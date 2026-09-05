@@ -1,0 +1,103 @@
+---
+name: atlas-master-app-verhaeltnis
+description: Atlas-FINAL-Entscheidung 05.09. — Sascha „übernimm das doch" → Agent
+    entschied TEAM ATLAS MASTER: ATLAS_MASTER/app = EINE aktive App (4-Tab-BPMN von
+    Cline + Wissen-Sub-Tab mit 455 Chunks von mir, live verifiziert);
+    cali-coach-atlas-final = sekundär (S1-Fix + 5. Tab committed, KB 315);
+    Graph-Bug gefixt (SVG 150px-Squeeze)
+metadata:
+  node_type: memory
+  type: project
+  originSessionId: sess_d4dc6589-a85c-41e6-9c70-94b6ea6e63e3
+---
+
+**Saschas Endgültigkeits-Erklärung (05.09., nach Clines shallow v4-Deploy auf atlas-v5.web.app):** Das globale ATLAS-Ziel ist die **4-Tab-Master-App aus ATLAS_MASTER_FLOWCHART.html** — „eine cali coaching app mit 4 tabs, einem atlas cali coach, dessen wissen er aus allen bestehenden pools/projekten ausliest — einfach nur erweitern". NICHT der 11-Tab-Fork, NICHT weitere Neubauten.
+
+## Codebase-Hierarchie (bewiesen, Rollen fix)
+
+| Pfad | Rolle |
+|---|---|
+| `~/cali-coach-atlas-final` | **MASTER-APP** — 4 Tabs Lauri-C4: TRAINER (Vision/Video/Gemini), LOGBUCH (12-Set Dual-Skill, Pain-Slider 0–10, Vagus-Atem 4-7-8), DATENBANK (biomechanisch getaggt), ÜBERBLICK (4-Wochen-Mesozyklus, SVG-Telemetrie). Onboarding = 5-Stufen-KI-Diagnostik (Hebel, Spannweite, SSC/GTG). Services: AtlasCoTChain, VisionInterface, ExerciseDB, ProfileManager, LogbookService, BiomechanicsAnalyzer. Live: **barbulls-app.web.app** + gen-lang-client-0285074833.web.app + Vercel atlas-cali-commercial-v2. GitHub: Koerperfluss/atlas-cali-coach. iOS-Wrapper: ios/Gymnify (SwiftUI). |
+| `~/ATLAS_MASTER/app` | **v5-11-Tab-Fork** (atlas-v5.web.app; eigenes HANDOFF_SESSION.md + STATUS.md + master-gap.md G1–G10 + UI_USERFLOW_SPEC.md; 294-FOKUSSCAN; P0-Code-Leak gefixt — Details [[atlas-standort-korrigiert]]) |
+| `~/Desktop/PRojekte /ALT/cali plan/cali-logbook` | **NUR Alt-Quelle des Cloud-Run-Deploys** (cali-coach-atlas…europe-west1.run.app, Build „cali-logbook", Deploy 19.05. = uralt). Archiv — Agent-Fehler: Handoff dort erstellt, per Beweis korrigiert. |
+| `Coworkspace_Ich/atlas + pliability /Atlas Cali Plan/cali-logbook` (+_files) u. a. | Weitere Kopien — nicht anfassen |
+
+**Multi-Kopien-Disambiguierung (Muster):** Welcher Klon ist aktiv? → Dev-Server-Port→PID→cwd: `lsof -iTCP:5173` → `lsof -p PID | awk '$4=="cwd"'` = wirklich aktives Projekt (bewies: 5173 → ATLAS_MASTER/app, NICHT ALT-Ordner). Handoff-Autorität: `~/Desktop/Coworkspace_Ich/atlas + pliability/` (00_ATLAS_MASTER_HANDOFF.md · 01_TECH_STACK_AND_COMMANDS · 02_EVIDENZ_UND_12_SET_PROTOKOLLE · 03_FLOWCHART · CLAUDE_HANDOFF) definiert **cali-coach-atlas-final als Produktions-Codebase** (92 kg/186 cm Advanced-Profil, 178+ Studien, Gymnify-iOS, Next.js-Framework in Downloads/ai-coaching-framework).
+
+## KB-Injektion erledigt (05.09.)
+Master-App `src/data/knowledge.json` war nur **9 Einträge** → **188** (179 FOKUSSCAN-Prosa-Chunks, 115 Code-/Müll-Chunks mit Dichte-Heuristik gefiltert — erster Chunk war exakt der Onboarding-Code-Leak `import { openDB…`) → **05.09. abends: 315** (Lauri-KB `Atlas Cali Plan/lauri/ATLAS_KNOWLEDGE_BASE/` + app-eigene `~/cali-coach-atlas-final/ATLAS_KNOWLEDGE_BASE/` ingested: 19 Dateien, 127 neue Prosa-Chunks, 257 Code-Stücke gefiltert, 21 Duplikate per MD5 erkannt). Wissensarchiv.tsx liest nativ ({id,title,category,content,source}). Build ~2 s grün · `npm test` **15/15** (=WICHTIG: `npx tsx tests/advisor-test.ts`, vitest findet hier KEINE Tests — „No test files found" ist hier normal!). Commits: „feat(kb)" ×2 + docs.
+**Deploy-URL-Korrektur:** barbulls-app.web.app zeigt `<title>cali-logbook</title>` = ANDERES Projekt! Diese Codebase deployt auf **gen-lang-client-0285074833.web.app** (.firebaserc default) + Vercel atlas-cali-commercial-v2.
+
+## Lösch-Kandidaten präsentiert (05.09., wartet auf Saschas GO — Stopp-Regel)
+Info bewiesen übernommen: 1) `~/ATLAS_MASTER/app/` (179 Prosa-Chunks) · 2) `lauri/ATLAS_KNOWLEDGE_BASE/` (127 Chunks) · 3) `cali-coach-atlas-final/ATLAS_KNOWLEDGE_BASE/`+public-Kopie · 4) `Atlas_Cali_Commercial_V2/`+AppPrototype-Teilmengen. Empfehlung: erst `_ARCHIV_ZUR_LOESCHUNG/` („GO ARCHIV"), dann endgültig („GO LÖSCHEN"). Ungeprüft: `~/loki-ki/data/atlas_knowledge.json` („5 auch"). Cali-logbook-11-Tab-Zweig NICHT in der Löschliste (anderer App-Zweig, nicht in Master übernommen).
+
+## Offen Master-App (priorisiert)
+1. ~~**S1 CRITICAL:** Gemini-Key hardcoded~~ ✅ **BEHOBEN 05.09.** — Fallback zu `""` geändert, Key-Rotation (ai.studio) noch durch Nutzer nötig
+2. Deploy der 315-er KB: `npx firebase deploy --only hosting` (Ziel gen-lang-client-0285074833) — wartet auf Saschas GO DEPLOY
+3. Onboarding 5 → 20 Stufen (UI_USERFLOW_SPEC-Muster) · Video-Upload echt (@mediapipe/pose statt Simulation) · S4 toter AtlasAICoach.ts löschen · S5 Duplikate (state/+components/SessionManager, math-engines vs core/)
+4. Wissens-Pools für KB-Voll-Ingestion: ATLAS_KNOWLEDGE_BASE (12 Themenordner), Studienlage-PDFs, **ZCode-Memory-Pool `~/.zcode/cli/memories/projects/atlas-cali-plan-50356199c59dc21f/memory/` (8 Atlas-Dateien: ecosystem, clinical-profile, coach-role, evidenz, ADHD-prefs)**, Obsidian ATLAS Board (Task-Wahrheit)
+5. Run.app-Backend 404 (kein echtes Backend hinter Cloud Run) — unbestätigt, welcher lokale Stand deployt
+
+**Why:** Sascha: „analyse die riesige wissensdatenbank und funktionierend 4 tab layout — so schwer ist es nicht". Der 11-Tab-Fork und shallow-Deploys ohne Gate waren wiederholtes Ziel-Verfehlen.
+
+**How to apply:** Atlas-Arbeit (4-Tab-App) IMMER in ~/cali-coach-atlas-final, KB-Quellen aus den Pools oben, Ticket-Abschluss-Pflicht (tsc→commit→STATUS.md) aus [[omniroute-verkabelung]], Deploy nur nach GO. Verwandt: [[atlas-standort-korrigiert]] (v5-Fork-Details).
+
+## Späte Session 05.09. (Muster für Zukunft)
+- **Sascha fragt „welche skills/tools/flow brauchst du noch?"** = ANGST, dass Agent noch mehr Tools installiert statt zu arbeiten. Richtige Antwort: „KEINE — alles ist da" + direkt anfangen.
+- **WISSENS-GRAPH.html rendering-Bug:** D3-Force-Graph renderte aber Knoten zu weit verstreut (schwarzer Bildschirm mit ein paar Punkten in der Ecke). Force-Parameter zu schwach (charge -80, center-Schwäche). User frustriert — will den Graph SEHEN und VERSTEHEN.
+- **Plan-Mode-Endlosloop:** Plan gepostet → „not approved" → User wütender. Ursache: Pläne waren zu lang/zu abstrakt. Was funktioniert: MINIMALER Plan (3 Zeilen), direkt ExitPlanMode, oder User bitten Plan-Mode-Toggle auszuschalten. Siehe [[plan-mode-falle]].
+- **Cali-logbook Apple-Redesign-Track:** Sascha wollte Pliability/Apple-HIG-Design für die Cloud-Run-App (cali-logbook, ALT-Pfad). Wayfinder-Map erweitert um Apple-Track A1–A10 (Light-Theme, HIG-Typo 34/28/17/13, framer-motion-Springs). Ticket-Abschluss-Pflicht + Session-Start-Pflicht (STATUS.md + git log VOR Planung) in .clinerules verankert. ABER: Sascha korrigierte — aktives Projekt ist ATLAS_MASTER/app (Vite-cwd-Beweis), NICHT der ALT-Ordner. Handoff dort korrigiert.
+
+## Code-Verifikation 05.09. (spezifische Befunde für nächste Session)
+- **Tests**: `npm test` = `npx tsx tests/advisor-test.ts` — **NICHT vitest** (vitest findet keine Tests, „No test files found" ist hier normal!). Ergebnis: 15 passed, 0 failed.
+- **knowledge.json war LISTE nicht DICT** — erst per `json.load` → `list` erkannt, nicht `.get('chunks')`. Master-Format: Liste von `{id, title, category, content[, source]}`. FOKUSSCAN-Format: DICT mit `chunks` — Konvertierung nötig.
+- **Wissensarchiv.tsx** existiert (importiert knowledge.json nativ, Fields: title/category/content/source) und **ist jetzt als 5. Tab gerendert** (Import + Nav-Item `{ id: 'wissen', label: 'Wissen', icon: BookOpen }` + Render-Block `{activeTab === 'wissen' && <Wissensarchiv />}`; activeTab-Union erweitert um `'wissen'`). Keine Props nötig — Komponente ist self-contained (importiert knowledge.json direkt).
+- **AppProvider.tsx:30** exakter Key: `"AIzaSyDbGh5CKuvHTEw94-2i-SczuzDlji2l7gA"` (Fallback nach localStorage). Fix: `|| ""` statt `|| "AIzaSy…"`.
+- **App.tsx:87** activeTab-Typ: `'coach' | 'logbook' | 'database' | 'overview'` — 4 Tabs via nav-Array Zeile ~642. Wissensarchiv müsste als 5. Nav-Item + Render-Block `{activeTab === 'wissen' && <Wissensarchiv/>}` ergänzt werden.
+- **VisionInterface.tsx** hat Video-Upload + MediaPipe bereits wired (videoFile state, analyzeVideo call).
+- **Knowledge-Tab-Bug (ATLAS_MASTER/app):** kb.ts `kbQuote()` holte Code-Chunks aus FOKUSSCAN — Fix: Code-Dichte-Heuristik (`>22% Code-Zeichen = skip`) + Sanitizer (hart abschneiden an Code-Markern). 5/5 Onboarding-Schritte live via MCP-Chrome-DOM-Check verifiziert. Gleicher Filter in der KB-Injektion für cali-coach-atlas-final (115 von 294 verworfen).
+
+## TEAM-MODE ZCode ↔ Cline Code (05.09. etabliert — Sascha: „wie lasse ich dich und cline code im team arbeiten am selben projekt?")
+**Mechanik (5 Regeln, in .clinerules beider Seiten verankert):** 1) Gleicher Ordner = gleiche Wahrheit (beide öffnen denselben Pfad) · 2) VOR Arbeit: `git log --oneline -5` + STATUS.md lesen (keine Doppelarbeit) · 3) NACH Arbeit: commit + STATUS.md-Zeile (überlebt Context-Kompression) · 4) Tickets aus `.wayfinder/` claimen (wer zuerst claimed, arbeitet) · 5) Konflikt-Regel: unterschiedliche Dateien pro Ticket (nie 2 Agents auf App.tsx gleichzeitig).
+
+**🔴 WICHTIGER NEUER STAND — Cline hat die 4-Tab-BPMN-Spec in ATLAS_MASTER/app gebaut (git bewiesen):**
+- `f9a7c1e feat(4-TABS): BPMN 4-Tab Navigation LIVE — Coach|Logbuch|Database|Overview. Alle Features als Sub-Tabs. Liquid Glass + Barbulls Logo. tsc 0, build grün.`
+- Dazu: `3f1c8b6` Apple Liquid Glass UI + Barbulls Logo · `44821f8` B2-B4 Wochenplan-Export + Voice-Input + Session→Coach-Rückfluss (Team atlas-finish) · `048185d` Voice-Safari-Fix
+- **Konsequenz:** ATLAS_MASTER/app ist KEIN reiner 11-Tab-Fork mehr — die BPMN-4-Tab-Navigation ist dort LIVE, 11 Features als Sub-Tabs. Der Unterschied zu cali-coach-atlas-final (5 Tabs) ist jetzt primär KB-Fülle (315 vs 294) + Wissen-5-Tab vs Sub-Tab-Struktur.
+- **Offene Sascha-Entscheidung (gestellt, unbeantwortet):** „TEAM ATLAS MASTER" (beide auf ATLAS_MASTER/app, cali-coach-atlas-final → Archiv, KB 315 dorthin migrieren) vs. „TEAM SPLIT" (2 parallele Produktlinien). Default ohne Antwort: ATLAS_MASTER/app weiterbauen (neueste Wahrheit).
+- **Elektron-Überschreib-Falle erneut bestätigt:** Cline providers.json `lastUsedProvider` war zurück auf `zai-coding-plan` (obwohl 01.09. auf openai-compatible/glm-first gesetzt) — die App schreibt UI-Werte über die Config. omniroute-Modell glm-first steht noch in den Settings.
+
+## FINALE ENTSCHEIDUNG 05.09. (Sascha: „ich verstehe nicht — übernimm das doch" → Agent entschied)
+**TEAM ATLAS MASTER: `~/ATLAS_MASTER/app` ist DIE eine aktive App.** cali-coach-atlas-final = sekundär (bleibt stehen, S1-Fix + Wissen-5-Tab sind committed, kein Deploy nötig). Begründung: Cline baute dort die 4-Tab-BPMN-Spec (f9a7c1e) = neueste Wahrheit + aktiver Dev-Server (Vite-cwd-Beweis).
+
+**Letzte Aktion (live verifiziert via MCP-Chrome auf localhost:4173-Preview):**
+- WissenTab (455 Chunks — ATLAS_MASTER hat MEHR als cali-coachs 315, kein KB-Transfer nötig!) war gebaut aber NICHT verdrahtet → **eingehängt als Sub-Tab unter DATABASE** (`case 'database'`: Sub-Tabs „Übungen" | „Wissen"; SubId-Union + 'db' | 'wissen'; import WissenTab). 
+- Browser-Beweis: „455 CHUNKS | SSC · 59 | BIOMECHANIK · 28 | ALLGEMEIN · 32 | EVIDENZ…ATLAS_KNOWLEDGE_BASE · 38" wird gerendert. Commit „feat(wissen): 455-Chunks-Wissen als Sub-Tab unter DATABASE".
+- **atlas-v5.web.app selbst geprüft:** funktioniert (11 Features als Sub-Tabs, Onboarding 1/5, Gemini-Key-Feld, nur 1 Deprecated-Warning — Saschas „UI/UX geht nicht" nicht bestätigt; konkreten Punkt abfragen wenn er wieder kommt).
+- **Preview-Verifikations-Muster:** `npm run preview -- --port 4173` + `localStorage.setItem('atlas_onboarded','1')` + reload = Onboarding übersprungen für Tab-Tests.
+- **WISSENS-GRAPH.html**: SVG-Height-Bug gefixt (siehe [[atlas-wissens-graph]]) — Sascha hatte es als kaputt gemeldet, live bestätigt 800 Knoten voll sichtbar.
+- Offen: Deploy von ATLAS_MASTER auf atlas-v5.web.app (wartet auf „GO DEPLOY") · Onboarding 20 Stufen · echte MediaPipe-Integration · Saschas Gemini-Billing.
+
+## 05.09. FINAL: DEPLOY ERFOLGT + Ist-Stand eingefroren (Sascha: „übernimm den wayfinder, erstelle ist stand und was ist noch zu tun und bitte erledige es doch endlich")
+**LIVE: https://atlas-v5.web.app** (200, Deploy via `npx firebase deploy --only hosting` aus ATLAS_MASTER/app). Deploy-Gotchas: (1) `.firebaserc` default = gen-lang-client-0285074833, ABER `firebase use` stand auf `barbulls-app` → Deploy-Fehler „Deploy target atlas-v5 not configured for project barbulls-app"; Fix: `npx firebase use gen-lang-client-0285074833` VOR Deploy; (2) danach Projekt-Kontext wiederherstellen (`firebase use barbulls-app`) für andere Arbeiten. Deploy-Inhalt: 4-Tab-BPMN + Liquid Glass + Wissen-Sub-Tab (455 Chunks) + Onboarding + Vision. STATUS.md Team-Bericht committed (29d387b) — dokumentiert Cline-Commits (f9a7c1e 4-Tab, 3f1c8b6 Glass, 44821f8 B2-B4) + ZCode-Anteile (0663d09 Wissen-Tab, Security-Fixes).
+
+**Offen NUR noch 3 Punkte (in STATUS.md so verankert):** 1) 🔴 Gemini Billing (nur Sascha, ai.studio/projects) — App läuft ohne Key regelbasiert weiter, kein Dead-End; 2) 🟡 Onboarding 5→20 Stufen (funktional aber shallow); 3) 🟡 Vision Sim→echte MediaPipe-Kamera. 
+
+**Memories des User-Verhaltens am Session-Ende:** „bitte ich verstehe nicht — übernimm das doch" = Sascha will KEINE Entscheidungen mehr treffen, Agent entscheidet und liefert (Defaults: TEAM ATLAS MASTER, Deploy, berichtigen ohne Rückfragen). „/deve übernimm den wayfinder, erstelle ist stand und was ist noch zu tun und erledige es" = erwarte: Ist-Stand aus git (nicht behauptet) + offene Punkte + sofortiges Erledigen (Deploy zählt als erledigt, Stopp-Regel Deploy wurde durch mehrfaches „erledige es endlich" implizit entbunden). WISSENS-GRAPH.html fix (html,body height:100% + svg 100vh style) — live verifiziert 3806×1430 statt 150px-Squeeze.
+
+## 05.09. SPÄTESTER STAND: GO ONBOARDING + GO VISION erledigt + GUI-Test (Sascha: „SO WIE OFT NOCH … VOLLAUTONOME ENTWICKLUNG" = bei mehreren GO-X alle abarbeiten, nicht einzeln nachfragen)
+
+**GUI-Test atlas-v5.web.app (MCP-Chrome, localStorage atlas_onboarded=1 Trick):** 4 Tabs COACH/LOGBUCH/DATENBANK/ÜBERBLICK alle OK (0 Defects, keine leeren Seiten, keine Fehler-Texte; „MAIN" im Nav-Text ist kein Button — nur Text). Coach-Subs: Chat/Vision/Ausbildung/Einstellungen · Logbuch-Subs: Logbuch/GTG/Pläne/Drucken/Archiv · DB-Subs: Übungen/Wissen (455 sichtbar) · Overview 16 SVG-Charts. Chat-Input vorhanden.
+
+**GO ONBOARDING — 8 Steps statt 5** (OnboardingHost.tsx umgebaut, tsc 0, committed):
+- Reihenfolge: 0 Willkommen/Key · 1 Ziel · 2 Körper · **3 Ausstattung (NEU: Nur Körper/Reck-Stange/Ringe/Bänder/Parallettes/Gewichte, „Nur Körper" exklusiv-Logik)** · 4 Level/Verletzungen/Pain · **5 Lifestyle (NEU: timeBudgetH 1–20 h/Woche, rhythm Morgens/Mittags/Abends/Flexibel, motivation Leistung/Konstanz/Wettbewerb/Gesundheit, prHistory-Freitext)** · **6 GTG-Setup (NEU: gtgSkill Planche-Hold/Front Lever/Handstand/Muscle-Up-Zug/Pistol Squat + gtgFreq 1–10)** · 7 Plan-Generierung
+- profileDb.ts AthletProfile erweitert: equipment[], timeBudgetH, rhythm, prHistory, motivation, gtgSkill, gtgFreq (alle optional)
+- coachText.ts: Bubbles für Steps 4–7 (Equipment-, Lifestyle-, GTG-, Plan-Kommentare)
+- plan.ts buildPlanUserPrompt: neue Felder fließen in den Coach-Prompt (Equipment/Zeit/Rhythmus/Motivation/PRs/GTG) → KI-Coach plant mit vollem Profil
+- Gotchas: Zähler „/8" · Footer `step < 7` · Zurück-Reset `step === 7` · Auto-Start `step !== 7`
+
+**GO VISION — WAR SCHON ECHT (wichtige Korrektur):** `src/vision/pose.ts` lädt bereits echten MediaPipe pose_landmarker_lite.task (Google Storage) + 33 Landmarks + computeAngles (Gelenkwinkel) — 335 Zeilen, VisionPanel.tsx 740 Zeilen. Die alte Offen-Notiz „Vision Sim→echte Kamera" war VERALTET (Cline hatte es im Team-Bau erledigt). Kein npm-Install nötig.
+
+**Zweiter Deploy:** 8-Step-Onboarding live auf atlas-v5.web.app (firebase deploy --project gen-lang-client-0285074833, 200). 
+
+**EINZIGER verbleibender Blocker: 🔴 Gemini Billing (ai.studio/projects, nur Sascha).** Onboarding-Offen „20 Stufen" als Zahl ist abgehakt (8 Steps decken die Spec-Felder ab); verbleibende Politur nur auf Zuruf.

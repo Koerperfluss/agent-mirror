@@ -1,0 +1,12 @@
+# browser
+
+The official built-in ZCode plugin for browser automation. It ships the `node_repl` MCP server, browser-client bootstrap module, skill, and documentation/capability manifests.
+
+## What it provides
+
+- `node_repl` MCP server — exposes `js`, `js_reset`, and `js_add_node_module_dir`; the model sees them as `mcp__node_repl__*`.
+- `scripts/browser-client.mjs` — explicitly bootstraps `agent.browsers` inside a fresh persistent kernel, matching the Codex plugin contract.
+- `control-browser` skill — tells the agent how to bootstrap and drive an advertised ZCode browser backend (Desktop IAB or CLI-managed headless CDP), select a browser and read `browser.documentation()` once, use the Codex-compatible Playwright DOM snapshot→locator→act workflow, and request screenshots only for visual evidence.
+- `web-gui-tester` skill — layers a pure-GUI black-box testing workflow on top of `control-browser`, requiring Browser Use semantic evidence plus inspected screenshots while respecting current console, upload, and runtime capability boundaries.
+
+The IAB runtime is provided by the desktop host; the managed headless CDP runtime is provided only by an explicitly opted-in CLI process. The plugin assets define the model guidance and the effective runtime object graph; unsupported members are removed by the manifest interpreter instead of failing after invocation.

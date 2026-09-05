@@ -1,0 +1,1 @@
+- [Graphify-Setup](graphify-setup.md) — PyPI=graphifyy, Skill kanonisch ~/.claude/skills/graphify, Symlink-Kette für ZCode
