@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-05 20:38 UTC
+Zuletzt gespiegelt: 2026-09-05 20:49 UTC
 
 ## call_fe4ee4834bf14478b4a66d0e-tool-result-df2ccbef-b4f7-499f-ac43-59af5f927f22
 
@@ -1319,6 +1319,8 @@ metadata:
 - **Nützliche Befehle:** `snapshot` (Accessibility-Tree mit refs), `screenshot /pfad.png`, `get url` / `get title`, `--help` zeigt Befehle. Viewport-Resize-Subcommand existiert NICHT unter diesem Namen („Unknown command: viewport" trotz help-Erwähnung).
 - **innerText reflektiert CSS `text-transform`:** Chrome liefert innerText in CAPS, wenn das Element `uppercase` hat — Feature-Checks also case-insensitive (`innerText.toLowerCase().includes(...)`) statt exaktem Case-Matching, sonst false negatives.
 - **Nach Deploy ZWEIMAL laden:** auch nach SW-Reset installiert der neue SW beim ersten Load nur im Hintergrund; der erste Reload zeigt oft noch das alte Bundle (Asset-Hash-Check!), der zweite (oder `?v=Date.now()`-Navigation) das neue. Never trust ein einziges Post-Deploy-Messergebnis.
+- **Chrome-HTTP-Cache-Byeass:** wenn auch nach SW-Reset das ALTE Asset geladen wird (`performance.getEntriesByType('resource')` zeigt alten Hash, curl auf der URL den neuen): `fetch('/',{cache:'reload'}).then(()=>fetch(location.href,{cache:'reload'})).then(()=>location.reload())` erzwingt frisches index.html.
+- **Deploy-Falle (zweimal passiert):** schlägt `npm run build` still fehl (z. B. TS6133 im selben `&&`-Chain), deployt Firebase trotzdem das ALTE `dist/` — Deploy sieht „erfolgreich" aus. Immer erst die `✓ built`-Zeile verifizieren, DANN deployen, DANN Live-Asset-Hash vs `ls dist/assets` abgleichen.
 - **Bewährt für:** Glass-Counts (`document.querySelectorAll('.glass-card').length`), Backdrop-Filter-Messung (`getComputedStyle(el).backdropFilter`), Onboarding-Clickthrough (Buttons per textContent-Regex, Klick + sleep-Loops in Bash), Asset-Hash-Check (`performance.getEntriesByType('resource')`).
 - **Fremdseiten-Gefahr (wichtig):** agent-browser hängt an Saschas ECHTEM Chrome-Fenster — er kann während deiner Tests selbst navigieren. Passierte: Atlas-Checks liefen plötzlich auf „KLINISCHES REHA DOSSIER / _michael_lagler.html" (alle DOM-Checks false). **Gegenmaßnahme:** vor jeder Auswertung `location.href` + `document.body.innerText.slice(0,80)` sanity-checken; bei Fremdseite mit `location.href='https://<ziel>/?v='+Date.now()` zurücknavigieren.
 - **Fallstricke im Umfeld:** chrome-devtools-MCP-Pages können verschwinden („No page found" → neue Seite öffnen); playwright ist im Browser-Use-node_repl NICHT installiert (Cannot find package); GCP-MCPs (google-cloud-storage, firestore) brauchen interaktives OAuth (`no_credentials`) — nicht für Ad-hoc-Checks nutzen.
@@ -1408,6 +1410,12 @@ metadata:
 Master-App `src/data/knowledge.json` war nur **9 Einträge** → **188** (179 FOKUSSCAN-Prosa-Chunks, 115 Code-/Müll-Chunks mit Dichte-Heuristik gefiltert — erster Chunk war exakt der Onboarding-Code-Leak `import { openDB…`) → **05.09. abends: 315** (Lauri-KB `Atlas Cali Plan/lauri/ATLAS_KNOWLEDGE_BASE/` + app-eigene `~/cali-coach-atlas-final/ATLAS_KNOWLEDGE_BASE/` ingested: 19 Dateien, 127 neue Prosa-Chunks, 257 Code-Stücke gefiltert, 21 Duplikate per MD5 erkannt). Wissensarchiv.tsx liest nativ ({id,title,category,content,source}). Build ~2 s grün · `npm test` **15/15** (=WICHTIG: `npx tsx tests/advisor-test.ts`, vitest findet hier KEINE Tests — „No test files found" ist hier normal!). Commits: „feat(kb)" ×2 + docs.
 **Deploy-URL-Korrektur:** barbulls-app.web.app zeigt `<title>cali-logbook</title>` = ANDERES Projekt! Diese Codebase deployt auf **gen-lang-client-0285074833.web.app** (.firebaserc default) + Vercel atlas-cali-commercial-v2.
 
+## UI/UX-Audit 05.09. Nacht (Bericht: `~/ATLAS_MASTER/app/UI_AUDIT_BERICHT.md`, committed)
+**9/10 Flows PASS, 0 Konsolenfehler** (Suche planche→8/68 ✓ · Elite-Filter→5 ✓ · Übung anlegen/löschen/Undo ✓ · Coach-KI-Antwort live ✓ · Wissen 455 ✓ · Overview-Charts+RPE-Heatmap ✓ · Vision ✓). Defects (unfixt, Polish): 🟠 MEDIUM „Speichern ohne Feedback hinter aktivem Filter" — neue Übung landet hinter Elite-Filter, Nutzer hält Speichern für gescheitert (Fix: Toast + Filter-Reset) · 🟡 Aktions-Chips setzen Präfix erst beim Senden ins Textarea · 🟡 Wissens-Suche ohne Trefferzähler. Testmuster: FAB/Buttons nie per textContent='+' suchen (Editor-Felder per eindeutigem placeholder, Trash-Button per innerHTML.includes('trash')); Filter-Zustand vor Save-Assertions prüfen.
+
+## D8 „Keine Vorannahmen" UMGESETZT (Bundle D9qeXLV8, Details [[atlas-d8-keine-vorannahmen]])
+Onboarding Körperdaten = leere Pflichtfelder (92/178-Defaults entfernt, canNext-Gate ≥30kg/≥100cm live im minifizierten Bundle: `i===2?J!=null&&J>=30&&me!=null&&me>=100`) · Vision fragt Gewicht interaktiv statt `?? 92` (Report nutzt usedWeight) · Profil-Prefill (IndexedDB `atlas-v5-profile`) für bekannte User bleibt Feature. OUTOTU-Demo-Scan = PDF Wort-für-Wort (Details [[atlas-outotu-output-format]]). Motion-System + Mobile-Bottom-Nav + 66-Übungen-Seed (Seed-Nachzieher idempotent in exerciseDb.ts initSeed) alles live.
+
 ## Lösch-Kandidaten präsentiert (05.09., wartet auf Saschas GO — Stopp-Regel)
 Info bewiesen übernommen: 1) `~/ATLAS_MASTER/app/` (179 Prosa-Chunks) · 2) `lauri/ATLAS_KNOWLEDGE_BASE/` (127 Chunks) · 3) `cali-coach-atlas-final/ATLAS_KNOWLEDGE_BASE/`+public-Kopie · 4) `Atlas_Cali_Commercial_V2/`+AppPrototype-Teilmengen. Empfehlung: erst `_ARCHIV_ZUR_LOESCHUNG/` („GO ARCHIV"), dann endgültig („GO LÖSCHEN"). Ungeprüft: `~/loki-ki/data/atlas_knowledge.json` („5 auch"). Cali-logbook-11-Tab-Zweig NICHT in der Löschliste (anderer App-Zweig, nicht in Master übernommen).
 
@@ -1492,12 +1500,6 @@ Info bewiesen übernommen: 1) `~/ATLAS_MASTER/app/` (179 Prosa-Chunks) · 2) `la
 - **Echte KI im Browser bewiesen (E2E):** Coach-Chat-Frage „Nenne mir EINEN Trainings-Cue für Planche Lean" → Gemini-Antwort live im DOM: „Drücke den Boden durch voll gestreckte Ellbogen maximal von dir weg…". Und zuvor 92kg-Tucked-Planche-Hebelverhältnis-Antwort. Kein Offline-/Regel-Modus mehr.
 - **Saschas Fertig-Kriterium (his /goal):** „FERTIG CALISTHENICS COACHING APP MIT ATLAS AI ASSISTENT" — Completion-Audit geliefert: 43/47 BPMN-Tickets ✅ (GESAMT-HISTORIE.md), App HTTP 200 + Asset = dist, KI live. Rest bewusst out-of-scope: Onboarding 8→20 Stufen, C2/C4 Commercial-Layer, Key-Referrer-Restriction (30s in Cloud-Console, gcloud kann Browser-Referrer nicht), nativer iOS-Build (Capacitor-Setup steht).
 - Sascha fragte „graphify wo istes" → WISSENS-GRAPH liegt komplett unter `~/Desktop/Coworkspace_Ich/atlas + pliability /WISSENS-GRAPH/` (WISSENS-GRAPH.html 295 KB · graph.json · KNOWLEDGE_MAP.md · 01-scan-log.json 780 KB); Open-Befehl: `open "<pfad>/WISSENS-GRAPH.html"`. Details [[atlas-wissens-graph]].
-
-## 05.09. NACHT FINAL: MOTION SYSTEM + STUFEN-AUTOMATIK (Ticket-Stand: 43/47 ✅)
-**DAS ZIEL fixiert in `~/ATLAS_MASTER/app/DESIGN_EVOLUTION.md`:** Mobile-First-PWA im BARBULLS-Look (dunkel #030303, Amber #f59e0b), Liquid Glass mit echter 3D-Tiefe, kinetischer Userflow, Coach leitet ALLES individuell aus KB+Interview ab; verkäuflich ohne Backend (BYO-Key). 8 Design-Gesetze D1–D8 + Motion-Tokens + Umsetzungs-Reihenfolge. Sascha: „DU SOLLST EINE GESAMTE APP ENTWICKELN mit higgsfield / ui ux fluidem liquidglass 3d animiertem userflow".
-
-**Motion System gebaut + live bewiesen (Bundle BAXe-zjX):** `page-enter` (Tab-Wechsel fade+rise+scale 320ms ease-out-quint; App.tsx `key={tab}` remountet) · `.stagger > *` (Karten steigen versetzt, 45ms-Staffelung via nth-child; DatabaseTab-Grid) · `.glass-card::before` Sheen (diagonaler Lichtstreifen beim Hover) · globaler `button:active` Press-Scale 0.97/80ms (prefers-reduced-motion respektiert). Live-DOM-Beweis: pageEnter=true, 68 Kinder mit card-rise + delay 0.045s.
-
 
 ## atlas-outotu-output-format
 
