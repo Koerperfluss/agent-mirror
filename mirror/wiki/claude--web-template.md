@@ -1,6 +1,6 @@
 # web-template (claude)
 
-Zuletzt gespiegelt: 2026-09-05 20:59 UTC
+Zuletzt gespiegelt: 2026-09-05 21:10 UTC
 
 ## no_spec
 
