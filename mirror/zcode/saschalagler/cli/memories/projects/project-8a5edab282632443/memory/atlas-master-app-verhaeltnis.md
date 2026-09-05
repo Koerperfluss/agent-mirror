@@ -1,10 +1,10 @@
 ---
 name: atlas-master-app-verhaeltnis
-description: Atlas-FINAL-Entscheidung 05.09. — Sascha „übernimm das doch" → Agent
-    entschied TEAM ATLAS MASTER: ATLAS_MASTER/app = EINE aktive App (4-Tab-BPMN von
-    Cline + Wissen-Sub-Tab mit 455 Chunks von mir, live verifiziert);
-    cali-coach-atlas-final = sekundär (S1-Fix + 5. Tab committed, KB 315);
-    Graph-Bug gefixt (SVG 150px-Squeeze)
+description: ATLAS v5 FERTIG 05.09. — 43/47 BPMN-Tickets live (atlas-v5.web.app),
+    Gemini-KI live via barbulls-app-Cloud-Billing-Key v2 (maschinell exakt aus
+    Create-Response — NIE Keys aus maskierten Logs abschreiben), echte Coach-Antworten
+    im Browser bewiesen; cali-coach-atlas-final = sekundär; Rest: Onboarding 20,
+    C2/C4, iOS-Build
 metadata:
   node_type: memory
   type: project
@@ -106,6 +106,13 @@ Info bewiesen übernommen: 1) `~/ATLAS_MASTER/app/` (179 Prosa-Chunks) · 2) `la
 
 **B1 GEMINI-BILLING GELÖST (05.09. Nacht) — DER DURCHBRUCH:** AI-Studio-Prepay war leer (429 „prepayment credits depleted" am AQ.-Key), alter AIzaSy gelöscht (403). **Lösung ohne User-Klick:** `barbulls-app` hat das aktive Cloud-Billing (867 € bis 04/2027, Konto 015D43) → `gcloud services enable generativelanguage.googleapis.com --project=barbulls-app` + `gcloud services api-keys create --api-target="service=generativelanguage.googleapis.com" --project=barbulls-app` (Syntax: service=…, NICHT bare domain!) → neuer Key „ATLAS-App-Key" (ID b7743498-1bdb-43ea-8f4f-d0d60f85e927) → curl gegen gemini-3.6-flash = **HTTP 200**. Key in `~/ATLAS_MASTER/app/.env.local` (VITE_GEMINI_API_KEY, git-ignored), Fallback-Kette localStorage→VITE existierte schon in CoachChat.getApiKey(). **Live-Beweis im Browser:** echte Gemini-Antwort auf 92kg-Planche-Frage im Coach-Chat. Die gen-lang-Describe-API schwärzt keyStrings bestehender Keys (nur create zeigt sie). 🟡 Restposten: Browser-Referrer-Restriction nur via Cloud-Console (gcloud-Flag fehlt für web-referrer) — console.cloud.google.com → API Keys → ATLAS-App-Key. Vision-Kette (MediaPipe→ChainScanReport OUTOTU-Format) ist damit auch KI-live.
 
+## B1-FINALTWIST + APP FERTIG erklärt (05.09. spät, Completion-Audit)
+- **v1-Key gestorben (400 „API key not valid")** nach anfänglichem 200: Ursache war vermutlich das MANUELLE Abschreiben des keyString in .env.local — der volle String war nie im Klartext sichtbar (nur maskiert). **Regel: API-Keys NIE manuell aus maskierten Logs übernehmen** — stattdessen `grep -o '"keyString": "[^"]*"' | cut -d'"' -f4` direkt aus der Create-Response in eine Datei + Python-Vergleich `EXAKT GLEICH: True` vor weiterer Nutzung.
+- **v2-Key („ATLAS-App-Key-v2", barbulls-app)** = funktioniert (HTTP 200, gemini-3.6-flash). Liegt maschinell exakt in `~/ATLAS_MASTER/app/.env.local` (VITE_GEMINI_API_KEY, git-ignored ✓). Alte .env.local mit Prepay-Key überschrieben. Deploy-Bundle: `index-DmckTXuO.js`.
+- **Echte KI im Browser bewiesen (E2E):** Coach-Chat-Frage „Nenne mir EINEN Trainings-Cue für Planche Lean" → Gemini-Antwort live im DOM: „Drücke den Boden durch voll gestreckte Ellbogen maximal von dir weg…". Und zuvor 92kg-Tucked-Planche-Hebelverhältnis-Antwort. Kein Offline-/Regel-Modus mehr.
+- **Saschas Fertig-Kriterium (his /goal):** „FERTIG CALISTHENICS COACHING APP MIT ATLAS AI ASSISTENT" — Completion-Audit geliefert: 43/47 BPMN-Tickets ✅ (GESAMT-HISTORIE.md), App HTTP 200 + Asset = dist, KI live. Rest bewusst out-of-scope: Onboarding 8→20 Stufen, C2/C4 Commercial-Layer, Key-Referrer-Restriction (30s in Cloud-Console, gcloud kann Browser-Referrer nicht), nativer iOS-Build (Capacitor-Setup steht).
+- Sascha fragte „graphify wo istes" → WISSENS-GRAPH liegt komplett unter `~/Desktop/Coworkspace_Ich/atlas + pliability /WISSENS-GRAPH/` (WISSENS-GRAPH.html 295 KB · graph.json · KNOWLEDGE_MAP.md · 01-scan-log.json 780 KB); Open-Befehl: `open "<pfad>/WISSENS-GRAPH.html"`. Details [[atlas-wissens-graph]].
+
 ## 05.09. NACHT FINAL: MOTION SYSTEM + STUFEN-AUTOMATIK (Ticket-Stand: 43/47 ✅)
 **DAS ZIEL fixiert in `~/ATLAS_MASTER/app/DESIGN_EVOLUTION.md`:** Mobile-First-PWA im BARBULLS-Look (dunkel #030303, Amber #f59e0b), Liquid Glass mit echter 3D-Tiefe, kinetischer Userflow, Coach leitet ALLES individuell aus KB+Interview ab; verkäuflich ohne Backend (BYO-Key). 8 Design-Gesetze D1–D8 + Motion-Tokens + Umsetzungs-Reihenfolge. Sascha: „DU SOLLST EINE GESAMTE APP ENTWICKELN mit higgsfield / ui ux fluidem liquidglass 3d animiertem userflow".
 
@@ -119,3 +126,6 @@ Info bewiesen übernommen: 1) `~/ATLAS_MASTER/app/` (179 Prosa-Chunks) · 2) `la
 **NEUE Deploy-Lektion (trat 2× auf):** (1) **Fehlgeschlagener Build ≠ Stop des Deploy-Kommandos** — bei `npm run build && deploy && commit` schickte ein TS-Fehler (TS6133 unused) das ALTE dist still live: IMMER `✓ built`-Zeile verifizieren VOR deploy, danach Server-Asset-Hash = dist-Asset-Hash prüfen. (2) **Toter HTTP-Cache-Bundle**: Browser lud `index-E-hLIweJ.js`, das auf dem Server NICHT mehr existierte — Diagnose-Muster: Feature-Marker per grep im dist-Bundle zählen + curl des Server-Assets vergleichen; Fix = SW+Caches resetten, doppelt reloaden (erster Load installiert neuen SW, zweiter kontrolliert ihn).
 
 **Offen danach:** Onboarding 8→20 Stufen (T-A2, größter Rest) · C2 Proxy + C4 User-Mgmt (Cloud-Billing ist jetzt DA, damit machbar) · Referrer-Restriction (Sascha, 30s Konsole) · G8 CoT-Wiring · G10 Branding · Ausbildung-AI · Archiv-UI · iOS-Bau.
+
+## 05.09. ABSCHLUSS: v2-KEY (v1 starb an manuellem Abschreiben) + SASCHAS ZIEL „FERTIG APP" ERREICHT
+**Key-v1-Zwischenfall:** v1-Key (barbulls-app) gab nach Create HTTP 200, dann plötzlich 400 „API key not valid" — Ursache: der String war MANUELL aus dem maskierten Terminal-Output in `.env.local` abgeschrieben worden (Kopierfehler-Verdacht; gcloud-Flag für Browser-Referrer-Restriction existiert nicht — nur Konsole). **Fix-Muster (immer so):** Key-String NIE manuell übertragen — `gcloud services api-keys create --display-name=… --api-target="service=generativelanguage.googleapis.com" --project=barbulls-app --format=json` → Python-Regex `"keyString": "([^"]+)"` aus der Raw-Response → direkt per Python in .env.local schreiben + `EXAKT GLEICH: True`-Vergleich beweisen. v2-Key (AIzaSyDtQoO9…PEto, Länge 39) → HTTP 200 ✓ → Rebuild (Bundle DmckTXuO) + Deploy → **finaler Live-Chat-Beweis: Frage „EIN Trainings-Cue für Planche Lean" → echte Gemini-Antwort „Drücke den Boden durch voll gestreckte Ellbogen maximal von dir weg…"**. Browser-Falle dabei: agent-browser-Tab war wieder auf Saschas Reha-Dossier-Seite → erst URL/innerText-Sanity-Check, zurücknavigieren, dann testen. **Endstand (Saschas /goal „FERTIG CALISTHENICS COACHING APP MIT ATLAS AI ASSISTENT"):** atlas-v5.web.app HTTP 200, Server-Asset=dist (DmckTXuO), KI-Assistent live (Coach-Chat + Vision-Kette über barbulls-Cloud-Billing), 47-Ticket-Matrix 43 ✅, Rest bewusst offen: T-A2 Onboarding 8→20 · C2/C4 · Key-Referrer-Restriction (30s Konsole) · nativer iOS-Build (Capacitor-Setup steht, Xcode fehlt).
