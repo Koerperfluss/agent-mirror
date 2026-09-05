@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-05 18:20 UTC
+Zuletzt gespiegelt: 2026-09-05 18:31 UTC
 
 ## call_fe4ee4834bf14478b4a66d0e-tool-result-df2ccbef-b4f7-499f-ac43-59af5f927f22
 
@@ -1297,6 +1297,7 @@ Update 2026-08-22 (Repair-Session): Ordner umgezogen nach `~/Desktop/Coworkspace
 - [Mimosa-Write-Zwang+uv-Tests](mimosa-write-zwang-uv-tests.md) — Hook blockt Dateischrieb via Bash → Write-Tool pflicht; pytest fehlt → `uv run --with pytest`; Commit-Block = Fehlalarm (System-Pfade) ODER echt (Traversal-Fund in ingest-Scripts → ALLOWED_ROOT+relative_to-Guard, dann Commit durch) — nie umgehen, prüfen+fixen; **NEU: dynamische Pfade aus JSON/externer Quelle in Python = immer [high] geblockt** (auch mit expanduser+is_relative_to-Guard) — Workarounds: Literale hardcoden, inline Bash-Python nur Output, graphify, D3-HTML direkt
 - [Anti-Lügen-Vertrag](anti-luegen-vertrag.md) — Sascha vertraut Agenten NICHT bei Pipelines — verlangt: Artefakt-Pflicht (Log-Dateien mit rohen Zahlen), Kennzahlen-Vertrag (In=Out), Stichprobe-Klausel (er wählt Zeile, Agent liest live), Todo-Liste live, Fail=Stop+Doku; bei jeder Pipeline ≥3 Stufen VOR Start anbieten
 - [Atlas-Wissens-Graph](atlas-wissens-graph.md) — Pipeline komplett 05.09.: 4228 Dateien · 1,83 GB · 703 Dup-Gruppen · 18 Themen · 601 Cluster · D3-Graph 800 Knoten/1032 Kanten; Output: `~/Desktop/Coworkspace_Ich/atlas + pliability /WISSENS-GRAPH/` (01-scan-log.json, KNOWLEDGE_MAP.md, WISSENS-GRAPH.html, graph.json); graphify scheitert an Gemini-429 → D3-Fallback self-contained besser
+- [Atlas-OUTOTU-Output-Format](atlas-outotu-output-format.md) — ALLE ATLAS-Analysen im OUTOTU-PDF-Stil (Kinetic-Chain-Scan, CALIBRATED @kg, Drill-Protocol); Schema liegt in chainScan.ts/ChainScanReport.tsx
 
 ## agent-browser-cli
 
@@ -1458,6 +1459,36 @@ Info bewiesen übernommen: 1) `~/ATLAS_MASTER/app/` (179 Prosa-Chunks) · 2) `la
 
 **GESAMT-HISTORIE KONSOLIDIERT (05.09. spät):** ALLE Atlas-Unterhaltungen in EINEM Dokument: `~/ATLAS_MASTER/app/.wayfinder/GESAMT-HISTORIE.md` — Quelle: Cline `~/.cline/data/db/session-search.db` (FTS5-Query: 53 Atlas-Sessions inkl. Team-Tasks atlas-scout/fixer/architect/03a/03b/05/06/09/SHELL/WISSEN/MODULE/QA-watchdog/finish/research) + 18 ZCode-Memories + git log. 47-Ticket-Matrix (BPMN-Spec): **39 ✅ / 4 🟡 (T-A2 Onboarding 8→20, P4.5 Auto-Push, T4-Heatmap, G5-Media) / 2 ❌ (C2 Proxy, C4 User-Mgmt — beide nach B1) / 1 🔴 (B1 Gemini-Billing, nur Sascha)**. Cline-Session-Mining-Muster: `sqlite3 session-search.db "SELECT session_id, title, started_at FROM session_search WHERE content LIKE '%KEYWORD%' GROUP BY session_id"` — FTS5 mit workspace_root/title/content-Spalten.
 
+## atlas-outotu-output-format
+
+---
+name: atlas-outotu-output-format
+description: Saschas verbindliches Output-Format für ALLE ATLAS-Analysen =
+  „ATLAS OUTOTU PERFEKT.pdf" (Bio-Feed/Kinetic-Chain-Scan-Stil)
+metadata:
+  node_type: memory
+  type: feedback
+  originSessionId: sess_9889d067-3d73-469e-835a-f54a1450b23c
+---
+
+Sascha hat am 05.09.2026 `~/Desktop/ATLAS OUTOTU PERFEKT.pdf` als verbindliches Ausgabeformat bestimmt: **Jeder Analyse-Output der ATLAS-App (Vision-Report, Coach-Analysen, Logbuch-Analysen, Übungs-Bewertungen) soll strukturell und stilistisch diesem PDF folgen** — nicht nur der Vision-Tab.
+
+**Why:** Sascha nennt es „PERFEKT" — es ist sein Produkt-Gesicht (BARBULLS v4.0 High-Tech-Bio-Feed, kalibriert auf 92kg, fordernder Trainer-Ton). Flache Chat-Antworten ohne diese Struktur empfindet er als wertlos.
+
+**How to apply:**
+1. **Format-Schema (aus dem PDF, 1:1):**
+   - Header: `BARBULLS v4.0 · BIOMETRISCHES FEED · ATLAS VISION V2` + `SYSTEM CALIBRATED @ <gewicht>KG` + Abschnittstitel in gepunkteten CAPS-Labels (tracking-[0.25em], amber)
+   - **KINETIC CHAIN SCAN:** je Körpersegment (HANDGELENK · ELLBOGEN · SCHULTER/SCAPULA · RUMPF/CORE · KÖRPERSCHWERPUNKT) ein Status-Badge `OK` (grün) / `WARNING` (amber) / `CRITICAL` (rot) + deutsche Physio-Analyse + konkreter Ausführungs-Cue (z. B. „Griff fest wie Zange")
+   - **IDENTIFIED CORE SKILL:** erkannte Übung + Stufe (z. B. „TUCKED PLANCHE (VORBEREITUNG/EINSTIEG)") + 2-3 Sätze Gesamtbewertung mit kg-Bezug
+   - **WEAK LINKS / COMPENSATIONS:** Listen der kritischen Schwachstellen/Kompensationen
+   - **DRILL PROTOCOL:** nummerierte Drills, jeder mit FOKUS (CAPS), TARGET DRILL (konkrete Übung, cyan-markiert) + RATIONALE (biomechanische Begründung inkl. Körpergewicht-Bezug)
+   - **BIO-EVOLUTION:** Progressionsempfehlung (erst Form perfektionieren, dann Dauer/Last steigern)
+   - Abschluss: `SYNC WITH INTELLIGENCE` / `UPLOAD TRAINING DATA`-CTA
+2. **Bereits implementiert für Vision:** `src/vision/chainScan.ts` (Gemini-JSON-Schema) + `src/vision/ChainScanReport.tsx` (UI) in `~/ATLAS_MASTER/app` — für neue Analysen dieses Schema WIEDERVERWENDEN statt neue Formate erfinden.
+3. Gemini-Prompts müssen dieses JSON-Schema erzwingen („Antworte AUSSCHLIESSLICH gültiges JSON, exakt dieses Schema"), Deutsch, präzise, fordernd, auf Athletengewicht kalibriert.
+4. Siehe auch [[atlas-standort-korrigiert]] (App-Pfad, OUTOTU=Vision-Design) und [[sascha-beweis-echtprojekte]].
+5. **Design-Kontext 05.09. Nacht:** `~/ATLAS_MASTER/app/DESIGN_EVOLUTION.md` (D1–D8) ist das übergeordnete Design-Gesetz (Higgsfield × Liquid Glass × BARBULLS + Motion-Tokens) — der OUTOTU-Report ist dort als Gesetz D8 „Wissen als Substanz" verankert; geplanter nächster Schritt: OUTOTU-Report als **Default-Demo mit Beispieldaten im Vision-Tab sichtbar machen** (auch ohne Gemini-Key), damit Sascha sein Zielbild sofort sieht.
+
 ## atlas-standort-korrigiert
 
 ---
@@ -1507,6 +1538,8 @@ Atlas Cali Coach — Standort-Korrektur (SSD-Scan 01.09.2026):
 **MOBILE-FIRST-UMBAU (05.09. spät, Sascha: „ES SOLL PRIMÄR EINE MOBILE APP WERDEN" + „wo sind Übungen aus den 12000 files"):** (1) **Hamburger-Drawer KOMPLETT entfernt** — neue `src/shell/MobileTabBar.tsx`: fixed bottom iOS-Style, glass-nav, `pb-[env(safe-area-inset-bottom)]`, 4 Tabs mit amber-Glow-Active; ShellDrawer.tsx jetzt NUR lg-Sidebar; AppShell main `pb-[calc(54px+env(safe-area-inset-bottom))] lg:pb-0`; Topbar ohne pl-14. (2) **Übungs-DB 10 → 66 Seed-Übungen** in `src/data/seed.ts` (Progressionsketten mit echten Calisthenics-Pfaden: Planche 10, FL 9, MU 5, Pull/One-Arm 8, Push/Dips/Ringe 5, HSPU 5, Beine 7, Core 8, Mobility/Prehab 5, Cardio 4 — alle mit Biomech-Tags + ZNS-Faktor); Live-DOM bewies 68 Karten. (3) **VERSTECKTER BUG: initSeed() lief nur bei leerer IndexedDB** → Saschas Browser blieb für IMMER bei den alten 10; Fix = Seed-Nachzieher (getAllKeys → fehlende Seed-IDs idempotent nachlegen, eigene Übungen unberührt). **OUTOTU-PDF gelöst:** `~/Desktop/ATLAS OUTOTU PERFEKT.pdf` = Saschas Ziel-Output (Vision-Report: BIOMETRIC FEED · SYSTEM CALIBRATED @ 92KG · KINETIC CHAIN SCAN mit Segment-Status OK/WARNING/CRITICAL · IDENTIFIED CORE SKILL · DRILL PROTOCOL mit Target-Drill+Rationale · BIO-EVOLUTION) — **bereits implementiert** in `src/vision/ChainScanReport.tsx` + `chainScan.ts` (Gemini-generiert aus MediaPipe-Frames, hängt am Vision-Sub-Tab); PDF zeigt auch die Mobile-Bottom-Navigation als Ziel. Verifiziert mit **agent-browser-CLI** (siehe [[agent-browser-cli]]).
 
 **OFFEN nach dieser Runde:** B1 Billing (nur Sascha) · G5 ExerciseDB Link-Import/Thumbnails · G6 KB-UI-Filter · G8 AtlasCoTChain-Wiring · G10 Branding-Sweep (Badge „BARBULLS V4.0"→ATLAS? Sascha-Frage offen) · T-A2 Onboarding 8→20 Stufen · Ausbildung-AI-Inhalte · Archiv-UI · C2/C4 Commercial · iOS-Bau (Xcode fehlt) · Mimosa-Vollscan lief (scan-job-mtonea3a). **Als Nächstes angekündigt (letzte Runde):** PWA-Install-Banner für iPhone-Home-Screen · Coach-Pläne im Trainingspläne-Tab sichtbar machen (generierte Pläne landen bisher nur im Coach-Chat).
+
+**DAS ZIEL FIXIERT + MOTION SYSTEM (05.09. Nacht, Saschas /plan mit „DU SOLLST EINE GESAMTE APP ENTWICKELN mit higgsfield / ui ux fluidem liquidglass 3d animiertem userflow, lege wert auf intuitiven flow, design wie barbulls modern"):** `~/ATLAS_MASTER/app/DESIGN_EVOLUTION.md` = neues verbindliches Design-Gesetz — **DAS ZIEL in einem Satz** (Mobile-First-PWA, BARBULLS-Look dunkel+amber, Liquid Glass mit echter 3D-Tiefe, kinetischer Userflow, Coach plant individuell aus KB+Interview, verkäuflich BYO-Key, KI-live mit Billing) + **8 Design-Gesetze D1–D8** (Mobile-First · Liquid Glass echt · 3D-Tiefe · Kinetischer Flow · Micro-Feedback · BARBULLS-Farbwelt · Kein toter Zustand · Wissen als Substanz) + Umsetzungs-Reihenfolge: 1 Motion-System ✅ → 2 Onboarding 8→20 → 3 Vision-Report als Default-Demo (OUTOTU-Design mit Beispieldaten, auch ohne Key sehbar) → 4 G5 Media → 5 Overview-Heatmap → 6 G10 Branding → 7 C2/C4 nach B1. **Motion System live bewiesen (Bundle index-BAXe-zjX.js):** `.page-enter` Tab-Übergang (App.tsx `key={tab}`-Remount, fade+rise+scale 320ms `--ease-out-quint`) · `.stagger > *` card-rise mit 45ms-Staffelung (nth-child 1–8, dann 360ms) — Live-DOM: 68 Kinder, anim=card-rise, delay[1]=0.045s · Glass-Sheen `.glass-card::before` diagonaler Lichtstreifen bei Hover · globaler Press-Scale `button:active scale(0.97)` mit prefers-reduced-motion-Gate. **NEUE CACHE-FALLE (3. Variante):** auch OHNE SW lieferte der HTTP-Disk-Cache ein totes Bundle (E-hLIweJ — existiert nirgends mehr, 0×page-enter), während curl den echten Live-Asset (BAXe-zjX) zeigte. **Beweis-Kette bei Feature-Verify:** 1) `curl live-url | grep assets/index-*.js` (Server-Stand) · 2) `grep -c 'feature-string' dist/assets/*.js` (welches Bundle hat das Feature) · 3) `performance.getEntriesByType('resource')` (was der Browser WIRKLICH lud) · 4) bei Mismatch: reload mit `?v=Date.now()` und ggf. SW+Cache-Reset wiederholen.
 
 ## atlas-wissens-graph
 
