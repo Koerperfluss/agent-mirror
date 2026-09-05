@@ -1,0 +1,21 @@
+---
+app: antigravity
+quelle: "saschalagler/extensions/ms-azuretools.vscode-docker-2.0.0-universal/SUPPORT.md"
+stand: 2026-09-05
+tags: [spiegel, antigravity]
+---
+
+# Support
+
+## How to file issues and get help
+
+This project uses GitHub Issues to track bugs and feature requests. Please search the existing
+issues before filing new issues to avoid duplicates.  For new issues, file your bug or
+feature request as a new Issue.
+
+For help and questions about using this project, please [create a discussion](https://github.com/microsoft/vscode-docker/discussions).
+
+## Microsoft Support Policy
+
+Support for this project is limited to the resources listed above.
+

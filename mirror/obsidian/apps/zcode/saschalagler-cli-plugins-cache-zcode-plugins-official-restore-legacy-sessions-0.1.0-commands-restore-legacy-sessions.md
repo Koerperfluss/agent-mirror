@@ -1,0 +1,18 @@
+---
+app: zcode
+quelle: "saschalagler/cli/plugins/cache/zcode-plugins-official/restore-legacy-sessions/0.1.0/commands/restore-legacy-sessions.md"
+stand: 2026-09-05
+tags: [spiegel, zcode]
+---
+
+---
+description: Select and restore a legacy ZCode session.
+argument-hint: "[agent/workspace/session filters]"
+skills: restore-legacy-sessions
+---
+
+Use the `restore-legacy-sessions` skill for this request:
+
+$ARGUMENTS
+
+Start by listing legacy agents, then narrow to a workspace and a conversation. Run a dry run before applying any restore, and keep the default source as `~/.zcode/v2/sessions` unless the user explicitly provides another source directory.

@@ -1,0 +1,93 @@
+---
+app: cline-code
+quelle: "saschalagler/plugins/_installed/official/speak-cd871ca919c7/package/README.md"
+stand: 2026-09-05
+tags: [spiegel, cline-code]
+---
+
+# speak
+
+Speaks Cline replies out loud with ElevenLabs text to speech.
+
+## What It Does
+
+Registers a conversational response rule and an `afterRun` hook. When a Cline turn completes successfully, the hook hands the final assistant reply to a detached local worker, then returns. The worker sends the reply to ElevenLabs, saves the returned MP3 to a temporary file, plays it with a local audio player, then removes the temporary file.
+
+The hook waits only for worker startup and payload handoff. It does not wait for ElevenLabs or audio playback, so normal playback duration does not count against Cline's plugin hook timeout.
+
+The only required configuration is `ELEVENLABS_API_KEY`. Voice, model, output format, playback detection, and reply length limits have defaults.
+
+## Install
+
+```bash
+cline plugin install speak
+```
+
+For local development from this repository:
+
+```bash
+cline plugin install ./plugins/speak --cwd .
+```
+
+## Setup
+
+Create an ElevenLabs API key at:
+
+```text
+https://elevenlabs.io/app/settings/api-keys
+```
+
+Add it to your zsh environment:
+
+```bash
+echo 'export ELEVENLABS_API_KEY="your-api-key"' >> ~/.zshrc
+source ~/.zshrc
+```
+
+Restart Cline CLI after updating your shell environment so the plugin process can read the key.
+
+## Defaults
+
+- Voice: Liam, `TX3LPaxmHKxFdv7VOQHJ`
+- Model: `eleven_flash_v2_5`
+- Output format: `mp3_44100_128`
+- Max spoken text: `3000` characters per reply
+- Response style: conversational prose, max three sentences, no lists unless requested
+- Audio players checked in order: `afplay`, `ffplay`, `mpg123`, `mpg321`, `play`
+
+If no supported player is installed, the agent run still completes and speech is skipped.
+
+## Optional Overrides
+
+```bash
+export ELEVENLABS_VOICE_ID="TX3LPaxmHKxFdv7VOQHJ"
+export ELEVENLABS_MODEL_ID="eleven_flash_v2_5"
+export ELEVENLABS_TTS_MAX_CHARS="3000"
+export ELEVENLABS_TTS_PLAYER="ffplay"
+```
+
+`ELEVENLABS_TTS_PLAYER` should be a command name or executable path. If you use `ffplay`, the plugin supplies quiet audio playback flags automatically.
+
+## Audio Player Setup
+
+macOS includes `afplay`.
+
+On systems without a default MP3 player, install one of:
+
+```bash
+brew install ffmpeg
+brew install mpg123
+```
+
+or on Debian or Ubuntu:
+
+```bash
+sudo apt-get install ffmpeg
+sudo apt-get install mpg123
+```
+
+## Security Notes
+
+Assistant reply text is sent to ElevenLabs for speech generation. Do not enable this plugin for workflows where replies may contain secrets, customer data, private code, or other sensitive information that should not be sent to ElevenLabs.
+
+Keep your API key in your shell environment or another local secret store. Do not commit it to a repository.

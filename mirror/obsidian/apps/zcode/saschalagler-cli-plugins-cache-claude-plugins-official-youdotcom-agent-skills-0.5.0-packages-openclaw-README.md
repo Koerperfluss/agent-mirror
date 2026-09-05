@@ -1,0 +1,51 @@
+---
+app: zcode
+quelle: "saschalagler/cli/plugins/cache/claude-plugins-official/youdotcom-agent-skills/0.5.0/packages/openclaw/README.md"
+stand: 2026-09-05
+tags: [spiegel, zcode]
+---
+
+# @youdotcom-oss/openclaw
+
+You.com skills and MCP setup metadata for [OpenClaw](https://openclaw.ai).
+
+This plugin packages You.com skills for web search, content extraction,
+research, finance, docs lookup, and guidance on adding You.com APIs, MCP, and
+SDKs to agentic projects. It also declares `YDC_API_KEY` setup metadata so
+OpenClaw can guide users through authenticated You.com MCP configuration.
+
+## Install
+
+From ClawHub:
+
+```sh
+openclaw plugins install clawhub:you
+```
+
+From npm:
+
+```sh
+openclaw plugins install npm:@youdotcom-oss/openclaw
+```
+
+## What it includes
+
+- Skills from `./skills`: `you-web`, `you-research`, `you-finance`,
+  `you-discover`, and `you-free`
+- Setup metadata for the You.com provider and `YDC_API_KEY`
+- A runtime-free plugin entry point, because skills and setup metadata do the
+  work
+
+The You.com MCP servers provide the tools. The bundled skills explain when and
+how to use them safely.
+
+## Auth
+
+- `you-free` can use keyless You.com search.
+- Authenticated You.com MCP tools require `YDC_API_KEY`.
+
+## Test
+
+```sh
+bun test
+```

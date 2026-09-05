@@ -1,0 +1,96 @@
+---
+app: antigravity
+quelle: "saschalagler/extensions/atom8n.openclaw-atom-3.25.58-universal/readme.md"
+stand: 2026-09-05
+tags: [spiegel, antigravity]
+---
+
+First OpenClaw client support cursor agent CLI inside VSCode/Cursor/Antigravity
+
+- Developed by the same creator of [n8n Atom 3.0](https://open-vsx.org/extension/atom8n/n8n-atom-v3)
+- Walkthrough video: [AtomClaw (OpenClaw Atom) + Antigravity: First client support cursor agent CLI](https://www.youtube.com/watch?v=xf5MnVCZx34)
+- Website: [www.atom8n.com](https://atom8n.com/)
+- Download the client extension: [AtomClaw (OpenClaw atom)](https://open-vsx.org/extension/atom8n/openclaw-atom)
+- Join Our Community: [Discord](https://discord.gg/9MmAhtJFWW), [Facebook](https://web.facebook.com/groups/atom8n) 
+<img alt="image" src="https://github.com/user-attachments/assets/17a9e014-8716-41da-bbda-f8b967846807" />
+
+- Search it on the extension tab:
+<img alt="image" src="https://github.com/user-attachments/assets/833073a9-bc53-40a8-8cb4-3ec7117592dd" />
+
+## Story behind
+
+As someone actively working with OpenClaw and AI agents, I initially struggled to understand its real-world value. With Antigravity and the right MCP configuration, I could already accomplish almost everything I needed. So I kept asking myself: **what does OpenClaw truly add?**
+
+---
+
+### **The problems I faced:**
+
+* I didn’t clearly see the practical advantage of OpenClaw over Antigravity + MCP
+* Agent behavior felt powerful, but not structured enough for long-term personalization
+* No clean way to integrate OpenClaw with Cursor Agent Mode (which I already pay $20/month for)
+* Official OpenClaw lacked support for Cursor Agent CLI
+* Setup and management felt more manual than necessary
+
+---
+
+### **The inspiration:**
+
+After digging deeper, I realized the real strength of OpenClaw lies in its structured `.md` system inside:
+
+* `/Users/{user-name}/.openclaw/workspace` (macOS)
+* `C:\Users\{user-name}\.openclaw\workspace` (Windows)
+
+Files like:
+
+* `AGENTS.md`
+* `BOOTSTRAP.md`
+* `HEARTBEAT.md`
+* `IDENTITY.md`
+* `SOUL.md`
+* `TOOLS.md`
+* `USER.md`
+
+This structure enables agents to evolve within a controlled loop — identity, memory, tools, and behavior all defined in Markdown. It’s essentially a programmable personality layer for AI agents.
+
+In theory, I could open this folder in Antigravity and achieve similar results. But since I already use Cursor’s unlimited Agent Mode, I wanted OpenClaw to leverage Cursor’s own MCP system instead of its default deep system MCP access. Cursor has its own system prompts and MCP invocation mechanism, which I consider safer and cleaner.
+
+---
+
+### **The journey:**
+
+Since official OpenClaw didn’t support Cursor Agent CLI, I forked it and added support myself.
+
+You can install my fork via Node.js:
+
+```
+npm install -g openclaw-atom@latest
+```
+
+To simplify everything, I also built the **AtomClaw extension**. The goal was:
+
+* One-click setup
+* Automatic configuration
+* Visual management of OpenClaw
+* No manual CLI friction
+
+If you’ve used my n8n Atom extension before, you’ll notice the interface feels almost identical.
+
+I also created a browser skill that forces the agent to use browserOS MCP instead of Playwright (which OpenClaw uses by default).
+
+---
+
+### **The real use case (for me):**
+
+The most practical application so far has been intelligent note-taking.
+
+I can:
+
+* Take a photo
+* Ask the agent to extract and store the information
+* Later retrieve it simply by asking naturally
+
+No need to remember exact keywords.
+No manual searching.
+Just conversational recall.
+
+That’s when OpenClaw truly started to make sense to me — not as a replacement for Antigravity, but as a structured memory and identity layer that enhances AI agents in a more sustainable way.
