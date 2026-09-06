@@ -1,8 +1,6 @@
 ---
 name: chipsi-openlaw-setup
-description: Chipsi ist Cloud-Webapp (chipsi.openlaw.cc) als
-  Chrome-App-Shortcut; Judicario-Connector konfiguriert man in Chipsi mit
-  MCP-URL+Key; Gmail=koerperfluss@gmail.com
+description: Chipsi ist Cloud-Webapp (chipsi.openlaw.cc) als Chrome-App-Shortcut; Konnektoren serverseitig von openlaw; Antwort-Fehler 06.09. wasserdicht als serverseitig bestätigt; UI-Tests nur mit echter Tastatureingabe; Gmail=koerperfluss@gmail.com
 metadata:
   node_type: memory
   type: project
