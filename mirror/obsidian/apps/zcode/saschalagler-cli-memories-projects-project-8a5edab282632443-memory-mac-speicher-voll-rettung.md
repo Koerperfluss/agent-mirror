@@ -7,24 +7,25 @@ tags: [spiegel, zcode]
 
 ---
 name: mac-speicher-voll-rettung
-description: Saschas Mac-Platte 06.09. voll (22/460 GB frei) — gemessene Zahlen,
-  genehmigter Rettungsplan, Beweis-Ordner ~/Desktop/SPEICHER-RETTUNG, offene
-  Frage iCloud-Plan-Größe
+description: GELÖST 06.09. — Mac 22→74 GB frei per brctl evict (iCloud-Offline-Kopien
+  freigegeben, nichts gelöscht); evict/download-Technik, .DS_Store-Falle, Logs in
+  ~/Desktop/SPEICHER-RETTUNG; offen mit Sascha-OK: .lmstudio, Docker.raw, PRojekte
 metadata:
   node_type: memory
   type: project
   originSessionId: sess_3ffe33ff-d0c0-4639-a973-ab1d721343be
 ---
 
-**Stand 06.09.2026 abends:** Mac 460 GB, nur noch 22 GB frei (95 % belegt). Baseline in `~/Desktop/SPEICHER-RETTUNG/00-baseline.log`.
+**ERGEBNIS 06.09.2026 22:25: 22 GiB → 74 GiB frei (~52 GB gewonnen), NULL Dateien gelöscht.** Beweis-Logs: `~/Desktop/SPEICHER-RETTUNG/` (00-baseline.log, 01-evict.log, 02-ERGEBNIS.md).
 
-Gemessene Real-Zahlen (du):
-- **Schreibtisch 98,1 GB · Dokumente 84,65 GB** (videos 17,2 + djo videos 8,4 + BB-Videos 9,4 + viele Einzel-MP4s à 200–400 MB) = primäre Auslager-Kandidaten
-- Library ~82 GB: Application Support 48 GB (Claude-3p 12 GB, Claude 10 GB, **Google/DriveFS nur 7,7 GB**, Sigma 6 GB) + Containers 13 GB + Mobile Documents 10 GB — Saschas „Application Support 90 GB" war die GANZE Library; DriveFS ist NICHT der Riesen-Block (Annahme im ersten Plan korrigiert)
-- AI-Caches: .lmstudio 19,65 GB · .claude 9,62 · .gemini 8,79 · .zcode 8,78 · .cache 3,61 · .hermes 3,27
+**Kernbefund (korrigiert):** Storage-Dialog-Zahlen sind IRREFÜHREND („iCloud Drive verwendet 6,70 GB, Offline 100,86 GB") — Wahrheit steht in Systemeinstellungen→Apple Account→iCloud: **2-TB-Plan, 1,2 TB genutzt, Drive 373,5 GB in der Cloud**. Schreibtisch&Dokumente-Sync UND „Mac-Speicher optimieren" waren schon AN. Problem war nur: Mac hielt ~100 GB Offline-Doppel-Kopien fest. Er hat zusätzlich Google Drive (App installiert, DriveFS nur 7,7 GB lokal).
 
-**Kernbefund (Sascha-Screenshot):** iCloud Drive AKTIV — Cloud nur **6,70 GB**, aber Offline-Kopien belegen **100,86 GB lokal** → iCloud-Plan zu klein für die Dateien, deshalb ist die Platte voll. Er hat „endlich iCloud" UND Google Drive („endlos", App installiert).
+**Die Technik (wiederverwendbar):**
+- `brctl evict <pfad>` = lokale Kopie einer BEREITS HOCHGELADENEN iCloud-Datei freigeben → Stub bleibt im Finder sichtbar, Klick lädt neu. `brctl download <pfad>` = zurückladen (Gegenprobe: PDF 0B→36K ✓)
+- **.DS_Store-Falle:** .DS_Store verweigert evict (NSFileProviderError -2008) und blockiert Nachbar-Files im Bulk-Lauf → immer `! -name ".DS_Store"` ausnehmen und WIEDERHOLUNGSPASSES fahren bis „Rest datenvoll: 0" (`find … -size +20M | xargs du -k | awk '$1>2048' | wc -l`)
+- Verifizierung: du = echte Blocks, ls -lh = Scheingröße; Erfolg an `df -k` Avail
+- Einstellungs-Checks via computer-use: Systemeinstellungen → iCloud → Drive-Dialog (3 Toggles)
 
-**Genehmigter Plan (ExitPlanMode approved):** 1) Google Drive auf Streaming-Modus (computer-use), Cache leert sich selbst · 2) Videos/Dokumente in Cloud hochladen (iCloud falls Plan reicht, sonst Google Drive Streaming) → Stub bleibt im Finder sichtbar · 3) lokale Kopie erst freigeben NACH Upload-Beweis · 4) df vorher/nachher + Stichprobe als Beweis (Anti-Lügen-Vertrag).
+**Evicted:** Desktop/Dokumente/**Barbulls 34 GB** (= enthielt die Dialog-„videos/djo videos/BB-Videos" — ~/Documents selbst war klein, „Dokumente – MacBook Pro von Sascha" nur 52K!) · Musik aktuell 9,6 · 1) FOTOS 7,2 · FFG_ReSubmission_PAKET 9,9 · 0) Allgemeine Dokumente 1,2. **Nie anfassen:** PRojekte 13G (aktiv), Coworkspace_Ich 12G (ATLAS), .claude/.gemini/.zcode/.hermes, Library ~82G (App Support 48G: Claude-3p 12G, Claude 10G).
 
-**Offen:** iCloud-Plan-Größe unbekannt — 1 Frage an Sascha gestellt („weiß nicht" möglich → via Systemeinstellungen/computer-use ablesen). STOP-Ereignis mitten in der Desktop/Dokumente-Messung brach du ab — Fortsetzung erst nach seiner Antwort. Siehe [[sascha-agenten-ordner-unantastbar]], [[anti-luegen-vertrag]].
+**Offen (brauchen Saschas OK, im Abschlussbericht offered als „mach Nr. X"):** 1. .lmstudio 19,6 GB (Modelle, neu ladbar) · 2. Docker.raw = Docker-VM (ls zeigt 72 GB SPARSE, du real nur 11 GB — immer du nehmen!), Reset via Docker Desktop→Problembehandlung · 3. PRojekte 13 GB ebenso evicten. „Mac-Speicher optimieren" ON → macOS evicted künftig selbst bei Druck. Siehe [[sascha-agenten-ordner-unantastbar]], [[anti-luegen-vertrag]].

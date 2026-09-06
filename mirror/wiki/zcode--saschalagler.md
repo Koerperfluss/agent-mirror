@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-06 20:24 UTC
+Zuletzt gespiegelt: 2026-09-06 20:35 UTC
 
 ## call_fe4ee4834bf14478b4a66d0e-tool-result-df2ccbef-b4f7-499f-ac43-59af5f927f22
 
@@ -1535,6 +1535,7 @@ Stand 06.09.2026 (Abend): Wohnkostenvereinbarung Sebastianistraße 15, 3382 Loos
 - Original-PDF (Desktop, 22:07 geändert) zitierte falsch **§ 1426 ABGB (= Erbverzicht!)** für die Quittung — korrigiert auf **§ 1369 ABGB** in v2.
 - Fertig gebaut: `Wohnkosten_Vereinbarung_Loosdorf_v2.pdf` (signierfertig, Ort/Datum 06.09.2026 vorausgefüllt) + `Quittung_Kostenbeteiligung_Herbert_Vorlage.pdf` (monatlich, für künftige Barzahlungen).
 - Ausstehend: Unterschriften (Herbert + Sascha), Versand an BH Melk (Thomas Schauer, soziales.bhme@noel.gv.at) — Schriftsatz vom 04.09. hatte Vereinbarung zugesagt.
+- Herbert-Identifizierung (Recherche 06.09., Report: `Coworkspace_Ich/PETER JUDICARIO/RESEARCH_Herbert_Edelmayer.md`): belegt im offiziellen Telefonverzeichnis st-poelten.at, Abteilung „IV Präsidiale" (Bürgermeister-Büro-Stab), Tel. +43 2742 333-1111; keine öffentliche Zeichnungsbefugnis, keine Presse-/Protokolltreffer → tritt im Mietkontext zu Recht als Privatperson auf.
 - Rechtsgrundlage-Check live via Judicario-Gateway: VwGH 94/15/0128 (Untervermietung ohne Überschuss = Liebhaberei, keine Einkünfte → Herbert-Meldefrage), § 33 FinStrG (nur bei Überschuss), VwGH 03.08.2026 (Sozialhilfe-Missbrauch). at-Corpus-Lücke: „Sozialhilfe Wohnkosten" = 0 Treffer, George@openlaw.cc melden. Siehe [[judicario-gateway-key-rotation]], [[chipsi-openlaw-setup]].
 
 ## zcode-computer-use-status
@@ -1560,8 +1561,8 @@ Diagnose 06.09.2026: Nutzer konnte Computer Use in ZCode „nicht aktivieren". B
 
 # Memory Index
 
-- [Mac-Speicher-voll-Rettung](mac-speicher-voll-rettung.md) — 06.09. Platte 95 % voll (22/460 GB frei); Kernbefund: iCloud-Plan zu klein (Cloud 6,70 GB vs 100,86 GB Offline-Kopien lokal); Schreibtisch 98 GB + Dokumente 85 GB = Auslager-Ziele; Plan approved: Google-Drive-Streaming + Cloud-Upload; Beweise in ~/Desktop/SPEICHER-RETTUNG; offen: iCloud-Plan-Größe
-- [Sascha-Agenten-Ordner-unantastbar](sascha-agenten-ordner-unantastbar.md) — .claude/.gemini/.zcode/.hermes nie „nur Modelle/Cache" nennen oder anfassen; „STOP" = sofort Tools anhalten + „nichts gelöscht, nur gelesen"; Messungen an persönlichen Ordnern vorher ankündigen
+- [Mac-Speicher-voll-Rettung](mac-speicher-voll-rettung.md) — GELÖST 06.09.: 22→74 GB frei per `brctl evict` auf iCloud-Offline-Kopien (2-TB-Plan, Barbulls 34G + Musik/FOTOS/FFG), nichts gelöscht; Technik: evict nur Hochgeladenes, .DS_Store ausnehmen + Wiederholungspässe, `brctl download` = Rückprobe; Storage-Dialog-Zahlen irreführen — Wahrheit in iCloud-Pane; offen mit OK: .lmstudio 19,6G, Docker.raw (sparse! du=11G real), PRojekte 13G
+- [Sascha-Agenten-Ordner-unantastbar](sascha-agenten-ordner-unantastbar.md) — .claude/.gemini/.zcode/.hermes nie „nur Modelle/Cache" nennen oder anfassen; „STOP" = sofort Tools anhalten + „nichts gelöscht, nur gelesen"; Messungen vorher ankündigen (trat 2× auf); seine Ressourcen nie aus Dialog-Screenshots beurteilen („iCloud-Plan zu klein" war falsch → KNALLTS-Wut), autoritative Pane prüfen
 - [Sascha-Meldung-nur-fertig](sascha-meldung-nur-fertig.md) — „genug geplant, erst melden wenn fertig" = still durchbauen, keine Zwischenberichte; EIN finaler Bericht mit Beweisen + Rest=User-Aktionen
 - [Agenten-Selbstüberwachung](agenten-selbstueberwachung.md) — Sascha fordert Agent-Team das den Haupt-Agenten ÜBERWACHT: Orchestrator(baut) + unabhängiger Reviewer(misst/nichtet, baut NICHT — Gewaltenteilung) + Install-Worker + ZCode koordiniert
 - [Sascha-3-Säulen-Parallelarbeit](sascha-3-saeulen-parallelarbeit.md) — ATLAS-Rahmen: 1 Planung/Userflow · 2 App-Dev iOS/Android/Web · 3 Research; Wut-Trigger = nicht ausgeführte Pläne/Doppelarbeit → ausführen ODER sofort fähige Subagents parallel; SSD-Konsolidierungs-GO 06.09.
@@ -2162,27 +2163,28 @@ metadata:
 
 ---
 name: mac-speicher-voll-rettung
-description: Saschas Mac-Platte 06.09. voll (22/460 GB frei) — gemessene Zahlen,
-  genehmigter Rettungsplan, Beweis-Ordner ~/Desktop/SPEICHER-RETTUNG, offene
-  Frage iCloud-Plan-Größe
+description: GELÖST 06.09. — Mac 22→74 GB frei per brctl evict (iCloud-Offline-Kopien
+  freigegeben, nichts gelöscht); evict/download-Technik, .DS_Store-Falle, Logs in
+  ~/Desktop/SPEICHER-RETTUNG; offen mit Sascha-OK: .lmstudio, Docker.raw, PRojekte
 metadata:
   node_type: memory
   type: project
   originSessionId: sess_3ffe33ff-d0c0-4639-a973-ab1d721343be
 ---
 
-**Stand 06.09.2026 abends:** Mac 460 GB, nur noch 22 GB frei (95 % belegt). Baseline in `~/Desktop/SPEICHER-RETTUNG/00-baseline.log`.
+**ERGEBNIS 06.09.2026 22:25: 22 GiB → 74 GiB frei (~52 GB gewonnen), NULL Dateien gelöscht.** Beweis-Logs: `~/Desktop/SPEICHER-RETTUNG/` (00-baseline.log, 01-evict.log, 02-ERGEBNIS.md).
 
-Gemessene Real-Zahlen (du):
-- **Schreibtisch 98,1 GB · Dokumente 84,65 GB** (videos 17,2 + djo videos 8,4 + BB-Videos 9,4 + viele Einzel-MP4s à 200–400 MB) = primäre Auslager-Kandidaten
-- Library ~82 GB: Application Support 48 GB (Claude-3p 12 GB, Claude 10 GB, **Google/DriveFS nur 7,7 GB**, Sigma 6 GB) + Containers 13 GB + Mobile Documents 10 GB — Saschas „Application Support 90 GB" war die GANZE Library; DriveFS ist NICHT der Riesen-Block (Annahme im ersten Plan korrigiert)
-- AI-Caches: .lmstudio 19,65 GB · .claude 9,62 · .gemini 8,79 · .zcode 8,78 · .cache 3,61 · .hermes 3,27
+**Kernbefund (korrigiert):** Storage-Dialog-Zahlen sind IRREFÜHREND („iCloud Drive verwendet 6,70 GB, Offline 100,86 GB") — Wahrheit steht in Systemeinstellungen→Apple Account→iCloud: **2-TB-Plan, 1,2 TB genutzt, Drive 373,5 GB in der Cloud**. Schreibtisch&Dokumente-Sync UND „Mac-Speicher optimieren" waren schon AN. Problem war nur: Mac hielt ~100 GB Offline-Doppel-Kopien fest. Er hat zusätzlich Google Drive (App installiert, DriveFS nur 7,7 GB lokal).
 
-**Kernbefund (Sascha-Screenshot):** iCloud Drive AKTIV — Cloud nur **6,70 GB**, aber Offline-Kopien belegen **100,86 GB lokal** → iCloud-Plan zu klein für die Dateien, deshalb ist die Platte voll. Er hat „endlich iCloud" UND Google Drive („endlos", App installiert).
+**Die Technik (wiederverwendbar):**
+- `brctl evict <pfad>` = lokale Kopie einer BEREITS HOCHGELADENEN iCloud-Datei freigeben → Stub bleibt im Finder sichtbar, Klick lädt neu. `brctl download <pfad>` = zurückladen (Gegenprobe: PDF 0B→36K ✓)
+- **.DS_Store-Falle:** .DS_Store verweigert evict (NSFileProviderError -2008) und blockiert Nachbar-Files im Bulk-Lauf → immer `! -name ".DS_Store"` ausnehmen und WIEDERHOLUNGSPASSES fahren bis „Rest datenvoll: 0" (`find … -size +20M | xargs du -k | awk '$1>2048' | wc -l`)
+- Verifizierung: du = echte Blocks, ls -lh = Scheingröße; Erfolg an `df -k` Avail
+- Einstellungs-Checks via computer-use: Systemeinstellungen → iCloud → Drive-Dialog (3 Toggles)
 
-**Genehmigter Plan (ExitPlanMode approved):** 1) Google Drive auf Streaming-Modus (computer-use), Cache leert sich selbst · 2) Videos/Dokumente in Cloud hochladen (iCloud falls Plan reicht, sonst Google Drive Streaming) → Stub bleibt im Finder sichtbar · 3) lokale Kopie erst freigeben NACH Upload-Beweis · 4) df vorher/nachher + Stichprobe als Beweis (Anti-Lügen-Vertrag).
+**Evicted:** Desktop/Dokumente/**Barbulls 34 GB** (= enthielt die Dialog-„videos/djo videos/BB-Videos" — ~/Documents selbst war klein, „Dokumente – MacBook Pro von Sascha" nur 52K!) · Musik aktuell 9,6 · 1) FOTOS 7,2 · FFG_ReSubmission_PAKET 9,9 · 0) Allgemeine Dokumente 1,2. **Nie anfassen:** PRojekte 13G (aktiv), Coworkspace_Ich 12G (ATLAS), .claude/.gemini/.zcode/.hermes, Library ~82G (App Support 48G: Claude-3p 12G, Claude 10G).
 
-**Offen:** iCloud-Plan-Größe unbekannt — 1 Frage an Sascha gestellt („weiß nicht" möglich → via Systemeinstellungen/computer-use ablesen). STOP-Ereignis mitten in der Desktop/Dokumente-Messung brach du ab — Fortsetzung erst nach seiner Antwort. Siehe [[sascha-agenten-ordner-unantastbar]], [[anti-luegen-vertrag]].
+**Offen (brauchen Saschas OK, im Abschlussbericht offered als „mach Nr. X"):** 1. .lmstudio 19,6 GB (Modelle, neu ladbar) · 2. Docker.raw = Docker-VM (ls zeigt 72 GB SPARSE, du real nur 11 GB — immer du nehmen!), Reset via Docker Desktop→Problembehandlung · 3. PRojekte 13 GB ebenso evicten. „Mac-Speicher optimieren" ON → macOS evicted künftig selbst bei Druck. Siehe [[sascha-agenten-ordner-unantastbar]], [[anti-luegen-vertrag]].
 
 ## mimosa-write-zwang-uv-tests
 
@@ -2392,7 +2394,7 @@ Bei der Speicher-Rettung 06.09. nannte ich .claude/.gemini/.zcode „nur Modelle
 
 **Why:** Seine Agenten-Ordner sind sein konfiguriertes Setup (Memories, Projekte, Historie) — für ihn kein „Cache". Und Datei-Operationen auf persönlichen Ordnern ohne laufende Erklärung wirken für ihn wie Datenverlust.
 
-**How to apply:** .claude/.gemini/.zcode/.hermes/Coworkspace nie als löschbar oder „nur Cache" framen; jeden Aufräum-Kandidaten einzeln nachfragen (.lmstudio-Modelle nur mit separater Erlaubnis). Bei „STOP": sofort alle Tools stoppen, ≤5 Zeilen „NICHTS gelöscht/verschoben, nur gelesen" + 1 Frage. Messungen an persönlichen Ordnern VORHER ankündigen. Siehe [[sascha-wut-fehlerpaste]], [[sascha-was-signal]], [[mac-speicher-voll-rettung]].
+**How to apply:** .claude/.gemini/.zcode/.hermes/Coworkspace nie als löschbar oder „nur Cache" framen; jeden Aufräum-Kandidaten einzeln nachfragen (.lmstudio-Modelle nur mit separater Erlaubnis). Bei „STOP": sofort alle Tools stoppen, ≤5 Zeilen „NICHTS gelöscht/verschoben, nur gelesen" + 1 Frage. Messungen an persönlichen Ordnern VORHER ankündigen (STOP trat 06.09. ZWEIMAL auf — beim zweiten Mal nur wegen du-Leselauf). Fakten über seine Ressourcen (z. B. „iCloud-Plan zu klein") nie aus Storage-Dialog-Screenshots behaupten — erst autoritative Quelle (iCloud-Pane: „Speicher: 1,2 von 2 TB genutzt") prüfen; Falschbehauptung löste „??? MEIN ICLOUD IST FAST LER KNALLTS" aus. Siehe [[sascha-wut-fehlerpaste]], [[sascha-was-signal]], [[mac-speicher-voll-rettung]].
 
 ## sascha-beweis-echtprojekte
 
