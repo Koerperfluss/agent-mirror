@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-06 17:42 UTC
+Zuletzt gespiegelt: 2026-09-06 17:53 UTC
 
 ## call_fe4ee4834bf14478b4a66d0e-tool-result-df2ccbef-b4f7-499f-ac43-59af5f927f22
 
@@ -1610,11 +1610,10 @@ Verwandt: [[atlas-master-app-verhaeltnis]] (DESIGN_EVOLUTION.md D1–D8), [[atla
 
 ---
 name: atlas-master-app-verhaeltnis
-description: ATLAS v5 FERTIG 05.09. — 43/47 BPMN-Tickets live (atlas-v5.web.app),
-    Gemini-KI live via barbulls-app-Cloud-Billing-Key v2 (maschinell exakt aus
-    Create-Response — NIE Keys aus maskierten Logs abschreiben), echte Coach-Antworten
-    im Browser bewiesen; cali-coach-atlas-final = sekundär; Rest: Onboarding 20,
-    C2/C4, iOS-Build
+description: ATLAS v5 06.09. NACHT — TEAM-MERGE LIVE: Onboarding 20 Stufen (AutoClaw)
+    + T-A8 CoT-Wiring + P4.5 Vision→Logbuch-Auto-Push + SSD-Konsolidierung (83/94/16/0)
+    alles deployed & bewiesen; PLAN.md = DIE Liste (19✅); Rest: C2 Proxy, C4 Tiers,
+    native Builds, GTM
 metadata:
   node_type: memory
   type: project
@@ -1728,6 +1727,7 @@ Info bewiesen übernommen: 1) `~/ATLAS_MASTER/app/` (179 Prosa-Chunks) · 2) `la
 - **Echte KI im Browser bewiesen (E2E):** Coach-Chat-Frage „Nenne mir EINEN Trainings-Cue für Planche Lean" → Gemini-Antwort live im DOM: „Drücke den Boden durch voll gestreckte Ellbogen maximal von dir weg…". Und zuvor 92kg-Tucked-Planche-Hebelverhältnis-Antwort. Kein Offline-/Regel-Modus mehr.
 - **Saschas Fertig-Kriterium (his /goal):** „FERTIG CALISTHENICS COACHING APP MIT ATLAS AI ASSISTENT" — Completion-Audit geliefert: 43/47 BPMN-Tickets ✅ (GESAMT-HISTORIE.md), App HTTP 200 + Asset = dist, KI live. Rest bewusst out-of-scope: Onboarding 8→20 Stufen, C2/C4 Commercial-Layer, Key-Referrer-Restriction (30s in Cloud-Console, gcloud kann Browser-Referrer nicht), nativer iOS-Build (Capacitor-Setup steht).
 - Sascha fragte „graphify wo istes" → WISSENS-GRAPH liegt komplett unter `~/Desktop/Coworkspace_Ich/atlas + pliability /WISSENS-GRAPH/` (WISSENS-GRAPH.html 295 KB · graph.json · KNOWLEDGE_MAP.md · 01-scan-log.json 780 KB); Open-Befehl: `open "<pfad>/WISSENS-GRAPH.html"`. Details [[atlas-wissens-graph]].
+
 
 ## atlas-outotu-output-format
 
@@ -1917,6 +1917,15 @@ Sascha befahl: ZCode = KOORDINATOR, kein Übersetzen durch ihn ([[zcode-koordina
 - AutoClaw hatte selbst einen NEUEN Chat vorbereitet: ~30 ATLAS-Docs als Anhänge (Batch 18:59: STATUS.md, DESIGN_EVOLUTION.md, UI_UX_PLAN.md, UI_AUDIT_BERICHT.md, alle PDFs …) — **aber aus der ARCHIV-Kopie** (Coworkspace-Quelle, .openclaw-attachments). Chat-Feld leer, Agent Cluster noch AUS (=0).
 - Ich schaltete Agent Cluster selbst an, tippte den KOORDINATIONS-AUFTRAG (T-A2 Onboarding 8→20, NUR /Users/saschalagler/ATLAS_MASTER/app, D8, tsc+git-Commit+STATUS-Zeile als DONE-WHEN, Rückfragen als Kommentar in ZCODE_HANDOFF.md) und sendete (19:18; Session aktualisierte sich 19:09→19:23).
 - ** Neue Mechanics:** (a) `state_id superseded`-Fehler, wenn AutoClaws UI sich zwischen type und Send ändert → neu get_app_state, Aktion wiederholen, nie blind retry; (b) Ein-Driver-Regel: ein fremdes „S" im Feld zeigte Doppel-Tippen (Sascha ODER ich) — wenn Sascha selbst tippen will, sagt er „STOPP", sonst steuert ZCode; (c) AutoClaw-Deliverables mit „file not found" = tote Archiv-Pfade aus alten Handoffs, korrigierbar per Chat-Nachricht mit Absolut-Pfad.
+
+## T-A2 GELIEFERT + MERGE-SAGA (06.09. Nacht) — AutoClaw als Builder bewiesen
+**AutoClaw lieferte T-A2 vollständig:** Onboarding 8→20 Stufen (21 Screens, D8-Pflicht-Gates, level optional ohne Default, Schmerz-Scan-Anker 0, Stufe 14 Gewichtskalibrierung → calibratedWeightKg gewinnt im Coach-Prompt), tsc -b + vite build grün, Commits 672e47c (feat) + f69ef60 (docs), Claim-Notiz in ZCODE_HANDOFF.md, STATUS/SPEC_CONFORMANCE aktualisiert. Selbst-Diagnose-Qualität hoch („Beweis, kein Raten"-Tabellen).
+
+**Störungen im Lauf:** wiederholte Quota-Abbrüche „We're experiencing high demand" + einmal **„Agent Cluster mode does not support the current model"** (bei GLM-5.3-Flash-Auswahl + Cluster-Checkbox → Cluster-Modus braucht anderes Modell; modus=Auto/Chat oder Modell wechseln). Nach „SOFORT JETZT"-Aufforderung führte er die Kopie-Aktion aus.
+
+**Pfad-Blindheit-Finale:** AutoClaw bestritt weiterhin ~/ATLAS_MASTER (mdfind+find „bewiesen", sah nur die Coworkspace-Kopie git 9b9aa82) — vermutlich Sandbox-Home-Sicht des Agenten. Nach Saschas „DOCH ICH HAB ES VERSCHOBEN" legte AutoClaw ~/ATLAS_MASTER/app als **APFS-Clone (333 MB, nicht-destruktiv)** mit SEINEN T-A2-Dateien an; meine ZCode-Commits blieben als .git-Historie erhalten, und mein nächstes `git add -A` nahm seine Dateien mit → **beide Wellen = EIN Stand ohne Konflikt** (Verifikation: git log meine Kette + grep 39 step-Blöcke/21 coachText-cases + cotChain.ts vorhanden + tsc 0 + git status leer).
+
+**How to apply nach jeder AutoClaw-Bau-Runde:** (1) BEIDE Repos checken (git log + Feature-Marker-grep), bevor irgendwas als verloren/überschrieben gilt; (2) fremde Commits ggf. per cherry-pick/Datei-Kopie+git add -A integrieren; (3) AutoClaw-Quota-Abbruch ≠ Task tot — Reststück selbst übernehmen (P4.5 wurde so von ZCode zu Ende gebaut); (4) Cluster-Fehlermeldung „does not support the current model" = Modell-Dropdown von Auto-Fast/GLM-5.3-Flash weg von cluster-fähigem Modell drehen.
 
 ## cline-cli-befehle-mechanik
 
@@ -2188,6 +2197,7 @@ Sascha formulierte es selbst (06.09., wütend): „1) planung kompletter app, fu
 3. Subagent-Prompts SELBST-ENTHALTEND schreiben: Ziel + Regeln + DONE-WHEN + Shell-Hinweis `/bin/bash -c '…'` (zsh-ENOENT betrifft auch Subagents, [[zcode-offpeak-ticket-ausfall]]) + Anti-Lügen-Log-Pflicht ([[anti-luegen-vertrag]]).
 4. **SSD-Konsolidierungs-GO (06.09. explizit):** alle verstreuten Atlas-Wissens-Dateien in `~/Desktop/Coworkspace_Ich/atlas + pliability /SSD-KONSOLIDIERUNG/` VERSCHIEBEN (mv, nie rm; Duplikate nach `_DUPLIKATE/`); verboten: ~/ATLAS_MASTER (live), cali-coach-atlas-final (git-Projekt), ~/Library, .git, node_modules. Verwandt: [[atlas-wissens-graph]] (4228-Dateien-Inventar als Basis), [[omniroute-verkabelung]] (Team-Regeln).
 5. **„WO IST DAS TO-DO?" → PLAN.md zeigen, nicht neu erklären (06.09. Abend):** Sascha verlangt EINE sichtbare Liste für alles. Antwort-Artefakt: **`~/ATLAS_MASTER/app/PLAN.md`** (committed) = DIE lebende Liste — 3 Säulen als Tabellen, je Zeile: Stufe | Agent | Status (⬜🔧✅🔴) | Beweis + „Roter Faden bis verkauft" + seine nur-2-User-Punkte. Bei jeder „wo ist die Liste"-Wut: PLAN.md aktualisieren (echte Zahlen der Agent-Logs eintragen) + committen, statt eine neue Übersicht zu bauen. Vierte Bewährung des Parallel-Musters: **4 Ströme gleichzeitig** (Agent-SSD-Konsolidierer + Agent-Flowchart-Gap + AutoClaw T-A2 + ZCode T-A10 deploy). Konsolidierer-Zielstruktur live bewiesen: `SSD-KONSOLIDIERUNG/{01_Alt-Projekte,02_Atlas-Cali-Plan,03_Downloads,04_Einzeldateien,_DUPLIKATE}/` stand nach Minuten.
+6. **Abschluss-Beleg des Musters (06.09. Nacht — alle 3 Säulen lieferten am selben Abend):** Gap-Agent 7✅/6🟡+Tickets 14/15 · SSD-Agent **fertig: 83 verschoben/94 Dup/16 übersprungen/0 Fehler, Log 237 Zeilen** (Saschas Stichproben-Klausel erfüllbar) · AutoClaw T-A2 komplett + Team-Merge live (1/20-Zähler) · ZCode selbst: T-A8 CoT-Wiring + T-A10 Branding + P4.5 Auto-Push, alles deployed mit Asset-Parität. PLAN.md-Stand: **19 ✅, roter Faden 6/9** — Rest: C2 Proxy → C4 Tiers → native Builds (iOS=Runtime-Freigabe Sascha) → GTM. Sein `/goal „führe zu ende"` + „mitte" = Plan autonom bis zum Ende durchziehen; Berichte nur mit Bundle-/Live-Beweisen.
 
 ## sascha-beweis-echtprojekte
 
