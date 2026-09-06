@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-06 12:28 UTC
+Zuletzt gespiegelt: 2026-09-06 12:39 UTC
 
 ## call_fe4ee4834bf14478b4a66d0e-tool-result-df2ccbef-b4f7-499f-ac43-59af5f927f22
 
@@ -1272,6 +1272,50 @@ Update 2026-08-20 (GLM-First): Z.AI-Key als Provider `zai` registriert; Priority
 Entscheidung 2026-08-20: Sascha hat das optionale Custom System Prompt (Dashboard → Endpoints) mit „nein" abgelehnt — KEIN globaler System-Prompt in OmniRoute setzen und nicht erneut anbieten.
 
 Update 2026-08-22 (Repair-Session): Ordner umgezogen nach `~/Desktop/Coworkspace_Ich/OmniRoute/OMNI-Router:ScannFallback` (alte Desktop-Pfade tot — Plist + zshrc-Alias repariert). Gateway läuft jetzt PERMANENT via LaunchAgent `com.sascha.omniroute` (RunAtLoad+KeepAlive, Logs `~/.omniroute/logs/launchd*.log`) — kein manueller Start mehr nötig. Dashboard-Passwort geändert (kein CHANGEME mehr). Verkabelungs-Stand: Claude Code global (env ANTHROPIC_BASE_URL + MCP omniroute global in ~/.claude.json), Cline = openai-compatible/glm-universum (Backups `*.backup_20260822_*`), Codex config.toml auf 20128 verkabelt (CLI aktuell NICHT installiert — greift bei Re-Install), Gemini CLI: omniroute als MCP-Server in ~/.gemini/settings.json (Modell-Ebene nicht umbiegbar, Google-API-Key-Auth), Antigravity + LM Studio nicht verkabelbar (serverseitig gesperrt bzw. Provider keine Consumer). ZCode bleibt bewusst DIREKT auf Z.AI-GLM (OmniRoute nur Fallback-Ebene, Sascha-Entscheidung 22.08.). Env `OMNIROUTE_API_KEY` in ~/.zshrc exportiert.
+
+## MEMORY
+
+# Memory Index
+
+- [Judicario Gateway Key Rotation](judicario-gateway-key-rotation.md) — alter Key tot, neuer Key jud_Cpu-… verifiziert, Connectoren 06.09.2026 gefixt
+- [Chipsi/Openlaw Setup](chipsi-openlaw-setup.md) — Chipsi=Cloud-Webapp via Chrome-Shortcut, Connector-Config mit MCP-URL+Key, Gmail=koerperfluss@gmail.com
+
+## chipsi-openlaw-setup
+
+---
+name: chipsi-openlaw-setup
+description: Chipsi ist Cloud-Webapp (chipsi.openlaw.cc) als
+  Chrome-App-Shortcut; Judicario-Connector konfiguriert man in Chipsi mit
+  MCP-URL+Key; Gmail=koerperfluss@gmail.com
+metadata:
+  node_type: memory
+  type: project
+  originSessionId: sess_419a8806-4350-4c0c-92da-4032328e499c
+---
+
+**Chipsi** (Rechts- & Steuer-Assistenz von openlaw) ist KEINE lokale App: `Chipsi.app` im Projektordner ist nur ein Chrome-App-Mode-Shortcut auf `https://chipsi.openlaw.cc/` (Login via Google). Ein "Netzwerkproblem — die Antwort konnte nicht erstellt werden" beim Antworten (Recherche→Synthese) kommt vom Connector-/Backend-Aufruf, nicht vom lokalen Netz. Mac-Seite 06.09.2026 verifiziert gesund: DNS/TLS ok, `/api/auth/methods` → 200, gateway.openlaw.cc erreichbar.
+
+Judicario-Connector in Chipsi = MCP-URL (`https://gateway.openlaw.cc/mcp/at/`) + Zugriffsschlüssel — Vorlage mit gültigem Key: `Judicario_Sacha_Mac/tools/CHIPSI_SANDBOX_CONNECTOR.html`. Toter Key war die wahrscheinliche Fehlerursache → [[judicario-gateway-key-rotation]].
+
+**Gmail des Nutzers: koerperfluss@gmail.com** (auch seine primäre Apple-ID → App-Store/TestFlight-Mails landen dort). Zugriffshürden: google-workspace-MCP hat KEINEN Gmail-Scope (Permission denied), Gmail ist NICHT in Apple Mail eingerichtet (nur iCloud + IMAP startup@koerperfluss.at), AppleScript auf Chrome/Mail timed out (TCC-Freigabe nötig), Comet-Browser-Debug-Port 9222 liefert keine DevTools-JSON. Funktionsweg: Browser-Tab auf accounts.google.com (Session im ZCode-IAB) oder Nutzer liest selbst. openlaw-Support: George george@openlaw.cc, WhatsApp +43 676 3064897.
+
+## judicario-gateway-key-rotation
+
+---
+name: judicario-gateway-key-rotation
+description: Judicario-Gateway-Key jud_gtSG0t… ist tot; aktiver Key jud_Cpu-…
+  funktioniert auf allen 8 Modulen; Connectoren am 06.09.2026 gefixt
+metadata:
+  node_type: memory
+  type: project
+  originSessionId: sess_419a8806-4350-4c0c-92da-4032328e499c
+---
+
+Der alte Judicario-Gateway-Key `jud_gtSG0t_c8db2KMG6FGyqr4r1sMPyXED7` (Einrichtungs-Files vom 21.07.2026, openlaw-Distribution) ist **deaktiviert** (Gateway antwortet: "unknown or disabled key"). Der aktive Key lautet `jud_Cpu-nyGunSlYK7TM1Nz7_g9iJQvhsiLh` (gefunden in `Judicario_Sacha_Mac/tools/CHIPSI_SANDBOX_CONNECTOR.html`), verifiziert am 06.09.2026 auf allen 8 Modulen (at, de, ch, eu, ip, steuer, insurance, steuer-de → judicario-* v1.29.0).
+
+Am 06.09.2026 gefixt: 30+ Konfig-Files im Projektordner (`Connectoren_URLs.txt`, `Judicario_in_Claude_Code_installieren.command`, `judicario/.mcp.json`, tools/, implementation/) umgestellt + alle 8 Claude-Code-Connectoren (user scope) neu registriert — 6/8 ✔ Connected. `insurance` + `steuer-de` verbinden, aber Tools-Liste serverseitig kaputt ("expected array, received undefined") → openlaw-Problem. Nur historische Research-MDs (Audit/_ARCHIV, LEGAL_OPS_MASTER_ARCHIV/konkurrenz) haben noch den alten Key als Doku-Referenz.
+
+Bei erneuter Key-Rotation: Test mit MCP-Initialize-POST (`Accept: application/json, text/event-stream`) gegen `https://gateway.openlaw.cc/mcp/at/?k=KEY`. Siehe auch [[chipsi-openlaw-setup]].
 
 ## MEMORY
 
