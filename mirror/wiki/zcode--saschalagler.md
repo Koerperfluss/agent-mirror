@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-06 15:13 UTC
+Zuletzt gespiegelt: 2026-09-06 15:34 UTC
 
 ## call_fe4ee4834bf14478b4a66d0e-tool-result-df2ccbef-b4f7-499f-ac43-59af5f927f22
 
@@ -655,6 +655,8 @@ Bei Fachfragen (z. B. Trainings-Übungen) fordert er explizit „clinical reason
 - [One action, not tables](feedback-one-action-not-tables.md) — nach "mach selbst/volle Freigabe": selbst prüfen, handeln; Nutzer-Aktion = EINE klare Aktion, keine Szenario-Tabellen
 
 - [Z.AI Coding Plan Limits](zai-coding-plan-limits.md) — weekly+5h Credit-Caps selbst auf Pro; [1310]=Cap; Fanout verbrennt Quota; 3 Z.AI-MCP-Server eingetragen mit Key-Platzhalter- [AutoClaw Full-Stack-Builder](autoclaw-full-stack-builder.md) — 06.09. Agent+7 Skills+Write-Guard eingerichtet; JWT pro-Modell in openclaw.json, nur additiv editieren; Config greift nach App-Neustart
+- [Legal-Ops-Native-Status](legal-ops-native-status.md) — 06.09. P0-Diagnose: Verschmelzung FUNKTIONIERT (live verifiziert, Port 7070/Ollama); „kaputt" = 4-App-Varianten-Wirrwarr → Aufräumen mit GO; STATE.md im Projekt
+- [LOKI Projekt-Map](loki-project-map.md) — 06.09. 17:30: Legal-Ops gelöst, Atlas-Takeover läuft LIVE in AutoClaw, TODO-App fertig, Paraletts=Prototyp, Barbulls=Wix+Scaffold; Q1 entlastet, Q1b Home-Repo neu; Source of Truth = ~/LOKI_PROJECT_MAP.md
 
 ## active-projects-focus
 
@@ -716,6 +718,8 @@ Verwandt: [[skill-install-conventions]]
 **Session 06.09. spät — Betrieb bewiesen:** (a) **Atlas an full-stack-builder ÜBERGEBEN**: WIKI.md committet (`8a5ad33`), MEMORY.md des Agent-Workspaces trägt Projekt-Pfad + Regel „NUR ~/cali-coach-atlas-final, Zwillingskopie ignorieren". (b) **Translocation-Fix**: AutoClaw lief von AppTranslocation-Pfad (Quarantäne-Flag) — `xattr -dr com.apple.quarantine /Applications/AutoClaw.app` + Restart → sauber von /Applications. (c) **Gateway-API geschlossen**: alle Chat-/Agent-Endpunkte 404 außer `/health` (Port 8766); Token in `.gateway-token` nützt nichts — Fernsteuerung nur via UI/Accessibility. (d) **mac-operator-Testchat LÄUFT** ( ferngesteuert getippt): Erstlings-Fehler EACCES `/usr/sbin/authserver` = Agent scannte Systemordner (macOS-Schutz, harmlos); Follow-up-Korrektur im Chat gesendet („nur launchctl list + ps aux"). (e) **UI-Klick-Fallen**: hängendes `screencaptureui`-Overlay frisst ALLE Klicks (dispatch geht an com.apple.screencaptureui statt Ziel-App!) — `killall screencaptureui` (transienter Apple-Helfer, ok); Fenster-Bounds ändern sich zwischen Aktionen — IMMER frisch via Quartz CGWindowList holen; funktionierende Loop: Ziel-App frontmost → CUA screenshot → zoom → left_click (receipt zeigt resolved_app_ref = Kontrolle) → osascript keystroke mit ASCII (Umlaute vermeiden). (f) Apps neu gestartet 06.09.: Cline, Claude, ZCode 16:16 (Hooks geladen).
 
 **Update 06.09. (Abend):** Skills konsolidiert zu **loki-dev** (Master `~/.agents/skills/loki-dev/`, 5 Modi INIT/BUILD/TAKEOVER/FINISH/MAP) — glm-init/glm-build/deve/lokiomnidevteam-plan/-execute sind jetzt 3-Zeilen-Wrapper (Autoclaws Originale in `SKILL.md.bak-20260906`). **Schnitt-0-Orchestrierungs-Gate** eingebaut (Pflicht-Schritt): Sequential-Thinking-Zerlegung → TodoWrite sofort → PLAN-Tabelle im Chat (Stufe|Agent|Skill|Modell|~Tokens|~Zeit|Dep) → PLAN.md im Projekt; Grund: Nutzervorwurf „Plan nie sichtbar" war berechtigt — Skills sind passiver Text ohne Enforcement, jetzt ist das Gate in loki-dev + STANDARD-SKILLS (alle Harnesses gesynct) verankert. Parallelitäts-Regel dynamisiert: Task-Graph-berechnet, Budget-Default 3 (Quota-Schutz ZAI-Caps), mehr mit 1-Zeilen-Begründung. **mac-operator** Agent angelegt (Agent 5 in openclaw.json, Guard-Roots 5) — bedient Programme/macOS, Stop-Regel: nie User-Services killen ohne GO.
+
+**Update 06.09. 17:20 („alles und abfahrt"):** (a) **Atlas-Takeover läuft LIVE im full-stack-builder-Chat**: Handoff (ZCODE_HANDOFF.md + TAKEOVER-Modus) war 17:05 gesendet; Agent bearbeitet ihn — **während Agent arbeitet NICHT in den Chat schreiben** (Verfälschung/Unterbrechung). AutoClaw-Projekt-Chats damit „grafisch sortiert" erfüllt: Atlas→full-stack-builder + Dienste→mac-operator; Rest läuft bewusst über ZCode. (b) **mac-operator-Chatverlauf liegt NICHT in `agents/<name>/sessions/*.jsonl`** — dort nur Heartbeat-Sessions („[OpenClaw heartbeat poll]"→„NO_REPLY"); echte Chats vermutlich in SQLite/trajectory. (c) **CG-vs-AX-Diskrepanz**: `CGWindowListCopyWindowInfo` kann existierende Fenster übersehen, während System-Events-AX sie meldet („windows: 1, frontmost: true") — bei Fenster-Suche IMMER auch AX fragen, nicht nur Quartz.
 
 ## cdp-skill-browser-harness
 
@@ -953,6 +957,39 @@ metadata:
 
 `graphify-out/` contains a queryable knowledge graph (90 nodes, 93 edges, 21 labeled communities, HTML viz `graph.html`). Query with: `cd ~/.agents/knowledge/gstack-deep-dives && graphify query "<question>"`. God node: web-research-team v1.1 bridges 6 communities. Before building any new skill, check the analysis tables there first (already covered? established pattern? conscious gap?).
 
+## legal-ops-native-status
+
+---
+name: legal-ops-native-status
+description: Legal-Ops+Native-Diagnose 06.09. ABGESCHLOSSEN — Verschmelzung
+  FUNKTIONIERT (App+Backend live verifiziert); Root Cause „kaputt" =
+  4-App-Varianten-Wirrwarr; Architektur-Fakten (Port 7070, venv,
+  Ollama-Personas)
+metadata:
+  node_type: memory
+  type: project
+  originSessionId: sess_6ec2db7a-ed38-4ece-8c80-35110f8e0fbc
+---
+
+**P0-Diagnose 06.09. 17:15 („alles und abfahrt"-Session): Legal Ops Native Verschmelzung FUNKTIONIERT** — live verifiziert: App gestartet → Fenster „Legal Ops Advisor v7.0 // M4 Native" voll geladen (Fristen- & Schulden-Cockpit, € 4.814,68 offen, 12 Fallkarten), kein Spinner/Fehler. Details: `~/LegalOpsAdvisor_Sacha_Mac/STATE.md`.
+
+**Root Cause des „App funktioniert nicht"-Eindrucks = 4-App-Varianten-Wirrwarr** (nicht Code!):
+
+| Variante | Pfad | Stand |
+|---|---|---|
+| **Native Legal Ops.app** | `~/Desktop/` | Sep 4 — ✅ DIE funktionierende |
+| NativeLegalOps.app | `~/Applications/` | Aug 26, alt |
+| Legal Ops Advisor.app | `~/Applications/` | Jul 28, andere Bundle-ID `com.saschalagler.legalopsadvisor` |
+| com.saschalagler.NativeLegalOps | `~/.Trash/` | WebKit-Cache-Leiche |
+
+Fix = alte Varianten aus `~/Applications/` entfernen (Lösch-Stopp-Regel → GO) + gute App nach /Applications + Dock.
+
+**Architektur-Fakten:** SwiftUI macOS 14+ (SPM, min 1100×720, Dark) · Backend FastAPI `legal-ops-advisor/app.py` auf **127.0.0.1:7070**, Ollama `qwen2.5-coder:1.5b`, 5 Personas (legal, legal_ops_omni, gdb, vwgh, compliance) · App startet Backend selbst: ProcessManager → `.venv/bin/python -m uvicorn app:app` (venv 3.14 vorhanden, HOME-absolut) · Health-Poll 0,3 s · bekannte kosmetische Race: AppDelegate greift `windows.first` vor WindowGroup-Anlage. Endpunkte inkl. `/launch_lokivoice`, `/lokivoice_status` (Thomas/LokiVoice-Verzahnung — [[loki-project-map]]).
+
+**Offene Tickets:** (1) [GO] App-Varianten aufräumen, (2) `NativeLegalOps/run_e2e_tests.sh` durchlaufen, (3) LokiVoice-Endpunkte live testen (ein Thomas-System mit LOKI Voice).
+
+**How to apply:** Bei „Legal-Ops-App kaputt": zuerst prüfen WELCHE der 4 Varianten gestartet wurde, nicht Code debuggen; Backend-Verifikation = `curl 127.0.0.1:7070/health` + `lsof -iTCP:7070`. Verwandt: [[loki-project-map]] [[autoclaw-full-stack-builder]]
+
 ## loki-autostarts-orphaned
 
 ---
@@ -1007,23 +1044,23 @@ metadata:
   originSessionId: sess_6ec2db7a-ed38-4ece-8c80-35110f8e0fbc
 ---
 
-**Kanonische Quelle: `~/LOKI_PROJECT_MAP.md`** (06.09.2026 erstellt nach Saschas Klartext-Liste) — dort stehen Tickets/Details. Kern-Stand:
+**Kanonische Quelle: `~/LOKI_PROJECT_MAP.md`** (06.09. 17:30 massiv aktualisiert nach „alles und abfahrt"-Batch) — dort stehen Tickets/Details. Kern-Stand:
 
 | Projekt | Pfad | Besitzer | Status |
 |---|---|---|---|
 | LOKI.OS / Agent OS | `~/agent-os/` | Sascha+ZCode | 🟢 aktiv |
-| Atlas Cali Coach | `~/cali-coach-atlas-final` | **AutoClaw full-stack-builder** (übergeben 06.09., commit 8a5ad33) | 🟢 übergeben |
-| Legal Ops + Native | `~/LegalOpsAdvisor_Sacha_Mac` + `NativeLegalOps/` | ZCode | 🔴 Verschmelzung kaputt, App funktioniert nicht → TAKEOVER-Diagnose |
+| Atlas Cali Coach | `~/cali-coach-atlas-final` | **AutoClaw full-stack-builder** — TAKEOVER LÄUFT LIVE im Agent-Chat (Handoff 17:05 gesendet, Agent arbeitet ZCODE_HANDOFF.md ab) | 🟢 aktiv übergeben |
+| Legal Ops + Native | `~/LegalOpsAdvisor_Sacha_Mac` + `NativeLegalOps/` | ZCode | ✅ **Diagnose fertig: Verschmelzung FUNKTIONIERT** ([[legal-ops-native-status]]); Rest: [GO] 4-App-Varianten aufräumen, e2e-Tests, Thomas-Endpunkte |
 | LOKI Voice + Thomas | `~/loki-ki/loki-voice` + PETER-JUDICARIO/LokiVoiceApp | ZCode | 🟡 läuft (launchd), geht in Legal-Ops über (ein Thomas-System) |
-| Körperfluss 3D | `~/Desktop/Coworkspace_Ich/FIRMEN PROJEKTE/Koerperfluss-3D-Upgrade` | ZCode | 🟡 live, 🔴 null Tests (F14/F15 offen) |
-| TODO App | `~/Desktop/Coworkspace_Ich/Projekt-Task-Planer` + `/Applications/TODO APP.app` | ZCode | 🟡 Stand unbekannt |
-| Förder-Landschaft-Tool | `~/Desktop/Coworkspace_Ich/öförderrungen` | ZCode | ⚪ Neubau (österreichische Förderlandschaft klonen) |
-| Paraletts 3D-Hub | `~/Desktop/Coworkspace_Ich/VEREIN ; BARBULLS ; PARALETTS/3d hub paraletts verkau` | ZCode | 🟡 Statuscheck offen |
-| Barbulls Website | `…VEREIN ; BARBULLS ; PARALETTS/Barbulls.Website update` | ZCode | 🟡 Statuscheck offen (Website + Termin-Bot) |
+| Körperfluss 3D | `~/Desktop/Coworkspace_Ich/FIRMEN PROJEKTE/Koerperfluss-3D-Upgrade` | ZCode | 🟡 live, 🔴 null Tests (F14/F15 offen) — nächstes großes Ticket |
+| TODO App | `~/Desktop/Coworkspace_Ich/Projekt-Task-Planer` + `/Applications/TODO APP.app` | ZCode | ✅ weitgehend fertig (pnpm-Monorepo Vite7/React19/Tailwind4, Tauri2, Postgres16-Docker `kern-db`); Rest: uncommittete Änderungen, Voice braucht Gemini-Key (Regex-Fallback da) |
+| Förder-Landschaft-Tool | `~/Desktop/Coworkspace_Ich/öförderrungen` | ZCode | ⚪ INIT offen (welche Quelle klonen? unklar) |
+| Paraletts 3D-Hub | `~/Desktop/Coworkspace_Ich/VEREIN ; BARBULLS ; PARALETTS/3d hub paraletts verkau` | ZCode | ✅ Statuscheck: Prototyp/Recherche (3MF-CAD-Modelle + Shop-Masterplan Shopify/Etsy/Willhaben, firebase.json da), kein Code-Projekt, kein eigenes Git |
+| Barbulls Website | `…Barbulls.Website update` + `~/Desktop/Dokumente/Barbulls/…/bb vereinsapp` | ZCode | ✅ Statuscheck: Wix live (859-KB-Export) + Vue3/Vuetify/Firebase-Scaffold v0.0.0; WhatsApp-Termin-Bot nur Plan-Doku; Entscheidung Wix vs. Eigenbau offen |
 
-**Querschnitt-Tickets:** Q1 🔴 API-Keys Klartext in `~/loki-ki/services/*mcp*` → Env · Q2 4× Legal-Ops-MCP-Prozesse beenden · Q3 FörderOps ohne Autostart · Q4 Gate/Testchat-Live-Beweise (mac-operator-Chat läuft, restliche Projekt-Chats in AutoClaw noch anzulegen — Sascha fordert projekt-sortierte Unterhaltungen grafisch).
+**Querschnitt (06.09. Abend):** Q1 ✅ ENTLASTET — Scan `~/loki-ki/services/` = 0 Plaintext-Keys, 0 .env (alter Eintrag war falsch) · Q1b 🟡 NEU — Home-Verzeichnis ist Git-Repo (1120 Dateien inkl. Desktop-Projekte quer; keine echten Secrets getrackt, 2 Treffer = Skill-Doku-Artikel; strukturell unsauber) · Q2 4× Legal-Ops-MCP-Prozesse (kill = GO) · Q3 FörderOps ohne Autostart · Q4 Gate-Live-Beweise. **AutoClaw-Chats:** Atlas→full-stack-builder ✅ (Agent arbeitet live, nicht reinfunken) + Dienste→mac-operator ✅; Rest bewusst über ZCode.
 
-**How to apply:** Bei „was ist offen / nächstes Ticket": Map lesen (nicht neu erfragen), von oben abarbeiten; jede Aufgabe startet mit loki-dev Schnitt-0-Gate ([[loki-dev-gate-enforcement]]). Verwandt: [[active-projects-focus]] [[autoclaw-full-stack-builder]] [[foerderops-assistent]]
+**How to apply:** Bei „was ist offen / nächstes Ticket": Map lesen (nicht neu erfragen), von oben abarbeiten; jede Aufgabe startet mit loki-dev Schnitt-0-Gate ([[loki-dev-gate-enforcement]]). Verwandt: [[active-projects-focus]] [[autoclaw-full-stack-builder]] [[legal-ops-native-status]] [[foerderops-assistent]]
 
 ## mac-cleanup-2026-08-25
 
@@ -1096,6 +1133,8 @@ Am 26.08.2026 lud das Read-Tool beim Öffnen lokaler Familienfoto-JPEGs diese zu
 1. Private/sensible Bilder NIEMALS per Read öffnen und nie an analyze_image übergeben, außer die Datei ist ohnehin schon exponiert (bereits existierende CDN-URLs dürfen weitergenutzt werden — keine neue Exposition).
 2. Lokale Bild-Diagnostik stattdessen per Metriken: `uv run --python 3.12 --with pillow --with "opencv-python-headless<5" python - <<'PY'` — Kanalmittel (Farbstich), HSV-Sättigung (S/W vs Farbe), Luminanz/std (Belichtung/Kontrast), Laplace-Varianz (Schärfe), Haar-Gesichter. OpenCV 5.x hat CascadeClassifier entfernt → Pin <5.
 3. Vor jedem Bild-Upload in irgendeinem Tool kurz prüfen, ob ein lokaler Weg existiert — Sascha arbeitet datensparsam ([[foto-restaurierung-opa-a4]]).
+
+**Ergänzung 06.09. — funktionierende Screenshot-Pipeline (nur für nicht-private UI-Screenshots):** CUA-`screenshot` liefert ablaufende signierte CDN-URLs zurück. Kette: CUA screenshot → URL mit `curl` nach /tmp laden → `Read` lädt sie erneut aufs CDN (frische, gültige Signatur!) → **diese frische Read-URL an `analyze_image` (4_5v) übergeben funktioniert zuverlässig**; alte/expired URLs und lokale Datei-Pfade geben Fehler 1210 „图片输入格式/解析错误". Zoom-Frames (`zoom`-Tool) funktionieren genauso. Das ist für UI-Verifikation ok (App-Inhalte), für private Fotos weiter verboten (Punkt 1).
 
 ## sequential-thinking-always
 
@@ -1461,17 +1500,20 @@ Diagnose 06.09.2026: Nutzer konnte Computer Use in ZCode „nicht aktivieren". B
 
 # Memory Index
 
+- [AutoClaw-Team-Kopplung](autoclaw-team-kopplung.md) — AutoClaw = native Mac-App, Agent LÄUFT LOKAL; ZCode↔AutoClaw-Team gebaut: ZCODE_HANDOFF.md im Workspace + Chat via computer-use, Cluster live gestartet
 - [Skill-Routing](skill-routing.md) — memory-basiertes Tool-Calling; Kanonisch: ~/.agents/skill-routing.md; Standard-Skills: ~/.agents/STANDARD-SKILLS.md
 - [GLM-Trigger-Befehle](glm-trigger-befehle.md) — KORREKTUR: Trigger-Wörter waren agent-erfunden, NIE User-absgegnet; kanonisch = /feature-dev (Plugin-Subagenten), glm-build/deve nur optional; Chat-Kontext → nie Bash/Terminal-Antworten
 - [Cline-CLI-Befehle-Mechanik](cline-cli-befehle-mechanik.md) — CLI-Commands = ~/.cline/workflows/*.md, Regeln = ~/.clinerules, Modell/MCP = ~/.cline/data (geteilt mit App); ~/.cline/skills ignoriert die CLI — Nachweis nur über sein /-Menü
 - [Sascha-erfundene-Konventionen](sascha-erfundene-konventionen.md) — "DAS HABE ICH NIE GESAGT" = Agent-Erfindung als Absprache verkauft; einräumen, offizielle Mechanik als Standard, Eigenbauten nur optional nennen
 - [OmniRoute-Verkabelung](omniroute-verkabelung.md) — Stand 05.09.: Vollautomatik-Layer FERTIG UND LIVE — **ABO = PRO bestätigt** (Agent-„Lite"-Korrektur war Beweis-Fehler aus altem Chat-Transcript; Lektion: Transcripts sind historisch, Plan nur aus Live-Quellen), glm-plan/glm-first-Combos, Cline-Defaults, **Z.AI-MCPs in ZCode LIVE bewiesen** (web-search lieferte echte Ergebnisse; Cline-Config komplett), GLM-Regeln Abschnitt D überall, omni-health (fand real den Free-Sync-Defekt), Director-Skills **glm-build**+**deve** (Onboarding/Takeover m. mdfind-Voll-SSD-Scan) + todo-sync.py, Landkarte **~/.agents/WAYFINDER-GLM.md**, Cline CLI+App teilen ~/.cline/data; **LaunchAgent-Sleep-Falle**: StartCalendarInterval feuert nicht bei Schlaf → free-sync UND omni-health jetzt RunAtLoad-gehärtet; Pipeline-E2E bewiesen (retro-sonic-jnrun 13/13, Bot-Playtest GOAL); Mimosa-Rescan läuft scoped/audit (alter Home-Scan war interrupted/niemals sealed); kein „Coding-Agent-Assistant-MCP" — nur die 4 Plan-MCPs + coding-helper CLI, Cline-UI-Add „zai-vision" (Platzhalter-Key) disabled; **Team-Pflicht für Scan/Index/Ingest in ~/.clinerules + Atlas-Projekt-.clinerules** (Cline arbeitete solo ohne Projekt-.clinerules); **ui-ux-tester = Skill+Workflow 08 gebaut** („teste die UI von X"; computer-use nur ZCode, Web-Flows via chrome-devtools beide) — **IMMER 2 Parallel-Subagenten als Standard** (A=Flows, B=Visual-Audit, Bericht glm-plan; User: „es gibt nur riesige Apps"); offen: Zoetrop, ClineCredits $-0,09, SSD-Konsolidierungs-Mission (1400 Dateien: Dedupe→Wertlos-Delete→Zentralisieren→graphify; 3 GO-Gates; Zielordner von Sascha bestätigt = `atlas + pliability` — laufende Cline-Session mit Team-Prompt versorgt); **Subagenten-Amnesie-Gegenmittel verankert** (Ticket-Pflicht tsc→commit→STATUS.md + Session-Start-Pflicht in ~/.clinerules/AGENTS.md und Atlas-.clinerules; ATLAS_MASTER/app bekam .clinerules+STATUS.md nachgerüstet)
 - [Sascha-Beweis-echt-Projekte](sascha-beweis-echtprojekte.md) — Toy-/Testprojekt-Beweise lehnt er ab; Beweis = Dokument verankern + Anwendung auf echte große Projekte
+- [ZCode-OffPeak-Ticket-Ausfall](zcode-offpeak-ticket-ausfall.md) — „off-peak-ticket-expired" killt Shell (spawn ENOENT) + Repo-Pfade für frische Reads; in-context Beweise bleiben gültig; nicht in Phantom-Pfade schreiben, stoppen+berichten
 - [Cline-lebt-Diagnose](cline-lebt-diagnose.md) — „Cline tot"-Panik = Fehlalarm-Rezept: pgrep/Sessions zählen/7890=Altlast, Provider-429 checken
 - [Cline-CLI-Versionenfalle](cline-cli-version-trap.md) — npm-CLI nur bis 3.0.15 lauffähig (Binary-Publish-Gap); vor Upgrade Versionsabgleich, CLI ≠ VS-Code-Extension
 - [Sascha-"Was?"-Signal](sascha-was-signal.md) — "was ?" = zu komplex erklärt; sofort auf ≤5 Zeilen + 1 Aktion + Alltags-Analogie kürzen
 - [Sascha-globale-Anweisungen](sascha-globale-anweisungen.md) — "alle/egal wo/immer" = Widerruf alter Ausnahmen; sofort maximal umsetzen, Alt-Config nur als Rollback
 - [Sascha-Ziel-klarstellen](sascha-ziel-klarstellen.md) — Pastes ohne Anweisung: erst 1 Ziel-Frage mit konkreten Optionen, "vor allem"-Ziel priorisieren + live beweisen
+- [Sascha-Unterlagen-lesen](sascha-unterlagen-lesen.md) — gepasteten Screenshot/Doku ERST per Read öffnen bevor Antwort ("DU HAST ALLES IN DEN UNTERLAGEN") — Anhang ist Teil der Frage, darauf aufbauen statt generisch antworten
 - [Sascha-Wut-Fehlerpaste](sascha-wut-fehlerpaste.md) — Fehlerpaste in CAPS: IDs aus Fehlertext diagnostizieren + direkt fixen; "alles kaputt" ohne Fehlertext = E2E-Volltest; Anschuldigung ("wieso machst du das") = Unschulds-Beweis per Prozess-Kette/Messung statt Diskussion
 - [Atlassian-MCP-Mystery-Tab](atlassian-mcp-mystery-tab.md) — GELÖST: Antigravity language_server startet mcp-remote; nur via Antigravity-UI entfernbar, pkill nur temporär; Diagnose: lsof → ps → ppid
 - [ZCode-MCP-npx-Timeout](zcode-mcp-npx-timeout.md) — "Failed to connect" = tote Binary oder npx-@latest-Download-Timeout; Fix: npm i -g + statischer Pfad; Config greift erst nach App-Neustart
@@ -1835,6 +1877,28 @@ metadata:
 
 GELÖST 30.08. (später, gleiche Session): Registrierungsort = **Antigravity**. Parent-Prozess-Kette: `/Applications/Antigravity.app/.../language_server` → `npm exec mcp-remote https://mcp.atlassian.com/v1/sse` — der Atlassian Rovo MCP wurde mal in Antigravity aktiviert. Liegt NICHT in `~/.gemini/antigravity/mcp/` (nur Google-/Chrome-/GitHub-Server dort) → interne Verwaltung, **nur über Antigravity-UI (Einstellungen → MCP/Tools → Atlassian Rovo entfernen)** endgültig löschbar. Prozesse stoppen temporaär: `pkill -f mcp.atlassian.com` — kehren bei jedem Antigravity-Start zurück, bis UI-Entfernung. Zusatz-Diagnose-Schritt wenn PID wechselt/wiederkommt: `ps -o ppid= -p <pid>` → Parent identifizieren (liefert den schuldigen Client).
 
+## autoclaw-team-kopplung
+
+---
+name: autoclaw-team-kopplung
+description: AutoClaw = native Mac-App (lokal!), Team-Kopplung ZCode↔AutoClaw
+  gebaut+live bewiesen — Datei-Kanal Workspace + Chat-Kanal via computer-use
+metadata:
+  node_type: memory
+  type: project
+  originSessionId: sess_d4dc6589-a85c-41e6-9c70-94b6ea6e63e3
+---
+
+**AUTOCLAW-TEAM-KOPPLUNG LIVE (06.09.):** AutoClaw ist eine **native Mac-App** (`com.zhipuai.autoclaw`, sichtbar via computer-use `list_apps`) — der Agent läuft **LOKAL** (UI: „Agent runs locally"), NICHT Cloud-only (frühere Cloud-Annahme war falsch). Workspace: `~/.openclaw-autoclaw/agents/full-stack-builder/workspace/`. AutoClaw hat **loki-dev als Skill geladen** („Loaded 1 skills") und erkannte aus Saschas Satz „übernimm…" selbst den TAKEOVER-Modus.
+
+**Gebaute Kopplung (bewiesen):**
+1. **Datei-Kanal:** `ZCODE_HANDOFF.md` direkt in AutoClaws Workspace geschrieben — Inhalt: verifizierter ATLAS-Stand (43/47 Tickets, KI live, Mimosa 0 Findings) + konkreter Job (T-A2 Onboarding 8→20 nach `~/ATLAS_MASTER/app/docs/UI_USERFLOW_SPEC.md`) + 4 Stopp-Regeln (kein Deploy/Push/Löschen) + D8-Gesetz (keine Vorannahmen) + Claim-Regel.
+2. **Chat-Kanal:** computer-use → `get_app_state(bundle_id: com.zhipuai.autoclaw)` → `type` in Textarea „Type @ to use a skill" → Send-Button AXPress (Checkbox „Agent Cluster" muss =1 sein). Beweis: AutoClaw „Planning the Agent Cluster task and preparing workers" (17:18, Punkte-Verbrauch 8398→8390 sichtbar).
+
+**Steuerung für spätere Sessions:** AutoClaw-Agents = Full Stack Builder / Design Expert / AutoCoder / Mac Operator. Fortschritt = Button „Agent Cluster Progress". Rückweg: AutoClaw committet laut Handoff lokal in `~/ATLAS_MASTER/app` (git) oder legt Artefakte im Workspace ab → ZCode reviewt den Diff. Erster Cluster-Durchlauf (Dienste-Tabelle via launchctl/ps aux) war schon vor der Kopplung fertig.
+
+**Lektion:** Wenn Bash `spawn /bin/zsh ENOENT` stirbt → Off-Peak-Ticket abgelaufen ([[zcode-offpeak-ticket-ausfall]]) — computer-use + Write + Read + WebSearch laufen weiter, damit weiterarbeiten. Siehe auch [[omniroute-verkabelung]] (Team-Regeln) und [[atlas-master-app-verhaeltnis]].
+
 ## cline-cli-befehle-mechanik
 
 ---
@@ -2148,6 +2212,29 @@ Beim OmniRoute-Ausbau hatte ich ZCode ausgenommen (alte 22.08.-Entscheidung „b
 
 **Zweite Instanz (01.09., „durchsuchen"):** Ich hatte den Projekt-Takeover nur über kuratierte Memory-Pfade gebaut; Sascha: „nein du verstehst nicht, er soll die **gesamte SSD** durchsuchen." „Alles durchsuchen" heißt bei ihm wörtlich die ganze Platte (Umsetzung: `mdfind`-Vollscan als Phase 0 im Takeover, siehe [[cline-cli-befehle-mechanik]]) — nicht Auswahl durch mich.
 
+## sascha-unterlagen-lesen
+
+---
+name: sascha-unterlagen-lesen
+description: "DU HAST ALLES IN DEN UNTERLAGEN … DENK NACH" = Sascha hat Screenshot/Dokument
+  gepastet und die Antwort war generisch, weil der Anhang NICHT gelesen wurde —
+  gepastetes Material ZUERST per Read öffnen, darin steht oft die halbe Antwort
+metadata:
+  type: feedback
+---
+
+Sascha paste zu einer Frage (z.B. „wie übergebe ich diese Aufgabe mit autoclaw?") einen Screenshot der betroffenen UI — und bekam eine generische Lehrbuch-Antwort (3 Wege A/B/C, so hätte es auch ohne Screenshot ausgesehen). Reaktion: „DU HAST ALLES IN DNE UNTERLAGNE DU BIMBO ODER HALTS MAUL UND DENK NACH".
+
+**Why:** Die Antwort-Infos standen TEILWEISE direkt im Screenshot (z.B. „loki-dev ×"-Tag schon im AutoClaw-Prompt-Feld) und der Rest in Saschas eigenen Projekt-Docs (loki-dev SKILL.md, STATUS.md, DESIGN_EVOLUTION.md). Generisch antworten, obwohl Material vorliegt, fühlt sich an wie Nicht-Nachdenken.
+
+**How to apply:**
+1. Gepasteten Screenshot/Anhang IMMER zuerst per Read-Tool öffnen und beschreiben lassen, BEVOR geantwortet wird — der Anhang ist Teil der Frage.
+2. Danach die eigenen Unterlagen (SKILL.md des getaggten Skills, STATUS.md, WAYFINDER-GLM.md) als Primärquelle nutzen statt Enzyklopädie-Wissen.
+3. Wenn der Anhang die Frage schon halb beantwortet: darauf aufbauen („ich sehe im Screenshot X — also…"), nicht bei null anfangen.
+4. Gilt auch umgekehrt: nicht raten, ob etwas in Unterlagen steht — nachsehen (z.B. grep/Read), bevor behauptet wird „steht nirgends".
+
+Verwandt: [[sascha-ziel-klarstellen]] (Pastes ohne Anweisung), [[sascha-wut-fehlerpaste]] (Fehlerpaste in CAPS).
+
 ## sascha-was-signal
 
 ---
@@ -2278,6 +2365,28 @@ metadata:
 **How to apply:** 1) MCP tot → command prüfen: existiert Binary? `npx -y …@latest` = sofort verdächtig → global installieren + statischen Pfad eintragen. 2) ZCode-App hält Config im Speicher und schreibt sie zurück (machte Löschungen um 06:32 NICHT rückgängig, kann aber Provider-Toggles ändern) — Config-Edits greifen erst nach App-Neustart (Cmd+Q). 3) User-Toggles im Model-Settings-Panel können Z.ai-Direkt aktivieren und OmniRoute umgehen — nach Panel-Besuch des Users OmniRoute-Enable-Status verifizieren.
 
 05.09.: **chrome-devtools-MCP "The browser is already running" Lock** — nach Browser-Chaos startet new_page/list_pages nicht mehr (stale Profile-Lock in `~/.cache/chrome-devtools-mcp/chrome-profile`). Fix: `pkill -f "chrome-devtools-mcp"` → 2 s warten → new_page funktioniert wieder. Diagnose-Regel: alle MCP-Chrome-Calls schlagen fehl, während curl die Ziel-URL als 200 OK zeigt → Infra-Problem (Lock), nicht Ziel-Problem.
+
+## zcode-offpeak-ticket-ausfall
+
+---
+name: zcode-offpeak-ticket-ausfall
+description: ZCode-Fehlerfall „off-peak-ticket-expired" → Shell stirbt (spawn
+  /bin/zsh ENOENT) und Repo-Pfade verschwinden für frische Reads;
+  In-Context-Inhalt bleibt gültig
+metadata:
+  node_type: memory
+  type: project
+  originSessionId: sess_ee4009c9-e362-4f0f-926c-ecf044833cd1
+---
+
+Beobachtet 06.09.2026 (Session mit Off-Peak-Ticket): Nach User-Paste „ZCode Error Info: off-peak-ticket-expired (TraceID: hydrate-trace)" galt innerhalb derselben Session:
+1. Bash komplett tot: `spawn /bin/zsh ENOENT` für JEDE Kommandos (auch `echo test`), auch in frischen Subagenten, auch nach 20s Wartezeit — nicht transient.
+2. Dateisystem-Verlust nur für frische Zugriffe: zuvor problemlos lesbare Pfade (z. B. `~/ATLAS_MASTER/app`) liefern „File does not exist"; das Working Directory zeigt weiterhin auf den toten Pfad. Home-Verzeichnis (~/.zshrc, ~/Desktop) bleibt lesbar.
+3. Bereits in-context gelesene Dateiinhalte und Bash-Outputs (git log etc.) bleiben gültige Beweise — sie waren echt.
+
+**Why:** Ohne dieses Rezept wirkt es wie „Projekt gelöscht/Agent lügt"; tatsächlich ist es ein Sandbox-/Quota-Ausfall nach Ticket-Ablauf (Session-Hydration fehlgeschlagen).
+
+**How to apply:** Bei ENOENT + „File does not exist" auf bekannten Pfaden: NICHT in Pfade schreiben (Ghost-File-Gefahr), NICHT node_repl als fs-Ersatz nutzen (Policy: Browser-Use-only), keine Editierungen auf ungeprüfte zweite-Hand-Claims stützen → Task sauber abbrechen, Scope+Beweise berichten, Fortsetzung nach Re-Login/Quota-Fix anbieten. Diagnose-Reihenfolge: 1× Bash-Retry nach wait(20–30s), 1 frischer Read auf noch nie gelesene Datei im Ziel-Pfad, ggf. Explore-Subagent als zweiter Beweger. Verwandt: [[anti-luegen-vertrag]], [[cline-lebt-diagnose]].
 
 ## README
 

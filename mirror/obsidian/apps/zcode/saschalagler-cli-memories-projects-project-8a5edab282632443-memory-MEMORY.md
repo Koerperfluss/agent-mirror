@@ -1,23 +1,26 @@
 ---
 app: zcode
 quelle: "saschalagler/cli/memories/projects/project-8a5edab282632443/memory/MEMORY.md"
-stand: 2026-09-05
+stand: 2026-09-06
 tags: [spiegel, zcode]
 ---
 
 # Memory Index
 
+- [AutoClaw-Team-Kopplung](autoclaw-team-kopplung.md) — AutoClaw = native Mac-App, Agent LÄUFT LOKAL; ZCode↔AutoClaw-Team gebaut: ZCODE_HANDOFF.md im Workspace + Chat via computer-use, Cluster live gestartet
 - [Skill-Routing](skill-routing.md) — memory-basiertes Tool-Calling; Kanonisch: ~/.agents/skill-routing.md; Standard-Skills: ~/.agents/STANDARD-SKILLS.md
 - [GLM-Trigger-Befehle](glm-trigger-befehle.md) — KORREKTUR: Trigger-Wörter waren agent-erfunden, NIE User-absgegnet; kanonisch = /feature-dev (Plugin-Subagenten), glm-build/deve nur optional; Chat-Kontext → nie Bash/Terminal-Antworten
 - [Cline-CLI-Befehle-Mechanik](cline-cli-befehle-mechanik.md) — CLI-Commands = ~/.cline/workflows/*.md, Regeln = ~/.clinerules, Modell/MCP = ~/.cline/data (geteilt mit App); ~/.cline/skills ignoriert die CLI — Nachweis nur über sein /-Menü
 - [Sascha-erfundene-Konventionen](sascha-erfundene-konventionen.md) — "DAS HABE ICH NIE GESAGT" = Agent-Erfindung als Absprache verkauft; einräumen, offizielle Mechanik als Standard, Eigenbauten nur optional nennen
 - [OmniRoute-Verkabelung](omniroute-verkabelung.md) — Stand 05.09.: Vollautomatik-Layer FERTIG UND LIVE — **ABO = PRO bestätigt** (Agent-„Lite"-Korrektur war Beweis-Fehler aus altem Chat-Transcript; Lektion: Transcripts sind historisch, Plan nur aus Live-Quellen), glm-plan/glm-first-Combos, Cline-Defaults, **Z.AI-MCPs in ZCode LIVE bewiesen** (web-search lieferte echte Ergebnisse; Cline-Config komplett), GLM-Regeln Abschnitt D überall, omni-health (fand real den Free-Sync-Defekt), Director-Skills **glm-build**+**deve** (Onboarding/Takeover m. mdfind-Voll-SSD-Scan) + todo-sync.py, Landkarte **~/.agents/WAYFINDER-GLM.md**, Cline CLI+App teilen ~/.cline/data; **LaunchAgent-Sleep-Falle**: StartCalendarInterval feuert nicht bei Schlaf → free-sync UND omni-health jetzt RunAtLoad-gehärtet; Pipeline-E2E bewiesen (retro-sonic-jnrun 13/13, Bot-Playtest GOAL); Mimosa-Rescan läuft scoped/audit (alter Home-Scan war interrupted/niemals sealed); kein „Coding-Agent-Assistant-MCP" — nur die 4 Plan-MCPs + coding-helper CLI, Cline-UI-Add „zai-vision" (Platzhalter-Key) disabled; **Team-Pflicht für Scan/Index/Ingest in ~/.clinerules + Atlas-Projekt-.clinerules** (Cline arbeitete solo ohne Projekt-.clinerules); **ui-ux-tester = Skill+Workflow 08 gebaut** („teste die UI von X"; computer-use nur ZCode, Web-Flows via chrome-devtools beide) — **IMMER 2 Parallel-Subagenten als Standard** (A=Flows, B=Visual-Audit, Bericht glm-plan; User: „es gibt nur riesige Apps"); offen: Zoetrop, ClineCredits $-0,09, SSD-Konsolidierungs-Mission (1400 Dateien: Dedupe→Wertlos-Delete→Zentralisieren→graphify; 3 GO-Gates; Zielordner von Sascha bestätigt = `atlas + pliability` — laufende Cline-Session mit Team-Prompt versorgt); **Subagenten-Amnesie-Gegenmittel verankert** (Ticket-Pflicht tsc→commit→STATUS.md + Session-Start-Pflicht in ~/.clinerules/AGENTS.md und Atlas-.clinerules; ATLAS_MASTER/app bekam .clinerules+STATUS.md nachgerüstet)
 - [Sascha-Beweis-echt-Projekte](sascha-beweis-echtprojekte.md) — Toy-/Testprojekt-Beweise lehnt er ab; Beweis = Dokument verankern + Anwendung auf echte große Projekte
+- [ZCode-OffPeak-Ticket-Ausfall](zcode-offpeak-ticket-ausfall.md) — „off-peak-ticket-expired" killt Shell (spawn ENOENT) + Repo-Pfade für frische Reads; in-context Beweise bleiben gültig; nicht in Phantom-Pfade schreiben, stoppen+berichten
 - [Cline-lebt-Diagnose](cline-lebt-diagnose.md) — „Cline tot"-Panik = Fehlalarm-Rezept: pgrep/Sessions zählen/7890=Altlast, Provider-429 checken
 - [Cline-CLI-Versionenfalle](cline-cli-version-trap.md) — npm-CLI nur bis 3.0.15 lauffähig (Binary-Publish-Gap); vor Upgrade Versionsabgleich, CLI ≠ VS-Code-Extension
 - [Sascha-"Was?"-Signal](sascha-was-signal.md) — "was ?" = zu komplex erklärt; sofort auf ≤5 Zeilen + 1 Aktion + Alltags-Analogie kürzen
 - [Sascha-globale-Anweisungen](sascha-globale-anweisungen.md) — "alle/egal wo/immer" = Widerruf alter Ausnahmen; sofort maximal umsetzen, Alt-Config nur als Rollback
 - [Sascha-Ziel-klarstellen](sascha-ziel-klarstellen.md) — Pastes ohne Anweisung: erst 1 Ziel-Frage mit konkreten Optionen, "vor allem"-Ziel priorisieren + live beweisen
+- [Sascha-Unterlagen-lesen](sascha-unterlagen-lesen.md) — gepasteten Screenshot/Doku ERST per Read öffnen bevor Antwort ("DU HAST ALLES IN DEN UNTERLAGEN") — Anhang ist Teil der Frage, darauf aufbauen statt generisch antworten
 - [Sascha-Wut-Fehlerpaste](sascha-wut-fehlerpaste.md) — Fehlerpaste in CAPS: IDs aus Fehlertext diagnostizieren + direkt fixen; "alles kaputt" ohne Fehlertext = E2E-Volltest; Anschuldigung ("wieso machst du das") = Unschulds-Beweis per Prozess-Kette/Messung statt Diskussion
 - [Atlassian-MCP-Mystery-Tab](atlassian-mcp-mystery-tab.md) — GELÖST: Antigravity language_server startet mcp-remote; nur via Antigravity-UI entfernbar, pkill nur temporär; Diagnose: lsof → ps → ppid
 - [ZCode-MCP-npx-Timeout](zcode-mcp-npx-timeout.md) — "Failed to connect" = tote Binary oder npx-@latest-Download-Timeout; Fix: npm i -g + statischer Pfad; Config greift erst nach App-Neustart

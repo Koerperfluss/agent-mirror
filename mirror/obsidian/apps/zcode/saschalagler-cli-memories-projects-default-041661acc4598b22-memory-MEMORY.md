@@ -40,3 +40,5 @@ tags: [spiegel, zcode]
 - [One action, not tables](feedback-one-action-not-tables.md) — nach "mach selbst/volle Freigabe": selbst prüfen, handeln; Nutzer-Aktion = EINE klare Aktion, keine Szenario-Tabellen
 
 - [Z.AI Coding Plan Limits](zai-coding-plan-limits.md) — weekly+5h Credit-Caps selbst auf Pro; [1310]=Cap; Fanout verbrennt Quota; 3 Z.AI-MCP-Server eingetragen mit Key-Platzhalter- [AutoClaw Full-Stack-Builder](autoclaw-full-stack-builder.md) — 06.09. Agent+7 Skills+Write-Guard eingerichtet; JWT pro-Modell in openclaw.json, nur additiv editieren; Config greift nach App-Neustart
+- [Legal-Ops-Native-Status](legal-ops-native-status.md) — 06.09. P0-Diagnose: Verschmelzung FUNKTIONIERT (live verifiziert, Port 7070/Ollama); „kaputt" = 4-App-Varianten-Wirrwarr → Aufräumen mit GO; STATE.md im Projekt
+- [LOKI Projekt-Map](loki-project-map.md) — 06.09. 17:30: Legal-Ops gelöst, Atlas-Takeover läuft LIVE in AutoClaw, TODO-App fertig, Paraletts=Prototyp, Barbulls=Wix+Scaffold; Q1 entlastet, Q1b Home-Repo neu; Source of Truth = ~/LOKI_PROJECT_MAP.md
