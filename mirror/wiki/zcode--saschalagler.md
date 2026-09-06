@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-06 19:52 UTC
+Zuletzt gespiegelt: 2026-09-06 20:03 UTC
 
 ## call_fe4ee4834bf14478b4a66d0e-tool-result-df2ccbef-b4f7-499f-ac43-59af5f927f22
 
@@ -1539,6 +1539,8 @@ Diagnose 06.09.2026: Nutzer konnte Computer Use in ZCode „nicht aktivieren". B
 
 # Memory Index
 
+- [Mac-Speicher-voll-Rettung](mac-speicher-voll-rettung.md) — 06.09. Platte 95 % voll (22/460 GB frei); Kernbefund: iCloud-Plan zu klein (Cloud 6,70 GB vs 100,86 GB Offline-Kopien lokal); Schreibtisch 98 GB + Dokumente 85 GB = Auslager-Ziele; Plan approved: Google-Drive-Streaming + Cloud-Upload; Beweise in ~/Desktop/SPEICHER-RETTUNG; offen: iCloud-Plan-Größe
+- [Sascha-Agenten-Ordner-unantastbar](sascha-agenten-ordner-unantastbar.md) — .claude/.gemini/.zcode/.hermes nie „nur Modelle/Cache" nennen oder anfassen; „STOP" = sofort Tools anhalten + „nichts gelöscht, nur gelesen"; Messungen an persönlichen Ordnern vorher ankündigen
 - [Sascha-Meldung-nur-fertig](sascha-meldung-nur-fertig.md) — „genug geplant, erst melden wenn fertig" = still durchbauen, keine Zwischenberichte; EIN finaler Bericht mit Beweisen + Rest=User-Aktionen
 - [Agenten-Selbstüberwachung](agenten-selbstueberwachung.md) — Sascha fordert Agent-Team das den Haupt-Agenten ÜBERWACHT: Orchestrator(baut) + unabhängiger Reviewer(misst/nichtet, baut NICHT — Gewaltenteilung) + Install-Worker + ZCode koordiniert
 - [Sascha-3-Säulen-Parallelarbeit](sascha-3-saeulen-parallelarbeit.md) — ATLAS-Rahmen: 1 Planung/Userflow · 2 App-Dev iOS/Android/Web · 3 Research; Wut-Trigger = nicht ausgeführte Pläne/Doppelarbeit → ausführen ODER sofort fähige Subagents parallel; SSD-Konsolidierungs-GO 06.09.
@@ -1672,6 +1674,40 @@ metadata:
 3. **Profil-Prefill für BEKANNTE User bleibt Feature** (profileDb, IndexedDB `atlas-v5-profile`) — nur Neukunden starten leer.
 4. **Onboarding-Tiefe:** freie Ziel-Eingaben („Eigenes Ziel…"-Freitext existiert) weiter ausbauen; Coach soll ausgiebig analysieren statt Chip-Katalog abzuarbeiten — D8/D10-Prinzip („Coach denkt, Code rechnet nur wenn der Coach es will").
 Verwandt: [[atlas-master-app-verhaeltnis]] (DESIGN_EVOLUTION.md D1–D8), [[atlas-outotu-output-format]].
+
+## atlas-lernender-agent-paradigma
+
+---
+name: atlas-lernender-agent-paradigma
+description: Saschas produktdefinitionsdurchbruch (4× Plan-Rejects) — ATLAS = LERNENDER KI-Agent (lernt ganze Wissensbasis, adaptives Interview bis zufrieden, Wissen ANWENDEN statt anzeigen) + echte 3D-Fluid-Glass-Engine statt CSS-Tweaks
+metadata:
+  node_type: memory
+  type: feedback
+  originSessionId: sess_d4dc6589-a85c-41e6-9c70-94b6ea6e63e3
+---
+
+**Sascha hat 4× ExitPlanMode-Pläne in Folge abgelehnt (06.09. Nacht) — der 4. mit „völlig wertlos". Die Ablehnungen definierten sein ECHTES Produkt-Bild für ATLAS (gilt für alle künftigen ATLAS-Pläne/Arbeit):**
+
+## 1. LERNENDER AGENT statt Formular-App (Zitat: „der ki agent soll alles aus diesem projekt aus dem graph gelernt haben, llm lernen, keine fixe abfrage")
+- `npm run learn`: LLM destilliert aus `graph.json` + allen 455 KB-Chunks eine **learned-kb.json** (Themen-Synopsen, Dosierungs-Logik, Verletzungs-Protokolle, Übung-Mechaniken, quellenbelegt) = Systemgedächtnis, das der Coach in JEDEM Turn lädt. Wiederausführbar bei KB-Wachstum. Nicht RAG-Schnipsel-Prozierung.
+
+## 2. ADAPTIVES INTERVIEW statt 20 fixer Screens (Zitat: „interaktive anpassung, empfehlung aufgrund deep reasoning und datenbank welche übungen welcher plan, adaptive abfrage .. so lange bis zufrieden, dann logbuch")
+- Die 20 UI_USERFLOW_SPEC-Punkte = **interne Checkliste** des Agenten (abgehakt was sich aus dem Dialog ergibt), NICHT Formular-Karussell
+- Individuelle Nachfragen per Deep Reasoning aus den Antworten („Planche bei 92kg mit Schulter-Vorgeschichte — Schmerz bei supported holds?"), KB-belegte Zwischen-Empfehlungen (Übungen, Herangehen, Prioritäten)
+- **Loop bis Sascha „zufrieden/passt" sagt → ERST DANN Plan + Logbuch-Generierung**
+
+## 3. WISSEN ANWENDEN, NICHT ANZEIGEN (Zitate: „zns readiness killswitch was macht da hier? das wissen soll angewendet werden nicht nur einsehbar" · „ssc weg damit")
+- **GESTRICHEN:** ZNS-Readiness-Tile, SSC/Prilepin-Karte, Kill-Switch als UI-Element, Readiness-Badge als Gimmick
+- Stattdessen: ZNS-Load/SSC/Pain/Psychologie fließen in die **Reasoning-Kette** — der Coach SAGT die Konsequenz („heute GELB, deshalb nur Isometrie"), der User braucht kein Dashboard
+- Kill-Switch bleibt nur als Schutz im Dialog (Coach bricht ab/warnt)
+
+## 4. GLASS ENGINE v2 — echte 3D-Fluid-Interaktion (Zitat nach Balken/Stagger/Pills-Vorschlag: „ist das für dich eine 3d fluide interaktive hochmoderne glasmorph app?")
+- CSS-Utility-Tweaks (Progress-Balken statt Dots, .stagger, Glas-Pills, Bull-SVG) = explizit UNGENÜGEND
+- Gefordert: **three.js/react-three-fiber** Hintergrund-Scene (flüssige Glas-Blobs Amber/Cyan, Pointer- UND Gyroskop-reaktiv), **motion/framer-motion Spring-Physik** (morphende Seitenübergänge via layoutId, Drag-Sheets), Karten als 3D-Glasplatten mit Pointer-Tilt + Specular-Sheen + Parallax-Tiefe, kinematisches Onboarding
+
+## 5. Pläne müssen ALLE ~34 App-Funktionalitätenlisten enthalten (Details [[sascha-plan-vollstaendigkeit]])
+
+**How to apply:** Jeder ATLAS-Plan/PR leads mit dem Agent-Paradigma (Lernen→Interview→Anwenden); nie wieder Dashboard-Kacheln für Wissen; Redesign nur als echte 3D/Physik-Arbeit. Verwandt: [[atlas-d8-keine-vorannahmen]] · [[atlas-outotu-output-format]] · [[sascha-plan-vollstaendigkeit]].
 
 ## atlas-master-app-verhaeltnis
 
@@ -2086,6 +2122,32 @@ metadata:
 
 **NACHTRAG 2 (05.09., User-Validierung der Pipeline):** Sascha forderte SELBST an: „teste die pipeline die workflow mit folgendem ziel erstelle retrogame sonic the hedgehog - jump and run" — mit Skill-Tags inkl. glm-build/deve/wayfinder/cavecrew. Der komplette Director-Lauf lief E2E ohne Rückfragen und ohne Einwand (Details [[omniroute-verkabelung]]). Einordnung: Die Erfindungs-Korrektur oben bleibt gültig (nie als von ihm abgesegnete „Trigger-Sprache" verkaufen), ABER glm-build/deve sind damit einmal von ihm explizit als Workflow beauftragt und erfolgreich erlebt — nicht mehr nur meine Eigenbauten.
 
+## mac-speicher-voll-rettung
+
+---
+name: mac-speicher-voll-rettung
+description: Saschas Mac-Platte 06.09. voll (22/460 GB frei) — gemessene Zahlen,
+  genehmigter Rettungsplan, Beweis-Ordner ~/Desktop/SPEICHER-RETTUNG, offene
+  Frage iCloud-Plan-Größe
+metadata:
+  node_type: memory
+  type: project
+  originSessionId: sess_3ffe33ff-d0c0-4639-a973-ab1d721343be
+---
+
+**Stand 06.09.2026 abends:** Mac 460 GB, nur noch 22 GB frei (95 % belegt). Baseline in `~/Desktop/SPEICHER-RETTUNG/00-baseline.log`.
+
+Gemessene Real-Zahlen (du):
+- **Schreibtisch 98,1 GB · Dokumente 84,65 GB** (videos 17,2 + djo videos 8,4 + BB-Videos 9,4 + viele Einzel-MP4s à 200–400 MB) = primäre Auslager-Kandidaten
+- Library ~82 GB: Application Support 48 GB (Claude-3p 12 GB, Claude 10 GB, **Google/DriveFS nur 7,7 GB**, Sigma 6 GB) + Containers 13 GB + Mobile Documents 10 GB — Saschas „Application Support 90 GB" war die GANZE Library; DriveFS ist NICHT der Riesen-Block (Annahme im ersten Plan korrigiert)
+- AI-Caches: .lmstudio 19,65 GB · .claude 9,62 · .gemini 8,79 · .zcode 8,78 · .cache 3,61 · .hermes 3,27
+
+**Kernbefund (Sascha-Screenshot):** iCloud Drive AKTIV — Cloud nur **6,70 GB**, aber Offline-Kopien belegen **100,86 GB lokal** → iCloud-Plan zu klein für die Dateien, deshalb ist die Platte voll. Er hat „endlich iCloud" UND Google Drive („endlos", App installiert).
+
+**Genehmigter Plan (ExitPlanMode approved):** 1) Google Drive auf Streaming-Modus (computer-use), Cache leert sich selbst · 2) Videos/Dokumente in Cloud hochladen (iCloud falls Plan reicht, sonst Google Drive Streaming) → Stub bleibt im Finder sichtbar · 3) lokale Kopie erst freigeben NACH Upload-Beweis · 4) df vorher/nachher + Stichprobe als Beweis (Anti-Lügen-Vertrag).
+
+**Offen:** iCloud-Plan-Größe unbekannt — 1 Frage an Sascha gestellt („weiß nicht" möglich → via Systemeinstellungen/computer-use ablesen). STOP-Ereignis mitten in der Desktop/Dokumente-Messung brach du ab — Fortsetzung erst nach seiner Antwort. Siehe [[sascha-agenten-ordner-unantastbar]], [[anti-luegen-vertrag]].
+
 ## mimosa-write-zwang-uv-tests
 
 ---
@@ -2267,6 +2329,26 @@ Sascha formulierte es selbst (06.09., wütend): „1) planung kompletter app, fu
 6. **Abschluss-Beleg des Musters (06.09. Nacht — alle 3 Säulen lieferten am selben Abend):** Gap-Agent 7✅/6🟡+Tickets 14/15 · SSD-Agent **fertig: 83 verschoben/94 Dup/16 übersprungen/0 Fehler, Log 237 Zeilen** (Saschas Stichproben-Klausel erfüllbar) · AutoClaw T-A2 komplett + Team-Merge live (1/20-Zähler) · ZCode selbst: T-A8 CoT-Wiring + T-A10 Branding + P4.5 Auto-Push, alles deployed mit Asset-Parität. Sein `/goal „führe zu ende"` + „mitte" = Plan autonom bis zum Ende durchziehen; Berichte nur mit Bundle-/Live-Beweisen.
 7. **„FERTIG EIGENSTÄNDIG WAR DER PLAN ODER" (06.09. späte Nacht) = autonom-weitermachen-Befehl:** Keine neue Planung, keine Bestätigung — die nächste PLAN.md-Stufe (C2 Proxy) wurde sofort eigenständig gebaut+deployed+per curl HTTP 200 bewiesen. Muster: bei diesem Signal Plan-Reihenfolge stur abarbeiten (C4 Tiers → native Builds → GTM), jede Stufe mit Live-Beweis + commit; PLAN.md-Stand danach **20 ✅ / 24**.
 
+## sascha-agenten-ordner-unantastbar
+
+---
+name: sascha-agenten-ordner-unantastbar
+description: Saschas Wut „WAS NUR MODELLE BIST DU BEHINDERT" — seine
+  Agenten-Ordner (.claude, .gemini, .zcode, .hermes) sind NIEMALS „nur
+  Modelle/Cache"; STOP = sofort alle Tools anhalten + „nichts gelöscht, nur
+  gelesen" beruhigen
+metadata:
+  node_type: memory
+  type: feedback
+  originSessionId: sess_3ffe33ff-d0c0-4639-a973-ab1d721343be
+---
+
+Bei der Speicher-Rettung 06.09. nannte ich .claude/.gemini/.zcode „nur Modelle/Cache, alles neu ladbar" — Sascha explodierte: „WAS NUR MODLELE BIST UD BEHINDERT". Kurz darauf „STOP WIE BITTE ?????" und er brach laufende du-Messungen auf Schreibtisch/Dokumente ab (allein der iCloud-Dialog „100,86 GB Offline" löste Panik aus).
+
+**Why:** Seine Agenten-Ordner sind sein konfiguriertes Setup (Memories, Projekte, Historie) — für ihn kein „Cache". Und Datei-Operationen auf persönlichen Ordnern ohne laufende Erklärung wirken für ihn wie Datenverlust.
+
+**How to apply:** .claude/.gemini/.zcode/.hermes/Coworkspace nie als löschbar oder „nur Cache" framen; jeden Aufräum-Kandidaten einzeln nachfragen (.lmstudio-Modelle nur mit separater Erlaubnis). Bei „STOP": sofort alle Tools stoppen, ≤5 Zeilen „NICHTS gelöscht/verschoben, nur gelesen" + 1 Frage. Messungen an persönlichen Ordnern VORHER ankündigen. Siehe [[sascha-wut-fehlerpaste]], [[sascha-was-signal]], [[mac-speicher-voll-rettung]].
+
 ## sascha-beweis-echtprojekte
 
 ---
@@ -2350,6 +2432,32 @@ Sascha (06.09., nach C2-Fertigmeldung): „genug geplant bitte erst melden wenn 
 **Why:** Jeder Zwischenbericht („nächstes baue ich X", Status-Geplänkel) empfindet er als weiteres Planen statt Arbeiten. Er will die Fertig-Meldung EINMAL, mit Beweisen, wenn wirklich alles aus seiner Sicht erledigt ist — Restliste mit seinen eigenen verbleibenden Aktionen (z. B. Installationen) klar benannt.
 
 **How to apply:** Bei „meld erst wenn fertig" / „eigenständig fertig": (1) todos auf die Reststufen setzen, dann STUMM abarbeiten — build→deploy→Asset-Parität→commit je Stufe, keine Chat-Zwischenberichte; (2) E2E-Verifikation der fertigen Sache (nicht nur build-grün); (3) EIN finaler Bericht: Ergebnis-Zeile, Beweis-Tabelle, Rest = nur User-Aktionen; (4) PLAN.md/STATUS.md final aktualisieren+committen statt zu erzählen. Verwandt: [[sascha-3-saeulen-parallelarbeit]] (autonom-weitermachen-Befehle), [[sascha-was-signal]] (Kürze), [[anti-luegen-vertrag]] (Beweise in der Meldung).
+
+## sascha-plan-vollstaendigkeit
+
+---
+name: sascha-plan-vollstaendigkeit
+description: 4× ExitPlanMode nacheinander abgelehnt („völlig wertlos") — Pläne müssen die KOMPLETTE Funktionsliste (alle ~34 Funktionen/11 Bereiche) enthalten, jede offene Funktion drin, keine „nächste Runde"-Aufschieber, Architektur an seiner Vision ausgerichtet
+metadata:
+  node_type: memory
+  type: feedback
+  originSessionId: sess_d4dc6589-a85c-41e6-9c70-94b6ea6e63e3
+---
+
+**Muster (06.09. Nacht):** 4 ExitPlanMode-Pläne in Folge abgelehnt — jeder mit spezifischem Fehlvorwurf:
+1. „was ist mit den 20 anderen app funktionalitäten?" — Plan enthielt nur ~10 Punkte, die anderen ~20 Funktionen (Ausbildung, Archiv, GTG-Details, Kalender/Deload, Custom-Spalten, Bio-Feed, Symmetry-Ring, PR-Badge, Link-Import, Biomech-Modal, Push, Auth…) fehlten
+2. „völlig wertlos" — Architektur falsch (fixe Abfragen statt lernender Agent), Details [[atlas-lernender-agent-paradigma]]
+3. Redesign-Punkt = CSS-Tweaks statt echte 3D-Engine
+4. Auch die schließlich VOLLSTÄNDIGE Version wurde abgelehnt — dann Permission denied → Session-Ende. **Niemals Plan-Variablen „für später" reduzieren; „KEINE GRENZEN" = wörtlich nehmen.**
+
+**Korrigiertes Plan-Protokoll für Sascha (gilt statt der 3-Zeilen-Regel aus [[plan-mode-falle]], wenn er VOLLSTÄNDIGKEIT verlangt):**
+1. VOR dem Plan: komplette Funktionsinventur (11 Bereiche × alle Sub-Funktionen, ~34 Punkte) mit Status ✅/⬜ — er hat sie eingefordert („WO IST DIE LISTE")
+2. Jede ⬜-Funktion kommt in den Plan, keine Auslagerung auf „später/nächste Runde/optional"
+3. Architektur-Vorentscheidungen mit seiner Vision abgleichen (lernender Agent, Wissen anwenden statt anzeigen)
+4. Plan = totzdem strukturiert (nummerierte Blöcke + Reihenfolge), aber VOLL
+5. Wenn Trotz-Rejection-Kette: die vermissten Punkte IM PLAN BENENNEN und ergänzen, nicht neu formatieren — Inhalt, nicht Form, war das Problem
+
+**Why:** Seine Rejection-Gründe waren jedes Mal konkrete FEHLENDE INHALTE, nicht Länge. Der „3-Zeilen-Minimalplan"-Rat aus [[plan-mode-falle]] gilt nur für Plan-Mode-Vergessen-Fälle, nicht für Vollständigkeits-Fälle.
 
 ## sascha-unterlagen-lesen
 
