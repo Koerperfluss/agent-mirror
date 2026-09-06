@@ -1,7 +1,7 @@
 ---
 app: zcode
 quelle: "saschalagler/cli/memories/projects/project-8a5edab282632443/memory/atlas-master-app-verhaeltnis.md"
-stand: 2026-09-05
+stand: 2026-09-06
 tags: [spiegel, zcode]
 ---
 
@@ -145,3 +145,9 @@ Info bewiesen übernommen: 1) `~/ATLAS_MASTER/app/` (179 Prosa-Chunks) · 2) `la
 
 ## 05.09. NACHT 4: D8 „KEINE VORANNAHMEN" (Sascha: „APP FÜR JEDEN, WIESO 92kg") — Details [[atlas-d8-keine-vorannahmen]]
 Onboarding startete mit VORAUSGEFÜLLTEN 92kg/178cm (useState-Defaults) und Vision nahm `?? 92` — für Endkunden falsch. **Fix (Bundle D9qeXLV8, deployt):** Gewicht/Größe = leere Pflichtfelder (Placeholder „dein Gewicht"/„deine Größe"), canNext-Gate `i===2?J!=null&&J>=30&&me!=null&&me>=100` im Bundle bewiesen, 0 Fundstellen der alten Defaults; Vision = interaktiver scanWeight-Prompt + Report rendert usedWeight; coachText null-safe (neutraler Satz ohne Werte). Bekannte User behalten Profil-Prefill aus IndexedDB `atlas-v5-profile` (Feature, nicht Bug — localStorage.clear() leert diese NICHT, nur `indexedDB.deleteDatabase`). Saschas Demo-Report mit 92kg = gekennzeichnetes OUTOTU-Beispiel, kein Default. Offen: Onboarding-Interaktivität vertiefen (freie Ziel-Eingaben auf alle Steps).
+
+## 05.09. NACHT 6: AUDIT-🟠-FIX + MIMOSA GEDICHTET + AUTOCLAW-KOPPLUNG
+- **🟠 MEDIUM-Defect aus UI_AUDIT_BERICHT.md gefixt (Bundle lNHeSJMI, live bewiesen):** `doSave()` in DatabaseTab.tsx resettet jetzt Filter+Suche und zeigt Toast „✓ … gespeichert" (glass-pill, 2,6s Auto-Hide, mobile-safe über Bottom-Nav). E2E-Beweis: Übung bei aktivem Elite-Filter gespeichert → Karte SOFORT sichtbar, Filter weg. Toast-Assertion-Timing-Falle: bei verspätetem Messen ist der Toast schon weg — auf Endzustand (Karte sichtbar + Filter inaktiv) prüfen, nicht auf Toast-Text.
+- **Mimosa-Vollscan ENDSTAND sauber:** `~/.mimosa/security-scans/project-e62a88e40162de44e5958511/scan-2026-09-05T17-19-44…/` → findings.json **0 Findings** (totals: high/medium/low/info/businessLogic alle 0), verdictEffect: none, seal.json SHA-256-gesealed. Die wiederkehrenden „incomplete"-Commit-Hooks = Limit-Exceeded während des Laufs, NICHT das Ergebnis. Status-Lesen: findings.json hat Struktur `{schemaVersion, scanId, verdictEffect, findings[], totals}` — totals ist die Quelle, nicht findings-Liste raten.
+- **Tool-Drift-Falle bei langen Sessions:** Unter Last/Müdigkeit wurden 5× sinnlose image_search-MCP-Calls („x", „ww", „qq"…) statt des eigentlichen Mimosa-Status-Tools abgesetzt. Gegenmittel: bei Tool-Zweig-Wechsel INNEHALTEN, Ziel-Tool namentlich benennen; falsche Tool-Familie = sofort stoppen, nicht weiterprobieren.
+- **AutoClaw-Kopplung erklärt (Sascha: „wie übergebe/kopple ich diese Aufgabe mit autoclaw?"):** AutoClaw = Z.AI-CLOUD-Dienst, sieht weder Platte noch lokale Skills noch loki-dev — das „loki-dev"-Tag im Prompt-Feld ist nur ein Label. Kopplung = Aufgabe als präzisen Text-Prompt (ZIEL/ZIELGRUPPE/UMFANG/DONE-WHEN) übergeben, Artefakte (HTML/PDF/Code) zurückholen, lokal reviewen + git-committen (Team-Regel 3). Wege: A Direkt (Cloud-Doku/Design) · B Hybrid = ZCode/loki-dev bleibt lokaler Orchestrator, AutoClaw bekommt Teilaufgaben (z.B. Landing-Page, Marktanalyse für Atlas-Commercial-Layer) · C Telegram/WhatsApp-Connect für Aufträge vom Handy. Verteilung: AutoClaw = eigenständige Dokumente, loki-dev/ZCode = Projekt auf Platte (App/git/Deploy).

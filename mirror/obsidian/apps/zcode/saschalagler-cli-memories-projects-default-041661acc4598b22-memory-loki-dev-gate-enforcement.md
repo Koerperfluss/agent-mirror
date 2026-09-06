@@ -24,4 +24,6 @@ metadata:
 
 **Parallelität (Regel geändert auf Saschas Wunsch):** bedarfsberechnet aus Task-Graph (unabhängige Tasks = Parallelitätsgrad), Budget-Default 3 mit 1-Zeilen-Begründung bei mehr — „3" ist Quota-Schutz ([[zai-coding-plan-limits]], 16-GB-Mac), kein Dogma.
 
+**Neustarts ausgeführt 06.09. spät:** Cline Code + Claude + ZCode (16:16, inkl. Restart-Kette) — Hooks damit geladen. Der ZCode-Restart-sqlite-Fix der Kette war gegen die FALSCHE Spalte (session-Tabelle hat keine `model`-Spalte; die zai-start-plan-Leiche steckt im App-Cache, nicht in db.sqlite) — fürs Wiki-Feature bleibt UI-Modellwahl der Fix, Details [[zcode-setup-verified]].
+
 Verwandt: [[autoclaw-full-stack-builder]] [[sequential-thinking-always]] [[skill-install-conventions]]

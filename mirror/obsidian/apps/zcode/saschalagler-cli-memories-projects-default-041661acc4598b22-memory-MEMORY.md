@@ -7,7 +7,7 @@ tags: [spiegel, zcode]
 
 # Memory Index
 
-- [FörderOps-Assistent](foerderops-assistent.md) — 30.08. aktiv, 🔴 06.09. Web-UI 8765 TOT (Restart: foerderops_web.py) + CLI; 70 Wissensdokumente; digi4KMU 50k existiert NICHT; Cap-Table Leon 26/Lisa 26/Sascha 25/Peter 23; 🔴 $350k-Blocker: Webgo-NS-Switch
+- [FörderOps-Assistent](foerderops-assistent.md) — 30.08. aktiv, 06.09. spät Web-UI 8765 LÄUFT WIEDER (kein Autostart!); 70 Wissensdokumente; digi4KMU 50k existiert NICHT; Cap-Table Leon 26/Lisa 26/Sascha 25/Peter 23; 🔴 $350k-Blocker: Webgo-NS-Switch
 - [GUI nicht CLI](feedback-gui-not-cli.md) — 30.08. Sascha: „ich will eine grafische oberfläche" — IMMER Web-UI bauen, nie nur Terminal-Befehl
 - [Sequential Thinking immer](sequential-thinking-always.md) — 30.08. Nutzer-Regel: mcp sequentialthinking bei JEDER Anfrage aufrufen; verankert in ~/.agents/STANDARD-SKILLS.md A.3 + skill-routing.md (alle 5 Harnesses)
 - [Aktive Fokus-Projekte](active-projects-focus.md) — 30.08.: Atlas Cali Coach, Körperfluss Physio-Web, FörderOps; Projektlisten-Tool `python3 ~/.claude/tools/projects.py`

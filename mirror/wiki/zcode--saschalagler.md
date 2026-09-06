@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-06 15:01 UTC
+Zuletzt gespiegelt: 2026-09-06 15:13 UTC
 
 ## call_fe4ee4834bf14478b4a66d0e-tool-result-df2ccbef-b4f7-499f-ac43-59af5f927f22
 
@@ -622,7 +622,7 @@ Bei Fachfragen (z. B. Trainings-Übungen) fordert er explizit „clinical reason
 
 # Memory Index
 
-- [FörderOps-Assistent](foerderops-assistent.md) — 30.08. aktiv, 🔴 06.09. Web-UI 8765 TOT (Restart: foerderops_web.py) + CLI; 70 Wissensdokumente; digi4KMU 50k existiert NICHT; Cap-Table Leon 26/Lisa 26/Sascha 25/Peter 23; 🔴 $350k-Blocker: Webgo-NS-Switch
+- [FörderOps-Assistent](foerderops-assistent.md) — 30.08. aktiv, 06.09. spät Web-UI 8765 LÄUFT WIEDER (kein Autostart!); 70 Wissensdokumente; digi4KMU 50k existiert NICHT; Cap-Table Leon 26/Lisa 26/Sascha 25/Peter 23; 🔴 $350k-Blocker: Webgo-NS-Switch
 - [GUI nicht CLI](feedback-gui-not-cli.md) — 30.08. Sascha: „ich will eine grafische oberfläche" — IMMER Web-UI bauen, nie nur Terminal-Befehl
 - [Sequential Thinking immer](sequential-thinking-always.md) — 30.08. Nutzer-Regel: mcp sequentialthinking bei JEDER Anfrage aufrufen; verankert in ~/.agents/STANDARD-SKILLS.md A.3 + skill-routing.md (alle 5 Harnesses)
 - [Aktive Fokus-Projekte](active-projects-focus.md) — 30.08.: Atlas Cali Coach, Körperfluss Physio-Web, FörderOps; Projektlisten-Tool `python3 ~/.claude/tools/projects.py`
@@ -683,6 +683,8 @@ Projektlisten-Tool: `python3 ~/.claude/tools/projects.py` — kuratierte Top-10-
 
 **Chatbot-Plan (30.08.2026):** Für alle 3 Fokus-Projekte als Bots geplant — FörderOps via Vertex-AI-Search-Credit (siehe [[google-cloud-genai-credit]]), Körperfluss-Web-Bot + Atlas via gratis Gemini API. Reihenfolge: FörderOps zuerst; Start auf Saschas Wort „Start FörderOps". Noch NICHT angefangen.
 
+**Update 06.09. spät:** Sascha nannte die VOLLE Liste (nicht nur 3): LOKI.OS/agent-os (aktiv), Atlas (**an AutoClaw full-stack-builder übergeben**), Legal Ops + Native (🔴 Verschmelzung kaputt), LOKI Voice+Thomas (ein Projekt), Körperfluss 3D, + 4 kleine: TODO App (`~/Desktop/Coworkspace_Ich/Projekt-Task-Planer`, App installiert als `/Applications/TODO APP.app`), Förder-Landschaft-Neubau (`~/Desktop/Coworkspace_Ich/öförderrungen`), Paraletts 3D-Hub + Barbulls Website (beide `…VEREIN ; BARBULLS ; PARALETTS/`). Kanonische Verwaltung jetzt: [[loki-project-map]] / `~/LOKI_PROJECT_MAP.md`.
+
 Verwandt: [[google-cloud-genai-credit]]
 
 ## autoclaw-full-stack-builder
@@ -710,6 +712,8 @@ Verwandt: [[skill-install-conventions]]
 **Gate-Enforcement 06.09. (Abend 2):** `~/.agents/tools/gate-enforcer.py` als **UserPromptSubmit-Hook** registriert in ZCode (`config.json` hooks.events), Cline (`~/.cline/hooks/settings.json`) UND Claude (`~/.claude/settings.json`) — feuert bei Build-Triggern (baue/erstelle/mach mir/übernimm/onboard/fertig) die Gate-Injektion (Schnitt 0), Fragen/Analyse bleiben leer (ANTI-Regex). Backups: `*.bak-gate-20260906`. Unit-getestet (Trigger→Gate, „was ist…"→leer). Hooks greifen je App erst nach Session-/App-Neustart. Ollama.app = kein Harness, kein Gate nötig.
 
 **UI-Steuerungs-Lektionen (06.09. 15:4x, live bewiesen):** (1) Agenten MÜSSEN per UI angelegt werden — App überschreibt openclaw.json beim Speichern mit ihrem Session-Stand, Datei-Edit allein fliegt raus. (2) UI-Klick-Rezept: Accessibility an → Fenster-Bounds (System Events) → `click at {x,y}` (Vorher App frontmost setzen!) → Element-Log bestätigt Ziel → für Textfeld-Eingabe: rekursiver AX-Finder (UI elements walk) + `set value` (keystroke verliert Fokus) → Button per Rekursion finden + click. Beweis: mac-operator komplett ferngesteuert erstellt (Name-Feld gesetzt → Create → Runtime zeigte 5 Agenten). (3) AutoClaw lief transloziert (AppTranslocation/Quarantäne) — Fix: `xattr -dr com.apple.quarantine /Applications/AutoClaw.app` + Restart. (4) App überschreibt IDENTITY/USER bei Agent-Create mit Generik — danach LOKI-Versionen zurückschreiben. (5) AutoClaw-Chat-Begriffe: „Agent Cluster"=Badge im Chat-Input (Parallel-Agent-Modus), Model-Auswahl=GLM-5.3-Flash-Dropdown, „Connect"=Telegram/WhatsApp-Bridge oben rechts.
+
+**Session 06.09. spät — Betrieb bewiesen:** (a) **Atlas an full-stack-builder ÜBERGEBEN**: WIKI.md committet (`8a5ad33`), MEMORY.md des Agent-Workspaces trägt Projekt-Pfad + Regel „NUR ~/cali-coach-atlas-final, Zwillingskopie ignorieren". (b) **Translocation-Fix**: AutoClaw lief von AppTranslocation-Pfad (Quarantäne-Flag) — `xattr -dr com.apple.quarantine /Applications/AutoClaw.app` + Restart → sauber von /Applications. (c) **Gateway-API geschlossen**: alle Chat-/Agent-Endpunkte 404 außer `/health` (Port 8766); Token in `.gateway-token` nützt nichts — Fernsteuerung nur via UI/Accessibility. (d) **mac-operator-Testchat LÄUFT** ( ferngesteuert getippt): Erstlings-Fehler EACCES `/usr/sbin/authserver` = Agent scannte Systemordner (macOS-Schutz, harmlos); Follow-up-Korrektur im Chat gesendet („nur launchctl list + ps aux"). (e) **UI-Klick-Fallen**: hängendes `screencaptureui`-Overlay frisst ALLE Klicks (dispatch geht an com.apple.screencaptureui statt Ziel-App!) — `killall screencaptureui` (transienter Apple-Helfer, ok); Fenster-Bounds ändern sich zwischen Aktionen — IMMER frisch via Quartz CGWindowList holen; funktionierende Loop: Ziel-App frontmost → CUA screenshot → zoom → left_click (receipt zeigt resolved_app_ref = Kontrolle) → osascript keystroke mit ASCII (Umlaute vermeiden). (f) Apps neu gestartet 06.09.: Cline, Claude, ZCode 16:16 (Hooks geladen).
 
 **Update 06.09. (Abend):** Skills konsolidiert zu **loki-dev** (Master `~/.agents/skills/loki-dev/`, 5 Modi INIT/BUILD/TAKEOVER/FINISH/MAP) — glm-init/glm-build/deve/lokiomnidevteam-plan/-execute sind jetzt 3-Zeilen-Wrapper (Autoclaws Originale in `SKILL.md.bak-20260906`). **Schnitt-0-Orchestrierungs-Gate** eingebaut (Pflicht-Schritt): Sequential-Thinking-Zerlegung → TodoWrite sofort → PLAN-Tabelle im Chat (Stufe|Agent|Skill|Modell|~Tokens|~Zeit|Dep) → PLAN.md im Projekt; Grund: Nutzervorwurf „Plan nie sichtbar" war berechtigt — Skills sind passiver Text ohne Enforcement, jetzt ist das Gate in loki-dev + STANDARD-SKILLS (alle Harnesses gesynct) verankert. Parallelitäts-Regel dynamisiert: Task-Graph-berechnet, Budget-Default 3 (Quota-Schutz ZAI-Caps), mehr mit 1-Zeilen-Begründung. **mac-operator** Agent angelegt (Agent 5 in openclaw.json, Guard-Roots 5) — bedient Programme/macOS, Stop-Regel: nie User-Services killen ohne GO.
 
@@ -751,7 +755,9 @@ Sascha (06.09.2026, 2× explizit wütend): „du sollst den agent ODER die agent
 
 **Why:** Er will den Agenten als eigenständigen Operator — sobald ich ihn etwas per UI klicken lasse („deine 1 Aktion: Create klicken"), gilt das als Arbeitsverweigerung. Seine App-Welt: AutoClaw, ZCode, Cline Code, Claude — „das soll in allen so sein".
 
-**How to apply:** Wenn eine Aktion nur per GUI geht: macOS Accessibility nutzen und sie selbst ausführen. Bewährtes Rezept (live bewiesen an AutoClaw-Create-Dialog): Fenster-Bounds via System Events holen → App frontmost setzen (`set frontmost of process … to true`, sonst landen Klicks im falschen Fenster!) → `click at {x,y}` (Element-Log im Ergebnis bestätigt das Ziel) → für Textfeld-Eingabe keystroke NICHT vertrauen (Fokus geht verloren), sondern rekursiv AX-Element suchen (UI-elements-Walk) + `set value of <textfield>` → Buttons per Rekursion finden und `click`. Verifikation per Screenshot (`screencapture -l <windowID>`, Window-ID via Quartz CGWindowList) und/oder Config/Runtime-Datei-Check. Elektro­nen-Apps (Electron) exponieren fast keine nativen AX-Elemente — Koordinaten aus Vision/Prozentangaben + Bestätigungs-Log sind der Weg. Verwandt: [[autoclaw-full-stack-builder]] [[feedback-one-action-not-tables]] [[feedback-gui-not-cli]]
+**How to apply:** Wenn eine Aktion nur per GUI geht: macOS Accessibility nutzen und sie selbst ausführen. Bewährtes Rezept (live bewiesen an AutoClaw-Create-Dialog): Fenster-Bounds via System Events holen → App frontmost setzen (`set frontmost of process … to true`, sonst landen Klicks im falschen Fenster!) → `click at {x,y}` (Element-Log im Ergebnis bestätigt das Ziel) → für Textfeld-Eingabe keystroke NICHT vertrauen (Fokus geht verloren), sondern rekursiv AX-Element suchen (UI-elements-Walk) + `set value of <textfield>` → Buttons per Rekursion finden und `click`. Verifikation per Screenshot (`screencapture -l <windowID>`, Window-ID via Quartz CGWindowList) und/oder Config/Runtime-Datei-Check. Elektro­nen-Apps (Electron) exponieren fast keine nativen AX-Elemente — Koordinaten aus Vision/Prozentangaben + Bestätigungs-Log sind der Weg.
+
+**Ergänzt 06.09. spät (Chat-Anlegen + Klick-Fallen):** Saschas Erwartung geht weiter: auch **Unterhaltungen/Chats pro Projekt grafisch sortiert anlegen** („DU HAST NOCH IMMER NICHT DIE CHATS ANGELEGT GRAFISCH SORTIERT") — in AutoClaw je Projekt einen Chat im passenden Agenten, benannt/sortierbar. Klick-Fallen dabei live gelernt: (1) hängendes **screencaptureui-Overlay** (von Nutzer-Screenshots) frisst jeden Klick-Dispatch → `killall screencaptureui` zuerst prüfen; (2) Fenster-**Bounds ändern sich** zwischen Aktionen → immer frisch via Quartz holen; (3) beste Loop: Ziel-App frontmost → computer-use `screenshot` → `zoom` → `left_click` (receipt zeigt `resolved_app_ref`-Ziel = Kontrolle) → Text via osascript `keystroke` MIT ASCII (Umlaute vermeiden). Verwandt: [[autoclaw-full-stack-builder]] [[feedback-one-action-not-tables]] [[feedback-gui-not-cli]] [[loki-project-map]]
 
 ## feedback-gui-not-cli
 
@@ -848,7 +854,7 @@ Cloud-Setup: Projekt **koerperfluss-antigravity** (Nr. 68337618626, Billing 015D
 
 **Lokaler Assistent (CLI, 30.08.):** Python-Skript `~/.agents/tools/foerderops_assistent.py`, verlinkt als `/opt/homebrew/bin/foerderops`. Lädt die Wissensdokumente lokal (Keyword-Retrieval), ruft Gemini 2.5 Flash via Vertex AI (gcloud-Token, Projekt koerperfluss-antigravity) auf — API-Key-Pfad (GEMINI_API_KEY) liefert 429 (rate-limited), Vertex-Fallback mit `role: user` im Content-Body funktioniert. SSRF-gehärtet (HTTPS-only, Host-Allowlist googleapis.com, keine Redirects, keine privaten IPs). Nutzung: `foerderops "Frage"` oder interaktiv `foerderops`. Live-Test bestätigt.
 
-**Web-UI-Status 06.09.: läuft NICHT** (curl auf 127.0.0.1:8765 = HTTP 000, kein Prozess) — Restart nötig: `python3 ~/.agents/tools/foerderops_web.py`. Kopien des Tools auch unter `~/Claude/Projects/Förderops` und `~/koerperfluss-frontend-optimized/Foerder-Ops` (Drift-Gefahr).
+**Web-UI-Status 06.09. spät: LÄUFT WIEDER** (per Agent gestartet: `nohup python3 ~/.agents/tools/foerderops_web.py`, HTTP 200 auf 127.0.0.1:8765) — aber OHNE Autostart/LaunchAgent, stirbt bei Reboot. Kopien des Tools auch unter `~/Claude/Projects/Förderops` und `~/koerperfluss-frontend-optimized/Foerder-Ops` (Drift-Gefahr).
 
 **Web-UI (30.08., von Sascha eingefordert — „ich will eine grafische Oberfläche du trotel"):** `~/.agents/tools/foerderops_web.py` — lokale Chat-Oberfläche auf **http://127.0.0.1:8765**, öffnet Browser automatisch. Dark/Gold-Design im Körperfluss-Look, 5 Schnell-Buttons (inno4KMU, FFG Status, Website-Lücken, Offene Konflikte, Google-E-Mail). API-Endpoint /api im selben Skript. Start: `python3 ~/.agents/tools/foerderops_web.py`. **Sascha will grafische Oberflächen, KEINE Terminal-Befehle** — CLI wurde abgelehnt („was soll ich mit so einem befehl").
 
@@ -985,7 +991,39 @@ metadata:
 
 **Parallelität (Regel geändert auf Saschas Wunsch):** bedarfsberechnet aus Task-Graph (unabhängige Tasks = Parallelitätsgrad), Budget-Default 3 mit 1-Zeilen-Begründung bei mehr — „3" ist Quota-Schutz ([[zai-coding-plan-limits]], 16-GB-Mac), kein Dogma.
 
+**Neustarts ausgeführt 06.09. spät:** Cline Code + Claude + ZCode (16:16, inkl. Restart-Kette) — Hooks damit geladen. Der ZCode-Restart-sqlite-Fix der Kette war gegen die FALSCHE Spalte (session-Tabelle hat keine `model`-Spalte; die zai-start-plan-Leiche steckt im App-Cache, nicht in db.sqlite) — fürs Wiki-Feature bleibt UI-Modellwahl der Fix, Details [[zcode-setup-verified]].
+
 Verwandt: [[autoclaw-full-stack-builder]] [[sequential-thinking-always]] [[skill-install-conventions]]
+
+## loki-project-map
+
+---
+name: loki-project-map
+description: Master-Projekt-Map (06.09.2026) — alle 9 Sascha-Projekte mit
+  kanonischen Pfaden, Besitzern, Status, Tickets; lebt in ~/LOKI_PROJECT_MAP.md
+metadata:
+  node_type: memory
+  type: project
+  originSessionId: sess_6ec2db7a-ed38-4ece-8c80-35110f8e0fbc
+---
+
+**Kanonische Quelle: `~/LOKI_PROJECT_MAP.md`** (06.09.2026 erstellt nach Saschas Klartext-Liste) — dort stehen Tickets/Details. Kern-Stand:
+
+| Projekt | Pfad | Besitzer | Status |
+|---|---|---|---|
+| LOKI.OS / Agent OS | `~/agent-os/` | Sascha+ZCode | 🟢 aktiv |
+| Atlas Cali Coach | `~/cali-coach-atlas-final` | **AutoClaw full-stack-builder** (übergeben 06.09., commit 8a5ad33) | 🟢 übergeben |
+| Legal Ops + Native | `~/LegalOpsAdvisor_Sacha_Mac` + `NativeLegalOps/` | ZCode | 🔴 Verschmelzung kaputt, App funktioniert nicht → TAKEOVER-Diagnose |
+| LOKI Voice + Thomas | `~/loki-ki/loki-voice` + PETER-JUDICARIO/LokiVoiceApp | ZCode | 🟡 läuft (launchd), geht in Legal-Ops über (ein Thomas-System) |
+| Körperfluss 3D | `~/Desktop/Coworkspace_Ich/FIRMEN PROJEKTE/Koerperfluss-3D-Upgrade` | ZCode | 🟡 live, 🔴 null Tests (F14/F15 offen) |
+| TODO App | `~/Desktop/Coworkspace_Ich/Projekt-Task-Planer` + `/Applications/TODO APP.app` | ZCode | 🟡 Stand unbekannt |
+| Förder-Landschaft-Tool | `~/Desktop/Coworkspace_Ich/öförderrungen` | ZCode | ⚪ Neubau (österreichische Förderlandschaft klonen) |
+| Paraletts 3D-Hub | `~/Desktop/Coworkspace_Ich/VEREIN ; BARBULLS ; PARALETTS/3d hub paraletts verkau` | ZCode | 🟡 Statuscheck offen |
+| Barbulls Website | `…VEREIN ; BARBULLS ; PARALETTS/Barbulls.Website update` | ZCode | 🟡 Statuscheck offen (Website + Termin-Bot) |
+
+**Querschnitt-Tickets:** Q1 🔴 API-Keys Klartext in `~/loki-ki/services/*mcp*` → Env · Q2 4× Legal-Ops-MCP-Prozesse beenden · Q3 FörderOps ohne Autostart · Q4 Gate/Testchat-Live-Beweise (mac-operator-Chat läuft, restliche Projekt-Chats in AutoClaw noch anzulegen — Sascha fordert projekt-sortierte Unterhaltungen grafisch).
+
+**How to apply:** Bei „was ist offen / nächstes Ticket": Map lesen (nicht neu erfragen), von oben abarbeiten; jede Aufgabe startet mit loki-dev Schnitt-0-Gate ([[loki-dev-gate-enforcement]]). Verwandt: [[active-projects-focus]] [[autoclaw-full-stack-builder]] [[foerderops-assistent]]
 
 ## mac-cleanup-2026-08-25
 
@@ -1276,7 +1314,7 @@ Verifiziert 26.08.2026. Clines Audit-Bericht war mostly richtig, hatte aber 2 Fe
 - **Plugins**: 16 aktiv — context7, code-review, feature-dev, superpowers, commit-commands, playwright, github, ios-simulator, cloudbase-skills, agent-sdk-dev, agentforce-adlc, youdotcom-agent-skills, mimosa, zcode-cua, restore-legacy-sessions, example-plugin.
 - **Skills**: 110 in `~/.zcode/skills/` vs 112 in `~/.agents/skills/` (Master). Drift: `lokiomnidevteam-plan`, `lokiomnidevteam-execute`, `_sources` nur in `.agents`; `find-docs` nur in `.zcode`. Fix wartet auf Saschas Go ("fix sync").
 - **Cline-Workflow**: `~/.cline/workflows/04-skill-aware-task-distribution.md` (v1.0) integriert, alle 5 Pflicht-Skills vorhanden. Trigger `/skill-aware-task-distribution`; Score-Formel siehe [[skill-install-conventions]].
-- **Wiki-Generator-Fehler (06.09.):** „当前选择的模型供应商不存在: builtin:zai-start-plan" = toter Provider-Name — Z.AI-Provider wurde in `builtin:zai-coding-plan` umbenannt (Log-Beweis 05.09.: session.model.updated start-plan→coding-plan), der Wiki-Dialog hält die Leiche gespeichert. Fix: im Wiki-Dialog Modell neu wählen → Generate. `~/.zcode/cli/db/db.sqlite` gehört der LAUFENDEN App — nie live reinschreiben.
+- **Wiki-Generator-Fehler (06.09.):** „当前选择的模型供应商不存在: builtin:zai-start-plan" = toter Provider-Name — Z.AI-Provider wurde in `builtin:zai-coding-plan` umbenannt (Log-Beweis 05.09.: session.model.updated start-plan→coding-plan), der Wiki-Dialog hält die Leiche gespeichert. Fix: im Wiki-Dialog Modell neu wählen → Generate. **Präzisiert 06.09. spät:** die Leiche steckt NICHT in `~/.zcode/cli/db/db.sqlite` (session-Tabelle hat gar keine `model`-Spalte; Restart-Kette 16:16 lief, sqlite-UPDATE lief ins Leere) — sie sitzt im App-/Wiki-Session-Cache. db.sqlite gehört der LAUFENDEN App — nie live reinschreiben.
 - **Gate-Hooks (06.09.):** UserPromptSubmit-Hook `gate-enforcer.py` registriert (ZCode config.json, Cline hooks/settings.json, Claude settings.json) — Details [[loki-dev-gate-enforcement]]. Wirken erst nach App-Neustart.
 - **Offen**: Obsidian↔Cline Memory-Sync — ZCode-Workspace-Memory überträgt NICHT automatisch zu Cline. Empfohlener Weg: Memory-Export als Markdown in `~/.agents/skills/_sources/` als ein Source of Truth (Alternative: obsidian-vault Skill).
 
@@ -1360,16 +1398,14 @@ Update 2026-08-22 (Repair-Session): Ordner umgezogen nach `~/Desktop/Coworkspace
 # Memory Index
 
 - [Judicario Gateway Key Rotation](judicario-gateway-key-rotation.md) — alter Key tot, neuer Key jud_Cpu-… verifiziert, Connectoren 06.09.2026 gefixt
-- [Chipsi/Openlaw Setup](chipsi-openlaw-setup.md) — Chipsi=Cloud-Webapp via Chrome-Shortcut, Connector-Config mit MCP-URL+Key, Gmail=koerperfluss@gmail.com
+- [Chipsi/Openlaw Setup](chipsi-openlaw-setup.md) — Chipsi=Cloud-Webapp via Chrome-Shortcut; Antwort-Fehler=serverseitig bei openlaw (06.09. bestätigt, George-Fix nötig); UI-Tests nur mit cua-Klick+echter Tastatur; Gmail=koerperfluss@gmail.com
 - [ZCode Computer Use Status](zcode-computer-use-status.md) — Plugin/TCC ok, Server braucht permission-broker-socket → Fix=volles App-Restart; per 06.09. offen
 
 ## chipsi-openlaw-setup
 
 ---
 name: chipsi-openlaw-setup
-description: Chipsi ist Cloud-Webapp (chipsi.openlaw.cc) als
-  Chrome-App-Shortcut; Judicario-Connector konfiguriert man in Chipsi mit
-  MCP-URL+Key; Gmail=koerperfluss@gmail.com
+description: Chipsi ist Cloud-Webapp (chipsi.openlaw.cc) als Chrome-App-Shortcut; Konnektoren serverseitig von openlaw; Antwort-Fehler 06.09. wasserdicht als serverseitig bestätigt; UI-Tests nur mit echter Tastatureingabe; Gmail=koerperfluss@gmail.com
 metadata:
   node_type: memory
   type: project

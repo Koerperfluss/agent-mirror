@@ -30,4 +30,6 @@ Projektlisten-Tool: `python3 ~/.claude/tools/projects.py` — kuratierte Top-10-
 
 **Chatbot-Plan (30.08.2026):** Für alle 3 Fokus-Projekte als Bots geplant — FörderOps via Vertex-AI-Search-Credit (siehe [[google-cloud-genai-credit]]), Körperfluss-Web-Bot + Atlas via gratis Gemini API. Reihenfolge: FörderOps zuerst; Start auf Saschas Wort „Start FörderOps". Noch NICHT angefangen.
 
+**Update 06.09. spät:** Sascha nannte die VOLLE Liste (nicht nur 3): LOKI.OS/agent-os (aktiv), Atlas (**an AutoClaw full-stack-builder übergeben**), Legal Ops + Native (🔴 Verschmelzung kaputt), LOKI Voice+Thomas (ein Projekt), Körperfluss 3D, + 4 kleine: TODO App (`~/Desktop/Coworkspace_Ich/Projekt-Task-Planer`, App installiert als `/Applications/TODO APP.app`), Förder-Landschaft-Neubau (`~/Desktop/Coworkspace_Ich/öförderrungen`), Paraletts 3D-Hub + Barbulls Website (beide `…VEREIN ; BARBULLS ; PARALETTS/`). Kanonische Verwaltung jetzt: [[loki-project-map]] / `~/LOKI_PROJECT_MAP.md`.
+
 Verwandt: [[google-cloud-genai-credit]]
