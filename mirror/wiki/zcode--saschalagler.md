@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-06 13:21 UTC
+Zuletzt gespiegelt: 2026-09-06 13:32 UTC
 
 ## call_fe4ee4834bf14478b4a66d0e-tool-result-df2ccbef-b4f7-499f-ac43-59af5f927f22
 
@@ -700,6 +700,8 @@ AutoClaw (v1.17.8, `com.zhipuai.autoclaw`, OpenClaw-Core) Agent **full-stack-bui
 
 Verwandt: [[skill-install-conventions]]
 
+**Update 06.09. (Abend):** Skills konsolidiert zu **loki-dev** (Master `~/.agents/skills/loki-dev/`, 5 Modi INIT/BUILD/TAKEOVER/FINISH/MAP) — glm-init/glm-build/deve/lokiomnidevteam-plan/-execute sind jetzt 3-Zeilen-Wrapper (Autoclaws Originale in `SKILL.md.bak-20260906`). **Schnitt-0-Orchestrierungs-Gate** eingebaut (Pflicht-Schritt): Sequential-Thinking-Zerlegung → TodoWrite sofort → PLAN-Tabelle im Chat (Stufe|Agent|Skill|Modell|~Tokens|~Zeit|Dep) → PLAN.md im Projekt; Grund: Nutzervorwurf „Plan nie sichtbar" war berechtigt — Skills sind passiver Text ohne Enforcement, jetzt ist das Gate in loki-dev + STANDARD-SKILLS (alle Harnesses gesynct) verankert. Parallelitäts-Regel dynamisiert: Task-Graph-berechnet, Budget-Default 3 (Quota-Schutz ZAI-Caps), mehr mit 1-Zeilen-Begründung. **mac-operator** Agent angelegt (Agent 5 in openclaw.json, Guard-Roots 5) — bedient Programme/macOS, Stop-Regel: nie User-Services killen ohne GO.
+
 ## cdp-skill-browser-harness
 
 ---
@@ -1302,6 +1304,7 @@ Update 2026-08-22 (Repair-Session): Ordner umgezogen nach `~/Desktop/Coworkspace
 
 - [Judicario Gateway Key Rotation](judicario-gateway-key-rotation.md) — alter Key tot, neuer Key jud_Cpu-… verifiziert, Connectoren 06.09.2026 gefixt
 - [Chipsi/Openlaw Setup](chipsi-openlaw-setup.md) — Chipsi=Cloud-Webapp via Chrome-Shortcut, Connector-Config mit MCP-URL+Key, Gmail=koerperfluss@gmail.com
+- [ZCode Computer Use Status](zcode-computer-use-status.md) — Plugin/TCC ok, Server braucht permission-broker-socket → Fix=volles App-Restart; per 06.09. offen
 
 ## chipsi-openlaw-setup
 
@@ -1320,7 +1323,7 @@ metadata:
 
 Judicario-Connector in Chipsi = MCP-URL (`https://gateway.openlaw.cc/mcp/at/`) + Zugriffsschlüssel — Vorlage mit gültigem Key: `Judicario_Sacha_Mac/tools/CHIPSI_SANDBOX_CONNECTOR.html`. Toter Key war die wahrscheinliche Fehlerursache → [[judicario-gateway-key-rotation]].
 
-**Gmail des Nutzers: koerperfluss@gmail.com** (auch seine primäre Apple-ID → App-Store/TestFlight-Mails landen dort). Zugriffshürden: google-workspace-MCP hat KEINEN Gmail-Scope (Permission denied), Gmail ist NICHT in Apple Mail eingerichtet (nur iCloud + IMAP startup@koerperfluss.at), AppleScript auf Chrome/Mail timed out (TCC-Freigabe nötig), Comet-Browser-Debug-Port 9222 liefert keine DevTools-JSON. Funktionsweg: Browser-Tab auf accounts.google.com (Session im ZCode-IAB) oder Nutzer liest selbst. openlaw-Support: George george@openlaw.cc, WhatsApp +43 676 3064897.
+**Gmail des Nutzers: koerperfluss@gmail.com** (auch seine primäre Apple-ID → App-Store/TestFlight-Mails landen dort; verifiziert 06.09. via Chrome-History-Kopie, read-only). Zugriffshürden: google-workspace-MCP hat KEINEN Gmail-Scope (Permission denied), Gmail ist NICHT in Apple Mail eingerichtet (nur iCloud + IMAP startup@koerperfluss.at), AppleScript auf Chrome/Mail timed out (Fehler -1712, TCC-Automation-Freigabe fehlt/hängt), Comet-Browser-Debug-Port 9222 liefert keine DevTools-JSON. Funktionsweg: Browser-Tab auf accounts.google.com (Session im ZCode-IAB, liegt seit 06.09. mit TestFlight-Suche bereit) oder Nutzer liest selbst. TestFlight-Prüfung (Judicario/Chipsi-Invites) per 06.09. abends noch offen. openlaw-Support: George george@openlaw.cc, WhatsApp +43 676 3064897. SCREEN-Automation würde vieles lösen → [[zcode-computer-use-status]].
 
 ## judicario-gateway-key-rotation
 
@@ -1339,6 +1342,25 @@ Der alte Judicario-Gateway-Key `jud_gtSG0t_c8db2KMG6FGyqr4r1sMPyXED7` (Einrichtu
 Am 06.09.2026 gefixt: 30+ Konfig-Files im Projektordner (`Connectoren_URLs.txt`, `Judicario_in_Claude_Code_installieren.command`, `judicario/.mcp.json`, tools/, implementation/) umgestellt + alle 8 Claude-Code-Connectoren (user scope) neu registriert — 6/8 ✔ Connected. `insurance` + `steuer-de` verbinden, aber Tools-Liste serverseitig kaputt ("expected array, received undefined") → openlaw-Problem. Nur historische Research-MDs (Audit/_ARCHIV, LEGAL_OPS_MASTER_ARCHIV/konkurrenz) haben noch den alten Key als Doku-Referenz.
 
 Bei erneuter Key-Rotation: Test mit MCP-Initialize-POST (`Accept: application/json, text/event-stream`) gegen `https://gateway.openlaw.cc/mcp/at/?k=KEY`. Siehe auch [[chipsi-openlaw-setup]].
+
+## zcode-computer-use-status
+
+---
+name: zcode-computer-use-status
+description: ZCode Computer Use „deaktiviert" — Plugin+TCC alle ok, echter Grund
+  = Server braucht permission-broker-socket vom Host; Fix = volles App-Restart
+  (06.09. angestoßen, offen)
+metadata:
+  node_type: memory
+  type: project
+  originSessionId: sess_419a8806-4350-4c0c-92da-4032328e499c
+---
+
+Diagnose 06.09.2026: Nutzer konnte Computer Use in ZCode „nicht aktivieren". Befunde (alle verifiziert): Plugin `computer-use@zcode-plugins-official` war in `~/.zcode/cli/config.json` aktiviert, macOS-TCC vollständig erteilt (kTCCServiceAccessibility + kTCCServiceScreenCapture = 2 für `dev.zcode.app` UND `dev.zcode.cua-helper`), Helper-App `~/.zcode/computer-use/ZCode Computer Use.app` v3.11.2 passend zur App 3.11.2 (Helper-Update 04.09. 23:19).
+
+**Echte Ursache:** Der CUA-MCP-Server (Plugin-Cache 0.5.14, Start via `/Applications/ZCode.app/.../ZCode Helper … __zcode-plugin-host …/dist/mcp/server.js`) beendet sich sofort ohne `--permission-broker-socket` („Plugin host failed: requires --permission-broker-socket"). Der laufende Host (zcode-host-local/CLI-Setup) hatte nach dem Helper-Update keinen Broker hochgezogen → Tools fehlen in der Session, obwohl UI/Config „aktiviert" zeigen.
+
+**Fix:** ZCode komplett beenden (Cmd+Q, nicht nur Fenster) + neu starten → neue Session → mit einem CUA-Tool (`request_access`) testen. Per 06.09. abends offen. Fallback ohne Computer Use: browser-use-IAB + TCC-Dialoge manuell klicken lassen. Relevanter Zusammenhang: [[chipsi-openlaw-setup]] (Gmail-/TestFlight-Prüfung).
 
 ## MEMORY
 
