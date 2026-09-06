@@ -1,7 +1,7 @@
 ---
 app: cline-code
 quelle: "saschalagler/CLAUDE.md"
-stand: 2026-09-05
+stand: 2026-09-06
 tags: [spiegel, cline-code]
 ---
 
@@ -153,11 +153,14 @@ Alle teilen das Skill-Repository: `~/.agents/skills/` (81 Skills)
 | Langzeitgedächtnis / Kontext über Sessions | cognee-memory |
 | Doku/Lookup aktueller APIs | context7 / find-docs |
 | Gratis-Modelle / KI-Fallback-Check | `omni-check` (Terminal-Alias) |
-| Build-Wunsch („baue/erstelle/mach mir X") | glm-build (Director, Zero-Question) |
-| Projekt onboarden / ÜBERNEHMEN (Memory-Sweep→Stand→Plan) / fertig machen / testen | deve |
+| Build-Wunsch („baue/erstelle/mach mir X") | **loki-dev** Modus BUILD (Director, Zero-Question; glm-build = Wrapper) |
+| Projekt onboarden / neu anlegen / ÜBERNEHMEN (Memory-Sweep→Stand→Plan) / fertig machen / testen | **loki-dev** Modi INIT/TAKEOVER/FINISH (deve/glm-init = Wrapper) |
 | UI-/UX-Test (Web/Desktop, erschöpfend) | ui-ux-tester (chrome-devtools/computer-use + Vision) |
-| GROSSES Projekt / Arbeit >1 Session | wayfinder (Map ch Artieren/abarbeiten; Konfig-Landkarte: ~/.agents/WAYFINDER-GLM.md) |
+| GROSSES Projekt / Arbeit >1 Session | **loki-dev** Modus MAP → wayfinder (Map ch Artieren/abarbeiten; Konfig-Landkarte: ~/.agents/WAYFINDER-GLM.md) |
 | Terminal-KI-Frage ohne Modell-Wahl | `omniroute chat` (Gateway **localhost:20128**, permanent via LaunchAgent) |
+
+**⚠️ Orchestrierungs-Gate (PFLICHT bei jedem loki-dev-Start):** Sequential-Thinking-Zerlegung → TodoWrite sofort → PLAN-Tabelle im Chat (Stufe|Agent|Skill|Modell|~Tokens|~Zeit|Dep) → PLAN.md im Projekt. Der Plan ist LEBEND: nach jeder Stufe Status aktualisieren.
+**Parallelität:** bedarfsberechnet aus Task-Graph (unabhängige Tasks = Parallelitätsgrad); Budget-Default 3 gleichzeitig (Quota-Schutz ZAI-Caps/16-GB-Mac), mehr mit 1-Zeilen-Begründung.
 
 **Verteilungs-Formel (skill-aware-task-distribution):** `score = skill_match*0.4 + performance_history*0.3 + availability*0.2 + platform_fit*0.1` — höchster Score gewinnt.
 
