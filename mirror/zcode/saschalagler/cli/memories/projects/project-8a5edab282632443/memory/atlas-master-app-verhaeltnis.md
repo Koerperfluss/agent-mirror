@@ -1,9 +1,8 @@
 ---
 name: atlas-master-app-verhaeltnis
-description: ATLAS v5 06.09. NACHT — TEAM-MERGE LIVE: Onboarding 20 Stufen (AutoClaw)
-    + T-A8 CoT-Wiring + P4.5 Vision→Logbuch-Auto-Push + SSD-Konsolidierung (83/94/16/0)
-    alles deployed & bewiesen; PLAN.md = DIE Liste (19✅); Rest: C2 Proxy, C4 Tiers,
-    native Builds, GTM
+description: ATLAS 06.09. FINALE — ALLE entwicklungsbaren Stufen DONE: 20-Stufen-Onboarding
+    (AutoClaw-Merge) + T-A8 + P4.5 + C2 Proxy + C4 Tiers (keyless Chat) + GTM.md; PLAN.md
+    23✅/24, Rest NUR 2 User-Installationen (Xcode, Android Studio) für native Builds
 metadata:
   node_type: memory
   type: project
@@ -162,3 +161,12 @@ Onboarding startete mit VORAUSGEFÜLLTEN 92kg/178cm (useState-Defaults) und Visi
 - **🔴 FREMD-FUNKTIONS-LÖSCHFALLE (wichtig für JEDES Firebase-Deploy in gen-lang-client-0285074833):** Deploy brach ab mit „Aborting because deletion cannot proceed in non-interactive mode… firebase functions:delete cli_api / generateClinicalContentProxy" — das Projekt enthält FUNKTIONEN ANDERER Apps (Koerperfluss!). NIE `--force`/löschen; Fix = **eigener codebase-Name** („atlas") in firebase.json functions → deployt nur eigene, fremde unangetastet. Vor Deploy immer prüfen, welche Funktionen der Deploy „löschen" will.
 - **Gotchas:** functions/ braucht eigenes `npm install`; Node 20 deprecated → engines `"node": "22"`; `.firebaserc` default gen-lang-client-0285074833, aber `firebase use` kann auf barbulls-app stehen → vor Deploy `npx firebase use gen-lang-client-0285074833`.
 - **LIVE-BEWEIS:** `curl -X POST https://atlas-v5.web.app/api/coach` → **HTTP 200 mit echter Gemini-Antwort** (modelVersion gemini-3.6-flash) über die App-Domain; Function-URL us-central1-gen-lang-client-0285074833.cloudfunctions.net/coach. Committed. PLAN.md-Stand danach: **20 ✅ / 24** — Rest: C4 User-Tiers (nächstes) · native Builds (iOS=Runtime-Freigabe Sascha) · GTM.
+
+## 06.09. FINALE: C4 TIERS + 20-STUFEN-E2E + GTM — ALLE entwicklungsbaren Stufen DONE (PLAN.md 23 ✅ / 24)
+Sascha: „genug geplant bitte erst melden wenn fertig" → still durchgebaut, erst der Fertig-Bericht kam ([[sascha-meldung-nur-fertig]]).
+
+- **C4 USER-TIERS (Bundle DJBvCQhD, Parität ✓):** neues `src/coach/tiers.ts` — Tier free|pro (localStorage `atlas_tier`), `FREE_DAILY_LIMIT=10`, `aiUsedToday()/aiCallAllowed()/countAiCall()` (Zähler `atlas_ai_count_YYYY-MM-DD`, tagesauto-reset). `runAtlas` prüft VOR dem Call → bei Free-Limit sanfte Atlas-Bubble („Tageslimit erreicht… morgen wieder oder Pro") statt Request (D10: kein Hard-Lock). **Key-Gate KOMPLETT aus CoachChat entfernt** — Chat läuft ohne eigenen Key via C2-Proxy: `createGemini` nutzt bei leerem apiKey `fetch('/api/coach')` ohne Key-Header (Server-Secret); BYO-Key via localStorage/Onboarding bleibt parallel. Tier-Badge „FREE 0/10"/„PRO" mit Klick-Toggle in der Chip-Leiste (Demo-Umschalter). Live: Badge sichtbar, keyGateWeg:true, keyless Chat-Pipeline durchgängig (Antwort kam bis auf Google-503 „high demand" — temporär serverseitig, Mechanismus bewiesen, „Wiederholen"-Button da; countAiCall zählt erst nach Erfolg).
+- **C4-Cleanup-Kette (3× TS6133-Iterationen):** toten Key-Code (keyDraft/keyTest/keyError/testAndSaveKey/resetKey/KeyRound/Lock/Zap-Imports, KeyTestState, validateApiKey-Import) schrittweise raus; Python-Regex-Löschen von Funktionsblöcken + danach gezielt Icon-Imports strippen (`re.sub(r"\n\s*NAME,","",src)` wenn kein `<NAME` im JSX). **Deploy-Falle DREIMAL an einem Abend:** jeder TS-Fehler (TS6133/TS2304) ließ `firebase deploy` das ALTE Bundle still ausliefern — immer `✓ built`-Zeile erzwingen, dann Server-Asset=dist vergleichen.
+- **20-STUFEN-E2E BESTANDEN (kompletter Live-Clickthrough):** 1/20 → 20/20 → „Fertig" → „Los geht's" → App. Pflicht-Gates blocken korrekt (Ziel, Gewicht/Größe ≥30/≥100 — number-Inputs brauchen WERTE via nativem value-Setter VOR Weiter-Klick, sonst hängt der Loop an Stufe 2); Stufe 19 (GTG) braucht „Fertig"-Klick, Stufe 20 schließt mit „Los geht's"/onDone.
+- **GTM.md (C5-Abschluss, committed):** Free 0 € (10 KI/Tag) · Pro 4,99 €/Monat · Verein 199 €/Jahr (30 Athleten); 30-Tage-Launch (Beta→Instagram-Vision-Hook→Foren→Store); DE-Recht: Impressum/DSGVO (Firebase/Gemini-Datenfluss), kein-Medizinprodukt-Disclaimer, Abo-Widerruf.
+- **ENDSTAND 23 ✅ / 24 — Rest sind NUR noch 2 Installationen von Sascha (kein Code!):** Xcode aus dem App Store (~12 GB; aktuell nur CommandLineTools — `xcodebuild -version` scheitert) → dann iOS-Build aus fertigem `ios/`; Android Studio (kein SDK/ANDROID_HOME vorhanden) → dann .apk aus fertigem `android/`. Bis dahin = PWA atlas-v5.web.app voll funktional installierbar.
