@@ -57,6 +57,8 @@ python scraper_vwgh.py --dry-run            # kein Schreiben
 
 - [Toolchain Provider-SPOF](toolchain-provider-spof.md) — 30.08.2026 fielen Claude Code/Cline/ZCode zusammen aus: alle auf Z.ai-Kontingent + npm-Mirror blockierte Cline-CLI; Diagnose-Fallen (npm view via Mirror, nested node_modules, Logs statt Dateien)
 
+- [Judicario + Chipsi (openlaw)](judicario-chipsi.md) — Chipsi=Cloud-Webapp via Chrome-Shortcut; Judicario-Gateway-Key rotiert (06.09.): jud_Cpu-… aktiv, Connectoren gefixt; Support George@openlaw.cc
+
 ## Skill-Routing
 - [Skill-Routing-Memory](skill-routing.md) — erlernte Task→Skill-Zuordnungen; Kanonisch: ~/.agents/skill-routing.md
 
