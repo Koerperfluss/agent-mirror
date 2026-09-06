@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-06 18:25 UTC
+Zuletzt gespiegelt: 2026-09-06 18:36 UTC
 
 ## call_fe4ee4834bf14478b4a66d0e-tool-result-df2ccbef-b4f7-499f-ac43-59af5f927f22
 
@@ -621,6 +621,8 @@ Bei Fachfragen (z. B. Trainings-Übungen) fordert er explizit „clinical reason
 ## MEMORY
 
 # Memory Index
+
+- [ZCode-Projektgruppen-Mechanik](zcode-projektgruppen-mechanik.md) — 06.09.: Chatliste links = tasks-index.sqlite (Gruppen+node_orders+members), externes SQL wirkt erst nach ⌘Q-Neustart; Claude/Cline-Chat-Importer import-chats-loki.py (259 Cline-Chats drin); Restore-.command auf Desktop
 
 - [FörderOps-Assistent](foerderops-assistent.md) — 30.08. aktiv, 06.09. spät Web-UI 8765 LÄUFT WIEDER (kein Autostart!); 70 Wissensdokumente; digi4KMU 50k existiert NICHT; Cap-Table Leon 26/Lisa 26/Sascha 25/Peter 23; 🔴 $350k-Blocker: Webgo-NS-Switch
 - [GUI nicht CLI](feedback-gui-not-cli.md) — 30.08. Sascha: „ich will eine grafische oberfläche" — IMMER Web-UI bauen, nie nur Terminal-Befehl
@@ -1335,6 +1337,41 @@ Related pitfalls seen in the same logs: (1) model name `glm‑coding‑5.3` writ
 
 Integration done 2026-08-30: added `web-search-prime`, `zread`, `zai-vision` MCP servers to `~/.mcp.json` (→ real target `~/.cline/data/settings/cline_mcp_settings.json`) with `YOUR_ZAI_API_KEY` placeholders — Sascha must replace the placeholder with his key from https://z.ai/manage-apikey/apikey-list (one find-replace, 3 occurrences). vision MCP fixes the "selected model does not support image input" screenshot-reading gap. Also: gstack + plan-tune were already installed at `~/.claude/skills/` (~/.gstack data dir); source clones go to `~/src/`. See [[web-research-team-skill]].
 
+## zcode-projektgruppen-mechanik
+
+---
+name: zcode-projektgruppen-mechanik
+description: Wie ZCode die Chat-/Projektliste links speichert (SQLite), wie man
+  Chats importiert (Claude/Cline) und warum Änderungen erst nach App-Neustart
+  erscheinen
+metadata:
+  node_type: memory
+  type: project
+  originSessionId: sess_6ec2db7a-ed38-4ece-8c80-35110f8e0fbc
+---
+
+ZCode-Desktop (dev.zcode.app) Chat-/Gruppenliste — Mechanik geklärt & genutzt 06.09.2026:
+
+**Speicherorte**
+- Task-Index: `~/.zcode/v2/tasks-index.sqlite` — Tabellen `tasks` (alle Chats), `task_groups` (Gruppen), `task_group_members` (Zuordnung, UNIQUE(workspace_key,task_id) = Move-Semantik), `task_group_view_node_orders` (REIHENFOLGE — ohne group-Zeile hier erscheint die Gruppe NICHT!)
+- Session-Inhalte: `~/.zcode/v2/sessions/<sha256(workspacePath)[:12]>/<task_id>.json` (meta + messages)
+- Workspace-Picker: `recentProjects` in `~/.zcode/v2/setting.json`
+
+**Verhalten**
+- Der Renderer cached die Gruppenliste im Speicher: externe SQL-Änderungen erscheinen erst nach App-NEUSTART (⌘Q). Cmd+R/View-Toggle laden die Liste NICHT neu. SQL-Writes überleben Renderer-Reloads.
+- „Project"-Ansicht gruppiert automatisch nach workspace_path; „Group"-Ansicht nach task_groups.
+
+**Chat-Import (Migration-Muster)**
+- Claude: ZCode importiert selbst → task_id `claude-import-<24hex>`, migration_source `claudeCode`, traceId = Claude-sessionId, Quelle `~/.claude/projects/*/*.jsonl`. 06.09.: alle 79 Sessions importiert (Stand 31.08.-Import).
+- Cline: `~/.cline/data/db/sessions.db` (session_id, prompt=Titel, workspace_root, messages_path→`<id>.messages.json`). Importer: `~/.zcode/v2/import-chats-loki.py` (259 Chats, source `clineCode`). Worktree-Pfade: GANZEN Pfad auf Projektnamen mappen, nicht nur Base (Base = Home!).
+
+**Sicherung**
+- Backup-Dump: `~/.zcode/v2/projekt-gruppen-backup.sql`; Restore: `~/Desktop/ZCODE-PROJEKTE-WIEDERHERSTELLEN.command` (nur bei geschlossenem ZCode). Backups: tasks-index.sqlite.bak-20260906-projects, setting.json.bak-20260906-projects.
+
+**Gruppen-Layout (06.09. gesetzt):** LOKI.OS/Agent OS · atlas · Legal Ops + Loki Voice · Körperfluss 3D · TODO App · Förder-Landschaft · Paraletts 3D-Hub · Barbulls Website · Research & Verwaltung · ARCHIV — Altlasten.
+
+Verwandt: [[loki-project-map]]
+
 ## zcode-setup-verified
 
 ---
@@ -1638,9 +1675,11 @@ Verwandt: [[atlas-master-app-verhaeltnis]] (DESIGN_EVOLUTION.md D1–D8), [[atla
 
 ---
 name: atlas-master-app-verhaeltnis
-description: ATLAS 06.09. FINALE — ALLE entwicklungsbaren Stufen DONE: 20-Stufen-Onboarding
-    (AutoClaw-Merge) + T-A8 + P4.5 + C2 Proxy + C4 Tiers (keyless Chat) + GTM.md; PLAN.md
-    23✅/24, Rest NUR 2 User-Installationen (Xcode, Android Studio) für native Builds
+description: ATLAS 06.09. NACHT-FINAL — ALLE entwicklungsbaren Stufen DONE (23✅/24 in
+    PLAN.md): 20-Stufen-Onboarding live (Team-Merge AutoClaw+ZCode) + T-A8 CoTChain +
+    P4.5 Auto-Push + C2 Proxy hardened (Fallback-Kette, Key nur im Secret) + C4 Tiers
+    keyless + GTM.md + Launch-Paket; LIVE-VOLLTEST 10/10 (QA-LIVE/, 11 Screenshots);
+    Rest NUR Installationen (Xcode, Android-SDK) + User-Geräte-Cache-Trap
 metadata:
   node_type: memory
   type: project
@@ -1754,8 +1793,6 @@ Info bewiesen übernommen: 1) `~/ATLAS_MASTER/app/` (179 Prosa-Chunks) · 2) `la
 - **Echte KI im Browser bewiesen (E2E):** Coach-Chat-Frage „Nenne mir EINEN Trainings-Cue für Planche Lean" → Gemini-Antwort live im DOM: „Drücke den Boden durch voll gestreckte Ellbogen maximal von dir weg…". Und zuvor 92kg-Tucked-Planche-Hebelverhältnis-Antwort. Kein Offline-/Regel-Modus mehr.
 - **Saschas Fertig-Kriterium (his /goal):** „FERTIG CALISTHENICS COACHING APP MIT ATLAS AI ASSISTENT" — Completion-Audit geliefert: 43/47 BPMN-Tickets ✅ (GESAMT-HISTORIE.md), App HTTP 200 + Asset = dist, KI live. Rest bewusst out-of-scope: Onboarding 8→20 Stufen, C2/C4 Commercial-Layer, Key-Referrer-Restriction (30s in Cloud-Console, gcloud kann Browser-Referrer nicht), nativer iOS-Build (Capacitor-Setup steht).
 - Sascha fragte „graphify wo istes" → WISSENS-GRAPH liegt komplett unter `~/Desktop/Coworkspace_Ich/atlas + pliability /WISSENS-GRAPH/` (WISSENS-GRAPH.html 295 KB · graph.json · KNOWLEDGE_MAP.md · 01-scan-log.json 780 KB); Open-Befehl: `open "<pfad>/WISSENS-GRAPH.html"`. Details [[atlas-wissens-graph]].
-
-## 05.09. NACHT FINAL: MOTION SYSTEM + STUFEN-AUTOMATIK (Ticket-Stand: 43/47 ✅)
 
 ## atlas-outotu-output-format
 
