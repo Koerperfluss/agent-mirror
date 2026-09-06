@@ -1,6 +1,6 @@
 # saschalagler (cline-code)
 
-Zuletzt gespiegelt: 2026-09-06 12:49 UTC
+Zuletzt gespiegelt: 2026-09-06 13:00 UTC
 
 ## CLAUDE
 
@@ -124,6 +124,703 @@ Cline ist Teil eines größeren Agenten-Netzwerks:
 - **Cursor** (`~/.cursor/`) — IDE-Agent
 - **Codex** (`~/.codex/`) — OpenAI Agent
 
+
+## 00-multi-agent-ecosystem-overview
+
+# Multi-Agent Ecosystem Overview
+
+## 🎯 MISSION
+Zentralisierte Orchestrierung und Automatisierung von Multi-Platform AI-Workflows zwischen Antigravity, Hermes, Gemini, Claude und Cline.
+
+## 🔗 AGENT-LANDSCAPE
+
+### Core Agents
+- **Antigravity** - Haupt-Orchestrierer, MCP-Integration, Docker Profile
+- **Hermes Agent** - Self-improving AI, Learning Loop, Multi-Platform Gateway
+- **Cline** - Entwicklungsagent mit CLI-Integration, Session Management
+- **Gemini CLI** - Google Multi-Modal AI Integration
+- **Claude Code** - Anthropic Agent mit Plugin-System
+
+### MCP Infrastructure
+- **Active Profile**: `ai_coding` → context7 (Code-Doku für LLMs)
+- **Servers**: macos-terminal, fs-sync, pdf-reader, lido, docling, gemini-api-docs-mcp, paper
+
+### Project Ecosystem
+- **Loki OS** - Local Intelligence Kernel (Port 8010)
+- **Cali Atlas** - Personal Coaching (GCP Cloud Run)
+- **Antigravity PWA** - Central Hub (Port 8081)
+- **Hermes Gateway** - LaunchAgent Integration
+
+## 📋 AVAILABLE SKILLS (60+)
+
+### Critical Skills (Just Installed)
+- managing-skills, cline-session-history, desktop-commander-overview
+- frontend-design, obsidian-second-brain, second-brain
+- parallel-feature-development, cline-sdk, backend-development
+- claude-automation-recommender, gemini-api, agentmemory-rest-api
+- ios-swift-development, developing-ios-apps
+
+### Pre-Existing Skills
+- Vercel Suite (7 skills), Writing Suite (4 skills), Dev Suite (8 skills)
+- Test Suite (grill-me, batch-grill-me), Design Suite
+- context7-mcp, brainstorming, github-auth
+
+## 🚀 NEXT WORKFLOWS TO CREATE
+1. Multi-Agent Status Check Loop
+2. Cross-Platform Knowledge Sync
+3. Automated Project Onboarding
+4. Skill-Aware Task Distribution
+5. Memory-Enhanced Decision Making
+## 01-multi-agent-status-check
+
+# Workflow: Multi-Agent Status Check Loop
+
+## 🎯 PURPOSE
+Täglicher automatisierter Check aller Agent-Systeme, Services und Projekte mit **Push-Right Checkpoint** - maximal automatisiert, minimal menschliches Eingreifen.
+
+## 🔄 LOOP SPECIFICATION
+
+### Trigger
+**Schedule**: Täglich 08:00 (oder manuell via `/status-check`)
+
+### Execution Steps (Autonomous)
+
+1. **System Health Check**
+   - Hermes Gateway Status (`launchctl list ai.hermes.gateway`)
+   - Docker MCP Gateway Profile Status
+   - Loki OS Master Kernel (`curl http://localhost:8010/health`)
+   - Antigravity PWA (`curl http://localhost:8081`)
+   - Cali Atlas (`curl https://atlas-cali-coach-.../health`)
+
+2. **Agent Activity Summary**
+   - Letzte Cline Sessions (via `cline-session-history` skill)
+   - Hermes Memory Updates (via `obsidian-second-brain`)
+   - Agent Memory REST API Status (`localhost:3111/agentmemory/livez`)
+
+3. **Project Status Dashboard**
+   - Loki OS Entwicklung (git status, letzter commit)
+   - Cali Atlas Deployment Status (GCP)
+   - Antigravity Cloud Functions Status
+   - Wichtige Issues/Pull Requests
+
+4. **Resource & Capacity Check**
+   - Docker Container Status (`docker ps`)
+   - Disk Space auf kritischen Pfaden
+   - API Quotas (Gemini, Claude, OpenRouter)
+
+5. **Knowledge Base Sync Status**
+   - Obsidian Vault Updates
+   - Second Brain Consistency Check
+   - Cross-Agent Knowledge Gaps
+
+### Brief (Checkpoint Content)
+```markdown
+## Multi-Agent Status - {DATE}
+
+**🟢 Systems Healthy**: {count}/{total} systems up
+**🟡 Warnings**: {list}
+**🔴 Critical Issues**: {list}
+
+### Active Projects
+- **Loki OS**: {status} - {last activity}
+- **Cali Atlas**: {status} - {deployment status}
+- **Antigravity**: {status} - {issues}
+
+### Memory & Learning
+- **Hermes**: {entries} new memories
+- **Obsidian**: {updates} vault updates
+- **Agent Memory**: {items} indexed
+
+### Recommended Actions
+1. [Link to detailed report]
+2. [Action item 1]
+3. [Action item 2]
+
+**Full Report**: /tmp/multi-agent-status-{date}.md
+```
+
+### Checkpoint Decision
+- **✓ Continue**: Keine kritischen Issues
+- **🔍 Review**: Warnings vorhanden, manuelle Prüfung empfohlen
+- **🚨 Action Needed**: Kritische Issues erfordern sofortiges Eingreifen
+
+## 🛠️ IMPLEMENTATION
+
+### Required Skills
+- `cline-session-history` - Cline Aktivitäten
+- `obsidian-second-brain` - Knowledge Base Status
+- `agentmemory-rest-api` - Memory System Check
+- `desktop-commander-overview` - Systemübergreifende Checks
+- `managing-skills` - Skill-Management
+
+### Cron Schedule (Hermes)
+```bash
+0 8 * * * /path/to/multi-agent-status-check.sh
+```
+
+### Manual Trigger
+```bash
+/status-check
+```
+
+## 📊 SUCCESS METRICS
+- **Daily uptime**: Alle Systeme grün
+- **Response time**: < 30 Sekunden für vollständigen Check
+- **False positives**: < 5% über 30 Tage
+- **Human intervention**: Nur bei echten Problemen
+
+## 🔧 TROUBLESHOOTING
+- **Hermes offline**: Check launchctl status → restart via `launchctl load`
+- **Docker MCP down**: `docker mcp gateway restart --profile ai_coding`
+- **Memory API down**: `pkill -f agentmemory && cd agentmemory && npm start`
+- **Git conflicts**: Automatischer `git stash` + Warning in Brief
+
+---
+*Created: 2025-08-12*
+*Last Updated: 2025-08-12*
+*Version: 1.0*
+## 02-cross-platform-knowledge-sync
+
+# Workflow: Cross-Platform Knowledge Sync
+
+## 🎯 PURPOSE
+Automatische Synchronisation von Wissen, Erkenntnissen und Patterns zwischen allen Agent-Plattformen (Hermes ↔ Cline ↔ Antigravity ↔ Gemini) zur Vermeidung von Wissensfragmentierung.
+
+## 🔄 LOOP SPECIFICATION
+
+### Trigger
+**Event**: Neue relevante Erkenntnisse in einem Agent-System (Memory Update, wichtiges Coding Pattern, Troubleshooting-Lösung)
+
+### Execution Steps (Fully Autonomous)
+
+1. **Knowledge Detection**
+   - Monitort Memory Updates in allen Systemen
+   - Identifiziert "high-value" content (Lösungen, Patterns, Konfigurationen)
+   - Klassifiziert nach Wichtigkeit und Relevanz
+
+2. **Cross-Platform Mapping**
+   - Hermes → Obsidian Second Brain (via `obsidian-second-brain` skill)
+   - Cline Sessions → Agent Memory REST API (`localhost:3111/agentmemory/remember`)
+   - Gemini Insights → Context7 (via MCP)
+   - Antigravity Patterns → Alle Agenten (via Skill-Symlinks)
+
+3. **Knowledge Transformation**
+   - Adaptiert Format für Zielplattform
+   - Erhält Metadaten (Quelle, Datum, Tags)
+   - Verknüpft mit verwandtem Wissen
+
+4. **Conflict Resolution**
+   - Erkennt widersprüchliche Informationen
+   - Automatische Merge-Strategie (neuester +权威ste)
+   - Flaggt für manuelle Review bei kritischen Widersprüchen
+
+5. **Distribution**
+   - Push zu allen relevanten Agenten
+   - Update von Search-Indices
+   - Trigger für abhängige Workflows
+
+### Brief (Checkpoint Content)
+```markdown
+## Knowledge Sync Summary - {TIMESTAMP}
+
+**📚 Items Synced**: {count} items across {platforms} platforms
+**🔄 Conflicts Resolved**: {count} automatic, {count} manual review needed
+**🏷️ Tags Added**: {count} new knowledge tags
+
+### High-Value Knowledge Synced
+1. **[{category}]** {title} - {source} → {destinations}
+   - Impact: {benefit}
+   - Related: {linked items}
+
+### Critical Conflicts (Manual Review)
+- **[Conflict 1]**: {description} - [review link]
+- **[Conflict 2]**: {description} - [review link]
+
+### Knowledge Distribution Status
+- ✅ Hermes → Obsidian: {count} items
+- ✅ Cline → Agent Memory: {count} items  
+- ✅ Gemini → Context7: {count} items
+- ✅ Antigravity → All Agents: {count} items
+
+**Next Auto-Sync**: {next_run_time}
+```
+
+### Checkpoint Decision
+- **✓ Complete**: Alle synchronisiert, keine Konflikte
+- **⚠️ Review Needed**: Manuelle Konfliktlösung erforderlich
+- **🔧 Optimisation**: Vorschläge für bessere Klassifikation
+
+## 🛠️ IMPLEMENTATION
+
+### Required Skills
+- `obsidian-second-brain` - Hermes → Obsidian Sync
+- `agentmemory-rest-api` - Cline → Memory System
+- `cline-session-history` - Cline Knowledge Extraction
+- `context7-mcp` - Gemini → Context7 Integration
+- `parallel-feature-development` - Multi-Agent Koordination
+
+### Integration Points
+```bash
+# Hermes Memory Hook
+~/.hermes/hooks/on_memory_update.sh → knowledge-sync
+
+# Cline Session Hook  
+~/.cline/hooks/post_session.sh → knowledge-sync
+
+# Gemini API Webhook (optional)
+POST /gemini/knowledge-sync → knowledge-sync
+```
+
+### Knowledge Classification
+```python
+HIGH_VALUE = [
+    "troubleshooting_solutions",
+    "architecture_decisions", 
+    "security_patches",
+    "performance_optimizations",
+    "api_integration_patterns"
+]
+
+MEDIUM_VALUE = [
+    "code_snippets",
+    "configuration_examples",
+    "debugging_techniques"
+]
+```
+
+## 📊 SUCCESS METRICS
+- **Sync coverage**: > 95% wertvoller Inhalte synchronisiert
+- **Conflict accuracy**: < 2% fälschliche Konflikte
+- **Cross-platform utility**: Agenten nutzen synchronisiertes Wissen
+- **Memory efficiency**: Keine Duplikate, intelligente Deduplizierung
+
+## 🔧 TROUBLESHOOTING
+- **Sync failures**: Check API-Keys und MCP-Verbindungen
+- **Corrupt knowledge**: Rollback via git + Re-sync
+- **Performance issues**: Rate limiting, Batch-Processing optimieren
+- **Platform offline**: Queue für späteres Sync speichern
+
+## 🎯 USE CASES
+
+## 03-automated-project-onboarding
+
+# Workflow: Automated Project Onboarding
+
+## 🎯 PURPOSE
+Vollautomatisches Einrichten neuer Projekte mit kompletter Multi-Agent-Infrastruktur, Repository-Setup, MCP-Konfiguration und Initial-Workflows in < 10 Minuten.
+
+## 🔄 LOOP SPECIFICATION
+
+### Trigger
+**Event**: Neues Projekt gestartet via `/project new` oder Repository erkannt
+
+### Execution Steps (Interactive Start, Autonomous Finish)
+
+1. **Project Discovery** (Checkpoint 1 - User Input)
+   - Projektname und Beschreibung
+   - Technologie-Stack (auto-detected wenn möglich)
+   - Zielplattform (Web, Mobile, Desktop, API)
+   - Team-Mitglieder und Rollen
+
+2. **Repository Setup** (Autonomous)
+   - Git Repository initialisieren oder clonen
+   - Branch-Struktur erstellen (`main`, `develop`, `feature/*`)
+   - Initial-Commit mit Projektstruktur
+   - CI/CD Pipeline Setup (GitHub Actions, GCP)
+
+3. **Multi-Agent Configuration** (Autonomous)
+   - **Cline**: `.clinerules` erstellen, Skill-Symlinks einrichten
+   - **Hermes**: Projekt-spezifische Memory-Konfiguration
+   - **Antigravity**: MCP-Server für Projekt hinzufügen
+   - **Gemini**: Projekt-spezifische API-Konfiguration
+
+4. **Infrastructure Setup** (Autonomous)
+   - Docker-Konfiguration (falls benötigt)
+   - Environment-Variablen Template (`.env.example`)
+   - Datenbank-Schema (falls Backend)
+   - API-Endpoints Struktur (falls API)
+
+5. **Knowledge Base Integration** (Autonomous)
+   - Obsidian Projekt-Seite erstellen
+   - Context7 Index initialisieren
+   - Agent Memory Categories einrichten
+   - Project-Dokumentation in alle Systeme pushen
+
+6. **Workflow Templates** (Autonomous)
+   - Development Loop installieren
+   - Deployment Workflow einrichten
+   - Testing Strategy konfigurieren
+   - Code Review Process setup
+
+### Brief (Checkpoint Content)
+```markdown
+## Project Onboarding Complete: {PROJECT_NAME}
+
+**🚀 Ready to Develop**: Full Multi-Agent Stack configured
+**⏱️ Setup Time**: {duration} (target: < 10 min)
+**🔧 Systems Configured**: {count}/{total} platforms
+
+### Infrastructure Ready
+- ✅ **Repository**: {repo_url} - {branch_structure}
+- ✅ **CI/CD**: {ci_cd_provider} configured
+- ✅ **Environment**: {env_setup} ready
+
+### Multi-Agent Integration
+- ✅ **Cline**: {skills} skills activated
+- ✅ **Hermes**: Memory categories configured
+- ✅ **Antigravity**: MCP servers active
+- ✅ **Gemini**: API integration ready
+
+### Workflows Active
+- ✅ Development Loop: {status}
+- ✅ Deployment: {status}
+- ✅ Testing: {status}
+- ✅ Code Review: {status}
+
+### Knowledge Base
+- ✅ **Obsidian**: {vault_path}/projects/{project_slug}.md
+- ✅ **Context7**: {index_status}
+- ✅ **Agent Memory**: {categories} categories
+
+### Next Steps
+1. **Start Development**: `cd {project_path} && cline`
+2. **First Feature**: `/brainstorming` → `/implement`
+3. **Team Onboarding**: Share project documentation
+
+**Project Dashboard**: [link to internal dashboard]
+```
+
+### Checkpoint Decision
+- **🚀 Start Development**: Alles bereit, kann sofort beginnen
+- **⚙️ Configuration Needed**: Feinabstimmung erforderlich
+- **🔴 Critical Issues**: Blockierende Probleme müssen gelöst werden
+
+## 🛠️ IMPLEMENTATION
+
+### Required Skills
+- `projects` - Projekt Management
+- `managing-skills` - Skill-Konfiguration
+- `parallel-feature-development` - Workflow Setup
+- `backend-development` / `frontend-design` - Stack-spezifisches Setup
+- `obsidian-second-brain` - Knowledge Base Integration
+
+### Technology Stack Templates
+```yaml
+web_modern:
+  repos: main, develop, feature/*, hotfix/*
+  ci_cd: github_actions + vercel_deploy
+  agents: cline + antigravity + hermes
+  mcp: fs-sync + macos-terminal + context7
+  
+mobile_swift:
+  repos: main, develop, feature/*, release/*
+  ci_cd: github_actions + testflight
+  agents: ios-swift-development + developing-ios-apps
+  mcp: xcode-tools + filesystem
+  
+api_python:
+  repos: main, develop, feature/*, chore/*
+  ci_cd: github_actions + gcp_cloud_functions
+  agents: backend-development + claude-automation-recommender
+  mcp: python-tools + firestore + logging
+```
+
+## 04-skill-aware-task-distribution
+
+# Workflow: Skill-Aware Task Distribution
+
+## 🎯 PURPOSE
+Intelligente Verteilung von Aufgaben an die optimalen Agenten basierend auf deren Skills, Workload und Historische Performance - maximale Effizienz durch **Right Agent, Right Task**.
+
+## 🔄 LOOP SPECIFICATION
+
+### Trigger
+**Event**: Neue Aufgabe eingegeben via `/task create` oder automatische Erkennung
+
+### Execution Steps (Fully Autonomous with Fallback)
+
+1. **Task Analysis & Classification**
+   - Natural Language Parsing der Aufgabe
+   - Kategorisierung: Frontend, Backend, DevOps, Design, Research, Testing
+   - Komplexitäts-Einschätzung (Low, Medium, High)
+   - Skill-Anforderungen extrahieren
+
+2. **Agent Capability Matching**
+   - Prüft verfügbare Skills in jedem Agenten (via `managing-skills`)
+   - Historische Performance für ähnliche Tasks
+   - Aktueller Workload und Verfügbarkeit
+   - Plattform-Kompatibilität (z.B. iOS Tasks nur an iOS-fähige Agenten)
+
+3. **Skill-Score Calculation**
+   ```python
+   score = (skill_match * 0.4) + (performance_history * 0.3) + 
+            (availability * 0.2) + (platform_fit * 0.1)
+   ```
+
+4. **Distribution Strategy**
+   - **Single Agent**: Hoher Score > 0.8, einfache Task
+   - **Parallel Execution**: Unabhängige Subtasks, Multi-Agent capability
+   - **Sequential Handoff**: Komplexe Tasks mit spezialisierten Phasen
+   - **Collaborative**: Gleichzeitige Bearbeitung mit Coordination
+
+5. **Agent Assignment & Handoff**
+   - Erstellt Task-Spezifikation für jeden Agenten
+   - Setzt Dependencies zwischen Subtasks
+   - Initialisiert Handoff-Prozess
+   - Monitoring Setup
+
+### Brief (Checkpoint Content)
+```markdown
+## Task Distribution Complete: {TASK_ID}
+
+**🎯 Task**: {task_description}
+**🤖 Assigned Agents**: {count} agents
+**⚡ Distribution Strategy**: {strategy}
+
+### Agent Assignments
+
+1. **[{agent_name}]** - {subtask}
+   - **Skills Used**: {matched_skills}
+   - **Score**: {score}/1.0
+   - **Est. Duration**: {time_estimate}
+   - **Dependencies**: {depends_on}
+
+2. **[{agent_name}]** - {subtask}
+   - **Skills Used**: {matched_skills}
+   - **Score**: {score}/1.0
+   - **Est. Duration**: {time_estimate}
+   - **Dependencies**: {depends_on}
+
+### Distribution Rationale
+**Primary Factor**: {dominant_factor} (e.g., skill matching)
+**Secondary Factors**: {other_factors}
+
+### Execution Plan
+- **Start**: {start_time}
+- **Milestones**: {milestone_timeline}
+- **Expected Completion**: {completion_time}
+
+### Monitoring
+**Progress Tracking**: [link to dashboard]
+**Fallback Strategy**: {backup_plan}
+**Escalation Threshold**: {time/quality limits}
+
+**Review Assignment**: [adjust agents] | [proceed with execution]
+```
+
+### Checkpoint Decision
+- **▶️ Execute**: Start mit aktueller Zuweisung
+- **🔄 Adjust**: Agenten ändern oder Strategy anpassen
+- **⏸️ Hold**: Task zurückhalten, zusätzliche Infos benötigt
+
+## 🛠️ IMPLEMENTATION
+
+### Required Skills
+- `managing-skills` - Skill-Discovery & Capability Analysis
+- `parallel-feature-development` - Multi-Agent Koordination
+- `cline-session-history` - Performance Historie
+- `claude-automation-recommender` - Automatische Erkennung von Wiederholungen
+
+### Agent Capability Matrix
+```python
+AGENT_SKILLS = {
+    "cline": {
+        "core": ["frontend-design", "backend-development", "fullstack"],
+        "specialized": ["react", "next.js", "typescript", "testing"],
+        "performance": 0.85,
+        "availability": "high"
+    },
+    "hermes": {
+        "core": ["learning", "coordination", "automation"],
+        "specialized": ["multi-platform", "memory_management", "scheduling"],
+        "performance": 0.92,
+        "availability": "medium"
+    },
+    "gemini": {
+        "core": ["multimodal", "vision", "code_understanding"],
+        "specialized": ["api_integration", "data_analysis", "live_interaction"],
+        "performance": 0.88,
+        "availability": "high"
+    }
+}
+```
+
+### Distribution Strategies
+```python
+
+## 05-glm-build
+
+# Workflow 05: GLM-BUILD — Director (1 Satz → fertiges Feature)
+
+Vollautomatische Entwicklung OHNE Rückfragen. Nutze den Skill `glm-build` (liegt in ~/.agents/skills/glm-build/SKILL.md — lies ihn und folge ihm exakt).
+
+Kurzfassung des Ablaufs:
+1. Ziel aus User-Satz extrahieren (GOAL/DONE WHEN — bei Klarheit NIE nachfragen)
+2. Aufwand schätzen (S/M/L/XL + Credits, Flash=⅓ von 5.3)
+3. Quota-Entscheidung: Peak (Mo–Fr 08–12 MEZ) → Flash-first; Off-Peak → 5.3 erlaubt. Dokumentieren, nicht fragen.
+4. Team-Mapping: Architektur→code-architect(glm-plan) · Frontend/Backend→direkt(glm-first) · Tests→qa · Review→code-reviewer(glm-plan)
+5. Todo-Sync atomar: `python3 ~/.agents/tools/todo-sync.py . --goal "…" --tasks '[…]' --effort '{…}'` → Todo-Liste übernehmen
+6. Bauen: Syntax-Gate je Datei (ast.parse/node --check), 3× Self-Healing, Tests bis grün (fehlende Deps via `uv run --with …`)
+7. Review (code-reviewer), High-Findings fixen
+8. PROJECT.md + Bericht (5 Zeilen BLUF + Tabelle + 1 Start-Befehl)
+
+STOPP nur bei: Deploy · Löschen · git push · >5000 Credits (je 1 Bestätigungszeile).
+Modell-Hinweis: Standard glm-first; bei 429 NICHT stoppen (OmniRoute rutscht automatisch).
+
+## 05-memory-enhanced-decision-making
+
+# Workflow: Memory-Enhanced Decision Making
+
+## 🎯 PURPOSE
+Entscheidungsfindung auf Basis von **cross-platform memory** - nutzt Wissen aus Hermes Learning, Cline Sessions, Obsidian Second Brain und Agent Memory für fundierte, kontextbewusste Entscheidungen.
+
+## 🔄 LOOP SPECIFICATION
+
+### Trigger
+**Event**: Entscheidungspunkt erreicht, komplexe Wahl erforderlich, `/decide` Kommando
+
+### Execution Steps (Autonomous Research, Human Decision)
+
+1. **Context Gathering** (Autonomous)
+   - Analysiert aktuelle Situation und Entscheidungskontext
+   - Identifiziert Entscheidungstyp (technisch, strategisch, prioritäts-basiert)
+   - Extrahiert verfügbare Optionen und Constraints
+
+2. **Memory Query** (Autonomous)
+   - **Hermes Memory**: Ähnliche vergangene Entscheidungen + Outcomes
+   - **Cline Sessions**: Coding-Decisions mit Performance-Daten
+   - **Obsidian Second Brain**: Strategische Entscheidungen + Dokumentation
+   - **Agent Memory REST API**: Prozedurales Wissen + Best Practices
+
+3. **Knowledge Synthesis** (Autonomous)
+   - Konsolidiert Informationen aus allen Quellen
+   - Identifiziert Muster und Trends
+   - Berechnet Risiken und Benefits basierend auf Historie
+
+### Brief (Checkpoint Content)
+```markdown
+## Decision Recommendation: {DECISION_TITLE}
+
+**🎯 Context**: {situation_description}
+**⚖️ Decision Type**: {type} (technical/strategic/priority)
+**📚 Knowledge Sources**: {count} sources queried
+
+### Analysis Summary
+**Historical Patterns**: {key_findings_from_memory}
+**Risk Factors**: {identified_risks}
+**Success Predictors**: {positive_indicators}
+
+### Options Ranked
+**🥇 RECOMMENDED: Option 1 - {option_title}**
+- **Score**: {score}/100
+- **Pros**: {key_benefits}
+- **Cons**: {key_drawbacks}
+- **Risk Level**: {risk_level}
+- **Historical Success**: {success_rate}%
+
+### Recommended Action
+**Choose**: Option 1 - {brief_justification}
+**Timeline**: {implementation_timeline}
+**Next Steps**: {immediate_actions}
+```
+
+## 🛠️ IMPLEMENTATION
+
+### Required Skills
+- `obsidian-second-brain` - Strategisches Wissen
+- `cline-session-history` - Coding-Decisions & Performance  
+- `agentmemory-rest-api` - Prozedurales Wissen & Best Practices
+- `claude-automation-recommender` - Pattern-Erkennung
+
+---
+*Created: 2025-08-12*
+*Version: 1.0*
+## 06-deve
+
+# Workflow 06: DEVE — Onboarding · ÜBERNEHMEN · Fertig machen
+
+Nutze den Skill `deve` (~/.agents/skills/deve/SKILL.md — lies und folge exakt). Modus auto: Ordner leer = ONBOARDING · „übernehmen" = TAKEOVER · „fertig machen" = FINISH.
+
+TAKEOVER (bestehendes Projekt, z. B. Atlas): 0) VOLL-SSD-SCAN via mdfind (ganze Platte, sekundenschnell): Projektname + Slug-Varianten + Aliase + Bundle-IDs → Cluster bilden (Projektordner inkl. Zweitkopien/Alt-Versionen, Agent-Daten ~/.cline ~/.zcode ~/.claude ~/.gemini ~/.antigravity ~/.hermes ~/agent-os ~/loki-ki, Docs/Desktop/Downloads/Obsidian). Kanonischen Pfad aus Projektliste bevorzugen; Zweitkopien im Brief melden. 1) MEMORY-SWEEP max 3 Explorer parallel über die gefundenen Cluster + claude-mem + ~/LOKI_SESSION_CONTEXT.md + ~/.agents/WAYFINDER-GLM.md — jede Quelle mit Pfad notieren. 2) FILESYSTEM-STAND: git log/status/branches, README/PROJECT/STATUS, Manifeste, Tests STARTEN (verifizieren statt behaupten). 3) STATE.md schreiben: Stand + Blocker + Wissenslücken + Quellen-Index; Unverifiziertes als „unbestätigt" markieren. 4) PLAN: groß → wayfinder-Map (.wayfinder/) · klein → glm-build-Todos (todo-sync.py). 5) Brief: SSD-Cluster n, Quellen n, Tests x/y, 3-Zeilen-Stand, nächster Zug.
+
+ONBOARDING: Stack auto-detect → git init (kein push!) → .clinerules (Verweis auf globale Regeln) → .env.example (nur Namen, nie Werte) → Stack-Template → STATUS.md+PROJECT.md+BEFEHLE.md → Brief.
+
+FINISH: 1) Audit (max 3 Explorer: Stack/Entry/Tests/TODOs) 2) todo-sync.py atomar 3) Tests laufen lassen (`uv run --with …` bei fehlenden Deps) 4) Fixes bis grün (Syntax-Gates, 3× Self-Healing, dann ⛔+Doku) 5) code-reviewer 6) PROJECT.md + 5-Zeilen-BLUF.
+
+STOPP nur bei Deploy/Löschen/push/>5000 Credits. Modell: glm-first Standard, Plan/Schweres glm-plan. Keine Rückfragen bei klarem Ziel.
+
+## 07-wayfinder
+
+# Workflow 07: WAYFINDER — Riesen-Arbeit planen (>1 Session)
+
+Für Arbeit zu groß für eine Session (große bestehende Projekte, Migrationen, Produkte). Nutze den Skill `wayfinder` (~/.zcode/skills/wayfinder/SKILL.md bzw. ~/.agents — lies und folge seinem Karten-Format).
+
+Ablauf:
+1. Map anlegen: `<projekt>/.wayfinder/map.md` mit Destination (1-2 Zeilen), Notes (Skills/Modell-Regeln: glm-plan für Entscheidungen), Decisions so far (Index, 1 Zeile + Link), Not yet specified (Nebel), Out of scope
+2. Tickets als Dateien `.wayfinder/tickets/NN-<name>.md` mit Label (wayfinder:research|prototype|grilling|task), HITL/AFK, blocked-by-Kante, DONE-WHEN
+3. Blocking-Kanten im 2. Durchgang verdrahten (Dateien brauchen erst Namen)
+4. Frontier = offene, unblockierte Tickets → pro Session GENAU 1 Ticket abarbeiten (claim→lösen→Resolution-Kommentar in Ticket→map-Decisions-Zeile)
+5. Nebel nachtragen, wenn Tickets Entscheidungen freigeben
+
+Beispiel-Referenz: `~/Desktop/Coworkspace_Ich/Analyse-Memorybase tool/.wayfinder/` (Map+4 Tickets live). Konfig-Landkarte global: `~/.agents/WAYFINDER-GLM.md`.
+
+## 08-ui-ux-test
+
+# Workflow 08: UI-UX-TEST — VOLLPROTOKOLL (erschöpfender Oberflächentest)
+
+Lies und folge EXAKT dem Skill `ui-ux-tester` (~/.agents/skills/ui-ux-tester/SKILL.md) — alle 4 Phasen, alle Checklisten, keine Auslassungen. Trigger: „teste die UI/UX von X" oder /08.
+
+**Phase 1 BEWERTUNG:** Server/App starten (Befehl aus Projektdoku) → Doku lesen → Feature-Liste N + je 2 Edge-Cases → 3 Personas (Neuling/Power-User/Frustrierter) → Baseline-Screenshots → Checkpoint zeigen, dann sofort weiter.
+
+**Phase 2 INTERAKTION (alle 8 Muster je Feature:** Full-Coverage · Objektive Validierung · Gnadenloses Klicken · Szenario E2E · Edge-Pushing · Visuelle Prüfung · State-Tracking · Repro-Verifizierung): Web → chrome-devtools-MCP (navigate/snapshot/click/fill_form/evaluate/press_key/take_screenshot/list_console_messages/list_network_requests/resize 375-768-1440) · Desktop → computer-use (nur ZCode) · Missbrauch-Pflicht: leere/Falscheingaben, Sonderzeichen, Doppel-Submit, Refresh + Zurück mid-Flow. UX-Defect-Kategorien mitschreiben (Sackgassen, Labels, Feedback, Loops, Desync, Recovery).
+
+**Phase 3 VISUAL-AUDIT (alle 11 Punkte je Screenshot):** Alignment · Leerraum ZU VIEL+ZU WENIG · Padding/Rand · Kontrast · Responsive · Typo · Overflow · Hover · Farb-Deviations · Empty-States · Error-States. Vision-MCP: ui_diff_check/image_analysis; Beweise nach `<projekt>/ui-test-evidence/NN-*.png`.
+
+**Phase 4 BERICHT `UI_TEST_REPORT.md`:** Kennzahlen (N/M, Interaktionen, D mit P0–P3-Count, Konsolen-/Netz-Errors) · Defect-Tabelle (#·Schwere·Flow·Beschreibung·Repro·Beweis-Pfad·Fix) · Wirkungsanalyse je P0/P1 · Positive Befunde · Top-3-Fix-Reihenfolge · Liefer-Satz wörtlich ausgeben.
+
+Modelle: Flows glm-first · Bericht glm-plan. **IMMER 2 PARALLEL-SUBAGENTEN (Standard, auch bei kleinen Apps):** Subagent A = Interaktions-Flows (Phase 2), Subagent B = Visual-Audit (Phase 3, über As Screenshots), Hauptagent = Phase 1 + zentraler Bericht. P0/P1 nicht selbst fixen (Bericht + auf Zuruf/glm-build). Desktop nur ZCode. Kein Daten-Write ohne Stopp-Regel-Prüfung.
+## STATUS
+
+# STATUS — 2026-08-20
+
+## ✅ MemoryIngestApp — FERTIG & GETESTET
+- App: ~/Desktop/MemoryIngestApp.app (signiert, Autoboot LM Studio + Obsidian)
+- Pipeline: ~/scripts/ingest.py + venv-Python + LM Studio (glm-4.6v-flash, 127.0.0.1:1234)
+- Alle 3 Modi grün (Text/PDF/URL), Vault: ~/Documents/Obsidian Vault/Knowledge/Research/
+- RAM-Schutz aktiv: ctx 4096, TTL 300s, Auto-Unload bewiesen (24%→37% frei)
+- Details: Handoff memoryingestapp/final.md + ram-schutz.md
+
+## Offen für nächste Session
+- AgentMemory (localhost:3111) NICHT installiert — nur Skill-Doku
+- LM Studio Modelle 21G in ~/.lmstudio/models (gemma-12b 6.7G + bonsai-27b 7.9G unbrauchbar auf 16GB RAM → optional löschbar)
+
+
+---
+
+# STATUS — 2026-08-20 (2. Eintrag) — Judicario/Chipsi Notruf
+
+## Berger-Korrespondenz final analysiert (3 E-Mails)
+- **E1** 18.08. 20:54 — PRD Notruf-Knopf (6 Wochen, Reihenfolge J2/J3 → T1/R1/S1 → J1 → A1 → S2). Bergers direkte Ask an Sascha: **S1-Latenzbericht, Frist 2 Wochen ≈ 01.09.**
+- **E2** 19.08. 00:05 — Agent-Skript + Bewertungsschema (6 Dateien in Desktop/chipsi notruf/notruf_agent_bewertung/)
+- **E3** 19.08. 04:56 — **Ernstfall**: FMA-Besuch 04:27–04:39, Notruf 670f8c47, Hash-Kette intakt, 73 Einträge. Produktion lief VOR den PRD-Gates. Schwächen: Dedup fehlt, Kontext-Fehler, nur § 22b FMABG belegt. Berger leitete Mandantendaten an mb@teufelswerk-media.com weiter (R3-Thema).
+- Task-Verteilung via Workflow erstellt (S1 → cline priorisiert); warte auf Execute-Entscheid.
+
+
+## Finale 20.08. (Team-Run cline/gemini/hermes) — ALLE 4 TASKS ABGEFAHREN
+- ✅ task_0001 S1: `chipsi notruf/S1_LATENZBERICHT_ENTWURF.md` v0.1 — Fakten belegt, p50/p95-Messung ausständig (Log leer, Messplan drin, bis 28.08.), GCP-Billing offen
+- ✅ task_0002 Postmortem (gemini): `POSTMORTEM_670f8c47.md` — 5 Mängel M1–M5, K.-o.-Urteil NICHT BESTANDEN (Nr. 3+8), Fix-Prio F4→F2→F3→F1→F5
+- ✅ task_0004 Git (hermes+cline): Branch `feature/sprachassistent`, Commits `a225c1f`+`02f90f8`, .venv (194 MB) ignoriert
+- 🔒 task_0003 S2: `S2_READINESS.md` — PRD-Gate respektiert, Vorbereitung erlaubt
+- 🖥️ UI: `chipsi notruf/AUFGABEN_UBERSICHT.html` (im Browser geöffnet)
+- Nächster Session-Start: S1-Messskript für VoiceService-Selftest bauen
+
+---
+
+# STATUS — 2026-08-22 — ZCode/Cline Integration Check
+- Workflow `04-skill-aware-task-distribution` verifiziert: vorhanden in ~/.cline/workflows/, als Skill in ~/.agents/skills/ UND ~/.zcode/skills/ (identisch, Frontmatter ok).
+- ZCode MCP-Konfig (~/.zcode/cli/config.json → mcp.servers): 14 Server aktiv — u.a. MCP_DOCKER (gateway, profile ai_coding), context7 (http+Key), filesystem, sequential-thinking, desktop-commander, chrome-devtools, firebase, firestore (http), google-workspace, claude-mem, loki-voice, loki-legal-ops.
+- ZCode Plugins aktiv: github, context7, code-review, feature-dev, superpowers, commit-commands, playwright, ios-simulator, cloudbase-skills.
+- Keine Änderungen nötig — Setup bereits vollständig synchronisiert.
 
 ## crun_08af965d-8e38-4c5e-abb8-85cf2146f750
 
@@ -2434,6 +3131,49 @@ Stop at the first rung that holds:
 5. **Already-installed dependency solves it?** Use it. Never add a new one.
 6. **Only then:** Write custom code.
 
+
+## STATUS
+
+# STATUS — 2026-08-20
+
+## ✅ MemoryIngestApp — FERTIG & GETESTET
+- App: ~/Desktop/MemoryIngestApp.app (signiert, Autoboot LM Studio + Obsidian)
+- Pipeline: ~/scripts/ingest.py + venv-Python + LM Studio (glm-4.6v-flash, 127.0.0.1:1234)
+- Alle 3 Modi grün (Text/PDF/URL), Vault: ~/Documents/Obsidian Vault/Knowledge/Research/
+- RAM-Schutz aktiv: ctx 4096, TTL 300s, Auto-Unload bewiesen (24%→37% frei)
+- Details: Handoff memoryingestapp/final.md + ram-schutz.md
+
+## Offen für nächste Session
+- AgentMemory (localhost:3111) NICHT installiert — nur Skill-Doku
+- LM Studio Modelle 21G in ~/.lmstudio/models (gemma-12b 6.7G + bonsai-27b 7.9G unbrauchbar auf 16GB RAM → optional löschbar)
+
+
+---
+
+# STATUS — 2026-08-20 (2. Eintrag) — Judicario/Chipsi Notruf
+
+## Berger-Korrespondenz final analysiert (3 E-Mails)
+- **E1** 18.08. 20:54 — PRD Notruf-Knopf (6 Wochen, Reihenfolge J2/J3 → T1/R1/S1 → J1 → A1 → S2). Bergers direkte Ask an Sascha: **S1-Latenzbericht, Frist 2 Wochen ≈ 01.09.**
+- **E2** 19.08. 00:05 — Agent-Skript + Bewertungsschema (6 Dateien in Desktop/chipsi notruf/notruf_agent_bewertung/)
+- **E3** 19.08. 04:56 — **Ernstfall**: FMA-Besuch 04:27–04:39, Notruf 670f8c47, Hash-Kette intakt, 73 Einträge. Produktion lief VOR den PRD-Gates. Schwächen: Dedup fehlt, Kontext-Fehler, nur § 22b FMABG belegt. Berger leitete Mandantendaten an mb@teufelswerk-media.com weiter (R3-Thema).
+- Task-Verteilung via Workflow erstellt (S1 → cline priorisiert); warte auf Execute-Entscheid.
+
+
+## Finale 20.08. (Team-Run cline/gemini/hermes) — ALLE 4 TASKS ABGEFAHREN
+- ✅ task_0001 S1: `chipsi notruf/S1_LATENZBERICHT_ENTWURF.md` v0.1 — Fakten belegt, p50/p95-Messung ausständig (Log leer, Messplan drin, bis 28.08.), GCP-Billing offen
+- ✅ task_0002 Postmortem (gemini): `POSTMORTEM_670f8c47.md` — 5 Mängel M1–M5, K.-o.-Urteil NICHT BESTANDEN (Nr. 3+8), Fix-Prio F4→F2→F3→F1→F5
+- ✅ task_0004 Git (hermes+cline): Branch `feature/sprachassistent`, Commits `a225c1f`+`02f90f8`, .venv (194 MB) ignoriert
+- 🔒 task_0003 S2: `S2_READINESS.md` — PRD-Gate respektiert, Vorbereitung erlaubt
+- 🖥️ UI: `chipsi notruf/AUFGABEN_UBERSICHT.html` (im Browser geöffnet)
+- Nächster Session-Start: S1-Messskript für VoiceService-Selftest bauen
+
+---
+
+# STATUS — 2026-08-22 — ZCode/Cline Integration Check
+- Workflow `04-skill-aware-task-distribution` verifiziert: vorhanden in ~/.cline/workflows/, als Skill in ~/.agents/skills/ UND ~/.zcode/skills/ (identisch, Frontmatter ok).
+- ZCode MCP-Konfig (~/.zcode/cli/config.json → mcp.servers): 14 Server aktiv — u.a. MCP_DOCKER (gateway, profile ai_coding), context7 (http+Key), filesystem, sequential-thinking, desktop-commander, chrome-devtools, firebase, firestore (http), google-workspace, claude-mem, loki-voice, loki-legal-ops.
+- ZCode Plugins aktiv: github, context7, code-review, feature-dev, superpowers, commit-commands, playwright, ios-simulator, cloudbase-skills.
+- Keine Änderungen nötig — Setup bereits vollständig synchronisiert.
 
 ## README
 
