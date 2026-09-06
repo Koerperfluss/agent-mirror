@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-06 16:59 UTC
+Zuletzt gespiegelt: 2026-09-06 17:10 UTC
 
 ## call_fe4ee4834bf14478b4a66d0e-tool-result-df2ccbef-b4f7-499f-ac43-59af5f927f22
 
@@ -1899,6 +1899,16 @@ metadata:
 
 **Lektion:** Wenn Bash `spawn /bin/zsh ENOENT` stirbt → Off-Peak-Ticket abgelaufen ([[zcode-offpeak-ticket-ausfall]]) — computer-use + Write + Read + WebSearch laufen weiter, damit weiterarbeiten. Siehe auch [[omniroute-verkabelung]] (Team-Regeln) und [[atlas-master-app-verhaeltnis]].
 
+## Erster echter Cluster-Lauf (06.09. Nachmittag) — Befunde
+
+**Ablauf bewiesen:** AutoClaw (Full Stack Builder) übernahm den Handoff autonom: ZCODE_HANDOFF.md gelesen → UI_USERFLOW_SPEC.md gefunden → OnboardingHost.tsx (938 Zeilen) analysiert → wollte T-A2 claimen. Der loki-dev-TAKEOVER-Modus-Check lief von selbst.
+
+**⚠️ ALT-KOPIE-FALLE (kritisch):** AutoClaw behauptete „~/ATLAS_MASTER existiert nicht auf dieser Platte", machte mdfind und erklärte `~/Desktop/Coworkspace_Ich/atlas + pliability /ATLAS_MASTER` (git 9b9aa82 = alter Stand!) zum kanonischen Pfad — hätte dort committet. Ursache unklar (Sandbox-Home-Sicht ODER mdfind-Fund der Alt-Kopie). **Korrektur per Chat-Nachricht** (kanonisch = /Users/saschalagler/ATLAS_MASTER/app, git 7fa7bf3+, Live atlas-v5.web.app; Flowchart liegt in `…/atlas + pliability /Atlas Cali Plan/lauri/`) wurde angenommen — er suchte danach selbstständig den Flowchart im lauri-Ordner (eigener File-Dialog!).
+
+**Quota-Abbruch:** Cluster-Lauf endete mit „We're experiencing high demand… upgrade to monthly subscription" (Z.AI-Serverlast, kein Defekt) + Deliverable „ATLAS_MASTER_FLOWCHART.html file not found" (alter falscher Pfad). Punkte-Stand 06.09.: 8.270 + **5.000 verfallen in 3 Tagen** (Inspiration Hub zeigt das).
+
+**Steuerungs-Gefahr:** Während der Agent arbeitet, öffnet ER SELBST macOS-File-Dialoge (z. B. beim Flowchart-Suchen) — mein Escape/Klick traf dann SEINEN Dialog, nicht meinen. **Regel: während Cluster-Lauf nicht ins Fenster funken**; nur beobachten (get_app_state), danach reviewen („autoclaw fertig" von Sascha = Signal für Diff-Review in ~/ATLAS_MASTER/app). type→Send kann `target_verification_status: mismatched` liefern wenn ein Dialog Fokus kapert — erst get_app_state, Dialog via Escape schließen, neu beobachten.
+
 ## cline-cli-befehle-mechanik
 
 ---
@@ -2387,6 +2397,8 @@ Beobachtet 06.09.2026 (Session mit Off-Peak-Ticket): Nach User-Paste „ZCode Er
 **Why:** Ohne dieses Rezept wirkt es wie „Projekt gelöscht/Agent lügt"; tatsächlich ist es ein Sandbox-/Quota-Ausfall nach Ticket-Ablauf (Session-Hydration fehlgeschlagen).
 
 **How to apply:** Bei ENOENT + „File does not exist" auf bekannten Pfaden: NICHT in Pfade schreiben (Ghost-File-Gefahr), NICHT node_repl als fs-Ersatz nutzen (Policy: Browser-Use-only), keine Editierungen auf ungeprüfte zweite-Hand-Claims stützen → Task sauber abbrechen, Scope+Beweise berichten, Fortsetzung nach Re-Login/Quota-Fix anbieten. Diagnose-Reihenfolge: 1× Bash-Retry nach wait(20–30s), 1 frischer Read auf noch nie gelesene Datei im Ziel-Pfad, ggf. Explore-Subagent als zweiter Beweger. Verwandt: [[anti-luegen-vertrag]], [[cline-lebt-diagnose]].
+
+**2. Auftreten (06.09. Nachmittag, ATLAS-Session):** Gleiche ENOENT-Symptomatik mitten in laufender Arbeit — diesmal bewiesener Fallback-Stack: **computer-use (MCP list_apps/get_app_state/AXPress/type) + Write-Tool + Read-Tool + WebSearch laufen alle normal weiter.** Damit war sogar App-Fernsteuerung (AutoClaw) und Memory-Schreiben möglich — Bash-Tod = kein Totalausfall. Zweite-Hand-Fallen trotzdem beachten: ein anderer Agent (AutoClaw) behauptete in dem Zustand, `~/ATLAS_MASTER` existiere nicht (sah nur die Alt-Kopie) — Pfade immer selbst prior-verifiziert halten, nicht von anderen Agenten übernehmen ([[autoclaw-team-kopplung]]).
 
 ## README
 

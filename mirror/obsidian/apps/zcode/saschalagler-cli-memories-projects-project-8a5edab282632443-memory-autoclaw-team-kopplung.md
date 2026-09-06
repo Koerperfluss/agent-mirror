@@ -24,3 +24,13 @@ metadata:
 **Steuerung für spätere Sessions:** AutoClaw-Agents = Full Stack Builder / Design Expert / AutoCoder / Mac Operator. Fortschritt = Button „Agent Cluster Progress". Rückweg: AutoClaw committet laut Handoff lokal in `~/ATLAS_MASTER/app` (git) oder legt Artefakte im Workspace ab → ZCode reviewt den Diff. Erster Cluster-Durchlauf (Dienste-Tabelle via launchctl/ps aux) war schon vor der Kopplung fertig.
 
 **Lektion:** Wenn Bash `spawn /bin/zsh ENOENT` stirbt → Off-Peak-Ticket abgelaufen ([[zcode-offpeak-ticket-ausfall]]) — computer-use + Write + Read + WebSearch laufen weiter, damit weiterarbeiten. Siehe auch [[omniroute-verkabelung]] (Team-Regeln) und [[atlas-master-app-verhaeltnis]].
+
+## Erster echter Cluster-Lauf (06.09. Nachmittag) — Befunde
+
+**Ablauf bewiesen:** AutoClaw (Full Stack Builder) übernahm den Handoff autonom: ZCODE_HANDOFF.md gelesen → UI_USERFLOW_SPEC.md gefunden → OnboardingHost.tsx (938 Zeilen) analysiert → wollte T-A2 claimen. Der loki-dev-TAKEOVER-Modus-Check lief von selbst.
+
+**⚠️ ALT-KOPIE-FALLE (kritisch):** AutoClaw behauptete „~/ATLAS_MASTER existiert nicht auf dieser Platte", machte mdfind und erklärte `~/Desktop/Coworkspace_Ich/atlas + pliability /ATLAS_MASTER` (git 9b9aa82 = alter Stand!) zum kanonischen Pfad — hätte dort committet. Ursache unklar (Sandbox-Home-Sicht ODER mdfind-Fund der Alt-Kopie). **Korrektur per Chat-Nachricht** (kanonisch = /Users/saschalagler/ATLAS_MASTER/app, git 7fa7bf3+, Live atlas-v5.web.app; Flowchart liegt in `…/atlas + pliability /Atlas Cali Plan/lauri/`) wurde angenommen — er suchte danach selbstständig den Flowchart im lauri-Ordner (eigener File-Dialog!).
+
+**Quota-Abbruch:** Cluster-Lauf endete mit „We're experiencing high demand… upgrade to monthly subscription" (Z.AI-Serverlast, kein Defekt) + Deliverable „ATLAS_MASTER_FLOWCHART.html file not found" (alter falscher Pfad). Punkte-Stand 06.09.: 8.270 + **5.000 verfallen in 3 Tagen** (Inspiration Hub zeigt das).
+
+**Steuerungs-Gefahr:** Während der Agent arbeitet, öffnet ER SELBST macOS-File-Dialoge (z. B. beim Flowchart-Suchen) — mein Escape/Klick traf dann SEINEN Dialog, nicht meinen. **Regel: während Cluster-Lauf nicht ins Fenster funken**; nur beobachten (get_app_state), danach reviewen („autoclaw fertig" von Sascha = Signal für Diff-Review in ~/ATLAS_MASTER/app). type→Send kann `target_verification_status: mismatched` liefern wenn ein Dialog Fokus kapert — erst get_app_state, Dialog via Escape schließen, neu beobachten.
