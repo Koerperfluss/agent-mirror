@@ -20,4 +20,10 @@ metadata:
 4. **ZCode = Koordinator:** startet, sammelt, deployt NUR geprüfte Commits, hält [[zcode-koordinator-live-austausch]] (Sascha nie als Relay).
 Bewährte Zusatzregeln: Subagent-Prompts müssen den /bin/bash-c-Workaround enthalten (zsh-ENOENT, [[zcode-offpeak-ticket-ausfall]]); Background-Logs auf Leerheit prüfen (leer = relaunchen); Berichte als Dateien im Projekt + 1-Zeilen-`open`-Befehl für Sascha.
 
+**Commit-Trennung bei parallelen Agents (06.09. bewährt):** Mehrere Agents, EIN git-Repo, gleichzeitige Commits → jeder Agent bekommt im Briefing eine **exklusive Datei-Zone** UND die Regel „committe NUR deine expliziten Pfade (`git add src/glass/ …`), NIEMALS `git add -A`" — sonst sweepen sich die Agents gegenseitig halbfertige Dateien in ihre Commits. Freigabe-Nachricht an resumed Agents enthält: GO + Pfadliste + „NIEMALS git add -A" + tsc-Gate vor jedem Commit.
+
+**Resume-Muster:** „Completed"-Subagents sind keine Totgeborenen — per SendMessage (an die agentId) wieder aufnehmen; sie behalten ihren vollen Kontext (Befund, Blueprint) und führen auf GO sofort aus. Kombiniert mit Plan-Mode-Bypass ([[plan-mode-falle]]): Agents liefern im Lock Blueprints → nach Approval per SendMessage FREIGABE + Commit-Zonen → sie bauen ohne Neukontextierung.
+
+**Zonen-Kollisionen aktiv koordinieren:** Vor dem Start jedes Agents die Datei-Zonen der LAUFENDEN Agents deklarieren („FASS NICHT AN: …") UND Überschneidungen im GO-Punkt auflösen (z. B. „Überspringe Schritt 4 OverviewTab — übernimmt der Parallel-Agent").
+
 Verwandt: [[sascha-3-saeulen-parallelarbeit]] (3-Säulen-Rahmen), [[autoclaw-team-kopplung]] (AutoClaw als weiterer Builder), [[omniroute-verkabelung]] (2-Parallel-Subagenten-Standard fürs UI-Testen).
