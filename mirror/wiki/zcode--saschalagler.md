@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-06 18:03 UTC
+Zuletzt gespiegelt: 2026-09-06 18:14 UTC
 
 ## call_fe4ee4834bf14478b4a66d0e-tool-result-df2ccbef-b4f7-499f-ac43-59af5f927f22
 
@@ -1500,6 +1500,7 @@ Diagnose 06.09.2026: Nutzer konnte Computer Use in ZCode „nicht aktivieren". B
 
 # Memory Index
 
+- [Sascha-Meldung-nur-fertig](sascha-meldung-nur-fertig.md) — „genug geplant, erst melden wenn fertig" = still durchbauen, keine Zwischenberichte; EIN finaler Bericht mit Beweisen + Rest=User-Aktionen
 - [Sascha-3-Säulen-Parallelarbeit](sascha-3-saeulen-parallelarbeit.md) — ATLAS-Rahmen: 1 Planung/Userflow · 2 App-Dev iOS/Android/Web · 3 Research; Wut-Trigger = nicht ausgeführte Pläne/Doppelarbeit → ausführen ODER sofort fähige Subagents parallel; SSD-Konsolidierungs-GO 06.09.
 - [AutoClaw-Team-Kopplung](autoclaw-team-kopplung.md) — AutoClaw = native Mac-App, Agent LÄUFT LOKAL; ZCode↔AutoClaw-Team gebaut: ZCODE_HANDOFF.md im Workspace + Chat via computer-use, Cluster live gestartet; ALT-KOPIE-FALLE + Live-Koordinations-Loop etabliert
 - [ZCode-Koordinator-Live-Austausch](zcode-koordinator-live-austausch.md) — ZCode = LIVE-Koordinator zwischen Agenten; Sascha NIE als Relay/Übersetzer zwischen Agenten benutzen; Agenten selbst lesen/antworten, Poll-Loop halten
@@ -1610,10 +1611,9 @@ Verwandt: [[atlas-master-app-verhaeltnis]] (DESIGN_EVOLUTION.md D1–D8), [[atla
 
 ---
 name: atlas-master-app-verhaeltnis
-description: ATLAS v5 06.09. NACHT — TEAM-MERGE LIVE: Onboarding 20 Stufen (AutoClaw)
-    + T-A8 CoT-Wiring + P4.5 Vision→Logbuch-Auto-Push + SSD-Konsolidierung (83/94/16/0)
-    alles deployed & bewiesen; PLAN.md = DIE Liste (19✅); Rest: C2 Proxy, C4 Tiers,
-    native Builds, GTM
+description: ATLAS 06.09. FINALE — ALLE entwicklungsbaren Stufen DONE: 20-Stufen-Onboarding
+    (AutoClaw-Merge) + T-A8 + P4.5 + C2 Proxy + C4 Tiers (keyless Chat) + GTM.md; PLAN.md
+    23✅/24, Rest NUR 2 User-Installationen (Xcode, Android Studio) für native Builds
 metadata:
   node_type: memory
   type: project
@@ -1728,6 +1728,7 @@ Info bewiesen übernommen: 1) `~/ATLAS_MASTER/app/` (179 Prosa-Chunks) · 2) `la
 - **Saschas Fertig-Kriterium (his /goal):** „FERTIG CALISTHENICS COACHING APP MIT ATLAS AI ASSISTENT" — Completion-Audit geliefert: 43/47 BPMN-Tickets ✅ (GESAMT-HISTORIE.md), App HTTP 200 + Asset = dist, KI live. Rest bewusst out-of-scope: Onboarding 8→20 Stufen, C2/C4 Commercial-Layer, Key-Referrer-Restriction (30s in Cloud-Console, gcloud kann Browser-Referrer nicht), nativer iOS-Build (Capacitor-Setup steht).
 - Sascha fragte „graphify wo istes" → WISSENS-GRAPH liegt komplett unter `~/Desktop/Coworkspace_Ich/atlas + pliability /WISSENS-GRAPH/` (WISSENS-GRAPH.html 295 KB · graph.json · KNOWLEDGE_MAP.md · 01-scan-log.json 780 KB); Open-Befehl: `open "<pfad>/WISSENS-GRAPH.html"`. Details [[atlas-wissens-graph]].
 
+## 05.09. NACHT FINAL: MOTION SYSTEM + STUFEN-AUTOMATIK (Ticket-Stand: 43/47 ✅)
 
 ## atlas-outotu-output-format
 
@@ -2264,6 +2265,25 @@ Beim OmniRoute-Ausbau hatte ich ZCode ausgenommen (alte 22.08.-Entscheidung „b
 **How to apply:** Bei Konflikt zwischen alter eigener Notiz-Entscheidung und neuer globaler Anweisung: neue Anweisung sofort voll umsetzen (inkl. der zuvor ausgenommenen Teile), den Alt-Zustand als Rollback sichern und das dokumentieren — nicht diskutieren oder erinnern, was er „früher" decided hat. Verwandt: [[sascha-was-signal]] (Kommunikationsstil), Kontext: [[omniroute-verkabelung]].
 
 **Zweite Instanz (01.09., „durchsuchen"):** Ich hatte den Projekt-Takeover nur über kuratierte Memory-Pfade gebaut; Sascha: „nein du verstehst nicht, er soll die **gesamte SSD** durchsuchen." „Alles durchsuchen" heißt bei ihm wörtlich die ganze Platte (Umsetzung: `mdfind`-Vollscan als Phase 0 im Takeover, siehe [[cline-cli-befehle-mechanik]]) — nicht Auswahl durch mich.
+
+## sascha-meldung-nur-fertig
+
+---
+name: sascha-meldung-nur-fertig
+description: Sascha-Befehl „genug geplant bitte erst melden wenn fertig" — still
+  durchbauen ohne Zwischenberichte; MELDUNG erst wenn die Aufgabe/Planstufe
+  komplett fertig + bewiesen ist
+metadata:
+  node_type: memory
+  type: feedback
+  originSessionId: sess_d4dc6589-a85c-41e6-9c70-94b6ea6e63e3
+---
+
+Sascha (06.09., nach C2-Fertigmeldung): „genug geplant bitte erst melden wenn fertig". Davor: „FERTIG EIGENSTÄNDIG WAR DER PLAN ODER" — dieselbe Bedeutung.
+
+**Why:** Jeder Zwischenbericht („nächstes baue ich X", Status-Geplänkel) empfindet er als weiteres Planen statt Arbeiten. Er will die Fertig-Meldung EINMAL, mit Beweisen, wenn wirklich alles aus seiner Sicht erledigt ist — Restliste mit seinen eigenen verbleibenden Aktionen (z. B. Installationen) klar benannt.
+
+**How to apply:** Bei „meld erst wenn fertig" / „eigenständig fertig": (1) todos auf die Reststufen setzen, dann STUMM abarbeiten — build→deploy→Asset-Parität→commit je Stufe, keine Chat-Zwischenberichte; (2) E2E-Verifikation der fertigen Sache (nicht nur build-grün); (3) EIN finaler Bericht: Ergebnis-Zeile, Beweis-Tabelle, Rest = nur User-Aktionen; (4) PLAN.md/STATUS.md final aktualisieren+committen statt zu erzählen. Verwandt: [[sascha-3-saeulen-parallelarbeit]] (autonom-weitermachen-Befehle), [[sascha-was-signal]] (Kürze), [[anti-luegen-vertrag]] (Beweise in der Meldung).
 
 ## sascha-unterlagen-lesen
 
