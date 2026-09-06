@@ -30,6 +30,8 @@ ZCode-Desktop (dev.zcode.app) Chat-/Gruppenliste — Mechanik geklärt & genutzt
 **Chat-Import (Migration-Muster)**
 - Claude: ZCode importiert selbst → task_id `claude-import-<24hex>`, migration_source `claudeCode`, traceId = Claude-sessionId, Quelle `~/.claude/projects/*/*.jsonl`. 06.09.: alle 79 Sessions importiert (Stand 31.08.-Import).
 - Cline: `~/.cline/data/db/sessions.db` (session_id, prompt=Titel, workspace_root, messages_path→`<id>.messages.json`). Importer: `~/.zcode/v2/import-chats-loki.py` (259 Chats, source `clineCode`). Worktree-Pfade: GANZEN Pfad auf Projektnamen mappen, nicht nur Base (Base = Home!).
+- **CRITICAL — Pflichtfelder der persistierten Session-JSON** (`sessions/<sha12>/<task_id>.json`): Jede Message braucht `timestamp` + `turnIndex`, meta braucht `thoughtLevel` + `target`. Fehlen sie, wirft ZCode beim Anklicken des Tasks `Session is not active and not persisted (fault.subscribe.sessionNotFound)` — Session-Loader verwirft die Datei still. 06.09. bei allen 259 Cline-JSONs gefixt (Felder ergänzt, turnIndex je user-Turn hochzählend). Validierung: Feld-für-Feld-Abgleich mit einer funktionierenden claude-import-JSON.
+- Falls sessionNotFound trotz korrekter Felder bleibt (Plan B, noch nicht nötig gewesen): echte ZCode-Runtime-Session-Registrierung je Chat anlegen statt nur persistierte Datei.
 
 **Sicherung**
 - Backup-Dump: `~/.zcode/v2/projekt-gruppen-backup.sql`; Restore: `~/Desktop/ZCODE-PROJEKTE-WIEDERHERSTELLEN.command` (nur bei geschlossenem ZCode). Backups: tasks-index.sqlite.bak-20260906-projects, setting.json.bak-20260906-projects.
