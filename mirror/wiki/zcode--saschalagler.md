@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-06 14:04 UTC
+Zuletzt gespiegelt: 2026-09-06 14:15 UTC
 
 ## call_fe4ee4834bf14478b4a66d0e-tool-result-df2ccbef-b4f7-499f-ac43-59af5f927f22
 
@@ -622,7 +622,7 @@ Bei Fachfragen (z. B. Trainings-Übungen) fordert er explizit „clinical reason
 
 # Memory Index
 
-- [FörderOps-Assistent](foerderops-assistent.md) — 30.08. aktiv: Web-UI auf 127.0.0.1:8765 (`foerderops_web.py`) + CLI; 70 Wissensdokumente aus 6 Verzeichnissen; Vertex-AI-Backend; digi4KMU 50k existiert NICHT; Cap-Table kanonisch Leon 26/Lisa 26/Sascha 25/Peter 23; 🔴 $350k-Blocker: Webgo-NS-Switch
+- [FörderOps-Assistent](foerderops-assistent.md) — 30.08. aktiv, 🔴 06.09. Web-UI 8765 TOT (Restart: foerderops_web.py) + CLI; 70 Wissensdokumente; digi4KMU 50k existiert NICHT; Cap-Table Leon 26/Lisa 26/Sascha 25/Peter 23; 🔴 $350k-Blocker: Webgo-NS-Switch
 - [GUI nicht CLI](feedback-gui-not-cli.md) — 30.08. Sascha: „ich will eine grafische oberfläche" — IMMER Web-UI bauen, nie nur Terminal-Befehl
 - [Sequential Thinking immer](sequential-thinking-always.md) — 30.08. Nutzer-Regel: mcp sequentialthinking bei JEDER Anfrage aufrufen; verankert in ~/.agents/STANDARD-SKILLS.md A.3 + skill-routing.md (alle 5 Harnesses)
 - [Aktive Fokus-Projekte](active-projects-focus.md) — 30.08.: Atlas Cali Coach, Körperfluss Physio-Web, FörderOps; Projektlisten-Tool `python3 ~/.claude/tools/projects.py`
@@ -668,7 +668,14 @@ metadata:
   originSessionId: sess_ec864b92-2403-44f6-8057-fd71047cea94
 ---
 
-Saschas 3 aktuell genannte Fokus-Projekte (30.08.2026): **ATLAS Cali Coach** (`~/Desktop/Atlas Cali Plan/Atlas_Cali_Commercial_V2`), **Körperfluss Physio-Web-App** (kanonisch `~/Desktop/Koerperfluss-3D-Upgrade`, GitHub 3d-UPGRADE, Deploy `--project gen-lang`), **FörderOps Assistant** (verwandt mit [[legal-ops]] / Legal Ops Advisor).
+Saschas 3 aktuell genannte Fokus-Projekte (30.08.2026): **ATLAS Cali Coach**, **Körperfluss Physio-Web-App**, **FörderOps Assistant** (verwandt mit [[legal-ops]] / Legal Ops Advisor).
+
+**Kanonische Pfade (06.09.2026 per Discovery korrigiert + WIKI.md je Projekt):**
+- **Atlas Cali Coach**: kanonisch `~/cali-coach-atlas-final` (React 19/Vite + Swift-iOS `ios/Gymnify`) — ⚠️ Zwillings-Root `~/Desktop/Coworkspace_Ich/atlas + pliability /cali-coach-atlas-final` (gleicher Git-HEAD, Ordnername endet mit LEERZEICHEN) = Drift-Falle. WIKI.md im Root.
+- **Körperfluss 3D**: `~/Desktop/Coworkspace_Ich/FIRMEN PROJEKTE/Koerperfluss-3D-Upgrade` (NICHT `~/Desktop/Koerperfluss-3D-Upgrade` — Projektliste war veraltet!). React+Three.js+Firebase, Deploy `--project gen-lang-client-0285074833`, 🔴 keine Tests.
+- **Legal Ops Advisor (Thomas/Judicario)**: `~/LegalOpsAdvisor_Sacha_Mac` + Judicario-MCP in `~/loki-ki/services` (läuft 4× parallel ⚠️, 🔴 API-Keys im Klartext).
+- **LOKI Voice**: `~/loki-ki/loki-voice` (Python) + Swift-App in `~/Desktop/Coworkspace_Ich/PETER JUDICARIO/Judicario_Sacha_Mac/LokiVoiceApp`.
+- Zentraler **WIKI-INDEX**: `~/.zcode/workspace/default/WIKI-INDEX.md` (alle Pfade + Querschnitt-Befunde).
 
 Projektlisten-Tool: `python3 ~/.claude/tools/projects.py` — kuratierte Top-10-Liste aus `~/.claude/projects/-Users-saschalagler/memory/MEMORY.md` (Abschnitt "## Weitere Projekte") × letzte Aktivität aus `~/.claude-mem/claude-mem.db`. Weitere Projekte in der Liste: GCP Billing (Konto 015D43, siehe [[google-cloud-genai-credit]]), LOKI Agent OS, Gemini API Stack, Legal Ops Advisor, Gemini Chrome + Mac, LOKI.OS konsolidiert, BAR BULLS Firebase, Barbulls GoPro Labs.
 
@@ -726,6 +733,25 @@ Installed 2026-08-23 at Sascha's request via `npx skills add https://github.com/
 - **Sascha's Chrome CDP port is 9223** (agent-browser attaches there) — connect with `await session.connect({port:9223})`
 - **Security:** skills.sh scanner rated Med Risk (1 Socket alert); locally verified clean (localhost-only bind, plain bash wrapper, readable TS source). Rated risky by nature (JS eval + browser control)
 - Pairs with the browser layer of [[web-research-team-skill]] (ORCH-WEB) and `agent-browser`. Installed per [[skill-install-conventions]].
+
+## feedback-agent-drives-ui
+
+---
+name: feedback-agent-drives-ui
+description: Sascha erwartet dass Agenten GUIs/Oberflächen SELBST steuern und
+  Dinge selbst anlegen — nicht den Nutzer klicken lassen (2× wütend eingefordert
+  06.09.)
+metadata:
+  node_type: memory
+  type: feedback
+  originSessionId: sess_6ec2db7a-ed38-4ece-8c80-35110f8e0fbc
+---
+
+Sascha (06.09.2026, 2× explizit wütend): „du sollst den agent ODER die agenten je nachdem was gebraucht wird ANLEGEN eigenständig" und „bitte steuere die oberfläche wie auch immer nutze das programm … stelle ein du trottel es ist geöffnet".
+
+**Why:** Er will den Agenten als eigenständigen Operator — sobald ich ihn etwas per UI klicken lasse („deine 1 Aktion: Create klicken"), gilt das als Arbeitsverweigerung. Seine App-Welt: AutoClaw, ZCode, Cline Code, Claude — „das soll in allen so sein".
+
+**How to apply:** Wenn eine Aktion nur per GUI geht: macOS Accessibility nutzen und sie selbst ausführen. Bewährtes Rezept (live bewiesen an AutoClaw-Create-Dialog): Fenster-Bounds via System Events holen → App frontmost setzen (`set frontmost of process … to true`, sonst landen Klicks im falschen Fenster!) → `click at {x,y}` (Element-Log im Ergebnis bestätigt das Ziel) → für Textfeld-Eingabe keystroke NICHT vertrauen (Fokus geht verloren), sondern rekursiv AX-Element suchen (UI-elements-Walk) + `set value of <textfield>` → Buttons per Rekursion finden und `click`. Verifikation per Screenshot (`screencapture -l <windowID>`, Window-ID via Quartz CGWindowList) und/oder Config/Runtime-Datei-Check. Elektro­nen-Apps (Electron) exponieren fast keine nativen AX-Elemente — Koordinaten aus Vision/Prozentangaben + Bestätigungs-Log sind der Weg. Verwandt: [[autoclaw-full-stack-builder]] [[feedback-one-action-not-tables]] [[feedback-gui-not-cli]]
 
 ## feedback-gui-not-cli
 
@@ -821,6 +847,8 @@ Regeln beim Prüfen von Anträgen/Mails: NUR belegte Fakten aus der Basis; Konfl
 Cloud-Setup: Projekt **koerperfluss-antigravity** (Nr. 68337618626, Billing 015D43…), GCS-Bucket **koerperfluss-foerderops-kb** (europe-west3). Vertex-Data-Stores **foerderops-kb-v2** + **v3** erstellt (CONTENT_REQUIRED), aber GCS-Import aller Dokumente wiederholt fehlgeschlagen (4/4): Discovery Engine lehnt .txt/.html/.jsonl ab mit „invalid unstructured data format, please provide NDJSON or JSON Lines". Indexierung hat NICHT stattgefunden. **Lokaler Assistent ist die funktionierende Lösung** (siehe unten). **API-Quirk:** alle discoveryengine-Calls brauchen Header `x-goog-user-project: koerperfluss-antigravity` (ADC-Quota-Projekt 681255809395 ist falsch vorkonfiguriert). Siehe [[google-cloud-genai-credit]].
 
 **Lokaler Assistent (CLI, 30.08.):** Python-Skript `~/.agents/tools/foerderops_assistent.py`, verlinkt als `/opt/homebrew/bin/foerderops`. Lädt die Wissensdokumente lokal (Keyword-Retrieval), ruft Gemini 2.5 Flash via Vertex AI (gcloud-Token, Projekt koerperfluss-antigravity) auf — API-Key-Pfad (GEMINI_API_KEY) liefert 429 (rate-limited), Vertex-Fallback mit `role: user` im Content-Body funktioniert. SSRF-gehärtet (HTTPS-only, Host-Allowlist googleapis.com, keine Redirects, keine privaten IPs). Nutzung: `foerderops "Frage"` oder interaktiv `foerderops`. Live-Test bestätigt.
+
+**Web-UI-Status 06.09.: läuft NICHT** (curl auf 127.0.0.1:8765 = HTTP 000, kein Prozess) — Restart nötig: `python3 ~/.agents/tools/foerderops_web.py`. Kopien des Tools auch unter `~/Claude/Projects/Förderops` und `~/koerperfluss-frontend-optimized/Foerder-Ops` (Drift-Gefahr).
 
 **Web-UI (30.08., von Sascha eingefordert — „ich will eine grafische Oberfläche du trotel"):** `~/.agents/tools/foerderops_web.py` — lokale Chat-Oberfläche auf **http://127.0.0.1:8765**, öffnet Browser automatisch. Dark/Gold-Design im Körperfluss-Look, 5 Schnell-Buttons (inno4KMU, FFG Status, Website-Lücken, Offene Konflikte, Google-E-Mail). API-Endpoint /api im selben Skript. Start: `python3 ~/.agents/tools/foerderops_web.py`. **Sascha will grafische Oberflächen, KEINE Terminal-Befehle** — CLI wurde abgelehnt („was soll ich mit so einem befehl").
 
@@ -935,6 +963,29 @@ metadata:
 Bleiben absichtlich aktiv: `com.sascha.omniroute` (Gateway localhost:20128), `com.lokivoice.mcp-server`, `com.loki.legalops.mcp`, tägliche Kalender-Jobs `com.sascha.assi.daily` + `com.sascha.omni-check.daily`.
 
 **How to apply:** Falls LOKI-Autostart gewünscht wird: aus dem Backup zurückschieben + `launchctl enable`. Nie omniroute/lokivoice/legalops anfassen. Details: [[mac-cleanup-2026-08-25]].
+
+## loki-dev-gate-enforcement
+
+---
+name: loki-dev-gate-enforcement
+description: loki-dev = EINE Fullstack-Pipeline (5 Modi) mit erzwungenem
+  Orchestrierungs-Gate (Schnitt 0) — Skills konsolidiert 06.09., Gate per
+  UserPromptSubmit-Hook in ZCode/Cline/Claude erzwungen
+metadata:
+  node_type: memory
+  type: project
+  originSessionId: sess_6ec2db7a-ed38-4ece-8c80-35110f8e0fbc
+---
+
+**loki-dev-Pipeline (06.09.2026 konsolidiert):** Master `~/.agents/skills/loki-dev/SKILL.md`, 5 Modi — INIT (neues Projekt) · BUILD (Director, 8 Schritte) · TAKEOVER (SSD-Scan→Memory-Sweep→STATE.md) · FINISH (Audit→Tests→Review) · MAP (→wayfinder). Alte Skills sind 3-Zeilen-Wrapper darauf: glm-init, glm-build, deve, lokiomnidevteam-plan, lokiomnidevteam-execute (Backups `SKILL.md.bak-20260906` in AutoClaw). Routing in STANDARD-SKILLS.md zeigt auf loki-dev; verdrahtet in allen 5 Harnesses (Symlinks) + AutoClaw (Kopie).
+
+**Schnitt-0-Orchestrierungs-Gate (Pflicht vor jedem Modus):** sequentialthinking-Zerlegung → TodoWrite SOFORT → PLAN-Tabelle im Chat (Stufe|Agent|Skill|Modell|~Tokens|~Zeit|Dep) → PLAN.md ins Projekt (persistent, Fortschritt live). Grund: Saschas berechtigter Vorwurf „Plan nie sichtbar, dutzendfach gefordert" — Skills sind passiver Text ohne Enforcement; TodoWrite stirbt mit der Session.
+
+**Erzwingung:** `~/.agents/tools/gate-enforcer.py` als UserPromptSubmit-Hook registriert in ZCode (`config.json`→hooks.events), Cline (`~/.cline/hooks/settings.json`), Claude (`~/.claude/settings.json`). Trigger-Regex (baue/erstelle/mach mir/übernimm/onboard/fertig mach/projekt init) injiziert 🚦-Gate; ANTI-Regex hält Fragen („was ist…") stumm. Unit-getestet. Backups `*.bak-gate-20260906`. **Hooks greifen erst nach App-Neustart** (ZCode/Cline/Claude je 1× neu starten).
+
+**Parallelität (Regel geändert auf Saschas Wunsch):** bedarfsberechnet aus Task-Graph (unabhängige Tasks = Parallelitätsgrad), Budget-Default 3 mit 1-Zeilen-Begründung bei mehr — „3" ist Quota-Schutz ([[zai-coding-plan-limits]], 16-GB-Mac), kein Dogma.
+
+Verwandt: [[autoclaw-full-stack-builder]] [[sequential-thinking-always]] [[skill-install-conventions]]
 
 ## mac-cleanup-2026-08-25
 
@@ -1225,6 +1276,8 @@ Verifiziert 26.08.2026. Clines Audit-Bericht war mostly richtig, hatte aber 2 Fe
 - **Plugins**: 16 aktiv — context7, code-review, feature-dev, superpowers, commit-commands, playwright, github, ios-simulator, cloudbase-skills, agent-sdk-dev, agentforce-adlc, youdotcom-agent-skills, mimosa, zcode-cua, restore-legacy-sessions, example-plugin.
 - **Skills**: 110 in `~/.zcode/skills/` vs 112 in `~/.agents/skills/` (Master). Drift: `lokiomnidevteam-plan`, `lokiomnidevteam-execute`, `_sources` nur in `.agents`; `find-docs` nur in `.zcode`. Fix wartet auf Saschas Go ("fix sync").
 - **Cline-Workflow**: `~/.cline/workflows/04-skill-aware-task-distribution.md` (v1.0) integriert, alle 5 Pflicht-Skills vorhanden. Trigger `/skill-aware-task-distribution`; Score-Formel siehe [[skill-install-conventions]].
+- **Wiki-Generator-Fehler (06.09.):** „当前选择的模型供应商不存在: builtin:zai-start-plan" = toter Provider-Name — Z.AI-Provider wurde in `builtin:zai-coding-plan` umbenannt (Log-Beweis 05.09.: session.model.updated start-plan→coding-plan), der Wiki-Dialog hält die Leiche gespeichert. Fix: im Wiki-Dialog Modell neu wählen → Generate. `~/.zcode/cli/db/db.sqlite` gehört der LAUFENDEN App — nie live reinschreiben.
+- **Gate-Hooks (06.09.):** UserPromptSubmit-Hook `gate-enforcer.py` registriert (ZCode config.json, Cline hooks/settings.json, Claude settings.json) — Details [[loki-dev-gate-enforcement]]. Wirken erst nach App-Neustart.
 - **Offen**: Obsidian↔Cline Memory-Sync — ZCode-Workspace-Memory überträgt NICHT automatisch zu Cline. Empfohlener Weg: Memory-Export als Markdown in `~/.agents/skills/_sources/` als ein Source of Truth (Alternative: obsidian-vault Skill).
 
 - **sequential-thinking** (30.08. verifiziert): registriert in `~/.zcode/cli/config.json` (~Zeile 94, `/opt/homebrew/bin/npx @modelcontextprotocol/server-sequential-thinking`) und in `~/.mcp.json` — ein Symlink auf `~/.cline/data/settings/cline_mcp_settings.json`. Sascha hielt es irrtümlich für einen Skill und „sah nichts": kein UI, kein Skill-File — wirkt nur unsichtbar in Antworten (nummerierte Denkschritte).
@@ -1325,7 +1378,7 @@ metadata:
 
 **Chipsi** (Rechts- & Steuer-Assistenz von openlaw) ist KEINE lokale App: `Chipsi.app` im Projektordner ist nur ein Chrome-App-Mode-Shortcut auf `https://chipsi.openlaw.cc/` (Login via Google). Ein "Netzwerkproblem — die Antwort konnte nicht erstellt werden" beim Antworten (Recherche→Synthese) kommt vom Connector-/Backend-Aufruf, nicht vom lokalen Netz. Mac-Seite 06.09.2026 verifiziert gesund: DNS/TLS ok, `/api/auth/methods` → 200, gateway.openlaw.cc erreichbar.
 
-Judicario-Connector in Chipsi = MCP-URL (`https://gateway.openlaw.cc/mcp/at/`) + Zugriffsschlüssel — Vorlage mit gültigem Key: `Judicario_Sacha_Mac/tools/CHIPSI_SANDBOX_CONNECTOR.html`. Toter Key war die wahrscheinliche Fehlerursache → [[judicario-gateway-key-rotation]].
+Judicario-Connector in Chipsi = serverseitig von openlaw eingerichtet (Dialog „Werkzeuge und Konnektoren": Judicario + Judicario · amtliche Quellen + Safebox = **verbunden**, URL+Key-Formular nur für NEUE Konnektoren) — User muss dort KEINEN Key eintragen. **„Netzwerkproblem — die Antwort konnte nicht erstellt werden" bleibt trotzdem (06.09. zweifach getestet im IAB: Judicario-Recherche-Frage UND triviales „Sag bitte nur: Test ok" im leeren Chat → beide Fehler)** → Ursache ist die serverseitige Antwort-Generierung bei openlaw (LLM-Backend/Account), NICHT der Konnektor, NICHT das lokale Netz. Fix nur durch openlaw (George). Vorlage mit gültigem Sandbox-Key: `Judicario_Sacha_Mac/tools/CHIPSI_SANDBOX_CONNECTOR.html` → [[judicario-gateway-key-rotation]].
 
 **Gmail des Nutzers: koerperfluss@gmail.com** (auch seine primäre Apple-ID → App-Store/TestFlight-Mails landen dort). **Zugriff-Funktionsweg (06.09. verifiziert): ZCode-IAB-Tab mit Nutzer-Google-Login** — Session hält im Tab `iab-tab:31cd4277-fdec-4dc9-bde6-ee709565dec4`; Vorgehen: `#search/<query>` + `getByRole("link", {name:/Betreff/}).click()`. google-workspace-MCP hat KEINEN Gmail-Scope, Gmail nicht in Apple Mail, AppleScript auf Chrome/Mail blockiert (TCC, -1712).
 
@@ -92463,4 +92516,37 @@ sudo mv /Library/LaunchAgents/com.adobe.AdobeCreativeCloud.plist \
 sudo mv /Library/Preferences/com.adobe.* "/Library/Application Support/Adobe" \
         /Library/PrivilegedHelperTools/com.adobe.* \
         ~/deinstall_backup/adobe_2026-08-25/system/ 2>/dev/null
+
+## PLAN
+
+# PLAN.md — Workspace-Wikis (06.09.2026)
+**Ziel:** ZCode-Wiki-Fehler gelöst + WIKI.md je aktivem Projekt. **DONE WHEN:** 4 Wikis + Index existieren, Fix dokumentiert.
+
+| # | Stufe | Agent | Skill | Modell | ~Tokens | ~Zeit | Dep | Status |
+|---|---|---|---|---|---|---|---|---|
+| 1 | Fix zai-start-plan | direkt | — | flash | 2k | 3 min | — | ✅ Diagnose: Provider-Rename, DB-Leiche; Fix=Modell im Dialog neu wählen |
+| 2 | 3× Discovery parallel | 3× Explore | research | flash | 362k | 3 min | — | ✅ Atlas/LegalOps+Voice/Körperfluss+Rest |
+| 3 | 4× WIKI.md + Index | direkt | ponytail | 5.3 | 15k | 15 min | 1,2 | ✅ |
+| 4 | Verifikation + Bericht | direkt | verification | flash | 3k | 5 min | 3 | ✅ |
+
+**Aufwand IST:** ~28 min, ~382k Tokens (Subagenten dominierten). Erkenntnisse: Körperfluss-Pfad korrigiert (FIRMEN PROJEKTE), Atlas-Doppelroot, Legal-Ops-Mehrfachprozesse, FörderOps tot.
+
+## WIKI-INDEX
+
+# WIKI-INDEX — Aktuelle Projekte (Stand 2026-09-06)
+
+| Projekt | Wiki | Kanonischer Pfad | Stack-Kern | Zustand |
+|---|---|---|---|---|
+| **Atlas Cali Coach** | `~/cali-coach-atlas-final/WIKI.md` | `~/cali-coach-atlas-final` | React 19/Vite + Swift-iOS | aktiv, main @ 5e61e86, ⚠️ Zwillings-Root |
+| **Legal Ops Advisor** (Thomas/Judicario) | `~/LegalOpsAdvisor_Sacha_Mac/WIKI.md` | `~/LegalOpsAdvisor_Sacha_Mac` + MCP in `~/loki-ki/services` | Python RAG + 9-Personas-MCP | läuft (4× MCP ⚠️, 🔴 Keys im Klartext) |
+| **LOKI Voice** | `~/loki-ki/loki-voice/WIKI.md` | `~/loki-ki/loki-voice` (Python) + Judicario-Sacha-Mac/LokiVoiceApp (Swift) | google-genai + Swift | Dienste laufen (launchd) |
+| **Körperfluss 3D** | `…/FIRMEN PROJEKTE/Koerperfluss-3D-Upgrade/WIKI.md` | `~/Desktop/Coworkspace_Ich/FIRMEN PROJEKTE/Koerperfluss-3D-Upgrade` | React+Three.js+Firebase | main @ f720160, 🔴 keine Tests |
+| LOKI Agent OS | (README vorhanden) | `~/agent-os/` | Bash/Claude/Gemini headless | aktiv — `~/agent-os/loki "Ziel"` |
+| FörderOps | (kein Wiki — Tool) | `~/.agents/tools/foerderops_web.py` | Python Web-UI | **läuft NICHT** (Port 8765 tot) — Start: `python3 ~/.agents/tools/foerderops_web.py` |
+
+## Querschnitt-Befunde
+1. 🔴 **API-Keys im Klartext**: loki-ki/services-MCP-Server (Legal-Ops + Voice) — Env nachziehen
+2. **Doppel-Strukturen**: Atlas (2 identische Git-Roots), Legal-Ops (Archiv-Kopie) — immer nur kanonischen Pfad bearbeiten
+3. **Test-Lücken**: Körperfluss (gar keine), Atlas (minimal), Legal-Ops (Tests vorhanden)
+4. ZCode-Wiki-Feature: Modell-Leiche `builtin:zai-start-plan` → im Wiki-Dialog Modell neu wählen (heißt jetzt `zai-coding-plan`), dann „Generate"
 

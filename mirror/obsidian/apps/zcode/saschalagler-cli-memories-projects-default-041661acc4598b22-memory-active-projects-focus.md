@@ -1,7 +1,7 @@
 ---
 app: zcode
 quelle: "saschalagler/cli/memories/projects/default-041661acc4598b22/memory/active-projects-focus.md"
-stand: 2026-09-05
+stand: 2026-09-06
 tags: [spiegel, zcode]
 ---
 
@@ -15,7 +15,14 @@ metadata:
   originSessionId: sess_ec864b92-2403-44f6-8057-fd71047cea94
 ---
 
-Saschas 3 aktuell genannte Fokus-Projekte (30.08.2026): **ATLAS Cali Coach** (`~/Desktop/Atlas Cali Plan/Atlas_Cali_Commercial_V2`), **Körperfluss Physio-Web-App** (kanonisch `~/Desktop/Koerperfluss-3D-Upgrade`, GitHub 3d-UPGRADE, Deploy `--project gen-lang`), **FörderOps Assistant** (verwandt mit [[legal-ops]] / Legal Ops Advisor).
+Saschas 3 aktuell genannte Fokus-Projekte (30.08.2026): **ATLAS Cali Coach**, **Körperfluss Physio-Web-App**, **FörderOps Assistant** (verwandt mit [[legal-ops]] / Legal Ops Advisor).
+
+**Kanonische Pfade (06.09.2026 per Discovery korrigiert + WIKI.md je Projekt):**
+- **Atlas Cali Coach**: kanonisch `~/cali-coach-atlas-final` (React 19/Vite + Swift-iOS `ios/Gymnify`) — ⚠️ Zwillings-Root `~/Desktop/Coworkspace_Ich/atlas + pliability /cali-coach-atlas-final` (gleicher Git-HEAD, Ordnername endet mit LEERZEICHEN) = Drift-Falle. WIKI.md im Root.
+- **Körperfluss 3D**: `~/Desktop/Coworkspace_Ich/FIRMEN PROJEKTE/Koerperfluss-3D-Upgrade` (NICHT `~/Desktop/Koerperfluss-3D-Upgrade` — Projektliste war veraltet!). React+Three.js+Firebase, Deploy `--project gen-lang-client-0285074833`, 🔴 keine Tests.
+- **Legal Ops Advisor (Thomas/Judicario)**: `~/LegalOpsAdvisor_Sacha_Mac` + Judicario-MCP in `~/loki-ki/services` (läuft 4× parallel ⚠️, 🔴 API-Keys im Klartext).
+- **LOKI Voice**: `~/loki-ki/loki-voice` (Python) + Swift-App in `~/Desktop/Coworkspace_Ich/PETER JUDICARIO/Judicario_Sacha_Mac/LokiVoiceApp`.
+- Zentraler **WIKI-INDEX**: `~/.zcode/workspace/default/WIKI-INDEX.md` (alle Pfade + Querschnitt-Befunde).
 
 Projektlisten-Tool: `python3 ~/.claude/tools/projects.py` — kuratierte Top-10-Liste aus `~/.claude/projects/-Users-saschalagler/memory/MEMORY.md` (Abschnitt "## Weitere Projekte") × letzte Aktivität aus `~/.claude-mem/claude-mem.db`. Weitere Projekte in der Liste: GCP Billing (Konto 015D43, siehe [[google-cloud-genai-credit]]), LOKI Agent OS, Gemini API Stack, Legal Ops Advisor, Gemini Chrome + Mac, LOKI.OS konsolidiert, BAR BULLS Firebase, Barbulls GoPro Labs.
 

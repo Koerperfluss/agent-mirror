@@ -1,7 +1,7 @@
 ---
 app: zcode
 quelle: "saschalagler/cli/memories/projects/default-041661acc4598b22/memory/foerderops-assistent.md"
-stand: 2026-09-05
+stand: 2026-09-06
 tags: [spiegel, zcode]
 ---
 
@@ -22,6 +22,8 @@ Regeln beim Prüfen von Anträgen/Mails: NUR belegte Fakten aus der Basis; Konfl
 Cloud-Setup: Projekt **koerperfluss-antigravity** (Nr. 68337618626, Billing 015D43…), GCS-Bucket **koerperfluss-foerderops-kb** (europe-west3). Vertex-Data-Stores **foerderops-kb-v2** + **v3** erstellt (CONTENT_REQUIRED), aber GCS-Import aller Dokumente wiederholt fehlgeschlagen (4/4): Discovery Engine lehnt .txt/.html/.jsonl ab mit „invalid unstructured data format, please provide NDJSON or JSON Lines". Indexierung hat NICHT stattgefunden. **Lokaler Assistent ist die funktionierende Lösung** (siehe unten). **API-Quirk:** alle discoveryengine-Calls brauchen Header `x-goog-user-project: koerperfluss-antigravity` (ADC-Quota-Projekt 681255809395 ist falsch vorkonfiguriert). Siehe [[google-cloud-genai-credit]].
 
 **Lokaler Assistent (CLI, 30.08.):** Python-Skript `~/.agents/tools/foerderops_assistent.py`, verlinkt als `/opt/homebrew/bin/foerderops`. Lädt die Wissensdokumente lokal (Keyword-Retrieval), ruft Gemini 2.5 Flash via Vertex AI (gcloud-Token, Projekt koerperfluss-antigravity) auf — API-Key-Pfad (GEMINI_API_KEY) liefert 429 (rate-limited), Vertex-Fallback mit `role: user` im Content-Body funktioniert. SSRF-gehärtet (HTTPS-only, Host-Allowlist googleapis.com, keine Redirects, keine privaten IPs). Nutzung: `foerderops "Frage"` oder interaktiv `foerderops`. Live-Test bestätigt.
+
+**Web-UI-Status 06.09.: läuft NICHT** (curl auf 127.0.0.1:8765 = HTTP 000, kein Prozess) — Restart nötig: `python3 ~/.agents/tools/foerderops_web.py`. Kopien des Tools auch unter `~/Claude/Projects/Förderops` und `~/koerperfluss-frontend-optimized/Foerder-Ops` (Drift-Gefahr).
 
 **Web-UI (30.08., von Sascha eingefordert — „ich will eine grafische Oberfläche du trotel"):** `~/.agents/tools/foerderops_web.py` — lokale Chat-Oberfläche auf **http://127.0.0.1:8765**, öffnet Browser automatisch. Dark/Gold-Design im Körperfluss-Look, 5 Schnell-Buttons (inno4KMU, FFG Status, Website-Lücken, Offene Konflikte, Google-E-Mail). API-Endpoint /api im selben Skript. Start: `python3 ~/.agents/tools/foerderops_web.py`. **Sascha will grafische Oberflächen, KEINE Terminal-Befehle** — CLI wurde abgelehnt („was soll ich mit so einem befehl").
 
