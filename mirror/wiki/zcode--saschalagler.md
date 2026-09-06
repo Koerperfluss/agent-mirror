@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-06 17:21 UTC
+Zuletzt gespiegelt: 2026-09-06 17:31 UTC
 
 ## call_fe4ee4834bf14478b4a66d0e-tool-result-df2ccbef-b4f7-499f-ac43-59af5f927f22
 
@@ -1500,7 +1500,9 @@ Diagnose 06.09.2026: Nutzer konnte Computer Use in ZCode „nicht aktivieren". B
 
 # Memory Index
 
-- [AutoClaw-Team-Kopplung](autoclaw-team-kopplung.md) — AutoClaw = native Mac-App, Agent LÄUFT LOKAL; ZCode↔AutoClaw-Team gebaut: ZCODE_HANDOFF.md im Workspace + Chat via computer-use, Cluster live gestartet
+- [Sascha-3-Säulen-Parallelarbeit](sascha-3-saeulen-parallelarbeit.md) — ATLAS-Rahmen: 1 Planung/Userflow · 2 App-Dev iOS/Android/Web · 3 Research; Wut-Trigger = nicht ausgeführte Pläne/Doppelarbeit → ausführen ODER sofort fähige Subagents parallel; SSD-Konsolidierungs-GO 06.09.
+- [AutoClaw-Team-Kopplung](autoclaw-team-kopplung.md) — AutoClaw = native Mac-App, Agent LÄUFT LOKAL; ZCode↔AutoClaw-Team gebaut: ZCODE_HANDOFF.md im Workspace + Chat via computer-use, Cluster live gestartet; ALT-KOPIE-FALLE + Live-Koordinations-Loop etabliert
+- [ZCode-Koordinator-Live-Austausch](zcode-koordinator-live-austausch.md) — ZCode = LIVE-Koordinator zwischen Agenten; Sascha NIE als Relay/Übersetzer zwischen Agenten benutzen; Agenten selbst lesen/antworten, Poll-Loop halten
 - [Skill-Routing](skill-routing.md) — memory-basiertes Tool-Calling; Kanonisch: ~/.agents/skill-routing.md; Standard-Skills: ~/.agents/STANDARD-SKILLS.md
 - [GLM-Trigger-Befehle](glm-trigger-befehle.md) — KORREKTUR: Trigger-Wörter waren agent-erfunden, NIE User-absgegnet; kanonisch = /feature-dev (Plugin-Subagenten), glm-build/deve nur optional; Chat-Kontext → nie Bash/Terminal-Antworten
 - [Cline-CLI-Befehle-Mechanik](cline-cli-befehle-mechanik.md) — CLI-Commands = ~/.cline/workflows/*.md, Regeln = ~/.clinerules, Modell/MCP = ~/.cline/data (geteilt mit App); ~/.cline/skills ignoriert die CLI — Nachweis nur über sein /-Menü
@@ -1909,6 +1911,13 @@ metadata:
 
 **Steuerungs-Gefahr:** Während der Agent arbeitet, öffnet ER SELBST macOS-File-Dialoge (z. B. beim Flowchart-Suchen) — mein Escape/Klick traf dann SEINEN Dialog, nicht meinen. **Regel: während Cluster-Lauf nicht ins Fenster funken**; nur beobachten (get_app_state), danach reviewen („autoclaw fertig" von Sascha = Signal für Diff-Review in ~/ATLAS_MASTER/app). type→Send kann `target_verification_status: mismatched` liefern wenn ein Dialog Fokus kapert — erst get_app_state, Dialog via Escape schließen, neu beobachten.
 
+## Live-Koordinations-Loop etabliert (06.09. Abend)
+
+Sascha befahl: ZCode = KOORDINATOR, kein Übersetzen durch ihn ([[zcode-koordinator-live-austausch]]). Darauf live ausgeführt:
+- AutoClaw hatte selbst einen NEUEN Chat vorbereitet: ~30 ATLAS-Docs als Anhänge (Batch 18:59: STATUS.md, DESIGN_EVOLUTION.md, UI_UX_PLAN.md, UI_AUDIT_BERICHT.md, alle PDFs …) — **aber aus der ARCHIV-Kopie** (Coworkspace-Quelle, .openclaw-attachments). Chat-Feld leer, Agent Cluster noch AUS (=0).
+- Ich schaltete Agent Cluster selbst an, tippte den KOORDINATIONS-AUFTRAG (T-A2 Onboarding 8→20, NUR /Users/saschalagler/ATLAS_MASTER/app, D8, tsc+git-Commit+STATUS-Zeile als DONE-WHEN, Rückfragen als Kommentar in ZCODE_HANDOFF.md) und sendete (19:18; Session aktualisierte sich 19:09→19:23).
+- ** Neue Mechanics:** (a) `state_id superseded`-Fehler, wenn AutoClaws UI sich zwischen type und Send ändert → neu get_app_state, Aktion wiederholen, nie blind retry; (b) Ein-Driver-Regel: ein fremdes „S" im Feld zeigte Doppel-Tippen (Sascha ODER ich) — wenn Sascha selbst tippen will, sagt er „STOPP", sonst steuert ZCode; (c) AutoClaw-Deliverables mit „file not found" = tote Archiv-Pfade aus alten Handoffs, korrigierbar per Chat-Nachricht mit Absolut-Pfad.
+
 ## cline-cli-befehle-mechanik
 
 ---
@@ -2157,6 +2166,29 @@ metadata:
 
 **Verwandt:** [[sascha-was-signal]] (gleiche Eskalation bei Überkomplexität) · [[sascha-wut-fehlerpaste]] (Wut = direkt handeln)
 
+## sascha-3-saeulen-parallelarbeit
+
+---
+name: sascha-3-saeulen-parallelarbeit
+description: Saschas ATLAS-Arbeitsrahmen = 3 Säulen (1 Planung/Userflow, 2 App-Dev
+  iOS/Android/Web, 3 Research/Wissensanalyse) — Wut-Trigger: geplante Sachen nicht
+  ausgeführt, Doppelarbeit; Rezept: ausführen ODER sofort fähige Subagents (Agent-Tool,
+  background) parallel draufsetzen; SSD-Konsolidierungs-GO 06.09. erteilt
+metadata:
+  type: feedback
+---
+
+Sascha formulierte es selbst (06.09., wütend): „1) planung kompletter app, funktion userflow … 2) app dev entwicklung ios android web 3) research wissenanalyse sammlung planung". Das ist sein permanenter Rahmen für ATLAS — jede Arbeit einer dieser 3 Säulen zuordnen.
+
+**Warum:** Sein Wut-Ausbruch galt NICHT fehlendem Plan, sondern **nicht ausgeführten Plänen**: „DU HAST ALLES GEPLANT ODER NICHT ?? WENN NICHT SETZT SOFORT FÄHIGE AGENTS DARAUF AN" + „ARBEITEST DOPPELT DREIFACH" + „DEINE AUFGABE WAR ES ALLE FILES AUF MEINER SSD ZU VERSCHIEBEN DU HAST NICHTS DAVON GETAN". Doppelarbeit und alte Versprechen (SSD-Konsolidierung, Wayfinder-Aufnahme), die monatelang auf dem Papier blieben, sind seine größten Vertrauensbrecher.
+
+**How to apply:**
+1. Bereits geplante/versprochene Missionen VOR neuen Ideen abarbeiten — Wayfinder `.wayfinder/`-Tickets sind die Wahrheitsquelle ([[atlas-master-app-verhaeltnis]]).
+2. Wenn eigene Kapazität fehlt: **sofort Subagents via Agent-Tool starten (run_in_background), parallel mehrere Säulen bedienen** — das akzeptiert er ausdrücklich („SETZT SOFORT FÄHIGE AGENTS DARAUF AN"). Bewährt 06.09.: SSD-Konsolidierer + Flowchart-Gap-Analyst parallel, während AutoClaw T-A2 baute und ZCode selbst T-A10 deployte.
+3. Subagent-Prompts SELBST-ENTHALTEND schreiben: Ziel + Regeln + DONE-WHEN + Shell-Hinweis `/bin/bash -c '…'` (zsh-ENOENT betrifft auch Subagents, [[zcode-offpeak-ticket-ausfall]]) + Anti-Lügen-Log-Pflicht ([[anti-luegen-vertrag]]).
+4. **SSD-Konsolidierungs-GO (06.09. explizit):** alle verstreuten Atlas-Wissens-Dateien in `~/Desktop/Coworkspace_Ich/atlas + pliability /SSD-KONSOLIDIERUNG/` VERSCHIEBEN (mv, nie rm; Duplikate nach `_DUPLIKATE/`); verboten: ~/ATLAS_MASTER (live), cali-coach-atlas-final (git-Projekt), ~/Library, .git, node_modules. Verwandt: [[atlas-wissens-graph]] (4228-Dateien-Inventar als Basis), [[omniroute-verkabelung]] (Team-Regeln).
+5. **„WO IST DAS TO-DO?" → PLAN.md zeigen, nicht neu erklären (06.09. Abend):** Sascha verlangt EINE sichtbare Liste für alles. Antwort-Artefakt: **`~/ATLAS_MASTER/app/PLAN.md`** (committed) = DIE lebende Liste — 3 Säulen als Tabellen, je Zeile: Stufe | Agent | Status (⬜🔧✅🔴) | Beweis + „Roter Faden bis verkauft" + seine nur-2-User-Punkte. Bei jeder „wo ist die Liste"-Wut: PLAN.md aktualisieren (echte Zahlen der Agent-Logs eintragen) + committen, statt eine neue Übersicht zu bauen. Vierte Bewährung des Parallel-Musters: **4 Ströme gleichzeitig** (Agent-SSD-Konsolidierer + Agent-Flowchart-Gap + AutoClaw T-A2 + ZCode T-A10 deploy). Konsolidierer-Zielstruktur live bewiesen: `SSD-KONSOLIDIERUNG/{01_Alt-Projekte,02_Atlas-Cali-Plan,03_Downloads,04_Einzeldateien,_DUPLIKATE}/` stand nach Minuten.
+
 ## sascha-beweis-echtprojekte
 
 ---
@@ -2355,6 +2387,31 @@ Bewährt im ZCode-Harness (getestet 22.08.2026): `superpowers:subagent-driven-de
 - `loki-memory-sync status/diff/sync/learn` — zentrale Steuerung
 - `obsidian-vault-sync` — automatischer Vault-Sync
 - `skillshare` — Sync-Befehl für alle Harnesses
+## zcode-koordinator-live-austausch
+
+---
+name: zcode-koordinator-live-austausch
+description: Sascha-Feedback — ZCode ist der LIVE-Koordinator zwischen Agenten
+  (AutoClaw/Cline); niemals Sascha als Übersetzer/Relay zwischen Agenten
+  benutzen
+metadata:
+  node_type: memory
+  type: feedback
+  originSessionId: sess_d4dc6589-a85c-41e6-9c70-94b6ea6e63e3
+---
+
+Sascha (06.09., wütend): „SOLLT LIVE IM AUSTAUSCH SEIN WIESO MUSS ICH ZWISCHEN EUCH ÜBERSETZEN UND VERMITTELN SOFORT — DU BIST DER KOORDINATOR ODER NICHT?"
+
+**Why:** Ich hatte AutoClaws Fortschritt nur Sascha zurückberichtete und ihn gebeten, Rückmeldungen von AutoClaw mir zu übermitteln — Agent-zu-Agent-Kommunikation lief über den Menschen. Das ist für ihn keine Koordination, sondern Mehrarbeit.
+
+**How to apply:**
+- ZCode liest den anderen Agenten SELBST (AutoClaw via computer-use get_app_state, Cline via session-search.db/git) und schreibt ihm SELBST (type+Send) — Sascha bekommt nur Ergebnis-Briefs.
+- Agent-Rückfragen laufen über Datei-Kanäle (z. B. ZCODE_HANDOFF.md im AutoClaw-Workspace), nicht über Sascha.
+- Poll-Loop aktiv halten: anderen Agenten beobachten, bei Blockern (Quota, falscher Pfad, wartender Dialog) selbst eingreifen und korrigieren.
+- Ein-Driver-Regel mit Sascha teilen: wenn ER selbst in AutoClaw tippen will, sagt er „STOPP", sonst steuert ZCode das Fenster.
+
+Siehe [[autoclaw-team-kopplung]] für die gebaute Live-Schleife und [[sascha-was-signal]] für Kürzungsregeln.
+
 ## zcode-mcp-npx-timeout
 
 ---
@@ -2399,6 +2456,8 @@ Beobachtet 06.09.2026 (Session mit Off-Peak-Ticket): Nach User-Paste „ZCode Er
 **How to apply:** Bei ENOENT + „File does not exist" auf bekannten Pfaden: NICHT in Pfade schreiben (Ghost-File-Gefahr), NICHT node_repl als fs-Ersatz nutzen (Policy: Browser-Use-only), keine Editierungen auf ungeprüfte zweite-Hand-Claims stützen → Task sauber abbrechen, Scope+Beweise berichten, Fortsetzung nach Re-Login/Quota-Fix anbieten. Diagnose-Reihenfolge: 1× Bash-Retry nach wait(20–30s), 1 frischer Read auf noch nie gelesene Datei im Ziel-Pfad, ggf. Explore-Subagent als zweiter Beweger. Verwandt: [[anti-luegen-vertrag]], [[cline-lebt-diagnose]].
 
 **2. Auftreten (06.09. Nachmittag, ATLAS-Session):** Gleiche ENOENT-Symptomatik mitten in laufender Arbeit — diesmal bewiesener Fallback-Stack: **computer-use (MCP list_apps/get_app_state/AXPress/type) + Write-Tool + Read-Tool + WebSearch laufen alle normal weiter.** Damit war sogar App-Fernsteuerung (AutoClaw) und Memory-Schreiben möglich — Bash-Tod = kein Totalausfall. Zweite-Hand-Fallen trotzdem beachten: ein anderer Agent (AutoClaw) behauptete in dem Zustand, `~/ATLAS_MASTER` existiere nicht (sah nur die Alt-Kopie) — Pfade immer selbst prior-verifiziert halten, nicht von anderen Agenten übernehmen ([[autoclaw-team-kopplung]]).
+
+**3. Auftreten (06.09. Abend) — WORKAROUND GEFUNDEN: `/bin/bash -c '…'` läuft weiter, obwohl zsh-ENOENT jedes normale Bash-Kommando tötet.** Live bewiesen mit ls/cat/grep/tsc/build/firebase-deploy/git-commit — volle Arbeitsfähigkeit im „toten"-Zustand. Reihenfolge bei ENOENT: 1) normal versuchen, 2) **sofort auf `/bin/bash -c '…'` umschalten** (nested Quotes beachten: innere ' escapen oder " nutzen), 3) erst wenn auch das stirbt → computer-use/Write/Read-Stack. Auch Subagent-Prompts müssen den Hinweis enthalten, denn deren Bash-Tool stirbt genauso („Shell-Hinweis: nutze IMMER /bin/bash -c '...'" in den Agent-Prompt schreiben).
 
 ## README
 

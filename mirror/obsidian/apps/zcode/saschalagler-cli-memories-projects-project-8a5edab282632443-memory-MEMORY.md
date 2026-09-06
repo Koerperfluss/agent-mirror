@@ -7,7 +7,9 @@ tags: [spiegel, zcode]
 
 # Memory Index
 
-- [AutoClaw-Team-Kopplung](autoclaw-team-kopplung.md) — AutoClaw = native Mac-App, Agent LÄUFT LOKAL; ZCode↔AutoClaw-Team gebaut: ZCODE_HANDOFF.md im Workspace + Chat via computer-use, Cluster live gestartet
+- [Sascha-3-Säulen-Parallelarbeit](sascha-3-saeulen-parallelarbeit.md) — ATLAS-Rahmen: 1 Planung/Userflow · 2 App-Dev iOS/Android/Web · 3 Research; Wut-Trigger = nicht ausgeführte Pläne/Doppelarbeit → ausführen ODER sofort fähige Subagents parallel; SSD-Konsolidierungs-GO 06.09.
+- [AutoClaw-Team-Kopplung](autoclaw-team-kopplung.md) — AutoClaw = native Mac-App, Agent LÄUFT LOKAL; ZCode↔AutoClaw-Team gebaut: ZCODE_HANDOFF.md im Workspace + Chat via computer-use, Cluster live gestartet; ALT-KOPIE-FALLE + Live-Koordinations-Loop etabliert
+- [ZCode-Koordinator-Live-Austausch](zcode-koordinator-live-austausch.md) — ZCode = LIVE-Koordinator zwischen Agenten; Sascha NIE als Relay/Übersetzer zwischen Agenten benutzen; Agenten selbst lesen/antworten, Poll-Loop halten
 - [Skill-Routing](skill-routing.md) — memory-basiertes Tool-Calling; Kanonisch: ~/.agents/skill-routing.md; Standard-Skills: ~/.agents/STANDARD-SKILLS.md
 - [GLM-Trigger-Befehle](glm-trigger-befehle.md) — KORREKTUR: Trigger-Wörter waren agent-erfunden, NIE User-absgegnet; kanonisch = /feature-dev (Plugin-Subagenten), glm-build/deve nur optional; Chat-Kontext → nie Bash/Terminal-Antworten
 - [Cline-CLI-Befehle-Mechanik](cline-cli-befehle-mechanik.md) — CLI-Commands = ~/.cline/workflows/*.md, Regeln = ~/.clinerules, Modell/MCP = ~/.cline/data (geteilt mit App); ~/.cline/skills ignoriert die CLI — Nachweis nur über sein /-Menü

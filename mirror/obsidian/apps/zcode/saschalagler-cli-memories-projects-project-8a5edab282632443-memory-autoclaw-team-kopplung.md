@@ -34,3 +34,10 @@ metadata:
 **Quota-Abbruch:** Cluster-Lauf endete mit „We're experiencing high demand… upgrade to monthly subscription" (Z.AI-Serverlast, kein Defekt) + Deliverable „ATLAS_MASTER_FLOWCHART.html file not found" (alter falscher Pfad). Punkte-Stand 06.09.: 8.270 + **5.000 verfallen in 3 Tagen** (Inspiration Hub zeigt das).
 
 **Steuerungs-Gefahr:** Während der Agent arbeitet, öffnet ER SELBST macOS-File-Dialoge (z. B. beim Flowchart-Suchen) — mein Escape/Klick traf dann SEINEN Dialog, nicht meinen. **Regel: während Cluster-Lauf nicht ins Fenster funken**; nur beobachten (get_app_state), danach reviewen („autoclaw fertig" von Sascha = Signal für Diff-Review in ~/ATLAS_MASTER/app). type→Send kann `target_verification_status: mismatched` liefern wenn ein Dialog Fokus kapert — erst get_app_state, Dialog via Escape schließen, neu beobachten.
+
+## Live-Koordinations-Loop etabliert (06.09. Abend)
+
+Sascha befahl: ZCode = KOORDINATOR, kein Übersetzen durch ihn ([[zcode-koordinator-live-austausch]]). Darauf live ausgeführt:
+- AutoClaw hatte selbst einen NEUEN Chat vorbereitet: ~30 ATLAS-Docs als Anhänge (Batch 18:59: STATUS.md, DESIGN_EVOLUTION.md, UI_UX_PLAN.md, UI_AUDIT_BERICHT.md, alle PDFs …) — **aber aus der ARCHIV-Kopie** (Coworkspace-Quelle, .openclaw-attachments). Chat-Feld leer, Agent Cluster noch AUS (=0).
+- Ich schaltete Agent Cluster selbst an, tippte den KOORDINATIONS-AUFTRAG (T-A2 Onboarding 8→20, NUR /Users/saschalagler/ATLAS_MASTER/app, D8, tsc+git-Commit+STATUS-Zeile als DONE-WHEN, Rückfragen als Kommentar in ZCODE_HANDOFF.md) und sendete (19:18; Session aktualisierte sich 19:09→19:23).
+- ** Neue Mechanics:** (a) `state_id superseded`-Fehler, wenn AutoClaws UI sich zwischen type und Send ändert → neu get_app_state, Aktion wiederholen, nie blind retry; (b) Ein-Driver-Regel: ein fremdes „S" im Feld zeigte Doppel-Tippen (Sascha ODER ich) — wenn Sascha selbst tippen will, sagt er „STOPP", sonst steuert ZCode; (c) AutoClaw-Deliverables mit „file not found" = tote Archiv-Pfade aus alten Handoffs, korrigierbar per Chat-Nachricht mit Absolut-Pfad.
