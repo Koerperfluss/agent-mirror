@@ -1,5 +1,7 @@
 # Memory Index
 
+- [ZCode-Projektgruppen-Mechanik](zcode-projektgruppen-mechanik.md) — 06.09.: Chatliste links = tasks-index.sqlite (Gruppen+node_orders+members), externes SQL wirkt erst nach ⌘Q-Neustart; Claude/Cline-Chat-Importer import-chats-loki.py (259 Cline-Chats drin); Restore-.command auf Desktop
+
 - [FörderOps-Assistent](foerderops-assistent.md) — 30.08. aktiv, 06.09. spät Web-UI 8765 LÄUFT WIEDER (kein Autostart!); 70 Wissensdokumente; digi4KMU 50k existiert NICHT; Cap-Table Leon 26/Lisa 26/Sascha 25/Peter 23; 🔴 $350k-Blocker: Webgo-NS-Switch
 - [GUI nicht CLI](feedback-gui-not-cli.md) — 30.08. Sascha: „ich will eine grafische oberfläche" — IMMER Web-UI bauen, nie nur Terminal-Befehl
 - [Sequential Thinking immer](sequential-thinking-always.md) — 30.08. Nutzer-Regel: mcp sequentialthinking bei JEDER Anfrage aufrufen; verankert in ~/.agents/STANDARD-SKILLS.md A.3 + skill-routing.md (alle 5 Harnesses)

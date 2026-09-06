@@ -1,8 +1,10 @@
 ---
 name: atlas-master-app-verhaeltnis
-description: ATLAS 06.09. FINALE — ALLE entwicklungsbaren Stufen DONE: 20-Stufen-Onboarding
-    (AutoClaw-Merge) + T-A8 + P4.5 + C2 Proxy + C4 Tiers (keyless Chat) + GTM.md; PLAN.md
-    23✅/24, Rest NUR 2 User-Installationen (Xcode, Android Studio) für native Builds
+description: ATLAS 06.09. NACHT-FINAL — ALLE entwicklungsbaren Stufen DONE (23✅/24 in
+    PLAN.md): 20-Stufen-Onboarding live (Team-Merge AutoClaw+ZCode) + T-A8 CoTChain +
+    P4.5 Auto-Push + C2 Proxy hardened (Fallback-Kette, Key nur im Secret) + C4 Tiers
+    keyless + GTM.md + Launch-Paket; LIVE-VOLLTEST 10/10 (QA-LIVE/, 11 Screenshots);
+    Rest NUR Installationen (Xcode, Android-SDK) + User-Geräte-Cache-Trap
 metadata:
   node_type: memory
   type: project
