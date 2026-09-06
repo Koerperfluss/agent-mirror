@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-06 23:35 UTC
+Zuletzt gespiegelt: 2026-09-06 23:46 UTC
 
 ## call_fe4ee4834bf14478b4a66d0e-tool-result-df2ccbef-b4f7-499f-ac43-59af5f927f22
 
@@ -1478,7 +1478,7 @@ Update 2026-08-22 (Repair-Session): Ordner umgezogen nach `~/Desktop/Coworkspace
 - [Judicario Gateway Key Rotation](judicario-gateway-key-rotation.md) — alter Key tot, neuer Key jud_Cpu-… verifiziert, Connectoren 06.09.2026 gefixt
 - [Chipsi/Openlaw Setup](chipsi-openlaw-setup.md) — Chipsi=Cloud-Webapp via Chrome-Shortcut; Antwort-Fehler=serverseitig bei openlaw (06.09. bestätigt, George-Fix nötig); UI-Tests nur mit cua-Klick+echter Tastatur; Gmail=koerperfluss@gmail.com
 - [ZCode Computer Use Status](zcode-computer-use-status.md) — Plugin/TCC ok, Server braucht permission-broker-socket → Fix=volles App-Restart; per 06.09. offen
-- [Wohnkosten-Vereinbarung Status](wohnkosten-vereinbarung-status.md) — v2 signierfertig (§ 1426→1369 ABGB gefixt), Barzahlungen bestätigt, Unterschriften+Versand BH Melk offen
+- [Wohnkosten-Vereinbarung Status](wohnkosten-vereinbarung-status.md) — v2 signierfertig (§ 1426→1369 ABGB gefixt), Barzahlungen bestätigt, Herbert verifiziert (Präsidiale St. Pölten) aber Unterschrift nicht öffentlich auffindbar → Gegenzeichnen vor Ort + WhatsApp-Beleg
 
 ## chipsi-openlaw-setup
 
@@ -1536,6 +1536,7 @@ Stand 06.09.2026 (Abend): Wohnkostenvereinbarung Sebastianistraße 15, 3382 Loos
 - Fertig gebaut: `Wohnkosten_Vereinbarung_Loosdorf_v2.pdf` (signierfertig, Ort/Datum 06.09.2026 vorausgefüllt) + `Quittung_Kostenbeteiligung_Herbert_Vorlage.pdf` (monatlich, für künftige Barzahlungen).
 - Ausstehend: Unterschriften (Herbert + Sascha), Versand an BH Melk (Thomas Schauer, soziales.bhme@noel.gv.at) — Schriftsatz vom 04.09. hatte Vereinbarung zugesagt.
 - Herbert-Identifizierung (Recherche 06.09., Report: `Coworkspace_Ich/PETER JUDICARIO/RESEARCH_Herbert_Edelmayer.md`): belegt im offiziellen Telefonverzeichnis st-poelten.at, Abteilung „IV Präsidiale" (Bürgermeister-Büro-Stab), Tel. +43 2742 333-1111; keine öffentliche Zeichnungsbefugnis, keine Presse-/Protokolltreffer → tritt im Mietkontext zu Recht als Privatperson auf.
+- Herberts **Unterschrift ist öffentlich nirgends auffindbar** (Nachsuche 06./07.09.: filetype:pdf-/site:st-poelten.at-Suche + Bildersuche = 0 Treffer; „Walter Edelmayer" NÖ Landtag 2006 = Namensvetter) — Normalbediensteter ohne Amts-Unterzeichnungsrolle. Verifizierungs-Plan gegen späteres Bestreiten der 1.050-€-Barquittung: (1) Unterschrift vor Ort + Handyfoto von Herbert beim Signieren, (2) WhatsApp-Bestätigung aus seiner Rufnummer + Foto der signierten Seite, (3) Lichtbild-Check beim Unterschreiben.
 - Rechtsgrundlage-Check live via Judicario-Gateway: VwGH 94/15/0128 (Untervermietung ohne Überschuss = Liebhaberei, keine Einkünfte → Herbert-Meldefrage), § 33 FinStrG (nur bei Überschuss), VwGH 03.08.2026 (Sozialhilfe-Missbrauch). at-Corpus-Lücke: „Sozialhilfe Wohnkosten" = 0 Treffer, George@openlaw.cc melden. Siehe [[judicario-gateway-key-rotation]], [[chipsi-openlaw-setup]].
 
 ## zcode-computer-use-status
