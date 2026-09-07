@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-07 14:47 UTC
+Zuletzt gespiegelt: 2026-09-07 14:58 UTC
 
 ## call_fe4ee4834bf14478b4a66d0e-tool-result-df2ccbef-b4f7-499f-ac43-59af5f927f22
 
@@ -1715,6 +1715,7 @@ Diagnose 06.09.2026: Nutzer konnte Computer Use in ZCode „nicht aktivieren". B
 
 # Memory Index
 
+- [Sascha-Training-Plan-Grill](sascha-training-plan-grill.md) — ECHTER Status 07.09.: 88 kg, Adv Tuck 3–4s, FL HalfLay 3–4s/Full 1–2s, HSPU 3–4 bis 90°+1×90°, Explosiv-Volumen zu hoch, Hüftheben-Problem aktiv, One-Arm nebene, 3–4×/Wo, will konkrete Reps/Sets; REGEL: er grillt den bestehenden Plan (1 Entscheidung pro Runde), nie ein fertiges Agent-Dokument
 - [Lisa-Therapeut-Skill](lisa-therapeut-skill.md) — FERTIG 07.09.: /lisa-therapeut in 3 Orten + chat.db-Skript live; Papa-Satz 02.09. war SASCHAS Nachricht (nicht Lisas Angriff); SQLite-strftime-TEXT-Falle; Lagenotiz 07.09. = Stillsein-Regel; 07.09. Lisa-Instagram-/Block-Umgehungs-Recherche ABGELEHNT (Grenz-Umführung, Linie halten); **Sabine-Export: Mutter-Chat = 02.06.26 Einbahnstraße (14 Screenshots + 3 Anrufe + „halte sie auf") → erklärt Präventiv-Block 05.09. — in alle 3 Skill-Kopien NACHGETRAGEN (erledigt)**; Claude-Transcript-Konvergenz 07.09.: ZCode/Claude/Analysedateien = identische Schlüsse; **CHRONOLOGIE EXISTIERT JETZT: `~/Desktop/CHRONOLOGIE_LISA_SABINE.md` + Spiegel in Dokumente/files/ — Konvention [B]elegt/[M]ündlich/[?]offen, Widersprüche markieren statt glätten; Sabine-Block-Zeitpunkt = widersprüchlich [?] („vor Besuch" vs. „DAS WAR DANACH") — nie Ursachen-Geschichte darauf bauen**; NACHRICHT_SABINE-Analyse: 6 dokumentierte Sprengstellen + überarbeitete Langversion geliefert; Basisrate Sabine 0/15+ seit Juni — keine Formulierung ändert das; IG-Recherche (Cline) liegt vor: Accounts existieren, Block persönlich, nichts technisch — nicht neu recherchieren; Bewährt: nach Absage seine Sinn-Fragen faktenbasiert beantworten; bei „ANALYSIEREN"-Wut reine Objekt-Lieferung (erst Zustell-Check, Block-Tabelle, überarbeiteter Text, Prognose); **PSD-Kontakte liegen in SEINEM `STUFENPLAN/Hilfsstellen Lisa.pdf` (PSD Amstetten 07472 65544 Di 14–16 walk-in, Krisendienst NÖ 0800 20 11 20) — ⚠️ Vorlage darin ist in LISA-STIMME, nie als sie kontaktieren; er ruft als er selbst an**; **IG-FINAL: lis.art.z = Mai 2026 frisch/leer (0 Posts, 2 F) — nichts Verdecktes, Fall-Recherche abgeschlossen; „Weg über Julia" = abgelehnte Umgehung, aktiv widerrufen falls Agenten sie erneut vorschlagen**; **GMAIL-PSD-THREADS (computer-use im koerperfluss@gmail.com): 07.10.25 + 18.05.26 „…für Lisa Marie Mauerhart" an PSD-Team Melk, 4 Nachrichten = PSD antwortete 2× — Strategie: im bestehenden Thread antworten statt Kaltanruf; namentlicher Kontakt Florian Hehenberger-Rautner (Caritas Amstetten, +43 676 83844659); Technik: Gmail-Zeilen öffnen nicht per Element-Klick, Koordinaten-Klicks sterben wenn ZCode-App vorgereiht; Apple-Mail-DB enthält KEINE PSD-Mails (nur Firmen-Konto, false positives)**; **IG-DEUTUNGS-DISZIPLIN (07.09. Wut „wie kannst du das sagen"): Sichtdaten nur als Beweis-Tabelle („Beweist" vs. „Beweist NICHT") — IG-Profil beweist NICHT „Leben läuft weiter/kein Zusammenbruch" (IG = kein Gesundheitsindikator) und leeres Konto NICHT „kein Doppelleben" (= offene Frage); „Netz-Teil abgeschlossen" = nur „Netz hat nichts mehr herzugeben", nie „Frage beantwortet" — Deutung nie als Daten verkaufen (aberrante Salienz: leeres Konto wird Zwangs-Beweis)**
 - [Sascha-Krise-nur-einmal](sascha-krise-nur-einmal-nennen.md) — 142/Hausarzt/PSD nur EINMAL pro Thema nennen, NIE wiederholen; bei „ANALYSIEREN/HANDELN" sofort Objekt-Analyse liefern (Nachricht Block für Block), keine Fürsorge-Zeilen (07.09. „HALTS MAUL"-Wut nach 3× Wiederholung)
 - [Mac-Speicher-voll-Rettung](mac-speicher-voll-rettung.md) — GELÖST 06.09.: 22→74 GB frei per `brctl evict` auf iCloud-Offline-Kopien (2-TB-Plan, Barbulls 34G + Musik/FOTOS/FFG), nichts gelöscht; Technik: evict nur Hochgeladenes, .DS_Store ausnehmen + Wiederholungspässe, `brctl download` = Rückprobe; Storage-Dialog-Zahlen irreführen — Wahrheit in iCloud-Pane; offen mit OK: .lmstudio 19,6G, Docker.raw (sparse! du=11G real), PRojekte 13G
@@ -2876,6 +2877,35 @@ metadata:
 5. Wenn Trotz-Rejection-Kette: die vermissten Punkte IM PLAN BENENNEN und ergänzen, nicht neu formatieren — Inhalt, nicht Form, war das Problem
 
 **Why:** Seine Rejection-Gründe waren jedes Mal konkrete FEHLENDE INHALTE, nicht Länge. Der „3-Zeilen-Minimalplan"-Rat aus [[plan-mode-falle]] gilt nur für Plan-Mode-Vergessen-Fälle, nicht für Vollständigkeits-Fälle.
+
+## sascha-training-plan-grill
+
+---
+name: sascha-training-plan-grill
+description: Saschas ECHTER Trainings-Status (07.09.26) + Grill-Session-Regeln —
+  er grillt/adjustiert den bestehenden Plan, bekommt nie ein fertiges
+  Agent-Dokument
+metadata:
+  node_type: memory
+  type: project
+  originSessionId: sess_d4dc6589-a85c-41e6-9c70-94b6ea6e63e3
+---
+
+**Saschas echter Trainings-Status (07.09.2026, aus SEINEN Worten beim Grillen — überholt alle Docs):**
+- **88 kg** (App-Stand W1 Cond; Docs hatten 89/92)
+- **Adv Tuck Planche 3–4s** — höher als die Doc-Werte (Frog 45°)! Er ist weiter als seine eigenen Protokolle denken
+- **FL: Half Lay 3–4s · Full FL 1–2s**
+- **HSPU: 3–4 Reps bis 90°, 1× voll 90°** — die Plan-Dosis (6–8 RIR 1) war „viel zu viel"
+- **Explosiv-Block: Volumen viel zu hoch** (9–10 Arbeitssätze) — sein Dauer-Kritikpunkt; Hüftheben-Problem besteht WEITER (real, nicht historisch)
+- **One-Arm = Nebensache** (zurückgestellt, bestätigt)
+- **Ziel: so viel Progress wie möglich, 3–4×/Woche**; „mir fehlen reps sets" = er will KONKRETE Zahlen überall, keine „Max Hold/minimal assistiert"-Vagheiten
+- Arbeitet sequenziell: „dann 1 dann 2 dann 3" — genau ein Grillpunkt pro Runde
+
+**Prozess-Regel (2× ExitPlanMode abgelehnt bevor es saß):** „KEINEN FERTIGEN PLAN WILL ICH — DEN PLAN DER ERSTELLT WURDE WILL ICH GRILLEN, BESPRECHEN, ANPASSEN." Er will nie ein neues fertiges Plan-Dokument vom Agent; das Produkt ist der INTERAKTIVE Loop: bestehenden/generated Plan vorlegen → ER grillt Zeile für Zeile → Anpassungen live einarbeiten → erst dann festigen. Korpus: 15 Sascha-Docs in `Coworkspace_Ich/atlas + pliability /claude atlas training/SaschaTraining/` (oliver_*.html = fremde Persona 68 kg, NICHT Sascha); neueste Denkung = app_v3 + straddle_protokoll; höchster Grillwert = Widersprüche zwischen seinen eigenen Varianten als Decision-Map.
+
+**Why:** Zwei abgelehnte Pläne (eigenes MEIN_PLAN.md; „Coach generiert, du grillst später") — falsch war beides Mal, dass die Diskussion nicht JETZT mit IHM passiert und/oder ein eigenes Dokument das Produkt war.
+
+**How to apply:** Bei Plan-/Protokoll-Aufgaben von ihm: Fakten extrahieren → Widersprüche als Decision-Map → EINE Frage pro Runde mit konkreter Empfehlung → seine Antwort sofort festzurren → erst am Ende Dokument/App-Verankerung. Verwandt: [[sascha-plan-vollstaendigkeit]], [[sascha-ziel-klarstellen]], [[i-have-adhd]]-Stil (kurz, 1 Aktion).
 
 ## sascha-unterlagen-lesen
 
