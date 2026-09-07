@@ -7,7 +7,7 @@ tags: [spiegel, zcode]
 
 ---
 name: atlas-master-app-verhaeltnis
-description: ATLAS 07.09. STAND — 3 Plattformen live + Capacitor-Fix + Sticky-Hint-Fix (C4wS_bJN) + 6-AGENTEN-PARALLELTEAM (Fix/Tracking/Glass✅/Modelle✅/Marketing/QA) + 16-Modell-Kette + higgsfield-Skills installiert; Deploy-Stau-Lektion — pro Agenten-Abschluss deployen, nicht sammeln; Cache-Falle 3× — Live-Hash-Beweis + ?v=-Link; Plan-Pastes erst gegenprücken
+description: ATLAS 07.09. STAND — 3 Plattformen live + Judge-Gate 0/6→3/3 PASS (Blob-Fix, Persistenz, Onboarding produziert, Bundle BmYgHge7) + 6-AGENTEN-PARALLELTEAM + 16-Modell-Kette + higgsfield-Skills; Fallen min-h-0-Flex, Overlay-bg-bg, SW-stale-Bundle; iOS/APK-Rebuild mit Judge-Stand offen
 metadata:
   node_type: memory
   type: project
