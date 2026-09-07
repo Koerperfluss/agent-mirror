@@ -1,6 +1,6 @@
 # saschalagler (cline-code)
 
-Zuletzt gespiegelt: 2026-09-07 19:54 UTC
+Zuletzt gespiegelt: 2026-09-07 20:05 UTC
 
 ## CLAUDE
 
@@ -4693,6 +4693,15 @@ Cline can call `web_search` to retrieve Exa-backed web results before deciding w
 ## Security Notes
 
 Queries are sent to Exa. Do not include private code, secrets, customer data, or other confidential text in search queries.
+
+## DE
+
+# Sprachregel: Deutsch
+
+- Antworte IMMER auf Deutsch.
+- Erkläre Fachbegriffe beim ersten Auftreten kurz auf Deutsch.
+- Code, Befehle und Dateinamen bleiben original (Englisch), Kommentare im Code auf Deutsch.
+- Git-Commits auf Deutsch, prägnant.
 
 ## global-rules
 
