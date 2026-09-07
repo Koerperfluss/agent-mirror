@@ -1,4 +1,4 @@
-{ "generatedAt": "2026-09-07 18:50 UTC", "pages": [
+{ "generatedAt": "2026-09-07 19:01 UTC", "pages": [
 { "app": "antigravity", "project": "1cf5e412-ad9c-4f02-9f3e-93788dc7476d", "path": "wiki/antigravity--1cf5e412-ad9c-4f02-9f3e-93788dc7476d.md" },
 { "app": "antigravity", "project": "Projekt-Task-Planer", "path": "wiki/antigravity--Projekt-Task-Planer.md" },
 { "app": "antigravity", "project": "cli", "path": "wiki/antigravity--cli.md" },
@@ -9,7 +9,9 @@
 { "app": "claude", "project": "saschalagler", "path": "wiki/claude--saschalagler.md" },
 { "app": "claude", "project": "web-template", "path": "wiki/claude--web-template.md" },
 { "app": "cline-code", "project": "chisle", "path": "wiki/cline-code--chisle.md" },
+{ "app": "cline-code", "project": "cline", "path": "wiki/cline-code--cline.md" },
 { "app": "cline-code", "project": "ponytail", "path": "wiki/cline-code--ponytail.md" },
 { "app": "cline-code", "project": "saschalagler", "path": "wiki/cline-code--saschalagler.md" },
+{ "app": "cline-code", "project": "sdk", "path": "wiki/cline-code--sdk.md" },
 { "app": "cline-code", "project": "web-template", "path": "wiki/cline-code--web-template.md" },
 { "app": "zcode", "project": "saschalagler", "path": "wiki/zcode--saschalagler.md" }] }
