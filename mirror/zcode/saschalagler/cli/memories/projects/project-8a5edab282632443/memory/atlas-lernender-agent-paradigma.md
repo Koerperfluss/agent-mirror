@@ -50,3 +50,13 @@ Der finale ExitPlanMode wurde genehmigt, nachdem (a) „hast du alles kapiert?" 
 **Glass Engine v2 deployed (Agent-2 lieferte 5 Commits):** deps three 0.185 + @react-three/fiber 9 + drei 10 + motion 13 · FluidScene (r3f Meta-Blobs, pointer/gyro-lerp, dpr 1.5, pause bei hidden, lazy) · Tilt/GlassPlate (Spring ±7°, specular sheen via CSS-Vars, statisch bei touch/reduced-motion — schützt die 68 DB-Karten) · MobileTabBar-Buttons + DB-Karten als GlassPlate · BullLogo SVG (Hörner+Kopf+Ring, amber, motion-Sheen) in Topbar/Drawer/Start-Header/favicon · Coach-Eingabezeile Glas-Pill.
 
 **Rest-Funktionen (Agent-3, partial vor Netz-Tod):** AgentSettings committed (8c5415a) · Ausbildung Lernkarten+Quiz committed (3d08089a) · GraphViewer.tsx + graph.json → public/ + WissenTab „Liste|🕸 Graph"-Toggle (von ZCode nachgezogen) · Overview-SSC/PR-Band-Teile unklar — beim nächsten Überblick prüfen.
+
+## ✅✅✅ KOMPLETTER LOOP LIVE BEWIESEN (07.09. früh, Produktion, QA-LIVE/20-26)
+Interview 0→**11/13** (3 komprimierte Antworten) → „Plan erstellen"-Klick → Plan-Karte mit **KB-Begründungen** (Scapula Push-ups · Tuck Planche 4×8s RPE 7 · Adv. Tuck FL 4×6s · „— [KB: biomechanik]") → **„In Logbuch übernehmen"** → heutiger Tag: **3 Blöcke · 6 Übungen · 20 Sätze** generiert → Onboarding schließt, App offen. E2E-Skript: `QA-LIVE/interview-e2e.sh` (send() via nativem textarea-value-Setter + Enter; state() per `/(\d+)\/13 erfasst/`-Regex).
+
+**Gotchas dabei:**
+- **READY_THRESHOLD = 0.8 → 11/13 Pflicht:** Bei 10/13 (0.769) tut ein „Plan erstellen"-Klick **NICHTS** — kein Loading, kein Fehler (runPlan wird erst gerendert/auslösbar wenn planReady). Diagnose-Pflicht bei „Button-Klick ohne Wirkung": zuerst `(document.body.innerText.match(/(\d+)\/13 erfasst/))[1]` prüfen und ggf. eine Antwort mehr senden.
+- **Plan-Generierung Self-Heal nachgerüstet** (runPlan): 4 Versuche, ab Retry 2 keyless über Proxy (`apiKey: attempt>=1 ? '' : apiKey`) — identisch zum Dialog-Retry; Google-Abend-Peaks (503/429) übersteht damit auch der Plan-Schritt.
+- Retry-Button heißt „**Noch mal**" (nicht „Wiederholen") — Matching danach.
+- Logbuch-Verifikation: nicht „blocks zählen" im Tab-Wechsel sofort, sondern `TRAININGSTAGE` + „Tag Mo., 07. Sept. · Fokus … 3 BLÖCKE 6 ÜBUNGEN 20 SÄTZE" im innerText lesen (Block-Zähl-Regex lieferte 0 obwohl Tag da war).
+- Watch-Loop-Muster: pro Schritt 22–25s schlafen, JSON-Status per agent-browser eval, `case "$S" in *\"p\":true*) break;; esac`.
