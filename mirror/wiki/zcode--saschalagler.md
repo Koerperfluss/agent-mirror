@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-07 21:21 UTC
+Zuletzt gespiegelt: 2026-09-07 21:31 UTC
 
 ## call_339477364a17488a84bbd97e-tool-result-bc9354f9-6002-4ff8-b81d-0069bef089d6
 
@@ -1633,9 +1633,9 @@ Sascha's machine: Apple M4 **MacBook Air** — **fanless**, 60 Hz panel, no ProM
 
 ---
 name: patrick-physiotherapie-sbp
-description: Patrick will Physiotherapie studieren (ohne Matura) — Recherche
-  07.09.2026 zu Studienberechtigungsprüfung + FH-Aufnahmeverfahren, Kernfakten
-  und Fallstricke
+description: Patrick (>20, ohne Matura, ohne jegliche Vorbildung) will Physiotherapie
+  an IMC Krems studieren — SBP für ihn blockiert; Empfehlung Pflegefachassistenz
+  als Schlüsselweg, Kernfakten + Fallstricke aus Recherche 07.09.2026
 metadata:
   node_type: memory
   type: project
@@ -1656,7 +1656,7 @@ Patrick (verwandt mit Sascha) will **Physiotherapie (FH-Bachelor) in Österreich
 
 **Patrick-Situation (07.09.2026 bestätigt):** über 20 → Altersvoraussetzung SBP **erfüllt**; **KEINE einschlägige Ausbildung** → Abkürzung (Zusatzprüfungen) entfällt, er macht die **volle SBP**. **Ziel-FH: IMC Krems** (akzeptiert externe SBP; Deutsch B2; Aufnahme = Online-Gesundheitstest ~2h biz:Examiner → körperlicher Eignungstest in Krems → Interview mit Motivationsschreiben; nach Zusage Gesundheitszeugnis + Strafregister <3 Monate; Fristen 2027/28: Bewerbung ab ca. 01.12.2026, Frist 15.03.2027 — vor Bewerbung verifizieren). Wichtigster offener Punkt: SBP-Zulassung braucht trotzdem „erhebliche berufliche/sonstige Vorbildung" → Schritt 1 der Todoliste = Anfrage an IMC Krems, ob Patricks Vorbildung genügt. Zeitleiste: Sep 2026 Antrag → 2026/27 Prüfungen → Sep 2027 Studienstart.
 
-**Ohne Berufserfahrung = KEIN Ausschluss (07.09. geklärt):** § 64a Abs 3 UG verlangt „erhebliche **berufliche ODER sonstige** Qualifikation" — auch ohne Beruf zählen sonstige Vorbildungen (Kurse, längeres Selbststudium, Ehrenamt/Sport im Gesundheitsbereich, Pflege Angehöriger, Praktika); Entscheidung beim Rektorat. Praktischer Workaround: 6–12 Monate Pflegehelfer / Physiopraxis-Assistenz / Rettungssanitäter löst SBP-Zulassung + Punkte im IMC-Interview gleichzeitig; verlässlichster Weg sonst: Pflegefachassistenz-Ausbildung (öffnet sogar Direkteinstieg mit nur Zusatzprüfungen). Uni Wien ist streng (Vorbildung „aus dem Bereich des Studiums"), Hochschulen uneinheitlich → erst Liste von Patricks Jobs/Kursen/Ehrenamt erstellen, dann an IMC Krems melden.
+**FINALE Klärung (07.09. spät): Patrick ist TECHNISCHER ZEICHNER** — hat also einen **abgeschlossenen Lehrabschluss** (frühere Annahme „gar nichts" war falsch). Konsequenz: **SBP-Zulassung ERFÜLLT** (Lehre = klassische „erhebliche berufliche Qualifikation", § 64a Abs 3 UG; Alter 20+ ✅). Da Zeichner **nicht einschlägig** (nicht medizinisch) ist: **volle SBP** (5 Teilprüfungen) nötig, NICHT nur Zusatzprüfungen. Ausnahme offen: manche FHs akzeptieren jeden Lehrabschluss mit Zusatzprüfungen → bei IMC Krems nachfragen. Sein Plus im IMC-Interview: Präzision, räumliches Denken (passt zu Eignungstest Koordination/Beobachtung); Motivationsschreiben muss den Wechsel Technik→Medizin begründen. Plan: jetzt SBP-Antrag + parallel IMC-Anfrage + Deutsch B2 checken → Studienstart Sep 2027 realistisch. Weitere offene Baustelle: professionelles DOCX (s. unten) mit diesen korrekten Fakten als eigenem Abschnitt.
 
 **Deliverable (Stand 07.09. spät):** Simple 1-Seiten-PDF `/Users/saschalagler/Desktop/Patrick_Physiotherapie_Weg.pdf` (reportlab-plaintext, Generator `sbp-doc/patrick_pdf.py`) wurde **scharf abgelehnt** („kein Design, keine Struktur, kein Layout") → Sascha will jetzt ein **professionell gestaltetes DOCX** (Cover-Rezept R4 Top Color Block, echte Tabellen, klare Sektionen) mit dem „sonstige Vorbildung"-Punkt als eigenem Abschnitt — **Bau noch offen** (docx npm-Paket installiert in `~/.zcode/workspace/default/sbp-doc/`; kein soffice/LibreOffice → kein direkter PDF-Export). Siehe [[feedback-doc-design-matters]].
 

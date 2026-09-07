@@ -1,8 +1,8 @@
 ---
 name: patrick-physiotherapie-sbp
-description: Patrick (>20, ohne Matura, ohne jegliche Vorbildung) will Physiotherapie
-  an IMC Krems studieren — SBP für ihn blockiert; Empfehlung Pflegefachassistenz
-  als Schlüsselweg, Kernfakten + Fallstricke aus Recherche 07.09.2026
+description: Patrick (>20, Lehre Technischer Zeichner, ohne Matura) will Physiotherapie
+  an IMC Krems studieren — SBP-Zulassung erfüllt, volle SBP nötig; finale Dokumente
+  (DOCX + 2-Seiten-PDF) fertig auf Desktop, Recherche-Stand 07.09.2026
 metadata:
   node_type: memory
   type: project
