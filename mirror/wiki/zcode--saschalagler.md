@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-07 12:12 UTC
+Zuletzt gespiegelt: 2026-09-07 12:24 UTC
 
 ## call_fe4ee4834bf14478b4a66d0e-tool-result-df2ccbef-b4f7-499f-ac43-59af5f927f22
 
@@ -1720,7 +1720,7 @@ Diagnose 06.09.2026: Nutzer konnte Computer Use in ZCode „nicht aktivieren". B
 - [Mac-Speicher-voll-Rettung](mac-speicher-voll-rettung.md) — GELÖST 06.09.: 22→74 GB frei per `brctl evict` auf iCloud-Offline-Kopien (2-TB-Plan, Barbulls 34G + Musik/FOTOS/FFG), nichts gelöscht; Technik: evict nur Hochgeladenes, .DS_Store ausnehmen + Wiederholungspässe, `brctl download` = Rückprobe; Storage-Dialog-Zahlen irreführen — Wahrheit in iCloud-Pane; offen mit OK: .lmstudio 19,6G, Docker.raw (sparse! du=11G real), PRojekte 13G
 - [Sascha-Agenten-Ordner-unantastbar](sascha-agenten-ordner-unantastbar.md) — .claude/.gemini/.zcode/.hermes nie „nur Modelle/Cache" nennen oder anfassen; „STOP" = sofort Tools anhalten + „nichts gelöscht, nur gelesen"; Messungen vorher ankündigen (trat 2× auf); seine Ressourcen nie aus Dialog-Screenshots beurteilen („iCloud-Plan zu klein" war falsch → KNALLTS-Wut), autoritative Pane prüfen
 - [Sascha-Meldung-nur-fertig](sascha-meldung-nur-fertig.md) — „genug geplant, erst melden wenn fertig" = still durchbauen, keine Zwischenberichte; EIN finaler Bericht mit Beweisen + Rest=User-Aktionen
-- [Agenten-Selbstüberwachung](agenten-selbstueberwachung.md) — Sascha fordert Agent-Team das den Haupt-Agenten ÜBERWACHT: Orchestrator(baut) + unabhängiger Reviewer(misst/nichtet, baut NICHT — Gewaltenteilung) + Install-Worker + ZCode koordiniert
+- [Agenten-Selbstüberwachung](agenten-selbstueberwachung.md) — Sascha fordert Agent-Team das den Haupt-Agenten ÜBERWACHT: Orchestrator(baut) + unabhängiger Reviewer(misst/nichtet, baut NICHT — Gewaltenteilung) + Install-Worker + ZCode koordiniert; **07.09. real ausgeführt: document-skills:judge = Abnahme-Instanz (User-Akzeptanz-Gewichtung), erstes Urteil 0/6 PASS — fertig gilt erst bei Judge-PASS auf frischen Screens nach Deploy, nie per Selbstanzeige**
 - [Sascha-3-Säulen-Parallelarbeit](sascha-3-saeulen-parallelarbeit.md) — ATLAS-Rahmen: 1 Planung/Userflow · 2 App-Dev iOS/Android/Web · 3 Research; Wut-Trigger = nicht ausgeführte Pläne/Doppelarbeit → ausführen ODER sofort fähige Subagents parallel; SSD-Konsolidierungs-GO 06.09.
 - [AutoClaw-Team-Kopplung](autoclaw-team-kopplung.md) — AutoClaw = native Mac-App, Agent LÄUFT LOKAL; ZCode↔AutoClaw-Team gebaut: ZCODE_HANDOFF.md im Workspace + Chat via computer-use, Cluster live gestartet; ALT-KOPIE-FALLE + Live-Koordinations-Loop etabliert
 - [ZCode-Koordinator-Live-Austausch](zcode-koordinator-live-austausch.md) — ZCode = LIVE-Koordinator zwischen Agenten; Sascha NIE als Relay/Übersetzer zwischen Agenten benutzen; Agenten selbst lesen/antworten, Poll-Loop halten
@@ -1809,6 +1809,8 @@ Bewährte Zusatzregeln: Subagent-Prompts müssen den /bin/bash-c-Workaround enth
 **Resume-Muster:** „Completed"-Subagents sind keine Totgeborenen — per SendMessage (an die agentId) wieder aufnehmen; sie behalten ihren vollen Kontext (Befund, Blueprint) und führen auf GO sofort aus. Kombiniert mit Plan-Mode-Bypass ([[plan-mode-falle]]): Agents liefern im Lock Blueprints → nach Approval per SendMessage FREIGABE + Commit-Zonen → sie bauen ohne Neukontextierung.
 
 **Zonen-Kollisionen aktiv koordinieren:** Vor dem Start jedes Agents die Datei-Zonen der LAUFENDEN Agents deklarieren („FASS NICHT AN: …") UND Überschneidungen im GO-Punkt auflösen (z. B. „Überspringe Schritt 4 OverviewTab — übernimmt der Parallel-Agent").
+
+**🔴 PRÜFINSTANZ-REALAUSFÜHRUNG (07.09., Sascha-Wut „WO IST DIE PRÜFINSTANZ DIE STUNDEN ARBEIT WTF"):** Der geforderte unabhängige Reviewer ist konkret der **document-skills:judge-Subagent** — bekommt gerenderte PNGs (QA-LIVE/*.png) + User-Akzeptanz-Kriterien (erster Eindruck kommerziell 40 % / Ästhetik 20 % / Layout-Proportionen 20 % / Bedienbarkeit 15 % / Branding 5 %), urteilt hart PASS|FAIL je Screen. **Erstes Urteil: 0/6 PASS** („so bricht der zahlende Kunde nach 10s im Onboarding ab") — obwohl ich dieselbe App zuvor „live bewiesen" hatte. **Abnahme-Gate ab jetzt: Wer baut ≠ wer abnimmt — fertig gilt erst bei Judge-PASS auf FRISCHEN Screens nach dem Fix-Deploy, nie per Selbstanzeige des Bau-Agenten.** Judge braucht keine Deploy-Umgebung, nur Beweis-PNGs; sein Urteil = direkt die priorisierte Fix-Liste (Top-5 mit P0/P1).
 
 Verwandt: [[sascha-3-saeulen-parallelarbeit]] (3-Säulen-Rahmen), [[autoclaw-team-kopplung]] (AutoClaw als weiterer Builder), [[omniroute-verkabelung]] (2-Parallel-Subagenten-Standard fürs UI-Testen).
 
