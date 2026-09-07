@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-07 20:59 UTC
+Zuletzt gespiegelt: 2026-09-07 21:10 UTC
 
 ## call_339477364a17488a84bbd97e-tool-result-bc9354f9-6002-4ff8-b81d-0069bef089d6
 
@@ -1632,7 +1632,9 @@ Patrick (verwandt mit Sascha) will **Physiotherapie (FH-Bachelor) in Österreich
 - FHs mit Physio: Campus Wien, Joanneum, Wiener Neustadt, IMC Krems, Salzburg, OÖ, Tirol, Burgenland, Kärnten.
 - Nächster offener Punkt: Patricks Alter + ob einschlägige Ausbildung (Masseur/MTF/Pflege) vorhanden → entscheidet SBP vs. nur Zusatzprüfungen.
 
-**Deliverable (07.09.2026):** Simple 1-Seiten-PDF-Todoliste auf `/Users/saschalagler/Desktop/Patrick_Physiotherapie_Weg.pdf` (reportlab, Generator-Skript `sbp-doc/patrick_pdf.py` im Workspace) — 8-Punkte-Todoliste inkl. Alter-20-Info. Sascha lehnte aufwendiges DOCX ab und wollte „simpel, PDF mir egal, als Todoliste" → bei Übergabe-Docs für Dritte: schnelle, simple 1-Seiten-PDF bevorzugen. Detaillierte DOCX-Fassung (Tabellen/FH-Vergleich) liegt unfertig in `~/.zcode/workspace/default/sbp-doc/` (docx npm-Paket dort installiert).
+**Patrick-Situation (07.09.2026 bestätigt):** über 20 → Altersvoraussetzung SBP **erfüllt**; **KEINE einschlägige Ausbildung** → Abkürzung (Zusatzprüfungen) entfällt, er macht die **volle SBP**. **Ziel-FH: IMC Krems** (akzeptiert externe SBP; Deutsch B2; Aufnahme = Online-Gesundheitstest ~2h biz:Examiner → körperlicher Eignungstest in Krems → Interview mit Motivationsschreiben; nach Zusage Gesundheitszeugnis + Strafregister <3 Monate; Fristen 2027/28: Bewerbung ab ca. 01.12.2026, Frist 15.03.2027 — vor Bewerbung verifizieren). Wichtigster offener Punkt: SBP-Zulassung braucht trotzdem „erhebliche berufliche/sonstige Vorbildung" → Schritt 1 der Todoliste = Anfrage an IMC Krems, ob Patricks Vorbildung genügt. Zeitleiste: Sep 2026 Antrag → 2026/27 Prüfungen → Sep 2027 Studienstart.
+
+**Deliverable (07.09.2026):** Simple 1-Seiten-PDF-Todoliste auf `/Users/saschalagler/Desktop/Patrick_Physiotherapie_Weg.pdf` (reportlab, Generator-Skript `sbp-doc/patrick_pdf.py` im Workspace; 2. Version mit IMC-Krems-Fokus + 9-Punkte-Todoliste). Sascha lehnte aufwendiges DOCX ab („simpel, PDF mir egal, als Todoliste") → bei Übergabe-Docs für Dritte: schnelle, simple 1-Seiten-PDF bevorzugen. Detaillierte DOCX-Fassung (Tabellen/FH-Vergleich) liegt unfertig in `~/.zcode/workspace/default/sbp-doc/` (docx npm-Paket dort installiert).
 
 ## read-tool-images-cdn-hazard
 

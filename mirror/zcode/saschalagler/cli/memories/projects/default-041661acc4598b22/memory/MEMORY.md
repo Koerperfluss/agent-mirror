@@ -1,5 +1,7 @@
 # Memory Index
 
+- [Skills-Architektur 07.09.](skills-architektur-2026-09-07.md) — .zcode/skills BEWUSST leer (laden nur via .agents, sonst Doppel!); Archiv in ~/.agents/skills-archive/2026-09-07; skill-router wählt Teil-Skills automatisch; npx skills add legt Doppel-Symlinks wieder an
+
 - [ZCode-Projektgruppen-Mechanik](zcode-projektgruppen-mechanik.md) — 06.09.: Chatliste links = tasks-index.sqlite (Gruppen+node_orders+members), externes SQL wirkt erst nach ⌘Q-Neustart; Claude/Cline-Chat-Importer import-chats-loki.py (259 Cline-Chats drin); Restore-.command auf Desktop
 
 - [FörderOps-Assistent](foerderops-assistent.md) — 30.08. aktiv, 06.09. spät Web-UI 8765 LÄUFT WIEDER (kein Autostart!); 70 Wissensdokumente; digi4KMU 50k existiert NICHT; Cap-Table Leon 26/Lisa 26/Sascha 25/Peter 23; 🔴 $350k-Blocker: Webgo-NS-Switch
@@ -36,5 +38,6 @@
 
 - [Z.AI Coding Plan Limits](zai-coding-plan-limits.md) — weekly+5h Credit-Caps selbst auf Pro; [1310]=Cap; Fanout verbrennt Quota; 3 Z.AI-MCP-Server eingetragen mit Key-Platzhalter- [AutoClaw Full-Stack-Builder](autoclaw-full-stack-builder.md) — 06.09. Agent+7 Skills+Write-Guard eingerichtet; JWT pro-Modell in openclaw.json, nur additiv editieren; Config greift nach App-Neustart
 - [Legal-Ops-Native-Status](legal-ops-native-status.md) — 06.09. P0-Diagnose: Verschmelzung FUNKTIONIERT (live verifiziert, Port 7070/Ollama); „kaputt" = 4-App-Varianten-Wirrwarr → Aufräumen mit GO; STATE.md im Projekt
-- [Patrick Physiotherapie via SBP](patrick-physiotherapie-sbp.md) — 07.09.: Patrick will Physio ohne Matura studieren; braucht SBP + FH-Aufnahmeverfahren (beides!); Falle: SBP studienrichtungsgebunden, FHs ordnen PT verschiedenen Gruppen zu; einschlägige Ausbildung (MTF/DGKS/Masseur) ersetzt SBP durch nur Zusatzprüfungen — offen: Patricks Alter/Ausbildung
+- [Patrick Physiotherapie via SBP](patrick-physiotherapie-sbp.md) — 07.09.: Patrick (>20, KEINE einschlägige Ausbildung, Ziel-FH IMC Krems) braucht volle SBP + FH-Aufnahmeverfahren; ohne Beruf OK — „beruflich ODER sonstige Vorbildung" (§ 64a UG); geplantes DOCX (R4-Cover) noch offen; Plaintext-PDF abgelehnt
+- [Doc-Design zählt](feedback-doc-design-matters.md) — 07.09.: „simpel" = wenig Umfang, nie schlechtes Layout; Plaintext-PDF scharf abgelehnt → Übergabe-Docs immer mit Cover/Tabellen/Struktur bauen
 - [LOKI Projekt-Map](loki-project-map.md) — 06.09. 17:30: Legal-Ops gelöst, Atlas-Takeover läuft LIVE in AutoClaw, TODO-App fertig, Paraletts=Prototyp, Barbulls=Wix+Scaffold; Q1 entlastet, Q1b Home-Repo neu; Source of Truth = ~/LOKI_PROJECT_MAP.md
