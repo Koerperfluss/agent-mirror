@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-07 20:48 UTC
+Zuletzt gespiegelt: 2026-09-07 20:59 UTC
 
 ## call_339477364a17488a84bbd97e-tool-result-bc9354f9-6002-4ff8-b81d-0069bef089d6
 
@@ -1631,6 +1631,8 @@ Patrick (verwandt mit Sascha) will **Physiotherapie (FH-Bachelor) in Österreich
 - Timing: Bewerbung für 2027/28 ab Winter 2026 (IMC ab 01.12.2026); bedingte Zulassung möglich — Nachweis SBP bis Studienbeginn (FHWN: bis 31.10.) erlaubt Parallelbetrieb.
 - FHs mit Physio: Campus Wien, Joanneum, Wiener Neustadt, IMC Krems, Salzburg, OÖ, Tirol, Burgenland, Kärnten.
 - Nächster offener Punkt: Patricks Alter + ob einschlägige Ausbildung (Masseur/MTF/Pflege) vorhanden → entscheidet SBP vs. nur Zusatzprüfungen.
+
+**Deliverable (07.09.2026):** Simple 1-Seiten-PDF-Todoliste auf `/Users/saschalagler/Desktop/Patrick_Physiotherapie_Weg.pdf` (reportlab, Generator-Skript `sbp-doc/patrick_pdf.py` im Workspace) — 8-Punkte-Todoliste inkl. Alter-20-Info. Sascha lehnte aufwendiges DOCX ab und wollte „simpel, PDF mir egal, als Todoliste" → bei Übergabe-Docs für Dritte: schnelle, simple 1-Seiten-PDF bevorzugen. Detaillierte DOCX-Fassung (Tabellen/FH-Vergleich) liegt unfertig in `~/.zcode/workspace/default/sbp-doc/` (docx npm-Paket dort installiert).
 
 ## read-tool-images-cdn-hazard
 
