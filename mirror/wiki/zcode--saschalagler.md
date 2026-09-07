@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-07 14:03 UTC
+Zuletzt gespiegelt: 2026-09-07 14:14 UTC
 
 ## call_fe4ee4834bf14478b4a66d0e-tool-result-df2ccbef-b4f7-499f-ac43-59af5f927f22
 
@@ -1877,14 +1877,14 @@ Verwandt: [[atlas-master-app-verhaeltnis]] (DESIGN_EVOLUTION.md D1–D8), [[atla
 
 ---
 name: atlas-design-system
-description: ATLAS Gesamtkonzept docs/DESIGN-SYSTEM.md v1.0 (07.09. committed) — Identität „ruhiger Titan", Gesetze F1–F6, Farb/Typo/Raum-Tokens, 3 Materialschichten, Komponenten-Verträge, Fix-Queue, Governance; entstand nach Saschas „DU SOLLST EIN VERFICKTES GESAMTKONZEPT ENTWICKELN"
+description: ATLAS DESIGN-SYSTEM.md v1.1 (07.09.) — Logo = Generator von ALLEM (Palette/Typo/Material), Gesetze F1–F7 (F7 Backdrop=Lichtfelder keine Kugeln), Fix-Queue 12 Punkte, nach unabhängiger Kritik geschärft; AutoClaw Design Expert hat Design-Hoheit, ZCode nur Web-Fixes
 metadata:
   node_type: memory
   type: project
   originSessionId: sess_d4dc6589-a85c-41e6-9c70-94b6ea6e63e3
 ---
 
-**Auslöser (07.09., Wut):** „DU SOLLST EIN VERFICKTES GESAMTKONZEPT ENTWICKELN … nimm autoclaw oder cline oder claude design dafür" — Einzel-Parameter-Fixes (Blob-Tiefe, Vignette) ohne bindendes Gesamtdokument empfand er als Stümperei. Antwort: **`~/ATLAS_MASTER/app/docs/DESIGN-SYSTEM.md` v1.0** (committed) als die Design-Bibel neben UI_USERFLOW_SPEC.md.
+**Auslöser (07.09., Wut):** „DU SOLLST EIN VERFICKTES GESAMTKONZEPT ENTWICKELN … nimm autoclaw oder cline oder claude design dafür" — Einzel-Parameter-Fixes (Blob-Tiefe, Vignette) ohne bindendes Gesamtdokument empfand er als Stümperei. Antwort: **`~/ATLAS_MASTER/app/docs/DESIGN-SYSTEM.md`** als die Design-Bibel neben UI_USERFLOW_SPEC.md. **v1.1 (nach unabhängiger Kritik):** 5 blinde Flecken geschlossen — F3 jetzt mit z-Ordnungs-Klausel (Backdrop NIE über Content) + Luminanz-Regel statt unpraktikablem Graustufen-Test; F2 Chat/Empty-State-Ausnahme (Vollbild-Ruhe erlaubt); **F7 NEU: Backdrop-Form bildverbindlich** (Lichtfelder/Nebel in Tiefe, KEINE scharfen specular-Kugeln); S4-Migrationsfrist (75× text-[10px] → 11, 8px→9 bei Launch-Vorbereitung) + Icon-Größen 16/20/24 + dim-Kontrast ≥4.5:1; F6 prüfbar (grep-Regel: animate-spin nie in KI-Wartekontexten, Emblem-Atem scale 1↔1.06); S9.1-Clarifizierung (KI-Fragen offen OHNE A/B/C-D, aber QUICK_REPLIES-Chips als Vorschläge erlaubt). Fix-Queue auf 12 Punkte erweitert (Cyan-Buttons AgentSettings:187+EinstellungenTab:165, ZNS-Balken grün/rot→Cyan, Loader2-Spinner, Roh-JSON im Chat, Graph-Farben bunt, Desktop-Build-Verify).
 
 **Kern (1 Satz):** BARBULLS ATLAS = *der ruhige Titan* (offizielles Minotaurus-Logo: Kraft im Lotussitz) → dunkle Kammer (#030303 warm), gebranntes Bernstein als Markenlicht, Glasplatten als Content, Text als Gravur — Kraft × Disziplin × Evidenz.
 
@@ -1997,7 +1997,7 @@ Der Agent-Prompt selbst empfahl in STUFE 5 „mit 2–4 Antwort-Optionen wo sinn
 
 ---
 name: atlas-master-app-verhaeltnis
-description: ATLAS 07.09. STAND — 3 Plattformen live + offizielles BARBULLS-Logo überall + Design v2 (Tiefe+Vignette, motion-Morph, HMtHfw8H) + UI_TEST_REPORT (15/18 gefixt) + Testversand-Tracking (app_open:14 echt) + VERLAUFS-AUDIT-TEAM (A=28 Behauptungen, B=Live, Kritik) läuft; TestFlight-Apple-ID = einziger User-Schritt
+description: ATLAS 07.09. STAND — 3 Plattformen live + offizielles Logo + DESIGN-SYSTEM v1.1 + AUDIT_VERLAUF.md (A 24✅/3⚠/1❌, B gesund, C Kritik) + QA 12 Defects (Fix-Agent Web-only läuft) + DEPLOY-HALT bis AutoClaw AUTOCLOW-DONE; TestFlight-Apple-ID = einziger User-Schritt
 metadata:
   node_type: memory
   type: project
@@ -2313,6 +2313,10 @@ Sascha befahl: ZCode = KOORDINATOR, kein Übersetzen durch ihn ([[zcode-koordina
 **Pfad-Blindheit-Finale:** AutoClaw bestritt weiterhin ~/ATLAS_MASTER (mdfind+find „bewiesen", sah nur die Coworkspace-Kopie git 9b9aa82) — vermutlich Sandbox-Home-Sicht des Agenten. Nach Saschas „DOCH ICH HAB ES VERSCHOBEN" legte AutoClaw ~/ATLAS_MASTER/app als **APFS-Clone (333 MB, nicht-destruktiv)** mit SEINEN T-A2-Dateien an; meine ZCode-Commits blieben als .git-Historie erhalten, und mein nächstes `git add -A` nahm seine Dateien mit → **beide Wellen = EIN Stand ohne Konflikt** (Verifikation: git log meine Kette + grep 39 step-Blöcke/21 coachText-cases + cotChain.ts vorhanden + tsc 0 + git status leer).
 
 **How to apply nach jeder AutoClaw-Bau-Runde:** (1) BEIDE Repos checken (git log + Feature-Marker-grep), bevor irgendwas als verloren/überschrieben gilt; (2) fremde Commits ggf. per cherry-pick/Datei-Kopie+git add -A integrieren; (3) AutoClaw-Quota-Abbruch ≠ Task tot — Reststück selbst übernehmen (P4.5 wurde so von ZCode zu Ende gebaut); (4) Cluster-Fehlermeldung „does not support the current model" = Modell-Dropdown von Auto-Fast/GLM-5.3-Flash weg von cluster-fähigem Modell drehen.
+
+## AutoClaw „Design Expert" PARALLEL IM REPO ENTDECKT (07.09. 16:10) — Deploy-Halt-Protokoll
+**Sascha ließ den AutoClaw-Design-Expert-Agent GLEICHZEITIG in ~/ATLAS_MASTER/app arbeiten** (Screenshot: Agent Cluster aktiv, „Hintergrund v2 ist im CSS. Jetzt Build-Verifikation + Native-Sync"). Das erklärte die unerklärlichen Änderungen: amber-Logo-Ableitung (BullLogo → /brand/barbulls-amber-*.png statt SVG, weißer Kreis = „Brand-Bruch auf dunkler UI"), barbulls-official.svg aus public/brand/ GELÖSCHT (von mir restauriert), Commit „fix(judge-gate)", QA-Report-Arithmetik-Korrekturen. **Erkennungsmuster für fremde Agenten: Datei-mtimes + git log mit unbekannten Commit-Messages + plötzlich andere Implementierungen als die eigenen.**
+**Protokoll (Sascha: „warte bis autoclaw fertig ist ODER verbinde dich mit dem agent"):** (1) ZCODE_HANDOFF.md im Repo = Arbeitsteilung (AutoClaw: ganzheitliches Logo-Konzept/Palette/Backdrop; ZCode: nur funktionale Web-Fixes + Deploy NACH Signal), (2) Fertig-Signal = `AUTOCLOW-DONE:` ans Ende der Handoff-Datei, (3) **kein Build/Deploy/Design-Edits von ZCode solange AutoClaw läuft** — halbe Design-Stände nicht deployen. Saschas Kernaufwurf dabei: „es geht primär darum das kein app konzept ganzheitlich erstellt wurde obwohl 10x geprüft — das logo ist der anhaltspunkt mit dem alles erstellt wird, design palette und und" + „BITTE KÜMMERE DICH EINFACH MAL UM DIE WEB APP, DER REST IST VÖLLIG EGAL — wieso immer alles auf einmal?" = FOKUS-Pflicht: ein Ziel (Web-App), keine neuen Arbeitsstränge.
 
 ## cline-cli-befehle-mechanik
 

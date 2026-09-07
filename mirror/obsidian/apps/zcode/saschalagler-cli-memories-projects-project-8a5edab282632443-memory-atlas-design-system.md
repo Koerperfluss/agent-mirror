@@ -7,14 +7,14 @@ tags: [spiegel, zcode]
 
 ---
 name: atlas-design-system
-description: ATLAS Gesamtkonzept docs/DESIGN-SYSTEM.md v1.0 (07.09. committed) — Identität „ruhiger Titan", Gesetze F1–F6, Farb/Typo/Raum-Tokens, 3 Materialschichten, Komponenten-Verträge, Fix-Queue, Governance; entstand nach Saschas „DU SOLLST EIN VERFICKTES GESAMTKONZEPT ENTWICKELN"
+description: ATLAS DESIGN-SYSTEM.md v1.1 (07.09.) — Logo = Generator von ALLEM (Palette/Typo/Material), Gesetze F1–F7 (F7 Backdrop=Lichtfelder keine Kugeln), Fix-Queue 12 Punkte, nach unabhängiger Kritik geschärft; AutoClaw Design Expert hat Design-Hoheit, ZCode nur Web-Fixes
 metadata:
   node_type: memory
   type: project
   originSessionId: sess_d4dc6589-a85c-41e6-9c70-94b6ea6e63e3
 ---
 
-**Auslöser (07.09., Wut):** „DU SOLLST EIN VERFICKTES GESAMTKONZEPT ENTWICKELN … nimm autoclaw oder cline oder claude design dafür" — Einzel-Parameter-Fixes (Blob-Tiefe, Vignette) ohne bindendes Gesamtdokument empfand er als Stümperei. Antwort: **`~/ATLAS_MASTER/app/docs/DESIGN-SYSTEM.md` v1.0** (committed) als die Design-Bibel neben UI_USERFLOW_SPEC.md.
+**Auslöser (07.09., Wut):** „DU SOLLST EIN VERFICKTES GESAMTKONZEPT ENTWICKELN … nimm autoclaw oder cline oder claude design dafür" — Einzel-Parameter-Fixes (Blob-Tiefe, Vignette) ohne bindendes Gesamtdokument empfand er als Stümperei. Antwort: **`~/ATLAS_MASTER/app/docs/DESIGN-SYSTEM.md`** als die Design-Bibel neben UI_USERFLOW_SPEC.md. **v1.1 (nach unabhängiger Kritik):** 5 blinde Flecken geschlossen — F3 jetzt mit z-Ordnungs-Klausel (Backdrop NIE über Content) + Luminanz-Regel statt unpraktikablem Graustufen-Test; F2 Chat/Empty-State-Ausnahme (Vollbild-Ruhe erlaubt); **F7 NEU: Backdrop-Form bildverbindlich** (Lichtfelder/Nebel in Tiefe, KEINE scharfen specular-Kugeln); S4-Migrationsfrist (75× text-[10px] → 11, 8px→9 bei Launch-Vorbereitung) + Icon-Größen 16/20/24 + dim-Kontrast ≥4.5:1; F6 prüfbar (grep-Regel: animate-spin nie in KI-Wartekontexten, Emblem-Atem scale 1↔1.06); S9.1-Clarifizierung (KI-Fragen offen OHNE A/B/C-D, aber QUICK_REPLIES-Chips als Vorschläge erlaubt). Fix-Queue auf 12 Punkte erweitert (Cyan-Buttons AgentSettings:187+EinstellungenTab:165, ZNS-Balken grün/rot→Cyan, Loader2-Spinner, Roh-JSON im Chat, Graph-Farben bunt, Desktop-Build-Verify).
 
 **Kern (1 Satz):** BARBULLS ATLAS = *der ruhige Titan* (offizielles Minotaurus-Logo: Kraft im Lotussitz) → dunkle Kammer (#030303 warm), gebranntes Bernstein als Markenlicht, Glasplatten als Content, Text als Gravur — Kraft × Disziplin × Evidenz.
 
