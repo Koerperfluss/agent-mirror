@@ -1,0 +1,7196 @@
+---
+app: antigravity
+quelle: "cli/sess_subagent_agent_b01a027e-e533-4fa5-bc58-4b82250e2ef2/call_c83011230e76471fb0da0d0d-tool-result-5d7c7fbd-9555-4381-b95a-d2de68282453.md"
+stand: 2026-09-07
+tags: [spiegel, antigravity]
+---
+
+Certified Trainers | WSWCF Academy
+
+[](https://wswcfacademy.com)
+
+- [Trainer Certification](https://wswcfacademy.com/calisthenics-trainer-online-certification/)
+
+[Online trainer certification
+Complete and become certified](https://wswcfacademy.com/calisthenics-trainer-online-certification/)
+
+- [Certified trainers](https://wswcfacademy.com/certified-trainers/)
+
+- [Gym & Park Certification](https://wswcfacademy.com/global-standard-for-gym-park-certification/)
+
+[Certification
+Apply and certify a gym or a park](https://wswcfacademy.com/global-standard-for-gym-park-certification/)
+
+- [Certified gyms and parks](https://wswcfacademy.com/certified-gyms-parks/)
+
+- [Online courses](https://wswcfacademy.com/learn-calisthenics/)
+
+[Basic
+Learn without certification](https://wswcfacademy.com/learn-calisthenics/)
+
+- [Advanced
+Learn without certification](https://wswcfacademy.com/advanced-calisthenics/)
+
+- [About Us](https://wswcfacademy.com/about-us/)
+
+- [News](https://wswcfacademy.com/news/)
+
+- [EN](https://wswcfacademy.com/certified-trainers/)
+
+[ES](https://wswcfacademy.com/es/entrenadores-certificados/)
+
+[](#)
+
+[](#)
+
+[+371 8000 55 80](http://wswcf.org)
+[WSWCF](http://wswcf.org)
+
+# Certified Trainers
+
+## Certified Trainers
+
+These trainers are officially certified by WSWCF Academy — the world leaders in street workout and calisthenics.
+They’ve earned their place by mastering the craft, passing our elite training program, and proving they can deliver real, lasting results.
+
+Want to become a certified trainer?
+
+Graduate from the Academy and join the ranks of certified coaches worldwide.
+
+[
+Get Certified Online
+](https://wswcfacademy.com/calisthenics-trainer-online-certification/)
+
+Select country
+Algeria
+Argentina
+Armenia
+Australia
+Austria
+Bahrain
+Belgium
+Belize
+Bolivia
+Brazil
+British Virgin Islands
+Bulgaria
+Canada
+Chile
+China
+Colombia
+Costa Rica
+Croatia
+Cyprus
+Czech Republic
+Denmark
+Ecuador
+Egypt
+El Salvador
+Estonia
+France
+Germany
+Great Britain
+Greece
+Grenada
+Guatemala
+Guinea
+Hong Kong
+Hungary
+India
+Iran
+Iraq
+Ireland
+Israel
+Italy
+Ivory Coast
+Japan
+Jordan
+Kingdom of Jordan
+Kuwait
+Kyrgyzstan
+Latvia
+Lebanon
+Libya
+Lima
+Macao
+Malaysia
+Mauritius
+Mexico
+Moldova
+Morocco
+Netherlands
+New Caledonia
+Nicaragua
+Nigeria
+Norway
+Oman
+Pakistan
+Palestine
+Panama
+Peru
+Philippines
+Poland
+Portugal
+Puerto Rico
+Qatar
+Romania
+Russia
+Saudi Arabia
+Scotland
+Senegal
+Singapore
+Slovakia
+Slovenia
+South Africa
+South Korea
+Spain
+Sri Lanka
+Sweden
+Switzerland
+Syria
+Taiwan
+Thailand
+Trinidad & Tobago
+Trinidad and Tobago
+Tunisia
+Turkey
+Ukraine
+United Arab Emirates
+United Kingdom
+United States of America
+Uruguay
+Wales
+Yemen
+Мexico
+Маlaysia
+Меxico
+
+Select country
+
+-
+### Jose Armando Stahl
+Mexico, Mexico City
+Certificate No. AA_1086
+
+[jasts1999@gmail.com](mailto:jasts1999@gmail.com)+525563185314
+[](https://www.instagram.com/jose_stahl)[](https://api.whatsapp.com/send?phone=525563185314)
+
+-
+### Samuval Ashwin raj M
+India, Chennai
+Certificate No. AA_1085
+
+[ashwingbj@gmail.com](mailto:ashwingbj@gmail.com)+917806849539
+[](https://www.instagram.com/lil_samfitx/)[](https://www.linkedin.com/in/samuval-ashwin-raj-1b4111279)[](https://api.whatsapp.com/send?phone=917806849539)
+
+-
+### Sercan Ulusoy
+Turkey, Istanbul
+Certificate No. AA_1084
+
+[ulusoychannel@gmail.com](mailto:ulusoychannel@gmail.com)+905541282807
+[](https://www.instagram.com/coach.sercanulusoy)[](https://www.youtube.com/channel/UC66FgmfecLMWZIr-H_YrtqA)[](https://api.whatsapp.com/send?phone=905541282807)
+
+-
+### György Papp
+Hungary, Nyergesújfalu
+Certificate No. AA_1083
+
+[pappgyurka@gmail.com](mailto:pappgyurka@gmail.com)+36706229926
+[](https://www.instagram.com/papp_gyurl/)[](https://api.whatsapp.com/send?phone=36706229926)
+
+-
+### Mateo Martinjaš
+Croatia, Čakovec
+Certificate No. AA_1082
+
+[mateo.martinjas.fitness@gmail.com](mailto:mateo.martinjas.fitness@gmail.com)+385997586327
+[](https://www.facebook.com/share/1Hys6cbbKT/?mibextid=wwXIfr)[](https://www.instagram.com/mateo_martinjas/)[](https://youtube.com/@mateo_martinjas_coaching)[](https://www.tiktok.com/@mateomartinjas)[](https://api.whatsapp.com/send?phone=385997586327)
+
+-
+### Jakub Zadamsky
+Czech Republic, Prague
+Certificate No. AA_1081
+
+[jakub.zadamsky@gmail.com](mailto:jakub.zadamsky@gmail.com)+971585136990
+[](https://www.facebook.com/jakub.zadamsky/)[](https://www.instagram.com/zadyfit/)[](https://www.linkedin.com/in/jakubzadamsky/)[](https://www.youtube.com/@jakubzadamsky7503)[](https://api.whatsapp.com/send?phone=971585136990)
+
+-
+### Karen Vargas Vargas
+Mexico
+Certificate No. AA_1080
+
+[karenvargasvargas.vv@gmail.com](mailto:karenvargasvargas.vv@gmail.com)+525544969807
+[](https://www.instagram.com/karen.vargas.v)[](https://api.whatsapp.com/send?phone=525544969807)
+
+-
+### Yousra Hamza
+Qatar, Doha
+Certificate No. AA_1079
+
+[yousrahamza552@yahoo.com](mailto:yousrahamza552@yahoo.com)+97433986603
+[](https://www.instagram.com/clx_26/)[](https://api.whatsapp.com/send?phone=97433986603)
+
+-
+
+### Sara Alomair
+Kuwait
+Certificate No. AA_1078
+
+[sfalomair@gmail.com](mailto:sfalomair@gmail.com)+96550616631
+[](https://www.instagram.com/sara__savage)[](https://www.tiktok.com/@sara__savage)[](https://api.whatsapp.com/send?phone=96550616631)
+
+-
+### Veronique Guiguemde
+United Kingdom, London
+Certificate No. AA_1077
+
+[guiguemde.veronique@gmail.com](mailto:guiguemde.veronique@gmail.com)+447784753963
+[](https://www.instagram.com/purplev888999/)[](https://api.whatsapp.com/send?phone=447784753963)
+
+-
+### Rachelle Bautista
+United States of America, South San Francisco
+Certificate No. AA_1076
+
+[rachellecayaban@gmail.com](mailto:rachellecayaban@gmail.com)+14156995362
+[](https://www.instagram.com/rachelle.plus3)[](https://api.whatsapp.com/send?phone=14156995362)
+
+-
+### Nadia Rabih Sidani
+Lebanon, Beirut
+Certificate No. AA_1075
+
+[Nadiasidanii99@gmail.com](mailto:Nadiasidanii99@gmail.com)+96171091166
+[](https://www.instagram.com/nadiasidani/)[](https://api.whatsapp.com/send?phone=96171091166)
+
+-
+### Moumtzellis Pantelis
+Greece
+Certificate No. AA_622
+
++306934674677
+[](https://www.facebook.com/share/1Y9BMHa5ij/?mibextid=wwXIfr%20)[](https://www.instagram.com/moum_sw)[](https://api.whatsapp.com/send?phone=306934674677)
+
+-
+### Roland Lakatos
+Hungary, Dabas
+Certificate No. AA_1074
+
+[jordiofficial399@gmail.com](mailto:jordiofficial399@gmail.com)+36204379062
+[](https://www.instagram.com/jordi.calisthenics)[](https://youtube.com/@jordicalisthenics)[](https://www.tiktok.com/@jordi.calisthenics)[](https://api.whatsapp.com/send?phone=36204379062)
+
+-
+### Graham Chiasson
+Canada, Burlington
+Certificate No. AA_1073
+
+[grahammichaelchiasson@gmail.com](mailto:grahammichaelchiasson@gmail.com)+19054391333
+[](https://www.instagram.com/grahamc_calisthenics)[](https://youtube.com/@graham_chiasson_sw)[](https://api.whatsapp.com/send?phone=19054391333)
+
+-
+
+### Reem Harasani
+Saudi Arabia, Jeddah
+Certificate No. AA_1072
+
+[harasani.r.86@gmail.com](mailto:harasani.r.86@gmail.com)
+[](https://api.whatsapp.com/send?phone=)
+
+-
+### Halaimia Hafsia
+Senegal, La somone
+Certificate No. AA_1071
+
+[halaimiahafsia@gmail.com](mailto:halaimiahafsia@gmail.com)+221710392097
+[](https://www.instagram.com/coachingbyhafsy)[](https://api.whatsapp.com/send?phone=221710392097)
+
+-
+### Maksim Akimau
+Belgium, Arlon
+Certificate No. AA_1070
+
+[maksim.akimau@gmail.com](mailto:maksim.akimau@gmail.com)+32471891411
+[](https://www.instagram.com/silamaksov)[](https://www.youtube.com/@silamaksov)[](https://www.tiktok.com/@silamaksov)[](https://api.whatsapp.com/send?phone=32471891411)
+
+-
+### Jose Antonio Malín Hernández
+Guatemala, Nueva Santa Rosa
+Certificate No. AA_1069
+
+[malin.jose@hotmail.com](mailto:malin.jose@hotmail.com)+50250188121
+[](https://www.instagram.com/malinperformance/)[](https://youtube.com/@malin.performance)[](https://www.tiktok.com/@malin.performance)[](https://api.whatsapp.com/send?phone=50250188121)
+
+-
+### Gundars Vegers
+Germany, Hannover
+Certificate No. AA_1068
+
+[gundars.vegers@gmail.com](mailto:gundars.vegers@gmail.com)+4916092160979
+[](https://www.instagram.com/gunweg)[](https://api.whatsapp.com/send?phone=4916092160979)
+
+-
+### Alaa Zaineh
+Palestine, Ramallah
+Certificate No. AA_1067
+
+[alaa.zaineh@gmail.com](mailto:alaa.zaineh@gmail.com)+972599888008
+[](https://api.whatsapp.com/send?phone=972599888008)
+
+-
+### Marcelo Ortiz
+United States of America, Milwaukee
+Certificate No. AA_1066
+
+[Marcelo.ortiz0292@gmail.com](mailto:Marcelo.ortiz0292@gmail.com)+14147361798
+[](https://api.whatsapp.com/send?phone=14147361798)
+
+-
+### Cynthia Juarez Perez
+Mexico
+Certificate No. AA_1065
+
+[aihtnyc26@gmail.com](mailto:aihtnyc26@gmail.com)+15256388873
+[](https://api.whatsapp.com/send?phone=15256388873)
+
+-
+### Daniel Cardenas Wilches
+Ecuador, Cuenca
+Certificate No. AA_1064
+
+[danielcardenaswilchesss@gmail.com](mailto:danielcardenaswilchesss@gmail.com)+5930987898135
+[](https://www.instagram.com/danielcardenaswilches)[](https://www.youtube.com/@danielcardenaswilches)[](https://www.tiktok.com/@danielcardenaswilches)[](https://api.whatsapp.com/send?phone=5930987898135)
+
+-
+### Mark Hoekstra
+Netherlands, Earnewald
+Certificate No. AA_1063
+
+[markhoekstra0@gmail.com](mailto:markhoekstra0@gmail.com)+31651567231
+[](https://www.instagram.com/mark_calisthenics)[](https://www.tiktok.com/@mark_calisthenics)[](https://api.whatsapp.com/send?phone=31651567231)
+
+-
+### Yanna Vedith Vamshi Krishna
+India, Hyderabad
+Certificate No. AA_1062
+
+[vedithvamshi0210@gmail.com](mailto:vedithvamshi0210@gmail.com)+919000409949
+[](https://api.whatsapp.com/send?phone=919000409949)
+
+-
+### Marcel Kohlmann
+Germany, Greifswald
+Certificate No. AA_1061
+
+[marcel.kohlmann@gmx.de](mailto:marcel.kohlmann@gmx.de)+4915253172398
+[](https://www.instagram.com/mirrorsabyys/)[](https://api.whatsapp.com/send?phone=4915253172398)
+
+-
+### Tim De Roode
+Netherlands, Oude Wetering
+Certificate No. AA_1060
+
+[timspersonaltrainingzh@gmail.com](mailto:timspersonaltrainingzh@gmail.com)+31624266845
+[](https://www.instagram.com/timmm13/)[](https://api.whatsapp.com/send?phone=31624266845)
+
+-
+### Maria Garcia Folguera
+Qatar, Doha
+Certificate No. AA_1059
+
+[mgarciafolguera@gmail.com](mailto:mgarciafolguera@gmail.com)+97450723863
+[](https://api.whatsapp.com/send?phone=97450723863)
+
+-
+### Wadha Mohammed Alomar
+Saudi Arabia
+Certificate No. AA_1058
+
+[wadha-2222@hotmail.com](mailto:wadha-2222@hotmail.com)+966502298907
+[](https://api.whatsapp.com/send?phone=966502298907)
+
+-
+### Marcelo Cardenas Escamilla
+Mexico, Aguascalientes
+Certificate No. AA_1057
+
+[marcelo2000cardenas@gmail.com](mailto:marcelo2000cardenas@gmail.com)+524492119725
+[](https://www.facebook.com/share/18S52V2ReB/?mibextid=wwXIfr)[](https://www.instagram.com/coachello_/)[](https://www.youtube.com/@marcelocardenasescamilla.6937)[](https://www.tiktok.com/@coachello_)[](https://api.whatsapp.com/send?phone=524492119725)
+
+-
+### Mohamed Agoumi Melcha
+Algeria, Boumardas
+Certificate No. AA_1056
+
+[mohamadagounimalcha@gmail.com](mailto:mohamadagounimalcha@gmail.com)+557355168
+[](https://www.facebook.com/share/1G9d1E5STu/)[](https://www.instagram.com/moh_calisthenics/)[](https://api.whatsapp.com/send?phone=557355168)
+
+-
+### Levente Pinter
+Hungary, Budapest
+Certificate No. AA_1055
+
+[frontlevermain@gmail.com](mailto:frontlevermain@gmail.com)+447802682425
+[](https://www.instagram.com/frontlevermain)[](https://www.youtube.com/@mainfrontlever)[](https://www.tiktok.com/@frontlevermain)[](https://api.whatsapp.com/send?phone=447802682425)
+
+-
+### Nikolas Pospelov
+Moldova, Tiraspol
+Certificate No. AA_1054
+
+[nickolasofficialfwp@gmail.com](mailto:nickolasofficialfwp@gmail.com)+37377877295
+[](https://www.instagram.com/nickolas_pospelov/)[](https://api.whatsapp.com/send?phone=37377877295)
+
+-
+### Zainab Noor
+Pakistan, Karachi
+Certificate No. AA_1053
+
+[noorzainab544@gmail.com](mailto:noorzainab544@gmail.com)+923335463129
+[](https://www.instagram.com/znoobie/)[](https://api.whatsapp.com/send?phone=923335463129)
+
+-
+### Ammar Yasser
+Egypt, Cairo
+Certificate No. AA_1052
+
+[my302979@gmail.com](mailto:my302979@gmail.com)+201210329512
+[](https://www.instagram.com/justammaar/)[](https://www.tiktok.com/@justaammaarr)[](https://api.whatsapp.com/send?phone=201210329512)
+
+-
+### Theo Naassan
+Lebanon, Hazmieh
+Certificate No. AA_1051
+
+[theonaassan10@gmail.com](mailto:theonaassan10@gmail.com)+96181267948
+[](https://www.instagram.com/theo_naassan/)[](https://api.whatsapp.com/send?phone=96181267948)
+
+-
+### Samer Saad
+Lebanon, Beirut
+Certificate No. AA_1050
+
+[samermsaad0@gmail.com](mailto:samermsaad0@gmail.com)+971547812164
+[](https://www.instagram.com/samersaad12/)[](https://www.linkedin.com/in/samer-saad-718182233/)[](https://api.whatsapp.com/send?phone=971547812164)
+
+-
+### Yorgo Nassif
+Lebanon, Journey El Ballout
+Certificate No. AA_1049
+
+[yorgozcnassif5@gmail.com](mailto:yorgozcnassif5@gmail.com)+96178794692
+[](https://www.instagram.com/nassif_yorgo/)[](https://api.whatsapp.com/send?phone=96178794692)
+
+-
+### Zakaria Soulali
+Morocco
+Certificate No. AA_1048
+
+[zakariasoulali73@gmail.com](mailto:zakariasoulali73@gmail.com)+212762182331
+[](https://www.instagram.com/za_karia_sw/)[](https://www.linkedin.com/in/zakaria-soulali-420bb9300/)[](https://api.whatsapp.com/send?phone=212762182331)
+
+-
+### Qairawan AlBathali
+Kuwait, Kuwait
+Certificate No. AA_1047
+
+[qierawan94@gmail.com](mailto:qierawan94@gmail.com)+96594907079
+[](https://api.whatsapp.com/send?phone=96594907079)
+
+-
+### Elio Germany
+Lebanon, Beirut
+Certificate No. AA_1046
+
+[eliogermany671@gmail.com](mailto:eliogermany671@gmail.com)+96181139989
+[](https://www.instagram.com/elio.germany/)[](https://api.whatsapp.com/send?phone=96181139989)
+
+-
+### Dormán András
+Hungary, Kecskemét
+Certificate No. AA_1045
+
+[andrasdorman19@gmail.com](mailto:andrasdorman19@gmail.com)+36305396626
+[](https://www.facebook.com/share/1RpE7Kvf1Q/?mibextid=wwXIfr)[](https://www.instagram.com/andrasdorman/)[](https://www.youtube.com/@andrasdorman)[](https://www.tiktok.com/@andrasdorman)[](https://api.whatsapp.com/send?phone=36305396626)
+
+-
+### Girish Srinivasaiah
+India, Bangalore
+Certificate No. AA_1044
+
+[girishs.champ@gmail.com](mailto:girishs.champ@gmail.com)+919008165432
+[](https://www.facebook.com/share/19qqqKbnwo/)[](https://www.instagram.com/fitbeeswithgirish/)[](https://api.whatsapp.com/send?phone=919008165432)
+
+-
+### Alexsandra Soderquist
+Sweden, Norrköping
+Certificate No. AA_1043
+
+[alexsandrasoderqvist@gmail.com](mailto:alexsandrasoderqvist@gmail.com)+46760039392
+[](https://www.instagram.com/hybrid__movement/)[](https://api.whatsapp.com/send?phone=46760039392)
+
+-
+### Marcell Rónavölgyi-Varga
+Hungary, Tata
+Certificate No. AA_1042
+
+[rvmarci@gmail.com](mailto:rvmarci@gmail.com)+36303916918
+[](https://www.instagram.com/rvmarci/)[](https://api.whatsapp.com/send?phone=36303916918)
+
+-
+### Marek Hauner
+Czech Republic, Rakovník
+Certificate No. AA_1041
+
+[skmekgym@gmail.com](mailto:skmekgym@gmail.com)+420607183183
+[](https://www.facebook.com/MekGymSal/)[](https://www.instagram.com/sk_mekgym/)[](https://www.youtube.com/channel/UC6BBxqE5X1g6Ja4DzmXmJ2A)[](https://api.whatsapp.com/send?phone=420607183183)
+
+-
+### Rand Zureikat
+Jordan, Amman
+Certificate No. AA_1040
+
+[randzureikat@gmail.com](mailto:randzureikat@gmail.com)+962797907983
+[](https://www.instagram.com/randcali/)[](https://api.whatsapp.com/send?phone=962797907983)
+
+-
+
+### Rodrigo García Aspe Colmenero
+Mexico, Mexico
+Certificate No. AA_1039
+
+[ro.gac.wswcf@gmail.com](mailto:ro.gac.wswcf@gmail.com)+525516609768
+[](https://api.whatsapp.com/send?phone=525516609768)
+
+-
+### Timothy Ramai
+Trinidad and Tobago, Chagunas
+Certificate No. AA_1038
+
+[ramaitimothy@gmail.com](mailto:ramaitimothy@gmail.com)+18684684016
+[](https://www.facebook.com/share/18vC97x3Zt/)[](https://www.instagram.com/timothyramai/)[](https://youtube.com/@timothyramai6003)[](https://www.tiktok.com/@timothyramai)[](https://api.whatsapp.com/send?phone=18684684016)
+
+-
+### Mohammad Haneen
+United Arab Emirates, Abu Dhabi
+Certificate No. AA_1037
+
+[mohammadhaneen463@gmail.com](mailto:mohammadhaneen463@gmail.com)+971501498848
+[](https://www.instagram.com/07.haneen/)[](https://api.whatsapp.com/send?phone=971501498848)
+
+-
+### Nicholas Smith
+United States of America, Sacramento
+Certificate No. AA_1036
+
+[nick@revelathletix.com](mailto:nick@revelathletix.com)+175702041367
+[](https://www.instagram.com/CoffeeCalisthenics)[](https://api.whatsapp.com/send?phone=175702041367)
+
+-
+### Anbazhagan Ravanan
+Canada, Kitchener
+Certificate No. AA_1035
+
+[spk2anbazhagan@gmail.com](mailto:spk2anbazhagan@gmail.com)+14379739639
+[](https://www.instagram.com/thehandstandpanda/)[](https://api.whatsapp.com/send?phone=14379739639)
+
+-
+### Mario Javier Ceballos Ramirez
+Colombia, Cartago Valle
+Certificate No. AA_1034
+
+[mairo.ceballos21@gmail.com](mailto:mairo.ceballos21@gmail.com)+573207918991
+[](https://www.instagram.com/mairoceballos1/)[](https://youtube.com/@mairoceballos9324)[](https://api.whatsapp.com/send?phone=573207918991)
+
+-
+### Matúš Dobiaš
+Slovakia, Topoľčany
+Certificate No. AA_1033
+
+[dobiasmatus86@gmail.com](mailto:dobiasmatus86@gmail.com)+421908360201
+[](https://www.facebook.com/matus.dobias.77)[](https://www.instagram.com/dobiasmatus/)[](https://www.youtube.com/@Matus_CaliWorkout)[](https://www.tiktok.com/@mat_caliworkout)[](https://api.whatsapp.com/send?phone=421908360201)
+
+-
+### Vatsal Shah
+India, Ahmedabad
+Certificate No. AA_1032
+
+[shahvatsal00@gmail.com](mailto:shahvatsal00@gmail.com)+919879513278
+[](http://www.facebook.com/iamvatsalshah)[](http://www.instagram.com/the_vatsalshah)[](https://www.linkedin.com/in/vatsal-shah-36aa161b6)[](http://www.youtube.com/c/CaliUniverse)[](https://api.whatsapp.com/send?phone=919879513278)
+
+-
+### Rebecca Chen
+Netherlands, Hengelo
+Certificate No. AA_1031
+
+[rschen96@gmail.com](mailto:rschen96@gmail.com)
+[](https://www.instagram.com/calischenics_nl)[](https://www.tiktok.com/@calischenics_nl)[](https://api.whatsapp.com/send?phone=)
+
+-
+### Lisa DeLong
+United States of America, Roanoke
+Certificate No. AA_1030
+
+[lisadelong416@gmail.com](mailto:lisadelong416@gmail.com)
+[](https://api.whatsapp.com/send?phone=)
+
+-
+### Raymond Abou Mounsef
+Lebanon, Mar Roukoz
+Certificate No. AA_1029
+
+[raymond.aboumounsef@gmail.com](mailto:raymond.aboumounsef@gmail.com)+96181718157
+[](https://www.instagram.com/raymond_am_/)[](https://api.whatsapp.com/send?phone=96181718157)
+
+-
+### Tony Krug Laugel
+France, Strasbourg
+Certificate No. AA_1028
+
+[kruglaugeltonypro@gmail.com](mailto:kruglaugeltonypro@gmail.com)+663038461
+[](https://www.instagram.com/tony_callisthenie/)[](https://www.youtube.com/@tony_callisthenie)[](https://api.whatsapp.com/send?phone=663038461)
+
+-
+### Cristian Daniel Rojas Monge
+Costa Rica, Tarrazú
+Certificate No. AA_1027
+
+[crisdanirojas28@gmail.com](mailto:crisdanirojas28@gmail.com)+50684546328
+[](https://www.instagram.com/cristian_roj_)[](https://api.whatsapp.com/send?phone=50684546328)
+
+-
+### Ben Van Cauter
+Belgium, Denderleeuw
+Certificate No. AA_1026
+
+[benvancauter452@gmail.com](mailto:benvancauter452@gmail.com)+32486654004
+[](https://www.facebook.com/share/1CwLSxAJoQ/?mibextid=wwXIfr)[](https://www.instagram.com/ben_vancauter/)[](https://youtube.com/@benvancauter)[](https://www.tiktok.com/@benvancauter)[](https://api.whatsapp.com/send?phone=32486654004)
+
+-
+### Yasmine Omar Moh’d Bedour
+Jordan, Amman
+Certificate No. AA_1025
+
+[yasminebedour2@gmail.com](mailto:yasminebedour2@gmail.com)+962795601710
+[](https://www.instagram.com/yasminebedour/)[](https://api.whatsapp.com/send?phone=962795601710)
+
+-
+### Bruno Emmanuel Rendon Dominguez
+Mexico, Mexico
+Certificate No. AA_1024
+
+[bracao.llv@gmail.com](mailto:bracao.llv@gmail.com)+525523276836
+[](https://www.instagram.com/brunobracao/)[](https://api.whatsapp.com/send?phone=525523276836)
+
+-
+### Aziz Dali
+Tunisia, Tunis
+Certificate No. AA_1023
+
+[mohamedazizdali@gmail.com](mailto:mohamedazizdali@gmail.com)+15144029087
+[](https://www.instagram.com/trainwithdaly_/)[](https://api.whatsapp.com/send?phone=15144029087)
+
+-
+### Maria Ximena Urizar Rosal
+Guatemala
+Certificate No. AA_1022
+
+[ximeurizar10@gmail.com](mailto:ximeurizar10@gmail.com)+50247700618
+[](https://www.instagram.com/ximeurizar10/)[](https://www.tiktok.com/@ximefit10)[](https://api.whatsapp.com/send?phone=50247700618)
+
+-
+### José Mario Santamaría Molina
+Costa Rica, Monteverde
+Certificate No. AA_1021
+
+[josemariosantamariamolina@gmail.com](mailto:josemariosantamariamolina@gmail.com)+50661836445
+[](https://www.facebook.com/jose.m.santamaria.3/)[](https://www.instagram.com/josem.sw/)[](https://www.youtube.com/@Josesantamariasw)[](https://api.whatsapp.com/send?phone=50661836445)
+
+-
+
+### Yosef Haim Soleimani
+Israel, Herzliya
+Certificate No. AA_1020
+
+[yosefchis770@gmail.com](mailto:yosefchis770@gmail.com)+972586049049
+[](https://api.whatsapp.com/send?phone=972586049049)
+
+-
+### Charalampos Ntokos
+Greece, Heraklion
+Certificate No. AA_1019
+
+[hdokos@gmail.com](mailto:hdokos@gmail.com)+306946319906
+[](https://api.whatsapp.com/send?phone=306946319906)
+
+-
+### Vicente Gonzalez Lutteroth
+United States of America, Spring
+Certificate No. AA_1018
+
+[vicentegl@gmail.com](mailto:vicentegl@gmail.com)+17134783544
+[](https://www.instagram.com/chengonzl/)[](https://www.youtube.com/vicentegl)[](https://www.tiktok.com/@chentegl)[](https://api.whatsapp.com/send?phone=17134783544)
+
+-
+### Ali Mahdi Ahmad Mesameh
+Jordan, Amman
+Certificate No. AA_1017
+
+[alimusamehh@gmail.com](mailto:alimusamehh@gmail.com)+962790908469
+[](https://www.facebook.com/share/19Ctz3ZtXV/?mibextid=wwXIfr)[](https://www.instagram.com/alimesameh/)[](https://youtube.com/@alimusameh)[](https://www.tiktok.com/@alimusameh)[](https://api.whatsapp.com/send?phone=962790908469)
+
+-
+### Sarath Kumar K G
+India, Thrissur
+Certificate No. AA_1016
+
+[sarathkumar9238@gmail.com](mailto:sarathkumar9238@gmail.com)+8907988617
+[](https://www.instagram.com/coach_s.k/)[](https://api.whatsapp.com/send?phone=8907988617)
+
+-
+### Abhishek Singh
+India, Mumbai
+Certificate No. AA_1015
+
+[abhisheksinghisking1234@gmail.com](mailto:abhisheksinghisking1234@gmail.com)+918928025717
+[](https://api.whatsapp.com/send?phone=918928025717)
+
+-
+### Gerasimos Derekas
+Greece, Igoumenitsa
+Certificate No. AA_1014
+
+[gerasimosderekas@hotmail.com](mailto:gerasimosderekas@hotmail.com)+306974087126
+[](https://www.facebook.com/share/1bDBA7SjL2/)[](https://www.instagram.com/jerry.derek/)[](https://api.whatsapp.com/send?phone=306974087126)
+
+-
+### Mohammadali Yousefi
+Iran, Nowshahr
+Certificate No. AA_621
+
++989116871251
+[](https://www.instagram.com/mohammadali___yousefi)[](https://api.whatsapp.com/send?phone=989116871251)
+
+-
+### Charbel Issa
+Lebanon, Jbeil
+Certificate No. AA_1013
+
+[charbel.saaaan@gmail.com](mailto:charbel.saaaan@gmail.com)+96179197368
+[](https://www.instagram.com/charbelissa1234)[](https://api.whatsapp.com/send?phone=96179197368)
+
+-
+### Ilias Boumpalikis
+Greece, Acharnes, Attiki
+Certificate No. AA_1012
+
+[iliasswc@gmail.com](mailto:iliasswc@gmail.com)+306980581073
+[](https://www.instagram.com/ilias_sw_)[](https://api.whatsapp.com/send?phone=306980581073)
+
+-
+### Jimmy Moussa
+Lebanon
+Certificate No. AA_1011
+
+[moussajimmy82@gmail.com](mailto:moussajimmy82@gmail.com)+96170990596
+[](https://www.instagram.com/jimmymoussa3)[](https://api.whatsapp.com/send?phone=96170990596)
+
+-
+### Rana Diab
+Senegal, Dakar
+Certificate No. AA_1010
+
+[samra_3@hotmail.com](mailto:samra_3@hotmail.com)+221775402270
+[](https://www.facebook.com/share/1LV2h1BD44/?mibextid=wwXIfr)[](https://www.instagram.com/ranroon13)[](https://api.whatsapp.com/send?phone=221775402270)
+
+-
+### Kassem Hussein
+Senegal, Dakar
+Certificate No. AA_1009
+
+[kassemhuss345@gmail.com](mailto:kassemhuss345@gmail.com)+221774211881
+[](https://www.instagram.com/huss__k)[](https://api.whatsapp.com/send?phone=221774211881)
+
+-
+### Matej Mosor
+Slovakia, Žilina
+Certificate No. AA_1008
+
+[matoo.swza@gmail.com](mailto:matoo.swza@gmail.com)+421949371757
+[](https://www.facebook.com/matej.mosor/)[](https://www.instagram.com/matoo_sw/)[](https://www.tiktok.com/@matoo_sw)[](https://api.whatsapp.com/send?phone=421949371757)
+
+-
+### Samrat Dasgupta
+Hong Kong, Central
+Certificate No. AA_1007
+
+[samratfitz@gmail.com](mailto:samratfitz@gmail.com)+85261626961
+[](https://www.instagram.com/Samratfitz)[](https://api.whatsapp.com/send?phone=85261626961)
+
+-
+### David Alexandre Pinto Pereira
+Portugal, Barreiro
+Certificate No. AA_1006
+
+[dp12gamer@gmail.com](mailto:dp12gamer@gmail.com)+351969703214
+[](https://www.instagram.com/peereira19/)[](https://api.whatsapp.com/send?phone=351969703214)
+
+-
+### Tiago Campos Dos Santos
+Portugal, Moita
+Certificate No. AA_1005
+
+[tiagosantos73737@gmail.com](mailto:tiagosantos73737@gmail.com)+351932903659
+[](https://www.facebook.com/tiago.santos.5264/)[](https://www.instagram.com/santos.tiagoc/)[](https://api.whatsapp.com/send?phone=351932903659)
+
+-
+### Mohammad Yousef Taha Abu Taha
+Jordan, Amman
+Certificate No. AA_1004
+
+[abotahasport@gmail.com](mailto:abotahasport@gmail.com)+962793590090
+[](https://www.facebook.com/share/1Kv9LYUBt6/?mibextid=wwXIfr)[](https://www.instagram.com/pt_butaha/)[](https://www.linkedin.com/in/mohammad-abu-taha-a139a6205/)[](https://youtube.com/@mohammadabotaha1658)[](https://api.whatsapp.com/send?phone=962793590090)
+
+-
+### Ribal Bou Najem
+Lebanon, Aley
+Certificate No. AA_1003
+
+[ribal.bn@gmail.com](mailto:ribal.bn@gmail.com)+96176410006
+[](https://www.facebook.com/share/1Bgpgze17R/?mibextid=wwXIfr)[](https://www.instagram.com/ribal_bn/)[](https://www.linkedin.com/in/ribal-bou-najem/)[](https://youtube.com/@ribalbounajem948)[](https://www.tiktok.com/@ribal810)[](https://api.whatsapp.com/send?phone=96176410006)
+
+-
+### Rémi Laget
+France, Jouy-en-Josas
+Certificate No. AA_1002
+
+[rems.laget@gmail.com](mailto:rems.laget@gmail.com)+33781968706
+[](https://www.instagram.com/remremremremremremremremrem/)[](https://api.whatsapp.com/send?phone=33781968706)
+
+-
+### Rashad Amer
+Lebanon, Baakline
+Certificate No. AA_1001
+
+[hildaabk2@hotmail.com](mailto:hildaabk2@hotmail.com)+96170544126
+[](https://www.instagram.com/dado_sthenics)[](https://api.whatsapp.com/send?phone=96170544126)
+
+-
+### Daniel Schnizer
+Germany, Stuttgart
+Certificate No. AA_1000
+
+[dani.schnizer@googlemail.com](mailto:dani.schnizer@googlemail.com)+4915127706914
+[](https://api.whatsapp.com/send?phone=4915127706914)
+
+-
+### Juzer Kaed
+Sri Lanka, Colombo
+Certificate No. AA_999
+
+[juzerjk@gmail.com](mailto:juzerjk@gmail.com)+94777824329
+[](https://www.facebook.com/juzer.kaed)[](https://www.instagram.com/juzer03/)[](https://www.linkedin.com/in/juzer-kaed/)[](https://www.youtube.com/@Juzer03)[](https://www.tiktok.com/@juzer03)[](https://api.whatsapp.com/send?phone=94777824329)
+
+-
+### Hornung Kristóf
+Hungary, Veszprém
+Certificate No. AA_998
+
+[hornung1999@gmail.com](mailto:hornung1999@gmail.com)+36204389878
+[](https://www.instagram.com/hornung_kristof_/)[](https://www.tiktok.com/@hornung.k)[](https://api.whatsapp.com/send?phone=36204389878)
+
+-
+### Leena Hai Ha Nguyen
+Canada, Montreal
+Certificate No. AA_997
+
+[nguyenhaiha1224@gmail.com](mailto:nguyenhaiha1224@gmail.com)+15145884873
+[](https://www.instagram.com/the.inflexible.noodle/)[](http://www.linkedin.com/in/nguyenhh)[](https://api.whatsapp.com/send?phone=15145884873)
+
+-
+### Dennis Hsaio
+United States of America, Ridgefield Park
+Certificate No. AA_996
+
+[dennis.hsaio@gmail.com](mailto:dennis.hsaio@gmail.com)+12017458290
+[](https://www.facebook.com/dennisfromthegym)[](https://www.instagram.com/bergencountycalisthenics/)[](https://www.youtube.com/@dennisfromthegym)[](https://www.tiktok.com/@bergencountycalisthenics)[](https://api.whatsapp.com/send?phone=12017458290)
+
+-
+### Kleanthi Chalkiadaki
+Greece, Larisa
+Certificate No. AA_995
+
+[klairhx@gmail.com](mailto:klairhx@gmail.com)+306938377861
+[](https://www.instagram.com/kleanthi_poledance)[](https://api.whatsapp.com/send?phone=306938377861)
+
+-
+### Jorge Humberto Nuñez Salinas
+Mexico, Puebla
+Certificate No. AA_994
+
+[zvnunez00@gmail.com](mailto:zvnunez00@gmail.com)+522226633605
+[](https://www.instagram.com/thebnmethod)[](http://www.linkedin.com/in/jorgehumbertonunezsalinas)[](https://www.youtube.com/@thebnmethod)[](https://www.tiktok.com/@thebnmethod)[](https://api.whatsapp.com/send?phone=522226633605)
+
+-
+### Óscar javier Medina Domínguez
+Colombia, Cali
+Certificate No. AA_993
+
+[ojmd563@gmail.com](mailto:ojmd563@gmail.com)+573016032555
+[](https://www.instagram.com/oscarjmedina26)[](https://www.youtube.com/@oscarmedina3017)[](https://www.tiktok.com/@oscarjmedina26)[](https://api.whatsapp.com/send?phone=573016032555)
+
+-
+### David Andrés Portilla González
+Colombia, Pasto
+Certificate No. AA_992
+
+[david2909bars@gmail.com](mailto:david2909bars@gmail.com)+573187011029
+[](https://www.facebook.com/share/15qzYLhZLRe/?mibextid=wwXIfr)[](https://www.instagram.com/davidportillag)[](https://www.tiktok.com/@davidportillag)[](https://api.whatsapp.com/send?phone=573187011029)
+
+-
+### Alyson Anctil
+Canada, Saint Basile le Grand
+Certificate No. AA_991
+
+[anctil.alyson@gmail.com](mailto:anctil.alyson@gmail.com)
+[](https://www.instagram.com/alyfitflow/)[](https://api.whatsapp.com/send?phone=)
+
+-
+### Karim Guindy
+Egypt, Cairo
+Certificate No. AA_990
+
+[karimguindy23@aucegypt.edu](mailto:karimguindy23@aucegypt.edu)+201114133660
+[](https://www.instagram.com/karimguindy/)[](https://api.whatsapp.com/send?phone=201114133660)
+
+-
+### Vasileios Daskarolis
+Greece, Kalamata
+Certificate No. AA_989
+
+[daskarolisvasilis@outlook.com](mailto:daskarolisvasilis@outlook.com)+306934378555
+[](https://api.whatsapp.com/send?phone=306934378555)
+
+-
+### Mouhamed Mouez Hizem
+Saudi Arabia, Riyadh
+Certificate No. AA_988
+
+[mouezhizem180@gmail.com](mailto:mouezhizem180@gmail.com)+966591075138
+[](https://www.instagram.com/moez_hizem/)[](https://api.whatsapp.com/send?phone=966591075138)
+
+-
+
+### Nouf Alhajjar
+Saudi Arabia, Riyadh
+Certificate No. AA_987
+
+[fromnouf@gmail.com](mailto:fromnouf@gmail.com)+966553334928
+[](https://api.whatsapp.com/send?phone=966553334928)
+
+-
+### Axel Enid Guerrero Guadarrama
+Mexico, Querétaro
+Certificate No. AA_986
+
+[axelenid07@gmail.com](mailto:axelenid07@gmail.com)+524423302994
+[](https://api.whatsapp.com/send?phone=524423302994)
+
+-
+### Albara Mohammad Mahmoud Awad
+Jordan, Amman
+Certificate No. AA_985
+
+[braaawad12@gmail.com](mailto:braaawad12@gmail.com)+962775526800
+[](https://www.instagram.com/braa_awad96/)[](https://api.whatsapp.com/send?phone=962775526800)
+
+-
+### Ryan Redmond
+United Kingdom, Ballymena
+Certificate No. AA_984
+
+[ryanredmond2000@gmail.com](mailto:ryanredmond2000@gmail.com)+447487372404
+[](https://www.instagram.com/sw_calx/)[](https://www.linkedin.com/in/ryan-redmond-374220210/)[](https://www.youtube.com/@SW_CALX)[](https://api.whatsapp.com/send?phone=447487372404)
+
+-
+### Angelos Evangelidis
+Greece, Athens
+Certificate No. AA_983
+
+[angel.evang1@gmail.com](mailto:angel.evang1@gmail.com)+306976260029
+[](https://api.whatsapp.com/send?phone=306976260029)
+
+-
+### Mason Borges
+Canada, Scarborough
+Certificate No. AA_982
+
+[mason.r.a.borges@gmail.com](mailto:mason.r.a.borges@gmail.com)+16473892929
+[](https://www.instagram.com/theforestsinger/)[](https://api.whatsapp.com/send?phone=16473892929)
+
+-
+### Udhara Eshwar
+India, Hyderabad
+Certificate No. AA_981
+
+[eshwarmudhiraj338@gmail.com](mailto:eshwarmudhiraj338@gmail.com)+919951288742
+[](https://www.facebook.com/share/1DdVV3hutt/)[](https://www.instagram.com/eshwar_endurance/)[](https://api.whatsapp.com/send?phone=919951288742)
+
+-
+### Hui Jane Chong
+Malaysia, Shah Alam
+Certificate No. AA_980
+
+[janechong200023@gmail.com](mailto:janechong200023@gmail.com)+60163353768
+[](https://www.instagram.com/huijane2000/)[](https://api.whatsapp.com/send?phone=60163353768)
+
+-
+### George Sideras
+Greece, Athens
+Certificate No. AA_979
+
+[siderasace21@yahoo.com](mailto:siderasace21@yahoo.com)+306989917295
+[](https://www.instagram.com/giwrgos_sideras/)[](https://api.whatsapp.com/send?phone=306989917295)
+
+-
+### Raúl Uriarte Lasheras
+Spain, Zizur Mayor
+Certificate No. AA_978
+
+[rauluriarte877@gmail.com](mailto:rauluriarte877@gmail.com)+34638760384
+[](https://api.whatsapp.com/send?phone=34638760384)
+
+-
+### Richard Jan Von Holdt
+Hong Kong, Hong Kong
+Certificate No. AA_977
+
+[rjvholdt@gmail.com](mailto:rjvholdt@gmail.com)+85298231264
+[](https://www.facebook.com/richard.j.vonholdt/)[](https://www.instagram.com/richardjanvon/)[](https://www.linkedin.com/in/richard-jan-von-holdt-616080bb/)[](https://api.whatsapp.com/send?phone=85298231264)
+
+-
+### Sam Graham
+United States of America, Melbourne
+Certificate No. AA_976
+
+[smxley@proton.me](mailto:smxley@proton.me)+13214326511
+[](https://www.instagram.com/nomadisthenics/)[](https://www.youtube.com/@nomadisthenics)[](https://www.tiktok.com/@nomadisthenics)[](https://api.whatsapp.com/send?phone=13214326511)
+
+-
+### Georgios Petanitis
+Greece, Arta
+Certificate No. AA_975
+
+[giorgospet7@gmail.com](mailto:giorgospet7@gmail.com)+306988214613
+[](https://www.instagram.com/_petanitis_/)[](https://api.whatsapp.com/send?phone=306988214613)
+
+-
+### Zahreddine Zegour
+Algeria, Alger
+Certificate No. AA_974
+
+[zegourzahreddine@gmail.com](mailto:zegourzahreddine@gmail.com)+213676842924
+[](https://www.instagram.com/combativoo/)[](https://api.whatsapp.com/send?phone=213676842924)
+
+-
+### Sebastjan Emeršič
+Slovenia, Ptuj
+Certificate No. AA_973
+
+[sebastjan.emersic@gmail.com](mailto:sebastjan.emersic@gmail.com)+38631572718
+[](https://www.facebook.com/sebastjan.emersic)[](https://www.instagram.com/sebastjan_emersic_sw)[](https://www.youtube.com/@streetworkoutslovenija4938)[](https://www.tiktok.com/@sebastjanemersic)[](https://api.whatsapp.com/send?phone=38631572718)
+
+-
+
+### Manal Mohammad
+Kuwait, Ferdous
+Certificate No. AA_972
+
+[manal10899@gmail.com](mailto:manal10899@gmail.com)+96592295954
+[](https://api.whatsapp.com/send?phone=96592295954)
+
+-
+### Carolina Lucas
+Portugal, Coimbra
+Certificate No. AA_971
+
+[carolina.00.lucas@gmail.com](mailto:carolina.00.lucas@gmail.com)+351966161887
+[](https://www.instagram.com/carolina.lucas/)[](https://www.linkedin.com/in/carolina-lucas/)[](https://www.youtube.com/@carol_calis)[](https://www.tiktok.com/@carols_calis)[](https://api.whatsapp.com/send?phone=351966161887)
+
+-
+### Joseph Tinish
+United Arab Emirates, Dubai
+Certificate No. AA_970
+
+[tinishkalistus@gmail.com](mailto:tinishkalistus@gmail.com)+971506338269
+[](https://www.instagram.com/joseph_tinish_c_k)[](https://api.whatsapp.com/send?phone=971506338269)
+
+-
+### Mustafa Wajdi Mustafa Al qalawi
+Jordan, Amman
+Certificate No. AA_969
+
+[mustafaqalawi80@gmail.com](mailto:mustafaqalawi80@gmail.com)+96276922810
+[](https://www.facebook.com/share/1DYup2kS3t/)[](https://www.instagram.com/mustafa.qalawi.1/)[](https://youtube.com/@mustafaqalawi2063)[](https://api.whatsapp.com/send?phone=96276922810)
+
+-
+### Pedro Rolón
+Argentina, Córdoba
+Certificate No. AA_968
+
+[pedroroloncba@gmail.com](mailto:pedroroloncba@gmail.com)+5493517340270
+[](https://www.instagram.com/peprolon/)[](https://youtube.com/@peprolon)[](https://www.tiktok.com/@peprolon0)[](https://api.whatsapp.com/send?phone=5493517340270)
+
+-
+### Oussama Ben Abbes
+Tunisia, Rades
+Certificate No. AA_967
+
+[oussemaba47@gmail.com](mailto:oussemaba47@gmail.com)+21694314228
+[](https://www.facebook.com/share/1KFNfyrkCk/?mibextid=wwXIfr)[](https://www.instagram.com/flyingwess/)[](https://youtube.com/@flyingwess)[](https://www.tiktok.com/@flyingwess1)[](https://api.whatsapp.com/send?phone=21694314228)
+
+-
+### Madhushree M R
+India, Bengaluru
+Certificate No. AA_966
+
+[madhushree2711@gmail.com](mailto:madhushree2711@gmail.com)+916361539887
+[](https://www.instagram.com/eemadhushree/)[](https://api.whatsapp.com/send?phone=916361539887)
+
+-
+### Lorant Szasz Oltei
+Spain, Madrid
+Certificate No. AA_965
+
+[lorant32@hotmail.com](mailto:lorant32@hotmail.com)+34642454746
+[](https://www.instagram.com/lorantt_szasz/)[](https://www.youtube.com/@Lorant_Szasz)[](https://www.tiktok.com/@lorantt_szasz)[](https://api.whatsapp.com/send?phone=34642454746)
+
+-
+### Ahmed Barakat
+Egypt, New Cairo
+Certificate No. AA_964
+
+[ahmedtbarakat92@gmail.com](mailto:ahmedtbarakat92@gmail.com)+201065539117
+[](https://www.instagram.com/kazamezax/)[](https://api.whatsapp.com/send?phone=201065539117)
+
+-
+### Dawid Bialy
+Wales, Cardiff
+Certificate No. AA_963
+
+[david.d.bialy@gmail.com](mailto:david.d.bialy@gmail.com)+447736241386
+[](https://www.facebook.com/thecombatgymnast/)[](https://www.instagram.com/thecombatgymnast/)[](https://www.youtube.com/@thecombatgymnast)[](https://www.tiktok.com/@thecombatgymnast)[](https://api.whatsapp.com/send?phone=447736241386)
+
+-
+### Nandhu K Anil
+India, Kottayam
+Certificate No. AA_962
+
+[nandhukoovapuzha00@gmail.com](mailto:nandhukoovapuzha00@gmail.com)+918137006698
+[](https://www.instagram.com/_nandhu.anil_/)[](https://api.whatsapp.com/send?phone=918137006698)
+
+-
+
+### Vaibhav Jadhav
+India, Nashik
+Certificate No. AA_961
+
+[vaibhavjadhav996@gmail.com](mailto:vaibhavjadhav996@gmail.com)+918308697196
+[](https://api.whatsapp.com/send?phone=918308697196)
+
+-
+### Javier Carrasco Sanchez
+Mexico, Puebla
+Certificate No. AA_960
+
+[calistenia.com.mx@gmail.com](mailto:calistenia.com.mx@gmail.com)+522223962260
+[](https://www.facebook.com/profile.php?id=61578995013609&locale=es_LA)[](https://www.instagram.com/javier_calistenia_mx/)[](https://api.whatsapp.com/send?phone=522223962260)
+
+-
+### Shibily Nihal a t
+India, Kottakkal
+Certificate No. AA_959
+
+[nihal4at@gmail.com](mailto:nihal4at@gmail.com)+919496067144
+[](https://www.facebook.com/shibily.nihal.7)[](https://www.linkedin.com/in/shibilynihal)[](https://www.youtube.com/@Unilete)[](https://api.whatsapp.com/send?phone=919496067144)
+
+-
+### Brian Loh Woei Xiang
+Malaysia, Kuala Lumpur
+Certificate No. AA_958
+
+[brian.loh@hotmail.com](mailto:brian.loh@hotmail.com)+60149225338
+[](https://www.facebook.com/loh.brian.3)[](https://www.instagram.com/brianlohxv/)[](https://api.whatsapp.com/send?phone=60149225338)
+
+-
+### Shravan Kumar Mandadi
+India, Hyderabad
+Certificate No. AA_957
+
+[shravanreddy12@gmail.com](mailto:shravanreddy12@gmail.com)+918142400004
+[](https://www.facebook.com/share/1B4k46Mktj/)[](https://www.instagram.com/shravanstory)[](https://www.youtube.com/@stenxcalisthenics)[](https://api.whatsapp.com/send?phone=918142400004)
+
+-
+
+### Edmundo Espíritu Santo Barajas
+Mexico, Mexico
+Certificate No. AA_956
+
+[dynamikos@proton.me](mailto:dynamikos@proton.me)
+[](https://www.instagram.com/dynamikos_rhesus/)[](https://api.whatsapp.com/send?phone=)
+
+-
+### Ilyes Fadel
+Algeria, Setif
+Certificate No. AA_955
+
+[fadelilyes701@gmail.com](mailto:fadelilyes701@gmail.com)+213658692922
+[](https://www.instagram.com/ilyesfad48)[](https://www.tiktok.com/@ilyesfad)[](https://api.whatsapp.com/send?phone=213658692922)
+
+-
+### Muhammed KP
+India, Kozhikode
+Certificate No. AA_954
+
+[muhammedkp72@gmail.com](mailto:muhammedkp72@gmail.com)+919544006087
+[](https://www.instagram.com/muhammed__kp)[](https://api.whatsapp.com/send?phone=919544006087)
+
+-
+### Benyamin Zolfaghari
+United States of America, Los Angeles
+Certificate No. AA_953
+
+[benyaminzolfagharii@gmail.com](mailto:benyaminzolfagharii@gmail.com)+18188188674
+[](https://www.instagram.com/benyaminzolfagharii)[](https://api.whatsapp.com/send?phone=18188188674)
+
+-
+### Roberto Zampino
+Cyprus, Paphos
+Certificate No. AA_952
+
+[robertozampinofoto@gmail.com](mailto:robertozampinofoto@gmail.com)+35795141834
+[](https://www.instagram.com/robertozampino_ph)[](https://api.whatsapp.com/send?phone=35795141834)
+
+-
+### Rayan Bazzi
+Lebanon, Jamhour
+Certificate No. AA_951
+
+[rayanbazzi98@gmail.com](mailto:rayanbazzi98@gmail.com)+96176568525
+[](https://www.instagram.com/bazzi.rayan)[](https://www.tiktok.com/@bzi.rayan)[](https://api.whatsapp.com/send?phone=96176568525)
+
+-
+### Ahmed Al-Azmi
+Kuwait, Kuwait
+Certificate No. AA_950
+
+[ta.ahmed.alazmi@gmail.com](mailto:ta.ahmed.alazmi@gmail.com)+96555890998
+[](https://api.whatsapp.com/send?phone=96555890998)
+
+-
+### Dalal Alayyaf
+Kuwait, Kuwait
+Certificate No. AA_949
+
+[d.alayyaf@live.com](mailto:d.alayyaf@live.com)+96566814440
+[](https://www.instagram.com/trendy.dalal)[](https://api.whatsapp.com/send?phone=96566814440)
+
+-
+### Gonçalo Duarte
+Denmark, Herlev
+Certificate No. AA_948
+
+[goncalo-torres-duarte@hotmail.com](mailto:goncalo-torres-duarte@hotmail.com)+351912156011
+[](https://www.instagram.com/goncaloduarte_/)[](https://api.whatsapp.com/send?phone=351912156011)
+
+-
+
+### Ammar Murad
+Syria
+Certificate No. AA_947
+
+[a.murad.fit@gmail.com](mailto:a.murad.fit@gmail.com)+966506108541
+[](https://api.whatsapp.com/send?phone=966506108541)
+
+-
+### Kilian Chevroulet
+France, Reims
+Certificate No. AA_946
+
+[kilian.ch10@gmail.com](mailto:kilian.ch10@gmail.com)+33695936961
+[](https://www.instagram.com/kilian_kch)[](https://api.whatsapp.com/send?phone=33695936961)
+
+-
+### Michael Karam
+Israel, Jish
+Certificate No. AA_945
+
+[michaelkarampersonaltrainer@gmail.com](mailto:michaelkarampersonaltrainer@gmail.com)+972524847045
+[](https://www.instagram.com/michaelkaramofficial)[](https://www.youtube.com/@michaeltraincast)[](https://api.whatsapp.com/send?phone=972524847045)
+
+-
+### Jessica Ruhane Simon Giron
+Mexico, Puebla
+Certificate No. AA_944
+
+[jessicaruhane@gmail.com](mailto:jessicaruhane@gmail.com)+522223246452
+[](https://www.facebook.com/share/1CRhHek2DW/?mibextid=wwXIfr)[](https://www.instagram.com/jessicaruhane)[](https://api.whatsapp.com/send?phone=522223246452)
+
+-
+### Hichem Sahraoui
+Algeria, Setif
+Certificate No. AA_943
+
+[hichamzang@gmail.com](mailto:hichamzang@gmail.com)+213775105723
+[](https://www.facebook.com/share/1BvWFFNK3z/)[](https://www.instagram.com/sahraoui_hichem1)[](https://www.tiktok.com/@sahraoui.hicham62)[](https://api.whatsapp.com/send?phone=213775105723)
+
+-
+### Geng Di Sia
+Маlaysia, Kuala Lumpur
+Certificate No. AA_942
+
+[siakendy214@gmail.com](mailto:siakendy214@gmail.com)+60169264729
+[](https://api.whatsapp.com/send?phone=60169264729)
+
+-
+### Gerard Coville
+United Kingdom, Cambridge
+Certificate No. AA_941
+
+[gezcoville@hotmail.com](mailto:gezcoville@hotmail.com)+440779626810
+[](https://www.facebook.com/agilitystrengthconditioning)[](http://www.instagram.com/gezcoville)[](https://api.whatsapp.com/send?phone=440779626810)
+
+-
+### Mutasem Juma Abdulla
+Oman, Sur
+Certificate No. AA_928
+
+[mtsmjj@gmail.com](mailto:mtsmjj@gmail.com)+96891151854
+[](https://www.instagram.com/mutasem_alghailani)[](https://api.whatsapp.com/send?phone=96891151854 )
+
+-
+### Dastagir Hassain Shaik
+India, Hyderabad
+Certificate No. AA_940
+
+[dastagirhassain@gmail.com](mailto:dastagirhassain@gmail.com)+918978017143
+[](https://www.facebook.com/hassy.patron)[](https://www.instagram.com/hassy_bunni/)[](https://www.linkedin.com/in/dastagir-hassain-shaik-3319b1157/)[](https://api.whatsapp.com/send?phone=918978017143)
+
+-
+
+### Jacan Blain
+Canada, Montréal
+Certificate No. AA_939
+
+[thebaconboy21@gmail.com](mailto:thebaconboy21@gmail.com)+15147555225
+[](https://api.whatsapp.com/send?phone=15147555225)
+
+-
+### Cristian Piñeiro
+United States of America, San Juan, PR
+Certificate No. AA_938
+
+[kalicrispr@gmail.com](mailto:kalicrispr@gmail.com)+17876715107
+[](https://www.instagram.com/kalicrispr)[](https://api.whatsapp.com/send?phone=17876715107)
+
+-
+### Kristián Sroka
+Slovakia, Žilina
+Certificate No. AA_937
+
+[kristian147@azet.sk](mailto:kristian147@azet.sk)+421910706060
+[](https://www.instagram.com/kri_st1an)[](https://api.whatsapp.com/send?phone=421910706060)
+
+-
+### Valter Trabulo
+Portugal, Setubal
+Certificate No. AA_936
+
+[valter.trabulo8@gmail.com](mailto:valter.trabulo8@gmail.com)+351914654484
+[](https://www.instagram.com/ditrabulo)[](https://www.tiktok.com/@ditrabulo)[](https://api.whatsapp.com/send?phone=351914654484)
+
+-
+### César Julián García Loyola
+Mexico, Monclova
+Certificate No. AA_935
+
+[jgl011599@gmail.com](mailto:jgl011599@gmail.com)+528662004898
+[](https://www.instagram.com/juliangarcia2424)[](https://api.whatsapp.com/send?phone=528662004898)
+
+-
+
+### Georges Gharib
+Lebanon, Rahbeh
+Certificate No. AA_934
+
+[gharibgeorges61@gmail.com](mailto:gharibgeorges61@gmail.com)+96171267857
+[](https://api.whatsapp.com/send?phone=96171267857)
+
+-
+### Raji Ghanem
+Lebanon, Beirut
+Certificate No. AA_933
+
+[rajighanem02@gmail.com](mailto:rajighanem02@gmail.com)+96178846083
+[](https://api.whatsapp.com/send?phone=96178846083)
+
+-
+### Sagi Vilensky
+Israel, Jerusalem
+Certificate No. AA_932
+
+[sagivilens999@gmail.com](mailto:sagivilens999@gmail.com)+9720585858451
+[](https://www.facebook.com/sagi.vilensky.2025)[](https://instagram.com/sagi_v_)[](https://www.linkedin.com/in/sagivilensky/)[](https://www.youtube.com/@sagi_v)[](https://api.whatsapp.com/send?phone=9720585858451)
+
+-
+### Tyler Ramirez
+United States of America, West Babylon
+Certificate No. AA_931
+
+[coachtyler.ramirez@gmail.com](mailto:coachtyler.ramirez@gmail.com)+16315262322
+[](https://www.instagram.com/tyler_calisthenics/)[](https://www.youtube.com/@tyler_calisthenics)[](https://api.whatsapp.com/send?phone=16315262322)
+
+-
+### Adam Potúček
+Slovakia, Trenčianske, Teplice
+Certificate No. AA_930
+
+[adamko.potucek@gmail.com](mailto:adamko.potucek@gmail.com)+421919233345
+[](https://www.facebook.com/adam.potucek.58)[](https://www.instagram.com/adamp7p/)[](https://www.tiktok.com/@adamp7p)[](https://api.whatsapp.com/send?phone=421919233345)
+
+-
+### Mallikarjun Koujalagi
+India, Bangalore
+Certificate No. AA_929
+
+[koujalagimallu@gmail.com](mailto:koujalagimallu@gmail.com)+918548040210
+[](https://www.instagram.com/califly_arjun)[](https://api.whatsapp.com/send?phone=918548040210)
+
+-
+### Alejandro Gutierrez Diaz
+United States of America
+Certificate No. AA_619
+
+[droalejandiaz@gmail.com ](mailto:droalejandiaz@gmail.com )+523787312493
+[](https://api.whatsapp.com/send?phone=523787312493)
+
+-
+### Mutasem Juma Abdulla
+Certificate No. AA_928
+
+[mtsmjj@gmail.com](mailto:mtsmjj@gmail.com)
+[](https://api.whatsapp.com/send?phone=)
+
+-
+
+### Farisa P
+India, Thrissur
+Certificate No. AA_927
+
+[farisaaboobacker@gmail.com](mailto:farisaaboobacker@gmail.com)+919633838552
+[](https://www.instagram.com/farisa_abu)[](https://api.whatsapp.com/send?phone=919633838552)
+
+-
+### Rabee AL Wazzan
+Jordan, Amman
+Certificate No. AA_926
+
+[wazzanrabee@gmail.com](mailto:wazzanrabee@gmail.com)+962788888441
+[](https://www.facebook.com/rabee.wazzan.2025)[](https://www.instagram.com/rabeewz.sw/)[](https://www.linkedin.com/in/rabee-wazzan-987960295)[](https://api.whatsapp.com/send?phone=962788888441)
+
+-
+### Adam Tobia
+United States of America, Yakima
+Certificate No. AA_925
+
+[tobia1021@yahoo.com](mailto:tobia1021@yahoo.com)+15093077008
+[](https://www.facebook.com/share/1BZ3zn4zmE/)[](https://www.instagram.com/hellhound_thenics/)[](https://api.whatsapp.com/send?phone=15093077008)
+
+-
+### Shatha BinSalman
+Saudi Arabia, Jeddah
+Certificate No. AA_924
+
+[shathabins97@gmail.com](mailto:shathabins97@gmail.com)+966532582561
+[](https://www.instagram.com/shathaaa.07/)[](https://api.whatsapp.com/send?phone=966532582561)
+
+-
+### Richard Arvaj
+Slovakia, Banská Bystrica
+Certificate No. AA_923
+
+[richardarvaj1@gmail.com](mailto:richardarvaj1@gmail.com)+421910761452
+[](https://www.instagram.com/richard_calisthenics/)[](https://www.youtube.com/@Richard_calisthenics)[](https://api.whatsapp.com/send?phone=421910761452)
+
+-
+### Dmytro Malakhov
+Spain, Barcelona
+Certificate No. AA_922
+
+[dimamalahovdima@gmail.com](mailto:dimamalahovdima@gmail.com)+34690816646
+[](https://www.instagram.com/dimamalahov1/)[](https://api.whatsapp.com/send?phone=34690816646)
+
+-
+### Salvador Ezequiel Soto Gutierrez
+Nicaragua, Managua
+Certificate No. AA_921
+
+[junior.soto99@gmail.com](mailto:junior.soto99@gmail.com)+50584925700
+[](https://www.instagram.com/sotofiera/)[](https://api.whatsapp.com/send?phone=50584925700)
+
+-
+### Syun Yatabe
+Japan
+Certificate No. AA_618
+
+[sunright135@gmail.com](mailto:sunright135@gmail.com)
+[](https://api.whatsapp.com/send?phone=)
+
+-
+### Rozan Kattoa
+Saudi Arabia, Jeddah
+Certificate No. AA_920
+
+[rozankattoa@gmail.com](mailto:rozankattoa@gmail.com)+966505658886
+[](https://api.whatsapp.com/send?phone=966505658886)
+
+-
+### Dina Mahmoud Felimban
+Saudi Arabia, Jeddah
+Certificate No. AA_919
+
+[dinafelemban@gmail.com](mailto:dinafelemban@gmail.com)+966506729943
+[](https://api.whatsapp.com/send?phone=966506729943)
+
+-
+### Alperen Yenigün
+Turkey, Isparta
+Certificate No. AA_918
+
+[alperenyenigunn@gmail.com](mailto:alperenyenigunn@gmail.com)+905315253642
+[](https://www.instagram.com/alperenyenigun/)[](https://api.whatsapp.com/send?phone=905315253642)
+
+-
+### Esraa Al Sirhi
+Saudi Arabia, Jeddah
+Certificate No. AA_917
+
+[esraa460@gmail.com](mailto:esraa460@gmail.com)+9660561256135
+[](https://api.whatsapp.com/send?phone=9660561256135)
+
+-
+### Damien Pham
+Australia, Adelaide
+Certificate No. AA_916
+
+[hpham2511@gmail.com](mailto:hpham2511@gmail.com)+61452511555
+[](https://www.facebook.com/damien.pham.2025)[](https://www.instagram.com/dstreetworkoutg/)[](https://api.whatsapp.com/send?phone=61452511555)
+
+-
+### Christophe Haddad
+Lebanon, Beirut
+Certificate No. AA_915
+
+[christophehaddad11@gmail.com](mailto:christophehaddad11@gmail.com)+96171334489
+[](https://www.instagram.com/christophe_haddad/)[](https://api.whatsapp.com/send?phone=96171334489)
+
+-
+### Elie Abi Saad
+Lebanon, Beirut
+Certificate No. AA_914
+
+[elieabisaad01@gmail.com](mailto:elieabisaad01@gmail.com)+96170740805
+[](https://www.instagram.com/lellodoescalisthenics/)[](https://youtube.com/@lellodoescalisthenics)[](https://www.tiktok.com/@lellodoescalisthenics)[](https://api.whatsapp.com/send?phone=96170740805)
+
+-
+### Lakshmi Srinivas Yasoda
+India, Hyderabad
+Certificate No. AA_913
+
+[yasodas@gmail.com](mailto:yasodas@gmail.com)+919100355919
+[](https://api.whatsapp.com/send?phone=919100355919)
+
+-
+### Facundo Nahuel Bazan
+United States of America, Kansas City
+Certificate No. AA_912
+
+[facundo.aar@gmail.com](mailto:facundo.aar@gmail.com)+12524693290
+[](https://www.instagram.com/facundo_aar)[](https://api.whatsapp.com/send?phone=12524693290)
+
+-
+### Otsmane Abdelkader
+Russia, Krasnodar
+Certificate No. AA_911
+
+[otsmaneabdelkader1993@gmail.com](mailto:otsmaneabdelkader1993@gmail.com)+79282045870
+[](https://www.facebook.com/share/19vg6W61Yj/?mibextid=wwXIfr)[](https://www.instagram.com/badadip/)[](https://www.youtube.com/@sharks-bar)[](https://www.tiktok.com/@sharksbar.russia)[](https://api.whatsapp.com/send?phone=79282045870)
+
+-
+
+### Oussama Srir El Hirtsi
+Algeria
+Certificate No. AA_910
+
+[ossaufsyuhf66@gmail.com](mailto:ossaufsyuhf66@gmail.com)
+[](https://api.whatsapp.com/send?phone=)
+
+-
+### Radoslav Kuník
+Slovakia, Modra
+Certificate No. AA_909
+
+[radkokunik3@gmail.com](mailto:radkokunik3@gmail.com)+421915130763
+[](https://www.facebook.com/share/17piUVyB9o/)[](https://www.instagram.com/rado_calisthenics/)[](https://youtube.com/@radokunik9412?si=VbDxhbYUpjzS4cj1)[](https://www.tiktok.com/@radoslavkunik)[](https://api.whatsapp.com/send?phone=421915130763)
+
+-
+### Mohamed Nasr Allah Salmi
+Algeria, Boumerdes
+Certificate No. AA_908
+
+[mohamednasro2000@gmail.com](mailto:mohamednasro2000@gmail.com)+213791676792
+[](https://www.facebook.com/share/1DaAS6Raci/)[](https://www.instagram.com/si______moh/)[](https://www.linkedin.com/in/mohamed-salmi-a50027205)[](https://www.tiktok.com/@salmi.mohamed3)[](https://api.whatsapp.com/send?phone=213791676792)
+
+-
+### Amir Chebli
+Algeria, Setif
+Certificate No. AA_907
+
+[amir1chebli@gmail.com](mailto:amir1chebli@gmail.com)+213559355524
+[](https://www.facebook.com/share/19QNoDNzKT/?mibextid=wwXIfr)[](https://www.instagram.com/amir_che1/)[](https://www.tiktok.com/@amirchebli)[](https://api.whatsapp.com/send?phone=213559355524)
+
+-
+### Belgacem Salah Eddine
+Algeria, Bouira
+Certificate No. AA_906
+
+[www.salah.blgacem@gmail.com](mailto:www.salah.blgacem@gmail.com)+213662219449
+[](https://www.facebook.com/share/17mNRFCZ34/?mibextid=wwXIfr)[](https://www.instagram.com/salah_sw_/)[](https://www.tiktok.com/@salah_360_sw)[](https://api.whatsapp.com/send?phone=213662219449)
+
+-
+### Andréanne Bourgeois
+Canada, Montréal
+Certificate No. AA_905
+
+[andreannebourgeoisphotos@gmail.com](mailto:andreannebourgeoisphotos@gmail.com)+14388226318
+[](https://www.facebook.com/share/1Mp8dn7tzy/)[](https://www.instagram.com/andreannebourgeois/)[](https://api.whatsapp.com/send?phone=14388226318)
+
+-
+### Angel Yukash Herrera Sour
+Меxico, Cuautitlán Izcalli
+Certificate No. AA_904
+
+[angelyukash@gmail.com](mailto:angelyukash@gmail.com)+525525784566
+[](https://www.instagram.com/angelyukash/)[](https://api.whatsapp.com/send?phone=525525784566)
+
+-
+### Zakaria Abdesselam
+Algeria, Miliana
+Certificate No. AA_903
+
+[zakiabdesselam50@gmail.com](mailto:zakiabdesselam50@gmail.com)+2120674254421
+[](https://www.facebook.com/za.ki.ab.614821)[](https://www.instagram.com/zaki___ckm_/)[](https://www.tiktok.com/@zaki___ckm_)[](https://api.whatsapp.com/send?phone=2120674254421)
+
+-
+### Diego Alfonso Renteria Sarabia
+Mexico, Tijuana
+Certificate No. AA_902
+
+[sarabia.god73@gmail.com](mailto:sarabia.god73@gmail.com)+526645847496
+[](https://www.instagram.com/sarabia.god/)[](https://api.whatsapp.com/send?phone=526645847496)
+
+-
+### Seth Medina
+United States of America, Denver, Colorado
+Certificate No. AA_901
+
+[sethmedina@msn.com](mailto:sethmedina@msn.com)+13035030396
+[](https://www.instagram.com/sethmedina303)[](https://api.whatsapp.com/send?phone=13035030396)
+
+-
+### Janie Stel
+Canada, Mississauga
+Certificate No. AA_900
+
+[janie.stel@gmail.com](mailto:janie.stel@gmail.com)+12895529417
+[](https://api.whatsapp.com/send?phone=12895529417)
+
+-
+### Azzedine Ouaked
+Algeria, Alger
+Certificate No. AA_899
+
+[ouakedazou3@gmail.com](mailto:ouakedazou3@gmail.com)+213779240579
+[](https://www.facebook.com/share/1b2QgHZZ7S/)[](https://www.instagram.com/azou.strictworkout/)[](https://api.whatsapp.com/send?phone=213779240579)
+
+-
+### Edward Ralph Petines
+United Arab Emirates, Dubai
+Certificate No. AA_898
+
+[cp.petines@gmail.com](mailto:cp.petines@gmail.com)+971581854678
+[](https://www.instagram.com/coach.pain/)[](https://api.whatsapp.com/send?phone=971581854678)
+
+-
+### Alejandro Marcio Mobarec Clavijo
+Bolivia, La Paz
+Certificate No. AA_897
+
+[amobarecclavijo@gmail.com](mailto:amobarecclavijo@gmail.com)+59176297785
+[](https://www.instagram.com/amobcla/)[](https://www.linkedin.com/in/alejandro-mobarec-clavijo-b93a88135/)[](https://api.whatsapp.com/send?phone=59176297785)
+
+-
+### Oday Makarem
+Lebanon, Ras l maten
+Certificate No. AA_896
+
+[odaymakarem3@gmail.com](mailto:odaymakarem3@gmail.com)+96103189145
+[](https://www.facebook.com/share/14PaoACrm1T/?mibextid=wwXIfr)[](https://www.instagram.com/odaymakarem7/)[](https://www.tiktok.com/@odaymak)[](https://api.whatsapp.com/send?phone=96103189145)
+
+-
+### Jakub Beran
+Slovakia, Prešov
+Certificate No. AA_895
+
+[beran.jakub03@gmail.com](mailto:beran.jakub03@gmail.com)+421911539600
+[](https://www.facebook.com/JakubJockeRBeran)[](https://www.instagram.com/jakub.bery.beran/)[](https://api.whatsapp.com/send?phone=421911539600)
+
+-
+### Jonathan Sandoval Barcenas
+Mexico, CDMX
+Certificate No. AA_894
+
+[jonazaza85@gmail.com](mailto:jonazaza85@gmail.com)+525623986666
+[](https://www.instagram.com/zaza_h.c)[](https://www.youtube.com/@zaza_hc)[](https://api.whatsapp.com/send?phone=525623986666)
+
+-
+### Salman Alharthi
+Saudi Arabia, Makkah
+Certificate No. AA_893
+
+[salman.hd.97@gmail.com](mailto:salman.hd.97@gmail.com)+966561059207
+[](https://api.whatsapp.com/send?phone=966561059207)
+
+-
+### Ahmed Mohamed Abdelaziz
+Egypt, Portsaid
+Certificate No. AA_892
+
+[elshenawyahmed360@gmail.com](mailto:elshenawyahmed360@gmail.com)+2001225658561
+[](https://www.instagram.com/ahmed_elshenawy568/)[](https://www.tiktok.com/@ahmed.elshenawy48)[](https://api.whatsapp.com/send?phone=2001225658561)
+
+-
+### Eric Moukarzel
+Lebanon, Beirut
+Certificate No. AA_891
+
+[ericmoukarzel10@gmail.com](mailto:ericmoukarzel10@gmail.com)+96171116704
+[](https://api.whatsapp.com/send?phone=96171116704)
+
+-
+### Abhijay Yadav
+India, Hyderabad
+Certificate No. AA_890
+
+[abhijay.yadav@gmail.com](mailto:abhijay.yadav@gmail.com)+919553551512
+[](https://www.facebook.com/share/1DFMKLme9U/)[](https://www.instagram.com/iam_jay5/)[](https://www.linkedin.com/in/abhijay-yadav-7ba67815a)[](https://youtube.com/@iam_jay5)[](https://api.whatsapp.com/send?phone=919553551512)
+
+-
+
+### David Raúl Rosales Márquez
+Spain, Vigo
+Certificate No. AA_889
+
+[davidrosalesux@gmail.com](mailto:davidrosalesux@gmail.com)+34617914366
+[](https://api.whatsapp.com/send?phone=34617914366)
+
+-
+### Waleed ALKandari
+Kuwait, Kuwait
+Certificate No. AA_888
+
+[waleed_Kandari@hotmail.com](mailto:waleed_Kandari@hotmail.com)+96566821222
+[](https://www.instagram.com/w_alkandari/)[](https://www.tiktok.com/@w_alkandari5)[](https://api.whatsapp.com/send?phone=96566821222)
+
+-
+### Muhannad Badri
+Saudi Arabia, Mecca
+Certificate No. AA_887
+
+[mohannadbadri@gmail.com](mailto:mohannadbadri@gmail.com)+966599699011
+[](https://www.instagram.com/imd.b25/)[](https://www.tiktok.com/@imd.b25)[](https://api.whatsapp.com/send?phone=966599699011)
+
+-
+### Matej Kmeť
+Slovakia, Banska Bystrica
+Certificate No. AA_886
+
+[kmetmatt@gmail.com](mailto:kmetmatt@gmail.com)+421948047246
+[](https://www.instagram.com/kmetmatt/)[](https://api.whatsapp.com/send?phone=421948047246)
+
+-
+### Rasha Ziad Yousef Almoghrabi
+Jordan, Amman
+Certificate No. AA_885
+
+[rashaalmoghrabi.1995@gmail.com](mailto:rashaalmoghrabi.1995@gmail.com)+962799084938
+[](https://www.instagram.com/rasha__almoghrabi/)[](https://linkedin.com/in/rasha-al-moghrabi-9ab2ba114)[](https://api.whatsapp.com/send?phone=962799084938)
+
+-
+### Benjamin Zalud
+Austria, Ybbs an der Donau
+Certificate No. AA_884
+
+[contact@basicben-bbw.at](mailto:contact@basicben-bbw.at)+436644693932
+[](https://api.whatsapp.com/send?phone=436644693932)
+
+-
+### Paschalis Miliorellis
+Greece, Athens
+Certificate No. AA_883
+
+[pascalismilio@gmail.com](mailto:pascalismilio@gmail.com)+0306974409359
+[](https://www.facebook.com/share/1EkN9se2q9/)[](https://www.instagram.com/pascal_miliorelli/)[](https://youtube.com/@pascal_million_films)[](https://api.whatsapp.com/send?phone=0306974409359)
+
+-
+### Filip Kopecký
+Czech Republic, Litomerice
+Certificate No. AA_882
+
+[kopeckyacc@gmail.com](mailto:kopeckyacc@gmail.com)+420734762010
+[](https://www.instagram.com/kopecky_filip/)[](https://www.youtube.com/@kopecky_filip)[](https://api.whatsapp.com/send?phone=420734762010)
+
+-
+### Lukáš Belopotočan
+Slovakia, Banská Bystrica
+Certificate No. AA_881
+
+[lukasbelopotocan1@gmail.com](mailto:lukasbelopotocan1@gmail.com)+421910188392
+[](https://www.facebook.com/lukas.belopotocan.5)[](https://www.instagram.com/l_belopotocan/)[](https://api.whatsapp.com/send?phone=421910188392)
+
+-
+### Clara Jeanbart
+Lebanon, Beit Mery
+Certificate No. AA_880
+
+[jeanbart.clara@gmail.com](mailto:jeanbart.clara@gmail.com)+96171738356
+[](https://www.instagram.com/clarajeanbart/)[](https://api.whatsapp.com/send?phone=96171738356)
+
+-
+### Carolina Scholz
+Germany, Wiesbaden
+Certificate No. AA_879
+
+[carolina.scholz@icloud.com](mailto:carolina.scholz@icloud.com)+491791360965
+[](https://api.whatsapp.com/send?phone=491791360965)
+
+-
+### Szekely Adam
+Hungary, Budapest
+Certificate No. AA_878
+
+[sz.adaam96@gmail.com](mailto:sz.adaam96@gmail.com)+36303675176
+[](https://www.facebook.com/adaam.szekely)[](https://www.instagram.com/szekelyadam/)[](https://www.linkedin.com/in/adam-szekely-181b021b0/)[](https://www.youtube.com/@szekelyadam)[](https://www.tiktok.com/@adaamszekely)[](https://api.whatsapp.com/send?phone=36303675176)
+
+-
+### Joaquín Alejandro Vivanco Pizarro
+Chile, Coyhaique
+Certificate No. AA_877
+
+[joaquin.vivanco@gmail.com](mailto:joaquin.vivanco@gmail.com)+56956174027
+[](https://www.instagram.com/ovivanco.sw/)[](https://api.whatsapp.com/send?phone=56956174027)
+
+-
+### Rabih Bou Jaoude
+Lebanon, Jal El Dib
+Certificate No. AA_876
+
+[rabihaboujaoude3@gmail.com](mailto:rabihaboujaoude3@gmail.com)+96176300164
+[](https://www.instagram.com/rabihboujaoude/)[](https://api.whatsapp.com/send?phone=96176300164)
+
+-
+### Petr Mraz
+Czech Republic, Prague
+Certificate No. AA_875
+
+[mrazpetr99@gmail.com](mailto:mrazpetr99@gmail.com)+420723918047
+[](https://www.instagram.com/mrazworkout/)[](https://api.whatsapp.com/send?phone=420723918047)
+
+-
+### Mhamad Al Mohtar
+Lebanon, Aramoun
+Certificate No. AA_874
+
+[mohamadalmohtar17@gmail.com](mailto:mohamadalmohtar17@gmail.com)+96170480942
+[](https://www.instagram.com/mhamad_al_mohtar/)[](https://www.tiktok.com/@mighty_calis)[](https://api.whatsapp.com/send?phone=96170480942)
+
+-
+### Ryan Bemister
+United Kingdom, Aberdeen
+Certificate No. AA_873
+
+[ryanbemister@gravityoffsociety.com](mailto:ryanbemister@gravityoffsociety.com)+447490164179
+[](https://www.instagram.com/ryan_bemister/)[](https://www.linkedin.com/in/ryan-bemister-142aa6380)[](https://www.youtube.com/@Ryanbemister)[](https://api.whatsapp.com/send?phone=447490164179)
+
+-
+### Georgiadis Dimitrios Georgiadis
+Greece, Kilkis
+Certificate No. AA_872
+
+[dimigeor14@gmail.com](mailto:dimigeor14@gmail.com)+306972192901
+[](https://api.whatsapp.com/send?phone=306972192901)
+
+-
+### Luis Calderon
+Canada, Montreal
+Certificate No. AA_871
+
+[luiscalderon.mcgill@gmail.com](mailto:luiscalderon.mcgill@gmail.com)+15145103598
+[](https://www.instagram.com/call_4_fitness/)[](https://api.whatsapp.com/send?phone=15145103598)
+
+-
+### Mustafa Halimah
+Jordan, Amman
+Certificate No. AA_870
+
+[mostafa97jm@gmail.com](mailto:mostafa97jm@gmail.com)+962788284214
+[](https://www.instagram.com/mostafa_halimah/)[](https://api.whatsapp.com/send?phone=962788284214)
+
+-
+### Walid Osman
+Saudi Arabia, Jeddah
+Certificate No. AA_869
+
+[walidosman1998@gmail.com](mailto:walidosman1998@gmail.com)+9660581810597
+[](https://www.facebook.com/Cipherr98)[](https://www.instagram.com/cipherr98/)[](https://www.linkedin.com/in/walid-osman-a44378178/)[](https://www.youtube.com/@cipherlol)[](https://www.tiktok.com/@cipherr98)[](https://api.whatsapp.com/send?phone=9660581810597)
+
+-
+### Mohamad Terki
+Lebanon, Tripoli
+Certificate No. AA_868
+
+[mohamad.terki91@gmail.com](mailto:mohamad.terki91@gmail.com)+96171599362
+[](https://www.instagram.com/mt_elitetrainer/)[](https://www.linkedin.com/in/mohamad-terki-521580367)[](https://api.whatsapp.com/send?phone=96171599362)
+
+-
+### Gerald Alexander Pastén Cepeda
+Chile, Santiago
+Certificate No. AA_867
+
+[gpastencepeda@gmail.com](mailto:gpastencepeda@gmail.com)+56995416434
+[](https://www.instagram.com/tenkai_movimiento/)[](http://www.linkedin.com/in/gerald-past%C3%A9n-cepeda-1611a2b7)[](https://api.whatsapp.com/send?phone=56995416434)
+
+-
+### Leonardo Banchero
+Uruguay, Montevideo
+Certificate No. AA_866
+
+[leobanchero.ic@gmail.com](mailto:leobanchero.ic@gmail.com)+59894988535
+[](https://www.instagram.com/leo.banchero/)[](https://www.linkedin.com/in/leobanchero/)[](https://api.whatsapp.com/send?phone=59894988535)
+
+-
+### Ahmed Hossam Ghander
+Egypt, Damietta
+Certificate No. AA_865
+
+[ahgh0100@gmail.com](mailto:ahgh0100@gmail.com)+201008212199
+[](https://www.facebook.com/share/1BXC9prQYD/)[](https://www.instagram.com/ahmed18ghander8/)[](https://youtube.com/@ahmedghanderghandoor)[](https://www.tiktok.com/@ahmed.ghander0)[](https://api.whatsapp.com/send?phone=201008212199)
+
+-
+### Jaroslav Bečvář
+Czech Republic, Poštovice
+Certificate No. AA_864
+
+[jarabecvar@seznam.cz](mailto:jarabecvar@seznam.cz)+420605165377
+[](https://api.whatsapp.com/send?phone=420605165377)
+
+-
+### Miguel Pedro da Silva Lobato Costa
+Portugal, Braga
+Certificate No. AA_863
+
+[miguelobatocosta@gmail.com](mailto:miguelobatocosta@gmail.com)+351937700225
+[](https://www.instagram.com/miguelobatocosta/)[](https://api.whatsapp.com/send?phone=351937700225)
+
+-
+### Philasande Tshepang Sekhosana
+South Africa, Durban
+Certificate No. AA_862
+
+[philasandesekhosana4@gmail.com](mailto:philasandesekhosana4@gmail.com)+27835977003
+[](https://www.facebook.com/share/1BQoySFN3V/)[](https://www.instagram.com/thephilasande/)[](https://www.tiktok.com/@thephilasande)[](https://api.whatsapp.com/send?phone=27835977003)
+
+-
+### Karolína Viteková
+Slovakia, Bratislava
+Certificate No. AA_861
+
+[karolina1vitekova@gmail.com](mailto:karolina1vitekova@gmail.com)+421918218385
+[](https://www.instagram.com/karolina_vitekova)[](https://api.whatsapp.com/send?phone=421918218385)
+
+-
+### Sari Al Hakim
+Lebanon, Aley
+Certificate No. AA_860
+
+[sarialhakim55@gmail.com](mailto:sarialhakim55@gmail.com)+96178977385
+[](https://www.facebook.com/share/17Vj5i729f/?mibextid=wwXIfr)[](https://www.instagram.com/sarialhakim_sw/)[](https://www.linkedin.com/in/sari-alhakim-930544387)[](https://youtube.com/@sarialhakim)[](https://www.tiktok.com/@sarialhakim_sw)[](https://api.whatsapp.com/send?phone=96178977385)
+
+-
+### Feras Alfariss
+Saudi Arabia, Riyadh
+Certificate No. AA_859
+
+[f.alfariss@gmail.com](mailto:f.alfariss@gmail.com)+966567246666
+[](https://api.whatsapp.com/send?phone=966567246666)
+
+-
+### Samah Zebian
+Lebanon, Mazraat Al Chouf
+Certificate No. AA_858
+
+[samahzebian1717@gmail.com](mailto:samahzebian1717@gmail.com)+96171560091
+[](https://www.instagram.com/s_zebian88/)[](https://api.whatsapp.com/send?phone=96171560091)
+
+-
+### Rei Aihara
+Japan, Shizuoka
+Certificate No. AA_617
+
+[](https://api.whatsapp.com/send?phone=)
+
+-
+### Ernesto Parra Hernández
+Mexico, Guadalajara
+Certificate No. AA_857
+
+[ernestoparra300@gmail.com](mailto:ernestoparra300@gmail.com)+523321777247
+[](https://www.instagram.com/parra.77x/)[](https://api.whatsapp.com/send?phone=523321777247)
+
+-
+### Siphesihle Luvuyo Gumede
+South Africa, Durban
+Certificate No. AA_856
+
+[siphesihleluvuyo07@gmail.com](mailto:siphesihleluvuyo07@gmail.com)+27677568480
+[](https://www.instagram.com/slg_kaizen/)[](https://www.tiktok.com/@slg_kaizen)[](https://api.whatsapp.com/send?phone=27677568480)
+
+-
+### Recep Ahmet Pehlivan
+Turkey, Istanbul
+Certificate No. AA_855
+
+[raphlvn@gmail.com](mailto:raphlvn@gmail.com)+905413731162
+[](https://www.instagram.com/calisthenics.engineer)[](https://api.whatsapp.com/send?phone=905413731162)
+
+-
+### Antonio El Beyrouthi
+Lebanon, Sarba
+Certificate No. AA_854
+
+[antoniobeyrouthi@gmail.com](mailto:antoniobeyrouthi@gmail.com)+96176035865
+[](https://www.instagram.com/antoniobeyrouthi/)[](https://api.whatsapp.com/send?phone=96176035865)
+
+-
+### Daniel Alexis Contreras Díaz
+Chile, Temuco
+Certificate No. AA_853
+
+[dacdfalcklandii@gmail.com](mailto:dacdfalcklandii@gmail.com)+56999849300
+[](https://www.facebook.com/share/1CiyDE7KMe/)[](https://www.instagram.com/danyelhumano/)[](https://youtube.com/@conoceteavosmismo)[](https://api.whatsapp.com/send?phone=56999849300)
+
+-
+### Tarek Nabilsi
+Jordan, Amman
+Certificate No. AA_852
+
+[tareknabilsi@gmail.com](mailto:tareknabilsi@gmail.com)+962795744722
+[](https://api.whatsapp.com/send?phone=962795744722)
+
+-
+### Daniel Abboud
+Lebanon, Jbeil
+Certificate No. AA_851
+
+[danymabboud@gmail.com](mailto:danymabboud@gmail.com)+96176549516
+[](https://www.instagram.com/danyabboud_/)[](https://www.tiktok.com/@_.danyabboud)[](https://api.whatsapp.com/send?phone=96176549516)
+
+-
+### Juan Felipe Becerra Ahumada
+Colombia, Bogotá
+Certificate No. AA_850
+
+[becerrajuanf@javeriana.edu.co](mailto:becerrajuanf@javeriana.edu.co)+573028569550
+[](https://www.facebook.com/share/1JqrRpo97t/)[](https://www.instagram.com/becerrajuf/)[](https://www.youtube.com/@juanfelipebecerra6491)[](https://api.whatsapp.com/send?phone=573028569550)
+
+-
+### Jacob Coleman
+United States of America, Portland, CT
+Certificate No. AA_849
+
+[jacobjcoleman1@gmail.com](mailto:jacobjcoleman1@gmail.com)+18608346241
+[](https://www.instagram.com/yogi___jc/)[](https://www.youtube.com/@SetTheStandard-Fitness)[](https://api.whatsapp.com/send?phone=18608346241)
+
+-
+### Afshin Safari
+Iran, Isfahan
+Certificate No. AA_848
+
+[afshinsfri@gmail.com](mailto:afshinsfri@gmail.com)+989138689869
+[](https://www.instagram.com/afshin_safariy)[](https://api.whatsapp.com/send?phone=989138689869)
+
+-
+### Jose Enrique Pagan Colon
+Puerto Rico, Manati
+Certificate No. AA_847
+
+[jpcolon3@gmail.com](mailto:jpcolon3@gmail.com)+17872392670
+[](https://www.instagram.com/theshagster/)[](https://www.linkedin.com/in/jose-pagan-ab8a2038b)[](https://www.youtube.com/@TheShagzter)[](https://www.tiktok.com/@theshagzter)[](https://api.whatsapp.com/send?phone=17872392670)
+
+-
+### Petr Horváth
+Czech Republic, Hodonín
+Certificate No. AA_846
+
+[petrhorvik@seznam.cz](mailto:petrhorvik@seznam.cz)+420607669472
+[](https://www.facebook.com/petr.horvath.904?locale=cs_CZ)[](https://www.instagram.com/petrhorvik/)[](https://www.youtube.com/@workouthodoninz.s.-swmadbr9767)[](https://api.whatsapp.com/send?phone=420607669472)
+
+-
+### Kongnat Wongsri
+Thailand, Nonthaburi
+Certificate No. AA_845
+
+[kongnatlovemom001@gmail.com](mailto:kongnatlovemom001@gmail.com)+66944097874
+[](https://www.instagram.com/jed_knt/)[](https://www.tiktok.com/@jed_knt)[](https://api.whatsapp.com/send?phone=66944097874)
+
+-
+### Pierre Esquenet
+France, Boulogne sur mer
+Certificate No. AA_844
+
+[pi2.esq@gmail.com](mailto:pi2.esq@gmail.com)+330785545554
+[](https://www.instagram.com/calisthevo/)[](https://www.tiktok.com/@calisthevo)[](https://api.whatsapp.com/send?phone=330785545554)
+
+-
+### Patrik Posch
+Netherlands, Nijmegen
+Certificate No. AA_843
+
+[ppatrik0506@gmail.com](mailto:ppatrik0506@gmail.com)+31645243319
+[](https://www.instagram.com/patrik_posch/)[](https://api.whatsapp.com/send?phone=31645243319)
+
+-
+### Latthapol Thawonnat
+Thailand, Bangkok
+Certificate No. AA_842
+
+[jaspergameing7@gmail.com](mailto:jaspergameing7@gmail.com)+66909956776
+[](https://www.instagram.com/pond_ltt/)[](https://api.whatsapp.com/send?phone=66909956776)
+
+-
+### Veronika Psotková
+Czech Republic, Olomouc
+Certificate No. AA_841
+
+[psotkova.veronika@seznam.cz](mailto:psotkova.veronika@seznam.cz)+420739176724
+[](https://www.facebook.com/profile.php?id=61579642760242)[](https://www.instagram.com/veronika.psotkova/)[](http://www.linkedin.com/in/veronika-psotková)[](https://www.tiktok.com/@veronika.psotkova)[](https://api.whatsapp.com/send?phone=420739176724)
+
+-
+### Krisztián Bartha
+Hungary, Szombathely
+Certificate No. AA_840
+
+[brth.krisz@gmail.com](mailto:brth.krisz@gmail.com)+36308479377
+[](https://www.instagram.com/kriszbartha/)[](https://www.youtube.com/@KRISZBRTH)[](https://api.whatsapp.com/send?phone=36308479377)
+
+-
+### Mohammad Ali Aldarabseh
+Jordan, Amman
+Certificate No. AA_839
+
+[mohammadaldarabseh1@gmail.com](mailto:mohammadaldarabseh1@gmail.com)+962780372307
+[](https://www.facebook.com/share/1Di1p3mZTo/?mibextid=wwXIfr)[](https://www.instagram.com/drabseeh/)[](https://api.whatsapp.com/send?phone=962780372307)
+
+-
+### Ricardo Murguía Morales
+Mexico, Cancún
+Certificate No. AA_838
+
+[ricardo1murguia@gmail.com](mailto:ricardo1murguia@gmail.com)+529981350841
+[](https://www.facebook.com/share/1CGfqWAYgC/?mibextid=wwXIfr)[](https://www.instagram.com/ricardomurguia_/)[](https://www.tiktok.com/@ricardomurguiaa_)[](https://api.whatsapp.com/send?phone=529981350841)
+
+-
+### N Nitheesh
+India, Chennai
+Certificate No. AA_837
+
+[nitheeshn7358@gmail.com](mailto:nitheeshn7358@gmail.com)+917358565616
+[](https://www.instagram.com/nitheesh_0910/)[](https://api.whatsapp.com/send?phone=917358565616)
+
+-
+### Karim Zakhary
+Egypt, Cairo
+Certificate No. AA_836
+
+[kairozakhary@gmail.com](mailto:kairozakhary@gmail.com)+2001279927118
+[](https://www.facebook.com/share/1FeTqos82h/?mibextid=wwXIfr)[](https://www.instagram.com/kzakhary_sw/)[](https://www.tiktok.com/@karim.zakhary)[](https://api.whatsapp.com/send?phone=2001279927118)
+
+-
+### Zoárd Dávid Patkó
+Hungary, Füzesabony
+Certificate No. AA_835
+
+[pzoardd@gmail.com](mailto:pzoardd@gmail.com)+36304765528
+[](https://www.instagram.com/pzoardd/)[](https://api.whatsapp.com/send?phone=36304765528)
+
+-
+### Ishu Bisht
+India, Ghaziabad, Uttar Pradesh
+Certificate No. AA_834
+
+[ishubisht1992@gmail.com](mailto:ishubisht1992@gmail.com)+918920198781
+[](https://www.instagram.com/ishu.bisht_sw)[](https://www.youtube.com/@ishu.bisht_sw)[](https://api.whatsapp.com/send?phone=918920198781)
+
+-
+
+### Andrey Andreev
+Bulgaria
+Certificate No. AA_833
+
+[vcandreev@gmail.com](mailto:vcandreev@gmail.com)
+[](https://api.whatsapp.com/send?phone=)
+
+-
+### Alexandros Konstantinos Alexandris
+Greece, Patras
+Certificate No. AA_832
+
+[alexandrosalexandris19@gmail.com](mailto:alexandrosalexandris19@gmail.com)+306906482304
+[](https://www.instagram.com/alexandrros._/)[](https://www.tiktok.com/@alexandrros._)[](https://api.whatsapp.com/send?phone=306906482304)
+
+-
+### Marielena Arrillaga Pedrosa
+Puerto Rico, San Juan
+Certificate No. AA_831
+
+[marielena.214@gmail.com](mailto:marielena.214@gmail.com)+17875320214
+[](https://www.instagram.com/marielena_arrillaga)[](https://api.whatsapp.com/send?phone=17875320214)
+
+-
+### Youness Abdel Karim
+Egypt, Dahab
+Certificate No. AA_830
+
+[youness.karim@hotmail.com](mailto:youness.karim@hotmail.com)+201288822734
+[](https://api.whatsapp.com/send?phone=201288822734)
+
+-
+
+### Kunal Mathur
+India, Bangalore
+Certificate No. AA_829
+
+[mathr.kunal@gmail.com](mailto:mathr.kunal@gmail.com)+919820622133
+[](https://api.whatsapp.com/send?phone=919820622133)
+
+-
+### Sawsan Abuzinadah
+Saudi Arabia, Jeddah
+Certificate No. AA_828
+
+[sawsanfit@gmail.com](mailto:sawsanfit@gmail.com)+966503363415
+[](https://api.whatsapp.com/send?phone=966503363415)
+
+-
+### Surya Narayanan
+India, Coimbatore
+Certificate No. AA_827
+
+[isurya1002@gmail.com](mailto:isurya1002@gmail.com)+918220390720
+[](https://www.instagram.com/surya_calisthenics/)[](https://www.linkedin.com/in/surya-narayn/)[](https://www.youtube.com/channel/UCG8k2_UuqWAjZEsOdssNUDQ)[](https://api.whatsapp.com/send?phone=918220390720)
+
+-
+### Yiannos Elias Demetriou
+Cyprus, Paphos
+Certificate No. AA_826
+
+[giannosd9@gmail.com](mailto:giannosd9@gmail.com)+306949507033
+[](https://www.facebook.com/DemJohnny/)[](https://www.instagram.com/demjohnny_/)[](https://www.linkedin.com/in/yiannos-elias-demetriou-9668bb232/)[](https://www.youtube.com/@DemJohnnny)[](https://www.tiktok.com/@demjohnny)[](https://api.whatsapp.com/send?phone=306949507033)
+
+-
+### Terence Buyne
+Netherlands, Lelystad
+Certificate No. AA_825
+
+[terenceb1982@gmail.com](mailto:terenceb1982@gmail.com)+31634187282
+[](https://www.instagram.com/strongerwithterence/)[](https://api.whatsapp.com/send?phone=31634187282)
+
+-
+### Konstantinos Perreas
+Greece, Athens
+Certificate No. AA_824
+
+[gusperreas@gmail.com](mailto:gusperreas@gmail.com)+306945599151
+[](https://www.facebook.com/share/1B3LbVr1MA/)[](https://www.instagram.com/harmonicmotionaigaleo/)[](https://youtube.com/channel/UCg3HuLCLRoXXXLt9q4nDhpA?si=uUgPbbCo_EFy_Jf4)[](https://api.whatsapp.com/send?phone=306945599151)
+
+-
+### Randi Mensalter
+Spain, Barcelona
+Certificate No. AA_823
+
+[rmensalter@gmail.com](mailto:rmensalter@gmail.com)+34711710434
+[](https://www.instagram.com/randimensalter)[](https://api.whatsapp.com/send?phone=34711710434)
+
+-
+### James Cope
+United Kingdom, Salisbury
+Certificate No. AA_822
+
+[jamescope293@gmail.com](mailto:jamescope293@gmail.com)+447507885552
+[](https://api.whatsapp.com/send?phone=447507885552)
+
+-
+### Mohamad Khaled Korhani
+Lebanon, Beirut
+Certificate No. AA_821
+
+[korhanimohamad33@gmail.com](mailto:korhanimohamad33@gmail.com)+96170295104
+[](https://www.instagram.com/sl_mkk1/)[](https://api.whatsapp.com/send?phone=96170295104)
+
+-
+### Tyler Tait
+Scotland, Aberdeen
+Certificate No. AA_820
+
+[tyler.tait94@gmail.com](mailto:tyler.tait94@gmail.com)+447752610600
+[](https://www.facebook.com/share/19gpE58z4W/?mibextid=wwXIfr)[](https://www.instagram.com/tylertaitpt/)[](https://www.linkedin.com/in/tylertaitptgravityoff?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app)[](https://www.tiktok.com/@tylertaitpt)[](https://api.whatsapp.com/send?phone=447752610600)
+
+-
+### Ricardo Sebastian Espinosa Peñafiel
+Ecuador, Quito
+Certificate No. AA_819
+
+[ricardo540ec@hotmail.com](mailto:ricardo540ec@hotmail.com)+593987261804
+[](https://www.instagram.com/rep4parkour/)[](https://www.linkedin.com/in/repinteractividad/)[](https://www.tiktok.com/@rep4parkour_)[](https://api.whatsapp.com/send?phone=593987261804)
+
+-
+### Sylvain Serville
+France, Rodez
+Certificate No. AA_818
+
+[sylvain.serville@gmail.com](mailto:sylvain.serville@gmail.com)+33617992167
+[](https://www.linkedin.com/in/sylvainserville)[](https://api.whatsapp.com/send?phone=33617992167)
+
+-
+### Machaal Arabi
+Lebanon, Beirut
+Certificate No. AA_817
+
+[mashaalarabi@gmail.com](mailto:mashaalarabi@gmail.com)+96181249456
+[](https://www.instagram.com/machaal_arabi/)[](https://api.whatsapp.com/send?phone=96181249456)
+
+-
+### Elyan Alkakhy
+Lebanon, Hasbayya
+Certificate No. AA_816
+
+[elyanalkakhy@gmail.com](mailto:elyanalkakhy@gmail.com)+96171259380
+[](https://www.facebook.com/elyan.alkakhy.5)[](https://www.instagram.com/elyan_alkakhy/)[](https://api.whatsapp.com/send?phone=96171259380)
+
+-
+
+### Diana Ezzedine
+Senegal, Dakar
+Certificate No. AA_558
+
+[dianaezz.3i@gmail.com](mailto:dianaezz.3i@gmail.com)+221775392131
+[](https://api.whatsapp.com/send?phone=221775392131)
+
+-
+### Oussema Laouiti
+Tunisia, Monastir
+Certificate No. AA_815
+
+[oussama.laouiti@gmail.com](mailto:oussama.laouiti@gmail.com)+96566409048
+[](https://www.facebook.com/share/175fu8ywDT/)[](https://www.instagram.com/oussema.laouiti/)[](https://youtube.com/@irobottn)[](https://www.tiktok.com/@mr_slendy_)[](https://api.whatsapp.com/send?phone=96566409048)
+
+-
+### Reginald Kincade Jr
+United States of America, Forth Worth
+Certificate No. AA_814
+
+[reginald.o.kincade@gmail.com](mailto:reginald.o.kincade@gmail.com)+18177295884
+[](https://www.instagram.com/kincadekinetics/)[](https://api.whatsapp.com/send?phone=18177295884)
+
+-
+### Abdulaziz Alanjery
+Kuwait, Kuwait
+Certificate No. AA_813
+
+[aziz.alanjery@gmail.com](mailto:aziz.alanjery@gmail.com)+96566161516
+[](https://www.instagram.com/azanjery/)[](https://api.whatsapp.com/send?phone=96566161516)
+
+-
+### Ayush Sabat
+India, Mumbai
+Certificate No. AA_812
+
+[ayushsabat045@gmail.com](mailto:ayushsabat045@gmail.com)+912200037350
+[](https://api.whatsapp.com/send?phone=912200037350)
+
+-
+### Daniel Toman
+Czech Republic, Pardubice
+Certificate No. AA_811
+
+[dant1@seznam.cz](mailto:dant1@seznam.cz)+420736135514
+[](https://api.whatsapp.com/send?phone=420736135514)
+
+-
+### Yousef Alabdullah
+Kuwait, Kuwait
+Certificate No. AA_810
+
+[yousefalabdullalh@gmail.com](mailto:yousefalabdullalh@gmail.com)+96597800778
+[](https://www.instagram.com/yousef_q8s/)[](https://api.whatsapp.com/send?phone=96597800778)
+
+-
+### Dana Ariqat
+Jordan, Amman
+Certificate No. AA_809
+
+[dariqat2005@gmail.com](mailto:dariqat2005@gmail.com)+962798516652
+[](https://api.whatsapp.com/send?phone=962798516652)
+
+-
+### Rudy Obeid
+Lebanon, Baabdat
+Certificate No. AA_808
+
+[rudyobeid02@gmail.com](mailto:rudyobeid02@gmail.com)+96171870204
+[](https://www.instagram.com/rudyobeid_/)[](https://api.whatsapp.com/send?phone=96171870204)
+
+-
+### Tetsuya Tsuruta
+Japan, Chiba
+Certificate No. AA_807
+
+[calistra.studio@gmail.com](mailto:calistra.studio@gmail.com)+819045474232
+[](https://www.instagram.com/tetsxy/)[](https://api.whatsapp.com/send?phone=819045474232)
+
+-
+### Ahinjith E K
+India, Kozhikode
+Certificate No. AA_806
+
+[ahinjith250@gmail.com](mailto:ahinjith250@gmail.com)+917034226486
+[](https://www.facebook.com/share/15yscWLYCN/?mibextid=wwXIfr)[](http://www.instagram.com/ahinjith)[](https://youtube.com/@ahinjith)[](https://api.whatsapp.com/send?phone=917034226486)
+
+-
+### Shawqi Salem
+Saudi Arabia, Jeddah
+Certificate No. AA_805
+
+[shawqii.salem@gmail.com](mailto:shawqii.salem@gmail.com)+966582004002
+[](https://www.facebook.com/share/19i9MQVaHS/?mibextid=wwXIfr)[](https://www.instagram.com/coach_shawqii/)[](https://www.linkedin.com/in/shawqi-salem-b54020189)[](https://youtube.com/@coachshawqi9086)[](https://www.tiktok.com/@coach_shs)[](https://api.whatsapp.com/send?phone=966582004002)
+
+-
+### Alena Štefunková
+Slovakia, Pavlice
+Certificate No. AA_804
+
+[stefunkova.alenka@gmail.com](mailto:stefunkova.alenka@gmail.com)+421915251833
+[](https://www.facebook.com/people/Alena-%C5%A0tefunkov%C3%A1/100009202760032/)[](https://www.instagram.com/alena_stefunkova/)[](https://www.youtube.com/@alena_stefunkova)[](https://api.whatsapp.com/send?phone=421915251833)
+
+-
+### Kristóf Korán
+Hungary, Nemesbük
+Certificate No. AA_803
+
+[k.kristof11@gmail.com](mailto:k.kristof11@gmail.com)+36307115339
+[](https://www.instagram.com/krisk.csw/)[](https://www.linkedin.com/in/krist%C3%B3f-kor%C3%A1n-a20a05256/)[](https://www.youtube.com/@KrisKCSW)[](https://www.tiktok.com/@krisk.workout)[](https://api.whatsapp.com/send?phone=36307115339)
+
+-
+### Anna Borowska-Abdeljaoued
+United Arab Emirates, Dubai
+Certificate No. AA_802
+
+[+971544330108](mailto:+971544330108)aniee.abdel@gmail.com
+[](https://www.instagram.com/anna_cali_journey/)[](https://api.whatsapp.com/send?phone=aniee.abdel@gmail.com)
+
+-
+### Julie-Ann Ouellet
+Canada, Laval
+Certificate No. AA_801
+
+[julieannouellet@gmail.com](mailto:julieannouellet@gmail.com)+14383462700
+[](https://www.facebook.com/julieann.ouellet.bfv)[](https://www.instagram.com/julieann.ouellet/)[](https://www.linkedin.com/in/julie-ann-ouellet-31a8a972/)[](https://www.youtube.com/@julieann.ouellet)[](https://www.tiktok.com/@julieann.ouellet)[](https://api.whatsapp.com/send?phone=14383462700)
+
+-
+### Alen Ajzeli
+Croatia, Osijek
+Certificate No. AA_800
+
+[alenajzeli122@gmail.com](mailto:alenajzeli122@gmail.com)+385915373480
+[](https://www.instagram.com/alen._.ajzeli/)[](https://api.whatsapp.com/send?phone=385915373480)
+
+-
+### Antoinette Venter
+South Africa, Cape Town
+Certificate No. AA_592
+
+[anniesmaloney@gmail.com](mailto:anniesmaloney@gmail.com)+27834198286
+[](https://www.instagram.com/antoinetteventer777)[](https://www.linkedin.com/in/antoinette-venter-364912229)[](https://api.whatsapp.com/send?phone=27834198286)
+
+-
+### Santiago Torres Lopera
+Colombia, Envigado
+Certificate No. AA_591
+
+[leonellusyt2@gmail.com](mailto:leonellusyt2@gmail.com)+573138085600
+[](https://www.facebook.com/profile.php?id=61568457184348&locale=es_LA)[](https://www.instagram.com/santytorres.sw/)[](https://api.whatsapp.com/send?phone=573138085600)
+
+-
+### Luigi Prato
+Hong Kong, Hong Kong
+Certificate No. AA_590
+
+[pratoluigi@icloud.com](mailto:pratoluigi@icloud.com)+85255998949
+[](https://www.instagram.com/yololupo)[](https://api.whatsapp.com/send?phone=85255998949)
+
+-
+### Dirfath K P
+India, Mannarkkad
+Certificate No. AA_589
+
+[problemsdetector@gmail.com](mailto:problemsdetector@gmail.com)+916282444452
+[](https://www.instagram.com/dirfath_media_)[](https://youtube.com/@problemsdetector1488)[](https://api.whatsapp.com/send?phone=916282444452)
+
+-
+### Mahsa Taghizadeh Ghouchani
+Iran, Mashhad
+Certificate No. AA_588
+
+[mhs.taghizade@gmail.com](mailto:mhs.taghizade@gmail.com)+989150019310
+[](https://www.instagram.com/mahsa_taqizade)[](https://www.linkedin.com/in/mahsa-taghizade-8725ba21b)[](https://api.whatsapp.com/send?phone=989150019310)
+
+-
+### Akash K V
+India, Calicut
+Certificate No. AA_587
+
+[akashandru.007@gmail.com](mailto:akashandru.007@gmail.com)+919048755286
+[](https://www.facebook.com/share/15kxgopfUy/?mibextid=wwXIfr)[](https://www.instagram.com/_akash_kv___)[](https://api.whatsapp.com/send?phone=919048755286)
+
+-
+### Neggazi Mohamed Lamine
+Algeria, Algiers
+Certificate No. AA_586
+
+[moh.lamsw@gmail.com](mailto:moh.lamsw@gmail.com)+213553710291
+[](https://www.instagram.com/psycho__sw/)[](https://www.linkedin.com/in/mohamed-lamine-neggazi-14143936a)[](https://www.tiktok.com/@coach_lamine)[](https://api.whatsapp.com/send?phone=213553710291)
+
+-
+### Salomão Manuel Gnagno
+Portugal, Laranjeiro
+Certificate No. AA_585
+
+[salomaomanuel04@gmail.com](mailto:salomaomanuel04@gmail.com)+351961861558
+[](https://www.instagram.com/lyfewithsalu/)[](https://www.youtube.com/@LyfeWithSalu)[](https://www.tiktok.com/@lyfewithsalu)[](https://api.whatsapp.com/send?phone=351961861558)
+
+-
+### Philip Holubec
+Czech Republic, Šestajovice
+Certificate No. AA_584
+
+[holubec.philip@seznam.cz](mailto:holubec.philip@seznam.cz)+420728886185
+[](https://www.instagram.com/hollow.back/)[](http://www.youtube.com/@Skillzquad)[](https://api.whatsapp.com/send?phone=420728886185)
+
+-
+### Jordan Polevnick
+South Africa, Johannesburg
+Certificate No. AA_583
+
+[polevnickj@gmail.com](mailto:polevnickj@gmail.com)+27834070610
+[](https://www.facebook.com/profile.php?id=61577489491637)[](https://www.instagram.com/jpthenics/)[](https://www.youtube.com/c/JPThenics)[](https://api.whatsapp.com/send?phone=27834070610)
+
+-
+### Dema Alfakhouri
+Jordan, Amman
+Certificate No. AA_582
+
+[dema.alfakhouri@gmail.com](mailto:dema.alfakhouri@gmail.com)+962777740083
+[](https://www.instagram.com/dimafakhouri/)[](https://api.whatsapp.com/send?phone=962777740083)
+
+-
+### Jorge Gabriel Ortiz Castañeda
+Guatemala
+Certificate No. AA_581
+
+[bochie.streetsport@gmail.com](mailto:bochie.streetsport@gmail.com)+50252070096
+[](https://www.facebook.com/share/1E3uFWLdqp/?mibextid=wwXIfr)[](https://www.instagram.com/bochie7)[](https://youtube.com/@bochie7)[](https://api.whatsapp.com/send?phone=50252070096)
+
+-
+### Sadettin Eryiğit
+Turkey, Istanbul
+Certificate No. AA_580
+
+[sadettineryigit@hotmail.com](mailto:sadettineryigit@hotmail.com)+905392112612
+[](https://www.instagram.com/sadettinerygt)[](https://www.linkedin.com/in/sadettin-eryi%C4%9Fit-5168b824b)[](https://www.youtube.com/@sadettineryiğit)[](https://api.whatsapp.com/send?phone=905392112612)
+
+-
+### Hamad Yassin
+Kuwait, Kuwait
+Certificate No. AA_579
+
+[hamadyassin78@gmail.com](mailto:hamadyassin78@gmail.com)+96566981991
+[](https://www.instagram.com/hamad_ysn)[](https://www.tiktok.com/@hamadysn)[](https://api.whatsapp.com/send?phone=96566981991)
+
+-
+### Nickerson Jean Baptiste
+Canada, Longueuil
+Certificate No. AA_578
+
+[nickerson.jbaptiste@gmail.com](mailto:nickerson.jbaptiste@gmail.com)+15144496425
+[](https://www.facebook.com/nickersonjb/)[](https://www.instagram.com/jb.calicoach)[](https://www.linkedin.com/in/nickerson-jean-baptiste-043125b7/)[](https://api.whatsapp.com/send?phone=15144496425)
+
+-
+### Fabien Roels
+Hong Kong, Hong Kong
+Certificate No. AA_577
+
+[fabien.roels@gmail.com](mailto:fabien.roels@gmail.com)+85290751071
+[](https://www.instagram.com/fabien_roels/)[](https://api.whatsapp.com/send?phone=85290751071)
+
+-
+### Usiel Humberto Hernández Pérez
+Мexico, Oaxaca de Juárez
+Certificate No. AA_576
+
+[usielpantera@outlook.com](mailto:usielpantera@outlook.com)+529511855315
+[](https://www.instagram.com/king_0f_curses._ogs)[](https://api.whatsapp.com/send?phone=529511855315)
+
+-
+### Sekhawat Monusingh
+India, Vadodara
+Certificate No. AA_575
+
+[sdon4676@gmail.com](mailto:sdon4676@gmail.com)+917048476446
+[](https://www.instagram.com/ms_shekhawat_)[](https://youtube.com/@x-fit7536)[](https://api.whatsapp.com/send?phone=917048476446)
+
+-
+### William Bees
+Great Britain, Gloucester
+Certificate No. AA_574
+
+[williambees2000@gmail.com](mailto:williambees2000@gmail.com)+447955329117
+[](https://www.instagram.com/ismcalisthenics)[](https://api.whatsapp.com/send?phone=447955329117)
+
+-
+### Akram Hammad
+Egypt, Cairo
+Certificate No. AA_573
+
+[akramahmedh2022@gmail.com](mailto:akramahmedh2022@gmail.com)+201033100300
+[](https://www.instagram.com/akram_hammad_)[](https://api.whatsapp.com/send?phone=201033100300)
+
+-
+### Michal Novak
+United Kingdom, London
+Certificate No. AA_572
+
+[miskonovak237@gmail.com](mailto:miskonovak237@gmail.com)+447538316562
+[](https://www.instagram.com/miskonovak/)[](https://api.whatsapp.com/send?phone=447538316562)
+
+-
+### Toranisorn Mixkhuntod
+Thailand, Khonkaen
+Certificate No. AA_571
+
+[mtoranisorn@gmail.com](mailto:mtoranisorn@gmail.com)+66823162910
+[](https://www.facebook.com/share/16X9LVRxA8/?mibextid=wwXIfr)[](https://www.instagram.com/love_toracali/)[](https://youtube.com/@love_toracali)[](https://api.whatsapp.com/send?phone=66823162910)
+
+-
+### Charbel El Khoury
+Lebanon, Byblos
+Certificate No. AA_570
+
+[charbelkhoury33@gmail.com](mailto:charbelkhoury33@gmail.com)+96171043554
+[](https://www.facebook.com/share/16qartf62V/?mibextid=wwXIfr)[](https://www.instagram.com/charbelkhoury99/)[](https://www.linkedin.com/in/charbel-el-khoury-59a60b22a)[](https://youtube.com/@charbelelkhoury855)[](https://www.tiktok.com/@charbelkhoury99)[](https://api.whatsapp.com/send?phone=96171043554)
+
+-
+### Alex Bukreev
+United States of America, Colts Neck, NJ
+Certificate No. AA_569
+
+[resilient.calisthenics@gmail.com](mailto:resilient.calisthenics@gmail.com)+17322523110
+[](https://www.instagram.com/resilient.calisthenics/)[](https://www.tiktok.com/@resilient.calisthenics)[](https://api.whatsapp.com/send?phone=17322523110)
+
+-
+### Pape Alioune Faye
+Senegal, Dakar
+Certificate No. AA_568
+
+[petitpa96@gmail.com](mailto:petitpa96@gmail.com)+221781199613
+[](https://api.whatsapp.com/send?phone=221781199613)
+
+-
+### Nikolaos Leventis
+Greece
+Certificate No. AA_615
+
+[leventisnik@gmail.com](mailto:leventisnik@gmail.com)+306976906676
+[](https://www.instagram.com/n_leventis)[](https://api.whatsapp.com/send?phone=306976906676)
+
+-
+### Roy Al Chamy
+Lebanon, Hazmieh
+Certificate No. AA_567
+
+[roykchamy@gmail.com](mailto:roykchamy@gmail.com)+96170144713
+[](https://www.instagram.com/roychamy/)[](https://api.whatsapp.com/send?phone=96170144713)
+
+-
+### Annalyn Abadiano Logrosa
+Philippines
+Certificate No. AA_566
+
+[logrosaannalynabadiano22@gmail.com](mailto:logrosaannalynabadiano22@gmail.com)+639602442961
+[](https://www.facebook.com/share/1CTGCZRaRB/)[](https://api.whatsapp.com/send?phone=639602442961)
+
+-
+### Gerardo Arellano Gonzalez
+Mexico, Mérida
+Certificate No. AA_565
+
+[grd8arellano@gmail.com](mailto:grd8arellano@gmail.com)+529993724162
+[](https://www.facebook.com/share/1DiTot5BcY/)[](https://www.instagram.com/_germen24/)[](https://www.tiktok.com/@germen24)[](https://api.whatsapp.com/send?phone=529993724162)
+
+-
+### Carlos Brahim Estrada Ortega
+Nicaragua, Masaya
+Certificate No. AA_564
+
+[brahim6733@gmail.com](mailto:brahim6733@gmail.com)+50582781453
+[](https://www.facebook.com/Cestrada09%20)[](https://www.instagram.com/car_estrada/)[](https://www.linkedin.com/in/carlos-estrada-ortega/)[](https://www.youtube.com/@wolvescalisthenics5308%20)[](https://www.tiktok.com/@wolvescalisthenics%20)[](https://api.whatsapp.com/send?phone=50582781453)
+
+-
+### Raúl Antonio Lozano Montemayor
+Mexico, Nuevo león
+Certificate No. AA_563
+
+[raulantonio.lm@gmail.com](mailto:raulantonio.lm@gmail.com)+528112742157
+[](https://www.instagram.com/barraul.1/)[](https://api.whatsapp.com/send?phone=528112742157)
+
+-
+### David Gracie
+Australia, Perth
+Certificate No. AA_562
+
+[davidgracieole@gmail.com](mailto:davidgracieole@gmail.com)+61412288470
+[](https://www.instagram.com/davidgracie)[](https://api.whatsapp.com/send?phone=61412288470)
+
+-
+### Dávid Horeličan
+Slovakia, Skalité
+Certificate No. AA_561
+
+[horelicand@gmail.com](mailto:horelicand@gmail.com)+421948298352
+[](https://api.whatsapp.com/send?phone=421948298352)
+
+-
+### Andrii Kalinkin
+Ukraine, Kryvyi Rih
+Certificate No. AA_560
+
+[andrew.kalinkin@gmail.com](mailto:andrew.kalinkin@gmail.com)+380972776876
+[](https://www.facebook.com/andreykalinkin)[](https://www.instagram.com/andreykalinkin)[](https://www.linkedin.com/in/andrii-kalinkin-881bba120)[](https://api.whatsapp.com/send?phone=380972776876)
+
+-
+### Nahuel Godoy Gonzalez
+Argentina, Buenos Aires
+Certificate No. AA_559
+
+[nahuelgodoygonzalez@gmail.com](mailto:nahuelgodoygonzalez@gmail.com)+5491121795179
+[](https://www.instagram.com/nahuuel.ksw/)[](https://api.whatsapp.com/send?phone=5491121795179)
+
+-
+### Raji Arabi
+Lebanon, Kfarqouk
+Certificate No. AA_557
+
+[rtrader2002@gmail.com](mailto:rtrader2002@gmail.com)+96176901033
+[](https://www.instagram.com/raji_arabii)[](https://www.tiktok.com/@eagl.estrength)[](https://api.whatsapp.com/send?phone=96176901033)
+
+-
+### SuHwan LEE
+South Korea, Cheongju
+Certificate No. AA_556
+
+[rhscnd921@naver.com](mailto:rhscnd921@naver.com)+8201064317735
+[](https://www.facebook.com/streetworkoutkoreabarcrows/)[](https://www.instagram.com/crows_strength)[](https://www.youtube.com/@user-crowsstreangth)[](https://www.tiktok.com/@crows_strength)[](https://api.whatsapp.com/send?phone=8201064317735)
+
+-
+### Franco Matias Rumiz Piottante
+Guinea, Conakry
+Certificate No. AA_555
+
+[franco.djembe@gmail.com](mailto:franco.djembe@gmail.com)+224612331500
+[](https://www.instagram.com/calisthenics.flow.movement/)[](https://www.tiktok.com/@calisthenics.flow.move)[](https://api.whatsapp.com/send?phone=224612331500)
+
+-
+### Amir Nasri
+Tunisia
+Certificate No. AA_554
+
+[nasriamir585@gmail.com](mailto:nasriamir585@gmail.com)+21626964323
+[](https://www.facebook.com/amir.nasri.306655)[](https://www.instagram.com/vladimir.boxing/)[](https://api.whatsapp.com/send?phone=21626964323)
+
+-
+### RAKESH KUMAR GUNDE
+India, Hyderabad
+Certificate No. AA_553
+
+[rakeshkumargunde@gmail.com](mailto:rakeshkumargunde@gmail.com)+919550763653
+[](https://api.whatsapp.com/send?phone=919550763653)
+
+-
+### Nabil Jellal
+Morocco, Casablanca
+Certificate No. AA_552
+
+[jellal.nabil@gmail.com](mailto:jellal.nabil@gmail.com)+212676820657
+[](https://www.facebook.com/share/1EyWb2GTL5/)[](https://www.instagram.com/coach.jnabil/)[](https://api.whatsapp.com/send?phone=212676820657)
+
+-
+### DAMIS PN
+India, Kozhikode
+Certificate No. AA_551
+
+[damisdamis631@gmail.com](mailto:damisdamis631@gmail.com)+918289920650
+[](https://www.instagram.com/coach_damis/)[](https://youtube.com/@damiscf)[](https://api.whatsapp.com/send?phone=918289920650)
+
+-
+### Andrej Pauer
+Slovakia, Trstená
+Certificate No. AA_550
+
+[apauer33@gmail.com](mailto:apauer33@gmail.com)+421944705457
+[](https://www.instagram.com/ado_pauer)[](https://api.whatsapp.com/send?phone=421944705457)
+
+-
+### Martina Lee
+Hong Kong, Hong Kong
+Certificate No. AA_549
+
+[martinal@gmail.com](mailto:martinal@gmail.com)+85291613307
+[](https://www.instagram.com/martina.kaliom)[](https://api.whatsapp.com/send?phone=85291613307)
+
+-
+### Jad El Kalaany
+Lebanon, Beirut
+Certificate No. AA_548
+
+[jadkalaany@gmail.com](mailto:jadkalaany@gmail.com)+96176487133
+[](https://www.instagram.com/jadkalaany/)[](https://api.whatsapp.com/send?phone=96176487133)
+
+-
+### Lillian AL-SHISHANY
+Jordan, Amman
+Certificate No. AA_547
+
+[lillianalshishany@gmail.com](mailto:lillianalshishany@gmail.com)+962799890244
+[](https://api.whatsapp.com/send?phone=962799890244)
+
+-
+### Sarah Fayez Hattar
+Jordan, Amman
+Certificate No. AA_546
+
+[sarahhattarr96@gmail.com](mailto:sarahhattarr96@gmail.com)+96279860555
+[](https://www.instagram.com/sarahhattar/)[](https://www.linkedin.com/in/sarah-hattar-55948b1b9)[](https://api.whatsapp.com/send?phone=96279860555)
+
+-
+### Aakash Mahesh Purohit
+India, Mumbai
+Certificate No. AA_545
+
+[apurohit7865@gmail.com](mailto:apurohit7865@gmail.com)+919867186919
+[](https://www.facebook.com/share/16bioYNiEU/)[](http://www.instagram.com/akashpurohit_)[](https://www.linkedin.com/in/aakash-purohit-8801951b6)[](https://www.youtube.com/@aakashpurohit7395)[](https://api.whatsapp.com/send?phone=919867186919)
+
+-
+### Mikhaël Roussel
+Belgium, Charleroi
+Certificate No. AA_544
+
+[mikhael-roussel@hotmail.com](mailto:mikhael-roussel@hotmail.com)+32498975770
+[](https://www.instagram.com/mika.keymove/)[](https://youtube.com/@diabolo6996)[](https://www.tiktok.com/@mika.keymove)[](https://api.whatsapp.com/send?phone=32498975770)
+
+-
+### Abdallah Abbadi
+United Arab Emirates, Al Ain
+Certificate No. AA_543
+
+[abdullahal_abbadi@yahoo.com](mailto:abdullahal_abbadi@yahoo.com)+971507230439
+[](https://www.instagram.com/one_planche_man/)[](http://linkedin.com/in/abdallah-abbadi-769651359)[](https://api.whatsapp.com/send?phone=971507230439)
+
+-
+### Sascha Lagler
+Austria, Melk
+Certificate No. AA_542
+
+[koerperfluss@gmail.com](mailto:koerperfluss@gmail.com)+436645333028
+[](https://www.instagram.com/sascha.lagler/)[](https://api.whatsapp.com/send?phone=436645333028)
+
+-
+### Moussa Bodian
+Senegal, Dakar
+Certificate No. AA_541
+
+[moussabodian944@gmail.com](mailto:moussabodian944@gmail.com)+221779783528
+[](https://www.facebook.com/share/16FLDs8Y9f/?mibextid=wwXIfr)[](https://www.instagram.com/bboy_moise/)[](https://youtube.com/@moise7448)[](https://www.tiktok.com/@moise830)[](https://api.whatsapp.com/send?phone=221779783528)
+
+-
+### Asia Waithe
+Trinidad & Tobago, St. Joseph
+Certificate No. AA_540
+
+[asiaalexaw@gmail.com](mailto:asiaalexaw@gmail.com)+18682997521
+[](https://www.facebook.com/profile.php?id=61552827483830)[](https://www.instagram.com/asiaalexaw/)[](https://www.linkedin.com/in/asia-waithe-005817a0/)[](https://www.youtube.com/@VIBETribeCoach)[](https://www.tiktok.com/@asiaalexaw)[](https://api.whatsapp.com/send?phone=18682997521)
+
+-
+### Prokopis Koulermos
+Cyprus, Nicosia
+Certificate No. AA_539
+
+[impetisium13@hotmail.com](mailto:impetisium13@hotmail.com)+35797755389
+[](https://www.facebook.com/share/16973aKeMn/)[](http://www.instagram.com/prokopis_sw/)[](https://www.linkedin.com/in/prokopis-koulermos-7b2383367)[](https://api.whatsapp.com/send?phone=35797755389)
+
+-
+### Matheo Boutros
+Lebanon, Jbeil
+Certificate No. AA_538
+
+[matheob337@gmail.com](mailto:matheob337@gmail.com)+96103693625
+[](https://www.instagram.com/matheoboutross/)[](https://www.tiktok.com/@matheoboutros)[](https://api.whatsapp.com/send?phone=96103693625)
+
+-
+### RAED EL ECHI
+Tunisia, Tunis
+Certificate No. AA_537
+
+[raedelechi1@gmail.com](mailto:raedelechi1@gmail.com)+21650135427
+[](https://www.instagram.com/aresfury_raed/)[](https://www.linkedin.com/in/raed-elechi-6a6170188/)[](https://api.whatsapp.com/send?phone=21650135427)
+
+-
+### Fabiola Alejandra Arango Méndez
+Mexico, Mexico
+Certificate No. AA_536
+
+[fabs.arango@gmail.com](mailto:fabs.arango@gmail.com)+525539666122
+[](https://www.instagram.com/fabytheveganyogi/)[](https://api.whatsapp.com/send?phone=525539666122)
+
+-
+### Victor Adrián Ríos Ruvalcaba
+Mexico, Aguascalientes
+Certificate No. AA_535
+
+[chimimma@gmail.com](mailto:chimimma@gmail.com)+524492848178
+[](https://api.whatsapp.com/send?phone=524492848178)
+
+-
+### Ramiro Antonio Mercado Chávez
+Peru, Lima
+Certificate No. AA_534
+
+[ramiro5a5b@gmail.com](mailto:ramiro5a5b@gmail.com)+51979533164
+[](https://www.instagram.com/rama_mercado_/)[](https://www.tiktok.com/@rama_mercado_)[](https://api.whatsapp.com/send?phone=51979533164)
+
+-
+### Chouaib Hizem
+Tunisia, Monastir
+Certificate No. AA_533
+
+[chouaibgamer1@gmail.com](mailto:chouaibgamer1@gmail.com)+21621258011
+[](https://www.instagram.com/chouaib__hizem/)[](https://api.whatsapp.com/send?phone=21621258011)
+
+-
+### Kristy Farhat
+Lebanon
+Certificate No. AA_532
+
+[kristyyfarhat@gmail.com](mailto:kristyyfarhat@gmail.com)+96171790989
+[](https://www.instagram.com/kristyfarhat_/%20)[](https://www.linkedin.com/in/kristy-farhat-346b97271)[](https://api.whatsapp.com/send?phone=96171790989)
+
+-
+### Charbel Ghanem
+Lebanon, Beirut
+Certificate No. AA_531
+
+[cghanem599@gmail.com](mailto:cghanem599@gmail.com)+96178833024
+[](https://www.instagram.com/charbelghanem16/)[](https://api.whatsapp.com/send?phone=96178833024)
+
+-
+### Amera Saher Al-Ashi
+Kuwait, Kuwait
+Certificate No. AA_530
+
+[amera.ashi@gmail.com](mailto:amera.ashi@gmail.com)+96598721077
+[](https://www.instagram.com/trainer_arema/)[](https://www.linkedin.com/in/amera-alashi-0aa503174/)[](https://api.whatsapp.com/send?phone=96598721077)
+
+-
+### Jeanette Bou Mayna
+Lebanon, Beirut
+Certificate No. AA_529
+
+[janoboumayna@icloud.com](mailto:janoboumayna@icloud.com)+96176387849
+[](https://www.facebook.com/share/16EegxQEJS/?mibextid=wwXIfr)[](https://www.instagram.com/train.withg/)[](https://www.linkedin.com/in/jano-bou-mayna-2b2b851ba)[](https://api.whatsapp.com/send?phone=96176387849)
+
+-
+### Deepak Mishra
+India, Noida
+Certificate No. AA_528
+
+[deep071018@gmail.com](mailto:deep071018@gmail.com)+918882520763
+[](https://www.instagram.com/deepaksthenics/)[](https://api.whatsapp.com/send?phone=918882520763)
+
+-
+### Abdalwahab Abdalrazak
+Germany, Delmenhorst
+Certificate No. AA_527
+
+[abdalwahababdalrazak7@gmail.com](mailto:abdalwahababdalrazak7@gmail.com)+4917670706935
+[](https://www.facebook.com/profile.php?id=61576146011454)[](https://www.instagram.com/wahab.calisthenics/)[](https://www.linkedin.com/in/abdalwahab-abdalrazak-23a841b4/)[](https://www.tiktok.com/@wahab.calisthenics)[](https://api.whatsapp.com/send?phone=4917670706935)
+
+-
+### Jorge Daniel Valdés Saucedo
+Mexico, Monterrey
+Certificate No. AA_526
+
+[valdesonly@gmail.com](mailto:valdesonly@gmail.com)+528135748793
+[](https://www.instagram.com/valdesonly/)[](https://api.whatsapp.com/send?phone=528135748793)
+
+-
+### Karam Al Kakoun
+Lebanon, Hammana
+Certificate No. AA_525
+
+[karam.alkakoun@gmail.com](mailto:karam.alkakoun@gmail.com)+96176075137
+[](https://www.facebook.com/share/19oDbmW7zi/?mibextid=wwXIfr)[](https://www.instagram.com/karam.kak1/)[](https://www.linkedin.com/in/karam-alkakoun-2282b9234)[](https://www.tiktok.com/@kakoun.k)[](https://api.whatsapp.com/send?phone=96176075137)
+
+-
+### Khalil Abi Khalil
+Lebanon, Kahaleh
+Certificate No. AA_524
+
+[khalilak436@gmail.com](mailto:khalilak436@gmail.com)+96181727520
+[](https://www.instagram.com/kalisthenicxx/)[](https://api.whatsapp.com/send?phone=96181727520)
+
+-
+### Michael Farah
+Lebanon, Beirut
+Certificate No. AA_523
+
+[michael.farah@live.com](mailto:michael.farah@live.com)+966532485031
+[](https://www.facebook.com/michael.f.farah)[](https://www.instagram.com/mikesthenicspt/)[](http://linkedin.com/in/michael-farahpt)[](https://www.tiktok.com/@mikesthenicspt)[](https://api.whatsapp.com/send?phone=966532485031)
+
+-
+### Ruben Rodrigues
+Portugal, Viseu
+Certificate No. AA_522
+
+[rubensilvarodrigues22@gmail.com](mailto:rubensilvarodrigues22@gmail.com)+351964494319
+[](https://www.instagram.com/coach.rubenrodrigues/)[](https://www.linkedin.com/in/r%C3%BAben-rodrigues-3b3711192)[](https://api.whatsapp.com/send?phone=351964494319)
+
+-
+### Charbel Charabaty
+Lebanon, Baabdat
+Certificate No. AA_521
+
+[charbelcharabati@hotmail.com](mailto:charbelcharabati@hotmail.com)+96171922121
+[](https://www.instagram.com/charbel_charabaty/)[](https://www.linkedin.com/in/charbel-charabaty-526429348)[](https://api.whatsapp.com/send?phone=96171922121)
+
+-
+### Serop Keoshkerian
+Lebanon, Anjar
+Certificate No. AA_520
+
+[seropkeoshkerian@gmail.com](mailto:seropkeoshkerian@gmail.com)+96170941810
+[](https://www.facebook.com/share/14wJvLqw2T/)[](https://www.instagram.com/seropkeoshkerian/)[](https://api.whatsapp.com/send?phone=96170941810)
+
+-
+### Victor Castro
+Macao
+Certificate No. AA_519
+
+[osoriocastro@yahoo.com.br](mailto:osoriocastro@yahoo.com.br)+85362389773
+[](https://api.whatsapp.com/send?phone=85362389773)
+
+-
+### Walid El Khoury
+Belgium, Brussels
+Certificate No. AA_518
+
+[walidelkhoury07@gmail.com](mailto:walidelkhoury07@gmail.com)+32470271566
+[](https://www.instagram.com/walidelkhoury07_/)[](https://api.whatsapp.com/send?phone=32470271566)
+
+-
+### Elie Daher
+Lebanon, Beirut
+Certificate No. AA_517
+
+[eliedaher256@gmail.com](mailto:eliedaher256@gmail.com)+96176496667
+[](https://www.tiktok.com/@eliedaher9)[](https://api.whatsapp.com/send?phone=96176496667)
+
+-
+### IZZET BEHIC SAKAR
+Canada, Toronto
+Certificate No. AA_516
+
+[behicsakar@gmail.com](mailto:behicsakar@gmail.com)+14165603414
+[](https://www.instagram.com/behicsakar/)[](https://www.tiktok.com/@behicsakar)[](https://api.whatsapp.com/send?phone=14165603414)
+
+-
+### Kareen Karam
+Lebanon, Beirut
+Certificate No. AA_515
+
+[karamkareen2@gmail.com](mailto:karamkareen2@gmail.com)+96171601768
+[](https://api.whatsapp.com/send?phone=96171601768)
+
+-
+### Edwin Wehbe
+Lebanon, Beirut
+Certificate No. AA_514
+
+[wehbeedwin@gmail.com](mailto:wehbeedwin@gmail.com)+96176163686
+[](https://www.instagram.com/edwin.wehbe/)[](https://www.tiktok.com/@edwinweh)[](https://api.whatsapp.com/send?phone=96176163686)
+
+-
+### Priscila Mazzei Carvalho
+Canada, Sherbrooke
+Certificate No. AA_513
+
+[contact.priscilamc@gmail.com](mailto:contact.priscilamc@gmail.com)+14389265053
+[](https://www.instagram.com/priscila_mazzei/)[](https://api.whatsapp.com/send?phone=14389265053)
+
+-
+### Perdikakis Antonis
+Greece
+Certificate No. AA_614
+
+[perdikisa@yahoo.gr](mailto:perdikisa@yahoo.gr)+306972945555
+[](https://www.facebook.com/perdikakis.antoniss)[](https://www.instagram.com/perdikantonis/)[](https://api.whatsapp.com/send?phone=306972945555)
+
+-
+### Mehrnaz Eskandari
+Iran, Shiraz
+Certificate No. AA_613
+
+[mehrnazeskandarisani1@gmail.com](mailto:mehrnazeskandarisani1@gmail.com)+989352132800
+[](https://www.instagram.com/mehrnazeskandarii/)[](https://api.whatsapp.com/send?phone=989352132800)
+
+-
+### LI TSUN HO
+Hong Kong, Sham Shui Po
+Certificate No. AA_512
+
+[li.tsunho54@gmail.com](mailto:li.tsunho54@gmail.com)+85251103481
+[](https://api.whatsapp.com/send?phone=85251103481)
+
+-
+### Samir Merhej
+Lebanon, Dbayeh
+Certificate No. AA_511
+
+[sam.csw29@gmail.com](mailto:sam.csw29@gmail.com)+96171964031
+[](https://www.facebook.com/samir.mj.7)[](https://www.instagram.com/sam.csw/)[](https://www.linkedin.com/in/samir-merhej-04b431212)[](https://youtube.com/@samirmj1951)[](https://www.tiktok.com/@samirmj39)[](https://api.whatsapp.com/send?phone=96171964031)
+
+-
+### Marco Tostado
+Mexico, Ciudad de México
+Certificate No. AA_510
+
+[marcotosta@gmail.com](mailto:marcotosta@gmail.com)+525534894699
+[](https://www.instagram.com/marcotostado_/)[](https://api.whatsapp.com/send?phone=525534894699)
+
+-
+### Șandru Cristian
+Romania, Sibiu
+Certificate No. AA_509
+
+[sandrucristian19@yahoo.com](mailto:sandrucristian19@yahoo.com)+40771530350
+[](https://www.facebook.com/SandruCristian19)[](https://www.instagram.com/c.sandru19/)[](https://youtube.com/@cristiansandru-s2u)[](https://www.tiktok.com/@xt1m3)[](https://api.whatsapp.com/send?phone=40771530350)
+
+-
+### Ramez Azizi
+United Arab Emirates, Dubai
+Certificate No. AA_508
+
+[azizi.ramez.96@gmail.com](mailto:azizi.ramez.96@gmail.com)+971551231000
+[](https://www.instagram.com/ramez_azizi/)[](https://api.whatsapp.com/send?phone=971551231000)
+
+-
+### Yassine Mouatassim
+Morocco, Agadir
+Certificate No. AA_507
+
+[ymouatassim.20@gmail.com](mailto:ymouatassim.20@gmail.com)+212680015902
+[](https://www.instagram.com/yassine.mm/)[](https://www.linkedin.com/in/yassine-mouatassim-a6bb5b2a8)[](https://api.whatsapp.com/send?phone=212680015902)
+
+-
+### Mohammad Sami Damaj
+Lebanon, Chouf
+Certificate No. AA_506
+
+[sami.damaj.17@gmail.com](mailto:sami.damaj.17@gmail.com)+96181688583
+[](https://api.whatsapp.com/send?phone=96181688583)
+
+-
+### Charbel Al Khoury
+Lebanon, Chekka
+Certificate No. AA_505
+
+[charbelkh10452@gmail.com](mailto:charbelkh10452@gmail.com)+96171941325
+[](https://www.instagram.com/charbelkhoury_7/)[](https://api.whatsapp.com/send?phone=96171941325)
+
+-
+### Mrunal Sarang
+India, Kolhapur
+Certificate No. AA_504
+
+[mrunals2020@gmail.com](mailto:mrunals2020@gmail.com)+918830262597
+[](https://www.instagram.com/_reanimatinggoku_/)[](https://youtube.com/@_reanimatinggoku_)[](https://api.whatsapp.com/send?phone=918830262597)
+
+-
+### Ahmed Saif Al-Mandhari
+Oman, Muscat
+Certificate No. AA_503
+
+[flxalmonthre@gmail.com](mailto:flxalmonthre@gmail.com)+96899038795
+[](https://www.instagram.com/menana_sw/)[](https://api.whatsapp.com/send?phone=96899038795)
+
+-
+### FIDA’A SULTAN ABDELWADOD YASSIN
+Jordan, Amman
+Certificate No. AA_502
+
+[coachfidaayassin@gmail.com](mailto:coachfidaayassin@gmail.com)+962792815619
+[](https://m.facebook.com/coachfidaayassin/)[](https://www.instagram.com/coachfidaayassin/)[](https://jo.linkedin.com/in/fida-a-yassin-984a75116)[](https://youtube.com/@dodisy)[](https://api.whatsapp.com/send?phone=962792815619)
+
+-
+### Abdulmohsen Faisal Alzahrani
+Saudi Arabia, Riyadh
+Certificate No. AA_501
+
+[abdualmohsin22@gmail.com](mailto:abdualmohsin22@gmail.com)+966533880791
+[](https://api.whatsapp.com/send?phone=966533880791)
+
+-
+### Blaz Kregar
+Slovenia, Straža
+Certificate No. AA_500
+
+[blazkregar.98@gmail.com](mailto:blazkregar.98@gmail.com)+38641525558
+[](https://www.instagram.com/blaz_kregar/)[](https://api.whatsapp.com/send?phone=38641525558)
+
+-
+### Tarek Hashem
+Lebanon, Beirut
+Certificate No. AA_499
+
+[tarek.1239@hotmail.com](mailto:tarek.1239@hotmail.com)+96170007999
+[](https://www.instagram.com/tarek1239/)[](https://api.whatsapp.com/send?phone=96170007999)
+
+-
+### Shaikh Ziyaul Haque
+India, Mumbai
+Certificate No. AA_498
+
+[shaikhziyaulhaque654@gmail.com](mailto:shaikhziyaulhaque654@gmail.com)+919167199670
+[](https://www.instagram.com/ashraf_shaikh.09)[](https://api.whatsapp.com/send?phone=919167199670)
+
+-
+### Armin Huber
+Germany, Pleiskirchen
+Certificate No. AA_497
+
+[arminhuber62@gmail.com](mailto:arminhuber62@gmail.com)+4915204373852
+[](https://www.instagram.com/armin_huber_beast_flow/)[](https://api.whatsapp.com/send?phone=4915204373852)
+
+-
+
+### Bashayer Al-merjan
+Kuwait, Kuwait city
+Certificate No. AA_496
+
+[identified_94@hotmail.com](mailto:identified_94@hotmail.com)+96566813010
+[](https://www.instagram.com/beefit_kw/)[](https://youtube.com/@mrsidentified)[](https://www.tiktok.com/@beefitkw)[](https://api.whatsapp.com/send?phone=96566813010)
+
+-
+### Wang Sung Hao
+Taiwan, Taichung
+Certificate No. AA_495
+
+[a0982330533@gmail.com](mailto:a0982330533@gmail.com)+886982330533
+[](https://www.facebook.com/songhao.wang)[](https://www.instagram.com/sunghao88/)[](https://api.whatsapp.com/send?phone=886982330533)
+
+-
+### Loiy Jamil Fadel Khaleel Kahlil
+Jordan, Zarqaa
+Certificate No. AA_493
+
+[loaimel779@gmail.com](mailto:loaimel779@gmail.com)+962780819686
+[](https://www.instagram.com/coach_loaimelhem/)[](https://api.whatsapp.com/send?phone=962780819686)
+
+-
+### Hsuan Ying Li
+Taiwan, Taitung
+Certificate No. AA_492
+
+[u877015@gmail.com](mailto:u877015@gmail.com)+8860911123721
+[](https://api.whatsapp.com/send?phone=8860911123721)
+
+-
+### Su Hui Mei
+Taiwan, Taichung
+Certificate No. AA_491
+
+[eddysue0703@hotmail.com](mailto:eddysue0703@hotmail.com)+886912364490
+[](https://www.facebook.com/share/12EdEMBxnMi/?mibextid=wwXIfr)[](https://www.instagram.com/eddy.su.315/)[](https://www.tiktok.com/@e6uysuu8)[](https://api.whatsapp.com/send?phone=886912364490)
+
+-
+### Denys Yelienchuk
+Hong Kong, Hong Kong
+Certificate No. AA_490
+
+[oranjevo@gmail.com](mailto:oranjevo@gmail.com)+85254352423
+[](https://www.facebook.com/share/19XzqEGXV1/?mibextid=wwXIfr)[](https://www.instagram.com/denysiy/)[](https://api.whatsapp.com/send?phone=85254352423)
+
+-
+### Jung Hwan Lee
+South Korea
+Certificate No. AA_489
+
+[messiah0912@naver.com](mailto:messiah0912@naver.com)+8201037925692
+[](https://www.instagram.com/_lee.jung.hwan_)[](https://www.youtube.com/@bellgym_life)[](https://api.whatsapp.com/send?phone=8201037925692)
+
+-
+### Albert Arakelyan
+Armenia, Yerevan
+Certificate No. AA_488
+
+[albertgym777@gmail.com](mailto:albertgym777@gmail.com)+37455511255
+[](https://www.facebook.com/share/1ALN6iXMbM/?mibextid=wwXIfr)[](https://www.instagram.com/abs__888/)[](http://linkedin.com/in/albert-arakelyan-26a08b357)[](https://www.tiktok.com/@abs__888)[](https://api.whatsapp.com/send?phone=37455511255)
+
+-
+### Hilda Nader Izz
+Palestine, Ramallah
+Certificate No. AA_487
+
+[hildaizz87@gmail.com](mailto:hildaizz87@gmail.com)+972598737988
+[](https://www.facebook.com/share/152UCFvtLP/?mibextid=wwXIfr)[](https://www.instagram.com/hilda_izz/)[](https://api.whatsapp.com/send?phone=972598737988)
+
+-
+### Thomas Altiparmakis
+Greece, Petroupolis
+Certificate No. AA_486
+
+[thomasaltip@yahoo.com](mailto:thomasaltip@yahoo.com)+306972454155
+[](https://www.instagram.com/thomasaltip/)[](https://www.tiktok.com/@c_altip)[](https://api.whatsapp.com/send?phone=306972454155)
+
+-
+### STAMOU MARIA
+Greece, Kilkis
+Certificate No. AA_484
+
+[info@almafit.gr](mailto:info@almafit.gr)+306997953901
+[](http://www.facebook.com/almafitnessspot)[](https://www.instagram.com/almafitnessspot/)[](https://api.whatsapp.com/send?phone=306997953901)
+
+-
+### Ricardo Gangotena
+Ecuador, Quito
+Certificate No. AA_482
+
+[josericardog@hotmail.com](mailto:josericardog@hotmail.com)+593987926071
+[](https://www.facebook.com/gangotena.calisthenics)[](https://www.instagram.com/gangotena.calisthenics/)[](https://youtube.com/@ricardo.gangotena)[](https://api.whatsapp.com/send?phone=593987926071)
+
+-
+### Omar Nabih Hajjkhalil
+Denmark, Vejle
+Certificate No. AA_481
+
+[o.hajjkhalil@gmail.com](mailto:o.hajjkhalil@gmail.com)+4542327034
+[](https://www.facebook.com/barzonegym)[](https://www.instagram.com/omarhk_barzone/)[](https://www.linkedin.com/in/omar-hk-a94313133)[](https://www.youtube.com/@_barzone)[](https://www.tiktok.com/@_barzone)[](https://api.whatsapp.com/send?phone=4542327034)
+
+-
+### Daniel Foley
+United Kingdom, London
+Certificate No. AA_480
+
+[66daysuk@gmail.com](mailto:66daysuk@gmail.com)+447961784826
+[](https://www.facebook.com/66daysUK)[](https://www.instagram.com/66daysuk/)[](https://www.linkedin.com/company/66-days-uk/)[](https://www.youtube.com/@66DaysFit)[](https://www.tiktok.com/@66daysfit)[](https://api.whatsapp.com/send?phone=447961784826)
+
+-
+### Abdallah Khweirah
+Palestine, Ramallah
+Certificate No. AA_479
+
+[abdallh.khwarah@gmail.com](mailto:abdallh.khwarah@gmail.com)+972592490841
+[](https://www.facebook.com/share/1BoiyW25Er/?mibextid=wwXIfr)[](https://www.instagram.com/abdallah.khweirah/)[](https://api.whatsapp.com/send?phone=972592490841)
+
+-
+### Saif Bitar
+Jordan, Amman
+Certificate No. AA_478
+
+[saifbitar04.19@gmail.com](mailto:saifbitar04.19@gmail.com)+962777279147
+[](https://www.instagram.com/saifbitar_/)[](https://api.whatsapp.com/send?phone=962777279147)
+
+-
+### Wesley Gabriel Maciel
+India, Goa
+Certificate No. AA_477
+
+[wescreations101@gmail.com](mailto:wescreations101@gmail.com)+918007413128
+[](https://www.instagram.com/wes_the_saiyan/)[](https://api.whatsapp.com/send?phone=918007413128)
+
+-
+### Saad ALORAYFIJ
+Saudi Arabia, Riyadh
+Certificate No. AA_476
+
+[orayfij.s@gmail.com](mailto:orayfij.s@gmail.com)+966553774787
+[](https://www.instagram.com/s3d0oosh/)[](https://api.whatsapp.com/send?phone=966553774787)
+
+-
+### Mahmoud SalahElDin
+Egypt, Cairo
+Certificate No. AA_474
+
+[mahmoudsalahelkady1996@gmail.com](mailto:mahmoudsalahelkady1996@gmail.com)+12048802207
+[](https://www.facebook.com/share/1468zQNALe/?mibextid=wwXIfr)[](https://www.instagram.com/brownycalisthenics/)[](https://www.linkedin.com/in/mahmoud-salah-elkady-a0569b210)[](https://youtube.com/@mahmoudbrowny)[](https://api.whatsapp.com/send?phone=12048802207)
+
+-
+### Juan Martín Acosta
+Uruguay, Montevideo
+Certificate No. AA_473
+
+[jacostaechenique@gmail.com](mailto:jacostaechenique@gmail.com)+59895442496
+[](https://api.whatsapp.com/send?phone=59895442496)
+
+-
+### Stefan Eroteev
+Bulgaria, Sofia
+Certificate No. AA_472
+
+[stefaneroteev@gmail.com](mailto:stefaneroteev@gmail.com)+359896055924
+[](https://www.facebook.com/profile.php?id=100002501295930)[](https://www.instagram.com/stefan_eroteev/)[](https://api.whatsapp.com/send?phone=359896055924)
+
+-
+### Mosab KHEMESH
+Jordan, Amman
+Certificate No. AA_471
+
+[mosabkh61@gmail.com](mailto:mosabkh61@gmail.com)+962795322280
+[](https://www.instagram.com/khemesh_sw/)[](https://api.whatsapp.com/send?phone=962795322280)
+
+-
+### Amine Layouni
+Tunisia, Monastir
+Certificate No. AA_470
+
+[layouniamine170@gmail.com](mailto:layouniamine170@gmail.com)+21699613330
+[](https://www.instagram.com/ayouniamin/)[](https://api.whatsapp.com/send?phone=21699613330)
+
+-
+### Rayan Hamrani
+Saudi Arabia, Jeddah
+Certificate No. AA_469
+
+[ry.hom2@gmail.com](mailto:ry.hom2@gmail.com)+966509000431
+[](https://www.instagram.com/rayan_al7mrani/)[](https://api.whatsapp.com/send?phone=966509000431)
+
+-
+### Francis Morais
+Canada, Rouyn-Noranda
+Certificate No. AA_468
+
+[titfrank18@hotmail.com](mailto:titfrank18@hotmail.com)+18197600252
+[](https://www.instagram.com/frankmorais_sw/)[](https://www.tiktok.com/@frankmorais_sw)[](https://api.whatsapp.com/send?phone=18197600252)
+
+-
+### Pedro Mier Arce
+Меxico, Puebla
+Certificate No. AA_467
+
+[peterrarce@gmail.com](mailto:peterrarce@gmail.com)+522216161605
+[](https://www.instagram.com/peterrarce/)[](https://www.tiktok.com/@peterrarce_)[](https://api.whatsapp.com/send?phone=522216161605)
+
+-
+### Alexander Rvachev
+Russia, Moscow
+Certificate No. AA_466
+
+[senior.rvachev@yandex.ru](mailto:senior.rvachev@yandex.ru)+79036770116
+[](https://www.facebook.com/alex.rvachev)[](https://www.instagram.com/thebigbadpanda13/)[](https://www.youtube.com/channel/UCcGKCjhIxu6PPX8YA1sEbpA)[](https://api.whatsapp.com/send?phone=79036770116)
+
+-
+### TARIQ ALSAFADI
+Jordan, Amman
+Certificate No. AA_465
+
+[tarek1998t@hotmail.com](mailto:tarek1998t@hotmail.com)+962797109595
+[](https://www.instagram.com/tareksafadi1/)[](https://api.whatsapp.com/send?phone=962797109595)
+
+-
+### Máximo Franco del Castillo
+Mexico, Puebla
+Certificate No. AA_464
+
+[maxfranco102212@gmail.com](mailto:maxfranco102212@gmail.com)+522225695972
+[](https://www.instagram.com/maxfraanco_/)[](https://www.tiktok.com/@maxfraanco_)[](https://api.whatsapp.com/send?phone=522225695972)
+
+-
+### Aoun Wasim Abu Hassan
+Jordan, Amman
+Certificate No. AA_463
+
+[aounabuhassan@gmail.com](mailto:aounabuhassan@gmail.com)+962791808505
+[](https://www.instagram.com/aounn.ah/)[](https://www.linkedin.com/in/aoun-abu-hassan/)[](https://www.youtube.com/@aounah)[](https://api.whatsapp.com/send?phone=962791808505)
+
+-
+### Danish Shaikh
+India, Mumbai
+Certificate No. AA_462
+
+[thatsdanu@gmail.com](mailto:thatsdanu@gmail.com)+919595474724
+[](https://www.instagram.com/dann_flex/)[](https://api.whatsapp.com/send?phone=919595474724)
+
+-
+
+### Décary Tristan
+Canada
+Certificate No. AA_461
+
+[decary9995tristan@gmail.com](mailto:decary9995tristan@gmail.com)
+[](https://api.whatsapp.com/send?phone=)
+
+-
+### Dany Alza
+Canada, Montreal
+Certificate No. AA_460
+
+[danyalza.nd@gmail.com](mailto:danyalza.nd@gmail.com)+15146863331
+[](https://www.facebook.com/soma.mtl)[](https://www.instagram.com/soma_psycho/)[](https://api.whatsapp.com/send?phone=15146863331)
+
+-
+### Joseph Delle Coste
+Australia, Sydney
+Certificate No. AA_459
+
+[joeydellecoste@gmail.com](mailto:joeydellecoste@gmail.com)+61472698099
+[](https://www.instagram.com/joey.dellecoste/)[](http://www.linkedin.com/in/joey-delle-coste-3a5199255)[](https://youtube.com/@joeydellecoste)[](https://www.tiktok.com/@joey.dellecoste)[](https://api.whatsapp.com/send?phone=61472698099)
+
+-
+### Alfrank David Dejaño Dalogdog
+Philippines, Cagayan de Oro
+Certificate No. AA_458
+
+[dalogdogalfrank@gmail.com](mailto:dalogdogalfrank@gmail.com)+639052148893
+[](https://www.facebook.com/dalogdogalfrank)[](https://www.instagram.com/coachalfrank/)[](https://www.linkedin.com/in/alfrankdalogdog/)[](https://www.youtube.com/@Frankthenics)[](https://www.tiktok.com/@frankthenics666)[](https://api.whatsapp.com/send?phone=639052148893)
+
+-
+### Khaled Al Abed
+Lebanon, Beirut
+Certificate No. AA_457
+
+[khaledalabed77@outlook.com](mailto:khaledalabed77@outlook.com)+96176004091
+[](https://www.instagram.com/khaledalabedd/)[](https://api.whatsapp.com/send?phone=96176004091)
+
+-
+### KIRAN KUMAR THIRAVALLURU
+India, Hyderabad
+Certificate No. AA_456
+
+[kiranpaddu83@gmail.com](mailto:kiranpaddu83@gmail.com)+918919645222
+[](https://www.facebook.com/profile.php?id=100073043871115&mibextid=wwXIfr&mibextid=wwXIfr)[](https://www.instagram.com/fitnessocean_6/)[](https://youtube.com/@fitnessocean-kiran)[](https://api.whatsapp.com/send?phone=918919645222)
+
+-
+### Abdulrahman Al Rahbi
+Oman, Muscat
+Certificate No. AA_455
+
+[abdulrahman.alrahbi1993@gmail.co](mailto:abdulrahman.alrahbi1993@gmail.co)+96897299947
+[](https://www.instagram.com/abdu_moves/)[](https://api.whatsapp.com/send?phone=96897299947)
+
+-
+### Croy Robertson
+Japan, Tokyo
+Certificate No. AA_454
+
+[jjtkyodai@gmail.com](mailto:jjtkyodai@gmail.com)
+[](https://www.facebook.com/share/1BC1HR6uiJ/?mibextid=wwXIfr)[](https://www.instagram.com/jjtkyodai/)[](https://www.linkedin.com/in/croy-robertson-6657401b8)[](https://www.youtube.com/@%E8%87%AA%E9%87%8D%E3%83%88%E3%83%AC%E5%85%84%E5%BC%9F)[](https://api.whatsapp.com/send?phone=)
+
+-
+### Ismael Sanchez Hernandez
+United Kingdom, Cambourne
+Certificate No. AA_453
+
+[ismaelwellness@gmail.com](mailto:ismaelwellness@gmail.com)+447910653716
+[](https://api.whatsapp.com/send?phone=447910653716)
+
+-
+### ATHUL KRISHNA B
+India, Bangalore
+Certificate No. AA_452
+
+[athulbkrishna71@gmail.com](mailto:athulbkrishna71@gmail.com)+917736862628
+[](https://www.instagram.com/_.ak._.calicoach/)[](https://youtube.com/@akslife464)[](https://api.whatsapp.com/send?phone=917736862628)
+
+-
+### SANAD AZBA
+Israel, Qalansuwa
+Certificate No. AA_451
+
+[sanadazba59@gmail.com](mailto:sanadazba59@gmail.com)+9720524833862
+[](https://www.instagram.com/sanadazba/)[](https://api.whatsapp.com/send?phone=9720524833862)
+
+-
+### Ali Sabbagh
+Saudi Arabia, Jeddah
+Certificate No. AA_450
+
+[alisabbaghpt@gmail.com](mailto:alisabbaghpt@gmail.com)+96659829757
+[](https://www.instagram.com/pt.alisab/)[](https://api.whatsapp.com/send?phone=96659829757)
+
+-
+### Ramitha Raghunathan
+India, Bangalore
+Certificate No. AA_449
+
+[ramitha.raghunathan@gmail.com](mailto:ramitha.raghunathan@gmail.com)+916360927133
+[](https://www.instagram.com/coach_ramitha/)[](https://www.linkedin.com/in/ramitha-r-88380696/)[](https://api.whatsapp.com/send?phone=916360927133)
+
+-
+### Daniela Tumidalská
+Slovakia, Sedlice
+Certificate No. AA_448
+
+[dada53267070@gmail.com](mailto:dada53267070@gmail.com)+421908501366
+[](https://www.facebook.com/profile.php?id=100005104396870)[](https://www.instagram.com/danne_hst/)[](https://www.youtube.com/@danne_hst)[](https://api.whatsapp.com/send?phone=421908501366)
+
+-
+### Adarsh Kalekar
+India, Margao
+Certificate No. AA_447
+
+[adarshklkr@gmail.com](mailto:adarshklkr@gmail.com)+918788031659
+[](https://www.facebook.com/share/14d5CrTyVZ/?mibextid=LQQJ4d)[](https://www.instagram.com/adarsh.kalekar_sw/)[](https://youtube.com/@adarshkalekar7481)[](https://api.whatsapp.com/send?phone=918788031659)
+
+-
+### Mohammad Soudani
+Jordan, Amman
+Certificate No. AA_446
+
+[moesoudani@gmail.com](mailto:moesoudani@gmail.com)+962795319297
+[](https://www.instagram.com/mohd.soudani/)[](https://api.whatsapp.com/send?phone=962795319297)
+
+-
+### Kevin Aguilar
+El Salvador, Santa Tecla
+Certificate No. AA_445
+
+[tatitoserrano123@gmail.com](mailto:tatitoserrano123@gmail.com)+50361877937
+[](https://api.whatsapp.com/send?phone=50361877937)
+
+-
+### Tso-Chi Yang
+Taiwan, Taichung
+Certificate No. AA_444
+
+[ryan.crazer@gmail.com](mailto:ryan.crazer@gmail.com)+886988052772
+[](https://www.facebook.com/ryanone123/)[](https://www.instagram.com/ryanone123/)[](https://www.linkedin.com/in/tsochiyang/)[](https://www.youtube.com/@ryanone123)[](https://api.whatsapp.com/send?phone=886988052772)
+
+-
+### Wassim Ramadan
+Lebanon, Barja
+Certificate No. AA_443
+
+[wassim.ram@outlook.com](mailto:wassim.ram@outlook.com)
+[](https://www.instagram.com/wassim_rm890/)[](https://api.whatsapp.com/send?phone=)
+
+-
+### Mamdouh Rudayni Alanazy Alanzy
+Saudi Arabia, Riyadh
+Certificate No. AA_442
+
+[mamdouh1124@icloud.com](mailto:mamdouh1124@icloud.com)+966503321176
+[](https://www.instagram.com/mamdouh.alanazii/)[](https://api.whatsapp.com/send?phone=966503321176)
+
+-
+### Issree Pittayayon
+Canada, Montreal
+Certificate No. AA_441
+
+[issree.p@gmail.com](mailto:issree.p@gmail.com)+15144320509
+[](https://www.instagram.com/inc_isre/)[](https://api.whatsapp.com/send?phone=15144320509)
+
+-
+### Zahir Alkindi
+Oman, Muscat
+Certificate No. AA_440
+
+[zkindi187@gmail.com](mailto:zkindi187@gmail.com)+96897944340
+[](https://www.instagram.com/ogzahir/)[](https://www.tiktok.com/@ogzahirr)[](https://api.whatsapp.com/send?phone=96897944340)
+
+-
+### Vamsi Krishna Nattuva
+India, Andhra Pradesh
+Certificate No. AA_439
+
+[vamsinet6954@gmail.com](mailto:vamsinet6954@gmail.com)+919182718405
+[](https://www.instagram.com/_trainwithv_)[](https://api.whatsapp.com/send?phone=919182718405)
+
+-
+### Ali Al Hadi Mahmoud
+Lebanon, Beirut
+Certificate No. AA_438
+
+[ali_mahmoud98@outlook.com](mailto:ali_mahmoud98@outlook.com)+96170747733
+[](https://www.facebook.com/share/12Cw2a4kgYS/?mibextid=wwXIfr)[](https://www.instagram.com/alimahmouud/)[](https://www.linkedin.com/in/ali-mahmoud-119420211)[](https://www.tiktok.com/@alimahmouudd)[](https://api.whatsapp.com/send?phone=96170747733)
+
+-
+### Mohammed Al Sharji
+Oman, Muscat
+Certificate No. AA_437
+
+[alsharjimo@gmail.com](mailto:alsharjimo@gmail.com)+96892885075
+[](https://www.instagram.com/clay40.8.40.4/)[](https://api.whatsapp.com/send?phone=96892885075)
+
+-
+
+### Ruba Abdullah Almashjari
+Saudi Arabia, Abha, SA
+Certificate No. AA_436
+
+[iruba.a@hotmail.com](mailto:iruba.a@hotmail.com)+966537865058
+[](https://api.whatsapp.com/send?phone=966537865058)
+
+-
+### Luis Santiago Tovar Lopez
+Mexico, Nuevo león
+Certificate No. AA_435
+
+[kikisantirdm2@gmail.com](mailto:kikisantirdm2@gmail.com)+525540427496
+[](https://api.whatsapp.com/send?phone=525540427496)
+
+-
+
+### Mohamed Hesham Kamel
+United Arab Emirates, Dubai
+Certificate No. AA_434
+
+[heshamiv@gmail.com](mailto:heshamiv@gmail.com)+971567628742
+[](https://api.whatsapp.com/send?phone=971567628742)
+
+-
+### Ibrahim Gökçemen
+Turkey, Mersin
+Certificate No. AA_433
+
+[bobkokshiman@gmail.com](mailto:bobkokshiman@gmail.com)+96171489922
+[](https://www.instagram.com/bobkokshiman/)[](https://www.linkedin.com/in/bob-kokshiman-665a94294)[](https://www.tiktok.com/@bobkokshiman)[](https://api.whatsapp.com/send?phone=96171489922)
+
+-
+### Alejandro Villanueva Martínez
+Mexico, Monterrey
+Certificate No. AA_432
+
+[a.villanuevamtz95@gmail.com](mailto:a.villanuevamtz95@gmail.com)+528116084002
+[](https://www.facebook.com/share/8CYBpbzsKA7yUtdW/?mibextid=LQQJ4d)[](https://www.instagram.com/alphaversionmx/)[](https://www.youtube.com/@ALPHAVERSIONmx)[](https://www.tiktok.com/@alpha.version)[](https://api.whatsapp.com/send?phone=528116084002)
+
+-
+### Aladdin Qattouri
+Jordan, Amman
+Certificate No. AA_431
+
+[aladdinqattouri@gmail.com](mailto:aladdinqattouri@gmail.com)+962797900910
+[](https://www.instagram.com/aqattouri/)[](https://api.whatsapp.com/send?phone=962797900910)
+
+-
+### Aiperi Beishenalieva
+Kyrgyzstan, Bishkek
+Certificate No. AA_430
+
+[ayperi.beishenalieva@gmail.com](mailto:ayperi.beishenalieva@gmail.com)+996559693139
+[](https://www.instagram.com/becoming_bamboo/)[](https://api.whatsapp.com/send?phone=996559693139)
+
+-
+### Yoshifumi Ootake
+Japan
+Certificate No. AA_610
+
+[bianchi.mini07@gmail.com](mailto:bianchi.mini07@gmail.com)
+[](https://api.whatsapp.com/send?phone=)
+
+-
+### Elio Eid
+Lebanon, Broumana
+Certificate No. AA_429
+
+[elioeed@gmail.com](mailto:elioeed@gmail.com)+96170291054
+[](https://www.instagram.com/ironcurlz.lb/)[](https://api.whatsapp.com/send?phone=96170291054)
+
+-
+### Garvit Singh
+India, Kurukshetra
+Certificate No. AA_428
+
+[garvitsingh2018@gmail.com](mailto:garvitsingh2018@gmail.com)+918222000198
+[](https://www.facebook.com/garvit.singhraghuvanshi)[](https://www.instagram.com/garvit_raghuvanshi/)[](https://api.whatsapp.com/send?phone=918222000198)
+
+-
+### Walid Saadeh
+Lebanon, Beirut
+Certificate No. AA_427
+
+[walidsaadeh1@live.com](mailto:walidsaadeh1@live.com)+96171879268
+[](https://www.instagram.com/walid_saadeh/)[](https://api.whatsapp.com/send?phone=96171879268)
+
+-
+### STALLON DENIS DCOSTA
+Canada, Mississauga
+Certificate No. AA_425
+
+[stallondcosta@gmail.com](mailto:stallondcosta@gmail.com)+13652920596
+[](https://www.facebook.com/stallondcosta)[](https://www.instagram.com/stallon_noizy/)[](https://www.linkedin.com/in/stallon-dcosta-685715161)[](https://youtube.com/channel/UCEsySfl34C0mOmZ1fkHqZpw)[](https://www.tiktok.com/@stallon_noizy)[](https://api.whatsapp.com/send?phone=13652920596)
+
+-
+### Panagiotis (Panos) Afxentis
+Netherlands, Eindhoven
+Certificate No. AA_424
+
+[panafxen@gmail.com](mailto:panafxen@gmail.com)+31611808012
+[](https://www.instagram.com/panos_afx/)[](https://api.whatsapp.com/send?phone=31611808012)
+
+-
+### Brendan Young
+United Kingdom, Cambridge
+Certificate No. AA_423
+
+[by@mineheart.com](mailto:by@mineheart.com)+447799188634
+[](https://api.whatsapp.com/send?phone=447799188634)
+
+-
+### Takla Abou Jaoude
+Lebanon, Broumana
+Certificate No. AA_422
+
+[taklaabj4@gmail.com](mailto:taklaabj4@gmail.com)+96176523609
+[](https://www.instagram.com/takla_aboujaoude/)[](https://www.linkedin.com/in/takla-abou-jaoude-633b74337)[](https://api.whatsapp.com/send?phone=96176523609)
+
+-
+### Sebastián Acuña Césped
+Chile, Santiago
+Certificate No. AA_421
+
+[sebastian.acuna.cesped@gmail.com](mailto:sebastian.acuna.cesped@gmail.com)+56948957213
+[](http://www.facebook.com/sebastian.acuna.94043626/)[](http://www.instagram.com/slayerba/)[](https://api.whatsapp.com/send?phone=56948957213)
+
+-
+
+### Razan Mohammed Omar Anwer Al Sabbagh
+Jordan, Amman
+Certificate No. AA_420
+
+[razanalsabbagh96@gmail.com](mailto:razanalsabbagh96@gmail.com)+962798010787
+[](https://api.whatsapp.com/send?phone=962798010787)
+
+-
+### Hassan Badran
+Egypt, Cairo
+Certificate No. AA_419
+
+[hassanbadrantkd@gmail.com](mailto:hassanbadrantkd@gmail.com)+201014940015
+[](https://www.facebook.com/hassan.a.badran)[](https://www.instagram.com/hassan.badran/)[](https://youtube.com/@hassan.badran)[](https://www.tiktok.com/@escobadran)[](https://api.whatsapp.com/send?phone=201014940015)
+
+-
+### Fady Cherfane
+Lebanon, Beirut
+Certificate No. AA_418
+
+[fadyb.cherfane@gmail.com](mailto:fadyb.cherfane@gmail.com)+9613892744
+[](https://www.facebook.com/share/1AUGHEFU8Z/)[](https://www.instagram.com/fcherfane/)[](https://api.whatsapp.com/send?phone=9613892744)
+
+-
+### Delisa Sánchez Lucero
+Mexico, Monterrey
+Certificate No. AA_417
+
+[dietas.delisa@gmail.com](mailto:dietas.delisa@gmail.com)+528117437682
+[](https://www.instagram.com/hybrid.deli/)[](https://api.whatsapp.com/send?phone=528117437682)
+
+-
+### Alejandro Gómez Fuentes
+Mexico, San Pedro Garza Garcia
+Certificate No. AA_416
+
+[alexgf201@gmail.com](mailto:alexgf201@gmail.com)+528120409904
+[](https://www.instagram.com/agf201/)[](https://www.linkedin.com/in/alejandro-gomez-3592a02a9/)[](https://www.tiktok.com/@agf201)[](https://api.whatsapp.com/send?phone=528120409904)
+
+-
+### Sarah Adel Ramadan Libzo
+Jordan, Amman
+Certificate No. AA_415
+
+[libzo.sarah@gmail.com](mailto:libzo.sarah@gmail.com)+962797643339
+[](https://api.whatsapp.com/send?phone=962797643339)
+
+-
+### Mohamed Hedi Rais
+Tunisia, Tunis
+Certificate No. AA_414
+
+[raismohamed004@gmail.com](mailto:raismohamed004@gmail.com)+21629842042
+[](https://www.facebook.com/share/18EDsT36tr/?mibextid=LQQJ4d)[](https://www.instagram.com/med.rais.36/)[](https://www.linkedin.com/in/mohamed-hedi-rais-ba96ba195/)[](https://www.youtube.com/@mohamedrais7318)[](https://www.tiktok.com/@med.rais.sthenos36)[](https://api.whatsapp.com/send?phone=21629842042)
+
+-
+### Mohammad Ali Al-Assaff
+Jordan, Amman
+Certificate No. AA_413
+
+[mumassaf@gmail.com](mailto:mumassaf@gmail.com)+962787013348
+[](https://www.instagram.com/bboy_pitbull_land/)[](https://api.whatsapp.com/send?phone=962787013348)
+
+-
+### Frédéric Domingue
+Canada, Trois-Rivières
+Certificate No. AA_412
+
+[frederic.domingue@gmail.com](mailto:frederic.domingue@gmail.com)+18199448183
+[](https://www.instagram.com/freddomingue/)[](https://api.whatsapp.com/send?phone=18199448183)
+
+-
+### Jestin Paul Kallookaran
+India, Thane
+Certificate No. AA_411
+
+[jestincali777@gmail.com](mailto:jestincali777@gmail.com)+918433873792
+[](https://www.facebook.com/share/18gWLfY14v/)[](https://www.instagram.com/jestinpaul_sw02/)[](https://api.whatsapp.com/send?phone=918433873792)
+
+-
+### Carlos Aceves Aceves Ortega
+Mexico, Mexico
+Certificate No. AA_410
+
+[btacvs@gmail.com](mailto:btacvs@gmail.com)+525523351634
+[](https://www.instagram.com/betoaceves.fit/)[](https://api.whatsapp.com/send?phone=525523351634)
+
+-
+### Kiss Bence
+Hungary, Budapest
+Certificate No. AA_409
+
+[kssworkout@gmail.com](mailto:kssworkout@gmail.com)+36204277447
+[](https://www.facebook.com/KissBenc9/)[](https://instagram.com/kss_bence/)[](https://www.youtube.com/@kissbence.hu-)[](https://www.tiktok.com/@kss_bence)[](https://api.whatsapp.com/send?phone=36204277447)
+
+-
+### Benedikt Lončar
+Croatia, Kalinovac
+Certificate No. AA_408
+
+[benediktloncar@gmail.com](mailto:benediktloncar@gmail.com)+385994551505
+[](https://api.whatsapp.com/send?phone=385994551505)
+
+-
+
+### Rama Abusaleh
+Jordan
+Certificate No. AA_407
+
+[ramaabusaleh12@outlook.com](mailto:ramaabusaleh12@outlook.com)+962798559079
+[](https://api.whatsapp.com/send?phone=962798559079)
+
+-
+
+### Tomas Fernandez
+Spain, Barcelona
+Certificate No. AA_607
+
+[t.fernandez094@gmail.com](mailto:t.fernandez094@gmail.com)+34632759566
+[](https://www.facebook.com/Skaaaap/)[](https://www.instagram.com/tohmm_/)[](https://api.whatsapp.com/send?phone=34632759566)
+
+-
+### Gerardo L. Rosado Ruberte
+Puerto Rico
+Certificate No. AA_606
+
+[ger_24@live.com](mailto:ger_24@live.com)
+[](https://api.whatsapp.com/send?phone=)
+
+-
+### Khaled Sidani
+Lebanon, Beirut
+Certificate No. AA_406
+
+[khaledsidani1@gmail.com](mailto:khaledsidani1@gmail.com)+9613605416
+[](https://www.instagram.com/k_sidani/)[](https://api.whatsapp.com/send?phone=9613605416)
+
+-
+### Muhammad Asif
+Pakistan, Gujrat
+Certificate No. AA_405
+
+[m.asif786123@gmail.com](mailto:m.asif786123@gmail.com)+923005530382
+[](https://www.facebook.com/masif.jutt2)[](https://www.instagram.com/police_thenx/)[](https://www.youtube.com/@police_thenx)[](https://www.tiktok.com/@police_thenx)[](https://api.whatsapp.com/send?phone=923005530382)
+
+-
+### Oussama Asmar Hamwi
+Lebanon, Tripoli
+Certificate No. AA_404
+
+[oussamahamwi123@gmail.com](mailto:oussamahamwi123@gmail.com)+96176393891
+[](https://www.instagram.com/oussama_asmarrr/)[](https://www.youtube.com/@oussamaasmarhamwi5196)[](https://www.tiktok.com/@oussama_asmar)[](https://api.whatsapp.com/send?phone=96176393891)
+
+-
+### Sara A’sem Ass’ad Abualsuod
+Jordan, Amman
+Certificate No. AA_403
+
+[sarahabusouddd@gmail.com](mailto:sarahabusouddd@gmail.com)+962779716697
+[](https://api.whatsapp.com/send?phone=962779716697)
+
+-
+### Héctor Felipe De La Garza Tolentino
+Mexico, Monterrey
+Certificate No. AA_402
+
+[toro.sport81@gmail.com](mailto:toro.sport81@gmail.com)+528180251124
+[](https://api.whatsapp.com/send?phone=528180251124)
+
+-
+### Noah Abboud
+Lebanon, Arabsalim
+Certificate No. AA_401
+
+[noaha12002@gmail.com](mailto:noaha12002@gmail.com)+96176458965
+[](https://www.facebook.com/nouh.abboud)[](https://www.instagram.com/noah_aboud_/)[](https://www.tiktok.com/@noahabboud7)[](https://api.whatsapp.com/send?phone=96176458965)
+
+-
+### Boutros Kass Hanna Sayssa
+United Arab Emirates, Dubai
+Certificate No. AA_400
+
+[pierro.sayssa1@gmail.com](mailto:pierro.sayssa1@gmail.com)+971503973967
+[](https://www.facebook.com/pierrosayssa)[](https://www.instagram.com/pierrosayssa/profilecard/)[](https://api.whatsapp.com/send?phone=971503973967)
+
+-
+### Farhang Zakariaei
+Iran, Isfahan
+Certificate No. AA_605
+
+[farhang.zakaryaeit@gmail.com](mailto:farhang.zakaryaeit@gmail.com)+989135954873
+[](https://www.instagram.com/4arhang/)[](https://api.whatsapp.com/send?phone=989135954873)
+
+-
+### Charbel Saad
+Lebanon, Beirut
+Certificate No. AA_399
+
+[csaad995@gmail.com](mailto:csaad995@gmail.com)+96171010474
+[](https://www.instagram.com/coach.charbelsaad/)[](https://www.tiktok.com/@coach.charbell)[](https://api.whatsapp.com/send?phone=96171010474)
+
+-
+### Yesser Hoballah
+Senegal, Dakar
+Certificate No. AA_398
+
+[yesserhoballah@hotmail.com](mailto:yesserhoballah@hotmail.com)+221774340072
+[](https://www.facebook.com/yesser.hoballah)[](https://www.instagram.com/yesser_hoballah/)[](https://api.whatsapp.com/send?phone=221774340072)
+
+-
+### Nadia Hoballah
+Senegal, Dakar
+Certificate No. AA_397
+
+[aboukhalilnadia@gmail.com](mailto:aboukhalilnadia@gmail.com)+221775297415
+[](https://www.instagram.com/nadia_abhob/)[](https://www.tiktok.com/@nadiahob)[](https://api.whatsapp.com/send?phone=221775297415)
+
+-
+### Adel Remmache
+Algeria, Algiers
+Certificate No. AA_396
+
+[remmacheadel@yahoo.fr](mailto:remmacheadel@yahoo.fr)+213549654609
+[](https://www.facebook.com/Adelrmch)[](https://www.instagram.com/adelrmch/)[](http://www.youtube.com/@AdelRemmache)[](https://www.tiktok.com/@adel_rmch)[](https://api.whatsapp.com/send?phone=213549654609)
+
+-
+### Alain Kallas
+Lebanon, Beirut
+Certificate No. AA_395
+
+[alainkallass@gmail.com](mailto:alainkallass@gmail.com)+9613097973
+[](https://api.whatsapp.com/send?phone=9613097973)
+
+-
+### Helmy Issa
+Iraq, Erbil
+Certificate No. AA_394
+
+[helmyeisssa77@gmail.com](mailto:helmyeisssa77@gmail.com)+9647518146855
+[](https://www.facebook.com/profile.php?id=61558021844447&mibextid=ZbWKwL)[](https://www.instagram.com/helmy.issa/)[](https://www.tiktok.com/@helmy.issa)[](https://api.whatsapp.com/send?phone=9647518146855)
+
+-
+### Tsz Yui Loa
+Hong Kong, Kowloon
+Certificate No. AA_393
+
+[angusloa3@gmail.com](mailto:angusloa3@gmail.com)+85290625701
+[](https://api.whatsapp.com/send?phone=85290625701)
+
+-
+### Sandra Gricel Vite
+Mexico, Cancun
+Certificate No. AA_392
+
+[grizvite@hotmail.com](mailto:grizvite@hotmail.com)+529983978500
+[](https://www.facebook.com/sandragriss.vitelobera/)[](https://www.instagram.com/grissvite/)[](https://www.tiktok.com/@grissvite)[](https://api.whatsapp.com/send?phone=529983978500)
+
+-
+### GEORGIOS TSIMPOULIS
+Greece, Athens
+Certificate No. AA_391
+
+[geoxt99@gmail.com](mailto:geoxt99@gmail.com)+306943916970
+[](https://www.instagram.com/giwrgos_tkd/)[](https://www.youtube.com/@giwrgostkd3704)[](https://www.tiktok.com/@giwrgostkd9)[](https://api.whatsapp.com/send?phone=306943916970)
+
+-
+### CHUNG TSZ HIN
+Hong Kong
+Certificate No. AA_390
+
+[cth17354@gmail.com](mailto:cth17354@gmail.com)+85263082046
+[](https://www.instagram.com/hinhinchung1/)[](https://api.whatsapp.com/send?phone=85263082046)
+
+-
+### Louis Philippe Bejjani
+Lebanon, Beirut
+Certificate No. AA_389
+
+[louisbejjani2006@gmail.com](mailto:louisbejjani2006@gmail.com)+96176157345
+[](https://api.whatsapp.com/send?phone=96176157345)
+
+-
+### Shahrzad GHOLAMMIRZAIE MOGHADAR
+Iran, Tehran
+Certificate No. AA_604
+
+[shahrzad.mirzaie.m@gmail.com](mailto:shahrzad.mirzaie.m@gmail.com)+989356816354
+[](https://www.instagram.com/shahrzad.mirzaiee/)[](https://api.whatsapp.com/send?phone=989356816354)
+
+-
+### Faramarz Jabbarvaziri
+Canada, Vancouver
+Certificate No. AA_388
+
+[faramarz.vaziri87@gmail.com](mailto:faramarz.vaziri87@gmail.com)+17788748591
+[](https://www.instagram.com/trainer_by_day_chef_by_night/)[](https://www.linkedin.com/in/faramarz-jabbarvaziri/)[](https://api.whatsapp.com/send?phone=17788748591)
+
+-
+### BORIS MARKOVIĆ
+Croatia, Zagreb
+Certificate No. AA_387
+
+[markovic.boris2000@gmail.com](mailto:markovic.boris2000@gmail.com)+385917275838
+[](https://www.instagram.com/mar.ko.vic/)[](https://youtube.com/@markovicsw)[](https://www.tiktok.com/@mar.ko.vic)[](https://api.whatsapp.com/send?phone=385917275838)
+
+-
+### Martin Frťala
+Slovakia, Hlohovec
+Certificate No. AA_386
+
+[martinfrtala21@gmail.com](mailto:martinfrtala21@gmail.com)+421951017040
+[](https://www.facebook.com/profile.php?id=100013206671827)[](https://www.instagram.com/matofrco/)[](https://api.whatsapp.com/send?phone=421951017040)
+
+-
+### Abduljalil Gassim Hassan Barnawi
+Nigeria, Abuja
+Certificate No. AA_385
+
+[jaloo7777online@gmail.com](mailto:jaloo7777online@gmail.com)+918247558530
+[](https://www.instagram.com/jaloo7777/)[](https://www.youtube.com/@Jthenx)[](https://api.whatsapp.com/send?phone=918247558530)
+
+-
+### SHU WING SEE
+Hong Kong, Hong Kong
+Certificate No. AA_384
+
+[sw814@yahoo.com.hk](mailto:sw814@yahoo.com.hk)+85296244128
+[](https://api.whatsapp.com/send?phone=85296244128)
+
+-
+### Abdullah Alghassab
+Saudi Arabia, Hail
+Certificate No. AA_383
+
+[abdul_aou@hotmail.com](mailto:abdul_aou@hotmail.com)+966503993226
+[](https://www.instagram.com/abdulaou0/)[](https://api.whatsapp.com/send?phone=966503993226)
+
+-
+### Hachem Yazback
+Senegal, Dakar
+Certificate No. AA_382
+
+[hachemyazback@hotmail.fr](mailto:hachemyazback@hotmail.fr)+221773298620
+[](https://www.instagram.com/yazbackhechem/)[](https://api.whatsapp.com/send?phone=221773298620)
+
+-
+### Sadry Hachem
+Senegal, Dakar
+Certificate No. AA_381
+
+[sadryh@hotmail.com](mailto:sadryh@hotmail.com)+221778559937
+[](https://www.instagram.com/sadryhm/)[](https://api.whatsapp.com/send?phone=221778559937)
+
+-
+### Leigh Maidment
+Ireland, Belfast
+Certificate No. AA_380
+
+[leighmaid@outlook.com](mailto:leighmaid@outlook.com)+447918518841
+[](https://www.instagram.com/builtbycali/)[](https://api.whatsapp.com/send?phone=447918518841)
+
+-
+### SHING YU LAM
+Hong Kong, Hong Kong
+Certificate No. AA_379
+
+[max1094056172max@yahoo.com.hk](mailto:max1094056172max@yahoo.com.hk)+85292314971
+[](https://www.instagram.com/lammax25/)[](https://api.whatsapp.com/send?phone=85292314971)
+
+-
+### HARIGOVINDAN SURENDRAN
+India, Kochi
+Certificate No. AA_378
+
+[haristhenix@gmail.com](mailto:haristhenix@gmail.com)+919037492696
+[](https://www.facebook.com/Hari6996)[](https://www.instagram.com/haristhenix/profilecard/)[](https://www.linkedin.com/in/hari-govindan-0250272b8)[](https://youtube.com/@haristhenix11)[](https://api.whatsapp.com/send?phone=919037492696)
+
+-
+### Igor Luiz da Silva e Silva
+Portugal, Leiria
+Certificate No. AA_377
+
+[igorluiz222@gmail.com](mailto:igorluiz222@gmail.com)+351927602983
+[](https://api.whatsapp.com/send?phone=351927602983)
+
+-
+### TSOI WING TUNG
+Hong Kong, Hong Kong
+Certificate No. AA_376
+
+[jamietsoi0@gmail.com](mailto:jamietsoi0@gmail.com)+85293826220
+[](https://www.instagram.com/jamie_is_exploring/)[](https://www.linkedin.com/in/jamie-tsoi-318746209)[](https://api.whatsapp.com/send?phone=85293826220)
+
+-
+### Viktor Kamenov
+Bulgaria, Sofia
+Certificate No. AA_375
+
+[viktor.kamenov98@gmail.com](mailto:viktor.kamenov98@gmail.com)+359894269787
+[](https://www.facebook.com/viktor.kamenov.37/)[](https://www.instagram.com/viktor_kamenov/)[](https://www.youtube.com/@ViktorKamenov)[](https://www.tiktok.com/discover/viktor-kamenov)[](https://api.whatsapp.com/send?phone=359894269787)
+
+-
+### Pui Yiu (Peggy) LIN
+Hong Kong, Hong Kong
+Certificate No. AA_374
+
+[linpuiyiu.peggy@gmail.com](mailto:linpuiyiu.peggy@gmail.com)+85260273611
+[](https://api.whatsapp.com/send?phone=85260273611)
+
+-
+### Ka Lai Hemon LAU
+Hong Kong
+Certificate No. AA_373
+
+[hemonlkl@gmail.com](mailto:hemonlkl@gmail.com)+85298342708
+[](https://www.instagram.com/pokemon_sports/)[](https://api.whatsapp.com/send?phone=85298342708)
+
+-
+### TSUI CHEUNG HEI
+Hong Kong
+Certificate No. AA_372
+
+[heihei6868535@yahoo.com.hk](mailto:heihei6868535@yahoo.com.hk)+85290416441
+[](https://api.whatsapp.com/send?phone=85290416441)
+
+-
+### George Mikes
+Greece
+Certificate No. AA_603
+
+[gmikes.gm40@gmail.com](mailto:gmikes.gm40@gmail.com)+306945596898
+[](https://www.facebook.com/mikes.giorgos)[](https://www.instagram.com/mikesgiorgos_sw/)[](https://api.whatsapp.com/send?phone=306945596898)
+
+-
+### Andrés Panti
+Mexico, Monterrey
+Certificate No. AA_371
+
+[andreshpanti@gmail.com](mailto:andreshpanti@gmail.com)+528132640530
+[](https://www.instagram.com/andrespanti/)[](https://www.youtube.com/@andrespanti_ow)[](https://www.tiktok.com/@andrespanti__)[](https://api.whatsapp.com/send?phone=528132640530)
+
+-
+### Naika Aymon
+Switzerland, Grimisuat
+Certificate No. AA_370
+
+[naika.ay.mon@hotmail.com](mailto:naika.ay.mon@hotmail.com)+41774882204
+[](https://www.instagram.com/naika_aymon/)[](https://api.whatsapp.com/send?phone=41774882204)
+
+-
+### Hussein Hassan
+Lebanon, Arabsalim
+Certificate No. AA_369
+
+[hussein.h@telickers.net](mailto:hussein.h@telickers.net)+96176025608
+[](https://www.instagram.com/_husn_hsn/)[](https://www.linkedin.com/in/hussein-hassan-2b2a921a2/)[](https://api.whatsapp.com/send?phone=96176025608)
+
+-
+### JUNKI HORI
+Japan, Tokyo
+Certificate No. AA_368
+
+[junkihori11@gmail.com](mailto:junkihori11@gmail.com)+818019586464
+[](https://www.instagram.com/jefronslab/)[](https://api.whatsapp.com/send?phone=818019586464)
+
+-
+### Benjamin Cruz Hernandez
+Mexico, Ecatepec de Morelos
+Certificate No. AA_367
+
+[benja.crhz1800@gmail.com](mailto:benja.crhz1800@gmail.com)+15577138085
+[](https://www.instagram.com/benya.ch23/)[](https://api.whatsapp.com/send?phone=15577138085)
+
+-
+### Hassan Kassem
+Senegal, Dakar
+Certificate No. AA_601
+
+[kassem66@altlook.fr](mailto:kassem66@altlook.fr)+221777833222
+[](https://www.instagram.com/wolfsrise/)[](https://api.whatsapp.com/send?phone=221777833222)
+
+-
+### Chadi Moukadem
+Senegal, Dakar
+Certificate No. AA_600
+
+[chadi.mkdm@hotmail.fr](mailto:chadi.mkdm@hotmail.fr)+221776575259
+[](https://www.instagram.com/chadimoukadem/)[](https://api.whatsapp.com/send?phone=221776575259)
+
+-
+### Mario Alberto Chico Sanchez
+Mexico, Mérida
+Certificate No. AA_366
+
+[mario_chico98@hotmail.com](mailto:mario_chico98@hotmail.com)+529932529921
+[](https://www.instagram.com/elchico_sw/)[](https://www.tiktok.com/@elchico_sw)[](https://api.whatsapp.com/send?phone=529932529921)
+
+-
+### Muhammad Shanzar
+Pakistan, Rawalpindi
+Certificate No. AA_365
+
+[shanzarrbutt@gmail.com](mailto:shanzarrbutt@gmail.com)+923131013490
+[](https://www.facebook.com/shanzarrr)[](https://www.instagram.com/shanzarr/)[](https://www.youtube.com/@shanzar)[](https://api.whatsapp.com/send?phone=923131013490)
+
+-
+### Hekmat Khattar
+Lebanon, Hazmieh
+Certificate No. AA_364
+
+[khattarhekmat@gmail.com](mailto:khattarhekmat@gmail.com)+96176379541
+[](https://www.facebook.com/hekmat.khattar.1)[](https://www.instagram.com/hekmatkhattar/)[](https://www.linkedin.com/in/hekmat-khattar-981004271/)[](https://api.whatsapp.com/send?phone=96176379541)
+
+-
+### SOMESH
+India, Kanpur
+Certificate No. AA_363
+
+[bhadauriass95@gmail.com](mailto:bhadauriass95@gmail.com)+919779112729
+[](https://www.instagram.com/hostile_duke_)[](https://api.whatsapp.com/send?phone=919779112729)
+
+-
+### Basel Alwadiya
+Palestine, Gaza
+Certificate No. AA_362
+
+[baselwadiya95@gmail.com](mailto:baselwadiya95@gmail.com)+201064225014
+[](https://www.facebook.com/basel.elwadeya/)[](https://www.instagram.com/alwadiyabasel/)[](https://x.com/baselwadiya)[](https://api.whatsapp.com/send?phone=201064225014)
+
+-
+### Andreas Christodoulou
+Cyprus, Paphos
+Certificate No. AA_361
+
+[andreasmetallica99@gmail.com](mailto:andreasmetallica99@gmail.com)+35799225533
+[](https://api.whatsapp.com/send?phone=35799225533)
+
+-
+### Carlos Nazaret Bodas Vázquez de Agredos
+Spain, Madrid
+Certificate No. AA_602
+
+[ankecalisthenics@gmail.com](mailto:ankecalisthenics@gmail.com)
+[](https://www.instagram.com/ankecalistenia/)[](https://api.whatsapp.com/send?phone=)
+
+-
+### Alaa Sleem
+Lebanon, Beirut
+Certificate No. AA_360
+
+[alaasleem.2001@gmail.com](mailto:alaasleem.2001@gmail.com)+96181894093
+[](https://www.facebook.com/alaa.sleem.9822)[](https://www.instagram.com/alaa_sleem12/)[](https://www.linkedin.com/in/alaa-sleem-a1175831a/)[](https://www.tiktok.com/@alaa_statics)[](https://api.whatsapp.com/send?phone=96181894093)
+
+-
+### Elizabeth Germanos
+Lebanon, Jbeil
+Certificate No. AA_359
+
+[germanoselizabeth@gmail.com](mailto:germanoselizabeth@gmail.com)+96103603497
+[](https://www.instagram.com/elizabethgermanos/)[](https://api.whatsapp.com/send?phone=96103603497)
+
+-
+### Satyanarayana Murthy Vungarala
+India, Hyderabad
+Certificate No. AA_358
+
+[satya.15081988@gmail.com](mailto:satya.15081988@gmail.com)+916303910012
+[](https://www.instagram.com/satya_15081988/)[](https://api.whatsapp.com/send?phone=916303910012)
+
+-
+### Joseph Khalil
+Lebanon, Daroun
+Certificate No. AA_357
+
+[josephkhalil46@gmail.com](mailto:josephkhalil46@gmail.com)+96171996564
+[](https://api.whatsapp.com/send?phone=96171996564)
+
+-
+### Peter Jack Khalil
+Lebanon, Jounieh
+Certificate No. AA_356
+
+[peterkhalil03@gmail.com](mailto:peterkhalil03@gmail.com)+96171995665
+[](https://www.instagram.com/peterkhalil__/)[](https://www.tiktok.com/@peterkhalil__)[](https://api.whatsapp.com/send?phone=96171995665)
+
+-
+### Amawei Opuobori
+Belize, Corozal town
+Certificate No. AA_355
+
+[amaweiopuobori@gmail.com](mailto:amaweiopuobori@gmail.com)+5016341876
+[](https://www.facebook.com/teamsenseifitbz)[](https://youtube.com/@senseifitnessbz2473)[](https://api.whatsapp.com/send?phone=5016341876)
+
+-
+### Vladlen Matveev
+Russia, Moscow
+Certificate No. AA_354
+
+[vladlenmatveev@icloud.com](mailto:vladlenmatveev@icloud.com)+79164273760
+[](https://www.instagram.com/vladlenmatveev/)[](https://api.whatsapp.com/send?phone=79164273760)
+
+-
+### Wissam Franjieh
+Lebanon, Zgharta
+Certificate No. AA_353
+
+[wissfran11@gmail.com](mailto:wissfran11@gmail.com)+96171876117
+[](https://api.whatsapp.com/send?phone=96171876117)
+
+-
+### Elie Tarabay
+Lebanon, Byblos
+Certificate No. AA_352
+
+[elietarabay2016@gmail.com](mailto:elietarabay2016@gmail.com)+96176382743
+[](https://www.instagram.com/elie.tarabay1/)[](https://api.whatsapp.com/send?phone=96176382743)
+
+-
+### Harish Sawant
+India, Mumbai
+Certificate No. AA_351
+
+[harishsawant70.hs@gmail.com](mailto:harishsawant70.hs@gmail.com)+918082529710
+[](https://www.instagram.com/sawant.harish/)[](https://youtube.com/@caliharish)[](https://api.whatsapp.com/send?phone=918082529710)
+
+-
+### Oscar Manuel Leon Navarro
+Mexico, Guanajuato
+Certificate No. AA_350
+
+[coach.leon8@gmail.com](mailto:coach.leon8@gmail.com)+524733997097
+[](https://www.facebook.com/LeonMusic10)[](https://www.instagram.com/leon.sthenics/)[](https://www.youtube.com/@BarrioBeastsCalisthenics)[](https://api.whatsapp.com/send?phone=524733997097)
+
+-
+### Ján Nagaj
+Slovakia, Zavar
+Certificate No. AA_349
+
+[jan.nagaj@gmail.com](mailto:jan.nagaj@gmail.com)+31687986937
+[](https://api.whatsapp.com/send?phone=31687986937)
+
+-
+### Rachelle Wehbe
+Ivory Coast, Abidjan
+Certificate No. AA_348
+
+[strongbyrachel111@gmail.com](mailto:strongbyrachel111@gmail.com)+2250707006071
+[](https://api.whatsapp.com/send?phone=2250707006071)
+
+-
+### Haydar Gundogmus
+Turkey, Ankara
+Certificate No. AA_347
+
+[ghaydar008@gmail.com](mailto:ghaydar008@gmail.com)+905060513046
+[](https://www.instagram.com/horck77/)[](https://api.whatsapp.com/send?phone=905060513046)
+
+-
+### Jean Marc Al Allawi
+Lebanon, Byblos
+Certificate No. AA_346
+
+[jm6041409@gmail.com](mailto:jm6041409@gmail.com)+96171838210
+[](https://www.instagram.com/jeanmarcallawi/)[](https://api.whatsapp.com/send?phone=96171838210)
+
+-
+### Dhiran C
+India, Kozhikode
+Certificate No. AA_345
+
+[dhiransachu@gmail.com](mailto:dhiransachu@gmail.com)+916282005922
+[](https://www.instagram.com/dhiran._/)[](https://www.youtube.com/@Dhirann)[](https://api.whatsapp.com/send?phone=916282005922)
+
+-
+### Giannhs Karagiannhs
+Greece, Nafpaktos
+Certificate No. AA_344
+
+[giannhsnaf98@gmail.com](mailto:giannhsnaf98@gmail.com)+306987410235
+[](https://www.facebook.com/giannhsworkout)[](https://www.instagram.com/johnworkout_98/)[](https://www.youtube.com/@john_workout98)[](https://api.whatsapp.com/send?phone=306987410235)
+
+-
+### Anastasia – Maria Leli
+Greece
+Certificate No. AA_299
+
+[natasaleli84@gmail.com](mailto:natasaleli84@gmail.com)+306944199781
+[](https://www.facebook.com/anastasia.leli.7)[](https://www.instagram.com/shantiyoga_anastasia/)[](https://api.whatsapp.com/send?phone=306944199781)
+
+-
+### Aqeel Yassein
+Saudi Arabia, Qatif
+Certificate No. AA_343
+
+[aqeelyassein@gmail.com](mailto:aqeelyassein@gmail.com)+966543583347
+[](https://www.instagram.com/3qlan90/)[](https://api.whatsapp.com/send?phone=966543583347)
+
+-
+### Hamza Adel Mohamed Abdelkarim
+Egypt
+Certificate No. AA_342
+
+[hamza8880@gmail.com](mailto:hamza8880@gmail.com)+201009927510
+[](https://www.facebook.com/profile.php?id=100092445435574&mibextid=LQQJ4d)[](https://www.instagram.com/hamzota_d_luffy/)[](https://youtube.com/@hamzotadl)[](https://api.whatsapp.com/send?phone=201009927510)
+
+-
+### Chiara M. Cittadini
+Mexico, Zicatela
+Certificate No. AA_298
+
+[resplandarte@gmail.com](mailto:resplandarte@gmail.com)
+[](https://api.whatsapp.com/send?phone=)
+
+-
+### Daniel Mota
+Portugal, Ponta Delgada
+Certificate No. AA_341
+
+[mota.daniells@hotmail.com](mailto:mota.daniells@hotmail.com)+351939922103
+[](https://www.instagram.com/danielsmota15/)[](https://api.whatsapp.com/send?phone=351939922103)
+
+-
+### Bartek Przeplata
+Poland, Kraków
+Certificate No. AA_340
+
+[bartek.przeplata@interia.pl](mailto:bartek.przeplata@interia.pl)+48661661228
+[](https://api.whatsapp.com/send?phone=48661661228)
+
+-
+### Karim Ahmed Elrawy
+Egypt, PortSaid
+Certificate No. AA_339
+
+[karim.ahmed12289@gmail.com](mailto:karim.ahmed12289@gmail.com)+201002599017
+[](https://www.instagram.com/karim.ahmed___)[](https://api.whatsapp.com/send?phone=201002599017)
+
+-
+### Adonis Karayiannis
+Cyprus, Paphos
+Certificate No. AA_338
+
+[mkaray@cytanet.com.cy](mailto:mkaray@cytanet.com.cy)+35799083471
+[](https://www.instagram.com/craybeast/)[](https://www.youtube.com/@craybeast)[](https://api.whatsapp.com/send?phone=35799083471)
+
+-
+### Swapnil Kotian
+India, Mumbai
+Certificate No. AA_337
+
+[swapnil.pkotian@gmail.com](mailto:swapnil.pkotian@gmail.com)+918356001709
+[](https://www.facebook.com/profile.php?id=100004874924710&mibextid=LQQJ4d)[](https://www.instagram.com/swapnil_kotian/)[](https://www.youtube.com/@swapnilkotian5083)[](https://api.whatsapp.com/send?phone=918356001709)
+
+-
+### Chi Hang TSANG
+Hong Kong, Hong Kong
+Certificate No. AA_336
+
+[tomtsang222@gmail.com](mailto:tomtsang222@gmail.com)+85251116905
+[](https://api.whatsapp.com/send?phone=85251116905)
+
+-
+### Romario Chamoun
+Lebanon, Broumana
+Certificate No. AA_335
+
+[chamounromario@gmail.com](mailto:chamounromario@gmail.com)+96170772440
+[](https://www.facebook.com/profile.php?id=100004833674825)[](https://www.instagram.com/romario_ch1/)[](https://www.youtube.com/@romariochamoun)[](https://api.whatsapp.com/send?phone=96170772440)
+
+-
+### Shaik Mujeeb Ur Rahman
+India, Hyderabad
+Certificate No. AA_334
+
+[shaikmujib14@gmail.com](mailto:shaikmujib14@gmail.com)+919391841675
+[](https://www.facebook.com/smurphographer)[](https://www.instagram.com/wowmujeeb/)[](https://www.youtube.com/@wowmujeeb)[](https://api.whatsapp.com/send?phone=919391841675)
+
+-
+### Salem Nassoura
+Qatar
+Certificate No. AA_297
+
+[salem.nassoura@gmail.com](mailto:salem.nassoura@gmail.com)+97433711611
+[](https://www.instagram.com/salem_nassoura/)[](https://api.whatsapp.com/send?phone=97433711611)
+
+-
+### Raul Avila Romero
+Mexico, Mexico city
+Certificate No. AA_296
+
+[raul.avila.1804@gmail.com](mailto:raul.avila.1804@gmail.com)+525516889004
+[](https://www.instagram.com/erre_avro/)[](https://api.whatsapp.com/send?phone=525516889004)
+
+-
+### CALEB CHAN
+Hong Kong, Hong Kong
+Certificate No. AA_333
+
+[calebchan@live.com](mailto:calebchan@live.com)+85296506037
+[](https://www.instagram.com/calebchan27/)[](https://api.whatsapp.com/send?phone=85296506037)
+
+-
+### Apostolos Vlaikos
+Ireland, Dublin
+Certificate No. AA_332
+
+[avlaikos@gmail.com](mailto:avlaikos@gmail.com)+353892346215
+[](https://www.facebook.com/apo.vlaikos/)[](https://www.instagram.com/apostolos_vlaikos/)[](https://api.whatsapp.com/send?phone=353892346215)
+
+-
+### Saleh Lambaz
+Jordan, Amman
+Certificate No. AA_331
+
+[salehlambaz@hotmail.com](mailto:salehlambaz@hotmail.com)+962795433314
+[](https://www.instagram.com/salbazzz/)[](https://api.whatsapp.com/send?phone=962795433314)
+
+-
+### Kornel Kaczmarski
+Poland, Szczecin
+Certificate No. AA_330
+
+[kornel.kaczmarski@wp.pl](mailto:kornel.kaczmarski@wp.pl)+48723240001
+[](https://www.facebook.com/profile.php?id=100006046063256)[](https://www.instagram.com/kornel_kaczmarski/)[](http://www.youtube.com/@kornel_kaczmarski)[](https://api.whatsapp.com/send?phone=48723240001)
+
+-
+### Konstantinos Athinaios
+Greece, Afantou/Rhodes
+Certificate No. AA_295
+
+[konstantinos.athinaios@yahoo.com](mailto:konstantinos.athinaios@yahoo.com)+6984694269
+[](https://www.instagram.com/athenian.90/)[](https://api.whatsapp.com/send?phone=6984694269)
+
+-
+### Mohannad Akram Alkhalili
+Jordan, Amman
+Certificate No. AA_329
+
+[mohannad.alkhalili@gmail.com](mailto:mohannad.alkhalili@gmail.com)+962795897386
+[](https://www.instagram.com/alkhalilimohannad/)[](https://api.whatsapp.com/send?phone=962795897386)
+
+-
+### Alfredo Torres Álvarez
+Mexico, Monterrey
+Certificate No. AA_328
+
+[alfredo.torresa@udem.edu](mailto:alfredo.torresa@udem.edu)+528181894289
+[](https://www.instagram.com/alfredotorres96/)[](https://www.youtube.com/@alfredotorresalvarez2656)[](https://api.whatsapp.com/send?phone=528181894289)
+
+-
+### Mohammad Qardan
+Jordan, Amman
+Certificate No. AA_327
+
+[moahammadq@gmail.com](mailto:moahammadq@gmail.com)+962776641891
+[](https://www.instagram.com/kitko93/)[](https://api.whatsapp.com/send?phone=962776641891)
+
+-
+### Adrián Reyes
+Mexico, Cancun
+Certificate No. AA_325
+
+[adrianreyesolis@gmail.com](mailto:adrianreyesolis@gmail.com)+529983026096
+[](https://www.facebook.com/adrian.r.solis.3)[](https://www.instagram.com/adrianreyes_sw/)[](https://api.whatsapp.com/send?phone=529983026096)
+
+-
+### George Fidelis
+Brazil, Natal
+Certificate No. AA_324
+
+[georgepessoafidelis@gmail.com](mailto:georgepessoafidelis@gmail.com)+5584999421284
+[](https://www.facebook.com/zencalistenia/)[](https://www.instagram.com/zencalistenia/)[](https://www.youtube.com/@Georgesw)[](https://api.whatsapp.com/send?phone=5584999421284)
+
+-
+### Leo Uzunić
+Austria, Salzburg
+Certificate No. AA_323
+
+[leouzunic.sw@gmail.com](mailto:leouzunic.sw@gmail.com)+436677717226
+[](https://www.instagram.com/coach.uzunic/)[](https://api.whatsapp.com/send?phone=436677717226)
+
+-
+### Ho Yin Mok
+Hong Kong, Hong Kong
+Certificate No. AA_322
+
+[myin1102@gmail.com](mailto:myin1102@gmail.com)+85293779195
+[](https://www.facebook.com/M2MOKHOYIN)[](https://www.instagram.com/m2.ham/)[](https://www.youtube.com/@m2streetworkout585)[](https://api.whatsapp.com/send?phone=85293779195)
+
+-
+### Kadi Ellus
+Estonia, Tallinn
+Certificate No. AA_321
+
+[muumitrolli@hotmail.com](mailto:muumitrolli@hotmail.com)+37256606101
+[](https://www.instagram.com/kadiellus/)[](https://api.whatsapp.com/send?phone=37256606101)
+
+-
+### Sumit Chauhan
+India, Tapovan, Rishikesh
+Certificate No. AA_320
+
+[sc264248@gmail.com](mailto:sc264248@gmail.com)+919953831846
+[](https://www.instagram.com/mogli_flow/)[](https://www.youtube.com/@sumitchauhan2415)[](https://api.whatsapp.com/send?phone=919953831846)
+
+-
+### Esau Andrews
+British Virgin Islands, Road Town
+Certificate No. AA_319
+
+[boyzie704@gmail.com](mailto:boyzie704@gmail.com)+12843689354
+[](https://api.whatsapp.com/send?phone=12843689354)
+
+-
+### ABDULELAH SULAIMAN ALHUMAIDAN
+Saudi Arabia, Al-Qassim
+Certificate No. AA_318
+
+[abdulelahs2014@gmail.com](mailto:abdulelahs2014@gmail.com)+966506413942
+[](https://www.instagram.com/c.abdulelah24/)[](https://api.whatsapp.com/send?phone=966506413942)
+
+-
+### Majella Dinsmore
+Ireland, Antrim
+Certificate No. AA_317
+
+[majelladinsmore@yahoo.com](mailto:majelladinsmore@yahoo.com)+447720893062
+[](https://www.instagram.com/majelladinsmore/)[](https://api.whatsapp.com/send?phone=447720893062)
+
+-
+### Leon Juratovac
+Croatia, Samobor
+Certificate No. AA_316
+
+[leon.juratovac@gmail.com](mailto:leon.juratovac@gmail.com)+385981307359
+[](https://www.instagram.com/_iam_zero/)[](https://api.whatsapp.com/send?phone=385981307359)
+
+-
+### Michael McComb
+Ireland, Antrim
+Certificate No. AA_315
+
+[mccm6480@gmail.com](mailto:mccm6480@gmail.com)+4407541224076
+[](https://www.instagram.com/bar_power_belfast/)[](https://api.whatsapp.com/send?phone=4407541224076)
+
+-
+### Tomislav Vađon
+Croatia, Ludbreg
+Certificate No. AA_314
+
+[tomislavvadon5@gmail.com](mailto:tomislavvadon5@gmail.com)+385916003283
+[](https://www.instagram.com/tomislavvadjon/)[](https://api.whatsapp.com/send?phone=385916003283)
+
+-
+### George Miliotis
+Greece
+Certificate No. AA_294
+
+[georgemilionman@gmail.com](mailto:georgemilionman@gmail.com)+6973463930
+[](https://www.instagram.com/geo_miliotis/)[](https://api.whatsapp.com/send?phone=6973463930)
+
+-
+### Esteban Moisés Hidalgo Silva
+Chile, Antofagasta
+Certificate No. AA_293
+
+[estebanhisilva@gmail.com](mailto:estebanhisilva@gmail.com)
+[](https://www.facebook.com/h24lifee)[](https://www.instagram.com/h24lifee/)[](https://api.whatsapp.com/send?phone=)
+
+-
+### Ghassan Abdulrahman Mamdouh Abu Hassan
+Jordan
+Certificate No. AA_292
+
+[mrgabuhassan666@gmail.com](mailto:mrgabuhassan666@gmail.com)+962777400000
+[](https://www.instagram.com/iamghassan/)[](https://api.whatsapp.com/send?phone=962777400000)
+
+-
+### Juan Sebastián Ojeda Castañeda
+Colombia, Bogotá
+Certificate No. AA_291
+
+[ojeda.col36@gmail.com](mailto:ojeda.col36@gmail.com)+573004816936
+[](https://www.instagram.com/theoptimisticog/)[](https://x.com/EloptimistaOC)[](https://api.whatsapp.com/send?phone=573004816936)
+
+-
+### Aseel Karadsheh
+Jordan, Amman
+Certificate No. AA_313
+
+[karadsheh_1992@hotmail.com](mailto:karadsheh_1992@hotmail.com)+962795337372
+[](https://www.instagram.com/aseel_karadsheh)[](https://api.whatsapp.com/send?phone=962795337372)
+
+-
+### Erhan Mutlu Keskin
+Turkey, Ankara
+Certificate No. AA_312
+
+[mutlukeskin7@gmail.com](mailto:mutlukeskin7@gmail.com)+905336683808
+[](https://www.instagram.com/ptmutlu7/)[](https://api.whatsapp.com/send?phone=905336683808)
+
+-
+### WILLIAM FONG WING LUN
+Hong Kong
+Certificate No. AA_311
+
+[ikedawilliam@yahoo.co.uk](mailto:ikedawilliam@yahoo.co.uk)
+[](https://api.whatsapp.com/send?phone=)
+
+-
+### FRANCISCO DE PAULA ALMEIDA ROSALES
+Ecuador, Ibarra
+Certificate No. AA_310
+
+[frandepaula1992@gmail.com](mailto:frandepaula1992@gmail.com)+593987253573
+[](https://www.facebook.com/franco.almeida.9/)[](https://www.instagram.com/iamfrancoalm/)[](https://api.whatsapp.com/send?phone=593987253573)
+
+-
+### Quentin Van Ginderdeuren
+Belgium, Linkebeek
+Certificate No. AA_309
+
+[quentinvg@hotmail.be](mailto:quentinvg@hotmail.be)+32477909070
+[](https://www.facebook.com/quentin.vanginderdeuren)[](https://www.instagram.com/quentinvg_sw/)[](https://api.whatsapp.com/send?phone=32477909070)
+
+-
+### Sophie Riddiford
+United Kingdom
+Certificate No. AA_308
+
+[sophie@upgrade.fitness](mailto:sophie@upgrade.fitness)+447781161993
+[](https://www.instagram.com/sophridfitness/)[](https://api.whatsapp.com/send?phone=447781161993)
+
+-
+### MEI TING CHEUNG
+Hong Kong, Tuen Mun
+Certificate No. AA_307
+
+[jchg0322@gmail.com](mailto:jchg0322@gmail.com)+85292980670
+[](https://www.instagram.com/jcmt.322/)[](https://api.whatsapp.com/send?phone=85292980670)
+
+-
+### Giorgos Athinaios
+Greece, Athens
+Certificate No. AA_290
+
+[tsiligiri_1973@hotmail.com](mailto:tsiligiri_1973@hotmail.com)+306946624051
+[](https://api.whatsapp.com/send?phone=306946624051)
+
+-
+### Dimitra Mougopetrou
+Greece
+Certificate No. AA_289
+
+[dmougopetrou@hotmail.com](mailto:dmougopetrou@hotmail.com)+306984212122
+[](https://www.instagram.com/dimitra_mougopetrou/)[](https://api.whatsapp.com/send?phone=306984212122)
+
+-
+### CHI KAI DAVID LAU
+Hong Kong
+Certificate No. AA_306
+
+[d2.wo.hk@gmail.com](mailto:d2.wo.hk@gmail.com)
+[](https://www.instagram.com/hkdl.sw)[](https://api.whatsapp.com/send?phone=)
+
+-
+### Alexander-Andreas Ewest
+Germany, Wuppertal
+Certificate No. AA_305
+
+[alexander.ewest@ruhr-uni-bochum.de](mailto:alexander.ewest@ruhr-uni-bochum.de)+4915779028498
+[](https://www.instagram.com/alex_ewest_mgs/)[](https://api.whatsapp.com/send?phone=4915779028498)
+
+-
+### David Vasquez De Luna
+Canada, Toronto
+Certificate No. AA_304
+
+[dbvdl2121@protonmail.com](mailto:dbvdl2121@protonmail.com)+12109848449
+[](https://www.instagram.com/davidvasquezdl/)[](https://api.whatsapp.com/send?phone=12109848449)
+
+-
+### Abdullah Narmoq
+Jordan, Amman
+Certificate No. AA_287
+
+[abdullahnarmoq@gmail.com](mailto:abdullahnarmoq@gmail.com)+962790267795
+[](https://www.instagram.com/calinarmoq/)[](https://api.whatsapp.com/send?phone=962790267795)
+
+-
+### Vargyasi Balázs
+Hungary, Eger
+Certificate No. AA_301
+
+[zentaclon@gmail.com](mailto:zentaclon@gmail.com)+36305121470
+[](https://www.facebook.com/profile.php?id=100011685664750)[](https://www.instagram.com/balazs.vargyasi/)[](https://api.whatsapp.com/send?phone=36305121470)
+
+-
+### AHMED BEN HAJ SALAH
+Tunisia, Tunis
+Certificate No. AA_286
+
+[ahmedbenhajsalah@yahoo.fr](mailto:ahmedbenhajsalah@yahoo.fr)+21652375294
+[](https://www.facebook.com/profile.php?id=100067741046014)[](https://www.instagram.com/ahmed_the_black_ninja_coach/)[](https://api.whatsapp.com/send?phone=21652375294)
+
+-
+### Daniel Pilc
+Czech Republic, Sumperk
+Certificate No. AA_285
+
+[dano.pilc@seznam.cz](mailto:dano.pilc@seznam.cz)+420722511247
+[](https://www.instagram.com/d_pilc/)[](https://api.whatsapp.com/send?phone=420722511247)
+
+-
+### Dominik Mudra
+Czech Republic
+Certificate No. AA_284
+
+[dom1771@seznam.cz](mailto:dom1771@seznam.cz)+420735833504
+[](https://www.facebook.com/MudrysDom)[](https://www.instagram.com/mudrys/)[](https://api.whatsapp.com/send?phone=420735833504)
+
+-
+### Louay Sattar
+Germany, Berlin
+Certificate No. AA_283
+
+[sattar.louay@gmail.com](mailto:sattar.louay@gmail.com)+4917620042535
+[](https://www.instagram.com/louayxsw/)[](https://api.whatsapp.com/send?phone=4917620042535)
+
+-
+### Afonso Guilherme Clemente Cardoso
+Portugal, Coimbra
+Certificate No. AA_282
+
+[afonso.cardoso@live.com](mailto:afonso.cardoso@live.com)+351915026240
+[](https://www.instagram.com/afonsoo_cardoso/)[](https://api.whatsapp.com/send?phone=351915026240)
+
+-
+### Khalid Alshamsi
+United Arab Emirates, Dubai
+Certificate No. AA_280
+
+[khalidalshamsi99@gmail.com](mailto:khalidalshamsi99@gmail.com)+971508556060
+[](https://www.instagram.com/khalid_alshamsi/)[](https://api.whatsapp.com/send?phone=971508556060)
+
+-
+### Tomáš Boššáni
+Slovakia, Martin
+Certificate No. AA_279
+
+[t.bossani@gmail.com](mailto:t.bossani@gmail.com)+421907912019
+[](https://api.whatsapp.com/send?phone=421907912019)
+
+-
+### Joseph Issa George Ghattas
+Jordan
+Certificate No. AA_278
+
+[josephghattas30@hotmail.com](mailto:josephghattas30@hotmail.com)+962792817111
+[](https://www.instagram.com/josephghatas)[](https://api.whatsapp.com/send?phone=962792817111)
+
+-
+### Basel Humam Nadeem Al Tayyan
+Jordan
+Certificate No. AA_277
+
+[info@baseltayyan.com](mailto:info@baseltayyan.com)+962797620020
+[](https://www.instagram.com/baseltayyan)[](https://api.whatsapp.com/send?phone=962797620020)
+
+-
+### Bashar Ahmad Ibrahim Allan
+Jordan
+Certificate No. AA_276
+
+[basharallan0@gmail.com](mailto:basharallan0@gmail.com)+962796691652
+[](https://www.instagram.com/bashar.allan)[](https://api.whatsapp.com/send?phone=962796691652)
+
+-
+### Karl Sarafian
+Canada, Montreal
+Certificate No. AA_275
+
+[volkerballkarl@gmail.com](mailto:volkerballkarl@gmail.com)+14383720427
+[](https://www.facebook.com/profile.php?id=100094153360785)[](https://www.instagram.com/val_karl8/)[](https://api.whatsapp.com/send?phone=14383720427)
+
+-
+### Soroush Pouladiyan GhaleNou
+Iran, Tehran
+Certificate No. AA_274
+
+[soroushpooladiyan1985@gmail.com](mailto:soroushpooladiyan1985@gmail.com)+989125347017
+[](https://www.instagram.com/soroush_pooladiyan/)[](https://www.youtube.com/@soroushpooladiyan9853)[](https://api.whatsapp.com/send?phone=989125347017)
+
+-
+### Ali Mahmoud Hussain Alhamawi
+Jordan
+Certificate No. AA_273
+
+[alihamawi33@gmail.com](mailto:alihamawi33@gmail.com)
+[](https://www.instagram.com/alihamawi/)[](https://api.whatsapp.com/send?phone=)
+
+-
+### Emily Adis
+United States of America, Miami
+Certificate No. AA_272
+
+[emilyadis3@gmail.com](mailto:emilyadis3@gmail.com)
+[](https://www.instagram.com/emilyadis/)[](https://www.youtube.com/channel/UCmgR6bROYJNYhaqFEmFrANg)[](https://api.whatsapp.com/send?phone=)
+
+-
+### Omar Mohammad Ali Abdullah
+Yemen
+Certificate No. AA_271
+
+[omarmsk88@gmail.com](mailto:omarmsk88@gmail.com)
+[](https://api.whatsapp.com/send?phone=)
+
+-
+### Ignacio Castro Medina
+Mexico, Santiago de Querétaro
+Certificate No. AA_270
+
+[icastrome@gmail.com](mailto:icastrome@gmail.com)+524424687133
+[](https://www.instagram.com/nach_sw/)[](https://api.whatsapp.com/send?phone=524424687133)
+
+-
+### Alexander Krasnov
+Germany, Lohfelden
+Certificate No. AA_269
+
+[alexkrasnov.kred@gmail.com](mailto:alexkrasnov.kred@gmail.com)+491786602206
+[](https://api.whatsapp.com/send?phone=491786602206)
+
+-
+### Nadim Saad
+Canada, Montreal
+Certificate No. AA_268
+
+[nadimsaad2001@gmail.com](mailto:nadimsaad2001@gmail.com)+14385266603
+[](https://www.instagram.com/lifeofdeemo/)[](https://api.whatsapp.com/send?phone=14385266603)
+
+-
+### Lin Han-Ting
+Taiwan, Hsinchu
+Certificate No. AA_267
+
+[hanting43@gmail.com](mailto:hanting43@gmail.com)+886983416720
+[](https://api.whatsapp.com/send?phone=886983416720)
+
+-
+### Lucie Řezáčová
+Czech Republic
+Certificate No. AA_266
+
+[l.rezacova12@email.cz](mailto:l.rezacova12@email.cz)+420735264635
+[](https://www.facebook.com/lucik.rezacova/)[](https://www.instagram.com/l.rezacova12/)[](https://api.whatsapp.com/send?phone=420735264635)
+
+-
+### Haseeb Hussain
+Pakistan, Islamabad
+Certificate No. AA_264
+
+[haseebhussain881@gmail.com](mailto:haseebhussain881@gmail.com)+923151177700
+[](https://www.facebook.com/saim.awaan.5)[](https://www.instagram.com/saim_calisthenics/)[](https://api.whatsapp.com/send?phone=923151177700)
+
+-
+### Diana Lilia Loperena Gutiérrez
+Mexico
+Certificate No. AA_263
+
+[d_loperena@hotmail.com](mailto:d_loperena@hotmail.com)+525529986713
+[](https://www.instagram.com/loperenadiana/)[](https://api.whatsapp.com/send?phone=525529986713)
+
+-
+### Samin Boodesh
+Iran, Tehran
+Certificate No. AA_262
+
+[saminbashafshar@yahoo.com](mailto:saminbashafshar@yahoo.com)+989357288202
+[](https://www.instagram.com/samin_af22/)[](https://api.whatsapp.com/send?phone=989357288202)
+
+-
+### Mostafa Manaei
+Iran, Tehran
+Certificate No. AA_261
+
+[mostafa.manaei@gmail.com](mailto:mostafa.manaei@gmail.com)+989120925045
+[](https://www.instagram.com/mostafa_manaei/)[](https://api.whatsapp.com/send?phone=989120925045)
+
+-
+### Dominik Klimek
+Slovakia
+Certificate No. AA_260
+
+[dominikstreetart@gmail.com](mailto:dominikstreetart@gmail.com)+421950451310
+[](https://www.facebook.com/dodoworkout)[](https://www.instagram.com/dodoworkout/)[](https://www.youtube.com/channel/UCN6PgrrzTCyeJ8U-Oq_yrjA)[](https://api.whatsapp.com/send?phone=421950451310)
+
+-
+### Mohamed Lababsa
+Algeria, Setif
+Certificate No. AA_259
+
+[baligobalidou@yahoo.com](mailto:baligobalidou@yahoo.com)+213698645739
+[](https://www.instagram.com/MOLATHENICS/)[](https://api.whatsapp.com/send?phone=213698645739)
+
+-
+### Jeanpaul Alyahchouchi
+Lebanon
+Certificate No. AA_257
+
+[jeanpaulyah@hotmail.com](mailto:jeanpaulyah@hotmail.com)
+[](https://api.whatsapp.com/send?phone=)
+
+-
+### Oscar Fernando Moreno Espinosa
+Colombia, Bogotá
+Certificate No. AA_256
+
+[morenooscar350@gmail.com](mailto:morenooscar350@gmail.com)
+[](https://www.facebook.com/oskr.moreno1/)[](https://www.instagram.com/oscarmoreno.co/)[](https://api.whatsapp.com/send?phone=)
+
+-
+### Francisco Pavel García
+Mexico, Mexico city
+Certificate No. AA_255
+
+[pavel.gr@hotmail.com](mailto:pavel.gr@hotmail.com)+525530835038
+[](https://www.instagram.com/paquito_pavel/)[](https://api.whatsapp.com/send?phone=525530835038)
+
+-
+### Kenya Yabuki
+Japan, Tokyo
+Certificate No. AA_254
+
+[yabusoccer101129@gmail.com](mailto:yabusoccer101129@gmail.com)
+[](https://www.instagram.com/thesamurai_ken/)[](https://api.whatsapp.com/send?phone=)
+
+-
+### Atsuya Ichikawa
+Japan, Aichi
+Certificate No. AA_253
+
+[atsuta134@gmail.com](mailto:atsuta134@gmail.com)
+[](https://api.whatsapp.com/send?phone=)
+
+-
+### Ahmed Kahoul
+Jordan, Amman
+Certificate No. AA_252
+
+[kahoulbodyweight@gmail.com ](mailto:kahoulbodyweight@gmail.com )+962790962010
+[](https://www.instagram.com/kahoul93/)[](https://api.whatsapp.com/send?phone=962790962010)
+
+-
+### Jorge Salazar
+Mexico, Naucalpan
+Certificate No. AA_251
+
+[jorgesalazar0707@gmail.com](mailto:jorgesalazar0707@gmail.com)+525633950724
+[](https://www.instagram.com/delamorasalazar/)[](https://api.whatsapp.com/send?phone=525633950724)
+
+-
+### Jinseok Kim
+South Korea, Seoul
+Certificate No. AA_248
+
+[plotjin@naver.com](mailto:plotjin@naver.com)+821088788440
+[](https://www.instagram.com/jin_plot/)[](https://api.whatsapp.com/send?phone=821088788440)
+
+-
+### Razan AlQaseer
+Bahrain
+Certificate No. AA_247
+
+[ladlad.alqaseer@hotmail.com](mailto:ladlad.alqaseer@hotmail.com)+97339333660
+[](https://api.whatsapp.com/send?phone=97339333660)
+
+-
+### Jui-En Chang
+South Africa, Durban
+Certificate No. AA_246
+
+[colisthenic@gmail.com](mailto:colisthenic@gmail.com)+27836404743
+[](https://api.whatsapp.com/send?phone=27836404743)
+
+-
+### Mohammed Ibrahim
+Saudi Arabia, Riyadh
+Certificate No. AA_245
+
+[mocali91261@gmail.com](mailto:mocali91261@gmail.com)+966536272469
+[](https://www.instagram.com/mhmdoz_/)[](https://api.whatsapp.com/send?phone=966536272469)
+
+-
+### Ahmet Erkiner
+Cyprus
+Certificate No. AA_244
+
+[erkinercoaching@gmail.com](mailto:erkinercoaching@gmail.com)+16283585034
+[](https://www.instagram.com/ae.healthjourney/)[](https://api.whatsapp.com/send?phone=16283585034)
+
+-
+### Samir Ouertani
+Tunisia, Tunis
+Certificate No. AA_243
+
+[samir.ouertani91@gmail.com](mailto:samir.ouertani91@gmail.com)+21698880990
+[](https://www.instagram.com/samir_ouertani/)[](https://api.whatsapp.com/send?phone=21698880990)
+
+-
+### Paul Delmas-Marsalet
+United Kingdom, London
+Certificate No. AA_242
+
+[pauldelmas27@yahoo.fr](mailto:pauldelmas27@yahoo.fr)+4407526348634
+[](https://api.whatsapp.com/send?phone=4407526348634)
+
+-
+### Girish Totlani
+India, Pune
+Certificate No. AA_241
+
+[girishtotlani@gmail.com](mailto:girishtotlani@gmail.com)+919323653266
+[](https://www.instagram.com/girishtotlani/)[](https://api.whatsapp.com/send?phone=919323653266)
+
+-
+### Tine Pecnik
+Slovenia, Koroska
+Certificate No. AA_240
+
+[tine.pecnik1997@gmail.com](mailto:tine.pecnik1997@gmail.com)+38651421870
+[](https://www.facebook.com/tine.pecnik.1)[](https://www.instagram.com/got_to_love_the_journey/)[](https://api.whatsapp.com/send?phone=38651421870)
+
+-
+### Daniel Rodríguez Gastaldi
+Uruguay, Montevideo
+Certificate No. AA_239
+
+[danielrodgast21@gmail.com](mailto:danielrodgast21@gmail.com)+598 98566492
+[](https://www.instagram.com/daniel_calisthenics/)[](https://api.whatsapp.com/send?phone=598 98566492)
+
+-
+### Manuel Humberto Rodríguez Vivas
+Mexico, Merida Yucatan
+Certificate No. AA_238
+
+[coachmanuel@revolutionuw.com](mailto:coachmanuel@revolutionuw.com)+529995280629
+[](https://api.whatsapp.com/send?phone=529995280629)
+
+-
+### Shigematsu Shigenori
+Japan, Chiba
+Certificate No. AA_237
+
+[kronoa.mr2@gmail.com](mailto:kronoa.mr2@gmail.com)
+[](https://api.whatsapp.com/send?phone=)
+
+-
+### Leen Qashu
+Jordan, Amman
+Certificate No. AA_234
+
+[lqashu@gmail.com ](mailto:lqashu@gmail.com )+962795793000
+[](https://www.instagram.com/lynnqashu/)[](https://api.whatsapp.com/send?phone=962795793000)
+
+-
+### Husam Eideh
+United Arab Emirates, Abu Dhabi
+Certificate No. AA_232
+
+[h_eideh50@hotmail.com](mailto:h_eideh50@hotmail.com)+971506204789
+[](https://www.instagram.com/hussameideh/)[](https://x.com/hussameideh)[](https://api.whatsapp.com/send?phone=971506204789)
+
+-
+### Marcos Yao
+Uruguay, Montevideo
+Certificate No. AA_231
+
+[marcosyao531@gmail.com](mailto:marcosyao531@gmail.com)
+[](https://www.instagram.com/marcos_yao/)[](https://api.whatsapp.com/send?phone=)
+
+-
+### Gautam Suresh
+India, Bangalore
+Certificate No. AA_228
+
+[gautams836@gmail.com](mailto:gautams836@gmail.com)+7838099396
+[](https://api.whatsapp.com/send?phone=7838099396)
+
+-
+### Alejandro Ruiz Olazabal
+Spain, Bilbao
+Certificate No. AA_227
+
+[alexr.olazabal@gmail.com](mailto:alexr.olazabal@gmail.com)+34654276083
+[](https://api.whatsapp.com/send?phone=34654276083)
+
+-
+### André Andre Castro
+Portugal, Gondomar
+Certificate No. AA_226
+
+[andrecastroccl@gmail.com](mailto:andrecastroccl@gmail.com)+351910920396
+[](https://www.instagram.com/andre_ca2tro/)[](https://api.whatsapp.com/send?phone=351910920396)
+
+-
+### Bhaskar Jyoti Saud
+India, Guwahati
+Certificate No. AA_225
+
+[bhaskarsaud@gmail.com](mailto:bhaskarsaud@gmail.com)+643643343452
+[](https://www.instagram.com/bhaskar_csw/)[](https://api.whatsapp.com/send?phone=643643343452)
+
+-
+### Mohit Sharma
+India, Uttar Pradesh
+Certificate No. AA_224
+
+[mohit7351933825@gmail.com](mailto:mohit7351933825@gmail.com)+917351933825
+[](https://api.whatsapp.com/send?phone=917351933825)
+
+-
+### Silvan Dario Ladner
+Switzerland, Kaiseraugst
+Certificate No. AA_223
+
+[silvan.dario@hotmail.com](mailto:silvan.dario@hotmail.com)+417864964303
+[](https://www.instagram.com/silvan.dario/)[](https://api.whatsapp.com/send?phone=417864964303)
+
+-
+### Arun Ganesa Moorthy
+India, Madurai
+Certificate No. AA_222
+
+[aarunganesh007@gmail.com](mailto:aarunganesh007@gmail.com)
+[](https://www.instagram.com/arun_thenx/)[](https://api.whatsapp.com/send?phone=)
+
+-
+### Aggelos Ierodiakonou
+Cyprus, Athienou
+Certificate No. AA_221
+
+[aggelosier227@gmail.com](mailto:aggelosier227@gmail.com)
+[](https://www.instagram.com/aggelosierodiakonou/)[](https://api.whatsapp.com/send?phone=)
+
+-
+### Alexandros Voumvoulakis
+Greece, Athens
+Certificate No. AA_220
+
+[voum.alex@gmail.com](mailto:voum.alex@gmail.com)+6946702096
+[](https://www.instagram.com/alejandro.delighted/)[](https://api.whatsapp.com/send?phone=6946702096)
+
+-
+### Nadja Berdnika
+Latvia, Ogre
+Certificate No. AA_219
+
+[nadjaberdnika@inbox.lv](mailto:nadjaberdnika@inbox.lv)+37126262654
+[](https://www.instagram.com/nadjaberdnika/)[](https://api.whatsapp.com/send?phone=37126262654)
+
+-
+### Vadims Barisoks
+Latvia, Ogre
+Certificate No. AA_218
+
+[vadimbarishok@inbox.lv](mailto:vadimbarishok@inbox.lv)+37127186774
+[](https://www.instagram.com/vadim_bshox/)[](https://api.whatsapp.com/send?phone=37127186774)
+
+-
+### Anupama Shivacharya
+India, Karnataka
+Certificate No. AA_217
+
+[anupamashivacharya@gmail.com](mailto:anupamashivacharya@gmail.com)+917204202924
+[](https://www.facebook.com/anupama.dolekar.shivacharya)[](https://www.instagram.com/anupama.shivacharya/)[](https://api.whatsapp.com/send?phone=917204202924)
+
+-
+### Ryoji Yoshikawa
+Japan, Osaka
+Certificate No. AA_216
+
+[m02ka.s1o.p3o.j17@gmail.com](mailto:m02ka.s1o.p3o.j17@gmail.com)
+[](https://api.whatsapp.com/send?phone=)
+
+-
+### Samuel Campos
+Switzerland
+Certificate No. AA_215
+
+[sam.campos97@gmail.com](mailto:sam.campos97@gmail.com)+41797105058
+[](https://api.whatsapp.com/send?phone=41797105058)
+
+-
+### David Quintanilla
+United States of America, El Monte
+Certificate No. AA_214
+
+[dq05394@gmail.com](mailto:dq05394@gmail.com)+3234792705
+[](https://www.instagram.com/david.quintanilla11/)[](https://api.whatsapp.com/send?phone=3234792705)
+
+-
+### Dmitrijs Širjajevs
+Latvia, Riga
+Certificate No. AA_213
+
+[dmitrijshirjajev@gmail.com](mailto:dmitrijshirjajev@gmail.com)+37127292354
+[](https://www.facebook.com/dmitrij.sirjajev)[](https://www.instagram.com/dmitrij_shirjajev/)[](https://api.whatsapp.com/send?phone=37127292354)
+
+-
+### Peeradon Narongwongwattana
+Thailand, Ratchaburi
+Certificate No. AA_212
+
+[peeradonton@hotmail.com](mailto:peeradonton@hotmail.com)+0851956502
+[](https://www.instagram.com/ton.peera/)[](https://www.youtube.com/tualeklenklam)[](https://api.whatsapp.com/send?phone=0851956502)
+
+-
+### Spyros Nikolaou
+Cyprus, Larnaka
+Certificate No. AA_211
+
+[snikolaou.94@gmail.com](mailto:snikolaou.94@gmail.com)+35799827570
+[](https://www.instagram.com/nikolaou_s/)[](https://api.whatsapp.com/send?phone=35799827570)
+
+-
+### Giannis Maragkos
+Greece, Athens
+Certificate No. AA_210
+
+[spawnor666@gmail.com](mailto:spawnor666@gmail.com)+6942608495
+[](https://www.instagram.com/j.marag/)[](https://api.whatsapp.com/send?phone=6942608495)
+
+-
+### Damien Joseph Baez
+United States of America, Port Richey
+Certificate No. AA_209
+
+[nexgaming74@gmail.com](mailto:nexgaming74@gmail.com)+7277988918
+[](https://www.instagram.com/grav.calisthenics/)[](https://api.whatsapp.com/send?phone=7277988918)
+
+-
+### Maks Besfamilnov
+Ukraine
+Certificate No. AA_208
+
+[besfamilnov@gmail.com](mailto:besfamilnov@gmail.com)+380935187713
+[](https://api.whatsapp.com/send?phone=380935187713)
+
+-
+### Aléxis Giuntini
+Portugal, Caldas da Rainha
+Certificate No. AA_207
+
+[alexisgiuntini@hotmail.com](mailto:alexisgiuntini@hotmail.com)+351917950507
+[](https://www.instagram.com/another_monkey_on_earth/)[](https://api.whatsapp.com/send?phone=351917950507)
+
+-
+### Rafael Silva
+Portugal, Pombal
+Certificate No. AA_206
+
+[rafael-silva20@hotmail.com](mailto:rafael-silva20@hotmail.com)+351914388907
+[](https://www.instagram.com/rafael.pe.silva/)[](https://api.whatsapp.com/send?phone=351914388907)
+
+-
+### Humaid Alhammadi
+United Arab Emirates, Khorfakkan
+Certificate No. AA_204
+
+[humaid90@hotmail.com](mailto:humaid90@hotmail.com)+971505798844
+[](https://www.instagram.com/h_alhammadi_/)[](https://api.whatsapp.com/send?phone=971505798844)
+
+-
+### Tomoki Ikeda
+Japan, Fukui
+Certificate No. AA_203
+
+[tomoki0825@outlook.jp](mailto:tomoki0825@outlook.jp)+09097695280
+[](https://api.whatsapp.com/send?phone=09097695280)
+
+-
+### Catarina Norte
+Portugal, Caldas Da Rainha
+Certificate No. AA_202
+
+[catarina.almeida.norte@gmail.com](mailto:catarina.almeida.norte@gmail.com)+967215489
+[](https://www.instagram.com/catarina.norte/)[](https://api.whatsapp.com/send?phone=967215489)
+
+-
+### Matthijs Nagtzaam
+Netherlands, Haarlem
+Certificate No. AA_201
+
+[chocothijs@hotmail.com](mailto:chocothijs@hotmail.com)+31636505516
+[](https://www.instagram.com/mcn_training/)[](https://api.whatsapp.com/send?phone=31636505516)
+
+-
+### Jamal Zeort
+Lebanon, Barja
+Certificate No. AA_200
+
+[jamalzeort123@gmail.com](mailto:jamalzeort123@gmail.com)+96171111997
+[](https://www.instagram.com/jamal.zeort/)[](https://api.whatsapp.com/send?phone=96171111997)
+
+-
+### Samuel Orsos
+Germany, Plochingen
+Certificate No. AA_199
+
+[samuelorsos08@gmail.com](mailto:samuelorsos08@gmail.com)+1724307770
+[](https://www.instagram.com/xsamuel_sw/)[](https://api.whatsapp.com/send?phone=1724307770)
+
+-
+### Tsubasa Ishii
+Japan, Kagoshima
+Certificate No. AA_198
+
+[ishii@ninja9-kagoshima.jp](mailto:ishii@ninja9-kagoshima.jp)
+[](https://api.whatsapp.com/send?phone=)
+
+-
+### Dimitar Marinov
+Netherlands, Haarlem
+Certificate No. AA_197
+
+[mitkom561@gmail.com](mailto:mitkom561@gmail.com)+687750989
+[](https://www.instagram.com/chris.calisthenics_/)[](https://api.whatsapp.com/send?phone=687750989)
+
+-
+### Joe Mazraani
+Canada
+Certificate No. AA_196
+
+[joemazraanithenics@gmail.com](mailto:joemazraanithenics@gmail.com)
+[](https://www.instagram.com/joe.xlsx/)[](https://api.whatsapp.com/send?phone=)
+
+-
+### Michelle Hermann
+Germany, Baden-Württemberg
+Certificate No. AA_195
+
+[michelle.hermann@gmx.com](mailto:michelle.hermann@gmx.com)+491729972873
+[](https://www.instagram.com/Shelly_9.3/)[](https://api.whatsapp.com/send?phone=491729972873)
+
+-
+### Kabir Jairaj
+India, New Delhi
+Certificate No. AA_194
+
+[dzinecasa@gmail.com](mailto:dzinecasa@gmail.com)+9783613014
+[](https://www.instagram.com/kabir.jj/)[](https://api.whatsapp.com/send?phone=9783613014)
+
+-
+### Emanuel Pardal
+Portugal, Lisbon
+Certificate No. AA_193
+
+[emanuelpardal@gmail.com](mailto:emanuelpardal@gmail.com)+351963767290
+[](https://www.instagram.com/pardal.sw/)[](https://api.whatsapp.com/send?phone=351963767290)
+
+-
+### Shota Hoshino
+Japan, Ishikawa
+Certificate No. AA_190
+
+[c1003727@planet.kanazawa-it.ac.jp](mailto:c1003727@planet.kanazawa-it.ac.jp)
+[](https://www.instagram.com/shiyouta8191/)[](https://api.whatsapp.com/send?phone=)
+
+-
+### Napolitano Carmine
+Japan, Osaka
+Certificate No. AA_189
+
+[kanacn17@gmail.com](mailto:kanacn17@gmail.com)
+[](https://www.instagram.com/leo.sthenix)[](https://api.whatsapp.com/send?phone=)
+
+-
+### Bruno Marques
+Portugal, Lisbon, Cascais
+Certificate No. AA_188
+
+[bruno10_marques@hotmail.com](mailto:bruno10_marques@hotmail.com)+351962522425
+[](https://www.instagram.com/b.calisthenics_official/)[](https://api.whatsapp.com/send?phone=351962522425)
+
+-
+### Sanad Hijjeh
+Jordan, Amman
+Certificate No. AA_187
+
+[sanad.hajjeh@gmail.com](mailto:sanad.hajjeh@gmail.com)+962799171523
+[](https://www.instagram.com/sanadhijjeh/)[](https://api.whatsapp.com/send?phone=962799171523)
+
+-
+### Sangeetha Shanmugavadivel
+India, Puducherry
+Certificate No. AA_186
+
+[ssangeetha1903@gmail.com](mailto:ssangeetha1903@gmail.com)+9597391473
+[](https://www.instagram.com/sangeethashanmugavadivel/)[](https://api.whatsapp.com/send?phone=9597391473)
+
+-
+### Brandon Joseph Castillo
+United States of America, Stevenson Ranch
+Certificate No. AA_185
+
+[bjcastle11@yahoo.com](mailto:bjcastle11@yahoo.com)+3108690931
+[](https://www.instagram.com/bjcastle11/)[](https://api.whatsapp.com/send?phone=3108690931)
+
+-
+### Youssef Mohamed
+United Arab Emirates, Dubai
+Certificate No. AA_184
+
+[youssef.mohamed@mymail.aud.edu](mailto:youssef.mohamed@mymail.aud.edu)+971505408229
+[](https://www.instagram.com/yousseffarouk98/)[](https://api.whatsapp.com/send?phone=971505408229)
+
+-
+### Jad Nahra
+France, Nice
+Certificate No. AA_182
+
+[jadnahra5@gmail.com](mailto:jadnahra5@gmail.com)+764453618
+[](https://www.instagram.com/jadnhra/)[](https://api.whatsapp.com/send?phone=764453618)
+
+-
+### Ryota Kitatani
+Japan, Ishikawa
+Certificate No. AA_181
+
+[ryo.kit.1990.1021.1201@gmail.com](mailto:ryo.kit.1990.1021.1201@gmail.com)
+[](https://www.instagram.com/yakudo_official/)[](https://api.whatsapp.com/send?phone=)
+
+-
+### Wong Chor Wing
+Hong Kong
+Certificate No. AA_180
+
+[chorwingwing@yahoo.com.hk](mailto:chorwingwing@yahoo.com.hk)+85293486083
+[](https://www.instagram.com/chorwingwong/)[](https://api.whatsapp.com/send?phone=85293486083)
+
+-
+### Kristian Kostka
+Denmark, Horsens
+Certificate No. AA_179
+
+[kristian.kostka@gmail.com](mailto:kristian.kostka@gmail.com)+4542786051
+[](https://www.instagram.com/cr1stiankooo/)[](https://api.whatsapp.com/send?phone=4542786051)
+
+-
+### Paula Traband
+Germany, Frankfurt
+Certificate No. AA_178
+
+[paula-traband@web.de](mailto:paula-traband@web.de)+15736964666
+[](https://www.instagram.com/paula_trbnd/)[](https://api.whatsapp.com/send?phone=15736964666)
+
+-
+### Daniel Isai Deloya Sales
+Mexico, Zumpango del Rio, Guerrero
+Certificate No. AA_177
+
+[danydeloya@gmail.com](mailto:danydeloya@gmail.com)+7471099132
+[](https://www.instagram.com/danieldeloya19/)[](https://api.whatsapp.com/send?phone=7471099132)
+
+-
+### Vasil Kirilov
+Bulgaria, Belozem
+Certificate No. AA_176
+
+[vasil0033@abv.bg](mailto:vasil0033@abv.bg)+359897682991
+[](https://www.instagram.com/vasil_kirilov_sw/)[](https://api.whatsapp.com/send?phone=359897682991)
+
+-
+### David Kalas
+Czech Republic, Letovice
+Certificate No. AA_175
+
+[d.kalas16822@seznam.cz](mailto:d.kalas16822@seznam.cz)+732278114
+[](https://www.instagram.com/dave_kalas/)[](https://api.whatsapp.com/send?phone=732278114)
+
+-
+### Natalia Kitaeva
+Russia
+Certificate No. AA_174
+
+[](https://www.facebook.com/workoutmalyshka)[](https://www.instagram.com/workout_malyshka/)[](https://api.whatsapp.com/send?phone=)
+
+-
+### Maryam Farkouh
+Jordan, Amman
+Certificate No. AA_173
+
+[m.farkouh@live.com](mailto:m.farkouh@live.com)+962799068715
+[](https://www.instagram.com/maryamfarkouh/)[](https://api.whatsapp.com/send?phone=962799068715)
+
+-
+### Edmar Christoper Alforte Belbes
+Philippines, Marikina
+Certificate No. AA_172
+
+[belbes16@gmail.com](mailto:belbes16@gmail.com)+639453387038
+[](https://www.instagram.com/edmarbelbes12/)[](https://api.whatsapp.com/send?phone=639453387038)
+
+-
+### Leong Chee Wai
+Malaysia, Selangor
+Certificate No. AA_171
+
+[calebcalisthenicgym@gmail.com](mailto:calebcalisthenicgym@gmail.com)+60166662619
+[](https://www.instagram.com/caleb3201/)[](https://api.whatsapp.com/send?phone=60166662619)
+
+-
+### Luis Caceres
+Chile
+Certificate No. AA_169
+
+[luiscacerescruz@gmail.com](mailto:luiscacerescruz@gmail.com)+962522504
+[](https://api.whatsapp.com/send?phone=962522504)
+
+-
+### Pier Luigi Pendola Molestina
+Ecuador
+Certificate No. AA_168
+
+[pierpendola@hotmail.com](mailto:pierpendola@hotmail.com)+593969639700
+[](https://www.instagram.com/pierpendola/)[](https://api.whatsapp.com/send?phone=593969639700)
+
+-
+### Dennis Marcel Krausz
+Germany, Bielefeld
+Certificate No. AA_167
+
+[dennis.calisthenics@gmail.com](mailto:dennis.calisthenics@gmail.com)
+[](https://www.facebook.com/dennis.krausz/)[](https://www.instagram.com/dennismarcel90/)[](https://api.whatsapp.com/send?phone=)
+
+-
+### Kristiyan Traykov
+France, Villemomble
+Certificate No. AA_166
+
+[krispau75@gmail.com](mailto:krispau75@gmail.com)+658010479
+[](https://www.instagram.com/traykov_calisthenics/)[](https://api.whatsapp.com/send?phone=658010479)
+
+-
+### Marco Keuter
+Germany, Erdmannhausen
+Certificate No. AA_165
+
+[marcokeuter@aol.com](mailto:marcokeuter@aol.com)+4915122228081
+[](https://www.instagram.com/le_keule/)[](https://api.whatsapp.com/send?phone=4915122228081)
+
+-
+### Margarita Akmentiņa
+Latvia, Riga
+Certificate No. AA_164
+
+[ margarita.akmentina@gmail.com](mailto: margarita.akmentina@gmail.com)
+[](https://api.whatsapp.com/send?phone=)
+
+-
+### Mosab Sarhan
+Egypt, Port Said
+Certificate No. AA_163
+
+[mosabtaha10@gmail.com](mailto:mosabtaha10@gmail.com)+201020080896
+[](https://www.facebook.com/mosab.sarhan.5)[](https://www.instagram.com/mosab_sarhan10/)[](https://x.com/mosabtaha10)[](https://api.whatsapp.com/send?phone=201020080896)
+
+-
+### Jonathan Tovar Razo
+Mexico, Benito Juarez
+Certificate No. AA_162
+
+[jonatovar29@gmail.com](mailto:jonatovar29@gmail.com)+525534809476
+[](https://www.instagram.com/jonatovar/)[](https://api.whatsapp.com/send?phone=525534809476)
+
+-
+### Sebastián Ellinger Díaz
+Chile, Santiago
+Certificate No. AA_161
+
+[sebaellingerd@gmail.com](mailto:sebaellingerd@gmail.com)+56978066328
+[](https://www.instagram.com/seba_ellinger/)[](https://api.whatsapp.com/send?phone=56978066328)
+
+-
+### Adryan St. Clair
+United States of America
+Certificate No. AA_160
+
+[abstclair12@yahoo.com](mailto:abstclair12@yahoo.com)+13197958586
+[](https://www.instagram.com/abstclair12/)[](https://x.com/adryan51565014)[](https://api.whatsapp.com/send?phone=13197958586)
+
+-
+### Denis Dimitrov
+Netherlands, Breda
+Certificate No. AA_159
+
+[denis.tonev.dimitrov@abv.bg](mailto:denis.tonev.dimitrov@abv.bg)+359896201524
+[](https://www.instagram.com/coachdimitrov/)[](https://api.whatsapp.com/send?phone=359896201524)
+
+-
+### Shota Sato
+Japan, Tokyo
+Certificate No. AA_158
+
+[scribble.past@gmail.com](mailto:scribble.past@gmail.com)+8058633100
+[](https://www.instagram.com/sho_baiyin/)[](https://api.whatsapp.com/send?phone=8058633100)
+
+-
+### Elena Gruber
+Austria, Tyrol
+Certificate No. AA_157
+
+[elig2104@gmail.com](mailto:elig2104@gmail.com)+436601651232
+[](https://www.instagram.com/elenagruber_/)[](https://api.whatsapp.com/send?phone=436601651232)
+
+-
+### Mahmoud Khaled Darwish
+Qatar, Doha
+Certificate No. AA_156
+
+[ma7mood_darwish@live.com](mailto:ma7mood_darwish@live.com)+97433850757
+[](https://www.instagram.com/darwish.95/)[](https://api.whatsapp.com/send?phone=97433850757)
+
+-
+### Shota Fujimoto
+Japan, Osaka
+Certificate No. AA_155
+
+[shota.fujimoto0602@gmail.com](mailto:shota.fujimoto0602@gmail.com)+08036115441
+[](https://instagram.com/kabegorilla.sw?igshid=1m4ubbnfy7tpz)[](https://www.youtube.com/channel/UCrBWkOBb8PSokK_mJNYsjEw)[](https://api.whatsapp.com/send?phone=08036115441)
+
+-
+### Feras Khalid Alahmad
+Qatar, Doha
+Certificate No. AA_154
+
+[feras.workout@gmail.com](mailto:feras.workout@gmail.com)+97433844494
+[](https://www.instagram.com/iiworkout/)[](https://api.whatsapp.com/send?phone=97433844494 )
+
+-
+### Petar Krastev
+United Kingdom, London
+Certificate No. AA_153
+
+[petar@pk.coach](mailto:petar@pk.coach)+447481488771
+[](https://www.facebook.com/PetarOnlinePt/)[](https://www.instagram.com/peter_onlinept/)[](https://api.whatsapp.com/send?phone=447481488771)
+
+-
+### Jacson Jacó de Araújo Rodrigues
+Brazil, Bahia
+Certificate No. AA_152
+
+[jacksonjaco94@hotmail.com](mailto:jacksonjaco94@hotmail.com)+315575 988269529
+[](https://www.facebook.com/jackson.jaco)[](https://www.instagram.com/jacksonjaco_/)[](https://www.youtube.com/channel/UCKZdWfutD0LFLNjkpKHweGg)[](https://api.whatsapp.com/send?phone=315575 988269529)
+
+-
+### Alexandre Okuyama
+Brazil, Curitiba
+Certificate No. AA_151
+
+[arobarzilians@gmail.com](mailto:arobarzilians@gmail.com)+996266854
+[](https://www.instagram.com/treinador_chan/)[](https://www.youtube.com/results?search_query=Treinador+Chan+Barzilians)[](https://api.whatsapp.com/send?phone=996266854)
+
+-
+### Robert Biller
+Germany, Frankfurt am Main
+Certificate No. AA_150
+
+[biller.robert@web.de](mailto:biller.robert@web.de)+4915678355313
+[](https://www.instagram.com/biller.robert/)[](https://api.whatsapp.com/send?phone=4915678355313)
+
+-
+### Ahmed Nashnush
+Libya, Tripoli
+Certificate No. AA_149
+
+[ahmednashnush1@gmail.com](mailto:ahmednashnush1@gmail.com)+218928637310
+[](https://www.instagram.com/ahmed.nashnush/)[](https://www.youtube.com/channel/UCYIb6tUPJ7AkYqbQlWuIoPw)[](https://api.whatsapp.com/send?phone=218928637310)
+
+-
+### Toru Mori
+Japan, Wakayama
+Certificate No. AA_148
+
+[raven.t.silva@gmail.com](mailto:raven.t.silva@gmail.com)+9073173729
+[](https://m.youtube.com/channel/UC5_0utyoY0zoIBqelorT06A)[](https://api.whatsapp.com/send?phone=9073173729)
+
+-
+### Bruno Villalobos
+Chile
+Certificate No. AA_147
+
+[bruno.villalobos.coz@gmail.com](mailto:bruno.villalobos.coz@gmail.com)+56984391463
+[](https://api.whatsapp.com/send?phone=56984391463)
+
+-
+### Hitesh Patel
+United Kingdom, Dudley
+Certificate No. AA_146
+
+[teshie131@gmail.com](mailto:teshie131@gmail.com)+4407747612116
+[](https://www.instagram.com/humanifique/)[](https://api.whatsapp.com/send?phone=4407747612116)
+
+-
+### Jeffrey Tan Vee Keong
+Malaysia, Klang, Selangor
+Certificate No. AA_145
+
+[jtvk.fitness@gmail.com](mailto:jtvk.fitness@gmail.com)+60162478585
+[](https://www.instagram.com/jtvk_/)[](https://www.youtube.com/channel/UCe-KdXHgC2vogtvjNRm6oDg)[](https://api.whatsapp.com/send?phone=60162478585)
+
+-
+### Juan Andrés Vázquez de Jesús
+Mexico, Veracruz
+Certificate No. AA_144
+
+[kiokaljuan@outlook.com](mailto:kiokaljuan@outlook.com)+529982187885
+[](https://api.whatsapp.com/send?phone=529982187885)
+
+-
+### EDUARDO DE LA CANAL GUIZAR
+Mexico, Mexico
+Certificate No. AA_143
+
+[eduardodlcg5@gmail.com](mailto:eduardodlcg5@gmail.com)+5525614655
+[](https://www.instagram.com/edyfitnessmx/)[](https://api.whatsapp.com/send?phone=5525614655)
+
+-
+### Marcin Dytko
+Poland, Kożuchów
+Certificate No. AA_142
+
+[marcin.dytko.fa@gmail.com](mailto:marcin.dytko.fa@gmail.com)+48725251347
+[](https://www.instagram.com/dydziu_freestyleathlete/)[](https://api.whatsapp.com/send?phone=48725251347)
+
+-
+### Daisuke Hiramatsu
+Japan, Funabashi-shi
+Certificate No. AA_141
+
+[superdaiten@gmail.com](mailto:superdaiten@gmail.com)+9038025884
+[](https://www.instagram.com/calisthenics_tokyo/)[](https://api.whatsapp.com/send?phone=9038025884)
+
+-
+### Shumpei Umeoka
+Japan, Osaka
+Certificate No. AA_140
+
+[pjpjdjsw1289@gmail.com](mailto:pjpjdjsw1289@gmail.com)+9063704126
+[](https://api.whatsapp.com/send?phone=9063704126)
+
+-
+### Tsukasa Arimura
+Japan, Osaka
+Certificate No. AA_139
+
+[tsukasa514.514@gmail.com](mailto:tsukasa514.514@gmail.com)+08083413649
+[](https://api.whatsapp.com/send?phone=08083413649)
+
+-
+### Charitardha Varma Kutcherlapati
+India, Andhra Pradesh
+Certificate No. AA_138
+
+[charitardhvarma@gmail.com](mailto:charitardhvarma@gmail.com)+917288854044
+[](https://www.facebook.com/charitardh)[](https://www.instagram.com/thekalossthenosguy/)[](https://x.com/CharitardhaV)[](https://www.youtube.com/channel/UCGUM7h8JSJDbchKVbRxEUlg?view_as=subscriber)[](https://api.whatsapp.com/send?phone=917288854044)
+
+-
+### Yomna Aly
+Egypt, Cairo
+Certificate No. AA_137
+
+[yomna.samy1@hotmail.com](mailto:yomna.samy1@hotmail.com)+201004438645
+[](https://www.instagram.com/yomnaalyy/)[](https://api.whatsapp.com/send?phone=201004438645)
+
+-
+### Mārtiņš Ļuļļa
+Latvia, Marupe
+Certificate No. AA_136
+
+[martinslulla29@gmail.com](mailto:martinslulla29@gmail.com)+37126090960
+[](https://www.facebook.com/martins.lulla.14)[](https://www.instagram.com/martins.29.04)[](https://api.whatsapp.com/send?phone=37126090960)
+
+-
+### Iúri Lage
+Portugal, Caldas da Rainha
+Certificate No. AA_135
+
+[lage.iuri@gmail.com](mailto:lage.iuri@gmail.com)+351911913799
+[](https://www.instagram.com/lage_iuri/)[](https://www.youtube.com/channel/UC2PYxpMoN97sFeLaSzVBkjg)[](https://api.whatsapp.com/send?phone=351911913799)
+
+-
+### Venkatesh Majjiga
+India, Hyderabad
+Certificate No. AA_134
+
+[venakteshmajjiga3@gmail.com](mailto:venakteshmajjiga3@gmail.com)+918142168289
+[](https://www.instagram.com/bar_venky_97/)[](https://api.whatsapp.com/send?phone=918142168289)
+
+-
+### Taiga Yamamoto
+Japan, Shizuoka
+Certificate No. AA_133
+
+[fruitsdaisukitaiger1@gmail.com](mailto:fruitsdaisukitaiger1@gmail.com)+09087557117
+[](https://api.whatsapp.com/send?phone=09087557117)
+
+-
+### Dmitry Lipanov
+Russia
+Certificate No. AA_132
+
+[kip333539@gmail.com](mailto:kip333539@gmail.com)+79853582786
+[](https://www.facebook.com/lipanworkoutrussia)[](https://www.instagram.com/lipanworkout/)[](https://api.whatsapp.com/send?phone=79853582786)
+
+-
+### Yuki Satoh
+Japan, Wakayama
+Certificate No. AA_131
+
+[rna4927@gmail.com](mailto:rna4927@gmail.com)+09031652741
+[](https://api.whatsapp.com/send?phone=09031652741)
+
+-
+### Juan Sebastian Macias Acevedo
+Canada
+Certificate No. AA_130
+
+[sebastianmaci_19@hotmail.com](mailto:sebastianmaci_19@hotmail.com)+14388662608
+[](https://www.instagram.com/juanse_sw/)[](https://api.whatsapp.com/send?phone=14388662608)
+
+-
+### Tobias Gruber
+Austria, Tyrol
+Certificate No. AA_129
+
+[tobiasgru1@gmail.com](mailto:tobiasgru1@gmail.com)+436603548369
+[](https://www.instagram.com/tobias.gruber_/)[](https://api.whatsapp.com/send?phone=436603548369)
+
+-
+### Vitaly Kontorovich
+Germany, Baden-Baden
+Certificate No. AA_128
+
+[vitaly.kontorovich@gmx.de](mailto:vitaly.kontorovich@gmx.de)+4917675618024
+[](https://www.instagram.com/__mindandbody__/)[](https://www.youtube.com/channel/UCHXp-Hbq5i5KU8QBPkFE0zQ?view_as=subscriber)[](https://api.whatsapp.com/send?phone=4917675618024)
+
+-
+### Victor Calderon Salazar
+Chile
+Certificate No. AA_127
+
+[calistenia.ynox@gmail.com](mailto:calistenia.ynox@gmail.com)+569986363637
+[](https://api.whatsapp.com/send?phone=569986363637)
+
+-
+### Ivan Grgurica
+Ireland, Cork
+Certificate No. AA_126
+
+[ivan.grgurica92@gmail.com](mailto:ivan.grgurica92@gmail.com)+3530830254489
+[](https://www.instagram.com/handstand_story/)[](https://api.whatsapp.com/send?phone=3530830254489)
+
+-
+### Frederic Stormezan
+Chile, Santiago
+Certificate No. AA_125
+
+[f_stormezan@hotmail.com](mailto:f_stormezan@hotmail.com)+56997942750
+[](https://api.whatsapp.com/send?phone=56997942750)
+
+-
+### Dominique Acero
+United States of America, Mastic Beach
+Certificate No. AA_124
+
+[dominike.a@hotmail.com](mailto:dominike.a@hotmail.com)+17186745451
+[](https://www.instagram.com/the_weak_one/)[](https://api.whatsapp.com/send?phone=17186745451)
+
+-
+### Kārlis Tauriņš
+Latvia, Riga
+Certificate No. AA_123
+
+[kartngs32@gmail.com](mailto:kartngs32@gmail.com)+37120212051
+[](https://www.instagram.com/butterfly_kintore/)[](https://api.whatsapp.com/send?phone=37120212051)
+
+-
+### Cameron Badenhorst
+South Africa
+Certificate No. AA_122
+
+[cameron.badenhorst@gmail.com](mailto:cameron.badenhorst@gmail.com)+27832929824
+[](https://www.instagram.com/camdaxmovement/)[](https://api.whatsapp.com/send?phone=27832929824)
+
+-
+### Freja Ferreira
+Sweden
+Certificate No. AA_121
+
+[frejaferreira@hotmail.com](mailto:frejaferreira@hotmail.com)+46704070748
+[](https://www.instagram.com/freya.sw.e/)[](https://api.whatsapp.com/send?phone=46704070748)
+
+-
+### Punit Shah
+India, Mumbai
+Certificate No. AA_120
+
+[punitkshah5@gmail.com](mailto:punitkshah5@gmail.com)+9773968119
+[](https://www.instagram.com/pure__calisthenics/)[](https://www.youtube.com/channel/UCTa4HXD-6C2j4ROP1Vq0B3g?view_as=subscriber)[](https://api.whatsapp.com/send?phone=9773968119)
+
+-
+### Christian Castro Almeida
+Switzerland, Täsch
+Certificate No. AA_119
+
+[chrisalmeida-99@hotmail.com](mailto:chrisalmeida-99@hotmail.com)+41788304816
+[](https://www.instagram.com/christian.castro.almeida/)[](https://api.whatsapp.com/send?phone=41788304816)
+
+-
+### Alessio Falena
+Italy, Rome
+Certificate No. AA_118
+
+[alessiofalena.w@gmail.com](mailto:alessiofalena.w@gmail.com)+3249946866
+[](https://api.whatsapp.com/send?phone=3249946866)
+
+-
+### Carlos Salas
+Canada, Toronto
+Certificate No. AA_117
+
+[1csalas1@gmail.com](mailto:1csalas1@gmail.com)+4167235747
+[](https://www.instagram.com/carlito/)[](https://api.whatsapp.com/send?phone=4167235747)
+
+-
+### Tobias Hämmerle
+Austria
+Certificate No. AA_116
+
+[tobi.haemmerle@gmx.at](mailto:tobi.haemmerle@gmx.at)+6602001138
+[](https://www.instagram.com/daaz_calisthenics/)[](https://www.youtube.com/channel/UCzeRt1WEshxK_T7PT4Xg_3A)[](https://api.whatsapp.com/send?phone=6602001138)
+
+-
+### Natalia Modzelewska
+Poland, Krakow
+Certificate No. AA_115
+
+[modzelew12@gmail.com](mailto:modzelew12@gmail.com)+48535300202
+[](https://www.facebook.com/natalia.modzelewska.374)[](https://www.instagram.com/nataliamodzelewska_/)[](https://www.youtube.com/channel/UClkJ6gSUpHvZozLmZR6iapw?view_as=subscriber)[](https://api.whatsapp.com/send?phone=48535300202)
+
+-
+### Mohammed Tarek
+Egypt, Cairo
+Certificate No. AA_114
+
+[medoamigoes@gmail.com](mailto:medoamigoes@gmail.com)+201126902484
+[](https://www.instagram.com/medo_tfz/)[](https://api.whatsapp.com/send?phone=201126902484)
+
+-
+### Laurin Vogel
+Austria
+Certificate No. AA_113
+
+[laurinvogel@gmx.at](mailto:laurinvogel@gmx.at)+6605387580
+[](https://www.instagram.com/daaz_calisthenics/)[](https://www.youtube.com/channel/UCzeRt1WEshxK_T7PT4Xg_3A)[](https://api.whatsapp.com/send?phone=6605387580)
+
+-
+### Kai Maeno
+Japan, Kanagawa
+Certificate No. AA_112
+
+[kaicalisthenics@gmail.com](mailto:kaicalisthenics@gmail.com)+09035929524
+[](https://api.whatsapp.com/send?phone=09035929524)
+
+-
+### Yuki Nishino
+Japan, Osaka
+Certificate No. AA_111
+
+[adfx8492@gmail.com](mailto:adfx8492@gmail.com)+08047028492
+[](https://instagram.com/hyper_tamoness?igshid=1xkze62orhygg)[](https://www.youtube.com/channel/UCMOZiys10cMh6Oj8Ef-5PZw)[](https://api.whatsapp.com/send?phone=08047028492)
+
+-
+### Shao-Yu Wang
+Taiwan, Hsinchu
+Certificate No. AA_110
+
+[a0979235062@gmail.com](mailto:a0979235062@gmail.com)+886960239011
+[](https://www.instagram.com/ken60066/)[](https://api.whatsapp.com/send?phone=886960239011)
+
+-
+### Kazuyuki Makido
+Japan, Mie
+Certificate No. AA_108
+
+[xfit.kaz@gmail.com](mailto:xfit.kaz@gmail.com)+09015680964
+[](https://www.instagram.com/crossfit_kaz/)[](https://api.whatsapp.com/send?phone=09015680964)
+
+-
+### Kosuke Shibaguchi
+Japan, Kanagawa
+Certificate No. AA_107
+
+[s.kousuke0419@gmail.com](mailto:s.kousuke0419@gmail.com)+09026314109
+[](https://api.whatsapp.com/send?phone=09026314109)
+
+-
+### Jian Qin Wong
+Malaysia, Pulau Pinang
+Certificate No. AA_106
+
+[zorowong94@hotmail.com](mailto:zorowong94@hotmail.com)+60164145587
+[](https://www.facebook.com/zoro.wong.5)[](https://www.instagram.com/callme_zorro/)[](https://www.youtube.com/channel/UCLBAAx42Z8fQY2gm6ndSCNg?view_as=subscriber)[](https://api.whatsapp.com/send?phone=60164145587)
+
+-
+### Philip Lin JBA
+Taiwan, Taipei
+Certificate No. AA_105
+
+[jba@jbafit.com](mailto:jba@jbafit.com)+886933669485
+[](https://www.instagram.com/jba_fit_/)[](https://api.whatsapp.com/send?phone=886933669485)
+
+-
+### Emiliano Andre Coffeen Bucio
+Mexico, Mexico
+Certificate No. AA_104
+
+[emancobu@hotmail.com](mailto:emancobu@hotmail.com)+525528694743
+[](https://www.instagram.com/emilianocoff/)[](https://api.whatsapp.com/send?phone=525528694743)
+
+-
+### Evrat Damien
+New Caledonia
+Certificate No. AA_103
+
+[ghettobarz98@gmail.com](mailto:ghettobarz98@gmail.com)+687752968
+[](https://www.facebook.com/damien.evrat.9)[](https://www.instagram.com/dam_streetworkout/)[](https://api.whatsapp.com/send?phone=687752968)
+
+-
+### Tadakazu Nishida
+Japan, Osaka
+Certificate No. AA_102
+
+[dpccc006@kawachi.zaq.ne.jp](mailto:dpccc006@kawachi.zaq.ne.jp)+08037874741
+[](https://www.instagram.com/j_n_tz.cali/)[](https://www.youtube.com/channel/UCHwhpV9kV2fRLpWGC_5mqIQ)[](https://api.whatsapp.com/send?phone=08037874741)
+
+-
+### Mattia Sampaoli
+Italy, Ravenna
+Certificate No. AA_101
+
+[m.sampaoli86@gmail.com](mailto:m.sampaoli86@gmail.com)+393287594191
+[](https://www.facebook.com/mattia.sampaoli)[](https://www.instagram.com/mattia.calisthenics/)[](https://api.whatsapp.com/send?phone=393287594191)
+
+-
+### Sin Chun Lam Allen
+Hong Kong
+Certificate No. AA_100
+
+[comickerchun@hotmail.com](mailto:comickerchun@hotmail.com)+85293350609
+[](https://api.whatsapp.com/send?phone=85293350609)
+
+-
+### Akira Yamagata
+Japan, Yamaguchi
+Certificate No. AA_99
+
+[kong.sw119@gmail.com](mailto:kong.sw119@gmail.com)+08061438710
+[](https://instagram.com/stoic4327?igshid=1emba9lqlhxb9)[](https://api.whatsapp.com/send?phone=08061438710)
+
+-
+### Dominic Lewarne
+South Africa, Boksburg
+Certificate No. AA_98
+
+[dominic.lewarne1@gmail.com](mailto:dominic.lewarne1@gmail.com)+27823177674
+[](https://www.instagram.com/dominiclewarne/)[](https://api.whatsapp.com/send?phone=27823177674)
+
+-
+### Nidhin Puthussery
+India, Ambarnath
+Certificate No. AA_97
+
+[nidhin.nair19@gmail.com](mailto:nidhin.nair19@gmail.com)+919970240732
+[](https://m.facebook.com/nidhin.nair.9)[](https://instagram.com/keep_calm_and_muscle_up/)[](https://api.whatsapp.com/send?phone=919970240732)
+
+-
+### Siddhartha Shankar Biswal
+India, Odisha
+Certificate No. AA_96
+
+[siddharthabiswal007@gmail.com](mailto:siddharthabiswal007@gmail.com)+917507527977
+[](https://www.facebook.com/siddhartha.s.biswal)[](https://www.instagram.com/sid_barvolution/)[](https://api.whatsapp.com/send?phone=917507527977)
+
+-
+### Thiago Queiroz
+Brazil, Distrito Federal
+Certificate No. AA_95
+
+[inity.elite@gmail.com](mailto:inity.elite@gmail.com)+5561991464656
+[](https://www.instagram.com/voaqueiroz/)[](https://api.whatsapp.com/send?phone=5561991464656)
+
+-
+### Artem Lykov
+Russia, Yudino
+Certificate No. AA_94
+
+[sdwsd@mail.ru](mailto:sdwsd@mail.ru)+79261691520
+[](https://www.instagram.com/artemlykov_life/)[](https://api.whatsapp.com/send?phone=79261691520)
+
+-
+### Hatem Aljadani
+Saudi Arabia, Riyadh
+Certificate No. AA_93
+
+[hatemjadani@gmail.com ](mailto:hatemjadani@gmail.com )+966544812388
+[](https://api.whatsapp.com/send?phone=966544812388)
+
+-
+### Wong Chor Yan
+Hong Kong
+Certificate No. AA_92
+
+[choryanwong_judo2008@ymail.com](mailto:choryanwong_judo2008@ymail.com)+8526829 2183
+[](https://m.facebook.com/chorchoryan/)[](https://www.instagram.com/chorchoryan)[](https://api.whatsapp.com/send?phone=8526829 2183)
+
+-
+### Emanuele Federico
+Canada, Québec
+Certificate No. AA_91
+
+[calistationcanada@gmail.com](mailto:calistationcanada@gmail.com)+14383938385
+[](https://m.facebook.com/Fedmrright1)[](https://www.instagram.com/calistationcanada/)[](https://api.whatsapp.com/send?phone=14383938385)
+
+-
+### Ricardo Deik
+Jordan, Amman
+Certificate No. AA_90
+
+[deek.ricky@gmail.com](mailto:deek.ricky@gmail.com)+962797396377
+[](https://www.instagram.com/deek.ricky/)[](https://api.whatsapp.com/send?phone=962797396377)
+
+-
+### Nicolas Torres
+Lima, Peru
+Certificate No. AA_89
+
+[ntorresferreyros2001@gmail.com](mailto:ntorresferreyros2001@gmail.com)+51967867317
+[](https://www.facebook.com/nicolas.torresferreyros)[](https://www.instagram.com/nico.workout2001/)[](https://www.youtube.com/channel/UCURee8gra-gN1bDmC04Gwfg?view_as=subscriber)[](https://api.whatsapp.com/send?phone=51967867317)
+
+-
+### Jorge Delgado
+United States of America
+Certificate No. AA_88
+
+[delgado.jc@live.com](mailto:delgado.jc@live.com)+14696606263
+[](https://www.facebook.com/jorge.delgado.1217727)[](https://www.instagram.com/jdallasthenics/)[](https://api.whatsapp.com/send?phone=14696606263)
+
+-
+### Emad Saab
+Lebanon, Chouf
+Certificate No. AA_87
+
+[emadsaab722@gmail.com](mailto:emadsaab722@gmail.com)+96103956706
+[](https://www.instagram.com/emad.saab.22/)[](https://api.whatsapp.com/send?phone=96103956706)
+
+-
+### Martin Eccles
+United Kingdom, Lincolnshire
+Certificate No. AA_86
+
+[blackbambootribe@gmail.com](mailto:blackbambootribe@gmail.com)+93795978885
+[](https://www.instagram.com/black_bamb00/)[](https://api.whatsapp.com/send?phone=93795978885)
+
+-
+### Abdallah Safadi
+Jordan, Amman
+Certificate No. AA_85
+
+[abdallah_safadi@hotmail.com](mailto:abdallah_safadi@hotmail.com)+962796012222
+[](https://www.facebook.com/Abul.Safad)[](https://www.instagram.com/afromansafadi/)[](https://api.whatsapp.com/send?phone=962796012222)
+
+-
+### Josip Stanic
+Ireland, Dublin
+Certificate No. AA_84
+
+[jsfitness.pt@gmail.com](mailto:jsfitness.pt@gmail.com)+353834611851
+[](https://www.instagram.com/jsfitnesspt/)[](https://api.whatsapp.com/send?phone=353834611851)
+
+-
+### Valsamos Anastasakis
+Greece, Rhodes
+Certificate No. AA_83
+
+[valsamosanastasakis@gmail.com](mailto:valsamosanastasakis@gmail.com)+306943699871
+[](https://www.facebook.com/semis.anastasakis)[](https://www.instagram.com/semis_anastasakis/)[](https://x.com/Valsamos4)[](https://www.youtube.com/channel/UCL1Mpayn9M3dyzAqoAAR9Xw)[](https://api.whatsapp.com/send?phone=306943699871)
+
+-
+### Melvin Blackman
+Grenada, St.Georges
+Certificate No. AA_82
+
+[melvinblackman@hotmail.com](mailto:melvinblackman@hotmail.com)+14734210050
+[](https://www.instagram.com/_backflipking_/)[](https://youtu.be/wkPWSaVNW1A)[](https://api.whatsapp.com/send?phone=14734210050)
+
+-
+### Dwayne Blackman
+Grenada, St.Georges
+Certificate No. AA_81
+
+[skillmaster728@gmail.com](mailto:skillmaster728@gmail.com)+14734210051
+[](https://www.facebook.com/profile.php?id=100010067320332)[](https://www.instagram.com/_skillmaster_/)[](https://www.youtube.com/channel/UCxN9io9BfO-ijQHuom9iDGw)[](https://api.whatsapp.com/send?phone=14734210051)
+
+-
+### Bruno Kačer
+Croatia, Split
+Certificate No. AA_80
+
+[brunokaceryt@gmail.com](mailto:brunokaceryt@gmail.com)+385951998154
+[](https://api.whatsapp.com/send?phone=385951998154)
+
+-
+### Nils Miezis
+Latvia, Riga
+Certificate No. AA_79
+
+[nils.miezis@gmail.com](mailto:nils.miezis@gmail.com)+37124503003
+[](https://m.facebook.com/#!/nils.miezis?ref=bookmarks)[](https://www.instagram.com/nilsmiezis/)[](https://www.youtube.com/channel/UCsyzR1lArYWUWvRB53S5qBQ)[](https://api.whatsapp.com/send?phone=37124503003)
+
+-
+### Ching Man Chung
+Hong Kong
+Certificate No. AA_78
+
+[chingman0722@yahoo.com.hk](mailto:chingman0722@yahoo.com.hk)+85292374543
+[](https://www.instagram.com/man0722/)[](https://api.whatsapp.com/send?phone=85292374543)
+
+-
+### Grégoire Bellemare
+Canada
+Certificate No. AA_77
+
+[marvelous_one@hotmail.com](mailto:marvelous_one@hotmail.com)+15149730423
+[](https://www.facebook.com/gregoire.bellemare)[](https://www.instagram.com/23gregoire/)[](https://api.whatsapp.com/send?phone=15149730423)
+
+-
+### Samuel Meister
+Austria, Vienna
+Certificate No. AA_76
+
+[samuel.meister@gmx.at ](mailto:samuel.meister@gmx.at )+436766834761
+[](https://www.instagram.com/meisterfitness123/)[](https://api.whatsapp.com/send?phone=436766834761)
+
+-
+### Samuel Zurbriggen
+Switzerland, Naters
+Certificate No. AA_75
+
+[info@go-top.ch](mailto:info@go-top.ch)+41795811633
+[](https://www.facebook.com/samuel.zurbriggen.125)[](https://www.instagram.com/zurbriggensamuel/)[](https://api.whatsapp.com/send?phone=41795811633)
+
+-
+### Robin Chee
+Singapore
+Certificate No. AA_74
+
+[robinchee@mac.com](mailto:robinchee@mac.com)
+[](https://www.facebook.com/robinchee)[](https://www.instagram.com/robin.chee/)[](https://api.whatsapp.com/send?phone=)
+
+-
+### Naga Teja Kare
+India, Hyderabad
+Certificate No. AA_73
+
+[nagateja80@gmail.com](mailto:nagateja80@gmail.com)+918331854606
+[](https://www.instagram.com/thenotorious_xt/)[](https://api.whatsapp.com/send?phone=918331854606)
+
+-
+### Nuthavud Noirune
+Thailand, Nonthaburi
+Certificate No. AA_72
+
+[natvud.sw@gmail.com](mailto:natvud.sw@gmail.com)+66824952951
+[](https://www.facebook.com/Nuttvud)[](https://www.instagram.com/natties5/)[](https://api.whatsapp.com/send?phone=66824952951)
+
+-
+### George Khachacho
+Lebanon, Baabda
+Certificate No. AA_71
+
+[streetworkoutathletes@gmail.com](mailto:streetworkoutathletes@gmail.com)+96181747072
+[](https://www.instagram.com/boykaworkout/)[](https://www.instagram.com/geo_calisthenics/)[](https://api.whatsapp.com/send?phone=96181747072)
+
+-
+### Jingjai Wongarmart
+Thailand, Bangkok
+Certificate No. AA_70
+
+[idderosee@gmail.com](mailto:idderosee@gmail.com)+66918870709
+[](https://www.facebook.com/calisthenics.thai)[](https://www.instagram.com/calisthenicsthaiteam/)[](https://api.whatsapp.com/send?phone=66918870709)
+
+-
+### Miguel Soares
+Portugal, Évora
+Certificate No. AA_69
+
+[miguelsoa@gmail.com](mailto:miguelsoa@gmail.com)+351 963592577
+[](https://www.facebook.com/miguel.soares.311056)[](https://www.instagram.com/miguelsoares33/)[](https://api.whatsapp.com/send?phone=351 963592577)
+
+-
+### Maksims Fainzilbergs
+Latvia, Riga
+Certificate No. AA_68
+
+[max.fainzilberg@gmail.com](mailto:max.fainzilberg@gmail.com)+ 37127767649
+[](https://m.facebook.com/max.finberg)[](https://www.instagram.com/max_fainzilberg)[](https://api.whatsapp.com/send?phone= 37127767649)
+
+-
+### Phi Hung Lam
+United Kingdom, Hampshire
+Certificate No. AA_67
+
+[hom.lam@hotmail.com](mailto:hom.lam@hotmail.com)+447365527215
+[](https://www.facebook.com/Hom.Lamm)[](https://www.instagram.com/hom__lam/)[](https://api.whatsapp.com/send?phone=447365527215)
+
+-
+### Milton Luis Pinilla Zabaleta
+Colombia, Bogota
+Certificate No. AA_66
+
+[miltonluis@hotmail.com](mailto:miltonluis@hotmail.com)+57 3002008781
+[](https://www.facebook.com/MLPZPB)[](https://www.instagram.com/milton.pinilla/)[](https://api.whatsapp.com/send?phone=57 3002008781)
+
+-
+### Hristo Petrov Harizanov
+Spain, Albacete
+Certificate No. AA_65
+
++34 691500090
+[](https://api.whatsapp.com/send?phone=34 691500090)
+
+-
+### Franco Botto
+Uruguay, Montevideo
+Certificate No. AA_64
+
+[francobotto7@hotmail.com](mailto:francobotto7@hotmail.com)+59898153776
+[](https://www.instagram.com/francobotto7/)[](https://api.whatsapp.com/send?phone=59898153776)
+
+-
+### José Urriola
+Panama, Chiriquí
+Certificate No. AA_63
+
+[j.au2025@gmail.com](mailto:j.au2025@gmail.com)+50769537197
+[](https://www.facebook.com/jose.Antonio2212)[](https://www.instagram.com/jauolil_50/)[](https://api.whatsapp.com/send?phone=50769537197)
+
+-
+### Leonardo Menchi
+Spain, Tenerife
+Certificate No. AA_62
+
+[menchileonardo@gmail.com](mailto:menchileonardo@gmail.com)+34 634008525
+[](https://www.facebook.com/leonardo.menchi)[](https://www.instagram.com/leonardomenchi_sw/)[](https://www.youtube.com/channel/UCg18jAQsx6H0s9WdO7sDrTg)[](https://api.whatsapp.com/send?phone=34 634008525)
+
+-
+### Samer Bitar
+United Arab Emirates, Abu Dhabi
+Certificate No. AA_61
+
+[samermaasofficial@gmail.com](mailto:samermaasofficial@gmail.com)+971502533933
+[](https://www.facebook.com/samer.maas.3)[](https://www.instagram.com/samermaas/)[](https://www.youtube.com/channel/UCObCdpmbH5TBLqsdgrAMKSQ?view_as=subscriber)[](https://api.whatsapp.com/send?phone=971502533933)
+
+-
+### Maximilian Kay Dezenter
+Germany, Karlsruhe
+Certificate No. AA_60
+
+[maximilian-dezenter@web.de](mailto:maximilian-dezenter@web.de)+49 17698664675
+[](https://www.instagram.com/kay201099/)[](https://api.whatsapp.com/send?phone=49 17698664675)
+
+-
+### Mohammed Aldokhi
+Saudi Arabia, Sayhat
+Certificate No. AA_59
+
+[momed-dki@hotmail.com](mailto:momed-dki@hotmail.com)+966 59 284 3066
+[](https://www.facebook.com/profile.php?id=100008895614159)[](https://www.instagram.com/silver_dki/)[](https://www.youtube.com/channel/UCtzuusbF1UMvbwqU7ljd1VQ)[](https://api.whatsapp.com/send?phone=966 59 284 3066)
+
+-
+### Marian Rückschloss
+Slovakia, Banská Štiavnica
+Certificate No. AA_58
+
+[ruckschloss.marian@gmail.com](mailto:ruckschloss.marian@gmail.com)+421918547680
+[](https://www.facebook.com/marian.ruckschloss)[](https://api.whatsapp.com/send?phone=421918547680)
+
+-
+### Samuel Kelley
+United States of America
+Certificate No. AA_57
+
+[skelleyahs@gmail.com](mailto:skelleyahs@gmail.com)+18564708059
+[](https://www.instagram.com/odd_fits/)[](https://api.whatsapp.com/send?phone=18564708059)
+
+-
+### Alejandro Ovalle Guardia
+Spain, Barbate
+Certificate No. AA_56
+
+[mglomgdesigner@gmail.com](mailto:mglomgdesigner@gmail.com)+34 619263696
+[](https://www.instagram.com/alex.sw14/)[](https://api.whatsapp.com/send?phone=34 619263696)
+
+-
+### Fred Schuster
+Australia
+Certificate No. AA_55
+
+[fschuster448@gmail.com](mailto:fschuster448@gmail.com)+61497569842
+[](https://www.instagram.com/fschuster_/)[](https://www.youtube.com/channel/UCVhZQm0BB_GpMFyEVSDnmCA?view_as=subscriber)[](https://api.whatsapp.com/send?phone=61497569842)
+
+-
+### Mikhail Kitaev
+Russia, Moscow
+Certificate No. AA_54
+
+[kitknight@mail.ru](mailto:kitknight@mail.ru)+79252763986
+[](https://www.facebook.com/666KIND666)[](https://www.instagram.com/kitaev_mihail/)[](https://api.whatsapp.com/send?phone=79252763986)
+
+-
+### Sergey Smirnov
+Russia, Moscow
+Certificate No. AA_53
+
+[red_devil_93@list.ru](mailto:red_devil_93@list.ru)+79031548223
+[](https://www.facebook.com/Grey1993)[](https://www.instagram.com/grey_smirnov/)[](https://api.whatsapp.com/send?phone=79031548223)
+
+-
+### Juan Carlos Ortiz
+Spain, Guadalajara
+Certificate No. AA_52
+
+[uankarortiz@gmail.com](mailto:uankarortiz@gmail.com)+34646767289
+[](https://api.whatsapp.com/send?phone=34646767289)
+
+-
+### Stefano Secci
+Italy, Genova
+Certificate No. AA_51
+
+[seccipersonaltrainer@gmail.com](mailto:seccipersonaltrainer@gmail.com)+3484591786
+[](https://api.whatsapp.com/send?phone=3484591786)
+
+-
+### Carlos Pérez Morillas
+Spain, Madrid
+Certificate No. AA_50
+
+[carpemori19@gmail.com](mailto:carpemori19@gmail.com)+34 618 695 488
+[](https://www.facebook.com/profile.php?id=1381676185)[](https://www.instagram.com/pm_charlie/)[](https://api.whatsapp.com/send?phone=34 618 695 488)
+
+-
+### Juan Carlos Galindo
+Colombia, Bogotá
+Certificate No. AA_49
+
+[galindo.juanca@gmail.com](mailto:galindo.juanca@gmail.com)+573108560575
+[](https://www.facebook.com/galindojuanca)[](https://www.instagram.com/galindo.juanca/?hl=en)[](https://x.com/galindojuanca)[](https://www.youtube.com/channel/UCd9FC-IY9Awf8s9prCClUyg)[](https://api.whatsapp.com/send?phone=573108560575)
+
+-
+### Hristo Ivanov
+Bulgaria, Sofia
+Certificate No. AA_48
+
+[hrstivanov@gmail.com](mailto:hrstivanov@gmail.com)+359897489122
+[](https://www.facebook.com/pg/Inner-Warriors-Eagles-Calisthenics-Athletes-446097285956680/posts/?ref=page_internal)[](https://api.whatsapp.com/send?phone=359897489122)
+
+-
+### Michaël Magnin
+Switzerland, Fribourg
+Certificate No. AA_47
+
+[mick.magnin@gmail.com](mailto:mick.magnin@gmail.com)+41799349119
+[](https://www.facebook.com/michael.magnin.77)[](https://www.instagram.com/michael_magnin/)[](https://x.com/magnin_michael)[](https://api.whatsapp.com/send?phone=41799349119)
+
+-
+### Kaarel Kõnd
+Estonia, Laagri
+Certificate No. AA_46
+
+[kaarel.k6nd@gmail.com](mailto:kaarel.k6nd@gmail.com)+37259088172
+[](https://www.facebook.com/kaarelk6nd)[](https://www.instagram.com/k6nd_workout/)[](https://api.whatsapp.com/send?phone=37259088172)
+
+-
+### Paulo Barbosa
+Portugal, Porto
+Certificate No. AA_45
+
+[paulo.teixeira.barbosa@hotmail.com](mailto:paulo.teixeira.barbosa@hotmail.com)+351 916283910
+[](https://www.facebook.com/paulo.teixeira.barbosa)[](https://www.instagram.com/paulo.teixeira.barbosa/)[](https://api.whatsapp.com/send?phone=351 916283910)
+
+-
+### Stéphane Sbizzera
+United States of America, New York
+Certificate No. AA_44
+
+[sbizzca@gmail.com](mailto:sbizzca@gmail.com)+3476149905
+[](https://www.facebook.com/stephane.sbizzera)[](https://www.instagram.com/iamsbizz/)[](https://api.whatsapp.com/send?phone=3476149905)
+
+-
+### Mohamed Razif Bin Mohamed Yusoff
+Singapore
+Certificate No. AA_43
+
+[mohdrazifyusoff@gmail.com](mailto:mohdrazifyusoff@gmail.com)+6597800630
+[](https://www.facebook.com/razifzone)[](https://www.instagram.com/razpec)[](https://api.whatsapp.com/send?phone=6597800630)
+
+-
+### Robin Kieszkowski
+Belgium
+Certificate No. AA_42
+
+[robin.kieszkowski@outlook.com](mailto:robin.kieszkowski@outlook.com)+32498111760
+[](https://api.whatsapp.com/send?phone=32498111760)
+
+-
+### Ryo Arata
+Japan, Osaka
+Certificate No. AA_41
+
+[arataryo@yahoo.co.jp](mailto:arataryo@yahoo.co.jp)+804396 8592
+[](https://www.facebook.com/profile.php?id=100010510232726)[](https://www.instagram.com/ryo.sw/)[](https://api.whatsapp.com/send?phone=804396 8592)
+
+-
+### Gai Huang
+China, Guangzhou
+Certificate No. AA_40
+
+[gai.huang@outlook.com](mailto:gai.huang@outlook.com)+86 18666016595
+[](https://www.facebook.com/ryan.wong.58118774)[](https://www.instagram.com/koyw/)[](https://api.whatsapp.com/send?phone=86 18666016595)
+
+-
+### Shehzad Zafar Shaikh
+India, Maharashtra
+Certificate No. AA_39
+
+[shehzad.zsf5@yahoo.com](mailto:shehzad.zsf5@yahoo.com)+919967422786
+[](https://www.instagram.com/shehzad_zsf5/)[](https://api.whatsapp.com/send?phone=919967422786)
+
+-
+### Tomoko Nakata
+Japan, Osaka
+Certificate No. AA_38
+
+[](https://instagram.com/tomo.kotarou)[](https://api.whatsapp.com/send?phone=)
+
+-
+### Picard Nelson
+France, Mérignac
+Certificate No. AA_37
+
+[nelsonbryan.picard@googlemail.com](mailto:nelsonbryan.picard@googlemail.com)+33 6 95 17 99 78
+[](https://www.facebook.com/TrainallSport/)[](https://www.instagram.com/ricco_nelson/)[](https://www.youtube.com/channel/UCPROoJGAlv2O6RzMvw-o7_A?view_as=subscriber)[](https://api.whatsapp.com/send?phone=33 6 95 17 99 78)
+
+-
+### Simon Centocinque
+Spain, Tarragona
+Certificate No. AA_36
+
+[simoncentocinque105@hotmail.com](mailto:simoncentocinque105@hotmail.com)+34667651074
+[](https://www.facebook.com/BodyweightSecrets/)[](https://www.instagram.com/bodyweightsecrets/)[](https://x.com/BodyweightSimon)[](https://www.youtube.com/channel/UCgNxoU7X9Q193M7OenJI8Wg)[](https://api.whatsapp.com/send?phone=34667651074)
+
+-
+### Markos Kampourakis
+Spain, Barcelona
+Certificate No. AA_35
+
+[mark.kam97@gmail.com](mailto:mark.kam97@gmail.com)+34 633563225
+[](https://www.facebook.com/mark.kampourakis)[](https://www.instagram.com/markos_kamp/)[](https://x.com/mark_cali97)[](https://www.youtube.com/channel/UCfwBBlnhmHuiro1Kw4YKimQ)[](https://api.whatsapp.com/send?phone=34 633563225)
+
+-
+### Olwyn Velasquez
+Chile, Santiago
+Certificate No. AA_34
+
+[olwason@hotmal.com](mailto:olwason@hotmal.com)+56952409470
+[](https://www.facebook.com/olwyn.velasquez)[](https://www.instagram.com/olwyn_kubebarz/)[](https://www.wswcfacademy.com/wp-content/themes/wswcf/www.youtube.com/c/KUBEBARZ)[](https://api.whatsapp.com/send?phone=56952409470)
+
+-
+### Mikel Aitor Usarraga
+Spain, Etxarri Aranatz
+Certificate No. AA_33
+
+[mikelaitorusarraga@gmail.com](mailto:mikelaitorusarraga@gmail.com)+34 662083922
+[](https://www.facebook.com/mikel.usarraga.5)[](https://www.instagram.com/mikel_calisthenics/)[](https://www.youtube.com/channel/UCL3EoYEYcg1kG5P8iAVwzvQ?view_as=subscriber)[](https://api.whatsapp.com/send?phone=34 662083922)
+
+-
+### Denis Chaushev
+Bulgaria, Radomir
+Certificate No. AA_32
+
+[denischaushev410@gmail.com](mailto:denischaushev410@gmail.com)+359898755540
+[](https://www.facebook.com/los.reyes.3)[](https://www.instagram.com/plamenovdenis/)[](https://api.whatsapp.com/send?phone=359898755540)
+
+-
+### Electra Radioti
+Greece, Attica
+Certificate No. AA_31
+
+[Jodius.Rad@gmail.com](mailto:Jodius.Rad@gmail.com)+306932370664
+[](https://www.facebook.com/profile.php?id=100010276210812)[](https://www.instagram.com/electra_radioti/)[](https://api.whatsapp.com/send?phone=306932370664)
+
+-
+### Aggelos Skretas
+Greece, Attica
+Certificate No. AA_30
+
+[aggelos.skr@gmail.com](mailto:aggelos.skr@gmail.com)+306974158056
+[](https://www.facebook.com/profile.php?id=100007950398278&ref=br_rs)[](https://www.instagram.com/aggelos_skretas/)[](https://api.whatsapp.com/send?phone=306974158056)
+
+-
+### Miłosz Kubacki
+Poland, Kostrzyn nad Odrą
+Certificate No. AA_29
+
+[miloszkubacki@poczta.onet.pl](mailto:miloszkubacki@poczta.onet.pl)+534241717
+[](https://pl-pl.facebook.com/people/Mi%C5%82osz-Kubacki/100000040756029)[](https://www.instagram.com/majlosw/)[](https://api.whatsapp.com/send?phone=534241717)
+
+-
+### Timour , Tahkakha
+Kingdom of Jordan, Amman
+Certificate No. AA_28
+
+[timour_art@yahoo.com](mailto:timour_art@yahoo.com)+962796212125
+[](https://www.facebook.com/derbavarian)[](https://www.instagram.com/timour_tahkakha/)[](https://api.whatsapp.com/send?phone=962796212125)
+
+-
+### Gabriel Massao, Tanaka
+Brazil, Curitiba
+Certificate No. AA_27
+
+[gabriel.tanaka@hotmail.com](mailto:gabriel.tanaka@hotmail.com)+55 41 988 333 167
+[](https://www.facebook.com/GTanakaa)[](https://www.instagram.com/g.tanakaa)[](https://api.whatsapp.com/send?phone=55 41 988 333 167)
+
+-
+### Omar Saqer
+Germany, Ilmenau
+Certificate No. AA_26
+
+[o.saqer93@hotmail.com](mailto:o.saqer93@hotmail.com)+4917631686685
+[](https://www.facebook.com/omar.saqer.90)[](https://www.instagram.com/omarsaqer_/)[](https://api.whatsapp.com/send?phone=4917631686685)
+
+-
+### Ayman Al-Abdulrahman
+Saudi Arabia, Jeddah
+Certificate No. AA_25
+
+[ayman.a.91@live.com](mailto:ayman.a.91@live.com)+966566618338
+[](https://www.instagram.com/ayman.fit/)[](https://api.whatsapp.com/send?phone=966566618338)
+
+-
+### Desman Tan
+Singapore, Singapore
+Certificate No. AA_24
+
+[vmovecali@gmail.com](mailto:vmovecali@gmail.com)+6582062278
+[](https://www.instagram.com/han.valor/)[](https://api.whatsapp.com/send?phone=6582062278)
+
+-
+### Josh McGowen
+United States of America, Ypsilanti, MI
+Certificate No. AA_23
+
+[shapeshiftersden@gmail.com](mailto:shapeshiftersden@gmail.com)1-(309) 642-4628
+[](https://www.facebook.com/josh.mcgowen.12)[](https://www.instagram.com/shapeshifters_den/)[](https://www.youtube.com/c/shapeshiftersden)[](https://api.whatsapp.com/send?phone=1-(309) 642-4628)
+
+-
+### Juan Pedro, Abaroa Diep
+Mexico, Mexico city
+Certificate No. AA_22
+
+[juanpedroabaroa@gmail.com](mailto:juanpedroabaroa@gmail.com)+5538940217
+[](https://www.facebook.com/pedro.abaroa)[](https://www.instagram.com/erimiafitness/)[](https://api.whatsapp.com/send?phone=5538940217)
+
+-
+### Antoine Patron
+Spain, Barcelona
+Certificate No. AA_21
+
+[Antoine.patron@gmail.com](mailto:Antoine.patron@gmail.com)+34622272241
+[](https://www.instagram.com/blazin_calisthenics/)[](https://api.whatsapp.com/send?phone=34622272241)
+
+-
+### Nigel Wills
+United Kingdom, Chelmsford
+Certificate No. AA_20
+
+[willsdoc@msn.com](mailto:willsdoc@msn.com)+447909155576
+[](https://www.facebook.com/nigel.wills.96)[](https://www.instagram.com/nudgerwills/)[](https://api.whatsapp.com/send?phone=447909155576)
+
+-
+### Danny Welch
+United Kingdom, Betteshanger, Kent
+Certificate No. AA_19
+
+[danny@nwrltd.com](mailto:danny@nwrltd.com)+447891288742
+[](https://api.whatsapp.com/send?phone=447891288742)
+
+-
+### Kamui Koyama
+Japan, Osaka
+Certificate No. AA_18
+
+[kamuioyama@hotmail.com](mailto:kamuioyama@hotmail.com)+8024135631
+[](https://www.facebook.com/kamui.koyama)[](https://www.instagram.com/kansai.street.workout/)[](https://api.whatsapp.com/send?phone=8024135631)
+
+-
+### Charles Stephen Chee Siong Chan Kam Wan
+Mauritius, Port Louis
+Certificate No. AA_17
+
+[sckw16@gmail.com](mailto:sckw16@gmail.com)+23059234417
+[](https://www.facebook.com/stephen.charles.372)[](https://www.instagram.com/stephen_lifebarz/)[](https://api.whatsapp.com/send?phone=23059234417)
+
+-
+### Krystian Izert
+Poland, Ruda Śląska
+Certificate No. AA_16
+
+[Krystian.izert@gmail.com](mailto:Krystian.izert@gmail.com)+48 502040047
+[](https://www.facebook.com/KrystianIzertPersonalCalisthenics/)[](https://www.instagram.com/personal_calisthenics_izert_k/)[](https://api.whatsapp.com/send?phone=48 502040047)
+
+-
+### Yusuf Jajbhay
+South Africa, Johannesburg
+Certificate No. AA_15
+
+[yusufjaj@gmail.com](mailto:yusufjaj@gmail.com)+27614302239
+[](https://www.facebook.com/yusuf.jajbhay)[](https://www.instagram.com/jajbhay/)[](https://api.whatsapp.com/send?phone=27614302239)
+
+-
+### Mus’ab Amireh
+Kingdom of Jordan, Amman
+Certificate No. AA_14
+
+[musabamireh@gmail.com](mailto:musabamireh@gmail.com)
+[](https://www.instagram.com/musabamireh/)[](https://api.whatsapp.com/send?phone=)
+
+-
+### Bahador Razaghi
+Iran, Teheran
+Certificate No. AA_13
+
+[bahidor@gmail.com](mailto:bahidor@gmail.com)+37160176345913
+[](https://www.facebook.com/bahidoor)[](https://www.instagram.com/bahidor/)[](https://api.whatsapp.com/send?phone=37160176345913)
+
+-
+### Guillermo Panak
+Argentina, Buenos Aires
+Certificate No. AA_12
+
+[guillermopanak@gmail.com](mailto:guillermopanak@gmail.com)
+[](https://www.facebook.com/Gapflowing)[](https://www.instagram.com/guillepanak_barcebados/)[](https://api.whatsapp.com/send?phone=)
+
+-
+### Nordin Elyemlahy
+Spain, Madrid
+Certificate No. AA_11
+
+[nordinmaghrebi@gmail.com](mailto:nordinmaghrebi@gmail.com)
+[](https://www.facebook.com/nordin.elyemlahy)[](https://www.instagram.com/nordinworkout/)[](https://www.youtube.com/channel/UChjBmEs-bAUUTOUVNTFKpXQ)[](https://api.whatsapp.com/send?phone=)
+
+-
+### Alexander Ivashko
+Latvia, Riga
+Certificate No. AA_10
+
+[alexivashko53@gmail.com](mailto:alexivashko53@gmail.com)+37127146693
+[](https://www.facebook.com/aleksandr.ivasko)[](https://www.instagram.com/alexivashko/)[](https://api.whatsapp.com/send?phone=37127146693)
+
+-
+### Sintija Tīruma
+Latvia, Riga
+Certificate No. AA_620
+
+[tiruma.sintija@gmail.com](mailto:tiruma.sintija@gmail.com)+371 28793849
+[](https://www.facebook.com/sintija.tiruma)[](https://www.instagram.com/mazaa_sincha/)[](https://api.whatsapp.com/send?phone=371 28793849)
+
+-
+### Dace Amolina
+Latvia, Riga
+Certificate No. AA_08
+
+[amolina.dace@gmail.com](mailto:amolina.dace@gmail.com)+37126768497
+[](https://www.facebook.com/dace.amolina)[](https://www.instagram.com/dace_a/)[](https://api.whatsapp.com/send?phone=37126768497)
+
+-
+### Smith Mangena
+South Africa, Johannesburg
+Certificate No. AA_07
+
+[smith@gravitycore.co.za](mailto:smith@gravitycore.co.za)+27782852104
+[](https://www.facebook.com/smithmangena)[](https://www.instagram.com/smithmangena/)[](https://api.whatsapp.com/send?phone=27782852104)
+
+-
+### Daniels Laizans
+Latvia, Riga
+Certificate No. AA_06
+
+[danielslaizans@gmail.com](mailto:danielslaizans@gmail.com)+37128777769
+[](https://www.facebook.com/daniels.laizans.1)[](https://www.instagram.com/daniels_laizans/)[](https://www.youtube.com/user/DanielFilmmaking)[](https://api.whatsapp.com/send?phone=37128777769)
+
+-
+### Miguel Alejandro Mayorga Solorza
+Chile, Santiago
+Certificate No. AA_05
+
+[mayorga.miguel.7@gmail.com](mailto:mayorga.miguel.7@gmail.com)+56944095710
+[](https://www.facebook.com/miguelcalistenia)[](https://www.instagram.com/miguelakasiete/)[](https://www.youtube.com/user/sevenrap7)[](https://api.whatsapp.com/send?phone=56944095710)
+
+-
+### Ivo Erdmanis
+Latvia, Riga
+Certificate No. AA_04
+
+[ivoerdmanis@gmail.com](mailto:ivoerdmanis@gmail.com)+37126332884
+[](https://www.facebook.com/ivo.erdmanis)[](https://www.instagram.com/ivoerdmanis/)[](https://api.whatsapp.com/send?phone=37126332884)
+
+-
+### Lasse Tufte
+Norway, Oslo
+Certificate No. AA_03
+
+[lasse_tufte@hotmail.com](mailto:lasse_tufte@hotmail.com)+4795837994
+[](https://www.facebook.com/officialtufte/)[](https://www.instagram.com/lassetufte/)[](https://api.whatsapp.com/send?phone=4795837994)
+
+-
+### Sergejs Kostilevs
+Latvia, Riga
+Certificate No. AA_02
+
+[sergejskostilevs@gmail.com](mailto:sergejskostilevs@gmail.com)+37128329355
+[](https://www.facebook.com/Krifelis)[](https://www.instagram.com/speka_vingrosana_t35/)[](https://api.whatsapp.com/send?phone=37128329355)
+
+- [Trainer certification](https://wswcfacademy.com/calisthenics-trainer-online-certification/)
+
+- [Online trainer certification](https://wswcfacademy.com/calisthenics-trainer-online-certification/)
+
+- [Certified Trainers](https://wswcfacademy.com/certified-trainers/)
+
+- [Gym & park certification](https://wswcfacademy.com/gym-certification/)
+
+- [Certification](https://wswcfacademy.com/gym-certification/)
+
+- [Certified gyms and parks](https://wswcfacademy.com/certified-gyms/)
+
+- [Online courses](https://wswcfacademy.com/learn-calisthenics/)
+
+- [Basics](https://wswcfacademy.com/learn-calisthenics/)
+
+- [Advanced](https://wswcfacademy.com/advanced-calisthenics/)
+
+- [About Us](https://wswcfacademy.com/about-us/)
+
+- [News](https://wswcfacademy.com/news/)
+
+- [Privacy Policy](https://wswcfacademy.com/privacy-policy/)
+
+#### Contacts
+Ltd  “WSWCF Academy”
+
+Phone: [+371 26332884](tel:+37126332884)
+
+E-mail: [academy@wswcf.org](mailto:academy@wswcf.org)
+
+@2011–2025 WSWCF | All rights reserved
+
+- [](https://wa.me/message/WVM3AYPXCFG5O1)
+- [](https://www.facebook.com/wswcfacademy/)
+- [](https://www.instagram.com/wswcf_academy/)
+
+[](#)
+
+- [](https://wswcfacademy.com/es/entrenadores-certificados/)
+- [](https://wswcfacademy.com/certified-trainers/)
+
+[WSWCF](http://wswcf.org)
+
+- [](https://wa.me/message/WVM3AYPXCFG5O1)
+- [](https://www.facebook.com/wswcfacademy/)
+- [](https://www.instagram.com/wswcf_academy/)

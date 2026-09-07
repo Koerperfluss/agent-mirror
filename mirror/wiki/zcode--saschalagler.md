@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-07 00:07 UTC
+Zuletzt gespiegelt: 2026-09-07 00:18 UTC
 
 ## call_fe4ee4834bf14478b4a66d0e-tool-result-df2ccbef-b4f7-499f-ac43-59af5f927f22
 
@@ -247,6 +247,129 @@ print(processor.decode(outputs[0][inputs["input_ids"].shape[-1]:]))
 - [ vLLM ](/Qwen/Qwen3.5-9B?local-app=vllm) How to use Qwen/Qwen3.5-9B with vLLM:
 
 ##### Install from pip and serve model
+
+## call_c83011230e76471fb0da0d0d-tool-result-5d7c7fbd-9555-4381-b95a-d2de68282453
+
+Certified Trainers | WSWCF Academy
+
+[](https://wswcfacademy.com)
+
+- [Trainer Certification](https://wswcfacademy.com/calisthenics-trainer-online-certification/)
+
+[Online trainer certification
+Complete and become certified](https://wswcfacademy.com/calisthenics-trainer-online-certification/)
+
+- [Certified trainers](https://wswcfacademy.com/certified-trainers/)
+
+- [Gym & Park Certification](https://wswcfacademy.com/global-standard-for-gym-park-certification/)
+
+[Certification
+Apply and certify a gym or a park](https://wswcfacademy.com/global-standard-for-gym-park-certification/)
+
+- [Certified gyms and parks](https://wswcfacademy.com/certified-gyms-parks/)
+
+- [Online courses](https://wswcfacademy.com/learn-calisthenics/)
+
+[Basic
+Learn without certification](https://wswcfacademy.com/learn-calisthenics/)
+
+- [Advanced
+Learn without certification](https://wswcfacademy.com/advanced-calisthenics/)
+
+- [About Us](https://wswcfacademy.com/about-us/)
+
+- [News](https://wswcfacademy.com/news/)
+
+- [EN](https://wswcfacademy.com/certified-trainers/)
+
+[ES](https://wswcfacademy.com/es/entrenadores-certificados/)
+
+[](#)
+
+[](#)
+
+[+371 8000 55 80](http://wswcf.org)
+[WSWCF](http://wswcf.org)
+
+# Certified Trainers
+
+## Certified Trainers
+
+These trainers are officially certified by WSWCF Academy — the world leaders in street workout and calisthenics.
+They’ve earned their place by mastering the craft, passing our elite training program, and proving they can deliver real, lasting results.
+
+Want to become a certified trainer?
+
+Graduate from the Academy and join the ranks of certified coaches worldwide.
+
+[
+Get Certified Online
+](https://wswcfacademy.com/calisthenics-trainer-online-certification/)
+
+Select country
+Algeria
+Argentina
+Armenia
+Australia
+Austria
+Bahrain
+Belgium
+Belize
+Bolivia
+Brazil
+British Virgin Islands
+Bulgaria
+Canada
+Chile
+China
+Colombia
+Costa Rica
+Croatia
+Cyprus
+Czech Republic
+Denmark
+Ecuador
+Egypt
+El Salvador
+Estonia
+France
+Germany
+Great Britain
+Greece
+Grenada
+Guatemala
+Guinea
+Hong Kong
+Hungary
+India
+Iran
+Iraq
+Ireland
+Israel
+Italy
+Ivory Coast
+Japan
+Jordan
+Kingdom of Jordan
+Kuwait
+Kyrgyzstan
+Latvia
+Lebanon
+Libya
+Lima
+Macao
+Malaysia
+Mauritius
+Mexico
+Moldova
+Morocco
+Netherlands
+New Caledonia
+Nicaragua
+Nigeria
+Norway
+Oman
+Pakistan
 
 ## call_bed114d10ff54d02b94f9657-tool-result-3e82c1fe-e13a-4137-b942-54ed68b21297
 
