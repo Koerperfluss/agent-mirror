@@ -18,7 +18,7 @@
 
 - [LOKI autostarts orphaned](loki-autostarts-orphaned.md) — com.loki.master + com.loki.v15 ENTFERNT 25.08.; omniroute/lokivoice/legalops sind gewollt
 
-- [web-research-team skill](web-research-team-skill.md) — v1.1: modes, 3 iron laws, browser tiers + handoff, delta research, runlog; control-browser main-agent-only, max 3 parallel subagents
+- [web-research-team skill](web-research-team-skill.md) — v1.1: modes, 3 iron laws, browser tiers + handoff, delta research, runlog; control-browser main-agent-only, max 3 parallel subagents; 07.09. Speed-Feedback: quick-first recherchieren (Fanout zu langsam/teuer), Fixes 1–4 auf GO wartend
 
 - [ZCode-Setup verifiziert](zcode-setup-verified.md) — 26.08.: 14 MCP-Server, 16 Plugins, Skill-Drift 112/110 (4 Skills), Obsidian↔Cline-Sync offen; sequential-thinking = MCP in config.json + ~/.mcp.json (Symlink auf Cline), kein Skill
 
@@ -36,4 +36,5 @@
 
 - [Z.AI Coding Plan Limits](zai-coding-plan-limits.md) — weekly+5h Credit-Caps selbst auf Pro; [1310]=Cap; Fanout verbrennt Quota; 3 Z.AI-MCP-Server eingetragen mit Key-Platzhalter- [AutoClaw Full-Stack-Builder](autoclaw-full-stack-builder.md) — 06.09. Agent+7 Skills+Write-Guard eingerichtet; JWT pro-Modell in openclaw.json, nur additiv editieren; Config greift nach App-Neustart
 - [Legal-Ops-Native-Status](legal-ops-native-status.md) — 06.09. P0-Diagnose: Verschmelzung FUNKTIONIERT (live verifiziert, Port 7070/Ollama); „kaputt" = 4-App-Varianten-Wirrwarr → Aufräumen mit GO; STATE.md im Projekt
+- [Patrick Physiotherapie via SBP](patrick-physiotherapie-sbp.md) — 07.09.: Patrick will Physio ohne Matura studieren; braucht SBP + FH-Aufnahmeverfahren (beides!); Falle: SBP studienrichtungsgebunden, FHs ordnen PT verschiedenen Gruppen zu; einschlägige Ausbildung (MTF/DGKS/Masseur) ersetzt SBP durch nur Zusatzprüfungen — offen: Patricks Alter/Ausbildung
 - [LOKI Projekt-Map](loki-project-map.md) — 06.09. 17:30: Legal-Ops gelöst, Atlas-Takeover läuft LIVE in AutoClaw, TODO-App fertig, Paraletts=Prototyp, Barbulls=Wix+Scaffold; Q1 entlastet, Q1b Home-Repo neu; Source of Truth = ~/LOKI_PROJECT_MAP.md

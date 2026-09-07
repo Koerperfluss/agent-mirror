@@ -1,6 +1,252 @@
 # cli (antigravity)
 
-Zuletzt gespiegelt: 2026-09-07 20:16 UTC
+Zuletzt gespiegelt: 2026-09-07 20:26 UTC
+
+## call_339477364a17488a84bbd97e-tool-result-bc9354f9-6002-4ff8-b81d-0069bef089d6
+
+Physiotherapie - Hochschule Campus Wien
+
+[Zum Hauptinhalt wechseln](#main_content)
+
+[Zum Studienangebot](/studium-weiterbildung/studienangebot)
+[Bachelor](https://www.hcw.ac.at/studium-weiterbildung/studien-und-lehrgangsangebot.html#asfilter-cat100007)
+[Master](https://www.hcw.ac.at/studium-weiterbildung/studien-und-lehrgangsangebot.html#asfilter-cat100008)
+[Weiterbildungsstudium](https://www.hcw.ac.at/studium-weiterbildung/studien-und-lehrgangsangebot.html#asfilter-cat100013)
+[Akademischer Hochschullehrgang](https://www.hcw.ac.at/studium-weiterbildung/studien-und-lehrgangsangebot.html#asfilter-cat900000096)
+
+### [Für Studieninteressierte](/ueber-uns/themen/studieninteressierte)
+
+- [Open House](/studium-weiterbildung/open-house-programm)
+- [Virtueller Rundgang](https://www.hcw.ac.at/360grad)
+- [Angebote für Schulen](/studium-weiterbildung/fuer-schuelerinnen-und-lehrerinnen/angebote-fuer-schulen)
+- [Online-Infosessions](/studium-weiterbildung/online-infosessions)
+- [Studieren Probieren](/studium-weiterbildung/fuer-schuelerinnen-und-lehrerinnen/studieren-probieren)
+- [Flexibel Studieren](/flexibel-studieren)
+- [Hochbegabtenförderung](/studium-weiterbildung/fuer-schuelerinnen-und-lehrerinnen/hochbegabte-schuelerinnen-an-die-hochschulen)
+- [Nostrifizierung](/studium-weiterbildung/bewerbung-und-aufnahme/nostrifizierung)
+
+### [Bewerbung und Aufnahme](/studium-weiterbildung/bewerbung-und-aufnahme)
+
+- [Studiensystem](/studium-weiterbildung/studiensystem)
+- [Vorbereitungskurse](/studium-weiterbildung/studienangebot/erweiterungscurricula-und-vorbereitungskurse)
+- [Einteilung Studienjahr](/studium-weiterbildung/studienangebot/einteilung-studienjahr)
+- [Barrierefreies Studieren und Lehren](/studium-weiterbildung/bewerbung-und-aufnahme/barrierefreies-studieren-und-lehren)
+- [Förderungen und Stipendien](/studium-weiterbildung/bewerbung-und-aufnahme/foerderungen-und-stipendien)
+- [Buddy Netzwerk](/studium-weiterbildung/bewerbung-und-aufnahme/buddy-netzwerk)
+- [Ausbildungsvertrag](/studium-weiterbildung/bewerbung-und-aufnahme/ausbildungsvertrag)
+- [Jetzt bewerben](https://bewerben.hcw.ac.at/)
+
+### [Für Studierende](/ueber-uns/themen/studierende)
+
+- [Bibliothek und Mediathek](/studium-weiterbildung/bibliothek-und-mediathek)
+- [Zewiss](/lehre/zentrum-fuer-wissenschaftliches-schreiben)
+- [Deutschkurse](/ueber-uns/themen/studierende/deutschkurse)
+- [Campusnetzwerk](/studium-weiterbildung/fuer-studierende/campusnetzwerk)
+- [Studijobs](/ueber-uns/themen/studierende/studijobs)
+- [EICC](/ueber-uns/themen/studierende/entrepreneurship-innovation-career-center)
+- [ÖH Hochschule Campus Wien](https://www.oeh-hcw.at/)
+- [Vorlesungsverzeichnis](https://vlv.hcw.ac.at/)
+
+### [Für Weiterbildungsinteressierte](/ueber-uns/themen/weiterbildung)
+
+- [Campus Wien Academy](/weiterbildung/campus-wien-academy)
+- [Language Center](/lehre/language-center)
+
+### [Für Absolvent*innen](/studium-weiterbildung/fuer-absolventinnen)
+
+- [Future Hero Award](/studium-weiterbildung/fuer-absolventinnen/future-hero-award)
+
+### [Forschung und Entwicklung](/forschung/forschung-entwicklung)
+
+- [Forschungszentren](/forschung/forschungszentren)
+- [Forschungsbereiche](/forschung/forschungsbereiche)
+- [Projekte und Aktivitäten](/forschung/projekte-und-aktivitaeten)
+- [Ethikkommission für Forschungsaktivitäten](/forschung/ethikkommission-fuer-forschungsaktivitaeten)
+- [Forschende](/forschung/forschende-von-a-z)
+- [Publikationsdatenbank der Hochschule Campus Wien](https://pub.hcw.ac.at)
+- [Forschungsforum 2025](/forschung/forschungsforum-2025)
+- [Doktoratsservice](/forschung/doktoratsservice)
+
+### [Internationales](/international/internationales)
+
+- [Europäischer Hochschulraum und ECTS](/international/europaeischer-hochschulraum-und-ects)
+- [Partnerhochschulen und Netzwerke](/international/partnerhochschulen-und-netzwerke)
+- [Internationale Projekte](/international/internationale-projekte)
+
+### [Outgoing](/international/studierendenmobilitaet)
+
+### [Incoming](/international/incoming)
+
+### [Personalmobilität](/international/personalmobilitaet)
+
+### [Organisation](/ueber-uns/organisation/organigramm)
+
+- [Präsidium](/ueber-uns/organisation/praesidium)
+- [Hochschulleitung](/ueber-uns/organisation/hochschulleitung)
+- [Abteilungen und Stabsstellen](/ueber-uns/organisation/abteilungen)
+- [Departments](/ueber-uns/organisation/departments)
+- [Betriebsrat](/ueber-uns/organisation/betriebsrat)
+- [Chronologie](/ueber-uns/organisation/chronologie)
+- [Code of Conduct](/ueber-uns/werte/code-of-conduct)
+- [Strategie](/ueber-uns/werte/strategie)
+
+### [Kooperationen](/ueber-uns/kooperationen)
+
+### [Qualitätsmanagement](/ueber-uns/werte/qualitaet)
+
+### [Gender & Diversity Management](/ueber-uns/werte/gender-diversity-management)
+
+### [Hochschuldidaktik](/lehre/hochschullehre)
+
+### [Projekte](/lehre/projekte)
+
+### [Akkreditierungen & Auszeichnungen](/ueber-uns/werte/akkreditierungen-und-auszeichnungen)
+
+### [Jobs und Karriere](/ueber-uns/jobs-und-karriere)
+
+### [Presseservice](/ueber-uns/presseservice)
+
+### [Bibliothek & Mediathek](/studium-weiterbildung/bibliothek-und-mediathek)
+
+### [Standorte](/ueber-uns/standorte)
+
+### [Events](/alle-events)
+
+SUCHE
+
+Oft gesucht
+
+- [Studien- und Lehrgangsangebot](/suche?tx_kesearch_pi1%5Bsword%5D=Studien-%20und%20Lehrgangsangebot)
+
+- [Online-Infosessions](/suche?tx_kesearch_pi1%5Bsword%5D=Online-Infosessions)
+
+- [Aufnahmeverfahren](/suche?tx_kesearch_pi1%5Bsword%5D=Aufnahmeverfahren)
+
+[](/)
+
+
+## call_f007854547bb4d069472434b-tool-result-5e5cab91-dd4b-4a03-8328-256c5435ce63
+
+Physiotherapie Studium | Ausbildung FH Kärnten[ skip_navigation ](#content)[](/)
+
+#
+
+- [Studium](/studium-1)
+#
+
+#
+
+#
+[Bau, Architektur & Immobilien](/studium/bauingenieurwesen-architektur)
+
+#
+[Engineering & IT](/studium/engineering-it)
+
+#
+[Gesundheit & Soziales](/studium/gesundheit-soziales)
+
+#
+[Wirtschaft & Management](/studium/wirtschaft-management)
+
+#
+
+#
+[Studieren ohne Matura?](/fachhochschule/servicebereiche/info-center/studieren-ohne-matura)
+
+#
+[StudyXplore – Orientierungsstudienjahr](/studyxplore)
+
+#
+
+#
+[Alle Studiengänge](/studium/gesundheit-soziales/bachelor/physiotherapie)
+
+#
+[mit Berufstätigkeit kombinierbar](/studium/gesundheit-soziales/bachelor/physiotherapie)
+
+#
+
+#
+
+#### [Technik](/studium/technik)
+
+#
+[Bachelor](/studium/technik)[Architektur](/studium/bauingenieurwesen-architektur/bachelor/architektur)
+- [Bauingenieurwesen](/studium/bauingenieurwesen-architektur/bachelor/bauingenieurwesen)
+- [Nachhaltiges Immobilienmanagement](/studium/bauingenieurwesen-architektur-berufsfreundlich/bachelor/nachhaltiges-immobilienmanagement)
+- [Biomedizinische Analytik](/studium/gesundheit-soziales/bachelor/biomedizinische-analytik)
+- [Digital Business Management](/studium/wirtschaft-management/bachelor/wirtschaft/digital-business-management)
+- [Green Transition Engineering](/studium/engineering-it/bachelor/green-transition-engineering)
+- [Informationstechnologien (IT)](/studium/engineering-it/bachelor/informationstechnologien)
+- [IT-Geoinformation & Umwelt**](/studium/engineering-it/bachelor/informationstechnologien/geoinformation-und-umwelt)
+- [IT-Medizintechnik](/studium/engineering-it/bachelor/informationstechnologien/medizintechnik)
+- [IT-Multimediatechnik](/studium/engineering-it/bachelor/informationstechnologien/multimediatechnik)
+- [IT-Netzwerktechnik](/studium/engineering-it/bachelor/informationstechnologien/netzwerk-und-kommunikationstechnik)
+- [Maschinenbau](/studium/engineering-it/bachelor/maschinenbau)
+- [Radiologietechnologie](/studium/gesundheit-soziales/bachelor/radiologietechnologie)
+- [Systems Engineering (SE)](/studium/engineering-it/bachelor/systems-engineering)
+- [SE–Green Electronics](/studium/engineering-it/bachelor/systems-engineering/green-electronics)
+- [SE–Green Mechatronics](/studium/engineering-it/bachelor/systems-engineering/green-mechatronics)
+- [Wirtschaftsingenieurwesen](/studium/engineering-it/bachelor/wirtschaftsingenieurwesen)
+
+- [Master](/studium/technik)[Architektur](/studium/bauingenieurwesen-architektur/master/architektur)
+- [Bauingenieurwesen](/studium/bauingenieurwesen-architektur/master/bauingenieurwesen)
+- [Civil Engineering (EN)](https://www.fh-kaernten.at/en/studium/bauingenieurwesen-architektur/master/civil-engineering)
+- [Sustainable Real Estate Management](/studium/bauingenieurwesen-architektur-berufsfreundlich/sustainable-real-estate-management)
+- [Digital Construction Management](/studium/bauingenieurwesen-architektur-berufsfreundlich/master/digital-construction-management)
+- [Advanced Practice in Diagnostic Imaging](/studium/gesundheit-soziales-berufsfreundlich/master/advanced-practice-in-diagnostic-imaging)
+- [Applied Data Science](/studium/engineering-it/master/applied-data-science)
+- [Communication Engineering](/studium/engineering-it/master/communication-engineering)
+- [Digital Transformation Management](/studium/wirtschaft-management/master/digital-transformation-management)
+- [Disability, Diversity & Digitalization](/studium/gesundheit-soziales-berufsfreundlich/master/disability-diversity-digitalisierung-ddd)
+- [Electrical Energy & Mobility Systems](/studium/engineering-it/master/electrical-energy-mobility-systems)
+- [Industrial Engineering & Management](/studium/engineering-it-berufsfreundlich/master/industrial-engineering-management)
+- [Industrial Power Electronics](/studium/engineering-it/master/industrial-power-electronics)
+- [Integrated Systems and Circuits Design](/studium/engineering-it/master/integrated-systems-and-circuits-design)
+- [Maschinenbau-Leichtbau](/studium/engineering-it/master/maschinenbau-/-leichtbau)
+- [Medical Engineering and Analytics](/studium/engineering-it/master/medical-engineering-and-analytics)
+- [Management of Conservation Areas - MSc (CE)](/weiterbildung/management-of-conservation-areas-msc)
+- [Systems Design](/studium/engineering-it/master/systems-design)
+
+#### [Wirtschaft, Management](/studium/wirtschaft)
+
+#
+
+- [Bachelor](/studium/wirtschaft)[WI-Business Management](/studium/wirtschaft-management/bachelor/wirtschaft/business-management)
+- [WI-Digital Business Management](/studium/wirtschaft-management/bachelor/wirtschaft/digital-business-management)
+- [WI-Digital Tax & Accounting](/studium/wirtschaft-management/bachelor/wirtschaft/digital-tax-accounting)
+- [WI-Digital Marketing & Sales](/studium/wirtschaft-management/bachelor/wirtschaft/digital-marketing-sales)
+- [WI-Hotel Management](/studium/wirtschaft-management/bachelor/wirtschaft/hotelmanagement)
+- [WI-Intercultural Management](/studium/wirtschaft-management/bachelor/wirtschaft/intercultural-management)
+- [WI-Public Management](/studium/wirtschaft-management/bachelor/wirtschaft/public-management)
+- [WI-Wirtschaftspsychologie](/studium/wirtschaft-management/bachelor/wirtschaft/wirtschaftspsychologie)
+- [Gesundheits- und Pflegemanagement](/studium/gesundheit-soziales/bachelor/gesundheits-und-pflegemanagement)
+- [Nachhaltiges Immobilienmanagement](/studium/bauingenieurwesen-architektur-berufsfreundlich/bachelor/nachhaltiges-immobilienmanagement)
+- [Wirtschaftsingenieurwesen](/studium/engineering-it/bachelor/wirtschaftsingenieurwesen)
+
+- [Master](/studium/wirtschaft)[Business Development & Management](/studium/wirtschaft-management/master/business-development-management)
+- [Digital Transformation Management](/studium/wirtschaft-management/master/digital-transformation-management)
+- [Gesundheitsmanagement](/studium/gesundheit-soziales-berufsfreundlich/master/gesundheitsmanagement)
+- [Industrial Engineering & Management](/studium/engineering-it-berufsfreundlich/master/industrial-engineering-management)
+- [International Business Management](/studium/wirtschaft-management/master/international-business-management)
+- [Public & Nonprofit-Management](/studium/wirtschaft-management/master/public-management)
+- [Sustainable Real Estate Management](/studium/bauingenieurwesen-architektur-berufsfreundlich/sustainable-real-estate-management)
+- [Leadership & Sozialmanagement MBA](/weiterbildung/gesundheit-soziales/leadership-und-sozialmanagement)
+- [Management of Conservation Areas – MSc (CE)](/weiterbildung/management-of-conservation-areas-msc)
+
+#### [Gesundheit ](/studium/gesundheit)
+
+#
+
+- [Bachelor](/studium/gesundheit)[Biomedizinische Analytik](/studium/gesundheit-soziales/bachelor/biomedizinische-analytik)
+- [Ergotherapie](/studium/gesundheit-soziales/bachelor/ergotherapie)
+- [Gesundheits- und Krankenpflege](/studium/gesundheit-soziales/bachelor/gesundheits-und-krankenpflege)
+- [Gesundheits- und Pflegemanagement](/studium/gesundheit-soziales/bachelor/gesundheits-und-pflegemanagement)
+- [Hebammen](/studium/gesundheit-soziales/bachelor/hebammen)
+- [IT-Medizintechnik](/studium/engineering-it/bachelor/informationstechnologien/medizintechnik)
+- [Logopädie](/studium/gesundheit-soziales/bachelor/logopaedie)
+- [Physiotherapie](/studium/gesundheit-soziales/bachelor/physiotherapie)
+- [Radiologietechnologie](/studium/gesundheit-soziales/bachelor/radiologietechnologie)
 
 ## call_fe4ee4834bf14478b4a66d0e-tool-result-df2ccbef-b4f7-499f-ac43-59af5f927f22
 
@@ -493,4 +739,127 @@ Select CLI Option
 
 - [caption](#caption)
 
+
+## call_dd72473c94b54bf091fb654e-tool-result-8d65ba6e-582f-4efa-b62f-ac72af4c1c81
+
+RIS - Universitätsgesetz 2002 - Bundesrecht konsolidiert, Fassung vom 07.09.2026
+
+Seitenbereiche:
+
+-
+[Zum Inhalt (Accesskey 0)](#main)
+
+-
+[Zur Navigationsleiste (Accesskey 1)](#navigation)
+
+-
+[Kontakt (Accesskey 4)
+](/UI/Kontakt.aspx)
+
+-
+[Impressum (Accesskey 5)
+](/UI/Impressum.aspx)
+
+-
+[Datenschutzerklärung (Accesskey 6)
+](/UI/Datenschutz.aspx)
+
+-
+[Barrierefreiheitserklärung (Accesskey 7)
+](/UI/Barrierefreiheit.aspx)
+
+-
+[Sitemap (Accesskey 8)
+](/UI/SiteMap.aspx)
+
+-
+[English](/defaultEn.aspx) (Accesskey 9)
+
+[](/default.aspx)
+
+Navigationsleiste:
+
+- [Startseite](default.aspx)
+
+- [Bund](Bund/)
+
+- [Länder](Land/)
+
+- [Bezirke](Bezirke/)
+
+- [Gemeinden](Gemeinde/)
+
+- [Judikatur](Judikatur/)
+
+- [Kundmachungen, Erlässe](Sonstige/)
+
+- [Gesamtabfrage](Gesamtabfrage/)
+
+#
+Bundesrecht konsolidiert: Gesamte Rechtsvorschrift für Universitätsgesetz 2002, Fassung vom 07.09.2026
+
+-
+
+[Druckansicht (Accesskey D)](http://www.ris.bka.gv.at:80/GeltendeFassung.wxe?Abfrage=Bundesnormen&Gesetzesnummer=20002128&Paragraf=64a&ShowPrintPreview=True)
+
+-
+
+Andere Formate:
+
+[](/GeltendeFassung/Bundesnormen/20002128/UG%2c%20Fassung%20vom%2007.09.2026.pdf)
+
+-
+[](/GeltendeFassung/Bundesnormen/20002128/UG%2c%20Fassung%20vom%2007.09.2026.rtf)
+
+##
+§ 0
+
+### Langtitel
+
+Bundesgesetz über die Organisation der Universitäten und ihre Studien (Universitätsgesetz 2002 – UG)
+StF: [BGBl. I Nr. 120/2002](/Dokumente/BgblPdf/2002_120_1/2002_120_1.pdf) (NR: GP XXI [RV 1134](https://www.parlament.gv.at/gegenstand/XXI/I/1134) [AB 1224](https://www.parlament.gv.at/gegenstand/XXI/I/1224) [S. 111.](https://www.parlament.gv.at/gegenstand/XXI/NRSITZ/111) BR: [6697](https://www.parlament.gv.at/gegenstand/BR/I-BR/6697) [AB 6717](https://www.parlament.gv.at/gegenstand/BR/I-BR/6717) [S. 690.](https://www.parlament.gv.at/gegenstand/BR/BRSITZ/690))
+
+### Änderung
+
+[BGBl. I Nr. 21/2004](/eli/bgbl/I/2004/21) (VfGH)
+[BGBl. I Nr. 96/2004](/eli/bgbl/I/2004/96) (NR: GP XXII [IA 414/A](https://www.parlament.gv.at/gegenstand/XXII/A/414) [AB 603](https://www.parlament.gv.at/gegenstand/XXII/I/603) [S. 73](https://www.parlament.gv.at/gegenstand/XXII/NRSITZ/73) BR: [7085](https://www.parlament.gv.at/gegenstand/BR/I-BR/7085) [AB 7107](https://www.parlament.gv.at/gegenstand/BR/I-BR/7107) [S. 712.](https://www.parlament.gv.at/gegenstand/BR/BRSITZ/712))
+[BGBl. I Nr. 116/2004](/eli/bgbl/I/2004/116) (VfGH)
+[BGBl. I Nr. 77/2005](/eli/bgbl/I/2005/77) (NR: GP XXII [AB 1045](https://www.parlament.gv.at/gegenstand/XXII/I/1045) [S. 117.](https://www.parlament.gv.at/gegenstand/XXII/NRSITZ/117) BR: [7336](https://www.parlament.gv.at/gegenstand/BR/I-BR/7336) [AB 7359](https://www.parlament.gv.at/gegenstand/BR/I-BR/7359) [S. 724.](https://www.parlament.gv.at/gegenstand/BR/BRSITZ/724))
+[BGBl. I Nr. 74/2006](/eli/bgbl/I/2006/74) (NR: GP XXII [IA 752/A](https://www.parlament.gv.at/gegenstand/XXII/A/752) [AB 1308](https://www.parlament.gv.at/gegenstand/XXII/I/1308) [S. 139.](https://www.parlament.gv.at/gegenstand/XXII/NRSITZ/139) [Einspr. d. BR: 1439](https://www.parlament.gv.at/gegenstand/XXII/I/1439) [AB 1449](https://www.parlament.gv.at/gegenstand/XXII/I/1449) [S. 150.](https://www.parlament.gv.at/gegenstand/XXII/NRSITZ/150) BR: [7475](https://www.parlament.gv.at/gegenstand/BR/I-BR/7475) [AB 7501](https://www.parlament.gv.at/gegenstand/BR/I-BR/7501) [S. 733.](https://www.parlament.gv.at/gegenstand/BR/BRSITZ/733))
+[BGBl. I Nr. 24/2007](/eli/bgbl/I/2007/24) (NR: GP XXIII [RV 43](https://www.parlament.gv.at/gegenstand/XXIII/I/43) [AB 67](https://www.parlament.gv.at/gegenstand/XXIII/I/67) [S. 20.](https://www.parlament.gv.at/gegenstand/XXIII/NRSITZ/20) BR: [7681](https://www.parlament.gv.at/gegenstand/BR/I-BR/7681) [AB 7682](https://www.parlament.gv.at/gegenstand/BR/I-BR/7682) [S. 745.](https://www.parlament.gv.at/gegenstand/BR/BRSITZ/745))
+[CELEX-Nr.: [32003L0096](https://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=CELEX:32003L0096:DE:HTML), [32006L0048](https://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=CELEX:32006L0048:DE:HTML), [32006L0098](https://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=CELEX:32006L0098:DE:HTML), [32006L0112](https://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=CELEX:32006L0112:DE:HTML), [32006L0141](https://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=CELEX:32006L0141:DE:HTML)]
+[BGBl. I Nr. 87/2007](/eli/bgbl/I/2007/87) (NR: GP XXIII [RV 241](https://www.parlament.gv.at/gegenstand/XXIII/I/241) [AB 276](https://www.parlament.gv.at/gegenstand/XXIII/I/276) [S. 37.](https://www.parlament.gv.at/gegenstand/XXIII/NRSITZ/37) BR: [AB 7787](https://www.parlament.gv.at/gegenstand/BR/I-BR/7787) [S. 750.](https://www.parlament.gv.at/gegenstand/BR/BRSITZ/750))
+[BGBl. I Nr. 134/2008](/eli/bgbl/I/2008/134) (NR: GP XXIII [IA 890/A](https://www.parlament.gv.at/gegenstand/XXIII/A/890) [S. 72.](https://www.parlament.gv.at/gegenstand/XXIII/NRSITZ/72) BR: [8017](https://www.parlament.gv.at/gegenstand/BR/I-BR/8017) [AB 8027](https://www.parlament.gv.at/gegenstand/BR/I-BR/8027) [S. 760.](https://www.parlament.gv.at/gegenstand/BR/BRSITZ/760))
+[BGBl. I Nr. 81/2009](/eli/bgbl/I/2009/81) (NR: GP XXIV [RV 225](https://www.parlament.gv.at/gegenstand/XXIV/I/225) [AB 308](https://www.parlament.gv.at/gegenstand/XXIV/I/308) [S. 31.](https://www.parlament.gv.at/gegenstand/XXIV/NRSITZ/31) BR: [8138](https://www.parlament.gv.at/gegenstand/BR/I-BR/8138) [AB 8159](https://www.parlament.gv.at/gegenstand/BR/I-BR/8159) [S. 774.](https://www.parlament.gv.at/gegenstand/BR/BRSITZ/774))
+[BGBl. I Nr. 111/2010](/eli/bgbl/I/2010/111) (NR: GP XXIV [RV 981](https://www.parlament.gv.at/gegenstand/XXIV/I/981) [AB 1026](https://www.parlament.gv.at/gegenstand/XXIV/I/1026) [S. 90.](https://www.parlament.gv.at/gegenstand/XXIV/NRSITZ/90) BR: [8437](https://www.parlament.gv.at/gegenstand/BR/I-BR/8437) [AB 8439](https://www.parlament.gv.at/gegenstand/BR/I-BR/8439) [S. 792.](https://www.parlament.gv.at/gegenstand/BR/BRSITZ/792))
+[CELEX-Nr.: [32010L0012](https://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=CELEX:32010L0012:DE:HTML)]
+[BGBl. I Nr. 13/2011](/eli/bgbl/I/2011/13) (NR: GP XXIV [RV 1054](https://www.parlament.gv.at/gegenstand/XXIV/I/1054) [AB 1079](https://www.parlament.gv.at/gegenstand/XXIV/I/1079) [S. 96.](https://www.parlament.gv.at/gegenstand/XXIV/NRSITZ/96) BR: [AB 8459](https://www.parlament.gv.at/gegenstand/BR/I-BR/8459) [S. 794.](https://www.parlament.gv.at/gegenstand/BR/BRSITZ/794))
+[BGBl. I Nr. 45/2011](/eli/bgbl/I/2011/45) (VfGH)
+[BGBl. I Nr. 35/2012](/eli/bgbl/I/2012/35) (NR: GP XXIV [RV 1685](https://www.parlament.gv.at/gegenstand/XXIV/I/1685) [AB 1708](https://www.parlament.gv.at/gegenstand/XXIV/I/1708) [S. 148.](https://www.parlament.gv.at/gegenstand/XXIV/NRSITZ/148) BR: [8686](https://www.parlament.gv.at/gegenstand/BR/I-BR/8686) [AB 8688](https://www.parlament.gv.at/gegenstand/BR/I-BR/8688) [S. 806.](https://www.parlament.gv.at/gegenstand/BR/BRSITZ/806))
+[BGBl. I Nr. 47/2012](/eli/bgbl/I/2012/47) (NR: GP XXIV [RV 1710](https://www.parlament.gv.at/gegenstand/XXIV/I/1710) [AB 1741](https://www.parlament.gv.at/gegenstand/XXIV/I/1741) [S. 153.](https://www.parlament.gv.at/gegenstand/XXIV/NRSITZ/153) BR: [AB 8722](https://www.parlament.gv.at/gegenstand/BR/I-BR/8722) [S. 808.](https://www.parlament.gv.at/gegenstand/BR/BRSITZ/808)) ersetzt durch [BGBl. I Nr. 52/2012](/eli/bgbl/I/2012/52)
+[BGBl. I Nr. 52/2012](/eli/bgbl/I/2012/52) (NR: GP XXIV [RV 1710](https://www.parlament.gv.at/gegenstand/XXIV/I/1710) [AB 1741](https://www.parlament.gv.at/gegenstand/XXIV/I/1741) [S. 153.](https://www.parlament.gv.at/gegenstand/XXIV/NRSITZ/153) BR: [AB 8722](https://www.parlament.gv.at/gegenstand/BR/I-BR/8722) [S. 808.](https://www.parlament.gv.at/gegenstand/BR/BRSITZ/808))
+[BGBl. I Nr. 18/2013](/eli/bgbl/I/2013/18) (NR: GP XXIV [RV 2011](https://www.parlament.gv.at/gegenstand/XXIV/I/2011) [AB 2078](https://www.parlament.gv.at/gegenstand/XXIV/I/2078) [S. 185.](https://www.parlament.gv.at/gegenstand/XXIV/NRSITZ/185) BR: [AB 8852](https://www.parlament.gv.at/gegenstand/BR/I-BR/8852) [S. 816.](https://www.parlament.gv.at/gegenstand/BR/BRSITZ/816))
+[BGBl. I Nr. 52/2013](/eli/bgbl/I/2013/52) (NR: GP XXIV [RV 2142](https://www.parlament.gv.at/gegenstand/XXIV/I/2142) [AB 2180](https://www.parlament.gv.at/gegenstand/XXIV/I/2180) [S. 191.](https://www.parlament.gv.at/gegenstand/XXIV/NRSITZ/191) BR: [AB 8909](https://www.parlament.gv.at/gegenstand/BR/I-BR/8909) [S. 818.](https://www.parlament.gv.at/gegenstand/BR/BRSITZ/818))
+[BGBl. I Nr. 79/2013](/eli/bgbl/I/2013/79) (NR: GP XXIV [RV 2164](https://www.parlament.gv.at/gegenstand/XXIV/I/2164) [AB 2282](https://www.parlament.gv.at/gegenstand/XXIV/I/2282) [S. 199.](https://www.parlament.gv.at/gegenstand/XXIV/NRSITZ/199) BR: [8945](https://www.parlament.gv.at/gegenstand/BR/I-BR/8945) [AB 8957](https://www.parlament.gv.at/gegenstand/BR/I-BR/8957) [S. 820.](https://www.parlament.gv.at/gegenstand/BR/BRSITZ/820))
+[BGBl. I Nr. 124/2013](/eli/bgbl/I/2013/124) (NR: GP XXIV [RV 2348](https://www.parlament.gv.at/gegenstand/XXIV/I/2348) [AB 2397](https://www.parlament.gv.at/gegenstand/XXIV/I/2397) [S. 206.](https://www.parlament.gv.at/gegenstand/XXIV/NRSITZ/206) BR: [9006](https://www.parlament.gv.at/gegenstand/BR/I-BR/9006) [AB 9012](https://www.parlament.gv.at/gegenstand/BR/I-BR/9012) [S. 822.](https://www.parlament.gv.at/gegenstand/BR/BRSITZ/822))
+[BGBl. I Nr. 168/2013](/eli/bgbl/I/2013/168) (VfGH)
+[BGBl. I Nr. 176/2013](/eli/bgbl/I/2013/176) (NR: GP XXIV [RV 2435](https://www.parlament.gv.at/gegenstand/XXIV/I/2435) [AB 2452](https://www.parlament.gv.at/gegenstand/XXIV/I/2452) [S. 216.](https://www.parlament.gv.at/gegenstand/XXIV/NRSITZ/216) BR: [9056](https://www.parlament.gv.at/gegenstand/BR/I-BR/9056) [AB 9119](https://www.parlament.gv.at/gegenstand/BR/I-BR/9119) [S. 823.](https://www.parlament.gv.at/gegenstand/BR/BRSITZ/823))
+[BGBl. I Nr. 16/2014](/eli/bgbl/I/2014/16) (NR: GP XXV [AB 35](https://www.parlament.gv.at/gegenstand/XXV/I/35) [S. 12.](https://www.parlament.gv.at/gegenstand/XXV/NRSITZ/12) BR: [AB 9144](https://www.parlament.gv.at/gegenstand/BR/I-BR/9144) [S. 827.](https://www.parlament.gv.at/gegenstand/BR/BRSITZ/827))
+[BGBl. I Nr. 45/2014](/eli/bgbl/I/2014/45) (NR: GP XXV [RV 136](https://www.parlament.gv.at/gegenstand/XXV/I/136) [AB 171](https://www.parlament.gv.at/gegenstand/XXV/I/171) [S. 30.](https://www.parlament.gv.at/gegenstand/XXV/NRSITZ/30) BR: [9189](https://www.parlament.gv.at/gegenstand/BR/I-BR/9189) [AB 9192](https://www.parlament.gv.at/gegenstand/BR/I-BR/9192) [S. 831.](https://www.parlament.gv.at/gegenstand/BR/BRSITZ/831))
+[BGBl. I Nr. 21/2015](/eli/bgbl/I/2015/21) (NR: GP XXV [RV 369](https://www.parlament.gv.at/gegenstand/XXV/I/369) [AB 389](https://www.parlament.gv.at/gegenstand/XXV/I/389) [S. 53.](https://www.parlament.gv.at/gegenstand/XXV/NRSITZ/53) BR: [AB 9289](https://www.parlament.gv.at/gegenstand/BR/I-BR/9289) [S. 837.](https://www.parlament.gv.at/gegenstand/BR/BRSITZ/837))
+[BGBl. I Nr. 131/2015](/eli/bgbl/I/2015/131) (NR: GP XXV [RV 797](https://www.parlament.gv.at/gegenstand/XXV/I/797) [AB 808](https://www.parlament.gv.at/gegenstand/XXV/I/808) [S. 96.](https://www.parlament.gv.at/gegenstand/XXV/NRSITZ/96) BR: [AB 9458](https://www.parlament.gv.at/gegenstand/BR/I-BR/9458) [S. 846.](https://www.parlament.gv.at/gegenstand/BR/BRSITZ/846))
+[BGBl. I Nr. 11/2017](/eli/bgbl/I/2017/11) (VfGH)
+[BGBl. I Nr. 129/2017](/eli/bgbl/I/2017/129) (NR: GP XXV [IA 2235/A](https://www.parlament.gv.at/gegenstand/XXV/A/2235) [AB 1705](https://www.parlament.gv.at/gegenstand/XXV/I/1705) [S. 188.](https://www.parlament.gv.at/gegenstand/XXV/NRSITZ/188) BR: [9817](https://www.parlament.gv.at/gegenstand/BR/I-BR/9817) [AB 9853](https://www.parlament.gv.at/gegenstand/BR/I-BR/9853) [S. 871.](https://www.parlament.gv.at/gegenstand/BR/BRSITZ/871))
+[BGBl. I Nr. 8/2018](/eli/bgbl/I/2018/8) (NR: GP XXVI [RV 10](https://www.parlament.gv.at/gegenstand/XXVI/I/10) [AB 20](https://www.parlament.gv.at/gegenstand/XXVI/I/20) [S. 9.](https://www.parlament.gv.at/gegenstand/XXVI/NRSITZ/9) BR: [9924](https://www.parlament.gv.at/gegenstand/BR/I-BR/9924) [S. 876.](https://www.parlament.gv.at/gegenstand/BR/BRSITZ/876))
+[BGBl. I Nr. 30/2018](/eli/bgbl/I/2018/30) (NR: GP XXVI [RV 59](https://www.parlament.gv.at/gegenstand/XXVI/I/59) [AB 91](https://www.parlament.gv.at/gegenstand/XXVI/I/91) [S. 19.](https://www.parlament.gv.at/gegenstand/XXVI/NRSITZ/19) BR: [9946](https://www.parlament.gv.at/gegenstand/BR/I-BR/9946) [AB 9950](https://www.parlament.gv.at/gegenstand/BR/I-BR/9950) [S. 879.](https://www.parlament.gv.at/gegenstand/BR/BRSITZ/879))
+[BGBl. I Nr. 31/2018](/eli/bgbl/I/2018/31) (NR: GP XXVI [RV 68](https://www.parlament.gv.at/gegenstand/XXVI/I/68) [AB 105](https://www.parlament.gv.at/gegenstand/XXVI/I/105) [S 21.](https://www.parlament.gv.at/gegenstand/XXVI/NRSITZ/21) BR: [AB 9960](https://www.parlament.gv.at/gegenstand/BR/I-BR/9960) [S. 879.](https://www.parlament.gv.at/gegenstand/BR/BRSITZ/879))
+[BGBl. I Nr. 52/2018](/eli/bgbl/I/2018/52) (NR: GP XXVI [IA 296/A](https://www.parlament.gv.at/gegenstand/XXVI/A/296) [AB 248](https://www.parlament.gv.at/gegenstand/XXVI/I/248) [S. 36.](https://www.parlament.gv.at/gegenstand/XXVI/NRSITZ/36) BR: [AB 10010](https://www.parlament.gv.at/gegenstand/BR/I-BR/10010) [S. 883.](https://www.parlament.gv.at/gegenstand/BR/BRSITZ/883))
+[BGBl. I Nr. 56/2018](/eli/bgbl/I/2018/56) (NR: GP XXVI [RV 189](https://www.parlament.gv.at/gegenstand/XXVI/I/189) [AB 207](https://www.parlament.gv.at/gegenstand/XXVI/I/207) [S. 36.](https://www.parlament.gv.at/gegenstand/XXVI/NRSITZ/36) BR: [9998](https://www.parlament.gv.at/gegenstand/BR/I-BR/9998) [AB 10020](https://www.parlament.gv.at/gegenstand/BR/I-BR/10020) [S. 883.](https://www.parlament.gv.at/gegenstand/BR/BRSITZ/883))
+[CELEX-Nr. [32016L0801](https://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=CELEX:32016L0801:DE:HTML)]
+[BGBl. I Nr. 3/2019](/eli/bgbl/I/2019/3) (NR: GP XXVI [RV 378](https://www.parlament.gv.at/gegenstand/XXVI/I/378) [AB 442](https://www.parlament.gv.at/gegenstand/XXVI/I/442) [S. 55.](https://www.parlament.gv.at/gegenstand/XXVI/NRSITZ/55) BR: [AB 10106](https://www.parlament.gv.at/gegenstand/BR/I-BR/10106) [S. 888.](https://www.parlament.gv.at/gegenstand/BR/BRSITZ/888))
+[BGBl. I Nr. 135/2020](/eli/bgbl/I/2020/135) (NR: GP XXVII [RV 408](https://www.parlament.gv.at/gegenstand/XXVII/I/408) [AB 440](https://www.parlament.gv.at/gegenstand/XXVII/I/440) [S. 62.](https://www.parlament.gv.at/gegenstand/XXVII/NRSITZ/62) BR: [10438](https://www.parlament.gv.at/gegenstand/BR/I-BR/10438) [AB 10443](https://www.parlament.gv.at/gegenstand/BR/I-BR/10443) [S. 915.](https://www.parlament.gv.at/gegenstand/BR/BRSITZ/915))
+[BGBl. I Nr. 20/2021](/eli/bgbl/I/2021/20) (NR: GP XXVII [RV 479](https://www.parlament.gv.at/gegenstand/XXVII/I/479) [AB 571](https://www.parlament.gv.at/gegenstand/XXVII/I/571) [S. 71.](https://www.parlament.gv.at/gegenstand/XXVII/NRSITZ/71) BR: [AB 10468](https://www.parlament.gv.at/gegenstand/BR/I-BR/10468) [S. 917.](https://www.parlament.gv.at/gegenstand/BR/BRSITZ/917))
+[BGBl. I Nr. 93/2021](/eli/bgbl/I/2021/93) (NR: GP XXVII [RV 662](https://www.parlament.gv.at/gegenstand/XXVII/I/662) [AB 705](https://www.parlament.gv.at/gegenstand/XXVII/I/705) [S. 89.](https://www.parlament.gv.at/gegenstand/XXVII/NRSITZ/89) BR: [AB 10600](https://www.parlament.gv.at/gegenstand/BR/I-BR/10600) [S. 924.](https://www.parlament.gv.at/gegenstand/BR/BRSITZ/924))
+[BGBl. I Nr. 177/2021](/eli/bgbl/I/2021/177) (NR: GP XXVII [RV 945](https://www.parlament.gv.at/gegenstand/XXVII/I/945) [AB 990](https://www.parlament.gv.at/gegenstand/XXVII/I/990) [S. 117.](https://www.parlament.gv.at/gegenstand/XXVII/NRSITZ/117) BR: [AB 10721](https://www.parlament.gv.at/gegenstand/BR/I-BR/10721) [S. 928.](https://www.parlament.gv.at/gegenstand/BR/BRSITZ/928))
+[BGBl. I Nr. 52/2023](/eli/bgbl/I/2023/52) (NR: GP XXVII [RV 1927](https://www.parlament.gv.at/gegenstand/XXVII/I/1927) [AB 1997](https://www.parlament.gv.at/gegenstand/XXVII/I/1997) [S. 209.](https://www.parlament.gv.at/gegenstand/XXVII/NRSITZ/209) BR: [AB 11226](https://www.parlament.gv.at/gegenstand/BR/I-BR/11226) [S. 953.](https://www.parlament.gv.at/gegenstand/BR/BRSITZ/953))
 
