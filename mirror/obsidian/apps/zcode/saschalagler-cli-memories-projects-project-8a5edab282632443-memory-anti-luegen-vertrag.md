@@ -1,7 +1,7 @@
 ---
 app: zcode
 quelle: "saschalagler/cli/memories/projects/project-8a5edab282632443/memory/anti-luegen-vertrag.md"
-stand: 2026-09-05
+stand: 2026-09-07
 tags: [spiegel, zcode]
 ---
 
@@ -29,3 +29,5 @@ Sascha: „wie kann ich sicher sein das du die ganze pipeline durchziehst und ni
 **Why:** Wiederholte Erfahrung mit Agenten, die Behauptungen als Fakten ausgeben („fertig" ohne Beweis, Stillschweigen über Fehler). Sascha: „du hast noch nie gezeigt welche Files welches Wissen enthalten haben — weiß ich nicht."
 
 **How to apply:** Bei jeder Pipeline ≥3 Stufen: Tabelle mit den 5 Mechanismen + Kennzahlen-Vertrag VOR Start präsentieren (ExitPlanMode), dann live abarbeiten. Nach Fertigstellung: Stichprobe anbieten („wähl eine Zeile"). Verwandt: [[sascha-beweis-echtprojekte]].
+
+**6. Mechanismus (07.09. ergänzt) — VERLAUFS-AUDIT:** Auf „prüfe was erledigt wurde" startet ZCode ein Audit-Team: Behauptungs-Liste aus dem Verlauf extrahieren → Subagent prüft JEDE Zeile gegen Artefakte (Datei/grep/curl/Screenshot), zweiter Subagent prüft Live-System parallel. Subagents können den Chat nicht lesen — die Behauptungsliste muss der Hauptagent selbst extrahieren. Details [[agenten-selbstueberwachung]].

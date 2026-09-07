@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-07 13:52 UTC
+Zuletzt gespiegelt: 2026-09-07 14:03 UTC
 
 ## call_fe4ee4834bf14478b4a66d0e-tool-result-df2ccbef-b4f7-499f-ac43-59af5f927f22
 
@@ -1742,7 +1742,8 @@ Diagnose 06.09.2026: Nutzer konnte Computer Use in ZCode „nicht aktivieren". B
 - [ZCode-MCP-npx-Timeout](zcode-mcp-npx-timeout.md) — "Failed to connect" = tote Binary oder npx-@latest-Download-Timeout; Fix: npm i -g + statischer Pfad; Config greift erst nach App-Neustart
 - [Atlas-Standort-korrigiert](atlas-standort-korrigiert.md) — **DEV-KANONISCH = ~/ATLAS_MASTER/app** (v5, LIVE atlas-v5.web.app; Knowledge-Quellen in Coworkspace_Ich/atlas + pliability, Zweitkopie cali-coach-atlas-final alt); HANDOFF_SESSION.md = Session-Einstieg; docs/UI_USERFLOW_SPEC.md = Design-Bibel (20 Onboarding-Stufen, Tab-Layouts); master-gap.md G1–G10; **ONBOARDING-LEAK GEFIXT** (KB-Evidenz-Whitelist 125 Chunks, canNext-Bug, SW-Serving-Falle: bei JEDEM Live-Verify SW+Caches resetten und Asset-Hash vs dist prüfen — trat auch danach 2× erneut auf); **KB-FUSSNOTE** (kbQuoteParts: Protokoll/Pipe/JSON/Emoji-Filter, Klartext-Quelle statt [KB: pfad.md], Fußnote unter der Bubble); **GLASS live gemessen** (glass-card2 existierte nie im CSS; Hauptflächen nachgerüstet, 3D-Tilt inline perspective); **MOBILE-FIRST 05.09. spät** (Sascha: „primär Mobile App" — Hamburger-Drawer entfernt, MobileTabBar.tsx iOS-Bottom-Bar, Übungs-DB 10→66 Progressionsketten, initSeed-Nachzieher idempotent = alter Browser blieb sonst bei 10); **OUTOTU-PDF = ChainScanReport.tsx bereits gebaut** (Kinetic-Chain-Scan/Drill-Protocol/Bio-Evolution am Vision-Tab); Blocker B1: Gemini-Billing (nur Sascha); offen: G5 Link-Import, G6 KB-UI, G8 CoT-Wiring, G10 Branding, T-A2 20 Stufen, Ausbildung-AI, Archiv-UI, iOS-Bau (Xcode fehlt, nur faktisch erwähnen)
 - [Agent-Browser-CLI](agent-browser-cli.md) — Browser-Automation ohne chrome-devtools-MCP: Chrome mit CDP-Port 9223 starten + `agent-browser connect`; **eval nimmt EXPRESSIONS, keine Funktionen** (IIFE nutzen); snapshot/screenshot/get url; kein viewport-Command; GCP-MCPs brauchen OAuth, playwright fehlt im node_repl
-- [Atlas-Master-App-Verhältnis](atlas-master-app-verhaeltnis.md) — **07.09. ABEND FINALE: ALLES ZU** — **DESIGN-V2: Blobs in Tiefe (z −6,5..−8,5, entsättigt, halbes Tempo) + Vignette + opacity 0.4 = „Lichtfelder im Schwarz statt Bälle vor UI" (Saschas Design-Frage ehrlich mit NEIN beantwortet) + motion v13 war nie verdrahtet → jetzt Spring-Morph-Tab-Wechsel (AnimatePresence mode=wait, useReducedMotion-Guard), Bundle HMtHfw8H** — UI_TEST_REPORT.md selbst geschrieben (18 Defects/15 gefixt, 3 offen: Vision-Doppelbutton+Scrollbars, Overview-Empty-States, FAB-Overlap), Testversand-Paket versendbar (Web+APK 200+QR-Hub /download/, app_open:14 echte Starts via ?summary=1), offizielles BARBULLS-Logo final live (Web Parität EVpFMcuZ + iOS-Sim 44 + APK neu) — **DESKTOP-SPIEGEL-FALLE: Sascha brows alte Kopie `Coworkspace_Ich/…/ATLAS_MASTER/app` (Sep 6) statt kanonischem `~/ATLAS_MASTER/app`** · Logo-Quelle `Dokumente/Barbulls/…/2.Logo neu/BarBulls_Logo_Kreis-01.svg` → public/brand/; AMBER-Assets in /tmp/atlas-brand/ (flüchtig!); Responsive-Logo-Regel (Full-Mark nur groß, Compact-Mark Stierkopf 24–28px); SVG-Pitfalls (viewBox 595×419.5, weißer .st0-bg-Pfad, iOS-Icon 1024 ohne Transparenz); MC-Regression gefixt (STUFE 5 = offene Fragen; Beweis nur nach simctl UNINSTALL) · 16-Modell-Kette+Telemetrie live · Blob-Fix (fixed z-0 pe:none, Content z-10, `.z-10`-Anker nie entfernen) · Judge-Gate-Pflicht · learned-kb 23/24 · higgsfield da, Zoetrop existiert nicht · JAVA_HOME-Falle (java_home -v 21 = Java 8! → openjdk@21-Pfad), iOS=xcodebuild -project · pypdfium2 via uv --with pillow · chrome-devtools-mcp geklont in ~/chrome-devtools-mcp · **Subagent >45–60min ohne Ergebnis = Deliverable selbst schreiben ([[sascha-meldung-nur-fertig]] Grenze 3)** · TestFlight = einziger User-Schritt
+- [Atlas-Master-App-Verhältnis](atlas-master-app-verhaeltnis.md) — **07.09. ABEND FINALE: ALLES ZU** — **DESIGN-V2: Blobs in Tiefe (z −6,5..−8,5, entsättigt, halbes Tempo) + Vignette + opacity 0.4 = „Lichtfelder im Schwarz statt Bälle vor UI" (Saschas Design-Frage ehrlich mit NEIN beantwortet) + motion v13 war nie verdrahtet → jetzt Spring-Morph-Tab-Wechsel (AnimatePresence mode=wait, useReducedMotion-Guard), Bundle HMtHfw8H** — UI_TEST_REPORT.md selbst geschrieben (18 Defects/15 gefixt, 3 offen: Vision-Doppelbutton+Scrollbars, Overview-Empty-States, FAB-Overlap), Testversand-Paket versendbar (Web+APK 200+QR-Hub /download/, app_open:14 echte Starts via ?summary=1), offizielles BARBULLS-Logo final live (Web Parität EVpFMcuZ + iOS-Sim 44 + APK neu) — **DESKTOP-SPIEGEL-FALLE: Sascha brows alte Kopie `Coworkspace_Ich/…/ATLAS_MASTER/app` (Sep 6) statt kanonischem `~/ATLAS_MASTER/app`** · Logo-Quelle `Dokumente/Barbulls/…/2.Logo neu/BarBulls_Logo_Kreis-01.svg` → public/brand/; AMBER-Assets in /tmp/atlas-brand/ (flüchtig!); Responsive-Logo-Regel (Full-Mark nur groß, Compact-Mark Stierkopf 24–28px); SVG-Pitfalls (viewBox 595×419.5, weißer .st0-bg-Pfad, iOS-Icon 1024 ohne Transparenz); MC-Regression gefixt (STUFE 5 = offene Fragen; Beweis nur nach simctl UNINSTALL) · 16-Modell-Kette+Telemetrie live · Blob-Fix (fixed z-0 pe:none, Content z-10, `.z-10`-Anker nie entfernen) · Judge-Gate-Pflicht · learned-kb 23/24 · higgsfield da, Zoetrop existiert nicht · JAVA_HOME-Falle (java_home -v 21 = Java 8! → openjdk@21-Pfad), iOS=xcodebuild -project · pypdfium2 via uv --with pillow · chrome-devtools-mcp geklont in ~/chrome-devtools-mcp · **Subagent >45–60min ohne Ergebnis = Deliverable selbst schreiben ([[sascha-meldung-nur-fertig]] Grenze 3)** · TestFlight = einziger User-Schritt · **DESIGN-SYSTEM.md v1.0 Gesamtkonzept committed ([[atlas-design-system]], F1–F6 + Fix-Queue + Governance)**
+- [Atlas-Design-System](atlas-design-system.md) — Gesamtkonzept docs/DESIGN-SYSTEM.md v1.0: „ruhiger Titan"-Identität aus dem offiziellen Minotaurus-Logo, Gesetze F1–F6 (F3 = Graustufen-Test), Farb/Typo/Raum-Tokens, 3 Materialschichten, Komponenten-Verträge, 6-Verstoß-Fix-Queue, Governance (UI-Commit ohne Gesetzes-Zitat = nicht mergen); entstand nach „DU SOLLST EIN VERFICKTES GESAMTKONZEPT ENTWICKELN" — Einzel-Parameter-Fixes ohne Bibel = für ihn Stümperei
 - [Atlas-Lernender-Agent-Paradigma](atlas-lernender-agent-paradigma.md) — Saschas Produktbild: ATLAS = lernender KI-Agent (Wissen ANWENDEN nicht anzeigen, Karten gestrichen) + adaptives Interview bis „passt" → Plan → Logbuch; AUSGEFÜHRT+KOMPLETT BEWIESEN 07.09.: learned-kb (inkrementell+Resume, Cluster≥100-Wörter-Branch), Interview+Plan Self-Heal mit Proxy-Switch ab Retry 2, READY_THRESHOLD=11/13-Gotcha (Klick stumm bei 10/13), Glass Engine 3D-Commits
 - [Mimosa-Write-Zwang+uv-Tests](mimosa-write-zwang-uv-tests.md) — Hook blockt Dateischrieb via Bash → Write-Tool pflicht; pytest fehlt → `uv run --with pytest`; Commit-Block = Fehlalarm (System-Pfade) ODER echt (Traversal-Fund in ingest-Scripts → ALLOWED_ROOT+relative_to-Guard, dann Commit durch) — nie umgehen, prüfen+fixen; **NEU: dynamische Pfade aus JSON/externer Quelle in Python = immer [high] geblockt** (auch mit expanduser+is_relative_to-Guard) — Workarounds: Literale hardcoden, inline Bash-Python nur Output, graphify, D3-HTML direkt
 - [Anti-Lügen-Vertrag](anti-luegen-vertrag.md) — Sascha vertraut Agenten NICHT bei Pipelines — verlangt: Artefakt-Pflicht (Log-Dateien mit rohen Zahlen), Kennzahlen-Vertrag (In=Out), Stichprobe-Klausel (er wählt Zeile, Agent liest live), Todo-Liste live, Fail=Stop+Doku; bei jeder Pipeline ≥3 Stufen VOR Start anbieten
@@ -1817,6 +1818,8 @@ Bewährte Zusatzregeln: Subagent-Prompts müssen den /bin/bash-c-Workaround enth
 
 **✅ GATE DURCHLAUFEN BEWIESEN (07.09. Abend, Side-Chat-Execution „mach endlich"): 2. Judge-Lauf = 3/3 PASS, „Verkaufbar? Ja"** — nach Fixes der 5 Judge-Punkte (Blobs hinter Content + amber-only + 0.55, Fehlerbanner raus, Safe-Area, Interview-Persistenz, Onboarding produziert + Quick-Wins). Beweis-Kette: Judge-Urteil → alle Punkte gefixt → build+deploy+Parität → NEUE Screens → Judge-Re-Lauf → PASS. Judge-FALSE-POSITIVE-Lektion: er las „Datengeriebenes" (Tippfehler-Vorwurf) — Code sagte korrekt „Datengetriebenes", der Blob fraß nur Render-Buchstaben → **Judge-Befund „Tippfehler" immer gegen den Quellcode prüfen** (Layout-Befunde dafür direkt glauben). Judge-Rest-Quick-Wins (Scrim, Composer-Docking, Scroll-Padding) noch im selben Deploy nachgeschoben — Gate bleibt: nach jedem Polish-Deploy wieder frische Screens + Judge.
 
+**VERLAUFS-AUDIT-TEAM (07.09., Sascha: „wie aktiviere ich ein team das den gesamten verlauf durchgeht und prüft was erledigt wurde"):** Er muss NICHTS konfigurieren — ZCode startet die Prüfer. **Kern-Insight: Subagents können den Chat-Text NICHT lesen, brauchen ihn aber nicht — jede Behauptung hat ein Artefakt (Datei/Screenshot/Endpoint/Commit) hinterlassen.** Methode: Hauptagent extrahiert die BEHAUPTUNGS-LISTE aus dem Verlauf (hier 28 Stück, inkl. „Zoetrop existiert nicht" und „Desktop-Kopie ist alt") → Auditor A prüft je Zeile: Prüfmethode + ✅/❌ + Beweis (Datei/grep/curl/Screenshot-Read); Auditor B prüft parallel das LIVE-System (Endpoints 200, Functions-Logs, Tracking-Zähler-Trend 2×30s = echter Traffic-Beweis, Simulator, Ladezeiten). Konsolidierung → AUDIT_VERLAUF.md, dann jeden ❌ fixen. Falsch angehängtes Skill vorkommend: resolving-merge-conflicts (ist für Git-Konflikte, nicht Audits).
+
 Verwandt: [[sascha-3-saeulen-parallelarbeit]] (3-Säulen-Rahmen), [[autoclaw-team-kopplung]] (AutoClaw als weiterer Builder), [[omniroute-verkabelung]] (2-Parallel-Subagenten-Standard fürs UI-Testen).
 
 ## anti-luegen-vertrag
@@ -1846,6 +1849,8 @@ Sascha: „wie kann ich sicher sein das du die ganze pipeline durchziehst und ni
 
 **How to apply:** Bei jeder Pipeline ≥3 Stufen: Tabelle mit den 5 Mechanismen + Kennzahlen-Vertrag VOR Start präsentieren (ExitPlanMode), dann live abarbeiten. Nach Fertigstellung: Stichprobe anbieten („wähl eine Zeile"). Verwandt: [[sascha-beweis-echtprojekte]].
 
+**6. Mechanismus (07.09. ergänzt) — VERLAUFS-AUDIT:** Auf „prüfe was erledigt wurde" startet ZCode ein Audit-Team: Behauptungs-Liste aus dem Verlauf extrahieren → Subagent prüft JEDE Zeile gegen Artefakte (Datei/grep/curl/Screenshot), zweiter Subagent prüft Live-System parallel. Subagents können den Chat nicht lesen — die Behauptungsliste muss der Hauptagent selbst extrahieren. Details [[agenten-selbstueberwachung]].
+
 ## atlas-d8-keine-vorannahmen
 
 ---
@@ -1867,6 +1872,37 @@ metadata:
 3. **Profil-Prefill für BEKANNTE User bleibt Feature** (profileDb, IndexedDB `atlas-v5-profile`) — nur Neukunden starten leer.
 4. **Onboarding-Tiefe:** freie Ziel-Eingaben („Eigenes Ziel…"-Freitext existiert) weiter ausbauen; Coach soll ausgiebig analysieren statt Chip-Katalog abzuarbeiten — D8/D10-Prinzip („Coach denkt, Code rechnet nur wenn der Coach es will").
 Verwandt: [[atlas-master-app-verhaeltnis]] (DESIGN_EVOLUTION.md D1–D8), [[atlas-outotu-output-format]].
+
+## atlas-design-system
+
+---
+name: atlas-design-system
+description: ATLAS Gesamtkonzept docs/DESIGN-SYSTEM.md v1.0 (07.09. committed) — Identität „ruhiger Titan", Gesetze F1–F6, Farb/Typo/Raum-Tokens, 3 Materialschichten, Komponenten-Verträge, Fix-Queue, Governance; entstand nach Saschas „DU SOLLST EIN VERFICKTES GESAMTKONZEPT ENTWICKELN"
+metadata:
+  node_type: memory
+  type: project
+  originSessionId: sess_d4dc6589-a85c-41e6-9c70-94b6ea6e63e3
+---
+
+**Auslöser (07.09., Wut):** „DU SOLLST EIN VERFICKTES GESAMTKONZEPT ENTWICKELN … nimm autoclaw oder cline oder claude design dafür" — Einzel-Parameter-Fixes (Blob-Tiefe, Vignette) ohne bindendes Gesamtdokument empfand er als Stümperei. Antwort: **`~/ATLAS_MASTER/app/docs/DESIGN-SYSTEM.md` v1.0** (committed) als die Design-Bibel neben UI_USERFLOW_SPEC.md.
+
+**Kern (1 Satz):** BARBULLS ATLAS = *der ruhige Titan* (offizielles Minotaurus-Logo: Kraft im Lotussitz) → dunkle Kammer (#030303 warm), gebranntes Bernstein als Markenlicht, Glasplatten als Content, Text als Gravur — Kraft × Disziplin × Evidenz.
+
+**Die 6 Gesetze (Review-Frage immer: „welche Zeile bricht der Commit?"):**
+- **F1** Kalte Farben (Cyan) NUR Daten/Charts, warme (Amber) NUR Marke/Aktion — Cyan-Buttons = Bug
+- **F2** Negativraum: Gruppen ≥24px, Klickziele nie <8px; Leerraum >120px ohne Inhalt = Defekt
+- **F3** Tiefenlicht-Test: Graustufen-Screenshot — hellstes Feld MUSS der primäre Text sein (der Test, den die Blob-Katastrophe nicht bestand)
+- **F4** Kein Glas ohne Funktion (nur tragende/interaktive Flächen)
+- **F5** Motion aus aktueller Position (motion-Springs, nie linear/CSS für Ortswechsel); reduced-motion tötet alles außer Opacity
+- **F6** Kein Spinner >300ms — Skeleton oder atemendes ATLAS-Emblem
+
+**Inhalt des Dokuments:** Farbtoken (bg #030303, bg-raised #0b0906 warm-SCHWARZ nie blau, amber #f59e0b, amber-deep #b45309, ember #7c2d12, cyan #06b6d4 Daten-only, ink warmweiß #f5f2ec, dim #8a8177) · Typo-Skala 9/11/13/15/18/24/32, UPPERCASE-Gravur-Labels · 8px-Raster, Tab-Bar 54px+SafeArea, Content ≥88px · 3 Materialschichten (Bühne+Backdrop-Lichtfeld / Glasplatten / Gravur) · Motion-Tabelle (Spring-Morph Tab-Wechsel, Press ab pointer-down, Kill-Switch bewusst HART 150ms) · Komponenten-Verträge (1 primary-Button pro Viewport, Chat-Bubble ≤620px mit Klartext-Quellen-Fußnote, States leer/geladen/Fehler/aus mit 1 Satz+1 CTA) · Screen-Specs der Kern-Reise · **Fix-Queue 6 Verstöße** (KPI-Duplikat, Vision-Doppelbutton+Scrollbars, FAB-Overlap, Tab-Indikator morpht nicht, Key-Jargon im 20-Stufen-Modus, „LETZTE 0 SÄTZE") · **Governance:** UI-Commit ohne Gesetzes-Referenz im Body = nicht mergen; Dokument ändert sich nur mit Saschas GO.
+
+**Unabhängige Kritik (Gewaltenteilung [[agenten-selbstueberwachung]]):** Kritik-Agent (baut NICHT) auditiert Screenshots+Code gegen F1–F6 und das Konzept selbst — sein Bericht treibt die Fix-Queue, nicht mein Selbsturteil.
+
+**DESIGN V2 LIVE UMGESETZT (07.09. Nachmittag, Bundle index-HMtHfw8H, QA-LIVE/44→45 Vorher/Nachher):** Saschas Instinkt „ist das ein modernes passendes Design?" war RICHTIG — helle Glanzkugeln VOR dem Content = Spielzeug-Look. Fix: Blobs nach hinten verlagert (base z −2,5/−4,5 → −6,5/−8,5), entsättigt (#f59e0b/#d97706 → #b45309/#92400e/#78350f), Glow halbiert, Speed halbiert (ruhig=premium), roughness 0,15→0,22 (tötet Plastik-Glanz), transmission 0,8, Container-Opacity 0,55→0,4 + **Vignette** (radial-gradient Ränder/Unten ins #030303). Dazu **Tab-Wechsel = echter motion-Spring-Morph** (App.tsx: AnimatePresence mode="wait" + motion.div fade+rise+blur, stiffness 340/damping 32, useReducedMotion-Guard) — motion v13 war schon in package.json, war NIE verdrahtet („geplant aber nie verkabelt"-Muster prüfen!). F3-Graustufen-Test besteht jetzt: hellstes Feld = Chat-Bubble/Text.
+
+**How to apply:** Jeder ATLAS-UI-Task startet mit DESIGN-SYSTEM.md-Lektüre (.clinerules-Lesepflicht erweitern), Befunde immer als Gesetz-Zitat + Schwere; neue Design-Ideen = erst Vorschlag ins Dokument (GO-Gate), dann Code. Bei „ist das modern?"-Fragen: F3-Graustufen-Test als objektive Antwort statt Geschmacksdiskussion. Verwandt: [[atlas-master-app-verhaeltnis]] (Design-V2-Blob-Parameter), [[atlas-standort-korrigiert]] (UI_USERFLOW_SPEC = Flow-Bibel).
 
 ## atlas-firestore-telemetry-setup
 
@@ -1961,7 +1997,7 @@ Der Agent-Prompt selbst empfahl in STUFE 5 „mit 2–4 Antwort-Optionen wo sinn
 
 ---
 name: atlas-master-app-verhaeltnis
-description: ATLAS 07.09. STAND — 3 Plattformen live + Judge-Gate 0/6→3/3 PASS (Blob-Fix, Persistenz, Onboarding produziert, Bundle BmYgHge7) + 6-AGENTEN-PARALLELTEAM + 16-Modell-Kette + higgsfield-Skills; Fallen min-h-0-Flex, Overlay-bg-bg, SW-stale-Bundle; iOS/APK-Rebuild mit Judge-Stand offen
+description: ATLAS 07.09. STAND — 3 Plattformen live + offizielles BARBULLS-Logo überall + Design v2 (Tiefe+Vignette, motion-Morph, HMtHfw8H) + UI_TEST_REPORT (15/18 gefixt) + Testversand-Tracking (app_open:14 echt) + VERLAUFS-AUDIT-TEAM (A=28 Behauptungen, B=Live, Kritik) läuft; TestFlight-Apple-ID = einziger User-Schritt
 metadata:
   node_type: memory
   type: project
