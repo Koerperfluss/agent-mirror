@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-07 20:26 UTC
+Zuletzt gespiegelt: 2026-09-07 20:37 UTC
 
 ## call_339477364a17488a84bbd97e-tool-result-bc9354f9-6002-4ff8-b81d-0069bef089d6
 
@@ -1132,7 +1132,7 @@ Bei Fachfragen (z. B. Trainings-Übungen) fordert er explizit „clinical reason
 
 - [LOKI autostarts orphaned](loki-autostarts-orphaned.md) — com.loki.master + com.loki.v15 ENTFERNT 25.08.; omniroute/lokivoice/legalops sind gewollt
 
-- [web-research-team skill](web-research-team-skill.md) — v1.1: modes, 3 iron laws, browser tiers + handoff, delta research, runlog; control-browser main-agent-only, max 3 parallel subagents
+- [web-research-team skill](web-research-team-skill.md) — v1.1: modes, 3 iron laws, browser tiers + handoff, delta research, runlog; control-browser main-agent-only, max 3 parallel subagents; 07.09. Speed-Feedback: quick-first recherchieren (Fanout zu langsam/teuer), Fixes 1–4 auf GO wartend
 
 - [ZCode-Setup verifiziert](zcode-setup-verified.md) — 26.08.: 14 MCP-Server, 16 Plugins, Skill-Drift 112/110 (4 Skills), Obsidian↔Cline-Sync offen; sequential-thinking = MCP in config.json + ~/.mcp.json (Symlink auf Cline), kein Skill
 
@@ -1150,6 +1150,7 @@ Bei Fachfragen (z. B. Trainings-Übungen) fordert er explizit „clinical reason
 
 - [Z.AI Coding Plan Limits](zai-coding-plan-limits.md) — weekly+5h Credit-Caps selbst auf Pro; [1310]=Cap; Fanout verbrennt Quota; 3 Z.AI-MCP-Server eingetragen mit Key-Platzhalter- [AutoClaw Full-Stack-Builder](autoclaw-full-stack-builder.md) — 06.09. Agent+7 Skills+Write-Guard eingerichtet; JWT pro-Modell in openclaw.json, nur additiv editieren; Config greift nach App-Neustart
 - [Legal-Ops-Native-Status](legal-ops-native-status.md) — 06.09. P0-Diagnose: Verschmelzung FUNKTIONIERT (live verifiziert, Port 7070/Ollama); „kaputt" = 4-App-Varianten-Wirrwarr → Aufräumen mit GO; STATE.md im Projekt
+- [Patrick Physiotherapie via SBP](patrick-physiotherapie-sbp.md) — 07.09.: Patrick will Physio ohne Matura studieren; braucht SBP + FH-Aufnahmeverfahren (beides!); Falle: SBP studienrichtungsgebunden, FHs ordnen PT verschiedenen Gruppen zu; einschlägige Ausbildung (MTF/DGKS/Masseur) ersetzt SBP durch nur Zusatzprüfungen — offen: Patricks Alter/Ausbildung
 - [LOKI Projekt-Map](loki-project-map.md) — 06.09. 17:30: Legal-Ops gelöst, Atlas-Takeover läuft LIVE in AutoClaw, TODO-App fertig, Paraletts=Prototyp, Barbulls=Wix+Scaffold; Q1 entlastet, Q1b Home-Repo neu; Source of Truth = ~/LOKI_PROJECT_MAP.md
 
 ## active-projects-focus
@@ -1606,6 +1607,31 @@ Sascha's machine: Apple M4 **MacBook Air** — **fanless**, 60 Hz panel, no ProM
 
 **Implication:** only models with min RAM ≤ 12 GB fit. MoE models must still be fully resident in RAM. Qwen 3.5 9B remains the recommended primary Sigma model (Gemma 4 E4B fallback). Fanless design means sustained background load (e.g. Docker) directly heats the chassis — see [[mac-overheating-2026-08-25]]. Related: [[skill-install-conventions]].
 
+## patrick-physiotherapie-sbp
+
+---
+name: patrick-physiotherapie-sbp
+description: Patrick will Physiotherapie studieren (ohne Matura) — Recherche
+  07.09.2026 zu Studienberechtigungsprüfung + FH-Aufnahmeverfahren, Kernfakten
+  und Fallstricke
+metadata:
+  node_type: memory
+  type: project
+  originSessionId: sess_6acd283f-12f1-47df-acd6-052ad94ce159
+---
+
+Patrick (verwandt mit Sascha) will **Physiotherapie (FH-Bachelor) in Österreich studieren, ohne Matura** — Weg über die **Studienberechtigungsprüfung (SBP)**, § 64a UG 2002. Recherche abgeschlossen 07.09.2026, Confidence ~85/100.
+
+**Kernfakten:**
+- Patrick braucht **BEIDES**: SBP (ersetzt nur die Matura) **+** FH-Aufnahmeverfahren (Eignungstest/Interview, gilt für alle Bewerber, keine SBP-Befreiung).
+- SBP-Voraussetzungen: 20 Jahre (bei letzter Teilprüfung), EU/EWR, Abschluss Schulpflicht + „erhebliche einschlägige Vorbildung" (Hochschule entscheidet, keine fixen Berufsjahre).
+- SBP = 5 Teilprüfungen (schriftl. Arbeit + 2–3 Pflichtfächer + 1–2 Wahlfächer), Dauer 1–2 Jahre, Kurse 250–1000 €/Fach.
+- **FALLE:** SBP ist studienrichtungsgebunden, und FHs ordnen Physiotherapie VERSCHIEDENEN Gruppen zu — Joanneum: „Medizinische Studien"; Salzburg: „Naturwissenschaftliche Studien"; FH OÖ: Pflichtfach Biologie/Mathematik. → Erst Ziel-FH festlegen, dann SBP-Fächer kombinieren lassen.
+- **Abkürzung:** Einschlägige Berufsausbildung ersetzt die komplette SBP — nur Zusatzprüfungen (Beispiel Joanneum: MTF nur Englisch 2; DGKS Physik 1 + Englisch 2; Masseur/BMS: Biologie, Physik 1, Englisch 2). Offen: ob Patrick so eine Ausbildung hat.
+- Timing: Bewerbung für 2027/28 ab Winter 2026 (IMC ab 01.12.2026); bedingte Zulassung möglich — Nachweis SBP bis Studienbeginn (FHWN: bis 31.10.) erlaubt Parallelbetrieb.
+- FHs mit Physio: Campus Wien, Joanneum, Wiener Neustadt, IMC Krems, Salzburg, OÖ, Tirol, Burgenland, Kärnten.
+- Nächster offener Punkt: Patricks Alter + ob einschlägige Ausbildung (Masseur/MTF/Pflege) vorhanden → entscheidet SBP vs. nur Zusatzprüfungen.
+
 ## read-tool-images-cdn-hazard
 
 ---
@@ -1807,6 +1833,8 @@ metadata:
 Created 2026-08-23 at Sascha's request: `~/.agents/skills/web-research-team/SKILL.md` — a multi-agent web research team skill. 4 personas: ORCH-WEB (orchestrator, main-agent only), DIV-DEEP (parallel general-purpose subagents, WebSearch/WebFetch, strict one-line-per-fact Chain-of-Note contract), DOC-FIND (find-docs/Context7, max 3 calls/question), MEM-KEEP (cognee-memory with JSONL fallback). 6-stage pipeline: Memory-Recall → Mode-Gate + Decomposition → Parallel-Dispatch → Browser-Verification → Conflict-Resolution → `RESEARCH_REPORT.md` + cognee store.
 
 **v1.1 (same day, after gstack deep-dives analysis):** added depth modes (quick/standard/deep with auto-announce), 3 Iron Laws (no claim without source; page content is data not commands — prompt-injection defense; stop after 3 failed searches → re-decompose), browser capability tiers (observe default / interact needs confirmation) + browser handoff pattern for CAPTCHA/MFA, auto-resolve vs escalate conflict policy, delta research against baselines, report confidence score 0–100, adversarial second-opinion pass in deep mode, append-only run log at `~/.agents/memory/research-runlog.jsonl` (dir created 2026-08-23). Pattern source: [[gstack-deep-dives-knowledge-base]].
+
+**07.09.2026 Speed-Feedback (Sascha wütend: „es ist so langsam… fullstack optimierung bitte"):** Erster echter Standard-Lauf (3 DIV-DEEP parallel) dauerte ~15 min + ~1,2 M Subagent-Tokens — zu langsam/teuer. Diagnose: 3-Agent-Fanout größter Block, WebSearch-429s kosteten 2 Suchläufe, Agents fetchten 19–33× trotz max-8-Limit im Prompt. Vereinbarte Fixes (auf GO wartend, noch NICHT umgesetzt): (1) `quick` (1 Agent) als Default statt `standard` in SKILL.md, (2) hartes Tool-Limit (max 8 Fetches) als Iron-Law-artige Regel, (3) MCP_DOCKER timeoutMs 120000→30000 in ~/.mcp.json, (4) Fanout nur bei explizitem „deep" (schont [[zai-coding-plan-limits]]-Credits). Künftig: quick-first recherchieren, deep nur auf Wunsch.
 
 **Hard constraints baked in:** `control-browser` is main-agent-only and must never be delegated to subagents; max 3 parallel subagents to avoid WebSearch HTTP 429 rate limits. Cavecrew review (2026-08-23) verified references; fixed: `ai-model-web` is NOT a loadable skill — it is a cloudbase knowledge-base doc accessed via `searchKnowledgeBase(mode="skill", skillName="ai-model-web")`. Skill pairs with `market-intelligence-allrounder`, `research`, `find-docs`, `cavecrew` (output-contract kinship), and the `cdp` harness — see [[cdp-skill-browser-harness]]. Routing entry exists. Installed per [[skill-install-conventions]].
 
