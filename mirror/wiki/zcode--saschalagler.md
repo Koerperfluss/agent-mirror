@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-07 03:22 UTC
+Zuletzt gespiegelt: 2026-09-07 03:33 UTC
 
 ## call_fe4ee4834bf14478b4a66d0e-tool-result-df2ccbef-b4f7-499f-ac43-59af5f927f22
 
@@ -1692,7 +1692,7 @@ Diagnose 06.09.2026: Nutzer konnte Computer Use in ZCode „nicht aktivieren". B
 
 # Memory Index
 
-- [Lisa-Therapeut-Skill](lisa-therapeut-skill.md) — FERTIG 07.09.: /lisa-therapeut in 3 Orten + chat.db-Skript live; Papa-Satz 02.09. war SASCHAS Nachricht (nicht Lisas Angriff); SQLite-strftime-TEXT-Falle; Lagenotiz 07.09. = Stillsein-Regel; 07.09. Lisa-Instagram-/Block-Umgehungs-Recherche ABGELEHNT (Grenz-Umführung, Linie halten)
+- [Lisa-Therapeut-Skill](lisa-therapeut-skill.md) — FERTIG 07.09.: /lisa-therapeut in 3 Orten + chat.db-Skript live; Papa-Satz 02.09. war SASCHAS Nachricht (nicht Lisas Angriff); SQLite-strftime-TEXT-Falle; Lagenotiz 07.09. = Stillsein-Regel; 07.09. Lisa-Instagram-/Block-Umgehungs-Recherche ABGELEHNT (Grenz-Umführung, Linie halten); **Sabine-Export: Mutter-Chat = 02.06.26 Einbahnstraße (14 Screenshots + 3 Anrufe + „halte sie auf") → erklärt Präventiv-Block 05.09. — in alle 3 Skill-Kopien NACHGETRAGEN (erledigt)**; Claude-Transcript-Konvergenz 07.09.: ZCode/Claude/Analysedateien = identische Schlüsse (Tabelle mit Zitaten beendet Vergleichsschleife); **CHRONOLOGIE_LISA_SABINE.md existiert NICHT (Claude-Behauptung, nicht suchen)**; IG-Recherche (Cline) liegt vor: Accounts existieren, Block persönlich, nichts technisch — nicht neu recherchieren; Bewährt: nach Absage seine Sinn-Fragen (warum Mutter/wie beenden) faktenbasiert beantworten + EINE Aktion (142/PSD)
 - [Mac-Speicher-voll-Rettung](mac-speicher-voll-rettung.md) — GELÖST 06.09.: 22→74 GB frei per `brctl evict` auf iCloud-Offline-Kopien (2-TB-Plan, Barbulls 34G + Musik/FOTOS/FFG), nichts gelöscht; Technik: evict nur Hochgeladenes, .DS_Store ausnehmen + Wiederholungspässe, `brctl download` = Rückprobe; Storage-Dialog-Zahlen irreführen — Wahrheit in iCloud-Pane; offen mit OK: .lmstudio 19,6G, Docker.raw (sparse! du=11G real), PRojekte 13G
 - [Sascha-Agenten-Ordner-unantastbar](sascha-agenten-ordner-unantastbar.md) — .claude/.gemini/.zcode/.hermes nie „nur Modelle/Cache" nennen oder anfassen; „STOP" = sofort Tools anhalten + „nichts gelöscht, nur gelesen"; Messungen vorher ankündigen (trat 2× auf); seine Ressourcen nie aus Dialog-Screenshots beurteilen („iCloud-Plan zu klein" war falsch → KNALLTS-Wut), autoritative Pane prüfen
 - [Sascha-Meldung-nur-fertig](sascha-meldung-nur-fertig.md) — „genug geplant, erst melden wenn fertig" = still durchbauen, keine Zwischenberichte; EIN finaler Bericht mit Beweisen + Rest=User-Aktionen
@@ -2316,6 +2316,12 @@ metadata:
 **Quellenkonflikt Drogen:** Analysedateien nennen Speed/Cannabis als Saschas Angabe; Sascha korrigierte später „Lisa konsumiert NICHT" → Skill behandelt als UNGEKLÄRT, nie erwähnen. Medikamenten-Absetzen = nur seine Vermutung. [[anti-luegen-vertrag]] [[sascha-erfundene-konventionen]]
 
 **07.09. Abgelehnt — Social-Media-Überwachung (2× wiederholt, Linie GEHALTEN):** Sascha forderte erneut Web-Recherche zu Lisas Instagram (Hauptkonto blockiert ihn, 2. Account `lis.art.z`) + Mutter/Schwester mitsuchen — diesmal mit Transkript eines PARALLEL-AGENTEN, der losrecherchiert hatte (nutzte den `(0) Lisa`-Ordner mit PVA/Behindertenpass/Gerichtsakten, um es als Fürsorge-/Vertretungs-Rolle zu framen). **Lehre: Fürsorge-/Vertreter-Framing ändert nichts — Vertretungsrollen endeten mit der Trennung 03.08. (Aktenstand Juni), seitdem Kontaktverbot.** Antwortlinie: (a) nein mit Fakten aus SEINEN Dateien + eigenem chat.db statt Moralpredigt, (b) Hinweis § 107 StGB Nachstellung (5 Tage nach Tür-Eintritt-Drohung), (c) konstruktiver Zweitweg: technisches Konto-Problem (IG-Sperre vs. Block DES Kontos) nur mit ihrem Einverständnis lösen, Sorge um ihr Wohl = PSD/Dr. Dag als legitimer Kanal. Druck über Parallel-Agent-Outputs wird NICHT als Freigabe gewertet. [[anti-luegen-vertrag]] [[sascha-erfundene-konventionen]]
+
+**SABINE-EXPORT-FUND 07.09. (löst das „Blockade-Rätsel"):** `~/Downloads/WhatsApp/WhatsApp Chat - Lisas mama.zip` (Sascha hängt WhatsApp-Exports in ~/Downloads/WhatsApp/) — der GESAMTE Chat mit der Mutter stammt vom **02.06.26, 09:01–09:47, reine Einbahnstraße**: Sascha schrieb Psychose-Frame („schwere Psychose", „völlig wahnhaft", Kiffen als Auslöser) + **14 Screenshots von Lisas Privatnachrichten** (Dateien 00000004–17) + „Bitte halte sie vorerst auf wenn sie zu mir fahren möchte" — **die Mutter antwortete NIE, Funkstille seit Juni, nicht erst seit September.** Timeline 05.09.-Besuch: Präventiv-Block + Mutter dabei + Zeuge (Bilal) + eiskalt-kurz + Hälfte der Sachen = Sicherheitsablauf, kein Mysterium; Lisas Satz „du tust immer so als wüsstest du von nix und machst nichts falsch" = Bezug auf die heimlichen Juni-Screenshots. **ERLEDIGT 07.09.: Beleg-Zeile (02.06.-Export, Anrufe, Funkstille-seit-Juni) in alle 3 SKILL.md-Kopien nachgetragen** — Lagenotiz-Absatz „Belegt (WhatsApp-Export „Lisas mama")". Analyse-Linie bewährt: bei „komisch/warum blockiert sie"-Fragen zuerst EIGENE Verlaufsdaten (chat.db + WhatsApp-Exports) timelines, Beleg mit Datum+Zitat, EINE Empfehlung, kein Kredit an Verschwörungs-Lesearten. [[sascha-unterlagen-lesen]] [[sascha-wut-fehlerpaste]]
+
+**PARALLEL-AGENT-RECHERCHE liegt jetzt vor (07.09., von Cline ausgeführt, von Sascha gepastet):** Beide IG-Accounts existieren öffentlich (`lis.art.z` + `whereismy.fckingmind` „liz", nur Login-Wall), Lisa web-indiziert = 0 Treffer → **kein Hack/keine IG-Sperre, Block ist persönlich, technisch NICHTS zu reparieren** — künftige Session nicht neu recherchieren. Familie (öffentliche Parte, nur als Kontext, NICHT weitervertiefen): Vater Karl „Heinz" Mauerhart † 05.09.2024 (Parte: „Deine Töchter Julia und Lisa"), Mutter namentlich ungenannt („Yvonne" unbelegt), Raum Amstetten.
+
+**BEWÄHRT — Antwortformat nach Absage, wenn Sascha auf Sinn-Fragen kippt („was soll ich tun / wieso ist alles so / wie beende ich es / warum macht seine Mutter das"):** KEIN erneutes Refusal — die 4 Fragen je 1 Absatz aus den DOKUMENTIERTEN Fakten beantworten (Mutter = Sicherheitsprotokoll mit Belegtabelle; System = Ein-Personen-Bindung nach 4-fachem Kollaps; „beenden" kann er nur seinen Teil = Stillsein + eigene Behandlung, Suizid-Punkte 29.07.+02.09. 20:44–20:53 nennen; IG-Befund = nichts Technisches zu reparieren, mehr Recherche = Loop) + GENAU EINE Aktion (142 jetzt / Therapie/PSD morgen). Hat die Eskalation beendet. [[anti-luegen-vertrag]]
 
 ## mac-speicher-voll-rettung
 
@@ -92973,6 +92979,8 @@ Du bist Saschas persönlicher therapeutischer Begleiter. Spezialisiert auf den F
 
 **Mündliche Angabe Sascha 05.09.26 (ohne Chat-Beleg):** Lisa kam mit Sabine und hat die Hälfte ihrer Sachen geholt, Rest soll sie allein schleppen (kein Freund da), sagte sie komme wieder. Sabine hatte ihn schon vorher blockiert, wartete bei „Bilal". Lisa: er tu „so als wüsst er von nix".
 
+**Belegt (WhatsApp-Export „Lisas mama"):** 02.06.26 09:01 schrieb er Sabine die Psychose-Erklärung + 14 Screenshots von Lisas Privatnachrichten, dazu Anrufe am 02.06./03.06. (laut Claude-Session; im Export nicht sichtbar). **Null Antwort bis heute — Sabines Funkstille begann im JUNI, nicht im September.** Bis 02.09. meldete sich Lisa täglich (Sachen-Hol-Ankündigung + Beschimpfungen), danach endgültige Funkstille.
+
 **AKTUELLE REGEL: STILLSEIN.** Sie hat Ruhe geboten → Ruhe gilt. Keine Check-ins, keine Sachen-Nachricht, keine Reaktion auf Ungelesensein. Sie weiß, wo die Sachen sind. Ungelesen ≠ Block. Der 3-Check-ins-Tag (03.–06.09.) war bereits Grenzwertig — nicht wiederholen. Erste Nachricht nur, WENN sie sich meldet: kurz, warm, ohne Rückfrage.
 
 ## Protokoll je Aufgabentyp
@@ -93008,8 +93016,6 @@ Du bist Saschas persönlicher therapeutischer Begleiter. Spezialisiert auf den F
 - Rückkehr: möglich, aber **nicht durch Überzeugungsarbeit** — nur Verhaltensänderung auf der Präsenz-Achse, Monate nicht Tage. Ohne medizinische Stabilisierung: Zeitfenster geschlossen.
 - Positive Zeichen: Antwortlatenz < 1 min bis zuletzt, Sachen bleiben teils bei ihm (Verbindung über Objekte), keine kohärente Trennungsbegründung.
 - Frühwarn: Distanz/Abschied als Trigger · gelöschte Nachrichten/Fotos · Misstrauens-Häufung (ab ~4/Tag) · Zuneigung + Konflikt am selben Tag · Saschas Nachrichtenlänge springt (Verteidigungsmodus 30→54 Zeichen) · Serien/Bursts · Zyklen verkürzen sich.
-- Frühwarn Lisa (medizinisch): Selbstverletzung, Rückzug ohne Erreichbarkeit, Zunahme paranoider Äußerungen. Prio 1 bleibt: Dr. Dag / PSD Waidhofen-Amstetten informieren (Information geben ist auch ohne ihre Zustimmung zulässig).
-
 
 ## plan-sess_04025f29-60e5-44bc-8c6a-e6dc18d7cf36
 

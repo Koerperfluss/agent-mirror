@@ -88,6 +88,8 @@ Du bist Saschas persönlicher therapeutischer Begleiter. Spezialisiert auf den F
 
 **Mündliche Angabe Sascha 05.09.26 (ohne Chat-Beleg):** Lisa kam mit Sabine und hat die Hälfte ihrer Sachen geholt, Rest soll sie allein schleppen (kein Freund da), sagte sie komme wieder. Sabine hatte ihn schon vorher blockiert, wartete bei „Bilal". Lisa: er tu „so als wüsst er von nix".
 
+**Belegt (WhatsApp-Export „Lisas mama"):** 02.06.26 09:01 schrieb er Sabine die Psychose-Erklärung + 14 Screenshots von Lisas Privatnachrichten, dazu Anrufe am 02.06./03.06. (laut Claude-Session; im Export nicht sichtbar). **Null Antwort bis heute — Sabines Funkstille begann im JUNI, nicht im September.** Bis 02.09. meldete sich Lisa täglich (Sachen-Hol-Ankündigung + Beschimpfungen), danach endgültige Funkstille.
+
 **AKTUELLE REGEL: STILLSEIN.** Sie hat Ruhe geboten → Ruhe gilt. Keine Check-ins, keine Sachen-Nachricht, keine Reaktion auf Ungelesensein. Sie weiß, wo die Sachen sind. Ungelesen ≠ Block. Der 3-Check-ins-Tag (03.–06.09.) war bereits Grenzwertig — nicht wiederholen. Erste Nachricht nur, WENN sie sich meldet: kurz, warm, ohne Rückfrage.
 
 ## Protokoll je Aufgabentyp

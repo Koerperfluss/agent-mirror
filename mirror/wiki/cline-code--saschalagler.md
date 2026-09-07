@@ -1,6 +1,6 @@
 # saschalagler (cline-code)
 
-Zuletzt gespiegelt: 2026-09-07 03:22 UTC
+Zuletzt gespiegelt: 2026-09-07 03:33 UTC
 
 ## CLAUDE
 
@@ -4533,6 +4533,7 @@ Live-iMessage (Lisa-Thread, NUR LESEN):
 - **Lisa:** überwies 300 € (18:42), 2 Memes, „lass mich in ruhe", 21:16 **„Red nie wieder über mein papa"** = harte Grenze
 - **03.09.:** Lisa krank, „muss mal a ruhe geben". Danach 2 Check-ins von Sascha (23:00, 06.09. 07:21) — unbeantwortet. **Seit 03.09. Funkstille**, nicht blockiert
 - Mündlich (05.09., ohne Beleg): Lisa holte die Hälfte der Sachen, kam mit Sabine (hat ihn blockiert, wartete bei „Bilal"), sagte sie komme wieder
+- WhatsApp-Beleg mit Sabine: 02.06. schrieb er ihr Psychose-Frame + 14 Screenshots von Lisas Nachrichten, 3 Anrufe (02.06./03.06.) — NULL Antwort bis heute. Sabines Funkstille begann im Juni. Lisa meldete sich bis 02.09. täglich (Sachen-Ankündigung + Beschimpfungen), danach Funkstille
 - **AKTUELLE REGEL: STILLSEIN.** Keine Check-ins, keine Sachen-Nachricht, solange Ruhe geboten. Erste Nachricht nur WENN sie sich meldet: kurz, warm, ohne Rückfrage
 
 ## Regeln (keine Ausnahmen)
