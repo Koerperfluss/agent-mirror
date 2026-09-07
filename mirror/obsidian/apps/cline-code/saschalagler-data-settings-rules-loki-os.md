@@ -1,51 +1,97 @@
 ---
 app: cline-code
 quelle: "saschalagler/data/settings/rules/loki-os.md"
-stand: 2026-09-05
+stand: 2026-09-07
 tags: [spiegel, cline-code]
 ---
 
-# 🌌 LOKI.OS — CURRENT STATE (consolidated 2026-07-30)
-> Cline is ARMED. This block is the single source of truth. Read it on every startup.
+# 🌌 LOKI.OS — CURRENT STATE (refreshed 2026-09-07 20:45)
+> Cline is ARMED. Single source of truth. Read on every startup.
+>
+> **Changelog seit 30.07.2026:** MCP-Liste korrigiert, chrome-devtools repariert, zai-vision deaktiviert (Duplikat zu zai-mcp-server), 5 neue MCP-Server ergänzt (context7 standalone, desktop-commander, firebase, firestore, google-cloud-storage, graphos-tools).
 
-## MCP Servers (~/.mcp.json — 6 servers, ALL verified launching)
-- **MCP_DOCKER** (`docker mcp gateway run --profile ai_coding`) → context7, sequentialthinking, gemini-api-docs, github-official, cloud-run-mcp, next-devtools-mcp + **314 Docker catalog servers**
-- **claude-mem** (`node .../mcp-server.cjs`) → cross-session memory (mem-search, knowledge-agent, smart-explore)
-- **chrome-devtools** → browser automation, DOM, network
-- **paper** → design tool (http://127.0.0.1:29979/mcp)
-- **filesystem** (`@modelcontextprotocol/server-filesystem /Users/saschalagler`) → file access
-- **sequential-thinking** (`@modelcontextprotocol/server-sequential-thinking`) → structured reasoning (standalone)
-- **gemini-api-docs-mcp** (`https://gemini-api-docs-mcp.dev`, HTTP) → `search_documentation` über die offiziellen Gemini-API-Docs. Eingetragen in **8 Configs**: `~/.mcp.json`, `~/.claude.json`, `~/.gemini/settings.json`, `~/.cursor/mcp.json`, `~/.cline/data/settings/cline_mcp_settings.json`, `~/Library/Application Support/Claude/claude_desktop_config.json`, `~/.config/antigravity/mcp_config.json`, `~/.gemini/config/mcp_config.json` (Antigravity-IDE — nutzt `serverUrl` statt `type`/`url`!).
-  - ⚠️ Googles Endpunkt antwortet aktuell mit **HTTP 429** (Rate-Limit auf Google-Seite, IP 34.54.237.210). Die Config ist korrekt — sobald der Server wieder antwortet, verbindet sich alles ohne Änderung. Solange fallen die Gemini-Skills auf `https://ai.google.dev/gemini-api/docs/llms.txt` zurück (geprüft, HTTP 200).
-  - Verifiziert per `gemini mcp list`: Eintrag wird geladen, Status `Disconnected` mit HTTP 429 beim Discovery → Konfiguration korrekt, Serverseite ist die Ursache.
-- ⚠️ MCP servers load at STARTUP. If tools not callable in-session → RESTART Cline.
+## MCP Servers (`~/.cline/data/settings/cline_mcp_settings.json`)
+| Server | Status | Zweck |
+|---|---|---|
+| `chrome-devtools` | ✅ fixed 07.09. | Browser automation, DOM, network |
+| `claude-mem` | ✅ v13.18.0 | Cross-session memory, smart-explore |
+| `context7` | ✅ HTTP | Up-to-date library docs (standalone) |
+| `desktop-commander` | ✅ stdio | Persistent shells, REPL, SSH |
+| `filesystem` | ✅ stdio | File access `/Users/saschalagler` |
+| `firebase` | ✅ stdio | Firestore, Auth, Hosting |
+| `firestore` | ✅ HTTP | Direkter Firestore-Zugriff |
+| `google-cloud-storage` | ✅ HTTP | GCS bucket/object ops |
+| `graphos-tools` | ✅ HTTP | Apollo GraphOS schema/metrics |
+| `loki-legal-ops-mcp` | ✅ local | VwGH/FFG/Task-Domain-Tools |
+| `MCP_DOCKER` | ✅ docker | context7, sequentialthinking, github-official, +314 catalog |
+| `sequential-thinking` | ✅ stdio | Structured reasoning (standalone) |
+| `web-search-prime` | ✅ Z.AI | Web search (1,2 Credits/Call) |
+| `zread` | ✅ Z.AI | GitHub repo docs/source |
+| `zai-mcp-server` | ✅ stdio | Vision/diagram/video/UI |
+| `zai-vision` | ⚠️ disabled | Duplikat — nur als Fallback behalten |
+| `github` | ⚠️ disabled | OAuth fehlt (separater Login) |
+| `shopify` | ⚠️ disabled | 400 Bad Request, kein Shop |
 
-## Skills (~/.agents/skills/ — 63 installed, Cline linked ✅)
+> ⚠️ MCP servers load at STARTUP. **RESTART Cline** after config changes.
+> ⚠️ API-Keys in `cline_mcp_settings.json` im Klartext (Z.AI Bearer). Bei Leak: rotieren via z.ai.
 
-### Gemini API Skills (global, 2026-08-05) — Quelle: github.com/google-gemini/gemini-skills @47d75ca
-Installiert in `~/.agents/skills/`, symlinked nach `~/.claude/skills/`, `~/.cline/skills/`, `~/.gemini/skills/`:
-- **gemini-api-dev** — aktuelle Modelle (gemini-3.6-flash, 3.5-flash-lite, 3.1-pro-preview), SDK `google-genai`/`@google/genai`. Verbietet legacy `google-generativeai` + `gemini-2.0/1.5`.
-- **gemini-live-api-dev** — Live API: WebSocket-Streaming, VAD/Barge-in, ephemeral tokens
-- **gemini-interactions-api** — Interactions API: Chat, Function Calling, Deep Research, Server-State
-- **gemini-omni-flash-api** — Video-Generierung/-Editing + ffmpeg-Preprocessing (Bonus aus dem Repo, in der Google-Doku nicht erwähnt)
-- **LOKI OS** braucht keinen Extra-Eintrag: `agent-os/agentos/discovery.py` scannt `~/.agents/skills`, `~/.claude/skills`, `~/.gemini/skills` sowie `~/.mcp.json` + `~/.claude.json` + `~/.gemini/settings.json` bereits selbst. `capabilities_map.json` regeneriert sich automatisch, sobald sie älter als 24 h ist — oder sofort per `python3 ~/agent-os/agentos/discovery.py`.
-- **Erwartete Warnung:** Die Gemini CLI meldet beim Start `Skill conflict detected: "gemini-*" ... is overriding ...`. Sie scannt `~/.agents/skills` **und** `~/.gemini/skills`; beide zeigen per Symlink auf dieselbe Datei. Harmlos, kein Fehler.
-- **Nachziehen/Aktualisieren:** `bash ~/agent-os/gemini-stack-sync.sh` (bzw. `--check` für Trockenlauf) — idempotent, holt den Upstream-Stand, setzt Symlinks und MCP-Einträge in allen 8 Configs, baut die capabilities_map neu. Legt vor jeder Config-Änderung ein `.bak-gemini-sync` an.
-- **mattpocock/skills**: grill-me, grill-with-docs, tdd, to-spec, to-tickets, handoff, implement, prototype, diagnosing-bugs, codebase-design, domain-modeling
-- **karpathy**: karpathy-guidelines
-- **vercel-labs/agent-skills**: code-review, design-an-interface, deploy-to-vercel, obsidian-vault, web-design-guidelines, git-guardrails
-- **Also present**: Superpowers (14), claude-mem (19), ponytail, ui-ux-pro-max, obsidian-second-brain, + 751 LOKI vault skills at `/Users/saschalagler/loki-ki/loki_vault/skills/`
+## Skills (`~/.agents/skills/` — 119 verlinkt nach `~/.cline/skills/`)
+### Routing-Skills (bei passendem Kontext AUTOMATISCH)
+| Aufgabe | Skill |
+|---|---|
+| Build-Wunsch ("baue/mach mir X") | `loki-dev` BUILD (Zero-Question) → `glm-build` |
+| Projekt fertig/onboarden/übernehmen | `loki-dev` INIT/TAKEOVER/FINISH → `deve`/`glm-init` |
+| Großprojekt >1 Session | `loki-dev` MAP → `wayfinder` |
+| Ökosystem-Übersicht | `multi-agent-ecosystem-overview` |
+| Status/Health-Check | `multi-agent-status-check` |
+| Bug | `superpowers:systematic-debugging` |
+| TDD | `superpowers:test-driven-development` |
+| Coden (simpelster Weg) | `ponytail` |
+| Architektur-Frage | `ask-matt` |
+| Security-Audit (eigene Apps) | `strix-pentesting` |
+| Kontext über Sessions | `cognee-memory` / `agentmemory-rest-api` |
+| Doku/Lookup | `context7` / `find-docs` |
+| UI-Test | `ui-ux-tester` |
+| Idee schärfen | `brainstorming` → `grilling` |
+
+**Weitere Skills (Auswahl):** grill-me, grilling, grill-with-docs, tdd, qa, prototype, diagnosing-bugs, code-review, frontend-design, ui-ux-pro-max, minimalist-ui, shadcn-ui, d3-visualization, data-report, web-design-guidelines, backend-development, ios-swift-development, developing-ios-apps, vercel-cli-with-tokens, deploy-to-vercel, writing-guidelines, writing-beats, writing-fragments, writing-great-skills, edit-article, teach, codebase-design, improve-codebase-architecture, domain-modeling, ubiquitous-language, setup-ts-deep-modules, resolving-merge-conflicts, loop-me, to-tickets, to-questionnaire, to-spec, agent-browser, cdp, loki-dev, lokiomnidevteam-plan, lokiomnidevteam-execute, parallel-feature-development, cline-sdk, caveman, projects, cross-platform-knowledge-sync, automated-project-onboarding, skill-aware-task-distribution, memory-enhanced-decision-making, second-brain, obsidian-second-brain, obsidian-vault, managing-skills, claude-automation-recommender, cline-session-history, request-refactor-plan, batch-grill-me, gemini-api-dev, gemini-live-api-dev, gemini-interactions-api, gemini-omni-flash-api, gemini-api, omni-auth, omni-combos-routing, omni-inference, omni-models, omni-resilience, omni-mcp, glm-build, glm-init, deve, wayfinder, design-an-interface, implement, scaffold-exercises, cognee-memory, handoff, claude-handoff, cavecrew, graphify, caveman, wizard, persona-selector, triage, lisa-therapeut, pva-bankverbindung-advisor, markitdown, jules-meta-agent
 
 ## LOKI Kernel
 - **RUNNING** on `localhost:8010` (LOKI_MASTER.py v15.3.0, FastAPI, started via `.venv_new/bin/python`)
 - Routes: `/loki/health`, `/api/v1/loki/vwgh`, `/loki/status`, `/api/v1/atlas/knowledge`, `/loki/todos`, `/loki/capabilities`, `/loki/agentos/run`, `/loki/providers`
 - ⚠️ NOT yet MCP-bridged (no `/mcp` endpoint). See LOKI_KERNEL_BRIDGE_PLAN.md
 
-## Settings (~/.cline/data/settings/global-settings.json)
-`planActMode=act` | `disabledTools=[]` (editor FREE) | `toolAutoApprove=true`
+## Cline Settings (`~/.cline/data/settings/global-settings.json`)
+`planActMode=act` | `toolAutoApprove=true` | `compactionStrategy=agentic` | `compactionEnabled=true` | `tuiTheme=solarized-dark` | `web_search.enabled=true`
+
+## Cline Version
+**3.66.0** (Desktop sidecar 0.0.23, Bot: `bot.cline.app`, Port 25463)
 
 ## Kanban
-v0.1.70 (host) + v0.1.60 (container db7f1ddf5ddc) | board at `http://127.0.0.1:3484` | 9 hooks (claude only) | 5 tasks
+v0.1.70 (host) | Board `http://127.0.0.1:3484` | 9 hooks | `/opt/homebrew/bin/kanban`
+
+## GLM-Pro-Betrieb (siehe `glm-pro.md`)
+- Standard: `glm-first` (Flash), Schweres: `glm-plan` (5.3)
+- OmniRoute `http://localhost:20128` — Auto-Fallback bei 429
+- Peak Mo-Fr 08-12 MEZ — Batch ab 12 oder Flash-first
+
+## LOKI Domain-Tools (via `loki-legal-ops-mcp`)
+`search_knowledge_tool` (LOKI RAG), `search_vwgh_fts5`, `search_ffg_programs`, `analyze_ffg_document`, `manage_tasks_tool`, `run_system_command_tool`, `scrape_links_tool`, `manage_peter_tasks_tool`
+
+## Verhaltensregeln
+1. Erst FAKTEN, dann behaupten — nie Chat-Logs als Wahrheit
+2. Keine Prozesse killen / keine Dateien löschen ohne explizites GO
+3. Weniger reden, mehr machen — Ergebnis zuerst, Erklärung kompakt
+4. Tabellen statt Prosa — Sascha will Übersichten
+5. Subagenten-Amnesie-Schutz: NACH jedem Subagent → git commit + STATUS.md updaten
+6. Ponytail-Leiter stoppen an erster Sprosse die hält (YAGNI → reuse → stdlib → native → dep → custom)
+
+## Letzte 5 Fixes (07.09.2026)
+1. ✅ chrome-devtools MCP repariert (falscher `transport`-Block raus)
+2. ✅ zai-vision Platzhalter-Key → echter Key + disabled
+3. ✅ Rules `loki-os.md` aktualisiert (MCP-Liste 6→14 Server, Changelog, aktuelle Skills)
+4. ✅ Alle Configs vor Änderung gesichert (.backup-20260907_*-vor-fix)
+5. ⏳ PFLICHT: Cline Desktop neu starten für WebView-Transport-Reset
 
 ## Conversations (resumable in `cline resume`)
 3 past sessions fixed → `status=completed`, `conversation_id SET`: m8lw2 (11MB Mac-analysis), 3v7k2 (Kanban), qq16o (model selection)
