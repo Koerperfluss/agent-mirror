@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-06 23:57 UTC
+Zuletzt gespiegelt: 2026-09-07 00:07 UTC
 
 ## call_fe4ee4834bf14478b4a66d0e-tool-result-df2ccbef-b4f7-499f-ac43-59af5f927f22
 
@@ -1478,7 +1478,7 @@ Update 2026-08-22 (Repair-Session): Ordner umgezogen nach `~/Desktop/Coworkspace
 - [Judicario Gateway Key Rotation](judicario-gateway-key-rotation.md) — alter Key tot, neuer Key jud_Cpu-… verifiziert, Connectoren 06.09.2026 gefixt
 - [Chipsi/Openlaw Setup](chipsi-openlaw-setup.md) — Chipsi=Cloud-Webapp via Chrome-Shortcut; Antwort-Fehler=serverseitig bei openlaw (06.09. bestätigt, George-Fix nötig); UI-Tests nur mit cua-Klick+echter Tastatur; Gmail=koerperfluss@gmail.com
 - [ZCode Computer Use Status](zcode-computer-use-status.md) — Plugin/TCC ok, Server braucht permission-broker-socket → Fix=volles App-Restart; per 06.09. offen
-- [Wohnkosten-Vereinbarung Status](wohnkosten-vereinbarung-status.md) — v2 signierfertig (§ 1426→1369 ABGB gefixt), Barzahlungen bestätigt, Herbert verifiziert (Präsidiale St. Pölten) aber Unterschrift nicht öffentlich auffindbar → Gegenzeichnen vor Ort + WhatsApp-Beleg
+- [Wohnkosten-Vereinbarung Status](wohnkosten-vereinbarung-status.md) — v2 signierfertig (§ 1426→1369 ABGB gefixt), Barzahlungen bestätigt, Herbert verifiziert (Präsidiale St. Pölten); Signatur-Suche 07.09. erschöpfend NEGATIV abgeschlossen (564 PDFs+Archive=0) → nicht erneut suchen, Gegenzeichnen vor Ort + WhatsApp-Beleg
 
 ## chipsi-openlaw-setup
 
@@ -1536,7 +1536,8 @@ Stand 06.09.2026 (Abend): Wohnkostenvereinbarung Sebastianistraße 15, 3382 Loos
 - Fertig gebaut: `Wohnkosten_Vereinbarung_Loosdorf_v2.pdf` (signierfertig, Ort/Datum 06.09.2026 vorausgefüllt) + `Quittung_Kostenbeteiligung_Herbert_Vorlage.pdf` (monatlich, für künftige Barzahlungen).
 - Ausstehend: Unterschriften (Herbert + Sascha), Versand an BH Melk (Thomas Schauer, soziales.bhme@noel.gv.at) — Schriftsatz vom 04.09. hatte Vereinbarung zugesagt.
 - Herbert-Identifizierung (Recherche 06.09., Report: `Coworkspace_Ich/PETER JUDICARIO/RESEARCH_Herbert_Edelmayer.md`): belegt im offiziellen Telefonverzeichnis st-poelten.at, Abteilung „IV Präsidiale" (Bürgermeister-Büro-Stab), Tel. +43 2742 333-1111; keine öffentliche Zeichnungsbefugnis, keine Presse-/Protokolltreffer → tritt im Mietkontext zu Recht als Privatperson auf.
-- Herberts **Unterschrift ist öffentlich nirgends auffindbar** (Nachsuche 06./07.09.: filetype:pdf-/site:st-poelten.at-Suche + Bildersuche = 0 Treffer; „Walter Edelmayer" NÖ Landtag 2006 = Namensvetter) — Normalbediensteter ohne Amts-Unterzeichnungsrolle. Verifizierungs-Plan gegen späteres Bestreiten der 1.050-€-Barquittung: (1) Unterschrift vor Ort + Handyfoto von Herbert beim Signieren, (2) WhatsApp-Bestätigung aus seiner Rufnummer + Foto der signierten Seite, (3) Lichtbild-Check beim Unterschreiben.
+- Herberts **Unterschrift existiert öffentlich definitiv nicht** (Deep-Run 07.09., ABGESCHLOSSEN — nicht erneut suchen!): kompletter PDF-Korpus st-poelten.at geprüft (alle 564 PDFs, 702 MB, pdftotext) = 0× „Edelmayer"; alle 37 amtssignierten Verordnungen + GR-Kundmachungen 2020–2026 = 0; Wayback-CDX domainweit 1998–heute = 0; data.gv.at/RIS/noen.at/archive.org = nur Namensvetter (Friedrich/Historiker, David/US, Margot+Erwin/Tulln, Clemens/LGA). Confidence 92/100, Deep-Run-Anhang im Report `Coworkspace_Ich/PETER JUDICARIO/RESEARCH_Herbert_Edelmayer.md`; Runlog: `~/.agents/memory/research-runlog.jsonl`. Verifizierungs-Plan gegen späteres Bestreiten der 1.050-€-Barquittung: (0) Identitäts-Check per Anruf auf +43 2742 333-1111, (1) Unterschrift vor Ort + Handyfoto von Herbert beim Signieren, (2) WhatsApp-Bestätigung aus seiner Rufnummer + Foto der signierten Seite, (3) Lichtbild-Check beim Unterschreiben.
+- Nutzer glaubte danach hartnäckig „jeder muss eine Unterschrift im Internet haben" (Doppel-Nachfrage, „es muss was geben") — korrigiert: Private Personen/Normalbedienstete haben **nie** öffentliche Signaturen (nur Bürgermeister/Amtsleiter/Notare bei veröffentlichten Dokumenten); Negativbefund = leere Menge, kein Datenschutz-Hinderungsgrund. Bei erneuter Nachfrage nicht neu recherchieren, sondern auf Verifizierungs-Plan oben verweisen.
 - Rechtsgrundlage-Check live via Judicario-Gateway: VwGH 94/15/0128 (Untervermietung ohne Überschuss = Liebhaberei, keine Einkünfte → Herbert-Meldefrage), § 33 FinStrG (nur bei Überschuss), VwGH 03.08.2026 (Sozialhilfe-Missbrauch). at-Corpus-Lücke: „Sozialhilfe Wohnkosten" = 0 Treffer, George@openlaw.cc melden. Siehe [[judicario-gateway-key-rotation]], [[chipsi-openlaw-setup]].
 
 ## zcode-computer-use-status

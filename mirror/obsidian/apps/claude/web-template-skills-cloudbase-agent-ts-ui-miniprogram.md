@@ -1,7 +1,7 @@
 ---
 app: claude
 quelle: "web-template/skills/cloudbase-agent-ts/ui-miniprogram.md"
-stand: 2026-09-06
+stand: 2026-09-07
 tags: [spiegel, claude]
 ---
 
