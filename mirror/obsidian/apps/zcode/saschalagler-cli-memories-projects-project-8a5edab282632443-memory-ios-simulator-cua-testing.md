@@ -32,5 +32,6 @@ E2E-Tests einer iOS-Simulator-App (z.B. ATLAS Capacitor) mit dem computer-use-MC
 - Lange Wartezeiten: KI-Antworten 20–60s (Self-Heal-Retries) — wait (max 30s) + sleep + simctl-Screenshot-Poll.
 - **Simulator fährt zwischendurch herunter** (Hintergrund-Pausen genügen): install/launch schlägt fehl mit simctl error 405 „Unable to lookup in current state: Shutdown" (Background-Tasks dann exit 149, obwohl der xcodebuild selbst BUILD SUCCEEDED war) → erst `xcrun simctl boot <UDID>` + `open -a Simulator` (~12s warten), DANN install/launch/screenshot.
 - **analyze_image kann PNGs gelegentlich ablehnen** („图片输入格式/解析错误" 400) — JPG-Raster von get_app_state funktionieren zuverlässiger als simctl-PNGs; notfalls erneut hochladen.
+- **localStorage überlebt `simctl install` (Drüber-Install):** App-Daten bleiben → alte Chat-Historie/Bubbles sichtbar trotz neuem Bundle. Für „frische Nutzer"-Beweise (z.B. neue Kickoff-Frage): `xcrun simctl uninstall <UDID> <bundle>` THEN install + launch.
 
 Verwandt: [[atlas-master-app-verhaeltnis]] · [[agent-browser-cli]] (Web-Pendant).
