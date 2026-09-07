@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-07 21:31 UTC
+Zuletzt gespiegelt: 2026-09-07 21:42 UTC
 
 ## call_339477364a17488a84bbd97e-tool-result-bc9354f9-6002-4ff8-b81d-0069bef089d6
 
@@ -1633,9 +1633,9 @@ Sascha's machine: Apple M4 **MacBook Air** — **fanless**, 60 Hz panel, no ProM
 
 ---
 name: patrick-physiotherapie-sbp
-description: Patrick (>20, ohne Matura, ohne jegliche Vorbildung) will Physiotherapie
-  an IMC Krems studieren — SBP für ihn blockiert; Empfehlung Pflegefachassistenz
-  als Schlüsselweg, Kernfakten + Fallstricke aus Recherche 07.09.2026
+description: Patrick (>20, Lehre Technischer Zeichner, ohne Matura) will Physiotherapie
+  an IMC Krems studieren — SBP-Zulassung erfüllt, volle SBP nötig; finale Dokumente
+  (DOCX + 2-Seiten-PDF) fertig auf Desktop, Recherche-Stand 07.09.2026
 metadata:
   node_type: memory
   type: project
@@ -1845,7 +1845,11 @@ Skill-Audit 07.09.2026 (User-Weisung: nicht selbst werten; Vercel/Gemini/Claude/
 - **skill-router** existiert neu (`~/.agents/skills/skill-router/`): wählt bei Build-/Code-Signalen automatisch 1–3 passende Teil-Skills (Matt-Pocock-, Design-, Vercel-, Gemini-, Claude-Suite). In skill-routing.md eingetragen.
 - superpowers:*-Routing-Einträge entfernt (Skills existieren nicht mehr); Debug-Route = diagnosing-bugs.
 - Nutzungs-Fakten (Memory-Check): caveman, cavecrew, agent-browser = belegt genutzt. Ohne Beleg, aber auf User-Entscheidung drin: market-intelligence-allrounder, persona-selector, jules-meta-agent, cli-serve, developing-ios-apps.
-- Achtung: `npx skills add` (skillshare) legt bei Neu-Install wieder Symlinks in `.zcode/skills` an → danach `find ~/.zcode/skills -maxdepth 1 -type l -delete` + Manifest leeren, sonst Doppel zurück.
+- Achtung (ÜBERHOLT/gelöst): skillshare legte beim Sync die Links neu an → **~/.config/skillshare/config.yaml: zcode-Target ENTFERNT** (07.09. spät). skillshare bedient ZCode nicht mehr; ZCode liest nur ~/.agents/skills. Die 119 Links + _sources__-Aliase wurden endgültig aus .zcode/skills entfernt.
+- Shadow-Doppel gelöst: .agents/skills/caveman zeigte auf Suite-Root (13 SKILL.md darunter) → jetzt 7 Einzelsymlinks auf .gemini/extensions/caveman/skills/*.
+- Obsidian repariert 07.09.: obsidian-second-brain description 1204→484 (der „1 error", lädt wieder); obsidian-vault WSL-Pfad → echter Vault **~/Documents/Obsidian Vault**; obsidian-sync.sh Testlauf grün.
+- **Skill-Browser GUI**: `python3 ~/.agents/tools/skill_browser.py` → ~/Desktop/skill-browser.html (Suche+Filter, Status & Nutzungsnotizen). Nach Skill-Änderungen neu generieren.
+- Nutzungs-Fakten (Memory-Check): caveman, cavecrew, agent-browser = belegt genutzt. Ohne Beleg: market-intelligence-allrounder, persona-selector, cli-serve (OmniRoute-CLI-Steuerung), developing-ios-apps (von User als wichtig markiert), jules-meta-agent (Rollen-Skill, Google-Abo, im skill-router angebunden).
 
 Audit-Doc: `~/loki-ki/docs/AUDIT_SKILLS_ZCODE_2026-09-07.md` · [[skill-install-conventions]] ist damit ÜBERHOLT (npx-Konvention erzeugt jetzt Doppel).
 
