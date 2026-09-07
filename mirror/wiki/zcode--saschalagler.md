@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-07 21:10 UTC
+Zuletzt gespiegelt: 2026-09-07 21:21 UTC
 
 ## call_339477364a17488a84bbd97e-tool-result-bc9354f9-6002-4ff8-b81d-0069bef089d6
 
@@ -1114,6 +1114,8 @@ Bei Fachfragen (z. B. Trainings-Übungen) fordert er explizit „clinical reason
 
 # Memory Index
 
+- [Skills-Architektur 07.09.](skills-architektur-2026-09-07.md) — .zcode/skills BEWUSST leer (laden nur via .agents, sonst Doppel!); Archiv in ~/.agents/skills-archive/2026-09-07; skill-router wählt Teil-Skills automatisch; npx skills add legt Doppel-Symlinks wieder an
+
 - [ZCode-Projektgruppen-Mechanik](zcode-projektgruppen-mechanik.md) — 06.09.: Chatliste links = tasks-index.sqlite (Gruppen+node_orders+members), externes SQL wirkt erst nach ⌘Q-Neustart; Claude/Cline-Chat-Importer import-chats-loki.py (259 Cline-Chats drin); Restore-.command auf Desktop
 
 - [FörderOps-Assistent](foerderops-assistent.md) — 30.08. aktiv, 06.09. spät Web-UI 8765 LÄUFT WIEDER (kein Autostart!); 70 Wissensdokumente; digi4KMU 50k existiert NICHT; Cap-Table Leon 26/Lisa 26/Sascha 25/Peter 23; 🔴 $350k-Blocker: Webgo-NS-Switch
@@ -1150,7 +1152,8 @@ Bei Fachfragen (z. B. Trainings-Übungen) fordert er explizit „clinical reason
 
 - [Z.AI Coding Plan Limits](zai-coding-plan-limits.md) — weekly+5h Credit-Caps selbst auf Pro; [1310]=Cap; Fanout verbrennt Quota; 3 Z.AI-MCP-Server eingetragen mit Key-Platzhalter- [AutoClaw Full-Stack-Builder](autoclaw-full-stack-builder.md) — 06.09. Agent+7 Skills+Write-Guard eingerichtet; JWT pro-Modell in openclaw.json, nur additiv editieren; Config greift nach App-Neustart
 - [Legal-Ops-Native-Status](legal-ops-native-status.md) — 06.09. P0-Diagnose: Verschmelzung FUNKTIONIERT (live verifiziert, Port 7070/Ollama); „kaputt" = 4-App-Varianten-Wirrwarr → Aufräumen mit GO; STATE.md im Projekt
-- [Patrick Physiotherapie via SBP](patrick-physiotherapie-sbp.md) — 07.09.: Patrick will Physio ohne Matura studieren; braucht SBP + FH-Aufnahmeverfahren (beides!); Falle: SBP studienrichtungsgebunden, FHs ordnen PT verschiedenen Gruppen zu; einschlägige Ausbildung (MTF/DGKS/Masseur) ersetzt SBP durch nur Zusatzprüfungen — offen: Patricks Alter/Ausbildung
+- [Patrick Physiotherapie via SBP](patrick-physiotherapie-sbp.md) — 07.09.: Patrick (>20, KEINE einschlägige Ausbildung, Ziel-FH IMC Krems) braucht volle SBP + FH-Aufnahmeverfahren; ohne Beruf OK — „beruflich ODER sonstige Vorbildung" (§ 64a UG); geplantes DOCX (R4-Cover) noch offen; Plaintext-PDF abgelehnt
+- [Doc-Design zählt](feedback-doc-design-matters.md) — 07.09.: „simpel" = wenig Umfang, nie schlechtes Layout; Plaintext-PDF scharf abgelehnt → Übergabe-Docs immer mit Cover/Tabellen/Struktur bauen
 - [LOKI Projekt-Map](loki-project-map.md) — 06.09. 17:30: Legal-Ops gelöst, Atlas-Takeover läuft LIVE in AutoClaw, TODO-App fertig, Paraletts=Prototyp, Barbulls=Wix+Scaffold; Q1 entlastet, Q1b Home-Repo neu; Source of Truth = ~/LOKI_PROJECT_MAP.md
 
 ## active-projects-focus
@@ -1257,6 +1260,25 @@ Sascha (06.09.2026, 2× explizit wütend): „du sollst den agent ODER die agent
 **How to apply:** Wenn eine Aktion nur per GUI geht: macOS Accessibility nutzen und sie selbst ausführen. Bewährtes Rezept (live bewiesen an AutoClaw-Create-Dialog): Fenster-Bounds via System Events holen → App frontmost setzen (`set frontmost of process … to true`, sonst landen Klicks im falschen Fenster!) → `click at {x,y}` (Element-Log im Ergebnis bestätigt das Ziel) → für Textfeld-Eingabe keystroke NICHT vertrauen (Fokus geht verloren), sondern rekursiv AX-Element suchen (UI-elements-Walk) + `set value of <textfield>` → Buttons per Rekursion finden und `click`. Verifikation per Screenshot (`screencapture -l <windowID>`, Window-ID via Quartz CGWindowList) und/oder Config/Runtime-Datei-Check. Elektro­nen-Apps (Electron) exponieren fast keine nativen AX-Elemente — Koordinaten aus Vision/Prozentangaben + Bestätigungs-Log sind der Weg.
 
 **Ergänzt 06.09. spät (Chat-Anlegen + Klick-Fallen):** Saschas Erwartung geht weiter: auch **Unterhaltungen/Chats pro Projekt grafisch sortiert anlegen** („DU HAST NOCH IMMER NICHT DIE CHATS ANGELEGT GRAFISCH SORTIERT") — in AutoClaw je Projekt einen Chat im passenden Agenten, benannt/sortierbar. Klick-Fallen dabei live gelernt: (1) hängendes **screencaptureui-Overlay** (von Nutzer-Screenshots) frisst jeden Klick-Dispatch → `killall screencaptureui` zuerst prüfen; (2) Fenster-**Bounds ändern sich** zwischen Aktionen → immer frisch via Quartz holen; (3) beste Loop: Ziel-App frontmost → computer-use `screenshot` → `zoom` → `left_click` (receipt zeigt `resolved_app_ref`-Ziel = Kontrolle) → Text via osascript `keystroke` MIT ASCII (Umlaute vermeiden). Verwandt: [[autoclaw-full-stack-builder]] [[feedback-one-action-not-tables]] [[feedback-gui-not-cli]] [[loki-project-map]]
+
+## feedback-doc-design-matters
+
+---
+name: feedback-doc-design-matters
+description: Sascha lehnte rohes Plaintext-PDF (reportlab drawString ohne
+  Layout) scharf ab — Übergabe-Dokumente brauchen echtes Design (Cover,
+  Struktur, Tabellen), selbst wenn er vorher "simpel" sagt
+metadata:
+  node_type: memory
+  type: feedback
+  originSessionId: sess_6acd283f-12f1-47df-acd6-052ad94ce159
+---
+
+07.09.2026: „simpel als Todoliste, PDF mir egal" führte zu einem reportlab-Plaintext-PDF (nur drawString-Zeilen) — Sascha wütend: „das ist dein Design da wirst du behindert, keine Struktur, kein Layout".
+
+**Why:** „Simpel/mir egal" bezieht sich bei Sascha auf UMFANG, nicht auf GESTALTUNG. Er erwartet immer professionelles Layout (Farbbanner/Cover, Sektionen, echte Tabellen, Typografie) — auch bei 1-Seiten-Docs.
+
+**How to apply:** Übergabe-Dokumente nie als reine Textwüste generieren. Entweder docx-Skill mit Cover-Rezept + Tabellen (siehe [[patrick-physiotherapie-sbp]], R4 geplant) oder reportlab mit Platypus (Table/TableStyle, Farbbänder) statt drawString. Kein LibreOffice/soffice auf dem Mac → DOCX→PDF-Konvertierung nicht verfügbar, PDF direkt erzeugen.
 
 ## feedback-gui-not-cli
 
@@ -1634,7 +1656,9 @@ Patrick (verwandt mit Sascha) will **Physiotherapie (FH-Bachelor) in Österreich
 
 **Patrick-Situation (07.09.2026 bestätigt):** über 20 → Altersvoraussetzung SBP **erfüllt**; **KEINE einschlägige Ausbildung** → Abkürzung (Zusatzprüfungen) entfällt, er macht die **volle SBP**. **Ziel-FH: IMC Krems** (akzeptiert externe SBP; Deutsch B2; Aufnahme = Online-Gesundheitstest ~2h biz:Examiner → körperlicher Eignungstest in Krems → Interview mit Motivationsschreiben; nach Zusage Gesundheitszeugnis + Strafregister <3 Monate; Fristen 2027/28: Bewerbung ab ca. 01.12.2026, Frist 15.03.2027 — vor Bewerbung verifizieren). Wichtigster offener Punkt: SBP-Zulassung braucht trotzdem „erhebliche berufliche/sonstige Vorbildung" → Schritt 1 der Todoliste = Anfrage an IMC Krems, ob Patricks Vorbildung genügt. Zeitleiste: Sep 2026 Antrag → 2026/27 Prüfungen → Sep 2027 Studienstart.
 
-**Deliverable (07.09.2026):** Simple 1-Seiten-PDF-Todoliste auf `/Users/saschalagler/Desktop/Patrick_Physiotherapie_Weg.pdf` (reportlab, Generator-Skript `sbp-doc/patrick_pdf.py` im Workspace; 2. Version mit IMC-Krems-Fokus + 9-Punkte-Todoliste). Sascha lehnte aufwendiges DOCX ab („simpel, PDF mir egal, als Todoliste") → bei Übergabe-Docs für Dritte: schnelle, simple 1-Seiten-PDF bevorzugen. Detaillierte DOCX-Fassung (Tabellen/FH-Vergleich) liegt unfertig in `~/.zcode/workspace/default/sbp-doc/` (docx npm-Paket dort installiert).
+**Ohne Berufserfahrung = KEIN Ausschluss (07.09. geklärt):** § 64a Abs 3 UG verlangt „erhebliche **berufliche ODER sonstige** Qualifikation" — auch ohne Beruf zählen sonstige Vorbildungen (Kurse, längeres Selbststudium, Ehrenamt/Sport im Gesundheitsbereich, Pflege Angehöriger, Praktika); Entscheidung beim Rektorat. Praktischer Workaround: 6–12 Monate Pflegehelfer / Physiopraxis-Assistenz / Rettungssanitäter löst SBP-Zulassung + Punkte im IMC-Interview gleichzeitig; verlässlichster Weg sonst: Pflegefachassistenz-Ausbildung (öffnet sogar Direkteinstieg mit nur Zusatzprüfungen). Uni Wien ist streng (Vorbildung „aus dem Bereich des Studiums"), Hochschulen uneinheitlich → erst Liste von Patricks Jobs/Kursen/Ehrenamt erstellen, dann an IMC Krems melden.
+
+**Deliverable (Stand 07.09. spät):** Simple 1-Seiten-PDF `/Users/saschalagler/Desktop/Patrick_Physiotherapie_Weg.pdf` (reportlab-plaintext, Generator `sbp-doc/patrick_pdf.py`) wurde **scharf abgelehnt** („kein Design, keine Struktur, kein Layout") → Sascha will jetzt ein **professionell gestaltetes DOCX** (Cover-Rezept R4 Top Color Block, echte Tabellen, klare Sektionen) mit dem „sonstige Vorbildung"-Punkt als eigenem Abschnitt — **Bau noch offen** (docx npm-Paket installiert in `~/.zcode/workspace/default/sbp-doc/`; kein soffice/LibreOffice → kein direkter PDF-Export). Siehe [[feedback-doc-design-matters]].
 
 ## read-tool-images-cdn-hazard
 
@@ -1801,6 +1825,29 @@ When Sascha writes `[$skill-name]` or `/skill` in a request, he expects the skil
 **Why:** On 2026-08-23 he sent a gstack deep-dives analysis request tagged [$cavecrew] [$graphify] /init. Merely mentioning them would have missed the point: cavecrew contributed its compressed output-contract pattern (used for the DIV-DEEP contract and a reviewer subagent), graphify produced a real queryable knowledge graph, and /init was fulfilled by initializing persistent memory. Across sessions he consistently tags skills this way (earlier: agent-browser, control-browser, cognee-memory, memory-enhanced-decision-making).
 
 **How to apply:** Invoke each referenced skill via the Skill tool first, then let its concrete patterns (output contracts, pipelines, conventions) do real work in the deliverable. If a referenced skill can't be applied meaningfully, say so explicitly rather than name-dropping it. Related: [[skill-install-conventions]].
+
+## skills-architektur-2026-09-07
+
+---
+name: skills-architektur-2026-09-07
+description: Skill-Ausmist 07.09. — .zcode/skills ist BEWUSST leer (Skills laden
+  nur via ~/.agents/skills), Archiv-Ort, skill-router existiert
+metadata:
+  node_type: memory
+  type: project
+  originSessionId: sess_ecb2e5e0-e1f7-46fb-a5b9-a997d5485c8e
+---
+
+Skill-Audit 07.09.2026 (User-Weisung: nicht selbst werten; Vercel/Gemini/Claude/Matt-Pocock/Design BLEIBEN):
+
+- `~/.zcode/skills` ist **bewusst leer** (125 Symlinks entfernt gegen Doppel-Einträge ~260→~126). ZCode lädt Skills NUR via `~/.agents/skills`. NICHT wieder befüllen — sonst Doppel.
+- Archiv (reversibel): `~/.agents/skills-archive/2026-09-07/` — 5 Writing-Skills + lisa-therapeut-Echtkopie. Rückholbefehl im Audit-Doc.
+- **skill-router** existiert neu (`~/.agents/skills/skill-router/`): wählt bei Build-/Code-Signalen automatisch 1–3 passende Teil-Skills (Matt-Pocock-, Design-, Vercel-, Gemini-, Claude-Suite). In skill-routing.md eingetragen.
+- superpowers:*-Routing-Einträge entfernt (Skills existieren nicht mehr); Debug-Route = diagnosing-bugs.
+- Nutzungs-Fakten (Memory-Check): caveman, cavecrew, agent-browser = belegt genutzt. Ohne Beleg, aber auf User-Entscheidung drin: market-intelligence-allrounder, persona-selector, jules-meta-agent, cli-serve, developing-ios-apps.
+- Achtung: `npx skills add` (skillshare) legt bei Neu-Install wieder Symlinks in `.zcode/skills` an → danach `find ~/.zcode/skills -maxdepth 1 -type l -delete` + Manifest leeren, sonst Doppel zurück.
+
+Audit-Doc: `~/loki-ki/docs/AUDIT_SKILLS_ZCODE_2026-09-07.md` · [[skill-install-conventions]] ist damit ÜBERHOLT (npx-Konvention erzeugt jetzt Doppel).
 
 ## vorssaint-mac-tools-research
 
