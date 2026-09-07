@@ -35,3 +35,11 @@ Shell ✅ · read_files ✅ · Sidecar :25463 ✅ · Network 200 ✅ · Docker 2
 ## TCC-Stand (Audit 25.08.2026, tcc_audit_user.txt)
 
 bot.cline.app: Desktop=2, Documents=2, Downloads=2, AppleEvents=2, FileProviderDomain=2, MediaLibrary=2, AppData=5 → erlaubt. Kein RemovableVolume/AllFiles-Eintrag (nur interne Volumes vorhanden).
+
+# STATUS — 2026-09-07
+
+## Behoben: Cline CLI 'zsh: killed' unter macOS 27
+- Ursache: macOS 27 AMFI killt linker-signed Ad-hoc-Binaries bei Page-in ('no CMS blob', cs_invalid_page). Cline-postinstall legt bin/.cline als Hardlink an -> Validierung schlägt fehl.
+- Fix: Update auf cline@3.0.61 + Hardlink durch Kopie ersetzt + codesign --force --sign - (Skript: ~/fix-cline-macos27.sh — nach jedem npm-Update erneut ausführen!)
+- Backup des alten Binaries: /tmp/cline-binary-backup-3.0.60
+- Offen: Desktop-App-Fehler 'Desktop backend transport closed' + 'Unauthorized: re-authenticate' -> Neuanmeldung im Cline-Account nötig (App + CLI).
