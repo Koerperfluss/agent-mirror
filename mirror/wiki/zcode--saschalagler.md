@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-07 12:24 UTC
+Zuletzt gespiegelt: 2026-09-07 12:37 UTC
 
 ## call_fe4ee4834bf14478b4a66d0e-tool-result-df2ccbef-b4f7-499f-ac43-59af5f927f22
 
@@ -1746,6 +1746,7 @@ Diagnose 06.09.2026: Nutzer konnte Computer Use in ZCode „nicht aktivieren". B
 - [Atlas-Lernender-Agent-Paradigma](atlas-lernender-agent-paradigma.md) — Saschas Produktbild: ATLAS = lernender KI-Agent (Wissen ANWENDEN nicht anzeigen, Karten gestrichen) + adaptives Interview bis „passt" → Plan → Logbuch; AUSGEFÜHRT+KOMPLETT BEWIESEN 07.09.: learned-kb (inkrementell+Resume, Cluster≥100-Wörter-Branch), Interview+Plan Self-Heal mit Proxy-Switch ab Retry 2, READY_THRESHOLD=11/13-Gotcha (Klick stumm bei 10/13), Glass Engine 3D-Commits
 - [Mimosa-Write-Zwang+uv-Tests](mimosa-write-zwang-uv-tests.md) — Hook blockt Dateischrieb via Bash → Write-Tool pflicht; pytest fehlt → `uv run --with pytest`; Commit-Block = Fehlalarm (System-Pfade) ODER echt (Traversal-Fund in ingest-Scripts → ALLOWED_ROOT+relative_to-Guard, dann Commit durch) — nie umgehen, prüfen+fixen; **NEU: dynamische Pfade aus JSON/externer Quelle in Python = immer [high] geblockt** (auch mit expanduser+is_relative_to-Guard) — Workarounds: Literale hardcoden, inline Bash-Python nur Output, graphify, D3-HTML direkt
 - [Anti-Lügen-Vertrag](anti-luegen-vertrag.md) — Sascha vertraut Agenten NICHT bei Pipelines — verlangt: Artefakt-Pflicht (Log-Dateien mit rohen Zahlen), Kennzahlen-Vertrag (In=Out), Stichprobe-Klausel (er wählt Zeile, Agent liest live), Todo-Liste live, Fail=Stop+Doku; bei jeder Pipeline ≥3 Stufen VOR Start anbieten
+- [Atlas-Firestore-Telemetry-Setup](atlas-firestore-telemetry-setup.md) — /api/track live ({"ok":true}, Summary zählt); Firestore-Fallen: NOT_FOUND=DB fehlt (databases:create "(default)"), PERMISSION_DENIED=roles/datastore.user via gcloud für 709873485696-compute-SA (~2min Propagation); npm install in functions/ vor Deploy; Rewrite-Reihenfolge
 - [Atlas-Wissens-Graph](atlas-wissens-graph.md) — Pipeline komplett 05.09.: 4228 Dateien · 1,83 GB · 703 Dup-Gruppen · 18 Themen · 601 Cluster · D3-Graph 800 Knoten/1032 Kanten; Output: `~/Desktop/Coworkspace_Ich/atlas + pliability /WISSENS-GRAPH/` (01-scan-log.json, KNOWLEDGE_MAP.md, WISSENS-GRAPH.html, graph.json); graphify scheitert an Gemini-429 → D3-Fallback self-contained besser
 - [Atlas-OUTOTU-Output-Format](atlas-outotu-output-format.md) — ALLE ATLAS-Analysen im OUTOTU-PDF-Stil (Kinetic-Chain-Scan, CALIBRATED @kg, Drill-Protocol); Schema liegt in chainScan.ts/ChainScanReport.tsx
 
@@ -1862,6 +1863,27 @@ metadata:
 3. **Profil-Prefill für BEKANNTE User bleibt Feature** (profileDb, IndexedDB `atlas-v5-profile`) — nur Neukunden starten leer.
 4. **Onboarding-Tiefe:** freie Ziel-Eingaben („Eigenes Ziel…"-Freitext existiert) weiter ausbauen; Coach soll ausgiebig analysieren statt Chip-Katalog abzuarbeiten — D8/D10-Prinzip („Coach denkt, Code rechnet nur wenn der Coach es will").
 Verwandt: [[atlas-master-app-verhaeltnis]] (DESIGN_EVOLUTION.md D1–D8), [[atlas-outotu-output-format]].
+
+## atlas-firestore-telemetry-setup
+
+---
+name: atlas-firestore-telemetry-setup
+description: ATLAS /api/track-Telemetrie live — Firestore-Fallen im Projekt gen-lang-client-0285074833: Error 5 NOT_FOUND = DB fehlt (firebase databases:create), Error 7 PERMISSION_DENIED = roles/datastore.user für die Functions-Service-Account fehlt (gcloud add-iam-policy-binding, ~2min Propagation)
+metadata:
+  node_type: memory
+  type: project
+  originSessionId: sess_d4dc6589-a85c-41e6-9c70-94b6ea6e63e3
+---
+
+ATLAS-Testversand-Tracking seit 07.09. LIVE bewiesen: `POST https://atlas-v5.web.app/api/track` → `{"ok":true}`, Zahlen-Beweis via `GET /api/track?summary=1` → `{"events":{app_open:N,…}}`. Client: `src/telemetry.ts` (anonym — nur localStorage `atlas_sid` = crypto.randomUUID, sendBeacon via `apiUrl()` wegen Capacitor, window.onerror+unhandledrejection → track('error')), `init()`+`app_open` in main.tsx; QR-Download-Hub `public/download/index.html` (inline-SVG-QR, kein CDN).
+
+**Firestore-Falle im Projekt gen-lang-client-0285074833 (2 Stufen, beide selbst durchlaufen):**
+1. **Error 5 NOT_FOUND (mit LEERER Meldung!)** = das Projekt hatte GAR KEINE Firestore-Datenbank (war nur als Gemini-Key-Projekt angelegt). Fix: `npx firebase firestore:databases:create "(default)" --location us-central1 --project gen-lang-client-0285074833` (Named-DB „atlas-telemetry" existiert zusätzlich; die Function nutzt Default via `getFirestore(fbApp)` — Admin umgeht Rules).
+2. **Danach Error 7 PERMISSION_DENIED: Missing or insufficient permissions** = die Gen2-Functions-Service-Account darf nicht in Firestore. Fix: `gcloud projects add-iam-policy-binding gen-lang-client-0285074833 --member "serviceAccount:709873485696-compute@developer.gserviceaccount.com" --role "roles/datastore.user"` — **IAM-Propagation ~2 min abwarten** bevor Retest.
+
+**Gotchas:** functions/package.json bekam `firebase-admin ^12` → IMMER `npm install` in functions/ vor Deploy; firebase.json-Rewrite `/api/track` MUSS VOR `/api/**` stehen (Reihenfolge entscheidet); GCP-Log-Ingestion hinkt Minuten hinterher → Fehlerursache per Logs erst nach Minuten sichtbar, live-curl ist die schnellere Wahrheit; in-memory Rate-Limit 1 Event/2s je session+event (2. POST sofort = 429, kein Bug); Agent-2-Bericht-Warnung: Deploy-Reihenfolge functions vor hosting.
+
+Verwandt: [[atlas-master-app-verhaeltnis]]
 
 ## atlas-lernender-agent-paradigma
 
@@ -2387,6 +2409,7 @@ E2E-Tests einer iOS-Simulator-App (z.B. ATLAS Capacitor) mit dem computer-use-MC
 - **zoom()-Frames:** neue Koordinaten sind RELATIV zum Crop (z.B. 400×210), nicht zum Fenster; Frames werden schnell stale („live pixel owner changed") — nach jedem Layout-Wechsel (Tastatur öffnet!) NEUen get_app_state-Screenshot holen und Koordinaten neu bestimmen.
 - **get_app_state auf Simulator zeigt NICHT die App-Inhalte:** a11y-Tree liefert nur Simulator-Chrome (Menüs, Device-Buttons) — App-UI ist nicht accessibility-auflösbar. Text-Verifikation nur per Screenshot → Read (CDN-URL) → mcp__4_5v_mcp__analyze_image. Deren OCR kann Wörter verfälschen („lernen"→„lassen", „3x"→„25x") — kritische Aussagen 2× verifizieren.
 - Lange Wartezeiten: KI-Antworten 20–60s (Self-Heal-Retries) — wait (max 30s) + sleep + simctl-Screenshot-Poll.
+- **Simulator fährt zwischendurch herunter** (Hintergrund-Pausen genügen): install/launch schlägt fehl mit simctl error 405 „Unable to lookup in current state: Shutdown" (Background-Tasks dann exit 149, obwohl der xcodebuild selbst BUILD SUCCEEDED war) → erst `xcrun simctl boot <UDID>` + `open -a Simulator` (~12s warten), DANN install/launch/screenshot.
 - **analyze_image kann PNGs gelegentlich ablehnen** („图片输入格式/解析错误" 400) — JPG-Raster von get_app_state funktionieren zuverlässiger als simctl-PNGs; notfalls erneut hochladen.
 
 Verwandt: [[atlas-master-app-verhaeltnis]] · [[agent-browser-cli]] (Web-Pendant).

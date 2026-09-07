@@ -30,6 +30,7 @@ E2E-Tests einer iOS-Simulator-App (z.B. ATLAS Capacitor) mit dem computer-use-MC
 - **zoom()-Frames:** neue Koordinaten sind RELATIV zum Crop (z.B. 400×210), nicht zum Fenster; Frames werden schnell stale („live pixel owner changed") — nach jedem Layout-Wechsel (Tastatur öffnet!) NEUen get_app_state-Screenshot holen und Koordinaten neu bestimmen.
 - **get_app_state auf Simulator zeigt NICHT die App-Inhalte:** a11y-Tree liefert nur Simulator-Chrome (Menüs, Device-Buttons) — App-UI ist nicht accessibility-auflösbar. Text-Verifikation nur per Screenshot → Read (CDN-URL) → mcp__4_5v_mcp__analyze_image. Deren OCR kann Wörter verfälschen („lernen"→„lassen", „3x"→„25x") — kritische Aussagen 2× verifizieren.
 - Lange Wartezeiten: KI-Antworten 20–60s (Self-Heal-Retries) — wait (max 30s) + sleep + simctl-Screenshot-Poll.
+- **Simulator fährt zwischendurch herunter** (Hintergrund-Pausen genügen): install/launch schlägt fehl mit simctl error 405 „Unable to lookup in current state: Shutdown" (Background-Tasks dann exit 149, obwohl der xcodebuild selbst BUILD SUCCEEDED war) → erst `xcrun simctl boot <UDID>` + `open -a Simulator` (~12s warten), DANN install/launch/screenshot.
 - **analyze_image kann PNGs gelegentlich ablehnen** („图片输入格式/解析错误" 400) — JPG-Raster von get_app_state funktionieren zuverlässiger als simctl-PNGs; notfalls erneut hochladen.
 
 Verwandt: [[atlas-master-app-verhaeltnis]] · [[agent-browser-cli]] (Web-Pendant).
