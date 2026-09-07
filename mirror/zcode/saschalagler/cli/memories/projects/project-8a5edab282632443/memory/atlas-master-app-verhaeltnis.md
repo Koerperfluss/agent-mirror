@@ -1,10 +1,6 @@
 ---
 name: atlas-master-app-verhaeltnis
-description: ATLAS 06.09. NACHT-FINAL — ALLE entwicklungsbaren Stufen DONE (23✅/24 in
-    PLAN.md): 20-Stufen-Onboarding live (Team-Merge AutoClaw+ZCode) + T-A8 CoTChain +
-    P4.5 Auto-Push + C2 Proxy hardened (Fallback-Kette, Key nur im Secret) + C4 Tiers
-    keyless + GTM.md + Launch-Paket; LIVE-VOLLTEST 10/10 (QA-LIVE/, 11 Screenshots);
-    Rest NUR Installationen (Xcode, Android-SDK) + User-Geräte-Cache-Trap
+description: ATLAS 07.09. NACHT-LAUF FERTIG — ALLE 3 Plattformen geliefert: Web (Agent-App 200) + Android (signiertes APK gehostet atlas-v5.web.app/download/ATLAS-v5.apk, 206) + iOS (Xcode via mas/Apple-ID AUTO-installiert, BUILD SUCCEEDED, App.app läuft im Simulator, Screenshot-Beweis); TestFlight = einziger Apple-gated Schritt (interaktive Apple-ID + 99$/Jahr-Programm)
 metadata:
   node_type: memory
   type: project
@@ -210,3 +206,11 @@ Ein iOS-Simulator-Runtime-Check (`xcrun simctl list runtimes`) bleibt leer bis e
 - **AGENTEN-NETZTOD-MUSTER:** alle 3 Execution-Agents starben an ZCode-API-Netzfehlern („Cannot connect to API: write EPIPE / read EADDRNOTAVAIL / getaddrinfo ENOTFOUND zcode.z.ai") — SASCHAS Eigenprovider hatte Netz-Ausfall; **Partial-Stand IMMER erst per git log + untracked-Dateien prüfen bevor „fehlgeschlagen"** (Glass-Engine hatte 5 Commits komplett geliefert, Agent-3 2 Commits + 4 untracked Dateien). Nach Netzerholung: Arbeit selbst übernehmen, nicht Agent-Resume erzwingen.
 - **Build-Fallen der Runde:** deutsches Anführungszeichen „…" in JSX-placeholder = TS1382 (mit {'…'} umklammern); **macOS-Case-Insensitiv-Falle:** LearnUnits.tsx + learnUnits.ts im selben Ordner = TS1192/TS1261 — Daten-Datei umbenannt zu learnData.ts; TS6133-Ketten wie gehabt (→ Deploy schickt still Alt-Bundle).
 - **Ergebnis-Stand:** PLAN 23✅/24 + lernender Agent live (Interview default, 5/13-E2E), Glass Engine deployed, APK in RELEASE/, iOS-SDK fertig geladen (xcodebuild .app noch ausstehend), learned-kb 23/24 Themen.
+
+## 07.09. NACHT-LAUF (Saschas Auftrag: „wenn ich morgen aufwache will ich das alles läuft — web app mit link, ios app testflight, android app; keine Fragen, 8h autonom") — ALLE 3 PLATTFORMEN GELIEFERT
+- **🍎 XCODE AUTOMATISCH INSTALLIERT (kein User-Klick!):** Developer-Downloads-URL liefert ohne Session nur /unauthorized → **`mas install 497799835`** (Mac-App-Store-CLI) funktionierte, weil Saschas Apple-ID im App Store eingeloggt ist (`mas list` zeigte Apple Developer/TestFlight-Apps). Lief ~Std. im nohup-Hintergrund → „Installed Xcode (26.6) in /Applications/Xcode.app". `xcode-select -s` braucht sudo (schien zu klappen ohne — `xcodebuild -version` zeigte 26.6 direkt); `-license accept` + `-runFirstLaunch` + `xcodebuild -downloadPlatform iOS` → **iOS 26.5 Runtime da** (simctl list runtimes).
+- **iOS BUILD SUCCEEDED:** `xcodebuild -project ios/App/App.xcodeproj -scheme App -configuration Release -destination "generic/platform=iOS Simulator" -derivedDataPath /tmp/atlas-ios build` → `/tmp/atlas-ios/Build/Products/Release-iphonesimulator/App.app`; `xcrun simctl boot <iPhone17Pro-UDID>` + `simctl install … App.app` + `simctl launch … app.barbulls.atlas` (PID 73857) = **App läuft im Simulator**, Screenshot QA-LIVE/30-ios-simulator.png; gezippt nach RELEASE/ATLAS-v5-iOS-Simulator.zip.
+- **Android SIGNIERTES RELEASE-APK:** keytool-Keystore `android/atlas-release.keystore` (Passwort atlas2026barbulls, alias atlas; .gitignore'd) + signingConfig in app/build.gradle → `./gradlew assembleRelease` → app-release.apk (5,0 MB) → gehostet **https://atlas-v5.web.app/download/ATLAS-v5.apk** (curl 206 bewiesen) + Kopie RELEASE/ATLAS-v5-signed.apk; **Download-Hub** https://atlas-v5.web.app/download/ (Landingpage public/download/index.html mit APK+Web-Links, deutsche Anleitung).
+- **TestFlight = Apples unhintergehbares Gate (im Morgenbericht ehrlich dokumentiert):** Upload+Einladungen brauchen interaktive Apple-ID-Passwort-Eingabe im Xcode-Account-Dialog + Apple-Developer-Programm (99$/Jahr). Dev-Signing-Identität liegt auf dem Mac („Apple Development: bahldorfa@gmail.com (YJJN9C93TN)"). Nach 1× Account-Add = Archive+Upload+TestFlight wieder vollautomatisch machbar.
+- **Morgenbericht:** `~/Desktop/RELEASE-MORGENBERICHT.md` (+ Kopie im Repo committed) mit allen Links + TestFlight-Schritten. Final-Health: APP 200 · APK 206 · PROXY 200.
+- **Saschas 8h-Auftragsmuster:** „keine fragen keine rückfragen kein mitwirken bis ende" = nachts autonom durchbauen, morgens EIN Bericht mit lauffähigen Links (Web/APK/Hub) + das Apple-Gate als einziger verbleibender User-Schritt ehrlich benannt.
