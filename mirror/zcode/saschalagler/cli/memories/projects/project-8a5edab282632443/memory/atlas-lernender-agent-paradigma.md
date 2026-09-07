@@ -60,3 +60,6 @@ Interview 0→**11/13** (3 komprimierte Antworten) → „Plan erstellen"-Klick 
 - Retry-Button heißt „**Noch mal**" (nicht „Wiederholen") — Matching danach.
 - Logbuch-Verifikation: nicht „blocks zählen" im Tab-Wechsel sofort, sondern `TRAININGSTAGE` + „Tag Mo., 07. Sept. · Fokus … 3 BLÖCKE 6 ÜBUNGEN 20 SÄTZE" im innerText lesen (Block-Zähl-Regex lieferte 0 obwohl Tag da war).
 - Watch-Loop-Muster: pro Schritt 22–25s schlafen, JSON-Status per agent-browser eval, `case "$S" in *\"p\":true*) break;; esac`.
+
+## 🔴 MC-REGRESSION (07.09. Nachmittag) — „keine fixe abfrage" kehrt via Prompt-Eigenzeile zurück
+Der Agent-Prompt selbst empfahl in STUFE 5 „mit 2–4 Antwort-Optionen wo sinnvoll" → KI stellte A/B/C/D-Fragen (Multiple-Choice = exakt Saschas verbotene fixe Abfrage). **Fix:** STUFE 5 verlangt jetzt OFFENE Fragen (freier Text), NIEMALS Buchstaben-Optionen/Choice-Listen; natürliche Beispiele nur im Satzfluss. **Verifizierungs-Falle:** die gleiche alte Bubble blieb nach Reinstall sichtbar — `simctl install` erhält localStorage; erst `simctl uninstall` + install = frischer Container → frisches Kickoff zeigt die offene Frage (Beweis QA-LIVE/43-ios-frische-antwort.png). Regel: Agent-Prompt-Zeilen gegen Saschas Verbote auditieren, NACHDEM Features gewachsen sind.
