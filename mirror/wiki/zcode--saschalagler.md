@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-07 06:04 UTC
+Zuletzt gespiegelt: 2026-09-07 06:15 UTC
 
 ## call_fe4ee4834bf14478b4a66d0e-tool-result-df2ccbef-b4f7-499f-ac43-59af5f927f22
 
@@ -1929,11 +1929,7 @@ Interview 0→**11/13** (3 komprimierte Antworten) → „Plan erstellen"-Klick 
 
 ---
 name: atlas-master-app-verhaeltnis
-description: ATLAS 06.09. NACHT-FINAL — ALLE entwicklungsbaren Stufen DONE (23✅/24 in
-    PLAN.md): 20-Stufen-Onboarding live (Team-Merge AutoClaw+ZCode) + T-A8 CoTChain +
-    P4.5 Auto-Push + C2 Proxy hardened (Fallback-Kette, Key nur im Secret) + C4 Tiers
-    keyless + GTM.md + Launch-Paket; LIVE-VOLLTEST 10/10 (QA-LIVE/, 11 Screenshots);
-    Rest NUR Installationen (Xcode, Android-SDK) + User-Geräte-Cache-Trap
+description: ATLAS 07.09. NACHT-LAUF FERTIG — ALLE 3 Plattformen geliefert: Web (Agent-App 200) + Android (signiertes APK gehostet atlas-v5.web.app/download/ATLAS-v5.apk, 206) + iOS (Xcode via mas/Apple-ID AUTO-installiert, BUILD SUCCEEDED, App.app läuft im Simulator, Screenshot-Beweis); TestFlight = einziger Apple-gated Schritt (interaktive Apple-ID + 99$/Jahr-Programm)
 metadata:
   node_type: memory
   type: project
@@ -2047,6 +2043,10 @@ Info bewiesen übernommen: 1) `~/ATLAS_MASTER/app/` (179 Prosa-Chunks) · 2) `la
 
 **B1 GEMINI-BILLING GELÖST (05.09. Nacht) — DER DURCHBRUCH:** AI-Studio-Prepay war leer (429 „prepayment credits depleted" am AQ.-Key), alter AIzaSy gelöscht (403). **Lösung ohne User-Klick:** `barbulls-app` hat das aktive Cloud-Billing (867 € bis 04/2027, Konto 015D43) → `gcloud services enable generativelanguage.googleapis.com --project=barbulls-app` + `gcloud services api-keys create --api-target="service=generativelanguage.googleapis.com" --project=barbulls-app` (Syntax: service=…, NICHT bare domain!) → neuer Key „ATLAS-App-Key" (ID b7743498-1bdb-43ea-8f4f-d0d60f85e927) → curl gegen gemini-3.6-flash = **HTTP 200**. Key in `~/ATLAS_MASTER/app/.env.local` (VITE_GEMINI_API_KEY, git-ignored), Fallback-Kette localStorage→VITE existierte schon in CoachChat.getApiKey(). **Live-Beweis im Browser:** echte Gemini-Antwort auf 92kg-Planche-Frage im Coach-Chat. Die gen-lang-Describe-API schwärzt keyStrings bestehender Keys (nur create zeigt sie). 🟡 Restposten: Browser-Referrer-Restriction nur via Cloud-Console (gcloud-Flag fehlt für web-referrer) — console.cloud.google.com → API Keys → ATLAS-App-Key. Vision-Kette (MediaPipe→ChainScanReport OUTOTU-Format) ist damit auch KI-live.
 
+## B1-FINALTWIST + APP FERTIG erklärt (05.09. spät, Completion-Audit)
+- **v1-Key gestorben (400 „API key not valid")** nach anfänglichem 200: Ursache war vermutlich das MANUELLE Abschreiben des keyString in .env.local — der volle String war nie im Klartext sichtbar (nur maskiert). **Regel: API-Keys NIE manuell aus maskierten Logs übernehmen** — stattdessen `grep -o '"keyString": "[^"]*"' | cut -d'"' -f4` direkt aus der Create-Response in eine Datei + Python-Vergleich `EXAKT GLEICH: True` vor weiterer Nutzung.
+- **v2-Key („ATLAS-App-Key-v2", barbulls-app)** = funktioniert (HTTP 200, gemini-3.6-flash). Liegt maschinell exakt in `~/ATLAS_MASTER/app/.env.local` (VITE_GEMINI_API_KEY, git-ignored ✓). Alte .env.local mit Prepay-Key überschrieben. Deploy-Bundle: `index-DmckTXuO.js`.
+- **Echte KI im Browser bewiesen (E2E):** Coach-Chat-Frage „Nenne mir EINEN Trainings-Cue für Planche Lean" → Gemini-Antwort live im DOM: „Drücke den Boden durch voll gestreckte Ellbogen maximal von dir weg…". Und zuvor 92kg-Tucked-Planche-Hebelverhältnis-Antwort. Kein Offline-/Regel-Modus mehr.
 
 ## atlas-outotu-output-format
 
