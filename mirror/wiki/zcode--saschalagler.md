@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-07 11:59 UTC
+Zuletzt gespiegelt: 2026-09-07 12:12 UTC
 
 ## call_fe4ee4834bf14478b4a66d0e-tool-result-df2ccbef-b4f7-499f-ac43-59af5f927f22
 
@@ -1742,7 +1742,7 @@ Diagnose 06.09.2026: Nutzer konnte Computer Use in ZCode „nicht aktivieren". B
 - [ZCode-MCP-npx-Timeout](zcode-mcp-npx-timeout.md) — "Failed to connect" = tote Binary oder npx-@latest-Download-Timeout; Fix: npm i -g + statischer Pfad; Config greift erst nach App-Neustart
 - [Atlas-Standort-korrigiert](atlas-standort-korrigiert.md) — **DEV-KANONISCH = ~/ATLAS_MASTER/app** (v5, LIVE atlas-v5.web.app; Knowledge-Quellen in Coworkspace_Ich/atlas + pliability, Zweitkopie cali-coach-atlas-final alt); HANDOFF_SESSION.md = Session-Einstieg; docs/UI_USERFLOW_SPEC.md = Design-Bibel (20 Onboarding-Stufen, Tab-Layouts); master-gap.md G1–G10; **ONBOARDING-LEAK GEFIXT** (KB-Evidenz-Whitelist 125 Chunks, canNext-Bug, SW-Serving-Falle: bei JEDEM Live-Verify SW+Caches resetten und Asset-Hash vs dist prüfen — trat auch danach 2× erneut auf); **KB-FUSSNOTE** (kbQuoteParts: Protokoll/Pipe/JSON/Emoji-Filter, Klartext-Quelle statt [KB: pfad.md], Fußnote unter der Bubble); **GLASS live gemessen** (glass-card2 existierte nie im CSS; Hauptflächen nachgerüstet, 3D-Tilt inline perspective); **MOBILE-FIRST 05.09. spät** (Sascha: „primär Mobile App" — Hamburger-Drawer entfernt, MobileTabBar.tsx iOS-Bottom-Bar, Übungs-DB 10→66 Progressionsketten, initSeed-Nachzieher idempotent = alter Browser blieb sonst bei 10); **OUTOTU-PDF = ChainScanReport.tsx bereits gebaut** (Kinetic-Chain-Scan/Drill-Protocol/Bio-Evolution am Vision-Tab); Blocker B1: Gemini-Billing (nur Sascha); offen: G5 Link-Import, G6 KB-UI, G8 CoT-Wiring, G10 Branding, T-A2 20 Stufen, Ausbildung-AI, Archiv-UI, iOS-Bau (Xcode fehlt, nur faktisch erwähnen)
 - [Agent-Browser-CLI](agent-browser-cli.md) — Browser-Automation ohne chrome-devtools-MCP: Chrome mit CDP-Port 9223 starten + `agent-browser connect`; **eval nimmt EXPRESSIONS, keine Funktionen** (IIFE nutzen); snapshot/screenshot/get url; kein viewport-Command; GCP-MCPs brauchen OAuth, playwright fehlt im node_repl
-- [Atlas-Master-App-Verhältnis](atlas-master-app-verhaeltnis.md) — **07.09. LOOP KOMPLETT BEWIESEN: Interview 11/13→Plan(KB-Zitate)→Logbuch(3 Blöcke/6 Üb/20 Sätze)→App; Xcode-KORREKTUR: NICHT installiert (0 in /Applications, nur CLT) — einziger User-Rest = Xcode-26.6-Download** · learned-kb 23/24/8.267 Wörter · gemini-3.8-flash Standard (2.5=TOT, Kette 3.8→3.5→3-preview→3.1-lite) · Vite-Dev-Proxy /api · LIVE-WATCHER :5199 · Agenten-Netztod = Partial-Stand checken · 06.09.: 23✅/24 PLAN.md, C2 Proxy 200, C4 Tiers keyless, Glass Engine v2 deployed, APK in RELEASE/, QA-LIVE 26 Screenshots, USER-CACHE-FALLE, TODO-Tabelle im Chat
+- [Atlas-Master-App-Verhältnis](atlas-master-app-verhaeltnis.md) — **07.09. LOOP KOMPLETT BEWIESEN: Interview 11/13→Plan(KB-Zitate)→Logbuch(3 Blöcke/6 Üb/20 Sätze)→App; Xcode-KORREKTUR: NICHT installiert (0 in /Applications, nur CLT) — einziger User-Rest = Xcode-26.6-Download** · **SPÄT 07.09.: Blob-Canvas-KATASTROPHE gemessen** (canvas static/pe:auto LIEGT AUF dem Content + frisst Klicks, Onboarding-Screen ohne Branding/Tabs = „unbrauchbar"; Fix: fixed z-0 pointer-events-none + Content z-10 + Blob-Deckung 25 %; Pfad-Falle „atlas + pliability " = Leerzeichen am Ende, Join mit /) · learned-kb 23/24/8.267 Wörter · gemini-3.8-flash Standard (2.5=TOT, Kette 3.8→3.5→3-preview→3.1-lite) · Vite-Dev-Proxy /api · LIVE-WATCHER :5199 · Agenten-Netztod = Partial-Stand checken · 06.09.: 23✅/24 PLAN.md, C2 Proxy 200, C4 Tiers keyless, Glass Engine v2 deployed, APK in RELEASE/, QA-LIVE 26 Screenshots, USER-CACHE-FALLE, TODO-Tabelle im Chat
 - [Atlas-Lernender-Agent-Paradigma](atlas-lernender-agent-paradigma.md) — Saschas Produktbild: ATLAS = lernender KI-Agent (Wissen ANWENDEN nicht anzeigen, Karten gestrichen) + adaptives Interview bis „passt" → Plan → Logbuch; AUSGEFÜHRT+KOMPLETT BEWIESEN 07.09.: learned-kb (inkrementell+Resume, Cluster≥100-Wörter-Branch), Interview+Plan Self-Heal mit Proxy-Switch ab Retry 2, READY_THRESHOLD=11/13-Gotcha (Klick stumm bei 10/13), Glass Engine 3D-Commits
 - [Mimosa-Write-Zwang+uv-Tests](mimosa-write-zwang-uv-tests.md) — Hook blockt Dateischrieb via Bash → Write-Tool pflicht; pytest fehlt → `uv run --with pytest`; Commit-Block = Fehlalarm (System-Pfade) ODER echt (Traversal-Fund in ingest-Scripts → ALLOWED_ROOT+relative_to-Guard, dann Commit durch) — nie umgehen, prüfen+fixen; **NEU: dynamische Pfade aus JSON/externer Quelle in Python = immer [high] geblockt** (auch mit expanduser+is_relative_to-Guard) — Workarounds: Literale hardcoden, inline Bash-Python nur Output, graphify, D3-HTML direkt
 - [Anti-Lügen-Vertrag](anti-luegen-vertrag.md) — Sascha vertraut Agenten NICHT bei Pipelines — verlangt: Artefakt-Pflicht (Log-Dateien mit rohen Zahlen), Kennzahlen-Vertrag (In=Out), Stichprobe-Klausel (er wählt Zeile, Agent liest live), Todo-Liste live, Fail=Stop+Doku; bei jeder Pipeline ≥3 Stufen VOR Start anbieten
@@ -1772,7 +1772,8 @@ metadata:
 - **Chrome-HTTP-Cache-Byeass:** wenn auch nach SW-Reset das ALTE Asset geladen wird (`performance.getEntriesByType('resource')` zeigt alten Hash, curl auf der URL den neuen): `fetch('/',{cache:'reload'}).then(()=>fetch(location.href,{cache:'reload'})).then(()=>location.reload())` erzwingt frisches index.html.
 - **Deploy-Falle (zweimal passiert):** schlägt `npm run build` still fehl (z. B. TS6133 im selben `&&`-Chain), deployt Firebase trotzdem das ALTE `dist/` — Deploy sieht „erfolgreich" aus. Immer erst die `✓ built`-Zeile verifizieren, DANN deployen, DANN Live-Asset-Hash vs `ls dist/assets` abgleichen.
 - **Bewährt für:** Glass-Counts (`document.querySelectorAll('.glass-card').length`), Backdrop-Filter-Messung (`getComputedStyle(el).backdropFilter`), Onboarding-Clickthrough (Buttons per textContent-Regex, Klick + sleep-Loops in Bash), Asset-Hash-Check (`performance.getEntriesByType('resource')`).
-- **Fremdseiten-Gefahr (wichtig):** agent-browser hängt an Saschas ECHTEM Chrome-Fenster — er kann während deiner Tests selbst navigieren. Passierte: Atlas-Checks liefen plötzlich auf „KLINISCHES REHA DOSSIER / _michael_lagler.html" (alle DOM-Checks false). **Gegenmaßnahme:** vor jeder Auswertung `location.href` + `document.body.innerText.slice(0,80)` sanity-checken; bei Fremdseite mit `location.href='https://<ziel>/?v='+Date.now()` zurücknavigieren.
+- **Fremdseiten-Gefahr (wichtig):** agent-browser hängt an Saschas ECHTEM Chrome-Fenster — er kann während deiner Tests selbst navigieren. Passierte: Atlas-Checks liefen plötzlich auf „KLINISCHES REHA DOSSIER / _michael_lagler.html" (alle DOM-Checks false). **Gegenmaßnahme:** vor jeder Auswertung `location.href` + `document.body.innerText.slice(0,80)` sanity-checken; bei Fremdseite mit `location.href='https://<ziel>/?v='+Date.now()` zurücknavigieren. **Sauberer bei Inspektionen:** eigener Throwaway-Profile-Ordner (`--user-data-dir=/tmp/<zweck>-profile`) → kein Cache, keine Fremdseiten (07.09. bewiesen).
+- **Click-Diagnose bei klick-fressenden Overlays (07.09. bewiesen):** `document.elementFromPoint(x,y)` zeigt den WAHREN Klick-Empfänger (traf HEADER statt Tab → Canvas-Overlay-Problem schwarz auf weiß). **Duplikat-Falle:** `[...querySelectorAll('button')].find(text)` greift das ERSTE Match — kann ein VERSTECKTES Duplikat mit rect 0,0 sein („Logbuch" existierte 3×: hidden 0,0 / Sub-Tab-Pill / MobileTabBar) → immer alle Matches per `getBoundingClientRect()` sammeln, erst `w>0&&h>0` filtern, dann den sichtbaren klicken. **Viewport-Falle:** `--window-size=1280,900` ≠ innerWidth — gemessen 839×925 (Display-Skalierung) → Mobile-Breakpoint/MobileTabBar greift auch im Desktop-Fenster. **Gate-Bypass via eval-IIFE:** `(() => { localStorage.setItem('atlas_onboarded','1'); location.reload(); return 'ok'; })()`.
 - **Fallstricke im Umfeld:** chrome-devtools-MCP-Pages können verschwinden („No page found" → neue Seite öffnen); playwright ist im Browser-Use-node_repl NICHT installiert (Cannot find package); GCP-MCPs (google-cloud-storage, firestore) brauchen interaktives OAuth (`no_credentials`) — nicht für Ad-hoc-Checks nutzen.
 
 **Why:** chrome-devtools-MCP ist fragil (Pages Close, Sessions wechseln); agent-browser funktioniert zuverlässig als Shell-Tool mit klaren Fehlern.
@@ -1929,7 +1930,7 @@ Interview 0→**11/13** (3 komprimierte Antworten) → „Plan erstellen"-Klick 
 
 ---
 name: atlas-master-app-verhaeltnis
-description: ATLAS 07.09. STAND — 3 Plattformen live + Capacitor-Native-Fix (apiUrl(), iOS+APK neu) + Visual-Audit 99 Befunde + 4-AGENTEN-PARALLELTEAM (Fix/Testversand-Tracking/Glass-Higgsfield/Modellkette) + Gegenprüfungs-Lektion: Plan-Pastes erst gegen Live-Stand prüfen (7/8 Alt-Blöcke schon erledigt); TestFlight = Apple-gated
+description: ATLAS 07.09. STAND — 3 Plattformen live + Capacitor-Fix + Sticky-Hint-Fix (C4wS_bJN) + 6-AGENTEN-PARALLELTEAM (Fix/Tracking/Glass✅/Modelle✅/Marketing/QA) + 16-Modell-Kette + higgsfield-Skills installiert; Deploy-Stau-Lektion — pro Agenten-Abschluss deployen, nicht sammeln; Cache-Falle 3× — Live-Hash-Beweis + ?v=-Link; Plan-Pastes erst gegenprücken
 metadata:
   node_type: memory
   type: project
@@ -2337,6 +2338,25 @@ metadata:
 **NACHTRAG (01.09. spät, „du hast nichts in cline cli implementiert"):** Skills-Symlinks in ~/.cline/skills/ waren wirkungslos für die CLI — Slash-Commands kommen in Cline CLI aus **~/.cline/workflows/** (bewiesen durch seine /00…/04), Regeln aus **~/.clinerules**. Fix ausgeführt: workflows/05-glm-build.md, 06-deve.md, 07-wayfinder.md angelegt + GLM-Regeln an ~/.clinerules angehängt. Sein Screenshot bewies parallel: Modell glm-first griff in der CLI bereits (providers.json wirkt). Details [[cline-cli-befehle-mechanik]].
 
 **NACHTRAG 2 (05.09., User-Validierung der Pipeline):** Sascha forderte SELBST an: „teste die pipeline die workflow mit folgendem ziel erstelle retrogame sonic the hedgehog - jump and run" — mit Skill-Tags inkl. glm-build/deve/wayfinder/cavecrew. Der komplette Director-Lauf lief E2E ohne Rückfragen und ohne Einwand (Details [[omniroute-verkabelung]]). Einordnung: Die Erfindungs-Korrektur oben bleibt gültig (nie als von ihm abgesegnete „Trigger-Sprache" verkaufen), ABER glm-build/deve sind damit einmal von ihm explizit als Workflow beauftragt und erfolgreich erlebt — nicht mehr nur meine Eigenbauten.
+
+## higgsfield-skills-installiert
+
+---
+name: higgsfield-skills-installiert
+description: higgsfield-ai/skills seit 07.09. installiert (8 Skills, ~/.agents/skills/higgsfield-*) — Design-Quelle für Apple-Liquid-Glass; Zoetrop existiert NICHT (GitHub 0 Treffer) — nie wieder suchen
+metadata:
+  node_type: memory
+  type: reference
+  originSessionId: sess_d4dc6589-a85c-41e6-9c70-94b6ea6e63e3
+---
+
+**`npx -y skills add higgsfield-ai/skills` = Exit 0 (07.09., in ATLAS-Glass-Agent angewendet).** 8 Skills unter `~/.agents/skills/higgsfield-*`: brandkit, generate, marketplace-cards, product-photoshoot, soul-id, video-explainer, **websites**, youtube-thumbnail.
+
+**Design-Schlüsselquelle:** `higgsfield-websites/references/design-taste-frontend.md` — Appendix C „Apple Liquid Glass: Honest Web Approximation" (1px helle Oberkante, inset-Toplicht, Spektral-Highlights mit Alpha ≤ 0.08, Subtilität) + „1px inner border für physical edge refraction" + „motion must be motivated" (Spring statt linear).
+
+**Angewendet in ATLAS `src/glass/` (07.09., tsc 0):** FluidScene = MeshPhysicalMaterial (transmission 0.75, ior 1.4, iridescence 0.45/1.3, clearcoat, attenuation Amber/Cyan) + RoomEnvironment/PMREMGenerator (prozedurale Env-Map — echte Glasreflexionen OHNE Netz, Teil von three 0.185) + orbitierende Amber/Cyan-PointLights + 3-Sinus-Vertex-Deformation mit 2. Oktave; Tilt/GlassPlate = EDGE_LIGHT (inset box-shadow oben weiß 0.30, Cyan unten) + 1px EDGE_RING via mask-composite (xor/exclude, Safari 16.4+) + tilt-abhängiger Specular-Sweep über CSS-Vars `--sx`/`--sr`; Static-Fall (Touch/reduced-motion) rendert passive Glaskante ohne JS.
+
+**Zoetrop = NICHT existent (definitiv, 07.09. per GitHub-API geprüft: `search/repositories?q=zoetrop+skills` → total_count 0; `npx skills add zoetrop` bricht ab).** Sascha erwähnt es immer wieder („aktiviere zoetrope skill") — ehrlich melden, nicht nachbauen/täuschen ([[sascha-erfundene-konventionen]]). Verwandt: [[atlas-master-app-verhaeltnis]], [[skill-routing]].
 
 ## ios-simulator-cua-testing
 
@@ -2751,6 +2771,10 @@ Sascha (06.09., nach C2-Fertigmeldung): „genug geplant bitte erst melden wenn 
 **Why:** Jeder Zwischenbericht („nächstes baue ich X", Status-Geplänkel) empfindet er als weiteres Planen statt Arbeiten. Er will die Fertig-Meldung EINMAL, mit Beweisen, wenn wirklich alles aus seiner Sicht erledigt ist — Restliste mit seinen eigenen verbleibenden Aktionen (z. B. Installationen) klar benannt.
 
 **How to apply:** Bei „meld erst wenn fertig" / „eigenständig fertig": (1) todos auf die Reststufen setzen, dann STUMM abarbeiten — build→deploy→Asset-Parität→commit je Stufe, keine Chat-Zwischenberichte; (2) E2E-Verifikation der fertigen Sache (nicht nur build-grün); (3) EIN finaler Bericht: Ergebnis-Zeile, Beweis-Tabelle, Rest = nur User-Aktionen; (4) PLAN.md/STATUS.md final aktualisieren+committen statt zu erzählen. Verwandt: [[sascha-3-saeulen-parallelarbeit]] (autonom-weitermachen-Befehle), [[sascha-was-signal]] (Kürze), [[anti-luegen-vertrag]] (Beweise in der Meldung).
+
+**🔴 GRENZE DER REGEL (07.09. gelernt):** „Erst melden wenn fertig" gilt für CHAT-Berichte — NICHT für Deploys! Sascha prüft die Live-App selbst zwischendurch („ES IST NICHTS FERTIG … lösch mal den cache damit ich irgendwas sehe"). Bei Parallel-Agenten-Teams: **nach JEDEM abgeschlossenen Agenten inkrementell deployen** (seriell durch den Hauptagenten — das verhindert Alt-Bundle-Kollisionen; das WARTEN auf alle ist der Fehler), sonst sieht er Wochen-Stand und wütet. Chat-Stille ≠ Deploy-Stau.
+
+**🔴 2. GRENZE (07.09. sidechat): „fertig" = SELBST LIVE ANGESCHAUT.** Nach „kein Barbulls-Rebrand, sieht aus wie vorher — öffne doch den verficktne BROWSER und schau selber nach" bestätigte die eigene Live-Inspektion ECHTE Defekte (Blob-Canvas lag über dem Content und fraß Klicks), obwohl Deploy+HTTP-200+Asset-Parität bewiesen waren. **Deploy-Beweis ≠ Sicht-Beweis:** Vor jeder Fertig-Meldung die UI-States SELBST screenshoten (agent-browser auf Prod, simctl im Simulator) und die Screenshots als Beweise liefern — nicht nur curl/Build-Logs. Sein „schau selber nach" ist wörtlich gemeint.
 
 ## sascha-plan-vollstaendigkeit
 

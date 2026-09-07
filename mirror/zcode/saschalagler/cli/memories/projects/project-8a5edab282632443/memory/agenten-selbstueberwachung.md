@@ -26,4 +26,6 @@ Bewährte Zusatzregeln: Subagent-Prompts müssen den /bin/bash-c-Workaround enth
 
 **Zonen-Kollisionen aktiv koordinieren:** Vor dem Start jedes Agents die Datei-Zonen der LAUFENDEN Agents deklarieren („FASS NICHT AN: …") UND Überschneidungen im GO-Punkt auflösen (z. B. „Überspringe Schritt 4 OverviewTab — übernimmt der Parallel-Agent").
 
+**🔴 PRÜFINSTANZ-REALAUSFÜHRUNG (07.09., Sascha-Wut „WO IST DIE PRÜFINSTANZ DIE STUNDEN ARBEIT WTF"):** Der geforderte unabhängige Reviewer ist konkret der **document-skills:judge-Subagent** — bekommt gerenderte PNGs (QA-LIVE/*.png) + User-Akzeptanz-Kriterien (erster Eindruck kommerziell 40 % / Ästhetik 20 % / Layout-Proportionen 20 % / Bedienbarkeit 15 % / Branding 5 %), urteilt hart PASS|FAIL je Screen. **Erstes Urteil: 0/6 PASS** („so bricht der zahlende Kunde nach 10s im Onboarding ab") — obwohl ich dieselbe App zuvor „live bewiesen" hatte. **Abnahme-Gate ab jetzt: Wer baut ≠ wer abnimmt — fertig gilt erst bei Judge-PASS auf FRISCHEN Screens nach dem Fix-Deploy, nie per Selbstanzeige des Bau-Agenten.** Judge braucht keine Deploy-Umgebung, nur Beweis-PNGs; sein Urteil = direkt die priorisierte Fix-Liste (Top-5 mit P0/P1).
+
 Verwandt: [[sascha-3-saeulen-parallelarbeit]] (3-Säulen-Rahmen), [[autoclaw-team-kopplung]] (AutoClaw als weiterer Builder), [[omniroute-verkabelung]] (2-Parallel-Subagenten-Standard fürs UI-Testen).
