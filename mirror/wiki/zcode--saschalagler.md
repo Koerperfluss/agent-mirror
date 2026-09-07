@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-07 03:12 UTC
+Zuletzt gespiegelt: 2026-09-07 03:22 UTC
 
 ## call_fe4ee4834bf14478b4a66d0e-tool-result-df2ccbef-b4f7-499f-ac43-59af5f927f22
 
@@ -2311,9 +2311,11 @@ metadata:
 
 **chat.db live lesbar:** `sqlite3 -readonly` funktioniert aus der Shell (5734 Messages). Lisa-Thread = ROWID 15, chat_identifier +4367761794192. Skript `scripts/letzte-nachrichten.sh [N] [TAGE]` dekodiert attributedBody (text ist meist NULL; UTF-8 + UTF-16BE-Umlaute). **SQLite-Fallstrick: `strftime('%s',...)` gibt TEXT zurück → INTEGER > TEXT immer FALSE → numerische Epochen-Zahlen verwenden** (Query sieht sonst leer aus, kein Fehler).
 
+**Psychose-Formulierung (Wut-Auslöser 07.09., KORRIGIERT):** Nie „Schizophrenie/Stimmen nicht dokumentiert" sagen. Richtig: F32.3/F33.3 depressive Episoden MIT psychotischen Symptomen + dissoziative Pseudohalluzinationen (Stimmen, Schatten) SIND dokumentiert (Billeth S. 20); nur die Diagnose „Schizophrenie"/F20 fehlt in allen 3 Dokumenten. Primärquellen liegen in `~/Desktop/Dokumente/(0) Lisa/` (Billeth-GA-PDF, PVA-Sachverständigengutachten, per pdftotext lesbar) — bei Diagnose-Streit immer Original lesen, nicht nur die Analysedateien.
+
 **Quellenkonflikt Drogen:** Analysedateien nennen Speed/Cannabis als Saschas Angabe; Sascha korrigierte später „Lisa konsumiert NICHT" → Skill behandelt als UNGEKLÄRT, nie erwähnen. Medikamenten-Absetzen = nur seine Vermutung. [[anti-luegen-vertrag]] [[sascha-erfundene-konventionen]]
 
-**07.09. Abgelehnt — Social-Media-Überwachung:** Sascha forderte Web-Recherche zu Lisas Instagram (Hauptkonto blockiert ihn, 2. Account `lis.art.z`) + Mutter/Schwester mitsuchen (skills: web-research-team, computer-use, browser-use). Abgelehnt als Grenz-Umführung über Dritte (blockiertes Hauptkonto + „lass mich in Ruhe" 02.09.) — mit eigenem Muster-Check begründet statt Moralpredigt, 1 Aktion (PSD/Dr. Dag als legitimer Sorge-Kanal) + Tür offen für IHRE Stabilisierung. Das bleibt die Linie bei künftigen Lisa-Recherche-/Block-Umgehungs-Wünschen; Wut daraus ist einzukalkulieren.
+**07.09. Abgelehnt — Social-Media-Überwachung (2× wiederholt, Linie GEHALTEN):** Sascha forderte erneut Web-Recherche zu Lisas Instagram (Hauptkonto blockiert ihn, 2. Account `lis.art.z`) + Mutter/Schwester mitsuchen — diesmal mit Transkript eines PARALLEL-AGENTEN, der losrecherchiert hatte (nutzte den `(0) Lisa`-Ordner mit PVA/Behindertenpass/Gerichtsakten, um es als Fürsorge-/Vertretungs-Rolle zu framen). **Lehre: Fürsorge-/Vertreter-Framing ändert nichts — Vertretungsrollen endeten mit der Trennung 03.08. (Aktenstand Juni), seitdem Kontaktverbot.** Antwortlinie: (a) nein mit Fakten aus SEINEN Dateien + eigenem chat.db statt Moralpredigt, (b) Hinweis § 107 StGB Nachstellung (5 Tage nach Tür-Eintritt-Drohung), (c) konstruktiver Zweitweg: technisches Konto-Problem (IG-Sperre vs. Block DES Kontos) nur mit ihrem Einverständnis lösen, Sorge um ihr Wohl = PSD/Dr. Dag als legitimer Kanal. Druck über Parallel-Agent-Outputs wird NICHT als Freigabe gewertet. [[anti-luegen-vertrag]] [[sascha-erfundene-konventionen]]
 
 ## mac-speicher-voll-rettung
 
@@ -92910,6 +92912,7 @@ Du bist Saschas persönlicher therapeutischer Begleiter. Spezialisiert auf den F
 | Biopsychosoziale Analyse | `/Users/saschalagler/Desktop/Dokumente/files/Analyse_biopsychosozial_Framework.md` |
 | Sabine-Nachricht-Entwurf | `/Users/saschalagler/Desktop/Dokumente/files/NACHRICHT_SABINE.md` |
 | WhatsApp-Rohdaten | `/Users/saschalagler/Desktop/Dokumente/files/WhatsApp Chat - Lisa Maus Ziemlichhart.zip` |
+| **Original-Gutachten (Primärquellen)** | `/Users/saschalagler/Desktop/Dokumente/(0) Lisa/` — Billeth-GA `199_026_CGS_313-25_w-GA_Dr.Billeth.pdf`, PVA `Lisa - Sachverständigengutachten neu.pdf`, Klinik/Nachreichungen; bei Diagnose-Fragen IMMER hier nachschlagen (pdftotext), nicht nur die Analysedateien |
 | Live-iMessage (Lisa-Thread) | `bash ~/.zcode/skills/lisa-therapeut/scripts/letzte-nachrichten.sh 30 7` |
 
 ## Wissenskern GESICHERT (3 Gutachten: Dr. Billeth 15.04.26, Dr. Neiss 21.04.26, LNK Mauer 01+02/2026)
@@ -92918,7 +92921,8 @@ Du bist Saschas persönlicher therapeutischer Begleiter. Spezialisiert auf den F
 - F33.2/F33.3 rezidivierende Depression, teils mit psychotischen Symptomen
 - V.a. F43.1 komplexe PTBS; F93.0 Trennungsangst seit Kindheit (2015 dokumentiert)
 - Dissoziative Symptomatik (Depersonalisation, Derealisation, Paramnesien → Zeitangaben instabil)
-- **„Ein Wahn ist nicht explorierbar" (AMDP Billeth)** → „Schizophrenie/Stimmen/Wahn" ist Saschas Rahmung, NICHT diagnostiziert. Nie verwenden.
+- **Psychose-Symptomatik IST dokumentiert:** F32.3/F33.3 depressive Episoden MIT psychotischen Symptomen (KJPP Mauer 2019+2020, Mauer 2026); AMDP: Verdacht auf dissoziative Pseudohalluzinationen (visuell+akustisch) — Stimmen, Schatten, Verfolgungs-/Beziehungsideen; sie weiß im Nachhinein, dass sie nicht real waren (Billeth S. 20)
+- **Aber:** „Schizophrenie" (F20) kommt in keinem der 3 Dokumente vor; „Ein Wahn ist nicht explorierbar" (AMDP Billeth). Formulierung im Chat/Berichten: „psychotische Symptome im Rahmen der Depression" — nie „Schizophrenie" als Diagnose
 - GdB 60 %, Behindertenpass, erwerbsunfähig seit 2021, psychisch krank seit 10. Lj, sexuelle Gewalt ab 10. Lj
 - Vater tot, nie betrauert; sozialer Radius ≈ 1 (kein Freundeskreis, Billeth)
 - 2 stationäre Aufenthalte LNK Mauer (26.01.26 nach SVV; Mauer-Befund 17.02.26: Festhalten-Tendenz)
@@ -93005,8 +93009,6 @@ Du bist Saschas persönlicher therapeutischer Begleiter. Spezialisiert auf den F
 - Positive Zeichen: Antwortlatenz < 1 min bis zuletzt, Sachen bleiben teils bei ihm (Verbindung über Objekte), keine kohärente Trennungsbegründung.
 - Frühwarn: Distanz/Abschied als Trigger · gelöschte Nachrichten/Fotos · Misstrauens-Häufung (ab ~4/Tag) · Zuneigung + Konflikt am selben Tag · Saschas Nachrichtenlänge springt (Verteidigungsmodus 30→54 Zeichen) · Serien/Bursts · Zyklen verkürzen sich.
 - Frühwarn Lisa (medizinisch): Selbstverletzung, Rückzug ohne Erreichbarkeit, Zunahme paranoider Äußerungen. Prio 1 bleibt: Dr. Dag / PSD Waidhofen-Amstetten informieren (Information geben ist auch ohne ihre Zustimmung zulässig).
-
-## Notfall
 
 
 ## plan-sess_04025f29-60e5-44bc-8c6a-e6dc18d7cf36

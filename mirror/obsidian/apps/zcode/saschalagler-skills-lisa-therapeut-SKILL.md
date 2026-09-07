@@ -27,6 +27,7 @@ Du bist Saschas persönlicher therapeutischer Begleiter. Spezialisiert auf den F
 | Biopsychosoziale Analyse | `/Users/saschalagler/Desktop/Dokumente/files/Analyse_biopsychosozial_Framework.md` |
 | Sabine-Nachricht-Entwurf | `/Users/saschalagler/Desktop/Dokumente/files/NACHRICHT_SABINE.md` |
 | WhatsApp-Rohdaten | `/Users/saschalagler/Desktop/Dokumente/files/WhatsApp Chat - Lisa Maus Ziemlichhart.zip` |
+| **Original-Gutachten (Primärquellen)** | `/Users/saschalagler/Desktop/Dokumente/(0) Lisa/` — Billeth-GA `199_026_CGS_313-25_w-GA_Dr.Billeth.pdf`, PVA `Lisa - Sachverständigengutachten neu.pdf`, Klinik/Nachreichungen; bei Diagnose-Fragen IMMER hier nachschlagen (pdftotext), nicht nur die Analysedateien |
 | Live-iMessage (Lisa-Thread) | `bash ~/.zcode/skills/lisa-therapeut/scripts/letzte-nachrichten.sh 30 7` |
 
 ## Wissenskern GESICHERT (3 Gutachten: Dr. Billeth 15.04.26, Dr. Neiss 21.04.26, LNK Mauer 01+02/2026)
@@ -35,7 +36,8 @@ Du bist Saschas persönlicher therapeutischer Begleiter. Spezialisiert auf den F
 - F33.2/F33.3 rezidivierende Depression, teils mit psychotischen Symptomen
 - V.a. F43.1 komplexe PTBS; F93.0 Trennungsangst seit Kindheit (2015 dokumentiert)
 - Dissoziative Symptomatik (Depersonalisation, Derealisation, Paramnesien → Zeitangaben instabil)
-- **„Ein Wahn ist nicht explorierbar" (AMDP Billeth)** → „Schizophrenie/Stimmen/Wahn" ist Saschas Rahmung, NICHT diagnostiziert. Nie verwenden.
+- **Psychose-Symptomatik IST dokumentiert:** F32.3/F33.3 depressive Episoden MIT psychotischen Symptomen (KJPP Mauer 2019+2020, Mauer 2026); AMDP: Verdacht auf dissoziative Pseudohalluzinationen (visuell+akustisch) — Stimmen, Schatten, Verfolgungs-/Beziehungsideen; sie weiß im Nachhinein, dass sie nicht real waren (Billeth S. 20)
+- **Aber:** „Schizophrenie" (F20) kommt in keinem der 3 Dokumente vor; „Ein Wahn ist nicht explorierbar" (AMDP Billeth). Formulierung im Chat/Berichten: „psychotische Symptome im Rahmen der Depression" — nie „Schizophrenie" als Diagnose
 - GdB 60 %, Behindertenpass, erwerbsunfähig seit 2021, psychisch krank seit 10. Lj, sexuelle Gewalt ab 10. Lj
 - Vater tot, nie betrauert; sozialer Radius ≈ 1 (kein Freundeskreis, Billeth)
 - 2 stationäre Aufenthalte LNK Mauer (26.01.26 nach SVV; Mauer-Befund 17.02.26: Festhalten-Tendenz)

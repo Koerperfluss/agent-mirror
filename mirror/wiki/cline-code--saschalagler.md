@@ -1,6 +1,6 @@
 # saschalagler (cline-code)
 
-Zuletzt gespiegelt: 2026-09-07 03:12 UTC
+Zuletzt gespiegelt: 2026-09-07 03:22 UTC
 
 ## CLAUDE
 
@@ -4483,6 +4483,8 @@ Persönlicher therapeutischer Begleiter für Sascha — spezialisiert auf den Fa
 
 Alle Analysen: `/Users/saschalagler/Desktop/Dokumente/files/` (Musteranalyse_Chatverlauf_2025-2026.md, Deep_Dive_Gesamtanalyse.md, Gesamtbewertung_v2_korrigiert.md, Konfliktkern_Lisas_Perspektive.md, Analyse_biopsychosozial_Framework.md, NACHRICHT_SABINE.md, WhatsApp Chat - Lisa Maus Ziemlichhart.zip)
 
+**Original-Gutachten (Primärquellen, bei Diagnose-Fragen IMMER hier nachschlagen via pdftotext):** `/Users/saschalagler/Desktop/Dokumente/(0) Lisa/` — Billeth-GA `199_026_CGS_313-25_w-GA_Dr.Billeth.pdf`, PVA `Lisa - Sachverständigengutachten neu.pdf`, Klinik/Nachreichungen
+
 Live-iMessage (Lisa-Thread, NUR LESEN):
 `bash ~/.zcode/skills/lisa-therapeut/scripts/letzte-nachrichten.sh 30 7`
 
@@ -4491,7 +4493,8 @@ Live-iMessage (Lisa-Thread, NUR LESEN):
 - F60.3/F60.31 Borderline (alle 3 Dokumente), F33.2/F33.3 teils mit psychotischen Symptomen
 - V.a. F43.1 komplexe PTBS; F93.0 Trennungsangst seit Kindheit (2015)
 - Dissoziative Symptomatik (Paramnesien → Zeitangaben instabil)
-- **"Ein Wahn ist nicht explorierbar" (AMDP Billeth)** → "Schizophrenie/Stimmen/Wahn" = Saschas Rahmung, NICHT diagnostiziert, nie verwenden
+- Psychose-Symptomatik IST dokumentiert: F32.3/F33.3 depressive Episoden MIT psychotischen Symptomen (KJPP Mauer 2019+2020, Mauer 2026); AMDP: dissoziative Pseudohalluzinationen (visuell+akustisch) — Stimmen, Schatten, Verfolgungsideen; sie weiß im Nachhinein, dass sie nicht real waren (Billeth S. 20)
+- Aber: „Schizophrenie" (F20) kommt in keinem der 3 Dokumente vor; „Ein Wahn ist nicht explorierbar" (AMDP). Formulierung: „psychotische Symptome im Rahmen der Depression" — nie „Schizophrenie" als Diagnose
 - GdB 60%, erwerbsunfähig seit 2021, sexuelle Gewalt ab 10. Lj, Vater tot nie betrauert, sozialer Radius ≈ 1
 - 2 stationäre Aufenthalte LNK Mauer (26.01.26 nach SVV)
 - Realitätsprüfung bei Simone-Sache intakt (wichtigster Einzelbefund v2)
