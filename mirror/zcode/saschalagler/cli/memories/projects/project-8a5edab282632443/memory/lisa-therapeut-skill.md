@@ -1,7 +1,6 @@
 ---
 name: lisa-therapeut-skill
-description: Eigener Therapeut-Skill /lisa-therapeut gebaut (07.09.26) — Fall
-  Lisa, 3 Standorte, chat.db-Skript live; Papa-Satz war Saschas eigene Nachricht
+description: Eigener Therapeut-Skill /lisa-therapeut gebaut (07.09.26) — Fall Lisa, 3 Standorte, chat.db-Skript live, Chronologie + Sabine-Export-Fund, IG-Fall abgeschlossen; PSD-Gmail-Threads LIVE gefunden (18.05.26, PSD antwortete 2× → im Bestandsthread antworten statt Kaltanruf) + Florian Hehenberger-Rautner; DEIN_PLAN_JETZT.md = aktiver Plan (Funkstille reaktiv, kein Timeout, PSD-Mail heute); IG-Deutungs-Disziplin (beweist nur Existenz, nie Zustand); Papa-Satz war Saschas eigene Nachricht
 metadata:
   node_type: memory
   type: project
