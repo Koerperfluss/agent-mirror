@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-08 04:58 UTC
+Zuletzt gespiegelt: 2026-09-08 05:08 UTC
 
 ## code-architect
 
@@ -1220,7 +1220,11 @@ Bei Fachfragen (z. B. Trainings-Übungen) fordert er explizit „clinical reason
 
 # Memory Index
 
-- [Atlas-Stand 08.09.](atlas-stand-2026-09-08.md) — Web fix (Cache/Coach-Proxy/Interview live), aber iPhone-App = altes Bundle → cap sync + Rebuild + NEUÜBERTRAGUNG nötig; TestFlight blockiert (Apple-ID/2FA); Build immer VITE_GEMINI_API_KEY= leer; nie echtes Chrome-Profil automatisieren; Pfade ATLAS_MASTER ×2 + cali-coach-atlas-final
+- [Atlas-Stand 08.09.](atlas-stand-2026-09-08.md) — Web fix (Cache/Coach-Proxy/Interview live), iOS-Dev-Setup komplett (Developer Mode ENABLED); FINALER Plan v2: AUFBAU zuerst (T1 Wissensgraph→Bildungs-Archiv, T2 Übungs-DB CRUD, T3 Liquid-Glass-Redesign Barbulls-Logo, T4 Verkaufs-Agent, T5 QA), EIN Deploy + iPhone-Neuübertragung erst am Ende (F1–F3); 5 uncommitted Files nur committen; Build immer VITE_GEMINI_API_KEY= leer; nie echtes Chrome-Profil automatisieren
+
+- [Aufbau vor Deploy](feedback-aufbau-vor-deploy.md) — 08.09. scharf korrigiert: bei anstehendem Umbau NIE erst die alte Version deployen/perfektionieren — Aufbau-Tickets zuerst, EIN Deploy der finalen Version am Ende nach Abnahme-GO
+
+- [Prüfinstanz-Pflicht](feedback-pruefinstanz-pflicht.md) — 2× scharf eingefordert (07.–08.09.): jeder mehrstufige Plan braucht eine explizite, unabhängige PRÜFINSTANZ mit Vetorecht („Wer gebaut hat, prüft nicht") — @reviewer + ui-ux-tester + Performance-Check nach JEDER Stufe, PASS/FAIL nur an Sascha; Reviewer VOR Ausführung hat Plan v1 schon 4× gerettet
 
 - [Skills-Architektur 07.-08.09.](skills-architektur-2026-09-07.md) — .zcode/skills BEWUSST leer (laden nur via .agents, sonst Doppel!); Konsolidierung 08.09. prüfinstanz-geprüft: 126→96 Skills, 20 archiviert, second-brain-Split 78→7 KB; Standard-Agents + loki-watcher (Fanout-Cap 3) + /standardskill, /init, /kanban, /todo; Full-Stack = loki-dev als Director; NIE ohne reviewer-Prüfinstanz konsolidieren; Einsatz im ATLAS-Chat vereinbart (TAKEOVER „übernimm Atlas") — Achtung: parallele Atlas-Tab-Session plant eigene Skill-Merges, immer erst Disk-Stand prüfen
 
@@ -1305,7 +1309,7 @@ Verwandt: [[google-cloud-genai-credit]]
 name: atlas-stand-2026-09-08
 description: Atlas Cali Coach Stand 08.09. (sess_d4dc6589) — Web fix ✅, iOS-Dev-Setup
   komplett (Developer Mode enabled), v6-Build wartet auf Deploy, 5 uncommitted Files,
-  Master-Prompt (P0–P4) übergeben
+  Master-Prompt erweitert auf P0–P9 (inkl. Liquid-Glass-Redesign, Übungs-DB, Verkaufs-Agent)
 metadata:
   node_type: memory
   type: project
@@ -1319,7 +1323,12 @@ Atlas Cali Coach — Stand 08.09.2026 (Handoff aus ZCode-Session sess_d4dc6589):
 - **iOS-Dev-Setup KOMPLETT (08.09. verifiziert):** Xcode 27.0.0-Beta.6 unter `/Applications/Xcode-27.0.0-Beta.6.app` (xcode-select korrekt, Lizenz akzeptiert, kaputtes Xcode-26.6-Teilpaket gelöscht); iPhone 16 Pro Max iOS 27.0 gekoppelt; **Developer Mode ENABLED** (per devicectl verifiziert). iPhone-App neu übertragen = `npm run build` → `npx cap sync ios` → Build via Xcode 27 → Device-Install. Für TestFlight-Verteilung bleibt Apple-ID/2FA (bahldorfa@gmail.com) der Nutzer-Schritt.
 - **Atlas v6 „Clean & Stable"** gebaut (Grafik-Extremismus aus src/index.css gestrippt, 137→75 Zeilen; Bundle index-BlhLFqDd.js) — **Deploy wartet auf GO**; Rollback: `git checkout 96fffe7 -- src/index.css`.
 - **5 uncommitted Files in 3 Repos:** firebase.json ×3 (Cache-Header), ATLAS_MASTER/app/src/coach/CoachChat.tsx (+108), app/src/glass/FluidScene.tsx (±1) → erst prüfen/committen (P0), dann Deploy (P1).
-- **Master-Prompt übergeben** („fordere gleich alles"): P0 uncommitted committen → P1 v6-Deploy → P2 iPhone+Android cap sync/Rebuild/Neuübertragung → P3 E2E-Beweis Live-Interview in isoliertem Profil → P4 Coach-Chat Tasks 20–22 + QA-Gate.
+- **Master-Prompt FINAL v2 (08.09., nach Nutzer-Korrektur — siehe [[feedback-aufbau-vor-deploy]]): AUFBAU ZUERST, Deploy EINMAL am Ende.** Struktur via wayfinder:
+  - Schritt 0 NUR sichern: 5 uncommitted Files committen (KEIN Deploy).
+  - T1 Wissensgraph (graphify-out/ + WISSENS-GRAPH/) → Archiv „Bildungsbereich" (query-fähig, Index+README) · T2 Übungsdatenbank VOLL EDITIERBAR (CRUD, Suche/Filter, JSON-Export/Import) · T3 UI/UX-Redesign „LIQUID GLASS" (modern, 3D-fluid, Barbulls-Logo) auf NEUEM Branch mit hartem Performance-Budget (60 fps mobile, Lighthouse-DONE; v6 bleibt Rollback-Basis) — Coach-Chat Tasks 20–22 fließen ins neue UI ein · T4 Verkaufs-Agent passives Einkommen (Konzept → MVP-Route am Onboarding-Finale) · T5 QA-Gate gesamt in ISOLIERTEM Browser-Profil.
+  - FINALE erst nach Abnahme-GO: F1 EIN Deploy der finalen Version (Headers drin) · F2 iPhone NEUÜBERTRAGUNG (build → cap sync ios → Xcode-27-Build → devicectl; DONE = neue UI+Übungs-DB auf dem Gerät) + Android APK/Download-Hub · F3 STATUS.md + Releases.
+  - **PRÜFINSTANZ als eigene Rolle mit Vetorecht** (Nutzer forderte sie explizit, siehe [[feedback-pruefinstanz-pflicht]]): unabhängig vom Bau-Team ("Wer gebaut hat, prüft nicht"), prüft nach JEDER Stufe gegen DONE-WHEN (@reviewer Code/Regressionen + ui-ux-tester visuell + Lighthouse/60 fps), PASS/FAIL-Befundtabellen nur an Sascha, FAIL = Stufe zurück — kein Weiterarbeiten bis PASS.
+- **Master-Prompt FINAL v3 = VOLLAUTOMATIK (08.09., letzte Version — „mir reichts ich will verkaufen"):** Nutzer will den Lauf KOMPLETT ohne sich selbst — alle GO-Gates (Deploy/Abnahme/Richtungswahl Redesign) entfallen, Agent entscheidet alles. Nur 4 Stopp-Punkte bleiben: (1) keine Löschung meiner Nutzerdaten ohne Begründung, (2) keine echten Zahlungen/Abschlüsse im Namen Saschas (Payment-Link einrichten erlaubt+erwünscht), (3) NIE echtes Chrome-Profil/ID-Austria-Tabs — isolierte Profile only, (4) kein git push in fremde Repos (Koerperfluss/* = freigegeben). **Priorität VERKAUF zuerst**: Sales-MVP in bestehender UI — Pro-Abo-Paywall am Ende des adaptiven Interviews („Dein Plan ist fertig — schalte Pro frei"), Stripe-Payment-Link (kein Backend), Free-Tier bleibt — deployen + in 3 Browsern verifizieren, DANACH Aufbau T1–T3 (Redesign-Richtung wählt der Agent selbst, Kriterium Brand + 60 fps + Lighthouse). Finale automatisch: Firebase-Deploy finale Version → iPhone (build → cap sync ios → Xcode-27-Build → devicectl) + Android APK → Download-Hub. Schlussbericht = EINE Tabelle (was ist live | Link | Preis | Wie kauft ein Kunde | Umsatz-Logik | Risiken) — das Einzige, was Sascha liest. Prompt liegt kopierfertig im Chat vom 08.09. (Block „VOLLAUTOMATIK-MODUS"); ExitPlanMode dahinter wurde abgelehnt/ignoriert („was?") — reines Text-Artefakt brauchte kein Approval-Fenster, siehe [[feedback-one-action-not-tables]].
 - **Eiserne Regeln:** Build immer mit `VITE_GEMINI_API_KEY=` (leer, sonst landet der Key im Bundle). Kein Deploy/git push ohne Sascha-GO. Browser-Automatisierung NIE im echten Chrome-Profil (ID-Austria-Login-Tab!) — isoliertes Profil. [[skills-architektur-2026-09-07]] [[macos-27-beta-status]]
 
 ## autoclaw-full-stack-builder
@@ -1395,6 +1404,25 @@ Sascha (06.09.2026, 2× explizit wütend): „du sollst den agent ODER die agent
 **How to apply:** Wenn eine Aktion nur per GUI geht: macOS Accessibility nutzen und sie selbst ausführen. Bewährtes Rezept (live bewiesen an AutoClaw-Create-Dialog): Fenster-Bounds via System Events holen → App frontmost setzen (`set frontmost of process … to true`, sonst landen Klicks im falschen Fenster!) → `click at {x,y}` (Element-Log im Ergebnis bestätigt das Ziel) → für Textfeld-Eingabe keystroke NICHT vertrauen (Fokus geht verloren), sondern rekursiv AX-Element suchen (UI-elements-Walk) + `set value of <textfield>` → Buttons per Rekursion finden und `click`. Verifikation per Screenshot (`screencapture -l <windowID>`, Window-ID via Quartz CGWindowList) und/oder Config/Runtime-Datei-Check. Elektro­nen-Apps (Electron) exponieren fast keine nativen AX-Elemente — Koordinaten aus Vision/Prozentangaben + Bestätigungs-Log sind der Weg.
 
 **Ergänzt 06.09. spät (Chat-Anlegen + Klick-Fallen):** Saschas Erwartung geht weiter: auch **Unterhaltungen/Chats pro Projekt grafisch sortiert anlegen** („DU HAST NOCH IMMER NICHT DIE CHATS ANGELEGT GRAFISCH SORTIERT") — in AutoClaw je Projekt einen Chat im passenden Agenten, benannt/sortierbar. Klick-Fallen dabei live gelernt: (1) hängendes **screencaptureui-Overlay** (von Nutzer-Screenshots) frisst jeden Klick-Dispatch → `killall screencaptureui` zuerst prüfen; (2) Fenster-**Bounds ändern sich** zwischen Aktionen → immer frisch via Quartz holen; (3) beste Loop: Ziel-App frontmost → computer-use `screenshot` → `zoom` → `left_click` (receipt zeigt `resolved_app_ref`-Ziel = Kontrolle) → Text via osascript `keystroke` MIT ASCII (Umlaute vermeiden). Verwandt: [[autoclaw-full-stack-builder]] [[feedback-one-action-not-tables]] [[feedback-gui-not-cli]] [[loki-project-map]]
+
+## feedback-aufbau-vor-deploy
+
+---
+name: feedback-aufbau-vor-deploy
+description: Sascha korrigierte Plan-Reihenfolge scharf („wtf ist los mit dir")
+  — bei anstehendem Umbau/Redesign NIEMALS erst die alte Version
+  deployen/perfektionieren; Aufbau zuerst, EIN Deploy der finalen Version am
+  Ende
+metadata:
+  node_type: memory
+  type: feedback
+  originSessionId: sess_ecb2e5e0-e1f7-46fb-a5b9-a997d5485c8e
+---
+
+Im Atlas-Master-Prompt (08.09.) wollte ich zuerst Deploy + iPhone-Neuübertragung (P0–P2) und danach Redesign/Übungs-DB/Verkaufs-Agent. Sascha: **„was bringt die App ganz zu machen wenn der Aufbau danach kommt? wtf ist los mit dir"** — Reihenfolge umgedreht.
+
+**Why:** Ein Deploy der Zwischenversion ist verschwendete Arbeit, wenn der Aufbau sie gleich ersetzt. „Fertig/live stellen" hat nur am Ende auf der finalen Version Wert.
+**How to apply:** Bei mehrstufigen Plänen mit anstehendem Umbau: (1) vorab nur Daten sichern/committen (Rollback-Basis, kein Deploy), (2) Aufbau-Tickets zuerst (wayfinder-Map), (3) EIN Deploy + Geräte-Übertragung am Ende nach Abnahme-GO. Verwandt: [[feedback-one-action-not-tables]] [[loki-dev-gate-enforcement]] — Kontext [[atlas-stand-2026-09-08]].
 
 ## feedback-doc-design-matters
 
@@ -1494,6 +1522,29 @@ Am 25.08.2026 (Schlussphase der Mac-Sanierung) reagierte Sascha frustriert („w
 
 **How to apply (Ergänzung):**
 19. Verlangt er ein ARTEFAKT (Prompt, Config, Command, Snippet), liefere NUR das Copy-Paste-fertige Artefakt in einem Codeblock — null Erklärung, null Kontext, null Tabellen drumherum. „Erkläre" heißt dann maximal 1–2 Sätze ÜBER dem Block.
+
+**Achte Lektion 08.09. (Atlas-Vollautomatik-Prompt):** Der vollautomatische Atlas-Prompt war fertig geliefert — ich hängte trotzdem noch ein ExitPlanMode-Approval-Fenster dahinter („Plan: kein Systemeingriff, nur Prompt-Text"). Reaktion: „was?" — er verstand nicht, was da von ihm genehmigt werden soll, dabei war alles getan.
+
+**How to apply (Ergänzung):**
+20. Ist das Deliverable reiner TEXT (Prompt/Snippet/Doku) und es gibt nichts auf dem System zu tun: KEIN Plan-Mode, KEIN ExitPlanMode, KEIN Freigabe-Fenster — Artefakt ausgeben, Turn beenden. Approval-Fenster nach bereits geliefertem Ergebnis wirken wie Beschwichtigungs-Ritual und verwirren nur.
+
+## feedback-pruefinstanz-pflicht
+
+---
+name: feedback-pruefinstanz-pflicht
+description: Sascha fordert in jedem Build-/Konsolidierungsplan eine explizite,
+  unabhängige Prüfinstanz mit Vetorecht — "Wer gebaut hat, prüft nicht"
+metadata:
+  node_type: memory
+  type: feedback
+  originSessionId: sess_ecb2e5e0-e1f7-46fb-a5b9-a997d5485c8e
+---
+
+Sascha hat es 2× scharf eingefordert (07.09. „hast du prüfinstanz die logik den sinn analysieren lassen", 08.09. „wo ist die prüfinstanz? du redest nur scheisse"): Jeder mehrstufige Plan braucht eine explizite PRÜFINSTANZ als eigene Rolle — bloßes „@reviewer vor jedem Commit" reicht ihm nicht.
+
+**Why:** Er will eine Kontroll-Ebene, die unabhängig vom Bau-Team validiert und ihm direkt berichtet — strukturelle Trennung statt Absichtserklärungen. Beweis des Nutzens: 08.09. zerriss der Reviewer-Agent den Atlas-Konsolidierungsplan v1 an 4 Punkten (Meta-Verschmelzung = Verlustrisiko, 7 tote Verweise, falsche Grill-These) — die Prüfinstanz VOR Ausführung verhinderte Fehlarbeit.
+
+**How to apply:** In Master-Prompts/Plänen eine eigene „PRÜFINSTANZ"-Sektion: (1) unabhängig vom Implementierer („Wer gebaut hat, prüft nicht"), (2) prüft nach JEDER Stufe gegen DONE-WHEN-Kriterien, (3) PASS/FAIL mit Befund-Tabelle (Ort | Problem | Fix) + Vetorecht (FAIL = Stufe zurück, kein Weiterarbeiten bis PASS), (4) berichtet nur dem Nutzer, nicht dem Bau-Team, (5) in ZCode konkret: @reviewer (Code/Standards/Regressionen) + ui-ux-tester (visuell) + Performance-Check (Lighthouse/60 fps). Auch bei Analysen: Ergebnisse erst gegenprüfen lassen, dann ausführen. [[feedback-aufbau-vor-deploy]] [[loki-dev-gate-enforcement]] [[atlas-stand-2026-09-08]]
 
 ## foerderops-assistent
 
