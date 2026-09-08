@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-08 06:15 UTC
+Zuletzt gespiegelt: 2026-09-08 06:25 UTC
 
 ## code-architect
 
@@ -1220,7 +1220,9 @@ Bei Fachfragen (z. B. Trainings-Übungen) fordert er explizit „clinical reason
 
 # Memory Index
 
-- [Atlas-Stand 08.09.](atlas-stand-2026-09-08.md) — Web fix (Cache/Coach-Proxy/Interview live), iOS-Dev-Setup komplett (Developer Mode ENABLED); FINALER Plan v2: AUFBAU zuerst (T1 Wissensgraph→Bildungs-Archiv, T2 Übungs-DB CRUD, T3 Liquid-Glass-Redesign Barbulls-Logo, T4 Verkaufs-Agent, T5 QA), EIN Deploy + iPhone-Neuübertragung erst am Ende (F1–F3); 5 uncommitted Files nur committen; Build immer VITE_GEMINI_API_KEY= leer; nie echtes Chrome-Profil automatisieren
+- [ZCode Hub 1006 + Netz-Fix](zcode-hub-1006-netz-fix.md) — 08.09.: 1006-Abbrüche = 9,7-GB-Session-Rollout (archiviert in ~/.zcode/cli/log/archive/) + Hotspot/IPv6; Wi-Fi DNS 1.1.1.1/8.8.8.8 + IPv6 OFF gesetzt; OmniRoute localhost:20128 als Fallback-Provider; iPhone „Maximale Kompatibilität" noch offen; Riesige Session-Rollouts nie weiternutzen
+
+- [Atlas-Stand 08.09.](atlas-stand-2026-09-08.md) — Web fix (Cache/Coach-Proxy/Interview live), iOS-Dev-Setup komplett (Developer Mode ENABLED); FINALER Plan v3 = VOLLAUTOMATIK (Zero-Question, Verkaufs-MVP zuerst: Pro-Abo + Stripe-Link am Interview-Finale; dann T1 Wissensgraph→Bildungs-Archiv, T2 Übungs-DB CRUD, T3 Liquid-Glass-Redesign Barbulls-Logo, T5 QA-Gate), EIN Deploy + iPhone-Neuübertragung automatisch am Ende; nur 4 Stopp-Punkte (Nutzerdaten/Zahlungen/echtes Chrome-Profil/fremde Repos); Build immer VITE_GEMINI_API_KEY= leer
 
 - [Aufbau vor Deploy](feedback-aufbau-vor-deploy.md) — 08.09. scharf korrigiert: bei anstehendem Umbau NIE erst die alte Version deployen/perfektionieren — Aufbau-Tickets zuerst, EIN Deploy der finalen Version am Ende nach Abnahme-GO
 
@@ -1330,6 +1332,7 @@ Atlas Cali Coach — Stand 08.09.2026 (Handoff aus ZCode-Session sess_d4dc6589):
   - **PRÜFINSTANZ als eigene Rolle mit Vetorecht** (Nutzer forderte sie explizit, siehe [[feedback-pruefinstanz-pflicht]]): unabhängig vom Bau-Team ("Wer gebaut hat, prüft nicht"), prüft nach JEDER Stufe gegen DONE-WHEN (@reviewer Code/Regressionen + ui-ux-tester visuell + Lighthouse/60 fps), PASS/FAIL-Befundtabellen nur an Sascha, FAIL = Stufe zurück — kein Weiterarbeiten bis PASS.
 - **Master-Prompt FINAL v3 = VOLLAUTOMATIK (08.09., letzte Version — „mir reichts ich will verkaufen"):** Nutzer will den Lauf KOMPLETT ohne sich selbst — alle GO-Gates (Deploy/Abnahme/Richtungswahl Redesign) entfallen, Agent entscheidet alles. Nur 4 Stopp-Punkte bleiben: (1) keine Löschung meiner Nutzerdaten ohne Begründung, (2) keine echten Zahlungen/Abschlüsse im Namen Saschas (Payment-Link einrichten erlaubt+erwünscht), (3) NIE echtes Chrome-Profil/ID-Austria-Tabs — isolierte Profile only, (4) kein git push in fremde Repos (Koerperfluss/* = freigegeben). **Priorität VERKAUF zuerst**: Sales-MVP in bestehender UI — Pro-Abo-Paywall am Ende des adaptiven Interviews („Dein Plan ist fertig — schalte Pro frei"), Stripe-Payment-Link (kein Backend), Free-Tier bleibt — deployen + in 3 Browsern verifizieren, DANACH Aufbau T1–T3 (Redesign-Richtung wählt der Agent selbst, Kriterium Brand + 60 fps + Lighthouse). Finale automatisch: Firebase-Deploy finale Version → iPhone (build → cap sync ios → Xcode-27-Build → devicectl) + Android APK → Download-Hub. Schlussbericht = EINE Tabelle (was ist live | Link | Preis | Wie kauft ein Kunde | Umsatz-Logik | Risiken) — das Einzige, was Sascha liest. Prompt liegt kopierfertig im Chat vom 08.09. (Block „VOLLAUTOMATIK-MODUS"); ExitPlanMode dahinter wurde abgelehnt/ignoriert („was?") — reines Text-Artefakt brauchte kein Approval-Fenster, siehe [[feedback-one-action-not-tables]].
 - **Eiserne Regeln:** Build immer mit `VITE_GEMINI_API_KEY=` (leer, sonst landet der Key im Bundle). Kein Deploy/git push ohne Sascha-GO. Browser-Automatisierung NIE im echten Chrome-Profil (ID-Austria-Login-Tab!) — isoliertes Profil. [[skills-architektur-2026-09-07]] [[macos-27-beta-status]]
+- **Hub-1006-Abbrüche im Atlas-Tab behoben (08.09.):** Ursache war die 9,7-GB-Rollout-Datei dieser Session (I/O-Stall im lokalen Hub) + iPhone-Hotspot/IPv6 — Fix + Netzkonfiguration: [[zcode-hub-1006-netz-fix]]. Diese Session NIE weiternutzen, immer neue Session.
 
 ## autoclaw-full-stack-builder
 
@@ -2147,6 +2150,28 @@ Sascha has a paid Z.AI AI Coding Plan (Pro) and believed it had no usage limits.
 Related pitfalls seen in the same logs: (1) model name `glm‑coding‑5.3` written with Unicode non-breaking hyphens (U+2011) → provider 404; always ASCII hyphens. (2) `[402]` OpenRouter credit errors come from the OmniRoute fallback chain, not the Z.AI plan. (3) "ascii codec can't encode \xfc" = Clash/V2Ray SOCKS proxy + non-ASCII chars — use an HTTP proxy port for agent gateways.
 
 Integration done 2026-08-30: added `web-search-prime`, `zread`, `zai-vision` MCP servers to `~/.mcp.json` (→ real target `~/.cline/data/settings/cline_mcp_settings.json`) with `YOUR_ZAI_API_KEY` placeholders — Sascha must replace the placeholder with his key from https://z.ai/manage-apikey/apikey-list (one find-replace, 3 occurrences). vision MCP fixes the "selected model does not support image input" screenshot-reading gap. Also: gstack + plan-tune were already installed at `~/.claude/skills/` (~/.gstack data dir); source clones go to `~/src/`. See [[web-research-team-skill]].
+
+## zcode-hub-1006-netz-fix
+
+---
+name: zcode-hub-1006-netz-fix
+description: ZCode-Hub 1006-Verbindungsabbrüche 08.09. behoben — Ursache
+  9,7-GB-Session-Rollout (archiviert), Wi-Fi DNS/IPv6 neu konfiguriert;
+  OmniRoute 20128 als Fallback-Provider
+metadata:
+  node_type: memory
+  type: project
+  originSessionId: sess_ecb2e5e0-e1f7-46fb-a5b9-a997d5485c8e
+---
+
+„Hub connection closed (code=1006, reason=Connection ended)" im ZCode-Chat-Tab — Diagnose + Fix 08.09.2026 (Explorer-Diagnose, dann ausgeführt):
+
+- **Root Cause war NICHT Z.AI** (api.z.ai/api/anthropic = 200 OK, 133 ms TLS) sondern die **Session-Rollout-Datei von sess_d4dc6589: 9,7 GB** (model-io jsonl) — I/O-Last brachte den lokalen Hub (zcode-host-local) zum Event-Loop-Stall → WS-Drop ohne Close-Handshake = exakt 1006. Symptom: ZCode-Renderer bei 27 % CPU. Lehrstück: **riesige Session-Rollouts killen den Hub — Session-Log-Größe checken (`find ~/.zcode -name "model-io-*.jsonl" -size +1G`), alte Monster-Sessions nie weiternutzen, neue Session starten.**
+- Fix ausgeführt: Rollout-Datei nach `~/.zcode/cli/log/archive/` verschoben (Checksum in CHECKSUMS.txt, gzip lief detached).
+- **Netz konfiguriert (08.09.):** Wi-Fi DNS hart auf `1.1.1.1 8.8.8.8` (z.ai-Auflösungschaos: Aliyun-CDN lief nur AAAA/v6), **IPv6 auf Wi-Fi OFF** (`networksetup -setv6off Wi-Fi`) — danach api.z.ai 200 OK. www.z.ai löst trotzdem nicht (Marketing-Host, irrelevant).
+- **Sascha surft über iPhone-Personal-Hotspot** (CGNAT, 172.20.10.x) — CGNAT reißt lange SSE/WebSocket-Streams ab. Offener Nutzerschritt am iPhone: Einstellungen → Persönlicher Hotspot → **„Maximale Kompatibilität" AN** (zwingt IPv4-freundlichen Modus).
+- **OmniRoute v16.3.1 läuft lokal auf Port 20128** (LaunchAgent) — als ZCode-Provider „OmniRoute Gateway" umgeht er Hotspot/CDN-Pfad-Probleme bei langen Streams; empfohlener Provider im Atlas-Tab.
+- Nutzer-Ritual nach dem Fix: ZCode ⌘Q-Neustart → Atlas-Tab NEUE Session (nie die 9,7-GB-Session weiternutzen) → Provider OmniRoute → Vollautomatik-Prompt (siehe [[atlas-stand-2026-09-08]]). Beta-Netz-Hintergrund: [[macos-27-beta-status]].
 
 ## zcode-projektgruppen-mechanik
 
