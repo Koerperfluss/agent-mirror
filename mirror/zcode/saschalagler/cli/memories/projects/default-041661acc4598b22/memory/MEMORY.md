@@ -1,6 +1,8 @@
 # Memory Index
 
-- [Atlas-Stand 08.09.](atlas-stand-2026-09-08.md) — Web fix (Cache/Coach-Proxy/Interview live), iOS-Dev-Setup komplett (Developer Mode ENABLED); FINALER Plan v2: AUFBAU zuerst (T1 Wissensgraph→Bildungs-Archiv, T2 Übungs-DB CRUD, T3 Liquid-Glass-Redesign Barbulls-Logo, T4 Verkaufs-Agent, T5 QA), EIN Deploy + iPhone-Neuübertragung erst am Ende (F1–F3); 5 uncommitted Files nur committen; Build immer VITE_GEMINI_API_KEY= leer; nie echtes Chrome-Profil automatisieren
+- [ZCode Hub 1006 + Netz-Fix](zcode-hub-1006-netz-fix.md) — 08.09.: 1006-Abbrüche = 9,7-GB-Session-Rollout (archiviert in ~/.zcode/cli/log/archive/) + Hotspot/IPv6; Wi-Fi DNS 1.1.1.1/8.8.8.8 + IPv6 OFF gesetzt; OmniRoute localhost:20128 als Fallback-Provider; iPhone „Maximale Kompatibilität" noch offen; Riesige Session-Rollouts nie weiternutzen
+
+- [Atlas-Stand 08.09.](atlas-stand-2026-09-08.md) — Web fix (Cache/Coach-Proxy/Interview live), iOS-Dev-Setup komplett (Developer Mode ENABLED); FINALER Plan v3 = VOLLAUTOMATIK (Zero-Question, Verkaufs-MVP zuerst: Pro-Abo + Stripe-Link am Interview-Finale; dann T1 Wissensgraph→Bildungs-Archiv, T2 Übungs-DB CRUD, T3 Liquid-Glass-Redesign Barbulls-Logo, T5 QA-Gate), EIN Deploy + iPhone-Neuübertragung automatisch am Ende; nur 4 Stopp-Punkte (Nutzerdaten/Zahlungen/echtes Chrome-Profil/fremde Repos); Build immer VITE_GEMINI_API_KEY= leer
 
 - [Aufbau vor Deploy](feedback-aufbau-vor-deploy.md) — 08.09. scharf korrigiert: bei anstehendem Umbau NIE erst die alte Version deployen/perfektionieren — Aufbau-Tickets zuerst, EIN Deploy der finalen Version am Ende nach Abnahme-GO
 

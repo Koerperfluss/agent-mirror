@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-08 06:03 UTC
+Zuletzt gespiegelt: 2026-09-08 06:15 UTC
 
 ## code-architect
 
@@ -94236,31 +94236,22 @@ Regel „Sequential Thinking bei ALLEN Anfragen" in dein bestehendes Standard-Sy
 Ergebnis: Ab der nächsten Nachricht gilt die Regel in allen 5 Harnesses automatisch — ohne dass du sie wiederholen musst.
 ## plan-sess_ecb2e5e0-e1f7-46fb-a5b9-a997d5485c8e
 
-SKILLS-KONSOLIDIERUNG v2 — prüfinstanz-geprüft, korrigiert (~126 → ~106, zero loss, zero tote Verweise)
+NETZ-FIX: Hotspot/IPv6-Problematik konfigurieren (1006-Abbrüche)
 
-AUFWAND: ~60 Min. Archiv: ~/.agents/skills-archive/2026-09-08/ (reversibel).
+MAC-SEITE (führe ich nach Freigabe aus):
+1. DNS hart auf saubere Resolver setzen (fixt das kaputte www.z.ai-DNS und Aliyun-CDN-Auflösungschaos):
+   networksetup -setdnsservers Wi-Fi 1.1.1.1 8.8.8.8
+2. IPv6 auf der Wi-Fi-Schnittstelle AUS (CDN-Cache war AAAA-only — ohne v6 nutzt macOS IPv4 und umgeht das Problem):
+   networksetup -setv6off Wi-Fi
+3. Verifikation: dscacheutil -q host -a name www.z.ai (muss jetzt IPv4 + Antwort liefern) + curl-Check api.z.ai/api/anthropic (200 OK).
+Hinweis: braucht dein Admin-Passwort (sudo) — falls die Sandbox es verweigert, bekommst du die 2 Befehle als Terminal-Block zum Pasten.
 
-0) REFERENZ-MAP ZUERST: grep aller Archiv-Kandidaten-Namen in ~/AGENTS.md, ~/.agents/STANDARD-SKILLS.md, ~/.agents/skill-routing.md, loki-dev, projects, skill-router — jede gefundene Zeile wird IM GLEICHEN ZUG umgeschrieben (Pflicht, reviewer-Pflichtpunkt 7).
+IPHONE-SEITE (2 Klicks, nur du kannst das am Gerät):
+Einstellungen → Persönlicher Hotspot → „Maximale Kompatibilität" AN → Hotspot einmal aus/an.
+(Zwingt den Hotspot in den IPv4-freundlicheren Modus — der bekannte Fix für abbrechende Langverbindungen/WebSockets über iPhone-Hotspot.)
 
-1) SOFORT-ARCHIV (11): glm-init, lokiomnidevteam-plan, lokiomnidevteam-execute, implement, grill-with-docs, persona-selector, market-intelligence-allrounder, backend-development, multi-agent-ecosystem-overview (STANDARD-SKILLS-Zeile vorher auf loki-dev umschreiben), second-brain, obsidian-vault, agentmemory-rest-api (Port 3111 = tot, geprüft)
-   NICHT: context7-mcp (erst Schritt 4), batch-grill-me/loop-me/to-questionnaire (prüfbestätigt eigenständig)
-
-2) PORTIERUNG → ARCHIV (6):
-   - loki-dev += 2 Zeilen (cavecrew-reviewer-Alternative, Antigravity-manuell-Regel) → glm-build + deve archivieren + AGENTS.md:103 („glm-build/deve = Wrapper") fixen
-   - loki-memory-sync += obsidian-sync.sh-Pfad + Session-Context-Targets → obsidian-vault-sync + cross-platform-knowledge-sync archivieren + STANDARD-SKILLS-Z.21 fixen
-   - projects += Onboarding-Schritte (AGENTS.md/.clinerules-Symlink, MCP-Check, F-2) → automated-project-onboarding archivieren + skill-routing-Z.21 fixen
-   - caveman += Config-Resolution (8 Zeilen) → caveman-help archivieren
-
-3) STREICHUNG: Meta-Verschmelzung (work-flow etc.) fällt KOMPLETT weg — qa, to-spec, to-tickets, triage, domain-modeling, codebase-design etc. bleiben alle unverändert (prüfbestätigt: Verlustrisiko > Nutzen).
-
-4) ENTSCHLACKUNG (Suiten bleiben):
-   - find-docs += ctx7-MCP-Schritte (resolve-library-id/query-docs, 1-Konzept-Regel) → DANNEACH context7-mcp archivieren (Skill-Flug erst nach Absorption, reviewer-Punkt 5)
-   - Gemini 5: Modell-/SDK-Tabellen 1× in interactions-api, andere 4 mit 1-Zeilen-Verweisen (−4,3 KB)
-   - higgsfield: shared-bootstrap.md, 7 Install-Sektionen → Pointer (−3,2 KB)
-   - ui-ux-pro-max + shadcn-ui → 1 Katalog-Skill (beide Trigger-Sets erhalten)
-   - obsidian-second-brain: Body 78 KB → ~10 KB Kern + references/ (19,6k → ~2,5k Tokens/Aufruf)
-
-5) VERIFIKATION: 0 tote Verweise (grep gegen Archivliste), 0 kaputte Links, Zählung ~106, Audit-Doc 2026-09-08, Skill-Browser (GUI) regenerieren, ⌘Q-Hinweis.
+DANACH (bekanntes Ritual):
+ZCode ⌘Q-Neustart → im Atlas-Tab NEUE Session → Provider „OmniRoute Gateway (localhost:20128)" → Vollautomatik-Prompt einfügen. Die 9,7-GB-Rollout-Datei der alten Session komprimiere ich dabei ins Archiv (I/O-Blocker weg).
 ## MAC_DIAGNOSE_REPORT_2026-08-25
 
 # Research Report: Mac-Überhitzung — Diagnose & beste Prüf-Tools
