@@ -52,3 +52,8 @@ Am 25.08.2026 (Schlussphase der Mac-Sanierung) reagierte Sascha frustriert („w
 16. Wiederholte ExitPlanMode-Ablehnungen = Signal dass der Plan-Mode selbst das Problem ist, nicht der Plan-Inhalt. Abbrechen und direkt machen.
 17. Wenn der Nutzer Screenshots schickt und ich sie nicht lesen kann („selected model does not support image input"): NICHT raten was darauf steht, NICHT behaupten ich hätte sie gelesen. Offen sagen dass das Modell keine Bilder unterstützt, nach Text-Inhalt fragen.
 18. „WAS IST DEIN PROBLEM" nach einer langen Erklärung = ich rede zu viel und handle zu wenig. Lange Erklärungen über Architektur sind KEIN Fortschritt — der Nutzer will Resultate, keinen Vortrag.
+
+**Siebte Lektion 08.09. (Atlas-Prompt):** Auf „erkläre mir und wir nutzen es in ATLAS Chat" lieferte ich Tabellen + Nutzungs-Erklärung — Reaktion: „was redest du dg mir einfach den prompt für dne chat".
+
+**How to apply (Ergänzung):**
+19. Verlangt er ein ARTEFAKT (Prompt, Config, Command, Snippet), liefere NUR das Copy-Paste-fertige Artefakt in einem Codeblock — null Erklärung, null Kontext, null Tabellen drumherum. „Erkläre" heißt dann maximal 1–2 Sätze ÜBER dem Block.

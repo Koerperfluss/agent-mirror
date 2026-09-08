@@ -1,6 +1,6 @@
 # Memory Index
 
-- [Skills-Architektur 07.09.](skills-architektur-2026-09-07.md) — .zcode/skills BEWUSST leer (laden nur via .agents, sonst Doppel!); Archiv in ~/.agents/skills-archive/2026-09-07; skill-router wählt Teil-Skills automatisch; npx skills add legt Doppel-Symlinks wieder an
+- [Skills-Architektur 07.-08.09.](skills-architektur-2026-09-07.md) — .zcode/skills BEWUSST leer (laden nur via .agents, sonst Doppel!); Konsolidierung 08.09. prüfinstanz-geprüft: 126→96 Skills, 20 archiviert, second-brain-Split 78→7 KB; Standard-Agents + loki-watcher (Fanout-Cap 3) + /standardskill, /init, /kanban, /todo; Full-Stack = loki-dev als Director; NIE ohne reviewer-Prüfinstanz konsolidieren; Einsatz im ATLAS-Chat vereinbart (TAKEOVER „übernimm Atlas") — Achtung: parallele Atlas-Tab-Session plant eigene Skill-Merges, immer erst Disk-Stand prüfen
 
 - [ZCode-Projektgruppen-Mechanik](zcode-projektgruppen-mechanik.md) — 06.09.: Chatliste links = tasks-index.sqlite (Gruppen+node_orders+members), externes SQL wirkt erst nach ⌘Q-Neustart; Claude/Cline-Chat-Importer import-chats-loki.py (259 Cline-Chats drin); Restore-.command auf Desktop
 
