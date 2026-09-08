@@ -1,6 +1,8 @@
 ---
 name: mac-setup-16gb-m4
-description: Sascha's Mac is a fanless MacBook Air M4, 16 GB RAM, ~42 GB disk free (2026-08-25), macOS 26.6 — RAM is the hard constraint for local models
+description: Sascha's Mac is a fanless MacBook Air M4, 16 GB RAM, ~103 GB disk free
+  (2026-09-08), macOS 27 „Golden Gate" Developer Beta (seit 09.2026) — RAM is the hard
+  constraint for local models; Beta-Bugs siehe macos-27-beta-status
 metadata:
   node_type: memory
   type: user

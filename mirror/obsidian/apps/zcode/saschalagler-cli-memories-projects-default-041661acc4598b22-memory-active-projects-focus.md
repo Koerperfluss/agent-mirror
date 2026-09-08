@@ -1,7 +1,7 @@
 ---
 app: zcode
 quelle: "saschalagler/cli/memories/projects/default-041661acc4598b22/memory/active-projects-focus.md"
-stand: 2026-09-06
+stand: 2026-09-08
 tags: [spiegel, zcode]
 ---
 
@@ -31,5 +31,7 @@ Projektlisten-Tool: `python3 ~/.claude/tools/projects.py` — kuratierte Top-10-
 **Chatbot-Plan (30.08.2026):** Für alle 3 Fokus-Projekte als Bots geplant — FörderOps via Vertex-AI-Search-Credit (siehe [[google-cloud-genai-credit]]), Körperfluss-Web-Bot + Atlas via gratis Gemini API. Reihenfolge: FörderOps zuerst; Start auf Saschas Wort „Start FörderOps". Noch NICHT angefangen.
 
 **Update 06.09. spät:** Sascha nannte die VOLLE Liste (nicht nur 3): LOKI.OS/agent-os (aktiv), Atlas (**an AutoClaw full-stack-builder übergeben**), Legal Ops + Native (🔴 Verschmelzung kaputt), LOKI Voice+Thomas (ein Projekt), Körperfluss 3D, + 4 kleine: TODO App (`~/Desktop/Coworkspace_Ich/Projekt-Task-Planer`, App installiert als `/Applications/TODO APP.app`), Förder-Landschaft-Neubau (`~/Desktop/Coworkspace_Ich/öförderrungen`), Paraletts 3D-Hub + Barbulls Website (beide `…VEREIN ; BARBULLS ; PARALETTS/`). Kanonische Verwaltung jetzt: [[loki-project-map]] / `~/LOKI_PROJECT_MAP.md`.
+
+**Update 08.09. (ATLAS + ZCode-Pipeline):** Atlas hängt seit ~10 h an „App live bekommen" (Blocker UNGEKLÄRT — Build/Deploy/Runtime nie benannt!). Copy-paste /standardskill-Prompt für den Atlas-Chat an Sascha übergeben: TAKEOVER (Koerperfluss/atlas-cali-coach, Live barbulls-app.web.app/Firebase) → BUILD MediaPipe Live-Pose-Estimation clientseitig (offene Prio) → FINISH; Team @code-architect/@explore/@implementer/@reviewer, max 3 parallel, Stopp-Regeln Deploy/Löschen/Push. Nutzung der neuen ZCode-Pipeline (@agents, loki-dev 5 Modi, /kanban, /init) erfordert ⌘Q-Neustart. Parallel lief im Atlas-Tab eine eigene Skill-Konsolidierungs-Session (Plan v2 via code-architect) — ohne Kollision: Endstand 96 aktive Skills, 20 archiviert in ~/.agents/skills-archive/2026-09-08/, siehe [[skills-architektur-2026-09-07]].
 
 Verwandt: [[google-cloud-genai-credit]]

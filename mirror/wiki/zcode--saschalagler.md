@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-08 04:35 UTC
+Zuletzt gespiegelt: 2026-09-08 04:47 UTC
 
 ## code-architect
 
@@ -1220,7 +1220,7 @@ Bei Fachfragen (z. B. Trainings-Übungen) fordert er explizit „clinical reason
 
 # Memory Index
 
-- [Skills-Architektur 07.09.](skills-architektur-2026-09-07.md) — .zcode/skills BEWUSST leer (laden nur via .agents, sonst Doppel!); Archiv in ~/.agents/skills-archive/2026-09-07; skill-router wählt Teil-Skills automatisch; npx skills add legt Doppel-Symlinks wieder an
+- [Skills-Architektur 07.-08.09.](skills-architektur-2026-09-07.md) — .zcode/skills BEWUSST leer (laden nur via .agents, sonst Doppel!); Konsolidierung 08.09. prüfinstanz-geprüft: 126→96 Skills, 20 archiviert, second-brain-Split 78→7 KB; Standard-Agents + loki-watcher (Fanout-Cap 3) + /standardskill, /init, /kanban, /todo; Full-Stack = loki-dev als Director; NIE ohne reviewer-Prüfinstanz konsolidieren; Einsatz im ATLAS-Chat vereinbart (TAKEOVER „übernimm Atlas") — Achtung: parallele Atlas-Tab-Session plant eigene Skill-Merges, immer erst Disk-Stand prüfen
 
 - [ZCode-Projektgruppen-Mechanik](zcode-projektgruppen-mechanik.md) — 06.09.: Chatliste links = tasks-index.sqlite (Gruppen+node_orders+members), externes SQL wirkt erst nach ⌘Q-Neustart; Claude/Cline-Chat-Importer import-chats-loki.py (259 Cline-Chats drin); Restore-.command auf Desktop
 
@@ -1290,6 +1290,8 @@ Projektlisten-Tool: `python3 ~/.claude/tools/projects.py` — kuratierte Top-10-
 **Chatbot-Plan (30.08.2026):** Für alle 3 Fokus-Projekte als Bots geplant — FörderOps via Vertex-AI-Search-Credit (siehe [[google-cloud-genai-credit]]), Körperfluss-Web-Bot + Atlas via gratis Gemini API. Reihenfolge: FörderOps zuerst; Start auf Saschas Wort „Start FörderOps". Noch NICHT angefangen.
 
 **Update 06.09. spät:** Sascha nannte die VOLLE Liste (nicht nur 3): LOKI.OS/agent-os (aktiv), Atlas (**an AutoClaw full-stack-builder übergeben**), Legal Ops + Native (🔴 Verschmelzung kaputt), LOKI Voice+Thomas (ein Projekt), Körperfluss 3D, + 4 kleine: TODO App (`~/Desktop/Coworkspace_Ich/Projekt-Task-Planer`, App installiert als `/Applications/TODO APP.app`), Förder-Landschaft-Neubau (`~/Desktop/Coworkspace_Ich/öförderrungen`), Paraletts 3D-Hub + Barbulls Website (beide `…VEREIN ; BARBULLS ; PARALETTS/`). Kanonische Verwaltung jetzt: [[loki-project-map]] / `~/LOKI_PROJECT_MAP.md`.
+
+**Update 08.09. (ATLAS + ZCode-Pipeline):** Atlas hängt seit ~10 h an „App live bekommen" (Blocker UNGEKLÄRT — Build/Deploy/Runtime nie benannt!). Copy-paste /standardskill-Prompt für den Atlas-Chat an Sascha übergeben: TAKEOVER (Koerperfluss/atlas-cali-coach, Live barbulls-app.web.app/Firebase) → BUILD MediaPipe Live-Pose-Estimation clientseitig (offene Prio) → FINISH; Team @code-architect/@explore/@implementer/@reviewer, max 3 parallel, Stopp-Regeln Deploy/Löschen/Push. Nutzung der neuen ZCode-Pipeline (@agents, loki-dev 5 Modi, /kanban, /init) erfordert ⌘Q-Neustart. Parallel lief im Atlas-Tab eine eigene Skill-Konsolidierungs-Session (Plan v2 via code-architect) — ohne Kollision: Endstand 96 aktive Skills, 20 archiviert in ~/.agents/skills-archive/2026-09-08/, siehe [[skills-architektur-2026-09-07]].
 
 Verwandt: [[google-cloud-genai-credit]]
 
@@ -1460,6 +1462,11 @@ Am 25.08.2026 (Schlussphase der Mac-Sanierung) reagierte Sascha frustriert („w
 16. Wiederholte ExitPlanMode-Ablehnungen = Signal dass der Plan-Mode selbst das Problem ist, nicht der Plan-Inhalt. Abbrechen und direkt machen.
 17. Wenn der Nutzer Screenshots schickt und ich sie nicht lesen kann („selected model does not support image input"): NICHT raten was darauf steht, NICHT behaupten ich hätte sie gelesen. Offen sagen dass das Modell keine Bilder unterstützt, nach Text-Inhalt fragen.
 18. „WAS IST DEIN PROBLEM" nach einer langen Erklärung = ich rede zu viel und handle zu wenig. Lange Erklärungen über Architektur sind KEIN Fortschritt — der Nutzer will Resultate, keinen Vortrag.
+
+**Siebte Lektion 08.09. (Atlas-Prompt):** Auf „erkläre mir und wir nutzen es in ATLAS Chat" lieferte ich Tabellen + Nutzungs-Erklärung — Reaktion: „was redest du dg mir einfach den prompt für dne chat".
+
+**How to apply (Ergänzung):**
+19. Verlangt er ein ARTEFAKT (Prompt, Config, Command, Snippet), liefere NUR das Copy-Paste-fertige Artefakt in einem Codeblock — null Erklärung, null Kontext, null Tabellen drumherum. „Erkläre" heißt dann maximal 1–2 Sätze ÜBER dem Block.
 
 ## foerderops-assistent
 
@@ -1963,6 +1970,20 @@ Skill-Audit 07.09.2026 (User-Weisung: nicht selbst werten; Vercel/Gemini/Claude/
 - Nutzungs-Fakten (Memory-Check): caveman, cavecrew, agent-browser = belegt genutzt. Ohne Beleg: market-intelligence-allrounder, persona-selector, cli-serve (OmniRoute-CLI-Steuerung), developing-ios-apps (von User als wichtig markiert), jules-meta-agent (Rollen-Skill, Google-Abo, im skill-router angebunden).
 
 Audit-Doc: `~/loki-ki/docs/AUDIT_SKILLS_ZCODE_2026-09-07.md` · [[skill-install-conventions]] ist damit ÜBERHOLT (npx-Konvention erzeugt jetzt Doppel).
+
+## TEIL 2 — Konsolidierung 08.09. (prüfinstanz-geprüft, v2)
+- **126 → 96 Skills**: 20 archiviert in `~/.agents/skills-archive/2026-09-08/` (glm-init, lokiomnidevteam-plan/execute, implement, grill-with-docs, persona-selector, market-intelligence-allrounder, backend-development, multi-agent-ecosystem-overview, second-brain, obsidian-vault, agentmemory-rest-api, glm-build, deve, obsidian-vault-sync, cross-platform-knowledge-sync, automated-project-onboarding, caveman-help, context7-mcp, ui-ux-pro-max). Rückholbefehl im Audit-Doc Teil 2.
+- **Prüfinstanz (reviewer-Subagent) war PFLICHT-Erfolg**: sie verwarf Plan v1 (Meta-Verschmelzung qa/triage/to-spec/to-tickets→„work-flow" gestrichen — triage 28 KB + State-Machine, Verlust>Nutzen; 7 tote Verweise; Grill-Varianten sind NICHT Dubletten). **Sascha fragte aktiv nach der Prüfinstanz** — bei Konsolidierungs-/Archiv-Plänen IMMER erst reviewer gegenlesen lassen, dann ausführen.
+- Portierungen (additiv): loki-dev += cavecrew-reviewer-Alternative + Antigravity-Regel · loki-memory-sync += obsidian-sync.sh + Session-Targets · projects += „Action 2.5 Repo-Infra" (onboarding-Ersatz: AGENTS.md/.clinerules-Symlink, MCP-Check, F-2 nie-Home-als-Git-Root) · caveman += Config-Resolution · find-docs += Context7-MCP-Modus (ist jetzt Doku-Master).
+- **obsidian-second-brain Split**: Body 78,4 KB → 6,9 KB Kern + references/full-manual.md (lazy) = −91 % Tokens/Aufruf.
+- 21 Verweis-Fixes (AGENTS.md:103 Workflow 05/06 jetzt loki-dev-Modi; STANDARD-SKILLS; skill-routing; skill-router; ask-matt; web-research-team; ui-ux-tester). Grep-Verifikation: 0 tote Verweise.
+- Bewusst nicht gemacht: Gemini-/Higgsfield-Entschlackung (nur 7 % Dubletten, ~7,5 KB) — auf Zuruf.
+- Full-Stack-Entwicklung läuft jetzt EINSPURIG: Trigger „baue X" → gate-enforcer → loki-dev BUILD (Director) + skill-router + Agents @code-architect/@explore/@implementer/@reviewer → code-review/qa/ui-ux-tester → deploy-to-vercel. Onboard = loki-dev INIT + projects Action 2.5; Übernehmen = loki-dev TAKEOVER; Prüfinstanzen: Hooks (hart) · @reviewer/code-review/caveman-review · qa/ui-ux-tester/status-check · /standardskill bei Rebellion.
+
+## ATLAS-Chat-Einsatz (08.09. vereinbart)
+- Sascha will die Pipeline **im Atlas-Chat** (Atlas Cali Coach, zweiter ZCode-Tab) einsetzen: ⌘Q-Neustart → „übernimm Atlas Cali Coach" (TAKEOVER) · „baue [Feature] in Atlas" (BUILD, gate→PLAN→Agents) · „mach Atlas fertig" (FINISH, Firebase-Deploy). Disziplin dort: /caveman lite + 1 Task = 1 Session.
+- **Parallel-Session-Warnung:** Der Atlas-Tab fuhr EIGENMÄCHTIG einen Konsolidierungsplan („131→~12 Tier-1", code-architect-Review, grilling-Hub/frontend-design-hub/loki-os-health geplant, teils „Full access"). Kollisionscheck 08.09. früh: nur mtime-Edits an grilling/frontend-design, KEINE Substanz-Merges ausgeführt, Design-Skills noch alle da, Archiv = nur meine 20. **Lehre: vor jeder eigenen Skill-Konsolidierung zuerst Disk-Stand prüfen (find-Zählung + mtimes + Archiv-Inhalt) — parallele Tabs am selben Skill-System sind real.**
+- Offener Blocker, den KEIN Skill löst: Atlas-App seit ~10 h nicht live — Sascha wurde gebeten, Name + konkrete Fehlermeldung zu liefern (vermutlich Firebase-Deploy-Kette).
 
 ## vorssaint-mac-tools-research
 
