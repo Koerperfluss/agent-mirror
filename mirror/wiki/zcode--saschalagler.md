@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-08 04:47 UTC
+Zuletzt gespiegelt: 2026-09-08 04:58 UTC
 
 ## code-architect
 
@@ -1220,6 +1220,8 @@ Bei Fachfragen (z. B. Trainings-Übungen) fordert er explizit „clinical reason
 
 # Memory Index
 
+- [Atlas-Stand 08.09.](atlas-stand-2026-09-08.md) — Web fix (Cache/Coach-Proxy/Interview live), aber iPhone-App = altes Bundle → cap sync + Rebuild + NEUÜBERTRAGUNG nötig; TestFlight blockiert (Apple-ID/2FA); Build immer VITE_GEMINI_API_KEY= leer; nie echtes Chrome-Profil automatisieren; Pfade ATLAS_MASTER ×2 + cali-coach-atlas-final
+
 - [Skills-Architektur 07.-08.09.](skills-architektur-2026-09-07.md) — .zcode/skills BEWUSST leer (laden nur via .agents, sonst Doppel!); Konsolidierung 08.09. prüfinstanz-geprüft: 126→96 Skills, 20 archiviert, second-brain-Split 78→7 KB; Standard-Agents + loki-watcher (Fanout-Cap 3) + /standardskill, /init, /kanban, /todo; Full-Stack = loki-dev als Director; NIE ohne reviewer-Prüfinstanz konsolidieren; Einsatz im ATLAS-Chat vereinbart (TAKEOVER „übernimm Atlas") — Achtung: parallele Atlas-Tab-Session plant eigene Skill-Merges, immer erst Disk-Stand prüfen
 
 - [ZCode-Projektgruppen-Mechanik](zcode-projektgruppen-mechanik.md) — 06.09.: Chatliste links = tasks-index.sqlite (Gruppen+node_orders+members), externes SQL wirkt erst nach ⌘Q-Neustart; Claude/Cline-Chat-Importer import-chats-loki.py (259 Cline-Chats drin); Restore-.command auf Desktop
@@ -1227,14 +1229,14 @@ Bei Fachfragen (z. B. Trainings-Übungen) fordert er explizit „clinical reason
 - [FörderOps-Assistent](foerderops-assistent.md) — 30.08. aktiv, 06.09. spät Web-UI 8765 LÄUFT WIEDER (kein Autostart!); 70 Wissensdokumente; digi4KMU 50k existiert NICHT; Cap-Table Leon 26/Lisa 26/Sascha 25/Peter 23; 🔴 $350k-Blocker: Webgo-NS-Switch
 - [GUI nicht CLI](feedback-gui-not-cli.md) — 30.08. Sascha: „ich will eine grafische oberfläche" — IMMER Web-UI bauen, nie nur Terminal-Befehl
 - [Sequential Thinking immer](sequential-thinking-always.md) — 30.08. Nutzer-Regel: mcp sequentialthinking bei JEDER Anfrage aufrufen; verankert in ~/.agents/STANDARD-SKILLS.md A.3 + skill-routing.md (alle 5 Harnesses)
-- [Aktive Fokus-Projekte](active-projects-focus.md) — 30.08.: Atlas Cali Coach, Körperfluss Physio-Web, FörderOps; Projektlisten-Tool `python3 ~/.claude/tools/projects.py`
+- [Aktive Fokus-Projekte](active-projects-focus.md) — Atlas (Pfade + Session sess_d4dc6589: firebase.json Cache-Fix uncommitted, iOS-27-Berechtigungen, 10h-Live-Blockade), Körperfluss, FörderOps; Übergaben = fertiger Copy-Paste-Prompt ohne Prosa; `python3 ~/.claude/tools/projects.py`
 - [Google Cloud GenAI Credit](google-cloud-genai-credit.md) — 867,15 € "GenAI App Builder" bis 23.04.2027 (Billing 015D43…, Projekt koerperfluss-antigravity); gilt NUR für Vertex AI Search & Conversation, NICHT normale Gemini API
 
 - [Sigma Local-AI-Stack](sigma-local-ai-stack.md) — 30.08. 08:00 FERTIG: LM Studio + OpenClaw = Primärweg (läuft, Gemma 4 12B, Vision/Tool-Calling, max_tokens≥100); Sigma Qwen 3.5 9B "Activate" JETZT möglich (Port 8787 frei, Engine b9357 unterstützt qwen35), aber NICHT nötig; **Root Cause 07:55 gelöst: Port 8787 war von Loki-Voice blockiert (EADDRINUSE → still failure)**; **LERNE: NIEMALS User-Services killen ohne zu fragen** (Loki-Voice entladen war Fehler — Optionen anbieten: Loki-Port ändern, Sigma-Port-Flag, socat-Forward, LM-Studio-Weg); Cloud=OpenRouter/Claude 4.5; openclaw.json HAT LM-Studio-Provider bereits fertig; GLM 4.6V im LM Studio Hub
 
 - [Foto-Restaurierung Opa A4](foto-restaurierung-opa-a4.md) — FINALE 26.08. früh: 8 Fotos als A4-JPEG (3508px/q90/300dpi, 11 MB) in druckfertig/ per reinem Lanczos; Quelle jetzt ~/Desktop/opa 70iger fotos/; Upscayl-CLI (upscayl-bin + remacri) dokumentiert; Lesson: „einfach nur skaliere" = wörtlich minimal, JPEG statt PNG
 
-- [Mac setup: fanless M4 Air 16 GB](mac-setup-16gb-m4.md) — fanless MacBook Air M4, 16 GB RAM / 38 GB disk (2026-08-26), macOS 26.6, Python 3.14.6 + uv 0.11.18; RAM constrains local models; Qwen 3.5 9B for Sigma
+- [Mac setup: fanless M4 Air 16 GB](mac-setup-16gb-m4.md) — fanless MacBook Air M4, 16 GB RAM / ~103 GB disk (08.09.), macOS 27 „Golden Gate" Developer Beta (seit 09.2026), Python 3.14.6 + uv 0.11.18; RAM constrains local models; Qwen 3.5 9B for Sigma; Beta-Bugs: [[macos-27-beta-status]]
 
 - [Mac-Cleanup 2026-08-25](mac-cleanup-2026-08-25.md) — AUSGEFÜHRT: Docker K8s aus (VM 1 % idle), Adobe KOMPLETT weg, 18 Dienste/Leichen entfernt (Restore: ~/launchagents_backup + ~/deinstall_backup), TCC-auditiert (Spotify/WhatsApp FDA entzogen); 26.7-Update-Lauf gestartet, Ausgang offen — 7507=GUI blockt Daemon, Beta-Toggle nur GUI-authoritativ (Runde 7)
 
@@ -1293,7 +1295,32 @@ Projektlisten-Tool: `python3 ~/.claude/tools/projects.py` — kuratierte Top-10-
 
 **Update 08.09. (ATLAS + ZCode-Pipeline):** Atlas hängt seit ~10 h an „App live bekommen" (Blocker UNGEKLÄRT — Build/Deploy/Runtime nie benannt!). Copy-paste /standardskill-Prompt für den Atlas-Chat an Sascha übergeben: TAKEOVER (Koerperfluss/atlas-cali-coach, Live barbulls-app.web.app/Firebase) → BUILD MediaPipe Live-Pose-Estimation clientseitig (offene Prio) → FINISH; Team @code-architect/@explore/@implementer/@reviewer, max 3 parallel, Stopp-Regeln Deploy/Löschen/Push. Nutzung der neuen ZCode-Pipeline (@agents, loki-dev 5 Modi, /kanban, /init) erfordert ⌘Q-Neustart. Parallel lief im Atlas-Tab eine eigene Skill-Konsolidierungs-Session (Plan v2 via code-architect) — ohne Kollision: Endstand 96 aktive Skills, 20 archiviert in ~/.agents/skills-archive/2026-09-08/, siehe [[skills-architektur-2026-09-07]].
 
+**Update 08.09. II (Atlas-Details + Prompt-Feedback):** Neue Kanonische Pfade von Sascha: alle Files `/Users/saschalagler/Desktop/Coworkspace_Ich/atlas + pliability`, Master `…/atlas + pliability/ATLAS_MASTER` UND `/Users/saschalagler/ATLAS_MASTER`; Deploy-Repo `~/cali-coach-atlas-final`. Vorherige Atlas-Session: sess_d4dc6589-a85c-41e6-9c70-94b6ea6e63e3 (Cline-Code/ZCode, Provider cline-pass/glm-5.3-flash, 89.205k Tokens, $1.01) — dort: +156/−5 uncommittete Changes in firebase.json (Cache-Control-Header: index.html no-cache, manifest no-cache, /assets/** immutable), Thema „iOS 27 Berechtigungen" + „Cline Code App fixen". 10h-Live-Blockade immer noch ohne benannte Root Cause. **Feedback**: Sascha will bei Übergaben den fertigen Copy-Paste-PROMPT (einfach, ohne Erklär-Prosa) — „was redest du, gib mir einfach den prompt".
+
 Verwandt: [[google-cloud-genai-credit]]
+
+## atlas-stand-2026-09-08
+
+---
+name: atlas-stand-2026-09-08
+description: Atlas Cali Coach Stand 08.09. (sess_d4dc6589) — Web fix ✅, iOS-Dev-Setup
+  komplett (Developer Mode enabled), v6-Build wartet auf Deploy, 5 uncommitted Files,
+  Master-Prompt (P0–P4) übergeben
+metadata:
+  node_type: memory
+  type: project
+  originSessionId: sess_ecb2e5e0-e1f7-46fb-a5b9-a997d5485c8e
+---
+
+Atlas Cali Coach — Stand 08.09.2026 (Handoff aus ZCode-Session sess_d4dc6589):
+
+- **Pfade:** Master `~/ATLAS_MASTER` und `~/Desktop/Coworkspace_Ich/atlas + pliability/ATLAS_MASTER`; Deploy-Repo `~/cali-coach-atlas-final` (GitHub Koerperfluss/atlas-cali-coach, Live https://barbulls-app.web.app bzw. atlas-v5.web.app).
+- **Web ist fix:** firebase.json Cache-Fix (commit 12e3323, Browser zeigten alte Stände durch 1h-Cache), Coach-429-Fix via keyless Server-Proxy `/api/coach` (commit d46e364, Secret ATLAS_GEMINI_KEY), adaptives KI-Interview als Default-Onboarding live.
+- **iOS-Dev-Setup KOMPLETT (08.09. verifiziert):** Xcode 27.0.0-Beta.6 unter `/Applications/Xcode-27.0.0-Beta.6.app` (xcode-select korrekt, Lizenz akzeptiert, kaputtes Xcode-26.6-Teilpaket gelöscht); iPhone 16 Pro Max iOS 27.0 gekoppelt; **Developer Mode ENABLED** (per devicectl verifiziert). iPhone-App neu übertragen = `npm run build` → `npx cap sync ios` → Build via Xcode 27 → Device-Install. Für TestFlight-Verteilung bleibt Apple-ID/2FA (bahldorfa@gmail.com) der Nutzer-Schritt.
+- **Atlas v6 „Clean & Stable"** gebaut (Grafik-Extremismus aus src/index.css gestrippt, 137→75 Zeilen; Bundle index-BlhLFqDd.js) — **Deploy wartet auf GO**; Rollback: `git checkout 96fffe7 -- src/index.css`.
+- **5 uncommitted Files in 3 Repos:** firebase.json ×3 (Cache-Header), ATLAS_MASTER/app/src/coach/CoachChat.tsx (+108), app/src/glass/FluidScene.tsx (±1) → erst prüfen/committen (P0), dann Deploy (P1).
+- **Master-Prompt übergeben** („fordere gleich alles"): P0 uncommitted committen → P1 v6-Deploy → P2 iPhone+Android cap sync/Rebuild/Neuübertragung → P3 E2E-Beweis Live-Interview in isoliertem Profil → P4 Coach-Chat Tasks 20–22 + QA-Gate.
+- **Eiserne Regeln:** Build immer mit `VITE_GEMINI_API_KEY=` (leer, sonst landet der Key im Bundle). Kein Deploy/git push ohne Sascha-GO. Browser-Automatisierung NIE im echten Chrome-Profil (ID-Austria-Login-Tab!) — isoliertes Profil. [[skills-architektur-2026-09-07]] [[macos-27-beta-status]]
 
 ## autoclaw-full-stack-builder
 
@@ -1733,7 +1760,9 @@ Am 2026-08-25 (Überhitzungs-Diagnose, MacBook Air M4 16 GB, macOS 26.6 Beta 4) 
 
 ---
 name: mac-setup-16gb-m4
-description: Sascha's Mac is a fanless MacBook Air M4, 16 GB RAM, ~42 GB disk free (2026-08-25), macOS 26.6 — RAM is the hard constraint for local models
+description: Sascha's Mac is a fanless MacBook Air M4, 16 GB RAM, ~103 GB disk free
+  (2026-09-08), macOS 27 „Golden Gate" Developer Beta (seit 09.2026) — RAM is the hard
+  constraint for local models; Beta-Bugs siehe macos-27-beta-status
 metadata:
   node_type: memory
   type: user
@@ -1743,6 +1772,30 @@ metadata:
 Sascha's machine: Apple M4 **MacBook Air** — **fanless**, 60 Hz panel, no ProMotion (confirmed during the 2026-08-25 thermal diagnosis; earlier noted as MacBook Pro). **16 GB unified memory** — under real workload (Docker VM + browser renderers) only ~140 MB free with 1.78 GB swap active; realistically ~4–6 GB headroom. Disk: **38 GB free of 460 GB** (2026-08-26; was 42 GB on 2026-08-25, ~25 GB before cleanup). Dev toolchain (2026-08-26): System-Python **3.14.6** (too new for old ML stacks like basicsr — use `uv venv --python 3.11` instead, see [[foto-restaurierung-opa-a4]]) and **uv 0.11.18**. **No `ollama` on PATH** (checked 2026-08-26) — no local vision-LLM via ollama; local models run via Sigma/llama.cpp only. OpenCV gotcha: **opencv 5.0 removed `cv2.CascadeClassifier`** → pin `"opencv-python-headless<5"` for classic CV scripts. OS: macOS 26.6 **Beta 4 (25G5057c)** as of 2026-08-25 — the night's `sudo softwareupdate -ia` run **finished WITHOUT installing anything** (catalog cache still on the beta branch; LastResultCode 0, build unchanged). Remaining path (told Sascha): **restart the Mac**, then install **26.7 Final (25G224)** via System Settings GUI; if still "No updates" after reboot, turn off the Beta-Updates toggle in the GUI (Apple Account koerperfluss@gmail.com still bound there) — see [[mac-cleanup-2026-08-25]] Runde 7. `softwareupdate` error **7507** = System Settings GUI blocking the update daemon → `killall "System Settings"` first. On this beta build the System Settings GUI tends to hang — `killall "System Settings"` + reopen fixes it. Uses Sigma browser (bundle `com.sigma-eclipse.llm`) for local GGUF models via llama.cpp.
 
 **Implication:** only models with min RAM ≤ 12 GB fit. MoE models must still be fully resident in RAM. Qwen 3.5 9B remains the recommended primary Sigma model (Gemma 4 E4B fallback). Fanless design means sustained background load (e.g. Docker) directly heats the chassis — see [[mac-overheating-2026-08-25]]. Related: [[skill-install-conventions]].
+
+## macos-27-beta-status
+
+---
+name: macos-27-beta-status
+description: macOS 27 „Golden Gate" Developer Beta — AMFI killt ad-hoc-signierte
+  Binaries (Cline-Fix ~/fix-cline-signing.sh nach jedem npm update!),
+  WindowServer-Bug (40–60 % CPU, Geisterbilder), kein TM-Backup → bei Beta
+  bleiben
+metadata:
+  node_type: memory
+  type: project
+  originSessionId: sess_ecb2e5e0-e1f7-46fb-a5b9-a997d5485c8e
+---
+
+macOS 27 „Golden Gate" Developer Beta — Stand 08.09.2026 (Sascha ist Entwickler, Entscheidung: bei Beta bleiben, Downgrade verworfen):
+
+- **AMFI verschärft:** ad-hoc/linker-signierte Binaries ohne echten Apple-CMS-Blob werden beim Start gekillt (`Killed: 9`). Betroffen war die **Cline CLI** (Bun-Standalone; GitHub Issue cline/cline#12042 noch offen). Fix: Re-Signing mit der Apple-Development-Identity aus dem Keychain — Skript **`~/fix-cline-signing.sh`, NACH JEDEM `npm update -g cline` erneut ausführen** (Updates überschreiben die Signatur). Doku: `~/STATUS-cline-macos27-fix.md`. Cline muss einmal neu eingeloggt werden (Team-Backend „Unauthorized" → spawn_agent-Runs schlagen sonst fehl).
+- **WindowServer-Bug:** 40–60 % CPU dauerhaft + Geisterbilder/Doppeltext (1537 Fehler/30 min). Gemessen: NICHT Refresh-Rate-abhängig (144/100/60 Hz alle ~48 %) = speicherleckend, nur Apple kann fixen. Symptomlinderung: Abmelden/Anmelden (startet WindowServer neu). Installiert: 100-Hz-LaunchAgent `dev.saschalagler.refresh100` (Rückweg auf 144 Hz via displayplacer dokumentiert); Terminal auf solides Profil (kein Blur); „Transparenz reduzieren" muss der Nutzer selbst klicken (TCC).
+- **Time-Machine:** kein echtes Backup-Ziel (TM zeigt auf Macintosh HD selbst → Mount-Fehler). Ohne Backup ist Downgrade auf macOS 26 = Festplatten-Löschung → zu riskant; daher Beta-Verbleib. Externe Platte anbinden = offener Nutzer-Punkt.
+- **Disk-Bereinigung 08.09.:** Claude-/Claude-3p-vm_bundles (20,4 GB), Google DriveFS (3 GB), Spotify-/Sigma-Caches gelöscht → ~103 GB frei. Offene OK-Fragen: iOS-26.5-Simulator-Runtime (17,6 GB).
+- **Nicht Beta-Schuld:** Die echten Ausfälle (LOKI-Kernel 8010, LegalOps 7070, Kanban) waren laut Audit VOR der Beta da (F-1-Watchdog fehlte); F-1 (Kernel läuft) + F-2 (Home-Git-Repo → ~/.git.DISABLED-20260907) erledigt.
+- **Cline-Sprache:** `~/.cline/rules/DE.md` angelegt (Antworten immer Deutsch, Code original).
+- iPhone-Dev-Seite ist komplett: siehe [[atlas-stand-2026-09-08]]. [[mac-setup-16gb-m4]]
 
 ## patrick-physiotherapie-sbp
 

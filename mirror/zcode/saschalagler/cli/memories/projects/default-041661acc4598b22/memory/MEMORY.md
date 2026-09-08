@@ -1,6 +1,10 @@
 # Memory Index
 
-- [Atlas-Stand 08.09.](atlas-stand-2026-09-08.md) — Web fix (Cache/Coach-Proxy/Interview live), aber iPhone-App = altes Bundle → cap sync + Rebuild + NEUÜBERTRAGUNG nötig; TestFlight blockiert (Apple-ID/2FA); Build immer VITE_GEMINI_API_KEY= leer; nie echtes Chrome-Profil automatisieren; Pfade ATLAS_MASTER ×2 + cali-coach-atlas-final
+- [Atlas-Stand 08.09.](atlas-stand-2026-09-08.md) — Web fix (Cache/Coach-Proxy/Interview live), iOS-Dev-Setup komplett (Developer Mode ENABLED); FINALER Plan v2: AUFBAU zuerst (T1 Wissensgraph→Bildungs-Archiv, T2 Übungs-DB CRUD, T3 Liquid-Glass-Redesign Barbulls-Logo, T4 Verkaufs-Agent, T5 QA), EIN Deploy + iPhone-Neuübertragung erst am Ende (F1–F3); 5 uncommitted Files nur committen; Build immer VITE_GEMINI_API_KEY= leer; nie echtes Chrome-Profil automatisieren
+
+- [Aufbau vor Deploy](feedback-aufbau-vor-deploy.md) — 08.09. scharf korrigiert: bei anstehendem Umbau NIE erst die alte Version deployen/perfektionieren — Aufbau-Tickets zuerst, EIN Deploy der finalen Version am Ende nach Abnahme-GO
+
+- [Prüfinstanz-Pflicht](feedback-pruefinstanz-pflicht.md) — 2× scharf eingefordert (07.–08.09.): jeder mehrstufige Plan braucht eine explizite, unabhängige PRÜFINSTANZ mit Vetorecht („Wer gebaut hat, prüft nicht") — @reviewer + ui-ux-tester + Performance-Check nach JEDER Stufe, PASS/FAIL nur an Sascha; Reviewer VOR Ausführung hat Plan v1 schon 4× gerettet
 
 - [Skills-Architektur 07.-08.09.](skills-architektur-2026-09-07.md) — .zcode/skills BEWUSST leer (laden nur via .agents, sonst Doppel!); Konsolidierung 08.09. prüfinstanz-geprüft: 126→96 Skills, 20 archiviert, second-brain-Split 78→7 KB; Standard-Agents + loki-watcher (Fanout-Cap 3) + /standardskill, /init, /kanban, /todo; Full-Stack = loki-dev als Director; NIE ohne reviewer-Prüfinstanz konsolidieren; Einsatz im ATLAS-Chat vereinbart (TAKEOVER „übernimm Atlas") — Achtung: parallele Atlas-Tab-Session plant eigene Skill-Merges, immer erst Disk-Stand prüfen
 

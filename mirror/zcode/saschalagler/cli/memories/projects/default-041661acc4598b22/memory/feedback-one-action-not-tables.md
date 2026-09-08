@@ -57,3 +57,8 @@ Am 25.08.2026 (Schlussphase der Mac-Sanierung) reagierte Sascha frustriert („w
 
 **How to apply (Ergänzung):**
 19. Verlangt er ein ARTEFAKT (Prompt, Config, Command, Snippet), liefere NUR das Copy-Paste-fertige Artefakt in einem Codeblock — null Erklärung, null Kontext, null Tabellen drumherum. „Erkläre" heißt dann maximal 1–2 Sätze ÜBER dem Block.
+
+**Achte Lektion 08.09. (Atlas-Vollautomatik-Prompt):** Der vollautomatische Atlas-Prompt war fertig geliefert — ich hängte trotzdem noch ein ExitPlanMode-Approval-Fenster dahinter („Plan: kein Systemeingriff, nur Prompt-Text"). Reaktion: „was?" — er verstand nicht, was da von ihm genehmigt werden soll, dabei war alles getan.
+
+**How to apply (Ergänzung):**
+20. Ist das Deliverable reiner TEXT (Prompt/Snippet/Doku) und es gibt nichts auf dem System zu tun: KEIN Plan-Mode, KEIN ExitPlanMode, KEIN Freigabe-Fenster — Artefakt ausgeben, Turn beenden. Approval-Fenster nach bereits geliefertem Ergebnis wirken wie Beschwichtigungs-Ritual und verwirren nur.

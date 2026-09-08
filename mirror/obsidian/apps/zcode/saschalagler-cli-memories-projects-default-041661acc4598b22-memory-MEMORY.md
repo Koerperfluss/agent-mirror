@@ -7,6 +7,8 @@ tags: [spiegel, zcode]
 
 # Memory Index
 
+- [Atlas-Stand 08.09.](atlas-stand-2026-09-08.md) — Web fix (Cache/Coach-Proxy/Interview live), aber iPhone-App = altes Bundle → cap sync + Rebuild + NEUÜBERTRAGUNG nötig; TestFlight blockiert (Apple-ID/2FA); Build immer VITE_GEMINI_API_KEY= leer; nie echtes Chrome-Profil automatisieren; Pfade ATLAS_MASTER ×2 + cali-coach-atlas-final
+
 - [Skills-Architektur 07.-08.09.](skills-architektur-2026-09-07.md) — .zcode/skills BEWUSST leer (laden nur via .agents, sonst Doppel!); Konsolidierung 08.09. prüfinstanz-geprüft: 126→96 Skills, 20 archiviert, second-brain-Split 78→7 KB; Standard-Agents + loki-watcher (Fanout-Cap 3) + /standardskill, /init, /kanban, /todo; Full-Stack = loki-dev als Director; NIE ohne reviewer-Prüfinstanz konsolidieren; Einsatz im ATLAS-Chat vereinbart (TAKEOVER „übernimm Atlas") — Achtung: parallele Atlas-Tab-Session plant eigene Skill-Merges, immer erst Disk-Stand prüfen
 
 - [ZCode-Projektgruppen-Mechanik](zcode-projektgruppen-mechanik.md) — 06.09.: Chatliste links = tasks-index.sqlite (Gruppen+node_orders+members), externes SQL wirkt erst nach ⌘Q-Neustart; Claude/Cline-Chat-Importer import-chats-loki.py (259 Cline-Chats drin); Restore-.command auf Desktop
@@ -14,14 +16,14 @@ tags: [spiegel, zcode]
 - [FörderOps-Assistent](foerderops-assistent.md) — 30.08. aktiv, 06.09. spät Web-UI 8765 LÄUFT WIEDER (kein Autostart!); 70 Wissensdokumente; digi4KMU 50k existiert NICHT; Cap-Table Leon 26/Lisa 26/Sascha 25/Peter 23; 🔴 $350k-Blocker: Webgo-NS-Switch
 - [GUI nicht CLI](feedback-gui-not-cli.md) — 30.08. Sascha: „ich will eine grafische oberfläche" — IMMER Web-UI bauen, nie nur Terminal-Befehl
 - [Sequential Thinking immer](sequential-thinking-always.md) — 30.08. Nutzer-Regel: mcp sequentialthinking bei JEDER Anfrage aufrufen; verankert in ~/.agents/STANDARD-SKILLS.md A.3 + skill-routing.md (alle 5 Harnesses)
-- [Aktive Fokus-Projekte](active-projects-focus.md) — 30.08.: Atlas Cali Coach, Körperfluss Physio-Web, FörderOps; Projektlisten-Tool `python3 ~/.claude/tools/projects.py`
+- [Aktive Fokus-Projekte](active-projects-focus.md) — Atlas (Pfade + Session sess_d4dc6589: firebase.json Cache-Fix uncommitted, iOS-27-Berechtigungen, 10h-Live-Blockade), Körperfluss, FörderOps; Übergaben = fertiger Copy-Paste-Prompt ohne Prosa; `python3 ~/.claude/tools/projects.py`
 - [Google Cloud GenAI Credit](google-cloud-genai-credit.md) — 867,15 € "GenAI App Builder" bis 23.04.2027 (Billing 015D43…, Projekt koerperfluss-antigravity); gilt NUR für Vertex AI Search & Conversation, NICHT normale Gemini API
 
 - [Sigma Local-AI-Stack](sigma-local-ai-stack.md) — 30.08. 08:00 FERTIG: LM Studio + OpenClaw = Primärweg (läuft, Gemma 4 12B, Vision/Tool-Calling, max_tokens≥100); Sigma Qwen 3.5 9B "Activate" JETZT möglich (Port 8787 frei, Engine b9357 unterstützt qwen35), aber NICHT nötig; **Root Cause 07:55 gelöst: Port 8787 war von Loki-Voice blockiert (EADDRINUSE → still failure)**; **LERNE: NIEMALS User-Services killen ohne zu fragen** (Loki-Voice entladen war Fehler — Optionen anbieten: Loki-Port ändern, Sigma-Port-Flag, socat-Forward, LM-Studio-Weg); Cloud=OpenRouter/Claude 4.5; openclaw.json HAT LM-Studio-Provider bereits fertig; GLM 4.6V im LM Studio Hub
 
 - [Foto-Restaurierung Opa A4](foto-restaurierung-opa-a4.md) — FINALE 26.08. früh: 8 Fotos als A4-JPEG (3508px/q90/300dpi, 11 MB) in druckfertig/ per reinem Lanczos; Quelle jetzt ~/Desktop/opa 70iger fotos/; Upscayl-CLI (upscayl-bin + remacri) dokumentiert; Lesson: „einfach nur skaliere" = wörtlich minimal, JPEG statt PNG
 
-- [Mac setup: fanless M4 Air 16 GB](mac-setup-16gb-m4.md) — fanless MacBook Air M4, 16 GB RAM / 38 GB disk (2026-08-26), macOS 26.6, Python 3.14.6 + uv 0.11.18; RAM constrains local models; Qwen 3.5 9B for Sigma
+- [Mac setup: fanless M4 Air 16 GB](mac-setup-16gb-m4.md) — fanless MacBook Air M4, 16 GB RAM / ~103 GB disk (08.09.), macOS 27 „Golden Gate" Developer Beta (seit 09.2026), Python 3.14.6 + uv 0.11.18; RAM constrains local models; Qwen 3.5 9B for Sigma; Beta-Bugs: [[macos-27-beta-status]]
 
 - [Mac-Cleanup 2026-08-25](mac-cleanup-2026-08-25.md) — AUSGEFÜHRT: Docker K8s aus (VM 1 % idle), Adobe KOMPLETT weg, 18 Dienste/Leichen entfernt (Restore: ~/launchagents_backup + ~/deinstall_backup), TCC-auditiert (Spotify/WhatsApp FDA entzogen); 26.7-Update-Lauf gestartet, Ausgang offen — 7507=GUI blockt Daemon, Beta-Toggle nur GUI-authoritativ (Runde 7)
 
