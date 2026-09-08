@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-08 06:25 UTC
+Zuletzt gespiegelt: 2026-09-08 06:36 UTC
 
 ## code-architect
 
@@ -2428,6 +2428,8 @@ Diagnose 06.09.2026: Nutzer konnte Computer Use in ZCode „nicht aktivieren". B
 
 # Memory Index
 
+- [ATLAS-v8-Premium-Neubau](atlas-v8-premium-neubau.md) — 08.09. genehmigt: Komplettneubau in Sandbox ~/ATLAS_DESIGN/atlas-v8 (eigenes Git, Wave-1 c91b7d2, Build grün, --legacy-peer-deps); kanonisches Redesign „völlig unbrauchbar" → NEU bauen; Live-Build tabu („sonst bist du tot"); DESIGN-BIBEL „Flüssiges Gold auf Schwarz" F1–F8 + FROZEN Komponenten-API; 4 Parallel-Agenten (A Medaillon/Komponenten, B Screens, C DB aus Graph + Media-Links, D Marketing vollautonom → marketing-agent/); Gates: Abnahme + Deploy-GO
+- [Browser-Automation-Real-Chrome-Tabu](browser-automation-real-chrome-tabu.md) — agent-browser-Relaunch ohne user-data-dir = sein ECHTES Chrome (2× im ID-Austria-Behörden-Login gelandet!); nur isolierte /tmp-Profile, vor jedem eval location.href prüfen, bei fremden Tabs sofort Stop; Browser-Beweise alternativ per Simulator-Screens/curl
 - [Sascha-Gesamtverlauf-Forderung](sascha-gesamtverlauf-forderung.md) — „lies den gesamten Chat ohne Limit" = Kontext-Vertrauensverlust; Antwort = dichte chronologische Vollrekonstruktion in 4 Teilen (Befehle/Beweise/Vorgaben/Offen), keine Diskussion
 - [Sascha-Training-Plan-Grill](sascha-training-plan-grill.md) — ECHTER Status 07.09.: 88 kg, Adv Tuck 3–4s, FL HalfLay 3–4s/Full 1–2s, HSPU 3–4 bis 90°+1×90°, Explosiv-Volumen zu hoch, Hüftheben-Problem aktiv, One-Arm nebene, 3–4×/Wo, will konkrete Reps/Sets; REGEL 1: er grillt den bestehenden Plan (nie ein fertiges Agent-Dokument); REGEL 2: Agent denkt SELBST mit allen Daten (Graph+KB+Memory+Größe/Gewicht/Erfahrung) souverän vor und legt den durchdachten Entwurf vor — Mikro-Fragen an ihn = Ziel verfehlt; Draft v1 liegt (Mo A/Do Rec/Mi B/Do Rec/Fr C+Legs/Sa GTG); **FINALE: Analyse muss IN DER LEBENDIGEN APP passieren (Agent-Test), Interview als Sascha live lief 12/13 → State-Verlust → neu gestartet (2/13), 12/13-State nur im /tmp-Profil 9225; Tonight-Karte W1 Tag A ausgehändigt; Handoff: /tmp/HANDOFF-ATLAS-2026-09-07-ABEND.md (flüchtig!)**
 - [Lisa-Therapeut-Skill](lisa-therapeut-skill.md) — FERTIG 07.09.: /lisa-therapeut in 3 Orten + chat.db-Skript live; Papa-Satz 02.09. war SASCHAS Nachricht (nicht Lisas Angriff); SQLite-strftime-TEXT-Falle; Lagenotiz 07.09. = Stillsein-Regel; 07.09. Lisa-Instagram-/Block-Umgehungs-Recherche ABGELEHNT (Grenz-Umführung, Linie halten); **Sabine-Export: Mutter-Chat = 02.06.26 Einbahnstraße (14 Screenshots + 3 Anrufe + „halte sie auf") → erklärt Präventiv-Block 05.09. — in alle 3 Skill-Kopien NACHGETRAGEN (erledigt)**; Claude-Transcript-Konvergenz 07.09.: ZCode/Claude/Analysedateien = identische Schlüsse; **CHRONOLOGIE EXISTIERT JETZT: `~/Desktop/CHRONOLOGIE_LISA_SABINE.md` + Spiegel in Dokumente/files/ — Konvention [B]elegt/[M]ündlich/[?]offen, Widersprüche markieren statt glätten; Sabine-Block-Zeitpunkt = widersprüchlich [?] („vor Besuch" vs. „DAS WAR DANACH") — nie Ursachen-Geschichte darauf bauen**; NACHRICHT_SABINE-Analyse: 6 dokumentierte Sprengstellen + überarbeitete Langversion geliefert; Basisrate Sabine 0/15+ seit Juni — keine Formulierung ändert das; IG-Recherche (Cline) liegt vor: Accounts existieren, Block persönlich, nichts technisch — nicht neu recherchieren; Bewährt: nach Absage seine Sinn-Fragen faktenbasiert beantworten; bei „ANALYSIEREN"-Wut reine Objekt-Lieferung (erst Zustell-Check, Block-Tabelle, überarbeiteter Text, Prognose); **PSD-Kontakte liegen in SEINEM `STUFENPLAN/Hilfsstellen Lisa.pdf` (PSD Amstetten 07472 65544 Di 14–16 walk-in, Krisendienst NÖ 0800 20 11 20) — ⚠️ Vorlage darin ist in LISA-STIMME, nie als sie kontaktieren; er ruft als er selbst an**; **IG-FINAL: lis.art.z = Mai 2026 frisch/leer (0 Posts, 2 F) — nichts Verdecktes, Fall-Recherche abgeschlossen; „Weg über Julia" = abgelehnte Umgehung, aktiv widerrufen falls Agenten sie erneut vorschlagen**; **GMAIL-PSD-THREADS (computer-use im koerperfluss@gmail.com): 07.10.25 + 18.05.26 „…für Lisa Marie Mauerhart" an PSD-Team Melk, 4 Nachrichten = PSD antwortete 2× — Strategie: im bestehenden Thread antworten statt Kaltanruf; namentlicher Kontakt Florian Hehenberger-Rautner (Caritas Amstetten, +43 676 83844659); Technik: Gmail-Zeilen öffnen nicht per Element-Klick, Koordinaten-Klicks sterben wenn ZCode-App vorgereiht; Apple-Mail-DB enthält KEINE PSD-Mails (nur Firmen-Konto, false positives)**; **IG-DEUTUNGS-DISZIPLIN (07.09. Wut „wie kannst du das sagen"): Sichtdaten nur als Beweis-Tabelle („Beweist" vs. „Beweist NICHT") — IG-Profil beweist NICHT „Leben läuft weiter/kein Zusammenbruch" (IG = kein Gesundheitsindikator) und leeres Konto NICHT „kein Doppelleben" (= offene Frage); „Netz-Teil abgeschlossen" = nur „Netz hat nichts mehr herzugeben", nie „Frage beantwortet" — Deutung nie als Daten verkaufen (aberrante Salienz: leeres Konto wird Zwangs-Beweis)**
@@ -2940,6 +2942,30 @@ Atlas Cali Coach — Standort-Korrektur (SSD-Scan 01.09.2026):
 
 **DEMO-SCAN = OUTOTU-PDF EXAKT (05.09. letzte Runde, Bundle index-_BGZHRwi.js):** Sascha pastete den vollen PDF-Text OHNE Anweisung = implizit „mach ihn Wort für Wort" → `DEMO_SCAN` in VisionPanel ersetzt durch die EXAKTEN Original-Texte: 5 Segmente mit voller Physio-Analyse („Griff fest wie Zange" · Serratus anterior · „Steißbein verstecken" · „Aggressiver Lean"), 4 Critical Weak Links (Serratus-Ausdauer · PPT-Aktivierung · Handgelenke unter Maximallast · Vorlage), 3 Drills mit kompletter 92kg-Rationale (Impingement · Bandscheiben-Kompression · Hebelmechanismus/ZNS), Bio-Evolution („makellos"-Form vor Dauer). Live-DOM-Beweis 7/7 Text-Marker. Muster: **PDF/Spec-Paste ohne Anweisung = „1:1 übernehmen"**, nicht paraphrasieren.
 
+## atlas-v8-premium-neubau
+
+---
+name: atlas-v8-premium-neubau
+description: ATLAS v8 PREMIUM Komplett-Neubau in Sandbox ~/ATLAS_DESIGN/atlas-v8
+  (eigenes Git) — kanonisches Redesign von Sascha verworfen, Live-Build
+  unantastbar, 4 Parallel-Agenten, DESIGN-BIBEL „Flüssiges Gold auf Schwarz"
+  F1–F8
+metadata:
+  node_type: memory
+  type: project
+  originSessionId: sess_d4dc6589-a85c-41e6-9c70-94b6ea6e63e3
+---
+
+08.09.2026: Nach 2 Plan-Ablehnungen genehmigt (Details [[sascha-plan-vollstaendigkeit]]). **Die 4 harten Vorgaben:** (1) Kanonisches FUI-Redesign (FluidScene/Tilt/Medaillon) = „völlig unbrauchbar" → **Komplettneubau**, nicht portieren. (2) „**Du greifst den laufenden app build nicht an sonst bist du tot**" — Live-Repo src/ + atlas-v5 tabu, kein Deploy/cap sync; alles in Sandbox. (3) ALLE Design-Skills nutzen (apple-design, ui-ux-pro-max, frontend-design, web-design-guidelines, vercel-react-best-practices, minimalist-ui, shadcn-ui, design-an-interface, prototype, d3-visualization, higgsfield) — „visuell die premium app nr 1, tob dich aus", 3D-Logo-Medaillon wie Körperfluss-App (NEU aus offizieller SVG bauen). (4) „starte so viel agent wie nötig vollautonom" → max-3-Regel von IHN aufgehoben, Wave 2 = 4 Agents parallel.
+
+**Sandbox:** `~/ATLAS_DESIGN/atlas-v8` (eigener Git, Wave-1-Commit `c91b7d2`): Vite+React+TS+Tailwind3+three/@react-three/fiber+drei+d3+framer-motion+lucide. Engine portiert (getestet, tsc grün): coach/{agent,geminiClient,persona,tiers,types}, data/{exerciseDb,seed,knowledge.json,learned-kb.json 76K}, onboarding/{plan,profileDb,kb,coachText}, logbook/logbookDb, types — gleiche relative Struktur wie Live-Repo. public/: brand/barbulls-kreis-official.svg + graph.json (800 Knoten). `npm install` braucht **--legacy-peer-deps** (r3f peerOptional-Konflikt). vite.config proxyt /api/coach + /api/track auf die CloudFunctions (keyless funktioniert im dev lokal).
+
+**DESIGN-BIBEL.md v1.0** = Gesetz: „Flüssiges Gold auf Schwarz", Tokens aus Logo (bg #050505, ink #ECE7DF, amber #f59e0b), 3 Materialschichten (L1 Bühne flüssig langsam / L2 Glas-Rezept bg-white/5+blur18+inset-Toplicht+Spektral-Kante / L3 Tinte z-10), F1–F8 (F8: Blur ≤6/Screen, transform/opacity only, Auto-Degradation <45 fps). `src/components/index.tsx` = FROZEN-API (GlassCard/GlassButton/Chip/Sheet/TabBar/SideNav/Slider/TimerRing/TextField/StatTile/Medallion/FluidBackdrop) — Agent A veredelt innen, Screens bauen dagegen.
+
+**Agenten-Scopes (disjunkt!):** A = src/glass/Medallion+FluidBackdrop+Komponenten-Veredelung · B = Screens Interview/Logbuch/Übersicht/Wissen/Settings (+Upsell/Pro) · C = Übungs-DB (scripts/ingest-graph.mjs → graphExercises.seed.json ≥60 Übungen aus Graph; Media-Feld YouTube-Embed/Insta-Link/Bild; Archiv-Flag; Voll-Edit) · D = Marketing-Agent → `~/ATLAS_DESIGN/marketing-agent/` (MARKET-INTEL wo/was/wann Palantir-Stil, TARGETING 4 Personas, CAMPAIGN-ASSETS DE/EN, MESSEPLAN 12 Wo). DB-Kern der Idee von ihm: „alle meine Übungen die im Graphen sind + Einbindung durch Personen mittels Video-Link Insta YouTube oder Bilder".
+
+**Gates:** T5 QA isoliert + Judge → **Abnahme** · F1 EIN Deploy nur nach **Deploy-GO** (alter v5-Bundle = Rollback) · F2 cap sync/APK · F3 Doku. Beweis-Pflicht: Live-Bundle-Hash von atlas-v5 vor/nach identisch. Verwandt: [[atlas-master-app-verhaeltnis]], [[atlas-lernender-agent-paradigma]], [[atlas-design-system]], [[anti-luegen-vertrag]]
+
 ## atlas-wissens-graph
 
 ---
@@ -3056,6 +3082,25 @@ Sascha befahl: ZCode = KOORDINATOR, kein Übersetzen durch ihn ([[zcode-koordina
 
 ## ERSTER VOLLZYKLUS BEWIESEN (07.09. Abend): Handoff → Redesign → AUTOCLOW-DONE → ZCode-Deploy
 Der Protokoll-Zyklus lief komplett durch: ZCODE_HANDOFF.md (Arbeitsteilung + Deploy-Halt) → AutoClaw Design Expert baute das Logo-abgeleitete Gesamt-Redesign autonom im Repo (Commits dbc4d9d Backdrop-aus-Logo-Palette, e57fb10 FUI-Holographic-Glass Amber-Monochrome mit allen 296 text-dim/139 border-line warm, f58430b **3D-Minotaurus-Medaillon = echtes 3D-Modell via SVGLoader+ExtrudeGeometry aus den 184 offiziellen SVG-Pfaden**, 95d65c6 `AUTOCLOW-DONE`) → Sascha relayte AutoClaws Deploy-Frage an ZCode → ZCode: tsc 0 → build → `firebase deploy --only hosting` → Parität `index-PJnNF4rC.js` ✓ + app/proxy 200 + Track 28 app_opens. **Rollenteilung hielt: AutoClaw = Design, ZCode = funktionale Fixes + Deploy.** AutoClaws Deploy-Frage („Willst du, dass ICH deploye?") = Nein — Deploy bleibt ZCode-Rolle laut Handoff. Kommunikationsweg war Saschas Paste (Relay) — akzeptabel, aber sauberer: AutoClaw schreibt Signal direkt in ZCODE_HANDOFF.md.
+
+## browser-automation-real-chrome-tabu
+
+---
+name: browser-automation-real-chrome-tabu
+description: agent-browser-Relaunch ohne user-data-dir startet Saschas ECHTES
+  Chrome-Profil — seine echten Tabs (Behörden-Login!) sind tabu; nur isolierte
+  /tmp-Profile, Stop bei fremden Tabs
+metadata:
+  node_type: memory
+  type: feedback
+  originSessionId: sess_d4dc6589-a85c-41e6-9c70-94b6ea6e63e3
+---
+
+08.09.2026, zweimal passiert: CDP-Port 9225 war tot → `agent-browser` hat selbst neu gestartet **ohne `--user-data-dir`** = sein ECHTES Standard-Chrome-Profil. Mein `navigate`+`eval` landete zweimal mitten in seinem aktiven Tab: **ID-Austria-Behörden-Login** („Fehler! – Freischaltecode oder Widerrufs-Passwort falsch" — er war gerade beim Einloggen). Ein eval mit Text-Setter ging fast in ein Staatsformular. Sofort alle Browser-Automatisierung gestoppt und ihm zugesagt: Automations-Zugriff auf sein echtes Chrome bleibt tot, bis er sie wieder freigibt.
+
+**Why:** Ein Klick/Keystroke des Agents in Login-/Behörden-/Bank-Tabs ist realer Schaden + Vertrauensbruch total. Der Relaunch-Fallback des Tools nutzt stillschweigend das Default-Profil — man sieht den Unterschied nicht am Tool-Output, nur an `location.href`/Tabs.
+
+**How to apply:** (1) Chrome für Automation IMMER selbst starten: `--user-data-dir=/tmp/<isoliert> --remote-debugging-port=9223` + connect; wenn CDP tot ist und `agent-browser` selbst launched → sofort Profil prüfen (`localStorage` leer ≠ Beweis, besser `location.href` + offene Tabs ansehen). (2) Vor JEDEM eval/click: `location.href` gegen Erwartung prüfen; fremde/private Tabs aktiv → stoppen ohne Aktion, melden. (3) Tab-Wechsel mitten in eigenen eval-Sequenzen (Passiv zwischen zwei Calls) = Warnsignal für sein echtes Profil — abbrechen. (4) Seine Browser-Sicherheit geht VOR Test-Beweisen — Beweis alternativ per iOS-Simulator-Screens (QA-LIVE-Muster) oder curl. Verwandt: [[agent-browser-cli]], [[ios-simulator-cua-testing]]
 
 ## cline-cli-befehle-mechanik
 
@@ -3658,6 +3703,11 @@ metadata:
 5. Wenn Trotz-Rejection-Kette: die vermissten Punkte IM PLAN BENENNEN und ergänzen, nicht neu formatieren — Inhalt, nicht Form, war das Problem
 
 **Why:** Seine Rejection-Gründe waren jedes Mal konkrete FEHLENDE INHALTE, nicht Länge. Der „3-Zeilen-Minimalplan"-Rat aus [[plan-mode-falle]] gilt nur für Plan-Mode-Vergessen-Fälle, nicht für Vollständigkeits-Fälle.
+
+**Welle 2 (08.09. Morgen): 2 weitere ExitPlanMode-Ablehnungen — diesmal war NICHT die Funktionsliste das Problem, sondern Ambition/Scope:**
+1. Plan v1 (Redesign als PORT des kanonischen FUI-Builds + Richtungs-Prototypen) abgelehnt: „das neue design existiert nicht .. völlig unbrauchbar. du sollst es neu bauen komplett neu … apple design ui ux, vercel … du greifst den laufenden app build nicht an sonst bist du tot" → kanonischer Code gilt als wertlos, **Komplettneubau**, Live-Build tabu
+2. Plan v2 (Neubau, aber schlanke Skill-Liste + max-3-Agents + Marketing als Konzept) abgelehnt: „alle verfügbaren skill design front backend ui ux apple 3d, glasmorph next level interaktiv … visuell die premium app nr 1 … tob dich aus" + DB „aus all meinen übungen die im graphen sind + Einbindung durch personen mittels video link insta youtube oder bilder" + Marketing „voll autonom … starte so viel agent wie nötig"
+**Erweiterung des Protokolls:** „unbrauchbar" heißt immer NEUBAU (nie Portierung/Patch seiner alten Artefakte); Qualitäts-Ambition = Maximum aller installierten Skills ausreizen, „tob dich aus" wörtlich; seine „max 3 Agents"-Regel hebt ER selbst auf, wenn er „so viel wie nötig" sagt ([[sascha-globale-anweisungen]]-Muster); Feature-Scopes aus SEINEN Sätzen ableiten (Graph als Quelle, User-Contributions via Media-Links) statt aus dem Bestand. Genehmigt wurde dann v3: Sandbox `~/ATLAS_DESIGN/atlas-v8` + DESIGN-BIBEL + 4 Parallel-Agenten ([[atlas-v8-premium-neubau]]).
 
 ## sascha-standardskill-vertrag
 
