@@ -1,7 +1,7 @@
 ---
 app: zcode
 quelle: "saschalagler/cli/memories/projects/default-041661acc4598b22/memory/loki-dev-gate-enforcement.md"
-stand: 2026-09-06
+stand: 2026-09-08
 tags: [spiegel, zcode]
 ---
 
@@ -25,5 +25,7 @@ metadata:
 **Parallelität (Regel geändert auf Saschas Wunsch):** bedarfsberechnet aus Task-Graph (unabhängige Tasks = Parallelitätsgrad), Budget-Default 3 mit 1-Zeilen-Begründung bei mehr — „3" ist Quota-Schutz ([[zai-coding-plan-limits]], 16-GB-Mac), kein Dogma.
 
 **Neustarts ausgeführt 06.09. spät:** Cline Code + Claude + ZCode (16:16, inkl. Restart-Kette) — Hooks damit geladen. Der ZCode-Restart-sqlite-Fix der Kette war gegen die FALSCHE Spalte (session-Tabelle hat keine `model`-Spalte; die zai-start-plan-Leiche steckt im App-Cache, nicht in db.sqlite) — fürs Wiki-Feature bleibt UI-Modellwahl der Fix, Details [[zcode-setup-verified]].
+
+**Full-Stack-Kette (Stand 08.09.2026, nach Skill-Konsolidierung 126→96, [[skills-architektur-2026-09-07]]):** Trigger „baue X" → gate-enforcer zwingt PLAN → skill-router wählt Teil-Skills → **Standard-Agents in `~/.zcode/agents/`: @code-architect (plant, kein Prod-Code) → @explore (read-only Scout) → @implementer (1 Stufe, Commit-Pflicht) → @reviewer (karpathy/ponytail-Review)** — @implementer-Spawns hart auf max 3 gekappt durch `~/.agents/tools/loki-watcher.py` (PreToolUse-Hook „Task|Agent", Exit-2-Block, Zähler /tmp/loki-agent-count.json). Vor-/Qualitäts-Skills: design-an-interface → prototype · tdd · code-review · qa · triage · to-spec/to-tickets (bleiben EINZELN — Prüfinstanz strich die Meta-Verschmelzung „work-flow": triage 28 KB State-Machine, Verlustrisiko > Nutzen) · ui-ux-tester. Deploy: deploy-to-vercel. Für „/implement"-Referenzen in ask-matt u. a. steht loki-dev Modus BUILD (ehem. implement-Skill archiviert).
 
 Verwandt: [[autoclaw-full-stack-builder]] [[sequential-thinking-always]] [[skill-install-conventions]]
