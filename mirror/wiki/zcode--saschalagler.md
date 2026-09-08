@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-08 03:38 UTC
+Zuletzt gespiegelt: 2026-09-08 03:49 UTC
 
 ## code-architect
 
@@ -2313,6 +2313,7 @@ Diagnose 06.09.2026: Nutzer konnte Computer Use in ZCode „nicht aktivieren". B
 - [Atlas-Firestore-Telemetry-Setup](atlas-firestore-telemetry-setup.md) — /api/track live ({"ok":true}, Summary zählt); Firestore-Fallen: NOT_FOUND=DB fehlt (databases:create "(default)"), PERMISSION_DENIED=roles/datastore.user via gcloud für 709873485696-compute-SA (~2min Propagation); npm install in functions/ vor Deploy; Rewrite-Reihenfolge
 - [Atlas-Wissens-Graph](atlas-wissens-graph.md) — Pipeline komplett 05.09.: 4228 Dateien · 1,83 GB · 703 Dup-Gruppen · 18 Themen · 601 Cluster · D3-Graph 800 Knoten/1032 Kanten; Output: `~/Desktop/Coworkspace_Ich/atlas + pliability /WISSENS-GRAPH/` (01-scan-log.json, KNOWLEDGE_MAP.md, WISSENS-GRAPH.html, graph.json); graphify scheitert an Gemini-429 → D3-Fallback self-contained besser
 - [Atlas-OUTOTU-Output-Format](atlas-outotu-output-format.md) — ALLE ATLAS-Analysen im OUTOTU-PDF-Stil (Kinetic-Chain-Scan, CALIBRATED @kg, Drill-Protocol); Schema liegt in chainScan.ts/ChainScanReport.tsx
+- [Atlas-Coach-Keyless-Proxy-Fix](atlas-coach-keyless-proxy-fix.md) — 10-h-Blockade Root Cause: Free-Tier-Key im Build → 429; Fix: keyless→Server-Proxy; Deploy nur mit leerem VITE_GEMINI_API_KEY; Plan-E2E live bewiesen
 
 ## agent-browser-cli
 
@@ -2414,6 +2415,19 @@ Sascha: „wie kann ich sicher sein das du die ganze pipeline durchziehst und ni
 **How to apply:** Bei jeder Pipeline ≥3 Stufen: Tabelle mit den 5 Mechanismen + Kennzahlen-Vertrag VOR Start präsentieren (ExitPlanMode), dann live abarbeiten. Nach Fertigstellung: Stichprobe anbieten („wähl eine Zeile"). Verwandt: [[sascha-beweis-echtprojekte]].
 
 **6. Mechanismus (07.09. ergänzt) — VERLAUFS-AUDIT:** Auf „prüfe was erledigt wurde" startet ZCode ein Audit-Team: Behauptungs-Liste aus dem Verlauf extrahieren → Subagent prüft JEDE Zeile gegen Artefakte (Datei/grep/curl/Screenshot), zweiter Subagent prüft Live-System parallel. Subagents können den Chat nicht lesen — die Behauptungsliste muss der Hauptagent selbst extrahieren. Details [[agenten-selbstueberwachung]].
+
+## atlas-coach-keyless-proxy-fix
+
+---
+name: atlas-coach-keyless-proxy-fix
+description: Root Cause der 10-h-App-Blockade gefixt: Client-Keyless→Proxy; Plan-E2E live bewiesen; Deploy-Build immer mit leerem VITE_GEMINI_API_KEY
+metadata:
+  type: project
+---
+
+08.09.2026: Die 10-h-Blockade („app live bekommen geht nicht") war ein Free-Tier-Key im Build: `.env.local` (VITE_GEMINI_API_KEY, Limit 20/Tag) wurde beim Clean-Deploy eingebakt → Client rief Gemini direkt → 429. Fix (Desktop-Repo, Commit d46e364): `geminiClient.ts` ruft ohne Key `/api/coach` (Server-Kette, Abo-Secret ATLAS_GEMINI_KEY), Key-Gate in CoachChat.tsx deaktiviert, BYO-Key bleibt.
+
+**How to apply:** Deploy-Build IMMER mit `VITE_GEMINI_API_KEY= npm run build` (leer), nie .env.local einbacken. Plan-Karten-Trigger-Regex im Coach: „Erstelle mir einen individuellen Trainingsplan" — Nachrichten brauchen diesen Prefix. E2E-Beweis: Plan-Karte → „In Logbuch übernehmen" → Logbuch-Eintrag (Di. 08. Sept., 3 Blöcke/6 Übungen/18 Sätze). **Finale Live-Version 08.09.: `index-K9pgQrSf.js` (Fix des „Kein API-Key"-Throws), live == lokal dist (Parität per curl bewiesen); die alte „Altlast"-App ist vollständig überschrieben — atlas-v5 = Clean-Build, keine zweite Version mehr.** PWA-Manifest `/manifest.webmanifest` live (HTTP 200) → iPhone-Install = Safari → Teilen → „Zum Home-Bildschirm", full-screen ohne Xcode; echter TestFlight-Weg bleibt Saschas Apple-ID-Schritt. Dokumente: ~/ATLAS_MASTER/{ATLAS-REGELN,INIT-KONFIGURATION,PROJEKT-STATUS-PLAN}.md. Verwandt: [[atlas-master-app-verhältnis]], [[atlas-firestore-telemetry-setup]]
 
 ## atlas-d8-keine-vorannahmen
 

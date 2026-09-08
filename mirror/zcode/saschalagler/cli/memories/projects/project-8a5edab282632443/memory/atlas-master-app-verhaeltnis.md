@@ -1,6 +1,6 @@
 ---
 name: atlas-master-app-verhaeltnis
-description: ATLAS 07.09. ABEND — AutoClaw-Redesign LIVE (3D-Minotaurus-Medaillon + FUI-Holographic-Glass, index-PJnNF4rC) + 8 QA-Fixes committed + Deploy-Zyklus nach AUTOCLOW-DONE bewiesen + Sascha-Interview 12/13 live getestet; TestFlight-Apple-ID = einziger User-Schritt
+description: ATLAS 08.09. — LIVE = Clean & Stable Desktop-Build (Redesign nur noch in Git, siehe [[atlas-coach-keyless-proxy-fix]]); Historie 07.09. ABEND: AutoClaw-Redesign live (index-PJnNF4rC) + 8 QA-Fixes + Deploy-Zyklus bewiesen; TestFlight-Apple-ID = einziger User-Schritt
 metadata:
   node_type: memory
   type: project
