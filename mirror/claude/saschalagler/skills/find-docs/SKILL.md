@@ -157,3 +157,10 @@ Do not silently fall back to training data — always tell the user why Context7
 - Use descriptive queries, not single words — `"React useEffect cleanup function"` not `"hooks"`
 - One topic per query — split `"routing and auth and caching"` into a separate `docs` command per concept, unless the question is about how they interact
 - Do not include sensitive information (API keys, passwords, credentials) in queries
+
+## Context7-MCP-Modus (absorbiert 2026-09-08, ehem. context7-mcp — archiviert)
+Wenn der Context7-MCP-Server konfiguriert ist (aktiv in ~/.mcp.json), nutze statt CLI:
+1. `resolve-library-id` mit `libraryName` + `query` (verbessert Ranking).
+2. Besten Match wählen: Namensnähe, höherer Benchmark-Score; bei Versionsnennung ("React 19") versionsspezifische ID.
+3. `query-docs` mit `libraryId` (z. B. `/vercel/next.js`) + query — **ein Konzept pro Query**; Multi-Topic-Fragen = separate Calls pro Konzept (gleiche libraryId), außer die Konzepte interagieren.
+4. Antwort mit aktuellen Docs + Codebeispielen, Version zitieren. Offizielle/primäre Pakete vor Community-Forks bevorzugen.

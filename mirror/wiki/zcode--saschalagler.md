@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-08 03:49 UTC
+Zuletzt gespiegelt: 2026-09-08 04:00 UTC
 
 ## code-architect
 
@@ -2313,7 +2313,8 @@ Diagnose 06.09.2026: Nutzer konnte Computer Use in ZCode „nicht aktivieren". B
 - [Atlas-Firestore-Telemetry-Setup](atlas-firestore-telemetry-setup.md) — /api/track live ({"ok":true}, Summary zählt); Firestore-Fallen: NOT_FOUND=DB fehlt (databases:create "(default)"), PERMISSION_DENIED=roles/datastore.user via gcloud für 709873485696-compute-SA (~2min Propagation); npm install in functions/ vor Deploy; Rewrite-Reihenfolge
 - [Atlas-Wissens-Graph](atlas-wissens-graph.md) — Pipeline komplett 05.09.: 4228 Dateien · 1,83 GB · 703 Dup-Gruppen · 18 Themen · 601 Cluster · D3-Graph 800 Knoten/1032 Kanten; Output: `~/Desktop/Coworkspace_Ich/atlas + pliability /WISSENS-GRAPH/` (01-scan-log.json, KNOWLEDGE_MAP.md, WISSENS-GRAPH.html, graph.json); graphify scheitert an Gemini-429 → D3-Fallback self-contained besser
 - [Atlas-OUTOTU-Output-Format](atlas-outotu-output-format.md) — ALLE ATLAS-Analysen im OUTOTU-PDF-Stil (Kinetic-Chain-Scan, CALIBRATED @kg, Drill-Protocol); Schema liegt in chainScan.ts/ChainScanReport.tsx
-- [Atlas-Coach-Keyless-Proxy-Fix](atlas-coach-keyless-proxy-fix.md) — 10-h-Blockade Root Cause: Free-Tier-Key im Build → 429; Fix: keyless→Server-Proxy; Deploy nur mit leerem VITE_GEMINI_API_KEY; Plan-E2E live bewiesen
+- [Atlas-Coach-Keyless-Proxy-Fix](atlas-coach-keyless-proxy-fix.md) — 10-h-Blockade Root Cause: Free-Tier-Key im Build → 429; Fix: keyless→Server-Proxy; Deploy nur mit leerem VITE_GEMINI_API_KEY; Plan-E2E live bewiesen; Onboarding-Reentry = privates Fenster/Flag-Reset; PWA-Install iPhone bewiesen; 2 Background-Agents gestartet (Marktscan + 3 UI-Defects, Deploy wartet auf GO)
+- [Sascha-Standardskill-Vertrag](sascha-standardskill-vertrag.md) — /standardskill = verbindlicher Vertrag: STANDARD-SKILLS.md + skill-routing.md laden, Regeltabelle bestätigen (BLUF · nummerierte Schritte · max 3 Agents · PLAN vor Build · 4 Stopp-Regeln · Flash-first · sequentialthinking · kein Löschen/Deploy ohne GO); Verstoß = sofort selbst benennen + korrigieren
 
 ## agent-browser-cli
 
@@ -2427,7 +2428,7 @@ metadata:
 
 08.09.2026: Die 10-h-Blockade („app live bekommen geht nicht") war ein Free-Tier-Key im Build: `.env.local` (VITE_GEMINI_API_KEY, Limit 20/Tag) wurde beim Clean-Deploy eingebakt → Client rief Gemini direkt → 429. Fix (Desktop-Repo, Commit d46e364): `geminiClient.ts` ruft ohne Key `/api/coach` (Server-Kette, Abo-Secret ATLAS_GEMINI_KEY), Key-Gate in CoachChat.tsx deaktiviert, BYO-Key bleibt.
 
-**How to apply:** Deploy-Build IMMER mit `VITE_GEMINI_API_KEY= npm run build` (leer), nie .env.local einbacken. Plan-Karten-Trigger-Regex im Coach: „Erstelle mir einen individuellen Trainingsplan" — Nachrichten brauchen diesen Prefix. E2E-Beweis: Plan-Karte → „In Logbuch übernehmen" → Logbuch-Eintrag (Di. 08. Sept., 3 Blöcke/6 Übungen/18 Sätze). **Finale Live-Version 08.09.: `index-K9pgQrSf.js` (Fix des „Kein API-Key"-Throws), live == lokal dist (Parität per curl bewiesen); die alte „Altlast"-App ist vollständig überschrieben — atlas-v5 = Clean-Build, keine zweite Version mehr.** PWA-Manifest `/manifest.webmanifest` live (HTTP 200) → iPhone-Install = Safari → Teilen → „Zum Home-Bildschirm", full-screen ohne Xcode; echter TestFlight-Weg bleibt Saschas Apple-ID-Schritt. Dokumente: ~/ATLAS_MASTER/{ATLAS-REGELN,INIT-KONFIGURATION,PROJEKT-STATUS-PLAN}.md. Verwandt: [[atlas-master-app-verhältnis]], [[atlas-firestore-telemetry-setup]]
+**How to apply:** Deploy-Build IMMER mit `VITE_GEMINI_API_KEY= npm run build` (leer), nie .env.local einbacken. Plan-Karten-Trigger-Regex im Coach: „Erstelle mir einen individuellen Trainingsplan" — Nachrichten brauchen diesen Prefix. E2E-Beweis: Plan-Karte → „In Logbuch übernehmen" → Logbuch-Eintrag (Di. 08. Sept., 3 Blöcke/6 Übungen/18 Sätze). **Finale Live-Version 08.09.: `index-K9pgQrSf.js` (Fix des „Kein API-Key"-Throws), live == lokal dist (Parität per curl bewiesen); die alte „Altlast"-App ist vollständig überschrieben — atlas-v5 = Clean-Build, keine zweite Version mehr.** PWA-Manifest `/manifest.webmanifest` live (HTTP 200) → iPhone-Install = Safari → Teilen → „Zum Home-Bildschirm", full-screen ohne Xcode; echter TestFlight-Weg bleibt Saschas Apple-ID-Schritt. Dokumente: ~/ATLAS_MASTER/{ATLAS-REGELN,INIT-KONFIGURATION,PROJEKT-STATUS-PLAN}.md. **Onboarding-Reentry:** Onboarding startet bei jedem frischen Profil automatisch („Ich bin ATLAS. 20 Fragen…"); in getesteten Browsern ist `atlas_onboarded=1` gesetzt → Rückweg = privates Fenster ODER `localStorage.removeItem('atlas_onboarded')` + Reload. **08.09. Abend:** Parität erneut bewiesen (live K9pgQrSf == dist, Proxy „OK", Altlast-Vorwurf damit erledigt); 2 Background-Agents gestartet: (A) Markt-Scan → `~/ATLAS_MASTER/marketing/MARKTSCAN_2026-09.md`, (B) 3 UI-Defects (Vision-Doppelbutton/Overview-Empty-States/FAB-Overlap) im Desktop-Repo mit tsc+Build, **KEIN Deploy ohne Sascha-GO**. Verwandt: [[atlas-master-app-verhaeltnis]], [[atlas-firestore-telemetry-setup]], [[sascha-standardskill-vertrag]]
 
 ## atlas-d8-keine-vorannahmen
 
@@ -2575,7 +2576,7 @@ Der Agent-Prompt selbst empfahl in STUFE 5 „mit 2–4 Antwort-Optionen wo sinn
 
 ---
 name: atlas-master-app-verhaeltnis
-description: ATLAS 07.09. ABEND — AutoClaw-Redesign LIVE (3D-Minotaurus-Medaillon + FUI-Holographic-Glass, index-PJnNF4rC) + 8 QA-Fixes committed + Deploy-Zyklus nach AUTOCLOW-DONE bewiesen + Sascha-Interview 12/13 live getestet; TestFlight-Apple-ID = einziger User-Schritt
+description: ATLAS 08.09. — LIVE = Clean & Stable Desktop-Build (Redesign nur noch in Git, siehe [[atlas-coach-keyless-proxy-fix]]); Historie 07.09. ABEND: AutoClaw-Redesign live (index-PJnNF4rC) + 8 QA-Fixes + Deploy-Zyklus bewiesen; TestFlight-Apple-ID = einziger User-Schritt
 metadata:
   node_type: memory
   type: project
@@ -3479,6 +3480,25 @@ metadata:
 5. Wenn Trotz-Rejection-Kette: die vermissten Punkte IM PLAN BENENNEN und ergänzen, nicht neu formatieren — Inhalt, nicht Form, war das Problem
 
 **Why:** Seine Rejection-Gründe waren jedes Mal konkrete FEHLENDE INHALTE, nicht Länge. Der „3-Zeilen-Minimalplan"-Rat aus [[plan-mode-falle]] gilt nur für Plan-Mode-Vergessen-Fälle, nicht für Vollständigkeits-Fälle.
+
+## sascha-standardskill-vertrag
+
+---
+name: sascha-standardskill-vertrag
+description: /standardskill-Custom-Command = verbindlicher Verhaltensvertrag pro
+  Session — beide Skill-Dateien laden, Regeltabelle bestätigen, danach strikt
+  folgen; Verstoß = sofort selbst benennen + korrigieren
+metadata:
+  node_type: memory
+  type: feedback
+  originSessionId: sess_d4dc6589-a85c-41e6-9c70-94b6ea6e63e3
+---
+
+Sascha hat das Custom-Command **`/standardskill`** (user/zcode) installiert und als VERBINDLICH erklärt (08.09.2026): vor der Antwort 1) `~/.agents/STANDARD-SKILLS.md` komplett lesen, 2) `~/.agents/skill-routing.md` lesen, 3) Bestätigung im Chat als Tabelle „| Regel | gilt ab jetzt |". Pflicht-Regeln: **BLUF Zeile 1 · nummerierte Schritte · max 3 Parallel-Agents · PLAN-Tabelle vor Build (Stufe|Agent|Skill|Modell|~Zeit|Dep) · keine Rückfragen außer 4 Stopp-Regeln · Flash-first (glm-first, schweres → glm-plan) · sequentialthinking bei jeder Anfrage · kein Löschen/Deploy ohne GO · Regelverstoß = sofort benennen und korrigieren, OHNE neue Nutzer-Frage.**
+
+**Why:** Das ist seine Umsetzung der „permanenten Kontroll-Instanz/Watcher, der Regeln strikt durchsetzt" — er will Selbst-Enforcement statt Überwachung durch ihn. Ein einmal bestätigter Vertrag gilt dauerhaft, nicht nur für die eine Antwort.
+
+**How to apply:** Bei `/standardskill`-Aufruf: beide Dateien lesen (kein Zitieren aus Gedächtnis) + Tabelle posten + Antworten danach formen. Die Regeln auch ohne Aufruf als Default arbeiten lassen (BLUF, max 3 Agents, Deploy-GO-Gate). Verwandt: [[skill-routing]], [[anti-luegen-vertrag]], [[sascha-meldung-nur-fertig]]
 
 ## sascha-training-plan-grill
 
@@ -94061,6 +94081,33 @@ Regel „Sequential Thinking bei ALLEN Anfragen" in dein bestehendes Standard-Sy
 5. **Verifizieren:** `grep -c "Sequential Thinking"` in allen 4 Zieldateien + `python3 ~/.claude/tools/projects.py --hook` (Test, ob der Block im Session-Start-Kontext landet).
 
 Ergebnis: Ab der nächsten Nachricht gilt die Regel in allen 5 Harnesses automatisch — ohne dass du sie wiederholen musst.
+## plan-sess_ecb2e5e0-e1f7-46fb-a5b9-a997d5485c8e
+
+SKILLS-KONSOLIDIERUNG v2 — prüfinstanz-geprüft, korrigiert (~126 → ~106, zero loss, zero tote Verweise)
+
+AUFWAND: ~60 Min. Archiv: ~/.agents/skills-archive/2026-09-08/ (reversibel).
+
+0) REFERENZ-MAP ZUERST: grep aller Archiv-Kandidaten-Namen in ~/AGENTS.md, ~/.agents/STANDARD-SKILLS.md, ~/.agents/skill-routing.md, loki-dev, projects, skill-router — jede gefundene Zeile wird IM GLEICHEN ZUG umgeschrieben (Pflicht, reviewer-Pflichtpunkt 7).
+
+1) SOFORT-ARCHIV (11): glm-init, lokiomnidevteam-plan, lokiomnidevteam-execute, implement, grill-with-docs, persona-selector, market-intelligence-allrounder, backend-development, multi-agent-ecosystem-overview (STANDARD-SKILLS-Zeile vorher auf loki-dev umschreiben), second-brain, obsidian-vault, agentmemory-rest-api (Port 3111 = tot, geprüft)
+   NICHT: context7-mcp (erst Schritt 4), batch-grill-me/loop-me/to-questionnaire (prüfbestätigt eigenständig)
+
+2) PORTIERUNG → ARCHIV (6):
+   - loki-dev += 2 Zeilen (cavecrew-reviewer-Alternative, Antigravity-manuell-Regel) → glm-build + deve archivieren + AGENTS.md:103 („glm-build/deve = Wrapper") fixen
+   - loki-memory-sync += obsidian-sync.sh-Pfad + Session-Context-Targets → obsidian-vault-sync + cross-platform-knowledge-sync archivieren + STANDARD-SKILLS-Z.21 fixen
+   - projects += Onboarding-Schritte (AGENTS.md/.clinerules-Symlink, MCP-Check, F-2) → automated-project-onboarding archivieren + skill-routing-Z.21 fixen
+   - caveman += Config-Resolution (8 Zeilen) → caveman-help archivieren
+
+3) STREICHUNG: Meta-Verschmelzung (work-flow etc.) fällt KOMPLETT weg — qa, to-spec, to-tickets, triage, domain-modeling, codebase-design etc. bleiben alle unverändert (prüfbestätigt: Verlustrisiko > Nutzen).
+
+4) ENTSCHLACKUNG (Suiten bleiben):
+   - find-docs += ctx7-MCP-Schritte (resolve-library-id/query-docs, 1-Konzept-Regel) → DANNEACH context7-mcp archivieren (Skill-Flug erst nach Absorption, reviewer-Punkt 5)
+   - Gemini 5: Modell-/SDK-Tabellen 1× in interactions-api, andere 4 mit 1-Zeilen-Verweisen (−4,3 KB)
+   - higgsfield: shared-bootstrap.md, 7 Install-Sektionen → Pointer (−3,2 KB)
+   - ui-ux-pro-max + shadcn-ui → 1 Katalog-Skill (beide Trigger-Sets erhalten)
+   - obsidian-second-brain: Body 78 KB → ~10 KB Kern + references/ (19,6k → ~2,5k Tokens/Aufruf)
+
+5) VERIFIKATION: 0 tote Verweise (grep gegen Archivliste), 0 kaputte Links, Zählung ~106, Audit-Doc 2026-09-08, Skill-Browser (GUI) regenerieren, ⌘Q-Hinweis.
 ## MAC_DIAGNOSE_REPORT_2026-08-25
 
 # Research Report: Mac-Überhitzung — Diagnose & beste Prüf-Tools
