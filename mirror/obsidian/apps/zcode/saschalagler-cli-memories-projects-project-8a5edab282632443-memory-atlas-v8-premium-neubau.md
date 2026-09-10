@@ -1,7 +1,7 @@
 ---
 app: zcode
 quelle: "saschalagler/cli/memories/projects/project-8a5edab282632443/memory/atlas-v8-premium-neubau.md"
-stand: 2026-09-08
+stand: 2026-09-10
 tags: [spiegel, zcode]
 ---
 
@@ -25,4 +25,6 @@ metadata:
 
 **Agenten-Scopes (disjunkt!):** A = src/glass/Medallion+FluidBackdrop+Komponenten-Veredelung · B = Screens Interview/Logbuch/Übersicht/Wissen/Settings (+Upsell/Pro) · C = Übungs-DB (scripts/ingest-graph.mjs → graphExercises.seed.json ≥60 Übungen aus Graph; Media-Feld YouTube-Embed/Insta-Link/Bild; Archiv-Flag; Voll-Edit) · D = Marketing-Agent → `~/ATLAS_DESIGN/marketing-agent/` (MARKET-INTEL wo/was/wann Palantir-Stil, TARGETING 4 Personas, CAMPAIGN-ASSETS DE/EN, MESSEPLAN 12 Wo). DB-Kern der Idee von ihm: „alle meine Übungen die im Graphen sind + Einbindung durch Personen mittels Video-Link Insta YouTube oder Bilder".
 
-**Gates:** T5 QA isoliert + Judge → **Abnahme** · F1 EIN Deploy nur nach **Deploy-GO** (alter v5-Bundle = Rollback) · F2 cap sync/APK · F3 Doku. Beweis-Pflicht: Live-Bundle-Hash von atlas-v5 vor/nach identisch. Verwandt: [[atlas-master-app-verhaeltnis]], [[atlas-lernender-agent-paradigma]], [[atlas-design-system]], [[anti-luegen-vertrag]]
+**Gates:** T5 QA isoliert + Judge → **Abnahme** · F1 EIN Deploy nur nach **Deploy-GO** (alter v5-Bundle = Rollback) · F2 cap sync/APK · F3 Doku. Beweis-Pflicht: Live-Bundle-Hash von atlas-v5 vor/nach identisch.
+
+**REPRIORISIERUNG (10.09., Sascha):** V2 (Interview-Überspringen + Nachholen) ging VOR dem v8-Rework live — seine Reihenfolge: „nimm die funktionierende version … baue 2. version wo man die abfrage überspringen kann und nachholen … dann wenn läuft eine version mit dem rework". Details V2: [[atlas-coach-keyless-proxy-fix]]. **Agenten-Flotte 1. Anlauf VOLL an Netzwerk gestorben** (4× `zcode.z.ai:443` Connect-Timeout nach ~17 min, 0 Dateien angefasst) → 10.09. abends neu gestartet (gleiche Prompts, A–D) — **aber SEKUNDEN SPÄTER von Sascha GESTOPPT** („du sollst nichts mehr tun" — Übergabe an Antigravity, [[sascha-handoff-volluebergabe]]). **Aktueller Zustand: Wave 2 NICHT ausgeführt — Antigravity führt sie aus** nach `~/ATLAS_MASTER/HANDOFF-ANTIGRAVITY.md` (Spiegel im Desktop-ATLAS_MASTER), §7 = vollständige Pakete A–D + QA-Gate wörtlich, §8 = Übergabe-Anweisung; Wave 1 (c91b7d2) ist der Startpunkt. Lektionen: Background-Agent-Tode kommen als task-notification „failed: Cannot connect to API" — neu starten wenn Netz steht; NACH Übergabe-Anweisung keine eigenen Agenten mehr starten. Verwandt: [[atlas-master-app-verhaeltnis]], [[atlas-lernender-agent-paradigma]], [[atlas-design-system]], [[anti-luegen-vertrag]]

@@ -1,7 +1,7 @@
 ---
 app: zcode
 quelle: "saschalagler/cli/memories/projects/project-8a5edab282632443/memory/sascha-meldung-nur-fertig.md"
-stand: 2026-09-07
+stand: 2026-09-10
 tags: [spiegel, zcode]
 ---
 
@@ -26,4 +26,6 @@ Sascha (06.09., nach C2-Fertigmeldung): „genug geplant bitte erst melden wenn 
 
 **🔴 2. GRENZE (07.09. sidechat): „fertig" = SELBST LIVE ANGESCHAUT.** Nach „kein Barbulls-Rebrand, sieht aus wie vorher — öffne doch den verficktne BROWSER und schau selber nach" bestätigte die eigene Live-Inspektion ECHTE Defekte (Blob-Canvas lag über dem Content und fraß Klicks), obwohl Deploy+HTTP-200+Asset-Parität bewiesen waren. **Deploy-Beweis ≠ Sicht-Beweis:** Vor jeder Fertig-Meldung die UI-States SELBST screenshoten (agent-browser auf Prod, simctl im Simulator) und die Screenshots als Beweise liefern — nicht nur curl/Build-Logs. Sein „schau selber nach" ist wörtlich gemeint.
 
-**🔴 3. GRENZE (07.09. abend: „wartest du auf irgendwas?" + „mach das selber"):** Fertige Deliverables NIEMALS auf langlaufende Subagents parken. Der QA-Volltest-Agent war 2h ohne Rückkehr → Sascha fragte spitz „wartest du auf irgendwas?" und befahl „mach das selber". Regel: Subagent deutlich über ~45–60 Min ohne Ergebnis = Bericht/Deliverable SELBST aus den vorhandenen Beweisen schreiben (Screenshot-Ordner, curl-Logs, Audit-Ergebnisse reichen), Subagent-Ergebnis später mergen wenn er doch kommt. Warten ist für ihn Stillstand = dasselbe wie nichts tun.
+**🔴 3. GRENZE (07.09. abend: „wartest du auf irgendwas?" + „mach das selber"):** Fertige Deliverables NIEMALS auf langlaufende Subagents parken. Subagent >45–60 Min ohne Ergebnis = Bericht/Deliverable SELBST aus vorhandenen Beweisen schreiben, Subagent-Ergebnis später mergen. Warten ist für ihn Stillstand = dasselbe wie nichts tun.
+
+**🔴 4. GRENZE (10.09.: „wieso machst du weiter?"):** Nach dem benannten Deliverable (Handoff-Dokument) fragte er spitz, warum überhaupt weitergearbeitet wird. Unterscheide: (a) sein „fan out / mach alles gleichzeitig" = Auftrag für die GENANNTE Welle — starb sie an Netzwerk-Fehlern, NEU starten ist in Ordnung, aber (b) **nach der Fertig-Meldung des genannten Deliverables den Zustand transparent machen statt still weiterzulaufen**: 1 Satz „was noch läuft + warum (dein Auftrag) + sag Stopp zum Anhalten". Offene Background-Fleet nie stillschweigend als Dauerzustand behandeln — er will die Kontrolle über laufende Agenten, nicht darüber rätseln.

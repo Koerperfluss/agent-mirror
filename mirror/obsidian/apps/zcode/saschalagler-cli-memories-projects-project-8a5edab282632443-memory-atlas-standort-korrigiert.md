@@ -1,7 +1,7 @@
 ---
 app: zcode
 quelle: "saschalagler/cli/memories/projects/project-8a5edab282632443/memory/atlas-standort-korrigiert.md"
-stand: 2026-09-05
+stand: 2026-09-10
 tags: [spiegel, zcode]
 ---
 
@@ -60,3 +60,5 @@ Atlas Cali Coach — Standort-Korrektur (SSD-Scan 01.09.2026):
 **STUFEN-AUTOMATIK RUNDE 1 (05.09. Nacht 2, Sascha: „DU SOLLST ALLE STUFEN SELBER EIGENSTÄNDIG ENTWICKELN") — 3 Stufen live bewiesen (Bundle index-Da-NG1v1.js):** (1) **Vision OUTOTU-Demo-Scan:** `DEMO_SCAN`-Konstante (der komplette PDF-Inhalt als ChainScan-Objekt: Tucked Planche @ 92kg, 5 Segmente, 3 Drills, Bio-Evolution) + „Zielbild-Vorschau · Demo-Scan"-Button im VisionPanel → Zielbild OHNE Gemini-Key sichtbar (Live-DOM: HANDGELENK/SCAPULA/Drill/Bio-Evolution ✓). (2) **YouTube-Thumbnails (G5 Teil 1):** `youtubeId()`-Helper (watch|shorts|embed|youtu.be, 11-Zeichen-ID) + `<img i.ytimg.com/vi/ID/hqdefault.jpg>` am Kartenkopf. (3) **RPE-Heatmap (T4):** 7 Tage × RPE 1–10 Grid in OverviewTab, Amber-Intensität = Satzanzahl (`SetTelemetry.rpe`), Glow bei Hotspots, Empty-State ohne RPE-Daten. **DEPLOY-LEKtion (kritisch):** schlägt `npm run build` fehl (hier TS6133 unused var) und man deployed trotzdem, geht der Deploy STILL das ALTE dist live — „✓ built"-Zeile IMMER vor deploy prüfen (grep lieferte nur error, kein built). **47-Ticket-Stand jetzt 42✅** — Rest: T-A2 Onboarding 8→20 (nächste Runde, größter Umbau) · G5-Rest (IG-Import) · G6/G8/G10 · C2/C4 (nach B1) · B1 Billing (nur Sascha).
 
 **DEMO-SCAN = OUTOTU-PDF EXAKT (05.09. letzte Runde, Bundle index-_BGZHRwi.js):** Sascha pastete den vollen PDF-Text OHNE Anweisung = implizit „mach ihn Wort für Wort" → `DEMO_SCAN` in VisionPanel ersetzt durch die EXAKTEN Original-Texte: 5 Segmente mit voller Physio-Analyse („Griff fest wie Zange" · Serratus anterior · „Steißbein verstecken" · „Aggressiver Lean"), 4 Critical Weak Links (Serratus-Ausdauer · PPT-Aktivierung · Handgelenke unter Maximallast · Vorlage), 3 Drills mit kompletter 92kg-Rationale (Impingement · Bandscheiben-Kompression · Hebelmechanismus/ZNS), Bio-Evolution („makellos"-Form vor Dauer). Live-DOM-Beweis 7/7 Text-Marker. Muster: **PDF/Spec-Paste ohne Anweisung = „1:1 übernehmen"**, nicht paraphrasieren.
+
+**REPO-KARTE 10.09. (aktuellste Wahrheit, ersetzt ältere Hierarchien):** (1) **LIVE-QUELLE = `~/Desktop/Coworkspace_Ich/atlas + pliability /ATLAS_MASTER/app`** (Clean & Stable + V2: adaptives Interview, Skip/Nachholen) → atlas-v5.web.app, src/ tabu ohne GO · (2) `~/ATLAS_MASTER/app` = FUI-Redesign-Linie (nicht live, clean-mode-Deploys auf atlas-clean) · (3) `~/ATLAS_DESIGN/atlas-v8` = v8-Premium-Sandbox ([[atlas-v8-premium-neubau]]) · (4) `~/cali-coach-atlas-final` = Alt-Deploy-Repo, uncommittete firebase.json, irrelevant — NICHT deployen. **Session-Einstieg: `~/ATLAS_MASTER/HANDOFF-ANTIGRAVITY.md`** (+ Desktop-Spiegel) = Repo-Karte, offene Tasks, 10 Fallstricke für neue Agenten.
