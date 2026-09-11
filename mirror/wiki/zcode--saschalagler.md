@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-11 22:35 UTC
+Zuletzt gespiegelt: 2026-09-11 22:46 UTC
 
 ## code-architect
 
@@ -4092,6 +4092,71 @@ Beobachtet 06.09.2026 (Session mit Off-Peak-Ticket): Nach User-Paste „ZCode Er
 **2. Auftreten (06.09. Nachmittag, ATLAS-Session):** Gleiche ENOENT-Symptomatik mitten in laufender Arbeit — diesmal bewiesener Fallback-Stack: **computer-use (MCP list_apps/get_app_state/AXPress/type) + Write-Tool + Read-Tool + WebSearch laufen alle normal weiter.** Damit war sogar App-Fernsteuerung (AutoClaw) und Memory-Schreiben möglich — Bash-Tod = kein Totalausfall. Zweite-Hand-Fallen trotzdem beachten: ein anderer Agent (AutoClaw) behauptete in dem Zustand, `~/ATLAS_MASTER` existiere nicht (sah nur die Alt-Kopie) — Pfade immer selbst prior-verifiziert halten, nicht von anderen Agenten übernehmen ([[autoclaw-team-kopplung]]).
 
 **3. Auftreten (06.09. Abend) — WORKAROUND GEFUNDEN: `/bin/bash -c '…'` läuft weiter, obwohl zsh-ENOENT jedes normale Bash-Kommando tötet.** Live bewiesen mit ls/cat/grep/tsc/build/firebase-deploy/git-commit — volle Arbeitsfähigkeit im „toten"-Zustand. Reihenfolge bei ENOENT: 1) normal versuchen, 2) **sofort auf `/bin/bash -c '…'` umschalten** (nested Quotes beachten: innere ' escapen oder " nutzen), 3) erst wenn auch das stirbt → computer-use/Write/Read-Stack. Auch Subagent-Prompts müssen den Hinweis enthalten, denn deren Bash-Tool stirbt genauso („Shell-Hinweis: nutze IMMER /bin/bash -c '...'" in den Agent-Prompt schreiben).
+
+## MEMORY
+
+# Memory Index
+
+- [VinylScanner-Projektstand](vinyl-scanner-state.md) — grafisches Archiv fertig (Commit fe83ea7), 5/6 Tests grün
+- [AI-Blocker Gemini-Guthaben](vinyl-scanner-ai-blocker.md) — Key ohne Guthaben → AI-Test skipped, nur External-Config-Fix
+- [Backend-Setup-Fakten](vinyl-scanner-env-setup.md) — requirements.txt inkonsistent, DB heißt test_database, gemini-3.5-flash als Modell
+
+## vinyl-scanner-ai-blocker
+
+---
+name: vinyl-scanner-ai-blocker
+description: GELÖST (12.09.): KI läuft über OmniRoute-Router (antigravity/gemini-3.7-flash-low);
+  Gemini-Key guthabenlos, Emergent-Key Free-Tier — beide nur noch Fallback
+metadata:
+  node_type: memory
+  type: project
+  originSessionId: sess_c2882922-5684-45c6-843f-3d2658bc6069
+---
+
+GELÖST am 12.09.2026: Die KI-Analyse läuft jetzt primär über den **OmniRoute-Router** (`http://localhost:20128/v1`, OpenAI-kompatibel, `OMNI_BASE_URL`/`OMNI_API_KEY`/`OMNI_VISION_MODEL` in `backend/.env`), Modell `antigravity/gemini-3.7-flash-low` (Vision verifiziert). Priorität im Code: OmniRoute → Gemini-Direct → Emergent.
+
+Nicht offensichtliche Details:
+- Router-Keys liegen in `~/.omniroute/storage.sqlite`, Tabelle `api_keys` (`SELECT key FROM api_keys WHERE revoked_at IS NULL AND is_active=1`).
+- `auto/*`-Modelle am Router (z. B. `auto/best-vision`, `auto/best-free`) scheitern mit 502, weil der Cloudflare-Playground-Provider einen Playwright-Chromium braucht, der nicht installiert ist — festes Provider-Modell verwenden.
+- Gemini-Key bleibt guthabenlos (429 „prepayment credits depleted"), Emergent-Key 403 FREE_USER_EXTERNAL_ACCESS_DENIED — beide nur Fallback. Bei beiden Keys gleichzeitig unbrauchbar liefert der Analyze-Endpoint sauber 503. Teil von [[vinyl-scanner-state]].
+
+## vinyl-scanner-env-setup
+
+---
+name: vinyl-scanner-env-setup
+description: Nicht offensichtliche Setup-Fakten des VinylScanner-Backends
+  (requirements.txt inkonsistent, DB-Name, Gemini-Modellname)
+metadata:
+  node_type: memory
+  type: project
+  originSessionId: sess_c2882922-5684-45c6-843f-3d2658bc6069
+---
+
+Setup-Fakten VinylScanner-Backend (Stand 12.09.2026):
+- `requirements.txt` ist nicht selbst-konsistent: `emergentintegrations==0.2.0` kollidiert mit dem gepinnten litellm-Wheel. Installiertes Kern-Set: fastapi, uvicorn, motor, httpx, beautifulsoup4, python-dotenv, pydantic, pytest + pytest-xdist, dann `emergentintegrations==0.2.0` (Extra-Index `https://d33sy5i8bnduwe.cloudfront.net/simple/`).
+- `backend/.env` nutzt `DB_NAME=test_database` (nicht `vinyl_scanner` wie README/Example) — Seeds/Tests müssen in die richtige DB.
+- pytest.ini erzwingt `pytest-xdist` (`required_plugins`), Fix `-n 2 --dist loadscope`; Tests laufen gegen `EXPO_PUBLIC_BACKEND_URL` (lokal: `http://localhost:8001`), ursprünglich auf alte Emergent-Preview-URL gerichtet.
+- `gemini-2.0-flash` und `gemini-3.6-flash` sind deaktiviert/429; verfügbares Vision-Modell: `gemini-3.5-flash` (Default in server.py, via `GEMINI_MODEL` überschreibbar).
+- MongoDB via Homebrew: Tap muss vorher `brew trust mongodb/brew` werden, `mongosh` kommt mit `mongodb-community-shell`. Teil von [[vinyl-scanner-state]].
+
+## vinyl-scanner-state
+
+---
+name: vinyl-scanner-state
+description: VinylScanner-Projektstand (12.09.2026) — grafisches Archiv + KI live über
+  OmniRoute fertig; 2 IG-Links gescannt; .env war im Git-Index (Push-Risiko)
+metadata:
+  node_type: memory
+  type: project
+  originSessionId: sess_c2882922-5684-45c6-843f-3d2658bc6069
+---
+
+VinylScanner (`/Users/saschalagler/Desktop/Coworkspace_Ich/PRIVATE PORJEKTE /vinyl-scanner`, Expo SDK 54 + FastAPI Port 8001 + MongoDB): **fertig nutzbar**, Commits `fe83ea7` + `172fad1`.
+
+- Grafisches Archiv: `GET /api/scans/{id}/image` (JPEG + Cache-Header, Redirect zu `image_url`); History-Grid, „Zuletzt gescannt", Detail nutzen echte Cover via `getScanImageSource()` (`frontend/src/api.ts`).
+- KI-Analyse live über OmniRoute (`antigravity/gemini-3.7-flash-low`); Tests **6/6 passed**, tsc clean. Echte Scans im Archiv: IG-Post DZ5MA8OyEXF (Thai-Compilation, high) und Db0c5akDaro („Forged Dubs EP", high).
+- **Sicherheit:** `backend/.env` (mit Keys) war im Git-Index, wurde mit `172fad1` entfernt + in `.gitignore` — **vor einem `git push` History prüfen** (Keys könnten in früheren Commits stecken; bislang kein Remote/kein Push).
+- DB heißt `test_database` (nicht `vinyl_scanner`!). Details: [[vinyl-scanner-env-setup]], [[vinyl-scanner-ai-blocker]].
 
 ## README
 
