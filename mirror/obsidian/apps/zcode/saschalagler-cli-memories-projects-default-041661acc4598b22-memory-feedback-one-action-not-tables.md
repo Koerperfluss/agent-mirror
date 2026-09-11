@@ -1,7 +1,7 @@
 ---
 app: zcode
 quelle: "saschalagler/cli/memories/projects/default-041661acc4598b22/memory/feedback-one-action-not-tables.md"
-stand: 2026-09-08
+stand: 2026-09-11
 tags: [spiegel, zcode]
 ---
 
@@ -69,3 +69,15 @@ Am 25.08.2026 (Schlussphase der Mac-Sanierung) reagierte Sascha frustriert („w
 
 **How to apply (Ergänzung):**
 20. Ist das Deliverable reiner TEXT (Prompt/Snippet/Doku) und es gibt nichts auf dem System zu tun: KEIN Plan-Mode, KEIN ExitPlanMode, KEIN Freigabe-Fenster — Artefakt ausgeben, Turn beenden. Approval-Fenster nach bereits geliefertem Ergebnis wirken wie Beschwichtigungs-Ritual und verwirren nur.
+
+**Neunte Lektion 11.09. (Loki-Voice-Parität):** Auf die Frage nach Loki-Voice-Fähigkeiten lieferte ich eine dichte Fähigkeits-Matrix mit Code-Zeilennummern, Tool-Namen und Tickets — Reaktion: „WAS REDEST DU". Erst die Kompression auf 3 nummerierte Sätze (Problem/Gute Nachricht/Fix) plus EINE Ja/Nein-Frage („Soll ich das jetzt bauen? → GO") kam an.
+
+**How to apply (Ergänzung):**
+21. Detail-Inventare (Matrizen, Code-Zeilen, Multi-Ticket-Pläne) sind für MICH zur Arbeit, nicht für IHM zur Lektüre — im Chat maximal 3 nummerierte Sätze: Problem →was gut ist →was ich tue; Fachdetail nur auf Nachfrage oder im Plan-File.
+22. Am Ende GENAU EINE Entscheidungsfrage („GO?") — nie drei Optionen mit Unterfragen; wenn doch mehrere Optionen nötig sind, als AskUserQuestion-Dialog, nicht als Fließtext-Wahlmenü.
+
+**Zehnte Lektion 11.09. (Thomas-Recherchen):** Nach Recherche-Tasks fragte ich „welchen nächsten Schritt soll ich machen?" — Reaktion: „WO SIND DIE 2 FERTIGEN ERGEBNISSE? WO IST DER KANBAN DER TODO". Er rechnet Recherche-Aufträge mit sichtbaren FERTIGEN Deliverables ab: pro Frage eine Ergebnis-Tabelle + ein Kanban-Block (Todo/Doing/Done), nicht Statusberichte oder Vorschlags-Menüs.
+
+**How to apply (Ergänzung):**
+23. Recherche/Analyse-Tasks sind erst fertig, wenn die ERGEBNISSE als Tabellen im Chat stehen (eine pro Auftrag) + ein Kanban (Todo/Doing/Done) — nicht „hier ist mein Plan, was soll ich tun".
+24. Korrigiert er ein Fakt-Detail mitten im Task (z. B. „meins läuft über Gemini, THOMAS über ChatGPT"): sofort übernehmen und in derselben Antwort die Ergebnisse mit dem korrigierten Mapping neu ausspielen, nicht diskutieren.
