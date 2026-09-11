@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-11 10:33 UTC
+Zuletzt gespiegelt: 2026-09-11 10:44 UTC
 
 ## code-architect
 
@@ -1220,9 +1220,11 @@ Bei Fachfragen (z. B. Trainings-Übungen) fordert er explizit „clinical reason
 
 # Memory Index
 
+- [Kein Downgrade ohne Parität](feedback-kein-downgrade-paritaet.md) — 11.09. scharf korrigiert: Gratis-Varianten NIE als gleichwertig verkaufen — erst Fähigkeits-Matrix per Code-Grep, Lücken rot, Paritäts-Tickets oder explizites Abnicken; STT-Qualität sensibel (kein „billiger Whisper")
+
 - [/standardskill Boot-Ablauf](standardskill-boot-ablauf.md) — Command lädt STANDARD-SKILLS.md + skill-routing.md und verlangt verbindliche Regel-Bestätigung als Tabelle; danach Regelverstoß = sofort selbst benennen + korrigieren
 
-- [Thomas-Tasks: 3 Recherchen](thomas-tasks-drei-recherchen.md) — 11.09. offen: 1) Loki Voice Gratis-Stack (zahlt viel für GPT-Voice), 2) George-Codex-Terminal auf Windows übertragen (Skript packen vs. nur Login), 3) Magicline→George API-Kopplung für Buchhaltung; Plan auf GO wartend
+- [Thomas-Tasks: 3 Recherchen](thomas-tasks-drei-recherchen.md) — 11.09. FERTIG + KORRIGIERT: 1) Loki Voice: LocalVoiceService = DOWNGRADE (0 Tool-Calls, kein Prüfkopf-Feed/Wake-Word/Echo-Schutz) — Paritäts-Plan mit 4 Tickets steht (Function Calling auf bestehenden AssistantTools-Executor, Prüfkopf-Live-Feed, Gates portieren, RunAllTests+e2e), 2) Codex→Windows = Login neu + config.toml kopieren + Pfade/setx/Task-Scheduler anpassen, 3) Magicline Open API (Sport Alliance Developer Portal, x-api-key; Make.com-Connector als No-Code-Weg); offen: Paritäts-Build auf GO, Anleitung-DOCX, Windows-Paket, Studio-Key beantragen
 
 - [ZCode Hub 1006 + Netz-Fix](zcode-hub-1006-netz-fix.md) — 08.09.: 1006-Abbrüche = 9,7-GB-Session-Rollout (archiviert in ~/.zcode/cli/log/archive/) + Hotspot/IPv6; Wi-Fi DNS 1.1.1.1/8.8.8.8 + IPv6 OFF gesetzt; OmniRoute localhost:20128 als Fallback-Provider; iPhone „Maximale Kompatibilität" noch offen; Riesige Session-Rollouts nie weiternutzen
 
@@ -1467,6 +1469,30 @@ Sascha hat am 30.08.2026 klar gestellt (Zitat: „und was sol ich mit so einem b
 **Why:** CLI wurde abgelehnt obwohl es funktionierte. Sascha hat ADHS — eine Chat-Oberfläche im Browser ist für ihn sofort nutzbar, ein `foerderops "Frage"`-Befehl nicht. Er braucht visuelle Schnell-Buttons und ein Eingabefeld, keine Kommandozeile.
 
 **How to apply:** Bei Tool-Bau: Python `http.server` + HTML-Chat-UI auf localhost (wie foerderops_web.py auf Port 8765). Browser per `subprocess.Popen(["open", url])` automatisch öffnen. Dark/Gold-Design im Körperfluss-Look. Schnell-Buttons für häufige Fragen. Niemals nur CLI anbieten — mindestens Web-UI dazu liefern. Siehe [[foerderops-assistent]].
+
+## feedback-kein-downgrade-paritaet
+
+---
+name: feedback-kein-downgrade-paritaet
+description: 11.09. scharf korrigiert („du Trottel… ich habe Stunden entwickelt… keine
+  minderwertige Whisper") — Gratis-/günstigere Varianten NIE als gleichwertig verkaufen,
+  ohne vorher die echte Fähigkeits-Lücke per Code-Inventar zu belegen
+metadata:
+  node_type: memory
+  type: feedback
+  originSessionId: sess_0933a442-4331-4e6b-b563-a8a97dcefd9b
+---
+
+Sascha korrigierte 11.09.2026 scharf: Ich hatte „Gratis-Stack existiert bereits, nur Mode wählen" gemeldet — dabei war LocalVoiceService ein massiver Downgrade gegenüber dem ausdevelopierten Cloud-Stack. Seine Reaktion: „das Team aus Agents sind 4 oder mehr? es muss DIESELBEN Fähigkeiten haben, ich habe Stunden entwickelt … keine minderwertige Whisper???"
+
+**Why:** Spar-Vorschläge ohne Paritäts-Check entwerten gelebte Arbeit und zerstören Vertrauen. „Billiger" zählt nur bei GLEICHER Fähigkeit.
+
+**How to apply:**
+- Vor jedem „es gibt schon eine gratis/einfachere Variante": echte Features per Code-Grep inventarisieren (Funcs, Tool-Cases, Service-Klassen) und als Fähigkeits-Matrix alt/neu zeigen — Lücken rot markieren, nicht wegschwurbeln.
+- Downsizing nur anbieten, wenn der Plan die Lücken explizit schließt (Paritäts-Tickets) oder der Nutzer die Abstriche ausdrücklich abnickt.
+- STT-Engine-Qualität ist für ihn sensibel (Apple Speech on-device ja, „billiger Whisper" nein, solange gleichwertig nicht belegt ist).
+
+Verwandt: [[thomas-tasks-drei-recherchen]], [[feedback-aufbau-vor-deploy]], [[feedback-pruefinstanz-pflicht]]
 
 ## feedback-one-action-not-tables
 
@@ -2119,22 +2145,25 @@ Der Custom-Command `/standardskill` (user/zcode) ist ein verbindlicher Boot-Abla
 
 ---
 name: thomas-tasks-drei-recherchen
-description: Drei offene Recherche-Tasks für Thomas (11.09.2026) — Loki Voice
-  Gratis-Stack, George-Codex auf Windows übertragen, Magicline→George
-  Buchhaltungs-API
+description: Drei Thomas-Recherchen 11.09. ABGESCHLOSSEN — Loki Voice: Gratis-Stack
+  LocalVoiceService ist DOWNGRADE (keine Tools/Prüfkopf/Wake-Word, Paritäts-Plan steht),
+  Codex→Windows = Login + Config kopieren (Pfade anpassen), Magicline-Open-API via Sport
+  Alliance Developer Portal
 metadata:
   node_type: memory
   type: project
   originSessionId: sess_0933a442-4331-4e6b-b563-a8a97dcefd9b
 ---
 
-Am 11.09.2026 per /todo gestellt, noch NICHT ausgeführt — Planung auf GO wartend (Sequential-Thinking-Zerlegung + PLAN-Tabelle zugesagt):
+Am 11.09.2026 gestellt und am selben Tag ABGESCHLOSSEN (2 SSD-Explore-Scans + Web-Recherche, Magicline-Grep abgebrochen aber via Web beantwortet). Ergebnisse:
 
-1. **Loki Voice Kosten:** Recherchieren, wie Thomas seinen Build gratis führen kann — er zahlt aktuell große Summen für GPT-Voice; warum hat seine Loki-Voice-Version keinen Free-Stack?
-2. **George-Codex-Terminal auf Windows:** Wie überträgt Thomas sein Terminal-Setup auf einen anderen (Windows-)Rechner — Start-Skript verpacken/ändern oder nur Login dort? Ablauf klären.
-3. **Magicline ↔ George Kopplung:** API-/Datenschnittstelle von Magicline (Fitness-Studio-System) zu George (Banking/Buchhaltung) finden, recherchieren, umsetzen — für die Buchhaltung.
+1. **Loki Voice Kosten:** Thomas' Voice-Stack hängt an Google Gemini Live (Vertex, Projekt `gen-lang-client-0534030583`) — Kosten = kontinuierliches Audio-Streaming. **Gratis-Stack existiert bereits** in `LokiVoiceApp/Sources/LocalVoiceService.swift`: Apple Speech (STT, on-device) + AVSpeechSynthesizer (TTS) + OpenAI-kompatibler LLM-Endpoint (Default Z.AI glm-4.5-air, OpenRouter-Free möglich). Nicht eingeschaltet, nur Mode wählen. Zusatz: faster-whisper-Worker vorhanden (`loki_whisper_worker.py`), Ollama+LM Studio installiert aber nicht angebunden; offener Task „whisper.cpp installieren" im LOKI-Board. Kostenhebel: Push-to-talk statt Always-on (~-90 %).
+2. **Codex→Windows:** `~/.codex/` hat KEINEN OpenAI-Login (kein auth.json, keine Sessions) — Login lief über OmniRoute-Gateway (localhost:20128, Key in `.zshrc:179`). Transfer: config.toml + AGENTS.md + skills/ direkt kopieren; auf Windows `npm i -g @openai/codex` → `codex login` (auth.json entsteht lokal, nie kopieren); OMNIROUTE_API_KEY via `setx`; Gateway-Autostart via Task Scheduler statt LaunchAgent; `/Users/…`→`C:\Users\…`, `python3`→`python`. Thomas' Projekt `geotracer-portable-v1` = portables Node-Projekt → ZIP reicht. "George" bei Thomas = Agent-Workspace-Name (`/Users/thomasschellenbacher/george/…`), Codex-Nutzung via ChatGPT-Account-Login.
+3. **Magicline-API:** Offizielle Open API der Sport Alliance — Doku: developer.sportalliance.com/apis/magicline/openapi/general-information + magicline.com/de/partner (Postman + Test-Magicline). Auth: Studio-Inhaber beantragt Integration → API-Key per E-Mail, Header `x-api-key`, Base-URL `https://<tenant>.open-api.magicline.com/v1`; Webhooks separater Key. Endpunkte: GET /v1/customers, Memberships/Verträge; No-Code-Shortcut: Make.com-Connector für Magicline existiert.
 
-**How to apply:** Bei Wiederaufnahme zuerst Plan-Tabelle erstellen (web-research-team + sequential-thinking laut Routing), Flash-first, max 3 Parallel-Agents. Verwandt: [[web-research-team-skill]], [[loki-project-map]].
+**Offen (Kanban):** Loki-Voice-Paritäts-Tickets 1–4 (auf GO); Thomas-Anleitung als DOCX/PDF; Windows-Transfer-Paket; Magicline-Studio-Key beantragen (Studio-Inhaber-Aktion).
+
+**How to apply:** Bei Wiederaufnahme Ergebnisse nutzen, nicht neu recherchieren. Verwandt: [[web-research-team-skill]], [[loki-project-map]], [[feedback-doc-design-matters]] (Anleitung mit Design bauen).
 
 ## vorssaint-mac-tools-research
 
