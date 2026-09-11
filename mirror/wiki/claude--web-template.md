@@ -1,6 +1,6 @@
 # web-template (claude)
 
-Zuletzt gespiegelt: 2026-09-11 22:02 UTC
+Zuletzt gespiegelt: 2026-09-11 22:13 UTC
 
 ## no_spec
 
@@ -163,7 +163,7 @@ ULIMPORTANT: **只生成 HTML 原型**，其他技术栈由后续开发实现。
 ---
 name: ai-model-nodejs
 description: "Use this skill for Node.js backend AI via @cloudbase/node-sdk (>=3.16.0) — cloud functions, CloudRun, Express/Koa/NestJS, serverless APIs, scheduled jobs, LLM proxies, agent orchestration. The only SDK supporting image generation (ai.createImageModel + generateImage). Text via ai.createModel with groups cloudbase, hunyuan-exp, or custom-*; model ids (e.g. deepseek-v4-flash, glm-5, kimi-k2.6) go in the `model` field of generateText/streamText. MUST run two-step preflight before code — see body. NOT for browser/Web (use ai-model-web) or Mini Program (use ai-model-wechat)."
-version: 2.33.0
+version: 2.33.2
 alwaysApply: false
 ---
 
@@ -439,7 +439,7 @@ Once onboarded, confirm with `DescribeAIModels` that the group is ready, then ca
 ---
 name: ai-model-web
 description: "Use this skill when a browser/Web app (React, Vue, Next, Nuxt, static sites, SPAs, dashboards, AI chat UI, 页面, 前端, 网页) needs AI models via @cloudbase/js-sdk. Default routing for Web/frontend AI — call directly from the browser, do NOT propose a Node.js proxy. Covers generateText and streamText; models via ai.createModel with groups cloudbase, hunyuan-exp, or custom-*, model id in the `model` field. MUST run two-step preflight before code — see body. NOT for Node.js backend (use ai-model-nodejs), Mini Program (use ai-model-wechat), or image generation (Node SDK only)."
-version: 2.33.0
+version: 2.33.2
 alwaysApply: false
 ---
 
@@ -808,7 +808,7 @@ curl "${base}/signup" \
 ---
 name: auth-nodejs-cloudbase
 description: CloudBase Node SDK auth guide for server-side identity, user lookup, and custom login tickets. This skill should be used when Node.js code must read caller identity, inspect end users, or bridge an existing user system into CloudBase; not when configuring providers or building client login UI.
-version: 2.33.0
+version: 2.33.2
 alwaysApply: false
 ---
 
@@ -1054,7 +1054,7 @@ When you load this skill to work on a task:
 ---
 name: auth-tool-cloudbase
 description: CloudBase auth provider configuration and login-readiness guide. This skill should be used when users need to inspect, enable, disable, or configure auth providers, publishable-key prerequisites, login methods, SMS/email sender setup, or other provider-side readiness before implementing a client or backend auth flow.
-version: 2.33.0
+version: 2.33.2
 alwaysApply: false
 ---
 
@@ -1464,7 +1464,7 @@ Use this checklist before generating any CloudBase authentication flow.
 ---
 name: auth-web-cloudbase
 description: CloudBase Web Authentication Quick Guide for frontend integration after auth-tool has already been checked. Provides concise and practical Web authentication solutions with multiple login methods and complete user management.
-version: 2.33.0
+version: 2.33.2
 alwaysApply: false
 ---
 
@@ -1509,11 +1509,11 @@ If a referenced sibling skill file is missing from this environment, ask the use
 - Starting implementation before calling `queryAppAuth(action="getLoginConfig")` and enabling `usernamePassword` when it is still off.
 - **Writing `auth.signInWithPassword(...)` or `auth.signUp(...)` code without first confirming the provider is enabled via MCP.** Before writing any sign-in or sign-up code in the browser, call `queryAppAuth(action="listProviders")` to verify the target provider (e.g. `email`, `phone`, `usernamePassword`) has `On: "TRUE"`. For email-based sign-up (`auth.signUp({ email, password })`), additionally confirm SMTP is configured — otherwise the provider may throw `"provider email not found"` or similar errors. For username/password login, use `auth.signInWithPassword({ username, password })`; registration is best done through the management API (`manageAppAuth(action="createUser")`) or by confirming email provider readiness first.
 - **Treating `auth.getUser()` or deprecated `auth.getLoginState()` as proof of real login.** When the SDK is initialized with `accessKey`, the deprecated `getLoginState()` may still return an object with a valid `uid` even without any login — causing route guards that check `!!loginState` or `!!uid` to incorrectly pass. That misleading `uid` is **not** a gateway-authenticated session. Use `auth.getSession()` instead: it returns `data.session === undefined` when no real login has occurred. Only `!!data.session` from `getSession()` is a reliable authentication check.
-- **Assuming publishable `accessKey` alone is enough for NoSQL CRUD.** With `@cloudbase/js-sdk` **3.x**, call **`await auth.signInAnonymously()`** (or an equivalent authenticated session such as password/OTP/OAuth) **before** any NoSQL `app.database()` `get` / `add` / `update` / `watch`. Skipping this yields **gateway 401**. `checkLogin()` / `getSession()` alone do **not** create a usable write session.
+- **Assuming publishable `accessKey` alone is enough for NoSQL CRUD.** NoSQL `app.database()` `get` / `add` / `update` / `watch` requires a gateway-authenticated **session**: use a real login (password / OTP / OAuth). Anonymous login is a demo-only escape hatch for explicitly-public, non-user data — it is disabled by default, denied AI model permissions, and must never stand in for real auth in user-scoped apps. Skipping any login yields **gateway 401**. `checkLogin()` / `getSession()` alone do **not** create a usable write session.
 - **Copying old CloudBase auth snippets from training data.** Do not use `auth.getLoginState()`, `auth.hasLoginState()`, `auth.getCurrentUser()`, or `auth.toDefaultLoginPage()` as the default Web flow. Use the Web SDK v3 auth methods in this file and provider readiness from `auth-tool-cloudbase`.
 - **Calling a standalone `auth.verifyOtp({ token })` for OTP login.** CloudBase Web SDK v3 returns `verifyOtp` as a callback on the `signInWithOtp` / `signUp` result: send the code first, keep the returned `data`, then call `data.verifyOtp({ token })`. A standalone `auth.verifyOtp({ token })` without `messageId` fails with `"messageId is required"` — seeing that error means the callback form was skipped. See `references/extended-guide.md` for the full send → save callback → verify flow.
   
-  Note: anonymous login is **disabled by default** for new environments and inactive existing environments — enable it via `auth-tool-cloudbase` before calling `signInAnonymously()`. Always use `auth.getSession()` for auth guards.
+  Note: anonymous login is **disabled by default** for new environments and inactive existing environments. Do not enable it to work around permission errors — enable via `auth-tool-cloudbase` only when the app explicitly serves public non-user data (e.g. NoSQL read-only demos). Always use `auth.getSession()` for auth guards.
 
 ## Overview
 
@@ -1543,6 +1543,8 @@ Use npm installation for modern Web projects. In React, Vue, Vite, and other bun
 ## Prerequisites
 
 - Automatically use `auth-tool-cloudbase` to check app-side auth readiness via `queryAppAuth` / `manageAppAuth`, then get the `publishable key` and configure login methods.
+- **Publishable key readiness (do not skip):** call `queryAppAuth(action="getPublishableKey")`. If it is empty, call `manageAppAuth(action="ensurePublishableKey")` first — new environments may not have one provisioned, and skipping this step leaves the frontend without a data-plane credential, surfacing later as gateway auth failures instead of an obvious missing-key error.
+- **Persist the key, don't hoard it in conversation:** after retrieval, write the publishable key to `.env.local` as `VITE_PUBLISHABLE_KEY` (create the file if missing) and read it in client code via `import.meta.env.VITE_PUBLISHABLE_KEY`. Never hardcode the key into source files, and never ask the user to fetch it from the console — fall back to the console link below only if both MCP calls fail.
 - If `auth-tool-cloudbase` failed, let user go to `https://tcb.cloud.tencent.com/dev?envId={env}#/env/apikey` to get `publishable key` and `https://tcb.cloud.tencent.com/dev?envId={env}#/identity/login-manage` to set up login methods
 
 ### Parameter map
@@ -1558,11 +1560,13 @@ Use npm installation for modern Web projects. In React, Vue, Vite, and other bun
 - If the task gives accounts like `admin`, `editor`, or another plain string without `@`, treat it as a username-style identifier rather than an email address
 - `data.verifyOtp({ token })` — the `verifyOtp` callback on the `signInWithOtp` / `signUp` result `data` — expects the SMS or email code in `token`; do not invent a standalone `auth.verifyOtp({ token })` call, which additionally requires `messageId`
 - `accessKey` is the publishable key from `queryAppAuth` / `manageAppAuth` via `auth-tool-cloudbase`, not a secret key
-- **`accessKey` alone does not create a gateway-authenticated anonymous session.** Publishable `accessKey` initializes the SDK; it does **not** replace an explicit login for NoSQL CRUD. With `@cloudbase/js-sdk` **3.x**, call `await auth.signInAnonymously()` (or an equivalent authenticated session) **before** `app.database()` `get` / `add` / `update` / `watch` — otherwise the gateway returns **401**. Separately: the deprecated `auth.getLoginState()` may still return a misleading `uid` without login; use `auth.getSession()` for route guards (`data.session === undefined` when not logged in). `checkLogin()` / `getSession()` alone do **not** create a usable write session.
+- **`accessKey` alone does not create a gateway-authenticated session.** Publishable `accessKey` initializes the SDK; it does **not** replace a login for NoSQL CRUD. Any `app.database()` `get` / `add` / `update` / `watch` needs a session — prefer a real login (password / OTP / OAuth); `signInAnonymously()` only for explicitly-public demo data (disabled by default, denied AI model permissions). Otherwise the gateway returns **401**. Separately: the deprecated `auth.getLoginState()` may still return a misleading `uid` without login; use `auth.getSession()` for route guards (`data.session === undefined` when not logged in). `checkLogin()` / `getSession()` alone do **not** create a usable write session.
 - Never set `accessKey` to `envId`, a username, or any placeholder string. If you do not have a real Publishable Key yet, do not fabricate one.
 - If the task mentions provider setup, stop and read `auth-tool-cloudbase` before writing frontend code
 
 ## Quick Start
+
+SDK init reference: [docs.cloudbase.net/api-reference/webv3/initialization.md](https://docs.cloudbase.net/api-reference/webv3/initialization.md)（URL 加 `.md` 可取 raw markdown 原文）
 
 ```js
 // npm install @cloudbase/js-sdk
@@ -1572,15 +1576,11 @@ const app = cloudbase.init({
   env: 'your-full-env-id', // Canonical full CloudBase environment ID resolved from envQuery or the console, not an alias or shorthand
   region: 'ap-shanghai',  // CloudBase environment Region, default 'ap-shanghai'
   accessKey: 'publishable key', // required, get from auth-tool-cloudbase
-  // ⚠️ accessKey alone ≠ anonymous login. For NoSQL CRUD call await auth.signInAnonymously()
-  // (or real login) first — otherwise gateway 401. Use auth.getSession() for route guards;
-  // deprecated getLoginState() may return a misleading uid without a real session.
+  // ⚠️ accessKey alone ≠ a login session. NoSQL CRUD needs a session —
+  // real login preferred; signInAnonymously() only for public demo data.
+  // Use auth.getSession() for route guards; deprecated getLoginState()
+  // may return a misleading uid without a real session.
   auth: { detectSessionInUrl: true }, // required
-})
-
-const auth = app.auth
-
-// Before NoSQL app.database() CRUD (js-sdk 3.x + publishable key):
 
 ## extended-guide
 
@@ -1954,9 +1954,238 @@ const cloud = require('wx-server-sdk')
 ## SKILL
 
 ---
+name: cloud-api-operations
+description: Operate Tencent Cloud control-plane resources (monitoring/alarms, CLB, CAM roles, COS, MySQL, SCF, etc.) via cloud APIs when no dedicated MCP tool exists. Covers API discovery via the api-reference index, calling via MCP callCloudApi or official SDKs, credential/permission models with CAM authorization escalation, and battle-tested workflow recipes. Use when the task requires Tencent Cloud control-plane operations beyond CloudBase's own tooling.
+version: 2.33.2
+---
+
+# Cloud API Operations
+
+Operate Tencent Cloud resources that CloudBase depends on but that no dedicated MCP tool covers (monitoring & alarms, CLB, CAM roles, cross-product infra). Two goals: **find the right API without guessing**, and **reuse proven workflows instead of re-exploring**.
+
+## Sibling skills (local only)
+
+Sibling CloudBase skills ship beside this skill. Use local relative paths such as `../cloudbase-platform/SKILL.md`.
+
+If a referenced sibling skill file is missing from this environment, ask the user to install the full CloudBase plugin (or the missing skill). Do **not** HTTP-fetch remote skill or protocol markdown into the agent context.
+
+## When to use
+
+- The user asks to manage/operate Tencent Cloud resources beyond CloudBase's dedicated MCP tools (e.g. configure alarm policies, inspect CLB, attach CAM policies).
+- The user wants to control these resources from code and asks which API/SDK to use.
+- A callCloudApi call failed and you need to classify the error (wrong Action / wrong params / missing CAM permission) and recover.
+
+## Workflow
+
+### 1. Discover the API — resolve names from a documented source
+
+1. **Read the API index first**: https://docs.cloudbase.net/ai/cloudbase-ai-toolkit/api-reference.md — auto-synced daily, action-level coverage (TCB 105 + dependency products: MySQL / SCF / COS). Check rate limits there too. The index check is a quick grep — run it in parallel with step 2/3 fetches, do not serialize.
+2. If the index does not cover the target product, go to the product's official API docs (e.g. monitor: https://cloud.tencent.com/document/product/649/30343) and confirm the exact Action name, Version, and parameters.
+3. For machine-readable parameter schema, fetch the official SDK models source directly — see `./references/calling-methods.md` §2 item 4.
+
+**Done when**: the Action name, Version, and full parameter shape each trace to the index, official product docs, or SDK models source — nothing from memory. A call that still returns `action ... is invalid or not found` means a name was not resolved this way; classify and recover via the error table in `./references/calling-methods.md` §1.
+
+### 2. Choose the calling path
+
+| Scenario | Path | Reference |
+| --- | --- | --- |
+| Interactive ops inside this session | MCP `callCloudApi` | `./references/calling-methods.md` §1 |
+| User's code / scripts | Official SDKs (TC3-HMAC-SHA256) or `@cloudbase/manager-node` | `./references/calling-methods.md` §2 |
+| Quick one-off verification | API Explorer (https://console.cloud.tencent.com/api/explorer) | — |
+
+Priority rule: if `@cloudbase/manager-node` has a matching method, use it; drop to raw cloud API only when it does not.
+
+### 3. Check credentials before the first call
+
+- Read the current credential scope from `auth` tools: `credential_scope: account` = account-level, reaches control-plane APIs subject to that identity's CAM policies; `env` = API Key, scoped to one environment's data plane plus the fixed TCB policies.
+- The TCB role family lacks alarm-management permissions by default — expect a permission error on first alarm calls (details and the verified evidence in `./references/calling-methods.md` §3).
+- On `UnauthorizedOperation` / `AuthFailure`, compose the one-click CAM authorization link for the user per the programmatic flow in `./references/calling-methods.md` §3, then retry the original call.
+
+**Done when**: the credential scope is known, and every permission error has been converted into an authorization link + concrete policy name for the user before any retry.
+
+### 4. Follow a proven recipe when one exists
+
+Recipes encode the exact call sequence, required parameters, and empirically discovered pitfalls so the flow works on the first pass. One scenario per file — start from the index `./references/recipes/README.md`:
+
+- **PostgreSQL storage-usage alarm** (fully verified in production, 2026-09-08): `./references/recipes/pg-storage-alarm.md`
+
+**Done when**: every parameter value in the call sequence traces to a recipe value marked as verified (实测) or to official docs.
+
+## Constraints
+
+- Region is a top-level `region` argument (X-TC-Region), never a body param. Some APIs additionally take a short region code inside `Dimensions` (e.g. `sh` vs `ap-shanghai`) — these are different fields.
+- Route SDK-language details to official SDK docs or sdkHints; keep this skill SDK-language-agnostic.
+
+## calling-methods
+
+# Calling Methods — MCP callCloudApi / SDK / CAM authorization
+
+## §1 MCP `callCloudApi`（会话内交互式操作）
+
+```json
+{
+  "service": "cam",                // 白名单内服务，见下
+  "action": "DescribeRoleList",    // 官方 Action 名，禁止猜测
+  "version": "2019-01-16",         // 官方 API 版本；未知 service 必须显式传
+  "region": "ap-shanghai",         // 可选，X-TC-Region；跨地域必传，禁止写进 params
+  "params": { "Page": 1, "Rp": 50 }
+}
+```
+
+- **Service 白名单**（随版本演进，以工具 schema 为准）：`tcb / tcbr / scf / sts / cam / lowcode / cdn / vpc / monitor / postgres`（2.34.0 起新增 monitor、postgres）。monitor/postgres 无内置默认 version，**必须显式传**：monitor `2018-07-24`、postgres `2017-03-12`。若当前部署版本 schema 枚举不含目标 service，说明版本较旧，取 `auth get_temp_credentials` 临时密钥走 §2 SDK 路径。
+- **前置条件**：首次调用若返回 `ENV_REQUIRED`，先完成环境绑定（`auth` 工具 `set_env`）再重发；这不是云 API 错误，是工具自身的会话状态要求。
+- **常用 version**：tcb `2018-06-08`、scf `2018-04-16`、sts `2018-04-16`、cam `2019-01-16`、tcbr `2022-02-17`（必传）、monitor `2018-07-24`、postgres `2017-03-12`。
+- **错误分类**（错误信息前缀决定下一步）：
+  - `The parameter 'X' is not recognized` → Action 正确、参数名错；对照官方文档修正字段名/大小写
+  - `action ... is invalid or not found` → Action 名未经文档来源确认就发起调用；回官方文档核对后用确认过的名字（实测案例：控制台代理的 `ListRoles` 在官方 CAM 2019-01-16 API 中不存在，真实 Action 为 `DescribeRoleList`）
+  - `UnauthorizedOperation / AuthFailure` → CAM 权限不足；走 §3 授权升级
+  - `Region is not recognized` → region 传到顶层参数，不放进 params
+
+## §2 代码管控（用户侧脚本/服务）
+
+1. **优先 `@cloudbase/manager-node`**：环境、存储、函数等常见操作有现成方法（https://docs.cloudbase.net/api-reference/manager/node/introduction）。
+2. **其他产品走官方 SDK + TC3-HMAC-SHA256 签名**：公共头部 `X-TC-Action` / `X-TC-Version` / `X-TC-Timestamp` / `X-TC-Region`（涉及时）/ `Authorization`；密钥只参与签名，不进 body。SDK 语言细节路由到官方文档（https://cloud.tencent.com/document/api 及各产品 SDK 页）或 sdkHints，不在此复制。
+3. 手写签名前先用 **API Explorer**（https://console.cloud.tencent.com/api/explorer）验证参数组合，再落代码。
+4. **AI 快速取参数 schema：直接抓 SDK 源码**（腾讯云官方**没有**公开 OpenAPI/Swagger 规范下载，SDK 源码就是最权威的机器可读 schema）。不用管用户用哪种语言，按下面的固定规律**按图索骥**即可：
+   - **托管三处，国内用户优先 CNB**：仓库命名 `tencentcloud-sdk-<lang>`（`-python` / `-go` / `-java` 等）。CNB 上挂在 `cnb.cool/tencent/cloud/api/sdk/` 路径下，raw 直链格式是 `/-/git/raw/master/`（不是 `/-/raw/`，用错会返回 404 HTML 但 HTTP 200，极易误判）；GitHub raw 是 `raw.githubusercontent.com/TencentCloud/<repo>/master/`；Gitee raw 是 `gitee.com/TencentCloud/<repo>/raw/master/`。
+   - **目录规律**：除 Node.js 外都是 `tencentcloud/<service>/<version>/`；schema 文件就在该目录下（Python `models.py`、Go `models.go`、Java 同包 `<Action>Request.java`）。每个接口一个 `<Action>Request` / `<Action>Response` 定义，字段名、参数名（json tag / 注解）、类型、必填性、注释齐全；同目录的 client 文件（`<service>_client.py` / `client.go`）可确认该 service 的 Action 全集。
+   - **Node.js 特例**：按服务 npm 分包 `tencentcloud-sdk-nodejs-<service>`，types `.d.ts` 就是 schema；源码在 `tencentcloud-sdk-nodejs` 仓库 `src/services/<service>/<version>/` 下。
+   - **不确定语言或路径时**：先抓仓库根目录的文件列表（GitHub API `https://api.github.com/repos/TencentCloud/<repo>/contents/tencentcloud`）确认实际结构，不要凭猜构造 URL；各仓库根路径 `examples/` 有每接口调用示例。
+   - 已实测锚点（Python 与 Go 结构完全同构，2026-09-08）：
+     `https://raw.githubusercontent.com/TencentCloud/tencentcloud-sdk-python/master/tencentcloud/monitor/v20180724/models.py` → `CreateAlarmPolicyRequest` 结构体直接可读。
+
+## §3 CAM 权限不足 → 拼授权链接（实测可用，2026-09-08）
+
+权限模型要点（同日实测）：
+
+- 账号级登录（device code / OAuth STS）：以登录的子账号/角色身份调用管控面，权限取决于该身份的 CAM 策略。**用户自己登录的子账号可能有完整 monitor 权限**（2026-09-08 二次实测：某子账号直调 monitor 告警全链路零障碍）——权限错误发生时才走授权升级，不要预先假定。
+- API Key 环境级：服务端固定权限模型，面向单环境数据面，没有为单个 Key 追加任意 CAM 策略的通道。
+- TCB **服务角色族**默认**无告警管理权限**（以 TCB_QcsRole 身份调用时）：`TCB_QcsRole` 无 monitor 策略；`TCBMonitor_QCSRole` 仅 `monitor:GetMonitorData`。
+- 临时密钥获取：`auth(action="get_temp_credentials", confirm="yes", reveal=true)` 返回明文 STS 三元组，可直接用于官方 SDK / TC3 手工签名（即 §2 代码管控路径），适用于 callCloudApi 白名单未放行目标 service 时的真实操作。
+
+**授权链接拼装流程**（cam service 已放行，全程可程序化）：
+
+1. 查角色 RoleId（按 RoleName 定位，跨账号 RoleId 不同）：
+   `callCloudApi(service="cam", version="2019-01-16", action="GetRole", params={ "RoleName": "TCB_QcsRole" })`
+   → `RoleInfo.RoleId`
+2. 拼 CAM 角色详情页链接（实测 URL 格式）：
+   `https://console.cloud.tencent.com/cam/role/detail?roleId=<RoleId>`
+3. 把链接和需要挂载的策略名一起给用户，例如追加 `QcloudMonitorReadOnlyAccess`（只读）或自定义告警策略集（`monitor:CreateAlarmPolicy` / `DescribeAlarmPolicies` / `BindingPolicyObject` 等），说明这是**一次性操作**，授权完成后重试原调用。
+4. 重试时遵循幂等模式：Create 前先 Describe 查重，避免重复创建。
+
+## README
+
+# Recipes — 实证工作流索引
+
+**一个场景一篇文档**，新增 recipe 时在本目录新建 `<场景名>.md`，并登记到下方目录表。
+
+每个 recipe 固定结构：**前置权限 → 接口序列 → 踩坑清单 → 验证步骤**。参数值凡未在 recipe 中标注"实测"的，先对照官方文档确认再使用。
+
+## 目录
+
+| # | Recipe | 文档 | 状态 |
+| --- | --- | --- | --- |
+| 1 | PostgreSQL 存储空间使用率告警 | [pg-storage-alarm.md](./pg-storage-alarm.md) | ✅ 生产实证（2026-09-08） |
+| 2 | 依赖产品资源告警（MySQL/CVM 等） | 复用 Recipe 1 框架，换 namespace | 📋 计划 |
+| 3 | MySQL 备份回档 | 待补 | 📋 计划 |
+| 4 | SCF 函数触发器 | 待补（api-reference 依赖产品段已有指引） | 📋 计划 |
+
+## 官方 API 文档入口（供 recipe 撰写时核对）
+
+- **监控/告警（腾讯云可观测平台）**：API 概览 https://cloud.tencent.com/document/product/649/30343 ；单个 Action 详细文档在 `document/api/248/` 下（例：CreateAlarmPolicy https://cloud.tencent.com/document/api/248/51287 ）
+- **其他产品**：从 https://cloud.tencent.com/document/api 进入对应产品 API 中心，Action 名与参数先经官方文档确认，再写入 recipe。
+
+## pg-storage-alarm
+
+# Recipe 1 — PostgreSQL 存储空间使用率 ≥ 80% 告警
+
+**实证来源**：2026-09-08 主账号 AppId 1259548930 全链路实测，policy-b2lti7cg 已生效。
+
+## 前置权限
+
+`monitor` 告警策略族 + `postgres` DescribeDBInstances。默认凭据（API Key / TCB 角色族）均无此权限，先走 [calling-methods.md §3](../calling-methods.md) 追加授权。
+
+官方 API 文档：监控告警 API 概览 https://cloud.tencent.com/document/product/649/30343（单个 Action 详细文档在 `document/api/248/` 下）。
+
+## 接口序列
+
+| 步 | Action | service / version | 关键参数 |
+| --- | --- | --- | --- |
+| 1 | DescribeAllNamespaces | monitor / 2018-07-24 | `{ "Module": "monitor", "SceneType": "ST_ALARM" }`，从 `QceNamespacesNew` 取策略命名空间（PG = `POSTGRESQL`） |
+| 2 | DescribeAlarmMetrics | monitor / 2018-07-24 | `{ "Module": "monitor", "MonitorType": "MT_QCE", "Namespace": "POSTGRESQL" }`，确认指标与可选值：StorageRate（Period 60/300，ContinuePeriod 1-5） |
+| 3 | DescribeDBInstances | **postgres / 2017-03-12** | `{ "Limit": 100, "Offset": 0 }`，按地域逐次调用；取实例 `DBInstanceId` 与 **`Uid`** |
+| 4 | DescribeAlarmNotices | monitor / 2018-07-24 | 复用已有通知模板（系统预设即可），或 CreateAlarmNotice 新建 |
+| 5 | CreateAlarmPolicy | monitor / 2018-07-24 | 见下方完整请求 |
+| 6 | BindingPolicyObject | monitor / 2018-07-24 | 顶层 region 必传 + 双维度绑定，见坑 3/4 |
+| 7 | DescribeAlarmPolicies / DescribeBindingPolicyObjectList | monitor / 2018-07-24 | 回查验证 |
+
+CreateAlarmPolicy 实测可用的请求体：
+
+```json
+{
+  "Module": "monitor",
+  "PolicyName": "PostgreSQL磁盘使用率80%告警",
+  "Remark": "磁盘(存储空间)使用率>=80%告警",
+  "MonitorType": "MT_QCE",
+  "Enable": 1,
+  "ProjectId": 0,
+  "Namespace": "POSTGRESQL",
+  "Condition": {
+    "IsUnionRule": 0,
+    "Rules": [{
+      "MetricName": "StorageRate", "Period": 60, "Operator": "ge",
+      "Value": "80", "ContinuePeriod": 1, "NoticeFrequency": 3600, "IsPowerNotice": 0
+    }]
+  },
+  "NoticeIds": ["notice-q5jl62uv"]
+}
+```
+
+返回 `PolicyId`（策略 ID）与 `OriginId`（数字，即后续绑定接口的 **GroupId**）。
+
+绑定请求（步骤 6）：
+
+```json
+{
+  "Module": "monitor",
+  "PolicyId": "policy-b2lti7cg",
+  "Dimensions": [{
+    "Region": "sh",
+    "Dimensions": "{\"uid\":425810,\"resourceId\":\"postgres-pdkup8by\"}"
+  }]
+}
+```
+
+## 踩坑清单（全部实测）
+
+| 坑 | 现象 | 正确做法 |
+| --- | --- | --- |
+| Namespace 用错 | `QCE/POSTGRES` / `postgres` 查指标返回空 | 策略族接口用 `DescribeAllNamespaces` 返回的 `QceNamespacesNew.N.Id`（PG = `POSTGRESQL`）；`QCE/POSTGRES` 只是监控数据命名空间 |
+| CreateAlarmPolicy 缺 ProjectId | `InvalidParameter: this namespace requires projectID: -1` | 显式传 `ProjectId=0`（默认项目，与实例一致；不要传 -1） |
+| 绑定缺 X-TC-Region | `MissingParameter: Region` | 顶层 region 传完整码（如 `ap-shanghai`）；同时 `Dimensions[].Region` 用**短码**（如 `sh`），两个字段不同 |
+| 绑定维度缺 uid | 表面成功，回查 `resourceId:null,uid:null`，告警被 alarm_disabled 禁用 | `Dimensions` 内 JSON 必须同时含 `uid`（来自 DescribeDBInstances）与 `resourceId` |
+| 回查绑定用错参数 | 传 PolicyId 或 PageNumber 均报错 | DescribeBindingPolicyObjectList 传 `Module="monitor"` + `GroupId`（= OriginId），不传分页 |
+| 解绑残留 | MissingParameter GroupId / UniqueId 类型错 | UnBindingPolicyObject 传 `GroupId` + `UniqueId`（**数组**，从绑定列表取） |
+| DescribeAlarmNotices 参数 | 缺 `Order` 报 MissingParameter；小写 `asc` 报 invalid input param | 必传 `Module` + `Order="ASC"`（大写）+ `PageNumber/PageSize`；响应字段是 `Id`（不是 NoticeId） |
+| 服务端报错吞首字母 | `RojectId` / `RderType` / `SUnionRule` / `Egion` 等未定义参数报错 | 这是服务端报错**显示**怪癖（首字母被吞），实际核对的是完整参数名；先对照 SDK models 的字段定义，别被报错带偏 |
+| SDK 类名陷阱（Python） | `ConditionTemplate`/`AlertRule`/`Dimension` 不存在或形状不对 | Condition 用 `AlarmPolicyCondition`、规则用 `AlarmPolicyRule`、绑定维度用 `BindingPolicyObjectDimension`（`Dimension` 是别的接口的，只有 Name/Value） |
+
+## 验证步骤
+
+1. `DescribeAlarmPolicies` 按 PolicyName 回查：确认 Enable=1、Condition 规则、NoticeIds。
+2. `DescribeBindingPolicyObjectList`（Module + GroupId）：确认 Total=1 且 Dimensions 双字段非 null。
+3. 若出现 null 维度残留记录，用 UnBindingPolicyObject 清理。
+
+## 二次实测记录（2026-09-08，账号 Uin 100046919896 / 环境 mcp-pg-ky5u9q）
+
+全链路二次打通：policy `policy-qnnip178`（GroupId 15961728）绑定 `postgres-l4xa5uq4`（uid 424521），回查双维度非 null、Enable=1。本次执行路径为 **SDK 直调**（monitor/postgres 未在 callCloudApi 白名单时，取 `auth get_temp_credentials` 临时密钥走官方 SDK，即 skill §2 代码管控路径），与首次 HTTP 直调结论一致。
+
+## SKILL
+
+---
 name: cloud-functions
 description: CloudBase function runtime guide for building, deploying, and debugging your own Event Functions or HTTP Functions. This skill should be used when users need application runtime code on CloudBase, not when they are merely calling CloudBase official platform APIs.
-version: 2.33.0
+version: 2.33.2
 alwaysApply: false
 ---
 
@@ -2908,7 +3137,7 @@ After VPC is bound, public internet egress may require NAT / public gateway in t
 ---
 name: cloud-storage-web
 description: Complete guide for CloudBase cloud storage using Web SDK (@cloudbase/js-sdk) - upload, download, temporary URLs, file management, and best practices.
-version: 2.33.0
+version: 2.33.2
 alwaysApply: false
 ---
 
@@ -3016,15 +3245,15 @@ Use instead:
 - ✅ `app.storage.from('covers').upload('file', file)` — PG 模式上传
 - ✅ `app.storage.from('covers').createSignedUrl('file', 3600)` — 获取签名 URL（返回 `fullSignedURL` 字段）
 
-### Post-bucket: storage RLS (mandatory in PG / pgstore environments)
+**Return shapes differ between modes (v3 SDK) — copy the right column:**
 
-In **PG / pgstore** environments, storage access control is enforced through **PostgreSQL Row Level Security (RLS) on `storage.buckets` / `storage.objects`** — exactly like Supabase Storage. These tables are already granted to `anon`, `authenticated`, and `service_role`; RLS is the permission gate. Traditional storage permission labels (`READONLY` / `PRIVATE` / `CUSTOM`) and JSON storage safe rules do not apply. The default RLS policy is deny all, so even if the bucket exists, `app.storage.from('covers').upload()` from a browser will fail with `STORAGE_PERMISSION_DENIED` unless you configure policies.
+| call | 传统模式 (`from()` 无参, `cloud://` fileID) | PG 模式 (`from('bucket')`, bucket 内对象名) |
+|---|---|---|
+| `upload(path, file)` | `{ data: { id, path, fullPath } }`；`upsert` 默认 **true** | `{ data: { id, ... } }`；`upsert` 默认 **false** |
+| `createSignedUrl(path, expiresIn)` | `await` → `{ data: { signedUrl } }` | `await` → `{ data: { fullSignedURL } }` |
+| `getPublicUrl(path)` | `await` → `{ data: { publicUrl } }` | **同步调用（不 await）** → `{ data: { publicUrl } }` |
 
-Use `managePgDatabase(action="execute", confirm=true)` to run the following SQL after creating the bucket:
-
-```sql
-ALTER TABLE storage.objects ENABLE ROW LEVEL SECURITY;
-
+Source: [webv3/storage.md](https://docs.cloudbase.net/api-reference/webv3/storage.md) · [webv3-pg/storage.md](https://docs.cloudbase.net/api-reference/webv3-pg/storage.md)（raw markdown）。
 
 ## SKILL
 
@@ -3776,7 +4005,7 @@ Component({
 ---
 name: cloudbase-agent
 description: Build and deploy AI agents with CloudBase Agent SDK (TypeScript & Python). Implements the AG-UI protocol for streaming agent-UI communication. Use when deploying agent servers, using LangGraph/LangChain/CrewAI adapters, building custom adapters, understanding AG-UI protocol events, or building web/mini-program UI clients. Supports both TypeScript (@cloudbase/agent-server) and Python (cloudbase-agent-server via FastAPI).
-version: 2.33.0
+version: 2.33.2
 alwaysApply: false
 ---
 
@@ -6171,7 +6400,7 @@ Component({
 ---
 name: cloudbase-cli
 description: CloudBase CLI (tcb, 云开发CLI, Tencent CloudBase命令行) resource management skill. Use when deploying cloud functions, CloudRun, storage, NoSQL/MySQL, static hosting, permissions, CORS/domains via tcb; for CI/CD and batch ops; when the user prefers CLI; or as the first-session fallback when CloudBase MCP tools are not loaded yet (after install/config, before IDE restart). Covers tcb login (device code for Tencent Cloud accounts; --cloudbase-api-key -e for environment API Key without an account; --apiKeyId/--apiKey for CI) and domain commands (fn/hosting/cloudrun/…) as MCP auth/manage parity — do not default to tcb deploy.
-version: 2.33.0
+version: 2.33.2
 alwaysApply: false
 ---
 
@@ -7524,7 +7753,7 @@ tcb storage rm folder/ --dir -e <envId>                # Directory
 ---
 name: cloudbase-code-review
 description: "Code review and validation for CloudBase projects. After writing code for Web / miniprogram / CloudRun / cloud-function projects, call this skill to check for known pitfalls — auth guard misuse, missing database tables, RLS misconfiguration, storage domain setup, and SDK API misuse. Supports automated lint scripts (regex-based) + LLM semantic review."
-version: 2.33.0
+version: 2.33.2
 alwaysApply: false
 ---
 
@@ -8379,9 +8608,441 @@ CloudBase 安全域名机制会拦截未注册的 origin 发出的请求。Vite 
 ## SKILL
 
 ---
+name: cloudbase-declarative-deploy
+description: CloudBase declarative deployment from a cloudbaserc config (声明式部署, 配置式部署, cloudbaserc 部署) through the deployBuild / deployPlan / deployApply MCP tools. Use when deploying database, functions, app, hosting, or gateway resources described in cloudbaserc.json/yaml as a single desired-state config, when a user wants to build static hosting artifacts locally first (deployBuild), or wants a dry-run plan before applying (deployPlan), or when handling multi-environment deploys via mode / envOverrides. Covers build-plan-apply flow (deployBuild local build → deployPlan dry-run → deployApply confirm=true), hosting build-output neutralization, envId resolution priority, only/skip filtering, concurrency, and continueOnError. Prefer deployBuild (when hosting declares a buildCommand) and deployPlan before deployApply; do not confuse with per-resource tcb CLI deploy or single-function deploy.
+version: 2.33.3
+alwaysApply: false
+---
+
+# CloudBase Declarative Deploy
+
+Deploy a whole CloudBase project from one `cloudbaserc` config as **desired state**,
+using the `deployBuild` (local hosting build), `deployPlan` (dry-run) and `deployApply`
+(apply) MCP tools. The orchestrator applies resources in a fixed dependency order:
+
+```
+database → functions → app → hosting → gateway
+```
+
+## Sibling skills (local only)
+
+Sibling CloudBase skills ship beside this skill. Use local relative paths such as
+`../cloudbase-cli/SKILL.md`.
+
+Cloud-hosted MCP mode does not guarantee access to a local workspace filesystem or
+stable relative paths. If a referenced sibling file is not available in cloud mode,
+use this skill's embedded guidance as source of truth and ask the user for any
+missing constraints (or to install the missing skill). Do **not** HTTP-fetch remote skill or protocol markdown into the agent context.
+
+**Cross-cutting protocols** (required before applying any deploy):
+- Change Safety Protocol: `../cloudbase-platform/references/protocols/change-safety-protocol.md`
+- Deployment Gate: `../cloudbase-platform/references/protocols/deployment-gate.md`
+
+## When to use this skill
+
+- The project has a `cloudbaserc.json` / `.yaml` / `.yml` / `.js` describing multiple
+  resources, and the user wants to deploy them together as one config.
+- The user asks for 声明式部署 / 配置式部署 / "deploy from cloudbaserc" / "deploy the whole project".
+- The user wants to preview what a deploy will change before applying (dry-run plan).
+- The user wants to build the static hosting artifact locally first (declarative
+  hosting deploys no longer build implicitly — see `deployBuild`).
+- Multi-environment deploy: production/staging via `mode` + `envOverrides`.
+
+## Do NOT use for
+
+- Deploying a single cloud function or one static site via `tcb` CLI → `../cloudbase-cli/SKILL.md`.
+- In-app SDK integration (web/miniprogram/node) → the matching SDK skill.
+- Console UI operations.
+
+## Cloud mode
+
+`deployBuild` / `deployPlan` / `deployApply` in this skill are the **local-form declarative
+executor**. In cloud-hosted MCP mode these tools are intentionally not registered
+(filtered at tool registration), because that runtime has no local `cwd` /
+filesystem-bound execution path.
+
+If you are in cloud mode and do not see `deployBuild` / `deployPlan` / `deployApply` in the
+tool list, this is expected behavior.
+
+Use the cloud upload-channel path instead:
+
+1. `queryApps(action=getUploadUrl)` to get `uploadUrl`, `uploadHeaders`, `unixTimestamp`
+2. Upload source/build zip to `uploadUrl` with returned headers
+   - If cloud build requires private/offline dependencies, package `node_modules` explicitly
+   - For public dependencies, uploading `package.json` + lockfile is typically enough
+3. `manageApps(action=deployApp, cosTimestamp=<unixTimestamp>, installCmd?, buildCmd?, deployCmd?)`
+   - `installCmd` / `buildCmd` / `deployCmd` are pipeline declarations executed in cloud container
+   - Agent passes data + declarations; it does not execute local shell commands
+
+Planned cloud declarative path (incremental roadmap): upload `cloudbaserc` as a data
+artifact, then run server-side plan/apply orchestration. `deployApply` remains the
+local-form executor of the same declarative spec.
+
+For parameter details, see `references/plan-and-apply.md` (`Cloud-hosted upload pipeline path`).
+
+## Core principles
+
+1. **Plan before apply — always.**
+   Run `deployPlan` first (dry-run, zero side effects). Read the per-resource action
+   classification and show it to the user before calling `deployApply`.
+
+2. **Apply requires explicit confirm.**
+   `deployApply` will refuse unless `confirm=true` is passed. This is the destructive-write guard.
+
+3. **Deployment Gate.**
+   Before any apply, complete `cloudbase-platform/references/protocols/deployment-gate.md`
+   and present the mandatory declaration.
+
+4. **Conservative on existing resources by default.**
+   `yes` defaults to `false` → existing resources are skipped, not overwritten. Only pass
+   `yes=true` when the user explicitly wants to overwrite/update existing resources.
+
+5. **database failure always aborts.**
+   Even with `continueOnError=true`, a database-stage failure stops the whole deploy,
+   because later resources depend on it.
+
+6. **Resolve envId explicitly.**
+   Never rely on implicit defaults silently — know which environment is targeted (see
+   the priority table below) and confirm it with the user before applying.
+
+## Plan action classification
+
+`deployPlan` returns a list of resource entries. Each `status` means:
+
+| status | meaning |
+|--------|---------|
+| `create` | new resource, will be created |
+| `update` | exists, will be overwritten/updated |
+| `skip` | no change needed |
+| `conflict` | conflict detected — deploy will abort, must resolve first |
+| `deploy` | direct overwrite upload |
+
+If any entry is `conflict`, stop and resolve it before applying.
+
+## envId resolution priority
+
+```
+explicit envId param  >  cloudbaserc `envId`  >  logged-in / bound environment
+```
+
+If none can be resolved, the tool errors out. Prefer confirming the resolved envId
+with the user before applying to production.
+
+## config-schema
+
+# cloudbaserc — Declarative Config Schema
+
+The `cloudbaserc` config declares the **desired state** of a CloudBase project.
+Supported file formats (searched from `cwd` downward): `cloudbaserc.json`,
+`cloudbaserc.yaml`, `cloudbaserc.yml`, `cloudbaserc.js`.
+
+> Local-mode note: `deployPlan` / `deployApply` discover these files from local `cwd`.
+> In cloud-hosted MCP mode, those tools are not registered; use the cloud upload pipeline
+> path described in `references/plan-and-apply.md` (no local `cwd` / filesystem execution).
+> The config contract remains the same desired-state model.
+
+`deployBuild` / `deployApply` / `deployPlan` validate the parsed config against the official
+cloudbaserc schema before building / applying. A schema failure aborts with the offending
+field path and reason.
+
+> Official schema source: `https://static.cloudbase.net/cli/cloudbaserc.schema.json` (JSON Schema Draft-07)
+
+## Top-level fields (official schema)
+
+Top-level `required` is empty (no globally required field), but some conditional branches make
+specific fields required in certain function image build scenarios.
+
+| field | purpose |
+|-------|---------|
+| `$schema` | JSON Schema declaration for tooling/IDE validation |
+| `version` | config schema version (official schema currently enumerates `"2.1"`) |
+| `envId` | target environment ID (can be overridden by an explicit tool param) |
+| `region` | target region (official enum includes `ap-shanghai` / `ap-guangzhou`) |
+| `functionRoot` | base dir for cloud function code |
+| `functionDefaultConfig` | defaults merged into every entry under `functions` |
+| `functions` | array of cloud function definitions |
+| `hosting` | hosting site definitions |
+| `integrations` | integration definitions |
+| `database` | database config (e.g. migration path) |
+| `gateway` | gateway route config |
+| `envOverrides` | per-`mode` overrides merged in when a matching `mode` is passed |
+| `servers` | local/dev server settings |
+| `app` | cloud app deployment config |
+| `ai` | AI-related config |
+| `privateSettings` | private settings |
+| `lowcodeCustomComponents` | lowcode custom component config |
+
+The resource sections the deploy orchestrator understands, in dependency order:
+
+```text
+database → functions → app → hosting → gateway
+```
+
+Use `only` / `skip` on the tools to restrict which of these sections are processed.
+
+## functions
+
+Each entry describes one cloud function. `functionDefaultConfig` is merged into every
+entry (entry-level values win).
+
+### Core function notes
+
+- Function entry required field: `name`
+- Common fields include: `type`, `runtime`, `handler`, `entry`, `timeout`, `memorySize`,
+  `envVariables`, `triggers`, `vpc`, `buildStrategy`, `imageConfig`
+- `type` enum: `Event` / `HTTP`
+- `buildStrategy` enum: `zip` / `cloud` / `local` / `image`
+- Runtime enum includes Node.js, Python, Java, Go, and `CustomImage` (follow official schema as source of truth)
+
+Declarative image/HTTP functions are passed through without flattening — do not manually inline
+`imageConfig` fields.
+
+```jsonc
+{
+  "functionDefaultConfig": { "timeout": 5 },
+  "functions": [
+    { "name": "fn-a" },                 // inherits timeout: 5
+    { "name": "fn-b", "timeout": 10 },  // overrides to 10
+    {
+      "name": "fn-image",
+      "type": "HTTP",
+      "buildStrategy": "local",
+      "imageConfig": {
+        "imageType": "enterprise",
+        "registryId": "reg-1",
+        "build": { "dockerfile": "Dockerfile", "repository": "ns/app" }
+      }
+    }
+  ]
+}
+```
+
+### Function image constraints (official schema highlights)
+
+- If `runtime = CustomImage`, both `buildStrategy` and `imageConfig` are required.
+- If `buildStrategy = image`, `imageConfig.imageUri` is required.
+- If `buildStrategy = cloud` or `local`, `imageConfig.build` is required.
+- If `buildStrategy = local`, `imageConfig.build.repository` is also required.
+- For enterprise image paths (`imageType = enterprise` with image build flows),
+  registry identity is required (`registryId` or `build.registryId`).
+
+There is also a top-level conditional rule in the official schema:
+- In personal cloud image build scenarios (e.g. `buildStrategy = cloud` + `imageType = personal`),
+  top-level `envId` becomes required.
+
+## Other resource sections (schema quick view)
+
+- `database`: currently constrained to `type = postgresql`; supports `migrations` path.
+- `hosting`: per-entry `name` required; supports `root`, `framework`, `installCommand`,
+  `buildCommand`, `outputDir`, `deployPath`, `envVariables`, `ignore`.
+- `app`: supports `root`, `serviceName`, `framework`, `installCommand`, `buildCommand`,
+  `outputDir`, `deployPath`, `envVariables`, `ignore`.
+
+Build/install fields are declarative intent in the spec. Execution side depends on
+resource path: some flows execute locally, while cloud-mode-compatible flows execute in
+cloud pipeline (staticCmd declarations) or consume prebuilt artifacts.
+- `gateway`: built around `routes[]`; each route requires `path` and `target`, with
+  protocol/auth/QPS-related constraints.
+
+## Template variables
+
+The parser renders `{{env.*}}` and `{{tcb.*}}` template variables, loading
+`.env` / `.env.local` / `.env.<mode>` from the project root.
+Keep secrets in env files, never hard-coded in `cloudbaserc`.
+
+
+## multi-env
+
+# Multi-Environment Deploy
+
+## mode + envOverrides
+
+Pass `mode` (e.g. `production`, `staging`) to merge the matching `envOverrides.<mode>`
+block into the base config. When no `mode` is passed, the base config is used untouched
+and `envOverrides` is not applied.
+
+```jsonc
+{
+  "envId": "env-base",
+  "functions": [ { "name": "api" } ],
+  "envOverrides": {
+    "staging":    { "envId": "env-staging" },
+    "production": { "envId": "env-prod" }
+  }
+}
+```
+
+- `deployPlan({ mode: "staging" })` → effective `envId` becomes `env-staging`, and the
+  merged config no longer carries the raw `envOverrides` block.
+- `deployPlan({})` (no mode) → `envId` stays `env-base`, `envOverrides` untouched.
+
+## envId resolution priority
+
+```
+explicit envId param  >  (merged) cloudbaserc envId  >  logged-in / bound environment
+```
+
+1. If the tool is called with an explicit `envId`, it wins over everything.
+2. Otherwise the `envId` in the (mode-merged) config is used.
+3. Otherwise the current MCP login / bound environment is used.
+4. If none resolve, the tool errors:
+   > 未能确定部署环境 ID：请在 cloudbaserc 配置 envId、通过 envId 参数指定，或先登录并绑定环境。
+
+**Always confirm the resolved envId with the user before applying to production.** An
+explicit `envId` param lets you deploy an `envId`-less config against a chosen environment
+without editing the config file.
+
+## Env-specific variables
+
+The parser loads `.env`, `.env.local`, and `.env.<mode>` from the project root and renders
+`{{env.*}}` / `{{tcb.*}}` template variables in the config. Use `.env.<mode>` to supply
+per-environment values (keys, endpoints) without duplicating whole config blocks.
+
+Keep all secrets in env files; never hard-code them in `cloudbaserc`.
+
+## Typical multi-env flow
+
+```
+# preview staging
+deployPlan({ mode: "staging" })
+# apply staging
+deployApply({ confirm: true, mode: "staging" })
+
+# preview production (confirm envId with user first)
+deployPlan({ mode: "production" })
+# apply production
+deployApply({ confirm: true, mode: "production" })
+```
+
+## plan-and-apply
+
+# Build → Plan → Apply: deployBuild, deployPlan & deployApply
+
+Three MCP tools implement the declarative flow. **Build first when hosting needs it,
+then always run `deployPlan` before applying.**
+
+## deployBuild (local hosting build)
+
+Parses `cloudbaserc`, and for every `hosting` item that resolves a `buildCommand`
+(explicit config > framework mapping > package.json auto-detection) executes that
+command locally. It does **not** install dependencies and does **not** upload.
+
+Parameters:
+
+| param | type | notes |
+|-------|------|-------|
+| `cwd` | string? | project root; defaults to current working dir |
+| `mode` | string? | env name; merges `envOverrides.<mode>` when matched |
+
+Notes:
+
+- Pure-static `hosting` items (no `buildCommand`) are skipped — nothing to build.
+- No `envId` resolution and no login required: it never calls the cloud.
+- A missing `node_modules` when `package.json` declares dependencies fails with
+  `DEPENDENCY_NOT_INSTALLED` (run install first; `deployBuild` never installs for you).
+- A failed build command fails with `BUILD_FAILED`.
+- `deployApply` no longer runs hosting builds implicitly: after source changes, run
+  `deployBuild` again so the uploaded artifact is fresh.
+
+## deployPlan (read-only dry-run)
+
+Parses `cloudbaserc`, validates it, resolves `envId`, and computes the plan **without
+making any change**.
+
+> `deployBuild` / `deployPlan` / `deployApply` are local-form tools. In cloud-hosted MCP
+> mode they are intentionally not registered; use the cloud upload-channel fallback
+> below.
+
+Parameters:
+
+| param | type | notes |
+|-------|------|-------|
+| `cwd` | string? | project root; defaults to current working dir |
+| `mode` | string? | env name; merges `envOverrides.<mode>` when matched |
+| `envId` | string? | overrides the cloudbaserc `envId`; else config value or bound env |
+| `only` | (database\|functions\|app\|hosting\|gateway)[]? | compute plan for these only |
+| `skip` | same enum[]? | skip these resource types |
+| `yes` | boolean? | align with `deployApply` `yes`: recompute the effective action for existing functions. `false` (default) previews them as `skip`; `true` previews them as `update` |
+
+Returns `{ cwd, mode, envId, yes, plan }` where `plan` is a list of entries like:
+
+```json
+{ "type": "functions", "name": "fn-a", "status": "create", "action": "新建" }
+```
+
+The plan is already reconciled to the *actual* action `deployApply` would take: with
+`yes` unset, an already-existing function is reported as `skip` (with `declaredStatus:
+"update"` preserved), so the preview never contradicts the execution.
+
+See `SKILL.md` for the meaning of each `status` (create / update / skip / conflict / deploy).
+
+## deployApply (destructive write)
+
+Applies the plan in dependency order: database → functions → app → hosting → gateway.
+This is the **local-form apply** (reads the local `cloudbaserc` and builds the upload
+artifact locally); it is the execution counterpart of `deployPlan`.
+
+Parameters:
+
+| param | type | notes |
+|-------|------|-------|
+| `confirm` | boolean | **required `true`**, otherwise the call is rejected |
+| `confirmDestructive` | boolean? | **required `true`** when a pending database migration contains destructive SQL (DROP/TRUNCATE/DELETE, ALTER…DROP/RENAME); otherwise the call is rejected and lists the offending migrations. No effect when no destructive migration is pending |
+| `cwd` | string? | project root; defaults to current working dir |
+| `mode` | string? | env name; merges `envOverrides.<mode>` |
+| `envId` | string? | overrides cloudbaserc `envId`; else config value or bound env |
+| `only` | enum[]? | deploy only these resource types |
+| `skip` | enum[]? | skip these resource types |
+| `yes` | boolean? | on existing resource: `true`=overwrite/update; `false` (default)=skip conservatively |
+| `concurrency` | int ≥ 1? | max parallelism for same-type resources; default 1 (serial) |
+| `continueOnError` | boolean? | keep going after a non-database failure; database failure always aborts |
+
+### Safety rules
+
+- Without `confirm=true`, `deployApply` throws and does nothing — this is intentional.
+- A pending destructive database migration additionally requires `confirmDestructive=true`
+  on top of `confirm=true`; back up or review first.
+- `yes=false` (default) never overwrites existing resources in a non-interactive context.
+- `concurrency` only parallelizes within one resource type; cross-type order is preserved.
+- A database-stage failure aborts the whole deploy even with `continueOnError=true`.
+
+## Build-first mental model
+
+Do not model declarative deploy as only `plan → apply`. Operationally, use:
+
+```text
+build → plan → apply
+```
+
+Where build runs depends on resource and path:
+
+- `hosting`: run `deployBuild` first (local build when `buildCommand` exists), then
+  `deployApply` uploads the artifacts. A missing output aborts apply with
+  `BUILD_OUTPUT_NOT_FOUND` and directs you back to `deployBuild`
+- `app` (`framework=static`): local/prebuilt artifacts uploaded directly
+- `app` (non-static): source package uploaded, cloud pipeline builds and deploys
+- `functions`: path depends on `buildStrategy` (`zip`/`cloud`/`local`/`image`)
+
+## Cloud-hosted upload pipeline path (not local-form deployPlan/deployApply)
+
+In cloud-hosted MCP mode, `deployBuild` / `deployPlan` / `deployApply` are intentionally not
+registered.
+Treat this as an **execution-channel switch**, not a change in declarative intent.
+
+Use this supported cloud path:
+
+1. `queryApps(action=getUploadUrl)` to receive `uploadUrl`, `uploadHeaders`, `unixTimestamp`
+2. Upload source/build package zip to `uploadUrl` using returned headers
+3. `manageApps(action=deployApp, cosTimestamp=<unixTimestamp>, installCmd?, buildCmd?, deployCmd?)`
+
+`installCmd` / `buildCmd` / `deployCmd` are pipeline declarations (staticCmd) executed by
+
+## SKILL
+
+---
 name: cloudbase-document-database-web-sdk
 description: Use CloudBase document database Web SDK only for confirmed NoSQL collection work. Query, create, update, and delete document data; if the task mentions PostgreSQL / CloudBase PG / app.rdb(), route to postgresql-development instead.
-version: 2.33.0
+version: 2.33.2
 alwaysApply: false
 ---
 
@@ -9365,7 +10026,7 @@ await managePermissions({
 ---
 name: cloudbase-platform
 description: CloudBase platform overview and routing guide. This skill should be used when users need high-level capability selection, platform concepts, console navigation, or cross-platform best practices before choosing a more specific implementation skill.
-version: 2.33.0
+version: 2.33.2
 alwaysApply: false
 ---
 
@@ -9379,6 +10040,8 @@ If a referenced sibling skill file is missing from this environment, ask the use
 - Change Safety Protocol: `references/protocols/change-safety-protocol.md`
 - Deployment Gate: `references/protocols/deployment-gate.md`
 - Sensitive Runtime Data Protection: `references/protocols/sensitive-runtime-data-protection.md`
+
+**Post-deployment (optional, non-intrusive)**: after a deployment is verified successful, you may offer at most once to generate anonymized shareables (Deployment Share) — see `references/protocols/deployment-share.md`. Never follow up if declined; never publish on the user's behalf.
 
 ## Activation Contract
 
@@ -9480,8 +10143,6 @@ When working with domain-related tasks, use the correct tool based on the requir
 | **Delete Custom Domain** | `manageGateway(action="deleteCustomDomain")` | `domain` (string) | Remove custom domain binding (only after routes on that domain are deleted). |
 | **Disable / enable gateway route** | `manageGateway(action="disableRoute" \| "enableRoute")` | `path` (required), prefer explicit `domain` | Toggle `Routes[].Enable` via `ModifyHTTPServiceRoute` (not `ModifyGatewayRoute`). |
 | **Disable static hosting default domain** | `queryGateway(listRoutes)` → `manageGateway(disableRoute)` | `domain` = `*.tcloudbaseapp.com` (`DomainType=STATIC_STORE`, `IsDefault=true`), usually `path="/"` | Turns off public access on the shared hosting CDN default host. **Do not use `manageHosting`.** |
-
-**Key indicators for choosing the right tool:**
 
 ## change-safety-protocol
 
@@ -9623,6 +10284,44 @@ When the task involves deployment, publishing, custom domains, CloudRun, or publ
 
 > Before any deployment or publish action, you must first complete the full checks in `cloudbase-platform/references/protocols/deployment-gate.md` and present the declaration template to the user.
 
+## Post-Deployment: Deployment Share (optional, non-intrusive)
+
+After a deployment is **verified successful** (public URL reachable, or mini program upload/publish done), you may — **at most once** — offer to generate anonymized, shareable deliverables (a visual card + paste-ready share copy). If the user declines or ignores, stop immediately. Publishing is always a manual user action; never post on the user's behalf.
+
+Full trigger/boundary rules, required information, anonymization red lines, and deliverable formats: `deployment-share.md` (same directory).
+
+## deployment-share
+
+# Deployment Share (Post-Deployment, Optional)
+
+A soft, non-intrusive flow for turning a verified deployment milestone into anonymized, shareable deliverables. The goal: willing users can share a reproducible result; no user ever feels pushed.
+
+## Trigger & Boundaries
+
+- Only after a deployment is **verified successful** (public URL reachable, or mini program upload/publish completed), offer **at most once**. If the user declines or ignores, stop immediately — never follow up or ask again in the same session.
+- Generate shareables only after the user explicitly agrees. Publishing is always a manual user action — **never post on the user's behalf**.
+- Never delay, bloat, or overshadow the deployment report itself. This is a closing pleasantry, not a step of the deployment workflow.
+
+## Required Information (both deliverables must cover all items)
+
+1. Agent / CLI used
+2. Project type (one sentence)
+3. CloudBase resources used (e.g. static hosting, database, auth)
+4. Deploy duration (distinguish cloud build time from end-to-end time)
+5. At least one piece of **real process evidence** (terminal output, build ID, or deployment log lines)
+6. **Reproduction path**: complete down to prerequisite steps such as connector / account authorization — not just the final one-line command. Include the toolkit docs link: https://docs.cloudbase.net/ai/cloudbase-ai-toolkit/
+7. **Key pitfalls resolved** along the way (1–2, optional but strongly recommended — the main source of content credibility)
+
+## Default Exclusions (Anonymization Red Lines)
+
+- Environment ID, secrets, credentials, private source code, user data, internal domains
+- Public URL: include only after the user confirms the address is intended to be public
+
+## Deliverables (generate both at once)
+
+- **Visual card**: single-file HTML, portrait aspect ratio, ready to open and screenshot. Colors, layout, and typography are unconstrained; echoing the deployed app's visual style is encouraged.
+- **Share copy**: a paste-ready paragraph. Style, tone, and platform formatting are unconstrained — just organize the 7 required items into it. Warn the user about platform hyperlink limits (e.g. Xiaohongshu body-text links are not clickable — suggest guiding readers to the comments section).
+
 ## sensitive-runtime-data-protection
 
 # Sensitive Runtime Data Protection
@@ -9725,7 +10424,7 @@ exports.main = async (event) => {
 ---
 name: cloudbase-wechat-integration
 description: CloudBase WeChat integration guide for Mini Program WeChat Pay, Mini Program virtual payment (虚拟支付, wx.requestVirtualPayment), Official Account JSAPI Pay, Native QR-code Pay, Official Account OAuth, openid handling, payment callbacks, and CloudBase Integration Center generated functions. This skill should be used when users ask to add, debug, or extend WeChat payment, virtual payment, or official-account flows on CloudBase.
-version: 2.33.0
+version: 2.33.2
 alwaysApply: false
 ---
 
@@ -10417,7 +11116,7 @@ Use this reference for **虚拟支付**（virtual goods payment）flows: 道具�
 ---
 name: cloudrun-development
 description: CloudBase Run backend development rules (Function mode/Container mode). Use this skill when deploying backend services that require long connections, multi-language support, custom environments, AI agent development, or migrating existing/GitHub apps that need VPC access to MySQL/PostgreSQL/Redis. Also use when diagnosing CloudRun container deploy failures (deploy_failed, readiness/probe failed, image won't start, docker.io pull loops). For stateless HTTP services, prefer HTTP cloud functions.
-version: 2.33.0
+version: 2.33.2
 alwaysApply: false
 ---
 
@@ -10447,7 +11146,7 @@ If a referenced sibling skill file is missing from this environment, ask the use
 
 - You still need to choose between Function mode and Container mode.
 - The prompt mentions `queryCloudRun`, `manageCloudRun`, Dockerfile, service domains, or public/private access.
-- The app depends on MySQL, PostgreSQL, Redis, or other VPC-private resources over TCP → also read `references/vpc-and-database.md`.
+- The app depends on MySQL, PostgreSQL, Redis, or other VPC-private resources over TCP → **先做数据库访问方式决策（SDK/网关优先，见下方「数据库访问方式决策门」）**；确认必须 TCP 直连后 → also read `references/vpc-and-database.md`.
 - You are choosing between CloudRun and HTTP cloud functions for a stateless HTTP service.
 - Container deploy fails (`deploy_failed`, Pod not ready, readiness/probe failed, third-party `imageUrl` won't stay up) → also read `references/image-deploy-troubleshooting.md` and follow the **Container deploy failure SOP** below. Do not start by raising `InitialDelaySeconds`.
 
@@ -10473,6 +11172,7 @@ If a referenced sibling skill file is missing from this environment, ask the use
 - Assuming local run is available for Container mode.
 - Opening public access by default when the scenario only needs private or mini-program internal access.
 - **Deploying an existing app with `DATABASE_URL` / MySQL / PostgreSQL / Redis but omitting `serverConfig.VpcConf`** — deploy appears to succeed, then runtime DB connections fail.
+- **新应用部署默认选 TCP 直连数据库** — 能用 SDK/网关访问的数据（PG `app.rdb()`、NoSQL、storage）不需要 `VpcConf` 也不需要数据库账号密码；仅迁移类应用（经典驱动/ORM 无法替换）才走 TCP 直连 + `VpcConf`。见「数据库访问方式决策门」。
 - Confusing `OpenAccessTypes` (how users reach the service) with `VpcConf` (how the service reaches VPC databases).
 - **Deploying to an environment that has not initialized CloudRun** — `CreateCloudRunServer` on an environment with no 大租户 record silently lands in the legacy 小租户 path, creating wrong small-tenant services/versions. Always ensure the environment is initialized first (`manageCloudRun(action="initEnv")`, tcbr) before the first deploy. `manageCloudRun(action="deploy")` now blocks new-service creation on uninitialized environments with guidance.
 - **Using the legacy `tcb` CloudRun API** (`CreateCloudBaseRunResource` / `DescribeCloudBaseRunResource` / `DeleteCloudBaseRunResource`) — these are deprecated 小租户 open APIs and are blocked in `callCloudApi`. CloudRun always goes through `tcbr` (`CreateCloudRunEnv` / `CreateCloudRunServer`). Query a single environment's base info / whether CloudRun is enabled with `DescribeEnvBaseInfo` (`EnvId` required) — use `manageCloudRun(action="initEnv")` to open and `queryCloudRun(action="envStatus")` to poll status; query the environment list / resource info with `DescribeCloudRunEnvs` (`EnvId` optional filter).
@@ -10519,21 +11219,20 @@ Use CloudBase Run when the task needs a deployed backend service rather than a s
 
 **决策示例：** 一个带 `Dockerfile` 的 Go/Python HTTP API，无长连接、无自定义运行时、不碰 VPC 数据库 → 选 HTTP 云函数而不是云托管；同一份代码若有 WebSocket 长连接 → 才选云托管。
 
-### When CloudRun is a better fit
+### 数据库访问方式决策门（部署前必答：SDK 优先，TCP 直连兜底）
 
-- Long connections: WebSocket, SSE, server push
-- Long-running request handling or persistent service processes
-- Custom runtime environments or system libraries
-- Arbitrary languages or frameworks
-- Stable external service endpoints with elastic scaling
-- AI Agent deployment on Function mode CloudRun
-- Migrating existing containerized or multi-language apps that need VPC access to databases
+> 核心原则：**能用 CloudBase SDK/网关访问的数据，一律优先 SDK 路径。** TCP 直连会引入 VPC、安全组、数据库账号密码三件套，全是部署后才暴露的问题（`ETIMEDOUT`、安全组拦截、密码注入），能不碰就不碰。
 
-## Mode selection
+**优先：SDK / 网关路径（无需 `VpcConf`、无需数据库账号密码）**
 
-| Dimension | Function mode | Container mode |
-| --- | --- | --- |
-| Best for | Fast start, Node.js service patterns, built-in framework, Agent flows | Existing containers, arbitrary runtimes, custom system dependencies |
+- CloudBase PG → `app.rdb()`（js-sdk v3 / node-sdk，走 PG HTTP 网关；详见 `../postgresql-development-cloudbase/SKILL.md`）
+- NoSQL → `app.database()`；对象存储 → `app.storage`
+- 新应用 / CloudBase 原生数据 → 数据层直接按 SDK 路径设计，部署时完全不需要 VPC 配置；若只用到这些数据面，还可结合上一节的「HTTP 云函数优先」进一步免掉云托管
+
+**仅当以下情况才走 TCP 直连（须完成 `references/vpc-and-database.md` 全流程）：**
+
+- 迁移已有 / GitHub / 第三方应用，数据层是经典驱动或 ORM（mysql2、pg、Prisma、SQLAlchemy、WordPress / Ghost 等），改造成 SDK 的成本高或用户明确要求保留
+- 需要 SDK 不覆盖的能力（特定 SQL 方言、存储过程、Redis 原生协议等）
 
 ## image-deploy-troubleshooting
 
@@ -10666,6 +11365,25 @@ Use this reference when deploying **existing / third-party apps** (GitHub projec
 
 Official docs: [VPC configuration for CloudBase Run](https://docs.cloudbase.net/run/deploy/networking/vpc)
 
+## 先决策：真的需要 TCP 直连吗？（SDK 优先）
+
+进入本文件（VPC / 安全组 / 连接串）之前，先确认 TCP 直连是**必要**的，而不是默认的。SDK / 网关路径不经过 VPC、不需要数据库账号密码，天然避开直连的网络与凭证问题：
+
+| 维度 | SDK / 网关路径（优先） | TCP 直连（兜底） |
+| --- | --- | --- |
+| 网络配置 | 无需 `VpcConf` | 必须绑定同 VPC + 安全组放行 DB 端口 |
+| 数据库凭证 | 环境内置，无需注入账号密码 | 需要生成 / 注入 / 轮换账号密码 |
+| 典型故障 | 基本没有 | `ETIMEDOUT`、安全组拦截、密码错误、VPC 未挂载 |
+| 适用场景 | 新应用 / CloudBase 原生数据（PG、NoSQL、storage） | 迁移已有应用、SDK 不覆盖的能力（特定 SQL 方言、Redis 原生协议等） |
+
+SDK 路径的具体形态：
+
+- CloudBase PG → `app.rdb()`（js-sdk v3 / node-sdk，走 PG HTTP 网关；见 `../../postgresql-development-cloudbase/SKILL.md`）
+- NoSQL → `app.database()`；对象存储 → `app.storage`
+- 若新应用只需要这些数据面，还可考虑直接用 HTTP 云函数（内置 SDK、免 VPC），不上云托管容器
+
+仅当应用是经典 TCP 客户端（mysql2 / pg / Prisma / SQLAlchemy / WordPress / Ghost 等迁移场景）且改造为 SDK 的方案被否决时，才继续往下走 VPC 流程。
+
 ## Critical distinction
 
 | Concept | What it controls | Typical field |
@@ -10761,32 +11479,13 @@ If the user says "PostgreSQL" but the app is a classic TCP client (for example n
 }
 ```
 
-Missing `VpcConf` here commonly yields deploy **success** followed by runtime `ECONNREFUSED`, timeout, or "could not connect to server".
-
-## Troubleshooting
-
-| Symptom | Likely cause | Fix |
-| --- | --- | --- |
-| Deploy OK, app cannot connect to DB | Missing/wrong VPC, or old SDK dropped `VpcConf` | Use `updateConfig` or redeploy with `VpcConf` on SDK &gt;= 5.6.2; verify via `detail`; if still wrong, console or recreate |
-| Redeploy wiped console VPC / env keys | Partial deploy without merge (legacy) | Current MCP deploy RMW preserves remote `VpcConf` / EnvParams keys / `OpenAccessTypes`; prefer `updateConfig` for config-only changes |
-| Timeout to DB IP | Security group / ACL | Allow CloudRun subnet CIDR on DB port |
-| Works locally, fails on CloudRun | Using `localhost` / docker-compose hostname | Replace with VPC private address |
-| Connected VPC but lost outbound Internet | Public egress disabled without NAT | Keep platform public egress, or add NAT gateway in VPC |
-| User asked for "PG" but SDK APIs fail in existing app | Protocol mismatch | Keep TCP DB + VPC, or refactor to `app.rdb()` |
-
-## Agent checklist (copy into plan before deploy)
-
-- [ ] DB dependency signals scanned
-- [ ] TCP vs CloudBase SDK/gateway path decided
-- [ ] `VpcId` + `SubnetId` resolved (same region as DB)
-- [ ] Private connection string prepared
 
 ## SKILL
 
 ---
 name: data-model-creation
 description: "[Deprecated] Optional advanced tool for complex data modeling. For simple MySQL table creation, use relational-database-tool directly; for PostgreSQL / CloudBase PG schema work, use postgresql-development. New environments should use PostgreSQL DDL via queryPgDatabase/managePgDatabase — see postgresql-development skill instead."
-version: 2.33.0
+version: 2.33.2
 alwaysApply: false
 metadata:
   priority: "5"
@@ -10909,7 +11608,7 @@ This skill is an **advanced modeling path**, not the default path for database w
 ---
 name: http-api-cloudbase
 description: CloudBase official HTTP API client guide. This skill should be used when backends, scripts, or non-SDK clients must call CloudBase platform APIs over raw HTTP instead of using a platform SDK or MCP management tool.
-version: 2.33.0
+version: 2.33.2
 alwaysApply: false
 ---
 
@@ -11354,7 +12053,7 @@ Use this checklist when the request comes from Android, iOS, Flutter, React Nati
 ---
 name: minimal-web-baas-demo
 description: "Fast path for a minimal CloudBase Web + database demo (最小前后端 / 最小可用 fullstack / Lovable-like BaaS). Defaults to @cloudbase/js-sdk client CRUD (NoSQL app.database / PG app.rdb), MCP-only schema, preview-first, and forbids cloud functions unless secrets, cron/background jobs, or logic that security rules/RLS cannot express. Use for 搭一套 demo、留言板、Todo、Notes、Kanban, or when users say 带云函数+云数据库 but only need CRUD. NOT for production multi-service backends, CloudRun, WeChat Mini Programs, or tasks that truly need server secrets."
-version: 2.33.0
+version: 2.33.2
 alwaysApply: false
 ---
 
@@ -13267,7 +13966,7 @@ async function paginateWithCount(collectionName, page, pageSize, whereConditions
 ---
 name: ops-inspector
 description: AIOps-style CloudBase inspection skill (v3). Use when users need health checks, log diagnosis, alarm interpretation (CPU alert normal?, peak QPS), metrics via queryEnv(action=metrics), or fault playbooks for 429 / function 404 / ACCESS_TOKEN_INVALID / zero invocations. Triggers on 巡检, 诊断, 告警, 峰值 QPS, 限频, 调用量为 0, troubleshooting.
-version: 2.33.0
+version: 2.33.2
 alwaysApply: false
 ---
 
@@ -13592,7 +14291,7 @@ Shared prerequisites for every playbook:
 ---
 name: postgresql-development-cloudbase
 description: "Use when building, debugging, or evaluating CloudBase PostgreSQL / CloudBase PG / PG mode apps, including Postgres schema setup, queryPgDatabase/managePgDatabase, JS SDK v3 app.rdb() CRUD/RPC, PG HTTP API fallback, RLS-style permissions, username-password auth, and Web CMS/admin CRUD flows backed by CloudBase PG."
-version: 2.33.0
+version: 2.33.2
 alwaysApply: false
 ---
 
@@ -13622,7 +14321,7 @@ If a referenced sibling skill file is missing from this environment, ask the use
 - PG mode overview -> `references/pg-mode-overview.md`
 - Auth / GRANT / RLS details -> `references/auth-and-rls.md`
 - End-to-end PG app closure -> `references/app-workflow.md`
-- PG storage details -> `references/storage-pg.md`
+- PG storage details — **MUST read before writing any bucket / upload / URL code** -> `references/storage-pg.md`
 - HTTP API fallback -> `references/http-api.md`
 - Troubleshooting -> `references/troubleshooting.md`
 
@@ -15242,7 +15941,7 @@ Fix:
 ---
 name: relational-database-mcp-cloudbase
 description: "[Deprecated] This is the required documentation for agents operating on the CloudBase Relational Database through MCP. It defines the canonical SQL management flow with `queryMysqlDatabase`, `manageMysqlDatabase`, `queryPermissions`, and `managePermissions`, including MySQL provisioning, destroy flow, async status checks, safe query execution, schema initialization, and permission updates. New environments should use PostgreSQL — see postgresql-development skill instead."
-version: 2.33.0
+version: 2.33.2
 alwaysApply: false
 metadata:
   priority: "5"
@@ -15488,7 +16187,7 @@ Note: when a user is logged in, `_openid` is automatically populated by the serv
 ---
 name: relational-database-web-cloudbase
 description: "[Deprecated] Use when building frontend Web apps that talk to CloudBase Relational Database via @cloudbase/js-sdk – provides the canonical init pattern so you can then use Supabase-style queries from the browser. New environments should use PostgreSQL with app.rdb() — see postgresql-development skill instead."
-version: 2.33.0
+version: 2.33.2
 alwaysApply: false
 metadata:
   priority: "5"
@@ -15734,7 +16433,7 @@ const app = cloudbase.init({
 ---
 name: spec-workflow
 description: Use when medium-to-large changes need explicit requirements, technical design, and task planning before implementation, especially for multi-module work, unclear acceptance criteria, or architecture-heavy requests.
-version: 2.33.0
+version: 2.33.2
 alwaysApply: false
 ---
 
@@ -15857,7 +16556,7 @@ Create `specs/<spec_name>/tasks.md`.
 ---
 name: ui-design
 description: Use when users need visual direction, interface hierarchy, layout decisions, design specifications, or prototypes before implementing a Web or mini program UI.
-version: 2.33.0
+version: 2.33.2
 alwaysApply: false
 ---
 
@@ -16006,7 +16705,7 @@ Use this checklist before generating any page, component, or visual interface.
 ---
 name: web-development
 description: Use when users need to implement, integrate, debug, build, deploy, or validate a Web frontend after the product direction is already clear, especially for React, Vue, Vite, browser flows, or CloudBase Web integration.
-version: 2.33.0
+version: 2.33.2
 alwaysApply: false
 ---
 
