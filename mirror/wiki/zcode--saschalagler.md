@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-11 11:06 UTC
+Zuletzt gespiegelt: 2026-09-11 11:17 UTC
 
 ## code-architect
 
@@ -1273,7 +1273,7 @@ Bei Fachfragen (z. B. Trainings-Übungen) fordert er explizit „clinical reason
 - [Z.AI Coding Plan Limits](zai-coding-plan-limits.md) — weekly+5h Credit-Caps selbst auf Pro; [1310]=Cap; Fanout verbrennt Quota; 3 Z.AI-MCP-Server eingetragen mit Key-Platzhalter- [AutoClaw Full-Stack-Builder](autoclaw-full-stack-builder.md) — 06.09. Agent+7 Skills+Write-Guard eingerichtet; JWT pro-Modell in openclaw.json, nur additiv editieren; Config greift nach App-Neustart
 - [Legal-Ops-Native-Status](legal-ops-native-status.md) — 06.09. P0-Diagnose: Verschmelzung FUNKTIONIERT (live verifiziert, Port 7070/Ollama); „kaputt" = 4-App-Varianten-Wirrwarr → Aufräumen mit GO; STATE.md im Projekt
 - [Patrick Physiotherapie via SBP](patrick-physiotherapie-sbp.md) — 07.09.: Patrick (>20, KEINE einschlägige Ausbildung, Ziel-FH IMC Krems) braucht volle SBP + FH-Aufnahmeverfahren; ohne Beruf OK — „beruflich ODER sonstige Vorbildung" (§ 64a UG); geplantes DOCX (R4-Cover) noch offen; Plaintext-PDF abgelehnt
-- [Doc-Design zählt](feedback-doc-design-matters.md) — 07.09.: „simpel" = wenig Umfang, nie schlechtes Layout; Plaintext-PDF scharf abgelehnt → Übergabe-Docs immer mit Cover/Tabellen/Struktur bauen
+- [Doc-Design zählt](feedback-doc-design-matters.md) — 07.09.: „simpel" = wenig Umfang, nie schlechtes Layout; 11.09.: **PDF = Lieferformat** („ERSTELLE EIN VERFICKTES PDF"); LibreOffice JETZT installiert (soffice→PDF + pdftoppm Pipeline); Quick-Look-DOCX-Thumbnails unzuverlässig; Übergabe-Docs immer Cover/Tabellen/Screenshots
 - [LOKI Projekt-Map](loki-project-map.md) — 06.09. 17:30: Legal-Ops gelöst, Atlas-Takeover läuft LIVE in AutoClaw, TODO-App fertig, Paraletts=Prototyp, Barbulls=Wix+Scaffold; Q1 entlastet, Q1b Home-Repo neu; Source of Truth = ~/LOKI_PROJECT_MAP.md
 
 ## active-projects-focus
@@ -1450,7 +1450,9 @@ metadata:
 
 **Why:** „Simpel/mir egal" bezieht sich bei Sascha auf UMFANG, nicht auf GESTALTUNG. Er erwartet immer professionelles Layout (Farbbanner/Cover, Sektionen, echte Tabellen, Typografie) — auch bei 1-Seiten-Docs.
 
-**How to apply:** Übergabe-Dokumente nie als reine Textwüste generieren. Entweder docx-Skill mit Cover-Rezept + Tabellen (siehe [[patrick-physiotherapie-sbp]], R4 geplant) oder reportlab mit Platypus (Table/TableStyle, Farbbänder) statt drawString. Kein LibreOffice/soffice auf dem Mac → DOCX→PDF-Konvertierung nicht verfügbar, PDF direkt erzeugen.
+**How to apply:** Übergabe-Dokumente nie als reine Textwüste generieren. Entweder docx-Skill mit Cover-Rezept + Tabellen (siehe [[patrick-physiotherapie-sbp]], R4 geplant) oder reportlab mit Platypus (Table/TableStyle, Farbbänder) statt drawString.
+
+**Update 11.09.2026:** (1) **LibreOffice JETZT INSTALLIERT** (`brew install --cask libreoffice`, soffice auf /opt/homebrew/bin/soffice) → DOCX→PDF-Konvertierung verfügbar: `soffice --headless --convert-to pdf` + `pdftoppm -png -r 80` für Seiten-Rendering. (2) **PDF ist das Lieferformat**: Sascha schrie „ERSTELLE EIN VERFICKTES PDF", als nur ein DOCX existierte — Übergabe-Docs primär als PDF liefern, DOCX nur als Beilage. (3) Bewährter Pipeline-Lauf: docx-Skill R4-Cover (GO-1) + echte App-Screenshots via `screencapture -o -x -l <window_id>` + computer-use-AX-Klicks für UI-Zustände → postcheck.py → add_toc_placeholders.py + fix_footer_fields.py → soffice→PDF → alle Seiten als PNG selbst visuell prüfen (Cover-Titlelbruch vorher: Wortgrenzen-Split in calcTitleLayout nötig, festes Char-Slicing bricht mitten im Wort). (4) macOS **Quick-Look-Thumbnails (qlmanage) sind bei DOCX unzuverlässig** — renderten das R4-Cover als vertikalen Letter-Streifen (false alarm); erst LibreOffice-Render ist verlässlich.
 
 ## feedback-gui-not-cli
 
@@ -2157,10 +2159,10 @@ Der Custom-Command `/standardskill` (user/zcode) ist ein verbindlicher Boot-Abla
 
 ---
 name: thomas-tasks-drei-recherchen
-description: Drei Thomas-Recherchen 11.09. ABGESCHLOSSEN + Ergebnisse im Chat
-  geliefert — Modell-Mapping: Saschas LokiVoiceApp = Gemini Live/Vertex, THOMAS = ChatGPT/OpenAI;
-  Gratis-Stack LocalVoiceService ist DOWNGRADE (Paritäts-Plan auf GO wartend),
-  Codex→Windows = Login + Config kopieren, Magicline-Open-API via Sport Alliance
+description: Drei Thomas-Recherchen 11.09. ABGESCHLOSSEN + Anleitung-PDF GELIEFERT
+  (Desktop/THOMAS_ANLEITUNG/) — Saschas LokiVoiceApp = Gemini Live/Vertex, THOMAS =
+  ChatGPT/OpenAI; Gratis-Stack LocalVoiceService ist DOWNGRADE (Paritäts-Build auf GO
+  wartend), Codex→Windows = Login + Config kopieren, Magicline-Open-API via Sport Alliance
 metadata:
   node_type: memory
   type: project
