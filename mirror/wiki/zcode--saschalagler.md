@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-11 10:01 UTC
+Zuletzt gespiegelt: 2026-09-11 10:12 UTC
 
 ## code-architect
 
@@ -1220,6 +1220,10 @@ Bei Fachfragen (z. B. Trainings-Übungen) fordert er explizit „clinical reason
 
 # Memory Index
 
+- [/standardskill Boot-Ablauf](standardskill-boot-ablauf.md) — Command lädt STANDARD-SKILLS.md + skill-routing.md und verlangt verbindliche Regel-Bestätigung als Tabelle; danach Regelverstoß = sofort selbst benennen + korrigieren
+
+- [Thomas-Tasks: 3 Recherchen](thomas-tasks-drei-recherchen.md) — 11.09. offen: 1) Loki Voice Gratis-Stack (zahlt viel für GPT-Voice), 2) George-Codex-Terminal auf Windows übertragen (Skript packen vs. nur Login), 3) Magicline→George API-Kopplung für Buchhaltung; Plan auf GO wartend
+
 - [ZCode Hub 1006 + Netz-Fix](zcode-hub-1006-netz-fix.md) — 08.09.: 1006-Abbrüche = 9,7-GB-Session-Rollout (archiviert in ~/.zcode/cli/log/archive/) + Hotspot/IPv6; Wi-Fi DNS 1.1.1.1/8.8.8.8 + IPv6 OFF gesetzt; OmniRoute localhost:20128 als Fallback-Provider; iPhone „Maximale Kompatibilität" noch offen; Riesige Session-Rollouts nie weiternutzen
 
 - [Atlas-Stand 08.09.](atlas-stand-2026-09-08.md) — Web fix (Cache/Coach-Proxy/Interview live), iOS-Dev-Setup komplett (Developer Mode ENABLED); FINALER Plan v3 = VOLLAUTOMATIK (Zero-Question, Verkaufs-MVP zuerst: Pro-Abo + Stripe-Link am Interview-Finale; dann T1 Wissensgraph→Bildungs-Archiv, T2 Übungs-DB CRUD, T3 Liquid-Glass-Redesign Barbulls-Logo, T5 QA-Gate), EIN Deploy + iPhone-Neuübertragung automatisch am Ende; nur 4 Stopp-Punkte (Nutzerdaten/Zahlungen/echtes Chrome-Profil/fremde Repos); Build immer VITE_GEMINI_API_KEY= leer
@@ -2091,6 +2095,46 @@ Audit-Doc: `~/loki-ki/docs/AUDIT_SKILLS_ZCODE_2026-09-07.md` · [[skill-install-
 - Sascha will die Pipeline **im Atlas-Chat** (Atlas Cali Coach, zweiter ZCode-Tab) einsetzen: ⌘Q-Neustart → „übernimm Atlas Cali Coach" (TAKEOVER) · „baue [Feature] in Atlas" (BUILD, gate→PLAN→Agents) · „mach Atlas fertig" (FINISH, Firebase-Deploy). Disziplin dort: /caveman lite + 1 Task = 1 Session.
 - **Parallel-Session-Warnung:** Der Atlas-Tab fuhr EIGENMÄCHTIG einen Konsolidierungsplan („131→~12 Tier-1", code-architect-Review, grilling-Hub/frontend-design-hub/loki-os-health geplant, teils „Full access"). Kollisionscheck 08.09. früh: nur mtime-Edits an grilling/frontend-design, KEINE Substanz-Merges ausgeführt, Design-Skills noch alle da, Archiv = nur meine 20. **Lehre: vor jeder eigenen Skill-Konsolidierung zuerst Disk-Stand prüfen (find-Zählung + mtimes + Archiv-Inhalt) — parallele Tabs am selben Skill-System sind real.**
 - Offener Blocker, den KEIN Skill löst: Atlas-App seit ~10 h nicht live — Sascha wurde gebeten, Name + konkrete Fehlermeldung zu liefern (vermutlich Firebase-Deploy-Kette).
+
+## standardskill-boot-ablauf
+
+---
+name: standardskill-boot-ablauf
+description: /standardskill Command-Protokoll (user/zcode) — lädt
+  STANDARD-SKILLS.md + skill-routing.md und verlangt verbindliche
+  Regel-Bestätigung als Tabelle
+metadata:
+  node_type: memory
+  type: feedback
+  originSessionId: sess_0933a442-4331-4e6b-b563-a8a97dcefd9b
+---
+
+Der Custom-Command `/standardskill` (user/zcode) ist ein verbindlicher Boot-Ablauf: (1) `~/.agents/STANDARD-SKILLS.md` komplett lesen, (2) `~/.agents/skill-routing.md` lesen, (3) Bestätigung im Chat als Tabelle `| Regel | gilt ab jetzt |` (mind. BLUF Zeile 1, nummerierte Schritte, max 3 Parallel-Agents, PLAN vor Build, keine Rückfragen außer 4 Stopp-Regeln, Flash-first, sequentialthinking bei jeder Anfrage, kein Löschen/Deploy ohne GO), (4) jede Antwort folgt danach; Regelverstoß sofort selbst benennen + korrigieren ohne neue Nutzerfrage.
+
+**Why:** Sascha will Regel-Compliance explizit bestätigt sehen, nicht stillschweigend angenommen.
+
+**How to apply:** Bei `/standardskill` beide Dateien lesen und die Tabelle ausgeben; danach in derselben Session alle Antworten regelkonform halten. Verwandt: [[sequential-thinking-always]], [[skill-reference-etiquette]].
+
+## thomas-tasks-drei-recherchen
+
+---
+name: thomas-tasks-drei-recherchen
+description: Drei offene Recherche-Tasks für Thomas (11.09.2026) — Loki Voice
+  Gratis-Stack, George-Codex auf Windows übertragen, Magicline→George
+  Buchhaltungs-API
+metadata:
+  node_type: memory
+  type: project
+  originSessionId: sess_0933a442-4331-4e6b-b563-a8a97dcefd9b
+---
+
+Am 11.09.2026 per /todo gestellt, noch NICHT ausgeführt — Planung auf GO wartend (Sequential-Thinking-Zerlegung + PLAN-Tabelle zugesagt):
+
+1. **Loki Voice Kosten:** Recherchieren, wie Thomas seinen Build gratis führen kann — er zahlt aktuell große Summen für GPT-Voice; warum hat seine Loki-Voice-Version keinen Free-Stack?
+2. **George-Codex-Terminal auf Windows:** Wie überträgt Thomas sein Terminal-Setup auf einen anderen (Windows-)Rechner — Start-Skript verpacken/ändern oder nur Login dort? Ablauf klären.
+3. **Magicline ↔ George Kopplung:** API-/Datenschnittstelle von Magicline (Fitness-Studio-System) zu George (Banking/Buchhaltung) finden, recherchieren, umsetzen — für die Buchhaltung.
+
+**How to apply:** Bei Wiederaufnahme zuerst Plan-Tabelle erstellen (web-research-team + sequential-thinking laut Routing), Flash-first, max 3 Parallel-Agents. Verwandt: [[web-research-team-skill]], [[loki-project-map]].
 
 ## vorssaint-mac-tools-research
 

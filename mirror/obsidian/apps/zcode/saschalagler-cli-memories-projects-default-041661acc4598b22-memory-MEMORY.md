@@ -1,11 +1,15 @@
 ---
 app: zcode
 quelle: "saschalagler/cli/memories/projects/default-041661acc4598b22/memory/MEMORY.md"
-stand: 2026-09-08
+stand: 2026-09-11
 tags: [spiegel, zcode]
 ---
 
 # Memory Index
+
+- [/standardskill Boot-Ablauf](standardskill-boot-ablauf.md) — Command lädt STANDARD-SKILLS.md + skill-routing.md und verlangt verbindliche Regel-Bestätigung als Tabelle; danach Regelverstoß = sofort selbst benennen + korrigieren
+
+- [Thomas-Tasks: 3 Recherchen](thomas-tasks-drei-recherchen.md) — 11.09. offen: 1) Loki Voice Gratis-Stack (zahlt viel für GPT-Voice), 2) George-Codex-Terminal auf Windows übertragen (Skript packen vs. nur Login), 3) Magicline→George API-Kopplung für Buchhaltung; Plan auf GO wartend
 
 - [ZCode Hub 1006 + Netz-Fix](zcode-hub-1006-netz-fix.md) — 08.09.: 1006-Abbrüche = 9,7-GB-Session-Rollout (archiviert in ~/.zcode/cli/log/archive/) + Hotspot/IPv6; Wi-Fi DNS 1.1.1.1/8.8.8.8 + IPv6 OFF gesetzt; OmniRoute localhost:20128 als Fallback-Provider; iPhone „Maximale Kompatibilität" noch offen; Riesige Session-Rollouts nie weiternutzen
 
