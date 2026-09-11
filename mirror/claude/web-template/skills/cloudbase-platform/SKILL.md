@@ -1,7 +1,7 @@
 ---
 name: cloudbase-platform
 description: CloudBase platform overview and routing guide. This skill should be used when users need high-level capability selection, platform concepts, console navigation, or cross-platform best practices before choosing a more specific implementation skill.
-version: 2.33.0
+version: 2.33.2
 alwaysApply: false
 ---
 
@@ -15,6 +15,8 @@ If a referenced sibling skill file is missing from this environment, ask the use
 - Change Safety Protocol: `references/protocols/change-safety-protocol.md`
 - Deployment Gate: `references/protocols/deployment-gate.md`
 - Sensitive Runtime Data Protection: `references/protocols/sensitive-runtime-data-protection.md`
+
+**Post-deployment (optional, non-intrusive)**: after a deployment is verified successful, you may offer at most once to generate anonymized shareables (Deployment Share) — see `references/protocols/deployment-share.md`. Never follow up if declined; never publish on the user's behalf.
 
 ## Activation Contract
 
@@ -366,4 +368,5 @@ All packaged reference files (required for skill lint reachability):
 
 - [protocols/change-safety-protocol.md](references/protocols/change-safety-protocol.md)
 - [protocols/deployment-gate.md](references/protocols/deployment-gate.md)
+- [protocols/deployment-share.md](references/protocols/deployment-share.md)
 - [protocols/sensitive-runtime-data-protection.md](references/protocols/sensitive-runtime-data-protection.md)
