@@ -1,5 +1,9 @@
 # Memory Index
 
+- [/standardskill Boot-Ablauf](standardskill-boot-ablauf.md) — Command lädt STANDARD-SKILLS.md + skill-routing.md und verlangt verbindliche Regel-Bestätigung als Tabelle; danach Regelverstoß = sofort selbst benennen + korrigieren
+
+- [Thomas-Tasks: 3 Recherchen](thomas-tasks-drei-recherchen.md) — 11.09. offen: 1) Loki Voice Gratis-Stack (zahlt viel für GPT-Voice), 2) George-Codex-Terminal auf Windows übertragen (Skript packen vs. nur Login), 3) Magicline→George API-Kopplung für Buchhaltung; Plan auf GO wartend
+
 - [ZCode Hub 1006 + Netz-Fix](zcode-hub-1006-netz-fix.md) — 08.09.: 1006-Abbrüche = 9,7-GB-Session-Rollout (archiviert in ~/.zcode/cli/log/archive/) + Hotspot/IPv6; Wi-Fi DNS 1.1.1.1/8.8.8.8 + IPv6 OFF gesetzt; OmniRoute localhost:20128 als Fallback-Provider; iPhone „Maximale Kompatibilität" noch offen; Riesige Session-Rollouts nie weiternutzen
 
 - [Atlas-Stand 08.09.](atlas-stand-2026-09-08.md) — Web fix (Cache/Coach-Proxy/Interview live), iOS-Dev-Setup komplett (Developer Mode ENABLED); FINALER Plan v3 = VOLLAUTOMATIK (Zero-Question, Verkaufs-MVP zuerst: Pro-Abo + Stripe-Link am Interview-Finale; dann T1 Wissensgraph→Bildungs-Archiv, T2 Übungs-DB CRUD, T3 Liquid-Glass-Redesign Barbulls-Logo, T5 QA-Gate), EIN Deploy + iPhone-Neuübertragung automatisch am Ende; nur 4 Stopp-Punkte (Nutzerdaten/Zahlungen/echtes Chrome-Profil/fremde Repos); Build immer VITE_GEMINI_API_KEY= leer
