@@ -1,9 +1,9 @@
 ---
 name: thomas-tasks-drei-recherchen
-description: Drei Thomas-Recherchen 11.09. ABGESCHLOSSEN + Ergebnisse im Chat
-  geliefert — Modell-Mapping: Saschas LokiVoiceApp = Gemini Live/Vertex, THOMAS = ChatGPT/OpenAI;
-  Gratis-Stack LocalVoiceService ist DOWNGRADE (Paritäts-Plan auf GO wartend),
-  Codex→Windows = Login + Config kopieren, Magicline-Open-API via Sport Alliance
+description: Drei Thomas-Recherchen 11.09. ABGESCHLOSSEN + Anleitung-PDF GELIEFERT
+  (Desktop/THOMAS_ANLEITUNG/) — Saschas LokiVoiceApp = Gemini Live/Vertex, THOMAS =
+  ChatGPT/OpenAI; Gratis-Stack LocalVoiceService ist DOWNGRADE (Paritäts-Build auf GO
+  wartend), Codex→Windows = Login + Config kopieren, Magicline-Open-API via Sport Alliance
 metadata:
   node_type: memory
   type: project
