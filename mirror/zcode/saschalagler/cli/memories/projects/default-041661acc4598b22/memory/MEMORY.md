@@ -1,8 +1,10 @@
 # Memory Index
 
+- [Kein Downgrade ohne Parität](feedback-kein-downgrade-paritaet.md) — 11.09. scharf korrigiert: Gratis-Varianten NIE als gleichwertig verkaufen — erst Fähigkeits-Matrix per Code-Grep, Lücken rot, Paritäts-Tickets oder explizites Abnicken; STT-Qualität sensibel (kein „billiger Whisper")
+
 - [/standardskill Boot-Ablauf](standardskill-boot-ablauf.md) — Command lädt STANDARD-SKILLS.md + skill-routing.md und verlangt verbindliche Regel-Bestätigung als Tabelle; danach Regelverstoß = sofort selbst benennen + korrigieren
 
-- [Thomas-Tasks: 3 Recherchen](thomas-tasks-drei-recherchen.md) — 11.09. offen: 1) Loki Voice Gratis-Stack (zahlt viel für GPT-Voice), 2) George-Codex-Terminal auf Windows übertragen (Skript packen vs. nur Login), 3) Magicline→George API-Kopplung für Buchhaltung; Plan auf GO wartend
+- [Thomas-Tasks: 3 Recherchen](thomas-tasks-drei-recherchen.md) — 11.09. FERTIG + KORRIGIERT: 1) Loki Voice: LocalVoiceService = DOWNGRADE (0 Tool-Calls, kein Prüfkopf-Feed/Wake-Word/Echo-Schutz) — Paritäts-Plan mit 4 Tickets steht (Function Calling auf bestehenden AssistantTools-Executor, Prüfkopf-Live-Feed, Gates portieren, RunAllTests+e2e), 2) Codex→Windows = Login neu + config.toml kopieren + Pfade/setx/Task-Scheduler anpassen, 3) Magicline Open API (Sport Alliance Developer Portal, x-api-key; Make.com-Connector als No-Code-Weg); offen: Paritäts-Build auf GO, Anleitung-DOCX, Windows-Paket, Studio-Key beantragen
 
 - [ZCode Hub 1006 + Netz-Fix](zcode-hub-1006-netz-fix.md) — 08.09.: 1006-Abbrüche = 9,7-GB-Session-Rollout (archiviert in ~/.zcode/cli/log/archive/) + Hotspot/IPv6; Wi-Fi DNS 1.1.1.1/8.8.8.8 + IPv6 OFF gesetzt; OmniRoute localhost:20128 als Fallback-Provider; iPhone „Maximale Kompatibilität" noch offen; Riesige Session-Rollouts nie weiternutzen
 
