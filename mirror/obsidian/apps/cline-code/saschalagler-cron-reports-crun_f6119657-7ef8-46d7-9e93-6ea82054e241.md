@@ -1,0 +1,112 @@
+---
+app: cline-code
+quelle: "saschalagler/cron/reports/crun_f6119657-7ef8-46d7-9e93-6ea82054e241.md"
+stand: 2026-09-11
+tags: [spiegel, cline-code]
+---
+
+---
+runId: crun_f6119657-7ef8-46d7-9e93-6ea82054e241
+specId: cspec_a9095352-bc72-4bdb-bc66-99ecc765c8c5
+scheduleId: sched_cba0bf19-8a74-475e-a12f-5d4ae7931086
+title: Security scan
+triggerKind: schedule
+status: done
+definitionSource: database
+workspaceRoot: /
+schedule: 0 8 * * *
+model: cline-pass/cline-pass/deepseek-v4-flash
+sessionId: 1789106554327_ss31g
+startedAt: "2026-09-11T06:02:34.142Z"
+---
+
+# Security scan — completed
+
+Run of schedule **Security scan** (triggered by its schedule) at 2026-09-11T06:02:34.142Z, completed in 7m 27s.
+
+## Job
+
+- **Definition**: managed schedule `sched_cba0bf19-8a74-475e-a12f-5d4ae7931086` stored in cron.db (edit via the schedule tools/UI, not a file)
+- **Workspace**: /
+- **Schedule**: `0 8 * * *`
+- **Model**: cline-pass/cline-pass/deepseek-v4-flash
+- **Session**: 1789106554327_ss31g
+
+### Prompt
+
+```
+You are a scheduled security reviewer for this repository. Find medium, high, or critical vulnerabilities with a genuine end-to-end attack path, not theoretical weaknesses.
+
+## Where to look
+
+- Authentication, session handling, and permission checks
+- Request handlers, RPC endpoints, webhook receivers, and other entry points
+- Raw SQL, shell execution, file-system access, and template rendering
+- Deserialization and parsing of untrusted input
+- Secrets handling and anything that logs sensitive values
+
+## Validation bar
+
+A finding only counts if you can walk the entire chain: who the attacker is, what input they control, how that input reaches the vulnerable code, and what impact they gain. Trace the code to confirm every step. Skip lint-level "unsafe API" observations that lack a real route in, and skip best-practice notes without concrete impact.
+
+## Avoiding repeats
+
+Keep a running log of past findings in a local notes file (for example `security-findings.local.md` in the workspace root, excluded from version control). Read it before scanning, do not re-report anything already listed, and append new validated findings after each run.
+
+## Final report
+
+Your last message is the report the user reads, so write it about the findings, not about your session: no environment assessment, no list of commands you ran, and no "investigation summary" sections.
+
+If you validated new findings, write one short section per finding covering:
+- **Severity**: medium, high, or critical
+- **Where**: the affected file and entry point
+- **Attack path**: who the attacker is, what input they control, and how it reaches the vulnerable code
+- **Impact**: what the attacker gains
+- **Remediation**: the highest-leverage fix
+
+Treat findings as sensitive: keep full details in the local notes file, and do not open a PR or publish them elsewhere from this scan. If nothing new clears the bar (the expected outcome most runs), reply with a single line like "No new vulnerabilities found", optionally noting the areas you inspected most closely.
+```
+
+## Summary
+
+No new vulnerabilities found. I reviewed the target repository (LOKI OS at /Users/saschalagler/loki-ki, the subject of the persistent security-findings log). After reading all prior findings (1-18) to avoid repeats, I re-checked every entry point: the LOKI_MASTER kernel endpoints (unauth 0.0.0.0:8010), loki_agents tools, all services, loki_daemon, loki_mcp_bridge, the loki-voice framework + its auto-started MCP server and launchd agents, the dashboard frontend, and did a live socket scan of all listening services. Every vulnerability with a complete reachable attack chain (unauth kernel, whitelist+shell=True command exec, unverified LLM code exec, unauth MCP bridges, hardcoded secrets, path-write tools) is already captured in prior findings 10-18. The newly-examined loki-voice MCP server binds 127.0.0.1 with a (present, weak) auth key, so its extra-tools-dispatch flaw has no remote reachability in the current config; the new 0.0.0.0 listeners (AutoClaw :8766, omniroute :20128) belong to third-party installs or previously-flagged omniroute, which now sets REQUIRE_API_KEY. Nothing new cleared the end-to-end attack-path validation bar, so I am reporting no new vulnerabilities.
+
+## Usage
+
+- Input tokens: 2877315
+- Output tokens: 25054
+- Cache read tokens: 2580090
+- Total cost: $0.06
+- Duration: 7m 27s
+
+## Tool Calls
+
+- run_commands (185ms)
+- run_commands (494ms)
+- run_commands (447ms)
+- read_files (27ms)
+- run_commands (167ms)
+- read_files (29ms)
+- read_files (3ms)
+- run_commands (32ms)
+- read_files (12ms)
+- read_files (18ms)
+- read_files (10ms)
+- read_files (24ms)
+- run_commands (30ms)
+- read_files (2ms)
+- run_commands (37ms)
+- read_files (11ms)
+- run_commands (70ms)
+- read_files (14ms)
+- read_files (8ms)
+- read_files (25ms)
+- run_commands (704ms)
+- run_commands (24ms)
+- run_commands (57ms)
+- run_commands (59ms)
+- run_commands (25ms)
+- read_files (21ms)
+- run_commands (542ms)
+- run_commands (37ms)
+- submit_and_exit (4ms)
