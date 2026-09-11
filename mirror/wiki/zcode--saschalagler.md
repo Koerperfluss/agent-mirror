@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-11 23:29 UTC
+Zuletzt gespiegelt: 2026-09-11 23:39 UTC
 
 ## code-architect
 
@@ -4101,6 +4101,49 @@ Beobachtet 06.09.2026 (Session mit Off-Peak-Ticket): Nach User-Paste „ZCode Er
 - [AI-Blocker gelöst via OmniRoute](vinyl-scanner-ai-blocker.md) — Vision-Modell antigravity/gemini-3.7-flash-low, Gemini/Emergent-Keys nur Fallback
 - [Backend-Setup-Fakten](vinyl-scanner-env-setup.md) — requirements.txt inkonsistent, DB heißt test_database, gemini-3.5-flash als Modell
 - [Autonomie-Präferenz Sascha](user-autonomy-preference.md) — keine Handanleitungen, nur echte Account-Logins beim Nutzer
+- [Research muss Google schlagen](research-beyond-google-answer.md) — keine Standard-Antworten; harte Zahlen, Abzocker-Netzwerke, Landesrecht statt Affiliate-Listen
+- [Research-Report Dating-AT](research-dating-at-report.md) — 12.09.2026 Casual-/Escort-Portale Österreich (Melk/Wien–Linz), Report-Pfad + Delta-Baseline
+
+## research-beyond-google-answer
+
+---
+name: research-beyond-google-answer
+description: Sascha akzeptiert bei Recherchen keine generischen
+  Standard-Antworten — Ergebnisse müssen Mehrwert über die normale
+  Google-Antwort liefern
+metadata:
+  node_type: memory
+  type: feedback
+  originSessionId: sess_4664db9f-4c04-4a61-b5a7-9edd72f931e3
+---
+
+Sascha kritisierte am 12.09.2026 nach einem großen Web-Research-Run (~74 Quellen): „du hast mit 1000 Quellen recherchiert, um mir die Standard-Google-Antwort zu geben?“
+
+**Why:** Generische Empfehlungslisten („Tinder ist beliebt, JOYclub ist gut“) findet er über Google selbst; wenn er den Research-Team-Apparat anwirft, erwartet er Findings, die man nicht googeln kann.
+
+**How to apply:** Research-Antworten müssen zumindest einen davon liefern: harte Zahlen mit Quellen (z. B. aktive Nutzerzahlen je App/Region), konkret benannte Abzocker-/Netzwerkstrukturen (z. B. Howlogic KFT, Interdate S.A./Jedermann-Inkasso), präzise Rechtslage je Bundesland, oder Entlarvung von Affiliate-getriebenen Empfehlungen. BLUF + Tabelle wie in [[user-autonomy-preference]].
+
+Nachtrag (12.09.2026): Auch die nachgeschärfte, quellenbelegte Antwort stieß auf Ablehnung („lol was für bullshit“). Er antwortete nicht, welcher Teil falsch war. Bei künftigen Recherche-Themen mit ihm: zuerst 1 gezielte Rückfrage, wonach er eigentlich sucht (eigene Bekannte-Portale, konkrete Vorlieben), bevor ein großer Report-Run gefahren wird — Quellenbelege allein überzeugen ihn nicht, wenn die Ergebnisliste „bekannt“ wirkt.
+
+## research-dating-at-report
+
+---
+name: research-dating-at-report
+description: Web-Research-Report (12.09.2026) zu Casual-Dating-/Escort-Portalen
+  in Österreich erstellt; Nutzerregion Melk 3390 (Wien–Linz)
+metadata:
+  node_type: memory
+  type: user
+  originSessionId: sess_4664db9f-4c04-4a61-b5a7-9edd72f931e3
+---
+
+Saschas Region ist Melk, 3390 (Korridor Wien–Linz). Am 2026-09-12 lief ein web-research-team-Lauf (Modus standard, 3 DIV-DEEP, Confidence 82) zu Sex-/Casual-Dating-Apps und Escort-Portalen in Österreich. Ergebnis: Tinder/Bumble/Hinge einzige Apps mit Nutzerbasis am Land; "Paysex" nur über Escort-Inseratsportale (BookSusi, Erobella, Ladies.de AT, Kaufmich); seriöse Casual-Community = JOYclub/JOYCE (~200k AT), günstiger poppen.de (ab 6,99 €/Monat); Warnung vor C-Date (EVZ-Warnung, Abofalle + Inkasso, Betreiber Interdate S.A.), BeNaughty/AdultFriendFinder (Bot-/Fake-lastig) und Howlogic/Casual-Networks-Fake-Chat-Netzwerken. Rechtslage: Prostitution in AT legal, landesrechtlich geregelt (Wien WPG 2011, NÖ PG 2021 novelliert); Abzocke-Rechtshilfe: datingfalle.at (Internet Ombudsmann). Nutzer ließ sich das Ergebnis im i-have-adhd-Listenformat aufbereiten ([[user-autonomy-preference]]).
+
+Report: `/Users/saschalagler/Desktop/Coworkspace_Ich/PRIVATE PORJEKTE /vinyl-scanner/RESEARCH_REPORT_dating-at.md`. Run-Log-Eintrag in `~/.agents/memory/research-runlog.jsonl`. Bei Folgefragen zum Thema Delta-Lauf gegen diese Baseline anbieten ([[vinyl-scanner-state]] ist das zugehörige Projekt).
+
+Finale Handlungsempfehlung an Sascha (Stand 12.09.2026): Tinder installieren (Profil auf Wien erweitern, da Melk allein zu dünn) + JOYclub-Account mit PLZ-Filter 3390 bis St. Pölten; Premium erst nach Sichtprüfung aktiver Profile kaufen. Für bezahlten Sex: booksusi.at, Region NÖ/Melk–St. Pölten, nach Bewertungen filtern.
+
+Klarstellung gegenüber Sascha (12.09.2026): Hinge ist sehr wohl eine Dating-App, wurde nur wegen der Beziehungs-Ausrichtung ("designed to be deleted") nicht für Casual-Dates empfohlen — kurz und ohne Fachjargon begründen, Missverständnisse bei App-Einordnungen Eskalieren statt wiederholen.
 
 ## user-autonomy-preference
 
@@ -4118,7 +4161,7 @@ Sascha reagierte am 12.09.2026 (VinylScanner-Spotify-Sync) deutlich genervt dara
 
 **Why:** Er nutzt den Agenten als Director (ADHS, loki-dev BUILD-Zero-Question-Modus); Anleitungen à „mach 3 Schritte selbst" empfindet er als Arbeitsverweigerung, nicht als Service.
 
-**How to apply:** Immer zuerst autonom versuchen (Credentials selbst auf der Platte suchen, Browser-Automation gegen eingeloggte Sessions, Umgebung selbst reparieren). Nur stoppen, wenn es echte Account-Geheimnisse (Passwörter/Logins) oder die 4 Stopp-Regeln betrifft — und dann den Zustand so herrichten, dass genau EIN Nutzer-Klick fehlt (z. B. Tab offen lassen), danach komplett übernehmen. Verwandt: [[vinyl-scanner-state]].
+**How to apply:** Antworten im **i-have-adhd-Stil** formatieren (er bat 12.09.2026 explizit darum: "als Liste ... /standardskill i-have-adhd") — BLUF in Zeile 1, nummerierte Schritte, kompakte Tabellen, Pfade/Begriffe fett, kein Smalltalk. Immer zuerst autonom versuchen (Credentials selbst auf der Platte suchen, Browser-Automation gegen eingeloggte Sessions, Umgebung selbst reparieren). Nur stoppen, wenn es echte Account-Geheimnisse (Passwörter/Logins) oder die 4 Stopp-Regeln betrifft — und dann den Zustand so herrichten, dass genau EIN Nutzer-Klick fehlt (z. B. Tab offen lassen), danach komplett übernehmen. Verwandt: [[vinyl-scanner-state]].
 
 ## vinyl-scanner-ai-blocker
 

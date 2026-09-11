@@ -11,3 +11,5 @@ tags: [spiegel, zcode]
 - [AI-Blocker gelöst via OmniRoute](vinyl-scanner-ai-blocker.md) — Vision-Modell antigravity/gemini-3.7-flash-low, Gemini/Emergent-Keys nur Fallback
 - [Backend-Setup-Fakten](vinyl-scanner-env-setup.md) — requirements.txt inkonsistent, DB heißt test_database, gemini-3.5-flash als Modell
 - [Autonomie-Präferenz Sascha](user-autonomy-preference.md) — keine Handanleitungen, nur echte Account-Logins beim Nutzer
+- [Research muss Google schlagen](research-beyond-google-answer.md) — keine Standard-Antworten; harte Zahlen, Abzocker-Netzwerke, Landesrecht statt Affiliate-Listen
+- [Research-Report Dating-AT](research-dating-at-report.md) — 12.09.2026 Casual-/Escort-Portale Österreich (Melk/Wien–Linz), Report-Pfad + Delta-Baseline
