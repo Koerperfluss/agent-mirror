@@ -1,7 +1,7 @@
 ---
 app: claude
 quelle: "saschalagler/skills/find-docs/SKILL.md"
-stand: 2026-09-08
+stand: 2026-09-11
 tags: [spiegel, claude]
 ---
 
@@ -164,6 +164,21 @@ Do not silently fall back to training data — always tell the user why Context7
 - Use descriptive queries, not single words — `"React useEffect cleanup function"` not `"hooks"`
 - One topic per query — split `"routing and auth and caching"` into a separate `docs` command per concept, unless the question is about how they interact
 - Do not include sensitive information (API keys, passwords, credentials) in queries
+
+## CLI-Extras (portiert 2026-09-11, ehem. context7-cli — archiviert)
+
+```bash
+# Output als JSON für Scripting
+npx ctx7@latest library react "How to use hooks for state management" --json | jq '.[0].id'
+npx ctx7@latest docs /facebook/react "How to use hooks for state management" --json
+
+# Piping — Output ist clean ohne TTY (keine Spinner/Farben)
+npx ctx7@latest docs /vercel/next.js "How to add middleware for route protection" | grep -A5 "middleware"
+```
+
+Verwandte Referenzen (ehem. context7-cli, wörtlich portiert):
+- [references/skills.md](references/skills.md) — Skill-Management via `ctx7 skills` (install/search/suggest/list/remove/generate).
+- [references/setup.md](references/setup.md) — Context7-Setup für Editoren via `ctx7 setup`.
 
 ## Context7-MCP-Modus (absorbiert 2026-09-08, ehem. context7-mcp — archiviert)
 Wenn der Context7-MCP-Server konfiguriert ist (aktiv in ~/.mcp.json), nutze statt CLI:

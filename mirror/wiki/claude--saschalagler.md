@@ -1,6 +1,6 @@
 # saschalagler (claude)
 
-Zuletzt gespiegelt: 2026-09-11 11:49 UTC
+Zuletzt gespiegelt: 2026-09-11 12:00 UTC
 
 ## CLAUDE
 
@@ -1704,6 +1704,173 @@ npx ctx7@latest docs /prisma/prisma "How to define one-to-many relations with ca
 The query directly affects the quality of results. Be specific and include relevant details, but keep each query to one topic — if the question spans multiple distinct concepts, run a separate `docs` command per concept instead of combining them, unless the question is about how the concepts interact. Do not include any sensitive or confidential information such as API keys, passwords, credentials, personal data, or proprietary code in your query.
 
 | Quality | Example |
+
+## setup
+
+# Setup
+
+## ctx7 setup
+
+One-time command to configure Context7 for your AI coding agent. Prompts for mode on first run:
+- **MCP server** — registers the Context7 MCP server so the agent can call tools natively
+- **CLI + Skills** — installs a `find-docs` skill that guides the agent to use `ctx7` CLI commands (no MCP required)
+
+```bash
+ctx7 setup                     # Interactive — prompts for mode, then agent/install target
+ctx7 setup --mcp               # Skip prompt, use MCP server mode
+ctx7 setup --cli               # Skip prompt, use CLI + Skills mode
+
+# MCP mode — target a specific agent
+ctx7 setup --claude            # Claude Code only
+ctx7 setup --cursor            # Cursor only
+ctx7 setup --opencode          # OpenCode only
+
+# CLI + Skills mode — target a specific install location
+ctx7 setup --cli --claude      # Claude Code (~/.claude/skills)
+ctx7 setup --cli --cursor      # Cursor (~/.cursor/skills)
+ctx7 setup --cli --universal   # Universal (~/.agents/skills)
+ctx7 setup --cli --antigravity # Antigravity (~/.config/agent/skills)
+
+ctx7 setup --project           # Configure current project instead of globally
+ctx7 setup --yes               # Skip confirmation prompts
+```
+
+**Authentication options:**
+```bash
+ctx7 setup --api-key YOUR_KEY  # Use an existing API key (both MCP and CLI + Skills mode)
+ctx7 setup --oauth             # OAuth endpoint — MCP mode only (IDE handles the auth flow)
+```
+
+Without `--api-key` or `--oauth`, setup opens a browser for OAuth login. MCP mode additionally generates a new API key after login. `--oauth` is MCP-only.
+
+**What gets written — MCP mode:**
+- MCP server entry in the agent's config file (`.mcp.json` for Claude, `.cursor/mcp.json` for Cursor, `.opencode.json` for OpenCode)
+- A Context7 rule file instructing the agent to use Context7 for library docs
+- A `context7-mcp` skill in the agent's skills directory
+
+**What gets written — CLI + Skills mode:**
+- A `find-docs` skill in the chosen agent's skills directory, guiding the agent to use `ctx7 library` and `ctx7 docs` commands
+
+## skills
+
+# Skills Commands
+
+Manage AI coding skills from the Context7 registry. Skills are Markdown files that teach AI coding agents best practices, patterns, and workflows for specific libraries or tasks.
+
+## Install
+
+Install skills from any GitHub repository. Repository format is always `/owner/repo`.
+
+```bash
+ctx7 skills install /anthropics/skills           # Interactive — pick from a list
+ctx7 skills install /anthropics/skills pdf        # Install a specific skill by name
+ctx7 skills install /anthropics/skills --all      # Install everything without prompting
+```
+
+Target a specific IDE with a flag:
+```bash
+ctx7 skills install /anthropics/skills pdf --claude     # Claude Code only
+ctx7 skills install /anthropics/skills pdf --cursor     # Cursor only
+ctx7 skills install /anthropics/skills pdf --universal  # Universal (.agents/skills/)
+ctx7 skills install /anthropics/skills --all --global   # All skills, global install
+```
+
+Alias: `ctx7 si /anthropics/skills pdf`
+
+## Search
+
+Find skills across the entire registry by keyword. Shows an interactive list with install counts and trust scores. Select to install.
+
+```bash
+ctx7 skills search pdf
+ctx7 skills search typescript testing
+ctx7 skills search react nextjs
+```
+
+Alias: `ctx7 ss pdf`
+
+## Suggest
+
+Auto-detects your project dependencies and recommends relevant skills from the registry.
+
+```bash
+ctx7 skills suggest           # Scan current project, install to project
+ctx7 skills suggest --global  # Install suggestions globally
+ctx7 skills suggest --claude  # Target Claude Code only
+```
+
+Reads `package.json`, `requirements.txt`, `pyproject.toml`, `Cargo.toml`, `go.mod`, `Gemfile`. Falls back to suggesting `ctx7 skills search` if no dependencies are detected.
+
+Alias: `ctx7 ssg`
+
+## Generate (AI-powered)
+
+Generate a custom skill tailored to your stack using AI. **Requires login.**
+
+```bash
+ctx7 skills generate
+ctx7 skills generate --claude   # Install directly to Claude Code
+ctx7 skills generate --global   # Install to global skills
+```
+
+Interactive flow:
+1. Describe the expertise you want (e.g., "OAuth authentication with NextAuth.js")
+2. Select relevant libraries from search results
+3. Answer 3 clarifying questions to focus the skill
+4. Review the generated skill, request changes if needed
+5. Choose where to install it
+
+**Limits:** Free accounts get 6 generations/week, Pro accounts get 10.
+
+Aliases: `ctx7 skills gen`, `ctx7 skills g`
+
+## List
+
+Show all installed skills for the current project or globally.
+
+```bash
+ctx7 skills list                  # Current project (all detected IDEs)
+ctx7 skills list --claude         # Claude Code only
+ctx7 skills list --global         # Global skills
+ctx7 skills list --global --claude # Global Claude Code skills
+```
+
+## Remove
+
+Uninstall a skill by name.
+
+```bash
+ctx7 skills remove pdf
+ctx7 skills remove pdf --claude   # From Claude Code only
+ctx7 skills remove pdf --global   # From global skills
+```
+
+Aliases: `ctx7 skills rm`, `ctx7 skills delete`
+
+## Info
+
+Browse all skills in a repository without installing — useful for previewing what's available.
+
+```bash
+ctx7 skills info /anthropics/skills
+```
+
+Output shows each skill name, description, and URL, plus quick install commands.
+
+## IDE Flags
+
+All skills commands accept these flags to target a specific AI coding assistant:
+
+| Flag | Directory | Used by |
+|------|-----------|---------|
+| `--universal` | `.agents/skills/` | Amp, Codex, Gemini CLI, OpenCode, GitHub Copilot |
+| `--claude` | `.claude/skills/` | Claude Code |
+| `--cursor` | `.cursor/skills/` | Cursor |
+| `--antigravity` | `.agent/skills/` | Antigravity |
+
+Without a flag, the CLI prompts you to select one or more targets interactively.
+
+Add `--global` to any flag to install in your home directory instead of the current project.
 
 ## SKILL
 
