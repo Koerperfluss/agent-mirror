@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-12 07:59 UTC
+Zuletzt gespiegelt: 2026-09-12 08:10 UTC
 
 ## code-architect
 
@@ -4102,7 +4102,22 @@ Beobachtet 06.09.2026 (Session mit Off-Peak-Ticket): Nach User-Paste „ZCode Er
 - [Backend-Setup-Fakten](vinyl-scanner-env-setup.md) — requirements.txt inkonsistent, DB heißt test_database, gemini-3.5-flash als Modell
 - [Autonomie-Präferenz Sascha](user-autonomy-preference.md) — keine Handanleitungen, nur echte Account-Logins beim Nutzer
 - [Research muss Google schlagen](research-beyond-google-answer.md) — keine Standard-Antworten; harte Zahlen, Abzocker-Netzwerke, Landesrecht statt Affiliate-Listen
+- [Nespresso CS203-Verkauf](nespresso-cs203-sale.md) — 12.09.2026 Marktwert 230–280 €, repariert, Verkauf an Thomas, Report im Repo
 - [Research-Report Dating-AT](research-dating-at-report.md) — 12.09.2026, 2 Läufe: Dating-Apps + komplette Escort-/Sextreff-Analyse Österreich (BookSusi beste Escort-Plattform, Splash Kemmelbach im Bezirk Melk); Report-Pfade + Delta-Baseline; Antworten im i-have-adhd-Format
+
+## nespresso-cs203-sale
+
+---
+name: nespresso-cs203-sale
+description: Nespresso Gemini CS203-Marktwert-Recherche 12.09.2026 — 250 €
+  Empfehlung für Verkauf an Thomas, Report im vinyl-scanner-Repo
+metadata:
+  node_type: memory
+  type: project
+  originSessionId: sess_d31f7ca3-8cd9-48ab-8730-57db31694fec
+---
+
+Sascha hat mit seinem Papa eine Nespresso Gemini CS203 (Type 733, 2300W) repariert und verkauft sie am 12.09.2026 an Bekannten (Thomas, hat sie bereits übernommen). Belegte Marktpreise: Realverkäufe 140 € (2023) / 470 € (2026 mit Münzprüfer), aktive Anfragen 300–400 €, defekt 40–110 €. Empfehlung: 230–280 €, Start 280 €. Report: `RESEARCH_REPORT_nespresso-gemini-cs203-marktwert.md` im vinyl-scanner-Repo. [[research-beyond-google-answer]] [[user-autonomy-preference]]
 
 ## research-beyond-google-answer
 
