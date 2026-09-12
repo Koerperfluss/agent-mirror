@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-12 11:43 UTC
+Zuletzt gespiegelt: 2026-09-12 11:54 UTC
 
 ## code-architect
 
@@ -1907,8 +1907,8 @@ macOS 27 „Golden Gate" Developer Beta — Stand 08.09.2026 (Sascha ist Entwick
 ---
 name: oneforma-agb-pruefung
 description: 12.09. OneForma/Centific-AGB live verifiziert — AT-kritische
-  Klauseln (Bildrechte, 2500-USD-Deckel, King-County-Gerichtsstand,
-  3-Monats-Frist, KI-Verbot) + 2 Korrekturen zur Nutzer-Analyse
+  Klauseln bestätigt; EMPFEHLUNG: JA akzeptieren (4 Spielregeln: KI nur mit
+  Freigabe, kein VPN, Zahlungen monatlich prüfen, Bild/Name meiden)
 metadata:
   node_type: memory
   type: project
@@ -94686,17 +94686,13 @@ DANACH (bekanntes Ritual):
 ZCode ⌘Q-Neustart → im Atlas-Tab NEUE Session → Provider „OmniRoute Gateway (localhost:20128)" → Vollautomatik-Prompt einfügen. Die 9,7-GB-Rollout-Datei der alten Session komprimiere ich dabei ins Archiv (I/O-Blocker weg).
 ## plan-sess_subagent_agent_c29fad28-4ad1-425e-bfe3-721511c2ae1c
 
-Skill-System abschließen (4 Teile, ADHS+caveman-Stil ab jetzt):
+**Alles läuft automatisch, du musst nichts lesen.**
 
-1. GLOSSAR: ~/.agents/UBIQUITOUS_LANGUAGE.md anlegen — alle Fachbegriffe (Tier 1/2, Hub, Archiv, Symlink, Map, Ticket, Routing, grep-Gate, Wrapper, Frontmatter, always-on) in einfachem Deutsch, mit Umgangssprachen-Spalte.
+1. **Kaputte Chats reparieren** — Datenbank aufräumen (Sicherung vorher). Danach ZCode-Neustart → alle Chats öffnen wieder.
+2. **Falsche Sachen still korrigieren** (PDF nachbauen, Paseo-Status prüfen) — ohne dass du irgendwas tun musst.
+3. **Automatik-Regel einbauen** — ab jedem neuen Chat: Agent prüft selbst, repariert selbst, antwortet in 3 Sätzen einfach. Steht fest in den Grundregeln, gilt für alle 4-5 Agenten-Programme.
 
-2. GOOGLE-SKILLS AUSMISTEN: Katalog-Skills (agent-platform-*, bigquery-*, gke-*, alloydb-*, google-* usw.) inventarisieren → grep-Check, dass nirgends geroutet → mv nach ~/.agents/skills-archive/2026-09-11-google-catalog/ (Gemini-Suite bleibt — separat geroutet). Installer-Manifest-Hinweis dokumentieren (skill-repair kann Status wiederherstellen).
-
-3. TICKET 09 (GO erteilt): Broken-Symlink-Script über ~/.cline/skills, ~/.gemini/skills, ~/.hermes/skills, ~/.claude/skills — nur Symlinks löschen, deren Ziel fehlt (verifiziert, nicht blind). 4 echte Alt-Kopien (context7-mcp, second-brain, obsidian-second-brain ×2) archivieren. 4 skillshare-Manifeste bereinigen. Gegenprobe: 0 broken Symlinks.
-
-4. ABSCHLUSSBERICHT: einfache Erklärung — was wo liegt, wie man Skills zurückholt, wie die 12 Haupt-Skills funktionieren.
-
-Nicht anfassen: i-have-adhd, 12 Tier-1-Skills, Gemini/Vercel/Higgsfield/Caveman/Matt-Pocock-Suiten, lisa-therapeut, pva-bankverbindung-advisor. Kein hartes Löschen — alles ins Archiv.
+**Fertig-Kriterium:** Du klickst Chats an → sie gehen auf. Du tippst einen Wunsch → er wird automatisch richtig ausgeführt. Keine Seiten, kein Lesen.
 ## MAC_DIAGNOSE_REPORT_2026-08-25
 
 # Research Report: Mac-Überhitzung — Diagnose & beste Prüf-Tools

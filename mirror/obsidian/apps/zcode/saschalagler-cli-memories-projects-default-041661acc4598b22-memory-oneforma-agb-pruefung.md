@@ -8,8 +8,8 @@ tags: [spiegel, zcode]
 ---
 name: oneforma-agb-pruefung
 description: 12.09. OneForma/Centific-AGB live verifiziert — AT-kritische
-  Klauseln (Bildrechte, 2500-USD-Deckel, King-County-Gerichtsstand,
-  3-Monats-Frist, KI-Verbot) + 2 Korrekturen zur Nutzer-Analyse
+  Klauseln bestätigt; EMPFEHLUNG: JA akzeptieren (4 Spielregeln: KI nur mit
+  Freigabe, kein VPN, Zahlungen monatlich prüfen, Bild/Name meiden)
 metadata:
   node_type: memory
   type: project
