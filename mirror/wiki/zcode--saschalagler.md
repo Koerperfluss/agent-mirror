@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-12 09:05 UTC
+Zuletzt gespiegelt: 2026-09-12 09:15 UTC
 
 ## code-architect
 
@@ -1220,11 +1220,11 @@ Bei Fachfragen (z. B. Trainings-Übungen) fordert er explizit „clinical reason
 
 # Memory Index
 
-- [Kein Downgrade ohne Parität](feedback-kein-downgrade-paritaet.md) — 11.09. scharf korrigiert: Gratis-Varianten NIE als gleichwertig verkaufen — erst Fähigkeits-Matrix per Code-Grep, Lücken rot, Paritäts-Tickets oder explizites Abnicken; STT-Qualität sensibel (kein „billiger Whisper")
+- [Kein Downgrade ohne Parität](feedback-kein-downgrade-paritaet.md) — 11.09.+12.09. scharf korrigiert: Gratis-Varianten NIE als gleichwertig verkaufen — erst Fähigkeits-Matrix per Code-Grep; VOR Technik-Empfehlungen im Projekt nach existierenden Modell-Analysen greppen (SPRACHASSISTENT_MARKTFUEHRER_ANALYSE/ARCHITEKTUR: M1 faster-whisper, KEIN Apple-Speech-Primär, kein tiny); er hat 6 Gemini-API-Keys als Ressource
 
 - [/standardskill Boot-Ablauf](standardskill-boot-ablauf.md) — Command lädt STANDARD-SKILLS.md + skill-routing.md und verlangt verbindliche Regel-Bestätigung als Tabelle; danach Regelverstoß = sofort selbst benennen + korrigieren
 
-- [Thomas-Tasks: 3 Recherchen](thomas-tasks-drei-recherchen.md) — 11.09. FERTIG + Paritäts-Build AUSGEFÜHRT: LocalVoiceService = Cloud-paritätisch (7-Tool-Function-Calling-Loop, Prüfkopf-Live-Feed, strenges Wake-Word-Gate sprichtMitAgent(), Audio-Befehle, Du:/Loki-Buch), 9/9 Tests grün (swift test kaputt → swiftc-Standalone-Runner), Reviewer PASS (6 Befunde gefixt), Commit 974e2ce; Lieferung Desktop/THOMAS_ANLEITUNG/ (PDF + Windows_Paket.zip; ⚠️ Saschas ~/.codex/config.toml enthält echten Bearer-Token — nie ungefiltert weitergeben); 12.09. GEORGE-Klarstellung: Thomas' Assistent „George" läuft IN Codex, Voice über ChatGPT, Kosten=Token — Codex billt still OPENAI_API_KEY trotz ChatGPT-Login; Gratis-Weg = model_provider→OmniRoute (Saschas eigener Codex läuft so); Recherche: THOMAS_ANLEITUNG/RECHERCHE_GEORGE_KOSTEN.md; offen: Mikro-e2e mit LOKI_LLM_API_KEY, /Applications-Deploy auf GO, Magicline-Studio-Key, PDF-Update auf George-Fakten
+- [Thomas-Tasks: 3 Recherchen](thomas-tasks-drei-recherchen.md) — 12.09. FERTIG GELIEFERT: **`~/Desktop/THOMAS_PAKET.zip` (1,3 MB) = das Liefer-Artefakt** (START_HIER.txt + LokiVoice.app + tools/ + PDF + Windows_Paket.zip); Parität ✅ (974e2ce) + LLM-Default Gemini-OpenAI-Layer (56456d5) + **M1 faster-whisper-small STT-Server Port 8788 Primär** (b0f042d, 41/41 XCTest + 9/9 + e2e PASS; Apple Speech nur Fallback); GEORGE = Thomas' Assistent IN Codex, Token-Kosten via still gebilltem OPENAI_API_KEY; Desktop/THOMAS_ANLEITUNG/ nur Quelle; ⚠️ ~/.codex/config.toml hat echten Bearer-Token; swift-test-codesign = fileprovider.fpfs (iCloud-Desktop) → manuell codesign + `xcrun xctest`; offen nur: /Applications-Deploy auf GO, Magicline-Studio-Key
 
 - [ZCode Hub 1006 + Netz-Fix](zcode-hub-1006-netz-fix.md) — 08.09.: 1006-Abbrüche = 9,7-GB-Session-Rollout (archiviert in ~/.zcode/cli/log/archive/) + Hotspot/IPv6; Wi-Fi DNS 1.1.1.1/8.8.8.8 + IPv6 OFF gesetzt; OmniRoute localhost:20128 als Fallback-Provider; iPhone „Maximale Kompatibilität" noch offen; Riesige Session-Rollouts nie weiternutzen
 
@@ -1493,6 +1493,11 @@ Sascha korrigierte 11.09.2026 scharf: Ich hatte „Gratis-Stack existiert bereit
 - Vor jedem „es gibt schon eine gratis/einfachere Variante": echte Features per Code-Grep inventarisieren (Funcs, Tool-Cases, Service-Klassen) und als Fähigkeits-Matrix alt/neu zeigen — Lücken rot markieren, nicht wegschwurbeln.
 - Downsizing nur anbieten, wenn der Plan die Lücken explizit schließt (Paritäts-Tickets) oder der Nutzer die Abstriche ausdrücklich abnickt.
 - STT-Engine-Qualität ist für ihn sensibel (Apple Speech on-device ja, „billiger Whisper" nein, solange gleichwertig nicht belegt ist).
+- **12.09. zweite Eskalation („wieso gibst du mir das minderwertigste das es gibt"):** Ich schlug Apple Speech als Lokal-STT vor — dabei legt SEINE eigene Projekt-Doku den Stack fest: `SPRACHASSISTENT_MARKTFUEHRER_ANALYSE.md` + `SPRACHASSISTENT_ARCHITEKTUR.md` (M1 faster-whisper lokal + Silero-VAD, M6 AssemblyAI/Deepgram Nova-3 Fallback, explizit „tiny ist minderwertig"). **Regel: bevor ich eine Technik-Empfehlung ausspreche, die Modelle/Engines/Anbieter nennt — erst im Projekt nach existierenden Markt-/Modell-Analysen greppen** (`marktführer|analyse|architektur|modell`); seine Analyse zitieren, nicht eigene Pausalien.
+- **Er hat Ressourcen, die ich nicht annehmen darf zu wissen:** 6 Gemini-API-Keys (Free-Tier-Rotation als Kosten-Hebel), GEMINI_API_KEY im Keychain. Free-Stack-Design an SEINEN Assets ausrichten (Gemini-Layer, OmniRoute), nicht an generischen Gratis-Ansätzen.
+
+- **12.09. dritte Eskalation („es geht um FREE USAGE — was willst du testen, wenn es um die Übergabe auf seinen Laptop geht"):** Wenn der Auftrag ein HANDOVER für einen Dritten (Thomas) ist, zählt nur der lieferbare Endzustand auf DEM Rechner — keine weiteren Test-/Optimierungs-Vorschläge (medium-Modell, Autostart, Mikro-e2e) als „nächste Schritte" aufdrängen. Paket schnüren (App + Skripte + START_HIER.txt), fertig melden.
+- **12.09. vierte Eskalation („du machst nur Mist" beim Anblick von THOMAS_ANLEITUNG + THOMAS_PAKET nebeneinander):** Mehrere Parallel-Ordner/ZIPs für denselben Zweck = selbstverschuldeter Mist. Regel: nach jedem Liefer-Build SOFORT konsolidieren — EIN Lieferordner, EIN ZIP (Arbeitsdateien in `_arbeit/`-Unterordner, nicht im ZIP), alte Strukturen ohne Nachfrage auflösen (Aufräumen ist implizit autorisiert, sobald er die Doppelstruktur bemängelt).
 
 Verwandt: [[thomas-tasks-drei-recherchen]], [[feedback-aufbau-vor-deploy]], [[feedback-pruefinstanz-pflicht]]
 
@@ -2159,10 +2164,9 @@ Der Custom-Command `/standardskill` (user/zcode) ist ein verbindlicher Boot-Abla
 
 ---
 name: thomas-tasks-drei-recherchen
-description: Drei Thomas-Recherchen 11.09. FERTIG + Paritäts-Build AUSGEFÜHRT
-  (9/9 Tests grün, Reviewer PASS, Commit 974e2ce) + Anleitung-PDF + Windows-Paket
-  GELIEFERT (Desktop/THOMAS_ANLEITUNG/); offen nur: Mikro-e2e, /Applications-Deploy,
-  Magicline-Studio-Key
+description: Drei Thomas-Recherchen 11.09. FERTIG + Paritäts-Build AUSGEFÜHRT (41/41 XCTest
+  + 9/9, faster-whisper-M1-STT, Gemini-LLM-Default) + Übergabe konsolidiert in
+  Desktop/THOMAS_PAKET.zip; offen nur: Mikro-e2e, /Applications-Deploy, Magicline-Key
 metadata:
   node_type: memory
   type: project
@@ -2180,7 +2184,16 @@ Am 11.09.2026 gestellt und am selben Tag ABGESCHLOSSEN inkl. Paritäts-Build (2 
 
 **Übergabe (fertig):** `/Users/saschalagler/Desktop/THOMAS_ANLEITUNG/` — Thomas bekommt NUR `Anleitung_Thomas_LokiVoice_Codex_Magicline.pdf` + `Windows_Paket.zip` (296 KB: bereinigte config.toml, AGENTS.md, Setup-Windows.ps1, PDF); `bilder/`, `pages/`, `generate.js`, `Windows_Paket/` sind nur Quelle.
 
-**Offen (Kanban):** (1) echter Mikro-e2e des Lokal-Modus mit gesetztem `LOKI_LLM_API_KEY` + `e2e.sh`; (2) neue LokiVoice.app nach /Applications — NUR auf GO (überschreibt bestehende App); (3) Magicline-Studio-Key beantragen (Studio-Inhaber-Aktion, Thomas).
+**Übergabe FINAL (12.09., nach Saschas „es geht um FREE USAGE, was willst du testen — es geht um die Übergabe auf seinen Laptop"):** **`~/Desktop/THOMAS_PAKET.zip` (1,3 MB)** = DAS Liefer-Artefakt. Inhalt: `START_HIER.txt` (3 Schritte, Laien-verständlich, „alles 0 €"), `LokiVoice.app` (gebaut+signiert), `tools/` (whisper_server + install/start/e2e-Skripte, PID/Log entfernt), `README_THOMAS.md`, Anleitung-PDF, `Windows_Paket.zip`. Kostennull für Thomas: STT lokal (Whisper small), TTS lokal, LLM Gemini Free-Tier (eigener Gratis-Key von aistudio.google.com, App findet Keychain-Key). **Konsolidiert 12.09. (Sascha: „kann man mergen, aufräumen"): `Desktop/THOMAS_ANLEITUNG/` existiert NICHT mehr** — alle Arbeitsdateien (bilder/pages/generate.js/DOCX/George-Recherche/LOKI.OS-PDF) liegen in `THOMAS_PAKET/_arbeit/` (nicht im ZIP); nur noch EIN Ordner + EIN ZIP.
+
+**Offen (Kanban):** (1) neue LokiVoice.app nach /Applications — NUR auf GO; (2) Magicline-Studio-Key beantragen (Studio-Inhaber-Aktion, Thomas); (3) optional: `start_whisper.sh` in start_loki.sh-Autostart · `WHISPER_MODEL=medium` testen. Mikro-e2e auf Saschas Mac ist KEIN Thomas-Blocker mehr (Übergabe fertig).
+
+**12.09. NACHLEGE — zwei Korrekturen durch Sascha + deren Umsetzung (alle committed, alles grün):**
+- **LLM-Default = GEMINI (Commit 56456d5):** Sascha: „glaubst du ich habe 6 Gemini-APIs zum Spaß?" → `LocalVoiceService` Default-Endpoint jetzt `https://generativelanguage.googleapis.com/v1beta/openai` (Modell `gemini-2.5-flash`); Key-Kette `LOKI_LLM_API_KEY` → `GEMINI_API_KEY` (Env) → Keychain (beide Dienstnamen), gecacht. Er hat **6 Gemini-API-Keys** als Ressourcen-Pool (Free-Tier-Rotation).
+- **STT = faster-whisper (M1), NICHT Apple Speech (3er-Agent-Team parallel, Commit b0f042d):** Sascha wütend („gibst du mir das minderwertigste das es gibt") — meine „Apple Speech 0 €"-Tabelle war falsch; **seine eigene Analyse gibt den Stack vor** (`Audit 2 + Sprachassistent/_ARCHIV/SPRACHASSISTENT_MARKTFUEHRER_ANALYSE.md` + `chipsi-safetalk/SPRACHASSISTENT_ARCHITEKTUR.md`: M1 faster-whisper lokal + Whisper-Streaming/Silero-VAD, M6 Cloud-Fallback AssemblyAI [beste DE] / Deepgram Nova-3 [Meetings]). Gebaut: `tools/whisper_server.py` (stdlib-HTTP, Port 8788, WHISPER_MODEL default **small** int8, NICHT tiny; läuft via `uv run --python 3.12` — System-Python 3.14 hat keine Wheels), `tools/install_whisper.sh` + `start_whisper.sh` (idempotent) + `e2e_whisper.sh` (alle 3 live exit 0), `Sources/WhisperSTTEngine.swift` + Energie-VAD-Pfad in LocalVoiceService (Apple Speech nur Fallback bei tot Server, `sttBackend`-Flag). Server lief live (PID 1746), Test-Transkripte wortwörtlich korrekt, **1,2 s warm**. **QA: 41/41 XCTest + 9/9 RunAllTests + e2e PASS.**
+- **`swift test`-Workaround verfeinert:** codesign-detritus-Ursache = `com.apple.fileprovider.fpfs#P` (iCloud-Desktop-Sync schreibt Attribut sofort zurück, `xattr -cr` hilft nicht dauerhaft). Weg: per-Datei xattr -cr → manuell `codesign --force --sign -` (ohne --generate-entitlement-der) → **`xcrun xctest .build/out/Products/Debug/LokiVoiceAppTests.xctest` direkt** — läuft (41 Tests).
+- **PDF Kapitel 1 korrigiert** (Marktführer-Stack-Tabelle mit Namen + Paritäts-Stand „✅ fertig 11.09."), neu gerendert (8 Seiten verifiziert), Windows_Paket.zip aktualisiert. LibreOffice verschwand mitten in der Session aus /Applications (iCloud/Beta?) — `brew reinstall --cask libreoffice` (cached, schnell).
+- **Noch offen:** Mikro-e2e mit echtem Key · /Applications-Deploy auf GO · Magicline-Studio-Key · `WHISPER_MODEL=medium` testen · `start_whisper.sh` in start_loki.sh-Autostart.
 
 **How to apply:** Bei Wiederaufnahme Parität als erledigt behandeln (nicht neu planen); Build/Verify über den Standalone-Runner, nicht `swift test`. Verwandt: [[feedback-kein-downgrade-paritaet]], [[feedback-pruefinstanz-pflicht]], [[feedback-doc-design-matters]], [[loki-project-map]].
 
