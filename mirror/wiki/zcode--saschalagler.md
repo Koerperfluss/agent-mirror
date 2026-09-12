@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-12 13:19 UTC
+Zuletzt gespiegelt: 2026-09-12 13:30 UTC
 
 ## code-architect
 
@@ -1220,7 +1220,7 @@ Bei Fachfragen (z. B. Trainings-Übungen) fordert er explizit „clinical reason
 
 # Memory Index
 
-- [Antigravity Physio-Assistent](antigravity-physio-assistent.md) — 12.09. Crash-Diagnose: „Agent execution terminated" = MCP `cloud-cli-execution` (gcloud-cli Cask 583.0.0) Forbidden durch nächtlichen DNS-Ausfall (oauth2.googleapis.com unerreichbar); Netz/Token-Refresh live OK → Fix = Agent-Neustart/Retry; Antigravity-MCPs stecken nur in state.vscdb, Diagnose via ~/.config/gcloud/logs; Kontext: Physio-Gem Adelina/Simon (HWS>ISG>Fuß, 5-Stufen-Evaluierung, A4-Handouts)
+- [Antigravity Physio-Assistent](antigravity-physio-assistent.md) — 12.09. GELÖST: Alter Chat korrupt (HTTP 400 INVALID_ARGUMENT, nur Retry/Neustart half NICHT) → NEUER Chat „Physiotherapy Rehab Assistant Setup" läuft komplett; Start-Prompt: `~/Desktop/ANTIGRAVITY_PHYSIO_START_PROMPT.md`; Adelina-Daten: `~/Desktop/Körperfluss/Patientenliste/Adelina/`; gelber MCP-Badge cloud-cli-execution nicht-fatal (ignorieren); UI-Lesson: Text-Eingabe nur via pbcopy+osascript keystroke, nicht AX set_value
 
 - [OneForma-AGB-Prüfung](oneforma-agb-pruefung.md) — 12.09. Live-Docs verifiziert: Bildrechte unbefristet, 2500-USD-Deckel, King-County-Gerichtsstand (Arbitration nur US), 3-Monats-Zahlfrist, KI-Verbot; Korrekturen: gdpr@oneforma.com, Schiedsklausel US-only; oneforma.com-Docs laden nur via web_reader, nicht WebFetch; EMPFEHLUNG: JA + 4 Spielregeln; Erklär-Session: 50–400 USD/Monat realistisch, Payoneer, AT-Steuer-Hinweis
 
@@ -1319,9 +1319,9 @@ Verwandt: [[google-cloud-genai-credit]]
 
 ---
 name: antigravity-physio-assistent
-description: Antigravity-IDE „3d Körperfluss / Physio Assistant Workflow" —
-  12.09. Crash-Diagnose (cloud-cli-execution MCP = Forbidden durch nächtlichen
-  DNS-Ausfall), Kontext Physio-Gem Adelina/Simon
+description: Antigravity-IDE „3d Körperfluss" Physio-GPT — 12.09. gelöst: korrupter
+  Chat (HTTP 400) nur via NEUEM Chat fixbar; Start-Prompt auf Desktop; Adelina-Datenpfad;
+  MCP-Badge nicht-fatal; osascript-Paste-Lesson
 metadata:
   node_type: memory
   type: project
@@ -1330,9 +1330,11 @@ metadata:
 
 Sascha nutzt die **Google Antigravity IDE** (Config unter `~/Library/Application Support/Antigravity/`) für den Workflow „3d Körperfluss / Physio Assistant" — ein Gemini-Gem „Physio - Assistent" zur Reha-Planung (Patientin **Adelina Sollböck** + **Simon**: Nacken/HWS > Hüfte/ISG > Fuß/Plantarfaszie; 5-stufiger Evaluierungsplan, 4-Spalten-Übungstabellen, A4-Handouts, M4-BLUF-Stil).
 
-**12.09. Crash-Diagnose (gelöst):** „Agent execution terminated due to error" jede Runde — Root Cause: MCP-Server `cloud-cli-execution` (Homebrew Cask `gcloud-cli` 583.0.0, Konto koerperfluss@gmail.com) bekam `tools/list: Forbidden`, weil **um 03:41 DNS `oauth2.googleapis.com` nicht auflösbar** (gleiche DNS/Hotspot-Problematik wie [[zcode-hub-1006-netz-fix]]) → kein OAuth-Token → 403. Netz + `gcloud auth print-access-token` (Token-Refresh) live wieder OK → Fix = Agent-Fenster neu öffnen bzw. Retry; falls wieder Forbidden: MCP-Panel → Reconnect/Re-Auth.
+**12.09. GELÖST — wahrer Root Cause:** Alter Chat „Physio Assistant Workflow Configuration" hatte eine **korrupte Trajectory** (16 Messages mit PDFs/Bildern) → JEDER Turn crasht nach 1 s mit **HTTP 400 INVALID_ARGUMENT** (Google cloudaicompanion-Backend, Debug via „Copy debug info"-Button). Retry + App-Restart halfen NICHT. **Fix = NEUER Chat** — funktioniert sofort einwandfrei. Der nächtliche DNS-Ausfall (03:41, `oauth2.googleapis.com` unauflösbar, vgl. [[zcode-hub-1006-netz-fix]]) erklärt nur den separaten, **nicht-fatalen** gelben „MCP Error cloud-cli-execution"-Badge (steht in `~/.gemini/config/mcp_config.json` längst auf `disabled: true`, Badge bleibt trotzdem sichtbar — ignorieren).
 
-Antigravity MCP-Server stecken NICHT in sichtbaren JSON-Configs auf Disk (nur protobuf state.vscdb) — Diagnose läuft über gcloud-Logs in `~/.config/gcloud/logs/`.
+**Start-Prompt-Artefakt:** `~/Desktop/ANTIGRAVITY_PHYSIO_START_PROMPT.md` (komplette M4-Systemanweisung + Adelina-Fall + 5 Auftragsschritte). **Patientendaten:** `/Users/saschalagler/Desktop/Körperfluss/Patientenliste/Adelina/` (5 Adelina-PDFs + Anamnese-MDs + `Simon - Adelina Freund.pdf`). Neuer Chat „Physiotherapy Rehab Assistant Setup" lieferte 12.09. Schritt 1–3 komplett (Befundhierarchie, Simon-Profil, Sitzungs-Zettel: FRT 32°, Knee-to-Wall 10–12 cm, NRS <3 = Progression) und wartet im adaptiven Loop.
+
+**UI-Lesson Antigravity (Electron):** AX `set_value` auf Message-Textarea = mismatched, computer-use `type strategy=event` = „not frontmost" trotz activate. **Funktioniert:** `pbcopy` + `osascript` → `tell app "Antigravity" to activate` → `keystroke "v" using {command down}` → `keystroke return`.
 
 Verwandt: [[active-projects-focus]] (Körperfluss), [[google-cloud-genai-credit]] (gleicher Google-Account).
 
