@@ -1,6 +1,6 @@
 # Memory Index
 
-- [Antigravity Physio-Assistent](antigravity-physio-assistent.md) — 12.09. Crash-Diagnose: „Agent execution terminated" = MCP `cloud-cli-execution` (gcloud-cli Cask 583.0.0) Forbidden durch nächtlichen DNS-Ausfall (oauth2.googleapis.com unerreichbar); Netz/Token-Refresh live OK → Fix = Agent-Neustart/Retry; Antigravity-MCPs stecken nur in state.vscdb, Diagnose via ~/.config/gcloud/logs; Kontext: Physio-Gem Adelina/Simon (HWS>ISG>Fuß, 5-Stufen-Evaluierung, A4-Handouts)
+- [Antigravity Physio-Assistent](antigravity-physio-assistent.md) — 12.09. GELÖST: Alter Chat korrupt (HTTP 400 INVALID_ARGUMENT, nur Retry/Neustart half NICHT) → NEUER Chat „Physiotherapy Rehab Assistant Setup" läuft komplett; Start-Prompt: `~/Desktop/ANTIGRAVITY_PHYSIO_START_PROMPT.md`; Adelina-Daten: `~/Desktop/Körperfluss/Patientenliste/Adelina/`; gelber MCP-Badge cloud-cli-execution nicht-fatal (ignorieren); UI-Lesson: Text-Eingabe nur via pbcopy+osascript keystroke, nicht AX set_value
 
 - [OneForma-AGB-Prüfung](oneforma-agb-pruefung.md) — 12.09. Live-Docs verifiziert: Bildrechte unbefristet, 2500-USD-Deckel, King-County-Gerichtsstand (Arbitration nur US), 3-Monats-Zahlfrist, KI-Verbot; Korrekturen: gdpr@oneforma.com, Schiedsklausel US-only; oneforma.com-Docs laden nur via web_reader, nicht WebFetch; EMPFEHLUNG: JA + 4 Spielregeln; Erklär-Session: 50–400 USD/Monat realistisch, Payoneer, AT-Steuer-Hinweis
 
