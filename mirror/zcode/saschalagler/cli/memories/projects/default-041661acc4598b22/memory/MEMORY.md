@@ -1,5 +1,7 @@
 # Memory Index
 
+- [Antigravity Physio-Assistent](antigravity-physio-assistent.md) — 12.09. Crash-Diagnose: „Agent execution terminated" = MCP `cloud-cli-execution` (gcloud-cli Cask 583.0.0) Forbidden durch nächtlichen DNS-Ausfall (oauth2.googleapis.com unerreichbar); Netz/Token-Refresh live OK → Fix = Agent-Neustart/Retry; Antigravity-MCPs stecken nur in state.vscdb, Diagnose via ~/.config/gcloud/logs; Kontext: Physio-Gem Adelina/Simon (HWS>ISG>Fuß, 5-Stufen-Evaluierung, A4-Handouts)
+
 - [OneForma-AGB-Prüfung](oneforma-agb-pruefung.md) — 12.09. Live-Docs verifiziert: Bildrechte unbefristet, 2500-USD-Deckel, King-County-Gerichtsstand (Arbitration nur US), 3-Monats-Zahlfrist, KI-Verbot; Korrekturen: gdpr@oneforma.com, Schiedsklausel US-only; oneforma.com-Docs laden nur via web_reader, nicht WebFetch; EMPFEHLUNG: JA + 4 Spielregeln; Erklär-Session: 50–400 USD/Monat realistisch, Payoneer, AT-Steuer-Hinweis
 
 - [Kein Downgrade ohne Parität](feedback-kein-downgrade-paritaet.md) — 11.09.+12.09. scharf korrigiert: Gratis-Varianten NIE als gleichwertig verkaufen — erst Fähigkeits-Matrix per Code-Grep; VOR Technik-Empfehlungen im Projekt nach existierenden Modell-Analysen greppen (SPRACHASSISTENT_MARKTFUEHRER_ANALYSE/ARCHITEKTUR: M1 faster-whisper, KEIN Apple-Speech-Primär, kein tiny); er hat 6 Gemini-API-Keys als Ressource
