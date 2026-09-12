@@ -21,4 +21,11 @@ Saschas Region ist Melk, 3390 (Korridor Wien–Linz). Am 2026-09-12 liefen ZWEI 
 
 Run-Log: `~/.agents/memory/research-runlog.jsonl`. Bei Folgefragen zum Thema Delta-Lauf gegen diese zwei Baselines anbieten ([[vinyl-scanner-state]] ist das zugehörige Projekt).
 
-Kommunikation mit Sascha (beide Läufe): Ergebnisse im **i-have-adhd-Format** (BLUF Zeile 1, nummerierte Schritte, Tabellen, keine Höflichkeitsfloskeln) — Sascha war explizit unzufrieden, als die Antwort wie "Standard-Google" klang ([[research-beyond-google-answer]], [[user-autonomy-preference]]). Bei Missverständnissen (z.B. "Hinge ist doch eine Dating-App") kurz klären: Hinge = Beziehungs-App ("designed to be deleted"), deshalb nicht für Casual empfohlen.
+Kommunikation mit Sascha (beide Läufe): Ergebnisse im **i-have-adhd-Format** (BLUF Zeile 1, nummerierte Schritte, Tabellen, keine Höflichkeitsfloskeln) — Sascha war explizit unzufrieden, als die Antwort wie "Standard-Google" klang ([[research-beyond-google-answer]], [[user-autonomy-preference]]).
+
+**Hinge-Korrektur (12.09.2026):** Sascha widersprach meiner pauschalen Hinge-Ablehnung zu Recht — Hinge bleibt eine Dating-App, in der Casual-Treffen real zustande kommen (Profiltext entscheidet, nicht die App). Rationale Schlussfolgerung: Hinge ist als **dritte Gratis-App neben Tinder/Bumble okay**, einziger echter Hinderungsgrund ist der kleinere AT-Pool (~43k vs. Tinder ~164k). Merke: Markenpositionierung ("designed to be deleted") nie als Ausschluss-Argument verkaufen, sondern Nutzerzahl/Pool nennen.
+
+**Konkrete Casual-Settings (final empfohlen):**
+- Tinder: Profilfeld **"Beziehungsziel → Kurzfristiger Spaß"** setzen; Bio "nichts Ernstes, offen für Abenteuer"; Umkreis 50 km ab 3390 (deckt St. Pölten/Krems/Wien-West); Premium nur bei <10 Matches/Woche gratis.
+- JOYclub: Suche auf 30–50 km um 3390, Profilstatus "Suche: Sexkontakt", kostenlose Profil-Verifizierung machen (mehr Antworten), Club-/Event-Bereich (Caribik Amstetten, Paradies Sauna Wien in Reichweite).
+- Escort-Buchung: nur BookSusi-Inserate mit **Verifiziert-Badge + Bewertungen**; alternativ direkt Laufhaus (Splash Kemmelbach ~10 Min von Melk) = null Fake-Risiko; niemals Vorkasse.
