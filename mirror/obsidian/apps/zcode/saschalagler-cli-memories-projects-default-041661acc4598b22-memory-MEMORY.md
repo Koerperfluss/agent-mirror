@@ -1,7 +1,7 @@
 ---
 app: zcode
 quelle: "saschalagler/cli/memories/projects/default-041661acc4598b22/memory/MEMORY.md"
-stand: 2026-09-11
+stand: 2026-09-12
 tags: [spiegel, zcode]
 ---
 
@@ -11,7 +11,7 @@ tags: [spiegel, zcode]
 
 - [/standardskill Boot-Ablauf](standardskill-boot-ablauf.md) — Command lädt STANDARD-SKILLS.md + skill-routing.md und verlangt verbindliche Regel-Bestätigung als Tabelle; danach Regelverstoß = sofort selbst benennen + korrigieren
 
-- [Thomas-Tasks: 3 Recherchen](thomas-tasks-drei-recherchen.md) — 11.09. FERTIG + KORRIGIERT: 1) Loki Voice: LocalVoiceService = DOWNGRADE (0 Tool-Calls, kein Prüfkopf-Feed/Wake-Word/Echo-Schutz) — Paritäts-Plan mit 4 Tickets steht (Function Calling auf bestehenden AssistantTools-Executor, Prüfkopf-Live-Feed, Gates portieren, RunAllTests+e2e), 2) Codex→Windows = Login neu + config.toml kopieren + Pfade/setx/Task-Scheduler anpassen, 3) Magicline Open API (Sport Alliance Developer Portal, x-api-key; Make.com-Connector als No-Code-Weg); offen: Paritäts-Build auf GO, Anleitung-DOCX, Windows-Paket, Studio-Key beantragen
+- [Thomas-Tasks: 3 Recherchen](thomas-tasks-drei-recherchen.md) — 11.09. FERTIG + Paritäts-Build AUSGEFÜHRT: LocalVoiceService = Cloud-paritätisch (7-Tool-Function-Calling-Loop, Prüfkopf-Live-Feed, strenges Wake-Word-Gate sprichtMitAgent(), Audio-Befehle, Du:/Loki-Buch), 9/9 Tests grün (swift test kaputt → swiftc-Standalone-Runner), Reviewer PASS (6 Befunde gefixt), Commit 974e2ce; Lieferung Desktop/THOMAS_ANLEITUNG/ (PDF + Windows_Paket.zip; ⚠️ Saschas ~/.codex/config.toml enthält echten Bearer-Token — nie ungefiltert weitergeben); 12.09. GEORGE-Klarstellung: Thomas' Assistent „George" läuft IN Codex, Voice über ChatGPT, Kosten=Token — Codex billt still OPENAI_API_KEY trotz ChatGPT-Login; Gratis-Weg = model_provider→OmniRoute (Saschas eigener Codex läuft so); Recherche: THOMAS_ANLEITUNG/RECHERCHE_GEORGE_KOSTEN.md; offen: Mikro-e2e mit LOKI_LLM_API_KEY, /Applications-Deploy auf GO, Magicline-Studio-Key, PDF-Update auf George-Fakten
 
 - [ZCode Hub 1006 + Netz-Fix](zcode-hub-1006-netz-fix.md) — 08.09.: 1006-Abbrüche = 9,7-GB-Session-Rollout (archiviert in ~/.zcode/cli/log/archive/) + Hotspot/IPv6; Wi-Fi DNS 1.1.1.1/8.8.8.8 + IPv6 OFF gesetzt; OmniRoute localhost:20128 als Fallback-Provider; iPhone „Maximale Kompatibilität" noch offen; Riesige Session-Rollouts nie weiternutzen
 

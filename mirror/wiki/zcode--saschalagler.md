@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-12 08:21 UTC
+Zuletzt gespiegelt: 2026-09-12 08:33 UTC
 
 ## code-architect
 
@@ -1224,7 +1224,7 @@ Bei Fachfragen (z. B. Trainings-Übungen) fordert er explizit „clinical reason
 
 - [/standardskill Boot-Ablauf](standardskill-boot-ablauf.md) — Command lädt STANDARD-SKILLS.md + skill-routing.md und verlangt verbindliche Regel-Bestätigung als Tabelle; danach Regelverstoß = sofort selbst benennen + korrigieren
 
-- [Thomas-Tasks: 3 Recherchen](thomas-tasks-drei-recherchen.md) — 11.09. FERTIG + KORRIGIERT: 1) Loki Voice: LocalVoiceService = DOWNGRADE (0 Tool-Calls, kein Prüfkopf-Feed/Wake-Word/Echo-Schutz) — Paritäts-Plan mit 4 Tickets steht (Function Calling auf bestehenden AssistantTools-Executor, Prüfkopf-Live-Feed, Gates portieren, RunAllTests+e2e), 2) Codex→Windows = Login neu + config.toml kopieren + Pfade/setx/Task-Scheduler anpassen, 3) Magicline Open API (Sport Alliance Developer Portal, x-api-key; Make.com-Connector als No-Code-Weg); offen: Paritäts-Build auf GO, Anleitung-DOCX, Windows-Paket, Studio-Key beantragen
+- [Thomas-Tasks: 3 Recherchen](thomas-tasks-drei-recherchen.md) — 11.09. FERTIG + Paritäts-Build AUSGEFÜHRT: LocalVoiceService = Cloud-paritätisch (7-Tool-Function-Calling-Loop, Prüfkopf-Live-Feed, strenges Wake-Word-Gate sprichtMitAgent(), Audio-Befehle, Du:/Loki-Buch), 9/9 Tests grün (swift test kaputt → swiftc-Standalone-Runner), Reviewer PASS (6 Befunde gefixt), Commit 974e2ce; Lieferung Desktop/THOMAS_ANLEITUNG/ (PDF + Windows_Paket.zip; ⚠️ Saschas ~/.codex/config.toml enthält echten Bearer-Token — nie ungefiltert weitergeben); 12.09. GEORGE-Klarstellung: Thomas' Assistent „George" läuft IN Codex, Voice über ChatGPT, Kosten=Token — Codex billt still OPENAI_API_KEY trotz ChatGPT-Login; Gratis-Weg = model_provider→OmniRoute (Saschas eigener Codex läuft so); Recherche: THOMAS_ANLEITUNG/RECHERCHE_GEORGE_KOSTEN.md; offen: Mikro-e2e mit LOKI_LLM_API_KEY, /Applications-Deploy auf GO, Magicline-Studio-Key, PDF-Update auf George-Fakten
 
 - [ZCode Hub 1006 + Netz-Fix](zcode-hub-1006-netz-fix.md) — 08.09.: 1006-Abbrüche = 9,7-GB-Session-Rollout (archiviert in ~/.zcode/cli/log/archive/) + Hotspot/IPv6; Wi-Fi DNS 1.1.1.1/8.8.8.8 + IPv6 OFF gesetzt; OmniRoute localhost:20128 als Fallback-Provider; iPhone „Maximale Kompatibilität" noch offen; Riesige Session-Rollouts nie weiternutzen
 
@@ -2159,27 +2159,30 @@ Der Custom-Command `/standardskill` (user/zcode) ist ein verbindlicher Boot-Abla
 
 ---
 name: thomas-tasks-drei-recherchen
-description: Drei Thomas-Recherchen 11.09. ABGESCHLOSSEN + Anleitung-PDF GELIEFERT
-  (Desktop/THOMAS_ANLEITUNG/) — Saschas LokiVoiceApp = Gemini Live/Vertex, THOMAS =
-  ChatGPT/OpenAI; Gratis-Stack LocalVoiceService ist DOWNGRADE (Paritäts-Build auf GO
-  wartend), Codex→Windows = Login + Config kopieren, Magicline-Open-API via Sport Alliance
+description: Drei Thomas-Recherchen 11.09. FERTIG + Paritäts-Build AUSGEFÜHRT
+  (9/9 Tests grün, Reviewer PASS, Commit 974e2ce) + Anleitung-PDF + Windows-Paket
+  GELIEFERT (Desktop/THOMAS_ANLEITUNG/); offen nur: Mikro-e2e, /Applications-Deploy,
+  Magicline-Studio-Key
 metadata:
   node_type: memory
   type: project
   originSessionId: sess_0933a442-4331-4e6b-b563-a8a97dcefd9b
 ---
 
-Am 11.09.2026 gestellt und am selben Tag ABGESCHLOSSEN (2 SSD-Explore-Scans + Web-Recherche, Magicline-Grep abgebrochen aber via Web beantwortet). Ergebnisse:
+Am 11.09.2026 gestellt und am selben Tag ABGESCHLOSSEN inkl. Paritäts-Build (2 SSD-Explore-Scans + Web-Recherche + Build + Reviewer-Loop). Ergebnisse:
 
-1. **Loki Voice Kosten (KORRIGIERT durch Sascha 11.09.: „der aktuelle Loki Voice läuft über Gemini … und Thomas über ChatGPT"):** Saschas LokiVoiceApp hängt an Google Gemini Live (Vertex, Projekt `gen-lang-client-0534030583`); **Thomas' Voice-Stack läuft über ChatGPT/OpenAI (Realtime Voice)** — dort die „unmengen"-Kosten (~$0,06/min in + ~$0,24/min out, Dauerbetrieb = hunderte €/Monat). Gratis-Stack für beide: `LokiVoiceApp/Sources/LocalVoiceService.swift` (Apple Speech STT + AVSpeech TTS + OpenAI-kompatibler LLM-Endpoint, Default Z.AI glm-4.5-air, OpenRouter-Free möglich) — im Thomas-Paket nicht aktiviert. Zusatz: faster-whisper-Worker vorhanden (`loki_whisper_worker.py`), Ollama+LM Studio installiert aber nicht angebunden; offener Task „whisper.cpp installieren" im LOKI-Board. Kostenhebel: Push-to-talk statt Always-on (~-90 %).
-2. **Codex→Windows:** `~/.codex/` hat KEINEN OpenAI-Login (kein auth.json, keine Sessions) — Login lief über OmniRoute-Gateway (localhost:20128, Key in `.zshrc:179`). Transfer: config.toml + AGENTS.md + skills/ direkt kopieren; auf Windows `npm i -g @openai/codex` → `codex login` (auth.json entsteht lokal, nie kopieren); OMNIROUTE_API_KEY via `setx`; Gateway-Autostart via Task Scheduler statt LaunchAgent; `/Users/…`→`C:\Users\…`, `python3`→`python`. Thomas' Projekt `geotracer-portable-v1` = portables Node-Projekt → ZIP reicht. "George" bei Thomas = Agent-Workspace-Name (`/Users/thomasschellenbacher/george/…`), Codex-Nutzung via ChatGPT-Account-Login.
-3. **Magicline-API:** Offizielle Open API der Sport Alliance — Doku: developer.sportalliance.com/apis/magicline/openapi/general-information + magicline.com/de/partner (Postman + Test-Magicline). Auth: Studio-Inhaber beantragt Integration → API-Key per E-Mail, Header `x-api-key`, Base-URL `https://<tenant>.open-api.magicline.com/v1`; Webhooks separater Key. Endpunkte: GET /v1/customers, Memberships/Verträge; No-Code-Shortcut: Make.com-Connector für Magicline existiert.
+1. **Loki Voice Kosten (KORRIGIERT durch Sascha 11.09.: „der aktuelle Loki Voice läuft über Gemini … und Thomas über ChatGPT"):** Saschas LokiVoiceApp hängt an Google Gemini Live (Vertex, Projekt `gen-lang-client-0534030583`); **Thomas' Voice-Stack läuft über ChatGPT/OpenAI (Realtime Voice)** — dort die „unmengen"-Kosten (~$0,06/min in + ~$0,24/min out). Gratis-Stack: `LocalVoiceService.swift` (Apple Speech STT + AVSpeech TTS + OpenAI-kompatibler LLM, Default Z.AI glm-4.5-air, Key `LOKI_LLM_API_KEY` via Env/Keychain). STT bleibt **Apple Speech, NICHT Whisper** (Sascha-Regel).
+   **GEORGE-KLARSTELLUNG (12.09., Sascha wütend — „du hörst mir nicht zu"):** „George" = **Thomas' Assistent, der CODEX ALS UMGEBUNG nutzt** (Workspace `~/george/…`), Voice über ChatGPT — **die Kosten sind TOKEN-basiert**, nicht Audio-Minuten-Marke. Recherche- Facts (Quellen in `Desktop/THOMAS_ANLEITUNG/RECHERCHE_GEORGE_KOSTEN.md`): (a) **Codex billt still `OPENAI_API_KEY` (API-Token, kein Deckel), obwohl mit ChatGPT eingeloggt** — klassische Ursache „unerwartete API-Kosten"; Sofort-Check für Thomas: Env-Key löschen + Abrechnungsquelle auf platform.openai.com prüfen. (b) Codex-API ~$1,25–5/1M in, $10–30/1M out; **ChatGPT-Login = Abo inklusive** (Plus $20/Pro $100–200, 5h-/Wochen-Limits) statt Cash. (c) **Gratis-Weg bei vollen Fähigkeiten:** Codex CLI ist modell-agnostisch (`config.toml → model_provider`) — Saschas eigener Codex läuft genau so gegen OmniRoute localhost:20128 ohne ChatGPT-Token-Billing (lebender Beweis); Voice = die frisch gebaute Split-Pipeline (Apple Speech + Text-LLM + AVSpeech). **Offen: PDF-Kapitel 1+2 auf die George-Fakten aktualisieren?** (Sascha unentschieden.)
+2. **Codex→Windows:** Login neu (`npm i -g @openai/codex` → `codex login`, auth.json nie kopieren), config.toml/AGENTS.md kopieren, Pfade/setx/Task-Scheduler anpassen, `geotracer-portable-v1` = portable Node-App → ZIP. ⚠️ **Saschas `~/.codex/config.toml` enthält einen echten Obsidian-MCP-Bearer-Token — nie ungefiltert weitergeben** (Paket nutzt bereinigte Config mit Platzhaltern). `~/.codex/skills` = 119 Symlinks (8 KB) → nicht paketieren.
+3. **Magicline-API:** Open API der Sport Alliance — developer.sportalliance.com/apis/magicline/openapi/general-information; Studio-Inhaber beantragt Key (`x-api-key`), Make.com-Connector als No-Code-Weg. **Offen: Studio-Key beantragen.**
 
-**Paritäts-Inventar 11.09. (nach Saschas „kein Downgrade"-Einschub, per Code-Lese verifiziert):** Local-Mode ist real ein Downgrade (~10 % der Features). Cloud-`VoiceService.swift` hat: 7 Function-Calling-Tools (`create_task`, `list_tasks`, `complete_task`, `remember`, `recall`, `recall_transcript`, `melde_fehler`), Prüfkopf-Live-Feed (`pruefenLiveStreamChunk` → Judicario-OpenLaw via JSON-RPC/SSE + SafeBox), Wake-Word-Gate („Loki"/„Chipsi"), Echo-Schutz/Barge-in (Z.817), 15-Min-Rotation. `LocalVoiceService.swift` fehlt: ALLE Tool-Calls (0 Treffer), Prüfkopf-Live, Wake-Word, Echo-Schutz, Audio-Befehle („Ton an/aus", „BLUF"). Schlüssel: `AssistantTools.swift` ist bereits modell-unabhängig (Dispatch-Table mit 7 Cases existiert) — Parität = OpenAI-kompatibles Function Calling an den bestehenden Executor anbinden. STT bleibt **Apple Speech, NICHT Whisper** (Sascha-Regel: keine minderwertige Whisper). Paritäts-Tickets: (1) Function Calling in LocalVoiceService, (2) Prüfkopf-Live-Feed verdrahten, (3) Wake-Word+Echo+Audio-Befehle portieren, (4) Paritäts-Test via `RunAllTests.swift`+`e2e.sh`+Reviewer. Skills: ios-swift-development, karpathy-guidelines, ui-ux-tester, Frame loki-dev BUILD. **GO von Sascha noch offen** (Stand 11.09.).
+**PARITÄTS-BUILD 11.09. NACHMITTAGS AUSGEFÜHRT (GO war per „bitte" erteilt):** `LocalVoiceService.swift` = jetzt Cloud-paritätisch: (a) Function-Calling-Loop im OpenAI-Protokoll (tools + tool_choice auto, tool_calls → `role:"tool"` + tool_call_id, max. 4 Runden, Rundenlimit → „Erledigt."), Dispatch auf bestehenden `AssistantTools.shared.execute`; (b) Prüfkopf-Live-Feed `pruefenLiveStreamChunk` aus jedem finalen Transkript (vor dem Gate); (c) STRENGES Wake-Word-Gate als testbarer Baustein `LocalVoiceService.sprichtMitAgent()` (Wortgrenzen-Regex `\b(loki|chipsi)\b` — „Chips übers Internet"/„Lokus" triggern NICHT); (d) komplette Cloud-Audio-Keyword-Liste (ton an/aus, stumm, stopp, halt, lauter, stimme an, ghetto an); (e) Transkript-Buch `fullTranscript` mit `Du:`/`Loki:`-Zeilen + 120k/90k-Cap; (f) `recall_transcript`-Quelle = aktive Session (`isSessionActive`/`isConnected`, keine Heuristik); (g) Keychain-Key gecacht, Tool-Datei-IO auf userInitiated-Queue. **QA:** `swift build -c release` grün; Testsuite **9/9 grün** — `swift test` bricht an codesign-detritus (xattr hilft nicht zuverlässig), Standalone-Runner nutzen: `swiftc -o /tmp/run_all_tests Tests/RunAllTests.swift $(ls Sources/*.swift | grep -v LokiVoiceApp.swift)`; Reviewer-Prüfinstanz **PASS** (2 Major + 4 Minor, alle gefixt). Bekannter Trade-off: halb-duplex — während LLM/TTS wird nicht mittranskribiert (Doku in STATUS). Bearbeitete Kopie = `Desktop/Coworkspace_Ich/THOMAS - CHIPS JUDICARIO/Judicario_Sacha_Mac/LokiVoiceApp` (git-Repo auf Judicario_Sacha_Mac-Ebene, Commit **974e2ce**, .gitignore für .build/LokiVoice.app; die PETER-JUDICARIO-Kopie blieb unberührt). Doku: `LokiVoiceApp/STATUS_LOCAL_PARITAET.md`. App-Bundle neu gebaut (ad-hoc signiert) in LokiVoiceApp/LokiVoice.app.
 
-**Offen (Kanban):** Loki-Voice-Paritäts-Tickets 1–4 (auf GO); Thomas-Anleitung als DOCX/PDF; Windows-Transfer-Paket; Magicline-Studio-Key beantragen (Studio-Inhaber-Aktion).
+**Übergabe (fertig):** `/Users/saschalagler/Desktop/THOMAS_ANLEITUNG/` — Thomas bekommt NUR `Anleitung_Thomas_LokiVoice_Codex_Magicline.pdf` + `Windows_Paket.zip` (296 KB: bereinigte config.toml, AGENTS.md, Setup-Windows.ps1, PDF); `bilder/`, `pages/`, `generate.js`, `Windows_Paket/` sind nur Quelle.
 
-**How to apply:** Bei Wiederaufnahme Ergebnisse nutzen, nicht neu recherchieren. Verwandt: [[web-research-team-skill]], [[loki-project-map]], [[feedback-doc-design-matters]] (Anleitung mit Design bauen).
+**Offen (Kanban):** (1) echter Mikro-e2e des Lokal-Modus mit gesetztem `LOKI_LLM_API_KEY` + `e2e.sh`; (2) neue LokiVoice.app nach /Applications — NUR auf GO (überschreibt bestehende App); (3) Magicline-Studio-Key beantragen (Studio-Inhaber-Aktion, Thomas).
+
+**How to apply:** Bei Wiederaufnahme Parität als erledigt behandeln (nicht neu planen); Build/Verify über den Standalone-Runner, nicht `swift test`. Verwandt: [[feedback-kein-downgrade-paritaet]], [[feedback-pruefinstanz-pflicht]], [[feedback-doc-design-matters]], [[loki-project-map]].
 
 ## vorssaint-mac-tools-research
 
@@ -2400,6 +2403,8 @@ Update 2026-08-22 (Repair-Session): Ordner umgezogen nach `~/Desktop/Coworkspace
 
 # Memory Index
 
+- [macOS Shell CWD ENOENT](macos-shell-cwd-enoent.md) — "spawn /bin/zsh ENOENT" = cwd weg → Ordner via Write rekonstruieren entblockt Shell
+
 - [Judicario Gateway Key Rotation](judicario-gateway-key-rotation.md) — alter Key tot, neuer Key jud_Cpu-… verifiziert, Connectoren 06.09.2026 gefixt
 - [Chipsi/Openlaw Setup](chipsi-openlaw-setup.md) — Chipsi=Cloud-Webapp via Chrome-Shortcut; Antwort-Fehler=serverseitig bei openlaw (06.09. bestätigt, George-Fix nötig); UI-Tests nur mit cua-Klick+echter Tastatur; Gmail=koerperfluss@gmail.com
 - [ZCode Computer Use Status](zcode-computer-use-status.md) — Plugin/TCC ok, Server braucht permission-broker-socket → Fix=volles App-Restart; per 06.09. offen
@@ -2464,6 +2469,24 @@ Lisa Marie Mauerhart = Person, deren Angelegenheiten Sascha führt (PVA, Behinde
 - Instagram (07.09., FINAL — Thema abgeschlossen): **Block kam vom Hauptkonto** (vom Nutzer bestätigt, Screenshot seines IG-DM-„Spitznamen"-Panels). Metriken (og-Metadaten via Googlebot-UA): @whereismy.fckingmind „liz" 149 F/2 Posts (= Hauptkonto, aktiv) · @lis.art.z „Lis" 2 F/13 Following/0 Posts · @lis.artz_ „Lisa · 𖦹" 69 F/8 Posts („Traditional artist"-Bio, Zuordnung unbestätigt).
 - **@lis.art.z Erstellungsdatum GEKLÄRT (Nutzer-Screenshot von „Konto-Info"/About this account): Beitrattsdatum MAI 2026, Standort Österreich → FRISCHES Konto, kein umbenanntes Alt-Konto.** Konsistent: 0 Posts/2 F/0 Wayback/0 Index. Zeitlich passend zur Trennungs-/Verfahrensphase (Protokoll 21.05.2026, Ordner „Lisa svs 29.05"). Interpretation: Neuanfang/Abgrenzung, nichts Verdecktes. Technik-Notiz: IG-App ⋯-Menü „Konto-Info" zeigt „Beigetreten am" (öffentliches Feature, jeder normale Account kann lesen; blockierter Account kommt nicht mehr ran; „Account-Age-Checker"-Tools = Phishing-Gefahr; belastbar nur Meta-Legal über Anwalt/EFSZ-Akte).
 - **Grenzen (bleiben!):** Kein Umgehen von Login-Walls/Blöcken, keine Personensuche-Portale, keine Gesundheitsdaten in Outputs, Trauermedien respektvoll. Mutter-Suche („Marion" wie „Sabine") ist ERSCHÖPFT — nicht erneut suchen. Lisa-IG-Thema abgeschlossen — keine erneute Recherche, keine Zweitaccount-Beobachtung.
+
+## macos-shell-cwd-enoent
+
+---
+name: macos-shell-cwd-enoent
+description: Bash "spawn /bin/zsh ENOENT" = Arbeitsverzeichnis existiert nicht —
+  Ordner rekonstruieren entblockt die Shell
+metadata:
+  node_type: memory
+  type: project
+  originSessionId: sess_0f956bae-0115-4221-a569-0d1744955ece
+---
+
+Auf Saschas Mac: Wenn Bash nur `spawn /bin/zsh ENOENT` wirft (auch mit Sandbox aus), ist **nicht** die Shell kaputt — das Harness-Arbeitsverzeichnis existiert nicht mehr (Spawn mit totem cwd = ENOENT).
+
+**Why:** 12.09.2026: Ordner `Desktop/Coworkspace_Ich/PETER JUDICARIO` wurde außerhalb der Session gelöscht/verschoben; Read der Binary `/bin/zsh` ("Unsupported or binary text encoding") bewies, dass die Shell existiert.
+
+**How to apply:** Per Write irgendeine Datei im (fehlenden) cwd anlegen — Write erzeugt Elternordner → Shell spawnt wieder. Danach mit absoluten Pfaden arbeiten. Verwandt: [[zcode-computer-use-status]]
 
 ## wohnkosten-vereinbarung-status
 
