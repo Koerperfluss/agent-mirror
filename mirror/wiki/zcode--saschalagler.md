@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-12 13:30 UTC
+Zuletzt gespiegelt: 2026-09-12 13:40 UTC
 
 ## code-architect
 
@@ -1220,7 +1220,7 @@ Bei Fachfragen (z. B. Trainings-Übungen) fordert er explizit „clinical reason
 
 # Memory Index
 
-- [Antigravity Physio-Assistent](antigravity-physio-assistent.md) — 12.09. GELÖST: Alter Chat korrupt (HTTP 400 INVALID_ARGUMENT, nur Retry/Neustart half NICHT) → NEUER Chat „Physiotherapy Rehab Assistant Setup" läuft komplett; Start-Prompt: `~/Desktop/ANTIGRAVITY_PHYSIO_START_PROMPT.md`; Adelina-Daten: `~/Desktop/Körperfluss/Patientenliste/Adelina/`; gelber MCP-Badge cloud-cli-execution nicht-fatal (ignorieren); UI-Lesson: Text-Eingabe nur via pbcopy+osascript keystroke, nicht AX set_value
+- [Antigravity Physio-Assistent](antigravity-physio-assistent.md) — 12.09. GELÖST: Alter Chat korrupt (HTTP 400 INVALID_ARGUMENT, nur Retry/Neustart half NICHT) → NEUER Chat „Physiotherapy Rehab Assistant Setup" läuft komplett; Start-Prompt: `~/Desktop/ANTIGRAVITY_PHYSIO_START_PROMPT.md`; Adelina-Daten: `~/Desktop/Körperfluss/Patientenliste/Adelina/`; 12.09. Sitzungs-PDFs gebaut (SITZUNG_Adelina + SITZUNG_Simon 2026-09-12, je 2 Seiten A4); Simon = Adelinas Partner mit Migräne/zervikogenem Kopfschmerz (Cranio-Cervical Phase 1), eigener Ordner noch offen (auf GO); gelber MCP-Badge cloud-cli-execution nicht-fatal; UI-Lesson: Text-Eingabe nur via pbcopy+osascript keystroke, nicht AX set_value
 
 - [OneForma-AGB-Prüfung](oneforma-agb-pruefung.md) — 12.09. Live-Docs verifiziert: Bildrechte unbefristet, 2500-USD-Deckel, King-County-Gerichtsstand (Arbitration nur US), 3-Monats-Zahlfrist, KI-Verbot; Korrekturen: gdpr@oneforma.com, Schiedsklausel US-only; oneforma.com-Docs laden nur via web_reader, nicht WebFetch; EMPFEHLUNG: JA + 4 Spielregeln; Erklär-Session: 50–400 USD/Monat realistisch, Payoneer, AT-Steuer-Hinweis
 
@@ -1333,6 +1333,8 @@ Sascha nutzt die **Google Antigravity IDE** (Config unter `~/Library/Application
 **12.09. GELÖST — wahrer Root Cause:** Alter Chat „Physio Assistant Workflow Configuration" hatte eine **korrupte Trajectory** (16 Messages mit PDFs/Bildern) → JEDER Turn crasht nach 1 s mit **HTTP 400 INVALID_ARGUMENT** (Google cloudaicompanion-Backend, Debug via „Copy debug info"-Button). Retry + App-Restart halfen NICHT. **Fix = NEUER Chat** — funktioniert sofort einwandfrei. Der nächtliche DNS-Ausfall (03:41, `oauth2.googleapis.com` unauflösbar, vgl. [[zcode-hub-1006-netz-fix]]) erklärt nur den separaten, **nicht-fatalen** gelben „MCP Error cloud-cli-execution"-Badge (steht in `~/.gemini/config/mcp_config.json` längst auf `disabled: true`, Badge bleibt trotzdem sichtbar — ignorieren).
 
 **Start-Prompt-Artefakt:** `~/Desktop/ANTIGRAVITY_PHYSIO_START_PROMPT.md` (komplette M4-Systemanweisung + Adelina-Fall + 5 Auftragsschritte). **Patientendaten:** `/Users/saschalagler/Desktop/Körperfluss/Patientenliste/Adelina/` (5 Adelina-PDFs + Anamnese-MDs + `Simon - Adelina Freund.pdf`). Neuer Chat „Physiotherapy Rehab Assistant Setup" lieferte 12.09. Schritt 1–3 komplett (Befundhierarchie, Simon-Profil, Sitzungs-Zettel: FRT 32°, Knee-to-Wall 10–12 cm, NRS <3 = Progression) und wartet im adaptiven Loop.
+
+**12.09. Sitzungs-PDFs gebaut (beide 2 Seiten A4, Körperfluss-Layout, visuell verifiziert):** `SITZUNG_Adelina_2026-09-12.pdf` (Sitzung #4: Red-Flags → Re-Tests → Entscheidungspunkt A/B/C → Behandlungsreihenfolge → Heimplan → SOAP; Basislinie: SLR L 53 / R 90 cm, Schwindel Typ Watte=A(CO₂)/Boot=B(vestibulär)) + `SITZUNG_Simon_2026-09-12.pdf` (Migräne & zervikogener Kopfschmerz, Phase 1 Reizdämpfung: SNOOP-Screening, FRT<32°, Chin Tuck, Kiefer-SMR, Vagus-4–8-Atmung, Akut-Protokoll) — je Teildruckfarbe Adelina=türkis/Simon=violett; HTML-Quellen liegen neben den PDFs. **Simons klinisches Profil:** Adelinas Partner, Migräne mit zervikogener Komponente (Trigeminocervicaler Komplex, C1/C2 + Bruxismus-Trigger), Quellen: `Patient_ Partner _ Freund - Reha-Plan Migräne & Zervikogener Kopfschmerz.pdf` + `Simon - Adelina Freund .pdf` (Scapula-Zifferblatt-Leitfaden). **Offen:** Simon hat noch keinen eigenen Ordner (`Patientenliste/Simon/` angelegt auf GO); SOAP-Ausfüllen nach der Sitzung.
 
 **UI-Lesson Antigravity (Electron):** AX `set_value` auf Message-Textarea = mismatched, computer-use `type strategy=event` = „not frontmost" trotz activate. **Funktioniert:** `pbcopy` + `osascript` → `tell app "Antigravity" to activate` → `keystroke "v" using {command down}` → `keystroke return`.
 
@@ -1480,6 +1482,8 @@ metadata:
 **How to apply:** Übergabe-Dokumente nie als reine Textwüste generieren. Entweder docx-Skill mit Cover-Rezept + Tabellen (siehe [[patrick-physiotherapie-sbp]], R4 geplant) oder reportlab mit Platypus (Table/TableStyle, Farbbänder) statt drawString.
 
 **Update 11.09.2026:** (1) **LibreOffice JETZT INSTALLIERT** (`brew install --cask libreoffice`, soffice auf /opt/homebrew/bin/soffice) → DOCX→PDF-Konvertierung verfügbar: `soffice --headless --convert-to pdf` + `pdftoppm -png -r 80` für Seiten-Rendering. (2) **PDF ist das Lieferformat**: Sascha schrie „ERSTELLE EIN VERFICKTES PDF", als nur ein DOCX existierte — Übergabe-Docs primär als PDF liefern, DOCX nur als Beilage. (3) Bewährter Pipeline-Lauf: docx-Skill R4-Cover (GO-1) + echte App-Screenshots via `screencapture -o -x -l <window_id>` + computer-use-AX-Klicks für UI-Zustände → postcheck.py → add_toc_placeholders.py + fix_footer_fields.py → soffice→PDF → alle Seiten als PNG selbst visuell prüfen (Cover-Titlelbruch vorher: Wortgrenzen-Split in calcTitleLayout nötig, festes Char-Slicing bricht mitten im Wort). (4) macOS **Quick-Look-Thumbnails (qlmanage) sind bei DOCX unzuverlässig** — renderten das R4-Cover als vertikalen Letter-Streifen (false alarm); erst LibreOffice-Render ist verlässlich.
+
+**Update 12.09.2026:** **Beste Pipeline für druckfertige Praxis-PDFs (Sitzungs-Zettel) = handgebaut HTML + Print-CSS → headless Chrome**: `"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless --disable-gpu --no-pdf-header-footer --print-to-pdf=OUT.pdf file:///tmp/x.html`, dann `pdftoppm -png -r 60` + selbst visuell prüfen. Bewährt: ein Theme pro Patient (Farbkennung Adelina=türkis, Simon=violett), Checkbox-Spans zum Ankreuzen, 4-Spalten-Übungstabellen, SOAP-Block, Footer mit Name/Datum. HTML-Quelle neben das PDF legen (später editierbar). Für übergebene Langtext-Prompts: als `.md` auf Desktop (Copy-Paste-Quelle), z. B. `ANTIGRAVITY_PHYSIO_START_PROMPT.md`-Muster.
 
 ## feedback-gui-not-cli
 
