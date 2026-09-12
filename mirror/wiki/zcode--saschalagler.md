@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-11 23:50 UTC
+Zuletzt gespiegelt: 2026-09-12 00:01 UTC
 
 ## code-architect
 
@@ -4102,7 +4102,7 @@ Beobachtet 06.09.2026 (Session mit Off-Peak-Ticket): Nach User-Paste „ZCode Er
 - [Backend-Setup-Fakten](vinyl-scanner-env-setup.md) — requirements.txt inkonsistent, DB heißt test_database, gemini-3.5-flash als Modell
 - [Autonomie-Präferenz Sascha](user-autonomy-preference.md) — keine Handanleitungen, nur echte Account-Logins beim Nutzer
 - [Research muss Google schlagen](research-beyond-google-answer.md) — keine Standard-Antworten; harte Zahlen, Abzocker-Netzwerke, Landesrecht statt Affiliate-Listen
-- [Research-Report Dating-AT](research-dating-at-report.md) — 12.09.2026 Casual-/Escort-Portale Österreich (Melk/Wien–Linz), Report-Pfad + Delta-Baseline
+- [Research-Report Dating-AT](research-dating-at-report.md) — 12.09.2026, 2 Läufe: Dating-Apps + komplette Escort-/Sextreff-Analyse Österreich (BookSusi beste Escort-Plattform, Splash Kemmelbach im Bezirk Melk); Report-Pfade + Delta-Baseline; Antworten im i-have-adhd-Format
 
 ## research-beyond-google-answer
 
@@ -4125,25 +4125,34 @@ Sascha kritisierte am 12.09.2026 nach einem großen Web-Research-Run (~74 Quelle
 
 Nachtrag (12.09.2026): Auch die nachgeschärfte, quellenbelegte Antwort stieß auf Ablehnung („lol was für bullshit“). Er antwortete nicht, welcher Teil falsch war. Bei künftigen Recherche-Themen mit ihm: zuerst 1 gezielte Rückfrage, wonach er eigentlich sucht (eigene Bekannte-Portale, konkrete Vorlieben), bevor ein großer Report-Run gefahren wird — Quellenbelege allein überzeugen ihn nicht, wenn die Ergebnisliste „bekannt“ wirkt.
 
+Nachtrag 2 (12.09.2026, Hinge-Debatte): Er widersprach meiner harten Ausgrenzung von Hinge („Abzog ausgerichtete Beziehungs-App“) zurecht: Marketing-Positionierung (Slogan „designed to be deleted“) ist KEIN Beleg, dass dort keine Casual-Treffen zustande kommen — real filtert der Profiltext, nicht die App. **Why:** Er lehnt es ab, wenn ich Apps/Portale auf Basis von Markenpositionierung statt Nutzungsrealität aus der Liste streiche. **How to apply:** Bei Empfehlungen Nische nicht exkludieren, sondern als „kleinerer Pool, aber ok“ mappen (Hinge: nur ~43k AT-Nutzer vs. Tinder ~164k — das war der echte Grund) und die volle Karte liefern; harte „Finger weg“-Urteile nur bei dokumentierter Abzocke (Verbraucherschutz/Verfahren), nicht bei Image.
+
 ## research-dating-at-report
 
 ---
 name: research-dating-at-report
-description: Web-Research-Report (12.09.2026) zu Casual-Dating-/Escort-Portalen
-  in Österreich erstellt; Nutzerregion Melk 3390 (Wien–Linz)
+description: Web-Research-Reports (12.09.2026) zu Casual-Dating- UND Escort-Portalen
+  in Österreich; Nutzerregion Melk 3390 (Wien–Linz); Delta-Baseline fürs Thema
 metadata:
   node_type: memory
   type: user
   originSessionId: sess_4664db9f-4c04-4a61-b5a7-9edd72f931e3
 ---
 
-Saschas Region ist Melk, 3390 (Korridor Wien–Linz). Am 2026-09-12 lief ein web-research-team-Lauf (Modus standard, 3 DIV-DEEP, Confidence 82) zu Sex-/Casual-Dating-Apps und Escort-Portalen in Österreich. Ergebnis: Tinder/Bumble/Hinge einzige Apps mit Nutzerbasis am Land; "Paysex" nur über Escort-Inseratsportale (BookSusi, Erobella, Ladies.de AT, Kaufmich); seriöse Casual-Community = JOYclub/JOYCE (~200k AT), günstiger poppen.de (ab 6,99 €/Monat); Warnung vor C-Date (EVZ-Warnung, Abofalle + Inkasso, Betreiber Interdate S.A.), BeNaughty/AdultFriendFinder (Bot-/Fake-lastig) und Howlogic/Casual-Networks-Fake-Chat-Netzwerken. Rechtslage: Prostitution in AT legal, landesrechtlich geregelt (Wien WPG 2011, NÖ PG 2021 novelliert); Abzocke-Rechtshilfe: datingfalle.at (Internet Ombudsmann). Nutzer ließ sich das Ergebnis im i-have-adhd-Listenformat aufbereiten ([[user-autonomy-preference]]).
+Saschas Region ist Melk, 3390 (Korridor Wien–Linz). Am 2026-09-12 liefen ZWEI web-research-team-Läufe (je Modus standard, je 3 DIV-DEEP):
 
-Report: `/Users/saschalagler/Desktop/Coworkspace_Ich/PRIVATE PORJEKTE /vinyl-scanner/RESEARCH_REPORT_dating-at.md`. Run-Log-Eintrag in `~/.agents/memory/research-runlog.jsonl`. Bei Folgefragen zum Thema Delta-Lauf gegen diese Baseline anbieten ([[vinyl-scanner-state]] ist das zugehörige Projekt).
+**Lauf 1 (Confidence 82)** — Dating-Apps/Casual: Tinder/Bumble/Hinge einzige Apps mit Nutzerbasis am Land (Feeld/Pure nur urban); seriöse Casual-Community = JOYclub/JOYCE (~200k AT), günstiger poppen.de; Warnung vor C-Date (EVZ-Warnung, Abofalle, Interdate S.A.), BeNaughty/AFF, Howlogic/Casual-Networks-Fake-Chat-Netzwerken. Report: `.../vinyl-scanner/RESEARCH_REPORT_dating-at.md`.
 
-Finale Handlungsempfehlung an Sascha (Stand 12.09.2026): Tinder installieren (Profil auf Wien erweitern, da Melk allein zu dünn) + JOYclub-Account mit PLZ-Filter 3390 bis St. Pölten; Premium erst nach Sichtprüfung aktiver Profile kaufen. Für bezahlten Sex: booksusi.at, Region NÖ/Melk–St. Pölten, nach Bewertungen filtern.
+**Lauf 2 (Confidence 84, Delta)** — komplette Escort-/Sextreff-Anbieter-Analyse: Report: `.../vinyl-scanner/RESEARCH_REPORT_escort-at.md`. Kernergebnisse:
+- Escort-Portale: **BookSusi = beste Wahl** (Betreiber essentialmind GmbH Wien, FN 311448m, KYC-Ausweis-Pflicht je Inserat, einzige Plattform mit eigenen Ortseiten für Melk/St. Pölten/Krems); Erobella (Amsterdam-Betreiber, Trust 100/100) und Ladies.at (RTO GmbH) ok; **meiden**: kaufmich (Hongkong, Vorkasse-Fakes), Wien-Girls.at (Wyoming-Shellfirma).
+- Tot/unbrauchbar: 6profis (DE-only), Ladies2night (inaktiv), lusthaus.at (leitet Webcam-Seite), Trauminsel (down), Slixa (kein AT).
+- Sextreff-Communities: JOYclub (Testsieger), **LovePoint (25k AT, 60 % Frauen, Vermittlungsgarantie — aber Trustpilot teils "nur Scam-Kontakte" → Vorsicht)**, secret-casual.at (~80k, teure Coins); **Fremdgehen69/FlirtFair = Casual Networks B.V., AGB sagt wörtlich: keine realen Treffen möglich**. Keine österreichische Sextreff-Eigenentwicklung existiert.
+- Region konkret: **Laufhaus Splash Kemmelbach** (Bezirk Melk, 50 Zimmer an der A1, ~100–130 €/Std) und Splash Krems; Richtpreise Wien 30 Min 50 € / Std 80–120 €, gesetzliche Vermutung ohne Kostinserat 100 €/Std (GewO).
+- Abzock-Regeln: Geschenkkarte/Paysafecard-Vorkasse = immer Betrug (BKA); bei Inkasso-Forderung schriftlich widersprechen, keine Teilzahlung (gilt als Anerkennung); Hilfe datingfalle.at. "Besuch bei mir" (Wohnung) in ganz AT verboten.
 
-Klarstellung gegenüber Sascha (12.09.2026): Hinge ist sehr wohl eine Dating-App, wurde nur wegen der Beziehungs-Ausrichtung ("designed to be deleted") nicht für Casual-Dates empfohlen — kurz und ohne Fachjargon begründen, Missverständnisse bei App-Einordnungen Eskalieren statt wiederholen.
+Run-Log: `~/.agents/memory/research-runlog.jsonl`. Bei Folgefragen zum Thema Delta-Lauf gegen diese zwei Baselines anbieten ([[vinyl-scanner-state]] ist das zugehörige Projekt).
+
+Kommunikation mit Sascha (beide Läufe): Ergebnisse im **i-have-adhd-Format** (BLUF Zeile 1, nummerierte Schritte, Tabellen, keine Höflichkeitsfloskeln) — Sascha war explizit unzufrieden, als die Antwort wie "Standard-Google" klang ([[research-beyond-google-answer]], [[user-autonomy-preference]]). Bei Missverständnissen (z.B. "Hinge ist doch eine Dating-App") kurz klären: Hinge = Beziehungs-App ("designed to be deleted"), deshalb nicht für Casual empfohlen.
 
 ## user-autonomy-preference
 

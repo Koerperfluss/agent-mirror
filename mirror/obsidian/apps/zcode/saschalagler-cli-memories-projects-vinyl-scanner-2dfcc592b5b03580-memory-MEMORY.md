@@ -1,7 +1,7 @@
 ---
 app: zcode
 quelle: "saschalagler/cli/memories/projects/vinyl-scanner-2dfcc592b5b03580/memory/MEMORY.md"
-stand: 2026-09-11
+stand: 2026-09-12
 tags: [spiegel, zcode]
 ---
 
@@ -12,4 +12,4 @@ tags: [spiegel, zcode]
 - [Backend-Setup-Fakten](vinyl-scanner-env-setup.md) — requirements.txt inkonsistent, DB heißt test_database, gemini-3.5-flash als Modell
 - [Autonomie-Präferenz Sascha](user-autonomy-preference.md) — keine Handanleitungen, nur echte Account-Logins beim Nutzer
 - [Research muss Google schlagen](research-beyond-google-answer.md) — keine Standard-Antworten; harte Zahlen, Abzocker-Netzwerke, Landesrecht statt Affiliate-Listen
-- [Research-Report Dating-AT](research-dating-at-report.md) — 12.09.2026 Casual-/Escort-Portale Österreich (Melk/Wien–Linz), Report-Pfad + Delta-Baseline
+- [Research-Report Dating-AT](research-dating-at-report.md) — 12.09.2026, 2 Läufe: Dating-Apps + komplette Escort-/Sextreff-Analyse Österreich (BookSusi beste Escort-Plattform, Splash Kemmelbach im Bezirk Melk); Report-Pfade + Delta-Baseline; Antworten im i-have-adhd-Format
