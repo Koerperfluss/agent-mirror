@@ -1,5 +1,7 @@
 # Memory Index
 
+- [OneForma-AGB-Prüfung](oneforma-agb-pruefung.md) — 12.09. Live-Docs verifiziert: Bildrechte unbefristet, 2500-USD-Deckel, King-County-Gerichtsstand (Arbitration nur US), 3-Monats-Zahlfrist, KI-Verbot; Korrekturen: gdpr@oneforma.com, Schiedsklausel US-only; oneforma.com-Docs laden nur via web_reader, nicht WebFetch
+
 - [Kein Downgrade ohne Parität](feedback-kein-downgrade-paritaet.md) — 11.09.+12.09. scharf korrigiert: Gratis-Varianten NIE als gleichwertig verkaufen — erst Fähigkeits-Matrix per Code-Grep; VOR Technik-Empfehlungen im Projekt nach existierenden Modell-Analysen greppen (SPRACHASSISTENT_MARKTFUEHRER_ANALYSE/ARCHITEKTUR: M1 faster-whisper, KEIN Apple-Speech-Primär, kein tiny); er hat 6 Gemini-API-Keys als Ressource
 
 - [/standardskill Boot-Ablauf](standardskill-boot-ablauf.md) — Command lädt STANDARD-SKILLS.md + skill-routing.md und verlangt verbindliche Regel-Bestätigung als Tabelle; danach Regelverstoß = sofort selbst benennen + korrigieren
