@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-12 12:58 UTC
+Zuletzt gespiegelt: 2026-09-12 13:08 UTC
 
 ## code-architect
 
@@ -1220,6 +1220,8 @@ Bei Fachfragen (z. B. Trainings-Übungen) fordert er explizit „clinical reason
 
 # Memory Index
 
+- [Antigravity Physio-Assistent](antigravity-physio-assistent.md) — 12.09. Crash-Diagnose: „Agent execution terminated" = MCP `cloud-cli-execution` (gcloud-cli Cask 583.0.0) Forbidden durch nächtlichen DNS-Ausfall (oauth2.googleapis.com unerreichbar); Netz/Token-Refresh live OK → Fix = Agent-Neustart/Retry; Antigravity-MCPs stecken nur in state.vscdb, Diagnose via ~/.config/gcloud/logs; Kontext: Physio-Gem Adelina/Simon (HWS>ISG>Fuß, 5-Stufen-Evaluierung, A4-Handouts)
+
 - [OneForma-AGB-Prüfung](oneforma-agb-pruefung.md) — 12.09. Live-Docs verifiziert: Bildrechte unbefristet, 2500-USD-Deckel, King-County-Gerichtsstand (Arbitration nur US), 3-Monats-Zahlfrist, KI-Verbot; Korrekturen: gdpr@oneforma.com, Schiedsklausel US-only; oneforma.com-Docs laden nur via web_reader, nicht WebFetch; EMPFEHLUNG: JA + 4 Spielregeln; Erklär-Session: 50–400 USD/Monat realistisch, Payoneer, AT-Steuer-Hinweis
 
 - [Kein Downgrade ohne Parität](feedback-kein-downgrade-paritaet.md) — 11.09.+12.09. scharf korrigiert: Gratis-Varianten NIE als gleichwertig verkaufen — erst Fähigkeits-Matrix per Code-Grep; VOR Technik-Empfehlungen im Projekt nach existierenden Modell-Analysen greppen (SPRACHASSISTENT_MARKTFUEHRER_ANALYSE/ARCHITEKTUR: M1 faster-whisper, KEIN Apple-Speech-Primär, kein tiny); er hat 6 Gemini-API-Keys als Ressource
@@ -1312,6 +1314,27 @@ Projektlisten-Tool: `python3 ~/.claude/tools/projects.py` — kuratierte Top-10-
 **Update 08.09. II (Atlas-Details + Prompt-Feedback):** Neue Kanonische Pfade von Sascha: alle Files `/Users/saschalagler/Desktop/Coworkspace_Ich/atlas + pliability`, Master `…/atlas + pliability/ATLAS_MASTER` UND `/Users/saschalagler/ATLAS_MASTER`; Deploy-Repo `~/cali-coach-atlas-final`. Vorherige Atlas-Session: sess_d4dc6589-a85c-41e6-9c70-94b6ea6e63e3 (Cline-Code/ZCode, Provider cline-pass/glm-5.3-flash, 89.205k Tokens, $1.01) — dort: +156/−5 uncommittete Changes in firebase.json (Cache-Control-Header: index.html no-cache, manifest no-cache, /assets/** immutable), Thema „iOS 27 Berechtigungen" + „Cline Code App fixen". 10h-Live-Blockade immer noch ohne benannte Root Cause. **Feedback**: Sascha will bei Übergaben den fertigen Copy-Paste-PROMPT (einfach, ohne Erklär-Prosa) — „was redest du, gib mir einfach den prompt".
 
 Verwandt: [[google-cloud-genai-credit]]
+
+## antigravity-physio-assistent
+
+---
+name: antigravity-physio-assistent
+description: Antigravity-IDE „3d Körperfluss / Physio Assistant Workflow" —
+  12.09. Crash-Diagnose (cloud-cli-execution MCP = Forbidden durch nächtlichen
+  DNS-Ausfall), Kontext Physio-Gem Adelina/Simon
+metadata:
+  node_type: memory
+  type: project
+  originSessionId: sess_f82a1756-a7b8-4b62-a4f2-2773f3c818b2
+---
+
+Sascha nutzt die **Google Antigravity IDE** (Config unter `~/Library/Application Support/Antigravity/`) für den Workflow „3d Körperfluss / Physio Assistant" — ein Gemini-Gem „Physio - Assistent" zur Reha-Planung (Patientin **Adelina Sollböck** + **Simon**: Nacken/HWS > Hüfte/ISG > Fuß/Plantarfaszie; 5-stufiger Evaluierungsplan, 4-Spalten-Übungstabellen, A4-Handouts, M4-BLUF-Stil).
+
+**12.09. Crash-Diagnose (gelöst):** „Agent execution terminated due to error" jede Runde — Root Cause: MCP-Server `cloud-cli-execution` (Homebrew Cask `gcloud-cli` 583.0.0, Konto koerperfluss@gmail.com) bekam `tools/list: Forbidden`, weil **um 03:41 DNS `oauth2.googleapis.com` nicht auflösbar** (gleiche DNS/Hotspot-Problematik wie [[zcode-hub-1006-netz-fix]]) → kein OAuth-Token → 403. Netz + `gcloud auth print-access-token` (Token-Refresh) live wieder OK → Fix = Agent-Fenster neu öffnen bzw. Retry; falls wieder Forbidden: MCP-Panel → Reconnect/Re-Auth.
+
+Antigravity MCP-Server stecken NICHT in sichtbaren JSON-Configs auf Disk (nur protobuf state.vscdb) — Diagnose läuft über gcloud-Logs in `~/.config/gcloud/logs/`.
+
+Verwandt: [[active-projects-focus]] (Körperfluss), [[google-cloud-genai-credit]] (gleicher Google-Account).
 
 ## atlas-stand-2026-09-08
 
