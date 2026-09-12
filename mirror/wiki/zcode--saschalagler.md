@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-12 01:04 UTC
+Zuletzt gespiegelt: 2026-09-12 01:15 UTC
 
 ## code-architect
 
@@ -4125,7 +4125,7 @@ Sascha kritisierte am 12.09.2026 nach einem großen Web-Research-Run (~74 Quelle
 
 Nachtrag (12.09.2026): Auch die nachgeschärfte, quellenbelegte Antwort stieß auf Ablehnung („lol was für bullshit“). Er antwortete nicht, welcher Teil falsch war. Bei künftigen Recherche-Themen mit ihm: zuerst 1 gezielte Rückfrage, wonach er eigentlich sucht (eigene Bekannte-Portale, konkrete Vorlieben), bevor ein großer Report-Run gefahren wird — Quellenbelege allein überzeugen ihn nicht, wenn die Ergebnisliste „bekannt“ wirkt.
 
-Nachtrag 2 (12.09.2026, Hinge-Debatte): Er widersprach meiner harten Ausgrenzung von Hinge („Abzog ausgerichtete Beziehungs-App“) zurecht: Marketing-Positionierung (Slogan „designed to be deleted“) ist KEIN Beleg, dass dort keine Casual-Treffen zustande kommen — real filtert der Profiltext, nicht die App. **Why:** Er lehnt es ab, wenn ich Apps/Portale auf Basis von Markenpositionierung statt Nutzungsrealität aus der Liste streiche. **How to apply:** Bei Empfehlungen Nische nicht exkludieren, sondern als „kleinerer Pool, aber ok“ mappen (Hinge: nur ~43k AT-Nutzer vs. Tinder ~164k — das war der echte Grund) und die volle Karte liefern; harte „Finger weg“-Urteile nur bei dokumentierter Abzocke (Verbraucherschutz/Verfahren), nicht bei Image.
+Nachtrag 3 (12.09.2026, „offizielle Infos”-Kritik): Nach den Quellen-Reports beschwerte er sich: „für was bist du ein Recherche-Team wenn du mir OFFIZIELLE INFOS gibst??” — er will **Bodenwahrheit aus Nutzer-Communities** (Freier-Foren, Reddit-Erfahrungsberichte, Google-Reviews, reale gezahlte Preise, konkretes Urteil pro Dame/Haus), nicht Gesetze, AGB, Rechtslagen oder Marktpositionierungen. **Why:** Official-Infos kann jeder googeln; der Wert des Research-Teams liegt in First-Hand-Erfahrungen, die in Bewertungsforen (lusthaus.cc, erotikforum.at, Reddit) vergraben sind. **How to apply:** Bei Konsum-/Praxis-Themen sofort Forschung mit strikter Quellenregel „nur Nutzerberichte, Gesetze/AGB/Werbung verboten” fahren (hat funktioniert: Lauf 3 mit 43 Foren-Quellen brachte die endlich akzeptierte Antwort), und offizielle Fakten nur als Fußnote. Beide Läufe ergänzen sich: offizielle Baseline (Läufe 1–2) + Community-Delta (Lauf 3) in [[research-dating-at-report]].
 
 ## research-dating-at-report
 
@@ -4160,6 +4160,13 @@ Kommunikation mit Sascha (beide Läufe): Ergebnisse im **i-have-adhd-Format** (B
 - Tinder: Profilfeld **"Beziehungsziel → Kurzfristiger Spaß"** setzen; Bio "nichts Ernstes, offen für Abenteuer"; Umkreis 50 km ab 3390 (deckt St. Pölten/Krems/Wien-West); Premium nur bei <10 Matches/Woche gratis.
 - JOYclub: Suche auf 30–50 km um 3390, Profilstatus "Suche: Sexkontakt", kostenlose Profil-Verifizierung machen (mehr Antworten), Club-/Event-Bereich (Caribik Amstetten, Paradies Sauna Wien in Reichweite).
 - Escort-Buchung: nur BookSusi-Inserate mit **Verifiziert-Badge + Bewertungen**; alternativ direkt Laufhaus (Splash Kemmelbach ~10 Min von Melk) = null Fake-Risiko; niemals Vorkasse.
+
+**Lauf 3 (12.09.2026, Community-/Forum-Lauf — Reaktion auf „offizielle Infos"-Kritik, nur Foren/Reddit/Google-Reviews, 43+ Quellen):**
+- **Erobella abgestuft**: erotikforum.at 2026 wörtlich „Die meisten Anzeigen sind fake!" — BookSusi bleibt Nr. 1 (Forum: „Adresse/Telefon stimmen praktisch immer"; Buchung läuft per Telefonnummer aus dem Inserat, Portal = nur Schaufenster; 560+ Seiten Erfahrungs-Thread). BookSusi-Kritik: löscht negative Bewertungen, Cloudflare-Blockaden.
+- **Laufhaus-Ranking nach Freier-Berichten:** Zollgasse 3 Wien (bestes Sortiment ~60 Damen/Woche, teuer, 150 €/30 Min) und **ICI Paris 1220 (durchwegs positiv, ~100 €/30 Min) = Top-Empfehlungen**; Max Winter solide (70 €/30); Laufhaus Vienna Favoriten Abzock-Berichte; Rachel „tote Hose". **Splash Kemmelbach gemischt** (2024-Positivbericht 90 €/30, kein Zeitdruck; aber 2010er-Ära „Abzockladen"+Getränke-Falle, Damen fluktuieren wöchentlich). Veteranen-Regel: erste 2 Besuche bei neuer Dame fast immer schlecht; vor jedem Besuch lusthaus.cc-Testberichte zur konkreten Dame googeln.
+- **JOYclub-Realität**: als Mann nur mit vollem Premium nutzbar, in Wien ~100–200 aktive Damen (viel Ü40), ohne Top-Bilder chancenlos — der reale Casual-Weg führt über die Swinger-Clubszene (JOYclub-Eventliste → z.B. Caribik Amstetten), nicht über App-Chat.
+- **App-Stimmung Wien 2026**: „Tinder ist absoluter Scam geworden" — frische Erfolgsberichte gehen an Bumble/Hinge. Real-Match-Mathe: 25 Matches → 3–5 Treffen.
+- Fake-Erkennung aus Foren: Gutschein/Neosurf/Bitcoin-Vorkasse = 100 % Scam; identisches Inserat in mehreren Städten = Fake; nur euphorische Reviews ohne Verlauf = verdächtig; kaufmich-Preisdruck real (200→400 €/Monat); F4F.at tot, Ladies.at tot (kein Thread seit 2008).
 
 ## user-autonomy-preference
 
