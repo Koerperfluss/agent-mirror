@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-12 11:32 UTC
+Zuletzt gespiegelt: 2026-09-12 11:43 UTC
 
 ## code-architect
 
@@ -1220,6 +1220,8 @@ Bei Fachfragen (z. B. Trainings-Übungen) fordert er explizit „clinical reason
 
 # Memory Index
 
+- [OneForma-AGB-Prüfung](oneforma-agb-pruefung.md) — 12.09. Live-Docs verifiziert: Bildrechte unbefristet, 2500-USD-Deckel, King-County-Gerichtsstand (Arbitration nur US), 3-Monats-Zahlfrist, KI-Verbot; Korrekturen: gdpr@oneforma.com, Schiedsklausel US-only; oneforma.com-Docs laden nur via web_reader, nicht WebFetch
+
 - [Kein Downgrade ohne Parität](feedback-kein-downgrade-paritaet.md) — 11.09.+12.09. scharf korrigiert: Gratis-Varianten NIE als gleichwertig verkaufen — erst Fähigkeits-Matrix per Code-Grep; VOR Technik-Empfehlungen im Projekt nach existierenden Modell-Analysen greppen (SPRACHASSISTENT_MARKTFUEHRER_ANALYSE/ARCHITEKTUR: M1 faster-whisper, KEIN Apple-Speech-Primär, kein tiny); er hat 6 Gemini-API-Keys als Ressource
 
 - [/standardskill Boot-Ablauf](standardskill-boot-ablauf.md) — Command lädt STANDARD-SKILLS.md + skill-routing.md und verlangt verbindliche Regel-Bestätigung als Tabelle; danach Regelverstoß = sofort selbst benennen + korrigieren
@@ -1899,6 +1901,34 @@ macOS 27 „Golden Gate" Developer Beta — Stand 08.09.2026 (Sascha ist Entwick
 - **Nicht Beta-Schuld:** Die echten Ausfälle (LOKI-Kernel 8010, LegalOps 7070, Kanban) waren laut Audit VOR der Beta da (F-1-Watchdog fehlte); F-1 (Kernel läuft) + F-2 (Home-Git-Repo → ~/.git.DISABLED-20260907) erledigt.
 - **Cline-Sprache:** `~/.cline/rules/DE.md` angelegt (Antworten immer Deutsch, Code original).
 - iPhone-Dev-Seite ist komplett: siehe [[atlas-stand-2026-09-08]]. [[mac-setup-16gb-m4]]
+
+## oneforma-agb-pruefung
+
+---
+name: oneforma-agb-pruefung
+description: 12.09. OneForma/Centific-AGB live verifiziert — AT-kritische
+  Klauseln (Bildrechte, 2500-USD-Deckel, King-County-Gerichtsstand,
+  3-Monats-Frist, KI-Verbot) + 2 Korrekturen zur Nutzer-Analyse
+metadata:
+  node_type: memory
+  type: project
+  originSessionId: sess_ada7c3e9-0dea-41df-b07e-18cd66d5ed96
+---
+
+OneForma (Centific Global Solutions Inc., Redmond/WA) AGB-Prüfung 12.09.2026: Alle drei Live-Docs von oneforma.com geladen und gegen Saschas Zusammenfassung verifiziert — **Analyse korrekt**, alle kritischen Klauseln wörtlich bestätigt.
+
+**Verifizierte Klauseln (T&C geändert 02.08.2026, Privacy 16.06.2025, GDPR 12.07.2023):**
+- Bild-/Namensrechte unbefristet „in jeder Form" + Voll-Schadlosstellung (in AT kaum durchsetzbar: § 78 UrhG, KUG, § 879 ABGB)
+- Haftungsdeckel: geringeres aus 2.500 USD / Vergütung letzte 6 Monate
+- Gerichtsstand King County/WA; Binding Arbitration gilt textlich NUR für „Services performed within the United States and its territories" → bei Leistung aus Österreich draußen aus der Schiedsklausel, aber im King-County-Gerichtsstand gefangen
+- Unterzahlungen binnen 3 Monaten melden, sonst Verzicht; Zahlungsstreit 5 Werktage, „final and binding" nur bei good faith
+- KI-GPT-Inhalte ohne explizite Projektfreigabe = Betrug → sofortige Kündigung (für Sascha als AI-Tester kritisch)
+- IP = work made for hire, Moral-Rights-Verzicht (in AT unverzichtbar, § 20 UrhG)
+- DSGVO-Widerspruch: 2 Verantwortliche — Privacy Policy: Centific Inc. Redmond; GDPR-Klausel: Centific Global Solutions S.L.U. Barcelona (CIF B61227138), Server USA, SCCs + EU-US Privacy Framework, Aufbewahrung 5 J. Profil / 10 J. Steuerdaten
+
+**2 Korrekturen zur Sascha-Analyse:** (1) DSGVO-Kontakt = gdpr@oneforma.com (AEPD), NICHT data_protection@centific.com (nur US-Policy) — bei Rechteausübung an BEIDE schreiben. (2) Schiedsklausel-Scope s.o.
+
+Kontext: In-app-Dokumente im my.oneforma.com-Flow luden nicht („Vereinbarungen konnten nicht geladen werden", Checkboxen disabled) — Live-Versionen auf oneforma.com sind verbindlich; Zustimmung wird mit Zeitstempel+Version protokolliert. Methodik-Note: www.oneforma.com/terms-and-conditions/ & Co. laden per WebFetch wie Marketing-Seite — vollständigen Text via web_reader holen.
 
 ## patrick-physiotherapie-sbp
 
