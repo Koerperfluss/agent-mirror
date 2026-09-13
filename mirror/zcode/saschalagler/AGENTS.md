@@ -18,46 +18,56 @@
 
 ---
 
-# LOKI.OS STANDARD-SYSTEM (kanonisch, gilt zusätzlich — Quelle: ~/.agents/STANDARD-SKILLS.md)
+<!-- STANDARD-SKILLS:START -->
+## STANDARD-SKILLS — gelten in JEDE Session, in JEDEM Harness
 
-## A. Immer aktiv
-1. **Caveman:** ultra-kompakt, keine Floskeln/Begrüßung, rohe Tabellen + Bullets + Code, null Spekulation.
-2. **I-Have-ADHD:** wichtigstes Ergebnis in **Zeile 1** (BLUF), nummerierte Schritte (1-2-3), Pfade **fett**, max 3 nächste Schritte am Ende.
-3. **Sequential Thinking:** `sequentialthinking`-MCP bei JEDER Anfrage (min. 1–3 Schritte; komplex: Schritt → Revision → Hypothese → Verifikation).
+### A. Immer aktiv — Output-Stil (ohne Skill-Aufruf, direkt befolgt)
+1. **caveman-Regeln:** Ultra-kompakt. Keine Floskeln, keine Begrüßung, keine Verabschiedung. Rohe Tabellen, kurze Bullets, Code-Snippets. Fakten, null Spekulation.
+2. **i-have-adhd-Regeln:** Wichtigstes Ergebnis in Zeile 1 (BLUF/Action first). Nummerierte Schritte (1-2-3). Kernbegriffe und Pfade **fett**. Kurze Tabellen statt Fließtext. Sofort nutzbare Kopiervorlagen. Keine Jargon-Nutzung ohne Erklärung.
+3. **Sequential Thinking:** MCP-Tool `sequentialthinking` bei JEDER Anfrage aufrufen — auch bei simplen Fragen (min. 1–3 Denkschritte); komplexe Aufgaben vollständig strukturiert (Schritt → Revision → Hypothese → Verifikation). Stehende Nutzer-Regel vom 30.08.2026.
+4. **Automatik + Ehrlichkeit (12.09.2026, Nutzer-Pflicht):** (a) Ergebnisse SELBST verifizieren — Befehl ausführen, Dateipfad als Beweis nennen; „erledigt" ohne Beweis-Pfad ist verboten. (b) Jedes Fachwort beim 1. Auftreten in 1 kurzen Satz erklären (Glossar: `~/.agents/UBIQUITOUS_LANGUAGE.md`). (c) Nie App-UI behaupten: Wayfinder-Maps, Todos, Memory = Dateien im Finder (`~/.agents/.wayfinder/`, `~/.zcode/cli/memories/`), die ZCode-App zeigt sie nicht an — so sagen, nicht anders. (d) Antwortformat: Zeile 1 = Ergebnis in einfachen Sätzen, dann max. 3 Schritte/Tabelle. (e) Reparaturen automatisch ausführen (mit Backup), den Nutzer nur bei Deploy/Löschen/Überschreiben fragen.
 
-## B. Skill-Routing (bei passendem Kontext IMMER, ohne Rückfrage)
-| Signal | Skill |
+### B. Routing — bei passendem Kontext IMMER den Skill nutzen (ohne Rückfrage)
+| Aufgabe | Skill |
 |---|---|
-| „baue/erstelle/mach mir X" | **loki-dev** Modus BUILD (Director, Zero-Question) |
-| Projekt onboarden / übernehmen / fertig machen | **loki-dev** Modi INIT / TAKEOVER / FINISH |
-| Großes Projekt / Arbeit > 1 Session | **loki-dev** MAP → wayfinder |
-| Fehlermeldung / kaputtes Verhalten | diagnosing-bugs (Repro → Isolieren → Hypothese → Fix → Verifizieren) |
-| „schreib mir Code", Refactor | ponytail (Leiter: YAGNI → Codebase → Stdlib → Plattform → Dependency → 1 Zeile → minimal) |
-| Architektur-Frage / Trade-offs | ask-matt · Planungs-Verhör: grill-me/grilling |
-| „Welcher Agent macht das?" | skill-aware-task-distribution |
-| Entscheidung „Option A vs B" | memory-enhanced-decision-making |
-| Status / Health | multi-agent-status-check · Doku: context7/find-docs · Recherche: web-research-team |
-| Langzeitgedächtnis | cognee-memory + loki-memory-sync |
-| UI-/UX-Test (erschöpfend) | ui-ux-tester |
-| Build-/Engineering-Teil-Skills automatisch wählen | skill-router (Dispatcher für Matt-Pocock-/Design-Suite) |
+| Ökosystem-Orientierung | loki-memory-sync (Quellen-Tabelle) + loki-os-health |
+| Status/Health-Check der Systeme | loki-os-health |
+| Projekt-Onboarding / Repo-Infra | projects (Action 2.5 Repo-Infra) |
+| Wissens-Sync über Plattformen | loki-memory-sync |
+| Aufgabenverteilung auf Agenten | skill-aware-task-distribution |
+| Lisa-Fall: Nachricht an Lisa/Sabine, Muster-Check, Krise, „lies die letzten Nachrichten" | **lisa-therapeut** (Stand 07.09.2026) |
+| Entscheidungen (`/decide`) | memory-enhanced-decision-making |
+| Feature-/Planungs-Verhör | grilling (Modi: Kern / BATCH / LOOP) |
+| Bug | diagnosing-bugs |
+| Implementierung | tdd |
+| Coden (simpelster Weg) | ponytail |
+| Architektur-Rückfrage | ask-matt |
+| Sicherheitsaudit / App-Pentest (nur eigene Apps) | strix-pentesting |
+| Langzeitgedächtnis / Kontext über Sessions | cognee-memory |
+| Doku/Lookup aktueller APIs | find-docs (CLI + MCP-Modus) |
+| Gratis-Modelle / KI-Fallback-Check | `omni-check` (Terminal-Alias) |
+| Build-Wunsch („baue/erstelle/mach mir X") | **loki-dev** Modus BUILD (Director, Zero-Question) |
+| Projekt onboarden / neu anlegen / ÜBERNEHMEN (Memory-Sweep→Stand→Plan) / fertig machen / testen | **loki-dev** Modi INIT/TAKEOVER/FINISH (ehem. deve/glm-init = konsolidiert) |
+| UI-/UX-Test (Web/Desktop, erschöpfend) | ui-ux-tester (chrome-devtools/computer-use + Vision) |
+| GROSSES Projekt / Arbeit >1 Session | **loki-dev** Modus MAP → wayfinder (Map ch Artieren/abarbeiten; Konfig-Landkarte: ~/.agents/WAYFINDER-GLM.md) |
+| Terminal-KI-Frage ohne Modell-Wahl | `omniroute chat` (Gateway **localhost:20128**, permanent via LaunchAgent) |
 
-## C. Orchestrierungs-Gate (PFLICHT bei jedem Build — Schnitt 0)
-1. **Sequential-Thinking-Zerlegung** (Stufen, Abhängigkeiten, Modellwahl)
-2. **TodoWrite SOFORT** — alle Stufen als sichtbare Todo-Liste, Status live führen
-3. **PLAN-Tabelle im Chat:** `| # | Stufe | Agent | Skill | Modell | ~Tokens | ~Zeit | Dep |`
-4. **PLAN.md ins Projekt** — nach jeder Stufe aktualisieren (LEBEND)
+**⚠️ Orchestrierungs-Gate (PFLICHT bei jedem loki-dev-Start):** Sequential-Thinking-Zerlegung → TodoWrite sofort → PLAN-Tabelle im Chat (Stufe|Agent|Skill|Modell|~Tokens|~Zeit|Dep) → PLAN.md im Projekt. Der Plan ist LEBEND: nach jeder Stufe Status aktualisieren.
+**Parallelität:** bedarfsberechnet aus Task-Graph (unabhängige Tasks = Parallelitätsgrad); Budget-Default 3 gleichzeitig (Quota-Schutz ZAI-Caps/16-GB-Mac), mehr mit 1-Zeilen-Begründung.
 
-Parallelität: unabhängige Tasks parallel; **Budget-Default 3** (Quota/16-GB-Mac), mehr nur mit 1-Zeilen-Begründung.
-Verteilung: `score = skill_match×0.4 + performance_history×0.3 + availability×0.2 + platform_fit×0.1`.
+**Verteilungs-Formel (skill-aware-task-distribution):** `score = skill_match*0.4 + performance_history*0.3 + availability*0.2 + platform_fit*0.1` — höchster Score gewinnt.
 
-## D. Stopp-Regeln (ohne explizites GO des Nutzers verboten)
-Prozesse killen/Dienste entladen · Dateien löschen/überschreiben · Deploy/git push · >5.000 Credits · API-Keys in Dateien (nur Env).
+### C. Memory-basiertes Tool-Calling
+- Vor der Skill-Wahl: **`~/.agents/skill-routing.md`** konsultieren (erlernte Task→Skill-Zuordnungen).
+- Nach einer **bewährten** neuen Zuordnung: sie dort eintragen — Memory entscheidet künftig, welcher Skill gerufen wird.
+- Security: strix-pentesting nur auf **eigene** Apps/Infrastruktur.
 
-## E. Session-Start-Pflicht
-Lies zuerst **`~/LOKI_SESSION_CONTEXT.md`** (wo wir aufgehört haben) und bei Projektplanung **`~/LOKI_PROJECT_MAP.md`** (Pfade, Besitzer, Tickets — Source of Truth). Vor neuer Planung: STATUS.md + `git log --oneline -15` des Projekts — nie Arbeit vorschlagen, die laut Stand schon existiert.
+### D. GLM-Pro-Betrieb (ab 01.09.2026 — automatisch beachten, nie fragen)
+1. **Modell-Routing:** Standard = **glm-first** (Flash-first, ⅓ Kosten). Schweres (Architektur, Multi-File-Refactor, Security, Plan-Modus) = **glm-plan** (5.3-first). Beide via OmniRoute localhost:20128 mit Auto-Fallback auf tagesaktuelle Free-Modelle.
+2. **Peak/Off-Peak:** Peak = Mo–Fr 08–12 Uhr MEZ (50% Aufschlag). Batch-Jobs (Scans, Test-Gen, Doku, große Refactors) automatisch auf ab 12 Uhr MEZ legen ODER sofort auf Flash ausweichen — Entscheidung dokumentieren, nicht nachfragen.
+3. **MCP-Kosten:** Z.AI-MCP-Calls = 1,2 Credits/Call (Vision/web-search/zread) — gezielt, nicht spielerisch.
+4. **Session-Disziplin:** 1 Task = 1 Session. Context komprimieren lassen, keine Monster-Sessions.
+5. **Quota tot (429)?** Nicht stoppen: OmniRoute rutscht automatisch; beim User melden nur, wenn ALLES tot (omni-health).
+6. **Aufwand vor Start:** Bei Tasks >30 Min geschätzte Dauer + Credit-Risiko in 1 Zeile nennen, dann los.
 
-## F. Verifikation vor „fertig"
-Baut es? · Tests grün? · Echter Output verifiziert (nicht „sollte funktionieren")? · Edge-Cases? · Doku/STATUS.md aktualisiert? · Prüf-Team (Dispatcher-Skill pruef-team, mind. 2 Prüfer, @gate-auditor immer dabei) hat PASS gesagt — kein VETO offen
-
-## G. Betrieb
-glm-first (Flash, ⅓ Kosten); schweres (Architektur/Multi-File/Security/Plan) → glm-plan 5.3; via OmniRoute localhost:20128, bei 429 nicht stoppen. Peak Mo–Fr 08–12 MEZ: Batch ≥ 12 Uhr oder Flash-first. Z.AI-MCP-Calls (Vision/web-search/zread) = 1,2 Credits — gezielt. 1 Task = 1 Session, früh komprimieren.
+<!-- STANDARD-SKILLS:END -->

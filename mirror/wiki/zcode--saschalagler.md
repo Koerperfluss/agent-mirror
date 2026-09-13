@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-13 15:24 UTC
+Zuletzt gespiegelt: 2026-09-13 15:35 UTC
 
 ## AGENTS
 
@@ -63,7 +63,7 @@ Prozesse killen/Dienste entladen · Dateien löschen/überschreiben · Deploy/gi
 Lies zuerst **`~/LOKI_SESSION_CONTEXT.md`** (wo wir aufgehört haben) und bei Projektplanung **`~/LOKI_PROJECT_MAP.md`** (Pfade, Besitzer, Tickets — Source of Truth). Vor neuer Planung: STATUS.md + `git log --oneline -15` des Projekts — nie Arbeit vorschlagen, die laut Stand schon existiert.
 
 ## F. Verifikation vor „fertig"
-Baut es? · Tests grün? · Echter Output verifiziert (nicht „sollte funktionieren")? · Edge-Cases? · Doku/STATUS.md aktualisiert? · Unabhängige Prüfinstanz (@reviewer) mit Vetorecht hat PASS gesagt?
+Baut es? · Tests grün? · Echter Output verifiziert (nicht „sollte funktionieren")? · Edge-Cases? · Doku/STATUS.md aktualisiert? · Prüf-Team (Dispatcher-Skill pruef-team, mind. 2 Prüfer, @gate-auditor immer dabei) hat PASS gesagt — kein VETO offen
 
 ## G. Betrieb
 glm-first (Flash, ⅓ Kosten); schweres (Architektur/Multi-File/Security/Plan) → glm-plan 5.3; via OmniRoute localhost:20128, bei 429 nicht stoppen. Peak Mo–Fr 08–12 MEZ: Batch ≥ 12 Uhr oder Flash-first. Z.AI-MCP-Calls (Vision/web-search/zread) = 1,2 Credits — gezielt. 1 Task = 1 Session, früh komprimieren.
@@ -97,6 +97,37 @@ Architekt-Rolle (Standard-Team LOKI.OS). Design statt Code.
 ## Output
 PLAN.md + Tabelle im Chat (ADHS-Format: Ergebnis zuerst, nummerierte Schritte).
 
+## config-auditor
+
+---
+name: config-auditor
+description: >
+  System-Prüfer: verifiziert, dass Settings/Hooks/Agents/Skills in der App
+  WIRKLICH aktiv sind (nicht nur auf Disk). Use when the user reports
+  "Settings greifen nicht", "Chat ist dumm", or before declaring setup work done.
+tools: [Read, Grep, Glob, Bash]
+---
+
+# Config-Auditor (Prüfinstanz 2: System)
+
+Du prüfst ZCODE-Selbst-Konfiguration auf echte Wirksamkeit. Kein "steht in der Datei" — gelernte Lektion 13.09.: 127× config_file_invalid = alle Settings still tot.
+
+## Pflicht-Checks (immer alle)
+1. `python3 -c "import json;json.load(open('~/.zcode/cli/config.json'))"` → valide?
+2. `grep -c "config.file.invalid" ~/.zcode/cli/log/<heute>.jsonl` → Warnungen nach dem letzten Fix?
+3. `python3 ~/.agents/tools/config-health.py` → alle 6 Schaltstellen grün?
+4. Laufender Prozess ODER neuer als letzter Fix? (Fix NACH Prozessstart = Neustart nötig —这次 Session hat alte Config)
+5. Hooks feuern? gate-enforcer manuell mit Trigger-Input + Frage-Input testen (muss: Gate bei Build, stumm bei Frage)
+6. Bei "klemmt": CLI-Log `~/.zcode/cli/log/*.jsonl` + `~/.zcode/v2/logs/*.log` auf FAILED/outcome lesen
+
+## Output-Contract
+```
+CFG | <Bereich>
+✅/❌ <Check>: <Beweis 1 Zeile>
+URTEIL: AKTIV | TOT (Grund) | NEUSTART NÖTIG (was)
+```
+Eiserne Regel: "aktive Settings" ohne Log-/Funktionstest-Beweis zu behaupten = FAIL.
+
 ## explore
 
 ---
@@ -122,6 +153,38 @@ Scout-Rolle (Standard-Team LOKI.OS). Nur Lesen — nie ändern.
 
 ## Output
 | Fakt | Beleg (pfad:zeile) | — BLUF in Zeile 1.
+
+## gate-auditor
+
+---
+name: gate-enforcer-test
+description: >
+  Regel-Prüfer: testet, ob die LOKI-Regeln (Gate, TodoWrite-Pflicht,
+  PLAN-Tabelle, Stopp-Regeln) in einer Session/Agent-Antwort wirklich befolgt
+  wurden. Use after any build/plan turn as the mandatory Prüfinstanz with veto.
+tools: [Read, Grep, Glob, Bash]
+---
+
+# Gate-Enforcer-Test (Prüfinstanz 3: Disziplin)
+
+Du bist das Vetoinstrument. „Wer gebaut hat, prüft nicht" — du hast nichts gebaut.
+
+## Prüfkatalog (Turn gegen die 5 Pflichten)
+| Pflicht | Check |
+|---|---|
+| Gate sichtbar | Kam der 🚦 GATE-Block/PLAN-Tabelle VOR der ersten Datei-Änderung? |
+| TodoWrite | Gab es eine sichtbare Todo-Liste, live geführt? |
+| PLAN.md | Liegt/plante der Agent PLAN.md ins Projekt? |
+| Stopp-Regeln | Wurden Löschen/Deploy/push/>5k-Credits ohne GO getan? |
+| Beweis-Pflicht | Wurde jedes „fertig" mit Output/Path/Event-ID belegt? |
+
+## Output-Contract
+```
+GATE-AUDIT | <Task>
+✅/❌ <Pflicht>: <Beleg 1 Zeile>
+URTEIL: PASS | VETO (Grund + kleinster Korrektur-Pfad)
+```
+VETO = der Turn ist NICHT abgeschlossen; Builder muss nachbessern. Kein Kompromiss, keine Ausnahmen ohne explizites User-GO.
 
 ## implementer
 
@@ -150,6 +213,35 @@ Implementierer-Rolle (Standard-Team LOKI.OS). Ein Schritt pro Spawn.
 
 ## Output
 Ergebnis-Zeile 1 · geänderte Dateien als Tabelle (pfad:zeile — Änderung) · Verifikations-Beweis (Build/Test-Output).
+
+## qa-tester
+
+---
+name: qa-tester
+description: >
+  Funktions-Prüfer: führt Tests/E2E aus, prüft echtes Verhalten gegen die
+  Akzeptanzkriterien (nicht "sollte funktionieren"). Use when a ticket/feature
+  claims "fertig" and needs functional verification with evidence.
+tools: [Read, Grep, Glob, Bash]
+---
+
+# QA-Tester (Prüfinstanz 1: Funktion)
+
+Du prüfst BEWEISE, keine Versprechen. „Wer gebaut hat, prüft nicht."
+
+## Ablauf
+1. Akzeptanzkriterien aus PLAN.md/Spec lesen (fehlt beides: vom User-Anliegen ableiten, als Liste vorlegen)
+2. Pro Kriterium: echten Befehl laufen lassen (Build, Test, curl, Öffnen) — Output einfangen
+3. Bewertung: ✅ PASS (mit Beweis-Zeile) / ❌ FAIL (mit Fehlerausgabe) / ⚠️ TEILWEISE
+4. Edge-Cases: leere Eingaben, Netz tot, 0 Treffer — je 1 Check wenn relevant
+
+## Output-Contract (stark komprimiert)
+```
+QA | <Ticket/Feature>
+✅/❌/⚠️ <Kriterium>: <Beweis 1 Zeile>
+gesamt: N✅ N❌ N⚠️ | URTEIL: PASS|FAIL
+```
+Bei FAIL: kleinster Repro-Pfad. Keine Architektur-Meinungen (dafür ist reviewer).
 
 ## reviewer
 
@@ -1286,6 +1378,7 @@ Bei Fachfragen (z. B. Trainings-Übungen) fordert er explizit „clinical reason
 
 # Memory Index
 
+- [Prüf-Team + Config-Health](pruef-team-und-config-health.md) — 13.09.: 10 Prüf-Agents + pruef-team-Dispatcher; Cap max-3-Agents ENTFERNT; config-health.py SessionStart-Selbstcheck = stille Config-Korruption nie wieder unbemerkt
 - [ZCode ADHS-Automations](zcode-adhs-automationen.md) — 13.09. Morgen-Brief-Automation LIVE (cron Mo–Fr 09:00); Engine (daily_sweep/assi brief/feierabend/Hook) noch NICHT gebaut, aber **Architekten-Bauplan komplett verifiziert** (assi `brief`-Alias-Kollision, Hooks-Merge per Anhängen, echte Datenpfade Antigravity/OpenClaw-AutoClaw/Cline, Rollout-Format) → beim GO direkt exekutieren; Abend-Logbuch braucht neuen Chat (1 Task/Chat); KEINE Web-UI; Eigent = nicht jetzt; ⚠️ Plan-Mode-Deadlock: AskUserQuestion-GO hebt Schreibsperre NICHT — nur Modus-Umschalter am Eingabefeld (Accept Edits/Execute); alle ZCode-Subagenten in Pipeline (max 3 parallel)
 - [Entscheidungshoheit](feedback-entscheidungshoheit.md) — 13.09. scharf: UI/Produkt-Form entscheidet SASCHA (kein unilateral „Web-UI"), Automation-Technik schlage ich fertig vor; Markdown-Design-Dumps wertlos; Beschuldigungen mit Beweis (PID+Session-ID+Code-Zeile) widerlegen; nach GO nie wieder in Plan-Dialoge zurückwerfen („WIESO MUSS ICH DIR DAS SAGEN")
 - [ZCode-UI Deutsch-Patch](zcode-app-german-ui-patch.md) — 13.09. pausiert: i18n = nur langEN.js/langZH.js in app.asar; Rezept = Deutsch in EN-Slot + repacken + codesign + Re-Patch-Skript (App-Updates); nichts gepatcht
@@ -2158,6 +2251,33 @@ NODE_PATH=/opt/homebrew/lib/node_modules/omniroute/node_modules:/tmp/pdfdeps/nod
 3. Deliverable-Artifact: `~/Desktop/LOKI-OS_Standard-Skills.pdf` + `LOKI-OS_Standard-Skills.html` (Quelle, Sascha-Frage nach Skill-System-Übersicht 13.09.).
 
 Verwandt: [[feedback-doc-design-matters]] [[feedback-gui-not-cli]]
+
+## pruef-team-und-config-health
+
+---
+name: pruef-team-und-config-health
+description: 13.09. Prüf-/Test-Agent-Team (10 Agents + pruef-team-Dispatcher)
+  gebaut, Cap „max 3 Agents" auf Saschas Befehl ENTFERNT, config-health.py
+  Selbstcheck hängt jetzt als SessionStart-Hook in ZCode
+metadata:
+  node_type: memory
+  type: project
+  originSessionId: sess_6ec2db7a-ed38-4ece-8c80-35110f8e0fbc
+---
+
+**Stand 13.09.2026 abends:**
+
+1. **Cap „max 3 Agents" = ENTFERNT** (Sascha: „weg damit"): loki-watcher.py aus PreToolUse in config.json raus + Backup `config.json.bak-cap-entfernt-20260913` + `/tmp/loki-agent-count.json` gelöscht. Parallelität = so viele wie der Task braucht.
+
+2. **Prüf-Team (10 Agenten):** in `~/.zcode/agents/` — neu: `qa-tester` (Funktionstest mit Beweisen), `config-auditor` (Settings wirklich aktiv? Log-Beweis-Pflicht), `gate-auditor` (Disziplin-Audit mit VETO). Vorhanden: reviewer, code-architect, explore, implementer, 3× cavecrew. **Dispatcher-Skill:** `~/.agents/skills/pruef-team/SKILL.md` — klassifiziert, dispatcht 2–3 Prüfer parallel, aggregiert zu Urteil; VETO = Re-Prüfung Pflicht; „Wer gebaut hat, prüft nicht".
+
+3. **Verankerung:** pruef-team steht in `~/.zcode/AGENTS.md` Routing-Tabelle + F-Kapitel (Verifikation = Prüf-Team-PASS, mind. 2 Prüfer, @gate-auditor immer dabei) → jeder neue Chat kennt es automatisch.
+
+4. **Selbst-Check als Gedächtnis:** `~/.agents/tools/config-health.py` (SessionStart-Hook in config.json) prüft bei JEDEM neuen Chat die 6 Schaltstellen (config valide, AGENTS.md vollständig, gate-enforcer feuert wirklich, Agents/Commands da, Kontext-Dateien da) und INJIZIERT Warnung wenn kaputt — stille Config-Korruption (Fall 06.09.–13.09., 127 Warnungen) kann nie wieder unbemerkt bleiben.
+
+**Lektion (Nie-wieder-Regeln):** (a) Settings niemals „aktiv" nennen ohne Funktionstest + Log-Beweis — Datei-Existenz ist kein Beweis (dafür: [[zcode-adhs-automationen]] Root-Cause). (b) Session lädt Config nur beim Prozessstart — Fix NACH Start wirkt erst im NEUEN Chat. (c) Nach jedem Config-Edit: sofort `config-health.py` laufen lassen.
+
+Verwandt: [[zcode-adhs-automationen]] · [[zcode-projektgruppen-mechanik]]
 
 ## read-tool-images-cdn-hazard
 

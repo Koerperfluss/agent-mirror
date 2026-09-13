@@ -7,6 +7,7 @@ tags: [spiegel, zcode]
 
 # Memory Index
 
+- [Prüf-Team + Config-Health](pruef-team-und-config-health.md) — 13.09.: 10 Prüf-Agents + pruef-team-Dispatcher; Cap max-3-Agents ENTFERNT; config-health.py SessionStart-Selbstcheck = stille Config-Korruption nie wieder unbemerkt
 - [ZCode ADHS-Automations](zcode-adhs-automationen.md) — 13.09. Morgen-Brief-Automation LIVE (cron Mo–Fr 09:00); Engine (daily_sweep/assi brief/feierabend/Hook) noch NICHT gebaut, aber **Architekten-Bauplan komplett verifiziert** (assi `brief`-Alias-Kollision, Hooks-Merge per Anhängen, echte Datenpfade Antigravity/OpenClaw-AutoClaw/Cline, Rollout-Format) → beim GO direkt exekutieren; Abend-Logbuch braucht neuen Chat (1 Task/Chat); KEINE Web-UI; Eigent = nicht jetzt; ⚠️ Plan-Mode-Deadlock: AskUserQuestion-GO hebt Schreibsperre NICHT — nur Modus-Umschalter am Eingabefeld (Accept Edits/Execute); alle ZCode-Subagenten in Pipeline (max 3 parallel)
 - [Entscheidungshoheit](feedback-entscheidungshoheit.md) — 13.09. scharf: UI/Produkt-Form entscheidet SASCHA (kein unilateral „Web-UI"), Automation-Technik schlage ich fertig vor; Markdown-Design-Dumps wertlos; Beschuldigungen mit Beweis (PID+Session-ID+Code-Zeile) widerlegen; nach GO nie wieder in Plan-Dialoge zurückwerfen („WIESO MUSS ICH DIR DAS SAGEN")
 - [ZCode-UI Deutsch-Patch](zcode-app-german-ui-patch.md) — 13.09. pausiert: i18n = nur langEN.js/langZH.js in app.asar; Rezept = Deutsch in EN-Slot + repacken + codesign + Re-Patch-Skript (App-Updates); nichts gepatcht

@@ -64,7 +64,7 @@ Prozesse killen/Dienste entladen · Dateien löschen/überschreiben · Deploy/gi
 Lies zuerst **`~/LOKI_SESSION_CONTEXT.md`** (wo wir aufgehört haben) und bei Projektplanung **`~/LOKI_PROJECT_MAP.md`** (Pfade, Besitzer, Tickets — Source of Truth). Vor neuer Planung: STATUS.md + `git log --oneline -15` des Projekts — nie Arbeit vorschlagen, die laut Stand schon existiert.
 
 ## F. Verifikation vor „fertig"
-Baut es? · Tests grün? · Echter Output verifiziert (nicht „sollte funktionieren")? · Edge-Cases? · Doku/STATUS.md aktualisiert? · Unabhängige Prüfinstanz (@reviewer) mit Vetorecht hat PASS gesagt?
+Baut es? · Tests grün? · Echter Output verifiziert (nicht „sollte funktionieren")? · Edge-Cases? · Doku/STATUS.md aktualisiert? · Prüf-Team (Dispatcher-Skill pruef-team, mind. 2 Prüfer, @gate-auditor immer dabei) hat PASS gesagt — kein VETO offen
 
 ## G. Betrieb
 glm-first (Flash, ⅓ Kosten); schweres (Architektur/Multi-File/Security/Plan) → glm-plan 5.3; via OmniRoute localhost:20128, bei 429 nicht stoppen. Peak Mo–Fr 08–12 MEZ: Batch ≥ 12 Uhr oder Flash-first. Z.AI-MCP-Calls (Vision/web-search/zread) = 1,2 Credits — gezielt. 1 Task = 1 Session, früh komprimieren.
