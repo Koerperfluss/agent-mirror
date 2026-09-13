@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-13 19:55 UTC
+Zuletzt gespiegelt: 2026-09-13 20:06 UTC
 
 ## AGENTS
 
@@ -1388,7 +1388,7 @@ Bei Fachfragen (z. B. Trainings-Übungen) fordert er explizit „clinical reason
 
 # Memory Index
 
-- [Coding-Modelle + Android Studio](coding-modelle-android-studio-2026-09-13.md) — 13.09. Research fertig (Report ~/Desktop/CODING_MODELL_RESEARCH_2026-09-13.md); **Nutzer-Korrektur: er wollte NUR LOKALE LLMs** (Cloud-Antwort = „trottel"); Winner lokal für MOOLAPTOP (40 GB RAM, RTX 3060 6 GB VRAM): Qwen3-Coder-30B-A3B Q4 / max-Qualität Qwen3-Coder-Next 80B-A3B Q2; Gemma 26B MoE = Googles offizielle AS-lokal-Empfehlung; GLM-5/5.3 Cloud-only; AS-Setup: Local Provider Port 1234/11434; ⚠️ Pagefile 35 GB belegt → RAM aufräumen
+- [Coding-Modelle + Android Studio](coding-modelle-android-studio-2026-09-13.md) — 13.09. Research fertig (Report ~/Desktop/CODING_MODELL_RESEARCH_2026-09-13.md, 74 Zeilen); **Nutzer-Korrektur: er wollte NUR LOKALE LLMs** (Cloud-Antwort = „trottel"); Winner lokal für MOOLAPTOP (40 GB RAM, RTX 3060 6 GB VRAM): **Qwen3-Coder-30B-A3B Q4_K_M** (16K ctx, KV q8_0, 8–15 tok/s) + Qwen2.5-Coder-7B für Autocomplete (FIM!); feature-dev-Team (architect+reviewer) PASS, **VETO auf 80B Q2_K**; GLM-5/5.3 Cloud-only; AS: Local Provider Port 1234; ⚠️ Pagefile 35 GB belegt → RAM aufräumen
 
 - [Prüf-Team + Config-Health](pruef-team-und-config-health.md) — 13.09.: 10 Prüf-Agents + pruef-team-Dispatcher; Cap max-3-Agents ENTFERNT; config-health.py SessionStart-Selbstcheck; **globale Sync jetzt 5/5 Harnesses (sync-standard-skills.sh TARGETS + ZCode AGENTS.md + Claude CLAUDE.md)**; alle ✅-Berichte = Disk-Beweise, LIVE-Beweis ausstehend → `/systemproof` Command (6 Checks, URTEIL AKTIV/TEILWEISE/TOT) in neuem Chat ausführen
 - [ZCode ADHS-Automations](zcode-adhs-automationen.md) — 13.09. LIVE: **EINE Automation mit ALLEN 6 Briefs** (cron `0 9,10,15,16,21`, Zweige per Uhrzeit+Wochentag; niemals 6 separate — Nutzer-Ziel!) + Engine 7/7 PASS + **erster Abend-Lauf PASS: Logbuch-Event UID 610E2A57 im Kalender „Kalender"** (Fix: `open -a Calendar` vor osascript wg. Fehler -600); 1 Task pro Chat-Limit; SessionStart-Hook injiziert jetzt Saschas Projektlisten-Pflicht
@@ -1633,6 +1633,28 @@ Caveats: GLM-5.3-Zahlen vendor-reported; „Claude Opus 5/Mythos/Fable" nur Drit
 - **GLM-5/5.3 = 744–754B → Cloud-only, NICHT lokal**; kein „GLM-5-Air" gefunden
 - ⚠️ DxDiag: Auslagerungsdatei 35 GB benutzt, nur 7,7 GB frei → vor Modell-Load aufräumen, sonst Swap-Tod
 
+**Finale Wahl + Download-Links (13.09., alle per curl HTTP 200 verifiziert):**
+- **Das Modell: Qwen3-Coder-30B-A3B-Instruct Q4_K_M** (~19 GB)
+  - Ollama: `ollama pull qwen3-coder:30b` → https://ollama.com/library/qwen3-coder
+  - GGUF manuell (LM Studio): https://huggingface.co/unsloth/Qwen3-Coder-30B-A3B-Instruct-GGUF (Datei Q4_K_M, ~18,6 GB)
+  - LM Studio: https://lmstudio.ai → Android Studio: Model Providers → Local Provider → Port 1234
+- Upgrade-Option: Qwen3-Coder-Next 80B Q2/Q3 (~26–30 GB) → https://huggingface.co/unsloth/Qwen3-Coder-Next-GGUF
+
+**Spezialisten-Team (feature-dev code-architect + code-reviewer als Prüfinstanz) geurteilt 13.09. ~21:50: PASS** — Qwen3-Coder-30B-A3B bestätigt, 2 Korrekturen übernommen, Report jetzt 74 Zeilen:
+1. ❌ **VETO auf Qwen3-Coder-Next 80B Q2_K** (Q2 zerstört Qualität, Untergrenze Q3; + Swap-Tod bei 35-GB-Pagefile) — erst nach RAM-Upgrade.
+2. **Speed korrigiert: 8–15 tok/s** realistisch (3B aktiv @ DDR4 ~50 GB/s), nicht 10–20.
+3. **Kontext 16K statt 32K** auf 6 GB VRAM + KV-Cache q8_0 + Flash-Attention AN.
+4. **LM Studio** (GPU-Layer-Slider + KV-Quant im UI, Start ~16 Layer, Ziel ≤5,5 GB VRAM); Fortgeschritten: ik_llama.cpp mit `-ot ".ffn_.*_exps.=CPU"`.
+5. **Zweitmodell Qwen2.5-Coder-7B Q4_K_M bestätigt** — wichtig: hat **FIM-Support** (Fill-in-the-Middle = Tab-Autocomplete), den Qwen3-Coder NICHT hat; 8K ctx, alle Layer GPU.
+6. Fallback: 30B als IQ3_XXS (~12 GB, mehr ins VRAM) statt Wechsel auf dichtes Modell.
+Regeln: nie Emulator + LLM gleichzeitig (~7 GB Puffer), RAM vorher freiräumen, keine 500-Zeilen-Dateien in den Chat, pro Aufgabe neue Session. Lektion: Sascha verlangte explizit das feature-dev-Spezialistenteam als Verifikation — bei Tech-Empfehlungen gern code-architect (Blueprint) + code-reviewer (adversär, Vetorecht) parallel dispatchen.
+
+**SOTA-Einordnung (13.09., auf Nachfrage „was ist state of the art?")** — offizieller swebench.com-Leaderboard: **#1 Claude 4.5 Opus (high)**, dann **Gemini 3 Flash (high)**, **MiniMax M2.5 (high)**; ~95 % Drittplattform-Werte („Fable 5"/„Mythos") unbestätigt. Fortschritt: Claude 3.5 Sonnet 2024 = 49 %. 3 Stufen: Cloud-SOTA (Claude 4.5 Opus) / Preis-Leistungs (Gemini 3 Flash, MiniMax M2.5, GLM-5.3) / Lokal-SOTA (Qwen3-Coder-Next 42,8 % ≈ Sonnet-4-Niveau, auf MOOLAPTOP pragmatisch = Qwen3-Coder-30B-A3B Q4). Pragmatische Empfehlung an Sascha: Hybrid — lokal 30B-A3B für Alltag, Cloud-Spitze (Gemini gratis-Tier / GLM-5.3-Flash aus Coding-Plan) bei harten Problemen.
+
+**Korrektur nach Saschas eigenem Fund (ModelFit-Rangliste 12.06.2026, Report jetzt 84 Zeilen):** **Qwen3.6 27B (dicht, 17 GB) = 77,2 % SWE-bench Verified** (vendor-reported) = Qualitätskönig seiner RAM-Klasse; auf 6-GB-VRAM aber ~4–8 tok/s. Devstral Small 2 (24B, 68,0 %, 384K ctx) = Speed-Falle (2–4 tok/s). Qwen3-Coder-30B MoE hat KEINEN publizierten SWE-bench-Score. Unaufgelöster Widerspruch markiert: 27B=77,2 % vs. 80B-Coder-Next=42,8 % (beides vendor-self-reported). **Finale Hybrid-Empfehlung:** `ollama pull qwen3-coder:30b` (Agent-Alltag, schnell) + `ollama pull qwen3.6:27b` (harte Aufgaben) + `ollama pull qwen2.5-coder:1.5b` (Autocomplete, continue.dev-Offiziell; keine Reasoning-Modelle für Autocomplete). **Ollama-Falle: Default-Kontext 2K, wird lautlos abgeschnitten → immer `OLLAMA_CONTEXT_LENGTH=32768 ollama serve`.** Angebot offen (auf GO): Windows-`.bat`/`.ps1` für Ollama-Autostart mit richtigem Kontext-Limit.
+
+**Korrektur 2 (13.09., „er hat keinen GLM plan du trottel"): Der MOOLAPTOP hat KEINEN Z.AI/GLM-Plan** → finale Empfehlung 100 % kostenlos ohne Bezahlplan, alle GLM/Coding-Plan-Verweise gestrichen: lokal das 3-Modell-Setup via Ollama (qwen3-coder:30b + qwen3.6:27b + qwen2.5-coder:1.5b), als einzige Cloud-Option nur der Gemini-Gratis-Tier in Android Studio (nur Google-Konto, ~1.000 Anfragen/Tag). Report final: **~/Desktop/CODING_MODELL_RESEARCH_2026-09-13.md (89 Zeilen)**. Lektion: Empfehlungen nie an Saschas eigene Pläne/Ressourcen koppeln, wenn der Ziel-Rechner jemand anderem gehört — „er" im Prompt = Dritter.
+
 ## feedback-agent-drives-ui
 
 ---
@@ -1871,6 +1893,13 @@ Am 25.08.2026 (Schlussphase der Mac-Sanierung) reagierte Sascha frustriert („w
 **How to apply (Ergänzung):**
 23. Recherche/Analyse-Tasks sind erst fertig, wenn die ERGEBNISSE als Tabellen im Chat stehen (eine pro Auftrag) + ein Kanban (Todo/Doing/Done) — nicht „hier ist mein Plan, was soll ich tun".
 24. Korrigiert er ein Fakt-Detail mitten im Task (z. B. „meins läuft über Gemini, THOMAS über ChatGPT"): sofort übernehmen und in derselben Antwort die Ergebnisse mit dem korrigierten Mapping neu ausspielen, nicht diskutieren.
+
+**Elfte Lektion 13.09. (Coding-Modell-Recherche):** Nach zwei dichten Recherche-Antworten mit Hitlisten/Tabellen: „WELCHES MODELL DU TROTTEL MIT LINK ZUM DOWENLOAD" — er wollte nicht die Analyse, sondern DIE eine Antwort: ein Modell + klickbarer Download-Link.
+
+**How to apply (Ergänzung):**
+25. Nach Recherche/Hitlisten immer mit einer EINDEUTIGEN Empfehlung enden: „Das Modell: X" + verifizierte Links + der 1 Kopierbefehl — nicht die Wahl dem Nutzer zurückspielen.
+26. Download-/Shop-Links vor dem Ausspielen per `curl -s -o /dev/null -w "%{http_code}"` auf HTTP 200 prüfen (kostet Sekunden, beweist Erreichbarkeit).
+27. „Welches X" = sein Satz für „gib mir EINEN Namen, keine Optionen". Eine Upgrade-Alternative maximal als eine Zeile unten.
 
 ## feedback-pruefinstanz-pflicht
 

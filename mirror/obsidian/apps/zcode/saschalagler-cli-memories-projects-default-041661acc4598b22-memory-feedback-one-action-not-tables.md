@@ -1,7 +1,7 @@
 ---
 app: zcode
 quelle: "saschalagler/cli/memories/projects/default-041661acc4598b22/memory/feedback-one-action-not-tables.md"
-stand: 2026-09-11
+stand: 2026-09-13
 tags: [spiegel, zcode]
 ---
 
@@ -81,3 +81,10 @@ Am 25.08.2026 (Schlussphase der Mac-Sanierung) reagierte Sascha frustriert („w
 **How to apply (Ergänzung):**
 23. Recherche/Analyse-Tasks sind erst fertig, wenn die ERGEBNISSE als Tabellen im Chat stehen (eine pro Auftrag) + ein Kanban (Todo/Doing/Done) — nicht „hier ist mein Plan, was soll ich tun".
 24. Korrigiert er ein Fakt-Detail mitten im Task (z. B. „meins läuft über Gemini, THOMAS über ChatGPT"): sofort übernehmen und in derselben Antwort die Ergebnisse mit dem korrigierten Mapping neu ausspielen, nicht diskutieren.
+
+**Elfte Lektion 13.09. (Coding-Modell-Recherche):** Nach zwei dichten Recherche-Antworten mit Hitlisten/Tabellen: „WELCHES MODELL DU TROTTEL MIT LINK ZUM DOWENLOAD" — er wollte nicht die Analyse, sondern DIE eine Antwort: ein Modell + klickbarer Download-Link.
+
+**How to apply (Ergänzung):**
+25. Nach Recherche/Hitlisten immer mit einer EINDEUTIGEN Empfehlung enden: „Das Modell: X" + verifizierte Links + der 1 Kopierbefehl — nicht die Wahl dem Nutzer zurückspielen.
+26. Download-/Shop-Links vor dem Ausspielen per `curl -s -o /dev/null -w "%{http_code}"` auf HTTP 200 prüfen (kostet Sekunden, beweist Erreichbarkeit).
+27. „Welches X" = sein Satz für „gib mir EINEN Namen, keine Optionen". Eine Upgrade-Alternative maximal als eine Zeile unten.
