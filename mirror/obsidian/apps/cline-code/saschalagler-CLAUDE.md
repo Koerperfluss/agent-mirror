@@ -1,7 +1,7 @@
 ---
 app: cline-code
 quelle: "saschalagler/CLAUDE.md"
-stand: 2026-09-06
+stand: 2026-09-13
 tags: [spiegel, cline-code]
 ---
 
@@ -134,27 +134,29 @@ Alle teilen das Skill-Repository: `~/.agents/skills/` (81 Skills)
 1. **caveman-Regeln:** Ultra-kompakt. Keine Floskeln, keine Begrüßung, keine Verabschiedung. Rohe Tabellen, kurze Bullets, Code-Snippets. Fakten, null Spekulation.
 2. **i-have-adhd-Regeln:** Wichtigstes Ergebnis in Zeile 1 (BLUF/Action first). Nummerierte Schritte (1-2-3). Kernbegriffe und Pfade **fett**. Kurze Tabellen statt Fließtext. Sofort nutzbare Kopiervorlagen. Keine Jargon-Nutzung ohne Erklärung.
 3. **Sequential Thinking:** MCP-Tool `sequentialthinking` bei JEDER Anfrage aufrufen — auch bei simplen Fragen (min. 1–3 Denkschritte); komplexe Aufgaben vollständig strukturiert (Schritt → Revision → Hypothese → Verifikation). Stehende Nutzer-Regel vom 30.08.2026.
+4. **Automatik + Ehrlichkeit (12.09.2026, Nutzer-Pflicht):** (a) Ergebnisse SELBST verifizieren — Befehl ausführen, Dateipfad als Beweis nennen; „erledigt" ohne Beweis-Pfad ist verboten. (b) Jedes Fachwort beim 1. Auftreten in 1 kurzen Satz erklären (Glossar: `~/.agents/UBIQUITOUS_LANGUAGE.md`). (c) Nie App-UI behaupten: Wayfinder-Maps, Todos, Memory = Dateien im Finder (`~/.agents/.wayfinder/`, `~/.zcode/cli/memories/`), die ZCode-App zeigt sie nicht an — so sagen, nicht anders. (d) Antwortformat: Zeile 1 = Ergebnis in einfachen Sätzen, dann max. 3 Schritte/Tabelle. (e) Reparaturen automatisch ausführen (mit Backup), den Nutzer nur bei Deploy/Löschen/Überschreiben fragen.
 
 ### B. Routing — bei passendem Kontext IMMER den Skill nutzen (ohne Rückfrage)
 | Aufgabe | Skill |
 |---|---|
-| Ökosystem-Orientierung | multi-agent-ecosystem-overview |
-| Status/Health-Check der Systeme | multi-agent-status-check |
-| Projekt-Onboarding | automated-project-onboarding |
-| Wissens-Sync über Plattformen | cross-platform-knowledge-sync |
+| Ökosystem-Orientierung | loki-memory-sync (Quellen-Tabelle) + loki-os-health |
+| Status/Health-Check der Systeme | loki-os-health |
+| Projekt-Onboarding / Repo-Infra | projects (Action 2.5 Repo-Infra) |
+| Wissens-Sync über Plattformen | loki-memory-sync |
 | Aufgabenverteilung auf Agenten | skill-aware-task-distribution |
+| Lisa-Fall: Nachricht an Lisa/Sabine, Muster-Check, Krise, „lies die letzten Nachrichten" | **lisa-therapeut** (Stand 07.09.2026) |
 | Entscheidungen (`/decide`) | memory-enhanced-decision-making |
-| Feature-/Planungs-Verhör | grill-me bzw. grilling |
-| Bug | superpowers:systematic-debugging |
-| Implementierung | superpowers:test-driven-development |
+| Feature-/Planungs-Verhör | grilling (Modi: Kern / BATCH / LOOP) |
+| Bug | diagnosing-bugs |
+| Implementierung | tdd |
 | Coden (simpelster Weg) | ponytail |
 | Architektur-Rückfrage | ask-matt |
 | Sicherheitsaudit / App-Pentest (nur eigene Apps) | strix-pentesting |
 | Langzeitgedächtnis / Kontext über Sessions | cognee-memory |
-| Doku/Lookup aktueller APIs | context7 / find-docs |
+| Doku/Lookup aktueller APIs | find-docs (CLI + MCP-Modus) |
 | Gratis-Modelle / KI-Fallback-Check | `omni-check` (Terminal-Alias) |
-| Build-Wunsch („baue/erstelle/mach mir X") | **loki-dev** Modus BUILD (Director, Zero-Question; glm-build = Wrapper) |
-| Projekt onboarden / neu anlegen / ÜBERNEHMEN (Memory-Sweep→Stand→Plan) / fertig machen / testen | **loki-dev** Modi INIT/TAKEOVER/FINISH (deve/glm-init = Wrapper) |
+| Build-Wunsch („baue/erstelle/mach mir X") | **loki-dev** Modus BUILD (Director, Zero-Question) |
+| Projekt onboarden / neu anlegen / ÜBERNEHMEN (Memory-Sweep→Stand→Plan) / fertig machen / testen | **loki-dev** Modi INIT/TAKEOVER/FINISH (ehem. deve/glm-init = konsolidiert) |
 | UI-/UX-Test (Web/Desktop, erschöpfend) | ui-ux-tester (chrome-devtools/computer-use + Vision) |
 | GROSSES Projekt / Arbeit >1 Session | **loki-dev** Modus MAP → wayfinder (Map ch Artieren/abarbeiten; Konfig-Landkarte: ~/.agents/WAYFINDER-GLM.md) |
 | Terminal-KI-Frage ohne Modell-Wahl | `omniroute chat` (Gateway **localhost:20128**, permanent via LaunchAgent) |

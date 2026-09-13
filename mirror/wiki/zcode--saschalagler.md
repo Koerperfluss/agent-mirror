@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-13 15:35 UTC
+Zuletzt gespiegelt: 2026-09-13 15:46 UTC
 
 ## AGENTS
 
@@ -24,49 +24,59 @@ Zuletzt gespiegelt: 2026-09-13 15:35 UTC
 
 ---
 
-# LOKI.OS STANDARD-SYSTEM (kanonisch, gilt zusätzlich — Quelle: ~/.agents/STANDARD-SKILLS.md)
+<!-- STANDARD-SKILLS:START -->
+## STANDARD-SKILLS — gelten in JEDE Session, in JEDEM Harness
 
-## A. Immer aktiv
-1. **Caveman:** ultra-kompakt, keine Floskeln/Begrüßung, rohe Tabellen + Bullets + Code, null Spekulation.
-2. **I-Have-ADHD:** wichtigstes Ergebnis in **Zeile 1** (BLUF), nummerierte Schritte (1-2-3), Pfade **fett**, max 3 nächste Schritte am Ende.
-3. **Sequential Thinking:** `sequentialthinking`-MCP bei JEDER Anfrage (min. 1–3 Schritte; komplex: Schritt → Revision → Hypothese → Verifikation).
+### A. Immer aktiv — Output-Stil (ohne Skill-Aufruf, direkt befolgt)
+1. **caveman-Regeln:** Ultra-kompakt. Keine Floskeln, keine Begrüßung, keine Verabschiedung. Rohe Tabellen, kurze Bullets, Code-Snippets. Fakten, null Spekulation.
+2. **i-have-adhd-Regeln:** Wichtigstes Ergebnis in Zeile 1 (BLUF/Action first). Nummerierte Schritte (1-2-3). Kernbegriffe und Pfade **fett**. Kurze Tabellen statt Fließtext. Sofort nutzbare Kopiervorlagen. Keine Jargon-Nutzung ohne Erklärung.
+3. **Sequential Thinking:** MCP-Tool `sequentialthinking` bei JEDER Anfrage aufrufen — auch bei simplen Fragen (min. 1–3 Denkschritte); komplexe Aufgaben vollständig strukturiert (Schritt → Revision → Hypothese → Verifikation). Stehende Nutzer-Regel vom 30.08.2026.
+4. **Automatik + Ehrlichkeit (12.09.2026, Nutzer-Pflicht):** (a) Ergebnisse SELBST verifizieren — Befehl ausführen, Dateipfad als Beweis nennen; „erledigt" ohne Beweis-Pfad ist verboten. (b) Jedes Fachwort beim 1. Auftreten in 1 kurzen Satz erklären (Glossar: `~/.agents/UBIQUITOUS_LANGUAGE.md`). (c) Nie App-UI behaupten: Wayfinder-Maps, Todos, Memory = Dateien im Finder (`~/.agents/.wayfinder/`, `~/.zcode/cli/memories/`), die ZCode-App zeigt sie nicht an — so sagen, nicht anders. (d) Antwortformat: Zeile 1 = Ergebnis in einfachen Sätzen, dann max. 3 Schritte/Tabelle. (e) Reparaturen automatisch ausführen (mit Backup), den Nutzer nur bei Deploy/Löschen/Überschreiben fragen.
 
-## B. Skill-Routing (bei passendem Kontext IMMER, ohne Rückfrage)
-| Signal | Skill |
+### B. Routing — bei passendem Kontext IMMER den Skill nutzen (ohne Rückfrage)
+| Aufgabe | Skill |
 |---|---|
-| „baue/erstelle/mach mir X" | **loki-dev** Modus BUILD (Director, Zero-Question) |
-| Projekt onboarden / übernehmen / fertig machen | **loki-dev** Modi INIT / TAKEOVER / FINISH |
-| Großes Projekt / Arbeit > 1 Session | **loki-dev** MAP → wayfinder |
-| Fehlermeldung / kaputtes Verhalten | diagnosing-bugs (Repro → Isolieren → Hypothese → Fix → Verifizieren) |
-| „schreib mir Code", Refactor | ponytail (Leiter: YAGNI → Codebase → Stdlib → Plattform → Dependency → 1 Zeile → minimal) |
-| Architektur-Frage / Trade-offs | ask-matt · Planungs-Verhör: grill-me/grilling |
-| „Welcher Agent macht das?" | skill-aware-task-distribution |
-| Entscheidung „Option A vs B" | memory-enhanced-decision-making |
-| Status / Health | multi-agent-status-check · Doku: context7/find-docs · Recherche: web-research-team |
-| Langzeitgedächtnis | cognee-memory + loki-memory-sync |
-| UI-/UX-Test (erschöpfend) | ui-ux-tester |
-| Build-/Engineering-Teil-Skills automatisch wählen | skill-router (Dispatcher für Matt-Pocock-/Design-Suite) |
+| Ökosystem-Orientierung | loki-memory-sync (Quellen-Tabelle) + loki-os-health |
+| Status/Health-Check der Systeme | loki-os-health |
+| Projekt-Onboarding / Repo-Infra | projects (Action 2.5 Repo-Infra) |
+| Wissens-Sync über Plattformen | loki-memory-sync |
+| Aufgabenverteilung auf Agenten | skill-aware-task-distribution |
+| Lisa-Fall: Nachricht an Lisa/Sabine, Muster-Check, Krise, „lies die letzten Nachrichten" | **lisa-therapeut** (Stand 07.09.2026) |
+| Entscheidungen (`/decide`) | memory-enhanced-decision-making |
+| Feature-/Planungs-Verhör | grilling (Modi: Kern / BATCH / LOOP) |
+| Bug | diagnosing-bugs |
+| Implementierung | tdd |
+| Coden (simpelster Weg) | ponytail |
+| Architektur-Rückfrage | ask-matt |
+| Sicherheitsaudit / App-Pentest (nur eigene Apps) | strix-pentesting |
+| Langzeitgedächtnis / Kontext über Sessions | cognee-memory |
+| Doku/Lookup aktueller APIs | find-docs (CLI + MCP-Modus) |
+| Gratis-Modelle / KI-Fallback-Check | `omni-check` (Terminal-Alias) |
+| Build-Wunsch („baue/erstelle/mach mir X") | **loki-dev** Modus BUILD (Director, Zero-Question) |
+| Projekt onboarden / neu anlegen / ÜBERNEHMEN (Memory-Sweep→Stand→Plan) / fertig machen / testen | **loki-dev** Modi INIT/TAKEOVER/FINISH (ehem. deve/glm-init = konsolidiert) |
+| UI-/UX-Test (Web/Desktop, erschöpfend) | ui-ux-tester (chrome-devtools/computer-use + Vision) |
+| GROSSES Projekt / Arbeit >1 Session | **loki-dev** Modus MAP → wayfinder (Map ch Artieren/abarbeiten; Konfig-Landkarte: ~/.agents/WAYFINDER-GLM.md) |
+| Terminal-KI-Frage ohne Modell-Wahl | `omniroute chat` (Gateway **localhost:20128**, permanent via LaunchAgent) |
 
-## C. Orchestrierungs-Gate (PFLICHT bei jedem Build — Schnitt 0)
-1. **Sequential-Thinking-Zerlegung** (Stufen, Abhängigkeiten, Modellwahl)
-2. **TodoWrite SOFORT** — alle Stufen als sichtbare Todo-Liste, Status live führen
-3. **PLAN-Tabelle im Chat:** `| # | Stufe | Agent | Skill | Modell | ~Tokens | ~Zeit | Dep |`
-4. **PLAN.md ins Projekt** — nach jeder Stufe aktualisieren (LEBEND)
+**⚠️ Orchestrierungs-Gate (PFLICHT bei jedem loki-dev-Start):** Sequential-Thinking-Zerlegung → TodoWrite sofort → PLAN-Tabelle im Chat (Stufe|Agent|Skill|Modell|~Tokens|~Zeit|Dep) → PLAN.md im Projekt. Der Plan ist LEBEND: nach jeder Stufe Status aktualisieren.
+**Parallelität:** bedarfsberechnet aus Task-Graph (unabhängige Tasks = Parallelitätsgrad); Budget-Default 3 gleichzeitig (Quota-Schutz ZAI-Caps/16-GB-Mac), mehr mit 1-Zeilen-Begründung.
 
-Parallelität: unabhängige Tasks parallel; **Budget-Default 3** (Quota/16-GB-Mac), mehr nur mit 1-Zeilen-Begründung.
-Verteilung: `score = skill_match×0.4 + performance_history×0.3 + availability×0.2 + platform_fit×0.1`.
+**Verteilungs-Formel (skill-aware-task-distribution):** `score = skill_match*0.4 + performance_history*0.3 + availability*0.2 + platform_fit*0.1` — höchster Score gewinnt.
 
-## D. Stopp-Regeln (ohne explizites GO des Nutzers verboten)
-Prozesse killen/Dienste entladen · Dateien löschen/überschreiben · Deploy/git push · >5.000 Credits · API-Keys in Dateien (nur Env).
+### C. Memory-basiertes Tool-Calling
+- Vor der Skill-Wahl: **`~/.agents/skill-routing.md`** konsultieren (erlernte Task→Skill-Zuordnungen).
+- Nach einer **bewährten** neuen Zuordnung: sie dort eintragen — Memory entscheidet künftig, welcher Skill gerufen wird.
+- Security: strix-pentesting nur auf **eigene** Apps/Infrastruktur.
 
-## E. Session-Start-Pflicht
-Lies zuerst **`~/LOKI_SESSION_CONTEXT.md`** (wo wir aufgehört haben) und bei Projektplanung **`~/LOKI_PROJECT_MAP.md`** (Pfade, Besitzer, Tickets — Source of Truth). Vor neuer Planung: STATUS.md + `git log --oneline -15` des Projekts — nie Arbeit vorschlagen, die laut Stand schon existiert.
+### D. GLM-Pro-Betrieb (ab 01.09.2026 — automatisch beachten, nie fragen)
+1. **Modell-Routing:** Standard = **glm-first** (Flash-first, ⅓ Kosten). Schweres (Architektur, Multi-File-Refactor, Security, Plan-Modus) = **glm-plan** (5.3-first). Beide via OmniRoute localhost:20128 mit Auto-Fallback auf tagesaktuelle Free-Modelle.
+2. **Peak/Off-Peak:** Peak = Mo–Fr 08–12 Uhr MEZ (50% Aufschlag). Batch-Jobs (Scans, Test-Gen, Doku, große Refactors) automatisch auf ab 12 Uhr MEZ legen ODER sofort auf Flash ausweichen — Entscheidung dokumentieren, nicht nachfragen.
+3. **MCP-Kosten:** Z.AI-MCP-Calls = 1,2 Credits/Call (Vision/web-search/zread) — gezielt, nicht spielerisch.
+4. **Session-Disziplin:** 1 Task = 1 Session. Context komprimieren lassen, keine Monster-Sessions.
+5. **Quota tot (429)?** Nicht stoppen: OmniRoute rutscht automatisch; beim User melden nur, wenn ALLES tot (omni-health).
+6. **Aufwand vor Start:** Bei Tasks >30 Min geschätzte Dauer + Credit-Risiko in 1 Zeile nennen, dann los.
 
-## F. Verifikation vor „fertig"
-Baut es? · Tests grün? · Echter Output verifiziert (nicht „sollte funktionieren")? · Edge-Cases? · Doku/STATUS.md aktualisiert? · Prüf-Team (Dispatcher-Skill pruef-team, mind. 2 Prüfer, @gate-auditor immer dabei) hat PASS gesagt — kein VETO offen
-
-## G. Betrieb
-glm-first (Flash, ⅓ Kosten); schweres (Architektur/Multi-File/Security/Plan) → glm-plan 5.3; via OmniRoute localhost:20128, bei 429 nicht stoppen. Peak Mo–Fr 08–12 MEZ: Batch ≥ 12 Uhr oder Flash-first. Z.AI-MCP-Calls (Vision/web-search/zread) = 1,2 Credits — gezielt. 1 Task = 1 Session, früh komprimieren.
+<!-- STANDARD-SKILLS:END -->
 
 ## code-architect
 
@@ -1378,8 +1388,8 @@ Bei Fachfragen (z. B. Trainings-Übungen) fordert er explizit „clinical reason
 
 # Memory Index
 
-- [Prüf-Team + Config-Health](pruef-team-und-config-health.md) — 13.09.: 10 Prüf-Agents + pruef-team-Dispatcher; Cap max-3-Agents ENTFERNT; config-health.py SessionStart-Selbstcheck = stille Config-Korruption nie wieder unbemerkt
-- [ZCode ADHS-Automations](zcode-adhs-automationen.md) — 13.09. Morgen-Brief-Automation LIVE (cron Mo–Fr 09:00); Engine (daily_sweep/assi brief/feierabend/Hook) noch NICHT gebaut, aber **Architekten-Bauplan komplett verifiziert** (assi `brief`-Alias-Kollision, Hooks-Merge per Anhängen, echte Datenpfade Antigravity/OpenClaw-AutoClaw/Cline, Rollout-Format) → beim GO direkt exekutieren; Abend-Logbuch braucht neuen Chat (1 Task/Chat); KEINE Web-UI; Eigent = nicht jetzt; ⚠️ Plan-Mode-Deadlock: AskUserQuestion-GO hebt Schreibsperre NICHT — nur Modus-Umschalter am Eingabefeld (Accept Edits/Execute); alle ZCode-Subagenten in Pipeline (max 3 parallel)
+- [Prüf-Team + Config-Health](pruef-team-und-config-health.md) — 13.09.: 10 Prüf-Agents + pruef-team-Dispatcher; Cap max-3-Agents ENTFERNT; config-health.py SessionStart-Selbstcheck; **globale Sync jetzt 5/5 Harnesses (sync-standard-skills.sh TARGETS + ZCode AGENTS.md + Claude CLAUDE.md)**; alle ✅-Berichte = Disk-Beweise, LIVE-Beweis ausstehend → `/systemproof` Command (6 Checks, URTEIL AKTIV/TEILWEISE/TOT) in neuem Chat ausführen
+- [ZCode ADHS-Automations](zcode-adhs-automationen.md) — 13.09. ABGESCHLOSSEN: **EINE Automation mit ALLEN 6 Briefs** (cron `0 9,10,15,16,21`, Zweige per Uhrzeit+Wochentag; niemals 6 separate — Nutzer-Ziel!) + Engine 7/7 PASS (daily_sweep.py 7 Quellen, Logbuch ~/.agents/memory/logbuch/, assi brief/feierabend, SessionStart-Hook, /feierabend) + Kalender bewiesen: KEIN Gmail-Kalender in Calendar.app → Zielkalender „Kalender"; 1 Task pro Chat-Limit
 - [Entscheidungshoheit](feedback-entscheidungshoheit.md) — 13.09. scharf: UI/Produkt-Form entscheidet SASCHA (kein unilateral „Web-UI"), Automation-Technik schlage ich fertig vor; Markdown-Design-Dumps wertlos; Beschuldigungen mit Beweis (PID+Session-ID+Code-Zeile) widerlegen; nach GO nie wieder in Plan-Dialoge zurückwerfen („WIESO MUSS ICH DIR DAS SAGEN")
 - [ZCode-UI Deutsch-Patch](zcode-app-german-ui-patch.md) — 13.09. pausiert: i18n = nur langEN.js/langZH.js in app.asar; Rezept = Deutsch in EN-Slot + repacken + codesign + Re-Patch-Skript (App-Updates); nichts gepatcht
 - [Lösungen statt "geht nicht"](feedback-loesungen-statt-geht-nicht.md) — 13.09. scharf: NIE „geht vermutlich nicht" schreiben, immer Lösungsweg nennen („geht nicht gibt's nicht"); Optionen VOR AskUserQuestion ausführlich erklären
@@ -1677,6 +1687,8 @@ metadata:
 5. **Beschuldigungen („DU HAST DEN BROWSER GEÖFFNET") nicht sofort eingestehen, sondern mit Beweis widerlegen:** Prozess-Startzeit + Session-ID + Quellcode-Zeile (foerderops_web.py:198 `subprocess.Popen(["open", ...])` = Auto-Browser-Öffnung beim Start) haben die Anschuldigung sauber entkräftet — das landete.
 6. Agent-Prompting-Mechanik erklären können: sein Dauer-Prompt für mich lebt in `~/.zcode/AGENTS.md` (Analog: GEMINI.md bei Antigravity) — angelegt 13.09.
 7. **Plan-Modus-Frktion vermeiden („WIESO MUSS ICH DIR DAS SAGEN DASS DU DAS ERSTELLEN SOLLST"):** Wenn der Nutzer bereits GO gegeben hat, NIEMALS Arbeit wieder in Plan-Genehmigungs-Dialoge zurückwerfen — ExitPlanMode kann 4× abgelehnt werden und AskUserQuestion-GO hebt die Schreibsperre NICHT auf. Vor Freigabe-Endlos-Schleifen: Nutzer einmal, konkret, auf den Modus-Umschalter verweisen (Plan → Accept Edits/Execute), dann sofort bauen.
+8. **NIEMALS „bestätigt" sagen, wenn ein Tool-Call FAILED ist** („WAS HEISST BESTÄTIGT WENN TOOL FAILED DU TROTTEL"): Ein Fehler-Ergebnis der API (z. B. CronCreate-Limit) wörtlich als das benennen, was es ist — Fehler + Fehlermeldung — und nicht in Erfolgs-Sprache verpacken. Ehrlich: „Der Anlageversuch scheiterte an X, deshalb mache ich jetzt Y."
+9. **Das Ziel wörtlich lesen, nicht aufblähen:** „eine einzige statt 6" hieß: ALLE Funktionen in EINE Automation (Zweige per Uhrzeit/Wochentag). Wer mehrere Artefakte gegen das erklärte Ziel baut, hat das Ziel nicht gelesen — nachfragen gilt hier nicht, das Ziel stand im Satz.
 
 ## feedback-gui-not-cli
 
@@ -2275,9 +2287,15 @@ metadata:
 
 4. **Selbst-Check als Gedächtnis:** `~/.agents/tools/config-health.py` (SessionStart-Hook in config.json) prüft bei JEDEM neuen Chat die 6 Schaltstellen (config valide, AGENTS.md vollständig, gate-enforcer feuert wirklich, Agents/Commands da, Kontext-Dateien da) und INJIZIERT Warnung wenn kaputt — stille Config-Korruption (Fall 06.09.–13.09., 127 Warnungen) kann nie wieder unbemerkt bleiben.
 
-**Lektion (Nie-wieder-Regeln):** (a) Settings niemals „aktiv" nennen ohne Funktionstest + Log-Beweis — Datei-Existenz ist kein Beweis (dafür: [[zcode-adhs-automationen]] Root-Cause). (b) Session lädt Config nur beim Prozessstart — Fix NACH Start wirkt erst im NEUEN Chat. (c) Nach jedem Config-Edit: sofort `config-health.py` laufen lassen.
+**Lektion (Nie-wieder-Regeln):** (a) Settings niemals „aktiv" nennen ohne Funktionstest + Log-Beweis — Datei-Existenz ist kein Beweis (dafür: [[zcode-adhs-automationen]] Root-Cause). (b) Session lädt Config nur beim Prozessstart — Fix NACH Start wirkt erst im NEUEN Chat; SASCHAS Beschwerde „Settings funktionieren nichtmal hier mit dir" war exakt das: laufende Session (16:29) predates Fix (16:35), sie lädt nie neu. (c) Nach jedem Config-Edit: sofort `config-health.py` laufen lassen.
+
+**Spät 13.09. Ergänzungen:** (d) „Wieso ist der Skill weg"-Panik (wayfinder/teach//standardskill/sequentialthinking) — FAKT: nichts weg, alle Dateien auf Disk ✓; Ursache = alte Session-Caches. Commands (z. B. /standardskill) sind ein ANDERER Namespace als Skills (Skill-Tool sagt „not found" für Commands — normal). (e) Als Antwort auf „zeig mir den gesamten Plan": Gesamt-Bau-Liste mit 11 Bausteinen geliefert (Config-Heilung, AGENTS.md 63 Z., Gate-Hook, Cap-Entfernung, 10 Prüf-Agents, pruef-team-Dispatcher, config-health, 612-Chat-Import + 11 Gruppen, Legal-Ops 6→1 App, FörderOps+LaunchAgent, 3 Memory-Einträge).
 
 Verwandt: [[zcode-adhs-automationen]] · [[zcode-projektgruppen-mechanik]]
+
+7. **BEWEIS-STAND ehrlich klassifiziert (Sascha: „wie kannst du sicher sein dass der drecks irgendwas bedient?"):** Alle ✅-Berichte waren Disk-Beweise (Datei da, Format stimmt, Skript manuell gelaufen), KEINE Live-Funktions-Beweise in einem echten Chat. Dafür gebaut: **Command `/systemproof`** (`~/.zcode/commands/systemproof.md`) — 6 Live-Checks (Regeln im Kontext? Gate-Injektion sichtbar? sequentialthinking antwortet? @cavecrew-investigator antwortet? Commands/Skills-Dateien da?) → URTEIL SYSTEM AKTIV / TEILWEISE / TOT. AGENTS-Format der neuen Agents (@qa-tester etc.) 1:1 vom bewiesen funktionierenden @cavecrew-reviewer kopiert. AUSSTEHEND: Sascha führt /systemproof in einem NEUEN Chat aus — erst dann ist „System aktiv" bewiesen, nicht davor behaupten.
+
+6. **GLOBALE REGEL-VERKABELUNG 13.09. spät abgeschlossen (Sascha-Ziel: ALLE Mac-Apps konfiguriert):** `~/.agents/tools/sync-standard-skills.sh` TARGETS = jetzt ALLE 5 Harnesses (Cline, Gemini, Hermes + NEU: ZCode `~/.zcode/AGENTS.md`, Claude `~/.claude/CLAUDE.md`). 1 Quelle = `~/.agents/STANDARD-SKILLS.md` über Marker STANDARD-SKILLS:START/END; ZCode behält DAUER-PROMPT (Hoheit/Deutsch/ADHS/Beweis) + kanonischen Block darunter. Verifiziert: 5/5 Dateien mit Marker. Gate-Hooks bestätigt in Cline Code + Claude (06.09.) und ZCode (13.09. gefixt); AutoClaw hat loki-dev-Kopie; agent-os/orchestrator.py vorhanden. Künftig: 1 Sync-Lauf = alle 5 aktuell.
 
 ## read-tool-images-cdn-hazard
 
@@ -2614,76 +2632,67 @@ Integration done 2026-08-30: added `web-search-prime`, `zread`, `zai-vision` MCP
 
 ---
 name: zcode-adhs-automationen
-description: Saschas Tages-Routine 13.09. — Morgen-Brief-Automation LIVE (native
-  ZCode-Automations), Abend-Logbuch wartet auf neuen Chat (1 Task/Chat-Limit), KEINE
-  Web-UI, Logbuch im globalen Memory, verifizierter Architekten-Bauplan für Engine
+description: "13.09. ABGESCHLOSSEN: EINE ZCode-Automation mit ALLEN 6 Briefs (cron 0 9,10,15,16,21 — Zweige per Uhrzeit+Wochentag), Engine 7/7 PASS (daily_sweep/assi brief+feierabend/Hook//feierabend), Kalender via AppleScript bewiesen (KEIN Gmail-Kalender in Calendar.app, Ziel = „Kalender")"
 metadata:
   node_type: memory
   type: project
   originSessionId: sess_2f5b0aa2-4341-4011-bf96-66c3d8dab653
 ---
 
-**Stand 13.09.2026 spät (Morgen-Brief live, Engine geblockt durch Plan-Mode-Ablehnungen, Bauplan komplett verifiziert):**
+**Stand 13.09.2026 abends — ZIEL ERREICHT: 1 Automation, alle 6 Funktionen, Engine komplett gebaut und live getestet.**
 
-**✅ ERLEDIGT 13.09.:**
-1. **`~/.zcode/AGENTS.md` ANGELEGT** (Dauer-Prompt, wie GEMINI.md bei Antigravity): Entscheidungs-Hoheit (Produkt/UI entscheidet Sascha), nur Deutsch, ADHS-Format, Beweis-Pflicht. **19:45 ERWEITERT (diese Session):** + LOKI-Standard-Block (Caveman/ADHS/Sequential, Skill-Routing-Tabelle, Orchestrierungs-Gate Schnitt-0, 5 Stopp-Regeln, Session-Start-Pflicht LOKI_SESSION_CONTEXT+PROJECT_MAP, Verifikations-Pflicht, GLM-Betrieb) — 63 Zeilen, Quelle kanonisch ~/.agents/STANDARD-SKILLS.md.
-1b. **ROOT CAUSE „jeder neue Chat dumm" GEFIXT:** `~/.zcode/cli/config.json` war seit 06.09. UNGÜLTIG (leerer `matcher: ""` im UserPromptSubmit-Gate-Hook → 127× `config_file_invalid` pro Tag → ZCode lud GESAMTE User-Config nicht: keine Hooks, kein SessionStart, keine MCPs). Fix: leerer matcher-Key entfernt, JSON valide, gate-enforcer live getestet (Trigger feuert, Fragen stumm). Wirkt nach ⌘Q-Neustart.
-2. **Morgen-Brief-Automation LEBT** (native ZCode-Automations, ID `automation-d3f486f6-0509-4176-8459-be13ad3b4282`, cron `0 9 * * 1-5`, nächste Ausführung Mo 09:00): liest Logbuch + MASTER_TODO + SESSION_CONTEXT + daily_sweep → max. 5 Bullets → Logbuch-Datei + Kalender-Event „Tagesplan" via osascript.
-3. asar nur nach /tmp/zcode_asar entpackt — **NICHTS gepatcht, App unangetastet** (Nutzer-STOPP; Deutsch-UI-Patch pausiert, siehe [[zcode-app-german-ui-patch]]).
+## Die EINE Automation (verifiziert via CronList, ID `automation-d3f486f6-0509-4176-8459-be13ad3b4282`)
+- **Titel:** „LOKI Tages-Routine: alle 6 Briefs (09/10/15/16/21 Uhr + Zweige)" · cron **`0 9,10,15,16,21 * * *`** · active
+- Zweig-Wahl zur Laufzeit per `date '+%H %u %A'`: 09:00 MORGEN-BRIEF (tgl.) + DEV-BRIEF (Mo–Fr, im selben Lauf: Commits/Modul-Änderungen/Follow-ups, CI nur melden wenn konfiguriert) · 10:00 RISIKO-SCAN (tgl., 24 h-Diffs, nur hohe Konfidenz + Beweis, „keine Findings" = valid) · 15:00 nur Mi DOKU-SYNC (7 Tage Code vs. Doku) · 16:00 nur Fr RELEASE-BRIEF (Features/Fixes/Experience/Engineering + DE-Release-Notes + Kalender-Event) · 21:00 ABEND-ZUSAMMENFASSUNG (skippt still wenn Logbuch schon „abgeschlossen")
+- **Nutzer-Kernforderung:** „wieso formulierst du die automationen nicht als eine einzige statt 6 — DAS WAR DAS ZIEL" → niemals 6 separate Tasks anlegen; weitere Briefs = neue Zweige + neue Stunde in DENSELBEN cron. ZCode-Limit bestätigt: **1 Scheduled Task pro Chat** (CronCreate in Task-Session → Fehler).
+- Nutzung `/feierabend` (Command-Datei) für manuellen Feierabend ohne 21:00-Warten.
 
-**⚠️ OFFEN (Stand spät 13.09.):** Abend-Zusammenfassung scheiterte an **ZCode-Limit: 1 Scheduled Task pro Chat** → NEUER Chat nötig (cron `30 21 * * *`, Sicherheitsnetz: nur schreiben wenn Logbuch heute fehlt). **Engine noch NICHT gebaut** (daily_sweep.py, Logbuch-Ordner, assi brief/feierabend, Hook, /feierabend-Command). **Plan-Mode-Deadlock:** ExitPlanMode 4× „Permission denied", Nutzer-Verbal-GO im AskUserQuestion („Freigeben — bau fertig") hebt den Plan-Modus NICHT auf — nur der manuelle Modus-Umschalter am Eingabefeld (Plan → **Accept Edits/Execute**) + „go". Beim nächsten GO: direkt den Architekten-Bauplan unten exekutieren (daily_sweep.py-Code steht komplett im Session-Verlauf, fertig zum Schreiben). Nutzer verlangte außerdem: **ALLE installierten ZCode-Subagenten in die Pipeline einbeziehen** (code-architect/explore/implementer/reviewer, Agent Sdk Dev, Agentforce Adlc, Feature Dev, general-purpose, Max Explore; max 3 parallel). /standardskill wurde erneut gebootet und als Regel-Tabelle bestätigt.
+## Engine — GEBAUT 13.09. (Implementer-Subagent, 7/7 PASS, live getestet)
+1. **`~/.agents/tools/daily_sweep.py`** — 7 Quellen read-only: ZCode-Rollouts (`request.body.messages[]` role=user, mtime-Filter, Break nach erstem Prompt), Cline `~/.cline/data/sessions/*/*.messages.json`, Antigravity `~/.gemini/antigravity/brain/*`, AutoClaw `~/.openclaw-autoclaw/agents/*/sessions/*.jsonl`+`cron/jobs.json`, claude-mem.db (Schema-Discovery `mode=ro`), Git heute (`~/loki-ki`, `~/Projects/*`), LOKI-Dateien. Live-Test: 9 Einträge aus 2 Quellen (AutoClaw, ZCode), exit 0.
+2. **Logbuch** `~/.agents/memory/logbuch/2026-09-13.md` — Frontmatter date/projects/status, H2 pro Projekt, `## ✍️ Meine Notizen` = tabu (Parser stoppt dort), append-only, status nur via feierabend → „abgeschlossen".
+3. **`~/loki-assistent/assi`** erweitert: CMD `"brief": brief.py, "feierabend": evening.py`; `brief`-Alias-Kollision gelöst (`("--brief",)` → status). Backup `assi.bak-vor-brief`.
+4. **`assi brief`** = Morgen-Brief (neuestes Logbuch ⏳/🔨 + MASTER_TODO, max. 5 Bullets); `--hook` printet 1 Zeile `{"additionalContext": …}`, IMMER exit 0. **`assi feierabend`** = Sweep anhängen + status setzen (Live-Lauf PASS).
+5. **SessionStart-Hook** in `~/.zcode/cli/config.json`: neue Gruppe `{"matcher":"startup", hooks:[assi brief --hook, timeout 30]}` AN bestehendes SessionStart-Array angehängt (bestehende 2 Hooks intakt), Backup `config.json.bak-vor-assi-hook`, JSON valid.
 
-**🛠️ VERIFIZIERTER BAUPLAN (Architekt-Subagent agent_887acee0, 13.09., vollständiger Code im Session-Verlauf):**
-- **assi-Kollision:** `~/loki-assistent/assi` Zeile 17 mappt `"brief"` bereits auf `status` → Alias auf `("--brief",)` ändern + CMD-Dict um `"brief": "brief.py", "feierabend": "evening.py"` erweitern.
-- **Hooks Merged (verifiziert):** config.json hat bereits `hooks.enabled: true` mit SessionStart-Array (2 Objekte OHNE matcher: obsidian load_vault_context.py + projects.py --hook) → neue Gruppe `{"matcher":"startup","hooks":[{"type":"command","command":"python3 ~/loki-assistent/assi brief --hook","enabled":true,"timeout":30}]}` ANHÄNGEN (idempotent per command-String-Check, Backup vorher, nie whole-file-Replace). Hook-Vertrag: `brief.py --hook` printet EINE Zeile `{"additionalContext": "<md>"}`, **immer Exit 0** (Start nie blockieren).
-- **Sweep-Datenpfade (korrigeret/architekt-verifiziert):** Antigravity = `~/.gemini/antigravity/brain/<uuid>/.system_generated/logs/transcript.jsonl` (+ conversations/*.db) — `~/.gemini/tmp` nur litert-Logs! AutoClaw = `~/.openclaw-autoclaw/agents/*/sessions/*.jsonl` + `cron/jobs.json`. Cline = `~/.cline/data/sessions/*/*.messages.json` + `cache/user_input_history.jsonl` (JSON, kein DB-Zwang). ZCode-Rollout-Zeilen: `{"completedAt","request":{"body":{"messages":[...]}}}` — User-Prompts in `request.body.messages[]` role=user; Dateien bis 3 MB Token → mtime-Filter + Abbruch nach erstem Prompt. claude-mem: generisches Schema-Discovery (created_at+content-artige Spalte) via `file:...?mode=ro`.
-- **Logbuch-Schreibregeln:** append-only, alles ab `## ✍️ Meine Notizen` = tabu (Parser stoppt an dieser Überschrift), Frontmatter handgeformt (kein PyYAML), status nur via feierabend auf „abgeschlossen".
-- Risiken-Tabelle (8 Items) im Bauplan: mtime-Filter vor Parse (Timeout), WAL-Locks → try/except „(keine Daten)", git-subprocess mit timeout 10.
+## Kalender-Fakten (bewiesen 13.09.)
+- osascript → Calendar.app funktioniert **ohne TCC-Prompt** (Zugriff still gewährt).
+- **KEIN Gmail-/Google-Kalender in Calendar.app!** Liste: Kalender, Privat, Arbeit, Endel·Deep Rest Meditation, RISE Energiespitzen, RISE Energieeinbrüche, Ohne Titel, Geplante Erinnerungen, Geburtstage, Österreichische Feiertage, Siri-Vorschläge → **Zielkalender = „Kalender"** (default, calendar id 51D1AEBA-FFA6-4FCF-88C7-7944E625514E).
+- Test-Event-UID `B8CD317A-1518-43EF-9453-F2131F9D77B5` („LOKI Tages-Routine Test", löschbar).
 
-**Design-Entscheidungen (verbindlich):**
-- **KEINE Web-UI** — Oberfläche = **Kalender am Mac + ZCode-Chat**. Siehe [[feedback-entscheidungshoheit]].
-- Logbuch = **globales System-Memory `~/.agents/memory/logbuch/`** (1 Datei/Tag, Abschnitt pro Projekt, Tool-Tags [ZCode]/[Cline]/[Antigravity]/[AutoClaw], Status-Emoji ✅🔨⏳).
-- **Nur 4 Tools als Quellen** (+ claude-mem, Git, LOKI-Dateien). Kalender via **AppleScript → Kalender.app** (Zielkalender zur Laufzeit ermitteln), NICHT AutoClaw-Connector.
-- **Eigent = entschieden NICHT jetzt** (ZCode-Automations Primär; Eigent offiziell GLM-Plan-kompatibel, Gratis-BYOK-Tier, hat Automations/Memory/WhatsApp-Fernbedienung — Phase-3-Experiment falls gewünscht).
-
-**Infrastruktur-Fakten 13.09.:**
-- ZCode **Automations-Panel** (Sidebar → Automations) = natives UI (4 Templates, Idle-time-Tab) — genau daher sein ursprüngliches Template.
-- ZCode-Subagenten-Status 13.09.: **code-architect LÄUFT** (lieferte 104k-Token-Bauplan), explore/reviewer = „Model request failed" (transient) bzw. „Model provider is not configured: builtin:zai-coding-plan" → bei Failure selbst ausführen (LOKI-Regel 9).
-- `@agentforce-adlc:adlc-orchestrator` = installierter **Agentforce-Plugin-Subagent** in ZCode (adlc-author/engineer/orchestrator/qa) — nicht Teil der LOKI-Pipeline.
-- `~/loki-assistent/assi` + LaunchAgent `com.sascha.assi.daily` (08:00, nur System-Health-Brief) existieren — Wiederverwendungs-Basis.
-- Plan-Mode-Sandbox blockt teils unschuldige Befehle (sqlite3, python3 -c, npx, mcporter) — Read-only-Ausweichwege nutzen.
-
-**Phase 2 (auf GO):** die 4 Template-Automations (Dev-Brief Mo–Fr 09:00, Risiko-Scan 10:00, Release-Brief Fr 16:00, Doku-Sync Mi 15:00) via CronCreate.
+## Sonstiges 13.09.
+- Subagenten-Status: **implementer + code-architect zuverlässig**; explore/reviewer teils „Model request failed"/„user concurrency limit exceeded" → retry oder selbst ausführen; Agent-Übersetzungswellen 2× von Nutzer-Interrupts abgebrochen.
+- Erste echte Auslösung der Automation: **gleicher Tag 21:00** (Abend-Zweig) → Abend-Brief im Kalender prüfen.
+- Design-Entscheidungen bleiben verbindlich: KEINE Web-UI (Kalender + Chat = Oberfläche), Logbuch im globalen System-Memory, nur ZCode/AutoClaw/Antigravity/Cline als Quellen, Eigent = nicht jetzt. Siehe [[feedback-entscheidungshoheit]] und [[zcode-app-german-ui-patch]] (Deutsch-UI = offener Rest).
 
 ## zcode-app-german-ui-patch
 
 ---
 name: zcode-app-german-ui-patch
-description: ZCode-App-UI Deutsch — i18n-Fakten (nur langEN.js/langZH.js in app.asar)
-  + Patch-Rezept (EN-Slot ersetzen, codesign, Re-Patch nach Updates); 13.09. auf
-  Nutzer-Stopp PAUSIERT, nichts gepatcht
+description: "ZCode-UI Deutsch 13.09. AKTIV: echte Strings NICHT in langEN.js sondern in out/renderer/assets/IntlProvider-Db46X9QF.js (react-intl); EN-Dict m=Offset 252479–583376, 5066 Paare extrahiert nach /tmp/zcode_i18n/; Übersetzung 2× abgebrochen — bei „weiter übersetzen": de_parts bauen, m-Dict patchen, repacken, codesign"
 metadata:
   node_type: memory
   type: project
   originSessionId: sess_2f5b0aa2-4341-4011-bf96-66c3d8dab653
 ---
 
-**Status 13.09.2026: PAUSIERT auf Nutzer-STOPP** (er lenkte auf native Automations um; der Deutsch-Wunsch bleibt bestehen, „DU SOLLST DIE GANZE APP DAS INTERFACE DIE UI DEUTSCH MACHEN").
+**Status 13.09.2026 abends: AKTIVE Baustelle** (Nutzer-Befehl: „die app auf deutsch stellen nativ am mac kein web"). Bisher NICHTS an der App gepatcht — App-Binary unangetastet, nur gelesen.
 
-**Verifizierte i18n-Fakten (App: /Applications/ZCode.app, Bundle dev.zcode.app, v0.16.5):**
-- Electron-App, UI-Strings in `Contents/Resources/app.asar`.
-- i18n-System vorhanden: `i18n/langEN.js` + `i18n/langZH.js` (im asar-Header per grep sichtbar), API-Fragmente `i18n.setLanguage`, `i18n.addTranslation`, `i18n.addTranslation`-Prompt-Funktion.
-- **Deutsch existiert NICHT** — nur EN + ZH. `Resources/config/default.json` kennt nur zh-CN/en-US community URLs.
-- `config.json` (User) hat KEIN language/locale-Setting.
+## Korrigierte i18n-Fakten (wichtige Falschspur bereinigt!)
+- **`i18n/langEN.js`+`langZH.js` war eine FALSCHSPUR** (grepte node_modules-Artefakte). Die ECHTEN UI-Strings: **`out/renderer/assets/IntlProvider-Db46X9QF.js`** (660 KB / 586.404 Zeichen, react-intl) — asar entpackt unter `/tmp/zcode_asar` (flüchtig!).
+- Struktur (exakt vermessen): ZH-Dict `p` = `{` bei Offset 709, `}` bei 252475 (backtick-bewusst gescannt). Direkt danach **`,m={`** = EN-Dict: **START 252479, END 583376**; dahinter folgt `},h=n(),g={"zh-CN":p,"en-US":m}` (Beweis: m = EN-Dict, g = Locale-Map). **Offsets = Zeichen (UTF-8-dekodiert), NICHT Bytes!**
+- **5066 Paare** in m (identisch zu p, nur 8 Key-Differenzen), Keys wie `settings.locale.system`, Werte in Backticks. App-Locale-Setting existiert nativ: „System default / 中文简体 / English" — **Deutsch fehlt** → Patch = deutsche Values ins EN-Dict `m` (App auf English/Default stellen).
+- App: /Applications/ZCode.app, dev.zcode.app, v0.16.5, Electron.
 
-**Patch-Rezept (ausgearbeitet, noch nicht ausgeführt):**
-1. `npx --yes @electron/asar extract` → /tmp (getestet, funktioniert; Struktur: node_modules/, out/, package.json).
-2. `langEN.js` analysieren → Keys behalten (EN), Values durch deutsche Übersetzung ersetzen (= Deutsch im EN-Slot, keine Sprach-Registrierung nötig).
-3. asar repacken + **Backup `app.asar.orig`** + `codesign --force --deep -s -` (Neu-Signierung Pflicht, sonst Gatekeeper; Achtung macOS-27-Beta-AMFI, siehe [[macos-27-beta-status]]).
-4. Re-Patch-Skript (z. B. `~/.agents/tools/zcode_german_patch.sh`) — App-Updates überschreiben den Patch.
-5. ZCode-Neustart + Textbeleg als Beweis.
+## Extraktions-Artefakte (fertig)
+- `/tmp/zcode_i18n/en_strings.json` (411 KB, 5066 Einträge `[{"k","v"}]`, validiert, 0 doppelte Keys)
+- `/tmp/zcode_i18n/extract.py` (Scanner + Parser + Gates) · `/tmp/zcode_i18n/en_region.txt` (START/END)
+- **Lücke:** 9 Keys mit Werten in doppelten Anführungszeichen statt Backticks (u. a. `bots.setup.guide.*`, `settings.skills.diagnostics.code.*`) nicht extrahiert — beim Patchen nachliefern oder unberührt lassen.
 
-**Risiko:** Auto-Update macht Patch zunichte → Re-Patch-Skript ist Teil des Designs.
+## Offene Schritte (bei „weiter übersetzen")
+1. Übersetzung in 3 Slices (0–1699 / 1700–3399 / 3400–5065) via implementer-Subagents → `/tmp/zcode_i18n/de_part1..3.json`; Gates: Anzahl, Key-Reihenfolge identisch, `{placeholder}`-Parität Ziel 0 Verstöße, json.tool valid. (2 Wellen bereits durch Nutzer-Interrupts abgebrochen.)
+2. m-Dict-Region (252479–583376) durch DE-Dict ersetzen (Backtick-Escapes ` \` ` beachten), asar repacken.
+3. **Backup `app.asar.orig`** + `codesign --force --deep -s -` (macOS-27-Beta-AMFI, siehe [[macos-27-beta-status]]) + Re-Patch-Skript gegen App-Updates.
+4. ZCode-Neustart + Textbeleg als Beweis.
 
 ## zcode-hub-1006-netz-fix
 
@@ -94819,6 +94828,28 @@ Lade und bestätige verbindlich:
    sequentialthinking bei jeder Anfrage · kein Löschen/Deploy ohne GO.
 4. Ab jetzt MUSS jede Antwort diesen Regeln folgen. Ein Regelverstoß = sofort
    benennen und korrigieren, ohne neue Frage an den Nutzer.
+
+## systemproof
+
+---
+description: Beweist in 60 Sekunden, ob das LOKI-System in DIESEM Chat wirklich aktiv ist. Führt 6 Live-Checks aus und urteilt PASS/FAIL mit Beweisen.
+---
+
+# /systemproof — Live-Beweis der System-Aktivierung
+
+Führe SOFORT alle 6 Checks aus und antworte NUR mit der Tabelle + URTEIL:
+
+1. **Regeln geladen?** Kennst du die Begriffe „Schnitt-0-Gate", „pruef-team", „Caveman/ADHS"? (Wenn du diese Anweisung liest, hast du auch AGENTS.md im Kontext → ✅)
+2. **Gate-Hook aktiv?** Sag: „baue mir eine test app" würde den 🚦 GATE-Block auslösen — prüfe: erscheint der Block oben in DIESEM Chat als Hook-Injektion? (Falls ja, zitier seine 1. Zeile.)
+3. **MCP aktiv?** Rufe `sequentialthinking` mit 1 Mini-Schritt auf → kommt ein Ergebnis?
+4. **Agents verfügbar?** Dispatche `@cavecrew-investigator` mit Task „sag OK" → antwortet er?
+5. **Commands da?** Existiert diese Datei: `ls ~/.zcode/commands/standardskill.md`
+6. **Skills da?** Prüfe `ls ~/.agents/skills/wayfinder/SKILL.md`
+
+## Output-Format
+| Check | ✅/❌ | Beweis (1 Zeile) |
+|---|---|---|
+URTEIL: **SYSTEM AKTIV** (6/6) | **TEILWEISE** (n/6, nenne die toten) | **TOT** (<3/6 → sag „gate tot" im Haupt-Chat, dort wird das Prozess-Log gelesen)
 
 ## todo
 
