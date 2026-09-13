@@ -81,3 +81,9 @@ Am 25.08.2026 (Schlussphase der Mac-Sanierung) reagierte Sascha frustriert („w
 25. Nach Recherche/Hitlisten immer mit einer EINDEUTIGEN Empfehlung enden: „Das Modell: X" + verifizierte Links + der 1 Kopierbefehl — nicht die Wahl dem Nutzer zurückspielen.
 26. Download-/Shop-Links vor dem Ausspielen per `curl -s -o /dev/null -w "%{http_code}"` auf HTTP 200 prüfen (kostet Sekunden, beweist Erreichbarkeit).
 27. „Welches X" = sein Satz für „gib mir EINEN Namen, keine Optionen". Eine Upgrade-Alternative maximal als eine Zeile unten.
+
+**Zwölfte Lektion 13.09. (Coding-Modell-Download-Link):** Auf „zeig link" antwortete ich zwar mit dem Link in Zeile 1, hängte aber noch Einbindungs-Wege, 404-Hinweis und Angebot an — Reaktion: „BIST DU BHEINDERT ??". Erst die reinrassige Ein-Zeilen-Antwort (Link + „Klick → Download → fertig") war das Format, das er wollte.
+
+**How to apply (Ergänzung):**
+28. Fragt er nach EINEM Ding (Link, Befehl, Name): EXAKT das eine Ding + maximal 1 Satz. Keine Varianten, keine Verifikations-Notizen, keine Zusatz-Angebote — die Nachfrage „warum X?" kommt von ihm, wenn er mehr braucht.
+29. Nach „BIST DU BEHINDERT/BEHINDERT??" ohne weiter Kontext: erst vermuten, dass der letzte Output wieder ZU VIEL war — als nächstes die dünnste mögliche Antwort liefern und das konkrete Symptom in einem Satz anbieten („wenn etwas klemmt: sag das Symptom"), statt zu erklären.
