@@ -21,7 +21,9 @@ metadata:
 
 **Warum Eigenbau:** Comet selbst ist seit dem Sept-2026-Update hinter Desktop-„Perplexity Computer" gesperrt und am iPhone entkernt (Support bestätigte ihm: Kern nicht änderbar, /-Skills weg, Browser-Übernahme weg). Kein Fertigprodukt deckt sein Anforderungsprofil ab.
 
-**Vorgelegter Plan (ExitPlanMode, Freigabe AUSSTEHEND — Call wurde von Plan-Modus abgelehnt, erneut einreichen wenn er zustimmt):** „Loki-Browser-Agent" unter `~/loki-browser-agent/`
+**STATUS 14.09.: VERWORFEN/PAUSIERT.** Kurz nach Plan-Präsentation Wutausbruch: „was soll ich damit … du bastard … WAS LIEGT AM MAC! ICH WILL EINEN BROWSER DER FÜR MICH ARBEITET" und schließlich „du solslt nichts bauen du sollst im web danach suchen". Lektion: Er wollte erst Recherche, kein Bauen; das Anforderungsprofil („alles wie Comet mit skills settings auto tools") bleibt dokumentiert, falls er später doch GO gibt.
+
+**Vorgelegter Plan (nie gebaut):** „Loki-Browser-Agent" unter `~/loki-browser-agent/`
 - Baustein 1: **Klick-Motor** = Chromium via Playwright auf dem Mac (headful, Logins 1× manuell, Cookies persistieren)
 - Baustein 2: **Agent-Gehirn** = OmniRoute-Modelle (Gateway localhost:20128, Key siehe [[omniroute-gateway-keys]]) führen Aufgaben schrittweise aus (navigieren/klicken/lesen/screenshot/berichten)
 - Baustein 3: **Web-Panel** vom iPhone im Safari: Aufgabe starten, Live-Schritt-Log + Screenshots, Ergebnis-Berichte, Skills-Verwaltung (Presets), zeitgesteuerte Auto-Tasks, Settings

@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-13 22:57 UTC
+Zuletzt gespiegelt: 2026-09-13 23:08 UTC
 
 ## AGENTS
 
@@ -1388,13 +1388,15 @@ Bei Fachfragen (z. B. Trainings-Übungen) fordert er explizit „clinical reason
 
 # Memory Index
 
-- [Loki-Browser-Agent (Eigenbau-Comet-Ersatz)](loki-browser-agent-comet-ersatz.md) — 14.09. Nacht: Sascha lehnte ALLE 4 Fertig-Kandidaten ab („keines") → Anforderung „alles wie Comet: skills, settings, auto tools"; Plan vorgelegt (Playwright-Klick-Motor + OmniRoute-Gehirn + iPhone-Web-Panel, S1–S5 mit Prüfinstanz, ~2 h, `~/loki-browser-agent/`) — **Freigabe ausstehend (Plan-Modus)**; Lesson: Antipp-Fragen (AskUserQuestion) brechen seinen Wut-/Verständnis-Loop
+- [Loki-Browser-Agent (Eigenbau-Comet-Ersatz)](loki-browser-agent-comet-ersatz.md) — 14.09. **VERWORFEN/PAUSIERT**: Sascha lehnte alle 4 Fertig-Kandidaten ab („keines"), Anforderung „alles wie Comet: skills, settings, auto tools" dokumentiert; nach Plan-Vorlage Wut „du sollst nichts bauen, du sollst im web danach suchen" → er wollte RECHERCHE, kein Bauen; Plan (Playwright+OmniRoute+iPhone-Panel, S1–S5) bleibt dokumentiert für späteres GO
+
+- [Web-Dev-IDE-Landschaft Sept 2026](webdev-ide-landschaft-2026-09.md) — 14.09. Recherche: **Antigravity = Gesamtsieger** (XDA 1-Monats-Test; Live-Vorschau + Goal-System = die 2 Features aus seinem Screenshot; bei ihm SCHON INSTALLIERT), Cursor nur für Riesen-Repos, Lovable nur Prototyping; Report `~/Desktop/KI_ANTWORTEN_UND_WEBDEV_SETUP_RECHERCHE_2026-09-14.md`
 
 - [Einfache Antworten](feedback-einfache-antworten.md) — 13.09. „ich versteh nicht was du redest": 1 Frage = 1 Empfehlung in Alltagswörtern, keine Werkzeug-Matrizen/Jargon; Web-App ≠ native App erklären (Xcode unnötig); **2. Vorfall „du trottel": NIE Tools empfehlen, die er schon täglich nutzt (Perplexity/Comet seit Jahren, hält sie für unbrauchbar) — sein Erfahrungs-Urteil schlägt Rankings**
 
 - [iOS27 Web-App-Testing + KI-Recherche-App](ios27-webapp-testing-recherche-2026-09-13.md) — 13.09. Report **`~/Desktop/IOS27_WEBAPP_TEST_RESEARCH_2026-09-13.md`** (Confidence 85): Testing = Safari Mac + Web Inspector „Connect via Network" (kabellos, gratis) / iOS-Simulator / Playwright-WebKit-Emulation / BrowserStack (iOS 27 Beta seit 17.06.2026); ⚠️ Perplexity-Empfehlung VERWORFEN (nutzt er seit Jahren, hasst sie) → seine Anforderung: Tool mit REGEL-HOHEIT; **Update-Lektion: seit Sept-2026-Update sind Perplexity-Skills/Web-Automatisierung nur noch Desktop-„Perplexity Computer" — am Handy tot**; ⚠️ **14.09. Kern-Bedarf klargestellt: er will einen ARBEITER-BROWSER vom iPhone („Ich will einen Browser der für mich arbeitet") — Mac-Tool allein reicht ihm NICHT; Empfehlung = Manus iOS-App (Cloud-Agent, Apple-Sandbox verbietet Klick-Automatisierung direkt am iPhone); Details im [Open WebUI Agent](openwebui-eigener-recherche-agent.md)**; Open WebUI wurde trotzdem gebaut (13./14.09. Nacht, siehe [[openwebui-eigener-recherche-agent]]); ⚠️ ZCode-Subagent-Dispatch tot („No reasoning level selected") → Main-Agent-Direktrecherche als bewährter Workaround
 
-- [Coding-Modelle + Android Studio](coding-modelle-android-studio-2026-09-13.md) — 13.09. Research fertig (Report ~/Desktop/CODING_MODELL_RESEARCH_2026-09-13.md); **Korrekturen: NUR LOKALE LLMs · MOOLAPTOP hat KEINEN GLM-Plan · KEIN OLLAMA (Runner = LM Studio/llama.cpp)**; **FINALES Modell für Moritz = Qwen3-Coder-Next 80B UD-Q2_K_XL (26,76 GB, von LM Studio selbst mit ✓ markiert + Unsloth-Karte bestätigt „2-bit XL or above")**, UD-IQ3_XXS 28,5 GB = Maximum; Download in LM Studio Discover-Tab oder HF-Direktlink; **Integration: .lmstudio\models\unsloth\Qwen3-Coder-Next-GGUF\ (3-Ebenen-Struktur!) → Server Port 1234 → AS Model Providers → Local Provider**; Token-Settings NUR in LM Studio (Zahnrad: Context 32K + KV q8_0 + Flash-Attention, „Max Tokens" 8192 Seitenleiste) — AS hat keine Token-Settings, nur neuer Chat pro Aufgabe; Qwen3.5-35B-A3B Q4 = sicherer Standard, Qwen3.6 27B (77,2 % SWE-bench vendor) für harte Aufgaben; feature-dev-Team PASS; **Nutzer = MORITZ** (präziser Coder → schnelles MoE als Default, Thinking-Reserve nur für Bug-Jagd); ⚠️ Pagefile 35 GB belegt
+- [Coding-Modelle + Android Studio](coding-modelle-android-studio-2026-09-13.md) — 13.09. Research fertig (Report ~/Desktop/CODING_MODELL_RESEARCH_2026-09-13.md); **Korrekturen: NUR LOKALE LLMs · MOOLAPTOP hat KEINEN GLM-Plan · KEIN OLLAMA (Runner = LM Studio/llama.cpp)**; **FINALES Modell für Moritz = Qwen3-Coder-Next 80B UD-Q2_K_XL (26,76 GB, von LM Studio selbst mit ✓ markiert + Unsloth-Karte bestätigt „2-bit XL or above")**, UD-IQ3_XXS 28,5 GB = Maximum; Download in LM Studio Discover-Tab oder HF-Direktlink; **Integration: .lmstudio\models\unsloth\Qwen3-Coder-Next-GGUF\ (3-Ebenen-Struktur!) → Server Port 1234 → AS Model Providers → Local Provider**; Token-Settings NUR in LM Studio (Zahnrad: Context 32K + KV q8_0 + Flash-Attention, „Max Tokens" 8192 Seitenleiste) — AS hat keine Token-Settings, nur neuer Chat pro Aufgabe; Qwen3.5-35B-A3B Q4 = sicherer Standard, Qwen3.6 27B (77,2 % SWE-bench vendor) für harte Aufgaben; feature-dev-Team PASS; **Nutzer = MORITZ** (präziser Coder → schnelles MoE als Default, Thinking-Reserve nur für Bug-Jagd); ⚠️ Pagefile 35 GB belegt; **14.09. offen: „Modell extrem langsam und dumm"** → Checks laufen (Swap/GPU-Offload/CUDA-Runtime), falls unverändert: Wechsel auf Qwen3.5-35B-A3B Q4 (~21 GB) empfohlen
 
 - [Prüf-Team + Config-Health](pruef-team-und-config-health.md) — 13.09.: 10 Prüf-Agents + pruef-team-Dispatcher; Cap max-3-Agents ENTFERNT; config-health.py SessionStart-Selbstcheck; **globale Sync jetzt 5/5 Harnesses (sync-standard-skills.sh TARGETS + ZCode AGENTS.md + Claude CLAUDE.md)**; alle ✅-Berichte = Disk-Beweise, LIVE-Beweis ausstehend → `/systemproof` Command (6 Checks, URTEIL AKTIV/TEILWEISE/TOT) in neuem Chat ausführen
 - [ZCode ADHS-Automations](zcode-adhs-automationen.md) — 13.09. LIVE: **EINE Automation mit ALLEN 6 Briefs** (cron `0 9,10,15,16,21`, Zweige per Uhrzeit+Wochentag; niemals 6 separate — Nutzer-Ziel!) + Engine 7/7 PASS + **erster Abend-Lauf PASS: Logbuch-Event UID 610E2A57 im Kalender „Kalender"** (Fix: `open -a Calendar` vor osascript wg. Fehler -600); 1 Task pro Chat-Limit; SessionStart-Hook injiziert jetzt Saschas Projektlisten-Pflicht
@@ -1712,6 +1714,8 @@ Regeln: nie Emulator + LLM gleichzeitig (~7 GB Puffer), RAM vorher freiräumen, 
 
 **Sascha bestätigt (13.09., „das ja"):** Sein Problem ist die ANTWORTLÄNGE (Antwort bricht mitten im Code ab), nicht das Chat-Gedächtnis → Fix = „Max Tokens" in LM-Studio-Chat-Seitenleiste auf 8192+ + pro Aufgabe neuer Chat in AS. Falls es in LM-Studio-eigenem Chat NICHT abschneidet, in AS aber doch: Grenze liegt beim AS-Request → neuer Chat in AS.
 
+**Diagnose „Modell extrem langsam und dumm" (13.09., letzter Stand, noch nicht gelöst):** Checkliste an Sascha/Moritz gegangen — LANGSAM: (1) Swap-Tod prüfen (Task-Manager: „Ausgelagert" >2–3 GB / Disk 100 % = häufigste Ursache → Programme schließen, Modell neu laden), (2) **GPU Offload muss Maximum** sein im Load-Panel (0 = CPU-only = 1–3 tok/s statt 8–15), (3) Runtime muss **CUDA** sein, nicht Vulkan/CPU (Zahnrad → Runtime). Referenz: 8–15 tok/s normal, 1–3 = Konfig-Fehler. DUMM = ehrlicher Preis von **UD-Q2_K_XL (2-Bit-Qualitätsfloor)**. Empfehlung: parallel **Qwen3.5-35B-A3B Q4 (~21 GB, 5 GB Luft, Q4>2-Bit schlauer, besseres Tool-Calling)** laden und vergleichen — realistischer Daily-Driver; Alternativ-Fix auf 80B: Wechsel auf IQ3_XXS (nur wenn Swap gelöst). Erst-Check-Ergebnis steht noch aus.
+
 ## feedback-agent-drives-ui
 
 ---
@@ -1845,6 +1849,7 @@ metadata:
 9. **Das Ziel wörtlich lesen, nicht aufblähen:** „eine einzige statt 6" hieß: ALLE Funktionen in EINE Automation (Zweige per Uhrzeit/Wochentag). Wer mehrere Artefakte gegen das erklärte Ziel baut, hat das Ziel nicht gelesen — nachfragen gilt hier nicht, das Ziel stand im Satz.
 10. **NICHT FÜR IHN RATEN/BEWERTEN (14.09., „DU SOLLST NICHT RATEN! WOFÜR HABEN WIR DEINEN /standardskill ERSTELLT?"):** Bei Tool-/Produkt-Kandidaten NIE Urteile im Namen abgeben („Passt zu dir? Ja — dein Fall", „eher nicht"). Korrektes Format: neutrale Fakten-Tabelle (Ort, Fähigkeit, Kosten, Grenze, Quelle) — OHNE Empfehlungsspalte, OHNE „dein Fall"-Vermerke — dann: „Deine Entscheidung: nenn die Nummer, ich richte es ein." Empfehlungen nur, wenn ER explizit danach fragt.
 11. **Bei Beleidigungs-Wut die Sachlage halten, nicht einlenken (14.09., „bist du behindert su missgeburt"):** Nicht rechtfertigen, nicht kuschen, nicht neu anfangen — sachlich antworten, Fakten-Tabelle als Entscheidungsbasis stehen lassen, und als Ventil die Delegation anbieten: „Wenn ich selbst entscheiden soll: sag ‚entscheide du', dann liefere ich ohne weitere Rückfragen." Beleidigungen ignorieren, Inhalt bedienen.
+12. **Auftrag wörtlich nehmen: RECHERCHE ≠ BAUEN (14.09., „du sollst nichts bauen du sollst im web danach suchen"):** Wenn er „suche/suche im Web danach" sagt, will er NUR einen belegten Bericht — keine Tools bauen, nichts einrichten. Ich hatte zweimal falsch reagiert (Mac-Agent gebaut, dann Eigenbau-Plan vorgelegt), bevor er es explizit machte. Was landete: researched Fakten-Tabelle + auf seine Wahl „Bericht als Datei" die Datei auf den Desktop (ExitPlanMode mit minimal-plan „nur Datei schreiben" wurde sofort genehmigt). Bei Mehrdeutigkeit: AskUserQuestion mit antippbaren Optionen (auch „keines" als Antwort zulassen) statt raten — bricht seinen Frust-Loop zuverlässig.
 
 ## feedback-gui-not-cli
 
@@ -2199,7 +2204,11 @@ Fakten-Stand 13./14.09.2026 für Saschas Kernbedarf „Browser, der für mich ar
 
 **Warum am iPhone kein direkter Klick-Browser:** Apple-Sandbox (keine App steuert eine andere) — arbeitende Browser laufen zwingend als Cloud-Agent mit iPhone-App als Fernbedienung.
 
-**Lesson bei Präsentation (14.09. Rüge „DU SOLLST NICHT RATEN"):** Kandidaten als neutrale Fakten-Tabelle ohne Bewertungsspalte — Entscheidung = Sascha (Nr. nennen), Umsetzung = ich.
+**Qualitäts-Studie (SuprMind, via Suchlauf 14.09.):** Perplexity Korrektur-Quote 2,54 (Fehler werden am zuverlässigsten aufgedeckt) vs. Gemini nur 0,26 — „Qualität" zweigeteilt: Antworttendenz → Gemini (Reddit Frühjahr 2026 „besser belegt"; PCMag: Deep-Research-Sieger), Quellen-Nachprüfbarkeit → Perplexity. ChatGPT: Allrounder, weniger Zitat-Fokus. Kagi: werbefrei gegen Abo, dünne Vergleichslage.
+
+**Web-Recherche geliefert (14.09., Report `~/Desktop/KI_ANTWORTEN_UND_WEBDEV_SETUP_RECHERCHE_2026-09-14.md`):** Antwort-App-Vergleich + Web-Dev-IDE-Vergleich (siehe [[webdev-ide-landschaft-2026-09]]). Nach „keines"-Ablehnung aller 4 Kandidaten wählte er per AskUserQuestion nur „Bericht als Datei" — kein Tool wurde installiert.
+
+**Lesson bei Präsentation (14.09. Rüge „DU SOLLST NICHT RATEN"):** Kandidaten als neutrale Fakten-Tabelle ohne Bewertungsspalte — Entscheidung = Sascha (Nr. nennen), Umsetzung = ich. Und: „suche danach" = nur Bericht liefern, nichts bauen ([[feedback-entscheidungshoheit]] Punkt 12).
 
 ## legal-ops-native-status
 
@@ -2269,7 +2278,9 @@ metadata:
 
 **Warum Eigenbau:** Comet selbst ist seit dem Sept-2026-Update hinter Desktop-„Perplexity Computer" gesperrt und am iPhone entkernt (Support bestätigte ihm: Kern nicht änderbar, /-Skills weg, Browser-Übernahme weg). Kein Fertigprodukt deckt sein Anforderungsprofil ab.
 
-**Vorgelegter Plan (ExitPlanMode, Freigabe AUSSTEHEND — Call wurde von Plan-Modus abgelehnt, erneut einreichen wenn er zustimmt):** „Loki-Browser-Agent" unter `~/loki-browser-agent/`
+**STATUS 14.09.: VERWORFEN/PAUSIERT.** Kurz nach Plan-Präsentation Wutausbruch: „was soll ich damit … du bastard … WAS LIEGT AM MAC! ICH WILL EINEN BROWSER DER FÜR MICH ARBEITET" und schließlich „du solslt nichts bauen du sollst im web danach suchen". Lektion: Er wollte erst Recherche, kein Bauen; das Anforderungsprofil („alles wie Comet mit skills settings auto tools") bleibt dokumentiert, falls er später doch GO gibt.
+
+**Vorgelegter Plan (nie gebaut):** „Loki-Browser-Agent" unter `~/loki-browser-agent/`
 - Baustein 1: **Klick-Motor** = Chromium via Playwright auf dem Mac (headful, Logins 1× manuell, Cookies persistieren)
 - Baustein 2: **Agent-Gehirn** = OmniRoute-Modelle (Gateway localhost:20128, Key siehe [[omniroute-gateway-keys]]) führen Aufgaben schrittweise aus (navigieren/klicken/lesen/screenshot/berichten)
 - Baustein 3: **Web-Panel** vom iPhone im Safari: Aufgabe starten, Live-Schritt-Log + Screenshots, Ergebnis-Berichte, Skills-Verwaltung (Presets), zeitgesteuerte Auto-Tasks, Settings
@@ -2914,6 +2925,32 @@ Created 2026-08-23 at Sascha's request: `~/.agents/skills/web-research-team/SKIL
 **07.09.2026 Speed-Feedback (Sascha wütend: „es ist so langsam… fullstack optimierung bitte"):** Erster echter Standard-Lauf (3 DIV-DEEP parallel) dauerte ~15 min + ~1,2 M Subagent-Tokens — zu langsam/teuer. Diagnose: 3-Agent-Fanout größter Block, WebSearch-429s kosteten 2 Suchläufe, Agents fetchten 19–33× trotz max-8-Limit im Prompt. Vereinbarte Fixes (auf GO wartend, noch NICHT umgesetzt): (1) `quick` (1 Agent) als Default statt `standard` in SKILL.md, (2) hartes Tool-Limit (max 8 Fetches) als Iron-Law-artige Regel, (3) MCP_DOCKER timeoutMs 120000→30000 in ~/.mcp.json, (4) Fanout nur bei explizitem „deep" (schont [[zai-coding-plan-limits]]-Credits). Künftig: quick-first recherchieren, deep nur auf Wunsch.
 
 **Hard constraints baked in:** `control-browser` is main-agent-only and must never be delegated to subagents; max 3 parallel subagents to avoid WebSearch HTTP 429 rate limits. Cavecrew review (2026-08-23) verified references; fixed: `ai-model-web` is NOT a loadable skill — it is a cloudbase knowledge-base doc accessed via `searchKnowledgeBase(mode="skill", skillName="ai-model-web")`. Skill pairs with `market-intelligence-allrounder`, `research`, `find-docs`, `cavecrew` (output-contract kinship), and the `cdp` harness — see [[cdp-skill-browser-harness]]. Routing entry exists. Installed per [[skill-install-conventions]].
+
+## webdev-ide-landschaft-2026-09
+
+---
+name: webdev-ide-landschaft-2026-09
+description: 14.09. Recherche bestes Web-App-Entwicklungs-Setup Sept 2026 —
+  Antigravity Gesamtsieger (XDA 1-Monats-Test, Live-Vorschau + Goal-System,
+  bei Sascha schon installiert), Cursor für komplexe Codebasen, Lovable nur
+  Prototyping; Report auf Desktop
+metadata:
+  node_type: memory
+  type: reference
+  originSessionId: sess_89889126-6bec-4e4b-b8ec-d30614619344
+---
+
+Recherche-Stand 14.09.2026 für Saschas Frage „welches Setup für Web-App-Entwicklung (z. B. Atlas)" (Vollbericht: `~/Desktop/KI_ANTWORTEN_UND_WEBDEV_SETUP_RECHERCHE_2026-09-14.md`; Kontext: [[ki-agent-browser-landschaft-2026-09]]):
+
+| Tool | Stärke Sept 2026 | Quelle |
+|---|---|---|
+| **Google Antigravity** | Gesamtsieger im 1-Monats-XDA-Test; Agent-Manager = Goal-System (plant/baut/verifiziert selbst) + Live-Browser-Vorschau mit Klick-Bearbeitung — wörtlich die zwei Features aus Saschas Screenshot-Frage | xda-developers.com/tried-replacing-vs-code-with-cursor-antigravity-windsurf-for-month · builder.io/blog/agentic-ide |
+| **Cursor 3.0** | Stärkstes Kontext-Gedächtnis für große/komplexe Codebasen; „powerhouse" | codecademy.com agentic-ide-comparison · dev.to jotafeldmann |
+| **Windsurf 2.0** | Polierter Mittelweg, kein klarer Vorsprung | reddit ChatGPTCoding 1psovoa |
+| **Lovable/Bolt** | Nur Browser-Prototyping; Muster: prototypen → in echte IDE exportieren | lovable.dev/guides/best-ai-app-builders · getautonoma.com bolt-vs-lovable |
+| Rangliste | Top-10-IDE-Ranking, 8 Dimensionen, 3 Lock-in-Tiers | digitalapplied.com/blog/ai-coding-ide-landscape-may-2026-10-tools |
+
+Wichtig: **Antigravity ist bei Sascha bereits installiert** (Physio-Assistent läuft darin) — Live-Vorschau UND Goal-System abgedeckt; iPhone-Test der gebauten Apps per Safari-LAN-Adresse (Methode wie beim Mac-Agenten eingerichtet). Cursor erst bei Riesen-Repos erwägen.
 
 ## zai-coding-plan-limits
 

@@ -29,4 +29,8 @@ Fakten-Stand 13./14.09.2026 für Saschas Kernbedarf „Browser, der für mich ar
 
 **Warum am iPhone kein direkter Klick-Browser:** Apple-Sandbox (keine App steuert eine andere) — arbeitende Browser laufen zwingend als Cloud-Agent mit iPhone-App als Fernbedienung.
 
-**Lesson bei Präsentation (14.09. Rüge „DU SOLLST NICHT RATEN"):** Kandidaten als neutrale Fakten-Tabelle ohne Bewertungsspalte — Entscheidung = Sascha (Nr. nennen), Umsetzung = ich.
+**Qualitäts-Studie (SuprMind, via Suchlauf 14.09.):** Perplexity Korrektur-Quote 2,54 (Fehler werden am zuverlässigsten aufgedeckt) vs. Gemini nur 0,26 — „Qualität" zweigeteilt: Antworttendenz → Gemini (Reddit Frühjahr 2026 „besser belegt"; PCMag: Deep-Research-Sieger), Quellen-Nachprüfbarkeit → Perplexity. ChatGPT: Allrounder, weniger Zitat-Fokus. Kagi: werbefrei gegen Abo, dünne Vergleichslage.
+
+**Web-Recherche geliefert (14.09., Report `~/Desktop/KI_ANTWORTEN_UND_WEBDEV_SETUP_RECHERCHE_2026-09-14.md`):** Antwort-App-Vergleich + Web-Dev-IDE-Vergleich (siehe [[webdev-ide-landschaft-2026-09]]). Nach „keines"-Ablehnung aller 4 Kandidaten wählte er per AskUserQuestion nur „Bericht als Datei" — kein Tool wurde installiert.
+
+**Lesson bei Präsentation (14.09. Rüge „DU SOLLST NICHT RATEN"):** Kandidaten als neutrale Fakten-Tabelle ohne Bewertungsspalte — Entscheidung = Sascha (Nr. nennen), Umsetzung = ich. Und: „suche danach" = nur Bericht liefern, nichts bauen ([[feedback-entscheidungshoheit]] Punkt 12).
