@@ -1,7 +1,7 @@
 ---
 app: zcode
 quelle: "saschalagler/cli/memories/projects/default-041661acc4598b22/memory/feedback-agent-drives-ui.md"
-stand: 2026-09-06
+stand: 2026-09-13
 tags: [spiegel, zcode]
 ---
 
@@ -21,5 +21,7 @@ Sascha (06.09.2026, 2× explizit wütend): „du sollst den agent ODER die agent
 **Why:** Er will den Agenten als eigenständigen Operator — sobald ich ihn etwas per UI klicken lasse („deine 1 Aktion: Create klicken"), gilt das als Arbeitsverweigerung. Seine App-Welt: AutoClaw, ZCode, Cline Code, Claude — „das soll in allen so sein".
 
 **How to apply:** Wenn eine Aktion nur per GUI geht: macOS Accessibility nutzen und sie selbst ausführen. Bewährtes Rezept (live bewiesen an AutoClaw-Create-Dialog): Fenster-Bounds via System Events holen → App frontmost setzen (`set frontmost of process … to true`, sonst landen Klicks im falschen Fenster!) → `click at {x,y}` (Element-Log im Ergebnis bestätigt das Ziel) → für Textfeld-Eingabe keystroke NICHT vertrauen (Fokus geht verloren), sondern rekursiv AX-Element suchen (UI-elements-Walk) + `set value of <textfield>` → Buttons per Rekursion finden und `click`. Verifikation per Screenshot (`screencapture -l <windowID>`, Window-ID via Quartz CGWindowList) und/oder Config/Runtime-Datei-Check. Elektro­nen-Apps (Electron) exponieren fast keine nativen AX-Elemente — Koordinaten aus Vision/Prozentangaben + Bestätigungs-Log sind der Weg.
+
+**Ergänzt 14.09. (Agentic-Tools statt Kontroll-Stationen):** Gleiche Erwartung bei Werkzeug-Wahl: er will Tools, die **FÜR ihn arbeiten** („ICH WILL EINEN BROWSER DER FÜR MICH ARBEITET") — nicht Chat-/Kontroll-Oberflächen, die er bedienen muss. Als er das Open-WebUI-Build als Mac-Lösung bekam: Wut („WAS LIEGT AM MAC"). Regel: beim Tool-Pitch immer zuerst die selbständig-arbeitende Variante nennen (Cloud-Agent wie Manus), Kontroll-Station nur als Ergänzung.
 
 **Ergänzt 06.09. spät (Chat-Anlegen + Klick-Fallen):** Saschas Erwartung geht weiter: auch **Unterhaltungen/Chats pro Projekt grafisch sortiert anlegen** („DU HAST NOCH IMMER NICHT DIE CHATS ANGELEGT GRAFISCH SORTIERT") — in AutoClaw je Projekt einen Chat im passenden Agenten, benannt/sortierbar. Klick-Fallen dabei live gelernt: (1) hängendes **screencaptureui-Overlay** (von Nutzer-Screenshots) frisst jeden Klick-Dispatch → `killall screencaptureui` zuerst prüfen; (2) Fenster-**Bounds ändern sich** zwischen Aktionen → immer frisch via Quartz holen; (3) beste Loop: Ziel-App frontmost → computer-use `screenshot` → `zoom` → `left_click` (receipt zeigt `resolved_app_ref`-Ziel = Kontrolle) → Text via osascript `keystroke` MIT ASCII (Umlaute vermeiden). Verwandt: [[autoclaw-full-stack-builder]] [[feedback-one-action-not-tables]] [[feedback-gui-not-cli]] [[loki-project-map]]

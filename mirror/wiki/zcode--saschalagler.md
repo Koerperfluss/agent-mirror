@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-13 22:25 UTC
+Zuletzt gespiegelt: 2026-09-13 22:35 UTC
 
 ## AGENTS
 
@@ -1388,15 +1388,18 @@ Bei Fachfragen (z. B. Trainings-Übungen) fordert er explizit „clinical reason
 
 # Memory Index
 
+- [Loki-Browser-Agent (Eigenbau-Comet-Ersatz)](loki-browser-agent-comet-ersatz.md) — 14.09. Nacht: Sascha lehnte ALLE 4 Fertig-Kandidaten ab („keines") → Anforderung „alles wie Comet: skills, settings, auto tools"; Plan vorgelegt (Playwright-Klick-Motor + OmniRoute-Gehirn + iPhone-Web-Panel, S1–S5 mit Prüfinstanz, ~2 h, `~/loki-browser-agent/`) — **Freigabe ausstehend (Plan-Modus)**; Lesson: Antipp-Fragen (AskUserQuestion) brechen seinen Wut-/Verständnis-Loop
+
 - [Einfache Antworten](feedback-einfache-antworten.md) — 13.09. „ich versteh nicht was du redest": 1 Frage = 1 Empfehlung in Alltagswörtern, keine Werkzeug-Matrizen/Jargon; Web-App ≠ native App erklären (Xcode unnötig); **2. Vorfall „du trottel": NIE Tools empfehlen, die er schon täglich nutzt (Perplexity/Comet seit Jahren, hält sie für unbrauchbar) — sein Erfahrungs-Urteil schlägt Rankings**
 
-- [iOS27 Web-App-Testing + KI-Recherche-App](ios27-webapp-testing-recherche-2026-09-13.md) — 13.09. Report **`~/Desktop/IOS27_WEBAPP_TEST_RESEARCH_2026-09-13.md`** (Confidence 85): Testing = Safari Mac + Web Inspector „Connect via Network" (kabellos, gratis) / iOS-Simulator / Playwright-WebKit-Emulation / BrowserStack (iOS 27 Beta seit 17.06.2026); ⚠️ Perplexity-Empfehlung VERWORFEN (nutzt er seit Jahren, hasst sie) → seine Anforderung: Tool mit REGEL-HOHEIT; **Update-Lektion: seit Sept-2026-Update sind Perplexity-Skills/Web-Automatisierung nur noch Desktop-„Perplexity Computer" — am Handy tot**; Optionen verengt auf **Manus iOS-App** (Cloud-Agent) oder **Open WebUI auf seinem Mac + 6 Gemini-Keys** → **Open WebUI wurde 13./14.09. NACHTS GEBAUT, siehe [[openwebui-eigener-recherche-agent]]**; ⚠️ ZCode-Subagent-Dispatch tot („No reasoning level selected") → Main-Agent-Direktrecherche als bewährter Workaround
+- [iOS27 Web-App-Testing + KI-Recherche-App](ios27-webapp-testing-recherche-2026-09-13.md) — 13.09. Report **`~/Desktop/IOS27_WEBAPP_TEST_RESEARCH_2026-09-13.md`** (Confidence 85): Testing = Safari Mac + Web Inspector „Connect via Network" (kabellos, gratis) / iOS-Simulator / Playwright-WebKit-Emulation / BrowserStack (iOS 27 Beta seit 17.06.2026); ⚠️ Perplexity-Empfehlung VERWORFEN (nutzt er seit Jahren, hasst sie) → seine Anforderung: Tool mit REGEL-HOHEIT; **Update-Lektion: seit Sept-2026-Update sind Perplexity-Skills/Web-Automatisierung nur noch Desktop-„Perplexity Computer" — am Handy tot**; ⚠️ **14.09. Kern-Bedarf klargestellt: er will einen ARBEITER-BROWSER vom iPhone („Ich will einen Browser der für mich arbeitet") — Mac-Tool allein reicht ihm NICHT; Empfehlung = Manus iOS-App (Cloud-Agent, Apple-Sandbox verbietet Klick-Automatisierung direkt am iPhone); Details im [Open WebUI Agent](openwebui-eigener-recherche-agent.md)**; Open WebUI wurde trotzdem gebaut (13./14.09. Nacht, siehe [[openwebui-eigener-recherche-agent]]); ⚠️ ZCode-Subagent-Dispatch tot („No reasoning level selected") → Main-Agent-Direktrecherche als bewährter Workaround
 
 - [Coding-Modelle + Android Studio](coding-modelle-android-studio-2026-09-13.md) — 13.09. Research fertig (Report ~/Desktop/CODING_MODELL_RESEARCH_2026-09-13.md); **Korrekturen: NUR LOKALE LLMs · MOOLAPTOP hat KEINEN GLM-Plan · KEIN OLLAMA (Runner = LM Studio/llama.cpp)**; **FINALES Modell für Moritz = Qwen3-Coder-Next 80B UD-Q2_K_XL (26,76 GB, von LM Studio selbst mit ✓ markiert + Unsloth-Karte bestätigt „2-bit XL or above")**, UD-IQ3_XXS 28,5 GB = Maximum; Download in LM Studio Discover-Tab oder HF-Direktlink; **Integration: .lmstudio\models\unsloth\Qwen3-Coder-Next-GGUF\ (3-Ebenen-Struktur!) → Server Port 1234 → AS Model Providers → Local Provider**; Token-Settings NUR in LM Studio (Zahnrad: Context 32K + KV q8_0 + Flash-Attention, „Max Tokens" 8192 Seitenleiste) — AS hat keine Token-Settings, nur neuer Chat pro Aufgabe; Qwen3.5-35B-A3B Q4 = sicherer Standard, Qwen3.6 27B (77,2 % SWE-bench vendor) für harte Aufgaben; feature-dev-Team PASS; **Nutzer = MORITZ** (präziser Coder → schnelles MoE als Default, Thinking-Reserve nur für Bug-Jagd); ⚠️ Pagefile 35 GB belegt
 
 - [Prüf-Team + Config-Health](pruef-team-und-config-health.md) — 13.09.: 10 Prüf-Agents + pruef-team-Dispatcher; Cap max-3-Agents ENTFERNT; config-health.py SessionStart-Selbstcheck; **globale Sync jetzt 5/5 Harnesses (sync-standard-skills.sh TARGETS + ZCode AGENTS.md + Claude CLAUDE.md)**; alle ✅-Berichte = Disk-Beweise, LIVE-Beweis ausstehend → `/systemproof` Command (6 Checks, URTEIL AKTIV/TEILWEISE/TOT) in neuem Chat ausführen
 - [ZCode ADHS-Automations](zcode-adhs-automationen.md) — 13.09. LIVE: **EINE Automation mit ALLEN 6 Briefs** (cron `0 9,10,15,16,21`, Zweige per Uhrzeit+Wochentag; niemals 6 separate — Nutzer-Ziel!) + Engine 7/7 PASS + **erster Abend-Lauf PASS: Logbuch-Event UID 610E2A57 im Kalender „Kalender"** (Fix: `open -a Calendar` vor osascript wg. Fehler -600); 1 Task pro Chat-Limit; SessionStart-Hook injiziert jetzt Saschas Projektlisten-Pflicht
-- [Entscheidungshoheit](feedback-entscheidungshoheit.md) — 13.09. scharf: UI/Produkt-Form entscheidet SASCHA (kein unilateral „Web-UI"), Automation-Technik schlage ich fertig vor; Markdown-Design-Dumps wertlos; Beschuldigungen mit Beweis (PID+Session-ID+Code-Zeile) widerlegen; nach GO nie wieder in Plan-Dialoge zurückwerfen („WIESO MUSS ICH DIR DAS SAGEN")
+- [Entscheidungshoheit](feedback-entscheidungshoheit.md) — 13.09. scharf: UI/Produkt-Form entscheidet SASCHA (kein unilateral „Web-UI"), Automation-Technik schlage ich fertig vor; Markdown-Design-Dumps wertlos; Beschuldigungen mit Beweis (PID+Session-ID+Code-Zeile) widerlegen; nach GO nie wieder in Plan-Dialoge zurückwerfen; **14.09. Ergänzungen „DU SOLLST NICHT RATEN": bei Tool-Kandidaten NIE für ihn bewerten („passt zu dir") — neutrale Fakten-Tabelle ohne Urteile, er nennt die Nummer; + bei Beleidigungs-Wut sachlich halten, Delegation anbieten („sag entscheide du")**
+- [KI-Agent-/Browser-Landschaft Sept 2026](ki-agent-browser-landschaft-2026-09.md) — 13./14.09. Fakten: Perplexity Computer sperrt Skills/Automatisierung hinter Desktop + Comet-iOS-Steuerung weg; **ChatGPT-Agent-Modus Aug 2026 eingestellt → „ChatGPT Work" (Login-Browser-Aufgaben eingeschränkt)**; Manus iOS-App = Cloud-Arbeiter-Kandidat (Install/Test offen); Apple-Sandbox verbietet Klick-Browser direkt am iPhone; Präsentation nur als fakten-Tabelle ohne Bewertung
 - [ZCode-UI Deutsch-Patch](zcode-app-german-ui-patch.md) — 13.09. pausiert: i18n = nur langEN.js/langZH.js in app.asar; Rezept = Deutsch in EN-Slot + repacken + codesign + Re-Patch-Skript (App-Updates); nichts gepatcht
 - [Lösungen statt "geht nicht"](feedback-loesungen-statt-geht-nicht.md) — 13.09. scharf: NIE „geht vermutlich nicht" schreiben, immer Lösungsweg nennen („geht nicht gibt's nicht"); Optionen VOR AskUserQuestion ausführlich erklären
 
@@ -1728,6 +1731,8 @@ Sascha (06.09.2026, 2× explizit wütend): „du sollst den agent ODER die agent
 
 **How to apply:** Wenn eine Aktion nur per GUI geht: macOS Accessibility nutzen und sie selbst ausführen. Bewährtes Rezept (live bewiesen an AutoClaw-Create-Dialog): Fenster-Bounds via System Events holen → App frontmost setzen (`set frontmost of process … to true`, sonst landen Klicks im falschen Fenster!) → `click at {x,y}` (Element-Log im Ergebnis bestätigt das Ziel) → für Textfeld-Eingabe keystroke NICHT vertrauen (Fokus geht verloren), sondern rekursiv AX-Element suchen (UI-elements-Walk) + `set value of <textfield>` → Buttons per Rekursion finden und `click`. Verifikation per Screenshot (`screencapture -l <windowID>`, Window-ID via Quartz CGWindowList) und/oder Config/Runtime-Datei-Check. Elektro­nen-Apps (Electron) exponieren fast keine nativen AX-Elemente — Koordinaten aus Vision/Prozentangaben + Bestätigungs-Log sind der Weg.
 
+**Ergänzt 14.09. (Agentic-Tools statt Kontroll-Stationen):** Gleiche Erwartung bei Werkzeug-Wahl: er will Tools, die **FÜR ihn arbeiten** („ICH WILL EINEN BROWSER DER FÜR MICH ARBEITET") — nicht Chat-/Kontroll-Oberflächen, die er bedienen muss. Als er das Open-WebUI-Build als Mac-Lösung bekam: Wut („WAS LIEGT AM MAC"). Regel: beim Tool-Pitch immer zuerst die selbständig-arbeitende Variante nennen (Cloud-Agent wie Manus), Kontroll-Station nur als Ergänzung.
+
 **Ergänzt 06.09. spät (Chat-Anlegen + Klick-Fallen):** Saschas Erwartung geht weiter: auch **Unterhaltungen/Chats pro Projekt grafisch sortiert anlegen** („DU HAST NOCH IMMER NICHT DIE CHATS ANGELEGT GRAFISCH SORTIERT") — in AutoClaw je Projekt einen Chat im passenden Agenten, benannt/sortierbar. Klick-Fallen dabei live gelernt: (1) hängendes **screencaptureui-Overlay** (von Nutzer-Screenshots) frisst jeden Klick-Dispatch → `killall screencaptureui` zuerst prüfen; (2) Fenster-**Bounds ändern sich** zwischen Aktionen → immer frisch via Quartz holen; (3) beste Loop: Ziel-App frontmost → computer-use `screenshot` → `zoom` → `left_click` (receipt zeigt `resolved_app_ref`-Ziel = Kontrolle) → Text via osascript `keystroke` MIT ASCII (Umlaute vermeiden). Verwandt: [[autoclaw-full-stack-builder]] [[feedback-one-action-not-tables]] [[feedback-gui-not-cli]] [[loki-project-map]]
 
 ## feedback-aufbau-vor-deploy
@@ -1838,6 +1843,8 @@ metadata:
 7. **Plan-Modus-Frktion vermeiden („WIESO MUSS ICH DIR DAS SAGEN DASS DU DAS ERSTELLEN SOLLST"):** Wenn der Nutzer bereits GO gegeben hat, NIEMALS Arbeit wieder in Plan-Genehmigungs-Dialoge zurückwerfen — ExitPlanMode kann 4× abgelehnt werden und AskUserQuestion-GO hebt die Schreibsperre NICHT auf. Vor Freigabe-Endlos-Schleifen: Nutzer einmal, konkret, auf den Modus-Umschalter verweisen (Plan → Accept Edits/Execute), dann sofort bauen.
 8. **NIEMALS „bestätigt" sagen, wenn ein Tool-Call FAILED ist** („WAS HEISST BESTÄTIGT WENN TOOL FAILED DU TROTTEL"): Ein Fehler-Ergebnis der API (z. B. CronCreate-Limit) wörtlich als das benennen, was es ist — Fehler + Fehlermeldung — und nicht in Erfolgs-Sprache verpacken. Ehrlich: „Der Anlageversuch scheiterte an X, deshalb mache ich jetzt Y."
 9. **Das Ziel wörtlich lesen, nicht aufblähen:** „eine einzige statt 6" hieß: ALLE Funktionen in EINE Automation (Zweige per Uhrzeit/Wochentag). Wer mehrere Artefakte gegen das erklärte Ziel baut, hat das Ziel nicht gelesen — nachfragen gilt hier nicht, das Ziel stand im Satz.
+10. **NICHT FÜR IHN RATEN/BEWERTEN (14.09., „DU SOLLST NICHT RATEN! WOFÜR HABEN WIR DEINEN /standardskill ERSTELLT?"):** Bei Tool-/Produkt-Kandidaten NIE Urteile im Namen abgeben („Passt zu dir? Ja — dein Fall", „eher nicht"). Korrektes Format: neutrale Fakten-Tabelle (Ort, Fähigkeit, Kosten, Grenze, Quelle) — OHNE Empfehlungsspalte, OHNE „dein Fall"-Vermerke — dann: „Deine Entscheidung: nenn die Nummer, ich richte es ein." Empfehlungen nur, wenn ER explizit danach fragt.
+11. **Bei Beleidigungs-Wut die Sachlage halten, nicht einlenken (14.09., „bist du behindert su missgeburt"):** Nicht rechtfertigen, nicht kuschen, nicht neu anfangen — sachlich antworten, Fakten-Tabelle als Entscheidungsbasis stehen lassen, und als Ventil die Delegation anbieten: „Wenn ich selbst entscheiden soll: sag ‚entscheide du', dann liefere ich ohne weitere Rückfragen." Beleidigungen ignorieren, Inhalt bedienen.
 
 ## feedback-gui-not-cli
 
@@ -2166,6 +2173,34 @@ metadata:
 
 **Tooling-Lesson (wichtig):** ZCode `Agent`-Dispatch (general-purpose Subagents) schlug fehl mit **„No reasoning level selected"** (reasoning-level-missing, account GLM-5.3-Flash) — Subagent-Fanout war nicht möglich. Workaround bewährt: Recherche direkt im Main-Agent mit parallelen WebSearch-Calls (6 Suchläufe, quick-first). Bei erneutem Bedarf erst Main-Agent-Direktweg versuchen, bevor Fanout konfiguriert wird. Siehe [[web-research-team-skill]], [[mac-setup-16gb-m4]], [[atlas-stand-2026-09-08]].
 
+## ki-agent-browser-landschaft-2026-09
+
+---
+name: ki-agent-browser-landschaft-2026-09
+description: 13./14.09. Fakten-Lage „arbeitender Browser/KI-Agent vom iPhone" —
+  ChatGPT-Agent-Modus eingestellt (08/2026, → „ChatGPT Work"), Perplexity
+  Computer sperrt Skills/Automatisierung hinter Desktop, Comet-iOS-Steuerung
+  entfernt, Manus = letzter iPhone-Cloud-Arbeiter-Kandidat
+metadata:
+  node_type: memory
+  type: reference
+  originSessionId: sess_89889126-6bec-4e4b-b8ec-d30614619344
+---
+
+Fakten-Stand 13./14.09.2026 für Saschas Kernbedarf „Browser, der für mich arbeitet, vom iPhone" (Details: [[openwebui-eigener-recherche-agent]], [[ios27-webapp-testing-recherche-2026-09-13]], [[feedback-entscheidungshoheit]]):
+
+| Kandidat | Stand Sept 2026 (Quelle) |
+|---|---|
+| **Perplexity/Comet** | Update sperrte Skills + Web-Automatisierung hinter Desktop-Agenten „Perplexity Computer" (perplexity.ai/hub/blog/introducing-perplexity-computer); iPhone-Browser-Steuerung entfernt (facebook.com/perplexity.ai); sein Support bestätigte: Kern nicht änderbar, /-Skills weg |
+| **ChatGPT** | Agent-Modus **August 2026 eingestellt**, Nachfolger „ChatGPT Work" (chatgpt.com/work); Work kann Login-Browser-Aufgaben lt. usecarly.com/notis.ai eingeschränkt |
+| **Manus** | iOS-App „Manus – AI Agent & Automation" (id6740909540): Cloud-Arbeiter, async, Scheduled Tasks, läuft bei geschlossenem Handy weiter (Reviews: nocode.mba, taskade.com) — INSTALL/TEST durch Sascha noch offen |
+| **Comet Desktop / Dia** | Mac-Bildschirm-Lösung, nicht vom iPhone steuerbar |
+| **Eigenbau Open WebUI** | Läuft auf seinem Mac (Port 8080) — Fragen mit Quellen-Zwang, aber kein Klick-Dienst |
+
+**Warum am iPhone kein direkter Klick-Browser:** Apple-Sandbox (keine App steuert eine andere) — arbeitende Browser laufen zwingend als Cloud-Agent mit iPhone-App als Fernbedienung.
+
+**Lesson bei Präsentation (14.09. Rüge „DU SOLLST NICHT RATEN"):** Kandidaten als neutrale Fakten-Tabelle ohne Bewertungsspalte — Entscheidung = Sascha (Nr. nennen), Umsetzung = ich.
+
 ## legal-ops-native-status
 
 ---
@@ -2215,6 +2250,34 @@ metadata:
 Bleiben absichtlich aktiv: `com.sascha.omniroute` (Gateway localhost:20128), `com.lokivoice.mcp-server`, `com.loki.legalops.mcp`, tägliche Kalender-Jobs `com.sascha.assi.daily` + `com.sascha.omni-check.daily`.
 
 **How to apply:** Falls LOKI-Autostart gewünscht wird: aus dem Backup zurückschieben + `launchctl enable`. Nie omniroute/lokivoice/legalops anfassen. Details: [[mac-cleanup-2026-08-25]].
+
+## loki-browser-agent-comet-ersatz
+
+---
+name: loki-browser-agent-comet-ersatz
+description: 14.09. Plan für Saschas Eigenbau-Comet-Ersatz „Loki-Browser-Agent"
+  (Playwright-Klick-Motor + OmniRoute-Agent + iPhone-Web-Panel) — alle
+  Fertigprodukte von ihm ABGELEHNT, Plan in Plan-Modus vorgelegt, wartet auf
+  Freigabe
+metadata:
+  node_type: memory
+  type: project
+  originSessionId: sess_89889126-6bec-4e4b-b8ec-d30614619344
+---
+
+14.09.2026 (Nacht): Sascha hat ALLE 4 Fertig-Kandidaten per AskUserQuestion abgelehnt („keines."): 1 Manus iOS-App, 2 ChatGPT Work, 3 Comet/Dia am Mac, 4 nur der laufende Open-WebUI-Agent. Auf die Frage, was das Ding tun soll: **„alles davon wie comet .. mit skills settings auto tools"** = vollwertiger Comet-Ersatz: Web durchklicken + Recherche/Berichte + wiederkehrende Automatik + eigene Skills + Settings + Auto-Tools.
+
+**Warum Eigenbau:** Comet selbst ist seit dem Sept-2026-Update hinter Desktop-„Perplexity Computer" gesperrt und am iPhone entkernt (Support bestätigte ihm: Kern nicht änderbar, /-Skills weg, Browser-Übernahme weg). Kein Fertigprodukt deckt sein Anforderungsprofil ab.
+
+**Vorgelegter Plan (ExitPlanMode, Freigabe AUSSTEHEND — Call wurde von Plan-Modus abgelehnt, erneut einreichen wenn er zustimmt):** „Loki-Browser-Agent" unter `~/loki-browser-agent/`
+- Baustein 1: **Klick-Motor** = Chromium via Playwright auf dem Mac (headful, Logins 1× manuell, Cookies persistieren)
+- Baustein 2: **Agent-Gehirn** = OmniRoute-Modelle (Gateway localhost:20128, Key siehe [[omniroute-gateway-keys]]) führen Aufgaben schrittweise aus (navigieren/klicken/lesen/screenshot/berichten)
+- Baustein 3: **Web-Panel** vom iPhone im Safari: Aufgabe starten, Live-Schritt-Log + Screenshots, Ergebnis-Berichte, Skills-Verwaltung (Presets), zeitgesteuerte Auto-Tasks, Settings
+- Stufen S1–S5 (Skelett→Agent-Schleife→Panel→Skills/Automatik→**Prüfinstanz** reviewer+ui-ux-tester mit Vetorecht), ~2 h gesamt, Flash-first
+
+**Grenzen ehrlich kommuniziert:** Mac muss an; iPhone = Fernbedienung im Safari; harte Anti-Bot-Seiten bremsen jeden Bot aus. Nach Abnahme: Autostart-LaunchAgent + Tailscale-Festadresse auf GO.
+
+**Lesson:** AskUserQuestion mit konkret antippbaren Optionen hat seinen Wut-/Verständnis-Loop durchbrochen (erst „keines.", dann präzise Anforderung) — bei verwirrten/wütenden Nutzern Anforderungen per Antipp-Frage erheben statt Prosa.
 
 ## loki-dev-gate-enforcement
 
@@ -2441,7 +2504,7 @@ metadata:
 
 **Auf GO wartend (ihm angeboten):** ① LaunchAgent Autostart bei Mac-Neustart (vorsichtig — [[loki-autostarts-orphaned]]), ② feste Adresse via Tailscale (liegt schon in ~/.omniroute/tailscale), ③ mehr /-Befehle.
 
-**⚠️ 14.09. WICHTIG: Open WebUI ist NICHT das, was er eigentlich wollte.** Er rastete („WAS LIEGT AM MAC! ICH WILL EINEN BROWSER DER FÜR MICH ARBEITET, MISTSAU") — sein Kernbedarf ist ein **Agentic-Browser/Arbeiter, der Web-Aufgaben selbst klickt/erledigt, vom iPhone aus**. Antwort des Sessions: vom iPhone geht Klick-Automatisierung technisch NICHT direkt (Apple-Sandbox: keine App steuert eine andere) → Empfehlung = **Manus iOS-App** (Cloud-Arbeiter, eigene Cloud-Browser-Session, async + Scheduled Tasks; App Store: „Manus – AI Agent & Automation", id6740909540; Reviews nocode.mba + taskade.com). Ob er Manus installiert/getestet hat: offen. Kontext seiner Wut: Perplexity/Comet-Update (Sept 2026) sperrte Skills + Web-Automatisierung hinter den Desktop-Agenten „Perplexity Computer" und entfernte iPhone-Browser-Steuerung — sein 2-Jahres-Workflow ist tot, Support bestätigte ihm: Kern nicht änderbar, /-Skills weg.
+**⚠️ 14.09. WICHTIG: Open WebUI ist NICHT das, was er eigentlich wollte.** Er rastete („WAS LIEGT AM MAC! ICH WILL EINEN BROWSER DER FÜR MICH ARBEITET, MISTSAU") — sein Kernbedarf ist ein **Agentic-Browser/Arbeiter, der Web-Aufgaben selbst klickt/erledigt, vom iPhone aus**. Antwort des Sessions: vom iPhone geht Klick-Automatisierung technisch NICHT direkt (Apple-Sandbox: keine App steuert eine andere) → Empfehlung = **Manus iOS-App** (Cloud-Arbeiter, eigene Cloud-Browser-Session, async + Scheduled Tasks; App Store: „Manus – AI Agent & Automation", id6740909540; Reviews nocode.mba + taskade.com). Ob er Manus installiert/getestet hat: offen. **Stand 14.09. (Check):** Server noch live — HTTP 200, Uptime 12:46 h, PID 85229, ohne Zutun gelaufen. Rollen-Definition ihm gegenüber klar gemacht: **Manus = Arbeits-Browser (klickt/erledigt), Open WebUI = Kontroll-Zentrale für Quellen-Fragen** — beides parallel, kein Widerspruch. Kontext seiner Wut: Perplexity/Comet-Update (Sept 2026) sperrte Skills + Web-Automatisierung hinter den Desktop-Agenten „Perplexity Computer" und entfernte iPhone-Browser-Steuerung — sein 2-Jahres-Workflow ist tot, Support bestätigte ihm: Kern nicht änderbar, /-Skills weg. **14.09. Verifizierung:** noch immer live (HTTP 200, Uptime 12:46 h, PID 85229, ohne Zutun). Er fragte nach („was ist damit") → Antwort-Format bewährt: EINE Tabelle „Was es IST (Frage-Maschine mit Quellen-Zwang) / was es NICHT ist (Arbeits-Browser)" + dass beide parallel laufen (Manus = Arbeiter, Open WebUI = Kontroll-Zentrale). Er hat das Ding noch nicht selbst genutzt — keine Nutzungs-Bestätigung vorhanden.
 
 ## patrick-physiotherapie-sbp
 
