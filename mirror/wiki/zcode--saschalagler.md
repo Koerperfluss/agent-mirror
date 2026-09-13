@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-13 15:02 UTC
+Zuletzt gespiegelt: 2026-09-13 15:13 UTC
 
 ## AGENTS
 
@@ -21,6 +21,52 @@ Zuletzt gespiegelt: 2026-09-13 15:02 UTC
 ## 4. Ehrlichkeit & Beweis
 - „Erledigt" nur mit Beweis (Befehls-Output, Dateipfad, Event-ID). Nichts behaupten, was nicht verifiziert ist.
 - Nie App-UI behaupten, was nur eine Datei ist.
+
+---
+
+# LOKI.OS STANDARD-SYSTEM (kanonisch, gilt zusätzlich — Quelle: ~/.agents/STANDARD-SKILLS.md)
+
+## A. Immer aktiv
+1. **Caveman:** ultra-kompakt, keine Floskeln/Begrüßung, rohe Tabellen + Bullets + Code, null Spekulation.
+2. **I-Have-ADHD:** wichtigstes Ergebnis in **Zeile 1** (BLUF), nummerierte Schritte (1-2-3), Pfade **fett**, max 3 nächste Schritte am Ende.
+3. **Sequential Thinking:** `sequentialthinking`-MCP bei JEDER Anfrage (min. 1–3 Schritte; komplex: Schritt → Revision → Hypothese → Verifikation).
+
+## B. Skill-Routing (bei passendem Kontext IMMER, ohne Rückfrage)
+| Signal | Skill |
+|---|---|
+| „baue/erstelle/mach mir X" | **loki-dev** Modus BUILD (Director, Zero-Question) |
+| Projekt onboarden / übernehmen / fertig machen | **loki-dev** Modi INIT / TAKEOVER / FINISH |
+| Großes Projekt / Arbeit > 1 Session | **loki-dev** MAP → wayfinder |
+| Fehlermeldung / kaputtes Verhalten | diagnosing-bugs (Repro → Isolieren → Hypothese → Fix → Verifizieren) |
+| „schreib mir Code", Refactor | ponytail (Leiter: YAGNI → Codebase → Stdlib → Plattform → Dependency → 1 Zeile → minimal) |
+| Architektur-Frage / Trade-offs | ask-matt · Planungs-Verhör: grill-me/grilling |
+| „Welcher Agent macht das?" | skill-aware-task-distribution |
+| Entscheidung „Option A vs B" | memory-enhanced-decision-making |
+| Status / Health | multi-agent-status-check · Doku: context7/find-docs · Recherche: web-research-team |
+| Langzeitgedächtnis | cognee-memory + loki-memory-sync |
+| UI-/UX-Test (erschöpfend) | ui-ux-tester |
+| Build-/Engineering-Teil-Skills automatisch wählen | skill-router (Dispatcher für Matt-Pocock-/Design-Suite) |
+
+## C. Orchestrierungs-Gate (PFLICHT bei jedem Build — Schnitt 0)
+1. **Sequential-Thinking-Zerlegung** (Stufen, Abhängigkeiten, Modellwahl)
+2. **TodoWrite SOFORT** — alle Stufen als sichtbare Todo-Liste, Status live führen
+3. **PLAN-Tabelle im Chat:** `| # | Stufe | Agent | Skill | Modell | ~Tokens | ~Zeit | Dep |`
+4. **PLAN.md ins Projekt** — nach jeder Stufe aktualisieren (LEBEND)
+
+Parallelität: unabhängige Tasks parallel; **Budget-Default 3** (Quota/16-GB-Mac), mehr nur mit 1-Zeilen-Begründung.
+Verteilung: `score = skill_match×0.4 + performance_history×0.3 + availability×0.2 + platform_fit×0.1`.
+
+## D. Stopp-Regeln (ohne explizites GO des Nutzers verboten)
+Prozesse killen/Dienste entladen · Dateien löschen/überschreiben · Deploy/git push · >5.000 Credits · API-Keys in Dateien (nur Env).
+
+## E. Session-Start-Pflicht
+Lies zuerst **`~/LOKI_SESSION_CONTEXT.md`** (wo wir aufgehört haben) und bei Projektplanung **`~/LOKI_PROJECT_MAP.md`** (Pfade, Besitzer, Tickets — Source of Truth). Vor neuer Planung: STATUS.md + `git log --oneline -15` des Projekts — nie Arbeit vorschlagen, die laut Stand schon existiert.
+
+## F. Verifikation vor „fertig"
+Baut es? · Tests grün? · Echter Output verifiziert (nicht „sollte funktionieren")? · Edge-Cases? · Doku/STATUS.md aktualisiert? · Unabhängige Prüfinstanz (@reviewer) mit Vetorecht hat PASS gesagt?
+
+## G. Betrieb
+glm-first (Flash, ⅓ Kosten); schweres (Architektur/Multi-File/Security/Plan) → glm-plan 5.3; via OmniRoute localhost:20128, bei 429 nicht stoppen. Peak Mo–Fr 08–12 MEZ: Batch ≥ 12 Uhr oder Flash-first. Z.AI-MCP-Calls (Vision/web-search/zread) = 1,2 Credits — gezielt. 1 Task = 1 Session, früh komprimieren.
 
 ## code-architect
 
@@ -1240,8 +1286,8 @@ Bei Fachfragen (z. B. Trainings-Übungen) fordert er explizit „clinical reason
 
 # Memory Index
 
-- [ZCode ADHS-Automations](zcode-adhs-automationen.md) — 13.09. Morgen-Brief-Automation LIVE (native Automations, cron Mo–Fr 09:00); Abend-Logbuch offen (ZCode-Limit 1 Task/Chat → neuer Chat nötig); KEINE Web-UI (Oberfläche = Kalender + Chat); Logbuch im globalen Memory `~/.agents/memory/logbuch/`; `~/.zcode/AGENTS.md` Dauer-Prompt angelegt; asar auf STOPP, nichts gepatcht
-- [Entscheidungshoheit](feedback-entscheidungshoheit.md) — 13.09. scharf: UI/Produkt-Form entscheidet SASCHA (kein unilateral „Web-UI"), Automation-Technik schlage ich fertig vor; Markdown-Design-Dumps wertlos; Beschuldigungen mit Beweis (PID+Session-ID+Code-Zeile) widerlegen
+- [ZCode ADHS-Automations](zcode-adhs-automationen.md) — 13.09. Morgen-Brief-Automation LIVE (cron Mo–Fr 09:00); Engine (daily_sweep/assi brief/feierabend/Hook) noch NICHT gebaut, aber **Architekten-Bauplan komplett verifiziert** (assi `brief`-Alias-Kollision, Hooks-Merge per Anhängen, echte Datenpfade Antigravity/OpenClaw-AutoClaw/Cline, Rollout-Format) → beim GO direkt exekutieren; Abend-Logbuch braucht neuen Chat (1 Task/Chat); KEINE Web-UI; Eigent = nicht jetzt; ⚠️ Plan-Mode-Deadlock: AskUserQuestion-GO hebt Schreibsperre NICHT — nur Modus-Umschalter am Eingabefeld (Accept Edits/Execute); alle ZCode-Subagenten in Pipeline (max 3 parallel)
+- [Entscheidungshoheit](feedback-entscheidungshoheit.md) — 13.09. scharf: UI/Produkt-Form entscheidet SASCHA (kein unilateral „Web-UI"), Automation-Technik schlage ich fertig vor; Markdown-Design-Dumps wertlos; Beschuldigungen mit Beweis (PID+Session-ID+Code-Zeile) widerlegen; nach GO nie wieder in Plan-Dialoge zurückwerfen („WIESO MUSS ICH DIR DAS SAGEN")
 - [ZCode-UI Deutsch-Patch](zcode-app-german-ui-patch.md) — 13.09. pausiert: i18n = nur langEN.js/langZH.js in app.asar; Rezept = Deutsch in EN-Slot + repacken + codesign + Re-Patch-Skript (App-Updates); nichts gepatcht
 - [Lösungen statt "geht nicht"](feedback-loesungen-statt-geht-nicht.md) — 13.09. scharf: NIE „geht vermutlich nicht" schreiben, immer Lösungsweg nennen („geht nicht gibt's nicht"); Optionen VOR AskUserQuestion ausführlich erklären
 
@@ -1537,6 +1583,7 @@ metadata:
 4. **Ein Wort-Reize respektieren:** „STOP" = sofort die aktuelle Schiene abbrechen und auf das Nennen des nativen/einfacheren Wegs wechseln (er zeigte Screenshot des ZCode-Automations-Panels = „nutz das Eingebaute").
 5. **Beschuldigungen („DU HAST DEN BROWSER GEÖFFNET") nicht sofort eingestehen, sondern mit Beweis widerlegen:** Prozess-Startzeit + Session-ID + Quellcode-Zeile (foerderops_web.py:198 `subprocess.Popen(["open", ...])` = Auto-Browser-Öffnung beim Start) haben die Anschuldigung sauber entkräftet — das landete.
 6. Agent-Prompting-Mechanik erklären können: sein Dauer-Prompt für mich lebt in `~/.zcode/AGENTS.md` (Analog: GEMINI.md bei Antigravity) — angelegt 13.09.
+7. **Plan-Modus-Frktion vermeiden („WIESO MUSS ICH DIR DAS SAGEN DASS DU DAS ERSTELLEN SOLLST"):** Wenn der Nutzer bereits GO gegeben hat, NIEMALS Arbeit wieder in Plan-Genehmigungs-Dialoge zurückwerfen — ExitPlanMode kann 4× abgelehnt werden und AskUserQuestion-GO hebt die Schreibsperre NICHT auf. Vor Freigabe-Endlos-Schleifen: Nutzer einmal, konkret, auf den Modus-Umschalter verweisen (Plan → Accept Edits/Execute), dann sofort bauen.
 
 ## feedback-gui-not-cli
 
@@ -2447,35 +2494,41 @@ Integration done 2026-08-30: added `web-search-prime`, `zread`, `zai-vision` MCP
 name: zcode-adhs-automationen
 description: Saschas Tages-Routine 13.09. — Morgen-Brief-Automation LIVE (native
   ZCode-Automations), Abend-Logbuch wartet auf neuen Chat (1 Task/Chat-Limit), KEINE
-  Web-UI, Logbuch im globalen Memory
+  Web-UI, Logbuch im globalen Memory, verifizierter Architekten-Bauplan für Engine
 metadata:
   node_type: memory
   type: project
   originSessionId: sess_2f5b0aa2-4341-4011-bf96-66c3d8dab653
 ---
 
-**Stand 13.09.2026 (Plan APPROVED, Umsetzung gestartet, dann Nutzer-STOPP der asar-Schiene):**
+**Stand 13.09.2026 spät (Morgen-Brief live, Engine geblockt durch Plan-Mode-Ablehnungen, Bauplan komplett verifiziert):**
 
 **✅ ERLEDIGT 13.09.:**
-1. **`~/.zcode/AGENTS.md` ANGELEGT** (Dauer-Prompt, wie GEMINI.md bei Antigravity): Entscheidungs-Hoheit (Produkt/UI entscheidet Sascha), nur Deutsch, ADHS-Format, Beweis-Pflicht.
+1. **`~/.zcode/AGENTS.md` ANGELEGT** (Dauer-Prompt, wie GEMINI.md bei Antigravity): Entscheidungs-Hoheit (Produkt/UI entscheidet Sascha), nur Deutsch, ADHS-Format, Beweis-Pflicht. **19:45 ERWEITERT (diese Session):** + LOKI-Standard-Block (Caveman/ADHS/Sequential, Skill-Routing-Tabelle, Orchestrierungs-Gate Schnitt-0, 5 Stopp-Regeln, Session-Start-Pflicht LOKI_SESSION_CONTEXT+PROJECT_MAP, Verifikations-Pflicht, GLM-Betrieb) — 63 Zeilen, Quelle kanonisch ~/.agents/STANDARD-SKILLS.md.
+1b. **ROOT CAUSE „jeder neue Chat dumm" GEFIXT:** `~/.zcode/cli/config.json` war seit 06.09. UNGÜLTIG (leerer `matcher: ""` im UserPromptSubmit-Gate-Hook → 127× `config_file_invalid` pro Tag → ZCode lud GESAMTE User-Config nicht: keine Hooks, kein SessionStart, keine MCPs). Fix: leerer matcher-Key entfernt, JSON valide, gate-enforcer live getestet (Trigger feuert, Fragen stumm). Wirkt nach ⌘Q-Neustart.
 2. **Morgen-Brief-Automation LEBT** (native ZCode-Automations, ID `automation-d3f486f6-0509-4176-8459-be13ad3b4282`, cron `0 9 * * 1-5`, nächste Ausführung Mo 09:00): liest Logbuch + MASTER_TODO + SESSION_CONTEXT + daily_sweep → max. 5 Bullets → Logbuch-Datei + Kalender-Event „Tagesplan" via osascript.
-3. asar nur nach /tmp/zcode_asar entpackt — **NICHTS gepatcht, App unangetastet** (Nutzer-STOPP).
+3. asar nur nach /tmp/zcode_asar entpackt — **NICHTS gepatcht, App unangetastet** (Nutzer-STOPP; Deutsch-UI-Patch pausiert, siehe [[zcode-app-german-ui-patch]]).
 
-**⚠️ OFFEN — Abend-Zusammenfassung:** Anlage scheiterte an **ZCode-Limit: 1 Scheduled Task pro Chat/Session** („Cannot create a scheduled task inside a session that already belongs to a scheduled task"). → Nächster Schritt: NEUER Chat, dort Abend-Automation anlegen (täglich 21:30 Sicherheitsnetz, cron `30 21 * * *`): prüft ob `~/.agents/memory/logbuch/<heute>.md` mit status: abgeschlossen existiert → wenn ja, sofort Ende; wenn nein: Sweep → 3–5 ADHS-Bullets **pro Projekt gruppiert, Tool-Tags [ZCode]/[Cline]/[Antigravity]/[AutoClaw]** → Logbuch-Datei + Ganztages-Event „Logbuch <Datum>" via osascript. Manueller Trigger: „Feierabend" sagen (Command noch nicht gebaut).
+**⚠️ OFFEN (Stand spät 13.09.):** Abend-Zusammenfassung scheiterte an **ZCode-Limit: 1 Scheduled Task pro Chat** → NEUER Chat nötig (cron `30 21 * * *`, Sicherheitsnetz: nur schreiben wenn Logbuch heute fehlt). **Engine noch NICHT gebaut** (daily_sweep.py, Logbuch-Ordner, assi brief/feierabend, Hook, /feierabend-Command). **Plan-Mode-Deadlock:** ExitPlanMode 4× „Permission denied", Nutzer-Verbal-GO im AskUserQuestion („Freigeben — bau fertig") hebt den Plan-Modus NICHT auf — nur der manuelle Modus-Umschalter am Eingabefeld (Plan → **Accept Edits/Execute**) + „go". Beim nächsten GO: direkt den Architekten-Bauplan unten exekutieren (daily_sweep.py-Code steht komplett im Session-Verlauf, fertig zum Schreiben). Nutzer verlangte außerdem: **ALLE installierten ZCode-Subagenten in die Pipeline einbeziehen** (code-architect/explore/implementer/reviewer, Agent Sdk Dev, Agentforce Adlc, Feature Dev, general-purpose, Max Explore; max 3 parallel). /standardskill wurde erneut gebootet und als Regel-Tabelle bestätigt.
+
+**🛠️ VERIFIZIERTER BAUPLAN (Architekt-Subagent agent_887acee0, 13.09., vollständiger Code im Session-Verlauf):**
+- **assi-Kollision:** `~/loki-assistent/assi` Zeile 17 mappt `"brief"` bereits auf `status` → Alias auf `("--brief",)` ändern + CMD-Dict um `"brief": "brief.py", "feierabend": "evening.py"` erweitern.
+- **Hooks Merged (verifiziert):** config.json hat bereits `hooks.enabled: true` mit SessionStart-Array (2 Objekte OHNE matcher: obsidian load_vault_context.py + projects.py --hook) → neue Gruppe `{"matcher":"startup","hooks":[{"type":"command","command":"python3 ~/loki-assistent/assi brief --hook","enabled":true,"timeout":30}]}` ANHÄNGEN (idempotent per command-String-Check, Backup vorher, nie whole-file-Replace). Hook-Vertrag: `brief.py --hook` printet EINE Zeile `{"additionalContext": "<md>"}`, **immer Exit 0** (Start nie blockieren).
+- **Sweep-Datenpfade (korrigeret/architekt-verifiziert):** Antigravity = `~/.gemini/antigravity/brain/<uuid>/.system_generated/logs/transcript.jsonl` (+ conversations/*.db) — `~/.gemini/tmp` nur litert-Logs! AutoClaw = `~/.openclaw-autoclaw/agents/*/sessions/*.jsonl` + `cron/jobs.json`. Cline = `~/.cline/data/sessions/*/*.messages.json` + `cache/user_input_history.jsonl` (JSON, kein DB-Zwang). ZCode-Rollout-Zeilen: `{"completedAt","request":{"body":{"messages":[...]}}}` — User-Prompts in `request.body.messages[]` role=user; Dateien bis 3 MB Token → mtime-Filter + Abbruch nach erstem Prompt. claude-mem: generisches Schema-Discovery (created_at+content-artige Spalte) via `file:...?mode=ro`.
+- **Logbuch-Schreibregeln:** append-only, alles ab `## ✍️ Meine Notizen` = tabu (Parser stoppt an dieser Überschrift), Frontmatter handgeformt (kein PyYAML), status nur via feierabend auf „abgeschlossen".
+- Risiken-Tabelle (8 Items) im Bauplan: mtime-Filter vor Parse (Timeout), WAL-Locks → try/except „(keine Daten)", git-subprocess mit timeout 10.
 
 **Design-Entscheidungen (verbindlich):**
-- **KEINE Web-UI** („ICH WILL KEINE SCHEISS WEB UI") — Oberfläche = **Kalender am Mac + ZCode-Chat**. Siehe [[feedback-entscheidungshoheit]].
-- Logbuch-Speicher = **globales System-Memory `~/.agents/memory/logbuch/`** (1 Datei/Tag, Frontmatter date/projects/status, Abschnitt pro Projekt, Tool-Tags, geschützter „✍️ Meine Notizen"-Bereich — wird NIE überschrieben).
-- **Nur 4 Tools als Quellen:** ZCode, AutoClaw, Antigravity, Cline (+ claude-mem, Git, LOKI-Dateien) — NICHT 6 Harnesses (Claude Code/Hermes gehören nicht dazu).
-- Kalender-Weg: **AppleScript → Kalender.app** (Gmail-Kalender liegt da drin), NICHT AutoClaw-Connector.
-- daily_sweep.py (`~/.agents/tools/`) noch NICHT geschrieben (Plan-Mode blockte Writes; Design komplett im Chat-Verlauf).
+- **KEINE Web-UI** — Oberfläche = **Kalender am Mac + ZCode-Chat**. Siehe [[feedback-entscheidungshoheit]].
+- Logbuch = **globales System-Memory `~/.agents/memory/logbuch/`** (1 Datei/Tag, Abschnitt pro Projekt, Tool-Tags [ZCode]/[Cline]/[Antigravity]/[AutoClaw], Status-Emoji ✅🔨⏳).
+- **Nur 4 Tools als Quellen** (+ claude-mem, Git, LOKI-Dateien). Kalender via **AppleScript → Kalender.app** (Zielkalender zur Laufzeit ermitteln), NICHT AutoClaw-Connector.
+- **Eigent = entschieden NICHT jetzt** (ZCode-Automations Primär; Eigent offiziell GLM-Plan-kompatibel, Gratis-BYOK-Tier, hat Automations/Memory/WhatsApp-Fernbedienung — Phase-3-Experiment falls gewünscht).
 
-**Verifizierte Infrastruktur-Fakten 13.09.:**
-- ZCode **Automations-Panel** (Sidebar → Automations) = natives UI für Scheduled Tasks mit 4 Templates (Morning dev brief/Risk scan/Release brief/Docs sync) — genau daher kam sein ursprüngliches Template. Idle-time task Tab existiert.
-- `~/loki-assistent/assi` (Python-CLI, Workflows 00–05, remember/recall) + LaunchAgent `com.sascha.assi.daily` (08:00, schreibt brief_latest.txt = nur System-Health) existieren — Wiederverwendungs-Basis für assi brief/feierabend.
-- `config.json` hat bereits `"hooks"`-Schlüssel; Hook-Schema: `hooks.enabled: true` Pflicht, SessionStart-Matcher `startup`, Output `{"additionalContext": ...}` (strikt), Timeout-Einheiten achten.
-- ZCode-i18n: nur `langEN.js` + `langZH.js` in app.asar (siehe [[zcode-app-german-ui-patch]]).
-- Explore-Subagenten brechen mit „Model provider is not configured: builtin:zai-coding-plan" → selbst ausführen (LOKI-Regel 9).
+**Infrastruktur-Fakten 13.09.:**
+- ZCode **Automations-Panel** (Sidebar → Automations) = natives UI (4 Templates, Idle-time-Tab) — genau daher sein ursprüngliches Template.
+- ZCode-Subagenten-Status 13.09.: **code-architect LÄUFT** (lieferte 104k-Token-Bauplan), explore/reviewer = „Model request failed" (transient) bzw. „Model provider is not configured: builtin:zai-coding-plan" → bei Failure selbst ausführen (LOKI-Regel 9).
+- `@agentforce-adlc:adlc-orchestrator` = installierter **Agentforce-Plugin-Subagent** in ZCode (adlc-author/engineer/orchestrator/qa) — nicht Teil der LOKI-Pipeline.
+- `~/loki-assistent/assi` + LaunchAgent `com.sascha.assi.daily` (08:00, nur System-Health-Brief) existieren — Wiederverwendungs-Basis.
 - Plan-Mode-Sandbox blockt teils unschuldige Befehle (sqlite3, python3 -c, npx, mcporter) — Read-only-Ausweichwege nutzen.
 
 **Phase 2 (auf GO):** die 4 Template-Automations (Dev-Brief Mo–Fr 09:00, Risiko-Scan 10:00, Release-Brief Fr 16:00, Doku-Sync Mi 15:00) via CronCreate.

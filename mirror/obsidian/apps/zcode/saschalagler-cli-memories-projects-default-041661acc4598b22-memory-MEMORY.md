@@ -7,8 +7,8 @@ tags: [spiegel, zcode]
 
 # Memory Index
 
-- [ZCode ADHS-Automations](zcode-adhs-automationen.md) — 13.09. Morgen-Brief-Automation LIVE (native Automations, cron Mo–Fr 09:00); Abend-Logbuch offen (ZCode-Limit 1 Task/Chat → neuer Chat nötig); KEINE Web-UI (Oberfläche = Kalender + Chat); Logbuch im globalen Memory `~/.agents/memory/logbuch/`; `~/.zcode/AGENTS.md` Dauer-Prompt angelegt; asar auf STOPP, nichts gepatcht
-- [Entscheidungshoheit](feedback-entscheidungshoheit.md) — 13.09. scharf: UI/Produkt-Form entscheidet SASCHA (kein unilateral „Web-UI"), Automation-Technik schlage ich fertig vor; Markdown-Design-Dumps wertlos; Beschuldigungen mit Beweis (PID+Session-ID+Code-Zeile) widerlegen
+- [ZCode ADHS-Automations](zcode-adhs-automationen.md) — 13.09. Morgen-Brief-Automation LIVE (cron Mo–Fr 09:00); Engine (daily_sweep/assi brief/feierabend/Hook) noch NICHT gebaut, aber **Architekten-Bauplan komplett verifiziert** (assi `brief`-Alias-Kollision, Hooks-Merge per Anhängen, echte Datenpfade Antigravity/OpenClaw-AutoClaw/Cline, Rollout-Format) → beim GO direkt exekutieren; Abend-Logbuch braucht neuen Chat (1 Task/Chat); KEINE Web-UI; Eigent = nicht jetzt; ⚠️ Plan-Mode-Deadlock: AskUserQuestion-GO hebt Schreibsperre NICHT — nur Modus-Umschalter am Eingabefeld (Accept Edits/Execute); alle ZCode-Subagenten in Pipeline (max 3 parallel)
+- [Entscheidungshoheit](feedback-entscheidungshoheit.md) — 13.09. scharf: UI/Produkt-Form entscheidet SASCHA (kein unilateral „Web-UI"), Automation-Technik schlage ich fertig vor; Markdown-Design-Dumps wertlos; Beschuldigungen mit Beweis (PID+Session-ID+Code-Zeile) widerlegen; nach GO nie wieder in Plan-Dialoge zurückwerfen („WIESO MUSS ICH DIR DAS SAGEN")
 - [ZCode-UI Deutsch-Patch](zcode-app-german-ui-patch.md) — 13.09. pausiert: i18n = nur langEN.js/langZH.js in app.asar; Rezept = Deutsch in EN-Slot + repacken + codesign + Re-Patch-Skript (App-Updates); nichts gepatcht
 - [Lösungen statt "geht nicht"](feedback-loesungen-statt-geht-nicht.md) — 13.09. scharf: NIE „geht vermutlich nicht" schreiben, immer Lösungsweg nennen („geht nicht gibt's nicht"); Optionen VOR AskUserQuestion ausführlich erklären
 
