@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-13 22:03 UTC
+Zuletzt gespiegelt: 2026-09-13 22:14 UTC
 
 ## AGENTS
 
@@ -1699,6 +1699,12 @@ Regeln: nie Emulator + LLM gleichzeitig (~7 GB Puffer), RAM vorher freiräumen, 
 
 **HF-Browser-Download → LM-Studio-Integration (13.09., letzte Frage „wir haben über hugging face geladen"):** Per Browser geladene .gguf MUSS manuell in den LM-Studio-Modellordner: `C:\Users\<Moritz>\.lmstudio\models\unsloth\Qwen3-Coder-Next-GGUF\Qwen3-Coder-Next-UD-Q2_K_XL.gguf` — **3-Ebenen-Ordnerstruktur (Publisher\Repo\Datei) zwingend**, sonst ignoriert LM Studio die Datei (echten Pfad unter Einstellungen → Models Directory nachsehen). Danach: LM Studio neu starten → My Models → Load → Developer-Tab → Start Server → AS Local Provider Port 1234; Schnelltest `http://localhost:1234/v1/models` (muss JSON zeigen). Lektion doppelt bestätigt: in-App-Download im Discover-Tab hätte Schritt 1 komplett gespart — bei Modell-Downloads IMMER den LM-Studio-Weg zuerst nennen.
 
+**Token-Limit-Frage (13.09., „er stößt dauernd an Grenze"):** LM Studio lädt Modelle mit kleinem Default-Kontext (~4096). Fix: Modell entladen → im Lade-Dialog rechts Einstellungen → **Context Length 32768** (safe) oder 65536 + **KV-Cache q8_0** + **Flash Attention AN** → als Standard speichern → Server neu starten. Wegen Hybrid-Architektur (nur 12/48 Layer Full-Attention, ~13 KB/Token KV @ q8_0) ist mehr Kontext billig: 16K=0,2 / 32K=0,4 / 64K=0,9 / 128K=1,7 GB. Sweet Spot 32K (Prefill auf DDR4 wird sonst träge); bei langen Agent-Sessions lieber 32K + pro Aufgabe neuer Chat statt 128K aufblähen. Zweite Stellschraube bei abgebrochenen Antworten: „Max Tokens" (Ausgabe-Länge) im Chat-Parameter auf 8192+.
+
+**Settings-Klickpfade (13.09., „WELCHE SETTINGS WO?"):** ALLE Modell-Settings hängen am **Zahnrad/Gear beim Modell in „My Models" bzw. Slider-Icon im Lade-Dialog** → Panel „Load Parameters": Context Length (Slider), GPU Offload, **Flash Attention Toggle — wichtig: erst FA an, DANN erscheint die KV-Cache-Quant-Dropdown (q8_0)**, unten „Save Preset" für Dauerhaftigkeit (pro Modell gemerkt). Server: Developer-Tab → Port 1234, „Serve on Local Network" AUS. AS: Settings → Tools → AI → Model Providers → „+" → Local Provider → 1234. Max Tokens (Ausgabelänge, bei abgebrochenen Antworten): LM-Studio-Chat rechte Seitenleiste, 8192+.
+
+**Subagent-Fehler-Erklärung an Sascha (13.09., „wieso?"):** Ursache kommuniziert — Z.AI-Start-Plan (GLM-5.3-Flash) verlangt für generische Subagents eine explizite Denkstufe; feature-dev:*-Agents bringen sie mit, general-purpose/Explore nicht. Fix: ZCode Settings → Modell/Reasoning → Thought-Stufe explizit setzen (nicht Auto/leer); `~/.zcode/config.json` hat derzeit keinen thoughtLevel/reasoningLevel-Eintrag (grep-Beweis geliefert). Bis dahin gilt: feature-dev:*-Agents oder Direkt-Arbeit per curl.
+
 ## feedback-agent-drives-ui
 
 ---
@@ -1793,6 +1799,8 @@ metadata:
 Verwandt: [[feedback-one-action-not-tables]], [[feedback-loesungen-statt-geht-not]] → korrekt: [[feedback-loesungen-statt-geht-nicht]].
 
 **Dritter Vorfall (13.09., Perplexity/Comet-Update):** Sascha meldete selbst das Faktum, dass ein Update Skills/Web-Automatisierung hinter den Desktop-Agenten gesperrt hat — Lesson: seine Live-Feldbeobachtungen über Tools, die er täglich nutzt, sind **primäre Quelle** und schlagen Suchergebnisse; nicht gegenrecherchieren, sondern darauf aufbauen und nur die Lösungspfade verifizieren. Ergebnis-Speicher: [[ios27-webapp-testing-recherche-2026-09-13]].
+
+**Vierter Vorfall (13.09., „zeig link" → danach „BIST DU BEHINDERT ??"):** Auf „zeig link" antwortete ich mit Prosa, doppelter Anleitung und Tipps — zu viel. Und auf eine Installationsfrage antwortete ich zuerst mit manuellem Download-Link, statt den EINFACHSTEN Weg (Direkt-Download in LM Studio über die Suche) zu nennen — Sascha: „wieso nicht gleich in lm studio?". Lektion: Wenn er ein Artefakt verlangt (Link, Befehl, Datei), NUR das Artefakt liefern, null Umrahmung; und bei allen How-to-Fragen zuerst den einfachsten Klick-Weg in der App nennen, manuelle/technische Wege nur als Fallback. Kurz-Reaktion dann korrekt: Link + 1 Satz + „sag das konkrete Symptom, ich fixe es".
 
 ## feedback-entscheidungshoheit
 
