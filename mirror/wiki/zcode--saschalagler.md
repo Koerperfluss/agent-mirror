@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-13 22:46 UTC
+Zuletzt gespiegelt: 2026-09-13 22:57 UTC
 
 ## AGENTS
 
@@ -95381,6 +95381,21 @@ Danach führe ich aus:
 | B5 | Workflows 00–04, 05-glm-build, 06–08 unangetastet | AGENTS.md referenziert 04/05/06/07 — Routing nutzt nur unnummerierte Skill-Namen |
 
 **Verifikation:** ls/diff-Checks nach B, Frontmatter-Validierung, 1 Live-Testchat in AutoClaw nach A2/A3 — erst dann „fertig". Backups vor jedem Schreibvorgang; einzige Löschung = B1 (explizit im Plan, GO = Plan-Freigabe).
+## plan-sess_89889126-6bec-4e4b-b8ec-d30614619344
+
+# Plan: Recherche-Bericht als Datei auf Desktop
+
+**Eine Aktion:** Die komplette heutige Recherche als Markdown-Datei auf deinen Desktop schreiben:
+
+**`~/Desktop/KI_ANTWORTEN_UND_WEBDEV_SETUP_RECHERCHE_2026-09-14.md`**
+
+Inhalt:
+1. **Frage 1 — Qualitative Antworten auf Web-Recherche-Anfragen:** Vergleichstabelle Gemini / Perplexity / ChatGPT / Kagi mit Quellen (inkl. Widerwort-Faktum SuprMind-Studie), Empfehlungsteil
+2. **Frage 2 — Web-App-Entwicklungs-Setup (Atlas-artig):** Antigravity (Gesamtsieger, Live-Vorschau + Goal-System) vs. Cursor vs. Windsurf vs. Lovable, mit allen Quellen-Links, Empfehlungsteil (Antigravity bereits installiert + iPhone-Safari-Test)
+3. Verweis auf den bereits existierenden Report `~/Desktop/IOS27_WEBAPP_TEST_RESEARCH_2026-09-13.md`
+
+Danach: Dateipfad als Beweis nennen. Kein weiteres Bauen, keine Einrichtung.
+
 ## plan-sess_a8584745-c71a-4be7-abfa-69705dde9546
 
 # Mac-Überhitzungs-Diagnose — Plan (MacBook Air M4 16 GB, passiv gekühlt)
