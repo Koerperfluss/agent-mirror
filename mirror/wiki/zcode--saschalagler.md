@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-13 21:10 UTC
+Zuletzt gespiegelt: 2026-09-13 21:20 UTC
 
 ## AGENTS
 
@@ -1388,6 +1388,8 @@ Bei Fachfragen (z. B. Trainings-Übungen) fordert er explizit „clinical reason
 
 # Memory Index
 
+- [iOS27 Web-App-Testing + KI-Recherche-App](ios27-webapp-testing-recherche-2026-09-13.md) — 13.09. Report **`~/Desktop/IOS27_WEBAPP_TEST_RESEARCH_2026-09-13.md`** (Confidence 85): Testing = Safari Mac + Web Inspector „Connect via Network" (kabellos, gratis) / iOS-Simulator / Playwright-WebKit-Emulation / BrowserStack (iOS 27 Beta seit 17.06.2026); KI-Apps: Perplexity Alltag, Gemini Deep Research, Comet gratis auf iOS (18.03.2026); ⚠️ ZCode-Subagent-Dispatch tot („No reasoning level selected") → Main-Agent-Direktrecherche als bewährter Workaround
+
 - [Coding-Modelle + Android Studio](coding-modelle-android-studio-2026-09-13.md) — 13.09. Research fertig (Report ~/Desktop/CODING_MODELL_RESEARCH_2026-09-13.md, **113 Zeilen**); **Korrekturen: NUR LOKALE LLMs · MOOLAPTOP hat KEINEN GLM-Plan · KEIN OLLAMA (Runner = LM Studio/llama.cpp)**; Sept-2026-Stand: **Standard = Qwen3.5-35B-A3B Q4 (~21 GB)** (Community: besser als Coder-Next); **Max-Standalone = Qwen3-Coder-Next 80B IQ3_XXS (~27 GB, RAM-Rechnung 38/40, Q3_K_XL VETO)**; Qwen3.6 27B = 77,2 % SWE-bench (vendor) für harte Aufgaben; Qwen3.8 27B-MLX = Mac-only; feature-dev-Team PASS mit VETO auf 80B Q2_K; llama.cpp `-ot ".ffn_.*_exps.=CPU"` + AS Local Provider; **Nutzer = MORITZ** (präziser Coder → schnelles MoE als Default, Thinking-Reserve nur für Bug-Jagd); ⚠️ Pagefile 35 GB belegt
 
 - [Prüf-Team + Config-Health](pruef-team-und-config-health.md) — 13.09.: 10 Prüf-Agents + pruef-team-Dispatcher; Cap max-3-Agents ENTFERNT; config-health.py SessionStart-Selbstcheck; **globale Sync jetzt 5/5 Harnesses (sync-standard-skills.sh TARGETS + ZCode AGENTS.md + Claude CLAUDE.md)**; alle ✅-Berichte = Disk-Beweise, LIVE-Beweis ausstehend → `/systemproof` Command (6 Checks, URTEIL AKTIV/TEILWEISE/TOT) in neuem Chat ausführen
@@ -2085,6 +2087,29 @@ metadata:
 `~/.agents/knowledge/gstack-deep-dives/` holds the archived "gstack Skill Deep Dives" doc (10.2k words, `raw/2026-08-23-gstack-skill-deep-dives.md`) plus `GSTACK-PATTERN-ANALYSE.md` mapping 14 transferable patterns → adopted in [[web-research-team-skill]] v1.1, 7 already covered by own skills (learn≈cognee-memory, health≈multi-agent-status-check, plan/ship≈lokiomnidevteam, context-save≈handoff, gbrain≈cross-platform-knowledge-sync), 3 consciously rejected (cookie import via Keychain, auto-upgrade loops, gstack browser sidebar), 3 open ideas (agent-retro, careful/freeze guardrails, skillify pattern).
 
 `graphify-out/` contains a queryable knowledge graph (90 nodes, 93 edges, 21 labeled communities, HTML viz `graph.html`). Query with: `cd ~/.agents/knowledge/gstack-deep-dives && graphify query "<question>"`. God node: web-research-team v1.1 bridges 6 communities. Before building any new skill, check the analysis tables there first (already covered? established pattern? conscious gap?).
+
+## ios27-webapp-testing-recherche-2026-09-13
+
+---
+name: ios27-webapp-testing-recherche-2026-09-13
+description: 13.09. Research „Web-App-Testing auf iOS 27 iPhone + beste
+  KI-Recherche-App iOS" — Empfehlungen, Report-Pfad, und ZCode-Subagent-Blocker
+  („No reasoning level selected")
+metadata:
+  node_type: memory
+  type: project
+  originSessionId: sess_89889126-6bec-4e4b-b8ec-d30614619344
+---
+
+13.09.2026 Recherche fertig (Report: **`~/Desktop/IOS27_WEBAPP_TEST_RESEARCH_2026-09-13.md`**, 12 belegte Fakten, Confidence 85/100; Runlog-Eintrag in `~/.agents/memory/research-runlog.jsonl` verifiziert).
+
+**Kern-Empfehlungen:**
+- Web-App-Testing iOS 27: Primärweg = Safari am Mac + Web Inspector + „Connect via Network" (iPhone: Settings → Safari → Advanced → Web Inspector ON, 1× Kabel, danach kabellos). Dev-Loop = iOS-Simulator (Xcode installiert). Automatisiert = Playwright/WebKit mit iPhone-Device-Emulation (echtes branded Safari fährt Playwright NICHT). Echte iOS-27-Fremdgeräte nur Cloud: BrowserStack hat iOS 27 Beta seit 17.06.2026.
+- Safari 27 (WWDC26) WebKit-Neuerungen zum Testen: Grid Lanes, Customizable Select, HTML Model, Immersive Environments, Web Extensions.
+- KI-Recherche-App iPhone: **Perplexity** = Alltagssieger (Quellen-Zitate), **Gemini** = Deep-Research-Sieger (PCMag-Test), ChatGPT nur Allrounder. **Comet** (Perplexity-KI-Browser) seit 18.03.2026 gratis auf iOS.
+- Bild-Frage „Live-Vorschau vs Goal-System": beides Features agentischer IDEs; Google Antigravity bietet BEIDE zusammen — keine Zwangswahl.
+
+**Tooling-Lesson (wichtig):** ZCode `Agent`-Dispatch (general-purpose Subagents) schlug fehl mit **„No reasoning level selected"** (reasoning-level-missing, account GLM-5.3-Flash) — Subagent-Fanout war nicht möglich. Workaround bewährt: Recherche direkt im Main-Agent mit parallelen WebSearch-Calls (6 Suchläufe, quick-first). Bei erneutem Bedarf erst Main-Agent-Direktweg versuchen, bevor Fanout konfiguriert wird. Siehe [[web-research-team-skill]], [[mac-setup-16gb-m4]], [[atlas-stand-2026-09-08]].
 
 ## legal-ops-native-status
 
