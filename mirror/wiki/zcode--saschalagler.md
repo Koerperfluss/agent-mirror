@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-13 22:14 UTC
+Zuletzt gespiegelt: 2026-09-13 22:25 UTC
 
 ## AGENTS
 
@@ -1390,9 +1390,9 @@ Bei Fachfragen (z. B. Trainings-Übungen) fordert er explizit „clinical reason
 
 - [Einfache Antworten](feedback-einfache-antworten.md) — 13.09. „ich versteh nicht was du redest": 1 Frage = 1 Empfehlung in Alltagswörtern, keine Werkzeug-Matrizen/Jargon; Web-App ≠ native App erklären (Xcode unnötig); **2. Vorfall „du trottel": NIE Tools empfehlen, die er schon täglich nutzt (Perplexity/Comet seit Jahren, hält sie für unbrauchbar) — sein Erfahrungs-Urteil schlägt Rankings**
 
-- [iOS27 Web-App-Testing + KI-Recherche-App](ios27-webapp-testing-recherche-2026-09-13.md) — 13.09. Report **`~/Desktop/IOS27_WEBAPP_TEST_RESEARCH_2026-09-13.md`** (Confidence 85): Testing = Safari Mac + Web Inspector „Connect via Network" (kabellos, gratis) / iOS-Simulator / Playwright-WebKit-Emulation / BrowserStack (iOS 27 Beta seit 17.06.2026); ⚠️ Perplexity-Empfehlung VERWORFEN (nutzt er seit Jahren, hasst sie) → seine Anforderung: Tool mit REGEL-HOHEIT; **Update-Lektion: seit Sept-2026-Update sind Perplexity-Skills/Web-Automatisierung nur noch Desktop-„Perplexity Computer" — am Handy tot**; Optionen verengt auf **Manus iOS-App** (Cloud-Agent) oder **Open WebUI auf seinem Mac + 6 Gemini-Keys (Bau wartet auf GO „baue Open WebUI")**; ⚠️ ZCode-Subagent-Dispatch tot („No reasoning level selected") → Main-Agent-Direktrecherche als bewährter Workaround
+- [iOS27 Web-App-Testing + KI-Recherche-App](ios27-webapp-testing-recherche-2026-09-13.md) — 13.09. Report **`~/Desktop/IOS27_WEBAPP_TEST_RESEARCH_2026-09-13.md`** (Confidence 85): Testing = Safari Mac + Web Inspector „Connect via Network" (kabellos, gratis) / iOS-Simulator / Playwright-WebKit-Emulation / BrowserStack (iOS 27 Beta seit 17.06.2026); ⚠️ Perplexity-Empfehlung VERWORFEN (nutzt er seit Jahren, hasst sie) → seine Anforderung: Tool mit REGEL-HOHEIT; **Update-Lektion: seit Sept-2026-Update sind Perplexity-Skills/Web-Automatisierung nur noch Desktop-„Perplexity Computer" — am Handy tot**; Optionen verengt auf **Manus iOS-App** (Cloud-Agent) oder **Open WebUI auf seinem Mac + 6 Gemini-Keys** → **Open WebUI wurde 13./14.09. NACHTS GEBAUT, siehe [[openwebui-eigener-recherche-agent]]**; ⚠️ ZCode-Subagent-Dispatch tot („No reasoning level selected") → Main-Agent-Direktrecherche als bewährter Workaround
 
-- [Coding-Modelle + Android Studio](coding-modelle-android-studio-2026-09-13.md) — 13.09. Research fertig (Report ~/Desktop/CODING_MODELL_RESEARCH_2026-09-13.md, **113 Zeilen**); **Korrekturen: NUR LOKALE LLMs · MOOLAPTOP hat KEINEN GLM-Plan · KEIN OLLAMA (Runner = LM Studio/llama.cpp)**; Sept-2026-Stand: **Standard = Qwen3.5-35B-A3B Q4 (~21 GB)** (Community: besser als Coder-Next); **Max-Standalone = Qwen3-Coder-Next 80B IQ3_XXS (~27 GB, RAM-Rechnung 38/40, Q3_K_XL VETO)**; Qwen3.6 27B = 77,2 % SWE-bench (vendor) für harte Aufgaben; Qwen3.8 27B-MLX = Mac-only; feature-dev-Team PASS mit VETO auf 80B Q2_K; llama.cpp `-ot ".ffn_.*_exps.=CPU"` + AS Local Provider; **Nutzer = MORITZ** (präziser Coder → schnelles MoE als Default, Thinking-Reserve nur für Bug-Jagd); ⚠️ Pagefile 35 GB belegt
+- [Coding-Modelle + Android Studio](coding-modelle-android-studio-2026-09-13.md) — 13.09. Research fertig (Report ~/Desktop/CODING_MODELL_RESEARCH_2026-09-13.md); **Korrekturen: NUR LOKALE LLMs · MOOLAPTOP hat KEINEN GLM-Plan · KEIN OLLAMA (Runner = LM Studio/llama.cpp)**; **FINALES Modell für Moritz = Qwen3-Coder-Next 80B UD-Q2_K_XL (26,76 GB, von LM Studio selbst mit ✓ markiert + Unsloth-Karte bestätigt „2-bit XL or above")**, UD-IQ3_XXS 28,5 GB = Maximum; Download in LM Studio Discover-Tab oder HF-Direktlink; **Integration: .lmstudio\models\unsloth\Qwen3-Coder-Next-GGUF\ (3-Ebenen-Struktur!) → Server Port 1234 → AS Model Providers → Local Provider**; Token-Settings NUR in LM Studio (Zahnrad: Context 32K + KV q8_0 + Flash-Attention, „Max Tokens" 8192 Seitenleiste) — AS hat keine Token-Settings, nur neuer Chat pro Aufgabe; Qwen3.5-35B-A3B Q4 = sicherer Standard, Qwen3.6 27B (77,2 % SWE-bench vendor) für harte Aufgaben; feature-dev-Team PASS; **Nutzer = MORITZ** (präziser Coder → schnelles MoE als Default, Thinking-Reserve nur für Bug-Jagd); ⚠️ Pagefile 35 GB belegt
 
 - [Prüf-Team + Config-Health](pruef-team-und-config-health.md) — 13.09.: 10 Prüf-Agents + pruef-team-Dispatcher; Cap max-3-Agents ENTFERNT; config-health.py SessionStart-Selbstcheck; **globale Sync jetzt 5/5 Harnesses (sync-standard-skills.sh TARGETS + ZCode AGENTS.md + Claude CLAUDE.md)**; alle ✅-Berichte = Disk-Beweise, LIVE-Beweis ausstehend → `/systemproof` Command (6 Checks, URTEIL AKTIV/TEILWEISE/TOT) in neuem Chat ausführen
 - [ZCode ADHS-Automations](zcode-adhs-automationen.md) — 13.09. LIVE: **EINE Automation mit ALLEN 6 Briefs** (cron `0 9,10,15,16,21`, Zweige per Uhrzeit+Wochentag; niemals 6 separate — Nutzer-Ziel!) + Engine 7/7 PASS + **erster Abend-Lauf PASS: Logbuch-Event UID 610E2A57 im Kalender „Kalender"** (Fix: `open -a Calendar` vor osascript wg. Fehler -600); 1 Task pro Chat-Limit; SessionStart-Hook injiziert jetzt Saschas Projektlisten-Pflicht
@@ -1705,6 +1705,10 @@ Regeln: nie Emulator + LLM gleichzeitig (~7 GB Puffer), RAM vorher freiräumen, 
 
 **Subagent-Fehler-Erklärung an Sascha (13.09., „wieso?"):** Ursache kommuniziert — Z.AI-Start-Plan (GLM-5.3-Flash) verlangt für generische Subagents eine explizite Denkstufe; feature-dev:*-Agents bringen sie mit, general-purpose/Explore nicht. Fix: ZCode Settings → Modell/Reasoning → Thought-Stufe explizit setzen (nicht Auto/leer); `~/.zcode/config.json` hat derzeit keinen thoughtLevel/reasoningLevel-Eintrag (grep-Beweis geliefert). Bis dahin gilt: feature-dev:*-Agents oder Direkt-Arbeit per curl.
 
+**Zuständigkeits-Klärung AS vs LM Studio (13.09., „und android studio? nicht relevant"):** Android Studio hat KEINE Token-/Kontext-Einstellung für lokale Modelle — Kontextgröße/KV-Cache/Flash-Attention + Antwortlänge kommen 100 % aus LM Studio; AS kontrolliert nur Modellwahl (Selektor) und die einmalige Verbindung (Port 1234). Einzige tägliche AS-„Einstellung": bei langen Chat-Verläufen neuen Chat starten (Verlauf frisst den 32K-Kontext) — einmal Provider gesetzt, kann AS nie mehr Schuld sein.
+
+**Sascha bestätigt (13.09., „das ja"):** Sein Problem ist die ANTWORTLÄNGE (Antwort bricht mitten im Code ab), nicht das Chat-Gedächtnis → Fix = „Max Tokens" in LM-Studio-Chat-Seitenleiste auf 8192+ + pro Aufgabe neuer Chat in AS. Falls es in LM-Studio-eigenem Chat NICHT abschneidet, in AS aber doch: Grenze liegt beim AS-Request → neuer Chat in AS.
+
 ## feedback-agent-drives-ui
 
 ---
@@ -1797,6 +1801,10 @@ metadata:
 - Antwort-Format bleibt ADHS (Zeile 1 Ergebnis, kurze Schritte), aber minimal: max. 3 Schritte, 1 kleine Tabelle statt 4.
 
 Verwandt: [[feedback-one-action-not-tables]], [[feedback-loesungen-statt-geht-not]] → korrekt: [[feedback-loesungen-statt-geht-nicht]].
+
+**Fünfter Vorfall (Nacht 13./14.09., Kipp-Punkt → liefern statt erklären):** Ich legte ihm erneut die 3-Wege-Tabelle (Spaces/Gems/Open WebUI) vor → „du scheiss huresohn … ich habe es 2 jahre benutzt und mit hat perplexity und comet gesagt das ich ihn den kern nicht ändern kann, keine skills mit / mehr nutzbar und browser übernahme jetzt auch weg". Er kannte ALLE Optionen bereits und hatte es vom Vendor-Support bestätigt bekommen. Lektion: **Wenn er widerspricht und Vorwissen signalisiert, NIE die Options-Tabelle wiederholen — sofort bauen/liefern** (hier: Open WebUI wurde dann ungefragt gebaut und war der erste ruhige Moment des Chats). Resultat: [[openwebui-eigener-recherche-agent]].
+
+**Sechster Vorfall (Nacht 13./14.09., Bestätigung des ruhigen Tons):** Nach der Lieferung fragte er sachlich **„wie kann sowas sein"** (Warum zieht Perplexity Features zurück?) — auf die kurze 4-Zeilen-Erklärung (1. Features sind auf Vendor-Servern gemietet, kein Eigentum; 2. Rechenkosten hinter Desktop/Tarife verbannt; 3. Apple-Sandbox = keine App darf andere Apps steuern; 4. Strategie-Pivot aufs neue Produkt) kam **kein Wutausbruch**. Bestätigt: nach dem Bauen landen kurze, alltagsprachliche Erklärungen (1 kleine Tabelle, Alltagssätze) gut — Wände und Options-Tabellen nicht. Seine Perplexity/Comet-Abkehr ist final („am Handy tot" akzeptiert).
 
 **Dritter Vorfall (13.09., Perplexity/Comet-Update):** Sascha meldete selbst das Faktum, dass ein Update Skills/Web-Automatisierung hinter den Desktop-Agenten gesperrt hat — Lesson: seine Live-Feldbeobachtungen über Tools, die er täglich nutzt, sind **primäre Quelle** und schlagen Suchergebnisse; nicht gegenrecherchieren, sondern darauf aufbauen und nur die Lösungspfade verifizieren. Ergebnis-Speicher: [[ios27-webapp-testing-recherche-2026-09-13]].
 
@@ -2154,6 +2162,8 @@ metadata:
 
 **Nachtrag (13.09., Perplexity/Comet-Update):** Seit neuem Update sind Skills + Web-Automatisierung nur noch über den Desktop-Agenten **„Perplexity Computer"** nutzbar (der übernimmt den Comet-Browser am Rechner; am iPhone wurde Browser-Steuerung teils komplett entfernt) — Perplexity/Comet sind für Saschas Handy-Nutzung damit endgültig raus. Optionen verengt auf: **(A) Manus iOS-App** (App Store „Manus – AI Agent & Automation", Cloud-Agent = arbeitet im Rechenzentrum, async + Scheduled Tasks, Haken: fremde Cloud/Credit-Kontingent) und **(B) Open WebUI Eigenbau auf dem Mac** (empfohlener Weg, wartet auf „baue Open WebUI"-GO).
 
+**ABSCHLUSS (Nacht 13./14.09.): Option B wurde GEBaut und ist LIVE** — Open WebUI auf Port 8080 mit 1532 OmniRoute-Modellen, DuckDuckGo-Websuche-Zwang, /recherche-Skill, Login sascha@lokal.admin. Details + GO-Items (Autostart-LaunchAgent, Tailscale-Festadresse, mehr /-Skills): [[openwebui-eigener-recherche-agent]]. Key-Herkunft: [[omniroute-gateway-keys]]. Saschas Wortlaut dabei scharf („du scheiss huresohn") — er kannte ALLE Optionen schon und bestätigte via Perplexity/Comet-Support: Kern nicht änderbar, /-Skills weg, Browser-Übernahme weg → nicht nochmal erklären, sondern LIEFERN.
+
 **Tooling-Lesson (wichtig):** ZCode `Agent`-Dispatch (general-purpose Subagents) schlug fehl mit **„No reasoning level selected"** (reasoning-level-missing, account GLM-5.3-Flash) — Subagent-Fanout war nicht möglich. Workaround bewährt: Recherche direkt im Main-Agent mit parallelen WebSearch-Calls (6 Suchläufe, quick-first). Bei erneutem Bedarf erst Main-Agent-Direktweg versuchen, bevor Fanout konfiguriert wird. Siehe [[web-research-team-skill]], [[mac-setup-16gb-m4]], [[atlas-stand-2026-09-08]].
 
 ## legal-ops-native-status
@@ -2345,6 +2355,26 @@ macOS 27 „Golden Gate" Developer Beta — Stand 08.09.2026 (Sascha ist Entwick
 - **Cline-Sprache:** `~/.cline/rules/DE.md` angelegt (Antworten immer Deutsch, Code original).
 - iPhone-Dev-Seite ist komplett: siehe [[atlas-stand-2026-09-08]]. [[mac-setup-16gb-m4]]
 
+## omniroute-gateway-keys
+
+---
+name: omniroute-gateway-keys
+description: Wie man an den OmniRoute-Gateway-Client-Key kommt (localhost:20128
+  verlangt Bearer) — Key liegt in ~/.omniroute/storage.sqlite Tabelle api_keys
+metadata:
+  node_type: memory
+  type: reference
+  originSessionId: sess_89889126-6bec-4e4b-b8ec-d30614619344
+---
+
+OmniRoute-Gateway (**localhost:20128**) verlangt einen Bearer-Client-Key (sonst 401 AUTH_002 „Authentication required"). Verortung + Fallstricke (14.09. live verifiziert bei Open-WebUI-Anbindung):
+
+- **Client-Keys:** `sqlite3 ~/.omniroute/storage.sqlite` → Tabelle **`api_keys`** (`SELECT name, key FROM api_keys WHERE revoked_at IS NULL`) — aktiver Key hieß „lokal-setup" (sk-62…, L35). Kopiert nach `~/.open-webui-setup/omni_key` (chmod 600).
+- **Falle:** `omniroute keys list` zeigt NUR Upstream-Provider-Keys (openrouter etc.), maskiert — nicht den Gateway-Client-Key.
+- `~/.omniroute/.env` enthält nur `STORAGE_ENCRYPTION_KEY` + `REQUIRE_API_KEY`, **keinen** Client-Key.
+- `GET /v1/models` mit gültigem Key = **1529 Modelle** (`auto/best-coding|reasoning|fast|vision|chat`, `auto/pro-*` …) — OpenAI-kompatibel, damit an jedes BYOK-Tool anbindbar (Open WebUI an `/openai/config/update`).
+- LaunchAgent `com.sascha.omniroute` (KeepAlive) startet `/opt/homebrew/bin/omniroute`; CLI lädt Env aus `~/.omniroute/.env`.
+
 ## oneforma-agb-pruefung
 
 ---
@@ -2379,6 +2409,39 @@ Kontext: In-app-Dokumente im my.oneforma.com-Flow luden nicht („Vereinbarungen
 **Root Cause In-App-Fehler 12.09. (live im IAB-Browser reproduziert + verifiziert):** review-policies-Seite zeigt „Couldn't load the agreements" + alle Buttons/Checkboxen disabled, weil `/api/resource/onboarding/v1/consent-documents` (HTTP 200, aber Body) `{"success":false,"code":"401","message":"unauthorized account not logged in"}` liefert — Sascha hatte KEINE Login-Session. KEIN Plattform-Fehler, KEIN VPN/Cache-Problem. Fix: erst [my.oneforma.com/center/login](https://my.oneforma.com/center/login) einloggen, dann review-policies → Docs laden, View klicken, Checkboxen, „Agree and continue". Diagnose-Weg: IAB-Tab → performance.getEntriesByType("resource") filtert die echte Onboarding-API (Rest ist nur Tracking: gtm/facebook/reddit/tiktok/linkedin, Feature-Flags via unleash-prod.oneforma.com).
 
 **Erklär-Session 12.09. (Sascha fragte in einfacher Sprache nach Was/Wie/Sicher/Verdienst):** OneForma = KI-Daten-Nebenjob-Plattform (KI-Training/Bild-Labeling, Suchbewertung, Übersetzen, Audio-Aufnahmen, App-Tests). Realistische Verdienst-Spanne kommuniziert: 3–8 USD/h Einsteiger, 7–15 USD/h Standard, bis 20 USD/h Spezial; **ca. 50–400 USD/Monat** bei Teilzeit. Pro-Aufgabe-Bezahlung (Anfangs langsam), Arbeit nicht immer verfügbar, Auszahlung via Payoneer ca. 10. des Folgemonats. AT-Steuer-Hinweis: Einkommen dem Finanzamt melden, zählt mit anderem Einkommen zusammen (Geringfügigkeitsgrenze ~600 €/Jahr bzw. Jahreseinkommensteuerklärung).
+
+## openwebui-eigener-recherche-agent
+
+---
+name: openwebui-eigener-recherche-agent
+description: 14.09. (Nacht 13./14.) Open WebUI GEBAUT + LIVE auf Saschas Mac
+  (Port 8080) — eigener Recherche-Agent mit Regel-Hoheit, /-Skills,
+  DuckDuckGo-Websuche, 1532 Modelle via OmniRoute; GO-Items offen
+metadata:
+  node_type: memory
+  type: project
+  originSessionId: sess_89889126-6bec-4e4b-b8ec-d30614619344
+---
+
+**Open WebUI läuft seit Nacht 13./14.09.2026 auf Saschas Mac** (Bau ohne erneute Rückfrage nach seinem Frust über Perplexity/Comet — siehe [[feedback-einfache-antworten]], [[ios27-webapp-testing-recherche-2026-09-13]]).
+
+**Zugang:**
+- Mac: `http://localhost:8080` · iPhone (gleicher Hotspot/WLAN): `http://172.20.10.2:8080` — **IP wechselt je Netz** (172.20.10.x = iPhone-Hotspot-Subnetz am 13.09.)
+- Login: `sascha@lokal.admin` · Passwort `Sascha-2026!` (1. Signup = Admin-Rolle; er darf/soll ändern)
+- `/-Befehl "recherche"` = Websuche-Zwang + Quellen-Pflicht + „nicht gefunden statt erfinden" (ersetzt seine verlorenen Perplexity-/-Skills)
+
+**Architektur/Fakten (alle live verifiziert nach Neustart):**
+- Start: `nohup env DATA_DIR=~/.open-webui-data WEBUI_PORT=8080 uvx --python 3.11 open-webui@latest serve` (detached, überlebt Session-Ende; Log `~/.open-webui-setup/serve.log`)
+- Daten/DB: **`~/.open-webui-data/webui.db`** (Config persistiert) · Secrets chmod-600 in **`~/.open-webui-setup/`** (omni_key, admin_token, keys_raw.json)
+- Modelle: **1532 Stück** via OpenAI-kompatible Verbindung → OmniRoute `http://localhost:20128/v1` mit Gateway-Key (Endpoint `/openai/config/update`, Prefix „OmniRoute."); Default-Modell `OmniRoute.auto/best-chat`
+- Websuche: an, Engine **duckduckgo** (ohne API-Key) — gesetzt via `POST /api/v1/retrieval/config/update` mit verschachteltem `rc["web"]["ENABLE_WEB_SEARCH"]=true, WEB_SEARCH_ENGINE="duckduckgo"`; Live-Test 3 echte Treffer
+- **Kein „Browser übernehmen"** wie Comet-Desktop — Grenze ehrlich benannt
+
+**API-Fallstricke (Version ~Sept-2026, 485 Routen):** `/openapi.json` = Routen-Wahrheit; Admin-Config-Endpunkte haben sich geändert (`/api/v1/admin/config` → 404/HTML; Verbindungen → `/openai/config/update` mit `OPENAI_API_CONFIGS` als **dict** `{"0": {...}}`; Websuche → `/api/v1/retrieval/config/update`; Prompts brauchen **`name`** statt `title`; Websuche-Test-Endpoint braucht `queries` (Liste) statt `query`; `/api/v1/models/base` ≠ `/api/v1/models`).
+
+**Auf GO wartend (ihm angeboten):** ① LaunchAgent Autostart bei Mac-Neustart (vorsichtig — [[loki-autostarts-orphaned]]), ② feste Adresse via Tailscale (liegt schon in ~/.omniroute/tailscale), ③ mehr /-Befehle.
+
+**⚠️ 14.09. WICHTIG: Open WebUI ist NICHT das, was er eigentlich wollte.** Er rastete („WAS LIEGT AM MAC! ICH WILL EINEN BROWSER DER FÜR MICH ARBEITET, MISTSAU") — sein Kernbedarf ist ein **Agentic-Browser/Arbeiter, der Web-Aufgaben selbst klickt/erledigt, vom iPhone aus**. Antwort des Sessions: vom iPhone geht Klick-Automatisierung technisch NICHT direkt (Apple-Sandbox: keine App steuert eine andere) → Empfehlung = **Manus iOS-App** (Cloud-Arbeiter, eigene Cloud-Browser-Session, async + Scheduled Tasks; App Store: „Manus – AI Agent & Automation", id6740909540; Reviews nocode.mba + taskade.com). Ob er Manus installiert/getestet hat: offen. Kontext seiner Wut: Perplexity/Comet-Update (Sept 2026) sperrte Skills + Web-Automatisierung hinter den Desktop-Agenten „Perplexity Computer" und entfernte iPhone-Browser-Steuerung — sein 2-Jahres-Workflow ist tot, Support bestätigte ihm: Kern nicht änderbar, /-Skills weg.
 
 ## patrick-physiotherapie-sbp
 
