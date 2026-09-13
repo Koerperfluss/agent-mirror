@@ -36,5 +36,6 @@ metadata:
 
 ## Sonstiges 13.09.
 - Subagenten-Status: **implementer + code-architect zuverlässig**; explore/reviewer teils „Model request failed"/„user concurrency limit exceeded" → retry oder selbst ausführen; Agent-Übersetzungswellen 2× von Nutzer-Interrupts abgebrochen.
-- Erste echte Auslösung der Automation: **gleicher Tag 21:00** (Abend-Zweig) → Abend-Brief im Kalender prüfen.
+- **Erste echte Auslösung ERFOLGT (13.09. ~17:07, Abend-Zweig, PASS):** Kalender.app lief nicht → Fehler -600, Fix: `open -a Calendar` + sleep 6 vor osascript. Ganztages-Event **„Logbuch 13.09.2026"** angelegt + zurückgelesen, UID `610E2A57-B658-4CDD-A66C-C2D326435AEA` (Kalender „Kalender"). Logbuch-Refresh via `assi feierabend` (10 Einträge aus 2 Quellen). Test-Event `B8CD317A…` darf gelöscht werden. Nächster Automatik-Lauf: Mo 09:00 (Morgen-Zweig).
+- **SessionStart-Hook-Injektion aktiv:** Beim Session-Start injiziert der Hook (obsidian-second-brain + projects.py) Saschas stehende Anweisung: **Projektliste (10 Projekte) JETZT ungefragt wortgleich ausgeben inkl. Schlusszeile „Oder ein neues Projekt erstellen?"**, dann passendes Skill-/Agenten-Team selbst starten ohne Rückfrage (Feature→grill-me, Bug→systematic-debugging, Implementierung→tdd, Coden→ponytail).
 - Design-Entscheidungen bleiben verbindlich: KEINE Web-UI (Kalender + Chat = Oberfläche), Logbuch im globalen System-Memory, nur ZCode/AutoClaw/Antigravity/Cline als Quellen, Eigent = nicht jetzt. Siehe [[feedback-entscheidungshoheit]] und [[zcode-app-german-ui-patch]] (Deutsch-UI = offener Rest).

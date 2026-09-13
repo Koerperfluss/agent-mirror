@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-13 15:57 UTC
+Zuletzt gespiegelt: 2026-09-13 16:08 UTC
 
 ## AGENTS
 
@@ -1389,7 +1389,7 @@ Bei Fachfragen (z. B. Trainings-Übungen) fordert er explizit „clinical reason
 # Memory Index
 
 - [Prüf-Team + Config-Health](pruef-team-und-config-health.md) — 13.09.: 10 Prüf-Agents + pruef-team-Dispatcher; Cap max-3-Agents ENTFERNT; config-health.py SessionStart-Selbstcheck; **globale Sync jetzt 5/5 Harnesses (sync-standard-skills.sh TARGETS + ZCode AGENTS.md + Claude CLAUDE.md)**; alle ✅-Berichte = Disk-Beweise, LIVE-Beweis ausstehend → `/systemproof` Command (6 Checks, URTEIL AKTIV/TEILWEISE/TOT) in neuem Chat ausführen
-- [ZCode ADHS-Automations](zcode-adhs-automationen.md) — 13.09. ABGESCHLOSSEN: **EINE Automation mit ALLEN 6 Briefs** (cron `0 9,10,15,16,21`, Zweige per Uhrzeit+Wochentag; niemals 6 separate — Nutzer-Ziel!) + Engine 7/7 PASS (daily_sweep.py 7 Quellen, Logbuch ~/.agents/memory/logbuch/, assi brief/feierabend, SessionStart-Hook, /feierabend) + Kalender bewiesen: KEIN Gmail-Kalender in Calendar.app → Zielkalender „Kalender"; 1 Task pro Chat-Limit
+- [ZCode ADHS-Automations](zcode-adhs-automationen.md) — 13.09. LIVE: **EINE Automation mit ALLEN 6 Briefs** (cron `0 9,10,15,16,21`, Zweige per Uhrzeit+Wochentag; niemals 6 separate — Nutzer-Ziel!) + Engine 7/7 PASS + **erster Abend-Lauf PASS: Logbuch-Event UID 610E2A57 im Kalender „Kalender"** (Fix: `open -a Calendar` vor osascript wg. Fehler -600); 1 Task pro Chat-Limit; SessionStart-Hook injiziert jetzt Saschas Projektlisten-Pflicht
 - [Entscheidungshoheit](feedback-entscheidungshoheit.md) — 13.09. scharf: UI/Produkt-Form entscheidet SASCHA (kein unilateral „Web-UI"), Automation-Technik schlage ich fertig vor; Markdown-Design-Dumps wertlos; Beschuldigungen mit Beweis (PID+Session-ID+Code-Zeile) widerlegen; nach GO nie wieder in Plan-Dialoge zurückwerfen („WIESO MUSS ICH DIR DAS SAGEN")
 - [ZCode-UI Deutsch-Patch](zcode-app-german-ui-patch.md) — 13.09. pausiert: i18n = nur langEN.js/langZH.js in app.asar; Rezept = Deutsch in EN-Slot + repacken + codesign + Re-Patch-Skript (App-Updates); nichts gepatcht
 - [Lösungen statt "geht nicht"](feedback-loesungen-statt-geht-nicht.md) — 13.09. scharf: NIE „geht vermutlich nicht" schreiben, immer Lösungsweg nennen („geht nicht gibt's nicht"); Optionen VOR AskUserQuestion ausführlich erklären
@@ -2661,7 +2661,8 @@ metadata:
 
 ## Sonstiges 13.09.
 - Subagenten-Status: **implementer + code-architect zuverlässig**; explore/reviewer teils „Model request failed"/„user concurrency limit exceeded" → retry oder selbst ausführen; Agent-Übersetzungswellen 2× von Nutzer-Interrupts abgebrochen.
-- Erste echte Auslösung der Automation: **gleicher Tag 21:00** (Abend-Zweig) → Abend-Brief im Kalender prüfen.
+- **Erste echte Auslösung ERFOLGT (13.09. ~17:07, Abend-Zweig, PASS):** Kalender.app lief nicht → Fehler -600, Fix: `open -a Calendar` + sleep 6 vor osascript. Ganztages-Event **„Logbuch 13.09.2026"** angelegt + zurückgelesen, UID `610E2A57-B658-4CDD-A66C-C2D326435AEA` (Kalender „Kalender"). Logbuch-Refresh via `assi feierabend` (10 Einträge aus 2 Quellen). Test-Event `B8CD317A…` darf gelöscht werden. Nächster Automatik-Lauf: Mo 09:00 (Morgen-Zweig).
+- **SessionStart-Hook-Injektion aktiv:** Beim Session-Start injiziert der Hook (obsidian-second-brain + projects.py) Saschas stehende Anweisung: **Projektliste (10 Projekte) JETZT ungefragt wortgleich ausgeben inkl. Schlusszeile „Oder ein neues Projekt erstellen?"**, dann passendes Skill-/Agenten-Team selbst starten ohne Rückfrage (Feature→grill-me, Bug→systematic-debugging, Implementierung→tdd, Coden→ponytail).
 - Design-Entscheidungen bleiben verbindlich: KEINE Web-UI (Kalender + Chat = Oberfläche), Logbuch im globalen System-Memory, nur ZCode/AutoClaw/Antigravity/Cline als Quellen, Eigent = nicht jetzt. Siehe [[feedback-entscheidungshoheit]] und [[zcode-app-german-ui-patch]] (Deutsch-UI = offener Rest).
 
 ## zcode-app-german-ui-patch
