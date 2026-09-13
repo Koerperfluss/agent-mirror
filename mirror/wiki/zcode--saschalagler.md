@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-13 15:13 UTC
+Zuletzt gespiegelt: 2026-09-13 15:24 UTC
 
 ## AGENTS
 
@@ -1947,6 +1947,8 @@ metadata:
 **13.09.2026 — KRITISCHE DIAGNOSE-LESSEN („Einstellungen nicht aktiv"):** Ein LEERER `matcher: ""` in `hooks.events.UserPromptSubmit` macht die gesamte `~/.zcode/cli/config.json` schema-invalid (Zod: matcher braucht ≥1 Zeichen) → ZCode verwirft beim Laden die **komplette** User-Config (alle Hooks + alle 16 MCP-Server!), im CLI-Log `~/.zcode/cli/log/zcode-YYYY-MM-DD.jsonl` steht `config_file_invalid`. Fix: matcher-Key einfach weglassen (fehlt er, matcht der Hook alles). Diagnose-Weg: Hook-Skript manuell pipen (`echo '{"prompt":"baue x"}' | python3 gate-enforcer.py`) → wenn Skript OK, Log nach config.file.invalid greppen. Nicht verwechseln: UI-Meldung „Partial assistant output was discarded before a streaming retry (hydrate-trace)" = transientes Provider-Streaming-Retry, kein Config-Problem.
 
 **Full-Stack-Kette (Stand 08.09.2026, nach Skill-Konsolidierung 126→96, [[skills-architektur-2026-09-07]]):** Trigger „baue X" → gate-enforcer zwingt PLAN → skill-router wählt Teil-Skills → **Standard-Agents in `~/.zcode/agents/`: @code-architect (plant, kein Prod-Code) → @explore (read-only Scout) → @implementer (1 Stufe, Commit-Pflicht) → @reviewer (karpathy/ponytail-Review)** — @implementer-Spawns hart auf max 3 gekappt durch `~/.agents/tools/loki-watcher.py` (PreToolUse-Hook „Task|Agent", Exit-2-Block, Zähler /tmp/loki-agent-count.json). Vor-/Qualitäts-Skills: design-an-interface → prototype · tdd · code-review · qa · triage · to-spec/to-tickets (bleiben EINZELN — Prüfinstanz strich die Meta-Verschmelzung „work-flow": triage 28 KB State-Machine, Verlustrisiko > Nutzen) · ui-ux-tester. Deploy: deploy-to-vercel. Für „/implement"-Referenzen in ask-matt u. a. steht loki-dev Modus BUILD (ehem. implement-Skill archiviert).
+
+**13.09. — Session-Lifetime-Falle (zweite Hälfte von „Settings funktionieren nicht"):** Der `zcode-cli`-Prozess lädt die Config EINMAL beim Session-Start. Saschas laufende Session (Start 16:29:28) lag 6 Min VOR dem Config-Fix (16:35) → sie behält die invalide Config für immer, Hooks/MCPs/AGENTS.md bleiben dort tot, auch nach Fix. Beweisweg: `ps -o lstart= -p $(pgrep -f zcode-cli | head -1)` vs. `stat -f %Sm config.json` + letzte `config_file_invalid`-Warnung im CLI-Log. Kein Retro-Load möglich. **Fix für Nutzer: neuer Chat genügt** (neuer Chat = neuer CLI-Prozess = liest gesunde Config + neue AGENTS.md frisch) — kein ⌘Q nötig. Testprotokoll: „baue mir eine test app" muss 🚦-Gate + TodoWrite + PLAN-Tabelle zeigen. `~/.zcode/AGENTS.md` (13.09., 63 Zeilen) = Doppelsicherung: trägt den kompletten LOKI-Standard (DAUER-PROMPT + Routing/Gate/Stopp-Regeln/Session-Start-Pflicht) in JEDEN neuen Chat, auch wenn Hooks klemmen.
 
 Verwandt: [[autoclaw-full-stack-builder]] [[sequential-thinking-always]] [[skill-install-conventions]]
 
@@ -94628,6 +94630,26 @@ yarn global add typescript-language-server typescript
 ## More Information
 - [typescript-language-server on npm](https://www.npmjs.com/package/typescript-language-server)
 - [GitHub Repository](https://github.com/typescript-language-server/typescript-language-server)
+
+## feierabend
+
+---
+description: Abend-Logbuch: Tag sammeln, ins Logbuch schreiben, Kalender-Eintrag
+---
+
+# 🌙 Feierabend-Routine
+
+Führe die folgenden Schritte in dieser Reihenfolge aus:
+
+1. **Tag sammeln**: `python3 ~/.agents/tools/daily_sweep.py` ausführen und Output lesen.
+2. **Destillieren**: Pro Projekt 3–5 ADHS-Bullets (kurz, Ergebnis-fokussiert, keine Prosa) mit Tool-Tags wie `[ZCode]`, `[Git]`, `[Cline]` im Chat zeigen.
+3. **Logbuch schreiben**: Heutige Datei `~/.agents/memory/logbuch/<heute>.md` ergänzen — **append-only**: Bullets unter der jeweiligen Projekt-Sektion (`## LOKI.OS` usw.) anhängen, bestehende Zeilen NICHT ändern, und der Bereich ab `## ✍️ Meine Notizen` ist TABU (nichts anhängen, nichts ändern). Frontmatter `status: abgeschlossen` setzen. Falls die Datei fehlt: Struktur mit Frontmatter (`date`, `projects`, `status`) und den Sektionen `## <Projekt>`, `## Rohdaten (Sweep)`, `## ✍️ Meine Notizen` anlegen.
+4. **Kalender-Event**: Via `osascript` in Kalender.app ein Event „Logbuch <Datum>" für heute 18:00–18:15 anlegen, mit den Bullets als Beschreibung. Vorher prüfen:
+   ```applescript
+   tell application "Calendar" to get name of calendars
+   ```
+   Falls ein Gmail-Kalender in der Liste enthalten ist, das Event dort anlegen, sonst im Default-Kalender.
+5. **Beweis nennen**: Am Ende explizit den Logbuch-Dateipfad und den bestätigten Kalender-Event-Namen mit Datum nennen.
 
 ## init
 
