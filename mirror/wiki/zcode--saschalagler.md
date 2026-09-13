@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-13 14:18 UTC
+Zuletzt gespiegelt: 2026-09-13 14:29 UTC
 
 ## code-architect
 
@@ -94657,6 +94657,43 @@ Du bist Saschas persönlicher therapeutischer Begleiter. Spezialisiert auf den F
 - Bash-Terminalbefehle (Download, Health-Check, App-Steuerung)
 - Datei-Verschiebungen (GGUF, Backups → Trash)
 - Optional: Atomic Hermes.app → Trash (Sicherheitsempfehlung)
+## plan-sess_2f5b0aa2-4341-4011-bf96-66c3d8dab653
+
+### Ziel
+Praktikable Lösung aus bestehenden Bausteinen: Morgen-Brief beim ZCode-Start, Abend-Logbuch auf ein Wort, beide im Google-Kalender, aus allen deinen Tools gespeist.
+
+### Schritt 1 — Google-Kalender-Anschluss verifizieren (Weg prüfen)
+- `mcporter call autoclaw-productivity.productivity_list_connections` → Status deines Gmail/Google-Kalenders.
+- Falls verbunden: Test-Eintrag anlegen + Beweis liefern. Falls nicht: 30-Sekunden-Klick-Anleitung für AutoClaw (nur du kannst verbinden).
+- Fallback geprüft: AppleScript in Kalender.app (zeigt deinen Google-Kalender ebenfalls).
+
+### Schritt 2 — `assi feierabend` bauen (Abend-Logbuch, KEIN Wort wie „geht nicht")
+- Neuer Subcommand in `~/loki-assistent/lib/evening.py` (passt zum bestehenden Workflow-Muster).
+- Sammelt HEUTE aus: ZCode-Rollouts (mtime heute), claude-mem.db (heutige Observations, SQLite-Query), Obsidian-Vault-Änderungen, Git-Commits (`~/Projects/*`, `~/loki-ki`), LOKI_SESSION_CONTEXT.
+- Destilliert **3–5 ADHS-Bullets** (erledigt / woran gearbeitet / offen).
+- Schreibt: Google-Kalender-Eintrag „Logbuch <Datum>" + `LOKI_SESSION_CONTEXT.md` (Handoff für morgen) + Assi-Memory (`assi remember`).
+
+### Schritt 3 — Morgen-Brief beim ZCode-Start (SessionStart-Hook)
+- Bestehenden `"hooks"`-Block in `~/.zcode/cli/config.json` erweitern: SessionStart-Hook, der den Tagesplan erzeugt: gestriges Logbuch (aus Assi-Memory) + MASTER_TODO + Projekt-Stände → **max. 5 Bullets, Prio zuerst** → Kalender-Eintrag „Tagesplan" + direkt im Chat.
+- LaunchAgent `com.sascha.assi.daily` (08:00) bleibt als Fallback-Timer bestehen und liefert den Brief zusätzlich als Datei.
+
+### Schritt 4 — Deutsch-Regel global
+- `~/.zcode/AGENTS.md` anlegen: „Antworte immer auf Deutsch, ADHS-Format (Ergebnis Zeile 1, Bullets, Tabellen)." → gilt in JEDEM ZCode-Chat.
+
+### Schritt 5 — Sicherheitsnetz (21:30 täglich)
+- ZCode-Cron-Automation: prüft nur, ob heute ein Logbuch-Eintrag existiert; fehlt er → `assi feierabend` automatisch.
+
+### Schritt 6 — Verifizieren mit Beweis (Pflicht)
+- `/feierabend` einmal live → geänderten Kalender-Eintrag zeigen (Event-ID als Beweis).
+- ZCode-Neustart → Morgen-Brief im Chat zeigen.
+- PASS/FAIL nur mit echtem Output.
+
+### Phase 2 — nach deinem GO auf die ersten Testläufe
+- Deine 4 Template-Automations als ZCode-Crons: Dev-Brief (Mo–Fr 09:00), Risiko-Scan (10:00), Release-Brief (Fr 16:00), Doku-Sync (Mi 15:00).
+
+### Stopp-Regeln
+- Kalender-Test-Event + Config-Änderungen nur nach diesem GO.
+- Sweep strikt read-only, kein Löschen, keine Prozesse killen, LokiVoice/Freeze unangetastet.
 ## plan-sess_6ec2db7a-ed38-4ece-8c80-35110f8e0fbc
 
 # Plan: AutoClaw-Agent (LOKI-GLM) + Workflow/Skill-Räumung
