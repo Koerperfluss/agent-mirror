@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-13 20:16 UTC
+Zuletzt gespiegelt: 2026-09-13 20:27 UTC
 
 ## AGENTS
 
@@ -1676,6 +1676,8 @@ Regeln: nie Emulator + LLM gleichzeitig (~7 GB Puffer), RAM vorher freiräumen, 
 - **Echte GGUF-Größen per HF-API verifiziert** (`https://huggingface.co/api/models/unsloth/Qwen3-Coder-Next-GGUF/tree/main?recursive=true`, curl + python): **UD-Q2_K_XL = 26,8 GB (Standard, sicher)**, **UD-IQ3_XXS = 28,5 GB (absolute Obergrenze)**; UD-IQ3_S 29,7 / Q3_K_S 34,6 / Q4_K_M 48,5 = NEIN. Frühere „Q2_K ~26–30 GB"-Schätzungen stimmten grob; Vanilla-Q2_K = 29,2 GB, UD-Dynamic-Quants sind kleiner UND qualitativ besser.
 - Finaler Befehl: `llama-server -hf unsloth/Qwen3-Coder-Next-GGUF:UD-Q2_K_XL --fit on --jinja -ot ".ffn_.*_exps.=CPU" --ctx-size 16384 --port 8080` → AS Local Provider Port 8080 (I3Q3_XXS-Variante = letzter Quent). Karpathy-Ehrlichkeit: tok/s nicht auf der exakten Maschine gemessen, erste Messung nach Setup dokumentieren.
 
+**Direkte Download-Links verifiziert (13.09., letzte Nachfrage „zeig link", alle curl-200):** UD-Q2_K_XL ist **eine einzelne Datei, kein Shard-Ordner** — `tree/main/UD-Q2_K_XL` = 404. Direktlink: `https://huggingface.co/unsloth/Qwen3-Coder-Next-GGUF/blob/main/Qwen3-Coder-Next-UD-Q2_K_XL.gguf`. LM-Studio-Einbindung: Suche im Discover-Tab nach „Qwen3-Coder-Next GGUF" → UD-Q2_K_XL, oder manuell nach `C:\Users\<Name>\.lmstudio\models\unsloth\qwen3-coder-next-gguf\`. Install-Weg für Moritz dokumentiert: llama.cpp-Release-Zip (cuda) nach C:\llama ODER LM Studio von lmstudio.ai. Lektion (13.09., „wieso nicht gleich in lm studio?"): bei Install-Anleitungen immer den EINFACHSTEN Weg zuerst (in-App-Download im Discover-Tab), manuelle Links nur als Fallback — und „zeig link"-Antworten ohne Prosa, nur den Link.
+
 **Technik-Bug (13.09.): Subagent-Dispatch teils kaputt** — `general-purpose` und `Explore` starteten mit „No reasoning level selected [reasoning-level-missing; account:zai-start-plan/GLM-5.3-Flash]" nicht; **feature-dev:code-architect / feature-dev:code-reviewer funktionierten** (deren Plugin-Definitionen bringen eine Denkstufe mit, generische Agenten nicht). Diagnose mit Beweis: `~/.zcode/config.json` enthält KEINEN `thoughtLevel`/`reasoningLevel`-Eintrag (grep-geprüft). **Fix (Sascha noch nicht gemacht): in ZCode Settings die Reasoning/Thought-Stufe explizit setzen, nicht „Auto/leer" lassen.** Workaround: harte API-Fakten selbst per curl/Bash holen statt Subagent. Lektion: bei Agent-Launch-Fehlern direkt feature-dev:*-Agents nehmen oder selbst erledigen.
 
 ## feedback-agent-drives-ui
@@ -1923,6 +1925,12 @@ Am 25.08.2026 (Schlussphase der Mac-Sanierung) reagierte Sascha frustriert („w
 25. Nach Recherche/Hitlisten immer mit einer EINDEUTIGEN Empfehlung enden: „Das Modell: X" + verifizierte Links + der 1 Kopierbefehl — nicht die Wahl dem Nutzer zurückspielen.
 26. Download-/Shop-Links vor dem Ausspielen per `curl -s -o /dev/null -w "%{http_code}"` auf HTTP 200 prüfen (kostet Sekunden, beweist Erreichbarkeit).
 27. „Welches X" = sein Satz für „gib mir EINEN Namen, keine Optionen". Eine Upgrade-Alternative maximal als eine Zeile unten.
+
+**Zwölfte Lektion 13.09. (Coding-Modell-Download-Link):** Auf „zeig link" antwortete ich zwar mit dem Link in Zeile 1, hängte aber noch Einbindungs-Wege, 404-Hinweis und Angebot an — Reaktion: „BIST DU BHEINDERT ??". Erst die reinrassige Ein-Zeilen-Antwort (Link + „Klick → Download → fertig") war das Format, das er wollte.
+
+**How to apply (Ergänzung):**
+28. Fragt er nach EINEM Ding (Link, Befehl, Name): EXAKT das eine Ding + maximal 1 Satz. Keine Varianten, keine Verifikations-Notizen, keine Zusatz-Angebote — die Nachfrage „warum X?" kommt von ihm, wenn er mehr braucht.
+29. Nach „BIST DU BEHINDERT/BEHINDERT??" ohne weiter Kontext: erst vermuten, dass der letzte Output wieder ZU VIEL war — als nächstes die dünnste mögliche Antwort liefern und das konkrete Symptom in einem Satz anbieten („wenn etwas klemmt: sag das Symptom"), statt zu erklären.
 
 ## feedback-pruefinstanz-pflicht
 
