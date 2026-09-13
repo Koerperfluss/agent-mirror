@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-13 21:53 UTC
+Zuletzt gespiegelt: 2026-09-13 22:03 UTC
 
 ## AGENTS
 
@@ -1388,9 +1388,9 @@ Bei Fachfragen (z. B. Trainings-Übungen) fordert er explizit „clinical reason
 
 # Memory Index
 
-- [Einfache Antworten](feedback-einfache-antworten.md) — 13.09. „ich versteh nicht was du redest": 1 Frage = 1 Empfehlung in Alltagswörtern, keine Werkzeug-Matrizen/Jargon; Web-App ≠ native App erklären (Xcode unnötig); ADHS-Format bleibt, aber minimal (max. 3 Schritte, 1 Tabelle)
+- [Einfache Antworten](feedback-einfache-antworten.md) — 13.09. „ich versteh nicht was du redest": 1 Frage = 1 Empfehlung in Alltagswörtern, keine Werkzeug-Matrizen/Jargon; Web-App ≠ native App erklären (Xcode unnötig); **2. Vorfall „du trottel": NIE Tools empfehlen, die er schon täglich nutzt (Perplexity/Comet seit Jahren, hält sie für unbrauchbar) — sein Erfahrungs-Urteil schlägt Rankings**
 
-- [iOS27 Web-App-Testing + KI-Recherche-App](ios27-webapp-testing-recherche-2026-09-13.md) — 13.09. Report **`~/Desktop/IOS27_WEBAPP_TEST_RESEARCH_2026-09-13.md`** (Confidence 85): Testing = Safari Mac + Web Inspector „Connect via Network" (kabellos, gratis) / iOS-Simulator / Playwright-WebKit-Emulation / BrowserStack (iOS 27 Beta seit 17.06.2026); KI-Apps: Perplexity Alltag, Gemini Deep Research, Comet gratis auf iOS (18.03.2026); ⚠️ ZCode-Subagent-Dispatch tot („No reasoning level selected") → Main-Agent-Direktrecherche als bewährter Workaround
+- [iOS27 Web-App-Testing + KI-Recherche-App](ios27-webapp-testing-recherche-2026-09-13.md) — 13.09. Report **`~/Desktop/IOS27_WEBAPP_TEST_RESEARCH_2026-09-13.md`** (Confidence 85): Testing = Safari Mac + Web Inspector „Connect via Network" (kabellos, gratis) / iOS-Simulator / Playwright-WebKit-Emulation / BrowserStack (iOS 27 Beta seit 17.06.2026); ⚠️ Perplexity-Empfehlung VERWORFEN (nutzt er seit Jahren, hasst sie) → seine Anforderung: Tool mit REGEL-HOHEIT; **Update-Lektion: seit Sept-2026-Update sind Perplexity-Skills/Web-Automatisierung nur noch Desktop-„Perplexity Computer" — am Handy tot**; Optionen verengt auf **Manus iOS-App** (Cloud-Agent) oder **Open WebUI auf seinem Mac + 6 Gemini-Keys (Bau wartet auf GO „baue Open WebUI")**; ⚠️ ZCode-Subagent-Dispatch tot („No reasoning level selected") → Main-Agent-Direktrecherche als bewährter Workaround
 
 - [Coding-Modelle + Android Studio](coding-modelle-android-studio-2026-09-13.md) — 13.09. Research fertig (Report ~/Desktop/CODING_MODELL_RESEARCH_2026-09-13.md, **113 Zeilen**); **Korrekturen: NUR LOKALE LLMs · MOOLAPTOP hat KEINEN GLM-Plan · KEIN OLLAMA (Runner = LM Studio/llama.cpp)**; Sept-2026-Stand: **Standard = Qwen3.5-35B-A3B Q4 (~21 GB)** (Community: besser als Coder-Next); **Max-Standalone = Qwen3-Coder-Next 80B IQ3_XXS (~27 GB, RAM-Rechnung 38/40, Q3_K_XL VETO)**; Qwen3.6 27B = 77,2 % SWE-bench (vendor) für harte Aufgaben; Qwen3.8 27B-MLX = Mac-only; feature-dev-Team PASS mit VETO auf 80B Q2_K; llama.cpp `-ot ".ffn_.*_exps.=CPU"` + AS Local Provider; **Nutzer = MORITZ** (präziser Coder → schnelles MoE als Default, Thinking-Reserve nur für Bug-Jagd); ⚠️ Pagefile 35 GB belegt
 
@@ -1792,6 +1792,8 @@ metadata:
 
 Verwandt: [[feedback-one-action-not-tables]], [[feedback-loesungen-statt-geht-not]] → korrekt: [[feedback-loesungen-statt-geht-nicht]].
 
+**Dritter Vorfall (13.09., Perplexity/Comet-Update):** Sascha meldete selbst das Faktum, dass ein Update Skills/Web-Automatisierung hinter den Desktop-Agenten gesperrt hat — Lesson: seine Live-Feldbeobachtungen über Tools, die er täglich nutzt, sind **primäre Quelle** und schlagen Suchergebnisse; nicht gegenrecherchieren, sondern darauf aufbauen und nur die Lösungspfade verifizieren. Ergebnis-Speicher: [[ios27-webapp-testing-recherche-2026-09-13]].
+
 ## feedback-entscheidungshoheit
 
 ---
@@ -2141,6 +2143,8 @@ metadata:
 - ~~KI-Recherche-App iPhone: Perplexity = Alltagssieger~~ **VERWORFEN** — Sascha nutzt Perplexity + Comet seit Jahren und hasst sie: Agent nicht promptbar, Kern-Funktion nicht änderbar, „lügt und tut was es will" (Halluzinationen ohne erzwungene Websuche). Seine echte Anforderung: **ein Tool, bei dem ER die Regeln schreibt**.
 - **Korrigierte Optionen (13.09. vorgelegt, Entscheidung offenes GO):** (1) **Perplexity Space** mit eigenen Anweisungen (Regel-Schreiben gratis, Modell-Wahl = Pro), (2) **Gemini Gem / Custom Instructions** (gratis), (3) **Open WebUI** selbst gehostet auf seinem Mac mit seinen 6 Gemini-Keys (Totale Kontrolle; Baubereitschaft signalisiert mit „baue Open WebUI", wartet auf GO). Copy-Paste-Regelblock geliefert („IMMER zuerst Websuche, jede Behauptung mit Quellen-URL, nicht gefunden sagen statt erfinden").
 - Bild-Frage „Live-Vorschau vs Goal-System": beides Features agentischer IDEs; Google Antigravity bietet BEIDE zusammen — keine Zwangswahl.
+
+**Nachtrag (13.09., Perplexity/Comet-Update):** Seit neuem Update sind Skills + Web-Automatisierung nur noch über den Desktop-Agenten **„Perplexity Computer"** nutzbar (der übernimmt den Comet-Browser am Rechner; am iPhone wurde Browser-Steuerung teils komplett entfernt) — Perplexity/Comet sind für Saschas Handy-Nutzung damit endgültig raus. Optionen verengt auf: **(A) Manus iOS-App** (App Store „Manus – AI Agent & Automation", Cloud-Agent = arbeitet im Rechenzentrum, async + Scheduled Tasks, Haken: fremde Cloud/Credit-Kontingent) und **(B) Open WebUI Eigenbau auf dem Mac** (empfohlener Weg, wartet auf „baue Open WebUI"-GO).
 
 **Tooling-Lesson (wichtig):** ZCode `Agent`-Dispatch (general-purpose Subagents) schlug fehl mit **„No reasoning level selected"** (reasoning-level-missing, account GLM-5.3-Flash) — Subagent-Fanout war nicht möglich. Workaround bewährt: Recherche direkt im Main-Agent mit parallelen WebSearch-Calls (6 Suchläufe, quick-first). Bei erneutem Bedarf erst Main-Agent-Direktweg versuchen, bevor Fanout konfiguriert wird. Siehe [[web-research-team-skill]], [[mac-setup-16gb-m4]], [[atlas-stand-2026-09-08]].
 
