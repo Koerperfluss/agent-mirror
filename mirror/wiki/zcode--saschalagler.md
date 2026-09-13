@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-13 14:50 UTC
+Zuletzt gespiegelt: 2026-09-13 15:02 UTC
 
 ## AGENTS
 
@@ -1240,7 +1240,9 @@ Bei Fachfragen (z. B. Trainings-Übungen) fordert er explizit „clinical reason
 
 # Memory Index
 
-- [ZCode ADHS-Automations](zcode-adhs-automationen.md) — 13.09. Plan fertig, NICHT umgesetzt (ExitPlanMode denied): Abend-Logbuch per /feierabend-Command + Morgen-Brief per SessionStart-Hook; Kalender = Google via AutoClaw-Connector (nicht iCloud); ZCode-UI ohne Sprach-Setting, Deutsch via ~/.zcode/AGENTS.md (existiert noch nicht); 0 Cron-Automations aktiv
+- [ZCode ADHS-Automations](zcode-adhs-automationen.md) — 13.09. Morgen-Brief-Automation LIVE (native Automations, cron Mo–Fr 09:00); Abend-Logbuch offen (ZCode-Limit 1 Task/Chat → neuer Chat nötig); KEINE Web-UI (Oberfläche = Kalender + Chat); Logbuch im globalen Memory `~/.agents/memory/logbuch/`; `~/.zcode/AGENTS.md` Dauer-Prompt angelegt; asar auf STOPP, nichts gepatcht
+- [Entscheidungshoheit](feedback-entscheidungshoheit.md) — 13.09. scharf: UI/Produkt-Form entscheidet SASCHA (kein unilateral „Web-UI"), Automation-Technik schlage ich fertig vor; Markdown-Design-Dumps wertlos; Beschuldigungen mit Beweis (PID+Session-ID+Code-Zeile) widerlegen
+- [ZCode-UI Deutsch-Patch](zcode-app-german-ui-patch.md) — 13.09. pausiert: i18n = nur langEN.js/langZH.js in app.asar; Rezept = Deutsch in EN-Slot + repacken + codesign + Re-Patch-Skript (App-Updates); nichts gepatcht
 - [Lösungen statt "geht nicht"](feedback-loesungen-statt-geht-nicht.md) — 13.09. scharf: NIE „geht vermutlich nicht" schreiben, immer Lösungsweg nennen („geht nicht gibt's nicht"); Optionen VOR AskUserQuestion ausführlich erklären
 
 - [Antigravity Physio-Assistent](antigravity-physio-assistent.md) — 12.09. GELÖST: Alter Chat korrupt (HTTP 400 INVALID_ARGUMENT, nur Retry/Neustart half NICHT) → NEUER Chat „Physiotherapy Rehab Assistant Setup" läuft komplett; Start-Prompt: `~/Desktop/ANTIGRAVITY_PHYSIO_START_PROMPT.md`; Adelina-Daten: `~/Desktop/Körperfluss/Patientenliste/Adelina/`; 12.09. Sitzungs-PDFs gebaut (SITZUNG_Adelina + SITZUNG_Simon 2026-09-12, je 2 Seiten A4); Simon = Adelinas Partner mit Migräne/zervikogenem Kopfschmerz (Cranio-Cervical Phase 1), eigener Ordner noch offen (auf GO); gelber MCP-Badge cloud-cli-execution nicht-fatal; UI-Lesson: Text-Eingabe nur via pbcopy+osascript keystroke, nicht AX set_value
@@ -1378,7 +1380,7 @@ metadata:
 
 Atlas Cali Coach — Stand 08.09.2026 (Handoff aus ZCode-Session sess_d4dc6589):
 
-- **Pfade:** Master `~/ATLAS_MASTER` und `~/Desktop/Coworkspace_Ich/atlas + pliability/ATLAS_MASTER`; Deploy-Repo `~/cali-coach-atlas-final` (GitHub Koerperfluss/atlas-cali-coach, Live https://barbulls-app.web.app bzw. atlas-v5.web.app).
+- **Pfade:** Master `~/ATLAS_MASTER` und `~/Desktop/Coworkspace_Ich/atlas + pliability/ATLAS_MASTER`; Deploy-Repo `~/cali-coach-atlas-final` (GitHub Koerperfluss/atlas-cali-coach, Live https://barbulls-app.web.app bzw. atlas-v5.web.app). **⚠️ 13.09.: `~/cali-coach-atlas-final` existiert nicht mehr** (nur noch ATLAS_MASTER/ATLAS_DESIGN/ATLAS_ARCHIV im Home) — vor dem nächsten Deploy/Git-Work das Deploy-Repo neu orten (GitHub-Remote war Koerperfluss/atlas-cali-coach).
 - **Web ist fix:** firebase.json Cache-Fix (commit 12e3323, Browser zeigten alte Stände durch 1h-Cache), Coach-429-Fix via keyless Server-Proxy `/api/coach` (commit d46e364, Secret ATLAS_GEMINI_KEY), adaptives KI-Interview als Default-Onboarding live.
 - **iOS-Dev-Setup KOMPLETT (08.09. verifiziert):** Xcode 27.0.0-Beta.6 unter `/Applications/Xcode-27.0.0-Beta.6.app` (xcode-select korrekt, Lizenz akzeptiert, kaputtes Xcode-26.6-Teilpaket gelöscht); iPhone 16 Pro Max iOS 27.0 gekoppelt; **Developer Mode ENABLED** (per devicectl verifiziert). iPhone-App neu übertragen = `npm run build` → `npx cap sync ios` → Build via Xcode 27 → Device-Install. Für TestFlight-Verteilung bleibt Apple-ID/2FA (bahldorfa@gmail.com) der Nutzer-Schritt.
 - **Atlas v6 „Clean & Stable"** gebaut (Grafik-Extremismus aus src/index.css gestrippt, 137→75 Zeilen; Bundle index-BlhLFqDd.js) — **Deploy wartet auf GO**; Rollback: `git checkout 96fffe7 -- src/index.css`.
@@ -1509,6 +1511,32 @@ metadata:
 **Update 12.09.2026:** **Beste Pipeline für druckfertige Praxis-PDFs (Sitzungs-Zettel) = handgebaut HTML + Print-CSS → headless Chrome**: `"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless --disable-gpu --no-pdf-header-footer --print-to-pdf=OUT.pdf file:///tmp/x.html`, dann `pdftoppm -png -r 60` + selbst visuell prüfen. Bewährt: ein Theme pro Patient (Farbkennung Adelina=türkis, Simon=violett), Checkbox-Spans zum Ankreuzen, 4-Spalten-Übungstabellen, SOAP-Block, Footer mit Name/Datum. HTML-Quelle neben das PDF legen (später editierbar). Für übergebene Langtext-Prompts: als `.md` auf Desktop (Copy-Paste-Quelle), z. B. `ANTIGRAVITY_PHYSIO_START_PROMPT.md`-Muster.
 
 **Update 12.09. Nr. 2 (PATIENTEN-DOKS):** Therapeuten-Zettel (SOAP, Schwellenwerte, Fachjargon) waren „VIEL ZU KOMPLEX" — **Patienten-Blätter brauchen: ALLES in Patientensprache, Freiflächen zum Schreiben (dotted lines), Ja/Nein-Kästen, Smiley-Skala 0–10, Übungen mit Schritt-für-Schritt-Anleitung + Alltags-Metaphern** („Bleistift zwischen Schulterblättern klemmen"), Wochen-Häkelblatt, Notfall-Plan in 3 Schritten. KEINE Fachbegriffe/Schwellenwerte auf Patientenblätter. Bewährte Struktur: 1 Wie geht's heute → 2 Sicherheitsfragen (JA ⛔/NEIN ✓) → 3 Mini-Selbsttests → 4 Übungen heute → 5 Hausaufgaben-Tabelle → 6 Bewertung (besser/gleich/schlechter + Freifeld). Dateien: `Adelina_UEBUNGSZETTEL…pdf` + `Simon_KOPFZETTEL…pdf` in `~/Desktop/Körperfluss/Patientenliste/Adelina/`. HTML-Fallstricke: div-Balance prüfen (non-greedy regex-Schnitte schließen Box nicht → Chrome bricht Layout falsch um); übergroße Boxen mit `page-break-inside:avoid` springen ganz auf neue Seite → halbleere Seiten vermeiden durch kompakte Tabellenzeilen.
+
+## feedback-entscheidungshoheit
+
+---
+name: feedback-entscheidungshoheit
+description: 13.09. mehrfach scharf korrigiert — Sascha entscheidet über
+  UI/Produkt-Form („SEIT WANN ENTSCHEIDEST DU FÜR MICH WAS FÜR WEB UI");
+  Automation-Technik ist meine Verantwortung; Markdown-Design-Dumps sind
+  wertlos; Beschuldigungen mit Beweis widerlegen
+metadata:
+  node_type: memory
+  type: feedback
+  originSessionId: sess_2f5b0aa2-4341-4011-bf96-66c3d8dab653
+---
+
+13.09.2026, mehrere harte Korrekturen in einer Session:
+
+**Why:** Ich entschied unilateral „Web-UI" für die Tages-Routine → Wutausbruch („SEIT WANN ZUR HÖLLE ENTSCHEIDEST DU FÜR MICH"). Gleichzeitig fragte ich zu viel ab, was meine Aufgabe war („DAS IST DEINE AUTOMATION, VORSCHLAG, WAS IST DAS FÜR FRAGE"). Er hasste meinen Markdown-Strukturentwurf („WAS SOLL ICH MIT DEM MARKDOWN? DAS SAGT ABSOLUT GARNICHT").
+
+**How to apply:**
+1. **Trennung der Entscheidungs-Hoheit:** Produkt-/UI-/Oberflächen-Form = **Sascha** (Optionen mit Tradeoffs vorlegen, EINE Frage, warten). Technische Umsetzung von Automations = **ich** (fertig vorschlagen, nicht fragen).
+2. **Kein UI-Format verallgemeinern:** „IMMER Web-UI" ([[feedback-gui-not-cli]]) gilt NICHT pauschal — für die Tages-Routine verwarf er Web-UI entschieden (Oberfläche = Kalender + Chat). Im Zweifel: er wählt die Oberfläche.
+3. **Keine Markdown-Wände als „Design"**: Markdown-Strukturentwürfe sagen ihm nichts — Design als konkretes Ergebnis/Beispiel zeigen oder beschreiben, was er SEHEN wird.
+4. **Ein Wort-Reize respektieren:** „STOP" = sofort die aktuelle Schiene abbrechen und auf das Nennen des nativen/einfacheren Wegs wechseln (er zeigte Screenshot des ZCode-Automations-Panels = „nutz das Eingebaute").
+5. **Beschuldigungen („DU HAST DEN BROWSER GEÖFFNET") nicht sofort eingestehen, sondern mit Beweis widerlegen:** Prozess-Startzeit + Session-ID + Quellcode-Zeile (foerderops_web.py:198 `subprocess.Popen(["open", ...])` = Auto-Browser-Öffnung beim Start) haben die Anschuldigung sauber entkräftet — das landete.
+6. Agent-Prompting-Mechanik erklären können: sein Dauer-Prompt für mich lebt in `~/.zcode/AGENTS.md` (Analog: GEMINI.md bei Antigravity) — angelegt 13.09.
 
 ## feedback-gui-not-cli
 
@@ -1693,7 +1721,11 @@ Cloud-Setup: Projekt **koerperfluss-antigravity** (Nr. 68337618626, Billing 015D
 
 **Lokaler Assistent (CLI, 30.08.):** Python-Skript `~/.agents/tools/foerderops_assistent.py`, verlinkt als `/opt/homebrew/bin/foerderops`. Lädt die Wissensdokumente lokal (Keyword-Retrieval), ruft Gemini 2.5 Flash via Vertex AI (gcloud-Token, Projekt koerperfluss-antigravity) auf — API-Key-Pfad (GEMINI_API_KEY) liefert 429 (rate-limited), Vertex-Fallback mit `role: user` im Content-Body funktioniert. SSRF-gehärtet (HTTPS-only, Host-Allowlist googleapis.com, keine Redirects, keine privaten IPs). Nutzung: `foerderops "Frage"` oder interaktiv `foerderops`. Live-Test bestätigt.
 
-**Web-UI-Status 06.09. spät: LÄUFT WIEDER** (per Agent gestartet: `nohup python3 ~/.agents/tools/foerderops_web.py`, HTTP 200 auf 127.0.0.1:8765) — aber OHNE Autostart/LaunchAgent, stirbt bei Reboot. Kopien des Tools auch unter `~/Claude/Projects/Förderops` und `~/koerperfluss-frontend-optimized/Foerder-Ops` (Drift-Gefahr).
+**Web-UI-Status 06.09. spät: LÄUFT WIEDER** (per Agent gestartet: `nohup python3 ~/.agents/tools/foerderops_web.py`, HTTP 200 auf 127.0.0.1:8765) — Kopien des Tools auch unter `~/Claude/Projects/Förderops` und `~/koerperfluss-frontend-optimized/Foerder-Ops` (Drift-Gefahr).
+
+**13.09.2026 — Q3 DAUERHAFT GEFIXT:** Web-UI war wieder tot (2. Mal, HTTP 000). Restart mit `python3 ~/.agents/tools/foerderops_web.py` (PATH-python3 = Homebrew; `~/.agents/tools/.venv` existiert NICHT). Danach LaunchAgent **`com.sascha.foerderops`** angelegt (`~/Library/LaunchAgents/com.sascha.foerderops.plist`, `/opt/homebrew/bin/python3`, RunAtLoad+KeepAlive, Logs /tmp/foerderops-launchd.log) — startet bei Boot und bei Crash neu. **Fallstricke:** `/usr/bin/python3` (Xcode-CLT) startet still ohne Port-Listen (Deps fehlen); nach `launchctl load` curl erst nach ~8 s versuchen. Verifiziert: Port 8765 LISTEN.
+
+**Achtung 13.09.:** `foerderops_web.py` öffnet den Browser SELBST beim Start (Zeile 198: `subprocess.Popen(["open", f"http://127.0.0.1:{PORT}"])`) — jeder Server-Start (auch via KeepAlive-LaunchAgent nach Crash) reißt Saschas Browser mit auf, und er beschuldigt dann den gerade aktiven Agenten (13.09. passiert; widerlegt per PID-Startzeit 16:46:41 + fremde Session sess_6ec2db7a curl-te 16:47 Port 8765).
 
 **Web-UI (30.08., von Sascha eingefordert — „ich will eine grafische Oberfläche du trotel"):** `~/.agents/tools/foerderops_web.py` — lokale Chat-Oberfläche auf **http://127.0.0.1:8765**, öffnet Browser automatisch. Dark/Gold-Design im Körperfluss-Look, 5 Schnell-Buttons (inno4KMU, FFG Status, Website-Lücken, Offene Konflikte, Google-E-Mail). API-Endpoint /api im selben Skript. Start: `python3 ~/.agents/tools/foerderops_web.py`. **Sascha will grafische Oberflächen, KEINE Terminal-Befehle** — CLI wurde abgelehnt („was soll ich mit so einem befehl").
 
@@ -1865,6 +1897,8 @@ metadata:
 
 **Neustarts ausgeführt 06.09. spät:** Cline Code + Claude + ZCode (16:16, inkl. Restart-Kette) — Hooks damit geladen. Der ZCode-Restart-sqlite-Fix der Kette war gegen die FALSCHE Spalte (session-Tabelle hat keine `model`-Spalte; die zai-start-plan-Leiche steckt im App-Cache, nicht in db.sqlite) — fürs Wiki-Feature bleibt UI-Modellwahl der Fix, Details [[zcode-setup-verified]].
 
+**13.09.2026 — KRITISCHE DIAGNOSE-LESSEN („Einstellungen nicht aktiv"):** Ein LEERER `matcher: ""` in `hooks.events.UserPromptSubmit` macht die gesamte `~/.zcode/cli/config.json` schema-invalid (Zod: matcher braucht ≥1 Zeichen) → ZCode verwirft beim Laden die **komplette** User-Config (alle Hooks + alle 16 MCP-Server!), im CLI-Log `~/.zcode/cli/log/zcode-YYYY-MM-DD.jsonl` steht `config_file_invalid`. Fix: matcher-Key einfach weglassen (fehlt er, matcht der Hook alles). Diagnose-Weg: Hook-Skript manuell pipen (`echo '{"prompt":"baue x"}' | python3 gate-enforcer.py`) → wenn Skript OK, Log nach config.file.invalid greppen. Nicht verwechseln: UI-Meldung „Partial assistant output was discarded before a streaming retry (hydrate-trace)" = transientes Provider-Streaming-Retry, kein Config-Problem.
+
 **Full-Stack-Kette (Stand 08.09.2026, nach Skill-Konsolidierung 126→96, [[skills-architektur-2026-09-07]]):** Trigger „baue X" → gate-enforcer zwingt PLAN → skill-router wählt Teil-Skills → **Standard-Agents in `~/.zcode/agents/`: @code-architect (plant, kein Prod-Code) → @explore (read-only Scout) → @implementer (1 Stufe, Commit-Pflicht) → @reviewer (karpathy/ponytail-Review)** — @implementer-Spawns hart auf max 3 gekappt durch `~/.agents/tools/loki-watcher.py` (PreToolUse-Hook „Task|Agent", Exit-2-Block, Zähler /tmp/loki-agent-count.json). Vor-/Qualitäts-Skills: design-an-interface → prototype · tdd · code-review · qa · triage · to-spec/to-tickets (bleiben EINZELN — Prüfinstanz strich die Meta-Verschmelzung „work-flow": triage 28 KB State-Machine, Verlustrisiko > Nutzen) · ui-ux-tester. Deploy: deploy-to-vercel. Für „/implement"-Referenzen in ask-matt u. a. steht loki-dev Modus BUILD (ehem. implement-Skill archiviert).
 
 Verwandt: [[autoclaw-full-stack-builder]] [[sequential-thinking-always]] [[skill-install-conventions]]
@@ -1880,6 +1914,8 @@ metadata:
   type: project
   originSessionId: sess_6ec2db7a-ed38-4ece-8c80-35110f8e0fbc
 ---
+
+**Stand 13.09.2026 (Delta-Checks live verifiziert):** Legal-Ops-Konsolidierung fertig — DIE App liegt als **`/Applications/Native Legal Ops.app`**, ~/Applications leer, Rest in `~/LegalOpsAdvisor_Sacha_Mac/_ARCHIV_Apps/` · **Atlas-Deploy-Repo `~/cali-coach-atlas-final` existiert NICHT mehr** — stattdessen `~/ATLAS_MASTER` + `~/ATLAS_DESIGN` + `~/ATLAS_ARCHIV` (vor nächstem Atlas-Deploy Pfade neu klären, siehe [[atlas-stand-2026-09-08]]) · TODO App: uncommittete Änderungen committet · FörderOps: LaunchAgent `com.sascha.foerderops` dauerhaft aktiv ([[foerderops-assistent]]) · Zwillingsroot `~/Desktop/Coworkspace_Ich/atlas + pliability ` existiert noch (Löschen = GO offen) · „superpowers"-Treffer in skill-routing.md = Fehlalarm (dokumentierte Umleitung auf diagnosing-bugs, korrekt). **Nächstes großes Ticket: Körperfluss vitest-Suite F14.**
 
 **Kanonische Quelle: `~/LOKI_PROJECT_MAP.md`** (06.09. 17:30 massiv aktualisiert nach „alles und abfahrt"-Batch) — dort stehen Tickets/Details. Kern-Stand:
 
@@ -2040,6 +2076,39 @@ Patrick (verwandt mit Sascha) will **Physiotherapie (FH-Bachelor) in Österreich
 **FINALE Klärung (07.09. spät): Patrick ist TECHNISCHER ZEICHNER** — hat also einen **abgeschlossenen Lehrabschluss** (frühere Annahme „gar nichts" war falsch). Konsequenz: **SBP-Zulassung ERFÜLLT** (Lehre = klassische „erhebliche berufliche Qualifikation", § 64a Abs 3 UG; Alter 20+ ✅). Da Zeichner **nicht einschlägig** (nicht medizinisch) ist: **volle SBP** (5 Teilprüfungen) nötig, NICHT nur Zusatzprüfungen. Ausnahme offen: manche FHs akzeptieren jeden Lehrabschluss mit Zusatzprüfungen → bei IMC Krems nachfragen. Sein Plus im IMC-Interview: Präzision, räumliches Denken (passt zu Eignungstest Koordination/Beobachtung); Motivationsschreiben muss den Wechsel Technik→Medizin begründen. Plan: jetzt SBP-Antrag + parallel IMC-Anfrage + Deutsch B2 checken → Studienstart Sep 2027 realistisch. Weitere offene Baustelle: professionelles DOCX (s. unten) mit diesen korrekten Fakten als eigenem Abschnitt.
 
 **Deliverable (Stand 07.09. spät):** Simple 1-Seiten-PDF `/Users/saschalagler/Desktop/Patrick_Physiotherapie_Weg.pdf` (reportlab-plaintext, Generator `sbp-doc/patrick_pdf.py`) wurde **scharf abgelehnt** („kein Design, keine Struktur, kein Layout") → Sascha will jetzt ein **professionell gestaltetes DOCX** (Cover-Rezept R4 Top Color Block, echte Tabellen, klare Sektionen) mit dem „sonstige Vorbildung"-Punkt als eigenem Abschnitt — **Bau noch offen** (docx npm-Paket installiert in `~/.zcode/workspace/default/sbp-doc/`; kein soffice/LibreOffice → kein direkter PDF-Export). Siehe [[feedback-doc-design-matters]].
+
+## pdf-html2pdf-pipeline
+
+---
+name: pdf-html2pdf-pipeline
+description: Funkierende HTML→PDF-Pipeline auf Saschas Mac (Playwright via
+  omniroute-NODE_PATH + pdf-lib in /tmp/pdfdeps) samt Fallstricken — genutzt für
+  LOKI-OS_Standard-Skills.pdf 13.09.
+metadata:
+  node_type: memory
+  type: reference
+  originSessionId: sess_6ec2db7a-ed38-4ece-8c80-35110f8e0fbc
+---
+
+**HTML→PDF auf diesem Mac (13.09.2026 bewährt, 3-Seiten-A4-Dark-PDF im Judge-Review 3/3 pass):**
+
+```bash
+PDF_SKILL_DIR=/Users/saschalagler/.zcode/cli/plugins/cache/zcode-plugins-official/document-skills/0.1.4/skills/pdf
+NODE_PATH=/opt/homebrew/lib/node_modules/omniroute/node_modules:/tmp/pdfdeps/node_modules \
+  node "$PDF_SKILL_DIR/scripts/html2pdf-next.js" in.html --output out.pdf --width 210mm --height 297mm
+```
+
+- **Playwright** existiert NUR in omniroutes node_modules (`/opt/homebrew/lib/node_modules/omniroute/node_modules/playwright`) — kein globales Playwright, daher NODE_PATH.
+- **pdf-lib** (Post-Processing-Pflicht des Skripts) ist temporär in `/tmp/pdfdeps/node_modules` installiert (`cd /tmp/pdfdeps && npm install pdf-lib`) — **nach Reboot weg, neu installieren**.
+- Metadata: `pymupdf` nutzen (`d.set_metadata(...); d.saveIncr()`) — pikepdf fehlt im pdf.py-CLI.
+- Vorab-Check: `poster_validate.py check-html` (0 errors = grün; TINY_FONT-Warnings ok).
+
+**Fallstricke (2 h gelernt):**
+1. `html2pdf-next.js` ENTFERNT fixe Höhe + `overflow:hidden` von `.page`-Containern („content will paginate naturally") → `position:absolute`-Footer müssen statisch werden (`margin-top` statt `auto`), sonst spillen Seiten als fast-leere Folgeseiten.
+2. Zu-voll-Seiten-Spill: nach jedem Render Seitenzahl prüfen (pymupdf), die spillende Seite per Zeilen-Kürzung/Table-Rows-Zusammenlegung retten statt Markup umbauen.
+3. Deliverable-Artifact: `~/Desktop/LOKI-OS_Standard-Skills.pdf` + `LOKI-OS_Standard-Skills.html` (Quelle, Sascha-Frage nach Skill-System-Übersicht 13.09.).
+
+Verwandt: [[feedback-doc-design-matters]] [[feedback-gui-not-cli]]
 
 ## read-tool-images-cdn-hazard
 
@@ -2376,30 +2445,70 @@ Integration done 2026-08-30: added `web-search-prime`, `zread`, `zai-vision` MCP
 
 ---
 name: zcode-adhs-automationen
-description: Saschas Wunsch-Automations (Abend-Logbuch + Morgen-Brief) — Design
-  13.09. fertig, Plan-Approval offen (ExitPlanMode denied), nichts implementiert
+description: Saschas Tages-Routine 13.09. — Morgen-Brief-Automation LIVE (native
+  ZCode-Automations), Abend-Logbuch wartet auf neuen Chat (1 Task/Chat-Limit), KEINE
+  Web-UI, Logbuch im globalen Memory
 metadata:
   node_type: memory
   type: project
   originSessionId: sess_2f5b0aa2-4341-4011-bf96-66c3d8dab653
 ---
 
-13.09.2026: Sascha will ADHS-Struktur-Automations in ZCode. Plan ausgearbeitet, **ExitPlanMode wurde denied → nichts umgesetzt**, Plan wartet auf Approval im Original-Chat.
+**Stand 13.09.2026 (Plan APPROVED, Umsetzung gestartet, dann Nutzer-STOPP der asar-Schiene):**
 
-**Gewünscht (6 Automations erklärt):**
-1. **Abend-Logbuch**: 3–5 ADHS-Bullets (was erledigt/woran gearbeitet/offen) → Kalender — Trigger: **wenn er „Feierabend" sagt**, NICHT fixe Uhrzeit → Lösung: `/feierabend` Command in `~/.zcode/commands/`
-2. **Morgen-Brief**: Tagesplan max. 5 Bullets — Trigger: **beim ZCode-Start**, NICHT fixe Zeit → Lösung: **SessionStart-Hook** in `~/.zcode/cli/config.json` (`hooks.enabled: true`, existiert noch nicht)
-3.–6. Template-Dev-Briefs (Dev-Brief Mo–Fr 09:00, Risiko-Scan täglich 10:00, Release-Brief Fr 16:00, Doku-Sync Mi 15:00) = **Phase 2**, erst nach stabilem Kern
+**✅ ERLEDIGT 13.09.:**
+1. **`~/.zcode/AGENTS.md` ANGELEGT** (Dauer-Prompt, wie GEMINI.md bei Antigravity): Entscheidungs-Hoheit (Produkt/UI entscheidet Sascha), nur Deutsch, ADHS-Format, Beweis-Pflicht.
+2. **Morgen-Brief-Automation LEBT** (native ZCode-Automations, ID `automation-d3f486f6-0509-4176-8459-be13ad3b4282`, cron `0 9 * * 1-5`, nächste Ausführung Mo 09:00): liest Logbuch + MASTER_TODO + SESSION_CONTEXT + daily_sweep → max. 5 Bullets → Logbuch-Datei + Kalender-Event „Tagesplan" via osascript.
+3. asar nur nach /tmp/zcode_asar entpackt — **NICHTS gepatcht, App unangetastet** (Nutzer-STOPP).
 
-**Kalender-Weg (sein „Wohin?" war offen):** Er nutzt Gmail → **direkter Google-Kalender via AutoClaw-Connector** (`mcporter call autoclaw-productivity.google_calendar_create_event`), NICHT über iCloud (sein eigener Vorschlag war der Umweg). Verbindung noch NICHT verifiziert (mcporter-Call in Plan-Mode geblockt) → Schritt 1 bei GO: `productivity_list_connections`. Fallback: AppleScript in Kalender.app.
+**⚠️ OFFEN — Abend-Zusammenfassung:** Anlage scheiterte an **ZCode-Limit: 1 Scheduled Task pro Chat/Session** („Cannot create a scheduled task inside a session that already belongs to a scheduled task"). → Nächster Schritt: NEUER Chat, dort Abend-Automation anlegen (täglich 21:30 Sicherheitsnetz, cron `30 21 * * *`): prüft ob `~/.agents/memory/logbuch/<heute>.md` mit status: abgeschlossen existiert → wenn ja, sofort Ende; wenn nein: Sweep → 3–5 ADHS-Bullets **pro Projekt gruppiert, Tool-Tags [ZCode]/[Cline]/[Antigravity]/[AutoClaw]** → Logbuch-Datei + Ganztages-Event „Logbuch <Datum>" via osascript. Manueller Trigger: „Feierabend" sagen (Command noch nicht gebaut).
 
-**Verifizierte Fakten 13.09.:**
-- ZCode-Cron-Automationssystem existiert, **0 Automations aktiv**
-- `config.json`: KEIN language/locale-Setting (App-UI vermutlich nicht deutsch machbar); keine `hooks`-Sektion; `~/.zcode/AGENTS.md` existiert NICHT (Deutsch-Regel steht bisher nur im Home-Workspace-AGENTS.md)
-- Commands vorhanden: init, kanban, projects, standardskill, todo (`~/.zcode/commands/`)
-- Datenquellen für Tages-Zusammenfassung: `~/.zcode/cli/rollout/*.jsonl` (mtime-Filter) + `~/.zcode/cli/log/zcode-YYYY-MM-DD.jsonl` + Git-Commits + LOKI_SESSION_CONTEXT.md/MASTER_TODO.md
+**Design-Entscheidungen (verbindlich):**
+- **KEINE Web-UI** („ICH WILL KEINE SCHEISS WEB UI") — Oberfläche = **Kalender am Mac + ZCode-Chat**. Siehe [[feedback-entscheidungshoheit]].
+- Logbuch-Speicher = **globales System-Memory `~/.agents/memory/logbuch/`** (1 Datei/Tag, Frontmatter date/projects/status, Abschnitt pro Projekt, Tool-Tags, geschützter „✍️ Meine Notizen"-Bereich — wird NIE überschrieben).
+- **Nur 4 Tools als Quellen:** ZCode, AutoClaw, Antigravity, Cline (+ claude-mem, Git, LOKI-Dateien) — NICHT 6 Harnesses (Claude Code/Hermes gehören nicht dazu).
+- Kalender-Weg: **AppleScript → Kalender.app** (Gmail-Kalender liegt da drin), NICHT AutoClaw-Connector.
+- daily_sweep.py (`~/.agents/tools/`) noch NICHT geschrieben (Plan-Mode blockte Writes; Design komplett im Chat-Verlauf).
 
-**Plan-Schritte bei Wiederaufnahme:** 1) `~/.zcode/AGENTS.md` mit Deutsch+ADHS-Regel 2) Google-Cal-Connector prüfen + Test-Event 3) `/feierabend.md` Command 4) SessionStart-Hook Morgen-Brief 5) optional Sicherheitsnetz-Cron 21:30 (nur falls kein Logbuch heute) 6) Live-Verifizierung mit Beweis. Siehe [[feedback-loesungen-statt-geht-nicht]].
+**Verifizierte Infrastruktur-Fakten 13.09.:**
+- ZCode **Automations-Panel** (Sidebar → Automations) = natives UI für Scheduled Tasks mit 4 Templates (Morning dev brief/Risk scan/Release brief/Docs sync) — genau daher kam sein ursprüngliches Template. Idle-time task Tab existiert.
+- `~/loki-assistent/assi` (Python-CLI, Workflows 00–05, remember/recall) + LaunchAgent `com.sascha.assi.daily` (08:00, schreibt brief_latest.txt = nur System-Health) existieren — Wiederverwendungs-Basis für assi brief/feierabend.
+- `config.json` hat bereits `"hooks"`-Schlüssel; Hook-Schema: `hooks.enabled: true` Pflicht, SessionStart-Matcher `startup`, Output `{"additionalContext": ...}` (strikt), Timeout-Einheiten achten.
+- ZCode-i18n: nur `langEN.js` + `langZH.js` in app.asar (siehe [[zcode-app-german-ui-patch]]).
+- Explore-Subagenten brechen mit „Model provider is not configured: builtin:zai-coding-plan" → selbst ausführen (LOKI-Regel 9).
+- Plan-Mode-Sandbox blockt teils unschuldige Befehle (sqlite3, python3 -c, npx, mcporter) — Read-only-Ausweichwege nutzen.
+
+**Phase 2 (auf GO):** die 4 Template-Automations (Dev-Brief Mo–Fr 09:00, Risiko-Scan 10:00, Release-Brief Fr 16:00, Doku-Sync Mi 15:00) via CronCreate.
+
+## zcode-app-german-ui-patch
+
+---
+name: zcode-app-german-ui-patch
+description: ZCode-App-UI Deutsch — i18n-Fakten (nur langEN.js/langZH.js in app.asar)
+  + Patch-Rezept (EN-Slot ersetzen, codesign, Re-Patch nach Updates); 13.09. auf
+  Nutzer-Stopp PAUSIERT, nichts gepatcht
+metadata:
+  node_type: memory
+  type: project
+  originSessionId: sess_2f5b0aa2-4341-4011-bf96-66c3d8dab653
+---
+
+**Status 13.09.2026: PAUSIERT auf Nutzer-STOPP** (er lenkte auf native Automations um; der Deutsch-Wunsch bleibt bestehen, „DU SOLLST DIE GANZE APP DAS INTERFACE DIE UI DEUTSCH MACHEN").
+
+**Verifizierte i18n-Fakten (App: /Applications/ZCode.app, Bundle dev.zcode.app, v0.16.5):**
+- Electron-App, UI-Strings in `Contents/Resources/app.asar`.
+- i18n-System vorhanden: `i18n/langEN.js` + `i18n/langZH.js` (im asar-Header per grep sichtbar), API-Fragmente `i18n.setLanguage`, `i18n.addTranslation`, `i18n.addTranslation`-Prompt-Funktion.
+- **Deutsch existiert NICHT** — nur EN + ZH. `Resources/config/default.json` kennt nur zh-CN/en-US community URLs.
+- `config.json` (User) hat KEIN language/locale-Setting.
+
+**Patch-Rezept (ausgearbeitet, noch nicht ausgeführt):**
+1. `npx --yes @electron/asar extract` → /tmp (getestet, funktioniert; Struktur: node_modules/, out/, package.json).
+2. `langEN.js` analysieren → Keys behalten (EN), Values durch deutsche Übersetzung ersetzen (= Deutsch im EN-Slot, keine Sprach-Registrierung nötig).
+3. asar repacken + **Backup `app.asar.orig`** + `codesign --force --deep -s -` (Neu-Signierung Pflicht, sonst Gatekeeper; Achtung macOS-27-Beta-AMFI, siehe [[macos-27-beta-status]]).
+4. Re-Patch-Skript (z. B. `~/.agents/tools/zcode_german_patch.sh`) — App-Updates überschreiben den Patch.
+5. ZCode-Neustart + Textbeleg als Beweis.
+
+**Risiko:** Auto-Update macht Patch zunichte → Re-Patch-Skript ist Teil des Designs.
 
 ## zcode-hub-1006-netz-fix
 

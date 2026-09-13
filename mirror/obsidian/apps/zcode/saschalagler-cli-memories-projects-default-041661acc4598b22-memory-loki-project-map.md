@@ -1,7 +1,7 @@
 ---
 app: zcode
 quelle: "saschalagler/cli/memories/projects/default-041661acc4598b22/memory/loki-project-map.md"
-stand: 2026-09-06
+stand: 2026-09-13
 tags: [spiegel, zcode]
 ---
 
@@ -14,6 +14,8 @@ metadata:
   type: project
   originSessionId: sess_6ec2db7a-ed38-4ece-8c80-35110f8e0fbc
 ---
+
+**Stand 13.09.2026 (Delta-Checks live verifiziert):** Legal-Ops-Konsolidierung fertig — DIE App liegt als **`/Applications/Native Legal Ops.app`**, ~/Applications leer, Rest in `~/LegalOpsAdvisor_Sacha_Mac/_ARCHIV_Apps/` · **Atlas-Deploy-Repo `~/cali-coach-atlas-final` existiert NICHT mehr** — stattdessen `~/ATLAS_MASTER` + `~/ATLAS_DESIGN` + `~/ATLAS_ARCHIV` (vor nächstem Atlas-Deploy Pfade neu klären, siehe [[atlas-stand-2026-09-08]]) · TODO App: uncommittete Änderungen committet · FörderOps: LaunchAgent `com.sascha.foerderops` dauerhaft aktiv ([[foerderops-assistent]]) · Zwillingsroot `~/Desktop/Coworkspace_Ich/atlas + pliability ` existiert noch (Löschen = GO offen) · „superpowers"-Treffer in skill-routing.md = Fehlalarm (dokumentierte Umleitung auf diagnosing-bugs, korrekt). **Nächstes großes Ticket: Körperfluss vitest-Suite F14.**
 
 **Kanonische Quelle: `~/LOKI_PROJECT_MAP.md`** (06.09. 17:30 massiv aktualisiert nach „alles und abfahrt"-Batch) — dort stehen Tickets/Details. Kern-Stand:
 
