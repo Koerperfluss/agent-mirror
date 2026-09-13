@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-13 21:42 UTC
+Zuletzt gespiegelt: 2026-09-13 21:53 UTC
 
 ## AGENTS
 
@@ -1388,6 +1388,8 @@ Bei Fachfragen (z. B. Trainings-Übungen) fordert er explizit „clinical reason
 
 # Memory Index
 
+- [Einfache Antworten](feedback-einfache-antworten.md) — 13.09. „ich versteh nicht was du redest": 1 Frage = 1 Empfehlung in Alltagswörtern, keine Werkzeug-Matrizen/Jargon; Web-App ≠ native App erklären (Xcode unnötig); ADHS-Format bleibt, aber minimal (max. 3 Schritte, 1 Tabelle)
+
 - [iOS27 Web-App-Testing + KI-Recherche-App](ios27-webapp-testing-recherche-2026-09-13.md) — 13.09. Report **`~/Desktop/IOS27_WEBAPP_TEST_RESEARCH_2026-09-13.md`** (Confidence 85): Testing = Safari Mac + Web Inspector „Connect via Network" (kabellos, gratis) / iOS-Simulator / Playwright-WebKit-Emulation / BrowserStack (iOS 27 Beta seit 17.06.2026); KI-Apps: Perplexity Alltag, Gemini Deep Research, Comet gratis auf iOS (18.03.2026); ⚠️ ZCode-Subagent-Dispatch tot („No reasoning level selected") → Main-Agent-Direktrecherche als bewährter Workaround
 
 - [Coding-Modelle + Android Studio](coding-modelle-android-studio-2026-09-13.md) — 13.09. Research fertig (Report ~/Desktop/CODING_MODELL_RESEARCH_2026-09-13.md, **113 Zeilen**); **Korrekturen: NUR LOKALE LLMs · MOOLAPTOP hat KEINEN GLM-Plan · KEIN OLLAMA (Runner = LM Studio/llama.cpp)**; Sept-2026-Stand: **Standard = Qwen3.5-35B-A3B Q4 (~21 GB)** (Community: besser als Coder-Next); **Max-Standalone = Qwen3-Coder-Next 80B IQ3_XXS (~27 GB, RAM-Rechnung 38/40, Q3_K_XL VETO)**; Qwen3.6 27B = 77,2 % SWE-bench (vendor) für harte Aufgaben; Qwen3.8 27B-MLX = Mac-only; feature-dev-Team PASS mit VETO auf 80B Q2_K; llama.cpp `-ot ".ffn_.*_exps.=CPU"` + AS Local Provider; **Nutzer = MORITZ** (präziser Coder → schnelles MoE als Default, Thinking-Reserve nur für Bug-Jagd); ⚠️ Pagefile 35 GB belegt
@@ -1762,6 +1764,34 @@ metadata:
 
 **Update 12.09. Nr. 2 (PATIENTEN-DOKS):** Therapeuten-Zettel (SOAP, Schwellenwerte, Fachjargon) waren „VIEL ZU KOMPLEX" — **Patienten-Blätter brauchen: ALLES in Patientensprache, Freiflächen zum Schreiben (dotted lines), Ja/Nein-Kästen, Smiley-Skala 0–10, Übungen mit Schritt-für-Schritt-Anleitung + Alltags-Metaphern** („Bleistift zwischen Schulterblättern klemmen"), Wochen-Häkelblatt, Notfall-Plan in 3 Schritten. KEINE Fachbegriffe/Schwellenwerte auf Patientenblätter. Bewährte Struktur: 1 Wie geht's heute → 2 Sicherheitsfragen (JA ⛔/NEIN ✓) → 3 Mini-Selbsttests → 4 Übungen heute → 5 Hausaufgaben-Tabelle → 6 Bewertung (besser/gleich/schlechter + Freifeld). Dateien: `Adelina_UEBUNGSZETTEL…pdf` + `Simon_KOPFZETTEL…pdf` in `~/Desktop/Körperfluss/Patientenliste/Adelina/`. HTML-Fallstricke: div-Balance prüfen (non-greedy regex-Schnitte schließen Box nicht → Chrome bricht Layout falsch um); übergroße Boxen mit `page-break-inside:avoid` springen ganz auf neue Seite → halbleere Seiten vermeiden durch kompakte Tabellenzeilen.
 
+## feedback-einfache-antworten
+
+---
+name: feedback-einfache-antworten
+description: 13.09. — Sascha: „ich versteh nicht was du redest" — Tool-Vergleiche
+  mit 6 Werkzeugen/Tabellen überfordern; 1 einfache Empfehlung pro Frage in
+  Alltagswörtern
+metadata:
+  node_type: memory
+  type: feedback
+---
+
+13.09.2026: Nach einer detaillierten Recherche-Antwort (6 Werkzeuge, 4 Tabellen, Fachbegriffe wie Web Inspector/Playwright/WebKit) sagte Sascha: **„ich versteh nicht was du redest"** — er stellte die Fragen neu und einfacher.
+
+**Why:** Sascha ist kein Fulltime-Entwickler; Antworten mit mehreren parallelen Optionen und Jargon (Xcode/Simulator/Cloud-Device-Farm) erzeugen Verwirrung statt Nutzen, auch wenn sie fachlich korrekt sind. Er will **eine** Lösung, die er sofort nutzen kann.
+
+**Zweiter Vorfall (13.09., später am Tag):** Ich empfahl die **Perplexity-App** als beste Recherche-App → Sascha wütend: **„mit sicherheit nicht du trottel"** — er nutzt **Perplexity + Comet seit Jahren** und hält sie für völlig unbrauchbar (Agent nicht promptbar, Kern-Funktion nicht änderbar, „lügt immer und tut was es will").
+
+**How to apply:**
+- **NIEMALS Tools empfehlen, die der Nutzer schon lange täglich nutzt** — vorher erfragen/erinnern, was er benutzt, und sein Urteil darüber respektieren (sein Erfahrungs-Urteil schlägt Web-Recherche-Rankings).
+- 1 Frage = 1 Empfehlung (keine Werkzeug-Matrix, nur Alternativen in 1 Zeile falls nötig).
+- Alltagswörter: „im iPhone-Safari die Web-Adresse öffnen" statt „Web Inspector via Connect via Network".
+- Fachwort nur mit 1-Satz-Erklärung; ohne wenn verzichtbar.
+- Typisches Vorwissen NICHT annehmen: er wusste nicht, dass Web-Apps (Atlas etc.) kein Xcode brauchen — native App ≠ Web-App klar unterscheiden.
+- Antwort-Format bleibt ADHS (Zeile 1 Ergebnis, kurze Schritte), aber minimal: max. 3 Schritte, 1 kleine Tabelle statt 4.
+
+Verwandt: [[feedback-one-action-not-tables]], [[feedback-loesungen-statt-geht-not]] → korrekt: [[feedback-loesungen-statt-geht-nicht]].
+
 ## feedback-entscheidungshoheit
 
 ---
@@ -2108,7 +2138,8 @@ metadata:
 **Kern-Empfehlungen:**
 - Web-App-Testing iOS 27: Primärweg = Safari am Mac + Web Inspector + „Connect via Network" (iPhone: Settings → Safari → Advanced → Web Inspector ON, 1× Kabel, danach kabellos). Dev-Loop = iOS-Simulator (Xcode installiert). Automatisiert = Playwright/WebKit mit iPhone-Device-Emulation (echtes branded Safari fährt Playwright NICHT). Echte iOS-27-Fremdgeräte nur Cloud: BrowserStack hat iOS 27 Beta seit 17.06.2026.
 - Safari 27 (WWDC26) WebKit-Neuerungen zum Testen: Grid Lanes, Customizable Select, HTML Model, Immersive Environments, Web Extensions.
-- KI-Recherche-App iPhone: **Perplexity** = Alltagssieger (Quellen-Zitate), **Gemini** = Deep-Research-Sieger (PCMag-Test), ChatGPT nur Allrounder. **Comet** (Perplexity-KI-Browser) seit 18.03.2026 gratis auf iOS.
+- ~~KI-Recherche-App iPhone: Perplexity = Alltagssieger~~ **VERWORFEN** — Sascha nutzt Perplexity + Comet seit Jahren und hasst sie: Agent nicht promptbar, Kern-Funktion nicht änderbar, „lügt und tut was es will" (Halluzinationen ohne erzwungene Websuche). Seine echte Anforderung: **ein Tool, bei dem ER die Regeln schreibt**.
+- **Korrigierte Optionen (13.09. vorgelegt, Entscheidung offenes GO):** (1) **Perplexity Space** mit eigenen Anweisungen (Regel-Schreiben gratis, Modell-Wahl = Pro), (2) **Gemini Gem / Custom Instructions** (gratis), (3) **Open WebUI** selbst gehostet auf seinem Mac mit seinen 6 Gemini-Keys (Totale Kontrolle; Baubereitschaft signalisiert mit „baue Open WebUI", wartet auf GO). Copy-Paste-Regelblock geliefert („IMMER zuerst Websuche, jede Behauptung mit Quellen-URL, nicht gefunden sagen statt erfinden").
 - Bild-Frage „Live-Vorschau vs Goal-System": beides Features agentischer IDEs; Google Antigravity bietet BEIDE zusammen — keine Zwangswahl.
 
 **Tooling-Lesson (wichtig):** ZCode `Agent`-Dispatch (general-purpose Subagents) schlug fehl mit **„No reasoning level selected"** (reasoning-level-missing, account GLM-5.3-Flash) — Subagent-Fanout war nicht möglich. Workaround bewährt: Recherche direkt im Main-Agent mit parallelen WebSearch-Calls (6 Suchläufe, quick-first). Bei erneutem Bedarf erst Main-Agent-Direktweg versuchen, bevor Fanout konfiguriert wird. Siehe [[web-research-team-skill]], [[mac-setup-16gb-m4]], [[atlas-stand-2026-09-08]].

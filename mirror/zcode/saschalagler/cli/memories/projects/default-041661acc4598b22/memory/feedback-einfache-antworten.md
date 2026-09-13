@@ -23,3 +23,5 @@ metadata:
 - Antwort-Format bleibt ADHS (Zeile 1 Ergebnis, kurze Schritte), aber minimal: max. 3 Schritte, 1 kleine Tabelle statt 4.
 
 Verwandt: [[feedback-one-action-not-tables]], [[feedback-loesungen-statt-geht-not]] → korrekt: [[feedback-loesungen-statt-geht-nicht]].
+
+**Dritter Vorfall (13.09., Perplexity/Comet-Update):** Sascha meldete selbst das Faktum, dass ein Update Skills/Web-Automatisierung hinter den Desktop-Agenten gesperrt hat — Lesson: seine Live-Feldbeobachtungen über Tools, die er täglich nutzt, sind **primäre Quelle** und schlagen Suchergebnisse; nicht gegenrecherchieren, sondern darauf aufbauen und nur die Lösungspfade verifizieren. Ergebnis-Speicher: [[ios27-webapp-testing-recherche-2026-09-13]].
