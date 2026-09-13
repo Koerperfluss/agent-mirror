@@ -1,7 +1,7 @@
 ---
 app: zcode
 quelle: "saschalagler/cli/memories/projects/default-041661acc4598b22/memory/skills-architektur-2026-09-07.md"
-stand: 2026-09-08
+stand: 2026-09-13
 tags: [spiegel, zcode]
 ---
 
@@ -46,3 +46,9 @@ Audit-Doc: `~/loki-ki/docs/AUDIT_SKILLS_ZCODE_2026-09-07.md` · [[skill-install-
 - Sascha will die Pipeline **im Atlas-Chat** (Atlas Cali Coach, zweiter ZCode-Tab) einsetzen: ⌘Q-Neustart → „übernimm Atlas Cali Coach" (TAKEOVER) · „baue [Feature] in Atlas" (BUILD, gate→PLAN→Agents) · „mach Atlas fertig" (FINISH, Firebase-Deploy). Disziplin dort: /caveman lite + 1 Task = 1 Session.
 - **Parallel-Session-Warnung:** Der Atlas-Tab fuhr EIGENMÄCHTIG einen Konsolidierungsplan („131→~12 Tier-1", code-architect-Review, grilling-Hub/frontend-design-hub/loki-os-health geplant, teils „Full access"). Kollisionscheck 08.09. früh: nur mtime-Edits an grilling/frontend-design, KEINE Substanz-Merges ausgeführt, Design-Skills noch alle da, Archiv = nur meine 20. **Lehre: vor jeder eigenen Skill-Konsolidierung zuerst Disk-Stand prüfen (find-Zählung + mtimes + Archiv-Inhalt) — parallele Tabs am selben Skill-System sind real.**
 - Offener Blocker, den KEIN Skill löst: Atlas-App seit ~10 h nicht live — Sascha wurde gebeten, Name + konkrete Fehlermeldung zu liefern (vermutlich Firebase-Deploy-Kette).
+
+## Stand 13.09.2026 (live am Disk verifiziert)
+- **109 Skills aktiv** in `~/.agents/skills`; weitere Archive existieren: `2026-09-11/`, `2026-09-11-google-catalog/`, `2026-09-11-stale-harness-copies/` (weitere Konsolidierung 11.09).
+- obsidian-second-brain SKILL.md jetzt 8 KB (Split bestätigt wirksam).
+- **OFFEN: 1 superpowers-Restzeile** noch in `~/.agents/skill-routing.md` (superpowers-Skills existieren nicht mehr) — Routing auf diagnosing-bugs umschreiben, 1-Edit-Ticket.
+- Sascha postete 13.09. alte Plan-Texte (Konsolidierung v2, 1006-Netz-Fix, Atlas-Prompt) mit „? /init /goal /standardskill" — **alles darin bereits erledigt**; er verwechselt alte Session-Pläne mit offenem Stand. Vor Statusaussagen erst Disk-Verifikation (Archive + Zählung), dann Tabelle.

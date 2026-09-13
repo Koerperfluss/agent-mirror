@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-13 14:29 UTC
+Zuletzt gespiegelt: 2026-09-13 14:40 UTC
 
 ## code-architect
 
@@ -2231,6 +2231,12 @@ Audit-Doc: `~/loki-ki/docs/AUDIT_SKILLS_ZCODE_2026-09-07.md` · [[skill-install-
 - **Parallel-Session-Warnung:** Der Atlas-Tab fuhr EIGENMÄCHTIG einen Konsolidierungsplan („131→~12 Tier-1", code-architect-Review, grilling-Hub/frontend-design-hub/loki-os-health geplant, teils „Full access"). Kollisionscheck 08.09. früh: nur mtime-Edits an grilling/frontend-design, KEINE Substanz-Merges ausgeführt, Design-Skills noch alle da, Archiv = nur meine 20. **Lehre: vor jeder eigenen Skill-Konsolidierung zuerst Disk-Stand prüfen (find-Zählung + mtimes + Archiv-Inhalt) — parallele Tabs am selben Skill-System sind real.**
 - Offener Blocker, den KEIN Skill löst: Atlas-App seit ~10 h nicht live — Sascha wurde gebeten, Name + konkrete Fehlermeldung zu liefern (vermutlich Firebase-Deploy-Kette).
 
+## Stand 13.09.2026 (live am Disk verifiziert)
+- **109 Skills aktiv** in `~/.agents/skills`; weitere Archive existieren: `2026-09-11/`, `2026-09-11-google-catalog/`, `2026-09-11-stale-harness-copies/` (weitere Konsolidierung 11.09).
+- obsidian-second-brain SKILL.md jetzt 8 KB (Split bestätigt wirksam).
+- **OFFEN: 1 superpowers-Restzeile** noch in `~/.agents/skill-routing.md` (superpowers-Skills existieren nicht mehr) — Routing auf diagnosing-bugs umschreiben, 1-Edit-Ticket.
+- Sascha postete 13.09. alte Plan-Texte (Konsolidierung v2, 1006-Netz-Fix, Atlas-Prompt) mit „? /init /goal /standardskill" — **alles darin bereits erledigt**; er verwechselt alte Session-Pläne mit offenem Stand. Vor Statusaussagen erst Disk-Verifikation (Archive + Zählung), dann Tabelle.
+
 ## standardskill-boot-ablauf
 
 ---
@@ -2392,7 +2398,7 @@ metadata:
 
 - **Root Cause war NICHT Z.AI** (api.z.ai/api/anthropic = 200 OK, 133 ms TLS) sondern die **Session-Rollout-Datei von sess_d4dc6589: 9,7 GB** (model-io jsonl) — I/O-Last brachte den lokalen Hub (zcode-host-local) zum Event-Loop-Stall → WS-Drop ohne Close-Handshake = exakt 1006. Symptom: ZCode-Renderer bei 27 % CPU. Lehrstück: **riesige Session-Rollouts killen den Hub — Session-Log-Größe checken (`find ~/.zcode -name "model-io-*.jsonl" -size +1G`), alte Monster-Sessions nie weiternutzen, neue Session starten.**
 - Fix ausgeführt: Rollout-Datei nach `~/.zcode/cli/log/archive/` verschoben (Checksum in CHECKSUMS.txt, gzip lief detached).
-- **Netz konfiguriert (08.09.):** Wi-Fi DNS hart auf `1.1.1.1 8.8.8.8` (z.ai-Auflösungschaos: Aliyun-CDN lief nur AAAA/v6), **IPv6 auf Wi-Fi OFF** (`networksetup -setv6off Wi-Fi`) — danach api.z.ai 200 OK. www.z.ai löst trotzdem nicht (Marketing-Host, irrelevant).
+- **Netz konfiguriert (08.09., 13.09. re-verifiziert aktiv):** Wi-Fi DNS hart auf `1.1.1.1 8.8.8.8` (z.ai-Auflösungschaos: Aliyun-CDN lief nur AAAA/v6), **IPv6 auf Wi-Fi OFF** (`networksetup -setv6off Wi-Fi`) — danach api.z.ai 200 OK. www.z.ai löst trotzdem nicht (Marketing-Host, irrelevant).
 - **Sascha surft über iPhone-Personal-Hotspot** (CGNAT, 172.20.10.x) — CGNAT reißt lange SSE/WebSocket-Streams ab. Offener Nutzerschritt am iPhone: Einstellungen → Persönlicher Hotspot → **„Maximale Kompatibilität" AN** (zwingt IPv4-freundlichen Modus).
 - **OmniRoute v16.3.1 läuft lokal auf Port 20128** (LaunchAgent) — als ZCode-Provider „OmniRoute Gateway" umgeht er Hotspot/CDN-Pfad-Probleme bei langen Streams; empfohlener Provider im Atlas-Tab.
 - Nutzer-Ritual nach dem Fix: ZCode ⌘Q-Neustart → Atlas-Tab NEUE Session (nie die 9,7-GB-Session weiternutzen) → Provider OmniRoute → Vollautomatik-Prompt (siehe [[atlas-stand-2026-09-08]]). Beta-Netz-Hintergrund: [[macos-27-beta-status]].
