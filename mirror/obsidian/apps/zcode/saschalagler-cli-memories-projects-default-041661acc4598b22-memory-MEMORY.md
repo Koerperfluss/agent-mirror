@@ -1,11 +1,14 @@
 ---
 app: zcode
 quelle: "saschalagler/cli/memories/projects/default-041661acc4598b22/memory/MEMORY.md"
-stand: 2026-09-12
+stand: 2026-09-13
 tags: [spiegel, zcode]
 ---
 
 # Memory Index
+
+- [ZCode ADHS-Automations](zcode-adhs-automationen.md) — 13.09. Plan fertig, NICHT umgesetzt (ExitPlanMode denied): Abend-Logbuch per /feierabend-Command + Morgen-Brief per SessionStart-Hook; Kalender = Google via AutoClaw-Connector (nicht iCloud); ZCode-UI ohne Sprach-Setting, Deutsch via ~/.zcode/AGENTS.md (existiert noch nicht); 0 Cron-Automations aktiv
+- [Lösungen statt "geht nicht"](feedback-loesungen-statt-geht-nicht.md) — 13.09. scharf: NIE „geht vermutlich nicht" schreiben, immer Lösungsweg nennen („geht nicht gibt's nicht"); Optionen VOR AskUserQuestion ausführlich erklären
 
 - [Antigravity Physio-Assistent](antigravity-physio-assistent.md) — 12.09. GELÖST: Alter Chat korrupt (HTTP 400 INVALID_ARGUMENT, nur Retry/Neustart half NICHT) → NEUER Chat „Physiotherapy Rehab Assistant Setup" läuft komplett; Start-Prompt: `~/Desktop/ANTIGRAVITY_PHYSIO_START_PROMPT.md`; Adelina-Daten: `~/Desktop/Körperfluss/Patientenliste/Adelina/`; 12.09. Sitzungs-PDFs gebaut (SITZUNG_Adelina + SITZUNG_Simon 2026-09-12, je 2 Seiten A4); Simon = Adelinas Partner mit Migräne/zervikogenem Kopfschmerz (Cranio-Cervical Phase 1), eigener Ordner noch offen (auf GO); gelber MCP-Badge cloud-cli-execution nicht-fatal; UI-Lesson: Text-Eingabe nur via pbcopy+osascript keystroke, nicht AX set_value
 

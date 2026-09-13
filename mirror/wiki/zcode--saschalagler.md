@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-13 14:07 UTC
+Zuletzt gespiegelt: 2026-09-13 14:18 UTC
 
 ## code-architect
 
@@ -1220,6 +1220,9 @@ Bei Fachfragen (z. B. Trainings-Übungen) fordert er explizit „clinical reason
 
 # Memory Index
 
+- [ZCode ADHS-Automations](zcode-adhs-automationen.md) — 13.09. Plan fertig, NICHT umgesetzt (ExitPlanMode denied): Abend-Logbuch per /feierabend-Command + Morgen-Brief per SessionStart-Hook; Kalender = Google via AutoClaw-Connector (nicht iCloud); ZCode-UI ohne Sprach-Setting, Deutsch via ~/.zcode/AGENTS.md (existiert noch nicht); 0 Cron-Automations aktiv
+- [Lösungen statt "geht nicht"](feedback-loesungen-statt-geht-nicht.md) — 13.09. scharf: NIE „geht vermutlich nicht" schreiben, immer Lösungsweg nennen („geht nicht gibt's nicht"); Optionen VOR AskUserQuestion ausführlich erklären
+
 - [Antigravity Physio-Assistent](antigravity-physio-assistent.md) — 12.09. GELÖST: Alter Chat korrupt (HTTP 400 INVALID_ARGUMENT, nur Retry/Neustart half NICHT) → NEUER Chat „Physiotherapy Rehab Assistant Setup" läuft komplett; Start-Prompt: `~/Desktop/ANTIGRAVITY_PHYSIO_START_PROMPT.md`; Adelina-Daten: `~/Desktop/Körperfluss/Patientenliste/Adelina/`; 12.09. Sitzungs-PDFs gebaut (SITZUNG_Adelina + SITZUNG_Simon 2026-09-12, je 2 Seiten A4); Simon = Adelinas Partner mit Migräne/zervikogenem Kopfschmerz (Cranio-Cervical Phase 1), eigener Ordner noch offen (auf GO); gelber MCP-Badge cloud-cli-execution nicht-fatal; UI-Lesson: Text-Eingabe nur via pbcopy+osascript keystroke, nicht AX set_value
 
 - [OneForma-AGB-Prüfung](oneforma-agb-pruefung.md) — 12.09. Live-Docs verifiziert: Bildrechte unbefristet, 2500-USD-Deckel, King-County-Gerichtsstand (Arbitration nur US), 3-Monats-Zahlfrist, KI-Verbot; Korrekturen: gdpr@oneforma.com, Schiedsklausel US-only; oneforma.com-Docs laden nur via web_reader, nicht WebFetch; EMPFEHLUNG: JA + 4 Spielregeln; Erklär-Session: 50–400 USD/Monat realistisch, Payoneer, AT-Steuer-Hinweis
@@ -1533,6 +1536,25 @@ Sascha korrigierte 11.09.2026 scharf: Ich hatte „Gratis-Stack existiert bereit
 - **12.09. vierte Eskalation („du machst nur Mist" beim Anblick von THOMAS_ANLEITUNG + THOMAS_PAKET nebeneinander):** Mehrere Parallel-Ordner/ZIPs für denselben Zweck = selbstverschuldeter Mist. Regel: nach jedem Liefer-Build SOFORT konsolidieren — EIN Lieferordner, EIN ZIP (Arbeitsdateien in `_arbeit/`-Unterordner, nicht im ZIP), alte Strukturen ohne Nachfrage auflösen (Aufräumen ist implizit autorisiert, sobald er die Doppelstruktur bemängelt).
 
 Verwandt: [[thomas-tasks-drei-recherchen]], [[feedback-aufbau-vor-deploy]], [[feedback-pruefinstanz-pflicht]]
+
+## feedback-loesungen-statt-geht-nicht
+
+---
+name: feedback-loesungen-statt-geht-nicht
+description: 13.09. scharf korrigiert — NIE „geht vermutlich nicht" schreiben;
+  Lösungen statt Hürden, und Optionen ERST ausführlich erklären bevor er
+  auswählen soll
+metadata:
+  node_type: memory
+  type: feedback
+  originSessionId: sess_2f5b0aa2-4341-4011-bf96-66c3d8dab653
+---
+
+13.09.2026, bei der Automation-Planung: Er wählte bei einer Frage „erstmals erklärst du mir die 6 Automatisierungen? weil du hast sie nicht gezeigt" und schrieb: „wenn ich ein Wort lese wie ‚geht vermutlich nicht', haue ich dir die Nase ins Gesicht. Ich will LÖSUNGEN. ‚Geht nicht' gibt's nicht."
+
+**Why:** Optionen, die ich nicht vorher erklärt habe, kann er nicht bewerten — dann wirken Fragen wie Abwälzen von Arbeit. Und Formulierungen wie „vermutlich nicht machbar" lesen sich für ihn als Arbeitsverweigerung.
+
+**How to apply:** (1) Vor jeder AskUserQuestion-Auswahl die Optionen im Chat ausführlich erklären (einfache Sprache, was sie konkret macht). (2) Hürden NIE als „geht nicht/vermutlich nicht" formulieren — immer direkt den Lösungsweg nennen (Beispiel: statt „App-UI nicht umstellbar" → „Menüs bleiben Englisch; Lösung: ~/.zcode/AGENTS.md-Regel macht jeden Chat deutsch"). (3) „geht nicht gibt's nicht" = erst denken, dann alternative Wege anbieten. Verwandt: [[feedback-one-action-not-tables]], [[i-have-adhd]]-Regeln in STANDARD-SKILLS.md.
 
 ## feedback-one-action-not-tables
 
@@ -2323,6 +2345,35 @@ Sascha has a paid Z.AI AI Coding Plan (Pro) and believed it had no usage limits.
 Related pitfalls seen in the same logs: (1) model name `glm‑coding‑5.3` written with Unicode non-breaking hyphens (U+2011) → provider 404; always ASCII hyphens. (2) `[402]` OpenRouter credit errors come from the OmniRoute fallback chain, not the Z.AI plan. (3) "ascii codec can't encode \xfc" = Clash/V2Ray SOCKS proxy + non-ASCII chars — use an HTTP proxy port for agent gateways.
 
 Integration done 2026-08-30: added `web-search-prime`, `zread`, `zai-vision` MCP servers to `~/.mcp.json` (→ real target `~/.cline/data/settings/cline_mcp_settings.json`) with `YOUR_ZAI_API_KEY` placeholders — Sascha must replace the placeholder with his key from https://z.ai/manage-apikey/apikey-list (one find-replace, 3 occurrences). vision MCP fixes the "selected model does not support image input" screenshot-reading gap. Also: gstack + plan-tune were already installed at `~/.claude/skills/` (~/.gstack data dir); source clones go to `~/src/`. See [[web-research-team-skill]].
+
+## zcode-adhs-automationen
+
+---
+name: zcode-adhs-automationen
+description: Saschas Wunsch-Automations (Abend-Logbuch + Morgen-Brief) — Design
+  13.09. fertig, Plan-Approval offen (ExitPlanMode denied), nichts implementiert
+metadata:
+  node_type: memory
+  type: project
+  originSessionId: sess_2f5b0aa2-4341-4011-bf96-66c3d8dab653
+---
+
+13.09.2026: Sascha will ADHS-Struktur-Automations in ZCode. Plan ausgearbeitet, **ExitPlanMode wurde denied → nichts umgesetzt**, Plan wartet auf Approval im Original-Chat.
+
+**Gewünscht (6 Automations erklärt):**
+1. **Abend-Logbuch**: 3–5 ADHS-Bullets (was erledigt/woran gearbeitet/offen) → Kalender — Trigger: **wenn er „Feierabend" sagt**, NICHT fixe Uhrzeit → Lösung: `/feierabend` Command in `~/.zcode/commands/`
+2. **Morgen-Brief**: Tagesplan max. 5 Bullets — Trigger: **beim ZCode-Start**, NICHT fixe Zeit → Lösung: **SessionStart-Hook** in `~/.zcode/cli/config.json` (`hooks.enabled: true`, existiert noch nicht)
+3.–6. Template-Dev-Briefs (Dev-Brief Mo–Fr 09:00, Risiko-Scan täglich 10:00, Release-Brief Fr 16:00, Doku-Sync Mi 15:00) = **Phase 2**, erst nach stabilem Kern
+
+**Kalender-Weg (sein „Wohin?" war offen):** Er nutzt Gmail → **direkter Google-Kalender via AutoClaw-Connector** (`mcporter call autoclaw-productivity.google_calendar_create_event`), NICHT über iCloud (sein eigener Vorschlag war der Umweg). Verbindung noch NICHT verifiziert (mcporter-Call in Plan-Mode geblockt) → Schritt 1 bei GO: `productivity_list_connections`. Fallback: AppleScript in Kalender.app.
+
+**Verifizierte Fakten 13.09.:**
+- ZCode-Cron-Automationssystem existiert, **0 Automations aktiv**
+- `config.json`: KEIN language/locale-Setting (App-UI vermutlich nicht deutsch machbar); keine `hooks`-Sektion; `~/.zcode/AGENTS.md` existiert NICHT (Deutsch-Regel steht bisher nur im Home-Workspace-AGENTS.md)
+- Commands vorhanden: init, kanban, projects, standardskill, todo (`~/.zcode/commands/`)
+- Datenquellen für Tages-Zusammenfassung: `~/.zcode/cli/rollout/*.jsonl` (mtime-Filter) + `~/.zcode/cli/log/zcode-YYYY-MM-DD.jsonl` + Git-Commits + LOKI_SESSION_CONTEXT.md/MASTER_TODO.md
+
+**Plan-Schritte bei Wiederaufnahme:** 1) `~/.zcode/AGENTS.md` mit Deutsch+ADHS-Regel 2) Google-Cal-Connector prüfen + Test-Event 3) `/feierabend.md` Command 4) SessionStart-Hook Morgen-Brief 5) optional Sicherheitsnetz-Cron 21:30 (nur falls kein Logbuch heute) 6) Live-Verifizierung mit Beweis. Siehe [[feedback-loesungen-statt-geht-nicht]].
 
 ## zcode-hub-1006-netz-fix
 
