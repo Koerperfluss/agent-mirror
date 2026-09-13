@@ -1,6 +1,26 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-13 14:40 UTC
+Zuletzt gespiegelt: 2026-09-13 14:50 UTC
+
+## AGENTS
+
+# SASCHAS DAUER-PROMPT (gilt in jedem ZCode-Chat, jedem Projekt)
+
+## 1. Entscheidungs-Hoheit (höchste Regel)
+- Produkt-, UI- und Design-Entscheidungen trifft **Sascha**. Ich lege Optionen mit Tradeoffs vor und warte.
+- **Automationen und ihre technische Umsetzung sind meine Verantwortung** — dort schlage ich fertig vor statt zu fragen; die Abnahme hat Sascha.
+- Nie selbst entscheiden, WO etwas angezeigt wird (UI-Form). Nie „geht nicht" sagen — Lösungen anbieten.
+
+## 2. Sprache & Format
+- **Immer Deutsch.**
+- ADHS-Format: Ergebnis in Zeile 1 · nummerierte Schritte · kurze Tabellen · Pfade **fett** · keine Floskeln, keine Fließtextwände.
+
+## 3. Fachwörter
+- Jedes Fachwort beim ersten Auftreten in 1 kurzen Satz erklären.
+
+## 4. Ehrlichkeit & Beweis
+- „Erledigt" nur mit Beweis (Befehls-Output, Dateipfad, Event-ID). Nichts behaupten, was nicht verifiziert ist.
+- Nie App-UI behaupten, was nur eine Datei ist.
 
 ## code-architect
 
@@ -94665,41 +94685,28 @@ Du bist Saschas persönlicher therapeutischer Begleiter. Spezialisiert auf den F
 - Optional: Atomic Hermes.app → Trash (Sicherheitsempfehlung)
 ## plan-sess_2f5b0aa2-4341-4011-bf96-66c3d8dab653
 
-### Ziel
-Praktikable Lösung aus bestehenden Bausteinen: Morgen-Brief beim ZCode-Start, Abend-Logbuch auf ein Wort, beide im Google-Kalender, aus allen deinen Tools gespeist.
+### Ziel (loki-dev BUILD, Aufwand L)
+Zwei Deliverables, keine neue App, keine Web-UI:
+1. **ZCode-App-UI komplett auf Deutsch** (App-Interface selbst patchen — verifiziert: i18n `langEN.js`/`langZH.js` in app.asar, Original wird gesichert).
+2. **Tages-Routine wie von dir gewünscht:** Abend-Zusammenfassung + Morgen-Brief als **ADHS-Bullet-Liste im Kalender am Mac** (Gmail-Kalender, via AppleScript) und **direkt im ZCode-Chat** — gespeist aus ZCode, Cline, Antigravity, AutoClaw, claude-mem, Git. Der Speicher dahinter: **globales System-Memory** `~/.agents/memory/logbuch/` (1 Datei pro Tag, Abschnitte pro Projekt — dort können auch alle deine Agenten lesen, du bei Bedarf korrigieren).
 
-### Schritt 1 — Google-Kalender-Anschluss verifizieren (Weg prüfen)
-- `mcporter call autoclaw-productivity.productivity_list_connections` → Status deines Gmail/Google-Kalenders.
-- Falls verbunden: Test-Eintrag anlegen + Beweis liefern. Falls nicht: 30-Sekunden-Klick-Anleitung für AutoClaw (nur du kannst verbinden).
-- Fallback geprüft: AppleScript in Kalender.app (zeigt deinen Google-Kalender ebenfalls).
+### Ablauf für dich danach
+- **Abend:** du sagst „Feierabend" (oder `/feierabend`) → Bullet-Liste erscheint im Chat + Kalendereintrag „Logbuch <Datum>" im Gmail-Kalender.
+- **Morgen:** du startest ZCode → Tagesplan (max. 5 Bullets, Prio zuerst) erscheint im Chat + Kalendereintrag „Tagesplan".
+- **Sicherheitsnetz:** um 21:30 prüft eine Automation, ob das Logbuch existiert — falls du Feierabend vergessen hast, läuft sie automatisch.
 
-### Schritt 2 — `assi feierabend` bauen (Abend-Logbuch, KEIN Wort wie „geht nicht")
-- Neuer Subcommand in `~/loki-assistent/lib/evening.py` (passt zum bestehenden Workflow-Muster).
-- Sammelt HEUTE aus: ZCode-Rollouts (mtime heute), claude-mem.db (heutige Observations, SQLite-Query), Obsidian-Vault-Änderungen, Git-Commits (`~/Projects/*`, `~/loki-ki`), LOKI_SESSION_CONTEXT.
-- Destilliert **3–5 ADHS-Bullets** (erledigt / woran gearbeitet / offen).
-- Schreibt: Google-Kalender-Eintrag „Logbuch <Datum>" + `LOKI_SESSION_CONTEXT.md` (Handoff für morgen) + Assi-Memory (`assi remember`).
+### Baustufen
+1. asar entpacken, `langEN.js`-Strings analysieren → deutsche Übersetzung in den EN-Slot → repacken → **Backup** + `codesign` neu signieren + Re-Patch-Skript (überlebt App-Updates) → Neustart-Test
+2. parallel: `daily_sweep.py` (read-only über alle deine Tools) + Logbuch-Schema im globalen System-Memory + `assi brief`/`assi feierabend` in `~/loki-assistent/`
+3. `/feierabend`-Command + SessionStart-Hook (Morgen-Brief beim ZCode-Start) + Sicherheitsnetz-Cron 21:30 + AppleScript-Kalendereintrag
+4. Verifizierung mit echtem Output (Kalender-Event-ID, Chat-Brief, deutsche UI) + Reviewer-Prüfinstanz mit Vetorecht
 
-### Schritt 3 — Morgen-Brief beim ZCode-Start (SessionStart-Hook)
-- Bestehenden `"hooks"`-Block in `~/.zcode/cli/config.json` erweitern: SessionStart-Hook, der den Tagesplan erzeugt: gestriges Logbuch (aus Assi-Memory) + MASTER_TODO + Projekt-Stände → **max. 5 Bullets, Prio zuerst** → Kalender-Eintrag „Tagesplan" + direkt im Chat.
-- LaunchAgent `com.sascha.assi.daily` (08:00) bleibt als Fallback-Timer bestehen und liefert den Brief zusätzlich als Datei.
+### Regeln, die ich zuerst in `~/.zcode/AGENTS.md` schreibe (dein Dauer-Prompt)
+- **Entscheidungs-Hoheit:** Produkt-/UI-Entscheidungen trifft Sascha; ich lege Optionen vor.
+- Deutsch + ADHS-Format (Ergebnis Zeile 1, Bullets, Tabellen).
 
-### Schritt 4 — Deutsch-Regel global
-- `~/.zcode/AGENTS.md` anlegen: „Antworte immer auf Deutsch, ADHS-Format (Ergebnis Zeile 1, Bullets, Tabellen)." → gilt in JEDEM ZCode-Chat.
-
-### Schritt 5 — Sicherheitsnetz (21:30 täglich)
-- ZCode-Cron-Automation: prüft nur, ob heute ein Logbuch-Eintrag existiert; fehlt er → `assi feierabend` automatisch.
-
-### Schritt 6 — Verifizieren mit Beweis (Pflicht)
-- `/feierabend` einmal live → geänderten Kalender-Eintrag zeigen (Event-ID als Beweis).
-- ZCode-Neustart → Morgen-Brief im Chat zeigen.
-- PASS/FAIL nur mit echtem Output.
-
-### Phase 2 — nach deinem GO auf die ersten Testläufe
-- Deine 4 Template-Automations als ZCode-Crons: Dev-Brief (Mo–Fr 09:00), Risiko-Scan (10:00), Release-Brief (Fr 16:00), Doku-Sync (Mi 15:00).
-
-### Stopp-Regeln
-- Kalender-Test-Event + Config-Änderungen nur nach diesem GO.
-- Sweep strikt read-only, kein Löschen, keine Prozesse killen, LokiVoice/Freeze unangetastet.
+### Sicherheit
+- asar-Patch nur mit Backup, reversibel · Sweep strikt read-only · kein Löschen · LokiVoice-Freeze unangetastet · PASS/FAIL nur an dich.
 ## plan-sess_6ec2db7a-ed38-4ece-8c80-35110f8e0fbc
 
 # Plan: AutoClaw-Agent (LOKI-GLM) + Workflow/Skill-Räumung

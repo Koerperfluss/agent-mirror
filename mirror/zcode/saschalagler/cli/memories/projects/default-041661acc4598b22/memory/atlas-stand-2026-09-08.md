@@ -11,7 +11,7 @@ metadata:
 
 Atlas Cali Coach — Stand 08.09.2026 (Handoff aus ZCode-Session sess_d4dc6589):
 
-- **Pfade:** Master `~/ATLAS_MASTER` und `~/Desktop/Coworkspace_Ich/atlas + pliability/ATLAS_MASTER`; Deploy-Repo `~/cali-coach-atlas-final` (GitHub Koerperfluss/atlas-cali-coach, Live https://barbulls-app.web.app bzw. atlas-v5.web.app).
+- **Pfade:** Master `~/ATLAS_MASTER` und `~/Desktop/Coworkspace_Ich/atlas + pliability/ATLAS_MASTER`; Deploy-Repo `~/cali-coach-atlas-final` (GitHub Koerperfluss/atlas-cali-coach, Live https://barbulls-app.web.app bzw. atlas-v5.web.app). **⚠️ 13.09.: `~/cali-coach-atlas-final` existiert nicht mehr** (nur noch ATLAS_MASTER/ATLAS_DESIGN/ATLAS_ARCHIV im Home) — vor dem nächsten Deploy/Git-Work das Deploy-Repo neu orten (GitHub-Remote war Koerperfluss/atlas-cali-coach).
 - **Web ist fix:** firebase.json Cache-Fix (commit 12e3323, Browser zeigten alte Stände durch 1h-Cache), Coach-429-Fix via keyless Server-Proxy `/api/coach` (commit d46e364, Secret ATLAS_GEMINI_KEY), adaptives KI-Interview als Default-Onboarding live.
 - **iOS-Dev-Setup KOMPLETT (08.09. verifiziert):** Xcode 27.0.0-Beta.6 unter `/Applications/Xcode-27.0.0-Beta.6.app` (xcode-select korrekt, Lizenz akzeptiert, kaputtes Xcode-26.6-Teilpaket gelöscht); iPhone 16 Pro Max iOS 27.0 gekoppelt; **Developer Mode ENABLED** (per devicectl verifiziert). iPhone-App neu übertragen = `npm run build` → `npx cap sync ios` → Build via Xcode 27 → Device-Install. Für TestFlight-Verteilung bleibt Apple-ID/2FA (bahldorfa@gmail.com) der Nutzer-Schritt.
 - **Atlas v6 „Clean & Stable"** gebaut (Grafik-Extremismus aus src/index.css gestrippt, 137→75 Zeilen; Bundle index-BlhLFqDd.js) — **Deploy wartet auf GO**; Rollback: `git checkout 96fffe7 -- src/index.css`.

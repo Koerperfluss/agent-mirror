@@ -1,7 +1,7 @@
 ---
 app: claude
 quelle: "web-template/skills/postgresql-development-cloudbase/SKILL.md"
-stand: 2026-09-11
+stand: 2026-09-13
 tags: [spiegel, claude]
 ---
 
@@ -77,8 +77,8 @@ CloudBase PG (`app.rdb()`, `app.storage.from('bucket')`) uses **different API me
 >
 > If step 0 shows `RuntimeBackends.postgresql === false` and you need PostgreSQL, create a new environment with PG enabled:
 >
-> - **Via MCP**: `manageEnv(action="create", alias="my-env", packageId="baas_personal", resources=["flexdb","storage","function","postgresql"], confirm="yes")` — do not pass `region`; CreateEnv does not accept it.
-> - **Via CLI**: `tcb env create --alias my-env --package baas_personal --postgresql --yes`
+> - **Via MCP**: `manageEnv(action="create", alias="my-env", packageId="baas_personal", resources=["storage","function","postgresql"], confirm="yes")` — optional `region` (e.g. `region="ap-shanghai"`) selects where the environment is created; it works as the `X-TC-Region` request context, so do **not** put `Region` into the request body. Omit it to use the current session region (site default: `ap-shanghai` domestic, `ap-singapore` intl); if you pass it, repeat it on the confirming call.
+> - **Via CLI**: `tcb env create --alias my-env --package baas_personal --postgresql --region ap-shanghai --yes`
 > - **Via Console**: [Create environment](https://console.cloud.tencent.com/tcb/env/create)
 
 1. Inspect the existing app surfaces first: `src/lib/backend.*`, `src/lib/auth.*`, `src/lib/*service.*`, route guards, and the handlers bound to existing forms.
