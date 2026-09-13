@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-13 19:44 UTC
+Zuletzt gespiegelt: 2026-09-13 19:55 UTC
 
 ## AGENTS
 
@@ -1388,6 +1388,8 @@ Bei Fachfragen (z. B. Trainings-Übungen) fordert er explizit „clinical reason
 
 # Memory Index
 
+- [Coding-Modelle + Android Studio](coding-modelle-android-studio-2026-09-13.md) — 13.09. Research fertig (Report ~/Desktop/CODING_MODELL_RESEARCH_2026-09-13.md); **Nutzer-Korrektur: er wollte NUR LOKALE LLMs** (Cloud-Antwort = „trottel"); Winner lokal für MOOLAPTOP (40 GB RAM, RTX 3060 6 GB VRAM): Qwen3-Coder-30B-A3B Q4 / max-Qualität Qwen3-Coder-Next 80B-A3B Q2; Gemma 26B MoE = Googles offizielle AS-lokal-Empfehlung; GLM-5/5.3 Cloud-only; AS-Setup: Local Provider Port 1234/11434; ⚠️ Pagefile 35 GB belegt → RAM aufräumen
+
 - [Prüf-Team + Config-Health](pruef-team-und-config-health.md) — 13.09.: 10 Prüf-Agents + pruef-team-Dispatcher; Cap max-3-Agents ENTFERNT; config-health.py SessionStart-Selbstcheck; **globale Sync jetzt 5/5 Harnesses (sync-standard-skills.sh TARGETS + ZCode AGENTS.md + Claude CLAUDE.md)**; alle ✅-Berichte = Disk-Beweise, LIVE-Beweis ausstehend → `/systemproof` Command (6 Checks, URTEIL AKTIV/TEILWEISE/TOT) in neuem Chat ausführen
 - [ZCode ADHS-Automations](zcode-adhs-automationen.md) — 13.09. LIVE: **EINE Automation mit ALLEN 6 Briefs** (cron `0 9,10,15,16,21`, Zweige per Uhrzeit+Wochentag; niemals 6 separate — Nutzer-Ziel!) + Engine 7/7 PASS + **erster Abend-Lauf PASS: Logbuch-Event UID 610E2A57 im Kalender „Kalender"** (Fix: `open -a Calendar` vor osascript wg. Fehler -600); 1 Task pro Chat-Limit; SessionStart-Hook injiziert jetzt Saschas Projektlisten-Pflicht
 - [Entscheidungshoheit](feedback-entscheidungshoheit.md) — 13.09. scharf: UI/Produkt-Form entscheidet SASCHA (kein unilateral „Web-UI"), Automation-Technik schlage ich fertig vor; Markdown-Design-Dumps wertlos; Beschuldigungen mit Beweis (PID+Session-ID+Code-Zeile) widerlegen; nach GO nie wieder in Plan-Dialoge zurückwerfen („WIESO MUSS ICH DIR DAS SAGEN")
@@ -1620,6 +1622,16 @@ Recherche 13.09.2026 (Confidence 85) abgeschlossen; Report: **~/Desktop/CODING_M
 - Setup-Empfehlung für ihn: Gemini Agent Mode gratis (er hat 6 Gemini-API-Keys) + GLM-5.3-Flash per BYOM (Coding-Plan) + LM Studio lokal als Fallback.
 
 Caveats: GLM-5.3-Zahlen vendor-reported; „Claude Opus 5/Mythos/Fable" nur Drittplattform-Tracker; lokale Modellnamen aus KDnuggets (24.06.2026), eigener Test nötig. Relevanter Kontext: [[zai-coding-plan-limits]], [[google-cloud-genai-credit]].
+
+**Nutzer-Korrektur (13.09., „was machst du trottel"): Sascha wollte NUR LOKALE LLMs** — erste Antwort mit Cloud-Modellen war am Thema vorbei. Lektion: bei „beste Coding-Modelle + meine Specs" = lokale Modelle auf SEINER Hardware, Cloud höchstens als Fußnote.
+
+**Vertiefung nur-lokal (Nachtrag im Report, 61 Zeilen):**
+- 🥇 **Qwen3-Coder-30B-A3B Q4** (~22 GB, GPU+RAM-Split, ~10–20 tok/s auf 5800H/DDR4) + Nachfolger **Qwen3.5-35B-A3B** (04/2026)
+- Max-Qualität: **Qwen3-Coder-Next 80B-A3B** (02/2026, Q2/Q3 ~26–35 GB knapp machbar, 42,8 % SWE-bench ≈ Sonnet-4-Niveau)
+- **Gemma 26B MoE** = Googles OFFIZIELLE lokale Android-Studio-Empfehlung (AS-Doku: Settings → Tools → AI → Model Providers → „+" → **Local Provider** → Port 1234 LM Studio / 11434 Ollama; Agent Mode braucht Tool-Use-Modell)
+- Schnell (komplett im 6-GB-VRAM): Qwen2.5-Coder-7B / Qwen3.5-9B; dichte 27B (Qwen3.6 MTP) = langsam per RAM
+- **GLM-5/5.3 = 744–754B → Cloud-only, NICHT lokal**; kein „GLM-5-Air" gefunden
+- ⚠️ DxDiag: Auslagerungsdatei 35 GB benutzt, nur 7,7 GB frei → vor Modell-Load aufräumen, sonst Swap-Tod
 
 ## feedback-agent-drives-ui
 
