@@ -1,7 +1,7 @@
 ---
 app: zcode
 quelle: "saschalagler/cli/memories/projects/default-041661acc4598b22/memory/zcode-adhs-automationen.md"
-stand: 2026-09-13
+stand: 2026-09-14
 tags: [spiegel, zcode]
 ---
 
@@ -39,3 +39,9 @@ metadata:
 - **Erste echte Auslösung ERFOLGT (13.09. ~17:07, Abend-Zweig, PASS):** Kalender.app lief nicht → Fehler -600, Fix: `open -a Calendar` + sleep 6 vor osascript. Ganztages-Event **„Logbuch 13.09.2026"** angelegt + zurückgelesen, UID `610E2A57-B658-4CDD-A66C-C2D326435AEA` (Kalender „Kalender"). Logbuch-Refresh via `assi feierabend` (10 Einträge aus 2 Quellen). Test-Event `B8CD317A…` darf gelöscht werden. Nächster Automatik-Lauf: Mo 09:00 (Morgen-Zweig).
 - **SessionStart-Hook-Injektion aktiv:** Beim Session-Start injiziert der Hook (obsidian-second-brain + projects.py) Saschas stehende Anweisung: **Projektliste (10 Projekte) JETZT ungefragt wortgleich ausgeben inkl. Schlusszeile „Oder ein neues Projekt erstellen?"**, dann passendes Skill-/Agenten-Team selbst starten ohne Rückfrage (Feature→grill-me, Bug→systematic-debugging, Implementierung→tdd, Coden→ponytail).
 - Design-Entscheidungen bleiben verbindlich: KEINE Web-UI (Kalender + Chat = Oberfläche), Logbuch im globalen System-Memory, nur ZCode/AutoClaw/Antigravity/Cline als Quellen, Eigent = nicht jetzt. Siehe [[feedback-entscheidungshoheit]] und [[zcode-app-german-ui-patch]] (Deutsch-UI = offener Rest).
+
+## Zweiter Live-Lauf (Mo 14.09. 15:07 — Morgen-Brief NACHGEHOLT)
+- **Der 09:00-Lauf feuerte NICHT** (kein `2026-09-14.md` um 15:07 nachweisbar) — Mac/ZCode war um 09:00 vermutlich schlafend; ZCode-Cron hat KEINEN Weck-Mechanismus. Option auf GO: bestehenden LaunchAgent `com.sascha.assi.daily` (launchd weckt pünktlich) zum Brief-Macher umrüsten.
+- Nachgeholt (Zweig-Abweichung dokumentiert): Logbuch `~/.agents/memory/logbuch/2026-09-14.md` angelegt (status: offen, 5 Tagesplan-Bullets + DEV-BRIEF-Sektion), Kalender-Event **„Tagesplan 14.09."** UID `A1284A91-8470-4F77-8F84-BA932A081B13` (Event-Zeit = jetzt+15 Min statt 09:00, da nachgeholt).
+- **DEV-BRIEF erster echter Output:** 0 Commits seit Freitag in `~/loki-ki` + `~/Projects/*`, „keine CI konfiguriert", Modul-Änderungen nur außerhalb Git (daily_sweep.py, assi, Hook).
+- SessionStart-Hook injiziert die Projektlisten-Pflicht auch in Automation-Sessions (Funktioniert) — bei Automation-Läufen zuerst Projektliste, dann Zweig-Ausführung.
