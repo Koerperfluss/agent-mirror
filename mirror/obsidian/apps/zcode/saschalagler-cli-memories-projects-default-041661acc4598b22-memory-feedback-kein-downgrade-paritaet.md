@@ -32,4 +32,6 @@ Sascha korrigierte 11.09.2026 scharf: Ich hatte „Gratis-Stack existiert bereit
 
 - **14.09. fünfte Eskalation („WELCHE MODELLE SOLL ICH VERBAUEN REDE ICH UNDEUTLICH? KEIN GOOGLE KEIN GEMINI ER HAT KEINEN API-KEY"):** Ich hatte den LLM-Default auf Gemini gelegt, WEIL SASCHA 6 Gemini-Keys hat — aber **THOMAS hat keinen einzigen Google-Key**. Regel: **Saschas Ressourcen (Keys, Accounts, OmniRoute,Coding-Plan) gelten NUR für Sascha** — Stacks für andere Nutzer (Thomas, Moritz, …) ohne Sascha-Assets und ohne Google/Apple-Abhängigkeit entwerfen (OpenRouter-free, Groq-free, edge-tts). Vor Deploy an Dritte fragen: „Welchen Key/API-Zugang hat DIESE Person wirklich?" statt zu assumieren.
 
+- **14.09. sechste Eskalation („wieso sind im Ordner für Thomas 100 Files? was soll er oder ich damit? du müllst uns beide zu"):** Arbeitsreste (`_arbeit/`, Roh-Screenshots, generate.js, DOCX) gehörten in den LIEFERORDNER — für Thomas und seine Agents unbrauchbarer Müll. **Regel: Ein Lieferordner für einen Dritten enthält NUR lieferbare Items (App + 1 LIESMICH + Tools, die der Dritte wirklich startet); alle Arbeits-/Quellreste außerhalb in _arbeit/_ARCHIV.** Nach dem Schnüren den Ordner aus DRETER-Sicht durchgehen: „kann Thomas mit JEDER Datei etwas anfangen?"
+
 Verwandt: [[thomas-tasks-drei-recherchen]], [[feedback-aufbau-vor-deploy]], [[feedback-pruefinstanz-pflicht]]

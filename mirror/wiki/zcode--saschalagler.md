@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-14 13:34 UTC
+Zuletzt gespiegelt: 2026-09-14 13:45 UTC
 
 ## AGENTS
 
@@ -1413,7 +1413,7 @@ Bei Fachfragen (z. B. Trainings-Übungen) fordert er explizit „clinical reason
 
 - [/standardskill Boot-Ablauf](standardskill-boot-ablauf.md) — Command lädt STANDARD-SKILLS.md + skill-routing.md und verlangt verbindliche Regel-Bestätigung als Tabelle; danach Regelverstoß = sofort selbst benennen + korrigieren
 
-- [Thomas-Tasks: 3 Recherchen](thomas-tasks-drei-recherchen.md) — 12.09. FERTIG GELIEFERT (Parität ✅ 974e2ce, Gemini-LLM 56456d5, M1 faster-whisper-small Port 8788 Primär b0f042d, 41/41+9/9+e2e PASS; GEORGE = Thomas' Assistent IN Codex, Token-Kosten via still gebilltem OPENAI_API_KEY); **14.09. THOMAS-START FEHLGESCHLAGEN: er hat KEINEN Google-Key → Gemini-Default unbrauchbar; neue Anforderung „KEIN GOOGLE/GEMINI/Apple, ALLE ANDEREN FREE VERSIONEN"; Fix-Plan fertig (OpenRouter-free→Groq + Settings-Key-Feld + edge-tts-Server 8789) aber ExitPlanMode DENIED — wartet auf GO; Paket liegt jetzt in `~/Desktop/THOMAS_ANLEITUNG/THOMAS_PAKET/`; Wayfinder-Map nur zu Skill-Konsolidierung, keine zu Thomas/LokiVoice**; ⚠️ ~/.codex/config.toml hat echten Bearer-Token; swift-test-codesign = fileprovider.fpfs (iCloud) → manuell codesign + `xcrun xctest`
+- [Thomas-Tasks: 3 Recherchen](thomas-tasks-drei-recherchen.md) — 12.09. FERTIG GELIEFERT (Parität ✅ 974e2ce, Gemini-LLM 56456d5, M1 faster-whisper-small Port 8788 Primär b0f042d, 41/41+9/9+e2e PASS; GEORGE = Thomas' Assistent IN Codex, Token-Kosten via still gebilltem OPENAI_API_KEY); **14.09. THOMAS-START FEHLGESCHLAGEN: er hat KEINEN Google-Key → Gemini-Default unbrauchbar; Anforderung „KEIN GOOGLE/GEMINI/Apple, ALLE ANDEREN FREE VERSIONEN" (OpenRouter-free→Groq empfohlen, wartet auf seine Wahl)**; **NEUES ZIEL: native LokiVoice mit Model-Pickern IN der App (keine 10 Skripte/210 Files), eingebetteter Server**; **Mac-Ausmistung befohlen: 10 Fragmente → ewiger Ordner `~/Desktop/Coworkspace_Ich/THOMAS - CHIPS JUDICARIO /`** (Paket liegt jetzt in dessen THOMAS_ANLEITUNG/THOMAS_PAKET); Wayfinder-Map nur zu Skill-Konsolidierung; ⚠️ ~/.codex/config.toml hat echten Bearer-Token; swift-test-codesign = fileprovider.fpfs (iCloud) → manuell codesign + `xcrun xctest`
 
 - [ZCode Hub 1006 + Netz-Fix](zcode-hub-1006-netz-fix.md) — 08.09.: 1006-Abbrüche = 9,7-GB-Session-Rollout (archiviert in ~/.zcode/cli/log/archive/) + Hotspot/IPv6; Wi-Fi DNS 1.1.1.1/8.8.8.8 + IPv6 OFF gesetzt; OmniRoute localhost:20128 als Fallback-Provider; iPhone „Maximale Kompatibilität" noch offen; Riesige Session-Rollouts nie weiternutzen
 
@@ -1898,6 +1898,8 @@ Sascha korrigierte 11.09.2026 scharf: Ich hatte „Gratis-Stack existiert bereit
 
 - **14.09. fünfte Eskalation („WELCHE MODELLE SOLL ICH VERBAUEN REDE ICH UNDEUTLICH? KEIN GOOGLE KEIN GEMINI ER HAT KEINEN API-KEY"):** Ich hatte den LLM-Default auf Gemini gelegt, WEIL SASCHA 6 Gemini-Keys hat — aber **THOMAS hat keinen einzigen Google-Key**. Regel: **Saschas Ressourcen (Keys, Accounts, OmniRoute,Coding-Plan) gelten NUR für Sascha** — Stacks für andere Nutzer (Thomas, Moritz, …) ohne Sascha-Assets und ohne Google/Apple-Abhängigkeit entwerfen (OpenRouter-free, Groq-free, edge-tts). Vor Deploy an Dritte fragen: „Welchen Key/API-Zugang hat DIESE Person wirklich?" statt zu assumieren.
 
+- **14.09. sechste Eskalation („wieso sind im Ordner für Thomas 100 Files? was soll er oder ich damit? du müllst uns beide zu"):** Arbeitsreste (`_arbeit/`, Roh-Screenshots, generate.js, DOCX) gehörten in den LIEFERORDNER — für Thomas und seine Agents unbrauchbarer Müll. **Regel: Ein Lieferordner für einen Dritten enthält NUR lieferbare Items (App + 1 LIESMICH + Tools, die der Dritte wirklich startet); alle Arbeits-/Quellreste außerhalb in _arbeit/_ARCHIV.** Nach dem Schnüren den Ordner aus DRETER-Sicht durchgehen: „kann Thomas mit JEDER Datei etwas anfangen?"
+
 Verwandt: [[thomas-tasks-drei-recherchen]], [[feedback-aufbau-vor-deploy]], [[feedback-pruefinstanz-pflicht]]
 
 ## feedback-loesungen-statt-geht-nicht
@@ -2179,6 +2181,7 @@ metadata:
 **ABSCHLUSS (Nacht 13./14.09.): Option B wurde GEBaut und ist LIVE** — Open WebUI auf Port 8080 mit 1532 OmniRoute-Modellen, DuckDuckGo-Websuche-Zwang, /recherche-Skill, Login sascha@lokal.admin. Details + GO-Items (Autostart-LaunchAgent, Tailscale-Festadresse, mehr /-Skills): [[openwebui-eigener-recherche-agent]]. Key-Herkunft: [[omniroute-gateway-keys]]. Saschas Wortlaut dabei scharf („du scheiss huresohn") — er kannte ALLE Optionen schon und bestätigte via Perplexity/Comet-Support: Kern nicht änderbar, /-Skills weg, Browser-Übernahme weg → nicht nochmal erklären, sondern LIEFERN.
 
 **Tooling-Lesson (wichtig):** ZCode `Agent`-Dispatch (general-purpose Subagents) schlug fehl mit **„No reasoning level selected"** (reasoning-level-missing, account GLM-5.3-Flash) — Subagent-Fanout war nicht möglich. Workaround bewährt: Recherche direkt im Main-Agent mit parallelen WebSearch-Calls (6 Suchläufe, quick-first). Bei erneutem Bedarf erst Main-Agent-Direktweg versuchen, bevor Fanout konfiguriert wird. Siehe [[web-research-team-skill]], [[mac-setup-16gb-m4]], [[atlas-stand-2026-09-08]].
+**14.09. Präzisierung:** Fehler reproduzierte sich mit `selection=account:zai-start-plan/GLM-5.3-Flash`; `~/.zcode/cli/config.json` enthält KEINE Reasoning-Level-Einstellung → Ursache sitzt in der **ZCode-App-UI** (Modell GLM-5.3-Flash ohne gesetzte Denkstufe). Sascha-Fix: ZCode-Einstellungen → Modell → Denk-/Reasoning-Stufe wählen. Zusätzlich: **Plan-Modus blockiert Bash komplett** (nur read-only filesystem-MCP-Tools + gelegentlich grep erlauben direkten Recon).
 
 ## ki-agent-browser-landschaft-2026-09
 
@@ -2894,6 +2897,13 @@ Am 11.09.2026 gestellt und am selben Tag ABGESCHLOSSEN inkl. Paritäts-Build (2 
 - **Geplanter Fix (ExitPlanMode DENIED — Plan liegt fertig, NICHT ausgeführt, wartet auf GO):** (1) LLM-Free-Kette: Default OpenRouter (`https://openrouter.ai/api/v1`, function-calling-fähiges `:free`-Modell, tagesaktuell verifizieren) → Fallback Groq free (llama-3.3-70b-versatile); GEMINI nur noch via Env für Sascha. (2) Key-Eingabe ohne Terminal: Settings-Feld → Keychain `LOKI_LLM_API_KEY`. (3) TTS: `tools/tts_server.py` Port 8789 mit **edge-tts** (gratis MS-Stimmen, kein Key, kein Apple), AVSpeech nur Fallback. (4) Thomas braucht GENAU 1 gratis Key (openrouter.ai). Doku/Paket-Rebuild danach.
 - **Wayfinder-Stand:** `~/.agents/.wayfinder/map.md` = „LOKI Skill-Konsolidierung v2" (9 Tickets, alle geschlossen) — **zu Thomas/LokiVoice existiert KEINE Map** (Thema lief über PLAN-Tabellen + STATUS_LOCAL_PARITAET.md + Git).
 - **Session-Facts:** Plan-Modus blockiert Bash komplett (read-only über filesystem-MCP-Tools); ZCode-Subagent-Dispatch weiter tot („No reasoning level selected"); Provider-Fehler [1210] einmalig.
+
+**14.09. SPÄT — PAkET-ORT FINAL + MÜLL-VORWURF + NEUES ZIEL:**
+- **Paket-Ort (jetzt endgültig):** Sascha hat `THOMAS_ANLEITUNG` selbst **in den ewigen Ordner** verschoben: **`~/Desktop/Coworkspace_Ich/THOMAS - CHIPS JUDICARIO /THOMAS_ANLEITUNG/THOMAS_PAKET/`** — dort liegt alles (App, tools, PDF, nested ZIPs, `_arbeit/`-Müll, alter `Contents/`-Bundle-Rest, thomas.csv). Frühere „Desktop/THOMAS_ANLEITUNG"-Pfade sind obsolet. **Ewiger Sammel-Ordner für ALLES Thomas/Judicario = `~/Desktop/Coworkspace_Ich/THOMAS - CHIPS JUDICARIO /`** (sein ausdrücklicher Wille).
+- **Müll-Vorwurf („wieso sind im Thomas-Ordner 100 Files, was soll er damit, du müllst uns beide zu"):** `_arbeit/` (Roh-Screenshots, page-Renderings, generate.js, DOCX) lag IM Lieferordner — weder Thomas noch seine Agents können damit arbeiten. **Regel: Lieferordner = NUR die 6 Liefer-Items; Arbeitsreste gehören NIE hinein.**
+- **NEUES ZIEL (wayfinder /goal, sein Wortlaut): „fix fertige native Mac LokiVoice mit sämtlichen Sprachmodellen funktional ZUM AUSWÄHLEN — fix fertig, keine 10 Skripte, keine 210 Files."** Konkret: App-interne Modell-Picker (STT: whisper small/medium/Apple · LLM: OpenRouter-free/Groq/Z.AI/eigener, OHNE Google-Zwang · TTS: edge-tts/Mac-Stimme), eingebetteter Python-Server den die App SELBST startet, 1×-Doppelklick-Installer statt Skript-Batterie.
+- **Mac-weite Ausmistung befohlen („max force", 12er-Team gefordert — Regel-Cap 3 + Director-direct):** 10 verifizierte Fragmente: (1) Judicario_Sacha_Mac/LokiVoiceApp=QUELLE, (2) THOMAS_ANLEITUNG/THOMAS_PAKET, (3) Desktop/Contents (Alter Bundle-Rest), (4) ~/Mirror/…/worktrees/a15eb (Cline-Spiegel), (5) ~/loki-ki/loki-voice (Python-Variante), (6) /Applications/LokiVoice.app + ~/Library/Application Support/LokiVoice, (7) LOKI_OS_CODEX_PAKET, (8) Obsidian Voice-Agent/LOKI-Board-Notizen, (9) ~/loki-ki/models + Desktop/„Local AI ", (10) Desktop-Screenshots/Alt-PDFs. Zielstruktur: Quelle + 00_PAKET_FUER_THOMAS + 01_MODELL_INVENTAR.md + _ARCHIV/2026-09-14 mit Move-Log; exakte md5-Duplikate löschen (GO erteilt), Rest archivieren. PETER JUDICARIO enthält nur CWD_RECOVERY.md (kein App-Duplikat).
+- **Modell-Liste geliefert (er verlangte sie VOR jedem Plan — beide ExitPlanMode-Versuche DENIED):** 3 Tabellen (verbaut/dokumentiert/free-Kandidaten). **Meine Empfehlung offen zur Abstimmung: OpenRouter free llama-3.3-70b (FC-fähig, ~50 Req/Tag) + Groq free als Fallback — 1 Gratis-Key, kein Google.** Awaiting seine Wahl/„baue".
 
 ## vorssaint-mac-tools-research
 
