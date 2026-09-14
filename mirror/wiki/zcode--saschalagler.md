@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-14 14:06 UTC
+Zuletzt gespiegelt: 2026-09-14 14:17 UTC
 
 ## AGENTS
 
@@ -1388,6 +1388,8 @@ Bei Fachfragen (z. B. Trainings-Übungen) fordert er explizit „clinical reason
 
 # Memory Index
 
+- [Subagent-Dispatch: implementer-Workaround](subagent-dispatch-implementer-workaround.md) — „No reasoning level selected" trifft NUR Explore/general-purpose (GLM-5.3-Flash ohne Denkstufe) — subagent_type `implementer` FUNKTIONIERT (auch für read-only Aufträge); Dauer-Fix nur per ZCode-App-Settings (Modell→Denkstufe)
+
 - [Loki-Browser-Agent (Eigenbau-Comet-Ersatz)](loki-browser-agent-comet-ersatz.md) — 14.09. **VERWORFEN/PAUSIERT**: Sascha lehnte alle 4 Fertig-Kandidaten ab („keines"), Anforderung „alles wie Comet: skills, settings, auto tools" dokumentiert; nach Plan-Vorlage Wut „du sollst nichts bauen, du sollst im web danach suchen" → er wollte RECHERCHE, kein Bauen; Plan (Playwright+OmniRoute+iPhone-Panel, S1–S5) bleibt dokumentiert für späteres GO
 
 - [Web-Dev-IDE-Landschaft Sept 2026](webdev-ide-landschaft-2026-09.md) — 14.09. Recherche: **Antigravity = Gesamtsieger** (XDA 1-Monats-Test; Live-Vorschau + Goal-System = die 2 Features aus seinem Screenshot; bei ihm SCHON INSTALLIERT), Cursor nur für Riesen-Repos, Lovable nur Prototyping; Report `~/Desktop/KI_ANTWORTEN_UND_WEBDEV_SETUP_RECHERCHE_2026-09-14.md`
@@ -2032,6 +2034,12 @@ Am 25.08.2026 (Schlussphase der Mac-Sanierung) reagierte Sascha frustriert („w
 **How to apply (Ergänzung):**
 28. Fragt er nach EINEM Ding (Link, Befehl, Name): EXAKT das eine Ding + maximal 1 Satz. Keine Varianten, keine Verifikations-Notizen, keine Zusatz-Angebote — die Nachfrage „warum X?" kommt von ihm, wenn er mehr braucht.
 29. Nach „BIST DU BEHINDERT/BEHINDERT??" ohne weiter Kontext: erst vermuten, dass der letzte Output wieder ZU VIEL war — als nächstes die dünnste mögliche Antwort liefern und das konkrete Symptom in einem Satz anbieten („wenn etwas klemmt: sag das Symptom"), statt zu erklären.
+
+**Dreizehnte Lektion 14.09. (LokiVoice-Ziel-App):** Nach dem Modell-Katalog endete ich wieder mit „Max 3 nächste Schritte: (1)…(2)…(3)?" — Reaktion: **„WAS MAX 3 KEIN MAX 3 mach alles was zu tun ist WO IST DAS TEAM?"**. Nach einem Alles-Auftrag sind Auswahl-Menüs eine Verweigerung.
+
+**How to apply (Ergänzung):**
+30. „Mach alles was zu tun ist" = ALLE offenen Tickets in EINEM Rutsch ausführen (Wellen/Team), ohne Abschluss-Menü — Ergebnis am Ende als Beweis-Tabelle, keine Zwischen-Wahlmöglichkeiten.
+31. „WO IST DAS TEAM?" = er will sichtbare Agenten-Orchestrierung: Team-Tabelle im Chat (Agent|Task|Status) führen, Agenten parallel starten — der 3er-Cap aus STANDARD-SKILLS ist secondary (Cap war 13.09. auf seinen Befehl entfernt); Dispatch-Workaround siehe [[subagent-dispatch-implementer-workaround]].
 
 ## feedback-pruefinstanz-pflicht
 
@@ -2874,6 +2882,32 @@ Der Custom-Command `/standardskill` (user/zcode) ist ein verbindlicher Boot-Abla
 
 **How to apply:** Bei `/standardskill` beide Dateien lesen und die Tabelle ausgeben; danach in derselben Session alle Antworten regelkonform halten. Verwandt: [[sequential-thinking-always]], [[skill-reference-etiquette]].
 
+## subagent-dispatch-implementer-workaround
+
+---
+name: subagent-dispatch-implementer-workaround
+description: ZCode-Subagent-Fehler "No reasoning level selected" trifft NUR
+  Explore/general-purpose (GLM-5.3-Flash ohne Denkstufe im
+  zai-start-plan-Account) — der subagent_type "implementer" FUNKTIONIERT; alles
+  über implementer routen
+metadata:
+  node_type: memory
+  type: reference
+  originSessionId: sess_0933a442-4331-4e6b-b563-a8a97dcefd9b
+---
+
+Entdeckt 14.09.2026 (Session sess_0933a442): Der Agent-Dispatch-Fehler `Cannot start subagent: No reasoning level selected [reason=reasoning-level-missing; selection=account:zai-start-plan/GLM-5.3-Flash]` ist **subagent-typ-abhängig**:
+
+| subagent_type | Status |
+|---|---|
+| `Explore`, `general-purpose` | ❌ FAIL (an GLM-5.3-Flash gebunden, dem im Plan-Account keine Denkstufe zugewiesen ist) |
+| `implementer` | ✅ LÄUFT (auch für read-only Bash-Aufträge nutzbar — einfach "nur lesende Befehle" in den Prompt schreiben) |
+| `reviewer` | lief am 11.09. noch (vor dem Bug-Auftreten); falls FAIL → gleichfalls implementer nehmen |
+
+`~/.zcode/cli/config.json` enthält KEINE Reasoning-Level-Einstellung — der Fehler sitzt in der ZCode-App, nicht in der CLI-Config. **Dauer-Fix (nur Sascha kann klicken):** ZCode-Einstellungen → Modell GLM-5.3-Flash → Denk-/Reasoning-Stufe setzen. Bis dahin: alle Agenten-Aufträge als `implementer` starten.
+
+**How to apply:** Bei „Cannot start subagent: No reasoning level selected": NICHT aufgeben, NICHT nur Main-Agent-Fallback — denselben Prompt an `subagent_type: implementer` erneut senden. Verwandt: [[ios27-webapp-testing-recherche-2026-09-13]] (Dort noch „Dispatch tot → Direktrecherche"; seit 14.09. der bessere Weg: implementer).
+
 ## thomas-tasks-drei-recherchen
 
 ---
@@ -2940,6 +2974,11 @@ Am 11.09.2026 gestellt und am selben Tag ABGESCHLOSSEN inkl. Paritäts-Build (2 
 - **Regie-Modi (in Ziel-App übernehmen):** frei (Modell führt) · **geführt (Regie/Zustandsautomat fragt, Modell formuliert — Notruf-Pflicht laut PRD §5.2 fail-safe)** · strikt (nur Regie, kein LLM = Offline/Notfall, 0 € 0 Risiko).
 - **Offen im Katalog:** (1) Nemotron-DeepInfra-Katalog live prüfen, (2) MiMo-exaktnamen klären, (3) Qwen3-ASR-DE-Test gegen faster-whisper small.
 - **Status: Katalog fertig; wartet auf GO „baue" (Ziel-App mit Pickern) bzw. Mac-Ausmistung.**
+
+**14.09. NACHT — GO ERGANGEN, AUSFÜHRUNG LÄUFT (Team aktiv, bei Agent-Start abgebrochen):**
+- Sascha: **„WAS MAX 3 KEIN MAX 3 mach alles was zu tun ist WO IST DAS TEAM? … fix meine modelle … MACH DOCH"** — Option-Menüs am Antwort-Ende sind VERBOTEN wenn er Alles-Ausführung befiehlt; das war das GO für Ziel-App + Mac-Ausmistung ohne weitere Rückfragen.
+- **3 implementer-Agenten parallel gestartet:** (1) Swift: LLM-Provider-Tabelle (openrouter `llama-3.3-70b-instruct:free` DEFAULT, groq, zai, custom; Rotation openrouter→groq→zai bei 429/Fehler; UserDefaults `loki.llm.provider`/`loki.llm.model`/`loki.stt.model`) + SettingsView „Modelle"-Card (Provider-/Modell-/STT-Picker + SecureField API-Key → Keychain via `security add-generic-password`, nie zurücklesen/loggen; Zeile „Gratis-Key: openrouter.ai/keys — kein Google"); (2) edge-tts: POST /tts an whisper_server.py (de-DE-KatjaNeural/Conrad/Amala, keyless, MP3), /health erweitert, Test auf Port 8790; (3) Mac-Vollscan read-only (ganze Home, md5-Duplikate) → Move-Liste für Director.
+- **Offen nach Agent-Returns:** Integration (build+Tests+Bundle), Ausmistung ausführen (Archiv+_ARCHIV/2026-09-14+Move-Log, md5-Duplikate löschen — GO steht), Prüfinstanz-Pass, 00_PAKET-FUER_THOMAS neu (NUR App+LIESMICH), Commits+STATUS.
 
 ## vorssaint-mac-tools-research
 

@@ -7,6 +7,8 @@ tags: [spiegel, zcode]
 
 # Memory Index
 
+- [Subagent-Dispatch: implementer-Workaround](subagent-dispatch-implementer-workaround.md) — „No reasoning level selected" trifft NUR Explore/general-purpose (GLM-5.3-Flash ohne Denkstufe) — subagent_type `implementer` FUNKTIONIERT (auch für read-only Aufträge); Dauer-Fix nur per ZCode-App-Settings (Modell→Denkstufe)
+
 - [Loki-Browser-Agent (Eigenbau-Comet-Ersatz)](loki-browser-agent-comet-ersatz.md) — 14.09. **VERWORFEN/PAUSIERT**: Sascha lehnte alle 4 Fertig-Kandidaten ab („keines"), Anforderung „alles wie Comet: skills, settings, auto tools" dokumentiert; nach Plan-Vorlage Wut „du sollst nichts bauen, du sollst im web danach suchen" → er wollte RECHERCHE, kein Bauen; Plan (Playwright+OmniRoute+iPhone-Panel, S1–S5) bleibt dokumentiert für späteres GO
 
 - [Web-Dev-IDE-Landschaft Sept 2026](webdev-ide-landschaft-2026-09.md) — 14.09. Recherche: **Antigravity = Gesamtsieger** (XDA 1-Monats-Test; Live-Vorschau + Goal-System = die 2 Features aus seinem Screenshot; bei ihm SCHON INSTALLIERT), Cursor nur für Riesen-Repos, Lovable nur Prototyping; Report `~/Desktop/KI_ANTWORTEN_UND_WEBDEV_SETUP_RECHERCHE_2026-09-14.md`
