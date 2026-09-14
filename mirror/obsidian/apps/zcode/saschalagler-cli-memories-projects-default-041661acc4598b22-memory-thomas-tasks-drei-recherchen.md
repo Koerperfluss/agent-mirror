@@ -1,7 +1,7 @@
 ---
 app: zcode
 quelle: "saschalagler/cli/memories/projects/default-041661acc4598b22/memory/thomas-tasks-drei-recherchen.md"
-stand: 2026-09-12
+stand: 2026-09-14
 tags: [spiegel, zcode]
 ---
 
@@ -39,3 +39,10 @@ Am 11.09.2026 gestellt und am selben Tag ABGESCHLOSSEN inkl. Paritäts-Build (2 
 - **Noch offen:** Mikro-e2e mit echtem Key · /Applications-Deploy auf GO · Magicline-Studio-Key · `WHISPER_MODEL=medium` testen · `start_whisper.sh` in start_loki.sh-Autostart.
 
 **How to apply:** Bei Wiederaufnahme Parität als erledigt behandeln (nicht neu planen); Build/Verify über den Standalone-Runner, nicht `swift test`. Verwandt: [[feedback-kein-downgrade-paritaet]], [[feedback-pruefinstanz-pflicht]], [[feedback-doc-design-matters]], [[loki-project-map]].
+
+**14.09. AUDIT + THOMAS-FEHLGESCHLAG (wütende Session):**
+- **Thomas' Versuch, LokiVoice bei sich zu starten, SCHLUG FEHL.** Wurzel-Ursache (Sascha endgültig klargestellt, Capslock): **„KEIN GOOGLE KEIN GEMINI ER HAT KEINEN API-KEY"** — der Gemini-LLM-Default (Commit 56456d5, auf SASCHAS 6 Keys ausgelegt) ist für Thomas unbrauchbar. Neue harte Anforderung: **Free-Stack OHNE Google, OHNE Gemini, OHNE Apple-Teile („kein lokales Dreck-MAc-Teil") — „ALLE ANDEREN FREE VERSIONEN"** (OpenRouter-free, Groq-free, edge-tts etc.).
+- **Paket-Ort geändert:** User hat THOMAS_PAKET vom Desktop **in `~/Desktop/THOMAS_ANLEITUNG/THOMAS_PAKET/` hineinverschoben** (alte Memory-Notiz „THOMAS_ANLEITUNG existiert nicht mehr" ist obsolet); Inhalts-Audit 14.09. verifiziert: native LokiVoice.app (Mach-O, ad-hoc) + tools/ komplett + PDF + nested THOMAS_PAKET.zip + Windows_Paket.zip.
+- **Geplanter Fix (ExitPlanMode DENIED — Plan liegt fertig, NICHT ausgeführt, wartet auf GO):** (1) LLM-Free-Kette: Default OpenRouter (`https://openrouter.ai/api/v1`, function-calling-fähiges `:free`-Modell, tagesaktuell verifizieren) → Fallback Groq free (llama-3.3-70b-versatile); GEMINI nur noch via Env für Sascha. (2) Key-Eingabe ohne Terminal: Settings-Feld → Keychain `LOKI_LLM_API_KEY`. (3) TTS: `tools/tts_server.py` Port 8789 mit **edge-tts** (gratis MS-Stimmen, kein Key, kein Apple), AVSpeech nur Fallback. (4) Thomas braucht GENAU 1 gratis Key (openrouter.ai). Doku/Paket-Rebuild danach.
+- **Wayfinder-Stand:** `~/.agents/.wayfinder/map.md` = „LOKI Skill-Konsolidierung v2" (9 Tickets, alle geschlossen) — **zu Thomas/LokiVoice existiert KEINE Map** (Thema lief über PLAN-Tabellen + STATUS_LOCAL_PARITAET.md + Git).
+- **Session-Facts:** Plan-Modus blockiert Bash komplett (read-only über filesystem-MCP-Tools); ZCode-Subagent-Dispatch weiter tot („No reasoning level selected"); Provider-Fehler [1210] einmalig.

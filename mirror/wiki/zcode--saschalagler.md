@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-14 13:23 UTC
+Zuletzt gespiegelt: 2026-09-14 13:34 UTC
 
 ## AGENTS
 
@@ -1413,7 +1413,7 @@ Bei Fachfragen (z. B. Trainings-Übungen) fordert er explizit „clinical reason
 
 - [/standardskill Boot-Ablauf](standardskill-boot-ablauf.md) — Command lädt STANDARD-SKILLS.md + skill-routing.md und verlangt verbindliche Regel-Bestätigung als Tabelle; danach Regelverstoß = sofort selbst benennen + korrigieren
 
-- [Thomas-Tasks: 3 Recherchen](thomas-tasks-drei-recherchen.md) — 12.09. FERTIG GELIEFERT: **`~/Desktop/THOMAS_PAKET.zip` (1,3 MB) = das Liefer-Artefakt** (START_HIER.txt + LokiVoice.app + tools/ + PDF + Windows_Paket.zip); Parität ✅ (974e2ce) + LLM-Default Gemini-OpenAI-Layer (56456d5) + **M1 faster-whisper-small STT-Server Port 8788 Primär** (b0f042d, 41/41 XCTest + 9/9 + e2e PASS; Apple Speech nur Fallback); GEORGE = Thomas' Assistent IN Codex, Token-Kosten via still gebilltem OPENAI_API_KEY; Desktop/THOMAS_ANLEITUNG/ nur Quelle; ⚠️ ~/.codex/config.toml hat echten Bearer-Token; swift-test-codesign = fileprovider.fpfs (iCloud-Desktop) → manuell codesign + `xcrun xctest`; offen nur: /Applications-Deploy auf GO, Magicline-Studio-Key
+- [Thomas-Tasks: 3 Recherchen](thomas-tasks-drei-recherchen.md) — 12.09. FERTIG GELIEFERT (Parität ✅ 974e2ce, Gemini-LLM 56456d5, M1 faster-whisper-small Port 8788 Primär b0f042d, 41/41+9/9+e2e PASS; GEORGE = Thomas' Assistent IN Codex, Token-Kosten via still gebilltem OPENAI_API_KEY); **14.09. THOMAS-START FEHLGESCHLAGEN: er hat KEINEN Google-Key → Gemini-Default unbrauchbar; neue Anforderung „KEIN GOOGLE/GEMINI/Apple, ALLE ANDEREN FREE VERSIONEN"; Fix-Plan fertig (OpenRouter-free→Groq + Settings-Key-Feld + edge-tts-Server 8789) aber ExitPlanMode DENIED — wartet auf GO; Paket liegt jetzt in `~/Desktop/THOMAS_ANLEITUNG/THOMAS_PAKET/`; Wayfinder-Map nur zu Skill-Konsolidierung, keine zu Thomas/LokiVoice**; ⚠️ ~/.codex/config.toml hat echten Bearer-Token; swift-test-codesign = fileprovider.fpfs (iCloud) → manuell codesign + `xcrun xctest`
 
 - [ZCode Hub 1006 + Netz-Fix](zcode-hub-1006-netz-fix.md) — 08.09.: 1006-Abbrüche = 9,7-GB-Session-Rollout (archiviert in ~/.zcode/cli/log/archive/) + Hotspot/IPv6; Wi-Fi DNS 1.1.1.1/8.8.8.8 + IPv6 OFF gesetzt; OmniRoute localhost:20128 als Fallback-Provider; iPhone „Maximale Kompatibilität" noch offen; Riesige Session-Rollouts nie weiternutzen
 
@@ -1895,6 +1895,8 @@ Sascha korrigierte 11.09.2026 scharf: Ich hatte „Gratis-Stack existiert bereit
 
 - **12.09. dritte Eskalation („es geht um FREE USAGE — was willst du testen, wenn es um die Übergabe auf seinen Laptop geht"):** Wenn der Auftrag ein HANDOVER für einen Dritten (Thomas) ist, zählt nur der lieferbare Endzustand auf DEM Rechner — keine weiteren Test-/Optimierungs-Vorschläge (medium-Modell, Autostart, Mikro-e2e) als „nächste Schritte" aufdrängen. Paket schnüren (App + Skripte + START_HIER.txt), fertig melden.
 - **12.09. vierte Eskalation („du machst nur Mist" beim Anblick von THOMAS_ANLEITUNG + THOMAS_PAKET nebeneinander):** Mehrere Parallel-Ordner/ZIPs für denselben Zweck = selbstverschuldeter Mist. Regel: nach jedem Liefer-Build SOFORT konsolidieren — EIN Lieferordner, EIN ZIP (Arbeitsdateien in `_arbeit/`-Unterordner, nicht im ZIP), alte Strukturen ohne Nachfrage auflösen (Aufräumen ist implizit autorisiert, sobald er die Doppelstruktur bemängelt).
+
+- **14.09. fünfte Eskalation („WELCHE MODELLE SOLL ICH VERBAUEN REDE ICH UNDEUTLICH? KEIN GOOGLE KEIN GEMINI ER HAT KEINEN API-KEY"):** Ich hatte den LLM-Default auf Gemini gelegt, WEIL SASCHA 6 Gemini-Keys hat — aber **THOMAS hat keinen einzigen Google-Key**. Regel: **Saschas Ressourcen (Keys, Accounts, OmniRoute,Coding-Plan) gelten NUR für Sascha** — Stacks für andere Nutzer (Thomas, Moritz, …) ohne Sascha-Assets und ohne Google/Apple-Abhängigkeit entwerfen (OpenRouter-free, Groq-free, edge-tts). Vor Deploy an Dritte fragen: „Welchen Key/API-Zugang hat DIESE Person wirklich?" statt zu assumieren.
 
 Verwandt: [[thomas-tasks-drei-recherchen]], [[feedback-aufbau-vor-deploy]], [[feedback-pruefinstanz-pflicht]]
 
@@ -2885,6 +2887,13 @@ Am 11.09.2026 gestellt und am selben Tag ABGESCHLOSSEN inkl. Paritäts-Build (2 
 - **Noch offen:** Mikro-e2e mit echtem Key · /Applications-Deploy auf GO · Magicline-Studio-Key · `WHISPER_MODEL=medium` testen · `start_whisper.sh` in start_loki.sh-Autostart.
 
 **How to apply:** Bei Wiederaufnahme Parität als erledigt behandeln (nicht neu planen); Build/Verify über den Standalone-Runner, nicht `swift test`. Verwandt: [[feedback-kein-downgrade-paritaet]], [[feedback-pruefinstanz-pflicht]], [[feedback-doc-design-matters]], [[loki-project-map]].
+
+**14.09. AUDIT + THOMAS-FEHLGESCHLAG (wütende Session):**
+- **Thomas' Versuch, LokiVoice bei sich zu starten, SCHLUG FEHL.** Wurzel-Ursache (Sascha endgültig klargestellt, Capslock): **„KEIN GOOGLE KEIN GEMINI ER HAT KEINEN API-KEY"** — der Gemini-LLM-Default (Commit 56456d5, auf SASCHAS 6 Keys ausgelegt) ist für Thomas unbrauchbar. Neue harte Anforderung: **Free-Stack OHNE Google, OHNE Gemini, OHNE Apple-Teile („kein lokales Dreck-MAc-Teil") — „ALLE ANDEREN FREE VERSIONEN"** (OpenRouter-free, Groq-free, edge-tts etc.).
+- **Paket-Ort geändert:** User hat THOMAS_PAKET vom Desktop **in `~/Desktop/THOMAS_ANLEITUNG/THOMAS_PAKET/` hineinverschoben** (alte Memory-Notiz „THOMAS_ANLEITUNG existiert nicht mehr" ist obsolet); Inhalts-Audit 14.09. verifiziert: native LokiVoice.app (Mach-O, ad-hoc) + tools/ komplett + PDF + nested THOMAS_PAKET.zip + Windows_Paket.zip.
+- **Geplanter Fix (ExitPlanMode DENIED — Plan liegt fertig, NICHT ausgeführt, wartet auf GO):** (1) LLM-Free-Kette: Default OpenRouter (`https://openrouter.ai/api/v1`, function-calling-fähiges `:free`-Modell, tagesaktuell verifizieren) → Fallback Groq free (llama-3.3-70b-versatile); GEMINI nur noch via Env für Sascha. (2) Key-Eingabe ohne Terminal: Settings-Feld → Keychain `LOKI_LLM_API_KEY`. (3) TTS: `tools/tts_server.py` Port 8789 mit **edge-tts** (gratis MS-Stimmen, kein Key, kein Apple), AVSpeech nur Fallback. (4) Thomas braucht GENAU 1 gratis Key (openrouter.ai). Doku/Paket-Rebuild danach.
+- **Wayfinder-Stand:** `~/.agents/.wayfinder/map.md` = „LOKI Skill-Konsolidierung v2" (9 Tickets, alle geschlossen) — **zu Thomas/LokiVoice existiert KEINE Map** (Thema lief über PLAN-Tabellen + STATUS_LOCAL_PARITAET.md + Git).
+- **Session-Facts:** Plan-Modus blockiert Bash komplett (read-only über filesystem-MCP-Tools); ZCode-Subagent-Dispatch weiter tot („No reasoning level selected"); Provider-Fehler [1210] einmalig.
 
 ## vorssaint-mac-tools-research
 
