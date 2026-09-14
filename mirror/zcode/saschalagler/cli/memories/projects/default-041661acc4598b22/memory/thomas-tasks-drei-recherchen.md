@@ -1,8 +1,8 @@
 ---
 name: thomas-tasks-drei-recherchen
-description: Drei Thomas-Recherchen 11.09. FERTIG + Paritäts-Build AUSGEFÜHRT (41/41 XCTest
-  + 9/9, faster-whisper-M1-STT, Gemini-LLM-Default) + Übergabe konsolidiert in
-  Desktop/THOMAS_PAKET.zip; offen nur: Mikro-e2e, /Applications-Deploy, Magicline-Key
+description: Drei Thomas-Recherchen 11.09. FERTIG + Paritäts-Build (41/41+9/9,
+  faster-whisper-M1) + 14.09. MODELL-KATALOG im ewigen Ordner erstellt (seine Liste +
+  Web-Verifikation, Defaults ohne Google); offen: sein „baue"-GO für Picker-App + Mac-Ausmistung
 metadata:
   node_type: memory
   type: project
@@ -54,3 +54,11 @@ Am 11.09.2026 gestellt und am selben Tag ABGESCHLOSSEN inkl. Paritäts-Build (2 
 - **Orte-Korrektur von Sascha: „orte sind nicht fix 10, schau doch selber nach, keine Vorannahmen"** — bei der Mac-Ausmistung echte Vollsuche über die ganze Platte machen, nicht die bekannte 10er-Liste abarbeiten.
 - **Desktop-Screenshots (15.28.12/15.40.16) vermutlich seine Modell-Listen** — per Read NICHT einsehbar (nur CDN-Upload, siehe [[read-tool-images-cdn-hazard]]); Inventar aus Disk-Dateien stattdessen.
 - **Status: Modell-Liste ist geliefert, er hat noch NICHT gewählt/gebaut-GO gegeben.** Next: seine Modellauswahl abwarten ODER GO „baue" → Ziel-App (Model-Picker, eingebetteter Server) + Mac-Ausmistung.
+
+**14.09. ABEND — SEINE MODELL-LISTE + MODELL-KATALOG ERSTELLT (SPERR-Dokument vor jeder weiteren Arbeit):**
+- **Sascha lieferte seine eigene Liste nach** (aus Voice-Agent-Builder-Screenshots): **STT**: Whisper large-v3-turbo (DeepInfra) · Deepgram Nova-3 (OpenRouter) · GPT-4o-transcribe (OpenRouter) · Whisper-1 (OpenRouter) · ElevenLabs Scribe · Qwen3-ASR 1.7B (DeepInfra) · Voxtral Mini (DeepInfra) · Nemotron 3.5 ASR Streaming (DeepInfra). **LLM/Regie-Modi**: MiMo Turbo (ultraspeed) frei + geführt · Gemini 3.7 Flash (OpenRouter) frei + geführt · **Strikt (nur Regie, ohne Modell)**. Auftrag: „erstelle dokument mit allen modellen anbietern aufgaben verteilung BEVOR du weiter machst — prüf gegen aktuellen Stand der Technik".
+- **ERSTELLT: `~/Desktop/Coworkspace_Ich/THOMAS - CHIPS JUDICARIO /01_MODELL_KATALOG.md`** — alle Modelle/Anbieter/Aufgabenverteilung, web-verifiziert 14.09. Defaults: STT faster-whisper small lokal (0 €) · LLM **OpenRouter `llama-3.3-70b-instruct:free`** (FC-fähig) · TTS **edge-tts** (gratis, keyless) · Live-Cloud-Schalter bleibt. **Thomas braucht GENAU 1 Gratis-Key: openrouter.ai.**
+- **Web-Verifikations-Facts:** „MiMo Turbo ultraspeed" existiert unter dem Namen NICHT → real **`xiaomi/mimo-v2-flash:free`** (OpenRouter, 256K, hybrid-thinking); Gemini 3.7 Flash $0,75/$3,75 per 1M (Einführungspreis bis 31.12.2026, OpenRouter −50 % Aktion — via OpenRouter KEIN Google-Account nötig); ElevenLabs Scribe **$0,22/h** Batch / $0,39/h Realtime (billigste Cloud-STT-Stunde); GPT-4o-transcribe $0,006/min (mini $0,003); **Qwen3-ASR outperformt Whisper laut Community-Benchmarks** (Reddit r/LocalLLaMA + OpenRouter-Vergleich); Whisper large-v3-turbo = gequetschte large-v3, 8× schneller; **Nemotron 3.5 ASR Streaming auf DeepInfra NICHT auffindbar — unverified, erst live testen**.
+- **Regie-Modi (in Ziel-App übernehmen):** frei (Modell führt) · **geführt (Regie/Zustandsautomat fragt, Modell formuliert — Notruf-Pflicht laut PRD §5.2 fail-safe)** · strikt (nur Regie, kein LLM = Offline/Notfall, 0 € 0 Risiko).
+- **Offen im Katalog:** (1) Nemotron-DeepInfra-Katalog live prüfen, (2) MiMo-exaktnamen klären, (3) Qwen3-ASR-DE-Test gegen faster-whisper small.
+- **Status: Katalog fertig; wartet auf GO „baue" (Ziel-App mit Pickern) bzw. Mac-Ausmistung.**
