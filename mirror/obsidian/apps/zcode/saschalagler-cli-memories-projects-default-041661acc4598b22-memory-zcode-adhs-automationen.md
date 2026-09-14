@@ -45,3 +45,6 @@ metadata:
 - Nachgeholt (Zweig-Abweichung dokumentiert): Logbuch `~/.agents/memory/logbuch/2026-09-14.md` angelegt (status: offen, 5 Tagesplan-Bullets + DEV-BRIEF-Sektion), Kalender-Event **„Tagesplan 14.09."** UID `A1284A91-8470-4F77-8F84-BA932A081B13` (Event-Zeit = jetzt+15 Min statt 09:00, da nachgeholt).
 - **DEV-BRIEF erster echter Output:** 0 Commits seit Freitag in `~/loki-ki` + `~/Projects/*`, „keine CI konfiguriert", Modul-Änderungen nur außerhalb Git (daily_sweep.py, assi, Hook).
 - SessionStart-Hook injiziert die Projektlisten-Pflicht auch in Automation-Sessions (Funktioniert) — bei Automation-Läufen zuerst Projektliste, dann Zweig-Ausführung.
+
+## Dritter Lauf (Mo 14.09. 16:01 — No-op-Zweig PASS)
+- 16:00-Lauf am Montag korrekt mit **1 Zeile „heute nichts zu tun"** geendet (RELEASE-BRIEF nur freitags) — Zweig-Guard funktioniert wie designiert; echtes Close des Logbuchs macht der 21:00-Abend-Zweig.

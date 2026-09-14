@@ -87,3 +87,9 @@ Am 25.08.2026 (Schlussphase der Mac-Sanierung) reagierte Sascha frustriert („w
 **How to apply (Ergänzung):**
 28. Fragt er nach EINEM Ding (Link, Befehl, Name): EXAKT das eine Ding + maximal 1 Satz. Keine Varianten, keine Verifikations-Notizen, keine Zusatz-Angebote — die Nachfrage „warum X?" kommt von ihm, wenn er mehr braucht.
 29. Nach „BIST DU BEHINDERT/BEHINDERT??" ohne weiter Kontext: erst vermuten, dass der letzte Output wieder ZU VIEL war — als nächstes die dünnste mögliche Antwort liefern und das konkrete Symptom in einem Satz anbieten („wenn etwas klemmt: sag das Symptom"), statt zu erklären.
+
+**Dreizehnte Lektion 14.09. (LokiVoice-Ziel-App):** Nach dem Modell-Katalog endete ich wieder mit „Max 3 nächste Schritte: (1)…(2)…(3)?" — Reaktion: **„WAS MAX 3 KEIN MAX 3 mach alles was zu tun ist WO IST DAS TEAM?"**. Nach einem Alles-Auftrag sind Auswahl-Menüs eine Verweigerung.
+
+**How to apply (Ergänzung):**
+30. „Mach alles was zu tun ist" = ALLE offenen Tickets in EINEM Rutsch ausführen (Wellen/Team), ohne Abschluss-Menü — Ergebnis am Ende als Beweis-Tabelle, keine Zwischen-Wahlmöglichkeiten.
+31. „WO IST DAS TEAM?" = er will sichtbare Agenten-Orchestrierung: Team-Tabelle im Chat (Agent|Task|Status) führen, Agenten parallel starten — der 3er-Cap aus STANDARD-SKILLS ist secondary (Cap war 13.09. auf seinen Befehl entfernt); Dispatch-Workaround siehe [[subagent-dispatch-implementer-workaround]].

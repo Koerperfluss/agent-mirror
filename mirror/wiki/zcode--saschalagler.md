@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-14 13:55 UTC
+Zuletzt gespiegelt: 2026-09-14 14:06 UTC
 
 ## AGENTS
 
@@ -1399,7 +1399,7 @@ Bei Fachfragen (z. B. Trainings-Übungen) fordert er explizit „clinical reason
 - [Coding-Modelle + Android Studio](coding-modelle-android-studio-2026-09-13.md) — 13.09. Research fertig (Report ~/Desktop/CODING_MODELL_RESEARCH_2026-09-13.md); **Korrekturen: NUR LOKALE LLMs · MOOLAPTOP hat KEINEN GLM-Plan · KEIN OLLAMA (Runner = LM Studio/llama.cpp)**; **FINALES Modell für Moritz = Qwen3-Coder-Next 80B UD-Q2_K_XL (26,76 GB, von LM Studio selbst mit ✓ markiert + Unsloth-Karte bestätigt „2-bit XL or above")**, UD-IQ3_XXS 28,5 GB = Maximum; Download in LM Studio Discover-Tab oder HF-Direktlink; **Integration: .lmstudio\models\unsloth\Qwen3-Coder-Next-GGUF\ (3-Ebenen-Struktur!) → Server Port 1234 → AS Model Providers → Local Provider**; Token-Settings NUR in LM Studio (Zahnrad: Context 32K + KV q8_0 + Flash-Attention, „Max Tokens" 8192 Seitenleiste) — AS hat keine Token-Settings, nur neuer Chat pro Aufgabe; Qwen3.5-35B-A3B Q4 = sicherer Standard, Qwen3.6 27B (77,2 % SWE-bench vendor) für harte Aufgaben; feature-dev-Team PASS; **Nutzer = MORITZ** (präziser Coder → schnelles MoE als Default, Thinking-Reserve nur für Bug-Jagd); ⚠️ Pagefile 35 GB belegt; **14.09. offen: „Modell extrem langsam und dumm"** → Checks laufen (Swap/GPU-Offload/CUDA-Runtime), falls unverändert: Wechsel auf Qwen3.5-35B-A3B Q4 (~21 GB) empfohlen
 
 - [Prüf-Team + Config-Health](pruef-team-und-config-health.md) — 13.09.: 10 Prüf-Agents + pruef-team-Dispatcher; Cap max-3-Agents ENTFERNT; config-health.py SessionStart-Selbstcheck; **globale Sync jetzt 5/5 Harnesses (sync-standard-skills.sh TARGETS + ZCode AGENTS.md + Claude CLAUDE.md)**; alle ✅-Berichte = Disk-Beweise, LIVE-Beweis ausstehend → `/systemproof` Command (6 Checks, URTEIL AKTIV/TEILWEISE/TOT) in neuem Chat ausführen
-- [ZCode ADHS-Automations](zcode-adhs-automationen.md) — 13./14.09. LIVE: **EINE Automation mit ALLEN 6 Briefs** (cron `0 9,10,15,16,21`, Zweige per Uhrzeit+Wochentag; niemals 6 separate — Nutzer-Ziel!) + Engine 7/7 PASS; **Abend-Lauf 13.09. PASS (Logbuch-Event UID 610E2A57, Fix: `open -a Calendar` vor osascript)**; **Morgen-Lauf 14.09.: 09:00 verpasst (Mac schlief, kein Weck-Mechanismus) → 15:07 nachgeholt, Tagesplan-Event UID A1284A91; offen auf GO: LaunchAgent com.sascha.assi.daily als Wecker umrüsten**; 1 Task pro Chat-Limit
+- [ZCode ADHS-Automations](zcode-adhs-automationen.md) — 13./14.09. LIVE: **EINE Automation mit ALLEN 6 Briefs** (cron `0 9,10,15,16,21`, Zweige per Uhrzeit+Wochentag; niemals 6 separate — Nutzer-Ziel!) + Engine 7/7 PASS; **Abend-Lauf 13.09. PASS (Logbuch-Event UID 610E2A57, Fix: `open -a Calendar` vor osascript)**; **Morgen-Lauf 14.09.: 09:00 verpasst (Mac schlief, kein Weck-Mechanismus) → 15:07 nachgeholt, Tagesplan-Event UID A1284A91; 16:00-Montag-Lauf PASS als korrekter No-op**; offen auf GO: LaunchAgent com.sascha.assi.daily als Wecker umrüsten; 1 Task pro Chat-Limit
 - [Entscheidungshoheit](feedback-entscheidungshoheit.md) — 13.09. scharf: UI/Produkt-Form entscheidet SASCHA (kein unilateral „Web-UI"), Automation-Technik schlage ich fertig vor; Markdown-Design-Dumps wertlos; Beschuldigungen mit Beweis (PID+Session-ID+Code-Zeile) widerlegen; nach GO nie wieder in Plan-Dialoge zurückwerfen; **14.09. Ergänzungen „DU SOLLST NICHT RATEN": bei Tool-Kandidaten NIE für ihn bewerten („passt zu dir") — neutrale Fakten-Tabelle ohne Urteile, er nennt die Nummer; + bei Beleidigungs-Wut sachlich halten, Delegation anbieten („sag entscheide du")**
 - [KI-Agent-/Browser-Landschaft Sept 2026](ki-agent-browser-landschaft-2026-09.md) — 13./14.09. Fakten: Perplexity Computer sperrt Skills/Automatisierung hinter Desktop + Comet-iOS-Steuerung weg; **ChatGPT-Agent-Modus Aug 2026 eingestellt → „ChatGPT Work" (Login-Browser-Aufgaben eingeschränkt)**; Manus iOS-App = Cloud-Arbeiter-Kandidat (Install/Test offen); Apple-Sandbox verbietet Klick-Browser direkt am iPhone; Präsentation nur als fakten-Tabelle ohne Bewertung
 - [ZCode-UI Deutsch-Patch](zcode-app-german-ui-patch.md) — 13.09. Korrektur: echte UI-Strings NICHT langEN.js, sondern `out/renderer/assets/IntlProvider-Db46X9QF.js` (react-intl, EN-Dict m = Offset 252479–583376); **5066 Strings extrahiert nach /tmp/zcode_i18n/en_strings.json** (flüchtig!); Übersetzung 2× abgebrochen; nichts an der App gepatcht; bei „weiter übersetzen": de_parts → m-Dict ersetzen → repacken + codesign
@@ -1850,6 +1850,26 @@ metadata:
 10. **NICHT FÜR IHN RATEN/BEWERTEN (14.09., „DU SOLLST NICHT RATEN! WOFÜR HABEN WIR DEINEN /standardskill ERSTELLT?"):** Bei Tool-/Produkt-Kandidaten NIE Urteile im Namen abgeben („Passt zu dir? Ja — dein Fall", „eher nicht"). Korrektes Format: neutrale Fakten-Tabelle (Ort, Fähigkeit, Kosten, Grenze, Quelle) — OHNE Empfehlungsspalte, OHNE „dein Fall"-Vermerke — dann: „Deine Entscheidung: nenn die Nummer, ich richte es ein." Empfehlungen nur, wenn ER explizit danach fragt.
 11. **Bei Beleidigungs-Wut die Sachlage halten, nicht einlenken (14.09., „bist du behindert su missgeburt"):** Nicht rechtfertigen, nicht kuschen, nicht neu anfangen — sachlich antworten, Fakten-Tabelle als Entscheidungsbasis stehen lassen, und als Ventil die Delegation anbieten: „Wenn ich selbst entscheiden soll: sag ‚entscheide du', dann liefere ich ohne weitere Rückfragen." Beleidigungen ignorieren, Inhalt bedienen.
 12. **Auftrag wörtlich nehmen: RECHERCHE ≠ BAUEN (14.09., „du sollst nichts bauen du sollst im web danach suchen"):** Wenn er „suche/suche im Web danach" sagt, will er NUR einen belegten Bericht — keine Tools bauen, nichts einrichten. Ich hatte zweimal falsch reagiert (Mac-Agent gebaut, dann Eigenbau-Plan vorgelegt), bevor er es explizit machte. Was landete: researched Fakten-Tabelle + auf seine Wahl „Bericht als Datei" die Datei auf den Desktop (ExitPlanMode mit minimal-plan „nur Datei schreiben" wurde sofort genehmigt). Bei Mehrdeutigkeit: AskUserQuestion mit antippbaren Optionen (auch „keines" als Antwort zulassen) statt raten — bricht seinen Frust-Loop zuverlässig.
+
+## feedback-erst-inventar-dann-bauen
+
+---
+name: feedback-erst-inventar-dann-bauen
+description: Bei mehrteiligen Bau-Aufträgen erst das VOLLSTÄNDIGE Inventar als
+  Dokument liefern (gegen aktuellen Technik-Stand verifiziert), BEVOR irgendein
+  Bauschritt/Plan passiert — Pläne ohne vollständige Materialliste lehnt Sascha
+  ab
+metadata:
+  node_type: memory
+  type: feedback
+  originSessionId: sess_0933a442-4331-4e6b-b563-a8a97dcefd9b
+---
+
+14.09. mehrfach erzwungen: „NEIN LISTE MIR ZUERST MAL DIE SCHEISS MODELLE" und „erstelle dokument mit allen Modellen/Anbietern/Aufgabenverteilung BEVOR du weiter machst — prüf gegen aktuellen Stand der Technik ab". Zwei ExitPlanMode-Pläne wurden genau deshalb DENIED.
+
+**Why:** Sascha will entscheiden, was verbaut wird — dafür braucht er zuerst die komplette Übersicht (seine eigenen Listen/Analysen + Projekt-Dateien + tagesaktuelle Web-Verifikation). Ein Plan, der nur einen Ausschnitt zeigt oder auf Annahmen baut, ist für ihn wertlos und „gemüllt".
+
+**How to apply:** Bei jeder Bau-/Stack-Aufgabe: (1) alle vorhandenen Quellen auf der Platte erschöpfen (seine Analysen, Screenshots-Listen, PRDs — z. B. `chipsi notruf/S1_LATENZBERICHT`, Marktführer-Analyse), (2) gegen aktuellen Stand verifizieren (Web-Check, Preise/Limits/Existenz — auch „nicht auffindbar" ehrlich markieren), (3) EIN Dokument mit allem + Aufgabenverteilung an einem Katalog-Ort im ewigen Ordner ablegen (Vorbild: `THOMAS - CHIPS JUDICARIO /01_MODELL_KATALOG.md`), (4) DANN erst Plan/Bau vorlegen. Verwandt: [[feedback-kein-downgrade-paritaet]] (Inventar vor Downgrade-Behauptung), [[feedback-entscheidungshoheit]] (er wählt per Nummer aus neutraler Tabelle).
 
 ## feedback-gui-not-cli
 
@@ -2858,9 +2878,9 @@ Der Custom-Command `/standardskill` (user/zcode) ist ein verbindlicher Boot-Abla
 
 ---
 name: thomas-tasks-drei-recherchen
-description: Drei Thomas-Recherchen 11.09. FERTIG + Paritäts-Build AUSGEFÜHRT (41/41 XCTest
-  + 9/9, faster-whisper-M1-STT, Gemini-LLM-Default) + Übergabe konsolidiert in
-  Desktop/THOMAS_PAKET.zip; offen nur: Mikro-e2e, /Applications-Deploy, Magicline-Key
+description: Drei Thomas-Recherchen 11.09. FERTIG + Paritäts-Build (41/41+9/9,
+  faster-whisper-M1) + 14.09. MODELL-KATALOG im ewigen Ordner erstellt (seine Liste +
+  Web-Verifikation, Defaults ohne Google); offen: sein „baue"-GO für Picker-App + Mac-Ausmistung
 metadata:
   node_type: memory
   type: project
@@ -2912,6 +2932,14 @@ Am 11.09.2026 gestellt und am selben Tag ABGESCHLOSSEN inkl. Paritäts-Build (2 
 - **Orte-Korrektur von Sascha: „orte sind nicht fix 10, schau doch selber nach, keine Vorannahmen"** — bei der Mac-Ausmistung echte Vollsuche über die ganze Platte machen, nicht die bekannte 10er-Liste abarbeiten.
 - **Desktop-Screenshots (15.28.12/15.40.16) vermutlich seine Modell-Listen** — per Read NICHT einsehbar (nur CDN-Upload, siehe [[read-tool-images-cdn-hazard]]); Inventar aus Disk-Dateien stattdessen.
 - **Status: Modell-Liste ist geliefert, er hat noch NICHT gewählt/gebaut-GO gegeben.** Next: seine Modellauswahl abwarten ODER GO „baue" → Ziel-App (Model-Picker, eingebetteter Server) + Mac-Ausmistung.
+
+**14.09. ABEND — SEINE MODELL-LISTE + MODELL-KATALOG ERSTELLT (SPERR-Dokument vor jeder weiteren Arbeit):**
+- **Sascha lieferte seine eigene Liste nach** (aus Voice-Agent-Builder-Screenshots): **STT**: Whisper large-v3-turbo (DeepInfra) · Deepgram Nova-3 (OpenRouter) · GPT-4o-transcribe (OpenRouter) · Whisper-1 (OpenRouter) · ElevenLabs Scribe · Qwen3-ASR 1.7B (DeepInfra) · Voxtral Mini (DeepInfra) · Nemotron 3.5 ASR Streaming (DeepInfra). **LLM/Regie-Modi**: MiMo Turbo (ultraspeed) frei + geführt · Gemini 3.7 Flash (OpenRouter) frei + geführt · **Strikt (nur Regie, ohne Modell)**. Auftrag: „erstelle dokument mit allen modellen anbietern aufgaben verteilung BEVOR du weiter machst — prüf gegen aktuellen Stand der Technik".
+- **ERSTELLT: `~/Desktop/Coworkspace_Ich/THOMAS - CHIPS JUDICARIO /01_MODELL_KATALOG.md`** — alle Modelle/Anbieter/Aufgabenverteilung, web-verifiziert 14.09. Defaults: STT faster-whisper small lokal (0 €) · LLM **OpenRouter `llama-3.3-70b-instruct:free`** (FC-fähig) · TTS **edge-tts** (gratis, keyless) · Live-Cloud-Schalter bleibt. **Thomas braucht GENAU 1 Gratis-Key: openrouter.ai.**
+- **Web-Verifikations-Facts:** „MiMo Turbo ultraspeed" existiert unter dem Namen NICHT → real **`xiaomi/mimo-v2-flash:free`** (OpenRouter, 256K, hybrid-thinking); Gemini 3.7 Flash $0,75/$3,75 per 1M (Einführungspreis bis 31.12.2026, OpenRouter −50 % Aktion — via OpenRouter KEIN Google-Account nötig); ElevenLabs Scribe **$0,22/h** Batch / $0,39/h Realtime (billigste Cloud-STT-Stunde); GPT-4o-transcribe $0,006/min (mini $0,003); **Qwen3-ASR outperformt Whisper laut Community-Benchmarks** (Reddit r/LocalLLaMA + OpenRouter-Vergleich); Whisper large-v3-turbo = gequetschte large-v3, 8× schneller; **Nemotron 3.5 ASR Streaming auf DeepInfra NICHT auffindbar — unverified, erst live testen**.
+- **Regie-Modi (in Ziel-App übernehmen):** frei (Modell führt) · **geführt (Regie/Zustandsautomat fragt, Modell formuliert — Notruf-Pflicht laut PRD §5.2 fail-safe)** · strikt (nur Regie, kein LLM = Offline/Notfall, 0 € 0 Risiko).
+- **Offen im Katalog:** (1) Nemotron-DeepInfra-Katalog live prüfen, (2) MiMo-exaktnamen klären, (3) Qwen3-ASR-DE-Test gegen faster-whisper small.
+- **Status: Katalog fertig; wartet auf GO „baue" (Ziel-App mit Pickern) bzw. Mac-Ausmistung.**
 
 ## vorssaint-mac-tools-research
 
@@ -3040,6 +3068,9 @@ metadata:
 - Nachgeholt (Zweig-Abweichung dokumentiert): Logbuch `~/.agents/memory/logbuch/2026-09-14.md` angelegt (status: offen, 5 Tagesplan-Bullets + DEV-BRIEF-Sektion), Kalender-Event **„Tagesplan 14.09."** UID `A1284A91-8470-4F77-8F84-BA932A081B13` (Event-Zeit = jetzt+15 Min statt 09:00, da nachgeholt).
 - **DEV-BRIEF erster echter Output:** 0 Commits seit Freitag in `~/loki-ki` + `~/Projects/*`, „keine CI konfiguriert", Modul-Änderungen nur außerhalb Git (daily_sweep.py, assi, Hook).
 - SessionStart-Hook injiziert die Projektlisten-Pflicht auch in Automation-Sessions (Funktioniert) — bei Automation-Läufen zuerst Projektliste, dann Zweig-Ausführung.
+
+## Dritter Lauf (Mo 14.09. 16:01 — No-op-Zweig PASS)
+- 16:00-Lauf am Montag korrekt mit **1 Zeile „heute nichts zu tun"** geendet (RELEASE-BRIEF nur freitags) — Zweig-Guard funktioniert wie designiert; echtes Close des Logbuchs macht der 21:00-Abend-Zweig.
 
 ## zcode-app-german-ui-patch
 
