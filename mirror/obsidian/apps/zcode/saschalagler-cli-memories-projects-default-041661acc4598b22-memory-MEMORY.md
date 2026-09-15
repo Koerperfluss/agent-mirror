@@ -7,7 +7,7 @@ tags: [spiegel, zcode]
 
 # Memory Index
 
-- [Google-Cloud-Billing-Fall 15.09.](gcloud-billing-fall-2026-09-15.md) — 3 Billing-Konten (koerperfluss@gmail.com); Support bestätigt: **015D43=1,03 € verursacht Gemini-API-Sperre, 0154CD=4,05 €, 016C8A=0 €** (Gesamt ~5,08 €); Browser-Operation läuft — E-Mail vorgefüllt, wartet auf Saschas Passwort+2FA („fertig"), Zahlung nur nach GO, danach API-Status + 867-€-Credit prüfen
+- [Google-Cloud-Billing-Fall 15.09.](gcloud-billing-fall-2026-09-15.md) — Fall NEU untersucht, Konsole widerlegt Support: **015D43 (Firma, 15 Projekte) = 24,08 € überfällig (August) → Gemini-API-Sperre**; 0154CD gesund (Karte 4280, 3 Projekte), 016C8A leer/0 €; Chaos erklärt (Firma+2 Privat-Artefakte, KoerperflussWebfrontendkooper nachweislich verschoben, Keys ändern Limits via Projekt-Bindung); Aufräum-Plan auf GO: 24,08 € zahlen → 3 Projekte konsolidieren → 016C8A schließen; Report+5 Screenshots auf Desktop
 
 - [Subagent-Dispatch: implementer-Workaround](subagent-dispatch-implementer-workaround.md) — „No reasoning level selected" trifft NUR Explore/general-purpose (GLM-5.3-Flash ohne Denkstufe) — subagent_type `implementer` FUNKTIONIERT (auch für read-only Aufträge); Dauer-Fix nur per ZCode-App-Settings (Modell→Denkstufe)
 
