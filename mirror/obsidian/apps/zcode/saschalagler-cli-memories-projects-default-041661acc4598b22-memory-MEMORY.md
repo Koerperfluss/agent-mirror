@@ -7,7 +7,7 @@ tags: [spiegel, zcode]
 
 # Memory Index
 
-- [Google-Cloud-Billing-Fall 15.09.](gcloud-billing-fall-2026-09-15.md) — Fall NEU untersucht, Konsole widerlegt Support: **015D43 (Firma, 15 Projekte) = 24,08 € überfällig (August) → Gemini-API-Sperre**; 0154CD gesund (Karte 4280, 3 Projekte), 016C8A leer/0 €; Chaos erklärt (Firma+2 Privat-Artefakte, KoerperflussWebfrontendkooper nachweislich verschoben, Keys ändern Limits via Projekt-Bindung); Aufräum-Plan auf GO: 24,08 € zahlen → 3 Projekte konsolidieren → 016C8A schließen; Report+5 Screenshots auf Desktop
+- [Google-Cloud-Billing-Fall 15.09.](gcloud-billing-fall-2026-09-15.md) — Fall NEU untersucht, Konsole widerlegt Support: **015D43 (Firma, 15 Projekte) = 24,08 € überfällig (August) → Gemini-API-Sperre**; 0154CD gesund (Karte 4280, 3 Projekte), 016C8A leer/0 €; **16.09. Reviewer-Revision PASS (Abschnitt 10) + Bank-Beweis (Abschnitt 9b): ALLE Google-Buchungen Juni–Aug gelistet, KEINE 36-€-Zahlung — plausibelste Erklärungen 32,66 € Workspace / 35,91 € PayPal-Summe / abgelehnter Versuch; September nur via George-App prüfbar**; wartet auf Karten-Deckung → Zahlung auf GO; Report auf Desktop
 
 - [Subagent-Dispatch: implementer-Workaround](subagent-dispatch-implementer-workaround.md) — **15./16.09. GELÖST + LIVE BEWIESEN**: „No reasoning level selected" saß in ~/.zcode/v2/agents-state.json (alter Override ohne Denkstufe); Fix = Explore/general-purpose explizit auf GLM-5.3-Flash + reasoningLevel „low", Reparatur-Skript `~/.zcode/fix-subagents.sh`; Test-Dispatch lief durch
 

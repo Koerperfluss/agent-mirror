@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-15 21:00 UTC
+Zuletzt gespiegelt: 2026-09-15 21:11 UTC
 
 ## AGENTS
 
@@ -1388,7 +1388,7 @@ Bei Fachfragen (z. B. Trainings-Übungen) fordert er explizit „clinical reason
 
 # Memory Index
 
-- [Google-Cloud-Billing-Fall 15.09.](gcloud-billing-fall-2026-09-15.md) — Fall NEU untersucht, Konsole widerlegt Support: **015D43 (Firma, 15 Projekte) = 24,08 € überfällig (August) → Gemini-API-Sperre**; 0154CD gesund (Karte 4280, 3 Projekte), 016C8A leer/0 €; Chaos erklärt (Firma+2 Privat-Artefakte, KoerperflussWebfrontendkooper nachweislich verschoben, Keys ändern Limits via Projekt-Bindung); Aufräum-Plan auf GO: 24,08 € zahlen → 3 Projekte konsolidieren → 016C8A schließen; Report+5 Screenshots auf Desktop
+- [Google-Cloud-Billing-Fall 15.09.](gcloud-billing-fall-2026-09-15.md) — Fall NEU untersucht, Konsole widerlegt Support: **015D43 (Firma, 15 Projekte) = 24,08 € überfällig (August) → Gemini-API-Sperre**; 0154CD gesund (Karte 4280, 3 Projekte), 016C8A leer/0 €; **16.09. Reviewer-Revision PASS (Abschnitt 10) + Bank-Beweis (Abschnitt 9b): ALLE Google-Buchungen Juni–Aug gelistet, KEINE 36-€-Zahlung — plausibelste Erklärungen 32,66 € Workspace / 35,91 € PayPal-Summe / abgelehnter Versuch; September nur via George-App prüfbar**; wartet auf Karten-Deckung → Zahlung auf GO; Report auf Desktop
 
 - [Subagent-Dispatch: implementer-Workaround](subagent-dispatch-implementer-workaround.md) — **15./16.09. GELÖST + LIVE BEWIESEN**: „No reasoning level selected" saß in ~/.zcode/v2/agents-state.json (alter Override ohne Denkstufe); Fix = Explore/general-purpose explizit auf GLM-5.3-Flash + reasoningLevel „low", Reparatur-Skript `~/.zcode/fix-subagents.sh`; Test-Dispatch lief durch
 
@@ -1763,6 +1763,25 @@ Im Atlas-Master-Prompt (08.09.) wollte ich zuerst Deploy + iPhone-Neuübertragun
 
 **Why:** Ein Deploy der Zwischenversion ist verschwendete Arbeit, wenn der Aufbau sie gleich ersetzt. „Fertig/live stellen" hat nur am Ende auf der finalen Version Wert.
 **How to apply:** Bei mehrstufigen Plänen mit anstehendem Umbau: (1) vorab nur Daten sichern/committen (Rollback-Basis, kein Deploy), (2) Aufbau-Tickets zuerst (wayfinder-Map), (3) EIN Deploy + Geräte-Übertragung am Ende nach Abnahme-GO. Verwandt: [[feedback-one-action-not-tables]] [[loki-dev-gate-enforcement]] — Kontext [[atlas-stand-2026-09-08]].
+
+## feedback-belege-am-mac-suchen
+
+---
+name: feedback-belege-am-mac-suchen
+description: Belege/Dokumente (Kontoauszüge, Rechnungen, PDFs) ERST auf dem Mac
+  suchen (Desktop/Downloads/projektordner), bevor man Sascha auffordert sie zu
+  liefern — 16.09. eingemahnt („schau doch sind doch am mac")
+metadata:
+  node_type: memory
+  type: feedback
+  originSessionId: sess_89889126-6bec-4e4b-b8ec-d30614619344
+---
+
+16.09.: Ich forderte Sascha auf, den Bank-Auszug September beizubringen („das kann nur er liefern"). Seine Antwort: **„schau doch sind doch e am mac"** — die Sparkasse-Auszüge lagen tatsächlich in `~/Desktop/Sozialhilfeneu/` und lösten die offene 36-€-Frage fast vollständig.
+
+**Why:** Sascha hortet seine Belege auf dem Mac (Desktop-Ordnerstruktur, oft in Kontext-Ordnern wie Sozialhilfeneu/, rechnungen/). Der Mac ist die erste Beweisquelle — der Nutzer ist die letzte.
+
+**How to apply:** Bevor eine Aussage endet mit „das kann nur der Nutzer liefern": ① mdfind/find nach Dateinamen-Stichworten (Kontoauszug, Rechnung, Beleg, IBAN-Pattern), ② typische Ordner prüfen (Desktop ± 3 Ebenen, Downloads, ~/Documents), ③ PDFs per pdftotext -layout + grep auswerten. Erst wenn wirklich nichts auf der Platte liegt, den Nutzer bitten. Verwandt: [[feedback-one-action-not-tables]], [[gcloud-billing-fall-2026-09-15]].
 
 ## feedback-doc-design-matters
 
@@ -2140,10 +2159,9 @@ Projekt (2026-08-26): Alte Familienfotos für Opas Geburtstagsfeier A4-druckfert
 
 ---
 name: gcloud-billing-fall-2026-09-15
-description: 15./16.09. Google-Cloud-Billing-Fall — Support-Zahl „5 €"
-  war FALSCH; Konsole beweist 24,08 € überfällig (August-Auszug) auf 015D43
-  (=Gemini-API-Sperre, 15 Projekte); Reviewer-Revision bestanden (Abschnitt 10),
-  7 Screenshots; wartet auf Karten-Deckung von Sascha, dann Zahlung auf GO
+description: 15./16.09. Google-Cloud-Billing-Fall — 24,08 € überfällig auf 015D43
+  (=Gemini-API-Sperre, 15 Projekte); Reviewer-Revision bestanden; 36-€-Frage GELÖST
+  (37,20 € Workspace-Abo 03.09., nicht Cloud); wartet auf Karten-Deckung, dann Zahlung auf GO
 metadata:
   node_type: memory
   type: project
@@ -2193,7 +2211,13 @@ Gesamt offen ≈ **5,08 €**. Google verlangt bei manueller Zahlung oft Mindest
 
 **Prüfinstanz-Revision (16.09. — Reviewer-Agent lief, erster Beweis dass der Subagent-Fix wirkt):** Unabhängiger Reviewer (subagent_type reviewer, 51 s, „PASS mit Auflagen") prüfte den Report advers. Alle 6 Auflagen sofort im Report **Abschnitt 10** umgesetzt: ① 25,12 € = Konsole-Anzeige (Posten-Summe 25,11 € — 1 Cent Rundungsdifferenz, beide Zahlen benannt). ② Christians „5 €" = Summe 1,03+4,05+0 ≈ 5,08 € (fehlte der August-Auszug). ③ Karte-1879-Ablehnung belegt (Screenshot „Transaktion abgelehnt" beider Karten + pay.google-Warnbanner nennt 1879). ④ Alte Fehldeutung „25,12 € Guthaben" jetzt transparent im Report dokumentiert. ⑤ Alle 7 Beweis-Screenshots gelistet. ⑥ Quelle für KoerperflussWebfrontendkooper-Verschiebung = Saschas Support-Transkript. **Offen nur noch:** Bank-Auszug September (36-€-Frage) + Karten-Deckung (dann Zahlung auf GO). Reviewer-Caveat: er konnte PNGs in seiner Umgebung nicht als Bilder lesen (Text-Konsistenz-Prüfung only) — visuelle Zweitprüfung = Sascha.
 
-**Lessons:** ① Geld bewegen = immer Stopp-Punkt mit explizitem GO, auch bei „erledige alles". ② Konsolen-Links nie in die Google-Suche tippen lassen (passiert ihm leicht) — direkt öffnen oder anklickbaren Link geben. ③ Sein eigenes Gemini-Gem „Allrounderomni v2" begleitet den Fall parallel mit denselben Fakten — Zahlen mit ihm abgleichen statt konkurrierend zu analysieren. ④ **„Kontostand" auf Google-Billing-Zahlungsseiten = SCHULDEN, nicht Guthaben** (ich habe das falsch gelesen, „25,12 € Guthaben" behauptet und musste scharf korrigiert werden — erst Transaktionen/Rechnungsliste gegenlesen bevor man Geld-Fakten behauptet). ⑤ Support-Agent-Angaben (christian) nie als Wahrheit übernehmen, wenn die Konsole sie widerlegt — Konsole + Screenshots sind die Beweisquelle. ⑥ Playwright-MCP: Eingeloggte Sitzung hält über mehrere Turns; Zahlen auf iframes per browser_find/snapshot-refs lesen, nicht per evaluate (cross-origin).
+**Bank-Beweis (16.09., Report Abschnitt 9b — Sascha: „schau doch sind doch am Mac"):** Echte Sparkasse-Auszüge lagen in `~/Desktop/Sozialhilfeneu/`: `kontoauszüge01.06-17.08.pdf` + `AT352025601001229317_2026016.pdf` (Auszug Nr. 016/2026 = 18.08.–31.08., Schluss-Saldo 35,27 €). **ALLE Google-Buchungen Juni–August:** 24,92 € PayPal-Google (04.06.), 1,99 € PayPal (16.06.), **10,66 € GOOGLE CLOUD 9TFZ7N Dublin Karte K2 (08.07. = Manuellzahlung 015D43 ✅)**, **19,32 € GOOGLE CLOUD WDR4X5 (16.07. = 0154CD ✅)**, **32,66 € GOOGLE WORKSPACE_KOERP (01.08.)**, 10,99 € PayPal-Google One (21.08.). **KEINE ~36-€-Zahlung an Google in allen Auszügen.** Plausibelste Erklärungen: ① 32,66 € Workspace (01.08., größte kürzliche Google-Belastung), ② 24,92+10,99=35,91 €, ③ abgelehnter September-Zahlversuch — abgelehnte Abbuchungen erscheinen NIE im Kontoauszug (passt zu „Verfügungsrahmen ausgereizt"). **Lücke:** 1.–15.09. per PDF nicht prüfbar (Auszug 017 kommt erst Ende September) — Live-Check nur Sascha in George-App → Umsätze → „GOOGLE".
+
+**36-€-Frage GELÖST (16.09., Report Abschnitt 9c):** Sascha lieferte den George-Einzelbeleg `~/Desktop/Transaktion_E33B0C22AE9680F8.pdf`: **37,20 € — GOOGLE WORKSPACE_KOERP Dublin, Kartenzahlung (E-COMM, Karte K2) am 03.09.2026 12:40, Valuta 04.09., Status „gebucht"**, Referenz 202562609042ALB-006103AHR7ZC (PDF war bildbasiert → pdftoppm-Render + Vision-Ablesen, pdftotext lieferte leer). Seine Erinnerung war also ECHT (37,20 ≈ 36) — aber das Geld floss ans **Workspace-Abo**, NICHT an Google Cloud. Google führt Workspace/Cloud/One in getrennten Abrechnungssäulen: Workspace-Zahlung tilgt KEINE Cloud-Schuld. Die 24,08 € auf 015D43 bleiben offen; Workspace-Abo bucht weiter monatlich (zuletzt 32,66 € am 01.08., jetzt 37,20 € am 03.09. — Preis offenbar gestiegen).
+
+**Offene Posten-Stand (16.09., Sascha fragte „andere Aufgaben?"):** Alles von Agent-Seite fertig; wartet NUR noch auf Sascha: ① Karten-Deckung + GO für die 24,08-€-Zahlung auf 015D43 (+ danach API-Reaktivierung prüfen), ② GO für Google-Konsolidierung (Projekte umziehen, 016C8A schließen, AI-Studio-Projekt fixieren), ③ GO für Open-WebUI-Autostart (LaunchAgent + Tailscale-Festadresse).
+
+**Lessons:** ① Geld bewegen = immer Stopp-Punkt mit explizitem GO, auch bei „erledige alles". ② Konsolen-Links nie in die Google-Suche tippen lassen (passiert ihm leicht) — direkt öffnen oder anklickbaren Link geben. ③ Sein eigenes Gemini-Gem „Allrounderomni v2" begleitet den Fall parallel mit denselben Fakten — Zahlen mit ihm abgleichen statt konkurrierend zu analysieren. ④ **„Kontostand" auf Google-Billing-Zahlungsseiten = SCHULDEN, nicht Guthaben** (ich habe das falsch gelesen, „25,12 € Guthaben" behauptet und musste scharf korrigiert werden — erst Transaktionen/Rechnungsliste gegenlesen bevor man Geld-Fakten behauptet). ⑤ Support-Agent-Angaben (christian) nie als Wahrheit übernehmen, wenn die Konsole sie widerlegt — Konsole + Screenshots sind die Beweisquelle. ⑥ Playwright-MCP: Eingeloggte Sitzung hält über mehrere Turns; Zahlen auf iframes per browser_find/snapshot-refs lesen, nicht per evaluate (cross-origin). ⑦ Belege liegen meist schon auf dem Mac (Desktop/Downloads) — erst Mac durchsuchen, bevor man den Nutzer nach Dokumenten fragt (16.09. eingemahnt).
 
 ## google-cloud-genai-credit
 
