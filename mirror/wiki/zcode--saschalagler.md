@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-15 21:11 UTC
+Zuletzt gespiegelt: 2026-09-15 21:22 UTC
 
 ## AGENTS
 
@@ -95617,28 +95617,16 @@ Danach führe ich aus:
 **Verifikation:** ls/diff-Checks nach B, Frontmatter-Validierung, 1 Live-Testchat in AutoClaw nach A2/A3 — erst dann „fertig". Backups vor jedem Schreibvorgang; einzige Löschung = B1 (explizit im Plan, GO = Plan-Freigabe).
 ## plan-sess_89889126-6bec-4e4b-b8ec-d30614619344
 
-# PLAN: Google-Billing-Fall über Browser abschließen
+# Google-Chaos aufräumen — 5 Schritte
 
-## Ziel
-Die 3 Billing-Konten in der echten Konsole verifizieren, die offenen ~5,08 € klären (015D43 = 1,03 € → Ursache der Gemini-API-Sperre; 0154CD = 4,05 €), Zahlung ausführen und die Reaktivierung der Gemini-API prüfen.
+1. **Inventur** (nur lesen): Alle Projekte + API-Keys + „zuletzt verwendet"-Datum aus der Konsole holen → Tabelle AKTIV/TOT
+2. **3 Privat-Projekte** (forerclautad2026, loki-ki, KoerperflussWebfrontendkooper) → auf Firmen-Konto **015D43** umziehen (umkehrbar; Deploy bleibt gleich)
+3. **Key-Müll**: tote Keys + leere Auto-Projekte als **Löschliste** zeigen → du sagst GO → ich lösche
+4. **Leerkonto 016C8A schließen** (dein GO liegt vor) → danach nur noch 2 Konten
+5. **Prüfung**: Reviewer-Agent prüft alles → Bericht + **KEY-MAP.md** auf Desktop (welcher Key gehört zu welchem Projekt)
 
-## Schritte
-| # | Schritt | Wer | Stopp? |
-|---|---|---|---|
-| 1 | Sichtbaren Browser öffnen → `console.cloud.google.com/billing` | ich | — |
-| 2 | **Login: koerperfluss@gmail.com + Passwort + 2FA** | **DU** (ich warte auf „fertig") | ✅ |
-| 3 | Alle 3 Konten nacheinander öffnen: Saldo, Rechnungen, verknüpfte Projekte — Screenshots als Beweis | ich | — |
-| 4 | **Zahlung** (Google verlangt meist Mindest-10 €; Überhang = Guthaben) — erst nach deinem ausdrücklichen **GO**, für welches Konto und welchen Betrag | ich klicke, DU entscheidest | ✅ |
-| 5 | Gemini-API-Status prüfen (Suspended Service Tier weg?) + dein 867-€-GenAI-Guthaben (Konto 015D43, bis 04/2027) kontrollieren | ich | — |
-| 6 | Kurzer Abschlussbericht mit allen Beweisen; falls API nicht sofort frei: Prüfzeitpunkt in ein paar Stunden | ich | — |
-
-## Regeln
-- Nie CAPTCHA/2FA umgehen, nichts löschen, keine Projekte ändern.
-- Zahlungsklick = nur mit deinem GO. Die Karten-Ablehnungen (Deckung) betreffen DICH an der Bank — falls die Karte wieder abgelehnt wird, melden statt wiederholen.
-- Reaktivierung der API kann nach Zahlung Stunden dauern — das ist normal.
-
-## Werkzeug
-Playwright-Browser (sichtbar am Mac) über MCP-Steuerung; Screenshots via Terminal in einen Beweis-Ordner.
+**Regeln:** Bezahlen diesmal NICHT (API-Sperre bleibt bis Zahlung, egal). Löschen nur mit deinem GO. Workspace + 867 € unangetastet.
+**Dauer: ~40 Min.** Team: ich (Browser) + Inventur-Agent + Reviewer.
 
 ## plan-sess_a8584745-c71a-4be7-abfa-69705dde9546
 
