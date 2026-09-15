@@ -1,15 +1,16 @@
 ---
 name: subagent-dispatch-implementer-workaround
-description: GELÖST 15.09.2026 — Subagent-Fehler "No reasoning level selected" hatte
-  seine Wurzel in ~/.zcode/v2/agents-state.json (Alter Fix-Override auf
-  zai-start-plan OHNE Denkstufe); Overrides geleert, greift nach App-Neustart
+description: GELÖST + LIVE BEWIESEN 16.09. — „No reasoning level selected" saß in
+  ~/.zcode/v2/agents-state.json; Fix = Explore/general-purpose explizit auf
+  GLM-5.3-Flash + reasoningLevel "low" + Reparatur-Skript
+  ~/.zcode/fix-subagents.sh; Test-Dispatch lief durch
 metadata:
   node_type: memory
   type: reference
   originSessionId: sess_0933a442-4331-4e6b-b563-a8a97dcefd9b
 ---
 
-**GELÖST am 15.09.2026 (Session sess_89889126):** Root Cause des Fehlers `Cannot start subagent: No reasoning level selected [reason=reasoning-level-missing; selection=account:zai-start-plan/GLM-5.3-Flash]` war NICHT der Plan-Account, sondern ein **alter Override in `~/.zcode/v2/agents-state.json`**:
+**✅ GELÖST + LIVE BEWIESEN 16.09.:** Test-Dispatch `general-purpose` lief durch („SUBAGENT OK", agent_0ab62252). Fix = in `~/.zcode/v2/agents-state.json` beide Built-ins EXPLIZIT gesetzt: `account:zai-individual-coding-plan/GLM-5.3-Flash` **mit `options.reasoningLevel:"low"`** (Backups `.bak-fix-20260915`/`.bak2-20260915`; Reparatur-Skript `~/.zcode/fix-subagents.sh`). Plugin-Agents erben (implementer lief immer). Historische Ursache: alter App-Override ohne Denkstufe → `L8()`-Pflichtprüfung schlug fehl.
 
 ```json
 "builtInModelSelectionOverrides": {

@@ -50,14 +50,18 @@ python scraper_vwgh.py --dry-run            # kein Schreiben
 - [Körperfluss App](koerperfluss-app.md) — kanonisch `~/Desktop/Koerperfluss-3D-Upgrade` (GitHub 3d.-UPGRADE-); Deploy IMMER `--project gen-lang-client-0285074833` (firebase use=barbulls!); /showcase live; 3 redundante Kopien
 - [BAR BULLS Firebase](bar-bulls-firebase.md) — barbulls-app=Shop-Host, gen-lang=Antigravity Hub (nie verwechseln); Rollback-Technik + Unfall-Schutz
 - [Barbulls GoPro Labs](barbulls-gopro-labs.md) — HERO11 Outdoor-Sportcasts; Dateien in `~/Desktop/TO DO /GORPO/`; geprüftes Allround-Setting + Token-Fallstricke (Shutter via ISO-Token, kein GP-Log, BITR≤120)
-- [GCP Billing](gcp-billing.md) — 015D43=einziges aktives Konto (867€ bis 04/2027); barbulls-app+nervenav wurden entkoppelt (re-link nötig!); lokales gcloud resettet → auth login nötig
+- [GCP Billing](gcp-billing.md) — 15.09. NEU: 015D43(FlexCo)=24,08€ überfällig→Gemini-API-Sperre; Karten 1879/9784 abgelehnt(Verfügungsrahmen); 0154CD gesund(Karte 4280); 016C8A leer(0 Projekte); 867€-Credit NUR GenAI-App-Builder; Beweise: ~/Desktop/GOOGLE_BILLING_NEUNTERSUCHUNG_2026-09-15.md
 - [Gemini Chrome + Mac](gemini-chrome-mac.md) — Nano-KI-Features gehen; volles "Frag Gemini"-Panel + Spark in AT serverseitig gesperrt; #glic-*-override/-guest-url/-disable-safety-checks = Müll aus Fake-Bericht; variations_country-Hebel nur mit US-VPN persistent
 - [ATLAS Cali Coach](atlas-cali-coach.md) — kanonisch (KORRIGIERT 05.09., mdfind-beweisen): `~/Desktop/Coworkspace_Ich/atlas + pliability /Atlas Cali Plan`; Desktop-Alt-Pfad TOT; Zweitkopie `~/cali-coach-atlas-final` (Referenz/Lieferant)
 - [Legal Ops Advisor](legal-ops-advisor.md) — EINE App: online (Gemini/Demo, datenfrei) + offline (Ollama QAT/privat); BACKEND_MODE-Schalter; ZTeam-Persona-Merging=„Multi-Agent"; gewonnene Fälle + Erfolgs-Muster; ~14-23GB Modell-Aufräumen offen
 
 - [Toolchain Provider-SPOF](toolchain-provider-spof.md) — 30.08.2026 fielen Claude Code/Cline/ZCode zusammen aus: alle auf Z.ai-Kontingent + npm-Mirror blockierte Cline-CLI; Diagnose-Fallen (npm view via Mirror, nested node_modules, Logs statt Dateien)
 
-- [Judicario + Chipsi (openlaw)](judicario-chipsi.md) — Chipsi=Cloud-Webapp via Chrome-Shortcut; Judicario-Gateway-Key rotiert (06.09.): jud_Cpu-… aktiv, Connectoren gefixt; Support George@openlaw.cc
+- [Judicario + Chipsi (openlaw)](judicario-chipsi.md) — Chipsi=Cloud-Webapp via Chrome-Shortcut; Judicario-Gateway-Key rotiert (06.09.): jud_Cpu-… aktiv, Connectoren gefixt; Support George@openlaw.cc; ZCode-Aktivität bis 11.09. (Paseo-Orchestrator-Recherche)
+- [Vinyl-Scanner](vinyl-scanner.md) — 14 ZCode-Sessions bis 12.09. (Nespresso-Gebrauchtpreise); Kanonisch `~/Desktop/Coworkspace_Ich/private Porjekte/vinyl-scanner`
+- [SBP Patrick-Doc](sbp-patrick-doc.md) — 3 ZCode-Sessions bis 07.09.; Patrick: volle SBP + FH-Aufnahmeverfahren (§ 64a UG); A4-PDF-Pipeline lief in `~/.zcode/workspace/default/sbp-doc`
+- [Antigravity Physio-Assistent](antigravity-physio-assistent-claude.md) — läuft in Antigravity; Adelina+Simon Sitzungs-PDFs 12.09.; Start-Prompt `~/Desktop/ANTIGRAVITY_PHYSIO_START_PROMPT.md`; Daten `~/Desktop/Körperfluss/Patientenliste/`
+- [iOS/WebDev-Stack 2026](ios-webdev-stack-2026.md) — 13.–15.09.: Open-WebUI-Agent am Mac (Port 8080, 1532 Modelle via OmniRoute-Key, /recherche, iPhone: http://<mac-ip>:8080); Dev-IDE-Sieger=Antigravity (Live-Vorschau+Goal-System); Berichte auf ~/Desktop (IOS27_WEBAPP_TEST…, KI_ANTWORTEN…, GOOGLE_BILLING…)
 
 ## Skill-Routing
 - [Skill-Routing-Memory](skill-routing.md) — erlernte Task→Skill-Zuordnungen; Kanonisch: ~/.agents/skill-routing.md

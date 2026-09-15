@@ -2,7 +2,7 @@
 
 - [Google-Cloud-Billing-Fall 15.09.](gcloud-billing-fall-2026-09-15.md) — Fall NEU untersucht, Konsole widerlegt Support: **015D43 (Firma, 15 Projekte) = 24,08 € überfällig (August) → Gemini-API-Sperre**; 0154CD gesund (Karte 4280, 3 Projekte), 016C8A leer/0 €; Chaos erklärt (Firma+2 Privat-Artefakte, KoerperflussWebfrontendkooper nachweislich verschoben, Keys ändern Limits via Projekt-Bindung); Aufräum-Plan auf GO: 24,08 € zahlen → 3 Projekte konsolidieren → 016C8A schließen; Report+5 Screenshots auf Desktop
 
-- [Subagent-Dispatch: implementer-Workaround](subagent-dispatch-implementer-workaround.md) — „No reasoning level selected" trifft NUR Explore/general-purpose (GLM-5.3-Flash ohne Denkstufe) — subagent_type `implementer` FUNKTIONIERT (auch für read-only Aufträge); Dauer-Fix nur per ZCode-App-Settings (Modell→Denkstufe)
+- [Subagent-Dispatch: implementer-Workaround](subagent-dispatch-implementer-workaround.md) — **15./16.09. GELÖST + LIVE BEWIESEN**: „No reasoning level selected" saß in ~/.zcode/v2/agents-state.json (alter Override ohne Denkstufe); Fix = Explore/general-purpose explizit auf GLM-5.3-Flash + reasoningLevel „low", Reparatur-Skript `~/.zcode/fix-subagents.sh`; Test-Dispatch lief durch
 
 - [Loki-Browser-Agent (Eigenbau-Comet-Ersatz)](loki-browser-agent-comet-ersatz.md) — 14.09. **VERWORFEN/PAUSIERT**: Sascha lehnte alle 4 Fertig-Kandidaten ab („keines"), Anforderung „alles wie Comet: skills, settings, auto tools" dokumentiert; nach Plan-Vorlage Wut „du sollst nichts bauen, du sollst im web danach suchen" → er wollte RECHERCHE, kein Bauen; Plan (Playwright+OmniRoute+iPhone-Panel, S1–S5) bleibt dokumentiert für späteres GO
 
