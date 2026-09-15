@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-15 22:09 UTC
+Zuletzt gespiegelt: 2026-09-15 22:19 UTC
 
 ## AGENTS
 
@@ -1388,7 +1388,9 @@ Bei Fachfragen (z. B. Trainings-Übungen) fordert er explizit „clinical reason
 
 # Memory Index
 
-- [Google-Cloud-Billing-Fall 15.09.](gcloud-billing-fall-2026-09-15.md) — Fall NEU untersucht, Konsole widerlegt Support: **015D43 (Firma, 15 Projekte) = 24,08 € überfällig (August) → Gemini-API-Sperre**; 0154CD gesund (Karte 4280, 3 Projekte), 016C8A leer/0 €; **16.09. Reviewer-Revision PASS (Abschnitt 10) + Bank-Beweis (Abschnitt 9b): ALLE Google-Buchungen Juni–Aug gelistet, KEINE 36-€-Zahlung — plausibelste Erklärungen 32,66 € Workspace / 35,91 € PayPal-Summe / abgelehnter Versuch; September nur via George-App prüfbar**; wartet auf Karten-Deckung → Zahlung auf GO; Report auf Desktop
+- [Google-Cloud-Billing-Fall 15.09.](gcloud-billing-fall-2026-09-15.md) — 16.09. Aufräum-Lauf: **es sind 5 Konten** (+2 Google-verwaltete Trial-Konten), 25 Projekte, 24 Keys → **KEY-MAP `~/Desktop/GOOGLE_PROJEKT_KEY_MAP_2026-09-16.md`**; 4 Projekte ganz entkoppelt (atlas/barbulls/loki-voice/nervenav = seine „nur 3–5 Projekte"-Phase); **016C8A bereits GESCHLOSSEN**; **Projekt-Umzug von Google BLOCKIERT bis 24,08 € bezahlt** („kein aktives Konto") — Zahlung = der einzige Hebel, wartet auf Karten-Deckung + GO; 36-€-Frage gelöst (37,20 € Workspace 03.09.); KoerperflussWebfrontend hat 9 Keys inkl. Duplikat; **„Sperre ist STUMM"**: Alltag lief auf gesundem 0154CD + bezahltem Workspace + Free-Tiers — deshalb spürte er nie eine Meldung, nur das Projekt-Chaos
+
+- [Projektlisten-Hook + Chat-Store-Landkarte](projectlisten-hook-projects-py.md) — Hook-Liste kommt aus `~/.claude/projects/-Users-saschalagler/memory/MEMORY.md` („## Weitere Projekte", geparst von `~/.claude/tools/projects.py`); 16.09. aktualisiert (GCP neu + Vinyl-Scanner/SBP-Patrick/Antigravity-Physio/iOS-WebDev-Stack); Chat-Stats: ZCode 344 Sessions (db.sqlite), 259 Cline- + 105 Claude-Importe, Antigravity-Store in state.vscdb; ⚠️ Mimosa-Hook blockiert Bash-Dateischreibungen → immer Edit/Write-Tool
 
 - [Subagent-Dispatch: implementer-Workaround](subagent-dispatch-implementer-workaround.md) — **15./16.09. GELÖST + LIVE BEWIESEN**: „No reasoning level selected" saß in ~/.zcode/v2/agents-state.json (alter Override ohne Denkstufe); Fix = Explore/general-purpose explizit auf GLM-5.3-Flash + reasoningLevel „low", Reparatur-Skript `~/.zcode/fix-subagents.sh`; Test-Dispatch lief durch
 
@@ -2064,6 +2066,25 @@ Am 25.08.2026 (Schlussphase der Mac-Sanierung) reagierte Sascha frustriert („w
 30. „Mach alles was zu tun ist" = ALLE offenen Tickets in EINEM Rutsch ausführen (Wellen/Team), ohne Abschluss-Menü — Ergebnis am Ende als Beweis-Tabelle, keine Zwischen-Wahlmöglichkeiten.
 31. „WO IST DAS TEAM?" = er will sichtbare Agenten-Orchestrierung: Team-Tabelle im Chat (Agent|Task|Status) führen, Agenten parallel starten — der 3er-Cap aus STANDARD-SKILLS ist secondary (Cap war 13.09. auf seinen Befehl entfernt); Dispatch-Workaround siehe [[subagent-dispatch-implementer-workaround]].
 
+## feedback-plaene-adhd-kurzformat
+
+---
+name: feedback-plaene-adhd-kurzformat
+description: ExitPlanMode-Pläne MÜSSEN ADHD-Kurzformat haben — 16.09. lehnte
+  Sascha 2 ausführliche Detailpläne ab, rief /ihaveadhd auf, die
+  15-Zeilen-Version war sofort genehmigt
+metadata:
+  node_type: memory
+  type: feedback
+  originSessionId: sess_89889126-6bec-4e4b-b8ec-d30614619344
+---
+
+16.09. Google-Aufräum-Plan: Zwei ausführliche ExitPlanMode-Pläne (mit Stufen-Tabellen, exakten Konsolen-Pfaden, Rollback-Szenarien, Team-Zuordnung) lehnte Sascha nacheinander ab; danach rief er **/ihaveadhd** auf. Die dritte Version — **15 Zeilen: 5 nummerierte Schritte, 1 Regeln-Block, 1 Zeitzeile** — wurde sofort genehmigt.
+
+**Why:** Detailtiefe ist für ihn keine Qualität, sondern Barriere (ADHS). Details gehören in die Ausführung (dort prüfe ich selbst nach), nicht in den Genehmigungs-Plan.
+
+**How to apply:** ExitPlanMode-Plan = max. ~15 Zeilen: Ziel 1 Satz, nummerierte Schritte je 1 Zeile, Regeln/Limits 2–3 Zeilen, Dauer 1 Zeile. Detail-Fakten (Pfade, Klickwege, Rollbacks) im Chat-Verlauf behalten und während der Ausführung nutzen. Verwandt: [[feedback-einfache-antworten]], [[feedback-one-action-not-tables]].
+
 ## feedback-pruefinstanz-pflicht
 
 ---
@@ -2159,9 +2180,7 @@ Projekt (2026-08-26): Alte Familienfotos für Opas Geburtstagsfeier A4-druckfert
 
 ---
 name: gcloud-billing-fall-2026-09-15
-description: 15./16.09. Google-Cloud-Billing-Fall — 24,08 € überfällig auf 015D43
-  (=Gemini-API-Sperre, 15 Projekte); Reviewer-Revision bestanden; 36-€-Frage GELÖST
-  (37,20 € Workspace-Abo 03.09., nicht Cloud); wartet auf Karten-Deckung, dann Zahlung auf GO
+description: 15./16.09. Google-Cloud-Fall — 24,08 € überfällig auf 015D43 blockiert ALLES (auch Projekt-Umzug); es sind 5 Konten, 25 Projekte, 24 Keys (KEY-MAP auf Desktop); 016C8A bereits GESCHLOSSEN; 36-€-Frage gelöst (37,20 € Workspace); wartet auf Karten-Deckung → Zahlung auf GO
 metadata:
   node_type: memory
   type: project
@@ -2217,7 +2236,17 @@ Gesamt offen ≈ **5,08 €**. Google verlangt bei manueller Zahlung oft Mindest
 
 **Offene Posten-Stand (16.09., Sascha fragte „andere Aufgaben?"):** Alles von Agent-Seite fertig; wartet NUR noch auf Sascha: ① Karten-Deckung + GO für die 24,08-€-Zahlung auf 015D43 (+ danach API-Reaktivierung prüfen), ② GO für Google-Konsolidierung (Projekte umziehen, 016C8A schließen, AI-Studio-Projekt fixieren), ③ GO für Open-WebUI-Autostart (LaunchAgent + Tailscale-Festadresse).
 
-**Lessons:** ① Geld bewegen = immer Stopp-Punkt mit explizitem GO, auch bei „erledige alles". ② Konsolen-Links nie in die Google-Suche tippen lassen (passiert ihm leicht) — direkt öffnen oder anklickbaren Link geben. ③ Sein eigenes Gemini-Gem „Allrounderomni v2" begleitet den Fall parallel mit denselben Fakten — Zahlen mit ihm abgleichen statt konkurrierend zu analysieren. ④ **„Kontostand" auf Google-Billing-Zahlungsseiten = SCHULDEN, nicht Guthaben** (ich habe das falsch gelesen, „25,12 € Guthaben" behauptet und musste scharf korrigiert werden — erst Transaktionen/Rechnungsliste gegenlesen bevor man Geld-Fakten behauptet). ⑤ Support-Agent-Angaben (christian) nie als Wahrheit übernehmen, wenn die Konsole sie widerlegt — Konsole + Screenshots sind die Beweisquelle. ⑥ Playwright-MCP: Eingeloggte Sitzung hält über mehrere Turns; Zahlen auf iframes per browser_find/snapshot-refs lesen, nicht per evaluate (cross-origin). ⑦ Belege liegen meist schon auf dem Mac (Desktop/Downloads) — erst Mac durchsuchen, bevor man den Nutzer nach Dokumenten fragt (16.09. eingemahnt).
+**Aufräum-Lauf 16.09. (Plan genehmigt, S1–S5):** KEY-MAP geliefert: **`~/Desktop/GOOGLE_PROJEKT_KEY_MAP_2026-09-16.md`**. Kernbefunde:
+- **Es sind 5 Konten, nicht 3:** + `0149F8-DB6353-622382` („Gemini Enterprise Free Trial", Google-verwaltet, trägt modular-gist-b8265) + `014BB7-734838-D1BD80` („Hardware→Language→AIDA", Google-verwaltet, trägt peppy-smithy-3ktcc + outstanding-medium-xjwpf). Sichtbar nur via `/billing` → Tab „Meine Projekte".
+- **25 Projekte gesamt; 4 mit „Abrechnung deaktiviert"**: atlas (gen-lang-client-0553968914, 0 Keys), barbulls-app, loki-voice-assistent, nervenav — DAS war Saschas „nur 3–5 Projekte nutzbar"-Phase (Entkopplung, nicht Limits). Nur 2 Projekte mit Sept-Kosten: KoerperflussWebfrontendkooper 3,04 €, loki-ki 1,02 €.
+- **24 API-Keys in 6 Projekten.** Wildwuchs-Zentrum KoerperflussWebfrontendkooper = 9 Keys (Master-Key-CLI 2× Duplikat 20.05.; DISPLAY_NAME 04.08. OHNE Beschränkung; ATLAS-App-Key 05.09. — konkurriert mit ATLAS-App-Key-v2 05.09. in barbulls-app). Weitere: koerperfluss-antigravity 2, „Gemini API"-Projekt 5 (inkl. finanz, FÖRDERCLOUD), loki-ki 3 (neuer 04.09.), barbulls-app 2, nervenav 3. Lokale .env-Dateien (15 geprüft) enthalten 0 Keys — Apps holen Keys zur Laufzeit.
+- **016C8A war BEREITS GESCHLOSSEN** (Konsole: „Dieses Rechnungskonto ist geschlossen", Re-Open-Button disabled) — die pay.google-Mahnung dafür ist ein Geist. S4 damit gratis erledigt.
+- **S2 Projekt-Umzug BLOCKIERT:** Dialog „Keine Rechnungskonten verfügbar … benötigen Sie Administratorberechtigungen für mindestens ein AKTIVES Rechnungskonto" — 015D43 gilt wegen der 24,08 € als nicht aktiv. **Sascha sagte „Zahlung ist jetzt egal", aber Google beweist: Ohne Zahlung kein Umzug, kein Re-Link (barbulls-app/atlas/nervenav/Loki Voice), keine API-Tiers. Die 24,08 € sind der einzige Hebel.**
+- Umbinde-Weg (wenn Konto aktiv): `/billing` → Tab „Meine Projekte" → Dreipunkt der Zeile → „Abrechnung ändern". `/billing/change?project=X` ist tot (Fehlerseite).
+
+**„Warum merke ich keine Sperre?" (16.09., Saschas Einwand — aufgelöst):** Beides stimmt — die Sperre existiert, aber NUR auf 015D43, und sein Alltag lief versehentlich auf den GESUNDEN Wegen: ① Körperfluss-Deploys (gen-lang-client-0285074833) + loki-ki hängen an 0154CD (Karte 4280 OK), ② Workspace separat bezahlt (37,20 € am 03.09.), ③ Free-Tiers der 15 Firmenkonto-Projekte laufen trotz Überfälligkeit weiter. Die Sperre ist STUMM: Gemini-API-Tier gedrosselt (merkt man erst bei Rate-Fehlern), keine neuen bezahlten Ressourcen auf 015D43, Projekt-Umzug/Re-Link blockiert, 4 Projekte abgekoppelt. Deshalb kam sie ihm nur als „Projekt-Chaos/wechselnde Limits" vor, nie als rote Meldung. Schluss mit Sascha: bewusst weiter ruhen lassen ODER 24,08 € zahlen — sein Call.
+
+**Lessons:** ① Geld bewegen = immer Stopp-Punkt mit explizitem GO, auch bei „erledige alles". ② Konsolen-Links nie in die Google-Suche tippen lassen (passiert ihm leicht) — direkt öffnen oder anklickbaren Link geben. ③ Sein eigenes Gemini-Gem „Allrounderomni v2" begleitet den Fall parallel mit denselben Fakten — Zahlen mit ihm abgleichen statt konkurrierend zu analysieren. ④ **„Kontostand" auf Google-Billing-Zahlungsseiten = SCHULDEN, nicht Guthaben** (ich habe das falsch gelesen, „25,12 € Guthaben" behauptet und musste scharf korrigiert werden — erst Transaktionen/Rechnungsliste gegenlesen bevor man Geld-Fakten behauptet). ⑤ Support-Agent-Angaben (christian) nie als Wahrheit übernehmen, wenn die Konsole sie widerlegt — Konsole + Screenshots sind die Beweisquelle. ⑥ Playwright-MCP: Eingeloggte Sitzung hält über mehrere Turns (aber nach Stunden/Neustart Login-Ablauf — E-Mail vortippen, Passwort/2FA macht Sascha); Zahlen auf iframes per browser_find/snapshot-refs lesen, nicht per evaluate (cross-origin); Screenshot bei schweren Seiten → Timeout, dann Text-Extraktion per evaluate als Beweis. ⑦ Belege liegen meist schon auf dem Mac (Desktop/Downloads) — erst Mac durchsuchen, bevor man den Nutzer nach Dokumenten fragt (16.09. eingemahnt). ⑧ Bildbasierte PDFs: pdftotext leer → pdftoppm -png + Vision-Analyse. ⑨ Subagent-Timeouts (600 s) bei langen lokalen Scans → selbst per gezieltem grep mit timeout machen.
 
 ## google-cloud-genai-credit
 
@@ -2704,6 +2733,39 @@ NODE_PATH=/opt/homebrew/lib/node_modules/omniroute/node_modules:/tmp/pdfdeps/nod
 **PDF-LESEN (15.09.):** Nutzer-PDF-Anhänge kann GLM-5.3-Flash NICHT direkt lesen ([1210] „Failed to parse the file / model does not support PDF input") → IMMER Text per **pdftotext** extrahieren (poppler installiert: `pdftotext -layout in.pdf out.txt`) und im Bash greppen; funktioniert zuverlässig auch bei 650-KB-PDFs. Bei sensiblen Anhängen (Bank/Sozialhilfe) NUR zielgerichtet nach Suchbegriffen greppen, Rest nicht auswerten.
 
 Verwandt: [[feedback-doc-design-matters]] [[feedback-gui-not-cli]]
+
+## projectlisten-hook-projects-py
+
+---
+name: projectlisten-hook-projects-py
+description: Wie die stehende Projektliste beim Session-Start funktioniert
+  (~/.claude/tools/projects.py liest MEMORY.md "Weitere Projekte") + Chat-Store-
+  Statistik aller Tools (ZCode 344, Cline 259, Claude 105 importiert) — 16.09.
+  aktualisiert
+metadata:
+  node_type: memory
+  type: reference
+  originSessionId: sess_89889126-6bec-4e4b-b8ec-d30614619344
+---
+
+**Die Projektliste („Oder ein neues Projekt erstellen?") im SessionStart-Hook** kommt aus `~/.claude/tools/projects.py --hook` (in `~/.zcode/cli/config.json` als SessionStart-Hook registriert).
+
+Mechanik (16.09. durch Code-Lektüre geklärt):
+- Quelldatei: `~/.claude/projects/-Users-saschalagler/memory/MEMORY.md`, Abschnitt `## Weitere Projekte` (Format `- [Titel](datei.md) — Hook-Text`)
+- Aktivitäts-Datum: claude-mem.db-Volltextsuche ODER mtime der verlinkten Memory-Datei (ZCode-Sessions fließen nicht ein — Datum = Memory-mtime)
+- Ändern = MEMORY.md bearbeiten (dort auch verlinkte .md-Dateien anlegen, sonst tote Links). 16.09. aktualisiert: GCP-Zeile neu + 4 neue Projekte (Vinyl-Scanner, SBP Patrick-Doc, Antigravity Physio-Assistent, iOS/WebDev-Stack 2026) + 4 Memory-Dateien angelegt.
+- ⚠️ **Mimosa-Hook blockiert Bash-Schreibzugriffe auf Dateien** („Bash 直接写源码/安全配置会绕过 Write/Edit 安全扫描") → IMMER Edit/Write-Tool nutzen, auch für JSON/MD; Bash cp-Backups funktionieren je nach Pfad teils auch nicht.
+
+**Chat-Store-Landkarte (16.09. gezählt):**
+| Store | Ort | Umfang |
+|---|---|---|
+| ZCode Sessions | `~/.zcode/cli/db/db.sqlite` Tabelle `session` (project_id, title, time_created) | 344 Sessions |
+| Importierte Chats | `~/.zcode/v2/sessions/*/cline-*.json` + `claude-import-*.json` | 259 Cline + 105 Claude |
+| ZCode-App-Gruppen | `~/.zcode/v2/tasks-index.sqlite` (wirkt erst nach ⌘Q) | s. [[zcode-projektgruppen-mechanik]] |
+| Antigravity | `~/Library/Application Support/Antigravity{, IDE}/User/globalStorage/state.vscdb`, Key `google.geminicodeassist` (Chat-Store, ~450 KB); `chat.ChatSessionStore.index` war leer | 2 Installationen |
+| Cline-Originale | VS-Code globalStorage tasks | leer (alles im ZCode-Import) |
+
+Verwandt: [[active-projects-focus]], [[gcloud-billing-fall-2026-09-15]].
 
 ## pruef-team-und-config-health
 
