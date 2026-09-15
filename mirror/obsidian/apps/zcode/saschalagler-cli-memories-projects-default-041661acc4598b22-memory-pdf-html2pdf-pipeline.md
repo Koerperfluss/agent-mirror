@@ -1,7 +1,7 @@
 ---
 app: zcode
 quelle: "saschalagler/cli/memories/projects/default-041661acc4598b22/memory/pdf-html2pdf-pipeline.md"
-stand: 2026-09-13
+stand: 2026-09-15
 tags: [spiegel, zcode]
 ---
 
@@ -33,5 +33,7 @@ NODE_PATH=/opt/homebrew/lib/node_modules/omniroute/node_modules:/tmp/pdfdeps/nod
 1. `html2pdf-next.js` ENTFERNT fixe Höhe + `overflow:hidden` von `.page`-Containern („content will paginate naturally") → `position:absolute`-Footer müssen statisch werden (`margin-top` statt `auto`), sonst spillen Seiten als fast-leere Folgeseiten.
 2. Zu-voll-Seiten-Spill: nach jedem Render Seitenzahl prüfen (pymupdf), die spillende Seite per Zeilen-Kürzung/Table-Rows-Zusammenlegung retten statt Markup umbauen.
 3. Deliverable-Artifact: `~/Desktop/LOKI-OS_Standard-Skills.pdf` + `LOKI-OS_Standard-Skills.html` (Quelle, Sascha-Frage nach Skill-System-Übersicht 13.09.).
+
+**PDF-LESEN (15.09.):** Nutzer-PDF-Anhänge kann GLM-5.3-Flash NICHT direkt lesen ([1210] „Failed to parse the file / model does not support PDF input") → IMMER Text per **pdftotext** extrahieren (poppler installiert: `pdftotext -layout in.pdf out.txt`) und im Bash greppen; funktioniert zuverlässig auch bei 650-KB-PDFs. Bei sensiblen Anhängen (Bank/Sozialhilfe) NUR zielgerichtet nach Suchbegriffen greppen, Rest nicht auswerten.
 
 Verwandt: [[feedback-doc-design-matters]] [[feedback-gui-not-cli]]

@@ -1,7 +1,7 @@
 ---
 app: zcode
 quelle: "saschalagler/cli/memories/projects/default-041661acc4598b22/memory/active-projects-focus.md"
-stand: 2026-09-08
+stand: 2026-09-15
 tags: [spiegel, zcode]
 ---
 
@@ -35,5 +35,7 @@ Projektlisten-Tool: `python3 ~/.claude/tools/projects.py` — kuratierte Top-10-
 **Update 08.09. (ATLAS + ZCode-Pipeline):** Atlas hängt seit ~10 h an „App live bekommen" (Blocker UNGEKLÄRT — Build/Deploy/Runtime nie benannt!). Copy-paste /standardskill-Prompt für den Atlas-Chat an Sascha übergeben: TAKEOVER (Koerperfluss/atlas-cali-coach, Live barbulls-app.web.app/Firebase) → BUILD MediaPipe Live-Pose-Estimation clientseitig (offene Prio) → FINISH; Team @code-architect/@explore/@implementer/@reviewer, max 3 parallel, Stopp-Regeln Deploy/Löschen/Push. Nutzung der neuen ZCode-Pipeline (@agents, loki-dev 5 Modi, /kanban, /init) erfordert ⌘Q-Neustart. Parallel lief im Atlas-Tab eine eigene Skill-Konsolidierungs-Session (Plan v2 via code-architect) — ohne Kollision: Endstand 96 aktive Skills, 20 archiviert in ~/.agents/skills-archive/2026-09-08/, siehe [[skills-architektur-2026-09-07]].
 
 **Update 08.09. II (Atlas-Details + Prompt-Feedback):** Neue Kanonische Pfade von Sascha: alle Files `/Users/saschalagler/Desktop/Coworkspace_Ich/atlas + pliability`, Master `…/atlas + pliability/ATLAS_MASTER` UND `/Users/saschalagler/ATLAS_MASTER`; Deploy-Repo `~/cali-coach-atlas-final`. Vorherige Atlas-Session: sess_d4dc6589-a85c-41e6-9c70-94b6ea6e63e3 (Cline-Code/ZCode, Provider cline-pass/glm-5.3-flash, 89.205k Tokens, $1.01) — dort: +156/−5 uncommittete Changes in firebase.json (Cache-Control-Header: index.html no-cache, manifest no-cache, /assets/** immutable), Thema „iOS 27 Berechtigungen" + „Cline Code App fixen". 10h-Live-Blockade immer noch ohne benannte Root Cause. **Feedback**: Sascha will bei Übergaben den fertigen Copy-Paste-PROMPT (einfach, ohne Erklär-Prosa) — „was redest du, gib mir einfach den prompt".
+
+**Update 15.09. (Projektliste TATSÄCHLICH aktualisiert — das 30.08.-OFFEN ist erledigt):** Auf Saschas Befehl („aktualisiere die Liste mit allen Unterhaltungen von zcode cline code cline cli antigravity") alle Chat-Stores gezählt: **ZCode 344 Sessions** (db.sqlite; Top: default-Workspace 104, Beobachter 58, ATLAS-v8-Bau 56), **Cline 259 importiert** (~/.zcode/v2/sessions), **Claude 105 importiert** + 20 Projektordner, **Antigravity 2 Installationen** (Chat-Store 446 KB, aktiv = Physio-Assistent). MEMORY.md-Abschnitt „Weitere Projekte" aktualisiert (Backup .bak-20260915): **+4 neue Projekte** (Vinyl-Scanner 14 Sessions bis 12.09., SBP Patrick-Doc bis 07.09., Antigravity Physio-Assistent, iOS/WebDev-Stack 2026) + GCP-Billing-Zeile auf 24,08-€-Wahrheit korrigiert; je neue Memory-Datei angelegt. ⚠️ Mimosa-Hook blockiert Bash-Schreibzugriffe auf Dateien unter ~/.claude („Bash 直接写源码") → IMMER Edit/Write-Tools nutzen, nie Bash-umleitung.
 
 Verwandt: [[google-cloud-genai-credit]]

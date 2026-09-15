@@ -1,6 +1,6 @@
 # saschalagler (claude)
 
-Zuletzt gespiegelt: 2026-09-15 20:49 UTC
+Zuletzt gespiegelt: 2026-09-15 21:00 UTC
 
 ## CLAUDE
 
@@ -986,14 +986,18 @@ python scraper_vwgh.py --dry-run            # kein Schreiben
 - [Körperfluss App](koerperfluss-app.md) — kanonisch `~/Desktop/Koerperfluss-3D-Upgrade` (GitHub 3d.-UPGRADE-); Deploy IMMER `--project gen-lang-client-0285074833` (firebase use=barbulls!); /showcase live; 3 redundante Kopien
 - [BAR BULLS Firebase](bar-bulls-firebase.md) — barbulls-app=Shop-Host, gen-lang=Antigravity Hub (nie verwechseln); Rollback-Technik + Unfall-Schutz
 - [Barbulls GoPro Labs](barbulls-gopro-labs.md) — HERO11 Outdoor-Sportcasts; Dateien in `~/Desktop/TO DO /GORPO/`; geprüftes Allround-Setting + Token-Fallstricke (Shutter via ISO-Token, kein GP-Log, BITR≤120)
-- [GCP Billing](gcp-billing.md) — 015D43=einziges aktives Konto (867€ bis 04/2027); barbulls-app+nervenav wurden entkoppelt (re-link nötig!); lokales gcloud resettet → auth login nötig
+- [GCP Billing](gcp-billing.md) — 15.09. NEU: 015D43(FlexCo)=24,08€ überfällig→Gemini-API-Sperre; Karten 1879/9784 abgelehnt(Verfügungsrahmen); 0154CD gesund(Karte 4280); 016C8A leer(0 Projekte); 867€-Credit NUR GenAI-App-Builder; Beweise: ~/Desktop/GOOGLE_BILLING_NEUNTERSUCHUNG_2026-09-15.md
 - [Gemini Chrome + Mac](gemini-chrome-mac.md) — Nano-KI-Features gehen; volles "Frag Gemini"-Panel + Spark in AT serverseitig gesperrt; #glic-*-override/-guest-url/-disable-safety-checks = Müll aus Fake-Bericht; variations_country-Hebel nur mit US-VPN persistent
 - [ATLAS Cali Coach](atlas-cali-coach.md) — kanonisch (KORRIGIERT 05.09., mdfind-beweisen): `~/Desktop/Coworkspace_Ich/atlas + pliability /Atlas Cali Plan`; Desktop-Alt-Pfad TOT; Zweitkopie `~/cali-coach-atlas-final` (Referenz/Lieferant)
 - [Legal Ops Advisor](legal-ops-advisor.md) — EINE App: online (Gemini/Demo, datenfrei) + offline (Ollama QAT/privat); BACKEND_MODE-Schalter; ZTeam-Persona-Merging=„Multi-Agent"; gewonnene Fälle + Erfolgs-Muster; ~14-23GB Modell-Aufräumen offen
 
 - [Toolchain Provider-SPOF](toolchain-provider-spof.md) — 30.08.2026 fielen Claude Code/Cline/ZCode zusammen aus: alle auf Z.ai-Kontingent + npm-Mirror blockierte Cline-CLI; Diagnose-Fallen (npm view via Mirror, nested node_modules, Logs statt Dateien)
 
-- [Judicario + Chipsi (openlaw)](judicario-chipsi.md) — Chipsi=Cloud-Webapp via Chrome-Shortcut; Judicario-Gateway-Key rotiert (06.09.): jud_Cpu-… aktiv, Connectoren gefixt; Support George@openlaw.cc
+- [Judicario + Chipsi (openlaw)](judicario-chipsi.md) — Chipsi=Cloud-Webapp via Chrome-Shortcut; Judicario-Gateway-Key rotiert (06.09.): jud_Cpu-… aktiv, Connectoren gefixt; Support George@openlaw.cc; ZCode-Aktivität bis 11.09. (Paseo-Orchestrator-Recherche)
+- [Vinyl-Scanner](vinyl-scanner.md) — 14 ZCode-Sessions bis 12.09. (Nespresso-Gebrauchtpreise); Kanonisch `~/Desktop/Coworkspace_Ich/private Porjekte/vinyl-scanner`
+- [SBP Patrick-Doc](sbp-patrick-doc.md) — 3 ZCode-Sessions bis 07.09.; Patrick: volle SBP + FH-Aufnahmeverfahren (§ 64a UG); A4-PDF-Pipeline lief in `~/.zcode/workspace/default/sbp-doc`
+- [Antigravity Physio-Assistent](antigravity-physio-assistent-claude.md) — läuft in Antigravity; Adelina+Simon Sitzungs-PDFs 12.09.; Start-Prompt `~/Desktop/ANTIGRAVITY_PHYSIO_START_PROMPT.md`; Daten `~/Desktop/Körperfluss/Patientenliste/`
+- [iOS/WebDev-Stack 2026](ios-webdev-stack-2026.md) — 13.–15.09.: Open-WebUI-Agent am Mac (Port 8080, 1532 Modelle via OmniRoute-Key, /recherche, iPhone: http://<mac-ip>:8080); Dev-IDE-Sieger=Antigravity (Live-Vorschau+Goal-System); Berichte auf ~/Desktop (IOS27_WEBAPP_TEST…, KI_ANTWORTEN…, GOOGLE_BILLING…)
 
 ## Skill-Routing
 - [Skill-Routing-Memory](skill-routing.md) — erlernte Task→Skill-Zuordnungen; Kanonisch: ~/.agents/skill-routing.md
@@ -1033,6 +1037,24 @@ metadata:
 
 **Why:** Sascha wollte nach endlosen Entwurfs-Loops im Antigravity/Gemini-Chat ein tatsächlich lauffähiges System („durch Eingabe was will ich und abfahrt").
 **How to apply:** Bei Erweiterungen (Dashboard, Cron, n8n-Anbindung) auf diesen Stack aufbauen statt neu anzufangen; verwandt: [[koerperfluss-app]], Personas liegen in `~/loki-ki/agents/` und `~/Desktop/Local AI /loki-ki/personas/`.
+
+## antigravity-physio-assistent-claude
+
+---
+name: antigravity-physio-assistent-claude
+description: Physiotherapie-Assistent in Google Antigravity — Adelina/Simon, Sitzungs-PDFs 12.09.2026
+metadata:
+  type: project
+---
+
+Läuft in Google Antigravity (nicht ZCode): Chat „Physiotherapy Rehab Assistant Setup" (alter Chat war korrupt HTTP 400 — nur Neustart half nicht, neuer Chat läuft komplett).
+
+- Start-Prompt: `~/Desktop/ANTIGRAVITY_PHYSIO_START_PROMPT.md`
+- Patientendaten: `~/Desktop/Körperfluss/Patientenliste/Adelina/`
+- Sitzungs-PDFs gebaut 12.09.: SITZUNG_Adelina + SITZUNG_Simon (je 2 Seiten A4); Simon = Adelinas Partner (Migräne/zervikogener Kopfschmerz, Cranio-Cervical Phase 1), eigener Ordner auf GO offen.
+- UI-Lesson: Text-Eingabe in Antigravity nur via pbcopy+osascript keystroke, nicht AX set_value.
+
+Verwandt (ZCode-Seite): [[antigravity-physio-assistent]].
 
 ## atlas-cali-coach
 
@@ -1254,6 +1276,23 @@ metadata:
 - Zu Beginn einer Session `TaskList` prüfen, statt Dubletten anzulegen.
 - Gilt zusätzlich zu [[auto-projektuebersicht]] (Projektliste beim Start) — die Projektliste zeigt WO man ist, die Task-Liste zeigt WAS offen ist.
 
+## ios-webdev-stack-2026
+
+---
+name: ios-webdev-stack-2026
+description: iOS-27-Web-App-Testing + KI-Recherche-Apps + Dev-IDE-Wahl + Open-WebUI-Agent (13.–15.09.2026)
+metadata:
+  type: project
+---
+
+Stand 15.09.2026 (Session iOS27/KI-Recherche):
+
+1. **Web-App-Test auf iOS 27:** Safari am Mac + Web Inspector „Connect via Network" (gratis, kabellos) = Primärweg; iOS-Simulator + Playwright/WebKit-Emulation ergänzend; BrowserStack hat iOS 27 Beta seit 17.06.2026. Bericht: `~/Desktop/IOS27_WEBAPP_TEST_RESEARCH_2026-09-13.md`.
+2. **KI-Recherche iPhone:** Gemini = beste Antworttendenz, Perplexity für Sascha TOT (Kern nicht promptbar, /-Skills weg, Browser-Steuerung iPhone entfernt — Desktop-Produkt „Perplexity Computer"). ChatGPT-Agent-Modus 08/2026 eingestellt → „ChatGPT Work". Bericht: `~/Desktop/KI_ANTWORTEN_UND_WEBDEV_SETUP_RECHERCHE_2026-09-14.md`.
+3. **Dev-IDE:** Antigravity = Gesamtsieger (XDA 1-Monats-Test; Live-Vorschau + Goal-System); Cursor nur Riesen-Repos; Lovable nur Prototyping.
+4. **Eigener Agent (14.09. gebaut):** Open WebUI auf dem Mac, Port 8080, Admin `sascha@lokal.admin` (PW in `~/.open-webui-setup/`), 1532 Modelle via OmniRoute (Key `~/.open-webui-setup/omni_key`), Websuche duckduckgo AN, `/recherche`-Befehl mit Quellen-Zwang. iPhone: `http://<mac-lan-ip>:8080`. HINWEIS: kein Autostart (nohup) — nach Mac-Neustart neu starten; Open-Session-Login = Login-Daten oben.
+5. Subagent-Fix 15.09.: siehe [[subagent-dispatch-implementer-workaround]] (ZCode-Seite).
+
 ## judicario-chipsi
 
 ---
@@ -1402,6 +1441,19 @@ Skill `obsidian-second-brain` (eugeniughelbur) installiert am 2026-07-10:
 
 Am selben Tag installiert: Plugin `claude-mem` v13.10.2 (thedotmack) — Installer-Bug: `npm install --allow-scripts` schlägt mit EALLOWSCRIPTS fehl; Fix war manuelles `npm install --omit=dev --legacy-peer-deps` in `~/.claude/plugins/marketplaces/thedotmack`. Worker läuft (status: ready). Außerdem Skill `rc-code-review` (aus ZIP, umbenannt wegen Kollision mit eingebautem /code-review).
 
+## sbp-patrick-doc
+
+---
+name: sbp-patrick-doc
+description: Patrick SBP + FH-Aufnahmeverfahren — A4-PDF-Pipeline, 3 Sessions bis 07.09.2026
+metadata:
+  type: project
+---
+
+Patrick (>20, keine einschlägige Ausbildung, Ziel FH IMC Krems) braucht volle SBP + FH-Aufnahmeverfahren; ohne Beruf OK — „beruflich ODER sonstige Vorbildung" (§ 64a UG). Details: ZCode-Memory `patrick-physiotherapie-sbp.md`.
+
+Pipeline: A4-PDF-Erzeugung lief in `~/.zcode/workspace/default/sbp-doc` (3 Sessions, letzte 07.09.2026: "Final acceptance check, German A4 PDF, 2 pages"). Plaintext-PDF wurde abgelehnt — Layout zählt ([[feedback-doc-design-matters]]). Offen: R4-Cover-DOCX-Variante.
+
 ## skill-routing
 
 # Skill-Routing-Memory (Claude)
@@ -1440,6 +1492,19 @@ Am 30.08.2026 fielen Claude Code, Cline Code.app, Cline CLI und ZCode.app gleich
 Keine Datenverluste: `~/.cline` (4,6 GB), Kanban-Workspaces, 223 Sessions, `~/.zcode` (1,6 GB) blieben intakt.
 
 Siehe auch [[loki-os]], [[agent-os]].
+
+## vinyl-scanner
+
+---
+name: vinyl-scanner
+description: Vinyl/Nespresso-Gebrauchtpreis-Scanner — 14 ZCode-Sessions bis 12.09.2026
+metadata:
+  type: project
+---
+
+Projektordner (kanonisch): `~/Desktop/Coworkspace_Ich/private Porjekte/vinyl-scanner` (ZCode-Workspace-Projekt, 14 Sessions, letzte 12.09.2026 mit Nespresso-Gebrauchtpreis-Recherche "Realistische Gebrauchtmarktpreise für die Nespresso-Maschinen").
+
+Status 15.09.: kein offener Auftrag; Recherche-Ergebnisse liegen im letzten Vinyl-Scanner-Chat. Nächster sinnvoller Schritt bei Wiederaufnahme: Wayfinder-Karte nur falls >1 Session Aufwand.
 
 ## context7
 

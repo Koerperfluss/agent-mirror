@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-15 20:49 UTC
+Zuletzt gespiegelt: 2026-09-15 21:00 UTC
 
 ## AGENTS
 
@@ -1390,7 +1390,7 @@ Bei Fachfragen (z. B. Trainings-Übungen) fordert er explizit „clinical reason
 
 - [Google-Cloud-Billing-Fall 15.09.](gcloud-billing-fall-2026-09-15.md) — Fall NEU untersucht, Konsole widerlegt Support: **015D43 (Firma, 15 Projekte) = 24,08 € überfällig (August) → Gemini-API-Sperre**; 0154CD gesund (Karte 4280, 3 Projekte), 016C8A leer/0 €; Chaos erklärt (Firma+2 Privat-Artefakte, KoerperflussWebfrontendkooper nachweislich verschoben, Keys ändern Limits via Projekt-Bindung); Aufräum-Plan auf GO: 24,08 € zahlen → 3 Projekte konsolidieren → 016C8A schließen; Report+5 Screenshots auf Desktop
 
-- [Subagent-Dispatch: implementer-Workaround](subagent-dispatch-implementer-workaround.md) — „No reasoning level selected" trifft NUR Explore/general-purpose (GLM-5.3-Flash ohne Denkstufe) — subagent_type `implementer` FUNKTIONIERT (auch für read-only Aufträge); Dauer-Fix nur per ZCode-App-Settings (Modell→Denkstufe)
+- [Subagent-Dispatch: implementer-Workaround](subagent-dispatch-implementer-workaround.md) — **15./16.09. GELÖST + LIVE BEWIESEN**: „No reasoning level selected" saß in ~/.zcode/v2/agents-state.json (alter Override ohne Denkstufe); Fix = Explore/general-purpose explizit auf GLM-5.3-Flash + reasoningLevel „low", Reparatur-Skript `~/.zcode/fix-subagents.sh`; Test-Dispatch lief durch
 
 - [Loki-Browser-Agent (Eigenbau-Comet-Ersatz)](loki-browser-agent-comet-ersatz.md) — 14.09. **VERWORFEN/PAUSIERT**: Sascha lehnte alle 4 Fertig-Kandidaten ab („keines"), Anforderung „alles wie Comet: skills, settings, auto tools" dokumentiert; nach Plan-Vorlage Wut „du sollst nichts bauen, du sollst im web danach suchen" → er wollte RECHERCHE, kein Bauen; Plan (Playwright+OmniRoute+iPhone-Panel, S1–S5) bleibt dokumentiert für späteres GO
 
@@ -1501,6 +1501,8 @@ Projektlisten-Tool: `python3 ~/.claude/tools/projects.py` — kuratierte Top-10-
 **Update 08.09. (ATLAS + ZCode-Pipeline):** Atlas hängt seit ~10 h an „App live bekommen" (Blocker UNGEKLÄRT — Build/Deploy/Runtime nie benannt!). Copy-paste /standardskill-Prompt für den Atlas-Chat an Sascha übergeben: TAKEOVER (Koerperfluss/atlas-cali-coach, Live barbulls-app.web.app/Firebase) → BUILD MediaPipe Live-Pose-Estimation clientseitig (offene Prio) → FINISH; Team @code-architect/@explore/@implementer/@reviewer, max 3 parallel, Stopp-Regeln Deploy/Löschen/Push. Nutzung der neuen ZCode-Pipeline (@agents, loki-dev 5 Modi, /kanban, /init) erfordert ⌘Q-Neustart. Parallel lief im Atlas-Tab eine eigene Skill-Konsolidierungs-Session (Plan v2 via code-architect) — ohne Kollision: Endstand 96 aktive Skills, 20 archiviert in ~/.agents/skills-archive/2026-09-08/, siehe [[skills-architektur-2026-09-07]].
 
 **Update 08.09. II (Atlas-Details + Prompt-Feedback):** Neue Kanonische Pfade von Sascha: alle Files `/Users/saschalagler/Desktop/Coworkspace_Ich/atlas + pliability`, Master `…/atlas + pliability/ATLAS_MASTER` UND `/Users/saschalagler/ATLAS_MASTER`; Deploy-Repo `~/cali-coach-atlas-final`. Vorherige Atlas-Session: sess_d4dc6589-a85c-41e6-9c70-94b6ea6e63e3 (Cline-Code/ZCode, Provider cline-pass/glm-5.3-flash, 89.205k Tokens, $1.01) — dort: +156/−5 uncommittete Changes in firebase.json (Cache-Control-Header: index.html no-cache, manifest no-cache, /assets/** immutable), Thema „iOS 27 Berechtigungen" + „Cline Code App fixen". 10h-Live-Blockade immer noch ohne benannte Root Cause. **Feedback**: Sascha will bei Übergaben den fertigen Copy-Paste-PROMPT (einfach, ohne Erklär-Prosa) — „was redest du, gib mir einfach den prompt".
+
+**Update 15.09. (Projektliste TATSÄCHLICH aktualisiert — das 30.08.-OFFEN ist erledigt):** Auf Saschas Befehl („aktualisiere die Liste mit allen Unterhaltungen von zcode cline code cline cli antigravity") alle Chat-Stores gezählt: **ZCode 344 Sessions** (db.sqlite; Top: default-Workspace 104, Beobachter 58, ATLAS-v8-Bau 56), **Cline 259 importiert** (~/.zcode/v2/sessions), **Claude 105 importiert** + 20 Projektordner, **Antigravity 2 Installationen** (Chat-Store 446 KB, aktiv = Physio-Assistent). MEMORY.md-Abschnitt „Weitere Projekte" aktualisiert (Backup .bak-20260915): **+4 neue Projekte** (Vinyl-Scanner 14 Sessions bis 12.09., SBP Patrick-Doc bis 07.09., Antigravity Physio-Assistent, iOS/WebDev-Stack 2026) + GCP-Billing-Zeile auf 24,08-€-Wahrheit korrigiert; je neue Memory-Datei angelegt. ⚠️ Mimosa-Hook blockiert Bash-Schreibzugriffe auf Dateien unter ~/.claude („Bash 直接写源码") → IMMER Edit/Write-Tools nutzen, nie Bash-umleitung.
 
 Verwandt: [[google-cloud-genai-credit]]
 
@@ -2138,10 +2140,10 @@ Projekt (2026-08-26): Alte Familienfotos für Opas Geburtstagsfeier A4-druckfert
 
 ---
 name: gcloud-billing-fall-2026-09-15
-description: 15.09. Google-Cloud-Billing-Fall NEU UNTERSUCHT — Support-Zahl „5 €"
+description: 15./16.09. Google-Cloud-Billing-Fall — Support-Zahl „5 €"
   war FALSCH; Konsole beweist 24,08 € überfällig (August-Auszug) auf 015D43
-  (=Gemini-API-Sperre, 15 Projekte hängen dran); Report+5 Screenshots auf
-  Desktop; wartet auf funktionierende Zahlungsmethode von Sascha, dann zahle ich
+  (=Gemini-API-Sperre, 15 Projekte); Reviewer-Revision bestanden (Abschnitt 10),
+  7 Screenshots; wartet auf Karten-Deckung von Sascha, dann Zahlung auf GO
 metadata:
   node_type: memory
   type: project
@@ -2186,6 +2188,10 @@ Gesamt offen ≈ **5,08 €**. Google verlangt bei manueller Zahlung oft Mindest
 **Prüf-Lauf (15.09., Report Abschnitt 8 — Sascha forderte Prüfinstanz/Zweitbeweis):** Da Prüf-Subagenten im Harness blockiert sind, Prüfung als Zweit-Lauf über unabhängige Beweiswege: ① 24,08 € DREIFACH bestätigt (Zahlungsdialog + Rechnungsliste + Transaktionsseite, die wörtlich schreibt: „Monatliche Rechnungsstellung über 24,08 € per Mastercard •••• 9784 abgelehnt. Unzureichende Mittel. M5815659689790147" am 01.09., Grund „Verfügungsrahmen ausgereizt"; „1.–31. Aug. 2026 Endsaldo: 24,08 €"). ② 867,15-€-Credit live auf Gutschriften-Seite belegt („Verfügbar, 100 %", Screenshot) — warum er die Rechnung nicht zahlt: Nutzungsbereich „Bestimmte Nutzung" (nur GenAI-App-Builder/Vertex-Produkte). ③ NEU gefunden: **8,08 € „Google Developer Program premium benefit"-Monats-Credit verfügbar (94 %), Scope „Google Cloud gesamt + Maps"** — dieser dürfte reguläre Cloud-Kosten decken (monatlich neu ~8,5 €). Report jetzt mit Abschnitt 7 (Landkarte) + 8 (Prüf-Lauf), **7 Beweis-Screenshots** in ~/.zcode/workspace/default/beweis-*.png (inkl. beweis-867EUR-guthaben-gutschriften.png, beweis-24EUR-transaktionen-karte-abgelehnt.png, beweis-015D43-rechnungen-24EUR-august.png, beweis-015D43-15-projekte-verknuepft.png).
 
 **Die mysteriösen „35–36 €"-Zahlung (15.09., Report Abschnitt 9 — Sascha: „für was habe ich 36 € vor paar Tagen gezahlt?"):** pay.google.com live geprüft — unter koerperfluss@gmail.com gibt es GENAU **2 Zahlungsprofile**: „Körperfluss - Leben in Bewegung" (ID 1258-5069-0452, **null Transaktionen**) und „Sascha Lagler" (ID 9344-7331-6394, nur Google One 10,99 €/Monat — zuletzt 21.08. — + Workspace Individual 8,99 €/Monat seit 2024). **Keine ~36-€-Zahlung im September bei Google angekommen.** Plausible Auflösung: 24,08 € (Aug) + 10,66 € (Juni-Auszug) = **34,74 € ≈ seine „35–36 €"-Erinnerung** (Summe unbeglichener Auszüge/fehlgeschlagener Zahlversuch, im Kopf als „bezahlt" festgesetzt). Entscheidender Beweis = SEIN Bankkonto (September nach „GOOGLE" belasten durchsuchen) — das kann nur er. Zusatzbefund: Das Zahlungszentrum mahnt **016C8A UND 015D43** (beide via Karte 1879), obwohl 016C8A 0 € Nutzung hat.
+
+**Die „36-€"-PDFs (15.09. spät, Anhang):** Sascha gab 2 PDFs („Gmail - Kontoauszüge 08_2026.pdf" + „Kontoauszüge 08:2026.pdf") — beide per pdftotext durchsucht: Es sind **Gmail-Exports des Sozialhilfe-Schriftverkehrs (BH Melk / Thomas Schauer)**, KEINE echten Sparkasse-Auszüge (die wären nur Anhänge der Mails gewesen und wurden nicht mitexportiert). **0 Google-Transaktionen, 0 Kartenzahlungen drin** → 36-€-Frage weiterhin offen; Beweis kann nur der ORIGINAL-Auszug aus George/Sparkasse liefern (dort nach „GOOGLE" suchen). Nebenbefund: Zahlungscenter mahnt weiterhin beide Konten (016C8A + 015D43) via Karte 1879.
+
+**Prüfinstanz-Revision (16.09. — Reviewer-Agent lief, erster Beweis dass der Subagent-Fix wirkt):** Unabhängiger Reviewer (subagent_type reviewer, 51 s, „PASS mit Auflagen") prüfte den Report advers. Alle 6 Auflagen sofort im Report **Abschnitt 10** umgesetzt: ① 25,12 € = Konsole-Anzeige (Posten-Summe 25,11 € — 1 Cent Rundungsdifferenz, beide Zahlen benannt). ② Christians „5 €" = Summe 1,03+4,05+0 ≈ 5,08 € (fehlte der August-Auszug). ③ Karte-1879-Ablehnung belegt (Screenshot „Transaktion abgelehnt" beider Karten + pay.google-Warnbanner nennt 1879). ④ Alte Fehldeutung „25,12 € Guthaben" jetzt transparent im Report dokumentiert. ⑤ Alle 7 Beweis-Screenshots gelistet. ⑥ Quelle für KoerperflussWebfrontendkooper-Verschiebung = Saschas Support-Transkript. **Offen nur noch:** Bank-Auszug September (36-€-Frage) + Karten-Deckung (dann Zahlung auf GO). Reviewer-Caveat: er konnte PNGs in seiner Umgebung nicht als Bilder lesen (Text-Konsistenz-Prüfung only) — visuelle Zweitprüfung = Sascha.
 
 **Lessons:** ① Geld bewegen = immer Stopp-Punkt mit explizitem GO, auch bei „erledige alles". ② Konsolen-Links nie in die Google-Suche tippen lassen (passiert ihm leicht) — direkt öffnen oder anklickbaren Link geben. ③ Sein eigenes Gemini-Gem „Allrounderomni v2" begleitet den Fall parallel mit denselben Fakten — Zahlen mit ihm abgleichen statt konkurrierend zu analysieren. ④ **„Kontostand" auf Google-Billing-Zahlungsseiten = SCHULDEN, nicht Guthaben** (ich habe das falsch gelesen, „25,12 € Guthaben" behauptet und musste scharf korrigiert werden — erst Transaktionen/Rechnungsliste gegenlesen bevor man Geld-Fakten behauptet). ⑤ Support-Agent-Angaben (christian) nie als Wahrheit übernehmen, wenn die Konsole sie widerlegt — Konsole + Screenshots sind die Beweisquelle. ⑥ Playwright-MCP: Eingeloggte Sitzung hält über mehrere Turns; Zahlen auf iframes per browser_find/snapshot-refs lesen, nicht per evaluate (cross-origin).
 
@@ -2671,6 +2677,8 @@ NODE_PATH=/opt/homebrew/lib/node_modules/omniroute/node_modules:/tmp/pdfdeps/nod
 2. Zu-voll-Seiten-Spill: nach jedem Render Seitenzahl prüfen (pymupdf), die spillende Seite per Zeilen-Kürzung/Table-Rows-Zusammenlegung retten statt Markup umbauen.
 3. Deliverable-Artifact: `~/Desktop/LOKI-OS_Standard-Skills.pdf` + `LOKI-OS_Standard-Skills.html` (Quelle, Sascha-Frage nach Skill-System-Übersicht 13.09.).
 
+**PDF-LESEN (15.09.):** Nutzer-PDF-Anhänge kann GLM-5.3-Flash NICHT direkt lesen ([1210] „Failed to parse the file / model does not support PDF input") → IMMER Text per **pdftotext** extrahieren (poppler installiert: `pdftotext -layout in.pdf out.txt`) und im Bash greppen; funktioniert zuverlässig auch bei 650-KB-PDFs. Bei sensiblen Anhängen (Bank/Sozialhilfe) NUR zielgerichtet nach Suchbegriffen greppen, Rest nicht auswerten.
+
 Verwandt: [[feedback-doc-design-matters]] [[feedback-gui-not-cli]]
 
 ## pruef-team-und-config-health
@@ -2945,16 +2953,17 @@ Der Custom-Command `/standardskill` (user/zcode) ist ein verbindlicher Boot-Abla
 
 ---
 name: subagent-dispatch-implementer-workaround
-description: GELÖST 15.09.2026 — Subagent-Fehler "No reasoning level selected" hatte
-  seine Wurzel in ~/.zcode/v2/agents-state.json (Alter Fix-Override auf
-  zai-start-plan OHNE Denkstufe); Overrides geleert, greift nach App-Neustart
+description: GELÖST + LIVE BEWIESEN 16.09. — „No reasoning level selected" saß in
+  ~/.zcode/v2/agents-state.json; Fix = Explore/general-purpose explizit auf
+  GLM-5.3-Flash + reasoningLevel "low" + Reparatur-Skript
+  ~/.zcode/fix-subagents.sh; Test-Dispatch lief durch
 metadata:
   node_type: memory
   type: reference
   originSessionId: sess_0933a442-4331-4e6b-b563-a8a97dcefd9b
 ---
 
-**GELÖST am 15.09.2026 (Session sess_89889126):** Root Cause des Fehlers `Cannot start subagent: No reasoning level selected [reason=reasoning-level-missing; selection=account:zai-start-plan/GLM-5.3-Flash]` war NICHT der Plan-Account, sondern ein **alter Override in `~/.zcode/v2/agents-state.json`**:
+**✅ GELÖST + LIVE BEWIESEN 16.09.:** Test-Dispatch `general-purpose` lief durch („SUBAGENT OK", agent_0ab62252). Fix = in `~/.zcode/v2/agents-state.json` beide Built-ins EXPLIZIT gesetzt: `account:zai-individual-coding-plan/GLM-5.3-Flash` **mit `options.reasoningLevel:"low"`** (Backups `.bak-fix-20260915`/`.bak2-20260915`; Reparatur-Skript `~/.zcode/fix-subagents.sh`). Plugin-Agents erben (implementer lief immer). Historische Ursache: alter App-Override ohne Denkstufe → `L8()`-Pflichtprüfung schlug fehl.
 
 ```json
 "builtInModelSelectionOverrides": {
