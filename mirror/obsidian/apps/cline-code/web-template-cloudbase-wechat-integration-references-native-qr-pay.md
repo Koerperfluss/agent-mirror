@@ -1,7 +1,7 @@
 ---
 app: cline-code
 quelle: "web-template/cloudbase-wechat-integration/references/native-qr-pay.md"
-stand: 2026-09-05
+stand: 2026-09-15
 tags: [spiegel, cline-code]
 ---
 
@@ -9,8 +9,8 @@ tags: [spiegel, cline-code]
 
 Official docs:
 
-- `https://docs.cloudbase.net/integration/wechat-pay-native/index.md`
-- `https://docs.cloudbase.net/integration/usage/index.md`
+- `https://docs.cloudbase.net/integration/wechat-pay-native.md`
+- `https://docs.cloudbase.net/integration/usage.md`
 
 ## When To Use
 

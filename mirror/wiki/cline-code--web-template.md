@@ -1,6 +1,6 @@
 # web-template (cline-code)
 
-Zuletzt gespiegelt: 2026-09-15 20:05 UTC
+Zuletzt gespiegelt: 2026-09-15 20:16 UTC
 
 ## rule
 
@@ -283,7 +283,7 @@ Once onboarded, confirm with `DescribeAIModels` that the group is ready, then ca
 ---
 name: ai-model-nodejs
 description: "Use this skill for Node.js backend AI via @cloudbase/node-sdk (>=3.16.0) — cloud functions, CloudRun, Express/Koa/NestJS, serverless APIs, scheduled jobs, LLM proxies, agent orchestration. The only SDK supporting image generation (ai.createImageModel + generateImage). Text via ai.createModel with groups cloudbase, hunyuan-exp, or custom-*; model ids (e.g. deepseek-v4-flash, glm-5, kimi-k2.6) go in the `model` field of generateText/streamText. MUST run two-step preflight before code — see body. NOT for browser/Web (use ai-model-web) or Mini Program (use ai-model-wechat)."
-version: 2.33.2
+version: 2.34.3
 alwaysApply: false
 ---
 
@@ -406,7 +406,7 @@ Eligibility alone is not enough. **Do not write `createModel("cloudbase")` yet.*
 ---
 name: ai-model-web
 description: "Use this skill when a browser/Web app (React, Vue, Next, Nuxt, static sites, SPAs, dashboards, AI chat UI, 页面, 前端, 网页) needs AI models via @cloudbase/js-sdk. Default routing for Web/frontend AI — call directly from the browser, do NOT propose a Node.js proxy. Covers generateText and streamText; models via ai.createModel with groups cloudbase, hunyuan-exp, or custom-*, model id in the `model` field. MUST run two-step preflight before code — see body. NOT for Node.js backend (use ai-model-nodejs), Mini Program (use ai-model-wechat), or image generation (Node SDK only)."
-version: 2.33.2
+version: 2.34.3
 alwaysApply: false
 ---
 
@@ -652,7 +652,7 @@ callCloudApi({
 ---
 name: auth-nodejs-cloudbase
 description: CloudBase Node SDK auth guide for server-side identity, user lookup, and custom login tickets. This skill should be used when Node.js code must read caller identity, inspect end users, or bridge an existing user system into CloudBase; not when configuring providers or building client login UI.
-version: 2.33.2
+version: 2.34.3
 alwaysApply: false
 ---
 
@@ -1059,7 +1059,7 @@ The tool handles read-merge-write internally. The model does not need to build a
 ---
 name: auth-tool-cloudbase
 description: CloudBase auth provider configuration and login-readiness guide. This skill should be used when users need to inspect, enable, disable, or configure auth providers, publishable-key prerequisites, login methods, SMS/email sender setup, or other provider-side readiness before implementing a client or backend auth flow.
-version: 2.33.2
+version: 2.34.3
 alwaysApply: false
 ---
 
@@ -1431,7 +1431,7 @@ const handleRegister = async () => {
 ---
 name: auth-web-cloudbase
 description: CloudBase Web Authentication Quick Guide for frontend integration after auth-tool has already been checked. Provides concise and practical Web authentication solutions with multiple login methods and complete user management.
-version: 2.33.2
+version: 2.34.3
 alwaysApply: false
 ---
 
@@ -1803,22 +1803,66 @@ Use it when you need to:
 
 ```json
 {
-  "service": "cam",                // 白名单内服务，见下
+  "service": "cam",                // 腾讯云产品标识，任意产品可调，见下
   "action": "DescribeRoleList",    // 官方 Action 名，禁止猜测
-  "version": "2019-01-16",         // 官方 API 版本；未知 service 必须显式传
+  "version": "2019-01-16",         // 官方 API 版本；多数可省，多版本产品必传
   "region": "ap-shanghai",         // 可选，X-TC-Region；跨地域必传，禁止写进 params
   "params": { "Page": 1, "Rp": 50 }
 }
 ```
 
-- **Service 白名单**（随版本演进，以工具 schema 为准）：`tcb / tcbr / scf / sts / cam / lowcode / cdn / vpc / monitor / postgres`（2.34.0 起新增 monitor、postgres）。monitor/postgres 无内置默认 version，**必须显式传**：monitor `2018-07-24`、postgres `2017-03-12`。若当前部署版本 schema 枚举不含目标 service，说明版本较旧，取 `auth get_temp_credentials` 临时密钥走 §2 SDK 路径。
+- **service 是白名单枚举**：只接受白名单内的产品标识，名单外的取值（对象存储 COS 这类不在云 API 体系内的产品、以及任何拼写错误）会被直接拒绝 —— 不要臆造 service 名、也不要试近义词。与中文名不一致的常见项：云数据库 MySQL 是 `cdb`、日志服务是 `cls`、DNS 解析是 `dnspod`、SSL 证书是 `ssl`。**完整清单（按产品线分组）：[`./service-versions.md`](./service-versions.md)。**
+- **version 多数可以省**：只有一个官方版本的产品会按映射表自动补齐（例如 `ssl` → `2019-12-05`）。**只有多版本产品必须显式传** —— `tke`、`mongodb`、`teo`、`vod`、`sms`、`monitor`：缺省会报错并列出可选版本，不会替你猜（猜错会被服务端报成 Action 不存在，很难排查）。
+- **最常用的几个**：
+
+  | service | version | 用途 |
+  | --- | --- | --- |
+  | `tcb` | `2018-06-08` | 云开发环境 / 用户 / 认证 / 函数 / 数据库 |
+  | `tcbr` | `2022-02-17` | 云托管 |
+  | `scf` | `2018-04-16` | 云函数 |
+  | `sts` | `2018-08-13` | 临时密钥与调用者身份 |
+  | `cam` | `2019-01-16` | 权限、角色、策略 |
+  | `monitor` | `2018-07-24` | 云监控 / 告警策略（多版本） |
+  | `postgres` | `2017-03-12` | PostgreSQL |
+  | `ssl` | `2019-12-05` | SSL 证书 |
 - **前置条件**：首次调用若返回 `ENV_REQUIRED`，先完成环境绑定（`auth` 工具 `set_env`）再重发；这不是云 API 错误，是工具自身的会话状态要求。
-- **常用 version**：tcb `2018-06-08`、scf `2018-04-16`、sts `2018-04-16`、cam `2019-01-16`、tcbr `2022-02-17`（必传）、monitor `2018-07-24`、postgres `2017-03-12`。
 - **错误分类**（错误信息前缀决定下一步）：
   - `The parameter 'X' is not recognized` → Action 正确、参数名错；对照官方文档修正字段名/大小写
   - `action ... is invalid or not found` → Action 名未经文档来源确认就发起调用；回官方文档核对后用确认过的名字（实测案例：控制台代理的 `ListRoles` 在官方 CAM 2019-01-16 API 中不存在，真实 Action 为 `DescribeRoleList`）
   - `UnauthorizedOperation / AuthFailure` → CAM 权限不足；走 §3 授权升级
   - `Region is not recognized` → region 传到顶层参数，不放进 params
+
+### 常用 Action 与参数示例（tcb / tcbr）
+
+`tcb`（云开发管控面）：
+
+| 用途 | Action |
+| --- | --- |
+| 环境管理 | `CreateEnv` / `ModifyEnv` / `DescribeEnvs` / `DestroyEnv` |
+| 用户管理 | `CreateUser` / `ModifyUser` / `DescribeUserList` / `DeleteUsers` |
+| 认证配置 | `EditAuthConfig` |
+| 云函数 | `DescribeFunctions` / `CreateFunction` |
+| 数据库 | `CreateMySQLInstance` |
+
+`tcbr`（云托管）：`CreateCloudRunEnv`（初始化）、`DescribeEnvBaseInfo`（查单个环境，`EnvId` 必填）、`DescribeCloudRunEnvs`（查环境列表 / 资源，`EnvId` 可选过滤）、`CreateCloudRunServer` / `DescribeCloudRunServers`。
+
+参数示例：
+
+```json
+{ "service": "tcb", "action": "DestroyEnv", "params": { "EnvId": "env-xxx", "BypassCheck": true } }
+```
+
+环境已处于隔离期时可再补 `params.IsForce: true`；更新环境别名：
+
+```json
+{ "service": "tcb", "action": "ModifyEnv", "params": { "EnvId": "env-xxx", "Alias": "demo" } }
+```
+
+跨地域查询时 `region` 走顶层，不要放进 `params`：
+
+```json
+{ "service": "tcb", "action": "DescribeEnvs", "region": "ap-singapore" }
+```
 
 ## §2 代码管控（用户侧脚本/服务）
 
@@ -1830,27 +1874,49 @@ Use it when you need to:
    - **目录规律**：除 Node.js 外都是 `tencentcloud/<service>/<version>/`；schema 文件就在该目录下（Python `models.py`、Go `models.go`、Java 同包 `<Action>Request.java`）。每个接口一个 `<Action>Request` / `<Action>Response` 定义，字段名、参数名（json tag / 注解）、类型、必填性、注释齐全；同目录的 client 文件（`<service>_client.py` / `client.go`）可确认该 service 的 Action 全集。
    - **Node.js 特例**：按服务 npm 分包 `tencentcloud-sdk-nodejs-<service>`，types `.d.ts` 就是 schema；源码在 `tencentcloud-sdk-nodejs` 仓库 `src/services/<service>/<version>/` 下。
    - **不确定语言或路径时**：先抓仓库根目录的文件列表（GitHub API `https://api.github.com/repos/TencentCloud/<repo>/contents/tencentcloud`）确认实际结构，不要凭猜构造 URL；各仓库根路径 `examples/` 有每接口调用示例。
-   - 已实测锚点（Python 与 Go 结构完全同构，2026-09-08）：
+   - 已实测锚点（Python 与 Go 结构完全同构）：
      `https://raw.githubusercontent.com/TencentCloud/tencentcloud-sdk-python/master/tencentcloud/monitor/v20180724/models.py` → `CreateAlarmPolicyRequest` 结构体直接可读。
 
-## §3 CAM 权限不足 → 拼授权链接（实测可用，2026-09-08）
+## §3 权限：先认凭据身份，再给一键授权链接
 
-权限模型要点（同日实测）：
+### 3.1 权限来自谁
 
-- 账号级登录（device code / OAuth STS）：以登录的子账号/角色身份调用管控面，权限取决于该身份的 CAM 策略。**用户自己登录的子账号可能有完整 monitor 权限**（2026-09-08 二次实测：某子账号直调 monitor 告警全链路零障碍）——权限错误发生时才走授权升级，不要预先假定。
-- API Key 环境级：服务端固定权限模型，面向单环境数据面，没有为单个 Key 追加任意 CAM 策略的通道。
-- TCB **服务角色族**默认**无告警管理权限**（以 TCB_QcsRole 身份调用时）：`TCB_QcsRole` 无 monitor 策略；`TCBMonitor_QCSRole` 仅 `monitor:GetMonitorData`。
-- 临时密钥获取：`auth(action="get_temp_credentials", confirm="yes", reveal=true)` 返回明文 STS 三元组，可直接用于官方 SDK / TC3 手工签名（即 §2 代码管控路径），适用于 callCloudApi 白名单未放行目标 service 时的真实操作。
+管控面调用「没权限」，先看是哪种凭据在调用 —— 三种身份的权限来源不同：
 
-**授权链接拼装流程**（cam service 已放行，全程可程序化）：
+| 凭据身份 | 实际调用者 | 权限来自 | 不足时怎么补 |
+| --- | --- | --- | --- |
+| 账号级登录（device code / OAuth STS / 腾讯云密钥） | 登录的用户 / 子账号本人 | 该身份自身的 CAM 策略 | 由主账号给**这个子账号**追加策略（控制台操作） |
+| 环境级 API Key | 服务端固定模型 | 单环境数据面 + 固定的 TCB 策略 | **没有为单个 Key 追加任意 CAM 策略的通道** —— 换账号级凭据，或走下面的角色路线 |
+| CLI / MCP 用 TCB 服务角色换取的临时密钥 | 角色（`TCB_QcsRole` 等） | 挂在**角色**上的策略 | 给**角色**追加策略（一键授权链接） |
 
-1. 查角色 RoleId（按 RoleName 定位，跨账号 RoleId 不同）：
-   `callCloudApi(service="cam", version="2019-01-16", action="GetRole", params={ "RoleName": "TCB_QcsRole" })`
-   → `RoleInfo.RoleId`
-2. 拼 CAM 角色详情页链接（实测 URL 格式）：
-   `https://console.cloud.tencent.com/cam/role/detail?roleId=<RoleId>`
-3. 把链接和需要挂载的策略名一起给用户，例如追加 `QcloudMonitorReadOnlyAccess`（只读）或自定义告警策略集（`monitor:CreateAlarmPolicy` / `DescribeAlarmPolicies` / `BindingPolicyObject` 等），说明这是**一次性操作**，授权完成后重试原调用。
-4. 重试时遵循幂等模式：Create 前先 Describe 查重，避免重复创建。
+TCB 服务角色族挂的是 TCB 自己声明的策略集（`QcloudAccessForTCBRole` 等），跨产品能力覆盖到哪一步由这份策略决定；`TCBMonitor_QCSRole` 只覆盖 `monitor:GetMonitorData`（拉指标）。所以跨产品调用报 `UnauthorizedOperation` 是预期内的，不是配置出错 —— 先按上表确认你的凭据属于哪一行，再决定给谁补策略。
+
+自己在哪一行，用 `auth(action="status")` 看 `credential_scope`：`account` = 账号级登录，`single_env` = 环境级 API Key。
+
+**角色挂载的策略会随产品迭代变化**，别照着文档里的旧结论判断。要确认当前覆盖范围，直接读（cam service 已放行）：
+
+1. `ListAttachedRolePolicies`：看角色挂了哪些策略
+2. `GetPolicy(PolicyId=…)`：读该策略的 `PolicyDocument`，逐条看 `action` 数组里有没有你要的 Action
+
+临时密钥用于代码侧调用：`auth(action="get_temp_credentials", confirm="yes", reveal=true)` 返回明文 STS 三元组，直接喂官方 SDK / TC3 手工签名，即 §2 代码管控路径。
+
+### 3.2 一键授权链接（交给用户点一下）
+
+```
+https://console.cloud.tencent.com/cam/role/grant?roleName=<角色名>&policyName=<预设策略名>&principal=<URL 编码后的 base64>
+```
+
+`principal` 是角色载体的 base64：`base64('{"service":"<角色载体>"}')`，末位 `=` 写成 `%3D`。
+
+| 角色 | 角色载体 | `principal` 参数值 |
+| --- | --- | --- |
+| `TCB_QcsRole` | `tcb.cloud.tencent.com` | `eyJzZXJ2aWNlIjoidGNiLmNsb3VkLnRlbmNlbnQuY29tIn0%3D` |
+| `SCF_QcsRole` | `scf.qcloud.com` | `eyJzZXJ2aWNlIjoic2NmLnFjbG91ZC5jb20ifQ%3D%3D` |
+
+不要硬编码角色名和载体 —— 两个都能现场读出来（cam service 已放行）：
+
+1. `callCloudApi(service="cam", version="2019-01-16", action="GetRole", params={ "RoleName": "TCB_QcsRole" })`
+2. `RoleInfo.PolicyDocument` 是该角色的**信任策略** JSON，`statement[].principal.service[]` 就是角色载体（`PolicyDocument` 是字符串，需再解析一层）
 
 ## README
 
@@ -1858,31 +1924,53 @@ Use it when you need to:
 
 **一个场景一篇文档**，新增 recipe 时在本目录新建 `<场景名>.md`，并登记到下方目录表。
 
-每个 recipe 固定结构：**前置权限 → 接口序列 → 踩坑清单 → 验证步骤**。参数值凡未在 recipe 中标注"实测"的，先对照官方文档确认再使用。
+每个 recipe 固定结构：**When to use → 前置权限 → 接口序列 → 踩坑清单 → 验证步骤**（入口特殊的可加「入口」一节）。`When to use` 写可判定的触发条件（出现什么症状就该翻这篇），并用一句划出本篇不管什么、该转哪去。
+
+正文只写使用者照着做什么：**不写出处与验证过程**（取自哪份文档/源码、比对过哪些版本、我们怎么核对的），**不留维护者待办**；可信度只记在下表「状态」列 —— `✅ 生产实证（日期）` = 已在真实环境端到端跑通；`🟡 文档核对，未实跑` = 接口序列尚未在真实环境跑过，先按「验证步骤」做只读自检再用。
+
+「实测」是**值级**标记：贴在某个参数、接口或返回值上，最多一个，未标注的按官方文档核对后再用。不要给整节或整表贴「（全部实测）」这类状态括注——它没有逐行分辨率，不能改变任何具体动作，而后来补进未验证内容时会继承这个标签，正好让 AI 高置信采信未验证的东西。
 
 ## 目录
 
 | # | Recipe | 文档 | 状态 |
 | --- | --- | --- | --- |
 | 1 | PostgreSQL 存储空间使用率告警 | [pg-storage-alarm.md](./pg-storage-alarm.md) | ✅ 生产实证（2026-09-08） |
-| 2 | 依赖产品资源告警（MySQL/CVM 等） | 复用 Recipe 1 框架，换 namespace | 📋 计划 |
-| 3 | MySQL 备份回档 | 待补 | 📋 计划 |
-| 4 | SCF 函数触发器 | 待补（api-reference 依赖产品段已有指引） | 📋 计划 |
 
-## 官方 API 文档入口（供 recipe 撰写时核对）
+## 没有独立 recipe 的场景
 
-- **监控/告警（腾讯云可观测平台）**：API 概览 https://cloud.tencent.com/document/product/649/30343 ；单个 Action 详细文档在 `document/api/248/` 下（例：CreateAlarmPolicy https://cloud.tencent.com/document/api/248/51287 ）
-- **其他产品**：从 https://cloud.tencent.com/document/api 进入对应产品 API 中心，Action 名与参数先经官方文档确认，再写入 recipe。
+- **MySQL / CVM 等依赖产品告警**：复用 Recipe 1 的框架，换 monitor namespace。
+- **MySQL 备份回档、SCF 函数触发器**：暂无 recipe，从 `api-reference` 的依赖产品段起查。
 
 ## pg-storage-alarm
 
 # Recipe 1 — PostgreSQL 存储空间使用率 ≥ 80% 告警
 
-**实证来源**：2026-09-08 主账号 AppId 1259548930 全链路实测，policy-b2lti7cg 已生效。
+## When to use
+
+要给 CloudBase PostgreSQL 实例配存储空间（磁盘）使用率告警时：
+
+- 新建使用率阈值告警策略，并绑定到指定实例
+- 已有策略但不生效：需要回查绑定维度（`resourceId` / `uid` 为 null、策略被 `alarm_disabled` 禁用）
+
+本篇只覆盖告警策略的创建 / 绑定 / 回查；查监控数据（`GetMonitorData`）或控制台可视化不在这里。
 
 ## 前置权限
 
-`monitor` 告警策略族 + `postgres` DescribeDBInstances。默认凭据（API Key / TCB 角色族）均无此权限，先走 [calling-methods.md §3](../calling-methods.md) 追加授权。
+需要 `monitor` 告警策略族的**写**权限 + `postgres` 读实例权限。
+
+权限来自哪种凭据身份，见 [calling-methods.md §3](../calling-methods.md)：账号级登录取该身份自身策略，服务角色发起的调用取角色挂载的策略，环境级 API Key 没有追加 CAM 策略的通道。**先直接往下做**，只有写操作真的返回 `UnauthorizedOperation` 时才回来补：
+
+- 告警策略族：`QcloudMonitorFullAccess`（`QcloudMonitorReadOnlyAccess` 对「告警策略」只有访问权、没有操作权，写操作挂它没用）
+- postgres 读实例：`QcloudPostgreSQLReadOnlyAccess`
+
+补权限的一键链接（`TCB_QcsRole` 为例，角色名与 `principal` 按实际角色替换）：
+
+- `https://console.cloud.tencent.com/cam/role/grant?roleName=TCB_QcsRole&policyName=QcloudMonitorFullAccess&principal=eyJzZXJ2aWNlIjoidGNiLmNsb3VkLnRlbmNlbnQuY29tIn0%3D`
+- `https://console.cloud.tencent.com/cam/role/grant?roleName=TCB_QcsRole&policyName=QcloudPostgreSQLReadOnlyAccess&principal=eyJzZXJ2aWNlIjoidGNiLmNsb3VkLnRlbmNlbnQuY29tIn0%3D`
+
+账号级身份（腾讯云密钥 / 子账号 / device 登录）缺权限时，由主账号给**这个身份**追加策略，别去点角色的链接。
+
+链接的拼法与角色载体的读法见 [calling-methods.md §3](../calling-methods.md)。
 
 官方 API 文档：监控告警 API 概览 https://cloud.tencent.com/document/product/649/30343（单个 Action 详细文档在 `document/api/248/` 下）。
 
@@ -1916,26 +2004,26 @@ CreateAlarmPolicy 实测可用的请求体：
       "Value": "80", "ContinuePeriod": 1, "NoticeFrequency": 3600, "IsPowerNotice": 0
     }]
   },
-  "NoticeIds": ["notice-q5jl62uv"]
+  "NoticeIds": ["notice-xxxxxxxx"]
 }
 ```
 
-返回 `PolicyId`（策略 ID）与 `OriginId`（数字，即后续绑定接口的 **GroupId**）。
+返回 `PolicyId`（策略 ID）与 `OriginId`（数字，即后续绑定接口的 **GroupId**）；维度里的 `uid` 取自步骤 3 的实例返回。
 
 绑定请求（步骤 6）：
 
 ```json
 {
   "Module": "monitor",
-  "PolicyId": "policy-b2lti7cg",
+  "PolicyId": "policy-xxxxxxxx",
   "Dimensions": [{
     "Region": "sh",
-    "Dimensions": "{\"uid\":425810,\"resourceId\":\"postgres-pdkup8by\"}"
+    "Dimensions": "{\"uid\":<实例Uid>,\"resourceId\":\"<PostgreSQL实例ID>\"}"
   }]
 }
 ```
 
-## 踩坑清单（全部实测）
+## 踩坑清单
 
 | 坑 | 现象 | 正确做法 |
 | --- | --- | --- |
@@ -1948,6 +2036,7 @@ CreateAlarmPolicy 实测可用的请求体：
 | DescribeAlarmNotices 参数 | 缺 `Order` 报 MissingParameter；小写 `asc` 报 invalid input param | 必传 `Module` + `Order="ASC"`（大写）+ `PageNumber/PageSize`；响应字段是 `Id`（不是 NoticeId） |
 | 服务端报错吞首字母 | `RojectId` / `RderType` / `SUnionRule` / `Egion` 等未定义参数报错 | 这是服务端报错**显示**怪癖（首字母被吞），实际核对的是完整参数名；先对照 SDK models 的字段定义，别被报错带偏 |
 | SDK 类名陷阱（Python） | `ConditionTemplate`/`AlertRule`/`Dimension` 不存在或形状不对 | Condition 用 `AlarmPolicyCondition`、规则用 `AlarmPolicyRule`、绑定维度用 `BindingPolicyObjectDimension`（`Dimension` 是别的接口的，只有 Name/Value） |
+| 以为只能 HTTP 直调 | 目标 service 不在 `callCloudApi` 支持的范围内，以为做不了 | 同序列可走官方 SDK 直调（[calling-methods.md §3](../calling-methods.md) 取临时密钥），两条路径结论一致、可互换 |
 
 ## 验证步骤
 
@@ -1955,16 +2044,135 @@ CreateAlarmPolicy 实测可用的请求体：
 2. `DescribeBindingPolicyObjectList`（Module + GroupId）：确认 Total=1 且 Dimensions 双字段非 null。
 3. 若出现 null 维度残留记录，用 UnBindingPolicyObject 清理。
 
-## 二次实测记录（2026-09-08，账号 Uin 100046919896 / 环境 mcp-pg-ky5u9q）
+## service-versions
 
-全链路二次打通：policy `policy-qnnip178`（GroupId 15961728）绑定 `postgres-l4xa5uq4`（uid 424521），回查双维度非 null、Enable=1。本次执行路径为 **SDK 直调**（monitor/postgres 未在 callCloudApi 白名单时，取 `auth get_temp_credentials` 临时密钥走官方 SDK，即 skill §2 代码管控路径），与首次 HTTP 直调结论一致。
+# Service 索引 — `callCloudApi` 支持的产品
+
+`service` 是**枚举白名单**：只接受下表的产品标识，名单外的取值（对象存储 COS 这类不在云 API 体系内的产品、以及任何拼写错误）在请求出网前就被拒。
+
+**权威顺序**：工具 schema 的 `enum`（随版本发布）> 本页。本页用于人工查阅 —— 尤其是「中文产品名 → service 标识」的对照，以及哪些产品必须显式传 `version`。
+
+## 用法要点
+
+- `version` 多数可以省：只有一个官方版本的产品由映射表自动补齐（例如 `ssl` → `2019-12-05`）。
+- **多版本产品必须显式传**（下表标 ⚠️）：缺省会报错并列出可选值，不会替你猜 —— 猜错会被服务端报成 `action is invalid or not found`，很难排查。
+- service 标识就是官方 SDK 的目录名：`tencentcloud/<service>/v<YYYYMMDD>`。
+- 常用 **Action 名与参数示例**（`tcb` / `tcbr` 的常见操作）见 [`./calling-methods.md`](./calling-methods.md) §1。
+
+## 云开发 / 管控面
+
+| service | 产品 | version |
+| --- | --- | --- |
+| `tcb` | 云开发 CloudBase | `2018-06-08` |
+| `tcbr` | 云托管 CloudBase Run | `2022-02-17` |
+| `scf` | 云函数 SCF | `2018-04-16` |
+| `sts` | 临时密钥服务 | `2018-08-13` |
+| `cam` | 访问管理 | `2019-01-16` |
+| `cloudaudit` | 云审计 | `2019-03-19` |
+| `tag` | 标签 | `2018-08-13` |
+| `billing` | 计费 | `2018-07-09` |
+| `region` | 地域 | `2022-06-27` |
+
+## 计算 / 容器 / 存储
+
+| service | 产品 | version |
+| --- | --- | --- |
+| `cvm` | 云服务器 | `2017-03-12` |
+| `lighthouse` | 轻量应用服务器 | `2020-03-24` |
+| `tke` | 容器服务 TKE | ⚠️ `2018-05-25` / `2022-05-01` |
+| `cbs` | 云硬盘 | `2017-03-12` |
+| `cfs` | 文件存储 | `2019-07-19` |
+| `tcr` | 容器镜像服务 | `2019-09-24` |
+
+## 数据库
+
+| service | 产品 | version |
+| --- | --- | --- |
+| `cdb` | 云数据库 MySQL | `2017-03-20` |
+| `mariadb` | 云数据库 MariaDB | `2017-03-12` |
+| `postgres` | 云数据库 PostgreSQL | `2017-03-12` |
+| `sqlserver` | 云数据库 SQL Server | `2018-03-28` |
+| `redis` | 云数据库 Redis | `2018-04-12` |
+| `mongodb` | 云数据库 MongoDB | ⚠️ `2018-04-08` / `2019-07-25` |
+| `cynosdb` | 云数据库 TDSQL-C MySQL | `2019-01-07` |
+| `dcdb` | 分布式数据库 TDSQL | `2018-04-11` |
+| `tcaplusdb` | 游戏数据库 TcaplusDB | `2019-08-23` |
+| `keewidb` | 云数据库 KeeWiDB | `2022-03-08` |
+
+## 网络 / 域名 / 证书
+
+| service | 产品 | version |
+| --- | --- | --- |
+| `vpc` | 私有网络 | `2017-03-12` |
+| `clb` | 负载均衡 | `2018-03-17` |
+| `cdn` | 内容分发网络 | `2018-06-06` |
+| `ecdn` | 全站加速网络 | `2019-10-12` |
+| `dnspod` | DNS 解析 DNSPod | `2021-03-23` |
+| `privatedns` | 私有域解析 Private DNS | `2020-10-28` |
+| `domain` | 域名注册 | `2018-08-08` |
+| `ssl` | SSL 证书 | `2019-12-05` |
+| `teo` | 边缘安全加速平台 EdgeOne | ⚠️ `2022-01-06` / `2022-09-01` |
+| `gaap` | 全球应用加速 | `2018-05-29` |
+
+## 安全
+
+| service | 产品 | version |
+| --- | --- | --- |
+| `kms` | 密钥管理系统 | `2019-01-18` |
+| `ssm` | 凭据管理系统 | `2019-09-23` |
+| `waf` | Web 应用防火墙 | `2018-01-25` |
+| `cwp` | 主机安全 | `2018-02-28` |
+| `tcss` | 容器安全服务 | `2020-11-01` |
+
+## 中间件 / 消息
+
+| service | 产品 | version |
+| --- | --- | --- |
+| `ckafka` | 消息队列 CKafka | `2019-08-19` |
+| `tdmq` | 消息队列 TDMQ | `2020-02-17` |
+| `tdmysql` | 云数据库 TDSQL MySQL 版 | `2021-11-22` |
+| `apigateway` | API 网关 | `2018-08-08` |
+
+## 可观测 / 运维
+
+| service | 产品 | version |
+| --- | --- | --- |
+| `monitor` | 云监控（可观测平台） | ⚠️ `2018-07-24` / `2023-06-16` |
+| `cls` | 日志服务 | `2020-10-16` |
+| `apm` | 应用性能监控 | `2021-06-22` |
+| `tsf` | 微服务平台 | `2018-03-26` |
+| `tat` | 自动化助手 | `2020-10-28` |
+
+## AI / 音视频
+
+| service | 产品 | version |
+| --- | --- | --- |
+| `hunyuan` | 混元大模型 | `2023-09-01` |
+| `lkeap` | 大模型知识引擎 | `2024-05-22` |
+| `tts` | 语音合成 | `2019-08-23` |
+| `trtc` | 实时音视频 | `2019-07-22` |
+| `live` | 云直播 | `2018-08-01` |
+| `vod` | 云点播 | ⚠️ `2018-07-17` / `2024-07-18` |
+
+## 通信
+
+| service | 产品 | version |
+| --- | --- | --- |
+| `sms` | 短信 | ⚠️ `2019-07-11` / `2021-01-11` |
+| `ses` | 邮件推送 | `2020-10-02` |
+
+## 目标产品不在表里
+
+表里的产品随 MCP 版本增加。不在表里说明当前版本还没收进来 —— 先把 MCP 升到最新版再试；仍然没有，反馈产品名与要调用的 Action，让维护方补表（不要用近义写法硬试，schema 会直接拒绝）。
+
+版本号不需要记：单版本产品调用时可省略，多版本产品缺省时会报错并列出可选值。
 
 ## rule
 
 ---
 name: cloud-api-operations
-description: Operate Tencent Cloud control-plane resources (monitoring/alarms, CLB, CAM roles, COS, MySQL, SCF, etc.) via cloud APIs when no dedicated MCP tool exists. Covers API discovery via the api-reference index, calling via MCP callCloudApi or official SDKs, credential/permission models with CAM authorization escalation, and battle-tested workflow recipes. Use when the task requires Tencent Cloud control-plane operations beyond CloudBase's own tooling.
-version: 2.33.2
+description: Operate Tencent Cloud control-plane resources (monitoring/alarms, CLB, CAM roles, COS, MySQL, SCF) via cloud APIs when no dedicated MCP tool covers the task. Use when a task needs control-plane operations beyond CloudBase's own tooling, or when a callCloudApi call failed and needs classifying.
+version: 2.34.3
 ---
 
 # Cloud API Operations
@@ -1993,11 +2201,14 @@ If a referenced sibling skill file is missing from this environment, ask the use
 
 **Done when**: the Action name, Version, and full parameter shape each trace to the index, official product docs, or SDK models source — nothing from memory. A call that still returns `action ... is invalid or not found` means a name was not resolved this way; classify and recover via the error table in `./references/calling-methods.md` §1.
 
+> **API first：公开 API 概览就是契约边界。** 索引里查不到某个能力，它就不在公开契约内 —— 不要拿某个 SDK 的封装方法反推未公开的 Action 名去调（这类 Action 不受公开文档保护，非该语言的使用者也无从照做）。此时改用有公开 API 的等价路径，或把缺口明确告诉用户。本 skill 的 recipes 只收录公开 API 覆盖的场景。
+
 ### 2. Choose the calling path
 
 | Scenario | Path | Reference |
 | --- | --- | --- |
 | Interactive ops inside this session | MCP `callCloudApi` | `./references/calling-methods.md` §1 |
+| Picking the `service` identifier / deciding whether `version` is needed | MCP `callCloudApi` | `./references/service-versions.md` |
 | User's code / scripts | Official SDKs (TC3-HMAC-SHA256) or `@cloudbase/manager-node` | `./references/calling-methods.md` §2 |
 | Quick one-off verification | API Explorer (https://console.cloud.tencent.com/api/explorer) | — |
 
@@ -2006,16 +2217,16 @@ Priority rule: if `@cloudbase/manager-node` has a matching method, use it; drop 
 ### 3. Check credentials before the first call
 
 - Read the current credential scope from `auth` tools: `credential_scope: account` = account-level, reaches control-plane APIs subject to that identity's CAM policies; `env` = API Key, scoped to one environment's data plane plus the fixed TCB policies.
-- The TCB role family lacks alarm-management permissions by default — expect a permission error on first alarm calls (details and the verified evidence in `./references/calling-methods.md` §3).
-- On `UnauthorizedOperation` / `AuthFailure`, compose the one-click CAM authorization link for the user per the programmatic flow in `./references/calling-methods.md` §3, then retry the original call.
+- Permission comes from a different place per credential identity: the account-level identity's own policies, the API Key model (no channel to attach arbitrary CAM policies), or the TCB service role that CLI / MCP assume. Which cross-product capabilities that role family already covers is not fixed — read the attached policies (`ListAttachedRolePolicies` + `GetPolicy`) instead of assuming, and treat `UnauthorizedOperation` as "this identity lacks this action", never as a broken setup.
+- On `UnauthorizedOperation` / `AuthFailure`, hand the user a **one-click CAM grant link** (role name + policy name + `principal`) instead of telling them to go find the policy in the console, then retry the original call. Role targets, the `principal` values, and which preset policy covers what: `./references/calling-methods.md` §3.
 
-**Done when**: the credential scope is known, and every permission error has been converted into an authorization link + concrete policy name for the user before any retry.
+**Done when**: the credential identity is known, and every permission error has been converted into a clickable authorization link carrying a concrete policy name before any retry.
 
 ### 4. Follow a proven recipe when one exists
 
-Recipes encode the exact call sequence, required parameters, and empirically discovered pitfalls so the flow works on the first pass. One scenario per file — start from the index `./references/recipes/README.md`:
+Recipes encode the exact call sequence, required parameters, and empirically discovered pitfalls so the flow works on the first pass. One scenario per file — start from the index `./references/recipes/README.md`, whose 状态 column records how far each recipe has been verified:
 
-- **PostgreSQL storage-usage alarm** (fully verified in production, 2026-09-08): `./references/recipes/pg-storage-alarm.md`
+- **PostgreSQL storage-usage alarm**: `./references/recipes/pg-storage-alarm.md`
 
 **Done when**: every parameter value in the call sequence traces to a recipe value marked as verified (实测) or to official docs.
 
@@ -2288,13 +2499,18 @@ exports.main = async (event, context) => {
 
 ## http-function-credentials
 
-# HTTP Function Credentials for CloudBase SDKs
+# Runtime Credentials for CloudBase SDKs
 
-Use this reference whenever an HTTP Function (managed runtime or Custom Image) calls CloudBase resources through `@cloudbase/node-sdk` or `@cloudbase/manager-node`.
+Use this reference whenever a **server-side compute resource** calls CloudBase resources through `@cloudbase/node-sdk` or `@cloudbase/manager-node`:
+
+- HTTP Functions (managed runtime or Custom Image)
+- CloudBase Run services, **Function mode** and **Container mode** both
+
+CloudRun containers do not automatically carry usable CloudBase credentials for this path — the same explicit credential gate below applies before deployment.
 
 ## Credential boundary
 
-> **STOP:** Do not assume that an HTTP Function can use CloudBase SDKs without explicit credentials.
+> **STOP:** Do not assume a server-side compute resource — HTTP Function or CloudRun service — can use CloudBase SDKs without explicit credentials.
 
 Event Functions can use the platform-provided runtime credential path. HTTP Functions must not depend on that default temporary credential injection: credential rotation can leave the process with invalid credentials and cause intermittent authorization failures.
 
@@ -2302,9 +2518,12 @@ Before deploying an HTTP Function that calls CloudBase SDKs:
 
 1. Identify which SDK the function uses.
 2. Select one supported explicit credential path below.
-3. Store credentials in function environment variables, never in source code.
-4. Read the existing function configuration, merge the credential variables, and update it with `manageFunctions(action="updateFunctionConfig")`.
-5. Verify one real SDK operation after deployment.
+3. Issue the credential through the platform API, never by copying a key out of a local client login state (`auth.json`, `.cloudbase/`). A key with no `keyName` has no owner, no rotation record, and no `keyId` to revoke.
+4. Store credentials in environment variables, never in source code.
+   - HTTP Function → read the current config, merge, then `manageFunctions(action="updateFunctionConfig")`.
+   - CloudRun service → merge into `serverConfig.EnvParams` via `manageCloudRun(action="deploy" | "updateConfig")`.
+5. Verify one real SDK operation after deployment, more than once.
+6. Record the key owner and the rotation/revocation path. Rotating a key invalidates the in-container copy silently, so redeploy after every rotation.
 
 ## `@cloudbase/node-sdk`
 
@@ -2334,7 +2553,10 @@ manageAppAuth({
 });
 ```
 
-Inject the returned key into the HTTP Function as `CLOUDBASE_APIKEY`. Do not print it, commit it, return it to a client, or put it in browser code.
+Inject the returned key as `CLOUDBASE_APIKEY`. Do not print it, commit it, return it to a client, or put it in browser code.
+
+- HTTP Function → `manageFunctions(action="updateFunctionConfig", ...)`
+- CloudRun service → `manageCloudRun(action="deploy" | "updateConfig", serverConfig={ "EnvParams": "{\"CLOUDBASE_APIKEY\":\"<key>\"}" })`, merging existing env keys instead of replacing the whole object
 
 Use a dedicated key name for each service and define a rotation/revocation owner. `expireIn: 0` avoids automatic expiry but creates a long-lived secret, so use it only when the deployment's secret-rotation process is explicit.
 
@@ -2397,17 +2619,6 @@ const app = CloudBase.init({
   secretId: process.env.TENCENTCLOUD_SECRETID,
   secretKey: process.env.TENCENTCLOUD_SECRETKEY
 });
-```
-
-Do not tell users to create a CloudBase API Key for Manager SDK initialization unless the Manager SDK public contract adds that capability.
-
-Use a dedicated CAM sub-account with the minimum management permissions required by the function.
-
-## Safe environment update
-
-Never replace all existing environment variables with only the new credentials.
-
-1. Call `queryFunctions(action="getFunctionDetail", functionName="...")`.
 
 ## http-functions-custom-image
 
@@ -2858,7 +3069,7 @@ After VPC is bound, public internet egress may require NAT / public gateway in t
 ---
 name: cloud-functions
 description: CloudBase function runtime guide for building, deploying, and debugging your own Event Functions or HTTP Functions. This skill should be used when users need application runtime code on CloudBase, not when they are merely calling CloudBase official platform APIs.
-version: 2.33.2
+version: 2.34.3
 alwaysApply: false
 ---
 
@@ -2897,7 +3108,7 @@ If a referenced sibling skill file is missing from this environment, ask the use
 
 - Detailed reference routing -> `./references.md`
 - Auth setup or provider-related backend work -> `../auth-tool-cloudbase/SKILL.md`
-- CloudBase Integration Center generated WeChat Pay or Official Account functions -> `../cloudbase-wechat-integration/SKILL.md` (official docs: `https://docs.cloudbase.net/integration/introduce/index.md`)
+- CloudBase Integration Center generated WeChat Pay or Official Account functions -> `../cloudbase-wechat-integration/SKILL.md` (official docs: `https://docs.cloudbase.net/integration/introduce.md`)
 - AI in functions -> `../ai-model-nodejs/SKILL.md`
 - Long-lived container services or Agent runtimes -> `../cloudrun-development/SKILL.md`
 - Calling CloudBase official platform APIs from a client or script -> `../http-api-cloudbase/SKILL.md`
@@ -2981,7 +3192,7 @@ Personal-tier image builds (`imageConfig.imageType="personal"` with `local` / `c
 ---
 name: cloud-storage-web
 description: Complete guide for CloudBase cloud storage using Web SDK (@cloudbase/js-sdk) - upload, download, temporary URLs, file management, and best practices.
-version: 2.33.2
+version: 2.34.3
 alwaysApply: false
 ---
 
@@ -5331,7 +5542,7 @@ Follow the **4-step deployment pipeline** in [agent-deployment](agent-deployment
 ---
 name: cloudbase-agent
 description: Build and deploy AI agents with CloudBase Agent SDK (TypeScript & Python). Implements the AG-UI protocol for streaming agent-UI communication. Use when deploying agent servers, using LangGraph/LangChain/CrewAI adapters, building custom adapters, understanding AG-UI protocol events, or building web/mini-program UI clients. Supports both TypeScript (@cloudbase/agent-server) and Python (cloudbase-agent-server via FastAPI).
-version: 2.33.2
+version: 2.34.3
 alwaysApply: false
 ---
 
@@ -7480,7 +7691,7 @@ tcb storage rm folder/ --dir -e <envId>                # Directory
 ---
 name: cloudbase-cli
 description: CloudBase CLI (tcb, 云开发CLI, Tencent CloudBase命令行) resource management skill. Use when deploying cloud functions, CloudRun, storage, NoSQL/MySQL, static hosting, permissions, CORS/domains via tcb; for CI/CD and batch ops; when the user prefers CLI; or as the first-session fallback when CloudBase MCP tools are not loaded yet (after install/config, before IDE restart). Covers tcb login (device code for Tencent Cloud accounts; --cloudbase-api-key -e for environment API Key without an account; --apiKeyId/--apiKey for CI) and domain commands (fn/hosting/cloudrun/…) as MCP auth/manage parity — do not default to tcb deploy.
-version: 2.33.2
+version: 2.34.3
 alwaysApply: false
 ---
 
@@ -8356,7 +8567,7 @@ CloudBase 安全域名机制会拦截未注册的 origin 发出的请求。Vite 
 ---
 name: cloudbase-code-review
 description: "Code review and validation for CloudBase projects. After writing code for Web / miniprogram / CloudRun / cloud-function projects, call this skill to check for known pitfalls — auth guard misuse, missing database tables, RLS misconfiguration, storage domain setup, and SDK API misuse. Supports automated lint scripts (regex-based) + LLM semantic review."
-version: 2.33.2
+version: 2.34.3
 alwaysApply: false
 ---
 
@@ -8769,7 +8980,7 @@ Use this supported cloud path:
 ---
 name: cloudbase-declarative-deploy
 description: CloudBase declarative deployment from a cloudbaserc config (声明式部署, 配置式部署, cloudbaserc 部署) through the deployBuild / deployPlan / deployApply MCP tools. Use when deploying database, functions, app, hosting, or gateway resources described in cloudbaserc.json/yaml as a single desired-state config, when a user wants to build static hosting artifacts locally first (deployBuild), or wants a dry-run plan before applying (deployPlan), or when handling multi-environment deploys via mode / envOverrides. Covers build-plan-apply flow (deployBuild local build → deployPlan dry-run → deployApply confirm=true), hosting build-output neutralization, envId resolution priority, only/skip filtering, concurrency, and continueOnError. Prefer deployBuild (when hosting declares a buildCommand) and deployPlan before deployApply; do not confuse with per-resource tcb CLI deploy or single-function deploy.
-version: 2.33.3
+version: 2.34.3
 alwaysApply: false
 ---
 
@@ -9630,7 +9841,7 @@ import { useEffect } from 'react';
 ---
 name: cloudbase-document-database-web-sdk
 description: Use CloudBase document database Web SDK only for confirmed NoSQL collection work. Query, create, update, and delete document data; if the task mentions PostgreSQL / CloudBase PG / app.rdb(), route to postgresql-development instead.
-version: 2.33.2
+version: 2.34.3
 alwaysApply: false
 ---
 
@@ -10229,7 +10440,7 @@ exports.main = async (event) => {
 ---
 name: cloudbase-platform
 description: CloudBase platform overview and routing guide. This skill should be used when users need high-level capability selection, platform concepts, console navigation, or cross-platform best practices before choosing a more specific implementation skill.
-version: 2.33.2
+version: 2.34.3
 alwaysApply: false
 ---
 
@@ -10265,7 +10476,7 @@ If a referenced sibling skill file is missing from this environment, ask the use
 - Web app implementation -> `../web-development/SKILL.md`
 - Web auth and provider setup -> `../auth-tool-cloudbase/SKILL.md`, `../auth-web-cloudbase/SKILL.md`
 - Mini program development -> `../miniprogram-development/SKILL.md`
-- WeChat Pay, Official Account OAuth, JSAPI Pay, or Native QR-code Pay through CloudBase Integration Center -> `../cloudbase-wechat-integration/SKILL.md` (official docs: `https://docs.cloudbase.net/integration/introduce/index.md`)
+- WeChat Pay, Official Account OAuth, JSAPI Pay, or Native QR-code Pay through CloudBase Integration Center -> `../cloudbase-wechat-integration/SKILL.md` (official docs: `https://docs.cloudbase.net/integration/introduce.md`)
 - Cloud functions -> `../cloud-functions/SKILL.md`
 - Official HTTP API clients -> `../http-api-cloudbase/SKILL.md`
 - Document database -> `../cloudbase-document-database-web-sdk/SKILL.md` or `../cloudbase-document-database-in-wechat-miniprogram/SKILL.md`
@@ -10353,8 +10564,8 @@ When working with domain-related tasks, use the correct tool based on the requir
 
 Official docs:
 
-- `https://docs.cloudbase.net/integration/wechat-pay-miniprogram/index.md`
-- `https://docs.cloudbase.net/integration/usage/index.md`
+- `https://docs.cloudbase.net/integration/wechat-pay-miniprogram.md`
+- `https://docs.cloudbase.net/integration/usage.md`
 
 ## When To Use
 
@@ -10440,8 +10651,8 @@ Adjust field names to the official docs and the generated function contract befo
 
 Official docs:
 
-- `https://docs.cloudbase.net/integration/wechat-pay-native/index.md`
-- `https://docs.cloudbase.net/integration/usage/index.md`
+- `https://docs.cloudbase.net/integration/wechat-pay-native.md`
+- `https://docs.cloudbase.net/integration/usage.md`
 
 ## When To Use
 
@@ -10505,9 +10716,9 @@ In CloudBase frontend-only projects, the API wrapper can call the generated HTTP
 
 Official docs:
 
-- `https://docs.cloudbase.net/integration/wechat-pay-jsapi-h5/index.md`
-- `https://docs.cloudbase.net/integration/wechat-official-oauth/index.md`
-- `https://docs.cloudbase.net/integration/usage/index.md`
+- `https://docs.cloudbase.net/integration/wechat-pay-jsapi-h5.md`
+- `https://docs.cloudbase.net/integration/wechat-official-oauth.md`
+- `https://docs.cloudbase.net/integration/usage.md`
 
 ## When To Use
 
@@ -10578,8 +10789,8 @@ Adjust request paths and parameter names to the generated function contract and 
 
 Official docs:
 
-- `https://docs.cloudbase.net/integration/wechat-official-oauth/index.md`
-- `https://docs.cloudbase.net/integration/usage/index.md`
+- `https://docs.cloudbase.net/integration/wechat-official-oauth.md`
+- `https://docs.cloudbase.net/integration/usage.md`
 
 ## When To Use
 
@@ -10650,8 +10861,8 @@ Use the actual generated function path or an application backend wrapper instead
 
 Official docs:
 
-- `https://docs.cloudbase.net/integration/introduce/index.md`
-- `https://docs.cloudbase.net/integration/usage/index.md`
+- `https://docs.cloudbase.net/integration/introduce.md`
+- `https://docs.cloudbase.net/integration/usage.md`
 
 ## What Integration Center Provides
 
@@ -10706,12 +10917,12 @@ When this skill is installed alone:
 
 Official docs:
 
-- `https://docs.cloudbase.net/integration/introduce/index.md`
-- `https://docs.cloudbase.net/integration/usage/index.md`
-- `https://docs.cloudbase.net/integration/wechat-pay-miniprogram/index.md`
-- `https://docs.cloudbase.net/integration/wechat-pay-jsapi-h5/index.md`
-- `https://docs.cloudbase.net/integration/wechat-pay-native/index.md`
-- `https://docs.cloudbase.net/integration/wechat-official-oauth/index.md`
+- `https://docs.cloudbase.net/integration/introduce.md`
+- `https://docs.cloudbase.net/integration/usage.md`
+- `https://docs.cloudbase.net/integration/wechat-pay-miniprogram.md`
+- `https://docs.cloudbase.net/integration/wechat-pay-jsapi-h5.md`
+- `https://docs.cloudbase.net/integration/wechat-pay-native.md`
+- `https://docs.cloudbase.net/integration/wechat-official-oauth.md`
 
 ## First Checks
 
@@ -10948,13 +11159,13 @@ Use this reference for **虚拟支付**（virtual goods payment）flows: 道具�
 ---
 name: cloudbase-wechat-integration
 description: CloudBase WeChat integration guide for Mini Program WeChat Pay, Mini Program virtual payment (虚拟支付, wx.requestVirtualPayment), Official Account JSAPI Pay, Native QR-code Pay, Official Account OAuth, openid handling, payment callbacks, and CloudBase Integration Center generated functions. This skill should be used when users ask to add, debug, or extend WeChat payment, virtual payment, or official-account flows on CloudBase.
-version: 2.33.2
+version: 2.34.3
 alwaysApply: false
 ---
 
 # CloudBase WeChat Integration
 
-This skill routes WeChat payment and official-account work through CloudBase Integration Center. It gives the agent the stable execution contract and points to official `index.md` docs for console details that may change.
+This skill routes WeChat payment and official-account work through CloudBase Integration Center. It gives the agent the stable execution contract and points to the official Markdown docs for console details that may change.
 
 ## Sibling skills (local only)
 
@@ -10963,8 +11174,8 @@ Sibling CloudBase skills ship beside this skill. Use local relative paths such a
 If a referenced sibling skill file is missing from this environment, ask the user to install the full CloudBase plugin (or the missing skill). Do **not** HTTP-fetch remote skill or protocol markdown into the agent context.
 
 Official CloudBase Integration Center docs (human reference — do not treat as skill markdown to fetch into agent context as a sibling skill substitute):
-- CloudBase Integration Center overview: `https://docs.cloudbase.net/integration/introduce/index.md`
-- CloudBase Integration Center usage: `https://docs.cloudbase.net/integration/usage/index.md`
+- CloudBase Integration Center overview: `https://docs.cloudbase.net/integration/introduce.md`
+- CloudBase Integration Center usage: `https://docs.cloudbase.net/integration/usage.md`
 - When cloud function deployment or log operations are needed and no sibling skill is available, use the current platform's CloudBase MCP tools or CloudBase console instead of guessing unsupported APIs.
 
 ## Activation Contract
@@ -11177,7 +11388,7 @@ Official docs: [VPC configuration for CloudBase Run](https://docs.cloudbase.net/
 | 维度 | SDK / 网关路径（优先） | TCP 直连（兜底） |
 | --- | --- | --- |
 | 网络配置 | 无需 `VpcConf` | 必须绑定同 VPC + 安全组放行 DB 端口 |
-| 数据库凭证 | 环境内置，无需注入账号密码 | 需要生成 / 注入 / 轮换账号密码 |
+| 数据库凭证 | 环境内置，无需注入**数据库**账号密码（≠ 不需要凭证，见下方注） | 需要生成 / 注入 / 轮换账号密码 |
 | 典型故障 | 基本没有 | `ETIMEDOUT`、安全组拦截、密码错误、VPC 未挂载 |
 | 适用场景 | 新应用 / CloudBase 原生数据（PG、NoSQL、storage） | 迁移已有应用、SDK 不覆盖的能力（特定 SQL 方言、Redis 原生协议等） |
 
@@ -11188,6 +11399,8 @@ SDK 路径的具体形态：
 - 若新应用只需要这些数据面，还可考虑直接用 HTTP 云函数（内置 SDK、免 VPC），不上云托管容器
 
 仅当应用是经典 TCP 客户端（mysql2 / pg / Prisma / SQLAlchemy / WordPress / Ghost 等迁移场景）且改造为 SDK 的方案被否决时，才继续往下走 VPC 流程。
+
+> ⚠️ **「无需数据库账号密码」≠「无需凭证」。** SDK / 网关路径省掉的是数据库账号密码与 `VpcConf`，但服务实例调用 CloudBase 资源（PG `app.rdb()` / NoSQL / storage）仍要带 CloudBase 资源访问凭证：由 `manageAppAuth(action="createApiKey", keyType="api_key")` 签发，经 `serverConfig.EnvParams` 注入 `CLOUDBASE_APIKEY`，不要从本地客户端登录态里取。完整步骤见 `../../cloud-functions/references/http-function-credentials.md`。
 
 ## Critical distinction
 
@@ -11282,15 +11495,13 @@ If the user says "PostgreSQL" but the app is a classic TCP client (for example n
     "EnvParams": "{\"DATABASE_URL\":\"postgres://...private-host...\"}"
   }
 }
-```
-
 
 ## rule
 
 ---
 name: cloudrun-development
 description: CloudBase Run backend development rules (Function mode/Container mode). Use this skill when deploying backend services that require long connections, multi-language support, custom environments, AI agent development, or migrating existing/GitHub apps that need VPC access to MySQL/PostgreSQL/Redis. Also use when diagnosing CloudRun container deploy failures (deploy_failed, readiness/probe failed, image won't start, docker.io pull loops). For stateless HTTP services, prefer HTTP cloud functions.
-version: 2.33.2
+version: 2.34.3
 alwaysApply: false
 ---
 
@@ -11322,6 +11533,7 @@ If a referenced sibling skill file is missing from this environment, ask the use
 - The prompt mentions `queryCloudRun`, `manageCloudRun`, Dockerfile, service domains, or public/private access.
 - The app depends on MySQL, PostgreSQL, Redis, or other VPC-private resources over TCP → **先做数据库访问方式决策（SDK/网关优先，见下方「数据库访问方式决策门」）**；确认必须 TCP 直连后 → also read `references/vpc-and-database.md`.
 - You are choosing between CloudRun and HTTP cloud functions for a stateless HTTP service.
+- The service calls CloudBase resources (PG `app.rdb()`, NoSQL, storage, functions) through an SDK → **先过「计算资源访问 CloudBase 的凭证决策门」**：凭证谁签发、怎么注入、怎么吊销，都必须在写代码之前定下来。
 - Container deploy fails (`deploy_failed`, Pod not ready, readiness/probe failed, third-party `imageUrl` won't stay up) → also read `references/image-deploy-troubleshooting.md` and follow the **Container deploy failure SOP** below. Do not start by raising `InitialDelaySeconds`.
 
 ### Then also read
@@ -11331,6 +11543,7 @@ If a referenced sibling skill file is missing from this environment, ask the use
 - Web authentication for browser callers -> `../auth-web-cloudbase/SKILL.md`
 - Existing app + TCP database networking -> `references/vpc-and-database.md`
 - Container image deploy failure / probe / `deploy_failed` -> `references/image-deploy-troubleshooting.md`
+- Service calls CloudBase resources through an SDK (credential source / injection / revocation) -> `../cloud-functions/references/http-function-credentials.md`
 
 ### Do NOT use for
 
@@ -11341,7 +11554,9 @@ If a referenced sibling skill file is missing from this environment, ask the use
 ### Common mistakes / gotchas
 
 - Choosing CloudRun when the request only needs a normal cloud function.
-- Forgetting to listen on the platform-provided `PORT`.
+- **Forgetting to listen on the platform-provided `PORT` in Container mode** — and its mirror image in Function mode: calling `app.listen()` there, where the framework already owns the port and the second bind dies with `EADDRINUSE`.
+- **Guessing the credential environment variable name.** `@cloudbase/node-sdk` reads `CLOUDBASE_APIKEY`; an invented name (for example `TCB_API_KEY`) is silently ignored and only shows up later as "no credentials at runtime".
+- **Copying a server credential out of the local client login state** (`auth.json`, `.cloudbase/`) and injecting it into a deployed service. Issue the key with `manageAppAuth(action="createApiKey", keyType="api_key")` instead, so it has an owner, a rotation path, and a `keyId` you can revoke. See `../cloud-functions/references/http-function-credentials.md`.
 - Treating CloudRun as stateful app hosting and storing important state on local disk.
 - Assuming local run is available for Container mode.
 - Opening public access by default when the scenario only needs private or mini-program internal access.
@@ -11363,6 +11578,7 @@ If a referenced sibling skill file is missing from this environment, ask the use
 - Confirm whether the service should be public, VPC-only, or mini-program internal (**ingress**).
 - If the app uses TCP databases/caches, resolve and set `VpcConf` (**egress / private network**) before deploy — see `references/vpc-and-database.md`.
 - Keep the service stateless and externalize durable data.
+- **Settle the credential path for every CloudBase SDK call before writing code** — a server API Key issued through `manageAppAuth(action="createApiKey")` and injected via `EnvParams`, never a key copied out of the local client login state.
 - Use absolute paths for every local project path.
 - Confirm handlers never echo `x-cloudbase-context`, full headers, or credential env vars; do not deploy httpbin-style reflectors.
 - For third-party images, complete the five-item docs checklist (Cmd / port / bind env / volume / health) before deploy.
@@ -11403,17 +11619,12 @@ Use CloudBase Run when the task needs a deployed backend service rather than a s
 - NoSQL → `app.database()`；对象存储 → `app.storage`
 - 新应用 / CloudBase 原生数据 → 数据层直接按 SDK 路径设计，部署时完全不需要 VPC 配置；若只用到这些数据面，还可结合上一节的「HTTP 云函数优先」进一步免掉云托管
 
-**仅当以下情况才走 TCP 直连（须完成 `references/vpc-and-database.md` 全流程）：**
-
-- 迁移已有 / GitHub / 第三方应用，数据层是经典驱动或 ORM（mysql2、pg、Prisma、SQLAlchemy、WordPress / Ghost 等），改造成 SDK 的成本高或用户明确要求保留
-- 需要 SDK 不覆盖的能力（特定 SQL 方言、存储过程、Redis 原生协议等）
-
 ## rule
 
 ---
 name: data-model-creation
 description: "[Deprecated] Optional advanced tool for complex data modeling. For simple MySQL table creation, use relational-database-tool directly; for PostgreSQL / CloudBase PG schema work, use postgresql-development. New environments should use PostgreSQL DDL via queryPgDatabase/managePgDatabase — see postgresql-development skill instead."
-version: 2.33.2
+version: 2.34.3
 alwaysApply: false
 metadata:
   priority: "5"
@@ -11697,7 +11908,7 @@ curl -X PATCH 'https://your-env.api.tcloudbasegateway.com/v1/rdb/rest/course?id=
 ---
 name: http-api-cloudbase
 description: CloudBase official HTTP API client guide. This skill should be used when backends, scripts, or non-SDK clients must call CloudBase platform APIs over raw HTTP instead of using a platform SDK or MCP management tool.
-version: 2.33.2
+version: 2.34.3
 alwaysApply: false
 ---
 
@@ -11981,7 +12192,7 @@ Before implementing any HTTP API calls, you should:
 ---
 name: minimal-web-baas-demo
 description: "Fast path for a minimal CloudBase Web + database demo (最小前后端 / 最小可用 fullstack / Lovable-like BaaS). Defaults to @cloudbase/js-sdk client CRUD (NoSQL app.database / PG app.rdb), MCP-only schema, preview-first, and forbids cloud functions unless secrets, cron/background jobs, or logic that security rules/RLS cannot express. Use for 搭一套 demo、留言板、Todo、Notes、Kanban, or when users say 带云函数+云数据库 but only need CRUD. NOT for production multi-service backends, CloudRun, WeChat Mini Programs, or tasks that truly need server secrets."
-version: 2.33.2
+version: 2.34.3
 alwaysApply: false
 ---
 
@@ -14094,7 +14305,7 @@ Shared prerequisites for every playbook:
 ---
 name: ops-inspector
 description: AIOps-style CloudBase inspection skill (v3). Use when users need health checks, log diagnosis, alarm interpretation (CPU alert normal?, peak QPS), metrics via queryEnv(action=metrics), or fault playbooks for 429 / function 404 / ACCESS_TOKEN_INVALID / zero invocations. Triggers on 巡检, 诊断, 告警, 峰值 QPS, 限频, 调用量为 0, troubleshooting.
-version: 2.33.2
+version: 2.34.3
 alwaysApply: false
 ---
 
@@ -14945,7 +15156,7 @@ Fix:
 ---
 name: postgresql-development-cloudbase
 description: "Use when building, debugging, or evaluating CloudBase PostgreSQL / CloudBase PG / PG mode apps, including Postgres schema setup, queryPgDatabase/managePgDatabase, JS SDK v3 app.rdb() CRUD/RPC, PG HTTP API fallback, RLS-style permissions, username-password auth, and Web CMS/admin CRUD flows backed by CloudBase PG."
-version: 2.33.2
+version: 2.34.3
 alwaysApply: false
 ---
 
@@ -15867,7 +16078,7 @@ CloudBase PG (`app.rdb()`, `app.storage.from('bucket')`) uses **different API me
 ---
 name: relational-database-mcp-cloudbase
 description: "[Deprecated] This is the required documentation for agents operating on the CloudBase Relational Database through MCP. It defines the canonical SQL management flow with `queryMysqlDatabase`, `manageMysqlDatabase`, `queryPermissions`, and `managePermissions`, including MySQL provisioning, destroy flow, async status checks, safe query execution, schema initialization, and permission updates. New environments should use PostgreSQL — see postgresql-development skill instead."
-version: 2.33.2
+version: 2.34.3
 alwaysApply: false
 metadata:
   priority: "5"
@@ -16113,7 +16324,7 @@ Note: when a user is logged in, `_openid` is automatically populated by the serv
 ---
 name: relational-database-web-cloudbase
 description: "[Deprecated] Use when building frontend Web apps that talk to CloudBase Relational Database via @cloudbase/js-sdk – provides the canonical init pattern so you can then use Supabase-style queries from the browser. New environments should use PostgreSQL with app.rdb() — see postgresql-development skill instead."
-version: 2.33.2
+version: 2.34.3
 alwaysApply: false
 metadata:
   priority: "5"
@@ -16359,7 +16570,7 @@ const app = cloudbase.init({
 ---
 name: spec-workflow
 description: Use when medium-to-large changes need explicit requirements, technical design, and task planning before implementation, especially for multi-module work, unclear acceptance criteria, or architecture-heavy requests.
-version: 2.33.2
+version: 2.34.3
 alwaysApply: false
 ---
 
@@ -16508,7 +16719,7 @@ Use this checklist before generating any page, component, or visual interface.
 ---
 name: ui-design
 description: Use when users need visual direction, interface hierarchy, layout decisions, design specifications, or prototypes before implementing a Web or mini program UI.
-version: 2.33.2
+version: 2.34.3
 alwaysApply: false
 ---
 
@@ -16828,7 +17039,7 @@ const cloudbaseProvider = {
 ---
 name: web-development
 description: Use when users need to implement, integrate, debug, build, deploy, or validate a Web frontend after the product direction is already clear, especially for React, Vue, Vite, browser flows, or CloudBase Web integration.
-version: 2.33.2
+version: 2.34.3
 alwaysApply: false
 ---
 
@@ -16863,7 +17074,7 @@ If a referenced sibling skill file is missing from this environment, ask the use
 - General React / Vue / Vite guidance -> `frameworks.md`
 - Browser flow checks or page validation -> `browser-testing.md`
 - Login flow -> `../auth-tool-cloudbase/SKILL.md`, then `../auth-web-cloudbase/SKILL.md`
-- Official Account JSAPI Pay, Native QR-code Pay, or WeChat OAuth on CloudBase -> `../cloudbase-wechat-integration/SKILL.md` (official docs: `https://docs.cloudbase.net/integration/introduce/index.md`)
+- Official Account JSAPI Pay, Native QR-code Pay, or WeChat OAuth on CloudBase -> `../cloudbase-wechat-integration/SKILL.md` (official docs: `https://docs.cloudbase.net/integration/introduce.md`)
 - CloudBase database work -> matching database skill
 
 ### Do NOT use for

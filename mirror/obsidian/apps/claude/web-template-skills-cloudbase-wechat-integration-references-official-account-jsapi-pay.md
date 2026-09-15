@@ -1,7 +1,7 @@
 ---
 app: claude
 quelle: "web-template/skills/cloudbase-wechat-integration/references/official-account-jsapi-pay.md"
-stand: 2026-09-05
+stand: 2026-09-15
 tags: [spiegel, claude]
 ---
 
@@ -9,9 +9,9 @@ tags: [spiegel, claude]
 
 Official docs:
 
-- `https://docs.cloudbase.net/integration/wechat-pay-jsapi-h5/index.md`
-- `https://docs.cloudbase.net/integration/wechat-official-oauth/index.md`
-- `https://docs.cloudbase.net/integration/usage/index.md`
+- `https://docs.cloudbase.net/integration/wechat-pay-jsapi-h5.md`
+- `https://docs.cloudbase.net/integration/wechat-official-oauth.md`
+- `https://docs.cloudbase.net/integration/usage.md`
 
 ## When To Use
 

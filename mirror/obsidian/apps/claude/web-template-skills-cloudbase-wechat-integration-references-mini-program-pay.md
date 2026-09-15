@@ -1,7 +1,7 @@
 ---
 app: claude
 quelle: "web-template/skills/cloudbase-wechat-integration/references/mini-program-pay.md"
-stand: 2026-09-05
+stand: 2026-09-15
 tags: [spiegel, claude]
 ---
 
@@ -9,8 +9,8 @@ tags: [spiegel, claude]
 
 Official docs:
 
-- `https://docs.cloudbase.net/integration/wechat-pay-miniprogram/index.md`
-- `https://docs.cloudbase.net/integration/usage/index.md`
+- `https://docs.cloudbase.net/integration/wechat-pay-miniprogram.md`
+- `https://docs.cloudbase.net/integration/usage.md`
 
 ## When To Use
 

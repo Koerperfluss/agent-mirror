@@ -1,14 +1,14 @@
 ---
 app: claude
 quelle: "web-template/skills/web-development/SKILL.md"
-stand: 2026-09-11
+stand: 2026-09-15
 tags: [spiegel, claude]
 ---
 
 ---
 name: web-development
 description: Use when users need to implement, integrate, debug, build, deploy, or validate a Web frontend after the product direction is already clear, especially for React, Vue, Vite, browser flows, or CloudBase Web integration.
-version: 2.33.2
+version: 2.34.3
 alwaysApply: false
 ---
 
@@ -43,7 +43,7 @@ If a referenced sibling skill file is missing from this environment, ask the use
 - General React / Vue / Vite guidance -> `frameworks.md`
 - Browser flow checks or page validation -> `browser-testing.md`
 - Login flow -> `../auth-tool-cloudbase/SKILL.md`, then `../auth-web-cloudbase/SKILL.md`
-- Official Account JSAPI Pay, Native QR-code Pay, or WeChat OAuth on CloudBase -> `../cloudbase-wechat-integration/SKILL.md` (official docs: `https://docs.cloudbase.net/integration/introduce/index.md`)
+- Official Account JSAPI Pay, Native QR-code Pay, or WeChat OAuth on CloudBase -> `../cloudbase-wechat-integration/SKILL.md` (official docs: `https://docs.cloudbase.net/integration/introduce.md`)
 - CloudBase database work -> matching database skill
 
 ### Do NOT use for
