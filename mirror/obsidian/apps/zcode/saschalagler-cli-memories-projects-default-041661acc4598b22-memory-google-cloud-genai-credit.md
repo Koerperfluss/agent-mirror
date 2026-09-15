@@ -1,7 +1,7 @@
 ---
 app: zcode
 quelle: "saschalagler/cli/memories/projects/default-041661acc4598b22/memory/google-cloud-genai-credit.md"
-stand: 2026-09-05
+stand: 2026-09-15
 tags: [spiegel, zcode]
 ---
 
@@ -36,3 +36,5 @@ Google Cloud Billing-Konto `015D43-AC6CDE-D17A3A`, Projekt `koerperfluss-antigra
 Quellen: reddit.com/r/googlecloud/comments/1ldj0uf + 1h2umes, cloud.google.com/generative-ai-app-builder/pricing
 
 Verwandt: [[mac-setup-16gb-m4]] (Saschas Projekte: Körperfluss, Förderanträge)
+
+**⚠️ 15.09.2026 Update:** Konto `015D43-AC6CDE-D17A3A` hat 1,03 € Restsaldo und verursachte laut Google-Support die Gemini-API-„Suspended Service Tier"-Herabstufung (10.09.). Beim Billing-Feldzug prüfen, ob der 867-€-Credit unberührt ist — Details: [[gcloud-billing-fall-2026-09-15]].

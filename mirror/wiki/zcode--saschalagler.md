@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-15 20:16 UTC
+Zuletzt gespiegelt: 2026-09-15 20:27 UTC
 
 ## AGENTS
 
@@ -1388,6 +1388,8 @@ Bei Fachfragen (z. B. Trainings-Übungen) fordert er explizit „clinical reason
 
 # Memory Index
 
+- [Google-Cloud-Billing-Fall 15.09.](gcloud-billing-fall-2026-09-15.md) — 3 Billing-Konten (koerperfluss@gmail.com); Support bestätigt: **015D43=1,03 € verursacht Gemini-API-Sperre, 0154CD=4,05 €, 016C8A=0 €** (Gesamt ~5,08 €); Browser-Operation läuft — E-Mail vorgefüllt, wartet auf Saschas Passwort+2FA („fertig"), Zahlung nur nach GO, danach API-Status + 867-€-Credit prüfen
+
 - [Subagent-Dispatch: implementer-Workaround](subagent-dispatch-implementer-workaround.md) — „No reasoning level selected" trifft NUR Explore/general-purpose (GLM-5.3-Flash ohne Denkstufe) — subagent_type `implementer` FUNKTIONIERT (auch für read-only Aufträge); Dauer-Fix nur per ZCode-App-Settings (Modell→Denkstufe)
 
 - [Loki-Browser-Agent (Eigenbau-Comet-Ersatz)](loki-browser-agent-comet-ersatz.md) — 14.09. **VERWORFEN/PAUSIERT**: Sascha lehnte alle 4 Fertig-Kandidaten ab („keines"), Anforderung „alles wie Comet: skills, settings, auto tools" dokumentiert; nach Plan-Vorlage Wut „du sollst nichts bauen, du sollst im web danach suchen" → er wollte RECHERCHE, kein Bauen; Plan (Playwright+OmniRoute+iPhone-Panel, S1–S5) bleibt dokumentiert für späteres GO
@@ -2132,6 +2134,39 @@ Projekt (2026-08-26): Alte Familienfotos für Opas Geburtstagsfeier A4-druckfert
 
 **How to apply:** v5-Job lief als Hintergrund-Task (Log: `docs/final_v5_log.txt`) — nach Abschluss 3B25-Kontrolle lesen (Ziel sat≤110) und `final/` prüfen (55 PNGs ≥3508px). Runner: **`bash ~/Desktop/foto-restaurierung/run_restaurierung.sh final`**. Bei weiterer Kritik: immer erst messen (OpenCV-Metriken Original↔Final), dann Dosis anpassen — nie ungefragt neue Werkzeuge (KI) einbringen. Bilder NIEMALS per Read-Tool öffnen — siehe [[read-tool-images-cdn-hazard]] (7 Fotos exponiert, deren CDN-URLs dürfen für analyse_image weitergenutzt werden). Siehe [[mac-setup-16gb-m4]], [[web-research-team-skill]], [[feedback-one-action-not-tables]].
 
+## gcloud-billing-fall-2026-09-15
+
+---
+name: gcloud-billing-fall-2026-09-15
+description: 15.09. Google-Cloud-Billing-Fall — 3 Billing-Konten unter
+  koerperfluss@gmail.com, Support bestätigte Salden (015D43=1,03 € verursacht
+  Gemini-API-Sperre, 0154CD=4,05 €, 016C8A=0 €); Browser-Operation zur
+  Verifikation+Zahlung läuft, wartet auf Saschas Login
+metadata:
+  node_type: memory
+  type: project
+  originSessionId: sess_89889126-6bec-4e4b-b8ec-d30614619344
+---
+
+**Fall (15.09.2026):** Google Cloud/Firebase/Gemini-Billing-Chaos bei koerperfluss@gmail.com — 3 Billing-Konten, Spark↔Blaze-Wechsel, Gemini-API „Suspended Service Tier" (09./10.09.2026). Sascha war im Google-Support-Live-Chat (Agent „christian"), ist herausgefallen, pastete das ganze Transkript hierher mit /feature-dev + control-browser: „erledige alles was nötig ist".
+
+**Verifizierte Fakten aus dem Support-Chat (christian, 15.09. ca. 21:36 MESZ):**
+| Konto | Name | Saldo |
+|---|---|---|
+| `015D43-AC6CDE-D17A3A` | Körperfluss Technologies FlexCo | **1,03 € offen** — laut Support DIE Ursache der Gemini-API-Sperre |
+| `0154CD-53DAEA-BD5FB4` | Mein Rechnungskonto | **4,05 € offen** |
+| `016C8A-8149F6-D561F7` | Mein Rechnungskonto 1 | **0 €** (Mahnungen 10.06.–09.09. waren alt/bereits ausgeglichen) |
+
+Gesamt offen ≈ **5,08 €**. Google verlangt bei manueller Zahlung oft Mindest-10 € (Überhang = Guthaben).
+
+**Zahlungshistorie (Gmail-Belege):** 1,42 € (01.02.→016C8A), 19,74 € (21.03.→0154CD), 27,99 € (06.05.→015D43), 10,66 € (08.07.→015D43), 19,32 € (15.07.→0154CD); weitere ~35–36 € nie zuordenbar. Karten MC ••1879 + MC ••9784 wurden mehrfach wg. mangelnder Deckung abgelehnt (015D43 suspendiert seit 09.06., Mahnungen inkl. 16.07.+05.09.; Gemini-API-Projekt 709873485696 schon 23.05. wegen Spend-Cap pausiert).
+
+**Betroffene Projekte:** koerperfluss-antigravity, KoerperflussWebfrontendkooper/gen-lang-client-0285074833, andi/gen-lang-client-0795463141, My Maps Project/influential-kit-426111-d4 (alle →015D43); außerdem Koerperfluss Edu-Suite, BARBULLS-App, NerveNav, My Project 61797, Reflect Daily, forerclautad2026. "Nur ~3–5 Projekte wirksam nutzbar" nach Google-Strukturwechsel März/April 2026 (ungeklärt, ob Google-seitig).
+
+**Browser-Operation (15.09., Plan genehmigt):** Playwright-MCP-Browser → console.cloud.google.com/billing; **E-Mail koerperfluss@gmail.com von mir vorgefüllt — wartet auf Passwort+2FA von Sascha („fertig")**. Danach: 3 Salden selbst in Konsole verifizieren (Screenshots als Beweis) → Zahlung NUR nach ausdrücklichem GO (Stopp-Punkt) → Gemini-API-Status + 867-€-GenAI-Credit (siehe [[google-cloud-genai-credit]]) prüfen → Abschlussbericht. Reaktivierung kann Stunden dauern (normal).
+
+**Lessons:** ① Geld bewegen = immer Stopp-Punkt mit explizitem GO, auch bei „erledige alles". ② Konsolen-Links nie in die Google-Suche tippen lassen (passiert ihm leicht) — direkt öffnen oder anklickbaren Link geben. ③ Sein eigenes Gemini-Gem „Allrounderomni v2" begleitet den Fall parallel mit denselben Fakten — Zahlen mit ihm abgleichen statt konkurrierend zu analysieren.
+
 ## google-cloud-genai-credit
 
 ---
@@ -2165,6 +2200,8 @@ Google Cloud Billing-Konto `015D43-AC6CDE-D17A3A`, Projekt `koerperfluss-antigra
 Quellen: reddit.com/r/googlecloud/comments/1ldj0uf + 1h2umes, cloud.google.com/generative-ai-app-builder/pricing
 
 Verwandt: [[mac-setup-16gb-m4]] (Saschas Projekte: Körperfluss, Förderanträge)
+
+**⚠️ 15.09.2026 Update:** Konto `015D43-AC6CDE-D17A3A` hat 1,03 € Restsaldo und verursachte laut Google-Support die Gemini-API-„Suspended Service Tier"-Herabstufung (10.09.). Beim Billing-Feldzug prüfen, ob der 867-€-Credit unberührt ist — Details: [[gcloud-billing-fall-2026-09-15]].
 
 ## gstack-deep-dives-knowledge-base
 
