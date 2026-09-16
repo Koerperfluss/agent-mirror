@@ -1,7 +1,7 @@
 ---
 app: claude
 quelle: "web-template/skills/ops-inspector/references/alarm-interpretation.md"
-stand: 2026-09-05
+stand: 2026-09-16
 tags: [spiegel, claude]
 ---
 
@@ -37,7 +37,7 @@ Use this reference when the user asks whether an alert is normal, what peak QPS 
 
 ## Baseline thresholds (skill defaults)
 
-These are **interpretation defaults for Agent answers**, not a substitute for the customer's contracted package. Always state the baseline used, and cross-check `envQuery(action="info")` / `envQuery(action="usage")` for package hints when available.
+These are **interpretation defaults for Agent answers**, not a substitute for the customer's contracted package. Always state the baseline used, and cross-check `queryEnv(action="info")` / `queryEnv(action="usage")` for package hints when available.
 
 | Signal | Warning | Critical | Healthy interpretation |
 |--------|---------|----------|------------------------|
@@ -52,7 +52,7 @@ If the environment package QPS is known and **not** 500, recompute 70%/90% again
 
 ## How to answer "CPU 告警是否正常？"
 
-1. Confirm env: `envQuery(action="info", envId="...")`.
+1. Confirm env: `queryEnv(action="info", envId="...")`.
 2. Pull `queryEnv(action="metrics", metricName="MysqlCpuUsageRate", ...)` for the alert window (and optionally last 24h for context).
 3. Read `Summary.max` / `avg` / `latest` / `peakTimestamp`.
 4. Compare to the MySQL CPU baselines above.

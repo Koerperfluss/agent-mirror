@@ -1,7 +1,7 @@
 ---
 app: cline-code
 quelle: "web-template/postgresql-development-cloudbase/references/storage-pg.md"
-stand: 2026-09-11
+stand: 2026-09-16
 tags: [spiegel, cline-code]
 ---
 
@@ -286,7 +286,7 @@ Key points:
 - `auth.uid()` returns the current JWT `sub` as **`text`** (not `uuid`). Path segments are text, so compare directly; do not cast to `uuid` here.
 - `storage.objects` does **not** need extra `GRANT` — `anon`/`authenticated`/`service_role` already have `ALL`; RLS is the only gate.
 - Do **not** `DELETE FROM storage.objects` directly — a `protect_delete` trigger blocks it. Use SDK / Storage API.
-- For simpler authenticated-only access (not per-user), replace `(storage.foldername(name))[1] = auth.uid()` with `auth.role() = 'authenticated'`.
+- For simpler authenticated-only access (not per-user), use `TO authenticated` with `USING (true)` / `WITH CHECK (true)`. The `TO` clause is the role gate; an additional `auth.role()` row predicate is redundant.
 
 ### Public-read bucket template (e.g. `models`, `covers` shown to everyone)
 

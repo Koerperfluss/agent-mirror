@@ -1,14 +1,14 @@
 ---
 app: cline-code
 quelle: "web-template/cloud-api-operations/rule.md"
-stand: 2026-09-15
+stand: 2026-09-16
 tags: [spiegel, cline-code]
 ---
 
 ---
 name: cloud-api-operations
 description: Operate Tencent Cloud control-plane resources (monitoring/alarms, CLB, CAM roles, COS, MySQL, SCF) via cloud APIs when no dedicated MCP tool covers the task. Use when a task needs control-plane operations beyond CloudBase's own tooling, or when a callCloudApi call failed and needs classifying.
-version: 2.34.3
+version: 2.34.4
 ---
 
 # Cloud API Operations

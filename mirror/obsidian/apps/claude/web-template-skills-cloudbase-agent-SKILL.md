@@ -1,14 +1,14 @@
 ---
 app: claude
 quelle: "web-template/skills/cloudbase-agent/SKILL.md"
-stand: 2026-09-15
+stand: 2026-09-16
 tags: [spiegel, claude]
 ---
 
 ---
 name: cloudbase-agent
 description: Build and deploy AI agents with CloudBase Agent SDK (TypeScript & Python). Implements the AG-UI protocol for streaming agent-UI communication. Use when deploying agent servers, using LangGraph/LangChain/CrewAI adapters, building custom adapters, understanding AG-UI protocol events, or building web/mini-program UI clients. Supports both TypeScript (@cloudbase/agent-server) and Python (cloudbase-agent-server via FastAPI).
-version: 2.34.3
+version: 2.34.4
 alwaysApply: false
 ---
 

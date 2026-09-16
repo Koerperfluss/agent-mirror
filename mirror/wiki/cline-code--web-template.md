@@ -1,6 +1,6 @@
 # web-template (cline-code)
 
-Zuletzt gespiegelt: 2026-09-16 21:14 UTC
+Zuletzt gespiegelt: 2026-09-16 21:25 UTC
 
 ## rule
 
@@ -283,7 +283,7 @@ Once onboarded, confirm with `DescribeAIModels` that the group is ready, then ca
 ---
 name: ai-model-nodejs
 description: "Use this skill for Node.js backend AI via @cloudbase/node-sdk (>=3.16.0) — cloud functions, CloudRun, Express/Koa/NestJS, serverless APIs, scheduled jobs, LLM proxies, agent orchestration. The only SDK supporting image generation (ai.createImageModel + generateImage). Text via ai.createModel with groups cloudbase, hunyuan-exp, or custom-*; model ids (e.g. deepseek-v4-flash, glm-5, kimi-k2.6) go in the `model` field of generateText/streamText. MUST run two-step preflight before code — see body. NOT for browser/Web (use ai-model-web) or Mini Program (use ai-model-wechat)."
-version: 2.34.3
+version: 2.34.4
 alwaysApply: false
 ---
 
@@ -357,7 +357,7 @@ Before calling any AI API on the server, **run the two-step preflight**: ① eli
 
 ### Step 0: obtain the environment ID
 
-Call the MCP tool `envQuery` with `action=info` and read `EnvId` from the response.
+Call the MCP tool `queryEnv` with `action=info` and read `EnvId` from the response.
 
 ---
 
@@ -406,7 +406,7 @@ Eligibility alone is not enough. **Do not write `createModel("cloudbase")` yet.*
 ---
 name: ai-model-web
 description: "Use this skill when a browser/Web app (React, Vue, Next, Nuxt, static sites, SPAs, dashboards, AI chat UI, 页面, 前端, 网页) needs AI models via @cloudbase/js-sdk. Default routing for Web/frontend AI — call directly from the browser, do NOT propose a Node.js proxy. Covers generateText and streamText; models via ai.createModel with groups cloudbase, hunyuan-exp, or custom-*, model id in the `model` field. MUST run two-step preflight before code — see body. NOT for Node.js backend (use ai-model-nodejs), Mini Program (use ai-model-wechat), or image generation (Node SDK only)."
-version: 2.34.3
+version: 2.34.4
 alwaysApply: false
 ---
 
@@ -487,7 +487,7 @@ Before generating any AI-related SDK code, **run the two-step preflight**: ① e
 
 ### Step 0: obtain the environment ID
 
-Call the MCP tool `envQuery` with `action=info` and read `EnvId` from the response. Every subsequent check and purchase link uses this `EnvId`.
+Call the MCP tool `queryEnv` with `action=info` and read `EnvId` from the response. Every subsequent check and purchase link uses this `EnvId`.
 
 ---
 
@@ -652,7 +652,7 @@ callCloudApi({
 ---
 name: auth-nodejs-cloudbase
 description: CloudBase Node SDK auth guide for server-side identity, user lookup, and custom login tickets. This skill should be used when Node.js code must read caller identity, inspect end users, or bridge an existing user system into CloudBase; not when configuring providers or building client login UI.
-version: 2.34.3
+version: 2.34.4
 alwaysApply: false
 ---
 
@@ -1059,7 +1059,7 @@ The tool handles read-merge-write internally. The model does not need to build a
 ---
 name: auth-tool-cloudbase
 description: CloudBase auth provider configuration and login-readiness guide. This skill should be used when users need to inspect, enable, disable, or configure auth providers, publishable-key prerequisites, login methods, SMS/email sender setup, or other provider-side readiness before implementing a client or backend auth flow.
-version: 2.34.3
+version: 2.34.4
 alwaysApply: false
 ---
 
@@ -1431,7 +1431,7 @@ const handleRegister = async () => {
 ---
 name: auth-web-cloudbase
 description: CloudBase Web Authentication Quick Guide for frontend integration after auth-tool has already been checked. Provides concise and practical Web authentication solutions with multiple login methods and complete user management.
-version: 2.34.3
+version: 2.34.4
 alwaysApply: false
 ---
 
@@ -1517,7 +1517,7 @@ Use npm installation for modern Web projects. In React, Vue, Vite, and other bun
 ### Parameter map
 
 - For username-style identifiers, the required precondition is `loginMethods.usernamePassword === true` from `queryAppAuth(action="getLoginConfig")`. If it is false, enable it with `manageAppAuth(action="patchLoginStrategy", patch={ usernamePassword: true })` before wiring frontend auth code.
-- If the conversation only provides an environment alias, nickname, or other shorthand, resolve it with `envQuery(action="list", alias=..., aliasExact=true)` first and use the returned canonical full `EnvId` for SDK init, console links, and generated config. Do not pass alias-like short forms directly into `cloudbase.init({ env })`.
+- If the conversation only provides an environment alias, nickname, or other shorthand, resolve it with `queryEnv(action="list", alias=..., aliasExact=true)` first and use the returned canonical full `EnvId` for SDK init, console links, and generated config. Do not pass alias-like short forms directly into `cloudbase.init({ env })`.
 - Treat CloudBase Web Auth as **Supabase-like**, not “every `supabase-js` auth example is valid unchanged”
 - When `queryAppAuth` / `manageAppAuth` returns `sdkStyle: "supabase-like"` and `sdkHints`, follow those method and parameter hints first
 - `auth.signInWithOtp({ phone })` and `auth.signUp({ phone })` use the phone number in a `phone` field, not `phone_number`
@@ -1540,7 +1540,7 @@ SDK init reference: [docs.cloudbase.net/api-reference/webv3/initialization.md](h
 import cloudbase from '@cloudbase/js-sdk'
 
 const app = cloudbase.init({
-  env: 'your-full-env-id', // Canonical full CloudBase environment ID resolved from envQuery or the console, not an alias or shorthand
+  env: 'your-full-env-id', // Canonical full CloudBase environment ID resolved from queryEnv or the console, not an alias or shorthand
   region: 'ap-shanghai',  // CloudBase environment Region, default 'ap-shanghai'
   accessKey: 'publishable key', // required, get from auth-tool-cloudbase
   // ⚠️ accessKey alone ≠ a login session. NoSQL CRUD needs a session —
@@ -2172,7 +2172,7 @@ CreateAlarmPolicy 实测可用的请求体：
 ---
 name: cloud-api-operations
 description: Operate Tencent Cloud control-plane resources (monitoring/alarms, CLB, CAM roles, COS, MySQL, SCF) via cloud APIs when no dedicated MCP tool covers the task. Use when a task needs control-plane operations beyond CloudBase's own tooling, or when a callCloudApi call failed and needs classifying.
-version: 2.34.3
+version: 2.34.4
 ---
 
 # Cloud API Operations
@@ -3069,7 +3069,7 @@ After VPC is bound, public internet egress may require NAT / public gateway in t
 ---
 name: cloud-functions
 description: CloudBase function runtime guide for building, deploying, and debugging your own Event Functions or HTTP Functions. This skill should be used when users need application runtime code on CloudBase, not when they are merely calling CloudBase official platform APIs.
-version: 2.34.3
+version: 2.34.4
 alwaysApply: false
 ---
 
@@ -3192,7 +3192,7 @@ Personal-tier image builds (`imageConfig.imageType="personal"` with `local` / `c
 ---
 name: cloud-storage-web
 description: Complete guide for CloudBase cloud storage using Web SDK (@cloudbase/js-sdk) - upload, download, temporary URLs, file management, and best practices.
-version: 2.34.3
+version: 2.34.4
 alwaysApply: false
 ---
 
@@ -3251,7 +3251,7 @@ If a referenced sibling skill file is missing from this environment, ask the use
 
 When the app runs on a local browser origin and must upload files from the frontend:
 
-1. Use `envQuery` with `action="domains"` to inspect the current security-domain whitelist.
+1. Use `queryEnv` with `action="domains"` to inspect the current security-domain whitelist.
 2. Convert the browser origin into the CloudBase whitelist entry format:
    - Browser origin `http://127.0.0.1:4173` -> whitelist entry `127.0.0.1:4173`
    - Browser origin `http://localhost:5173` -> whitelist entry `localhost:5173`
@@ -5542,7 +5542,7 @@ Follow the **4-step deployment pipeline** in [agent-deployment](agent-deployment
 ---
 name: cloudbase-agent
 description: Build and deploy AI agents with CloudBase Agent SDK (TypeScript & Python). Implements the AG-UI protocol for streaming agent-UI communication. Use when deploying agent servers, using LangGraph/LangChain/CrewAI adapters, building custom adapters, understanding AG-UI protocol events, or building web/mini-program UI clients. Supports both TypeScript (@cloudbase/agent-server) and Python (cloudbase-agent-server via FastAPI).
-version: 2.34.3
+version: 2.34.4
 alwaysApply: false
 ---
 
@@ -7691,7 +7691,7 @@ tcb storage rm folder/ --dir -e <envId>                # Directory
 ---
 name: cloudbase-cli
 description: CloudBase CLI (tcb, 云开发CLI, Tencent CloudBase命令行) resource management skill. Use when deploying cloud functions, CloudRun, storage, NoSQL/MySQL, static hosting, permissions, CORS/domains via tcb; for CI/CD and batch ops; when the user prefers CLI; or as the first-session fallback when CloudBase MCP tools are not loaded yet (after install/config, before IDE restart). Covers tcb login (device code for Tencent Cloud accounts; --cloudbase-api-key -e for environment API Key without an account; --apiKeyId/--apiKey for CI) and domain commands (fn/hosting/cloudrun/…) as MCP auth/manage parity — do not default to tcb deploy.
-version: 2.34.3
+version: 2.34.4
 alwaysApply: false
 ---
 
@@ -7882,7 +7882,7 @@ Only add rules that are backed by stable SDK/API documentation, repeated evaluat
 | AUTH-TOOL-009 | error | lint | Web, MP, Node, CR | 禁止使用 lowcode/DescribeLoginStrategy/ModifyLoginStrategy |
 | AUTH-TOOL-010 | error | lint | Web | 用户名禁止路由到 email-only 辅助函数 |
 | AUTH-TOOL-011 | error | LLM | Web, MP, Node, CR | EnvId 是环境 ID，不是 publishable key |
-| AUTH-TOOL-012 | error | LLM | Web, MP, Node, CR | 环境别名必须通过 envQuery 解析为规范 EnvId |
+| AUTH-TOOL-012 | error | LLM | Web, MP, Node, CR | 环境别名必须通过 queryEnv 解析为规范 EnvId |
 | AUTH-TOOL-013 | warning | LLM | Web, MP, Node, CR | 匿名登录默认禁用 |
 | AUTH-TOOL-014 | warning | LLM | Web, MP, Node, CR | 匿名用户调用 AI 模型需显式授权 |
 
@@ -8483,7 +8483,7 @@ CloudBase PG Web 场景中，文件/图片上传更适合走 Web Storage v3 API�
 
 1. 项目是否运行在 CloudBase PG / pgstore 环境？
 2. 如果是，存储桶创建后是否配置了 `storage.objects` 表的 RLS 策略？
-3. 存储 RLS 策略是否至少允许认证用户上传（`FOR INSERT TO authenticated WITH CHECK (auth.role() = 'authenticated')`）和读取（`FOR SELECT TO authenticated USING (auth.role() = 'authenticated')`）？
+3. 存储 RLS 策略是否至少允许认证用户上传（`FOR INSERT TO authenticated WITH CHECK (true)`）和读取（`FOR SELECT TO authenticated USING (true)`）？`TO authenticated` 已经是角色门，不需要重复调用 `auth.role()`。
 4. 配置方式是否正确使用了 `managePgDatabase(action="execute", confirm=true)` 执行 SQL？不要使用 CloudBase 传统安全规则 API（`managePermissions` / `ModifyStorageSafeRule`），那是 NoSQL 环境用的。
 5. 如果上传失败（`STORAGE_PERMISSION_DENIED`），是否检查了 storage RLS 配置？
 
@@ -8496,11 +8496,11 @@ ALTER TABLE storage.objects ENABLE ROW LEVEL SECURITY;
 
 CREATE POLICY "authenticated_upload" ON storage.objects
   FOR INSERT TO authenticated
-  WITH CHECK (auth.role() = 'authenticated');
+  WITH CHECK (true);
 
 CREATE POLICY "authenticated_read" ON storage.objects
   FOR SELECT TO authenticated
-  USING (auth.role() = 'authenticated');
+  USING (true);
 ```
 
 详细指引见 `cloud-storage-web/SKILL.md` "Post-bucket: storage RLS" 章节。
@@ -8567,7 +8567,7 @@ CloudBase 安全域名机制会拦截未注册的 origin 发出的请求。Vite 
 ---
 name: cloudbase-code-review
 description: "Code review and validation for CloudBase projects. After writing code for Web / miniprogram / CloudRun / cloud-function projects, call this skill to check for known pitfalls — auth guard misuse, missing database tables, RLS misconfiguration, storage domain setup, and SDK API misuse. Supports automated lint scripts (regex-based) + LLM semantic review."
-version: 2.34.3
+version: 2.34.4
 alwaysApply: false
 ---
 
@@ -8980,7 +8980,7 @@ Use this supported cloud path:
 ---
 name: cloudbase-declarative-deploy
 description: CloudBase declarative deployment from a cloudbaserc config (声明式部署, 配置式部署, cloudbaserc 部署) through the deployBuild / deployPlan / deployApply MCP tools. Use when deploying database, functions, app, hosting, or gateway resources described in cloudbaserc.json/yaml as a single desired-state config, when a user wants to build static hosting artifacts locally first (deployBuild), or wants a dry-run plan before applying (deployPlan), or when handling multi-environment deploys via mode / envOverrides. Covers build-plan-apply flow (deployBuild local build → deployPlan dry-run → deployApply confirm=true), hosting build-output neutralization, envId resolution priority, only/skip filtering, concurrency, and continueOnError. Prefer deployBuild (when hosting declares a buildCommand) and deployPlan before deployApply; do not confuse with per-resource tcb CLI deploy or single-function deploy.
-version: 2.34.3
+version: 2.34.4
 alwaysApply: false
 ---
 
@@ -9841,7 +9841,7 @@ import { useEffect } from 'react';
 ---
 name: cloudbase-document-database-web-sdk
 description: Use CloudBase document database Web SDK only for confirmed NoSQL collection work. Query, create, update, and delete document data; if the task mentions PostgreSQL / CloudBase PG / app.rdb(), route to postgresql-development instead.
-version: 2.34.3
+version: 2.34.4
 alwaysApply: false
 ---
 
@@ -9877,7 +9877,7 @@ If a referenced sibling skill file is missing from this environment, ask the use
 - Server-side or cloud-function database access.
 - SQL / MySQL database operations.
 - Pure resource-permission administration with no browser SDK code.
-- **NEW business tables that the task explicitly asks to put in CloudBase PostgreSQL (CloudBase PG).** Before applying this skill, call `envQuery(action="info", envId=...)` and read `EnvInfo.RuntimeBackends`. If `postgresql === true` AND the task asks for a new business table to live in PG, switch to the `postgresql-development-cloudbase` skill for that table: it goes through `app.rdb()`, uses PG row-level security (`CREATE POLICY`), and uploads via `app.storage.from('<bucket>').upload('<key>', file)` against an explicitly-created pgstore bucket.
+- **NEW business tables that the task explicitly asks to put in CloudBase PostgreSQL (CloudBase PG).** Before applying this skill, call `queryEnv(action="info", envId=...)` and read `EnvInfo.RuntimeBackends`. If `postgresql === true` AND the task asks for a new business table to live in PG, switch to the `postgresql-development-cloudbase` skill for that table: it goes through `app.rdb()`, uses PG row-level security (`CREATE POLICY`), and uploads via `app.storage.from('<bucket>').upload('<key>', file)` against an explicitly-created pgstore bucket.
   - Existing NoSQL collections in the same env keep using THIS skill — PG and NoSQL coexist in CloudBase PG environments. The rule is "follow the task / existing surface", not "PG env forbids NoSQL".
 
 ### SDK Code vs MCP Tools
@@ -10440,7 +10440,7 @@ exports.main = async (event) => {
 ---
 name: cloudbase-platform
 description: CloudBase platform overview and routing guide. This skill should be used when users need high-level capability selection, platform concepts, console navigation, or cross-platform best practices before choosing a more specific implementation skill.
-version: 2.34.3
+version: 2.34.4
 alwaysApply: false
 ---
 
@@ -10472,7 +10472,7 @@ If a referenced sibling skill file is missing from this environment, ask the use
 ### Then also read
 
 - Minimal Web + database demo (BaaS-first, no cloud functions by default) -> `../minimal-web-baas-demo/SKILL.md`
-  - **Stack order for 最小前后端 / Lovable-like demos:** Web SDK CRUD > MCP schema > template warmup during credential wait > cloud functions (default count = 0). Capability sniff: connector ready → `envQuery` → lock one DB plane → MCP schema → `@cloudbase/js-sdk` CRUD → preview.
+  - **Stack order for 最小前后端 / Lovable-like demos:** Web SDK CRUD > MCP schema > template warmup during credential wait > cloud functions (default count = 0). Capability sniff: connector ready → `queryEnv` → lock one DB plane → MCP schema → `@cloudbase/js-sdk` CRUD → preview.
 - Web app implementation -> `../web-development/SKILL.md`
 - Web auth and provider setup -> `../auth-tool-cloudbase/SKILL.md`, `../auth-web-cloudbase/SKILL.md`
 - Mini program development -> `../miniprogram-development/SKILL.md`
@@ -10532,7 +10532,7 @@ Use this skill for **CloudBase platform knowledge** when you need to:
    - Different platforms require different SDKs for data models
    - MySQL data models must use models SDK, not collection API
    - PostgreSQL / CloudBase PG work must route to `postgresql-development-cloudbase`; do not reuse NoSQL `app.database()` / `db.collection(...)` snippets or MySQL `queryMysqlDatabase` / `manageMysqlDatabase` for PG data paths
-   - Use `envQuery` tool to get environment ID
+   - Use `queryEnv` tool to get environment ID
    - In an existing Web application with fixed structure, inspect the existing `src/lib/backend.*`, `src/lib/auth.*`, `src/lib/*service.*`, and bound page handlers before broad concept reading.
 
 4. **Use the canonical CloudBase MCP setup from the main `cloudbase` guideline**
@@ -11159,7 +11159,7 @@ Use this reference for **虚拟支付**（virtual goods payment）flows: 道具�
 ---
 name: cloudbase-wechat-integration
 description: CloudBase WeChat integration guide for Mini Program WeChat Pay, Mini Program virtual payment (虚拟支付, wx.requestVirtualPayment), Official Account JSAPI Pay, Native QR-code Pay, Official Account OAuth, openid handling, payment callbacks, and CloudBase Integration Center generated functions. This skill should be used when users ask to add, debug, or extend WeChat payment, virtual payment, or official-account flows on CloudBase.
-version: 2.34.3
+version: 2.34.4
 alwaysApply: false
 ---
 
@@ -11501,7 +11501,7 @@ If the user says "PostgreSQL" but the app is a classic TCP client (for example n
 ---
 name: cloudrun-development
 description: CloudBase Run backend development rules (Function mode/Container mode). Use this skill when deploying backend services that require long connections, multi-language support, custom environments, AI agent development, or migrating existing/GitHub apps that need VPC access to MySQL/PostgreSQL/Redis. Also use when diagnosing CloudRun container deploy failures (deploy_failed, readiness/probe failed, image won't start, docker.io pull loops). For stateless HTTP services, prefer HTTP cloud functions.
-version: 2.34.3
+version: 2.34.4
 alwaysApply: false
 ---
 
@@ -11624,7 +11624,7 @@ Use CloudBase Run when the task needs a deployed backend service rather than a s
 ---
 name: data-model-creation
 description: "[Deprecated] Optional advanced tool for complex data modeling. For simple MySQL table creation, use relational-database-tool directly; for PostgreSQL / CloudBase PG schema work, use postgresql-development. New environments should use PostgreSQL DDL via queryPgDatabase/managePgDatabase — see postgresql-development skill instead."
-version: 2.34.3
+version: 2.34.4
 alwaysApply: false
 metadata:
   priority: "5"
@@ -11908,7 +11908,7 @@ curl -X PATCH 'https://your-env.api.tcloudbasegateway.com/v1/rdb/rest/course?id=
 ---
 name: http-api-cloudbase
 description: CloudBase official HTTP API client guide. This skill should be used when backends, scripts, or non-SDK clients must call CloudBase platform APIs over raw HTTP instead of using a platform SDK or MCP management tool.
-version: 2.34.3
+version: 2.34.4
 alwaysApply: false
 ---
 
@@ -12192,7 +12192,7 @@ Before implementing any HTTP API calls, you should:
 ---
 name: minimal-web-baas-demo
 description: "Fast path for a minimal CloudBase Web + database demo (最小前后端 / 最小可用 fullstack / Lovable-like BaaS). Defaults to @cloudbase/js-sdk client CRUD (NoSQL app.database / PG app.rdb), MCP-only schema, preview-first, and forbids cloud functions unless secrets, cron/background jobs, or logic that security rules/RLS cannot express. Use for 搭一套 demo、留言板、Todo、Notes、Kanban, or when users say 带云函数+云数据库 but only need CRUD. NOT for production multi-service backends, CloudRun, WeChat Mini Programs, or tasks that truly need server secrets."
-version: 2.34.3
+version: 2.34.4
 alwaysApply: false
 ---
 
@@ -12272,7 +12272,7 @@ Use this order for every minimal Web + DB demo. **Do not reorder.** Cloud functi
 ```text
 0. Connector pre-enabled (or shortest Trust path)     ← host / partner packaging
 1. Template warmup // parallel with credential wait   ← downloadTemplate + install
-2. envQuery(action="info")                            ← sniff env + RuntimeBackends
+2. queryEnv(action="info")                            ← sniff env + RuntimeBackends
 3. Lock ONE DB plane (NoSQL | PG | MySQL)             ← no mid-flight thrash
 4. MCP schema + minimal permissions                   ← writeNoSql* / PG migrate / MySQL manage
 5. Browser @cloudbase/js-sdk CRUD                     ← app.database() / app.rdb()
@@ -12285,7 +12285,7 @@ Stack priority for this path: **Web SDK CRUD > MCP schema > template warmup > cl
 ## Standard playbook
 
 1. **Warm template in parallel with credentials** (see partner notes below): `downloadTemplate` (`react` default, `vue` if requested) → `npm install` / `pnpm install`.
-2. `envQuery(action="info")` → lock **one** DB plane (NoSQL **or** PG **or** MySQL). Do not thrash between them.
+2. `queryEnv(action="info")` → lock **one** DB plane (NoSQL **or** PG **or** MySQL). Do not thrash between them.
 3. MCP: create the collection/table + minimal permissions.
 4. Frontend: ensure session (`auth.signInAnonymously()` or equivalent), then wire list + create with `@cloudbase/js-sdk` (see Hard rule 6).
 5. Start / report preview URL; ask before deploy.
@@ -14132,7 +14132,7 @@ Use this reference when the user asks whether an alert is normal, what peak QPS 
 
 ## Baseline thresholds (skill defaults)
 
-These are **interpretation defaults for Agent answers**, not a substitute for the customer's contracted package. Always state the baseline used, and cross-check `envQuery(action="info")` / `envQuery(action="usage")` for package hints when available.
+These are **interpretation defaults for Agent answers**, not a substitute for the customer's contracted package. Always state the baseline used, and cross-check `queryEnv(action="info")` / `queryEnv(action="usage")` for package hints when available.
 
 | Signal | Warning | Critical | Healthy interpretation |
 |--------|---------|----------|------------------------|
@@ -14147,7 +14147,7 @@ If the environment package QPS is known and **not** 500, recompute 70%/90% again
 
 ## How to answer "CPU 告警是否正常？"
 
-1. Confirm env: `envQuery(action="info", envId="...")`.
+1. Confirm env: `queryEnv(action="info", envId="...")`.
 2. Pull `queryEnv(action="metrics", metricName="MysqlCpuUsageRate", ...)` for the alert window (and optionally last 24h for context).
 3. Read `Summary.max` / `avg` / `latest` / `peakTimestamp`.
 4. Compare to the MySQL CPU baselines above.
@@ -14185,7 +14185,7 @@ Four high-frequency KA / ops triage playbooks. Use the matching playbook when th
 
 Shared prerequisites for every playbook:
 
-1. `envQuery(action="info")` — bind `envId`
+1. `queryEnv(action="info")` — bind `envId`
 2. Prefer metrics via `queryEnv(action="metrics", ...)`
 3. Prefer logs via `queryLogs` / `queryFunctions` log actions
 4. Summarize with severity + next action + console link
@@ -14267,7 +14267,7 @@ Shared prerequisites for every playbook:
 
 1. Confirm which surface failed: **app user token** vs **env API key / publishable key** vs **MCP management login**
 2. App auth: follow `../auth-tool-cloudbase/SKILL.md` then platform auth skill (`auth-web` / `auth-wechat` / `auth-nodejs`) — check providers with `queryAppAuth` / related auth tools when available
-3. Env binding: `envQuery(action="info")` — wrong env often presents as token/env mismatch
+3. Env binding: `queryEnv(action="info")` — wrong env often presents as token/env mismatch
 4. `queryLogs(action="searchLogs", queryString="ACCESS_TOKEN_INVALID OR token invalid OR unauthorized", ...)`
 5. Metrics are usually secondary; only use `queryEnv(action="metrics")` if correlating a traffic drop after auth breakage
 
@@ -14305,7 +14305,7 @@ Shared prerequisites for every playbook:
 ---
 name: ops-inspector
 description: AIOps-style CloudBase inspection skill (v3). Use when users need health checks, log diagnosis, alarm interpretation (CPU alert normal?, peak QPS), metrics via queryEnv(action=metrics), or fault playbooks for 429 / function 404 / ACCESS_TOKEN_INVALID / zero invocations. Triggers on 巡检, 诊断, 告警, 峰值 QPS, 限频, 调用量为 0, troubleshooting.
-version: 2.34.3
+version: 2.34.4
 alwaysApply: false
 ---
 
@@ -14359,7 +14359,7 @@ If a referenced sibling skill file is missing from this environment, ask the use
 
 ### Minimal checklist
 
-- [ ] Environment is bound and accessible (`envQuery(action="info")`)
+- [ ] Environment is bound and accessible (`queryEnv(action="info")`)
 - [ ] Metrics pulled with `queryEnv(action="metrics")` when the question involves QPS / CPU / throttle / invocation volume
 - [ ] CLS log service is enabled (`queryLogs(action="checkLogService")`) when log diagnosis is needed
 - [ ] Matching fault playbook selected when symptoms match 429 / function 404 / ACCESS_TOKEN_INVALID / 调用量为 0
@@ -14393,7 +14393,7 @@ Follow these steps in order for a comprehensive environment health check:
 **Step 1 — Environment Check**
 
 ```
-envQuery(action="info")
+queryEnv(action="info")
 ```
 
 Confirm the environment is accessible. Record the `envId` for console link generation.
@@ -14422,6 +14422,407 @@ If CLS is not enabled, note this as a **warning** — log-based diagnosis will b
 queryFunctions(action="listFunctions")
 ```
 
+
+## access-patterns
+
+# Access Patterns
+
+Read this reference for application-level database access: loops, serial calls, duplicate reads, polling, pagination, and operational data.
+
+## Batch N+1 reads
+
+Database round trips should stay bounded as result cardinality grows.
+
+**Incorrect: one query per row**
+
+```ts
+for (const row of rankedRows) {
+  const { data: profile } = await db
+    .from("profiles")
+    .select("id, display_name")
+    .eq("id", row.user_id)
+    .single();
+  profiles.push(profile);
+}
+```
+
+**Correct: one batch query**
+
+```ts
+const userIds = [...new Set(rankedRows.map((row) => row.user_id))];
+const { data: profiles, error } = await db
+  .from("profiles")
+  .select("id, display_name")
+  .in("id", userIds);
+
+if (error) throw error;
+```
+
+Identity lives in `auth.users`. Do not create `public.users` just to join display names. Use a business `profiles` table or embed a declared foreign key. Use a batch plus an in-memory map when separate result shaping is clearer.
+
+## Run independent queries concurrently
+
+Serial execution is correct when query B depends on query A. Independent reads should share one wait.
+
+```ts
+const [roomResult, memberResult] = await Promise.all([
+  db.from("rooms").select("id, status").eq("id", roomId).single(),
+  db.from("room_members").select("user_id, role").eq("room_id", roomId),
+]);
+if (roomResult.error) throw roomResult.error;
+if (memberResult.error) throw memberResult.error;
+```
+
+`app.rdb()` returns `{ data, error }` and does not throw on query failure. Keep writes serial when they require ordered state transitions. Prefer an RPC when multiple writes must commit atomically; `Promise.all` does not provide a database transaction.
+
+## Make polling selective
+
+A status endpoint should read one job, room, or cursor range through an indexed equality/range predicate. Return an explicit retry interval or version marker. CloudBase PG has no NoSQL `.watch()` / Realtime subscription; do not copy that path onto `app.rdb()`.
+
+Implement the poll with SDK filters, not raw `$1` SQL in application code:
+
+```ts
+const { data, error } = await db
+  .from("jobs")
+  .select("id, status")
+  .eq("owner_id", ownerId)
+  .gt("updated_at", since)
+  .order("updated_at", { ascending: true })
+  .order("id", { ascending: true })
+  .limit(100);
+if (error) throw error;
+```
+
+Back this path with an index on `(owner_id, updated_at, id)`.
+
+## Bound lists without deep offsets
+
+The documented SDK pagination helper is inclusive `.range(from, to)` after `.order()`. That is enough for short pages. Deep `.range()` still walks earlier rows.
+
+```ts
+const { data, error } = await db
+  .from("articles")
+  .select("id, title, created_at")
+  .order("created_at", { ascending: false })
+  .range(0, 19);
+if (error) throw error;
+```
+
+For large ranked lists, wrap keyset SQL in an RPC. `app.rdb()` has no tuple-comparison helper, and application code must not send Postgres `$1` placeholders through the SDK.
+
+```sql
+-- RPC body / EXPLAIN target only
+SELECT id, title, created_at
+FROM articles
+WHERE (created_at, id) < ($1, $2)
+ORDER BY created_at DESC, id DESC
+LIMIT 20;
+```
+
+Back that RPC with `(created_at DESC, id DESC)`.
+
+## Route operational data by purpose
+
+- Application logs and request traces belong in CloudBase logging.
+- Large immutable exports and archives belong in object storage.
+- High-volume analytics events belong in an analytics-oriented system.
+- PG holds transactional facts that need constraints, joins, or transactional updates.
+
+If audit records are a product requirement, store a bounded audit model with retention, archive-to-storage planning, and restricted access. Do not use a catch-all request-log table as the default, and do not assume table partitioning is a CloudBase console feature.
+
+## capacity-and-connections
+
+# Capacity and Connections
+
+Read this reference for burst traffic, launch readiness, or database sizing. CloudBase PG business data uses the SDK or HTTP gateway, not an application-managed TCP pool.
+
+## Inspect before a launch
+
+Call `queryEnv(action="info", envId=...)` and record the PostgreSQL allocation exposed by the environment response. Pair it with explicit workload assumptions:
+
+- peak requests per second and burst duration;
+- database operations per request after batching;
+- expected active rows and result sizes;
+- scheduled jobs that overlap the peak;
+- acceptable latency and failure rate.
+
+Small development allocations are not evidence of production capacity. If the environment response lacks enough detail to judge capacity, state that uncertainty and ask for a verified console allocation or load-test result.
+
+## Estimate database demand
+
+Use:
+
+```text
+database_ops_per_second =
+  request_rate
+  * database_round_trips_per_request
+  * retry_multiplier
+```
+
+This is a planning estimate, not a capacity guarantee. Reduce round trips before using instance size as the only remedy.
+
+## Prefer the SDK path; do not invent a TCP pool
+
+CloudBase PG traffic from Web, cloud functions, and CloudRun should go through the existing `app.rdb()` client (or the documented PG HTTP API). That path is an HTTP request to the CloudBase gateway. The platform owns database sessions behind the gateway. Application code does not open `pg.Pool`, does not hold `DATABASE_URL`, and cannot tune `max_connections` from the SDK. Do not add a second `cloudbase.init` in this skill; reuse the client from `../postgresql-development-cloudbase/SKILL.md`.
+
+What still belongs to the application:
+
+- fewer round trips per request (batch, join, concurrency);
+- bounded result sets;
+- observed instance size versus stated peak QPS.
+
+Reuse one SDK `app` / `db` at module scope so credential and client setup are not repeated. That is not a PostgreSQL connection pool. The documented single-row helper is `.single()`, not `.maybeSingle()`.
+
+```ts
+export async function loadOrder(id: string) {
+  const { data, error } = await db
+    .from("orders")
+    .select("id, status")
+    .eq("id", id)
+    .single();
+  if (error) throw error;
+  return data;
+}
+```
+
+Do not expose database connection strings, SecretKey, API Key, or `service_role` credentials to browser code.
+
+TCP clients (`pg`, Prisma, `DATABASE_URL`) are an exception-only migration path. They need VPC access and a bounded pool because each compute instance then holds real database connections. Do not introduce that path for new CloudBase PG CRUD. If an existing app already uses it, follow `../cloudrun-development/references/vpc-and-database.md` and `../cloud-functions/references/vpc-and-tcp-database.md`.
+
+## Define a peak response
+
+Before launch, identify who can change capacity, how long a change takes, what metric triggers action, and how traffic is shed while the database is unhealthy. Treat automatic scaling as unavailable unless the target environment explicitly proves otherwise.
+
+A skill can surface this risk; it cannot provision missing elasticity or repair a platform authentication failure.
+
+## indexes-and-explain
+
+# Indexes and EXPLAIN
+
+Read this reference when a query or RPC is slow, or when a changed access path needs an index decision.
+
+## Index observed access paths
+
+PostgreSQL automatically indexes primary and unique keys. It does not automatically index referencing foreign-key columns. Add indexes for frequent filters, joins, and stable ordering paths. The SQL below is for migrations and `EXPLAIN`; substitute literals. Application reads still go through `app.rdb()`.
+
+**Incorrect**
+
+```sql
+SELECT id, status, updated_at
+FROM matches
+WHERE room_id = $1 AND status = 'active'
+ORDER BY updated_at DESC;
+```
+
+**Correct migration**
+
+```sql
+CREATE INDEX matches_room_active_updated_idx
+  ON public.matches (room_id, updated_at DESC)
+  WHERE status = 'active';
+```
+
+Put equality columns first, then range or ordering columns. Use a partial index when the same selective predicate appears consistently. Each extra index increases write cost and storage, so tie every non-constraint index to a named access path.
+
+## Preserve indexable predicates
+
+Compare raw indexed columns to ranges instead of wrapping them in a function.
+
+```sql
+-- Full scan risk unless a matching expression index exists
+WHERE date_trunc('day', created_at) = $1
+
+-- Uses a normal index on created_at
+WHERE created_at >= $1 AND created_at < $1 + INTERVAL '1 day'
+```
+
+## Explain before changing
+
+Use `queryPgDatabase(action="sql")` with `EXPLAIN (BUFFERS, FORMAT TEXT)` and representative literals. That action only accepts read-only SQL. The read-only gate treats the token `ANALYZE` as mutating, so `EXPLAIN ANALYZE` is rejected — do not send it through `queryPgDatabase`.
+
+Plain `EXPLAIN` estimates a plan; it does not prove runtime cost. After an index lands, compare scan type, row estimates, and buffer reads on the same `EXPLAIN` text. If actual timings are required, state that the management SQL path cannot run `EXPLAIN ANALYZE` and do not invent a TCP `psql` session.
+
+Record:
+
+- estimated rows;
+- sequential scans on large relations;
+- sort or hash nodes;
+- buffer reads;
+- the dominant node, not merely the highest estimated cost.
+
+After changing SQL or adding an index through `applyMigration`, run the same `EXPLAIN` again and compare scan type, row estimates, and buffers. A plan change without a better scan or estimate is not completion.
+
+## Stored procedures and RPCs
+
+For a slow RPC, identify the SQL statements inside the function and explain those statements with representative arguments. A top-level RPC duration alone cannot identify missing indexes or repeated work. Prefer set-based SQL over procedural loops that issue one query per item.
+
+## schema-and-rls
+
+# Schema and RLS Quality
+
+Read this reference when an access design changes tables, relationships, tenant isolation, or row policies. Use `../postgresql-development-cloudbase/references/auth-and-rls.md` as the canonical source for CloudBase grants, helper types, and complete policy templates.
+
+## Start from access paths
+
+Before DDL, write down:
+
+- rows created per business event;
+- common equality, range, join, and ordering predicates;
+- expected cardinality and retention;
+- write contention and required atomic transitions;
+- owner or tenant boundary for every row.
+
+Normalize transactional facts by default. Denormalize only a measured hot read and define how the derived value stays consistent.
+
+## Encode invariants in PostgreSQL
+
+Use a primary key, `NOT NULL`, `UNIQUE`, foreign keys, and `CHECK` constraints for invariants the database can enforce. Use `TIMESTAMPTZ` for event time and exact `NUMERIC` for money. Prefer `GENERATED ... AS IDENTITY` for new numeric surrogate keys.
+
+Index the referencing side of every foreign key used for joins or parent deletion checks.
+
+## Separate authentication from authorization
+
+The policy `TO` clause selects eligible database roles. `USING` and `WITH CHECK` select eligible rows.
+
+**Incorrect: authenticated users can access every order**
+
+```sql
+CREATE POLICY orders_read ON public.orders
+  FOR SELECT
+  USING (auth.role() = 'authenticated');
+```
+
+**Correct: authenticated users can access their own orders**
+
+```sql
+CREATE INDEX orders_owner_id_idx ON public.orders (owner_id);
+
+CREATE POLICY orders_read_own ON public.orders
+  FOR SELECT TO authenticated
+  USING ((SELECT auth.uid()) = owner_id);
+```
+
+CloudBase `auth.uid()` returns `text`; keep owner identifiers as `varchar(64)` or `text`. Do not default owner columns to `uuid`. Wrapping stable auth helpers in `SELECT` lets PostgreSQL initialize the value once instead of evaluating it for every row. Table access still needs `GRANT` plus RLS; copy the grant sequence from `../postgresql-development-cloudbase/references/auth-and-rls.md`.
+
+For updates, use both predicates:
+
+```sql
+CREATE POLICY orders_update_own ON public.orders
+  FOR UPDATE TO authenticated
+  USING ((SELECT auth.uid()) = owner_id)
+  WITH CHECK ((SELECT auth.uid()) = owner_id);
+```
+
+`TO authenticated` includes any session that maps to that role, including anonymous sign-in. Do not copy a Supabase claim name from memory. Inspect `auth.jwt()` in this environment, or store a durable role in a `profiles` / `user_roles` table keyed by `auth.uid()`.
+
+## Multi-tenant default
+
+Use shared tables with an explicit `tenant_id` plus RLS when tenants share the same schema and lifecycle. Include `tenant_id` in unique constraints and leading index columns for tenant-scoped queries.
+
+CloudBase PG is one database per environment. Do not plan a second database or a provisioned schema-per-tenant fleet. Isolate tenants with `tenant_id` plus RLS. Do not create one table per user.
+
+## Migration discipline
+
+Represent each schema change as a local `cloudbase/migrations/<version>_<name>.sql` file and apply it through `applyMigration`. In disposable environments, a new migration may deliberately rebuild a table. In persistent environments, use forward-compatible expand/migrate/contract changes and a new migration for every correction.
+
+## rule
+
+---
+name: postgresql-best-practices-cloudbase
+description: "CloudBase PostgreSQL access-pattern and slow-query quality guidance. Use when designing how tables are read and written, eliminating per-row database calls, adding indexes for filters or joins, reviewing high-traffic data access, or explaining a slow SQL query. Not for first-time PG SDK setup, login UI, or NoSQL collections."
+version: 2.34.4
+alwaysApply: false
+---
+
+# CloudBase PostgreSQL Best Practices
+
+This skill turns a working CloudBase PG implementation into a reviewable access design. It makes query paths, indexes, row authorization, and launch capacity explicit before code is considered complete.
+
+## Sibling skills (local only)
+
+Sibling CloudBase skills ship beside this skill. Use local relative paths such as `../postgresql-development-cloudbase/SKILL.md`.
+
+If a referenced sibling skill file is missing from this environment, ask the user to install the full CloudBase plugin (or the missing skill). Do **not** HTTP-fetch remote skill or protocol markdown into the agent context.
+
+## When to use
+
+- A feature needs a new or changed access pattern.
+- Application code performs repeated, serial, or high-frequency PG queries.
+- A SQL query, RPC, endpoint, or polling path is slow.
+- A high-traffic launch needs a database readiness review.
+
+## Do NOT use for
+
+- PG environment setup, `app.rdb()` syntax, migrations, GRANTs, or base RLS correctness: use `../postgresql-development-cloudbase/SKILL.md`.
+- Login provider or UI implementation: use the matching auth skill.
+- Confirmed NoSQL collection work: use the document database skill.
+- Platform alarm diagnosis or slow-log collection: use `../ops-inspector/SKILL.md`.
+
+## Workflow
+
+### 1. Inventory access paths
+
+List every changed endpoint, job, RPC, or UI flow and its reads and writes. Record filters, joins, sort keys, expected cardinality, and request frequency.
+
+**Complete when:** every changed path has a concrete query inventory; unknown volume or peak concurrency is marked as an assumption for the user.
+
+### 2. Design schema, indexes, and row authorization together
+
+Derive columns and indexes from the query inventory. Every frequent filter, join, and stable ordering path must have a deliberate index decision. For user-owned rows, use the role as the policy gate and identity as the row predicate:
+
+```sql
+CREATE POLICY orders_select_own ON public.orders
+  FOR SELECT TO authenticated
+  USING ((SELECT auth.uid()) = owner_id);
+```
+
+Apply schema DDL through the versioned `applyMigration` workflow defined by `../postgresql-development-cloudbase/SKILL.md`. This keeps Git, development, and production reproducible; the tradeoff is that experiments require a new migration version instead of ad hoc schema mutation.
+
+**Complete when:** every query predicate has an index decision, every user-owned path has an ownership predicate, and all DDL is represented in one reviewable migration for the change.
+
+### 3. Implement bounded database access
+
+Batch related keys, combine repeated reads, and execute independent queries concurrently. Keep each result bounded by a filter plus `.limit()` / `.range()`, or by an RPC that implements keyset pagination.
+
+```ts
+const userIds = [...new Set(rows.map((row) => row.user_id))];
+const { data: profiles, error } = await db
+  .from("profiles")
+  .select("id, display_name")
+  .in("id", userIds);
+
+if (error) throw error;
+```
+
+Send request logs, traces, and high-volume analytics to the platform logging service or purpose-built analytics storage. Keep PG for transactional data that participates in business queries and constraints.
+
+**Complete when:** the changed code has no database call inside an item loop, no repeated read of the same row in one request, and no unbounded hot-path query.
+
+### 4. Check launch capacity when traffic is material
+
+For campaigns, rankings, polling endpoints, or other bursty paths, inspect the target environment with `queryEnv(action="info", envId=...)`. Report the observed PG allocation, expected peak load, and unresolved capacity risk. CloudBase currently requires an explicit capacity plan; do not represent autoscaling as guaranteed.
+
+**Complete when:** the current allocation is recorded and either judged against an explicit traffic assumption or raised to the user as an unresolved launch blocker.
+
+## Routing
+
+| Current branch | Read |
+| --- | --- |
+| Repeated calls, serial queries, polling, pagination, or logging tables | `references/access-patterns.md` |
+| Missing indexes, slow SQL/RPC, or query-plan review | `references/indexes-and-explain.md` |
+| New schema, tenant isolation, or RLS performance | `references/schema-and-rls.md` |
+| Campaign launch or database sizing | `references/capacity-and-connections.md` |
+
+Load only the references required by the current branch.
+
+## Minimum self-check
+
+- Every changed access path is accounted for.
+- Every frequent filter, join, and stable sort has an index decision.
+- Database round trips are bounded independently of result cardinality.
+- RLS separates role gating (`TO`) from row authorization (`auth.uid()`).
+- Schema changes use the canonical migration workflow.
+- Capacity claims are based on observed allocation and stated traffic assumptions.
 
 ## app-workflow
 
@@ -15156,7 +15557,7 @@ Fix:
 ---
 name: postgresql-development-cloudbase
 description: "Use when building, debugging, or evaluating CloudBase PostgreSQL / CloudBase PG / PG mode apps, including Postgres schema setup, queryPgDatabase/managePgDatabase, JS SDK v3 app.rdb() CRUD/RPC, PG HTTP API fallback, RLS-style permissions, username-password auth, and Web CMS/admin CRUD flows backed by CloudBase PG."
-version: 2.34.3
+version: 2.34.4
 alwaysApply: false
 ---
 
@@ -15177,6 +15578,7 @@ If a referenced sibling skill file is missing from this environment, ask the use
 
 ### Then also read
 
+- Access-pattern design or slow-query work -> `../postgresql-best-practices-cloudbase/SKILL.md`
 - Web auth provider readiness -> `../auth-tool-cloudbase/SKILL.md`
 - Web login implementation -> `../auth-web-cloudbase/SKILL.md`
 - General Web implementation and verification -> `../web-development/SKILL.md`
@@ -15214,7 +15616,7 @@ CloudBase PG (`app.rdb()`, `app.storage.from('bucket')`) uses **different API me
 
 **If you find yourself typing `.where()` or `.orderBy()` or `.count()` — stop and use the correct method from the right column.**
 
-0. **First, confirm this environment actually has PostgreSQL provisioned.** Call `envQuery(action="info", envId=...)` and read the derived `EnvInfo.RuntimeBackends` block (`{ postgresql, nosql, mysql }`) along with `EnvInfo.RuntimeMode`. It is only safe to apply this skill's PG-specific guidance when `RuntimeBackends.postgresql === true` (equivalently, `EnvInfo.PostgreSQL` is non-empty AND/OR `EnvInfo.Meta` contains `postgresql=enable`).
+0. **First, confirm this environment actually has PostgreSQL provisioned.** Call `queryEnv(action="info", envId=...)` and read the derived `EnvInfo.RuntimeBackends` block (`{ postgresql, nosql, mysql }`) along with `EnvInfo.RuntimeMode`. It is only safe to apply this skill's PG-specific guidance when `RuntimeBackends.postgresql === true` (equivalently, `EnvInfo.PostgreSQL` is non-empty AND/OR `EnvInfo.Meta` contains `postgresql=enable`).
    - PG mode is a **new-environment mode** selected when creating a CloudBase environment with PostgreSQL. Do not try to "upgrade" a legacy environment in place; create/select a PG-mode environment instead.
    - If `RuntimeBackends.postgresql === false`, STOP — this is a legacy NoSQL-only env: switch to `cloudbase-document-database-web-sdk` for browser data and `cloud-storage-web` (with `app.uploadFile()`) for uploads. Do not write `app.rdb()` code, do not enable RLS, do not create a pgstore bucket here.
    - If both `postgresql` and `nosql` are `true` (the common case in a PG environment), they coexist. Apply this skill to NEW business data the task asks you to put in PG (e.g. articles / role tables explicitly described as PG). Existing NoSQL collections, the bucket reported in `EnvInfo.Storages[]`, and any `managePermissions(resourceType="noSqlDatabase")` rules continue to govern the legacy NoSQL data — do NOT migrate or rewrite them unless the task explicitly asks.
@@ -15272,7 +15674,6 @@ CloudBase PG (`app.rdb()`, `app.storage.from('bucket')`) uses **different API me
 7. Implement browser-side business data with the CloudBase JS SDK v3 PostgreSQL API first: `app.rdb().from(table)`. Use the latest `@cloudbase/js-sdk` when `app.rdb` is missing (`xxx.rdb is not a function` means the SDK is too old).
 8. Do not manually fetch a CloudBase Auth bearer token from browser code for PG CRUD. In particular, do not call non-canonical helpers such as `currentUser.getIdToken()` unless you have verified that exact method exists in the installed SDK. Prefer `app.rdb()` so the SDK carries the active session.
 9. Use the official CloudBase PG SQL auth helpers in policies: `auth.uid()` for JWT `sub`, `auth.role()` for `anon` / `authenticated` / `service_role`, `auth.jwt()` for full claims, and `auth.email()` when email is needed. Still verify the policy through the real app session before claiming it works:
-   - Log in through the real app path.
 
 ## app-workflow
 
@@ -16078,7 +16479,7 @@ CloudBase PG (`app.rdb()`, `app.storage.from('bucket')`) uses **different API me
 ---
 name: relational-database-mcp-cloudbase
 description: "[Deprecated] This is the required documentation for agents operating on the CloudBase Relational Database through MCP. It defines the canonical SQL management flow with `queryMysqlDatabase`, `manageMysqlDatabase`, `queryPermissions`, and `managePermissions`, including MySQL provisioning, destroy flow, async status checks, safe query execution, schema initialization, and permission updates. New environments should use PostgreSQL — see postgresql-development skill instead."
-version: 2.34.3
+version: 2.34.4
 alwaysApply: false
 metadata:
   priority: "5"
@@ -16324,7 +16725,7 @@ Note: when a user is logged in, `_openid` is automatically populated by the serv
 ---
 name: relational-database-web-cloudbase
 description: "[Deprecated] Use when building frontend Web apps that talk to CloudBase Relational Database via @cloudbase/js-sdk – provides the canonical init pattern so you can then use Supabase-style queries from the browser. New environments should use PostgreSQL with app.rdb() — see postgresql-development skill instead."
-version: 2.34.3
+version: 2.34.4
 alwaysApply: false
 metadata:
   priority: "5"
@@ -16570,7 +16971,7 @@ const app = cloudbase.init({
 ---
 name: spec-workflow
 description: Use when medium-to-large changes need explicit requirements, technical design, and task planning before implementation, especially for multi-module work, unclear acceptance criteria, or architecture-heavy requests.
-version: 2.34.3
+version: 2.34.4
 alwaysApply: false
 ---
 
@@ -16719,7 +17120,7 @@ Use this checklist before generating any page, component, or visual interface.
 ---
 name: ui-design
 description: Use when users need visual direction, interface hierarchy, layout decisions, design specifications, or prototypes before implementing a Web or mini program UI.
-version: 2.34.3
+version: 2.34.4
 alwaysApply: false
 ---
 
@@ -17039,7 +17440,7 @@ const cloudbaseProvider = {
 ---
 name: web-development
 description: Use when users need to implement, integrate, debug, build, deploy, or validate a Web frontend after the product direction is already clear, especially for React, Vue, Vite, browser flows, or CloudBase Web integration.
-version: 2.34.3
+version: 2.34.4
 alwaysApply: false
 ---
 

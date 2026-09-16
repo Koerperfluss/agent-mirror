@@ -1,14 +1,14 @@
 ---
 app: cline-code
 quelle: "web-template/http-api-cloudbase/rule.md"
-stand: 2026-09-15
+stand: 2026-09-16
 tags: [spiegel, cline-code]
 ---
 
 ---
 name: http-api-cloudbase
 description: CloudBase official HTTP API client guide. This skill should be used when backends, scripts, or non-SDK clients must call CloudBase platform APIs over raw HTTP instead of using a platform SDK or MCP management tool.
-version: 2.34.3
+version: 2.34.4
 alwaysApply: false
 ---
 
