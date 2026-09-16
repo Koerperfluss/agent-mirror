@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-16 01:47 UTC
+Zuletzt gespiegelt: 2026-09-16 01:58 UTC
 
 ## AGENTS
 
@@ -5205,7 +5205,8 @@ Abschluss-Erkenntnis 16.09.2026 (Sascha: „wieso geht ein chat und der andere n
 name: loki-verkaufstool-stand
 description: LOKI Verkaufstool (eBay+willhaben) — Repo ~/loki-verkaufstool (Port
   8077), korrigierte 7-Objekt-Struktur in „moo ebay/VERKAUF", blockiert auf
-  eBay-Approval + Gemini-Key
+  eBay-Keys (Approval-Mail in Gmail, nur manuell holbar); Gmail-Automatik
+  komplett unzugänglich; nie Saschas echten Chrome fernsteuern (Workday-Incindent)
 metadata:
   node_type: memory
   type: project
@@ -5218,7 +5219,10 @@ LOKI Verkaufstool (eBay + willhaben, Stand 16.09.2026):
 - **Foto-Ordner:** Originale in `~/Desktop/TO DOS /moo ebay/` (17 Fotos, „Groß (IMG_0899…0915).png"); Verkaufspakete in `…/moo ebay/VERKAUF/` mit 7 Objekt-Ordnern (fotos/ + eBay-Anzeige.md + willhaben-Anzeige.txt + PREIS.md). Ordnernamen mit Leerzeichen/Slash nicht vergessen („TO DOS /moo ebay").
 - **Foto-Korrektur 16.09. (2 Fehlzuordnungen per Label-Foto belegt):** „S7-1200 1214C" war falsch — IMG_0912 zeigt 6ES7 214-1BD23-0XB0 = **S7-200 CPU 224** (ein Objekt mit IMG_0913). Die 3 „MOXA E1210/E1242"-Fotos sind alle **ein** ioLogik E2210 (SN TAAF0312146S5). Zielsumme ~534 € statt 839 €.
 - Sascha sprach von „6 Objekten" — Foto-Beweis ergibt 7; offen: ob LOGO! 24R + DM8 als Set verkauft werden (dann 6). Auf Antwort „LOGO zusammen" warten.
-- **Blocker:** eBay-Developer-Approval läuft (Mail wartet, typ. 1–48 h) → danach Sandbox-Keys in ~/.zshenv (EBAY_APP_ID/EBAY_CERT_ID), A3/A4 scharf schalten. GEMINI_API_KEY in ~/.zshenv gültig, aber Tageslimit — Reset ~09:00 MEZ. Google-Login im Automations-Browser wird blockiert („nicht sicher") — Keys nur via Saschas eigenem Browser holen.
+- **Blocker (16.09.):** eBay-Approval-Mail ist DA (in Gmail koerperfluss@gmail.com, von Sascha bestätigt) — Keys stehen NICHT in der Mail, sondern auf developer.ebay.com/my/keys (App ID + Cert ID). GEMINI_API_KEY in ~/.zshenv gültig, aber Tageslimit — Reset ~09:00 MEZ.
+- **Gmail-Zugriff: ALLE Automatik-Wege zu (16.09. live getestet):** google-workspace-MCP gmail_* → Permission denied (Scopes fehlen); AutoClaw-mcporter → Binary nicht installiert, via npx startbar aber Gateway offline (fetch failed); MCP-Automations-Chrome → nicht bei Google eingeloggt, Google blockt Login („nicht sicher"); Apple Mail → 3 Accounts (iCloud koerperfluss@icloud.com, Koerperfluss sascha.lagler@koerperfluss.at, startup@koerperfluss.at), KEIN Gmail, keine eBay-Mails. Keys nur via Saschas eigene Hände (Mail/Portal → Chat oder read -rs One-Liner in ~/.zshenv).
+- **⚠️ Computer-Use-Lektion (16.09., teuer gelernt):** SASCHAS ECHTEN CHROME NICHT PER KEYBOARD FERNSTEUERN — cmd+L/typing landete in seinem Workday-Bewerbungs-Tab (CGM IT-Techniker, St. Pölten) und schob die Bewerbung auf Schritt 2/7 (nichts submitted, Workday submitted erst nach Schritt 7 Review). Sofort stop_computer_control. Wenn Browser-Automatik nötig: nur MCP-Chrome-Profil oder neue Tabs mit Element-Klicks, nie globale Tastatur in fremde Tabs.
+- Verwaister chrome-devtools-mcp-Chrome (Profil ~/.cache/chrome-devtools-mcp/chrome-profile) blockiert chrome-devtools-MCP-Start mit „browser already running" — kill des Pids löst es, Cookies bleiben auf Disk.
 - Unterricht aus der Session: Foto-Erkennung mit **eigenem/native Vision (Read-Tool) machen, keine Credits**; Label-/Typenschild-Fotos sind der Identitäts-Beweis, nicht die Frontansicht.
 
 Verwandt: [[sascha-local-infra-ports]], [[cline-code-app-hub-1006-diagnosis]]
