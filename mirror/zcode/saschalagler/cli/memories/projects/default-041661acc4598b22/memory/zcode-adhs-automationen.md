@@ -41,3 +41,9 @@ metadata:
 
 ## Dritter Lauf (Mo 14.09. 16:01 — No-op-Zweig PASS)
 - 16:00-Lauf am Montag korrekt mit **1 Zeile „heute nichts zu tun"** geendet (RELEASE-BRIEF nur freitags) — Zweig-Guard funktioniert wie designiert; echtes Close des Logbuchs macht der 21:00-Abend-Zweig.
+
+## Vierter Lauf (Mi 16.09. 21:03 — Abend-Zweig PASS)
+- Kalender-Event **„Logbuch 16.09.2026"** UID `88CCE1A6-AAD8-44CF-8548-65D966CCD86D` (Ganztages, Kalender „Kalender"), Logbuch `~/.agents/memory/logbuch/2026-09-16.md` (status: abgeschlossen).
+- Inhalt: Bewerbungen (4 Texte HCS/ASFINAG/Mapei/EnergieD auditiert + 6 PDFs verifiziert + Zeugnisse aufbereitet, via Cline), Tool-Hub-Verkaufsplattform (WAYFINDER: Spec + FastAPI-Backend + Dashboard, via Cline), 3 Antigravity-Brain-Sessions, 0 Git-Commits, Deutsch-Patch weiter offen.
+- **15.09. = Lücken-Tag:** kein Logbuch (Lauf verpasst, Mac vermutlich aus) — bestätigt den Wecker-Bedarf (LaunchAgent com.sascha.assi.daily auf GO).
+- Sweep-Qualität gut genug für reale Tages-Zusammenfassung: Cline-Task-Themen (Bewerbungen, Hub-Bau) sauber erkennbar; Antigravity-Transcripts liefern nur Ordner-Signal, keine Klartext-Themen.
