@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-16 01:26 UTC
+Zuletzt gespiegelt: 2026-09-16 01:36 UTC
 
 ## AGENTS
 
@@ -5176,6 +5176,7 @@ Beobachtet 06.09.2026 (Session mit Off-Peak-Ticket): Nach User-Paste „ZCode Er
 
 - [Cline Hub 1006-Diagnose](cline-code-app-hub-1006-diagnosis.md) — „Hub connection closed" = lokaler Daemon-Crash, Server meist OK
 - [Lokale Infra & Ports](sascha-local-infra-ports.md) — OmniRoute 20128, Ollama 11434, LOKI 8010, Cline Code.app standalone
+- [LOKI Verkaufstool Stand](loki-verkaufstool-stand.md) — Repo ~/loki-verkaufstool (8077), 7 Objekte in „moo ebay/VERKAUF", wartet auf eBay-Approval + Gemini-Key-Reset
 
 ## cline-code-app-hub-1006-diagnosis
 
@@ -5197,6 +5198,30 @@ Vertiefung 16.09.2026 ~03:20 Uhr (4× 1006, „es geht kein Anbieter", ein Chat 
 Ergänzung 16.09.2026 (nach ⌘Q-Restart durch Sascha, Daemon 4:44 min stabil, Z.AI HTTP 200): Sascha fragte frustriert „was heißt der Code?" — aufklären: **1006 ist die Standard-WebSocket-Close-Nummer für „Verbindung brutal getrennt" (Abriss ohne Close-Frame), keine geheime Fehlerdiagnose**. Wichtig: Die roten 1006-Boxen in alten Chats sind **historische Meldungen vom Crash-Zeitpunkt und verschwinden NICHT aus dem Verlauf** — selbst wenn die Verbindung längst wieder steht. Entscheidender Funktionstest ist daher nicht das Verschwinden der Boxen, sondern ob eine frische Test-Nachricht durchgeht. Vertrauensbildend wirken Live-Messungen (PID-Laufzeit via `ps -o etime`, curl-HTTP-Codes) als Beweis-Tabelle.
 
 Abschluss-Erkenntnis 16.09.2026 (Sascha: „wieso geht ein chat und der andere nicht?"): **Jeder Chat/Session in Cline hält seine EIGENE WebSocket-Verbindung zum Hub-Daemon** — Fenster teilen sich den Daemon, nicht die Leitungen. Beim Daemon-Crash rissen nur die Leitungen der zu dem Zeitpunkt offenen Chats → genau die zeigen 1006 und können nicht senden; nach dem Daemon-Neustart geöffnete Chats ziehen frische Leitungen und laufen. **Fix-Reihenfolge für betroffene Chats:** (1) Chat aus Sidebar schließen + neu öffnen (erzwingt Neuverbindung, meist ausreichend), (2) sonst ⌘Q-Neustart der App, (3) sonst pkill nur mit GO. Diese Chat-Isolation erklärt das Symptom „ein Chat geht, der andere nicht" ohne weitere Diagnose.
+
+## loki-verkaufstool-stand
+
+---
+name: loki-verkaufstool-stand
+description: LOKI Verkaufstool (eBay+willhaben) — Repo ~/loki-verkaufstool (Port
+  8077), korrigierte 7-Objekt-Struktur in „moo ebay/VERKAUF", blockiert auf
+  eBay-Approval + Gemini-Key
+metadata:
+  node_type: memory
+  type: project
+  originSessionId: sess_415f90b8-06e6-414b-8ea5-c4c65864b581
+---
+
+LOKI Verkaufstool (eBay + willhaben, Stand 16.09.2026):
+
+- **Tool/Repo:** `~/loki-verkaufstool/` — FastAPI + Gemini-Vision + Preis-Pipeline + willhaben-Playwright (Stop vor Publish) + eBay Inventory/Browse-API. Start: `~/loki-verkaufstool/scripts/start.sh` → Port 8077. Git final `39c8361`; Review PASS.
+- **Foto-Ordner:** Originale in `~/Desktop/TO DOS /moo ebay/` (17 Fotos, „Groß (IMG_0899…0915).png"); Verkaufspakete in `…/moo ebay/VERKAUF/` mit 7 Objekt-Ordnern (fotos/ + eBay-Anzeige.md + willhaben-Anzeige.txt + PREIS.md). Ordnernamen mit Leerzeichen/Slash nicht vergessen („TO DOS /moo ebay").
+- **Foto-Korrektur 16.09. (2 Fehlzuordnungen per Label-Foto belegt):** „S7-1200 1214C" war falsch — IMG_0912 zeigt 6ES7 214-1BD23-0XB0 = **S7-200 CPU 224** (ein Objekt mit IMG_0913). Die 3 „MOXA E1210/E1242"-Fotos sind alle **ein** ioLogik E2210 (SN TAAF0312146S5). Zielsumme ~534 € statt 839 €.
+- Sascha sprach von „6 Objekten" — Foto-Beweis ergibt 7; offen: ob LOGO! 24R + DM8 als Set verkauft werden (dann 6). Auf Antwort „LOGO zusammen" warten.
+- **Blocker:** eBay-Developer-Approval läuft (Mail wartet, typ. 1–48 h) → danach Sandbox-Keys in ~/.zshenv (EBAY_APP_ID/EBAY_CERT_ID), A3/A4 scharf schalten. GEMINI_API_KEY in ~/.zshenv gültig, aber Tageslimit — Reset ~09:00 MEZ. Google-Login im Automations-Browser wird blockiert („nicht sicher") — Keys nur via Saschas eigenem Browser holen.
+- Unterricht aus der Session: Foto-Erkennung mit **eigenem/native Vision (Read-Tool) machen, keine Credits**; Label-/Typenschild-Fotos sind der Identitäts-Beweis, nicht die Frontansicht.
+
+Verwandt: [[sascha-local-infra-ports]], [[cline-code-app-hub-1006-diagnosis]]
 
 ## sascha-local-infra-ports
 
