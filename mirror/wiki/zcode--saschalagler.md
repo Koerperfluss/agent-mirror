@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-17 23:26 UTC
+Zuletzt gespiegelt: 2026-09-17 23:37 UTC
 
 ## AGENTS
 
@@ -5209,10 +5209,10 @@ Abschluss-Erkenntnis 16.09.2026 (Sascha: „wieso geht ein chat und der andere n
 
 ---
 name: loki-verkaufstool-stand
-description: LOKI Verkaufstool (eBay+willhaben) — Repo ~/loki-verkaufstool (Port 8077),
-  7-Objekt-VERKAUF FINAL 879 € QA-PASS (Beijer E1011 einzeln 299 €); eBay-Dev-Konto "fritzlphantom"
-  (bahldorfa@gmail.com!) — Keys nur via Portal-Login (Passwort=user-only); Gemini-Credits
-  aufgebraucht (GCP 24,08 € überfällig); nie Saschas echten Chrome fernsteuern (Workday-Incident)
+description: LOKI Verkaufstool (eBay+willhaben) — 7 Objekte NEU-Preise 1980 € + MAX-STRATEGIE
+  (Deckel 2240 €, Beijer E1011 1190/900/1380 €); eBay PRODUCTION-Keyset erstellt (App/Dev-ID in
+  ~/.zshenv, Cert-ID wartet auf Saschas Auge-Klick im Portal); nie Saschas echten Chrome fernsteuern
+  (Workday-Incident); Gemini-Credits aufgebraucht
 metadata:
   node_type: memory
   type: project
@@ -5236,7 +5236,11 @@ LOKI Verkaufstool (eBay + willhaben, Stand 16.09. ~10:45):
 - **GEMINI-KONSOLIDIERUNG 16.09. (Gemini-Chat 0842b0259a5c15a2 übernommen):** Objekt 07 = **Beijer/Mitsubishi E1011** HMI (Type 0740-074, 6.5" TFT, Schutzfolie drauf) — Konvolut-Ordner umbenannt in `07_Beijer_Mitsubishi_E1011_HMI`, **einzeln 299 € VB** (Markt 250–450+ €, Serie abgekündigt). Weitere Korrekturen: 03 DM8 45→**69 €** (NEU/OVP-Aufschlag), 04 S7-200 55→**89 €** (Legacy 75–114 €). **Finale Zielsumme 885 €** (534 Schätzung → 641 Live → 885 final). Alle 14 Vorlagen + UEBERSICHT.md sync (grep-verifiziert: 219/49/69/89/129/25/299 EUR).
 - **QA-FINAL 16./17.09. (pruef-team, @qa-tester 2 Runden):** GESAMT **PASS**. Korrigiert: Titel 02 gekürzt auf „Siemens LOGO! 24R 6ED1 052-1HA00 DC24V 6xDI 4x Relais gebraucht" (64 Zeichen, ≤80) · 07/PREIS.md auf „299 EUR VB (EINZELN, kein Konvolut!)" · **Zielsumme korrekt 879 €** (219+49+69+89+129+25+299 — die vorher genannten 885 € waren eine Rechen-Fehlsumme). Alle 7 Ordner QA-geprüft: Dateien 4/4, Preis-Sync ebay=willhaben=PREIS, copy-paste-fertig für willhaben.
 - **Ordner-Cleanup 17./18.09. (Sascha: „alles neu, altes weg"):** VERKAUF/ enthält NUR noch die 7 Objekt-Ordner + UEBERSICHT.md. Altes (Gemini-Analyse-PDF, ZCode_Session_Kontext.md, .mimosa) → Backup in `VERKAUF/_ALT/` (nichts gelöscht). Ordner 04 umbenannt: `04_Siemens_S7-200_CPU224` (Zusatz „_ist_S7-200" raus). **Achtung: `.mimosa` legt das Mimosa-Sicherheits-Plugin bei jedem Befehl neu an** — ignorieren, kein Müll.
-- Offen: (1) Saschas Passwort-Tipp im vorbereiteten Login-Fenster → Keys → A3/A4 scharf. (2) LOGO-Set-Entscheidung. (3) E1011 wirklich fabrikneu/unbenutzt? → dann 990–1290 € statt 299 € (Gemini-NEU-Szenario).
+- **NEU-PREISE 18.09. (Sascha-GO „alleeee neu", Plan-Mode approved):** Zielsumme **1980 €** — 01 Web-IO 219 € VB (bleibt) · 02 LOGO! 24R 49→**69 € VB** · 03 DM8 69 € (bleibt) · 04 S7-200 89→**149 € VB** · 05 MOXA 129→**249 € VB** · 06 Nook 25→**35 € Fest** · 07 **Beijer E1011 299→1190 € VB** (Preisvorschlag ab 900, Titel „Beijer E1011 HMI Touch Panel Mitsubishi 0740-074 Terminal 6.5 NEU OVP" = 69 Zeichen, vorher 84 >80-Limit!). Zustand in allen Vorlagen auf „NEU/unbenutzte Lagerware" umgestellt. Grep-verifiziert: 219/69/69/149/249/35/1190 EUR.
+- **🔑 eBay PRODUCTION-Keyset 18.09. ERSTELLT (Sascha selbst im Portal):** App-ID (Client-ID) `SaschaLa-zcode-PRD-2a21ac5d6-a4db7a16` + Dev-ID `ce0ca28e-bf6c-40db-ae5d-6d2fa3a96163` stehen in `~/.zshenv` (chmod 600, grep-verifiziert 2 Zeilen). **Cert-ID (Client-Secret) ist im Portal maskiert („3-72da")** — fehlt noch, Sascha muss das 👁 Auge-Symbol neben Zertifikats-ID klicken und Screenshot schicken ODER `read -rs C && echo "export EBAY_CERT_ID=$C" >> ~/.zshenv`. Danach: OAuth client_credentials-Verify → Server-Neustart (scripts/start.sh :8077) → Browse-Test → Listings (Publish nur mit GO).
+- **Plan-Mode-Block:** Im Plan-Modus blockiert der Hook sogar read-only Bash (curl/echo) — nur MCP-Read-Tools + Read gehen. ExitPlanMode-Plan wurde direkt approved.
+- **MAX-PREIS-STRATEGIE 18.09. (Sascha: „maximalen Verkaufspreis bei allen 7 erzielen"):** Neue Datei `VERKAUF/MAX-STRATEGIE.md` — pro Objekt Deckel/Start/Boden: 01 219/200/258 € · 02 69/60/75 € · 03 69/60/129 € · 04 149/130/180 € · 05 249/220/300 € · 06 35/30/45 € · **07 Beijer E1011 1190/900/1380 €** (NEU-Deckel-Beweise: Radwell E1061 factory-new $1.490, eBay NEU $895, recertified bis $4.417). Portfolio: Start 1980 € · Deckel ~2240 € · Boden 1740 €. **4 Hebel eingebaut:** (1) bilinguale DE+EN-Titel („PLC Logic Module", „Remote I/O") — alle 7 ≤80 Zeichen verifiziert (2. Messung; erste Messung „105 Zeichen" war Skript-Bug: Regex griff Header-Zeile statt Titelzeile), (2) Vorschlags-Politik hart: unter Boden ablehnen + Gegendvorschlag Boden+5 %, ≥ Start−10 % sofort ja, (3) eBay.com-Zweitlisting EN für 01/04/05/07, (4) B2B-Ankauf (fkautomation.de, maas-import-export.de, buyparto.com, sps-handel.net, industrieankauf.de) NUR als Sicherheitsnetz nach 4 Wochen — zahlen 40–60 % des Marktwerts.
+- Offen: (1) Cert-ID Auge-Klick → OAuth-Verify → Listings scharf (grep 18.09. bestätigt: EBAY_CERT_ID noch NICHT in ~/.zshenv). (2) LOGO-Set-Entscheidung (unentschieden, einzeln = 118 € zusammen ist besser — Sascha nicht widersprochen). (3) willhaben: 7 Pakete copy-paste-fertig, Sascha kann jederzeit einstellen.
 - Unterricht: Foto-Erkennung mit native Vision (Read-Tool, 0 Credits); Typenschild-Foto = Identitäts-Beweis.
 
 Verwandt: [[sascha-local-infra-ports]], [[cline-code-app-hub-1006-diagnosis]]
@@ -95561,6 +95565,38 @@ description: Todo-Liste synchronisieren und anzeigen (todo-sync)
 2. Zeige das Ergebnis als kompakte Tabelle (Task | Status | Projekt).
 3. Schlage den nächsten konkreten Schritt vor (1 Zeile).
 
+## plan-sess_415f90b8-06e6-414b-8ea5-c4c65864b581
+
+# PLAN: eBay-Keys scharf schalten + NEU-Preise in alle Vorlagen
+
+**Fakten (bewiesen):** Du hast das **eBay PRODUCTION-Keyset** erstellt (Screenshot): App-ID `SaschaLa-zcode-PRD-2a21ac5d6-a4db7a16` · Dev-ID `ce0ca28e-bf6c-40db-ae5d-6d2fa3a96163` · **Cert-ID ist im Portal maskiert („3-72da")** → muss aufgedeckt werden. Und: „alles NEU" = Gemini-NEU-Preistabelle gilt.
+
+## Schritt 1 — eBay-Keys einschleusen (Env, nie Repo/Chat)
+- Prüfen, ob die eBay-Session im CDP-Browser (Port 9223) liegt → wenn ja: `developer.ebay.com/my/keys` öffnen, Auge-Symbol für Cert-ID, Wert auslesen.
+- Wenn Session woanders liegt: du klickst das Auge 🖉 neben „Zertifikats-ID" und schickst 1 Screenshot (oder tippst die Zeile ins Terminal: `read -rs C && echo "export EBAY_CERT_ID=$C" >> ~/.zshenv`).
+- Schreiben: `~/.zshenv` → `EBAY_APP_ID`, `EBAY_DEV_ID`, `EBAY_CERT_ID` (chmod 600, .gitignore-Check).
+- Live-Verify: OAuth client_credentials-Call → Token = Beweis.
+
+## Schritt 2 — NEU-Preise in alle 14 Vorlagen + UEBERSICHT (Summe 1980 €)
+| # | Objekt | alt → NEU |
+|---|---|---|
+| 01 | Web-IO 57631M | 219 € (bleibt) |
+| 02 | LOGO! 24R | 49 → **69 € VB** |
+| 03 | LOGO! DM8 | 69 € (bleibt) |
+| 04 | S7-200 CPU 224 | 89 → **149 € VB** |
+| 05 | MOXA E2210 | 129 → **249 € VB** |
+| 06 | Nook | 25 → **35 € Fest** |
+| 07 | **Beijer E1011** | 299 → **1190 € VB** · Titel + „NEU OVP unbenutzte Lagerware" · Preisvorschlag ab 900 € |
+- Anzeigentexte: Zustand auf „NEU/unbenutzt" umgestellt; Beschreibungstexte sauber formulieren („neuwertig, unbenutzt") statt reklamehaft übertrieben — eBay-Käufer reklamieren sonst.
+- sync per sed + grep-Verify; QA-Re-Check (Titel-Länge, Preis-Sync) wie zuletzt.
+
+## Schritt 3 — eBay-Listings scharf
+- `~/loki-verkaufstool` Server mit Keys neu starten (scripts/start.sh, Port 8077) → eBay-Browse-Preisabfrage live testen (Objekt 01) → Inventor-Listings für alle 7 (Publish nur nach deinem GO).
+
+## Stopp-Regeln bleiben
+- **Publish auf eBay = nur mit deinem GO.** Keys nie im Chat/Repo. nichts löschen.
+
+~20 min · Flash-first · Keine Rückfragen außer: falls die Cert-ID nicht holbar ist → 1 Auge-Klick von dir.
 ## SKILL
 
 ---
