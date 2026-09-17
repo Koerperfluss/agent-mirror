@@ -1,9 +1,9 @@
 ---
 name: loki-verkaufstool-stand
 description: LOKI Verkaufstool (eBay+willhaben) — Repo ~/loki-verkaufstool (Port 8077),
-  7-Objekt-VERKAUF + LIVE-MARKT-ANALYSE (641 € Ziel, +107 € via echte eBay-Anzeigen);
-  eBay-Dev-Konto "fritzlphantom" (bahldorfa@gmail.com!) — Keys nur via Portal-Login (Passwort=user-only);
-  Gemini-Credits aufgebraucht; nie Saschas echten Chrome fernsteuern (Workday-Incident)
+  7-Objekt-VERKAUF FINAL 879 € QA-PASS (Beijer E1011 einzeln 299 €); eBay-Dev-Konto "fritzlphantom"
+  (bahldorfa@gmail.com!) — Keys nur via Portal-Login (Passwort=user-only); Gemini-Credits
+  aufgebraucht (GCP 24,08 € überfällig); nie Saschas echten Chrome fernsteuern (Workday-Incident)
 metadata:
   node_type: memory
   type: project
@@ -25,6 +25,8 @@ LOKI Verkaufstool (eBay + willhaben, Stand 16.09. ~10:45):
 - **CDP-Restroute:** `agent-browser`-CLI (`/opt/homebrew/bin/agent-browser`); Bewerbungs-Chrome (Profil `~/.cache/bewerbung-browser`) mit CDP **Port 9223** — dort zeigt Google das NORMALE Login-Formular. Verwaister chrome-devtools-mcp-Chrome blockiert MCP-Start → kill derPid löst es.
 - **Markt-Recherche-Routen:** eBay-Sold-Listings (LH_Sold) hinter Login/„Einloggen"-Wall — NICHT ohne Account holbar; eBay-Suche im CDP-Browser → „Something went wrong"-Bot-Wall. **Funktioniert:** `web_search_prime` (Query mit „ebay preis EUR") + webReader nur ohne Sonderzeichen-URL-Fehler. eBay.de-Preise erscheinen auch über ebay.com-Ergebnisse.
 - **GEMINI-KONSOLIDIERUNG 16.09. (Gemini-Chat 0842b0259a5c15a2 übernommen):** Objekt 07 = **Beijer/Mitsubishi E1011** HMI (Type 0740-074, 6.5" TFT, Schutzfolie drauf) — Konvolut-Ordner umbenannt in `07_Beijer_Mitsubishi_E1011_HMI`, **einzeln 299 € VB** (Markt 250–450+ €, Serie abgekündigt). Weitere Korrekturen: 03 DM8 45→**69 €** (NEU/OVP-Aufschlag), 04 S7-200 55→**89 €** (Legacy 75–114 €). **Finale Zielsumme 885 €** (534 Schätzung → 641 Live → 885 final). Alle 14 Vorlagen + UEBERSICHT.md sync (grep-verifiziert: 219/49/69/89/129/25/299 EUR).
+- **QA-FINAL 16./17.09. (pruef-team, @qa-tester 2 Runden):** GESAMT **PASS**. Korrigiert: Titel 02 gekürzt auf „Siemens LOGO! 24R 6ED1 052-1HA00 DC24V 6xDI 4x Relais gebraucht" (64 Zeichen, ≤80) · 07/PREIS.md auf „299 EUR VB (EINZELN, kein Konvolut!)" · **Zielsumme korrekt 879 €** (219+49+69+89+129+25+299 — die vorher genannten 885 € waren eine Rechen-Fehlsumme). Alle 7 Ordner QA-geprüft: Dateien 4/4, Preis-Sync ebay=willhaben=PREIS, copy-paste-fertig für willhaben.
+- **Ordner-Cleanup 17./18.09. (Sascha: „alles neu, altes weg"):** VERKAUF/ enthält NUR noch die 7 Objekt-Ordner + UEBERSICHT.md. Altes (Gemini-Analyse-PDF, ZCode_Session_Kontext.md, .mimosa) → Backup in `VERKAUF/_ALT/` (nichts gelöscht). Ordner 04 umbenannt: `04_Siemens_S7-200_CPU224` (Zusatz „_ist_S7-200" raus). **Achtung: `.mimosa` legt das Mimosa-Sicherheits-Plugin bei jedem Befehl neu an** — ignorieren, kein Müll.
 - Offen: (1) Saschas Passwort-Tipp im vorbereiteten Login-Fenster → Keys → A3/A4 scharf. (2) LOGO-Set-Entscheidung. (3) E1011 wirklich fabrikneu/unbenutzt? → dann 990–1290 € statt 299 € (Gemini-NEU-Szenario).
 - Unterricht: Foto-Erkennung mit native Vision (Read-Tool, 0 Credits); Typenschild-Foto = Identitäts-Beweis.
 
