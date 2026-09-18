@@ -1,11 +1,12 @@
 # Arbeits-Wiki
 
-Stand: 2026-09-18 03:46 UTC. Jede Seite fasst ein Projekt über alle Apps hinweg zusammen.
+Stand: 2026-09-18 03:57 UTC. Jede Seite fasst ein Projekt über alle Apps hinweg zusammen.
 
 - [antigravity / 1cf5e412-ad9c-4f02-9f3e-93788dc7476d](antigravity--1cf5e412-ad9c-4f02-9f3e-93788dc7476d.md)
 - [antigravity / Projekt-Task-Planer](antigravity--Projekt-Task-Planer.md)
 - [antigravity / cli](antigravity--cli.md)
 - [antigravity / saschalagler](antigravity--saschalagler.md)
+- [claude / IRIS-AI](claude--IRIS-AI.md)
 - [claude / claude-mem](claude--claude-mem.md)
 - [claude / esbenp.prettier-vscode-12.4.0-universal](claude--esbenp.prettier-vscode-12.4.0-universal.md)
 - [claude / legal-ops-advisor](claude--legal-ops-advisor.md)

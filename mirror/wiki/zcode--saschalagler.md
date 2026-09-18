@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-18 03:46 UTC
+Zuletzt gespiegelt: 2026-09-18 03:57 UTC
 
 ## AGENTS
 
@@ -1821,6 +1821,10 @@ Verankert auch in `~/.agents/STANDARD-SKILLS.md` A.5, in alle 5 Harnesses gesync
 
 **Lade-Ketten-Lektion (18.09., nach „WIE soll ZCode/Cline/Antigravity/Terminal wissen wo das steht, du Trottel"):** Eine Regel NUR in `skill-routing.md` zu schreiben reicht NICHT — keine Harness-Session lädt diese Datei automatisch. Fix: der **Dispatch-Kern (Trigger-Zeilen + Prompt-Vertrag + Merge-Regeln) sitzt SEIT 18.09. IM auto-injizierten STANDARD-SKILLS-Block** → wird bei jedem Session-Start in alle 5 Tools geliefert: ZCode via `~/.zcode/AGENTS.md` (nativ) + `projects.py --hook`, Claude via `~/.claude/CLAUDE.md`, Cline via `~/.cline/CLAUDE.md`, Antigravity/Gemini via `~/.gemini/GEMINI.md`, Hermes via `~/.hermes/SOUL.md` (Sync: `~/.agents/tools/sync-standard-skills.sh`); Injektions-Beweis: Hook-Output enthält „Dispatch-Kern … JA". **Generalregel: Verhalten-Regeln gehören IN den injizierten Block (STANDARD-SKILLS-Marker), Detail-Dateien sind nur Referenz.**
 
+**Trigger-Karte + ehrliche Injektions-Grenzen (18.09., auf Nachfrage „WIE trigger ich das eigentliche Ziel?"):**
+- Trigger-Phrasen für Sascha: normale Frage → Dispatch-Protokoll automatisch · „baue/erstelle X" → loki-dev BUILD (Plan-Gate: Sequential+TodoWrite+PLAN-Tabelle+PLAN.md) · „mappe Projekt X"/>1 Session → wayfinder · „pruef X" → Prüfinstanz · „/standardskill" = Sicherungs-Trigger für Tools ohne Auto-Injektion.
+- Injektions-Wahrheit (nicht 100 %): ZCode/Claude/Cline = ✅ jeder NEUE Chat (nativ geladene AGENTS/CLAUDE.md); **Antigravity = ⚠️ liest primär WORKSPACE-AGENTS.md, globale Regeln nicht garantiert → dort 1× /standardskill schreiben; Terminal (omniroute chat) = ❌ KEINE Auto-Injektion** (Regeln müssen im Prompt stehen); laufende Sessions laden Änderungen erst nach Neustart.
+
 ## feedback-belege-am-mac-suchen
 
 ---
@@ -3088,6 +3092,8 @@ metadata:
 **Automation erstellt:** `automation-03ce4628-a0a0-4e42-b807-8650402c7471` „Tägliche SSD-Cache-Bereinigung (12 Uhr)", cron `0 12 * * *`, löscht nur Caches mit Altersfilter (mtime +2/+3 Tage): var/folders X+T, ~/Library/Caches, ~/.cache, npm-cache, `simctl delete unavailable`, Trash. Schutzliste: Desktop/Documents/Pictures/Music/Downloads/Mobile Documents/Application Support/Repos.
 
 **18.09. Erweiterung:** Automation nutzt jetzt **Mole-CLI** (`mole clean`, Homebrew `/opt/homebrew/bin/mole`) als Schritt 1. Tool-Inventar: CleanMyMac NICHT installiert; Vorssaint = GUI-only (Fenster/Clipboard, kein Cleaning-CLI). Erster Live-Lauf 18.09.: Mole +1,54 GB, var/folders 26→4,3 GB. Mole "Large files"-Vorschläge (LM-Studio 14 GB, Docker 5,8 GB) IMMER überspringen — Schutzliste im Automation-Prompt.
+
+**18.09. Runde 2 (nach Saschas Wut — rechtlich: er hatte recht, 163 Brew-Pakete):** Volle Inventur: 47 Apps in /Applications, 156 Brew-Formeln + 8 Casks. **CleanMyMac = Setapp-Version, DEINSTALLIERT** — nur Leichen; LaunchDaemons/PrivilegedHelper gelöscht (sudo frei), 9 Application-Scripts-Reste in ~/Library (mas/setapp-Varianten). **Vorssaint 3.3.5 = GUI-only UND fernsteuerungs-resistent**: Fenster (Display 2, 1467×953) lehnt synthetische Mausklicks ab („declined left mouse down", Overlay-Layer) → NIE wieder GUI-Automatisierung versuchen, nur Sascha von Hand. Brew cleanup brachte nur 175 KB (war sauber). Endstand 18.09.: **42 GB frei** (Start 29 GB), var/folders stabil 4,3 GB.
 
 Echte Entlastung braucht zusätzlich manuell: Desktop ausmisten (79 GB) — Sascha-Entscheidung.
 
@@ -5404,6 +5410,15 @@ LOKI Verkaufstool (eBay + willhaben, Stand 16.09. ~10:45):
 - **Browser-Automation-Recherche (Explore-Agent, Sep 2026) für ZCode+GLM:** Notes: **Playwright MCP mit persistentem Profil/CDP-Attach = Note 1** (zuverlässig, gratis, echte Logins, `--user-data-dir`/`--cdp-endpoint`) · browser-use Plugin (schon in ZCode installiert, `use_existing_browser`-Auth, Note 2) · Stagehand/Browserbase (hybrid act(), Cloud-Kosten, Note 3) · Anthropic CUA/Operator (kein GLM-Fit, 4) · AutoGLM/z.ai Browser-Agent (kein sauberer MCP-Client, 4). Bot-Detection: echtes eingeloggtes Profil via CDP/Persistent-Profile am unauffälligsten. Quellen: docs.browser-use.com/open-source/customize/browser/authentication, microsoft-playwright-mcp.mintlify.app, agent-browser.dev/sessions.
 - **Empfohlener Weg für eBay/willhaben-Flows:** Playwright MCP mit persistentem Profil `~/.cache/verkauf-browser` (einmalig eBay+willhaben-Login von Sascha), dann Anzeigen-Flows stabil über dieses Profil statt computer-use auf seinem Live-Chrome.
 
+## Stand 21.09. — eBay.at-Korrektur + Browser-Konflikt-Ende
+
+- **🔴 KRITISCHE KORREKTUR: Sascha arbeitet auf EBAY.AT, nicht ebay.de** (mehrfach betont: „ist dir klar dass ich in Österreich bin?"). Mein Formular-Flow lief auf ebay.de (SiteID 77) → Login-Redirect signin.ebay.de, Session von ebay.at (anderes Cookie-Domain) dadurch nicht betroffen, aber alle meine Login-Tests auf ebay.de waren gegen die falsche Domain. Richtig: **ebay.at/sl/sell** — Saschas Session ist dort aktiv (getestet: ebay.at/sl/sell lädt eingeloggt in seinem Profil). Draft 5196095607000 existierte auf ebay.de — für ebay.at neu anlegen (Daten stehen in data/objekte/ + VERKAUF-Ordnern).
+- **Browser-Konflikt-Ende (Sascha: „STOP JETZT"):** Sascha arbeitete parallel selbst im Chrome (Flags-Konfig, eigene Navigation) — meine computer-use-Klicks und seine Aktionen haben sich gegenseitig überschrieben (Fenster-Fokus wechselte zu chrome://flags, ebay.at-Tab verschwand auf chrome://newtab). **Regel: NIEMALS gleichzeitig mit Sascha in denselben Browser — vorher abklären wer fährt, oder dedizierten Agent-Browser (persistentes Profil) nutzen.** Alle Prozesse sauber gestoppt (pkill print-to-pdf, ebay_callback_server).
+- **PDF-Stand 21.09.:** 01/02-PDFs weiterhin ohne Fotos (Chrome headless + base64-data-URLs flaky bei virtual-time-budget 15000; direktes Rendern ohne virtual-time + langen Timeout war in Arbeit, dann STOP). 03–07 PDFs verifiziert MIT Fotos (993–3450 KB). Fix-Restaufwand: nur 01+02 neu rendern.
+- **eBay-Formular-Rest für Anzeige 01 (falls Browser-Route):** Entwurf neu öffnen (ebay.at/sl/sell → Suchbegriff → Zustand Neu → Titel/Beschreibung/Preis/Fotos via set_value+NSOpenPanel — bewährter Ablauf aus Session) → Versandservice „Paketversand" 6,90 € → Angebot aufgeben.
+- **Preise final (Sascha-VOLL GO, 21.09.):** 01 300 € (Sascha selbst im Formular gesetzt, statt 219!) · 02 69 · 03 69 · 04 149 · 05 249 · 06 35 · 07 1190 — Vorschläge 280/270 bei 01. UEBERSICHT.md + PDFs hatten zwischenzeitlich 1980 € (Sascha korrigierte später selbst auf 879 im Formular-Kontext? — nein: 1980 bleibt Zielsumme laut Stand 18./19., Saschas „879"-Korrektur betraf die alte 879-er Basis-Vor-NEU-Rechnung; aktuell gültig = 1980 € NEU-Basis mit 300 € statt 219 € für 01 → neu berechnen wenn final). Bei Unsicherheit: Ordner-Preise sind Source of Truth (grep-Verify).
+- **Willhaben: endgültig ERLEDIGT von Sascha selbst** (mehrfach bestätigt, nicht mehr erwähnen/anbieten).
+
 Verwandt: [[sascha-local-infra-ports]], [[cline-code-app-hub-1006-diagnosis]]
 
 ## sascha-local-infra-ports
@@ -5460,6 +5475,8 @@ Sascha (18.09.2026, nach 30h Konfiguration): „WIESO MUSS ICH JEDEN SCHEISS SCH
 5. Fehlschläge ehrlich melden, aber mit bereits gewähltem Plan B im selben Zug.
 
 Verwandt: [[loki-verkaufstool-stand]]
+
+**Ergänzung (21.09., Browser-Konflikt):** WENN Sascha selbst parallel im Browser/Finder arbeitet, KEINE computer-use-Klicks mehr senden — „STOP JETZT" heißt sofort alle Prozesse killen und melden. Stattdessen: ihm den 60-Sekunden-Rest per Checkliste geben (er klickt schneller fertig als eine Fernsteuerung) ODER dedizierten Agent-Browser nutzen. Plan-Modus-Wiederholungen: Er lehnt lange Pläne ab — Plan auf das absolute Minimum kürzen (3 Zeilen), kein Willhaben-/Nebenthemen-Bezug. Korrektur: Sascha arbeitet auf EBAY.AT (Österreich, Loosdorf/NÖ) — nie ebay.de-Flows für ihn fahren.
 
 **Ergänzung (18.09., Chrome-Session):** Keine Zwischenfragen heißt AUCH: keine langen Status-/Konfig-Erklärungen. Sascha antwortete mehrfach „ICH VERSTEHE NICHT WAS DU REDEST / WAS IST DEINE AUFGABE/GOAL", als ich Setup-Details erzählte. Format das er versteht: (1) Meine Aufgabe in 1 Satz, (2) Ursache in 1 Satz, (3) die EINE offene Entscheidung („Sag GO oder NEIN"). Alles andere in Dateien ablegen, nicht in den Chat. **Und: Er kann lange Terminal-Texte nicht lesen — Übersichten/Erklärungen grafisch als HTML-Datei auf Desktop aufbereiten und im Browser öffnen** (siehe [[chrome-agent-browser-fix]], `~/Desktop/chrome-fix-uebersicht.html`).
 

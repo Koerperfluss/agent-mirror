@@ -28,4 +28,6 @@ Sascha (18.09.2026, nach 30h Konfiguration): „WIESO MUSS ICH JEDEN SCHEISS SCH
 
 Verwandt: [[loki-verkaufstool-stand]]
 
+**Ergänzung (21.09., Browser-Konflikt):** WENN Sascha selbst parallel im Browser/Finder arbeitet, KEINE computer-use-Klicks mehr senden — „STOP JETZT" heißt sofort alle Prozesse killen und melden. Stattdessen: ihm den 60-Sekunden-Rest per Checkliste geben (er klickt schneller fertig als eine Fernsteuerung) ODER dedizierten Agent-Browser nutzen. Plan-Modus-Wiederholungen: Er lehnt lange Pläne ab — Plan auf das absolute Minimum kürzen (3 Zeilen), kein Willhaben-/Nebenthemen-Bezug. Korrektur: Sascha arbeitet auf EBAY.AT (Österreich, Loosdorf/NÖ) — nie ebay.de-Flows für ihn fahren.
+
 **Ergänzung (18.09., Chrome-Session):** Keine Zwischenfragen heißt AUCH: keine langen Status-/Konfig-Erklärungen. Sascha antwortete mehrfach „ICH VERSTEHE NICHT WAS DU REDEST / WAS IST DEINE AUFGABE/GOAL", als ich Setup-Details erzählte. Format das er versteht: (1) Meine Aufgabe in 1 Satz, (2) Ursache in 1 Satz, (3) die EINE offene Entscheidung („Sag GO oder NEIN"). Alles andere in Dateien ablegen, nicht in den Chat. **Und: Er kann lange Terminal-Texte nicht lesen — Übersichten/Erklärungen grafisch als HTML-Datei auf Desktop aufbereiten und im Browser öffnen** (siehe [[chrome-agent-browser-fix]], `~/Desktop/chrome-fix-uebersicht.html`).

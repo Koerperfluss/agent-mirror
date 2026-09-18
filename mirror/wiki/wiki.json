@@ -1,8 +1,9 @@
-{ "generatedAt": "2026-09-18 03:46 UTC", "pages": [
+{ "generatedAt": "2026-09-18 03:57 UTC", "pages": [
 { "app": "antigravity", "project": "1cf5e412-ad9c-4f02-9f3e-93788dc7476d", "path": "wiki/antigravity--1cf5e412-ad9c-4f02-9f3e-93788dc7476d.md" },
 { "app": "antigravity", "project": "Projekt-Task-Planer", "path": "wiki/antigravity--Projekt-Task-Planer.md" },
 { "app": "antigravity", "project": "cli", "path": "wiki/antigravity--cli.md" },
 { "app": "antigravity", "project": "saschalagler", "path": "wiki/antigravity--saschalagler.md" },
+{ "app": "claude", "project": "IRIS-AI", "path": "wiki/claude--IRIS-AI.md" },
 { "app": "claude", "project": "claude-mem", "path": "wiki/claude--claude-mem.md" },
 { "app": "claude", "project": "esbenp.prettier-vscode-12.4.0-universal", "path": "wiki/claude--esbenp.prettier-vscode-12.4.0-universal.md" },
 { "app": "claude", "project": "legal-ops-advisor", "path": "wiki/claude--legal-ops-advisor.md" },
