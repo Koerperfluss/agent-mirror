@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-18 14:20 UTC
+Zuletzt gespiegelt: 2026-09-18 14:31 UTC
 
 ## AGENTS
 
@@ -1385,6 +1385,8 @@ Bei Fachfragen (z. B. Trainings-Übungen) fordert er explizit „clinical reason
 
 # Memory Index
 
+- [Cline-App Backend-Fix](cline-app-desktop-backend-fix.md) — 18.09. „desktop backend exited" gefixt: steckengebliebener code-sidecar; Health-Check Port 25463/health; Fix-Einzeiler pkill code-sidecar + App-Neustart; ~/.cline ist NICHT die App
+
 - [SSD-Cache-Automation](ssd-cache-automation.md) — 18.09.: 29→42 GB frei; automation-03ce4628 täglich 12 Uhr (Mole-CLI+var/folders+Caches); Top-Analyse fertig: Barbulls „MEDIE: PLÄNE" 24 GB = größter Hebel, ~/.zcode/cli/rollout 7,8 GB alle <30T aktiv; 3 GO-Hebel offen
 
 - [Kein Raten — Agenten-Wissen](feedback-kein-raten-agenten-wissen.md) — 18.09. „HÖR AUF MIT MIR ZU RATEN": keine unbelegten Tool-Behauptungen; Unwissen = Research-Agent mit Quellen-Nachweis statt Formulierung ins Blaue; „alle Tools" = VOLLSTÄNDIGE Inventur
@@ -1646,6 +1648,27 @@ Installed 2026-08-23 at Sascha's request via `npx skills add https://github.com/
 - **Sascha's Chrome CDP port is 9223** (agent-browser attaches there) — connect with `await session.connect({port:9223})`
 - **Security:** skills.sh scanner rated Med Risk (1 Socket alert); locally verified clean (localhost-only bind, plain bash wrapper, readable TS source). Rated risky by nature (JS eval + browser control)
 - Pairs with the browser layer of [[web-research-team-skill]] (ORCH-WEB) and `agent-browser`. Installed per [[skill-install-conventions]].
+
+## cline-app-desktop-backend-fix
+
+---
+name: cline-app-desktop-backend-fix
+description: 18.09. Cline-Desktop-App (Tauri) „desktop backend exited before
+  publishing its endpoint" gefixt — Ursache steckengebliebener
+  code-sidecar-Prozess, Einzeiler-Fix
+metadata:
+  node_type: memory
+  type: reference
+  originSessionId: sess_91589d59-5cf0-4fa5-a4f8-804e96d224d7
+---
+
+**18.09.2026 gefixt:** /Applications/Cline.app (Tauri-App, Binärdateien `cline-app` + `code-sidecar` in Contents/MacOS) zeigte `Tauri invoke get_desktop_backend_endpoint: desktop backend exited before publishing its endpoint`.
+
+- **Root Cause:** steckengebliebener/alter `code-sidecar`-Prozess einer früheren Session war tot-fürs-Melden; App wartete ins Leere. Kein Gatekeeper/Codesign-Problem (Notarized Developer ID, spctl accepted), kein Crash-Report (nur alter vom 22.08).
+- **Sidecar-Architektur:** `code-sidecar` spawnen 2 Prozesse, Hub-Daemon per Default auf Port **25463**, Pfad `/hub`; Health: `curl http://127.0.0.1:25463/health` → `{"ok":true, coreVersion 0.0.83, url ws://127.0.0.1:25463/hub}`. Laufen die Sidecars, respawnet die laufende cline-app sie automatisch.
+- **Fix-Einzeiler:** `pkill -f code-sidecar; osascript -e 'quit app "Cline"'; sleep 2; open -a Cline`
+- **Landkarten-Fallen:** `~/Library/Application Support/cline-app/` existiert nicht; echte App-Daten in `/var/folders/.../T/bot.cline.app` (+ WebKit-Sandboxes). `~/.cline/` im Home ist NICHT die App, sondern Saschas eigene LOKI-Config (CLAUDE.md, skills, cron …) — nicht anfassen.
+- Verwandt: [[macos-27-beta-status]] (dort anderes Cline-Problem: AMFI-Signing nach npm-Updates).
 
 ## coding-modelle-android-studio-2026-09-13
 

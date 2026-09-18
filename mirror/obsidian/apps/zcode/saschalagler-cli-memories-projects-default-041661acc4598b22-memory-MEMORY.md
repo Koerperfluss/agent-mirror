@@ -7,6 +7,8 @@ tags: [spiegel, zcode]
 
 # Memory Index
 
+- [Cline-App Backend-Fix](cline-app-desktop-backend-fix.md) — 18.09. „desktop backend exited" gefixt: steckengebliebener code-sidecar; Health-Check Port 25463/health; Fix-Einzeiler pkill code-sidecar + App-Neustart; ~/.cline ist NICHT die App
+
 - [SSD-Cache-Automation](ssd-cache-automation.md) — 18.09.: 29→42 GB frei; automation-03ce4628 täglich 12 Uhr (Mole-CLI+var/folders+Caches); Top-Analyse fertig: Barbulls „MEDIE: PLÄNE" 24 GB = größter Hebel, ~/.zcode/cli/rollout 7,8 GB alle <30T aktiv; 3 GO-Hebel offen
 
 - [Kein Raten — Agenten-Wissen](feedback-kein-raten-agenten-wissen.md) — 18.09. „HÖR AUF MIT MIR ZU RATEN": keine unbelegten Tool-Behauptungen; Unwissen = Research-Agent mit Quellen-Nachweis statt Formulierung ins Blaue; „alle Tools" = VOLLSTÄNDIGE Inventur
