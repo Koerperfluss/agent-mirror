@@ -47,3 +47,8 @@ metadata:
 - Inhalt: Bewerbungen (4 Texte HCS/ASFINAG/Mapei/EnergieD auditiert + 6 PDFs verifiziert + Zeugnisse aufbereitet, via Cline), Tool-Hub-Verkaufsplattform (WAYFINDER: Spec + FastAPI-Backend + Dashboard, via Cline), 3 Antigravity-Brain-Sessions, 0 Git-Commits, Deutsch-Patch weiter offen.
 - **15.09. = Lücken-Tag:** kein Logbuch (Lauf verpasst, Mac vermutlich aus) — bestätigt den Wecker-Bedarf (LaunchAgent com.sascha.assi.daily auf GO).
 - Sweep-Qualität gut genug für reale Tages-Zusammenfassung: Cline-Task-Themen (Bewerbungen, Hub-Bau) sauber erkennbar; Antigravity-Transcripts liefern nur Ordner-Signal, keine Klartext-Themen.
+
+## Fünfter Lauf (Fr 18.09. 15:05 — Morgen-Brief nachgeholt, PASS)
+- 09:00 wieder verpasst (3. Lücken-Morgen: 15./17./18.09. ohne Logbuch bzw. nachgeholt) → 15:00-Freitag-Slot als Nachhol-Lauf genutzt (Zweig-Abweichung dokumentiert). Kalender-Event **„Tagesplan 18.09."** UID `533CCF84-6694-440A-B4C9-E2F21CEF2B6F`, Logbuch `~/.agents/memory/logbuch/2026-09-18.md` (status: offen, DEV-BRIEF: 0 Commits, keine CI; Cline-Yolo-Team „daily digest/documentation maintainer/security reviewer" in Session 712478 gesichtet — mögliche Überschneidung mit Tages-Routine beobachten).
+- **LaunchAgent-Wecker (com.sascha.assi.daily umrüsten) weiter auf GO offen** — Dauerlösung gegen verpasste 09:00-Läufe.
+- 17.09. bleibt Lücken-Tag (kein Logbuch).
