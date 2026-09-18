@@ -7,9 +7,9 @@ tags: [spiegel, zcode]
 
 ---
 name: subagent-dispatch-implementer-workaround
-description: GELÖST + AUTOMATISIERT 16./18.09. — „No reasoning level selected"
-  saß in ~/.zcode/v2/agents-state.json; Fix jetzt selbstheilend via SessionStart-Hook
-  (fix-subagents.sh --silent in ~/.zcode/cli/config.json); Dispatches bewiesen
+description: „No reasoning level selected" — Hook-Fix (~/.zcode/fix-subagents.sh)
+  deckt implementer ab, aber 18.09. warfen Explore/general-purpose WEITERHIN den Fehler;
+  Workaround: alles über implementer-Type routen oder Director-direct
 metadata:
   node_type: memory
   type: reference
@@ -24,3 +24,5 @@ metadata:
 3. Die App hat den Fix selbst auf Plugin-Agents ausgeweitet (agent-sdk-verifier-py/ts erhielten Overrides MIT Denkstufe).
 
 **How to apply:** Nichts manuell nötig. Falls Dispatch je wieder „No reasoning level selected" wirft: `~/.zcode/fix-subagents.sh` prüfen/läuft der Hook (config.json SessionStart)? Workaround bis Neustart: `implementer`. Verwandt: [[feedback-auto-team-dispatch]] (Dispatch-Protokoll v2).
+
+**⚠️ 18.09. RÜCKFALL (Teilweise):** In der großen LokiVoice-Session warfen **`Explore` und `general-purpose` weiterhin „No reasoning level selected / selection=account:zai-start-plan/GLM-5.3-Flash"**, während **`implementer`-Dispatches parallel erfolgreich liefen** (3/3 implementer gestartet, 1 verifiziert geliefert). Der Hook-Fix deckt offenbar nicht alle Agent-Typen/Provider-Kombinationen (Plan-Account `zai-start-plan` statt `individual-coding-plan` im Fehlertext). **Workaround-Kette bewährt:** (1) Task als `implementer` umformulieren (auch für read-only Scans — „nur lesende Befehle"), (2) sonst Director-Direktausführung. Sascha-Seitiger Dauer-Fix: ZCode-Einstellungen → GLM-5.3-Flash → Denkstufe explizit setzen (App-Setting, nicht config.json).

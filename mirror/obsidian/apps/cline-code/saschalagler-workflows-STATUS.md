@@ -1,7 +1,7 @@
 ---
 app: cline-code
 quelle: "saschalagler/workflows/STATUS.md"
-stand: 2026-09-07
+stand: 2026-09-18
 tags: [spiegel, cline-code]
 ---
 
@@ -43,3 +43,5 @@ bot.cline.app: Desktop=2, Documents=2, Downloads=2, AppleEvents=2, FileProviderD
 - Fix: Update auf cline@3.0.61 + Hardlink durch Kopie ersetzt + codesign --force --sign - (Skript: ~/fix-cline-macos27.sh — nach jedem npm-Update erneut ausführen!)
 - Backup des alten Binaries: /tmp/cline-binary-backup-3.0.60
 - Offen: Desktop-App-Fehler 'Desktop backend transport closed' + 'Unauthorized: re-authenticate' -> Neuanmeldung im Cline-Account nötig (App + CLI).
+
+# STATUS — 2026-09-18: FFG 68209806 (Körperfluss Edu) Neueinreichung fix fertig — S1–S5 PASS, UPLOAD_eCall_SLOTS_2026-09-18/ + PLAN.md im Paket. HITL: eCall-Portal (B1/B6/C), Unterschriften (B7), Leons CV-Daten (B4b), SMS-Versand (B5). Mauerhart-CV = Alt-Leiche (Nutzer-Entscheid), ungelöscht in NACHWEISE/.
