@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-18 00:09 UTC
+Zuletzt gespiegelt: 2026-09-18 00:20 UTC
 
 ## AGENTS
 
@@ -5182,7 +5182,7 @@ Beobachtet 06.09.2026 (Session mit Off-Peak-Ticket): Nach User-Paste „ZCode Er
 
 - [Cline Hub 1006-Diagnose](cline-code-app-hub-1006-diagnosis.md) — „Hub connection closed" = lokaler Daemon-Crash, Server meist OK
 - [Lokale Infra & Ports](sascha-local-infra-ports.md) — OmniRoute 20128, Ollama 11434, LOKI 8010, Cline Code.app standalone
-- [LOKI Verkaufstool Stand](loki-verkaufstool-stand.md) — LIVE-MARKT-ANALYSE fertig (641 € Ziel, MOXA+HMI stark unterpreist); eBay-Konto „fritzlphantom" (bahldorfa@gmail.com!), Login-Fenster CDP-9223 vorbereitet (nur Passwort fehlt); Gemini-Credits depletion; PDF→PNG→OCR-Workaround; Sold-Preise nur mit Account
+- [LOKI Verkaufstool Stand](loki-verkaufstool-stand.md) — eBay KOMPLETT SCHARF: User-Token live (Refresh im Store), v2→v1-Bug gefixt, Redirect https://localhost:8078/callback; 7 Objekte NEU-Preise 1980 € + MAX-STRATEGIE (Beijer E1011 1190 €); ausstehend: Listings-Entwürfe + Publish (nur GO), willhaben einstellbar; Workday-Incident-Lektion; Gemini-Credits depletion
 
 ## cline-code-app-hub-1006-diagnosis
 
@@ -5210,10 +5210,10 @@ Abschluss-Erkenntnis 16.09.2026 (Sascha: „wieso geht ein chat und der andere n
 ---
 name: loki-verkaufstool-stand
 description: LOKI Verkaufstool (eBay+willhaben) — 7 Objekte NEU-Preise 1980 € + MAX-STRATEGIE
-  (Deckel 2240 €, Beijer E1011 1190/900/1380 €); eBay PRODUCTION-Keys AKTIV — OAuth live
-  (Token 7200 s), Ausnahme-Portal-Fix selbst per computer-use-Element-Klicks in Saschas echtem
-  Chrome erledigt (Chrome-Autofill tat das Passwort); Browse-API live; fehlt nur User-Token +
-  EBAY_REDIRECT_URI für Listings (Publish nur mit GO); Gemini-Credits aufgebraucht
+  (Deckel 2240 €, Beijer E1011 1190/900/1380 €); eBay KOMPLETT SCHARF: Production-Keys + OAuth
+  Application- UND User-Token live (Refresh-Token im Store data/ebay_tokens.json), v2→v1-Token-URL-Bug
+  gefixt, Redirect https://localhost:8078/callback (eBay erzwingt https!); Browse-API live; ausstehend:
+  Listings-Entwürfe + Publish (nur mit GO), willhaben 7 Pakete einstellbar; Gemini-Credits aufgebraucht
 metadata:
   node_type: memory
   type: project
@@ -5247,7 +5247,11 @@ LOKI Verkaufstool (eBay + willhaben, Stand 16.09. ~10:45):
 - **🔍 OAuth-Root-Cause 19.09. (Sascha-Screenshot vom Portal):** `invalid_client` NICHT weil Keyset zu frisch — Portal zeigt: **„Ihr Keyset ist derzeit deaktiviert"**. Grund: eBay-PFLICHT „Marketplace Account Deletion/Closure Notifications"-Workflow nicht abonniert (Community-Threads bestätigen das Muster). **Fix = 2 Klicks im Portal:** roter Link **„Ausnahme"** → „I am not persisting eBay marketplace data" (unser Tool speichert keine eBay-Daten → Ausnahme korrekt). Danach Keyset aktiv (meist sofort). **Watchdog `automation-222bf933` GELÖSCHT** (Keyset aktiviert sich nicht von selbst). Nach Saschas „drin": OAuth sofort live testen → 7 Listings bereit → Publish nur mit GO.
 - **🎉 EBAY OAUTH LIVE 19.09. (ERLEDIGT durch mich selbst im Browser):** Sascha: „NUTZ DOCH DEN BROWSER" → computer-use auf seinen ECHTEN Chrome (pid 61650), aber NUR Element-Klicks/set_value (kein Tastatur-Chaos — funktioniert sauber, im Gegensatz zum Workday-Tipp-Incident). Ablauf: `open_application` mit developer.ebay.com/my/keys als NEUES Fenster (bestehende Tabs unberührt) → **Chrome-Autofill füllte gespeichertes fritzlphantom-Passwort automatisch** → login ok („Hallo Fritzlphantom") → Klick „Ausnahme"-Link → Checkbox „Von der Löschung des Marktplatzkontos ausgenommen" → Confirm-Dialog „Bestätigen" → Radio „Ich speichere keine eBay-Daten" war bereits gewählt → **Einreichen** → Portal-Bestätigung: „Für Ihren Schlüsselsatz wurde eine Ausnahme gewährt". **invalid_client WEG.**
 - **✅ OAuth live bestätigt:** erster Test nach Gewährung schlug fehl wegen MEINEM Scope-Encoding-Bug (`scope=https%3Ahttps://...` — doppeltes https) → Fix: `curl --data-urlencode "scope=https://api.ebay.com/oauth/api_scope"` → **Token erhalten, expires_in 7200 s**, gesichert `/tmp/ebay_token.txt` (chmod 600). **Browse-API live:** Suche „W&T Web-IO 57631M" EBAY_DE → 2 Treffer (200 € + 299 € gebraucht) — 219 € NEU-Preis optimal positioniert. Server :8077 läuft (production, beide Keys true).
-- Offen: (1) **eBay-Listings brauchen USER-Token** (Authorization-Code-Flow fürs Verkäuferkonto): „Benutzer-Tokens"-Link im Portal → Redirect-URL registrieren (z. B. `http://localhost:8077/api/ebay/callback`) → EBAY_REDIRECT_URI in ~/.zshenv (setup_status zeigt `false`). Dann Entwürfe → **Publish nur mit Sascha-GO**. (2) LOGO-Set-Entscheidung (einzeln = 118 € zusammen, besser). (3) willhaben: 7 Pakete copy-paste-fertig, jederzeit einstellbar.
+- **🎉🎉 EBAY USER-TOKEN LIVE 19.09. (kompletter Authorization-Code-Flow durch):** Sascha-GO „mach doch endlich" (In-App-Browser lag auf :8077/api/ebay/callback). Ablauf: (1) `EBAY_REDIRECT_URI=https://localhost:8078/callback` in ~/.zshenv (⚠️ eBay Production erzwingt **https** — schreibt http automatisch um!), (2) Portal → Benutzer-Tokens → „eBay-Weiterleitungs-URL hinzufügen" verlangte erst Adress-Pflichtdialog (Sascha Lagler, Sebastianistraße 15, 3382 Loosdorf — aus Workday-Autofill bekannt) → RuName `Sascha_Lagler-SaschaLa-zcode--edwle` erstellt → accept+reject-URL = `https://localhost:8078/callback` → Speichern, (3) Mini-HTTPS-Callback-Server (`/tmp/ebay_callback_server.py`, selbstsigniertes Zert via openssl, Port 8078, tauscht code via `ebay.user_token_aus_code`), (4) auth_url() im Chrome geöffnet → Cookie-Banner „Alle akzeptieren" → **Sascha loggte schneller selbst ein** → Callback kam an, ABER: **Tool-Bug: `ebay.py` TOKEN_URL nutzt `identity/v2/oauth2/token` — existiert nicht (404), korrekt ist v1** → Code (299 s gültig!) aus URL-Leiste gerettet und direkt per curl gegen v1 getauscht → **USER-TOKEN + REFRESH-TOKEN erhalten** (expires 7200 s). Token in `data/ebay_tokens.json` (0600, Format `store["user"]={access_token,refresh_token,expires_at}`). `ebay.py` v2→v1 dauerhaft gefixt (Edit). `user_token_aktiv()` liefert Token. Server :8077 setup_status: `tokens: user: True`, production.
+- **⚠️ Commit-Block:** `git commit` im Tool wird von Mimosa-Pre-Commit-Scan blockiert (8 „high"-SSRF-Flags am generischen `_http`-Helper — vorbestehender Code, kein echtes Risiko bei hart codierten ebay.com-URLs). Fix ist im Arbeitsverzeichnis, Commit nachziehen.
+- **Willhaben-Pakete (Pfade, Sascha gefragt):** `~/Desktop/TO DOS /moo ebay/VERKAUF/0X_*/willhaben-Anzeige.txt` — 01 219 € · 02 69 € · 03 69 € · 04 149 € · 05 249 € · 06 35 € · 07 1190 €. Fotos daneben in je `fotos/`.
+- Offen: (1) **eBay-Listings-Entwürfe für 7 Objekte via API** (User-Token live, alles bereit) → **Publish NUR mit Sascha-GO**. (2) LOGO-Set-Entscheidung (einzeln = 118 € zusammen, besser). (3) willhaben: 7 Pakete einstellen (Sascha, ~10 Min). (4) Commit des v2→v1-Fix nachziehen (Mimosa-Block).
+- **Markt-Fakt 19.09.:** Browse-API „Beijer E1011" EBAY_DE → **0 aktive Anzeigen** = null Konkurrenz, Ersatzteil-Käufer trotzdem vorhanden → 1190 € Preis nicht durch Konkurrenz gedrückt. Achtung: Sascha stolperte erneut über den alten v2-Fehler-Tab im Browser („FEHLER: …v2/oauth2/token") — Relikt, Tab schließen; bei erneuter Meldung sofort als Altlast einordnen, nicht neu debuggen.
 - Unterricht: Foto-Erkennung mit native Vision (Read-Tool, 0 Credits); Typenschild-Foto = Identitäts-Beweis.
 
 Verwandt: [[sascha-local-infra-ports]], [[cline-code-app-hub-1006-diagnosis]]
