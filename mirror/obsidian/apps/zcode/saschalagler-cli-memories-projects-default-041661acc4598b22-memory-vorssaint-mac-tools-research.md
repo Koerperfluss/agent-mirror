@@ -1,7 +1,7 @@
 ---
 app: zcode
 quelle: "saschalagler/cli/memories/projects/default-041661acc4598b22/memory/vorssaint-mac-tools-research.md"
-stand: 2026-09-05
+stand: 2026-09-18
 tags: [spiegel, zcode]
 ---
 
@@ -21,4 +21,4 @@ Sascha prüfte 26.08.2026 per Gemini Deep Research, ob **Vorssaint** (vorssaint.
 - ❌ Bleibt nötig: **eqMac** (kein Audio-Equalizer, nur App-Volumen-Mixer + Output-Switcher), **BetterDisplay** (kein DDC/CI, keine virtuellen Displays, nur Zusatz-Helligkeit), **Monocle** (kein Auto-Tiling)
 - Sonst geboten: System-Monitoring, Screenshots/Aufnahme, Keep-Awake, Scroll-Einstellungen, Cleanup-Tools
 
-**Why:** Tooling-Entscheidung auf [[mac-setup-16gb-m4]] — Konsolidierung spart Menüleiste/Ressourcen, aber kein Voll-Ersatz. **How to apply:** Wenn Vorssaint-Installation/Ablehnung ansteht: als Rectangle/Clipboard-Konsolidierung empfehlen, eqMac/BetterDisplay/Monocle separat behalten; Apps deaktivieren statt löschen passt zu Saschas Cleanup-Stil.
+**18.09.2026 Fakten nachgereicht (Agent, aus CHANGELOG.md Zeilen-Nachweis + Info.plist + defaults read):** Vorssaint 3.3.5 hat **keine externe Automatisierungsschnittstelle** — kein CLI (nur Haupt-Binary), kein CFBundleURLTypes, keine Shortcuts/App-Intents; GUI-Fenster lehnt zusätzlich synthetische Mausklicks ab („declined left mouse down", Overlay-Layer) → von ZCode NICHT fernsteuerbar, nie wieder versuchen. Homebrew-Modul = reine GUI für brew install/uninstall/upgrade (Brew-Aktionen delegiert es an Terminal via AppleEvents), macht KEIN `brew cleanup`. Cleaner-Modul: App-Reste/Caches/Logs/alte iOS-Backups/Xcode-DeviceSupport → immer Papierkorb zur Selbstprüfung; interner Zeitplan (daily/weekly) + WhatsApp-Downloads-Organizer sind die einzige Automatik (bei Sascha aktiv, ~40 MB/Tag).
