@@ -1,7 +1,7 @@
 ---
 app: zcode
 quelle: "saschalagler/cli/memories/projects/default-041661acc4598b22/memory/antigravity-physio-assistent.md"
-stand: 2026-09-12
+stand: 2026-09-18
 tags: [spiegel, zcode]
 ---
 
@@ -25,5 +25,9 @@ Sascha nutzt die **Google Antigravity IDE** (Config unter `~/Library/Application
 **12.09. Sitzungs-PDFs gebaut (beide 2 Seiten A4, Körperfluss-Layout, visuell verifiziert):** `SITZUNG_Adelina_2026-09-12.pdf` (Sitzung #4: Red-Flags → Re-Tests → Entscheidungspunkt A/B/C → Behandlungsreihenfolge → Heimplan → SOAP; Basislinie: SLR L 53 / R 90 cm, Schwindel Typ Watte=A(CO₂)/Boot=B(vestibulär)) + `SITZUNG_Simon_2026-09-12.pdf` (Migräne & zervikogener Kopfschmerz, Phase 1 Reizdämpfung: SNOOP-Screening, FRT<32°, Chin Tuck, Kiefer-SMR, Vagus-4–8-Atmung, Akut-Protokoll) — je Teildruckfarbe Adelina=türkis/Simon=violett; HTML-Quellen liegen neben den PDFs. **Simons klinisches Profil:** Adelinas Partner, Migräne mit zervikogener Komponente (Trigeminocervicaler Komplex, C1/C2 + Bruxismus-Trigger), Quellen: `Patient_ Partner _ Freund - Reha-Plan Migräne & Zervikogener Kopfschmerz.pdf` + `Simon - Adelina Freund .pdf` (Scapula-Zifferblatt-Leitfaden). **Offen:** Simon hat noch keinen eigenen Ordner (`Patientenliste/Simon/` angelegt auf GO); SOAP-Ausfüllen nach der Sitzung.
 
 **UI-Lesson Antigravity (Electron):** AX `set_value` auf Message-Textarea = mismatched, computer-use `type strategy=event` = „not frontmost" trotz activate. **Funktioniert:** `pbcopy` + `osascript` → `tell app "Antigravity" to activate` → `keystroke "v" using {command down}` → `keystroke return`.
+
+**18.09. Stand Adelina (Sitzung #5):** Fuß-Kette deutlich besser (spaziert ohne Innenfuß-Schmerz ✓) · Schwindel-Muster präzisiert: „zuerst Schwindel → Benommenheit → Dissoziation (‚ferngesteuert')", täglich, 1 Episode 7/10 mit Übelkeit · **Übertraining-Fall:** 2×/Tag Vollgas → Übungen nicht haltbar → 1 Woche Fast-Pause → heute OK → Load-Regeln: max. 1×/Tag, RPE ≤ 6, 1 Ruhetag/Woche, Schwindel-Ampel (🟢 0–3 weiter / 🟡 4–6 Pause+4–8-Atmung / 🔴 ≥7 oder Übelkeit Stop+Füße hoch) · **Gym-Reentry:** Warm-up-/Aktivierungsblock (10 Min vor JEDEM Training) = 4–8-Atmung → TVA-Zippen → Glute Bridge → Short Foot → subokzipital Hold-Relax → optional Nerve Slider; anfangs Rot: Überkopf-Drücken, Maximalversuche, HIIT. Hyperventilationsprobe (60 s) = Differenzierungs-Test für „ferngesteuert"-Qualität. Dateien: `Adelina_THERAPEUT_Sitzung5_2026-09-18.pdf` (2 S.) + `Adelina_ZETTEL_2026-09-18.pdf` (**exakt 1 Seite**).
+
+**18.09. Design-Gesetz (nach „SO NICHT" zum Antigravity-Sitzung-5-Handout):** Praxis-PDFs = **leichtes Design: weiß, dünne graue Trennlinien, EIN gedämpfter Akzent (petrol #17777c nur als Textfarbe), keine Farbbanner, keine Emoji-Flut, klare Sektionen über 1px-Linien** · **Patienten-Handouts max. 1 Seite** (eisernes Gesetz aus Wayfinder-Map) · Therapeuten-Bogen darf 2 Seiten. **Ergänzung („alles simpel getrennt leichte Sprache"): gilt AUCH für Therapeuten-Bögen** — 7 getrennte Blöcke (① Heute in einem Satz ② Verlauf mit 5 Fragen+Schreiblinien ③ 3 kurze Tests in Alltagssprache ④ 4 Regeln zum Abhaken ⑤ Warm-up-Tabelle ⑥ Ampel ⑦ Notizen), Fachwörter übersetzt („Schnellatmen-Test" statt Hyperventilationsprobe, „so trainieren, dass sie noch weitermachen könnte" statt RPE ≤ 6). Finaler Therapeuten-Bogen ersetzt die alte dichte Version unter gleichem Dateinamen `Adelina_THERAPEUT_Sitzung5_2026-09-18.pdf`.
 
 Verwandt: [[active-projects-focus]] (Körperfluss), [[google-cloud-genai-credit]] (gleicher Google-Account).

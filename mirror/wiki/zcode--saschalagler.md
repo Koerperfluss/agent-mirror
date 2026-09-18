@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-18 12:57 UTC
+Zuletzt gespiegelt: 2026-09-18 13:08 UTC
 
 ## AGENTS
 
@@ -1555,6 +1555,10 @@ Sascha nutzt die **Google Antigravity IDE** (Config unter `~/Library/Application
 
 **UI-Lesson Antigravity (Electron):** AX `set_value` auf Message-Textarea = mismatched, computer-use `type strategy=event` = „not frontmost" trotz activate. **Funktioniert:** `pbcopy` + `osascript` → `tell app "Antigravity" to activate` → `keystroke "v" using {command down}` → `keystroke return`.
 
+**18.09. Stand Adelina (Sitzung #5):** Fuß-Kette deutlich besser (spaziert ohne Innenfuß-Schmerz ✓) · Schwindel-Muster präzisiert: „zuerst Schwindel → Benommenheit → Dissoziation (‚ferngesteuert')", täglich, 1 Episode 7/10 mit Übelkeit · **Übertraining-Fall:** 2×/Tag Vollgas → Übungen nicht haltbar → 1 Woche Fast-Pause → heute OK → Load-Regeln: max. 1×/Tag, RPE ≤ 6, 1 Ruhetag/Woche, Schwindel-Ampel (🟢 0–3 weiter / 🟡 4–6 Pause+4–8-Atmung / 🔴 ≥7 oder Übelkeit Stop+Füße hoch) · **Gym-Reentry:** Warm-up-/Aktivierungsblock (10 Min vor JEDEM Training) = 4–8-Atmung → TVA-Zippen → Glute Bridge → Short Foot → subokzipital Hold-Relax → optional Nerve Slider; anfangs Rot: Überkopf-Drücken, Maximalversuche, HIIT. Hyperventilationsprobe (60 s) = Differenzierungs-Test für „ferngesteuert"-Qualität. Dateien: `Adelina_THERAPEUT_Sitzung5_2026-09-18.pdf` (2 S.) + `Adelina_ZETTEL_2026-09-18.pdf` (**exakt 1 Seite**).
+
+**18.09. Design-Gesetz (nach „SO NICHT" zum Antigravity-Sitzung-5-Handout):** Praxis-PDFs = **leichtes Design: weiß, dünne graue Trennlinien, EIN gedämpfter Akzent (petrol #17777c nur als Textfarbe), keine Farbbanner, keine Emoji-Flut, klare Sektionen über 1px-Linien** · **Patienten-Handouts max. 1 Seite** (eisernes Gesetz aus Wayfinder-Map) · Therapeuten-Bogen darf 2 Seiten. **Ergänzung („alles simpel getrennt leichte Sprache"): gilt AUCH für Therapeuten-Bögen** — 7 getrennte Blöcke (① Heute in einem Satz ② Verlauf mit 5 Fragen+Schreiblinien ③ 3 kurze Tests in Alltagssprache ④ 4 Regeln zum Abhaken ⑤ Warm-up-Tabelle ⑥ Ampel ⑦ Notizen), Fachwörter übersetzt („Schnellatmen-Test" statt Hyperventilationsprobe, „so trainieren, dass sie noch weitermachen könnte" statt RPE ≤ 6). Finaler Therapeuten-Bogen ersetzt die alte dichte Version unter gleichem Dateinamen `Adelina_THERAPEUT_Sitzung5_2026-09-18.pdf`.
+
 Verwandt: [[active-projects-focus]] (Körperfluss), [[google-cloud-genai-credit]] (gleicher Google-Account).
 
 ## atlas-stand-2026-09-08
@@ -1846,6 +1850,8 @@ metadata:
 **Update 11.09.2026:** (1) **LibreOffice JETZT INSTALLIERT** (`brew install --cask libreoffice`, soffice auf /opt/homebrew/bin/soffice) → DOCX→PDF-Konvertierung verfügbar: `soffice --headless --convert-to pdf` + `pdftoppm -png -r 80` für Seiten-Rendering. (2) **PDF ist das Lieferformat**: Sascha schrie „ERSTELLE EIN VERFICKTES PDF", als nur ein DOCX existierte — Übergabe-Docs primär als PDF liefern, DOCX nur als Beilage. (3) Bewährter Pipeline-Lauf: docx-Skill R4-Cover (GO-1) + echte App-Screenshots via `screencapture -o -x -l <window_id>` + computer-use-AX-Klicks für UI-Zustände → postcheck.py → add_toc_placeholders.py + fix_footer_fields.py → soffice→PDF → alle Seiten als PNG selbst visuell prüfen (Cover-Titlelbruch vorher: Wortgrenzen-Split in calcTitleLayout nötig, festes Char-Slicing bricht mitten im Wort). (4) macOS **Quick-Look-Thumbnails (qlmanage) sind bei DOCX unzuverlässig** — renderten das R4-Cover als vertikalen Letter-Streifen (false alarm); erst LibreOffice-Render ist verlässlich.
 
 **Update 12.09.2026:** **Beste Pipeline für druckfertige Praxis-PDFs (Sitzungs-Zettel) = handgebaut HTML + Print-CSS → headless Chrome**: `"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless --disable-gpu --no-pdf-header-footer --print-to-pdf=OUT.pdf file:///tmp/x.html`, dann `pdftoppm -png -r 60` + selbst visuell prüfen. Bewährt: ein Theme pro Patient (Farbkennung Adelina=türkis, Simon=violett), Checkbox-Spans zum Ankreuzen, 4-Spalten-Übungstabellen, SOAP-Block, Footer mit Name/Datum. HTML-Quelle neben das PDF legen (später editierbar). Für übergebene Langtext-Prompts: als `.md` auf Desktop (Copy-Paste-Quelle), z. B. `ANTIGRAVITY_PHYSIO_START_PROMPT.md`-Muster.
+
+**Update 18.09. (LEICHTE SPRACHE FÜR ALLES):** „bitte alles … simpel getrennt leichte sprache" — gilt **nicht nur für Patienten-Doks, sondern auch für Therapeuten-Bögen**. Jeder Bogen: EIN Thema pro Block (7 Blöcke: Satz-Zusammenfassung → Verlauf-Fragen mit Schreiblinien → 3 Tests in Alltagssprache → Regeln zum Abhaken → Übungstabelle → Ampel → Notizen), Fachwörter im Alltag übersetzen („Schnellatmen-Test" statt Hyperventilationsprobe; „Anstrengung 6/10, könnte noch weitermachen" statt RPE ≤ 6), viel Weißraum, klare Trennlinien. Bestätigter finaler Stand: `Adelina_THERAPEUT_Sitzung5_2026-09-18.pdf` (2 S., 7-Block-Format) + `Adelina_ZETTEL_2026-09-18.pdf` (1 S.).
 
 **Update 12.09. Nr. 2 (PATIENTEN-DOKS):** Therapeuten-Zettel (SOAP, Schwellenwerte, Fachjargon) waren „VIEL ZU KOMPLEX" — **Patienten-Blätter brauchen: ALLES in Patientensprache, Freiflächen zum Schreiben (dotted lines), Ja/Nein-Kästen, Smiley-Skala 0–10, Übungen mit Schritt-für-Schritt-Anleitung + Alltags-Metaphern** („Bleistift zwischen Schulterblättern klemmen"), Wochen-Häkelblatt, Notfall-Plan in 3 Schritten. KEINE Fachbegriffe/Schwellenwerte auf Patientenblätter. Bewährte Struktur: 1 Wie geht's heute → 2 Sicherheitsfragen (JA ⛔/NEIN ✓) → 3 Mini-Selbsttests → 4 Übungen heute → 5 Hausaufgaben-Tabelle → 6 Bewertung (besser/gleich/schlechter + Freifeld). Dateien: `Adelina_UEBUNGSZETTEL…pdf` + `Simon_KOPFZETTEL…pdf` in `~/Desktop/Körperfluss/Patientenliste/Adelina/`. HTML-Fallstricke: div-Balance prüfen (non-greedy regex-Schnitte schließen Box nicht → Chrome bricht Layout falsch um); übergroße Boxen mit `page-break-inside:avoid` springen ganz auf neue Seite → halbleere Seiten vermeiden durch kompakte Tabellenzeilen.
 
@@ -3345,6 +3351,11 @@ metadata:
 - Inhalt: Bewerbungen (4 Texte HCS/ASFINAG/Mapei/EnergieD auditiert + 6 PDFs verifiziert + Zeugnisse aufbereitet, via Cline), Tool-Hub-Verkaufsplattform (WAYFINDER: Spec + FastAPI-Backend + Dashboard, via Cline), 3 Antigravity-Brain-Sessions, 0 Git-Commits, Deutsch-Patch weiter offen.
 - **15.09. = Lücken-Tag:** kein Logbuch (Lauf verpasst, Mac vermutlich aus) — bestätigt den Wecker-Bedarf (LaunchAgent com.sascha.assi.daily auf GO).
 - Sweep-Qualität gut genug für reale Tages-Zusammenfassung: Cline-Task-Themen (Bewerbungen, Hub-Bau) sauber erkennbar; Antigravity-Transcripts liefern nur Ordner-Signal, keine Klartext-Themen.
+
+## Fünfter Lauf (Fr 18.09. 15:05 — Morgen-Brief nachgeholt, PASS)
+- 09:00 wieder verpasst (3. Lücken-Morgen: 15./17./18.09. ohne Logbuch bzw. nachgeholt) → 15:00-Freitag-Slot als Nachhol-Lauf genutzt (Zweig-Abweichung dokumentiert). Kalender-Event **„Tagesplan 18.09."** UID `533CCF84-6694-440A-B4C9-E2F21CEF2B6F`, Logbuch `~/.agents/memory/logbuch/2026-09-18.md` (status: offen, DEV-BRIEF: 0 Commits, keine CI; Cline-Yolo-Team „daily digest/documentation maintainer/security reviewer" in Session 712478 gesichtet — mögliche Überschneidung mit Tages-Routine beobachten).
+- **LaunchAgent-Wecker (com.sascha.assi.daily umrüsten) weiter auf GO offen** — Dauerlösung gegen verpasste 09:00-Läufe.
+- 17.09. bleibt Lücken-Tag (kein Logbuch).
 
 ## zcode-app-german-ui-patch
 
