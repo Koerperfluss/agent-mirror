@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-18 16:18 UTC
+Zuletzt gespiegelt: 2026-09-18 16:29 UTC
 
 ## AGENTS
 
@@ -2021,6 +2021,8 @@ Sascha korrigierte 11.09.2026 scharf: Ich hatte „Gratis-Stack existiert bereit
 
 - **14.09. sechste Eskalation („wieso sind im Ordner für Thomas 100 Files? was soll er oder ich damit? du müllst uns beide zu"):** Arbeitsreste (`_arbeit/`, Roh-Screenshots, generate.js, DOCX) gehörten in den LIEFERORDNER — für Thomas und seine Agents unbrauchbarer Müll. **Regel: Ein Lieferordner für einen Dritten enthält NUR lieferbare Items (App + 1 LIESMICH + Tools, die der Dritte wirklich startet); alle Arbeits-/Quellreste außerhalb in _arbeit/_ARCHIV.** Nach dem Schnüren den Ordner aus DRETER-Sicht durchgehen: „kann Thomas mit JEDER Datei etwas anfangen?"
 
+- **14.09. siebte Eskalation („es kann nicht funktionieren wenn du welche Modelle nimmst — er soll ebenfalls seinen Gemini-Key einfügen können, OpenAI, OpenRouter oder Ollama"):** Ein Key-Zwang auf EINEN Anbieter ist für Dritte unbrauchbar — die App muss JEDEN gängigen Key akzeptieren (Gemini AIza / OpenAI sk- / OpenRouter sk-or- / Groq gsk_ / Ollama ohne Key), ihn am Präfix erkennen, im richtigen Slot speichern und selbst dorthin routen. Implementiert 18.09. (Commit dfedc83).
+
 Verwandt: [[thomas-tasks-drei-recherchen]], [[feedback-aufbau-vor-deploy]], [[feedback-pruefinstanz-pflicht]]
 
 ## feedback-kein-raten-agenten-wissen
@@ -3176,14 +3178,16 @@ metadata:
 
 **⚠️ 18.09. SPÄT (2. Beobachtung):** Implementer kann komplette Commits SELBST machen (62c3597 „Add STT and TTS pickers") und Dateien des Directors LÖSCHEN/ÜBERSCHREIBEN (mein LLMProviders.swift wurde durch seine AIProviders.swift ersetzt; seine Abschlus-Reports kamen teils gar nicht als Notification, Arbeit lag aber im Tree). Konsequenz: Nach implementer-Läufen IMMER `git log`/`git status` + Kollisions-Check (Dublett-Module, tote Referenzen) — siehe [[thomas-tasks-drei-recherchen]] Kollisions-Lektion.
 
+**⚠️ 18.09. (3. Beobachtung):** implementer kann auch silent FERTIG sein und danach weitere Edits machen — TaskOutput „No task found" heißt nicht verloren; Arbeit lag im Tree (git log bewies seinen Picker-Commit). Und: gelöschte Director-Dateien können im Projekt-`_ARCHIV/` liegen (Kollisions-Auflösung des Agenten) — vor Re-Implementierung IMMER erst Archiv/Tree prüfen, sonst baut man Duplikate.
+
 ## thomas-tasks-drei-recherchen
 
 ---
 name: thomas-tasks-drei-recherchen
 description: Drei Thomas-Recherchen 11.09. FERTIG + Paritäts-Build + 18.09. ZIEL-APP
-  (Modell-Zentrale, OAuth-Key, Whisper/edge-tts) + LIVE-TEST bestanden + KEY-FREIHEIT
-  (google/openai Provider, Key-Slots je Anbieter, Auto-Router AIza/sk-; dfedc83) +
-  IRIS-AI geklont; offen: Mikro-Test Sascha, Mac-Ausmistung, Paket-ZIP
+  (Modell-Zentrale, OAuth-Key, Whisper/edge-tts, google/openai Key-Slots) + LIVE-TEST
+  bestanden + Whisper-AUTOSTART (App startet Engine selbst, Apple-Fallback-Zeile
+  gelöscht; 6070c0a) + IRIS-AI geklont; offen: Mikro-Test Sascha, Mac-Ausmistung, ZIP
 metadata:
   node_type: memory
   type: project
@@ -3277,6 +3281,13 @@ Am 11.09.2026 gestellt und am selben Tag ABGESCHLOSSEN inkl. Paritäts-Build (2 
 - **Swift-Lektion (mein Bash-Python-Insert):** Inline-Python-Edit zerstörte die Klammerung (genericKey öffnete, llmAPIKey steckte darin, 50 „attribute 'private' can only be used in a non-local scope"-Fehler) — Fix: llmAPIKey als dünner Wrapper (`llmAPIKey { llmAPIKey(for: LLMChoice.provider.id) ?? genericKey() }`), Body blieb genericKey(). Und: Python-`str.replace` macht still No-Ops bei Nicht-Treffer (Agent-Version der storeKey hatte anderen Body) — nach Replace immer Ergebnis verifizieren.
 - **QA:** Build grün · RunAllTests 9/9 · Bundle signiert · `00_PAKET_FUER_THOMAS/LokiVoice.app` aktualisiert.
 - **OFFEN geblieben:** Mac-Ausmistung Vollscan (letztes Ticket), Mikro-Sprechtest Sascha, Endpaket-ZIP.
+
+**18.09. FINAL — WHISPER-AUTOSTART (Apple-Fallback-Zeile für immer gelöscht, Commit `6070c0a`):**
+- Sascha-Order: „LÖSCHE SOFORT [System: STT-Backend = Apple Speech (Whisper-Server nicht erreichbar — Fallback)] — ich will das nie wieder sehen." Umsetzung = Root-Cause statt Zeile: **NEU `Sources/WhisperServerLauncher.swift`** — App prüft Health; wenn tot: startet `whisper_server.py` SELBST via uv (Python 3.12, faster-whisper + edge-tts) detached und pollt Health bis 40 s (Modell-Kaltstart). **`whisper_server.py` liegt jetzt IM App-Bundle** (`Contents/Resources/`, build_app.sh kopiert) — funktioniert auf Thomas' Rechner ohne Projektpfad; Bundle-Pfad → Fallback-Pfade (Projekt, ~/tools). Wenn wirklich alles fehlschlägt (kein uv): stiller Apple-Pfad, KEINE Meldung mehr.
+- **LIVE BEWIESEN (computer-use am neuen Bundle):** Verbindung herstellen → App startete Server selbst (neue PID, health `{"status":"ok","model":"small","tts":true}`) → Transkript-Zoom: „[System: Whisper-Engine startet …]" + „[System: STT-Backend = faster-whisper (http://127.0.0.1:8788)]" — **keine Apple-Fallback-Zeile**. UI-Beweis-Technik: Transkript-Element per `zoom` (element target) ablichten statt Clipboard (Kopieren-Button griff diesmal nicht, Clipboard enthielt alten fremden Inhalt).
+- **Launch-Lektion:** `open <pfad>.app` startete die frisch signierte App NICHT zuverlässig (LaunchServices) — direkter Binary-Start (`…/Contents/MacOS/LokiVoiceApp &`) funktionierte immer.
+- QA: Build grün · 9/9 · Paket aktualisiert. Commits-Kette jetzt: af57e68 → 62c3597 → dfedc83 → 6070c0a.
+- **OFFEN unverändert:** Mac-Ausmistung Vollscan · Mikro-Sprechtest Sascha · Endpaket-ZIP.
 
 ## vorssaint-mac-tools-research
 
