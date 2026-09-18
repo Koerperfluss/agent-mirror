@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-18 03:24 UTC
+Zuletzt gespiegelt: 2026-09-18 03:35 UTC
 
 ## AGENTS
 
@@ -1389,6 +1389,10 @@ Bei Fachfragen (z. B. Trainings-Übungen) fordert er explizit „clinical reason
 
 # Memory Index
 
+- [SSD-Cache-Automation](ssd-cache-automation.md) — 18.09.: Data-Volume 371/460 GB; automation-03ce4628 täglich 12 Uhr räumt var/folders(25GB)+Caches; Desktop 79 GB = manuell
+
+- [Agent-Wochenreports-Automation](agent-wochenreports-automation.md) — 18.09.: Freitags-17-Uhr-Wochenreport LIVE (automation-5ff3acbc, alle Agent-Apps, → ~/Desktop/Agent-Wochenreports/); täglicher 20-Uhr-Report OFFEN (1 Automation pro Session) — in neuem Chat anlegen
+
 - [Auto-Team-Dispatch Eisenregel](feedback-auto-team-dispatch.md) — 16.09.: JEDF Nachfrage = Agenten automatisch zuweisen/arbeiten lassen, keine Rückfragen
 
 - [Google-Cloud-Billing-Fall 15.09.](gcloud-billing-fall-2026-09-15.md) — 16.09. Aufräum-Lauf: **es sind 5 Konten** (+2 Google-verwaltete Trial-Konten), 25 Projekte, 24 Keys → **KEY-MAP `~/Desktop/GOOGLE_PROJEKT_KEY_MAP_2026-09-16.md`**; 4 Projekte ganz entkoppelt (atlas/barbulls/loki-voice/nervenav = seine „nur 3–5 Projekte"-Phase); **016C8A bereits GESCHLOSSEN**; **Projekt-Umzug von Google BLOCKIERT bis 24,08 € bezahlt** („kein aktives Konto") — Zahlung = der einzige Hebel, wartet auf Karten-Deckung + GO; 36-€-Frage gelöst (37,20 € Workspace 03.09.); KoerperflussWebfrontend hat 9 Keys inkl. Duplikat; **„Sperre ist STUMM"**: Alltag lief auf gesundem 0154CD + bezahltem Workspace + Free-Tiers — deshalb spürte er nie eine Meldung, nur das Projekt-Chaos
@@ -1510,6 +1514,25 @@ Projektlisten-Tool: `python3 ~/.claude/tools/projects.py` — kuratierte Top-10-
 **Update 15.09. (Projektliste TATSÄCHLICH aktualisiert — das 30.08.-OFFEN ist erledigt):** Auf Saschas Befehl („aktualisiere die Liste mit allen Unterhaltungen von zcode cline code cline cli antigravity") alle Chat-Stores gezählt: **ZCode 344 Sessions** (db.sqlite; Top: default-Workspace 104, Beobachter 58, ATLAS-v8-Bau 56), **Cline 259 importiert** (~/.zcode/v2/sessions), **Claude 105 importiert** + 20 Projektordner, **Antigravity 2 Installationen** (Chat-Store 446 KB, aktiv = Physio-Assistent). MEMORY.md-Abschnitt „Weitere Projekte" aktualisiert (Backup .bak-20260915): **+4 neue Projekte** (Vinyl-Scanner 14 Sessions bis 12.09., SBP Patrick-Doc bis 07.09., Antigravity Physio-Assistent, iOS/WebDev-Stack 2026) + GCP-Billing-Zeile auf 24,08-€-Wahrheit korrigiert; je neue Memory-Datei angelegt. ⚠️ Mimosa-Hook blockiert Bash-Schreibzugriffe auf Dateien unter ~/.claude („Bash 直接写源码") → IMMER Edit/Write-Tools nutzen, nie Bash-umleitung.
 
 Verwandt: [[google-cloud-genai-credit]]
+
+## agent-wochenreports-automation
+
+---
+name: agent-wochenreports-automation
+description: Freitags-Wochenreport-Automation über alle Agent-Apps eingerichtet;
+  täglicher 20-Uhr-Report noch offen (1-Automation-pro-Session-Limit)
+metadata:
+  node_type: memory
+  type: project
+  originSessionId: sess_a55787e4-5bb6-4dc7-98c2-1ccd6ca69015
+---
+
+18.09.2026: Sascha will wöchentlich (freitags) + täglich Zusammenfassungen der Ereignisse aus allen Agent-Apps (ZCode, Cline, Antigravity, AutoClaw/OpenClaw) über seine Projekte.
+
+- ✅ **Wochenreport LIVE**: Automation `automation-5ff3acbc-6637-4f95-a6ef-8a844ef0878e`, cron `0 17 * * 5` (freitags 17:00). Sammelt aus ZCode (tasks-index.sqlite/db.sqlite), Cline-Importen, Antigravity (state.vscdb), OpenClaw-Logs, Wayfinder + Memory; pro Projekt Tabelle (App|Was|Beweis), speichert nach `~/Desktop/Agent-Wochenreports/WOCHE_YYYY-MM-DD.md`. Erster Lauf: Fr 25.09.2026.
+- ❌ **Tagesreport (täglich 20:00) NOCH OFFEN**: Erstellen schlug fehl — „Cannot create a scheduled task inside a session that already belongs to a scheduled task" ( diese Session gehörte selbst zu einer Automation). **Pro Session geht nur 1 neue Automation.** Fix: in einem NEUEN normalen Chat die Automation „Täglicher Agent-Kurzreport (20:00)" anlegen (Prompt-Vorlage steht im Chat vom 18.09.).
+
+Verwandt: [[zcode-adhs-automationen]], [[projectlisten-hook-projects-py]] (Chat-Store-Quellen).
 
 ## antigravity-physio-assistent
 
@@ -3037,6 +3060,24 @@ Audit-Doc: `~/loki-ki/docs/AUDIT_SKILLS_ZCODE_2026-09-07.md` · [[skill-install-
 - obsidian-second-brain SKILL.md jetzt 8 KB (Split bestätigt wirksam).
 - **OFFEN: 1 superpowers-Restzeile** noch in `~/.agents/skill-routing.md` (superpowers-Skills existieren nicht mehr) — Routing auf diagnosing-bugs umschreiben, 1-Edit-Ticket.
 - Sascha postete 13.09. alte Plan-Texte (Konsolidierung v2, 1006-Netz-Fix, Atlas-Prompt) mit „? /init /goal /standardskill" — **alles darin bereits erledigt**; er verwechselt alte Session-Pläne mit offenem Stand. Vor Statusaussagen erst Disk-Verifikation (Archive + Zählung), dann Tabelle.
+
+## ssd-cache-automation
+
+---
+name: ssd-cache-automation
+description: 18.09. SSD-voll-Diagnose + tägliche Cache-Bereinigung-Automation
+  (automation-03ce4628)
+metadata:
+  node_type: memory
+  type: project
+  originSessionId: sess_66536c69-6d4a-4f36-a9c7-b1c72c2a20b1
+---
+
+18.09.2026: Data-Volume 371/460 GB belegt (nur 29 GB frei). Größte Brocken: **~/Desktop 79 GB** (Saschas Dateien, nie löschen), `/private/var/folders/…/X` **25 GB** Temp-Cache, ~/Library 56 GB (App Support 17 GB, iCloud 16 GB), CoreSimulator 1,5 GB.
+
+**Automation erstellt:** `automation-03ce4628-a0a0-4e42-b807-8650402c7471` „Tägliche SSD-Cache-Bereinigung (12 Uhr)", cron `0 12 * * *`, löscht nur Caches mit Altersfilter (mtime +2/+3 Tage): var/folders X+T, ~/Library/Caches, ~/.cache, npm-cache, `simctl delete unavailable`, Trash. Schutzliste: Desktop/Documents/Pictures/Music/Downloads/Mobile Documents/Application Support/Repos.
+
+Echte Entlastung braucht zusätzlich manuell: Desktop ausmisten (79 GB) — Sascha-Entscheidung.
 
 ## standardskill-boot-ablauf
 
@@ -5205,7 +5246,7 @@ Beobachtet 06.09.2026 (Session mit Off-Peak-Ticket): Nach User-Paste „ZCode Er
 - [Chrome Agent-Browser Fix](chrome-agent-browser-fix.md) — Agent-Browser läuft auf 9222 (persistentes Profil, Login bleibt); Service-Worker-Cache = Ursache „Websites alt" (177 Worker); chrome-cache-nuke.sh wartet auf GO; Übersicht: ~/Desktop/chrome-fix-uebersicht.html
 - [Cline Hub 1006-Diagnose](cline-code-app-hub-1006-diagnosis.md) — „Hub connection closed" = lokaler Daemon-Crash, Server meist OK
 - [Lokale Infra & Ports](sascha-local-infra-ports.md) — OmniRoute 20128, Ollama 11434, LOKI 8010, Cline Code.app standalone
-- [LOKI Verkaufstool Stand](loki-verkaufstool-stand.md) — KORREKTUR: Saschas eBay-Marktplatz-Konto EXISTIERT (er eingeloggt in eigenem Profil, Formular lief, er änderte Preis selbst auf 300 €) — meine Login-Fehlversuche liefen im falschen Chrome-Profil. Formular-Objekt 01 fast fertig (Fotos 3/4, Versand AT „Paketversand" 6,90 €, Abholung Loosdorf), Entwurf draftId 5196095607000 gesichert. Willhaben FERTIG. 8 PDFs fertig. eBay: Keys/User-Token/Leaf-Kategorien (181708/09/14/17, 171485) scharf; Trading-API 410, Media-API 503. AT-Fokus (Loosdorf/NÖ): willhaben-Kategorien verifiziert, AT-Post-Versand. Sascha konfiguriert chrome://flags local-network-access für localhost-Callback
+- [LOKI Verkaufstool Stand](loki-verkaufstool-stand.md) — KORREKTUR: Saschas eBay-Marktplatz-Konto EXISTIERT (er eingeloggt in eigenem Profil, Formular lief, er änderte Preis selbst auf 300 €) — meine Login-Fehlversuche liefen im falschen Chrome-Profil. Formular-Objekt 01 fast fertig (Fotos 3/4, Versand AT „Paketversand" 6,90 €, Abholung Loosdorf), Entwurf draftId 5196095607000 gesichert. Willhaben FERTIG. 8 PDFs fertig. eBay: Keys/User-Token/Leaf-Kategorien (181708/09/14/17, 171485) scharf; Trading-API 410, Media-API 503. AT-Fokus (Loosdorf/NÖ): willhaben-Kategorien verifiziert, AT-Post-Versand. Sascha konfiguriert chrome://flags local-network-access für localhost-Callback. Browser-Tooling-Recherche: Playwright MCP persistentes Profil = Note 1, browser-use = 2; IRIS war NIE installiert (nur PDF `~/Desktop/Coworkspace_Ich/skills/Iris - Agentic eyes skill.pdf`), Sascha will Clone `IRISX-AI/IRIS-AI` (Plan-Modus blockte, offen)
 - [Sascha Vollzug-Regel](sascha-vollzug-keine-zwischenfragen.md) — Komplettlösungen ohne Zwischenfragen; GO gilt bis zum fertigen Ergebnis; nur bei Passwort/Stopp-Regeln nachfragen
 
 ## chrome-agent-browser-fix
@@ -5350,6 +5391,13 @@ LOKI Verkaufstool (eBay + willhaben, Stand 16.09. ~10:45):
 - **Callback-Server-Bug (18./19.09.):** `/tmp/ebay_callback_server.py` überschrieb den echten Token-Store mit dem Status-Return von `user_token_aus_code` ({"status":"user_token_gespeichert","ablauf_s":7200}) → Store verlor das user-Objekt. Fix: nur speichern wenn Antwort access_token enthält; neuere Consents (Runde 2b: nur api_scope+sell.inventory+sell.account, ohne sell.funds/marketing → kein invalid_scope) kamen als Callback-Tab an, aber Codes verfielen (299 s), bevor sie getauscht wurden; zweiter manueller Tausch → invalid_grant (1-use verbraucht). Konsent-URLs R2b: `/tmp/ebay_auth3.txt`, R4 ohne prompt=login: `/tmp/ebay_auth4.txt`.
 - **eBay-Callback-Tabs im Chrome bleiben als „localhost:8078/callback?code=…&expires_in=299" liegen** — bei erneuter Meldung „FEHLER …v2/oauth2/token": Altlast, nicht neu debuggen; der korrigierte Callback-Server nutzt v1 via ebay.py.
 - **eBay-Listing-Flow-Fazit:** Browser-Formular-Route funktioniert (Sascha eingeloggt in seinem Profil). Empfohlener Rest-Ablauf, wenn er weitermachen will: Entwurf draftId 5196095607000 wieder öffnen → Versand „Paketversand" 6,90 € → Preis/Texte checken → „Angebot aufgeben". Danach Objekte 02–07 mit demselben Muster (Suchbegriff → Zustand → Formularfelder via set_value → Fotos via NSOpenPanel → Versandservice → Publish).
+
+## Stand 20.09. III — Browser-Tooling-Recherche + IRIS (Plan-Modus)
+
+- **IRIS-Skill-Rätsel gelöst:** IRIS war **nie installiert** — nur als PDF archiviert: `~/Desktop/Coworkspace_Ich/skills/Iris - Agentic eyes skill.pdf` („Agentic eyes" = Vision-basierte Agenten-Wahrnehmung) + Screenshots in `~/Desktop/PRojekte /Bewerbung/VERSANDFERTIG/iris_shots`. Kein Eintrag in skill-routing/STANDARD-SKILLS/loki-ki. Rekonstruierbar aus dem PDF → `~/.agents/skills/iris/SKILL.md`.
+- **GitHub-Hinweis von Sascha:** `github.com/IRISX-AI/IRIS-AI.git` — er will IRIS-AI von dort geclont haben (`gh repo clone IRISX-AI/IRIS-AI`); Clone wurde durch Plan-Modus blockiert, offen.
+- **Browser-Automation-Recherche (Explore-Agent, Sep 2026) für ZCode+GLM:** Notes: **Playwright MCP mit persistentem Profil/CDP-Attach = Note 1** (zuverlässig, gratis, echte Logins, `--user-data-dir`/`--cdp-endpoint`) · browser-use Plugin (schon in ZCode installiert, `use_existing_browser`-Auth, Note 2) · Stagehand/Browserbase (hybrid act(), Cloud-Kosten, Note 3) · Anthropic CUA/Operator (kein GLM-Fit, 4) · AutoGLM/z.ai Browser-Agent (kein sauberer MCP-Client, 4). Bot-Detection: echtes eingeloggtes Profil via CDP/Persistent-Profile am unauffälligsten. Quellen: docs.browser-use.com/open-source/customize/browser/authentication, microsoft-playwright-mcp.mintlify.app, agent-browser.dev/sessions.
+- **Empfohlener Weg für eBay/willhaben-Flows:** Playwright MCP mit persistentem Profil `~/.cache/verkauf-browser` (einmalig eBay+willhaben-Login von Sascha), dann Anzeigen-Flows stabil über dieses Profil statt computer-use auf seinem Live-Chrome.
 
 Verwandt: [[sascha-local-infra-ports]], [[cline-code-app-hub-1006-diagnosis]]
 
