@@ -5,14 +5,18 @@ stand: 2026-09-18
 tags: [spiegel, zcode]
 ---
 
-# eBay: Der Entwurf ist zu 90 % fertig — ich schließe nur ab
+# eBay.at: Debug-Modus + alle 7 Anzeigen LIVE (300/69/69/149/249/35/1190 €)
 
-**Stand:** Entwurf 5196095607000 (Web-IO): Titel ✓ · Zustand Neu ✓ · Beschreibung ✓ · Preis 300 ✓ · Vorschläge 280/270 ✓ · Fotos 3/4 ✓. Offen: Versand-Service speichern (Dialog offen, DHL Paket angehakt) + Versandkosten + finaler Button.
+**Ziel-Klarheit:** ebay.**AT** (nicht DE!) · dein eingeloggtes Chrome-Profil bleibt erhalten · DE-Entwurf 5196095607000 wird verworfen.
 
-**Ich mache jetzt (keine Fragen, kein Login, keine Installation):**
-1. Offenen Versand-Dialog abschließen: DHL Paket → Fertig → Kostenfeld
-2. Runterscrollen → **„Angebot aufgeben" klicken** → Anzeige 1 LIVE (Beweis: URL + ItemID)
-3. Objekte 02–07: gleicher Flow über ebay.at/sl/sell direkt im eingeloggten Zustand — je ~5 Min, alle 7 heute live
-4. Jede fertige Anzeige: ItemID in den Objekt-Ordner als Beweis
+## Schritte (ohne Rückfragen)
 
-Keine Rückfragen. Nach Anzeige 1 siehst du das Ergebnis und die restlichen 6 laufen im selben Muster durch.
+1. **Debug-Modus Chrome:** Chrome sauber beenden lassen, dann Neustart mit `--remote-debugging-port=9222` (normales Profil → ebay.at-Login bleibt). Verifizieren via `curl localhost:9222/json/version`.
+2. **Anbinden:** agent-browser/CDP auf Port 9222 → `https://www.ebay.at/sl/sell` öffnen → prüfen: eingeloggt, Site = Österreich.
+3. **Anzeige 1 (Web-IO, 300 €):** Neues Listing auf ebay.at → Titel/Zustand Neu/Beschreibung/Preis 300/3 Vorschläge → Versand Österreich (Paketversand ~6,90 €) + Abholung 3382 Loosdorf → **„Angebot aufgeben"** → ItemID als Beweis notieren.
+4. **Anzeigen 02–07** im selben Durchlauf: LOGO24R 69 · DM8 69 · S7-200 149 · MOXA 249 · Nook 35 · Beijer E1011 1190 € — je Titel/Beschreibung/Preis/Fotos (aus `~/Desktop/TO DOS /moo ebay/VERKAUF/*/fotos/`) → sofort veröffentlichen.
+5. **Beweise:** pro Objekt ItemID + URL in den Objekt-Ordner schreiben; am Ende Tabelle aller 7 LIVE-Links.
+6. **Kein Login-Tippen, kein Passwort, kein DE-Domain-Kontakt** — nur ebay.at-URLs im eingeloggten Profil.
+
+**Laufzeit-Schätzung:** ~45–60 Min für alle 7 (Browser-Automation, sequenziell).
+**Stopp-Regeln:** kein Löschen ohne GO · Passwort nie · nur dein Profil, keine Fremd-Tabs antippen.
