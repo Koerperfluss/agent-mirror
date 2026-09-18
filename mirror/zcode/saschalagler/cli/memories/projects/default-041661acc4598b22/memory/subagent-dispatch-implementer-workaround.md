@@ -21,6 +21,6 @@ metadata:
 
 Den Built-in-Agents war früher (App-Settings „Subagents") ein fixes Modell OHNE Denkstufe zugewiesen worden. Der Code (Bundle `zcode.cjs`, Funktion `L8`/`resolveSubagentSelection`) verlangt zwingend `options.reasoningLevel` → Abbruch.
 
-**Fix (15.09., FINALE Version nach Sascha-Korrektur „fixe GLEICH alle"):** Beide Built-ins EXPLIZIT gesetzt — `account:zai-individual-coding-plan/GLM-5.3-Flash` **mit `options.reasoningLevel:"low"`** (Provider+Modell bewiesen durch laufende Session; Backups `agents-state.json.bak2-20260915`). Reparatur-Skript falls App beim Beinen zurückschreibt: **`~/.zcode/fix-subagents.sh`**. Plugin-Agents brauchen nichts (Erbe funktioniert — implementer lief am 14.09.). **WICHTIG: Fix greift erst nach ZCode-Neustart (Bootstrap liest die Datei nur beim Start).**
+**✅ GELÖST + AUTOMATISIERT 16.09.:** Fix sitzt UND heilt sich selbst — **SessionStart-Hook** in `~/.zcode/cli/config.json` (`bash ~/.zcode/fix-subagents.sh --silent`) prüft bei JEDEM Chat-Start die Overrides und repariert still (idempotent, Backup-Rotation max. 5). Live bewiesen: Kaputt-Simulation → Hook → „FIXED" → geheilt; Zweitlauf = „intakt — nichts zu tun". Dispatch-Tests bestanden: „SUBAGENT OK" (general-purpose), „EXPLORE OK" (Explore m. Bash), reviewer 51 s. Kein manueller Notfall-Knopf mehr nötig.
 
 **How to apply:** Nach App-Neustart Subagent-Test (trivialer general-purpose-Dispatch). Falls wieder FAIL → `implementer` als Workaround (lief am 14.09.). Verwandt: [[ios27-webapp-testing-recherche-2026-09-13]].

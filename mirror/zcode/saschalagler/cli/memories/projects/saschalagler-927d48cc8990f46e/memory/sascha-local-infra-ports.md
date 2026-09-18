@@ -18,6 +18,8 @@ Live-Stand vom 16.09.2026 (per lsof/ps verifiziert):
 - Z.AI-MCPs (web-search-prime, zread) als streamableHttp in `~/.mcp.json`; OmniRoute `/v1/models` ohne Key → AUTH_002 (normal, kein Fehler)
 - Nebenbei lief `next start -p 3300` (Dev-Server, PID ~99734)
 
+**Update 18.09.2026 (curl-Verifikation):** OmniRoute **20128** ✅ (HTTP 307) · **neuer Python-Dienst auf 8077** ✅ (HTTP 200, deutschsprachige Seite) · **neuer Python-Dienst auf 8055** ✅ (HTTP 404 am Root, lauscht) · LOKI 8010 ⛔ aus · Open-WebUI 8080 ⛔ aus · eBay-Callback 8078 ⛔ aus (nur bei Nutzung) · 5173/3000 aus.
+
 **Why:** Port-/Prozess-Wissen ist bei jedem Health-Check und Fehler wie [[cline-code-app-hub-1006-diagnosis]] die erste Anlaufstelle.
 
 **How to apply:** Vor Diagnosen diese Checkliste nutzen; Stand bei Änderungen hier aktualisieren (PIDs/„läuft seit" sind flüchtig, Ports sind stabil).
