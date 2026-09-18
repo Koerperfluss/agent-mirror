@@ -7,12 +7,12 @@ tags: [spiegel, zcode]
 
 ---
 name: loki-verkaufstool-stand
-description: LOKI Verkaufstool — 7 Objekte NEU-Preise 1980 € + MAX-STRATEGIE + 8 grafische
-  PDFs (VERKAUFSPAKET.pdf ×7 + UEBERSICHT.pdf). Willhaben: 7 Pakete FERTIG von Sascha eingestellt
-  (echte Kategorien+Versand verifiziert). eBay: Keys/Tokens/OAuth ALLES scharf, Leaf-Kategorien
-  ermittelt — ABER **eBay-Marktplatz-Konto existiert NICHT** (fritzlphantom + bahldorfa@gmail.com
-  → „Konto nicht gefunden" am signin; Developer-Konto ≠ Marktplatz-Konto) → eBay-Verkauf blockiert
-  bis neues/anderes Marktplatz-Konto existiert
+description: LOKI Verkaufstool — 7 Objekte, 8 grafische PDFs, willhaben FERTIG von Sascha. eBay:
+  Saschas Marktplatz-Konto EXISTIERT (meine Login-Fehlversuche = falsches Chrome-Profil);
+  Formular-Objekt 01 fast fertig (Entwurf draftId 5196095607000, Preis 300 € von Sascha,
+  AT-Versand „Paketversand" 6,90 €, 3/4 Fotos hochgeladen). Keys/User-Token/Leaf-Kategorien
+  scharf; Trading-API 410, Media-API 503. Sascha ist in Österreich (Loosdorf/NÖ) — AT-Versand,
+  keine DE-Dienste. Er konfiguriert chrome://flags (local-network-access) parallel selbst
 metadata:
   node_type: memory
   type: project
@@ -65,5 +65,18 @@ LOKI Verkaufstool (eBay + willhaben, Stand 16.09. ~10:45):
 - **⚠️ VERKAUF-Ordner wird parallel manipuliert:** 01/02 fotos/ mysteriös geleert (aus Elternordner wiederhergestellt: 01=IMG_0899-0902, 02=IMG_0903-0904), 06-Ordner komplett weg, _ALT-Inhalte wieder im Hauptordner. Verdacht: Sascha selbst im Finder oder anderes Programm. Vor File-Operationen immer erst live prüfen.
 - **✅ Grafische PDFs fertig:** `scripts/pdf_gen_v2.py` (DC write_file geht durch, ZCode-Write-Tool wird von Mimosa blockt bei /tmp+urllib) → 7× **VERKAUFSPAKET.pdf** (Header mit Preis-Badge, willhaben-Copy-Block, eBay-Block, Preis-Ladder-Tabelle) + **UEBERSICHT.pdf** (Tabelle, Zielsumme 1980 €, Korridor 1740–2240 €). Generator-Quirks: (1) Chrome headless braucht **base64-embedded Bilder** + verkleinerte Fotos (sips -Z 1100 jpg q82, in `/tmp/pdf fotos klein/<nr>/`) — file://-Pfade + virtual-time-budget = fehlende Fotos, (2) Zustands-Header aus festem Mapping (ZUSTAND/UEB_ZUSTAND dicts), nicht Regex, (3) Rerun nur 01/02: ohne virtual-time-budget rendern. QA-Befund v1: 01/02 ohne Fotos, Nook-Zustand-Fehler — v2 fixt alles.
 - **Fokus-Disziplin:** Sascha: „HÖR AUF X — konzentriere dich auf ANZEIGEN via eBay API" (multiple). Keine Parallel-Themen mehr aufmachen; der aktuelle Auftrag wird End-to-End zu Ende geführt.
+
+## Stand 20.09. II — eBay-Formular-Flow (Browser) + AT-Korrektur
+
+- **🔴 KORREKTUR der „Marktplatz-Konto existiert nicht"-These:** Saschas Screenshot zeigte das eBay-Listing-Formular (`ebay.de/lstng?draftId=5196095607000&mode=AddItem`, Titel vorausgefüllt, Avatar sichtbar) — **er IST mit einem funktionierenden Marktplatz-Konto eingeloggt, in SEINEM eigenen Chrome-Profil**. Meine Login-Fehlversuche („fritzlphantom"/„bahldorfa@gmail.com" → „Konto nicht gefunden") liefen im Chrome-Profil „Sascha" (koerperfluss@gmail.com) ohne eBay-Session — falsches Profil, falsche Schlüsse. „Keyset deaktiviert"-Meldung bleibt aber real (Deletion/Closure-Ausnahme wurde trotzdem eingereicht und gewährt).
+- **Sascha arbeitete parallel selbst im Formular:** Preis Artikelpreis selbst auf **300,00 €** geändert (statt 219), Vorschläge 280/270 — NICHT anfassen (Entscheidungs-Hoheit). 3/4 Fotos hochgeladen.
+- **Formular-Fortschritt durch mich (computer-use, nur set_value/AXPress):** Zustand „Neu" ✓, Titel erweitert auf „W&T Web-IO 57631M 12x DI 12x DO RS232 Ethernet neuwertig OVP" ✓, Beschreibung gesetzt ✓ (später von Sascha korrigiert auf 300 €/AT-Post), Format Sofort-Kaufen ✓, Preisvorschläge min 200/accept 208 ✓ (vor Saschas 280/270-Änderung), **3 Fotos via NSOpenPanel hochgeladen** („Vom Computer hochladen"-Klick → Cmd+Shift+G → `/tmp/fotos01` → Return → Cmd+A → Return — funktioniert!), Gewicht 1 kg ✓.
+- **🇦🇹 Sascha ist in ÖSTERREICH (Loosdorf/NÖ) — eBay.de-Marktplatz:** Versand-Services im Formular sind DE-Dienste (DHL/Hermes/DPD/GLS/UPS) — für AT-Verkäufer korrekt: **„Paketversand" (Sonstige-Sektion, generisch) ~6,90 €** statt DHL; Beschreibungs-Zeile korrigiert auf „Versand mit der österreichischen Post (ca. 6-7 EUR) oder Abholung in 3382 Loosdorf". Offene Fragen an Sascha: (1) Versand nur AT oder auch DE/EU? (2) eBay-Nutzername seines Marktplatz-Kontos (für spätere API-Anbindung).
+- **Fenster-Fokus-Chaos:** Sascha arbeitet parallel im Chrome (chrome://flags, local-network-access-check Flags — HEbel für localhost:8078-Callback-HTTPS-Problem). Window-IDs rotieren; vor jedem Klick: `list_windows` + gezielt `get_app_state` mit window_id des Titel-erkannten eBay-Fensters. eBay-Formular-Fenster wurde zwischenzeitlich geschlossen → **Entwurf automatisch bei eBay gesichert (draftId 5196095607000, wiederherstellbar Mein eBay → Entwürfe), kein Datenverlust.**
+- **Versand-Dialog-Quirk:** Der „Services hinzufügen"-Dialog (Fertig [oben], Speichern [unten], ~200 Elemente) verliert Checkbox-Status, wenn zwischen Check und „Fertig" ein State-Refresh passiert — Auswahl + Fertig in einem Zug, sonst wiederholen (DHL Paket [105] → Fertig [29]). Für AT: stattdessen „Paketversand" [268] + Fertig.
+- **UploadSiteHostedPictures-Format (Trading, falls je freigeschaltet):** multipart/related; type="text/xml" — XML-Part (UploadSiteHostedPicturesRequest) + binärer Bild-Part; reines form-data multipart schlägt fehl („keine XML-RequestPassword/Token"). Moot: Trading-API bleibt 410 für den Account.
+- **Callback-Server-Bug (18./19.09.):** `/tmp/ebay_callback_server.py` überschrieb den echten Token-Store mit dem Status-Return von `user_token_aus_code` ({"status":"user_token_gespeichert","ablauf_s":7200}) → Store verlor das user-Objekt. Fix: nur speichern wenn Antwort access_token enthält; neuere Consents (Runde 2b: nur api_scope+sell.inventory+sell.account, ohne sell.funds/marketing → kein invalid_scope) kamen als Callback-Tab an, aber Codes verfielen (299 s), bevor sie getauscht wurden; zweiter manueller Tausch → invalid_grant (1-use verbraucht). Konsent-URLs R2b: `/tmp/ebay_auth3.txt`, R4 ohne prompt=login: `/tmp/ebay_auth4.txt`.
+- **eBay-Callback-Tabs im Chrome bleiben als „localhost:8078/callback?code=…&expires_in=299" liegen** — bei erneuter Meldung „FEHLER …v2/oauth2/token": Altlast, nicht neu debuggen; der korrigierte Callback-Server nutzt v1 via ebay.py.
+- **eBay-Listing-Flow-Fazit:** Browser-Formular-Route funktioniert (Sascha eingeloggt in seinem Profil). Empfohlener Rest-Ablauf, wenn er weitermachen will: Entwurf draftId 5196095607000 wieder öffnen → Versand „Paketversand" 6,90 € → Preis/Texte checken → „Angebot aufgeben". Danach Objekte 02–07 mit demselben Muster (Suchbegriff → Zustand → Formularfelder via set_value → Fotos via NSOpenPanel → Versandservice → Publish).
 
 Verwandt: [[sascha-local-infra-ports]], [[cline-code-app-hub-1006-diagnosis]]

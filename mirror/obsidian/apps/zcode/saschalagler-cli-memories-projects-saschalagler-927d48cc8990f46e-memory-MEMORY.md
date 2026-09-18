@@ -7,8 +7,8 @@ tags: [spiegel, zcode]
 
 # Memory Index
 
-- [Chrome Agent-Browser Fix](chrome-agent-browser-fix.md) — Chrome 136: Remote-Debugging-Port braucht eigenes user-data-dir; Agent-Browser auf Port 9222, Flags fast egal (nur protocol-monitor + code-cache)
+- [Chrome Agent-Browser Fix](chrome-agent-browser-fix.md) — Agent-Browser läuft auf 9222 (persistentes Profil, Login bleibt); Service-Worker-Cache = Ursache „Websites alt" (177 Worker); chrome-cache-nuke.sh wartet auf GO; Übersicht: ~/Desktop/chrome-fix-uebersicht.html
 - [Cline Hub 1006-Diagnose](cline-code-app-hub-1006-diagnosis.md) — „Hub connection closed" = lokaler Daemon-Crash, Server meist OK
 - [Lokale Infra & Ports](sascha-local-infra-ports.md) — OmniRoute 20128, Ollama 11434, LOKI 8010, Cline Code.app standalone
-- [LOKI Verkaufstool Stand](loki-verkaufstool-stand.md) — Willhaben FERTIG von Sascha eingestellt (7 Pakete, echte Kategorien). eBay BLOCKIERT: Marktplatz-Konto existiert nicht (fritzlphantom/bahldorfa → „Konto nicht gefunden") — Keys/Tokens/OAuth scharf, Leaf-Kategorien ermittelt (181708/09/14/17, 171485), 8 grafische PDFs (VERKAUFSPAKET×7 + UEBERSICHT) fertig; ausstehend: funktionierendes Marktplatz-Konto (neu registrieren oder anderes) + Foto-Upload-503
+- [LOKI Verkaufstool Stand](loki-verkaufstool-stand.md) — KORREKTUR: Saschas eBay-Marktplatz-Konto EXISTIERT (er eingeloggt in eigenem Profil, Formular lief, er änderte Preis selbst auf 300 €) — meine Login-Fehlversuche liefen im falschen Chrome-Profil. Formular-Objekt 01 fast fertig (Fotos 3/4, Versand AT „Paketversand" 6,90 €, Abholung Loosdorf), Entwurf draftId 5196095607000 gesichert. Willhaben FERTIG. 8 PDFs fertig. eBay: Keys/User-Token/Leaf-Kategorien (181708/09/14/17, 171485) scharf; Trading-API 410, Media-API 503. AT-Fokus (Loosdorf/NÖ): willhaben-Kategorien verifiziert, AT-Post-Versand. Sascha konfiguriert chrome://flags local-network-access für localhost-Callback
 - [Sascha Vollzug-Regel](sascha-vollzug-keine-zwischenfragen.md) — Komplettlösungen ohne Zwischenfragen; GO gilt bis zum fertigen Ergebnis; nur bei Passwort/Stopp-Regeln nachfragen
