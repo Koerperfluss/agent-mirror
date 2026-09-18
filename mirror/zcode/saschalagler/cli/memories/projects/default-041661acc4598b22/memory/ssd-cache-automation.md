@@ -14,4 +14,6 @@ metadata:
 
 **18.09. Erweiterung:** Automation nutzt jetzt **Mole-CLI** (`mole clean`, Homebrew `/opt/homebrew/bin/mole`) als Schritt 1. Tool-Inventar: CleanMyMac NICHT installiert; Vorssaint = GUI-only (Fenster/Clipboard, kein Cleaning-CLI). Erster Live-Lauf 18.09.: Mole +1,54 GB, var/folders 26→4,3 GB. Mole "Large files"-Vorschläge (LM-Studio 14 GB, Docker 5,8 GB) IMMER überspringen — Schutzliste im Automation-Prompt.
 
+**18.09. Runde 2 (nach Saschas Wut — rechtlich: er hatte recht, 163 Brew-Pakete):** Volle Inventur: 47 Apps in /Applications, 156 Brew-Formeln + 8 Casks. **CleanMyMac = Setapp-Version, DEINSTALLIERT** — nur Leichen; LaunchDaemons/PrivilegedHelper gelöscht (sudo frei), 9 Application-Scripts-Reste in ~/Library (mas/setapp-Varianten). **Vorssaint 3.3.5 = GUI-only UND fernsteuerungs-resistent**: Fenster (Display 2, 1467×953) lehnt synthetische Mausklicks ab („declined left mouse down", Overlay-Layer) → NIE wieder GUI-Automatisierung versuchen, nur Sascha von Hand. Brew cleanup brachte nur 175 KB (war sauber). Endstand 18.09.: **42 GB frei** (Start 29 GB), var/folders stabil 4,3 GB.
+
 Echte Entlastung braucht zusätzlich manuell: Desktop ausmisten (79 GB) — Sascha-Entscheidung.
