@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-18 02:18 UTC
+Zuletzt gespiegelt: 2026-09-18 02:29 UTC
 
 ## AGENTS
 
@@ -5180,10 +5180,30 @@ Beobachtet 06.09.2026 (Session mit Off-Peak-Ticket): Nach User-Paste „ZCode Er
 
 # Memory Index
 
+- [Chrome Agent-Browser Fix](chrome-agent-browser-fix.md) — Chrome 136: Remote-Debugging-Port braucht eigenes user-data-dir; Agent-Browser auf Port 9222, Flags fast egal (nur protocol-monitor + code-cache)
 - [Cline Hub 1006-Diagnose](cline-code-app-hub-1006-diagnosis.md) — „Hub connection closed" = lokaler Daemon-Crash, Server meist OK
 - [Lokale Infra & Ports](sascha-local-infra-ports.md) — OmniRoute 20128, Ollama 11434, LOKI 8010, Cline Code.app standalone
 - [LOKI Verkaufstool Stand](loki-verkaufstool-stand.md) — eBay KOMPLETT SCHARF: User-Token live (Refresh im Store), v2→v1-Bug gefixt, Redirect https://localhost:8078/callback; 7 Objekte NEU-Preise 1980 € + MAX-STRATEGIE (Beijer E1011 1190 €); ausstehend: Listings-Entwürfe + Publish (nur GO), willhaben einstellbar; Workday-Incident-Lektion; Gemini-Credits depletion
 - [Sascha Vollzug-Regel](sascha-vollzug-keine-zwischenfragen.md) — Komplettlösungen ohne Zwischenfragen; GO gilt bis zum fertigen Ergebnis; nur bei Passwort/Stopp-Regeln nachfragen
+
+## chrome-agent-browser-fix
+
+---
+name: chrome-agent-browser-fix
+description: Chrome-136-Regel — Remote-Debugging-Port ignoriert im
+  Standard-Profil; ZCode/Cline brauchen dedizierten Agent-Browser mit eigenem
+  user-data-dir
+metadata:
+  node_type: memory
+  type: project
+  originSessionId: sess_5ee29b3e-cfe1-414a-8c01-02ec99f260a6
+---
+
+Stand 18.09.2026: Saschas „Chrome unbrauchbar"-Problem (Cache nicht löschbar, Versionen rendern/laden nicht, ZCode/Cline finden Browser nicht) liegt NICHT an chrome://flags. Ursache: Seit Chrome 136 ignoriert Chrome `--remote-debugging-port` im Standard-User-Data-Dir — Debugging braucht zwingend ein eigenes `--user-data-dir` (offizielle Chrome-Sicherheitsänderung, developer.chrome.com/blog/remote-debugging-port).
+
+**Lösung:** Dedizierter Agent-Browser: `open -na "Google Chrome" --args --remote-debugging-port=9222 --user-data-dir="$HOME/.zcode/chrome-agent-profile" --no-first-run` → ZCode chrome-devtools-MCP + Cline verbinden auf `http://127.0.0.1:9222`. Cache-Probleme: Chrome komplett beenden, dann Caches löschen (laufende Instanz lockt Profil); DevTools „Disable Cache" im Network-Tab.
+
+**Wichtigste Flags (Chrome 153):** `#devtools-protocol-monitor` → Enabled (zeigt CDP-Traffic), `#use-persistent-cache-for-code-cache` → Disabled bei Render-/Load-Problemen; alle anderen Flags auf Default lassen. Port 9222 nur auf 127.0.0.1 binden (LAN-RCE-Risiko). Plan war vorgelegt, noch nicht ausgeführt.
 
 ## cline-code-app-hub-1006-diagnosis
 
