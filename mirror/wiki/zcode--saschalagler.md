@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-18 03:13 UTC
+Zuletzt gespiegelt: 2026-09-18 03:24 UTC
 
 ## AGENTS
 
@@ -32,7 +32,7 @@ Zuletzt gespiegelt: 2026-09-18 03:13 UTC
 2. **i-have-adhd-Regeln:** Wichtigstes Ergebnis in Zeile 1 (BLUF/Action first). Nummerierte Schritte (1-2-3). Kernbegriffe und Pfade **fett**. Kurze Tabellen statt Fließtext. Sofort nutzbare Kopiervorlagen. Keine Jargon-Nutzung ohne Erklärung.
 3. **Sequential Thinking:** MCP-Tool `sequentialthinking` bei JEDER Anfrage aufrufen — auch bei simplen Fragen (min. 1–3 Denkschritte); komplexe Aufgaben vollständig strukturiert (Schritt → Revision → Hypothese → Verifikation). Stehende Nutzer-Regel vom 30.08.2026.
 4. **Automatik + Ehrlichkeit (12.09.2026, Nutzer-Pflicht):** (a) Ergebnisse SELBST verifizieren — Befehl ausführen, Dateipfad als Beweis nennen; „erledigt" ohne Beweis-Pfad ist verboten. (b) Jedes Fachwort beim 1. Auftreten in 1 kurzen Satz erklären (Glossar: `~/.agents/UBIQUITOUS_LANGUAGE.md`). (c) Nie App-UI behaupten: Wayfinder-Maps, Todos, Memory = Dateien im Finder (`~/.agents/.wayfinder/`, `~/.zcode/cli/memories/`), die ZCode-App zeigt sie nicht an — so sagen, nicht anders. (d) Antwortformat: Zeile 1 = Ergebnis in einfachen Sätzen, dann max. 3 Schritte/Tabelle. (e) Reparaturen automatisch ausführen (mit Backup), den Nutzer nur bei Deploy/Löschen/Überschreiben fragen.
-5. **Auto-Team-Dispatch (Sascha 16.09.2026, EISENREGEL):** Jede Nutzer-Nachfrage löst automatisch Agenten-Arbeit aus: analysieren → Agents per Verteilungs-Formel zuweisen → parallel arbeiten lassen (max. 3) → Ergebnisse bewerten und mergen. Keine Rückfrage, keine reine Mono-Antwort, wenn Agents sinnvoll beitragen können. Browser-Steuerung bleibt Main-Agent-vorbehalten.
+5. **Auto-Team-Dispatch (Sascha 16.09.2026, EISENREGEL):** Jede Nutzer-Nachfrage löst automatisch Agenten-Arbeit aus: analysieren → Agents per Verteilungs-Formel zuweisen → parallel arbeiten lassen (max. 3) → Ergebnisse bewerten und mergen. Keine Rückfrage — AUSSER Deploy/Löschen/Überschreiben (Regel 4e bleibt höherwertig). Wenn keine sinnvolle Agent-Aufteilung existiert: 1 Agent + Begründung in 1 Zeile. Browser-Steuerung bleibt Main-Agent-vorbehalten.
 
 ### B. Routing — bei passendem Kontext IMMER den Skill nutzen (ohne Rückfrage)
 | Aufgabe | Skill |
@@ -5249,6 +5249,10 @@ Stand 18.09.2026 — **AUSGEFÜHRT + VERIFIZIERT**: Agent-Chrome läuft auf `htt
 **Nachtrag 6 (18.09., VORSORGE INSTALLIERT — „wie unterbinden wir das"):** Dauerhafte Prävention installiert: **`~/.agents/tools/browser-cache-auto-clean.sh`** + LaunchAgent **`~/Library/LaunchAgents/com.sascha.browser-cache-auto-clean.plist`** (jeden Sonntag 04:30, **läuft nur wenn KEIN Browser offen** — macht nie Saschas Fenster zu; verifiziert: plutil OK, launchctl geladen, Testlauf loggt korrekt „SKIP — Browser offen"). Log: `~/.agents/logs/browser-cache-clean.log`. Damit ist „Webseiten zeigen alten Stand" 3-fach abgedeckt: frisch gereinigt + wöchentliche Auto-Vorsorge + Gewohnheit Cmd+Shift+R. Mimosa-Hook meldet bei den Nuke-Scripts wiederholt „Befehls-Injektion" — False Positives (alle Pfade hardcoded, keine Nutzereingabe), nicht behoben nötig.
 
 **Nachtrag 7 (18.09., SW-Lesart-Regel):** Sascha zeigte die 6 Service-Worker-Registrierungen im **Agent-Profil** (`chrome://serviceworker-internals`) — alle `chrome-extension://…` (u. a. `ghbmnnjooekpmoecnnnilnnbdlolhkhi` = Google Docs Offline) mit `Fetch handler: DOES_NOT_EXIST` = **unschädlich, können keine Webseiten cachen**. Lesart-Regel fürs Auge: Nur SW-Einträge mit `http(s)://`-Origin sind „Webseiten-Kopierer" (problematisch); `chrome-extension://` = Chrome-Innenleben, niemals anfassen/löschen. Browser-Inventar: installiert sind **Chrome, Comet (Chromium 152, Perplexity), Safari + Safari Technology Preview** — Comet in alle künftigen Cache-/Browser-Skripte einbeziehen.
+
+**Nachtrag 8 (18.09., Sascha liest chrome://net-internals selbst):** Er exploriert inzwischen eigenständig Browser-Internals (zeigte „Shared Dictionaries": Googles Kompressions-Wörterbücher, ~1,3 MB, nur für google.com/search, selbst-verfallend — als GUT-Zeichen erklärt: last_fetch = Cleanup-Tag = Cache frisch). Kurz-Deutungs-Tabelle an ihn ausgegeben: DNS→Clear host cache bei „nicht erreichbar", Sockets→Flush socket pools bei hängendem Laden, Events/Proxy/Dictionaries→nur ansehen, nie löschen. Lesart-Regel: net-internals-Abschnitte sind Diagnose, nicht Müll.
+
+**Nachtrag 9 (18.09., abgeschlossen):** Endstatus bestätigt an Sascha: Alle SEITEN laden jetzt aktuellen Stand (Cache frisch + wöchentlicher Auto-Clean + Beweis last_fetch = Cleanup-Tag). Einzige Rest-Ausnahme erklärt: bereits OFFENE Tabs zeigen Altstand bis einmaliges Cmd+Shift+R. Cache-/Browser-Thema damit abgeschlossen; einzige offene Baustelle bleiben Saschas manuelle 3 Flags in chrome://flags (localhost-Blockade-Prophylaxe).
 
 ## cline-code-app-hub-1006-diagnosis
 
