@@ -1,9 +1,9 @@
 ---
 name: thomas-tasks-drei-recherchen
 description: Drei Thomas-Recherchen 11.09. FERTIG + Paritäts-Build + 18.09. ZIEL-APP
-  (Modell-Zentrale, OAuth-Key, Whisper/edge-tts) + 18.09. ABEND LIVE-TEST bestanden
-  (LLM 200, Mikro-Fallback, Gate; 404-free-model-Bug gefixt) + IRIS-AI geklont;
-  offen: Mikro-Test Sascha, Mac-Ausmistung, Paket-ZIP
+  (Modell-Zentrale, OAuth-Key, Whisper/edge-tts) + LIVE-TEST bestanden + KEY-FREIHEIT
+  (google/openai Provider, Key-Slots je Anbieter, Auto-Router AIza/sk-; dfedc83) +
+  IRIS-AI geklont; offen: Mikro-Test Sascha, Mac-Ausmistung, Paket-ZIP
 metadata:
   node_type: memory
   type: project
@@ -89,3 +89,11 @@ Am 11.09.2026 gestellt und am selben Tag ABGESCHLOSSEN inkl. Paritäts-Build (2 
 - **Kosten-Verifikation (Web, 18.09.):** Groq free **~1000 Req/Tag** (llama-3.3-70b-versatile, 30/min) schlägt OpenRouter free 50/Tag (1000/Tag erst nach einmalig $10 Aufladung); AssemblyAI U-2 $0,15/h · U-3.5 $0,21/h; Deepgram Nova-3 $0,26/h batch · $0,46/h stream; GPT-4o-transcribe $0,006/min; ElevenLabs Scribe $0,22/h.
 - **IRIS-AI ÜBERNOMMEN:** `gh repo clone IRISX-AI/IRIS-AI` → **`THOMAS - CHIPS JUDICARIO /IRIS-AI/`** (Sascha reichte zusätzlich Downloads/IRIS-AI-main.zip). Befund: **Voice-First Desktop-Controller** (Electron, Gemini 3.1 Live, WebRTC, steuert Apps/Email/WhatsApp/Camera, LangGraph-Agent). ⚠️ Agent-Logik **proprietär (V8-Bytecode/ASAR)** → kein Umbau/Merge möglich; braucht **Google-Key**; Free-Tier nur **12 Turns/5 Tool-Calls pro Tag** (v1.7; alte Versionen tot); Keys über App-UI → OS-Keychain. **Verknüpfung = Arbeitsteilung:** LokiVoice (juristisch, Free-Stack, Prüfkopf) + IRIS (Desktop-Fernsteuerung mit Saschas Gemini-Key). Ein wütendes Paste-Attachment einer anderen Session (Paseo/Cleanup/GCP) war Kontext-Rauschen — nicht unser Scope.
 - **Nächste Schritte offen:** Sascha 30-Sek-Mikro-Sprechtest („Loki, was kannst du?") · Endpaket-ZIP · Mac-Vollausmistung · IRIS-Setup-Doku (optional).
+
+**18.09. SPÄT — KEY-FREIHEIT-FIX (Commit `dfedc83`):** Sascha-Anforderung „er soll seinen Gemini-API-Key einfügen können, OpenAI, OpenRouter oder Ollama":
+- **2 neue Provider in `AIProviders.swift` LLMProvider.all:** `google` (baseURL `https://generativelanguage.googleapis.com/v1beta/openai`, gemini-2.5-flash/2.5-pro, Slot GEMINI_API_KEY) + `openai` (api.openai.com/v1, gpt-4o-mini/4.1-mini, Slot OPENAI_API_KEY).
+- **Provider-spezifische Key-Slots:** `LLMChoice.keychainService(forProviderID:)` (groq→GROQ_API_KEY, google→GEMINI_API_KEY, openai→OPENAI_API_KEY, openrouter→OPENROUTER_API_KEY); `LocalVoiceService.llmAPIKey(for:)` liest pro Provider UserDefaults `loki.key.<SERVICE>` → Env → generische Kette (Keys können GLEICHZEITIG mehrerer Provider drin sein — Rotation nutzt bei 429 den nächsten mit gültigem Key); `KeySelfService.storeKey(_:service:)` (Default LOKI_LLM_API_KEY, OAuth unverändert); callLLM/callLLMWithoutTools nutzen `llmAPIKey(for: LLMChoice.provider.id)`.
+- **Auto-Router im KeySelfService.applyAndAutoRouteKey korrigiert:** `AIza…` → Provider **google** (gemini-2.5-flash, NICHT mehr vertex-WSS-Live — das war Thomas-Falle); `sk-…` (ohne sk-or-) → **openai** (gpt-4o-mini); `sk-or-…` → openrouter mit live-ID qwen3.8-27b:free; `gsk_…` → groq. Key landet per Präfix im richtigen Slot; google/openai/groq/openrouter gehören alle zum .openRouter-Backend-Pfad.
+- **Swift-Lektion (mein Bash-Python-Insert):** Inline-Python-Edit zerstörte die Klammerung (genericKey öffnete, llmAPIKey steckte darin, 50 „attribute 'private' can only be used in a non-local scope"-Fehler) — Fix: llmAPIKey als dünner Wrapper (`llmAPIKey { llmAPIKey(for: LLMChoice.provider.id) ?? genericKey() }`), Body blieb genericKey(). Und: Python-`str.replace` macht still No-Ops bei Nicht-Treffer (Agent-Version der storeKey hatte anderen Body) — nach Replace immer Ergebnis verifizieren.
+- **QA:** Build grün · RunAllTests 9/9 · Bundle signiert · `00_PAKET_FUER_THOMAS/LokiVoice.app` aktualisiert.
+- **OFFEN geblieben:** Mac-Ausmistung Vollscan (letztes Ticket), Mikro-Sprechtest Sascha, Endpaket-ZIP.

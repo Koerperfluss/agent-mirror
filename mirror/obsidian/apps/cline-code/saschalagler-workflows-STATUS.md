@@ -48,3 +48,5 @@ bot.cline.app: Desktop=2, Documents=2, Downloads=2, AppleEvents=2, FileProviderD
 
 # STATUS — 2026-09-18 (2): FFG 68209806 Design-Build abgeschlossen (9/9 PDFs Braun/Gold, Bündel refreshed, Backups in _ALT/). QA-Verifikation: 0 Alt-Referenzen, MD↔PDF-Integrität belegt, visuelle Checks PASS. HITL unverändert (B1/B2/B4b/B5/B6/B7/C). EOF
 echo '--- Doku-Updates fertig ---' && tail -3 PLAN.md | head -1 && ls -la UPLOAD_eCall_SLOTS_2026-09-18/MANIFEST.md
+
+# STATUS — 2026-09-18 (2): FFG-PDF Design-Refresh fertig — PDF_DESIGN_BAUEN.sh, 9 PDFs Braun/Gold + Signatur-Grids + Multiset-Proof 100 %, Upload-Bündel refreshed. Route skill-router: loki-dev (kein dedizierter PDF-Skill).

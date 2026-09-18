@@ -43,3 +43,10 @@ bot.cline.app: Desktop=2, Documents=2, Downloads=2, AppleEvents=2, FileProviderD
 echo '--- Doku-Updates fertig ---' && tail -3 PLAN.md | head -1 && ls -la UPLOAD_eCall_SLOTS_2026-09-18/MANIFEST.md
 
 # STATUS — 2026-09-18 (2): FFG-PDF Design-Refresh fertig — PDF_DESIGN_BAUEN.sh, 9 PDFs Braun/Gold + Signatur-Grids + Multiset-Proof 100 %, Upload-Bündel refreshed. Route skill-router: loki-dev (kein dedizierter PDF-Skill).
+
+# STATUS — 2026-09-18 (3): FFG 68209806 „Neueinreichung“ aus allen Einreichungsdokumenten entfernt (11/11 PDFs = 0 Treffer, Kernzahlen intakt, Bündel refreshed). 8 Kritikpunkte verankert (Investigator-Belege). Offen (Nutzer): K6-Didaktik-Rolle, K7-Zahlenspanne, HITL (CV/Unterschriften/eCall).
+
+## 2026-09-18 QA (qa-tester): FFG-Paket 68209806 End-Abnahme nach Sprach-Fix
+- Ergebnis: 6/6 PASS, GESAMTVERDICT: PASS (einreichbereit)
+- Neueinreichung=0 in allen 11 Root-PDFs; Einreichung/Einreichfassung sauber; Kernzahlen 3x/3x/3x (00) + eCall korrekt; K2/K3/K5/K8-Verankerung belegt; Bündel-Sync md5 identisch (7/7 Paare); Alt-Referenzen=0 (00/05/06)
+- Hinweis: SLOT_03/04/05 enthalten Bündel-exklusive Nachweise (CV Fischer/Lagler, LOI, Kapitalnachweis) ohne Root-PDF-Gegenstück — strukturell korrekt

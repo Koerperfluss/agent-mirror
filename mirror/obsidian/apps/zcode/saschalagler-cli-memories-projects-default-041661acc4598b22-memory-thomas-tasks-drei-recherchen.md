@@ -8,8 +8,9 @@ tags: [spiegel, zcode]
 ---
 name: thomas-tasks-drei-recherchen
 description: Drei Thomas-Recherchen 11.09. FERTIG + Paritäts-Build + 18.09. ZIEL-APP
-  ERREICHT (Modell-Zentrale: 3-Wege-Backend, 10 STT, TTS, Triage, OAuth-Key-Selbstholung;
-  Commits af57e68→8d73ea5); offen: Mac-Vollausmistung
+  (Modell-Zentrale, OAuth-Key, Whisper/edge-tts) + 18.09. ABEND LIVE-TEST bestanden
+  (LLM 200, Mikro-Fallback, Gate; 404-free-model-Bug gefixt) + IRIS-AI geklont;
+  offen: Mikro-Test Sascha, Mac-Ausmistung, Paket-ZIP
 metadata:
   node_type: memory
   type: project
@@ -83,3 +84,15 @@ Am 11.09.2026 gestellt und am selben Tag ABGESCHLOSSEN inkl. Paritäts-Build (2 
 - **Subagent-Fakten 18.09.: `implementer` läuft, `Explore`/`general-purpose` werfen weiterhin „No reasoning level selected"** (siehe [[subagent-dispatch-implementer-workaround]] — Hook-Fix deckt nicht alle Typen ab).
 - **Endpaket:** `THOMAS - CHIPS JUDICARIO /00_PAKET_FUER_THOMAS/` (2,3 MB: LokiVoice.app neu + LIESMICH.txt [2 Schritte] + 01_MODELL_KATALOG.md + ältere ANLEITUNG/UEBERGABE-Dokumente). STATUS_LOCAL_PARITAET.md hat RELEASE-18.09.-Abschnitt.
 - **OFFEN:** Mac-Vollausmistung (Fragment-Orte → _ARCHIV, md5-Dubletten löschen — Scan-Agent-Ergebnis verlorengangen, eigener find/md5-Lauf nötig) · ZIP des Endpakets · Mikro-Live-Test mit Groq-Key.
+
+**18.09. ABEND — LIVE-TESTUNG VOLLZUG („live testung der app voll und ganz") + IRIS-AI-ÜBERNAHME:**
+- **LIVE-E2E per computer-use am laufenden Bundle (PID 18320), alles bewiesen:**
+  - Backend-Wechsel auf **OpenRouter (0 €)** per UI-Klick ✅ (Badge „OpenRouter (0 €): meta-llama…"), Sitzung startete (Button → „Verbindung trennen").
+  - **Mikrofon-Loop LIVE:** Whisper-Server (8788) war aus → App fiel sauber auf Apple Speech zurück (Transkript-Zeile „[System: STT-Backend = Apple Speech (Whisper-Server nicht erreichbar — Fallback)]") und **transkribierte real Gesprochenes** („Du: Hallo … ich bin der lokale…").
+  - **Wake-Word-Gate LIVE korrekt:** „Lukilukiton" ≠ Loki/Chipsi → geschwiegen, 0 LLM-Kosten.
+  - **LLM-Kette live:** Key aus Keychain (`security find-generic-password -s LOKI_LLM_API_KEY` — **Saschas Key ist sk-or-… = OpenRouter**) → **HTTP 200, Antwort 40 Zeichen** (openai/gpt-4o-mini). NIE Key-Inhalt ausgeben — nur Muster (sk-or-→OpenRouter, gsk_→Groq) + Statuscode/Antwortlänge.
+  - **🔴 Realer Bug gefunden+gefixt:** Default `meta-llama/llama-3.3-70b-instruct:free` → **404 (Modell von OpenRouter entfernt!)**. Fix in AIProviders.swift: DEFAULT **`qwen/qwen3.8-27b:free`** (FC-fähig, live verifiziert) + `nvidia/nemotron-3.5-lightning:free` + `deepseek/deepseek-v4-flash-0731:free` — aus **22 aktuellen Free-Modellen** (live via /api/v1/models, Tools-Support geprüft). Commit + Tests 9/9 + Bundle neu signiert (`xattr -cr` + codesign) + 00_PAKET aktualisiert.
+  - **Transkript-Beweis-Technik:** UI-Klick auf „Kopieren"-Button → `read_clipboard` = voller Transkript-Text (statt Screenshot-Leserei).
+- **Kosten-Verifikation (Web, 18.09.):** Groq free **~1000 Req/Tag** (llama-3.3-70b-versatile, 30/min) schlägt OpenRouter free 50/Tag (1000/Tag erst nach einmalig $10 Aufladung); AssemblyAI U-2 $0,15/h · U-3.5 $0,21/h; Deepgram Nova-3 $0,26/h batch · $0,46/h stream; GPT-4o-transcribe $0,006/min; ElevenLabs Scribe $0,22/h.
+- **IRIS-AI ÜBERNOMMEN:** `gh repo clone IRISX-AI/IRIS-AI` → **`THOMAS - CHIPS JUDICARIO /IRIS-AI/`** (Sascha reichte zusätzlich Downloads/IRIS-AI-main.zip). Befund: **Voice-First Desktop-Controller** (Electron, Gemini 3.1 Live, WebRTC, steuert Apps/Email/WhatsApp/Camera, LangGraph-Agent). ⚠️ Agent-Logik **proprietär (V8-Bytecode/ASAR)** → kein Umbau/Merge möglich; braucht **Google-Key**; Free-Tier nur **12 Turns/5 Tool-Calls pro Tag** (v1.7; alte Versionen tot); Keys über App-UI → OS-Keychain. **Verknüpfung = Arbeitsteilung:** LokiVoice (juristisch, Free-Stack, Prüfkopf) + IRIS (Desktop-Fernsteuerung mit Saschas Gemini-Key). Ein wütendes Paste-Attachment einer anderen Session (Paseo/Cleanup/GCP) war Kontext-Rauschen — nicht unser Scope.
+- **Nächste Schritte offen:** Sascha 30-Sek-Mikro-Sprechtest („Loki, was kannst du?") · Endpaket-ZIP · Mac-Vollausmistung · IRIS-Setup-Doku (optional).
