@@ -27,4 +27,6 @@ Sascha korrigierte 11.09.2026 scharf: Ich hatte „Gratis-Stack existiert bereit
 
 - **14.09. sechste Eskalation („wieso sind im Ordner für Thomas 100 Files? was soll er oder ich damit? du müllst uns beide zu"):** Arbeitsreste (`_arbeit/`, Roh-Screenshots, generate.js, DOCX) gehörten in den LIEFERORDNER — für Thomas und seine Agents unbrauchbarer Müll. **Regel: Ein Lieferordner für einen Dritten enthält NUR lieferbare Items (App + 1 LIESMICH + Tools, die der Dritte wirklich startet); alle Arbeits-/Quellreste außerhalb in _arbeit/_ARCHIV.** Nach dem Schnüren den Ordner aus DRETER-Sicht durchgehen: „kann Thomas mit JEDER Datei etwas anfangen?"
 
+- **14.09. siebte Eskalation („es kann nicht funktionieren wenn du welche Modelle nimmst — er soll ebenfalls seinen Gemini-Key einfügen können, OpenAI, OpenRouter oder Ollama"):** Ein Key-Zwang auf EINEN Anbieter ist für Dritte unbrauchbar — die App muss JEDEN gängigen Key akzeptieren (Gemini AIza / OpenAI sk- / OpenRouter sk-or- / Groq gsk_ / Ollama ohne Key), ihn am Präfix erkennen, im richtigen Slot speichern und selbst dorthin routen. Implementiert 18.09. (Commit dfedc83).
+
 Verwandt: [[thomas-tasks-drei-recherchen]], [[feedback-aufbau-vor-deploy]], [[feedback-pruefinstanz-pflicht]]
