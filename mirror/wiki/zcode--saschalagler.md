@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-18 02:51 UTC
+Zuletzt gespiegelt: 2026-09-18 03:02 UTC
 
 ## AGENTS
 
@@ -3060,7 +3060,7 @@ metadata:
 
 Den Built-in-Agents war früher (App-Settings „Subagents") ein fixes Modell OHNE Denkstufe zugewiesen worden. Der Code (Bundle `zcode.cjs`, Funktion `L8`/`resolveSubagentSelection`) verlangt zwingend `options.reasoningLevel` → Abbruch.
 
-**Fix (15.09., FINALE Version nach Sascha-Korrektur „fixe GLEICH alle"):** Beide Built-ins EXPLIZIT gesetzt — `account:zai-individual-coding-plan/GLM-5.3-Flash` **mit `options.reasoningLevel:"low"`** (Provider+Modell bewiesen durch laufende Session; Backups `agents-state.json.bak2-20260915`). Reparatur-Skript falls App beim Beinen zurückschreibt: **`~/.zcode/fix-subagents.sh`**. Plugin-Agents brauchen nichts (Erbe funktioniert — implementer lief am 14.09.). **WICHTIG: Fix greift erst nach ZCode-Neustart (Bootstrap liest die Datei nur beim Start).**
+**✅ GELÖST + AUTOMATISIERT 16.09.:** Fix sitzt UND heilt sich selbst — **SessionStart-Hook** in `~/.zcode/cli/config.json` (`bash ~/.zcode/fix-subagents.sh --silent`) prüft bei JEDEM Chat-Start die Overrides und repariert still (idempotent, Backup-Rotation max. 5). Live bewiesen: Kaputt-Simulation → Hook → „FIXED" → geheilt; Zweitlauf = „intakt — nichts zu tun". Dispatch-Tests bestanden: „SUBAGENT OK" (general-purpose), „EXPLORE OK" (Explore m. Bash), reviewer 51 s. Kein manueller Notfall-Knopf mehr nötig.
 
 **How to apply:** Nach App-Neustart Subagent-Test (trivialer general-purpose-Dispatch). Falls wieder FAIL → `implementer` als Workaround (lief am 14.09.). Verwandt: [[ios27-webapp-testing-recherche-2026-09-13]].
 
@@ -5214,6 +5214,12 @@ Stand 18.09.2026 — **AUSGEFÜHRT + VERIFIZIERT**: Agent-Chrome läuft auf `htt
 
 **Nachtrag 18.09. (Saschas echtes Problem „Websites zeigen alten Stand"):** Root-Cause = Service-Worker-Cache im Haupt-Profil: `~/Library/Application Support/Google/Chrome/Default/Service Worker/` — 5,8 MB ScriptCache, 177 Worker (überlebt „Cache löschen" in den Einstellungen!). Plus HTTP-Cache 21 MB + Code-Cache 12 MB in `~/Library/Caches/Google/Chrome/Default`. Fix-Script: **`~/.agents/tools/chrome-cache-nuke.sh`** (beendet Chrome, löscht alle 4 Schichten, startet Haupt+Agent neu) — Ausführung nur mit GO. Zweiter Live-Fund: ohne `--remote-allow-origins='*'` blockiert Chrome WebSocket-CDP mit 403 — Flag ist im Agent-Launch PFLICHT.
 
+**Feedback-Korrektur (Ende der Session):** Sascha verstand meine Status-Berichte nicht — zu viel Jargon/Setup-Erklärungen statt BLUF. Bei ihm gilt: Aufgabe/Goal in 1 Satz, Ursache in 1 Satz, dann NUR die eine Entscheidung nennen („Sag GO oder NEIN"). Er fragt explizit „was ist deine Aufgabe/Goal", wenn Antworten zu lang werden.
+
+**Nachtrag 2 (18.09., Umgebung angepasst):** Flags-Tabelle in `~/.agents/CHROME_AGENT_SETUP.md` an seine Ports angepasst — Live-Messung: OmniRoute 20128 ✅ (HTTP 307), Python-Tool **8077** ✅ (200, deutschsprachige Seite), Python-Tool **8055** ✅ (404 am Root), LOKI 8010 / Open-WebUI 8080 / eBay-Callback 8078 aus. Neuer Kern-Flag: `#unsafely-treat-insecure-origin-as-secure` mit Eintrag `http://localhost:20128, http://localhost:8077, http://localhost:8055, http://localhost:8010, http://localhost:8080` (seine localhost-Tools als sicher). `#enable-webgpu-developer-features` Enabled (Bodyfluss-3D), `#prompt-api`+`#gemma4-for-built-in-ai` Enabled (Browser-LLM, arm64 ok), Rest der PDF-Flags Default lassen. **chrome-cache-nuke.sh noch NICHT ausgeführt — wartet auf Saschas GO.**
+
+**Nachtrag 3 (18.09., Session-Ende):** Alles-erklärt-Gespräch abgeschlossen — Sascha hat die 3 Rest-Schritte erhalten: (1) 1× Login im Agent-Chrome-Fenster (bleibt gespeichert), (2) 3 Flags setzen (`#local-network-access-check` Disabled, `#use-persistent-cache-for-code-cache` Disabled, `#devtools-protocol-monitor` Enabled), (3) GO für chrome-cache-nuke.sh. Er will Erklärungen als Nummerierung „Problem → Ursache → geändert → läuft jetzt → deine Schritte" mit Fachwörtern (CDP, Service Worker, Profil) je 1 Satz erklärt — diese Struktur funktionierte.
+
 ## cline-code-app-hub-1006-diagnosis
 
 ---
@@ -5322,6 +5328,8 @@ Live-Stand vom 16.09.2026 (per lsof/ps verifiziert):
 - Z.AI-MCPs (web-search-prime, zread) als streamableHttp in `~/.mcp.json`; OmniRoute `/v1/models` ohne Key → AUTH_002 (normal, kein Fehler)
 - Nebenbei lief `next start -p 3300` (Dev-Server, PID ~99734)
 
+**Update 18.09.2026 (curl-Verifikation):** OmniRoute **20128** ✅ (HTTP 307) · **neuer Python-Dienst auf 8077** ✅ (HTTP 200, deutschsprachige Seite) · **neuer Python-Dienst auf 8055** ✅ (HTTP 404 am Root, lauscht) · LOKI 8010 ⛔ aus · Open-WebUI 8080 ⛔ aus · eBay-Callback 8078 ⛔ aus (nur bei Nutzung) · 5173/3000 aus.
+
 **Why:** Port-/Prozess-Wissen ist bei jedem Health-Check und Fehler wie [[cline-code-app-hub-1006-diagnosis]] die erste Anlaufstelle.
 
 **How to apply:** Vor Diagnosen diese Checkliste nutzen; Stand bei Änderungen hier aktualisieren (PIDs/„läuft seit" sind flüchtig, Ports sind stabil).
@@ -5350,6 +5358,8 @@ Sascha (18.09.2026, nach 30h Konfiguration): „WIESO MUSS ICH JEDEN SCHEISS SCH
 5. Fehlschläge ehrlich melden, aber mit bereits gewähltem Plan B im selben Zug.
 
 Verwandt: [[loki-verkaufstool-stand]]
+
+**Ergänzung (18.09., Chrome-Session):** Keine Zwischenfragen heißt AUCH: keine langen Status-/Konfig-Erklärungen. Sascha antwortete mehrfach „ICH VERSTEHE NICHT WAS DU REDEST / WAS IST DEINE AUFGABE/GOAL", als ich Setup-Details erzählte. Format das er versteht: (1) Meine Aufgabe in 1 Satz, (2) Ursache in 1 Satz, (3) die EINE offene Entscheidung („Sag GO oder NEIN"). Alles andere in Dateien ablegen, nicht in den Chat. Verwandt: [[chrome-agent-browser-fix]]
 
 ## MEMORY
 
@@ -95911,16 +95921,12 @@ Danach führe ich aus:
 **Verifikation:** ls/diff-Checks nach B, Frontmatter-Validierung, 1 Live-Testchat in AutoClaw nach A2/A3 — erst dann „fertig". Backups vor jedem Schreibvorgang; einzige Löschung = B1 (explizit im Plan, GO = Plan-Freigabe).
 ## plan-sess_89889126-6bec-4e4b-b8ec-d30614619344
 
-# Google-Chaos aufräumen — 5 Schritte
+# fix-subagents.sh AUTOMATISCH machen — Selbstheilung ohne manuellen Klick
 
-1. **Inventur** (nur lesen): Alle Projekte + API-Keys + „zuletzt verwendet"-Datum aus der Konsole holen → Tabelle AKTIV/TOT
-2. **3 Privat-Projekte** (forerclautad2026, loki-ki, KoerperflussWebfrontendkooper) → auf Firmen-Konto **015D43** umziehen (umkehrbar; Deploy bleibt gleich)
-3. **Key-Müll**: tote Keys + leere Auto-Projekte als **Löschliste** zeigen → du sagst GO → ich lösche
-4. **Leerkonto 016C8A schließen** (dein GO liegt vor) → danach nur noch 2 Konten
-5. **Prüfung**: Reviewer-Agent prüft alles → Bericht + **KEY-MAP.md** auf Desktop (welcher Key gehört zu welchem Projekt)
-
-**Regeln:** Bezahlen diesmal NICHT (API-Sperre bleibt bis Zahlung, egal). Löschen nur mit deinem GO. Workspace + 867 € unangetastet.
-**Dauer: ~40 Min.** Team: ich (Browser) + Inventur-Agent + Reviewer.
+1. **SessionStart-Hook eintragen** in `~/.zcode/cli/config.json`: bei jedem Chat-Start läuft `fix-subagents.sh --silent` automatisch → App kann den Subagent-Fix nie wieder dauerhaft zerstören
+2. **Skript härten**: still + idempotent (= nur schreiben wenn kaputt), keine Backup-Müll-Häufung
+3. **Beweis**: Kaputt-Zustand simulieren → Hook läuft → Datei wieder heile (Output als Beweis)
+4. Memory-Eintrag: Hook ist aktiv — kein manueller Notfall-Knopf mehr nötig
 
 ## plan-sess_a8584745-c71a-4be7-abfa-69705dde9546
 

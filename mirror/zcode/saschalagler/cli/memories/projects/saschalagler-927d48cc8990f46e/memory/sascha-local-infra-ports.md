@@ -20,6 +20,8 @@ Live-Stand vom 16.09.2026 (per lsof/ps verifiziert):
 
 **Update 18.09.2026 (curl-Verifikation):** OmniRoute **20128** ✅ (HTTP 307) · **neuer Python-Dienst auf 8077** ✅ (HTTP 200, deutschsprachige Seite) · **neuer Python-Dienst auf 8055** ✅ (HTTP 404 am Root, lauscht) · LOKI 8010 ⛔ aus · Open-WebUI 8080 ⛔ aus · eBay-Callback 8078 ⛔ aus (nur bei Nutzung) · 5173/3000 aus.
 
+**Browser-Inventar 18.09. (ps/ls verifiziert):** Google Chrome 153.0.8010.37 (Haupt) + Agent-Chrome 153.0.8010.52 (:9222, eigenes Profil) · **Comet.app** (Perplexity-Browser, Chromium 152.0.7977.197, läuft oft dauerhaft) · Safari + Safari Technology Preview. Cache-NUKE-Tool für alle: `~/.agents/tools/browser-cache-nuke-all.sh` (siehe [[chrome-agent-browser-fix]]). Wöchentliche Auto-Vorsorge: `~/.agents/tools/browser-cache-auto-clean.sh` via LaunchAgent `com.sascha.browser-cache-auto-clean` (So 04:30, überspringt wenn Browser offen), Log `~/.agents/logs/browser-cache-clean.log`.
+
 **Why:** Port-/Prozess-Wissen ist bei jedem Health-Check und Fehler wie [[cline-code-app-hub-1006-diagnosis]] die erste Anlaufstelle.
 
 **How to apply:** Vor Diagnosen diese Checkliste nutzen; Stand bei Änderungen hier aktualisieren (PIDs/„läuft seit" sind flüchtig, Ports sind stabil).

@@ -1,7 +1,7 @@
 ---
 app: zcode
 quelle: "saschalagler/cli/memories/projects/saschalagler-927d48cc8990f46e/memory/sascha-local-infra-ports.md"
-stand: 2026-09-16
+stand: 2026-09-18
 tags: [spiegel, zcode]
 ---
 
@@ -24,6 +24,8 @@ Live-Stand vom 16.09.2026 (per lsof/ps verifiziert):
 - **Cline**: standalone **Cline Code.app** (`/Applications/Cline Code.app`), NICHT die VS-Code-Extension — Prozesse `cline-app` + `code-sidecar` (einer mit `--cline-hub-daemon`, lauscht `127.0.0.1:25463`); Standard-Cline-Settings-Pfad unter VS Code globalStorage existiert nicht; App-Logs unter `~/Library/Application Support/Cline Code/logs` nicht gefunden
 - Z.AI-MCPs (web-search-prime, zread) als streamableHttp in `~/.mcp.json`; OmniRoute `/v1/models` ohne Key → AUTH_002 (normal, kein Fehler)
 - Nebenbei lief `next start -p 3300` (Dev-Server, PID ~99734)
+
+**Update 18.09.2026 (curl-Verifikation):** OmniRoute **20128** ✅ (HTTP 307) · **neuer Python-Dienst auf 8077** ✅ (HTTP 200, deutschsprachige Seite) · **neuer Python-Dienst auf 8055** ✅ (HTTP 404 am Root, lauscht) · LOKI 8010 ⛔ aus · Open-WebUI 8080 ⛔ aus · eBay-Callback 8078 ⛔ aus (nur bei Nutzung) · 5173/3000 aus.
 
 **Why:** Port-/Prozess-Wissen ist bei jedem Health-Check und Fehler wie [[cline-code-app-hub-1006-diagnosis]] die erste Anlaufstelle.
 
