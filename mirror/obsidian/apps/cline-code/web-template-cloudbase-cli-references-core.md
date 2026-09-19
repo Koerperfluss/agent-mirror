@@ -1,7 +1,7 @@
 ---
 app: cline-code
 quelle: "web-template/cloudbase-cli/references/core.md"
-stand: 2026-09-05
+stand: 2026-09-19
 tags: [spiegel, cline-code]
 ---
 
@@ -182,6 +182,15 @@ tcb env use <envId>                          # Set default env for all subsequen
 tcb env detail <envId>                       # View environment details
 tcb env rename <newAlias> --env-id <envId> --yes  # Rename alias
 tcb env create --alias <name> --package <packageId> --yes  # Create new env
+```
+
+To put a new environment's **cloud storage** on a shared COS bucket (one bucket for many environments, each under its own BasePath), pass all three `--external-storage-*` flags. They apply to cloud storage only; the static hosting bucket is chosen by the platform when hosting is enabled and has no CLI flag. Use them only when the user provides the bucket.
+
+```bash
+tcb env create --alias tenant-a --package baas_personal --yes \
+  --external-storage-bucket my-bucket-1250000000 \
+  --external-storage-region ap-shanghai \
+  --external-storage-base-path tenant-a
 ```
 
 > ⚠️ `tcb env list` may return incomplete results under sub-account permissions. Use only when user explicitly asks.

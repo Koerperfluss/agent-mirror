@@ -1,6 +1,6 @@
 # web-template (cline-code)
 
-Zuletzt gespiegelt: 2026-09-19 18:18 UTC
+Zuletzt gespiegelt: 2026-09-19 18:29 UTC
 
 ## rule
 
@@ -7100,39 +7100,44 @@ Hosting = pre-built static files with CDN; for framework build + deploy, use `ap
 # 1. Confirm target environment
 tcb env list
 
-# 2. Check hosting status (auto-enables if not active)
-tcb hosting detail --env-id <envId>
-
-# 3. Build locally first
+# 2. Build locally first
 npm run build
 
-# 4. Deploy built assets
-tcb hosting deploy ./dist --env-id <envId> --yes
+# 3. Deploy built assets (hosting must already be enabled)
+tcb hosting deploy ./dist --env-id <envId>
 
-# 5. Verify
+# 4. Verify
 tcb hosting list --env-id <envId>
 ```
+
+> `tcb hosting deploy` only checks the hosting status, it never enables the service. If hosting is not enabled, the command fails and the environment owner must enable it in the CloudBase console first. If the service was just enabled and is still initializing (`init` / `process`), the command waits until it reports `online` (checks every 5 seconds, up to about 6 minutes) and then uploads.
 
 ### Deploy Variations
 
 ```bash
 # Deploy current directory
-tcb hosting deploy --env-id <envId> --yes
+tcb hosting deploy --env-id <envId>
 
 # Deploy to a sub-path
-tcb hosting deploy ./dist /v2 --env-id <envId> --yes
+tcb hosting deploy ./dist /v2 --env-id <envId>
 
 # Deploy a single file
-tcb hosting deploy ./index.html --env-id <envId> --yes
+tcb hosting deploy ./index.html --env-id <envId>
 
 # Update only one file (incremental)
-tcb hosting deploy ./dist/index.html /index.html --env-id <envId> --yes
+tcb hosting deploy ./dist/index.html /index.html --env-id <envId>
 
 # CI/CD: non-interactive with JSON output
-tcb hosting deploy ./dist --env-id $ENV_ID --yes --json
+tcb hosting deploy ./dist --env-id $ENV_ID --json
 ```
 
 > ⚠️ Deploy overwrites existing files at the same path. There is no built-in versioning — consider cleaning old files before redeploying.
+
+### Deploying to a Shared Bucket Environment
+
+Platforms that create many environments under one account may keep hosting files for all of them in one shared COS bucket, each environment under its own BasePath. The bucket is chosen by the platform when hosting is enabled and cannot be changed afterwards; the CLI has no flag for it.
+
+- Keep writing `cloudPath` as a plain path (`./dist app`). The CLI adds the BasePath, and the hosting domain resolves it too, so site URLs use the plain path — adding the BasePath to a URL returns 404.
 
 ---
 
@@ -7163,7 +7168,7 @@ tcb hosting delete --dry-run --env-id <envId>
 tcb hosting delete --env-id <envId> --yes
 
 # Deploy fresh build
-tcb hosting deploy ./dist --env-id <envId> --yes
+tcb hosting deploy ./dist --env-id <envId>
 ```
 
 ---
@@ -7188,11 +7193,6 @@ tcb hosting list --env-id <envId> --json
 ### Download files
 
 ```bash
-# Download a single file
-tcb hosting download path/to/file.txt --env-id <envId>
-
-# Download to a specific local path
-tcb hosting download path/to/file.txt ./local --env-id <envId>
 
 ## mysql
 
@@ -7631,6 +7631,16 @@ tcb storage upload ./logo.png /images/logo.png
 tcb storage upload ./logo.png images/logo.png
 ```
 
+**Shared-bucket environments.** Some environments keep their files in a COS bucket shared with other environments, each isolated under its own directory prefix (BasePath). The CLI resolves the shared bucket and BasePath by itself, so you do not need to detect this: **write `cloudPath` exactly as in a normal environment** and never prepend the BasePath or the bucket name. `list`, `detail`, `url`, `cp` and `rm` accept and return the same plain paths.
+
+```bash
+# Environment whose storage BasePath is "tenant-a"
+# WRONG — the file ends up under tenant-a/tenant-a/images/logo.png
+tcb storage upload ./logo.png tenant-a/images/logo.png -e <envId>
+# CORRECT — stored as tenant-a/images/logo.png in the shared bucket
+tcb storage upload ./logo.png images/logo.png -e <envId>
+```
+
 For 50+ file uploads, check `cloudbase-error.log` for partial failure details. Retry with `--times 5 --interval 1000`.
 
 ---
@@ -7675,16 +7685,6 @@ tcb storage rm folder/ --dir -e <envId>                # Directory
 
 ⚠️ Deleting 2+ files triggers a confirmation prompt. Use `--force` to skip (required in CI/scripts).
 
-### Wildcard rules
-
-| Pattern | Meaning |
-|---------|---------|
-| `*` | Match any filename in current directory (not across `/`) |
-| `**` | Match any path including `/` (recursive) |
-| `?` | Match single character (not `/`) |
-
-```bash
-# Only root-level .log files
 
 ## rule
 
@@ -11500,7 +11500,7 @@ If the user says "PostgreSQL" but the app is a classic TCP client (for example n
 
 ---
 name: cloudrun-development
-description: CloudBase Run backend development rules (Function mode/Container mode). Use this skill when deploying backend services that require long connections, multi-language support, custom environments, AI agent development, or migrating existing/GitHub apps that need VPC access to MySQL/PostgreSQL/Redis. Also use when diagnosing CloudRun container deploy failures (deploy_failed, readiness/probe failed, image won't start, docker.io pull loops). For stateless HTTP services, prefer HTTP cloud functions.
+description: CloudBase Run backend development rules (Function mode/Container mode). Use this skill when deploying backend services that require long connections, multi-language support, custom environments, AI agent development, or migrating existing/GitHub apps that need VPC access to MySQL/PostgreSQL/Redis. Also use when diagnosing CloudRun container deploy failures (deploy_failed, readiness/probe failed, image won't start, docker.io pull loops) or a deploy stuck behind a running deploy task. For stateless HTTP services, prefer HTTP cloud functions.
 version: 2.34.4
 alwaysApply: false
 ---
