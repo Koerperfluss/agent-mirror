@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-20 16:35 UTC
+Zuletzt gespiegelt: 2026-09-20 16:46 UTC
 
 ## AGENTS
 
@@ -6216,6 +6216,7 @@ Beobachtet 06.09.2026 (Session mit Off-Peak-Ticket): Nach User-Paste „ZCode Er
 
 # Memory Index
 
+- [LOKI Second Brain Handoff](loki-second-brain-handoff.md) — NÄCHSTES Projekt (20.09.): Bauplan an Antigravity übergeben (~/Desktop/HANDOFF_ANTIGRAVITY.md); brain.py+FTS5+Obsidian-Vault, Daemon-Tools brain_save/brain_search, déjà+Morgenbrief; wartet auf Ausführung (oder „baue es hier")
 - [loki-dev Plan alle 5 Modi](loki-dev-plan-alle-modi.md) — 20.09. PLAN-Tabelle + Datei ~/LOKI_DEV_PLAN_ALLE_MODI.md (TAKEOVER/INIT/BUILD/FINISH/MAP, 6 Stufen); wartet auf Saschas GO + LokiVoice-Ausbaustufen-Wahl (①Stille ②CDP ③Morgenbrief ④iPhone) — bei GO Datei lesen, nicht neu planen
 - [Saschas harte Arbeitsregeln](sascha-arbeitsregeln-hart.md) — 20.09. gelernt: LOKI OS = ZCode/GLM selbst (keine Agent-Schwärme bei bekannten Fakten), Plan-abgelehnt → STOPP+simple Frage (keine Neu-Analyse), keine Überraschungs-GUI/TCC-Dialoge, nichts ohne GO schreiben, alrround-voice-Files = M4-Prompting-SPEC
 - [LOKI Voice Agent](loki-voice-agent.md) — 24/7-Daemon ~/loki-voice/ LIVE (Doppel-Ctrl→Whisper→glm-5.3-flash→say, Stufe 2 bewiesen) + App-Fork ~/loki-voice-app/ gebaut, NICHT deployt; Rest (Tests/Deploy/mac_action/Ollama-Fix) durch Plan-Modus-Streit NICHT ausgeführt; Original-Stand real 18.09. (V10 keyfrei); TCC-Klicks offen; Prompt-Architektur verortet (alles hardcoded, whisper ohne initial_prompt)
@@ -6461,6 +6462,26 @@ LOKI-OS-Harness Soll-Stand (gebaut 13.09.2026 in sess_6ec2db7a/sess_ecb2e5e0/ses
 
 Regel-Änderungen immer: 1× in STANDARD-SKILLS.md editieren + `bash ~/.agents/tools/sync-standard-skills.sh` — nie in die Kopien. Verwandt: [[deja-vu-install]].
 
+## loki-second-brain-handoff
+
+---
+name: loki-second-brain-handoff
+description: NÄCHSTES PROJEKT „LOKI SECOND BRAIN" (20.09.) — Bauplan fertig, via ~/Desktop/HANDOFF_ANTIGRAVITY.md an Antigravity übergeben (lokal: Obsidian-Vault + FTS5, 2 neue Daemon-Tools, déjà- + Morgenbrief-Kopplung)
+metadata:
+  type: project
+---
+
+**LOKI SECOND BRAIN — Bauplan an Antigravity übergeben (20.09. ~17:20).**
+
+- **Handoff-Datei (kanonisch):** `~/Desktop/HANDOFF_ANTIGRAVITY.md` — selbständig lesbar (Ist-Stand Voice-System, 7 Build-Schritte mit Beweis-Pflicht, Stop-Regeln, Pfade, Suggested Skills). Erst DORT nachlesen, bevor das Projekt angefasst wird.
+- **Kern:** „Loki, merk dir X" / „was wissen wir über Y" — Speicher = Markdown in `~/Documents/Obsidian Vault/Brain/` (+ `Daily/` Sitzungsprotokolle, M2), Index = `~/loki-brain/brain.db` (FTS5, Schema-Klon aus loki.db `fts_clinical_knowledge` → `fts_memory`), Kern = `~/loki-brain/brain.py` (~150 Zeilen, CLI + importierbar).
+- **Daemon-Erweiterung:** Tools `brain_save` + `brain_search` (Andockung wie run_command) + Prompt-Regel „merk dir…" → brain_save; dazu `recall_history` (déjà-CLI) + `read_briefing` (liest `~/loki-assistent/data/brief_latest.txt` vor).
+- **Bewusst NICHT drin:** kein UI, keine Cloud, keine Ökosystem-Reparaturen (OmniRoute-LAN-Bindung, LegalOps-Duplikate, Kernel :8010 = separate Tickets).
+- **Status:** wartet auf Antigravity-Ausführung ODER Sascha sagt „baue es hier" → dann ZCode-Schwarm (implementer/qa/reviewer wie in [[loki-voice-agent]]).
+- Saschas Reaktion auf den Plan: „Für was gibt es ein Top-Projekt" — er will Aufträge als saubere übergabefähige Tickets, nicht als Chat-Verlust.
+
+Verwandt: [[loki-voice-agent]], [[sascha-arbeitsregeln-hart]], [[loki-os-ecosystem-stand]]
+
 ## loki-verkaufstool-stand
 
 ---
@@ -6627,6 +6648,8 @@ LOKI VOICE (20.09.2026, loki-dev BUILD) — zwei Teile:
 **FINALE 20.09. ~17:00 — SCHWARM-KOMPLETT (T1–T5 alle PASS, reviewer PASS):** EINE Prompt-Quelle `~/.loki/prompt/AGENT_PROMPT.md` + `whisper-vocab.txt` treibt App (PromptLoader.swift, Fallbacks) + Daemon (mit Leer-Datei-Schutz + gemeinsamen Vocab-Pfad nach Reviewer-Fix). LokiVoiceIch.app: 9/9 Tests grün, **installiert + GESTARTET (PID verifiziert)**, Original unberührt (mtime 14.09.). Daemon idle auf glm-5.3-flash. Doku: `~/loki-voice-app/PLAN.md` + `STATUS_IW.md`. Rest-User-Klicks: Mikro-Erlauben (Dialog ist auf dem Bildschirm), Hammerspoon-Bedienungshilfen.
 
 **Re-Scan 20.09. spät (One-Shot-Planning-Explorer):** Beide Apps in /Applications (`LokiVoice.app` + `LokiVoiceIch.app`) ✅, Prompt-Zentrale `~/.loki/prompt/` existiert, PromptLoader.swift + Andockungen VoiceService.swift:448/LocalVoiceService.swift:502 drin. **Rest-Lücken:** Fork hat **kein .git** (kein Rollback) · `~/loki-voice/.env` fehlt (VAD-Werte nur Code-Defaults, Doku-Drift) · PLAN.md nur T1–T3 PASS, **T4/T5 formal offen** · LaunchAgent zeigt Last-Exit **-9** (SIGKILL-Spur, Daemon antwortet trotzdem) · audit.log letzter Eintrag 14:41. Offene Ausbaustufen: ② CDP-Browser (9222 tot, braucht Chrome-Restart) · ③ Morgenbrief (~/loki-assistent) · ④ iPhone.
+
+**MIKRO-BLOCKADE bewiesen 20.09. ~17:15 + Modell-Klärung für Sascha:** Live-Toggle-Test → „aufnahme_zu_kurz", daemon.err.log: `Failed to create AV capture input device: Cannot use MacBook Pro-Mikrofon` = **Mikro-TCC für Daemon fehlt** (früherer Dialog weggeklickt). Einziger Fix (nur Sascha): Systemeinstellungen → Datenschutz & Sicherheit → Mikrofon → „+" → ⌘⇧G → `/opt/homebrew/bin/ffmpeg` (ggf. + `/opt/homebrew/bin/python3`). App LokiVoiceIch läuft (PID 12169), fragt ihre eigene Mikro-Erlaubnis beim ersten Verbinden. **Saschas Modell-Frage beantwortet:** Ohren = Whisper lokal · Gehirn = GLM 5.3 Flash via OmniRoute (kein Gemini! — Gemini nur optionaler App-Modus des Thomas/Chipsi-Originals mit 15-Min-Limit/Google-Login) · Mund = say Anna. Nach seinem Klick: „ok" sagen → Live-Stimmtest.
 
 Verwandt: [[sascha-local-infra-ports]], [[loki-os-ecosystem-stand]], [[sascha-vollzug-keine-zwischenfragen]], [[sascha-arbeitsregeln-hart]]
 
