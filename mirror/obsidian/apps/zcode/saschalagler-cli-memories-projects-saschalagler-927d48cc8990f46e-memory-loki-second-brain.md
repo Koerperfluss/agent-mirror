@@ -29,4 +29,6 @@ LOKI SECOND BRAIN — SASCHAS LOKALER GEDÄCHTNIS-HELFER (fertig 20.09.2026, Abe
 
 **Nutzung:** Doppel-Ctrl → „Loki, merk dir X" / „was wissen wir über X?" / „lies den Morgenbrief" · ohne Mikro: `curl "127.0.0.1:8078/ask?text=..."` · CLI: `python3 ~/loki-brain/brain.py status|save|search|recall|briefing|sync`.
 
+**MAC-APP (20.09. 23:48, nach Saschas Wut-Auftrag „MAC NATIVE APP DIE ICH BENUTZEN KANN"):** **LOKI Brain.app** in /Applications (Projekt `~/loki-brain-app/`, SPM+SwiftUI, build_app.sh wie loki-voice-Muster, ad-hoc signiert). 4 Tabs: 🔍 Brain-Suche (brain.py --json) · ✏️ Notiz erfassen (brain.py save) · 📅 Heute (liest ~/loki-brain/Daily-Spiegel, kein TCC) · 🎙 Loki fragen (→ Daemon :8078 /ask, antwortet Text+laut). Footer: Daemon-Status. Start: `open "/Applications/LOKI Brain.app"`.
+
 Verwandt: [[loki-voice-agent]], [[sascha-vollzug-keine-zwischenfragen]], [[deja-vu-install]]

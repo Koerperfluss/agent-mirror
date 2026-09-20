@@ -7,8 +7,8 @@ tags: [spiegel, zcode]
 
 # Memory Index
 
-- [LOKI Second Brain Handoff](loki-second-brain-handoff.md) — NÄCHSTES Projekt (20.09.): Bauplan an Antigravity übergeben (~/Desktop/HANDOFF_ANTIGRAVITY.md); brain.py+FTS5+Obsidian-Vault, Daemon-Tools brain_save/brain_search, déjà+Morgenbrief; wartet auf Ausführung (oder „baue es hier")
-- [loki-dev Plan alle 5 Modi](loki-dev-plan-alle-modi.md) — 20.09. PLAN-Tabelle + Datei ~/LOKI_DEV_PLAN_ALLE_MODI.md (TAKEOVER/INIT/BUILD/FINISH/MAP, 6 Stufen); wartet auf Saschas GO + LokiVoice-Ausbaustufen-Wahl (①Stille ②CDP ③Morgenbrief ④iPhone) — bei GO Datei lesen, nicht neu planen
+- [LOKI Second Brain](loki-second-brain.md) — 20.09. SPÄT FERTIG+GETESTET: ~/loki-brain/ (brain.py+FTS5+git) × Daemon-4-Tools × Obsidian-Vault × M2-Auto-Protokoll; Review PASS (0 HIGH, 2 MED); Builder-Schwarm+Director parallel — NIE wieder von 0 planen, nur erweitern; Handoff-Datei war Basis
+- [loki-dev Plan alle 5 Modi](loki-dev-plan-alle-modi.md) — 20.09. VOLLZUG BEENDET (alle 6 Stufen ✅): Routing-Sync, Agenten 10/10, VAD+Vocab live; Ausbaustufe ① erledigt, ③ Morgenbrief via Brain real, offen: ② CDP-Browser ④ iPhone; Plan-Datei ~/LOKI_DEV_PLAN_ALLE_MODI.md
 - [Saschas harte Arbeitsregeln](sascha-arbeitsregeln-hart.md) — 20.09. gelernt: LOKI OS = ZCode/GLM selbst (keine Agent-Schwärme bei bekannten Fakten), Plan-abgelehnt → STOPP+simple Frage (keine Neu-Analyse), keine Überraschungs-GUI/TCC-Dialoge, nichts ohne GO schreiben, alrround-voice-Files = M4-Prompting-SPEC
 - [LOKI Voice Agent](loki-voice-agent.md) — 24/7-Daemon ~/loki-voice/ LIVE (Doppel-Ctrl→Whisper→glm-5.3-flash→say, Stufe 2 bewiesen) + App-Fork ~/loki-voice-app/ gebaut, NICHT deployt; Rest (Tests/Deploy/mac_action/Ollama-Fix) durch Plan-Modus-Streit NICHT ausgeführt; Original-Stand real 18.09. (V10 keyfrei); TCC-Klicks offen; Prompt-Architektur verortet (alles hardcoded, whisper ohne initial_prompt)
 - [Agentic-OS-Inventur](loki-os-ecosystem-stand.md) — 20.09. Vollanalyse: 10 Harnesses/1075 Skills/21 MCPs; kritisch: Kernel 8010 tot+0.0.0.0-Bind, VwGH-DB leer, 4 LegalOps-Duplikate, Phantome Phi/STANDARD-Skills/cognee; Saschas Traum = Voice→Agentic-OS-Kopplung

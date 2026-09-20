@@ -7,8 +7,8 @@ tags: [spiegel, zcode]
 
 ---
 name: lokivoice-v10-stand-presentation
-description: LokiVoice V10-Build-Stand (Session sess_a0c71628) + offener
-  Präsentationsauftrag mit leerem [topic]-Platzhalter (20.09.2026)
+description: LokiVoice V10-Build-Stand (Session sess_a0c71628), Handout-PDF
+  fertig (20.09.), PPTX-Präsentation pausiert bis Themenwahl
 metadata:
   node_type: memory
   type: project
