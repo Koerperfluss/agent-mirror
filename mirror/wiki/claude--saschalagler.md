@@ -1,6 +1,6 @@
 # saschalagler (claude)
 
-Zuletzt gespiegelt: 2026-09-20 14:58 UTC
+Zuletzt gespiegelt: 2026-09-20 15:09 UTC
 
 ## CLAUDE
 
@@ -38,12 +38,10 @@ When the user types `/graphify`, use the installed graphify skill or instruction
 | „Hatten wir das schon gelöst?" (Cross-Session) | deja-search (MCP-Tool `deja`) |
 | Unklarer Task → erst Fakten sammeln | investigate-first |
 | Doku/Lookup aktueller APIs | find-docs (CLI + MCP-Modus) |
-| Gratis-Modelle / KI-Fallback-Check | `omni-check` (Terminal-Alias) |
 | Build-Wunsch („baue/erstelle/mach mir X") | **loki-dev** Modus BUILD (Director, Zero-Question) |
 | Projekt onboarden / neu anlegen / ÜBERNEHMEN (Memory-Sweep→Stand→Plan) / fertig machen / testen | **loki-dev** Modi INIT/TAKEOVER/FINISH (ehem. deve/glm-init = konsolidiert) |
 | UI-/UX-Test (Web/Desktop, erschöpfend) | ui-ux-tester (chrome-devtools/computer-use + Vision) |
 | GROSSES Projekt / Arbeit >1 Session | **loki-dev** Modus MAP → wayfinder (Map ch Artieren/abarbeiten; Konfig-Landkarte: ~/.agents/WAYFINDER-GLM.md) |
-| Terminal-KI-Frage ohne Modell-Wahl | `omniroute chat` (Gateway **localhost:20128**, permanent via LaunchAgent) |
 
 
 
@@ -52,12 +50,12 @@ When the user types `/graphify`, use the installed graphify skill or instruction
 - Nach einer **bewährten** neuen Zuordnung: sie dort eintragen — Memory entscheidet künftig, welcher Skill gerufen wird.
 - Security: strix-pentesting nur auf **eigene** Apps/Infrastruktur.
 
-### D. GLM-Pro-Betrieb (ab 01.09.2026 — automatisch beachten, nie fragen)
-1. **Modell-Routing:** Standard = **glm-first** (Flash-first, ⅓ Kosten). Schweres (Architektur, Multi-File-Refactor, Security, Plan-Modus) = **glm-plan** (5.3-first). Beide via OmniRoute localhost:20128 mit Auto-Fallback auf tagesaktuelle Free-Modelle.
+### D. GLM-Pro-Betrieb (Stand 20.09.2026 — automatisch beachten, nie fragen)
+1. **Modell-Routing:** Standard = **glm-first** (Flash-first, ⅓ Kosten). Schweres (Architektur, Multi-File-Refactor, Security, Plan-Modus) = **glm-plan** (5.3-first). **Direkt-Provider (OmniRoute ab 20.09. ABGEBAUT auf Nutzer-Wunsch):** ZCode & Claude-Code = z.ai builtin · Cline-CLI = OpenRouter · Gemini-CLI = Gemini-Key.
 2. **Peak/Off-Peak:** Peak = Mo–Fr 08–12 Uhr MEZ (50% Aufschlag). Batch-Jobs (Scans, Test-Gen, Doku, große Refactors) automatisch auf ab 12 Uhr MEZ legen ODER sofort auf Flash ausweichen — Entscheidung dokumentieren, nicht nachfragen.
 3. **MCP-Kosten:** Z.AI-MCP-Calls = 1,2 Credits/Call (Vision/web-search/zread) — gezielt, nicht spielerisch.
 4. **Session-Disziplin:** 1 Task = 1 Session. Context komprimieren lassen, keine Monster-Sessions.
-5. **Quota tot (429)?** Nicht stoppen: OmniRoute rutscht automatisch; beim User melden nur, wenn ALLES tot (omni-health).
+5. **Quota tot (429)?** Nicht stoppen: Provider-eigener Retry/Fallback; beim User melden nur, wenn ALLES tot ist.
 6. **Aufwand vor Start:** Bei Tasks >30 Min geschätzte Dauer + Credit-Risiko in 1 Zeile nennen, dann los.
 
 <!-- STANDARD-SKILLS:END -->

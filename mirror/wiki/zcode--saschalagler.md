@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-20 14:58 UTC
+Zuletzt gespiegelt: 2026-09-20 15:09 UTC
 
 ## AGENTS
 
@@ -54,12 +54,10 @@ Zuletzt gespiegelt: 2026-09-20 14:58 UTC
 | „Hatten wir das schon gelöst?" (Cross-Session) | deja-search (MCP-Tool `deja`) |
 | Unklarer Task → erst Fakten sammeln | investigate-first |
 | Doku/Lookup aktueller APIs | find-docs (CLI + MCP-Modus) |
-| Gratis-Modelle / KI-Fallback-Check | `omni-check` (Terminal-Alias) |
 | Build-Wunsch („baue/erstelle/mach mir X") | **loki-dev** Modus BUILD (Director, Zero-Question) |
 | Projekt onboarden / neu anlegen / ÜBERNEHMEN (Memory-Sweep→Stand→Plan) / fertig machen / testen | **loki-dev** Modi INIT/TAKEOVER/FINISH (ehem. deve/glm-init = konsolidiert) |
 | UI-/UX-Test (Web/Desktop, erschöpfend) | ui-ux-tester (chrome-devtools/computer-use + Vision) |
 | GROSSES Projekt / Arbeit >1 Session | **loki-dev** Modus MAP → wayfinder (Map ch Artieren/abarbeiten; Konfig-Landkarte: ~/.agents/WAYFINDER-GLM.md) |
-| Terminal-KI-Frage ohne Modell-Wahl | `omniroute chat` (Gateway **localhost:20128**, permanent via LaunchAgent) |
 
 
 
@@ -68,12 +66,12 @@ Zuletzt gespiegelt: 2026-09-20 14:58 UTC
 - Nach einer **bewährten** neuen Zuordnung: sie dort eintragen — Memory entscheidet künftig, welcher Skill gerufen wird.
 - Security: strix-pentesting nur auf **eigene** Apps/Infrastruktur.
 
-### D. GLM-Pro-Betrieb (ab 01.09.2026 — automatisch beachten, nie fragen)
-1. **Modell-Routing:** Standard = **glm-first** (Flash-first, ⅓ Kosten). Schweres (Architektur, Multi-File-Refactor, Security, Plan-Modus) = **glm-plan** (5.3-first). Beide via OmniRoute localhost:20128 mit Auto-Fallback auf tagesaktuelle Free-Modelle.
+### D. GLM-Pro-Betrieb (Stand 20.09.2026 — automatisch beachten, nie fragen)
+1. **Modell-Routing:** Standard = **glm-first** (Flash-first, ⅓ Kosten). Schweres (Architektur, Multi-File-Refactor, Security, Plan-Modus) = **glm-plan** (5.3-first). **Direkt-Provider (OmniRoute ab 20.09. ABGEBAUT auf Nutzer-Wunsch):** ZCode & Claude-Code = z.ai builtin · Cline-CLI = OpenRouter · Gemini-CLI = Gemini-Key.
 2. **Peak/Off-Peak:** Peak = Mo–Fr 08–12 Uhr MEZ (50% Aufschlag). Batch-Jobs (Scans, Test-Gen, Doku, große Refactors) automatisch auf ab 12 Uhr MEZ legen ODER sofort auf Flash ausweichen — Entscheidung dokumentieren, nicht nachfragen.
 3. **MCP-Kosten:** Z.AI-MCP-Calls = 1,2 Credits/Call (Vision/web-search/zread) — gezielt, nicht spielerisch.
 4. **Session-Disziplin:** 1 Task = 1 Session. Context komprimieren lassen, keine Monster-Sessions.
-5. **Quota tot (429)?** Nicht stoppen: OmniRoute rutscht automatisch; beim User melden nur, wenn ALLES tot (omni-health).
+5. **Quota tot (429)?** Nicht stoppen: Provider-eigener Retry/Fallback; beim User melden nur, wenn ALLES tot ist.
 6. **Aufwand vor Start:** Bei Tasks >30 Min geschätzte Dauer + Credit-Risiko in 1 Zeile nennen, dann los.
 
 <!-- STANDARD-SKILLS:END -->
@@ -2171,6 +2169,8 @@ Bei Fachfragen (z. B. Trainings-Übungen) fordert er explizit „clinical reason
 
 # Memory Index
 
+- [OmniRoute-Rückbau + System-Fixes](omniroute-rueckbau-system-fixes-2026-09-20.md) — 20.09. Abend: Q1–Q7 ALLE ERLEDIGT („fix test"-GO): OmniRoute ABGEBAUT (Nutzer-Wunsch, Plist raus, Regeln auf Direkt-Provider gesynced, Comet läuft bis Reboot); Atlas-Ingest 67 Module (2 Code-Bugs gefixt); Task-Bridge 5 echte Tasks; loki-up.command am Desktop getestet; Mongo zu; 2 tote Agents disabled; 7b-Coder-Modell da; MASTER_STATUS+HANDBUCH aktualisiert (Backups ~/sicherungen/doku-backup-20260920); Endstand CHECKPOINT CONTINUE — offen nur: 4 Keys (Sascha) + Firewall sudo
+
 - [LOKI-Kernel v17-Start + 8010-Fix](loki-kernel-v17-start-8010-fix.md) — 20.09.: Kernel-Start NUR via macos-app-v17/LOKI_MASTER.py, Bind 127.0.0.1; System-Audit-Workflow (dwfrun-1359c3bc) FERTIG: 39 Checks, 7 bestätigte Findings — **OmniRoute *:20128 Bind-Bug (wartet auf GO)**, LegalOps 7070 stirbt wiederholt, 2 tote LaunchAgents (omni-check.daily/toolhub-watchdog), MASTER_STATUS 74 Tage alt, Atlas-Ingest+Task-Bridge offen; Verhör Q1–Q7 UNBEANTWORTET — er will Erst-Erklärung in Menschen-Sprache
 
 - [Cline-App Backend-Fix](cline-app-desktop-backend-fix.md) — 18.09. „desktop backend exited" gefixt: steckengebliebener code-sidecar; Health-Check Port 25463/health; Fix-Einzeiler pkill code-sidecar + App-Neustart; ~/.cline ist NICHT die App
@@ -3513,6 +3513,27 @@ OmniRoute-Gateway (**localhost:20128**) verlangt einen Bearer-Client-Key (sonst 
 - `~/.omniroute/.env` enthält nur `STORAGE_ENCRYPTION_KEY` + `REQUIRE_API_KEY`, **keinen** Client-Key.
 - `GET /v1/models` mit gültigem Key = **1529 Modelle** (`auto/best-coding|reasoning|fast|vision|chat`, `auto/pro-*` …) — OpenAI-kompatibel, damit an jedes BYOK-Tool anbindbar (Open WebUI an `/openai/config/update`).
 - LaunchAgent `com.sascha.omniroute` (KeepAlive) startet `/opt/homebrew/bin/omniroute`; CLI lädt Env aus `~/.omniroute/.env`.
+
+## omniroute-rueckbau-system-fixes-2026-09-20
+
+---
+name: omniroute-rueckbau-system-fixes-2026-09-20
+description: OmniRoute abgebaut (Nutzer-Wunsch) + 7 Audit-Fixes: Atlas-Ingest 67 Module, Task-Bridge, loki-up.command, Mongo zu, tote Agents raus, Doku aktualisiert
+metadata:
+  type: project
+---
+
+Stand 20.09.2026 Abend — Fix-Lauf nach System-Selbstprüfung (Workflow „LOKI.OS Selbstprüfung", 39 Checks):
+
+1. **OmniRoute ABGEBAUT auf Nutzer-Wunsch** („ich brauche kein OmniRoute mehr"): Plist `com.sascha.omniroute.plist` → `~/sicherungen/launchagents-disabled-20260920/` (reversibel). Laufender Prozess bleibt als Comet-Fallback bis zum Mac-Neustart; danach ist er WEG. Regeln in `~/.agents/STANDARD-SKILLS.md` D.1 umgestellt auf Direkt-Provider (ZCode/Claude=z.ai, Cline=OpenRouter, Gemini=Gemini-Key) + Sync auf alle 5 Harnesses (17:0x). WICHTIG: status_check.sh-Soll-Tabelle angepasst (OmniRoute-Zeile raus). Rest-Referenzen: openclaw.json-Provider, omni-* Skills (~6), `omni-check`-Terminal-Alias — bewusst NICHT gelöscht, nur Doku.
+2. **OmniRoute-Bind bleibt `*:20128`**: Binary kodiert `*` hart, `HOST=127.0.0.1` in `~/.omniroute/.env` wirkte NICHT auf den Listen-Socket. Einziger Fix: macOS-Firewall (ist DISABLED) — sudo nötig → Paste-Block an Nutzer. `/health` ist KEIN OmniRoute-Endpunkt (TCP-Check nutzen).
+3. **Atlas-Ingest gefixt** (2 Bugs): Quelle war toter Pfad `~/Desktop/lauri/ATLAS_KNOWLEDGE_BASE` → jetzt echter `ATLAS_MASTER`-Pfad (ist ein Symlink! find braucht -L) + os.walk-Pruning gegen node_modules (hing sonst Minuten) + GET-Pfad-Bug (`BASE_DIR` vs. `BASE_DIR.parent`) → **67 Wissensmodule live**.
+4. **Task-Bridge**: Kernel `/tasks` liest `~/loki-ki/macos-app-v17/todo.txt` (NICHT `~/loki-ki/todo.txt` — das ist der Sprachnotizen-Speicher) → 5 echte Aufgaben statt Test-Dummies.
+5. **`~/Desktop/loki-up.command`** (getestet): startet Kernel + LegalOps + Kanban idempotent — das erste Mittel nach jedem Reboot.
+6. MongoDB gestoppt (`brew services stop mongodb-community`, niemand nutzte ihn), 2 tote LaunchAgents disabled (omni-check.daily Exit 2, toolhub-watchdog Exit 126), qwen2.5-coder:7b (4,7 GB) installiert.
+7. Doku-Konsolidierung: `LOKI_MASTER_STATUS.md` (war 74 Tage alt) + `SYSTEM_HANDBUCH.md` neu geschrieben/gezielt gefixt; Backups in `~/sicherungen/doku-backup-20260920/`.
+
+Verwandt: [[loki-kernel-v17-start-8010-fix]], [[zai-coding-plan-limits]]
 
 ## oneforma-agb-pruefung
 
@@ -6330,7 +6351,10 @@ Meta-Plan (20.09.2026, Schnitt-0 komplett: Sequential 3 Schritte + TodoWrite + P
 
 **Update 20.09. (Visualisierung + Nutzungs-Fix):** Sascha verstand nicht, was passiert → **visuelles HTML-Kanban gebaut + geöffnet: `~/LOKI_PLAN_KANBAN.html`** (4 Spalten Todo/In-Arbeit/Blockiert/Fertig, wird nach jeder Stufe aktualisiert). WICHTIG: `/kanban`-Command (Port 3484) NICHT für Plan-Sichtbarkeit nutzen — `kanban task create` startet echte Cline-Agenten mit Git-Worktrees (zu schwer); HTML-Board ist der Weg. Stufe 4 erweitert: **Nutzungs-Szenarien zuerst definieren** (am Schreibtisch Doppel-Ctrl · curl-Fallback ohne Mikro · Morgenbrief-Fluss · Whisper-Vokabular VwGH/FFG/Judicario) und **ui-ux-tester als Abnahme-Gate** einbauen — Antwort auf Saschas Frage „hast du bedacht, wie ich den Assistenten nutzen werde?"
 
+**Update 20.09. spät — ONE-SHOT-FULL-OS-PLAN vorgelegt + ABGELEHNT:** Sascha: „spawn whole zcode sub agent team - plan everything from 0 - one shot. possible?" → 3 Explorer lieferten Fakten (Kernel 8010 läuft doch, App deployt, aber OmniRoute *:20128, 5 LegalOps-Dupes, VwGH-DB leer, kein git im Fork). Plan: P0 Sicherung (git init beide Voice-Repos, .env) · P1 Security (OmniRoute 127.0.0.1, LegalOps-Singleton, Kernel-Bind-Fix+Watchdog, omni-free-sync) · P2 Voice-Abschluss (T4/T5, Ausbaustufe ② CDP-Browser + ③ Morgenbrief) · P3 Maps/Ticket 10 Option A · P4 QA+Reviewer-Veto. AskUserQuestion (Umfang+Ausbaustufen) blieb unbeantwortet → Empfehlung Full-OS+②③ gewählt. **ExitPlanMode abgelehnt** (Sascha verstand das Ziel nicht → Wut; siehe [[sascha-arbeitsregeln-hart]]). Status: nichts ausgeführt, Plan wartet auf einfaches ja/nein.
+
 **Why:** Endet die Session vor GO, muss der nächste Lauf NICHT neu planen — Datei + Kanban-HTML + diese Notiz sind die Basis.
+**How to apply:** Bei „GO" (ggf. mit Stufen-Nr.) Datei lesen und ab Stufe 1+2 parallel fahren; Stopp-Regeln (Deploy/Löschen/push) bleiben GO-pflichtig. Verwandt: [[loki-voice-agent]], [[wayfinder-skill-konsolidierung]], [[sascha-vollzug-keine-zwischenfragen]]
 **How to apply:** Bei „GO" (ggf. mit Stufen-Nr.) Datei lesen und ab Stufe 1+2 parallel fahren; Stopp-Regeln (Deploy/Löschen/push) bleiben GO-pflichtig. Verwandt: [[loki-voice-agent]], [[wayfinder-skill-konsolidierung]], [[sascha-vollzug-keine-zwischenfragen]]
 
 ## loki-ki-clinical-wayfinder
@@ -6379,7 +6403,7 @@ Systemanalyse von Saschas Agentic OS (20.09.2026, alle Fakten mit lsof/ps/ls/cur
 
 **Skills gesamt 1.075:** 127 ~/.agents + 104 autoclaw + 95 cline + 749 Vault. Kopplung nur via `skillshare` + `~/.agents/skill-routing.md` (84 Zeilen). Drift: kanonische Doku (SKILL_LANDKARTE 31.08., loki-memory-sync) nennt 113/99/99 — falsch; „Phi"-Harness existiert NICHT (Phantom); `~/.agents/STANDARD-Skills`-Pfad fehlt (Referenz ins Leere); **cognee-Paket nicht installiert** (Skill tot); deja findet ZCode-Verlauf nicht (0 Sessions dort).
 
-**Kritische Baustellen (Reihenfolge nach Risiko):** 1) OmniRoute + Kernel-Bind auf `0.0.0.0` ([[sascha-local-infra-ports]]) · 2) LOKI-Kernel 8010 läuft nicht, Watchdog fehlt → ganzes LOKI.OS nur Doku, Voice→Kernel-Kopplung (M2–M6: Second-Brain-Sitzungsdatei, voice-triage-Webhook, Prüfkopf) hat kein Ziel · 3) 4 LegalOps-Duplikate · 4) **VwGH-DB leer** (Legal-Use-Case Peter/Thomas inhaltlich tot) · 5) 3 tote LaunchAgents.
+**Kritische Baustellen (Re-Scan 20.09. Abend, 3 Explorer des One-Shot-Plannings):** 1) OmniRoute bindet weiter `*:20128` (LAN-offen, Security #1, mehrfach in Saschas Docs CRITICAL) · 2) **Kernel 8010 LÄUFT JETZT DOCH** (Python PID 8933, 8 h, `localhost:8010` — korrigiert früheren Tot-Befund!) ABER: kein Watchdog/LaunchAgent, nur manueller Prozess; Code `LOKI_MASTER.py:894` bindet `0.0.0.0` (künftige Starts wären LAN-offen) · 3) **5× LegalOps-Duplikate** (4× loki_legal_ops_mcp_server.py PIDs + NativeLegalOps.app, trotz disabled-plist) · 4) **VwGH-DB leer** (`~/loki-ki/data/vwgh_erkenntnisse/` = 0 B seit Mai) · 5) tote LaunchAgents: omni-free-sync Exit 1; Chrome CDP 9222 tot. M2–M6-Roadmap (Voice→Kernel) Quelle: `~/Desktop/Coworkspace_Ich/THOMAS - CHIPS JUDICARIO /Judicario_Sacha_Mac/chipsi-safetalk/SPRACHASSISTENT_ARCHITEKTUR.md:138-143` (M1 lokale Transkription · M2 Second-Brain-Sitzungsdatei · M3 Prüfkopf Judicario · M4 Melde-Report · M5 Frage-mich · M6 Cloud-Fallback).
 
 **Aktive Projekte:** ~/loki-voice (Daemon LIVE) · ~/loki-voice-app (Fork, wartet Deploy, [[loki-voice-agent]]) · ~/loki-verkaufstool (MVP fertig, eBay live) · ~/loki-assistent (assi-CLI, 08:00-Briefing) · FFG 68209806 (Upload fertig, HITL-Felder offen) · Kernel-Code ~/loki-ki/macos-app-v17/LOKI_MASTER.py v15.3.0 existiert.
 
@@ -6602,6 +6626,8 @@ LOKI VOICE (20.09.2026, loki-dev BUILD) — zwei Teile:
 
 **FINALE 20.09. ~17:00 — SCHWARM-KOMPLETT (T1–T5 alle PASS, reviewer PASS):** EINE Prompt-Quelle `~/.loki/prompt/AGENT_PROMPT.md` + `whisper-vocab.txt` treibt App (PromptLoader.swift, Fallbacks) + Daemon (mit Leer-Datei-Schutz + gemeinsamen Vocab-Pfad nach Reviewer-Fix). LokiVoiceIch.app: 9/9 Tests grün, **installiert + GESTARTET (PID verifiziert)**, Original unberührt (mtime 14.09.). Daemon idle auf glm-5.3-flash. Doku: `~/loki-voice-app/PLAN.md` + `STATUS_IW.md`. Rest-User-Klicks: Mikro-Erlauben (Dialog ist auf dem Bildschirm), Hammerspoon-Bedienungshilfen.
 
+**Re-Scan 20.09. spät (One-Shot-Planning-Explorer):** Beide Apps in /Applications (`LokiVoice.app` + `LokiVoiceIch.app`) ✅, Prompt-Zentrale `~/.loki/prompt/` existiert, PromptLoader.swift + Andockungen VoiceService.swift:448/LocalVoiceService.swift:502 drin. **Rest-Lücken:** Fork hat **kein .git** (kein Rollback) · `~/loki-voice/.env` fehlt (VAD-Werte nur Code-Defaults, Doku-Drift) · PLAN.md nur T1–T3 PASS, **T4/T5 formal offen** · LaunchAgent zeigt Last-Exit **-9** (SIGKILL-Spur, Daemon antwortet trotzdem) · audit.log letzter Eintrag 14:41. Offene Ausbaustufen: ② CDP-Browser (9222 tot, braucht Chrome-Restart) · ③ Morgenbrief (~/loki-assistent) · ④ iPhone.
+
 Verwandt: [[sascha-local-infra-ports]], [[loki-os-ecosystem-stand]], [[sascha-vollzug-keine-zwischenfragen]], [[sascha-arbeitsregeln-hart]]
 
 ## sascha-arbeitsregeln-hart
@@ -6623,7 +6649,7 @@ Saschas harte Regeln, gelernt aus dem 20.09.-Zerwürfnis (619k Token in 1 Sessio
 7. **GO kam schließlich als Direktiv (20.09. Abend):** Nach der Schwarm-Korrektur („MIT AGENTEN SCHWARM … VOLLSTÄNDIGER NEUER PLAN") erteilte Sascha das GO als 1-Satz-Direktiv: „loki-dev übernimm — denke — optimiere — verteile — überwache — teste — verifiziere — stelle fertig AUTONOM, melde dich wenn fertig". Das Muster, das funktionierte: PLAN-Tabelle mit installierten Subagenten (T1 implementer A ∥ T2 implementer B → T3 qa-tester → T4 reviewer qwen3.8-max → T5 Director) + PLAN.md ins Projekt + dann autonome Ausführung OHNE weitere Rückfragen bis zum Beweis-Bericht. **Gotcha:** Per SendMessage resumed Subagenten tragen stale Plan-Modus-Annahmen aus alter Session mit → explizit korrigieren („Plan-Modus ist BEENDET, führe jetzt aus").
 
 1. **Schwarm-Kontradiktion auflösen (WICHTIG, korrigiert):** Sascha verurteilte NICHT Agent-Schwärme generell — er verurteilte (a) redundantes Explorer-Feuern bei bereits bekannten Fakten (Token-Schleife) und (b) Solo-Minimal-Pläne ohne sein Orchestrierungs-Format. RICHTIG: Schwarm-Einsatz NUR als PLAN-Tabelle konform Standard-Skill-System S.2 (Agent/Modell/Tokens/Zeit/Dep), Builder parallel, Reviewer mit Vetorecht, PLAN.md ins Projekt. „LOKI OS BIST DU — ZCODE/GLM" heißt: ZCode ist der DIRECTOR, nicht der Allein-Arbeiter.
-2. **Token-Disziplin:** Wenn ein Plan abgelehnt wird → STOPPEN und 1 simple Frage/Angebot, NICHT neu analysieren + 3 neue Explorer + neuen Riesenplan. ~400k Token gingen so in Schleifen verloren. 1 Task = 1 Session ernst nehmen.
+2. **Token-Disziplin:** Wenn ein Plan abgelehnt wird → STOPPEN und 1 simple Frage/Angebot, NICHT neu analysieren + 3 neue Explorer + neuen Riesenplan. ~400k Token gingen so in Schleifen verloren. 1 Task = 1 Session ernst nehmen. **Bestätigt 20.09. spät (8. abgelehnter Plan):** Sascha fragte „one-shot possible?" → ich fuhr volle Plan-Modus-Zeremonie (3 Explorer + AskUserQuestion + ExitPlanMode-Riesenplan) → Plan abgelehnt + Wut-Ausbruch „WAS ZUR HÖLLE MACHST DU WAS IST DEIN ZIEL". **Was funktionierte:** sofort STOPP, 3 Sätze (Ziel + was lief + „nichts verändert"), dann 1 simple ja/nein-Frage. **Weitere Lektionen:** (a) unbeantwortete AskUserQuestion ≠ GO — Best-Judgment-Empfehlung als Default wählen und im Plan klar als Empfehlung markieren; (b) im Plan-Modus die Freigabe-Kachel KLEIN halten (max ~15 Zeilen) statt 5-Phasen-Tabelle — die Zeremonie selbst löst die Wut aus, nicht der Inhalt.
 3. **Keine Überraschungs-GUI-Aktionen:** Apps öffnen, Aufnahme-Tests oder TCC-Dialoge („python3.14 möchte aufs Mikrofon") NIE unaufgefordert auslösen — vorher ankündigen. Genau das löste den ersten Stopp aus („du sollst nur planen").
 4. **Nichts ohne Bestätigung:** Nach Plan-Ablehnung keine Dateien/Deliverables „trotzdem" schreiben (AGENTIC_OS_WISSEN.md wurde ohne GO geschrieben → „ich habe nichts bestätigt").
 5. **`~/Desktop/alrround voice /`-Files = M4-optimierte Prompting-SPEC** (5-Schichten: Persona, Output-Disziplin BLUF/Token-Ban, ToT-Verifikation, AT-Daten-Gate, Intercept-Gate) — verstehen → verbessern → Einbau in LokiVoice planen. NICHT als Archiv behandeln.

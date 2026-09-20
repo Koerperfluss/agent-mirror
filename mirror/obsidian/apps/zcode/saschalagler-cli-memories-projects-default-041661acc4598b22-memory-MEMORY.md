@@ -7,6 +7,8 @@ tags: [spiegel, zcode]
 
 # Memory Index
 
+- [OmniRoute-Rückbau + System-Fixes](omniroute-rueckbau-system-fixes-2026-09-20.md) — 20.09. Abend: Q1–Q7 ALLE ERLEDIGT („fix test"-GO): OmniRoute ABGEBAUT (Nutzer-Wunsch, Plist raus, Regeln auf Direkt-Provider gesynced, Comet läuft bis Reboot); Atlas-Ingest 67 Module (2 Code-Bugs gefixt); Task-Bridge 5 echte Tasks; loki-up.command am Desktop getestet; Mongo zu; 2 tote Agents disabled; 7b-Coder-Modell da; MASTER_STATUS+HANDBUCH aktualisiert (Backups ~/sicherungen/doku-backup-20260920); Endstand CHECKPOINT CONTINUE — offen nur: 4 Keys (Sascha) + Firewall sudo
+
 - [LOKI-Kernel v17-Start + 8010-Fix](loki-kernel-v17-start-8010-fix.md) — 20.09.: Kernel-Start NUR via macos-app-v17/LOKI_MASTER.py, Bind 127.0.0.1; System-Audit-Workflow (dwfrun-1359c3bc) FERTIG: 39 Checks, 7 bestätigte Findings — **OmniRoute *:20128 Bind-Bug (wartet auf GO)**, LegalOps 7070 stirbt wiederholt, 2 tote LaunchAgents (omni-check.daily/toolhub-watchdog), MASTER_STATUS 74 Tage alt, Atlas-Ingest+Task-Bridge offen; Verhör Q1–Q7 UNBEANTWORTET — er will Erst-Erklärung in Menschen-Sprache
 
 - [Cline-App Backend-Fix](cline-app-desktop-backend-fix.md) — 18.09. „desktop backend exited" gefixt: steckengebliebener code-sidecar; Health-Check Port 25463/health; Fix-Einzeiler pkill code-sidecar + App-Neustart; ~/.cline ist NICHT die App
