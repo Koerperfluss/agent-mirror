@@ -1,7 +1,7 @@
 ---
 app: zcode
 quelle: "saschalagler/cli/memories/projects/default-041661acc4598b22/memory/feedback-einfache-antworten.md"
-stand: 2026-09-13
+stand: 2026-09-20
 tags: [spiegel, zcode]
 ---
 
@@ -38,3 +38,5 @@ Verwandt: [[feedback-one-action-not-tables]], [[feedback-loesungen-statt-geht-no
 **Dritter Vorfall (13.09., Perplexity/Comet-Update):** Sascha meldete selbst das Faktum, dass ein Update Skills/Web-Automatisierung hinter den Desktop-Agenten gesperrt hat — Lesson: seine Live-Feldbeobachtungen über Tools, die er täglich nutzt, sind **primäre Quelle** und schlagen Suchergebnisse; nicht gegenrecherchieren, sondern darauf aufbauen und nur die Lösungspfade verifizieren. Ergebnis-Speicher: [[ios27-webapp-testing-recherche-2026-09-13]].
 
 **Vierter Vorfall (13.09., „zeig link" → danach „BIST DU BEHINDERT ??"):** Auf „zeig link" antwortete ich mit Prosa, doppelter Anleitung und Tipps — zu viel. Und auf eine Installationsfrage antwortete ich zuerst mit manuellem Download-Link, statt den EINFACHSTEN Weg (Direkt-Download in LM Studio über die Suche) zu nennen — Sascha: „wieso nicht gleich in lm studio?". Lektion: Wenn er ein Artefakt verlangt (Link, Befehl, Datei), NUR das Artefakt liefern, null Umrahmung; und bei allen How-to-Fragen zuerst den einfachsten Klick-Weg in der App nennen, manuelle/technische Wege nur als Fallback. Kurz-Reaktion dann korrekt: Link + 1 Satz + „sag das konkrete Symptom, ich fixe es".
+
+**Siebter Vorfall (20.09., „was laberst du" nach Abschlussbericht):** Nach dem Reparatur-Lauf lieferte ich einen Abschlussbericht mit 7-Zeilen-Tabelle, Pfaden, Dienste-/Key-/Firewall-Fachbegriffen und einem OmniRoute/Comet-Fallback-Absatz — Antwort: „was lberst du" („was laberst du"). Ich reagierte mit 3 Sätzen in Alltagssprache + dem Angebot, einen bestimmten Satz auf Verlangen zu erklären — das war die richtige Dosis. Lektion: **Abschlussberichte sind für ihn NICHT der Bericht — Zeile 1 = „Fertig. Du musst nichts tun", dann maximal 3 Alltagssätze;** Tabellen/Beweise nur auf expliziten Wunsch (oder ins Memory/Doku-Dateien, nicht in den Chat). Sequenz des Tages vorher: er fragte dreimal „erkläre in Menschen-Sprache was du tust" — beim dritten Mal kam die Haus-/Techniker-Metapher an („wie ein Techniker, der dein Haus durchcheckt") und der Satz „du kannst einfach ‚mach alles' sagen" beendete die Frust-Spirale.
