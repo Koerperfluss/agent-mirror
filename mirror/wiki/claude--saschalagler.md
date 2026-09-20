@@ -1,6 +1,6 @@
 # saschalagler (claude)
 
-Zuletzt gespiegelt: 2026-09-20 20:47 UTC
+Zuletzt gespiegelt: 2026-09-20 20:58 UTC
 
 ## CLAUDE
 
@@ -1007,6 +1007,7 @@ python scraper_vwgh.py --dry-run            # kein Schreiben
 - Sequential Thinking: MCP-Tool `sequentialthinking` bei JEDER Anfrage aufrufen (Nutzer-Regel 30.08.2026, kanonisch in ~/.agents/STANDARD-SKILLS.md A.3)
 
 ## Weitere Projekte
+- [LOKI Second Brain](loki-brain.md) — ~/loki-brain/ & ~/loki-voice/ (Port 8078); lokaler Assistent mit Obsidian Vault Storage, FTS5 unicode61 Suche mit Frage-Parsing, M2 Auto-Sitzungsprotokoll (Daily/), déjà-Kopplung, assi-Morgenbrief, Iris Plugin, Zoetrope Doku; 100% lokal.
 - [LOKI.OS konsolidiert](loki-os.md) — EINE Boot-Kette (com.loki.v15→MASTER_BOOT v15.3.0), EIN Frontend (macos-app-v17, kein Xcode nötig), Dashboard v15.3 mit 7 Tabs + Bedienkanal; Wahrheit=capabilities_map (527 Skills); Redundanzen in `~/loki-ki/_archive/`
 - [Gemini API Stack](gemini-api-stack.md) — 4 Skills kanonisch in `~/.agents/skills` + symlinked; Docs-MCP in 8 Configs (Antigravity nutzt `serverUrl`!); Googles Endpunkt liefert 429 → llms.txt-Fallback; Sync: `~/agent-os/gemini-stack-sync.sh`
 - [LOKI Agent OS](agent-os.md) — `~/agent-os/loki "Ziel"` = Single-Prompt Multi-Agenten-Dev-Stack (R1–R5); Discovery/Routing/Slicer/Self-Healing; Engines claude→gemini→ollama; Audit in `.agents/auditor_m5/`
