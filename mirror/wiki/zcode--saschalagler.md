@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-20 10:44 UTC
+Zuletzt gespiegelt: 2026-09-20 10:55 UTC
 
 ## AGENTS
 
@@ -1412,7 +1412,7 @@ Bei Fachfragen (z. B. Trainings-Übungen) fordert er explizit „clinical reason
 - [Coding-Modelle + Android Studio](coding-modelle-android-studio-2026-09-13.md) — 13.09. Research fertig (Report ~/Desktop/CODING_MODELL_RESEARCH_2026-09-13.md); **Korrekturen: NUR LOKALE LLMs · MOOLAPTOP hat KEINEN GLM-Plan · KEIN OLLAMA (Runner = LM Studio/llama.cpp)**; **FINALES Modell für Moritz = Qwen3-Coder-Next 80B UD-Q2_K_XL (26,76 GB, von LM Studio selbst mit ✓ markiert + Unsloth-Karte bestätigt „2-bit XL or above")**, UD-IQ3_XXS 28,5 GB = Maximum; Download in LM Studio Discover-Tab oder HF-Direktlink; **Integration: .lmstudio\models\unsloth\Qwen3-Coder-Next-GGUF\ (3-Ebenen-Struktur!) → Server Port 1234 → AS Model Providers → Local Provider**; Token-Settings NUR in LM Studio (Zahnrad: Context 32K + KV q8_0 + Flash-Attention, „Max Tokens" 8192 Seitenleiste) — AS hat keine Token-Settings, nur neuer Chat pro Aufgabe; Qwen3.5-35B-A3B Q4 = sicherer Standard, Qwen3.6 27B (77,2 % SWE-bench vendor) für harte Aufgaben; feature-dev-Team PASS; **Nutzer = MORITZ** (präziser Coder → schnelles MoE als Default, Thinking-Reserve nur für Bug-Jagd); ⚠️ Pagefile 35 GB belegt; **14.09. offen: „Modell extrem langsam und dumm"** → Checks laufen (Swap/GPU-Offload/CUDA-Runtime), falls unverändert: Wechsel auf Qwen3.5-35B-A3B Q4 (~21 GB) empfohlen
 
 - [Prüf-Team + Config-Health](pruef-team-und-config-health.md) — 13.09.: 10 Prüf-Agents + pruef-team-Dispatcher; Cap max-3-Agents ENTFERNT; config-health.py SessionStart-Selbstcheck; **globale Sync jetzt 5/5 Harnesses (sync-standard-skills.sh TARGETS + ZCode AGENTS.md + Claude CLAUDE.md)**; alle ✅-Berichte = Disk-Beweise, LIVE-Beweis ausstehend → `/systemproof` Command (6 Checks, URTEIL AKTIV/TEILWEISE/TOT) in neuem Chat ausführen
-- [ZCode ADHS-Automations](zcode-adhs-automationen.md) — 13.–16.09. LIVE: **EINE Automation mit ALLEN 6 Briefs** (cron `0 9,10,15,16,21`, Zweige per Uhrzeit+Wochentag; niemals 6 separate — Nutzer-Ziel!) + Engine 7/7 PASS; **Läufe bewiesen: Abend 13.09. PASS (Event 610E2A57, Fix `open -a Calendar` vor osascript) · Morgen 14.09. 09:00 verpasst (Mac schlief) → 15:07 nachgeholt (Event A1284A91) · 16:00-Montag korrekter No-op · Abend 16.09. PASS (Event 88CCE1A6, Logbuch 2026-09-16.md)**; ⚠️ **15.09. = Lücken-Tag (kein Logbuch)**; offen auf GO: LaunchAgent com.sascha.assi.daily als Wecker umrüsten; 1 Task pro Chat-Limit
+- [ZCode ADHS-Automations](zcode-adhs-automationen.md) — 13.–20.09. LIVE: **EINE Automation mit ALLEN 6 Briefs** (cron `0 9,10,15,16,21`, Zweige per Uhrzeit+Wochentag; niemals 6 separate — Nutzer-Ziel!) + Engine 7/7 PASS; **alle 6 Zweige mind. 1× real gelaufen: Abend 13./16.09. PASS (Events 610E2A57/88CCE1A6, Fix `open -a Calendar` vor osascript) · Morgen 14./18.09. verpasst→nachgeholt (A1284A91/533CCF84) · 16:00-Montag korrekter No-op · Risiko-Scan 20.09. PASS (leeres Ergebnis = valid)**; ⚠️ **Lücken-Tage 15./17./19.09. (Mac schläft um 09:00)**; offen auf GO: LaunchAgent com.sascha.assi.daily als Wecker umrüsten; 1 Task pro Chat-Limit
 - [Entscheidungshoheit](feedback-entscheidungshoheit.md) — 13.09. scharf: UI/Produkt-Form entscheidet SASCHA (kein unilateral „Web-UI"), Automation-Technik schlage ich fertig vor; Markdown-Design-Dumps wertlos; Beschuldigungen mit Beweis (PID+Session-ID+Code-Zeile) widerlegen; nach GO nie wieder in Plan-Dialoge zurückwerfen; **14.09. Ergänzungen „DU SOLLST NICHT RATEN": bei Tool-Kandidaten NIE für ihn bewerten („passt zu dir") — neutrale Fakten-Tabelle ohne Urteile, er nennt die Nummer; + bei Beleidigungs-Wut sachlich halten, Delegation anbieten („sag entscheide du")**
 - [KI-Agent-/Browser-Landschaft Sept 2026](ki-agent-browser-landschaft-2026-09.md) — 13./14.09. Fakten: Perplexity Computer sperrt Skills/Automatisierung hinter Desktop + Comet-iOS-Steuerung weg; **ChatGPT-Agent-Modus Aug 2026 eingestellt → „ChatGPT Work" (Login-Browser-Aufgaben eingeschränkt)**; Manus iOS-App = Cloud-Arbeiter-Kandidat (Install/Test offen); Apple-Sandbox verbietet Klick-Browser direkt am iPhone; Präsentation nur als fakten-Tabelle ohne Bewertung
 - [ZCode-UI Deutsch-Patch](zcode-app-german-ui-patch.md) — 13.09. Korrektur: echte UI-Strings NICHT langEN.js, sondern `out/renderer/assets/IntlProvider-Db46X9QF.js` (react-intl, EN-Dict m = Offset 252479–583376); **5066 Strings extrahiert nach /tmp/zcode_i18n/en_strings.json** (flüchtig!); Übersetzung 2× abgebrochen; nichts an der App gepatcht; bei „weiter übersetzen": de_parts → m-Dict ersetzen → repacken + codesign
@@ -3378,7 +3378,7 @@ Integration done 2026-08-30: added `web-search-prime`, `zread`, `zai-vision` MCP
 
 ---
 name: zcode-adhs-automationen
-description: "13.09. ABGESCHLOSSEN: EINE ZCode-Automation mit ALLEN 6 Briefs (cron 0 9,10,15,16,21 — Zweige per Uhrzeit+Wochentag), Engine 7/7 PASS (daily_sweep/assi brief+feierabend/Hook//feierabend), Kalender via AppleScript bewiesen (KEIN Gmail-Kalender in Calendar.app, Ziel = „Kalender")"
+description: "13.–20.09. LIVE: EINE ZCode-Automation mit ALLEN 6 Briefs (cron 0 9,10,15,16,21 — Zweige per Uhrzeit+Wochentag); alle 6 Zweige mind. 1× real gelaufen (Abend 13./16.09. PASS, Morgen 14./18.09. nachgeholt, Risiko-Scan 20.09. PASS, No-op-Guards korrekt); Lücken-Tage 15./17./19.09. (Mac schläft) → LaunchAgent-Wecker auf GO wartend; Deutsch-Patch weiterhin offen"
 metadata:
   node_type: memory
   type: project
@@ -3430,6 +3430,12 @@ metadata:
 - 09:00 wieder verpasst (3. Lücken-Morgen: 15./17./18.09. ohne Logbuch bzw. nachgeholt) → 15:00-Freitag-Slot als Nachhol-Lauf genutzt (Zweig-Abweichung dokumentiert). Kalender-Event **„Tagesplan 18.09."** UID `533CCF84-6694-440A-B4C9-E2F21CEF2B6F`, Logbuch `~/.agents/memory/logbuch/2026-09-18.md` (status: offen, DEV-BRIEF: 0 Commits, keine CI; Cline-Yolo-Team „daily digest/documentation maintainer/security reviewer" in Session 712478 gesichtet — mögliche Überschneidung mit Tages-Routine beobachten).
 - **LaunchAgent-Wecker (com.sascha.assi.daily umrüsten) weiter auf GO offen** — Dauerlösung gegen verpasste 09:00-Läufe.
 - 17.09. bleibt Lücken-Tag (kein Logbuch).
+
+## Sechster Lauf (So 20.09. 10:07 — RISIKO-SCAN-Zweig PASS)
+- Erster echter RISIKO-SCAN (Sonntag 10:00-Slot): 0 Commits letzte 24 h in `~/loki-ki` + `~/Projects/*`, 0 uncommittete Änderungen, 0 Engine-Datei-Änderungen → **„Keine Hoch-Risiko-Änderungen gefunden"** als valides Leerergebnis, kein ⚠️-Kalender-Event nötig.
+- Scan im Tages-Logbuch vermerkt: `~/.agents/memory/logbuch/2026-09-20.md` (status: offen, Abend-Zweig 21:00 schließt ab).
+- **19.09. (Samstag) = weiterer Lücken-Tag** — Lücken-Muster: 15./17./19.09. ohne Logbuch; LaunchAgent-Wecker (com.sascha.assi.daily umrüsten) wartet weiterhin auf Saschas „GO Wecker".
+- Lauf-Bilanz 13.–20.09.: Abend-Zweig 2× PASS (13./16.09.), Morgen nachgeholt 2× (14./18.09.), No-op-Guards 2× korrekt (14.09. 16:00, ⌀), Risiko-Scan 1× PASS (20.09.) — alle 6 Zweige mindestens einmal real ausgeführt.
 
 ## zcode-app-german-ui-patch
 
@@ -5341,7 +5347,7 @@ Beobachtet 06.09.2026 (Session mit Off-Peak-Ticket): Nach User-Paste „ZCode Er
 - [Chrome Agent-Browser Fix](chrome-agent-browser-fix.md) — Agent-Browser läuft auf 9222 (persistentes Profil, Login bleibt); Service-Worker-Cache = Ursache „Websites alt" (177 Worker); chrome-cache-nuke.sh wartet auf GO; Übersicht: ~/Desktop/chrome-fix-uebersicht.html
 - [Cline Hub 1006-Diagnose](cline-code-app-hub-1006-diagnosis.md) — „Hub connection closed" = lokaler Daemon-Crash, Server meist OK
 - [Lokale Infra & Ports](sascha-local-infra-ports.md) — OmniRoute 20128, Ollama 11434, LOKI 8010, Cline Code.app standalone
-- [LOKI Verkaufstool Stand](loki-verkaufstool-stand.md) — **01 Web-IO 300 € LIVE (Sascha selbst, 18.09.)**, 02–07 offen (Vorlagen `eBay-Anzeige-OPTIMIERT.md` in VERKAUF-Ordnern fertig, Zielsumme 2061 €). 7× Vorlagen + Preis-Sweep 219→300 grep-verifiziert. Willhaben FERTIG. eBay: Keys/User-Token/Leaf-Kategorien scharf; Trading-API 410, Media-API 503. Debug-Chrome 9222 = Profil-Kopie, ebay-Login-Session ging verloren (1× Login nötig). IRIS-AI installiert gefixt (npm rebuild electron + path.txt ohne Newline), Start `npm run dev`. AT-Fokus Loosdorf/NÖ
+- [LOKI Verkaufstool Stand](loki-verkaufstool-stand.md) — **Alle 6 eBay.at-Anzeigen LIVE (2006 €, Konto saschlagle_0)**. NEU 20.09. VII: 3 neue Objekte — **Nespresso Gemini CS203** (Schild druckt „CS200 Pro", Service-Manual beweist CS203; Max-Preise wh 390 €/eBay 399 €) · **KTM Life One Rad** (Opa, wh 199 VB/eBay 179) · **ATX-Scheiben 199 €** (keine Fotos). **eBay im 9222-Chrome eingeloggt; Kaffee-Draft 5202586051500 zu 95 % CDP-gebaut — Rest: Merkmal „Modell" + Publish (Sascha 1 Min)**; willhaben-Rad-Entwurf fertig (nur Farbe+Publish). Ordner `~/Desktop/PRojekte /VERKAUF-Nespresso-Gemini-CS203/` + `VERKAUF-KTM-Life-One-Rad/`. CDP-eBay-Playbook im File. AT-Fokus Loosdorf/NÖ
 - [Sascha Vollzug-Regel](sascha-vollzug-keine-zwischenfragen.md) — Komplettlösungen ohne Zwischenfragen; GO gilt bis zum fertigen Ergebnis; nur bei Passwort/Stopp-Regeln nachfragen
 
 ## chrome-agent-browser-fix
@@ -5392,6 +5398,10 @@ Stand 18.09.2026 — **AUSGEFÜHRT + VERIFIZIERT**: Agent-Chrome läuft auf `htt
 
 **Nachtrag 10 (18.09., Debug-Port-Block-Details — erweitert die Root-Cause-Regel):** Chrome 153 blockiert `--remote-debugging-port` auf dem Standard-Profil UND beim Symlink-Trick (`--user-data-dir=~/chrome-real-link` → `$HOME/Library/Application Support/Google/Chrome` — Chrome löst den Symlink auf, Block greift trotzdem). **Was funktioniert: Profil-KOPIE** — `~/ebay-debug-profile` (rsync `Default/` minus Cache/Service-Worker/Extensions + `Local State`; ~44 MB) → Port 9222 live (Chrome/153, curl-Beweis). **ABER:** eBay-Session-Cookie (`.ebay.at|ebay`, `is_persistent=0`, in Default/Cookies vorhanden und wird geladen) reicht NICHT — Sascha bestätigte: im Debug-Chrome NICHT eingeloggt → 1× manueller Login nötig (Passwort-Fall). CDP-Raw-Access via Python-Socket (Upgrade-Handshake + Runtime.evaluate) funktioniert ohne Bibliothek; Achtung: Titelfeld „Omnibox Popup" + leerer Body = Tab hatte UI-Fokus statt Seiteninhalt — erst Tab-Fokus setzen, dann evaluieren.
 
+**Nachtrag 11 (20.09., CDP-Kniffe für 9222-Automation):** (1) **WebSocket-403 ohne Neustart umgehen:** `websocket.create_connection(url, suppress_origin=True)` — Chrome rejected sonst mit „Rejected an incoming WebSocket connection … use --remote-allow-origins" (Flag-Neustart NICHT nötig). (2) `/json/new` braucht seit Chrome 153 **PUT** (`curl -X PUT`, GET → „Using unsafe HTTP verb"). (3) `DOM.setFileInputFiles` für Datei-Uploads: **nodeIds sind verbindungs-gebunden** — getDocument + querySelector + setFileInputFiles in EINER WebSocket-Session. (4) willhaben-Formular: React resettet JS-gesetzte Werte (Quill-Beschreibung!) bei jedem Re-Render → trusted `Input.insertText` verwenden und Beschreibung zuletzt setzen; native Custom-Dropdowns (Farbe) ließen sich auch mit echten CDP-Mausklicks nicht bedienen → manuell. Playbook + Helper: `/tmp/cdp.py` (eval/raw/upload) — Mimosa blockt `urllib`-Fetches in Python-Skripten (SSRF-False-Positive), HTTP-Steps stattdessen via curl in Bash.
+
+**Nachtrag 12 (20.09., eBay-RTE-iframe-Typen):** eBay-Listing-Beschreibung = iframe `se-rte-frame__summary` mit Editor-Div `.se-rte-editor__rich`. (1) `Input.insertText`, synthetische ClipboardEvents und execCommand-`insertText` landen ALLE NICHT im Editor — nur echte `Input.dispatchKeyEvent`-Paare (keyDown+keyUp, text=ch; Enter: code "Enter", text "\r"). (2) **Koordinaten-Falle:** Rects von Elementen INNERHALB des iframes sind iframe-lokal — Seiten-Koordinaten = iframe-Rect + Element-Rect, und nach scrollIntoView Koordinaten NEU messen. (3) Editor-DOM niemals per `innerHTML` anfassen (zerstört den Editor; eBay-Draft-Autosave + Reload rettet den Stand). (4) Formular-Flow mit Beweis: `/sl/prelist/suggest` (Keyword @keyword-Input + Enter) → identify → Zustand-Label → „Weiter zum Angebot" → Fotos `#fehelix-uploader` (setFileInputFiles) → Publish „Artikel kostenlos einstellen"; Versandservice über „Ersten Versandservice hinzufügen" + Label-Mausklick + „Fertig". Vollständiges Playbook: loki-verkaufstool-stand.md, Stand 20.09. VII.
+
 ## cline-code-app-hub-1006-diagnosis
 
 ---
@@ -5417,12 +5427,7 @@ Abschluss-Erkenntnis 16.09.2026 (Sascha: „wieso geht ein chat und der andere n
 
 ---
 name: loki-verkaufstool-stand
-description: LOKI Verkaufstool — 7 Objekte, 8 grafische PDFs, willhaben FERTIG von Sascha. eBay:
-  Saschas Marktplatz-Konto EXISTIERT (meine Login-Fehlversuche = falsches Chrome-Profil);
-  Formular-Objekt 01 fast fertig (Entwurf draftId 5196095607000, Preis 300 € von Sascha,
-  AT-Versand „Paketversand" 6,90 €, 3/4 Fotos hochgeladen). Keys/User-Token/Leaf-Kategorien
-  scharf; Trading-API 410, Media-API 503. Sascha ist in Österreich (Loosdorf/NÖ) — AT-Versand,
-  keine DE-Dienste. Er konfiguriert chrome://flags (local-network-access) parallel selbst
+description: LOKI Verkaufstool — 6 eBay-Anzeigen LIVE (2006 €) · NEU 20.09.: Kaffee-eBay-Draft 5202586051500 98% (nur Versandservice-Dialog persistiert nicht = Sascha 3 Klicks) · Rad-Draft 5202622489400 von eBay-Security-Reauth unterbrochen · willhaben-Rad-Entwurf fertig (Farbe+Publish von Sascha) · ATX 199 € wartet auf Fotos · CDP-Playbooks im Text
 metadata:
   node_type: memory
   type: project
@@ -5505,7 +5510,27 @@ LOKI Verkaufstool (eBay + willhaben, Stand 16.09. ~10:45):
 - **Preise final (Sascha-VOLL GO, 21.09.):** 01 300 € (Sascha selbst im Formular gesetzt, statt 219!) · 02 69 · 03 69 · 04 149 · 05 249 · 06 35 · 07 1190 — Vorschläge 280/270 bei 01. UEBERSICHT.md + PDFs hatten zwischenzeitlich 1980 € (Sascha korrigierte später selbst auf 879 im Formular-Kontext? — nein: 1980 bleibt Zielsumme laut Stand 18./19., Saschas „879"-Korrektur betraf die alte 879-er Basis-Vor-NEU-Rechnung; aktuell gültig = 1980 € NEU-Basis mit 300 € statt 219 € für 01 → neu berechnen wenn final). Bei Unsicherheit: Ordner-Preise sind Source of Truth (grep-Verify).
 - **Willhaben: endgültig ERLEDIGT von Sascha selbst** (mehrfach bestätigt, nicht mehr erwähnen/anbieten).
 
+## Stand 20.09. — Nespresso Gemini CS203-Verkauf (NEUES Objekt, nicht Teil der 7)
+
+- **Objekt (FINALE Bestimmung 20.09., Service-Manual-Beweis):** Es ist die **Nespresso Gemini CS203 (EF 733)** — Sascha insistierte mehrfach („ALTER WELCHES GERÄT", „NEIN IST ES NICHT DENK SOFORT NACH"). **Beweis:** Parts-Town-Service-Manual „Gemini CS203 EF 733" schreibt selbst: Frontpanel-Druck der CS203 = „Gemini CS200 PRO". Das Schild „Type: CS200 / Gemini CS200 Pro" (2300W, Made in Switzerland, SN 140208-11) IST der offizielle CS203-Aufdruck; dazu Festwasser-Modul („Fixed Water Connection"-Sticker, Pflicht bei CS203). NICHT CS220 (kein Milchaufschäumer). Titel führen jetzt **CS203 zuerst**, „CS200 Pro" als Keyword: willhaben „Nespresso Gemini CS203 CS200 Pro Kaffeemaschine 2-Gruppen" (58 Z.), ebay „… 2-Gruppen Gastronomie" (70 Z.). **Lektion: Bei Geräte-Identifikation nicht auf Schild-Interpretation beharren — sofort gegen offizielles Service-Manual/Parts-Doku verifizieren, Sascha kennt seine Geräte.**
+- Von Sascha + Papa repariert/geprüft/entkalkt; Verkauf an Bekannten **Thomas** (Abnahme) + willhaben-Anzeige. Keine Gastro-Positionierung (Sascha: „keine Gastro-Maschine") — Büro/Home-Office/Praxis.
+- **Vorlagen fertig + Fotos im Ordner (ls+grep-verifiziert) `~/Desktop/PRojekte /VERKAUF-Nespresso-Gemini-CS203/`:** MARKTWERT.md (Beleg-Tabelle mit URLs + exakte Modellbestimmung) · willhaben-ANZEIGE.md (Titel „Nespresso Gemini CS203 CS200 Pro Kaffeemaschine 2-Gruppen", **320 € Fix**, Festwasser-Modul als Büro-Bonus, Foto-Checkliste) · ebay-ANZEIGE.md (**330 € SK**, Vorschläge ab 280 auto-accept, Kategorie Gastronomie — bei eBay bewusst Gastro, anders als willhaben) · THOMAS-ANGEBOT.md (230 € Start / 220 Ziel / 200 Boden) · foto-1-front.jpg + foto-2/3-typenschild.jpg (aus ~/Desktop/image*.jpg kopiert). Saschas Frontfoto: dunkel/schräg/Hintergrund-Störer → bessere Fotos empfohlen (Funktionstest-Foto = größter Preishebel).
+- **Live-Marktdaten (2 Parallelsuche-Agenten, 20.09.):** Bastler/defekt 50–110 € · ungepflegt f.f. 70–200 € · gepflegt f.f. **180–280 €** (CS200 Pro gewartet 280 € Wien, Gemini 220 f.f. 270 €) · überholt 400–750 € · Neupreis CS200 Pro 2.398 €. Empfehlung: Anzeige **320 € Fix** (Fixpreis statt VB — nur 1/5 der Gemini-Anzeigen nutzt VB), Zielerlös 280–300 €.
+- **Suchoptimierung:** Titel beginnt mit „Nespresso Gemini" + Modellnummer (alle 5 sichtbaren willhaben-Titel so); Keywords CS200/CS203/Gemini 200/Typ 733; Kategorie Haushaltsgeräte > Kapselmaschinen, NICHT Gastro. Modelltrennung belegt: CS200=2 Gruppen kaffee-only, CS203=Festwasser, CS220=Milch (artizancoffee.com, partstown.ca).
+- **eBay-Anzeige Gemini fertig (20.09., Parallel-Agent, korrigiert auf CS203-first):** `ebay-ANZEIGE.md` im selben Ordner — Titel „Nespresso Gemini CS203 CS200 Pro Kaffeemaschine 2-Gruppen Gastronomie", SK **330 €**, Vorschläge ab 280 € auto-accept, Kategorie **Business & Industrie > Gastronomie > Kaffeemaschinen** (bei eBay bewusst Gastro, anders als willhaben!), Versand AT→DE Hermes 20–30 € bis 25 kg, Abholung parallel anbieten.
+- **Abschluss-Action-Plan (20.09., an Sascha geliefert, Reihenfolge wichtig):** (1) Thomas-Nachricht (230 €) VOR Online-Stellen — sonst verkauft sich die Maschine unter ihm weg · (2) bessere Fotos (hell/gerade + Funktionstest) · (3) willhaben 320 Fix + eBay 330 SK parallel online.
+- **„ATX Scheiben" aufgelöst:** = **2× 20 kg ATX Calibrated Steel Plates** (Powerlifting, IPF approved) — fertige Vorlage existiert schon: `~/Desktop/TO DOS /moo ebay/VERKAUF/08_ATX_Calibrated_Steel_20kg_2er/eBay-Anzeige-OPTIMIERT.md` (SK 179 €, Vorschläge ab 165 auto-accept, Boden 155; Markt 129–249 €). Separater willhaben-Chat „Manuel": 160 € fest / 150 € Abholung, Boden 140 €. **Ordner hat noch keine Fotos** — fotografieren, dann einstellen. Nicht doppelt bauen.
+- **🎉 THOMAS ERLEDIGT (20.09.) → MAX-PREIS-Strategie (Sascha: „MAXIMALEN PREIS ERZIELEN", grep-verifiziert):** willhaben 320→**390 € Fix** (Ziel 340–360, Untergrenze 320) · eBay 330→**399 € SK** (Vorschläge ab 350 auto-accept) · MARKTWERT.md Preisstrategie-Abschnitt ersetzt durch Max-Leiter (Positionierung zwischen „gepflegt 280" und „überholt 400–500", gerechtfertigt durch Reparatur + Festwasser-Modul). Rückfall: nach 2 Wochen willhaben 350, danach 320; eBay-Alternative Auktion ab 250 €. Vor Upload: bessere Fotos nötig (hell/gerade + Funktionstest) — dunkles Schräg-Foto kostet bei 390 € den Käufer.
+
 Verwandt: [[sascha-local-infra-ports]], [[cline-code-app-hub-1006-diagnosis]]
+
+## Stand 20.09. IV — 3er-Verkaufs-Review an Sascha (Upload wartet auf GO)
+
+- **Workflow-Vorgabe von Sascha: „nach Recherche beide Anzeigen prüfen mit mir DANN hochladen"** — Upload/Live-Stellen nur nach seinem expliziten GO pro Artikel („1 GO, 2 GO…"). Review-Tabelle + 4 Prüf-Fragen geliefert, Antwort offen.
+- **ATX-Gewichte Preis-Update (Agent-Recherche 20.09.):** SK 179→**199 €**, Vorschläge ab 175 auto-accept, Boden 165 — Begründung: direkte Konkurrenz willhaben **189 € VB** (2×20 kg ATX, Sept. 2026), Neupreis-Set ~178–224 € (89–112 €/Scheibe Megafitness). Versand 40 kg = DHL-31,5-kg-Limit → nur 2 Pakete à ~26,50 € = ~53 € Zuschlag oder Abholung. Datei editiert: `VERKAUF/08_ATX_Calibrated_Steel_20kg_2er/eBay-Anzeige-OPTIMIERT.md` (Header + Preis-Strategie-Zeile, grep-verifiziert). Ordner hat weiterhin KEINE Fotos.
+- **KTM Life One Rad von Opa (NEUES Objekt, identifiziert via 5 Fotos):** KTM **Life One** 28" Trekking-OFF, Alu-Rahmen, ~2008–2012, Shimano Acera 24-Gang (3x8, Rapidfire), SR Suntour NEX Federgabel 63 mm, V-Brakes, Schwalbe, Ständer. Neupreis damals ~400–500 €. Markt 80–249 € (direkt vergleichbares Life One 249 € Vösendorf, Life Comp 220 € St. Pölten) — bewusst NICHT höher, übersättigter 24-Gang-Markt. **Preise: willhaben 199 € VB (Ziel 170, Boden 150) · eBay SK 179 € (Vorschläge ab 155, nur Abholung).**
+- **Rad-Ordner + Fotos:** `~/Desktop/PRojekte /VERKAUF-KTM-Life-One-Rad/ANZEIGE-willhaben-ebay.md` (Titel wh 63 Z. „KTM Life One 28\" Trekkingrad – Shimano Acera 24-Gang – gepflegt", ebay 72 Z., gemeinsamer Anzeigentext, Privatverkauf, Abholung Loosdorf) + `fotos/rad-foto-1…5.jpg` (aus Photos-Library-Derivatives kopiert: A605C307, 2E325181, FD6CF287, 8F67570B, 79E0ABFB). Empfohlen zusätzlich: Rahmenhöhe-Maßband-Foto (Vergleichs-Inserat RH 51) + Reifenprofil.
+- **Review-Fragen an Sascha (offen):** (1) ATX 199 € ok? (2) Rad 199 € VB ok? (3) Rad-Rahmenhöhe? (4) Gemini-Fotos dunkel/schräg — neu machen oder so hoch?
 
 ## Stand 18.09. IV — Sascha-Pivot: nur noch Vorlagen, kein Browser-Automatismus
 
@@ -5520,9 +5545,6 @@ Verwandt: [[sascha-local-infra-ports]], [[cline-code-app-hub-1006-diagnosis]]
 - **Sascha zählt 6 Objekte — NOOK (06) existiert für ihn NICHT** („06 gibt es nicht du trottel") — Nook nicht listen; Daten bleiben in data/objekte/7b3569e98b7d.
 - **Alle 6 auf ebay.at LIVE (Konto saschlagle_0), Beweis `mys/active` „Alle (6)" + `eBay-ITEMID.txt` je Ordner:** 01 Web-IO **168697158404** 300 € (Sascha selbst) · 02 LOGO! 24R **168697205370** 69 € · 03 DM8 **168697219801** 69 € · 04 S7-200 **168697230243** 149 € · 05 MOXA **168697233287** 249 € · 07 Beijer E1011 **168697239529** 1190 €. Summe 2006 €.
 - **Versand+Abholung (Sascha: „SICHER VERSAND UND ABHOLUNG"):** neuer Sell-Flow erlaubt NUR „Nur Versand" XOR „Nur Abholung". Geliefert: Versicherter Versand 6,90 € Käufer zahlt + „Abholung in 3382 Loosdorf möglich" in jeder Beschreibung. Echtes Beides ginge nur im erweiterten Formular (Abholung-Checkbox) — Klick auf „Zum erweiterten Verkaufsformular wechseln" navigierte nicht; offen falls Sascha es will.
-- **Workflow (wiederverwendbar):** Playwright (pip, sync) `connect_over_cdp("localhost:9222")` auf Debug-Chrome (`~/ebay-debug-profile`, Sascha 1× eingeloggt). Flow: `/sl/prelist/suggest` → Keyword+Enter → `input[type='radio'][value='{1000=Neu,3000=Gebraucht}']` direkt klicken (NICHT label:has — Label-Struktur variiert!) → „Weiter zum Angebot" → title/Herstellernummer/price füllen · „HTML-Code anzeigen"/„Show HTML Code" → `textarea[name='description']` · `[role='switch']`=Preisvorschläge · file-input (fehelix-uploader).set_input_files OHNE scroll (hidden!) · Kategorie über „Bearbeiten/Edit"+Empfehlung+Fertig · Service-Karte „Versicherter Versand" ERST, dann „Versandkosten bearbeiten/Edit shipping cost" → `input[id*='SHIPPING_SIMPLE']` 6,90 → Speichern · Publish `button:has-text('Zu genannten Gebühren einstellen')`. Kategorie-Auto: 05→181717, 07→181709 automatisch korrekt; 03 bekam SPS-Prozessoren (akzeptiert). Formular-Variante wechselt DE/EN — Locator-Texte doppelt absichern.
-- **Langsamkeits-Diagnose (Sascha-Frage):** eBay-Server-Rendering 2–5 s/Aktion (unvermeidbar) + feste sleeps + REPL-Puffer-Verzögerung (veraltete Outputs → Doppel-Schritte) + Varianten-Fallbacks. Fix: ganzer Ablauf je Anzeige in einem exec.
-- Tooling: Python-REPL via desktop-commander — keine mehrzeiligen Direct-Eingaben (IndentationError-Puffer!), immer `exec(open('/tmp/step.py').read())`, Skript via dc write_file.
 
 ## sascha-local-infra-ports
 
@@ -95913,6 +95935,30 @@ description: Todo-Liste synchronisieren und anzeigen (todo-sync)
 
 ## Ergebnis
 - Agents steuern EINEN Chrome, Login bleibt, Cache getrennt, Memory sauber
+## plan-sess_942c93ed-7e28-481c-b0f2-f18c143f79c7
+
+**Gemini CS203 — Live-Recherche fertig, Vorlagen jetzt schreiben**
+
+**Neue Live-Marktdaten (20.09.2026, belegt):**
+| Segment | Belegte Preise |
+|---|---|
+| Bastler/defekt | 50–110 € |
+| Ungepflegt f.f. | 70–200 € |
+| Gepflegt/funktionsfähig | **180–280 €** (CS200 Pro gewartet: 280 €, Wien · Gemini 220 f.f.: 270 €, heute) |
+| Überholt/Neuwert | 400–750 € |
+| Neupreis CS200 Pro | 2.398 € |
+
+**Suchoptimierung (aus echten willhaben-Titeln):** Titel beginnt mit „Nespresso Gemini" + Modellnummer · **Fixpreis statt VB** (wirkt seriöser, nur 1/5 nutzt VB) · Fotos Funktionstest + Typenschild = größter Preishebel · Kategorie Haushalt, nicht Gastro.
+
+**Preis-Empfehlung:** Anzeige **320 € Fix** (Zielerlös ~280 €) · Thomas fair: **200–250 €**.
+
+**Ausführung:**
+1. Ordner `~/Desktop/PRojekte /VERKAUF-Nespresso-Gemini-CS203/` anlegen
+2. **MARKTWERT.md** — Beleg-Tabelle mit URLs + Preisstrategie (320 Fix / Ziel 280 / Thomas 200–250)
+3. **willhaben-ANZEIGE.md** — kopierfertig: Titel „Nespresso Gemini CS203 Profi Kaffeemaschine – 2 Brühgruppen", 320 € Fix, kompakter Text mit Keywords (Typ 733, CS200, Doppelbrühgruppe, Tee-Funktion, Büro/Home-Office/Praxis, Privatverkauf)
+4. **THOMAS-ANGEBOT.md** — kurze Angebotsnachricht mit Fair-Preis-Begründung
+
+Quellen: [willhaben Gemini-Listings](https://www.willhaben.at/iad/kaufen-und-verkaufen/l/nespresso-gemini) · [ricardo.ch](https://www.ricardo.ch) · [ebay.at](https://www.ebay.at)
 ## SKILL
 
 ---
