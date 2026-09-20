@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-20 18:58 UTC
+Zuletzt gespiegelt: 2026-09-20 19:09 UTC
 
 ## AGENTS
 
@@ -4226,7 +4226,7 @@ Integration done 2026-08-30: added `web-search-prime`, `zread`, `zai-vision` MCP
 
 ---
 name: zcode-adhs-automationen
-description: "13.–20.09. LIVE: EINE ZCode-Automation mit ALLEN 6 Briefs (cron 0 9,10,15,16,21 — Zweige per Uhrzeit+Wochentag); alle 6 Zweige mind. 1× real gelaufen (Abend 13./16.09. PASS, Morgen 14./18.09. nachgeholt, Risiko-Scan 20.09. PASS, No-op-Guards korrekt); Lücken-Tage 15./17./19.09. (Mac schläft) → LaunchAgent-Wecker auf GO wartend; Deutsch-Patch weiterhin offen"
+description: "13.–20.09. LIVE: EINE ZCode-Automation mit ALLEN 6 Briefs (cron 0 9,10,15,16,21 — Zweige per Uhrzeit+Wochentag); alle 6 Zweige mind. 1× real gelaufen, 7 Läufe gesamt (Abend 13./16./20.09. PASS, Morgen 14./18.09. nachgeholt, Risiko-Scan 20.09. PASS, No-op-Guards korrekt); Lücken-Tage 15./17./19.09. (Mac schläft) → LaunchAgent-Wecker auf GO wartend; Deutsch-Patch weiterhin offen"
 metadata:
   node_type: memory
   type: project
@@ -4285,6 +4285,11 @@ metadata:
 - **19.09. (Samstag) = weiterer Lücken-Tag** — Lücken-Muster: 15./17./19.09. ohne Logbuch; LaunchAgent-Wecker (com.sascha.assi.daily umrüsten) wartet weiterhin auf Saschas „GO Wecker".
 - Lauf-Bilanz 13.–20.09.: Abend-Zweig 2× PASS (13./16.09.), Morgen nachgeholt 2× (14./18.09.), No-op-Guards 4× korrekt (14.09. 16:00, So 20.09. 15:00+16:00, ⌀), Risiko-Scan 1× PASS (20.09.) — alle 6 Zweige mindestens einmal real ausgeführt.
 - Wochenend-No-ops So 20.09. bestätigt (15:00- und 16:00-Lauf je 1 Zeile „heute nichts zu tun", Logbuch blieb offen für 21:00-Abend-Lauf).
+
+## Siebter Lauf (So 20.09. 21:07 — Abend-Zweig PASS)
+- Kalender-Event **„Logbuch 20.09.2026"** UID `6BFDB24A-2893-4AA2-A4CE-477B56148BDC` (Ganztages, Kalender „Kalender"), Logbuch `~/.agents/memory/logbuch/2026-09-20.md` → status **abgeschlossen** (Edit: status + ABEND-Sektion vor „✍️ Meine Notizen" eingefügt, append-only).
+- Inhalt: System-Audit 39 Checks/7 Findings + OmniRoute-Rückbau Q1–Q7 (aus [[omniroute-rueckbau-system-fixes-2026-09-20]]), Skill-System-Standard + deja-vu-Skill-Install 🔨, LokiVoiceApp V10-Binary-Rebuild-Handoff 🔨, Deutsch-Patch + Wecker-GO ⏳.
+- **Endbilanz 13.–20.09.: alle 6 Zweige live bewiesen; nur noch 2 offene Punkte: LaunchAgent-Wecker (auf „GO Wecker") + Deutsch-Patch (siehe [[zcode-app-german-ui-patch]]).**
 
 ## zcode-app-german-ui-patch
 
