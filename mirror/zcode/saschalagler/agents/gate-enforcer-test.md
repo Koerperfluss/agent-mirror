@@ -2,7 +2,7 @@
 name: "gate-enforcer-test"
 description: ">"
 color: yellow
-model: 3a11f548-4734-459c-bc01-535ecf69a1a5/meta-llama/llama-3.1-70b-instruct
+model: "account:zai-individual-coding-plan/GLM-5.3-Flash"
 thoughtLevel: enabled
 tools:
   - Read

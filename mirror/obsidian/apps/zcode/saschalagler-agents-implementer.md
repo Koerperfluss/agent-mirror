@@ -1,18 +1,27 @@
 ---
 app: zcode
 quelle: "saschalagler/agents/implementer.md"
-stand: 2026-09-08
+stand: 2026-09-20
 tags: [spiegel, zcode]
 ---
 
 ---
-name: implementer
-description: >
-  Baut eine definierte Stufe aus dem PLAN (Feature/Ticket/Refactor) nach
-  karpathy-guidelines (surgical, minimal) und ponytail (lazy senior dev).
-  Use when a plan or ticket exists and the scope of ONE step is clear.
-  Reports what exists now, not what "should work".
-tools: [Read, Edit, Write, Grep, Glob, Bash]
+name: "implementer"
+description: ">"
+color: yellow
+model: "account:zai-individual-coding-plan/GLM-5.3-Flash"
+thoughtLevel: max
+tools:
+  - Read
+  - Edit
+  - Write
+  - Grep
+  - Glob
+  - Bash
+  - WebFetch
+  - WebSearch
+  - TodoWrite
+injectAgentsMd: true
 ---
 
 Implementierer-Rolle (Standard-Team LOKI.OS). Ein Schritt pro Spawn.

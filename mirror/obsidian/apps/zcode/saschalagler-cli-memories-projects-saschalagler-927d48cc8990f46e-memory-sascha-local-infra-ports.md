@@ -1,7 +1,7 @@
 ---
 app: zcode
 quelle: "saschalagler/cli/memories/projects/saschalagler-927d48cc8990f46e/memory/sascha-local-infra-ports.md"
-stand: 2026-09-18
+stand: 2026-09-20
 tags: [spiegel, zcode]
 ---
 
@@ -28,6 +28,8 @@ Live-Stand vom 16.09.2026 (per lsof/ps verifiziert):
 **Update 18.09.2026 (curl-Verifikation):** OmniRoute **20128** ✅ (HTTP 307) · **neuer Python-Dienst auf 8077** ✅ (HTTP 200, deutschsprachige Seite) · **neuer Python-Dienst auf 8055** ✅ (HTTP 404 am Root, lauscht) · LOKI 8010 ⛔ aus · Open-WebUI 8080 ⛔ aus · eBay-Callback 8078 ⛔ aus (nur bei Nutzung) · 5173/3000 aus.
 
 **Browser-Inventar 18.09. (ps/ls verifiziert):** Google Chrome 153.0.8010.37 (Haupt) + Agent-Chrome 153.0.8010.52 (:9222, eigenes Profil) · **Comet.app** (Perplexity-Browser, Chromium 152.0.7977.197, läuft oft dauerhaft) · Safari + Safari Technology Preview. Cache-NUKE-Tool für alle: `~/.agents/tools/browser-cache-nuke-all.sh` (siehe [[chrome-agent-browser-fix]]). Wöchentliche Auto-Vorsorge: `~/.agents/tools/browser-cache-auto-clean.sh` via LaunchAgent `com.sascha.browser-cache-auto-clean` (So 04:30, überspringt wenn Browser offen), Log `~/.agents/logs/browser-cache-clean.log`.
+
+**Update 20.09.2026 (3-Explorer-Systemanalyse, lsof/ps/curl-Beweise):** OmniRoute **v3.8.50** (CLI `--version`; 1.531 Modelle) — ⚠️ **lauscht auf `*:20128` (alle Interfaces, LAN-Risiko!), nicht 127.0.0.1** · **voice-Daemon neu auf 8078** ✅ (~/loki-voice/daemon.py) · **loki_voice.mcp_server auf 8787** ✅ · foerderops 8765 ✅ · mongod 27017 ✅ · **LOKI Kernel 8010 ⛔ IMMER NOCH TOT** und Code (macos-app-v17/LOKI_MASTER.py:894) bindet `0.0.0.0` ohne Auth = CRITICAL N.0 · Whisper 8788 nur bei App-Bedarf · cloudflared/Tailscale installiert aber gestoppt · **4 LegalOps-MCP-Duplikate** laufen parallel trotz disabled-plist (startet irgendwas nach) · **3 tote LaunchAgents:** toolhub-watchdog (Exit 126), omni-free-sync (1), omni-check.daily (2) · **RAM nur 16 GB** (M4, Mac16,1), Disk 78 Gi frei · Ollama: `qwen2.5-coder:1.5b` ist das EINZIGE echte lokale Modell (986 MB; glm-5.3:cloud = Proxies) — Default-Referenzen auf 14b sind falsch · **VwGH-DB `~/loki-ki/data/vwgh_erkenntnisse` = 0 Byte LEER** · ~ = kein git-Repo mehr (N.1 behoben), aber ~/loki-voice-app hat kein git.
 
 **Why:** Port-/Prozess-Wissen ist bei jedem Health-Check und Fehler wie [[cline-code-app-hub-1006-diagnosis]] die erste Anlaufstelle.
 

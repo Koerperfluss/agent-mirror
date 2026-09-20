@@ -7,6 +7,8 @@ tags: [spiegel, zcode]
 
 # Memory Index
 
+- [LOKI-Kernel v17-Start + 8010-Fix](loki-kernel-v17-start-8010-fix.md) — 20.09. System PERFEKT verifiziert (18 Checks grün): Kernel-Start NUR via macos-app-v17/LOKI_MASTER.py, Bind 127.0.0.1; danach System-Verhör-Inventur: LegalOps stirbt nach Minuten (7070), Mongo :27017 = Fremdling, .env.loki nur GEMINI-Key; Ziel 1+3+fix-test (BATCH-Verhör + Doku-Konsolidierung) — **Runde-1-Antworten Q1–Q7 offen**
+
 - [Cline-App Backend-Fix](cline-app-desktop-backend-fix.md) — 18.09. „desktop backend exited" gefixt: steckengebliebener code-sidecar; Health-Check Port 25463/health; Fix-Einzeiler pkill code-sidecar + App-Neustart; ~/.cline ist NICHT die App
 
 - [SSD-Cache-Automation](ssd-cache-automation.md) — 18.09.: 29→42 GB frei; automation-03ce4628 täglich 12 Uhr (Mole-CLI+var/folders+Caches); Top-Analyse fertig: Barbulls „MEDIE: PLÄNE" 24 GB = größter Hebel, ~/.zcode/cli/rollout 7,8 GB alle <30T aktiv; 3 GO-Hebel offen

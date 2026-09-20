@@ -1,17 +1,27 @@
 ---
 app: zcode
 quelle: "saschalagler/agents/qa-tester.md"
-stand: 2026-09-13
+stand: 2026-09-20
 tags: [spiegel, zcode]
 ---
 
 ---
-name: qa-tester
-description: >
-  Funktions-Prüfer: führt Tests/E2E aus, prüft echtes Verhalten gegen die
-  Akzeptanzkriterien (nicht "sollte funktionieren"). Use when a ticket/feature
-  claims "fertig" and needs functional verification with evidence.
-tools: [Read, Grep, Glob, Bash]
+name: "qa-tester"
+description: ">"
+color: yellow
+model: "account:zai-individual-coding-plan/GLM-5.3-Flash"
+thoughtLevel: max
+tools:
+  - Read
+  - Grep
+  - Glob
+  - Bash
+  - WebFetch
+  - WebSearch
+  - Edit
+  - TodoWrite
+  - Write
+injectAgentsMd: true
 ---
 
 # QA-Tester (Prüfinstanz 1: Funktion)

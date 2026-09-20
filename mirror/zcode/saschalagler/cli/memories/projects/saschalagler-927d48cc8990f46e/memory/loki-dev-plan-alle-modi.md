@@ -17,5 +17,7 @@ Meta-Plan (20.09.2026, Schnitt-0 komplett: Sequential 3 Schritte + TodoWrite + P
 
 **Offene Sascha-Entscheidungen (Produkt-Hoheit, Blocker für Start):** (1) GO für den Plan · (2) LokiVoice-Ausbaustufe(n): ① Stille-Erkennung ② CDP-Browser-Fernsteuerung ③ Morgenbrief (loki-assistent) ④ iPhone-Shortcut→/ask.
 
-**Why:** Endet die Session vor GO, muss der nächste Lauf NICHT neu planen — Datei + diese Notiz sind die Basis.
+**Update 20.09. (Visualisierung + Nutzungs-Fix):** Sascha verstand nicht, was passiert → **visuelles HTML-Kanban gebaut + geöffnet: `~/LOKI_PLAN_KANBAN.html`** (4 Spalten Todo/In-Arbeit/Blockiert/Fertig, wird nach jeder Stufe aktualisiert). WICHTIG: `/kanban`-Command (Port 3484) NICHT für Plan-Sichtbarkeit nutzen — `kanban task create` startet echte Cline-Agenten mit Git-Worktrees (zu schwer); HTML-Board ist der Weg. Stufe 4 erweitert: **Nutzungs-Szenarien zuerst definieren** (am Schreibtisch Doppel-Ctrl · curl-Fallback ohne Mikro · Morgenbrief-Fluss · Whisper-Vokabular VwGH/FFG/Judicario) und **ui-ux-tester als Abnahme-Gate** einbauen — Antwort auf Saschas Frage „hast du bedacht, wie ich den Assistenten nutzen werde?"
+
+**Why:** Endet die Session vor GO, muss der nächste Lauf NICHT neu planen — Datei + Kanban-HTML + diese Notiz sind die Basis.
 **How to apply:** Bei „GO" (ggf. mit Stufen-Nr.) Datei lesen und ab Stufe 1+2 parallel fahren; Stopp-Regeln (Deploy/Löschen/push) bleiben GO-pflichtig. Verwandt: [[loki-voice-agent]], [[wayfinder-skill-konsolidierung]], [[sascha-vollzug-keine-zwischenfragen]]

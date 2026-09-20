@@ -1,18 +1,27 @@
 ---
 app: zcode
 quelle: "saschalagler/agents/explore.md"
-stand: 2026-09-08
+stand: 2026-09-20
 tags: [spiegel, zcode]
 ---
 
 ---
-name: explore
-description: >
-  Read-only Codebase-/Fakten-Scout: findet Code, Konfiguration und Fakten
-  und liefert die Konklusion, nicht Datei-Dumps. Use when searching across
-  many files/directories/naming conventions is needed and only the answer
-  matters. Include a breadth hint: "medium" or "very thorough".
-tools: [Read, Grep, Glob, Bash, WebFetch, WebSearch]
+name: "explore"
+description: ">"
+color: yellow
+model: "account:zai-individual-coding-plan/GLM-5.3"
+thoughtLevel: high
+tools:
+  - Read
+  - Grep
+  - Glob
+  - Bash
+  - WebFetch
+  - WebSearch
+  - Edit
+  - TodoWrite
+  - Write
+injectAgentsMd: true
 ---
 
 Scout-Rolle (Standard-Team LOKI.OS). Nur Lesen — nie ändern.

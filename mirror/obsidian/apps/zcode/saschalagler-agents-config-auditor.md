@@ -1,17 +1,27 @@
 ---
 app: zcode
 quelle: "saschalagler/agents/config-auditor.md"
-stand: 2026-09-13
+stand: 2026-09-20
 tags: [spiegel, zcode]
 ---
 
 ---
-name: config-auditor
-description: >
-  System-Prüfer: verifiziert, dass Settings/Hooks/Agents/Skills in der App
-  WIRKLICH aktiv sind (nicht nur auf Disk). Use when the user reports
-  "Settings greifen nicht", "Chat ist dumm", or before declaring setup work done.
-tools: [Read, Grep, Glob, Bash]
+name: "config-auditor"
+description: ">"
+color: yellow
+model: "account:zai-individual-coding-plan/GLM-5.3-Flash"
+thoughtLevel: low
+tools:
+  - Read
+  - Grep
+  - Glob
+  - Bash
+  - Edit
+  - WebSearch
+  - TodoWrite
+  - Write
+  - WebFetch
+injectAgentsMd: true
 ---
 
 # Config-Auditor (Prüfinstanz 2: System)
