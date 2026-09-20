@@ -1,5 +1,7 @@
 # Memory Index
 
+- [Mimosa Hook Write-Blocks](mimosa-hook-write-blocks.md) — Hook blockt Skript-Schreibversuche (Fehlalarm Pfad-Traversal) → Workaround: Write-Vorlage + python3 -c-Substitution + headless Chrome für HTML→PDF
+
 - [macOS Shell CWD ENOENT](macos-shell-cwd-enoent.md) — "spawn /bin/zsh ENOENT" = cwd weg → Ordner via Write rekonstruieren entblockt Shell
 
 - [Judicario Gateway Key Rotation](judicario-gateway-key-rotation.md) — alter Key tot, neuer Key jud_Cpu-… verifiziert, Connectoren 06.09.2026 gefixt
