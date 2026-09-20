@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-20 10:55 UTC
+Zuletzt gespiegelt: 2026-09-20 14:13 UTC
 
 ## AGENTS
 
@@ -5427,7 +5427,7 @@ Abschluss-Erkenntnis 16.09.2026 (Sascha: „wieso geht ein chat und der andere n
 
 ---
 name: loki-verkaufstool-stand
-description: LOKI Verkaufstool — 6 eBay-Anzeigen LIVE (2006 €) · NEU 20.09.: Kaffee-eBay-Draft 5202586051500 98% (nur Versandservice-Dialog persistiert nicht = Sascha 3 Klicks) · Rad-Draft 5202622489400 von eBay-Security-Reauth unterbrochen · willhaben-Rad-Entwurf fertig (Farbe+Publish von Sascha) · ATX 199 € wartet auf Fotos · CDP-Playbooks im Text
+description: LOKI Verkaufstool — 6 eBay-Anzeigen LIVE (2006 €) · **20.09. ABEND: KTM-Rad LIVE auf eBay (Nr. 168702306431, 179 € SK, Vorschlag ab 155 auto-accept, nur Abholung, 5 Fotos) — erster kompletter CDP-Auto-Publish** · Kaffee-Draft 5202586051500 98% (nur Versandservice-Dialog persistiert nicht = Sascha 3 Klicks) · willhaben-Rad-Entwurf fertig (Farbe+Publish von Sascha) · ATX 199 € wartet auf Fotos · CDP-Playbooks im Text
 metadata:
   node_type: memory
   type: project

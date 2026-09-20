@@ -57,4 +57,5 @@ metadata:
 - Erster echter RISIKO-SCAN (Sonntag 10:00-Slot): 0 Commits letzte 24 h in `~/loki-ki` + `~/Projects/*`, 0 uncommittete Änderungen, 0 Engine-Datei-Änderungen → **„Keine Hoch-Risiko-Änderungen gefunden"** als valides Leerergebnis, kein ⚠️-Kalender-Event nötig.
 - Scan im Tages-Logbuch vermerkt: `~/.agents/memory/logbuch/2026-09-20.md` (status: offen, Abend-Zweig 21:00 schließt ab).
 - **19.09. (Samstag) = weiterer Lücken-Tag** — Lücken-Muster: 15./17./19.09. ohne Logbuch; LaunchAgent-Wecker (com.sascha.assi.daily umrüsten) wartet weiterhin auf Saschas „GO Wecker".
-- Lauf-Bilanz 13.–20.09.: Abend-Zweig 2× PASS (13./16.09.), Morgen nachgeholt 2× (14./18.09.), No-op-Guards 2× korrekt (14.09. 16:00, ⌀), Risiko-Scan 1× PASS (20.09.) — alle 6 Zweige mindestens einmal real ausgeführt.
+- Lauf-Bilanz 13.–20.09.: Abend-Zweig 2× PASS (13./16.09.), Morgen nachgeholt 2× (14./18.09.), No-op-Guards 4× korrekt (14.09. 16:00, So 20.09. 15:00+16:00, ⌀), Risiko-Scan 1× PASS (20.09.) — alle 6 Zweige mindestens einmal real ausgeführt.
+- Wochenend-No-ops So 20.09. bestätigt (15:00- und 16:00-Lauf je 1 Zeile „heute nichts zu tun", Logbuch blieb offen für 21:00-Abend-Lauf).

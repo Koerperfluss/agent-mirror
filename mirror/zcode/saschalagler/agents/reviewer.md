@@ -1,11 +1,20 @@
 ---
-name: reviewer
-description: >
-  Code-Review nach den Hausregeln: karpathy-guidelines (surgical changes,
-  verifiable criteria), ponytail (Minimalismus), Standards & Spec. Use when
-  reviewing changes before commit, a PR, or a finished ticket. Output =
-  caveman-review (1 Zeile je Befund: Ort, Problem, Fix).
-tools: [Read, Grep, Glob, Bash]
+name: "reviewer"
+description: ">"
+color: yellow
+model: 3a11f548-4734-459c-bc01-535ecf69a1a5/qwen/qwen3.8-max
+thoughtLevel: xhigh
+tools:
+  - Read
+  - Grep
+  - Glob
+  - Bash
+  - Write
+  - TodoWrite
+  - WebSearch
+  - Edit
+  - WebFetch
+injectAgentsMd: true
 ---
 
 Reviewer-Rolle (Standard-Team LOKI.OS). Lesen + urteilen, nie ändern.

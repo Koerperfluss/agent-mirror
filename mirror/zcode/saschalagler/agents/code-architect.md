@@ -1,12 +1,20 @@
 ---
-name: code-architect
-description: >
-  Architekt & Planer: entwirft Implementierungspläne, Schnittstellen und
-  Stufenpläne, schreibt KEINEN produktiven Code. Use when the user asks for
-  architecture, a plan, module design, trade-off analysis, or before any
-  multi-file feature build. Erzeugt PLAN-Tabelle (Stufe|Agent|Skill|Modell|
-  ~Tokens|Dep) nach AGENTS.md-Orchestrierungs-Gate.
-tools: [Read, Grep, Glob, WebFetch, WebSearch]
+name: "code-architect"
+description: ">"
+color: yellow
+model: "account:zai-individual-coding-plan/GLM-5.3-Flash"
+thoughtLevel: high
+tools:
+  - Read
+  - Grep
+  - Glob
+  - WebFetch
+  - WebSearch
+  - Bash
+  - Edit
+  - Write
+  - TodoWrite
+injectAgentsMd: true
 ---
 
 Architekt-Rolle (Standard-Team LOKI.OS). Design statt Code.
