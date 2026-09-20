@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-20 20:25 UTC
+Zuletzt gespiegelt: 2026-09-20 20:36 UTC
 
 ## AGENTS
 
@@ -4487,7 +4487,7 @@ Update 2026-08-22 (Repair-Session): Ordner umgezogen nach `~/Desktop/Coworkspace
 - [Chipsi/Openlaw Setup](chipsi-openlaw-setup.md) — Chipsi=Cloud-Webapp via Chrome-Shortcut; Antwort-Fehler=serverseitig bei openlaw (06.09. bestätigt, George-Fix nötig); UI-Tests nur mit cua-Klick+echter Tastatur; Gmail=koerperfluss@gmail.com
 - [ZCode Computer Use Status](zcode-computer-use-status.md) — Plugin/TCC ok, Server braucht permission-broker-socket → Fix=volles App-Restart; per 06.09. offen
 - [Wohnkosten-Vereinbarung Status](wohnkosten-vereinbarung-status.md) — v2 signierfertig (§ 1426→1369 ABGB gefixt), Barzahlungen bestätigt, Herbert verifiziert (Präsidiale St. Pölten); Signatur-Suche 07.09. erschöpfend NEGATIV (auch Selbsttest Sascha=0 Signaturen) → nicht erneut suchen; Nutzer will Herbert außen vor halten → **Grenze: keine Signatur-Replikation (§ 223 StGB)**, Kompromiss = 5-Min-Unterschrift ohne Sozialhilfe-Kontext; Mutter Maria Edelmayer † 14.08.2025 Loosdorf, Herbert als Sohn belegt — offener Faden: Erbschaft/Elternhaus Sebastianistraße
-- [LokiVoice V10 Stand + Präsentationsauftrag](lokivoice-v10-stand-presentation.md) — V10-Build ok, /Applications-Binary-Ersatz braucht GO, Gateway-Key 401; Thomas: Astra-Fast fraß 750 Credits in 28 Min; [topic] leer, Wahl A/B offen (20.09.)
+- [LokiVoice V10 Stand + Präsentationsauftrag](lokivoice-v10-stand-presentation.md) — V10-Build ok, /Applications-Binary-Ersatz braucht GO, Gateway-Key 401; Thomas: Astra-Fast fraß 750 Credits in 28 Min; [topic] leer, Wahl A/B offen; 20.09. Pivot auf Screenshot-Analyse (erledigt), PPTX pausiert bis Themenwahl
 - [Lisa Mauerhart Aktenlage](lisa-mauerhart-aktenlage.md) — Betreuungsfall (PVA/BH/LG St. Pölten): Vater Karl Heinz † 05.09.2024 Amstetten, Schwester Julia belegt, **Mutter = Sabine (Nutzerangabe; „Marion" war falsch — beide Namen öffentlich 0, nicht erneut suchen)**; IG: Block vom Hauptkonto (whereismy.fckingmind, 149 F) vom Nutzer bestätigt; **@lis.art.z = MAI 2026 erstellt, Österreich (Screenshot „Konto-Info") → frisches Leerkonto, kein Rename — IG-Thema ABGESCHLOSSEN**; Technik: IG-App ⋯-Menü „Konto-Info" zeigt „Beigetreten am"; keine Block-Umgehung, keine Zweitaccount-Beobachtung
 
 ## chipsi-openlaw-setup
@@ -4575,7 +4575,9 @@ metadata:
 - V1.9.12-Vergleich: faster-whisper small Port 8788, OpenRouter Free, Seraphina-TTS mit Streaming, SafeBox, Judicario-Abfragen = eingebaut; gute lokale Premiumstimme = NICHT im Paket gewesen.
 - Abschlussbericht Thomas: `/Users/thomasschellenbacher/.codex/worktrees/3796/george/audit/2026-09-18/final-integration/ABSCHLUSS.md`.
 
-**Offener Auftrag (20.09.2026):** Präsentation via Presentations-Plugin gewünscht, aber `[topic]`-Platzhalter wurde nicht ersetzt. Vorgeschlagen: A) LokiVoice-Stand, B) KI-Credit-Kosten im Agentenbetrieb. Saschas Wahl steht aus. „Durch Chipsi laufen lassen" = NICHT geschehen (Chipsi = Chrome-Shortcut, siehe [[chipsi-openlaw-setup]]); ehrlich so gemeldet statt zu behaupten.
+**Offener Auftrag (20.09.2026):** Präsentation via Presentations-Plugin gewünscht, aber `[topic]`-Platzhalter wurde nicht ersetzt (2× identische Vorlage geschickt). Vorgeschlagen: A) LokiVoice-Stand, B) KI-Credit-Kosten im Agentenbetrieb. „Durch Chipsi laufen lassen" = NICHT geschehen (Chipsi = Chrome-Shortcut, siehe [[chipsi-openlaw-setup]]); ehrlich so gemeldet statt zu behaupten.
+
+**Verlauf 20.09. (Pivot):** Ich hatte mit dem PPTX-Bau begonnen (pptxgenjs lokal im Projekt installiert, Bash-ENOENT durch Rekonstruktion des Ordners per Write `.keep` entblockt — [[macos-shell-cwd-enoent]] erneut aufgetreten). Sascha unterbrach mitten im Turn: **„bitte die bilder den inhalt analyisere und erklären"** → Pikto-Analyse war das eigentliche Ziel; ich habe alle 5 Screenshots im Chat analysiert und erklärt (Credit-Brand, Astra-for-Law-Reel [unverifiziert], Kritikbericht, Zweitmeinung, V1.9.12-Vergleich). **PPTX pausiert — Saschas Themenwahl steht weiterhin aus (A oder B).** Gesamtbild der Analyse: Technik besser verbunden, aber kein einziger echter Geschäftsauftrag Ende-zu-Ende nachgewiesen; Credit-Brand kam vom Astra-Fast-Modus, nicht von LokiVoice.
 
 ## macos-shell-cwd-enoent
 
