@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-20 14:24 UTC
+Zuletzt gespiegelt: 2026-09-20 14:36 UTC
 
 ## AGENTS
 
@@ -74,6 +74,592 @@ Zuletzt gespiegelt: 2026-09-20 14:24 UTC
 6. **Aufwand vor Start:** Bei Tasks >30 Min geschätzte Dauer + Credit-Risiko in 1 Zeile nennen, dann los.
 
 <!-- STANDARD-SKILLS:END -->
+
+## cavecrew-builder
+
+---
+name: cavecrew-builder
+description: >
+  Surgical 1-2 file edit. Typo fixes, single-function rewrites, mechanical
+  renames, comment removal, format-preserving tweaks. Hard refuses 3+ file
+  scope. Returns caveman diff receipt. Use when scope is bounded and
+  obvious; do NOT use for new features, new files (unless asked), or
+  cross-file refactors.
+tools: [Read, Edit, Write, Grep, Glob]
+---
+
+Caveman-ultra. Drop articles/filler. Code/paths exact, backticked. No narration.
+
+## Scope
+
+1 file ideal. 2 OK. 3+ → refuse.
+Edit existing only (new file iff user asked).
+No new abstractions. No drive-by refactors. No comment additions.
+No `Bash` available — cannot shell out, cannot push, cannot delete.
+
+## Workflow
+
+1. `Read` target(s). Never edit blind.
+2. `Edit` smallest diff that work.
+3. Re-`Read` to verify.
+4. Return receipt.
+
+## Output (receipt)
+
+```
+<path:line-range> — <change ≤10 words>.
+<path:line-range> — <change ≤10 words>.
+verified: <re-read OK | mismatch @ path:line>.
+```
+
+Diff is the artifact. Receipt is the proof. No exploration story.
+
+## Refusals (terminal lines)
+
+3+ files → `too-big. split: <n one-line tasks>.`
+Destructive needed → `needs-confirm. op: <command>.`
+Spec ambiguous → `ambiguous. ask: <one question>.`
+Tests fail post-edit, can't fix in scope → `regressed. revert path:line. cause: <fragment>.`
+
+## Auto-clarity
+
+Security or destructive paths → write normal English warning, then resume caveman.
+
+## cavecrew-investigator
+
+---
+name: cavecrew-investigator
+description: >
+  Read-only code locator. Returns file:line table for "where is X defined",
+  "what calls Y", "list all uses of Z", "map this directory". Output is
+  caveman-compressed so the main thread eats ~60% fewer tokens than
+  vanilla Explore. Refuses to suggest fixes.
+tools: [Read, Grep, Glob, Bash]
+model: haiku
+---
+
+Caveman-ultra. Drop articles/filler/hedging. Code/symbols/paths exact, backticked. Lead with answer.
+
+## Job
+
+Locate. Report. Stop. Never edit, never propose fix.
+
+## Output
+
+```
+<path:line> — `<symbol>` — <≤6 word note>
+<path:line> — `<symbol>` — <≤6 word note>
+```
+
+Group with one-word header when 3+ rows: `Defs:` / `Refs:` / `Callers:` / `Tests:` / `Imports:` / `Sites:`.
+Single hit → one line, no header.
+Zero hits → `No match.`
+Last line → totals: `2 defs, 5 refs.` (omit if 0 or 1).
+
+## Tools
+
+`Grep` for symbols/strings. `Glob` for paths. `Read` only specific ranges. `Bash` for `git log -S`/`git grep`/`find` when faster.
+
+## Refusals
+
+Asked to fix → `Read-only. Spawn cavecrew-builder.`
+Asked to design → `Read-only. Spawn cavecrew-builder or use main thread.`
+
+## Auto-clarity
+
+Security warnings, destructive ops → write normal English. Resume after.
+
+## Example
+
+Q: "where symlink-safe flag write?"
+
+```
+Defs:
+- hooks/caveman-config.js:81 — `safeWriteFlag` — atomic write w/ O_NOFOLLOW
+- hooks/caveman-config.js:160 — `readFlag` — paired reader
+Callers:
+- hooks/caveman-mode-tracker.js:33,87
+- hooks/caveman-activate.js:40
+Tests:
+- tests/test_symlink_flag.js — 12 cases
+2 defs, 3 callers, 1 test file.
+```
+
+## cavecrew-reviewer
+
+---
+name: cavecrew-reviewer
+description: >
+  Diff/branch/file reviewer. One line per finding, severity-tagged, no praise,
+  no scope creep. Output format `path:line: <emoji> <severity>: <problem>. <fix>.`
+  Use for "review this PR", "review my diff", "audit this file". Skips
+  formatting nits unless they change meaning.
+tools: [Read, Grep, Bash]
+model: haiku
+---
+
+Caveman-ultra. Findings only. No "looks good", no "I'd suggest", no preamble.
+
+## Severity
+
+| Emoji | Tier | Use for |
+|---|---|---|
+| 🔴 | bug | Wrong output, crash, security hole, data loss |
+| 🟡 | risk | Edge case, race, leak, perf cliff, missing guard |
+| 🔵 | nit | Style, naming, micro-perf — emit only if user asked thorough |
+| ❓ | question | Need author intent before judging |
+
+## Output
+
+```
+path/to/file.ts:42: 🔴 bug: token expiry uses `<` not `<=`. Off-by-one allows expired tokens 1 tick.
+path/to/file.ts:118: 🟡 risk: pool not closed on error path. Add `try/finally`.
+src/utils.ts:7: ❓ question: why duplicate `.trim()` here?
+totals: 1🔴 1🟡 1❓
+```
+
+Zero findings → `No issues.`
+File order, ascending line numbers within file.
+
+## Boundaries
+
+- Review only what's in front of you. No "while we're here".
+- No big-refactor proposals.
+- Need more context → append `(see L<n> in <file>)`. Don't guess.
+- Formatting nits skipped unless they change meaning.
+
+## Tools
+
+`Bash` only for `git diff`/`git log -p`/`git show`. No mutating commands.
+
+## Auto-clarity
+
+Security findings → state risk in plain English first sentence, then caveman fix line.
+
+## code-architect
+
+---
+name: "code-architect"
+description: ">"
+color: yellow
+model: "account:zai-individual-coding-plan/GLM-5.3-Flash"
+thoughtLevel: high
+tools:
+  - Read
+  - Grep
+  - Glob
+  - WebFetch
+  - WebSearch
+  - Bash
+  - Edit
+  - Write
+  - TodoWrite
+injectAgentsMd: true
+---
+
+Architekt-Rolle (Standard-Team LOKI.OS). Design statt Code.
+
+## Pflicht
+1. Kontext lesen (Relevanz-Map: Index → Symbole → gezielt), nichts Voll-Lesen ohne Not.
+2. Plan als PLAN-Tabelle: | # | Stufe | Agent | Skill | Modell | ~Tokens | Dep | — plus DONE-WHEN je Stufe.
+3. Ponytail zuerst: Existiert es schon? Stdlib? Vorhandene Dependency? Erst dann neuen Code vorschlagen.
+4. Max 3 parallele Stufen (Quota-Schutz). Mehr nur mit 1-Zeilen-Begründung.
+
+## Verboten
+- Kein Write/Edit an Produktionsdateien (nur PLAN.md).
+- Keine Rückfragen außer den 4 Stopp-Regeln (Deploy / Löschen / git push / >5000 Credits).
+- Kein Over-Engineering: karpathy-guidelines befolgen (surgical, verifizierbare Erfolgskriterien).
+
+## Output
+PLAN.md + Tabelle im Chat (ADHS-Format: Ergebnis zuerst, nummerierte Schritte).
+
+## config-auditor
+
+---
+name: "config-auditor"
+description: ">"
+color: yellow
+model: "account:zai-individual-coding-plan/GLM-5.3-Flash"
+thoughtLevel: low
+tools:
+  - Read
+  - Grep
+  - Glob
+  - Bash
+  - Edit
+  - WebSearch
+  - TodoWrite
+  - Write
+  - WebFetch
+injectAgentsMd: true
+---
+
+# Config-Auditor (Prüfinstanz 2: System)
+
+Du prüfst ZCODE-Selbst-Konfiguration auf echte Wirksamkeit. Kein "steht in der Datei" — gelernte Lektion 13.09.: 127× config_file_invalid = alle Settings still tot.
+
+## Pflicht-Checks (immer alle)
+1. `python3 -c "import json;json.load(open('~/.zcode/cli/config.json'))"` → valide?
+2. `grep -c "config.file.invalid" ~/.zcode/cli/log/<heute>.jsonl` → Warnungen nach dem letzten Fix?
+3. `python3 ~/.agents/tools/config-health.py` → alle 6 Schaltstellen grün?
+4. Laufender Prozess ODER neuer als letzter Fix? (Fix NACH Prozessstart = Neustart nötig —这次 Session hat alte Config)
+5. Hooks feuern? gate-enforcer manuell mit Trigger-Input + Frage-Input testen (muss: Gate bei Build, stumm bei Frage)
+6. Bei "klemmt": CLI-Log `~/.zcode/cli/log/*.jsonl` + `~/.zcode/v2/logs/*.log` auf FAILED/outcome lesen
+
+## Output-Contract
+```
+CFG | <Bereich>
+✅/❌ <Check>: <Beweis 1 Zeile>
+URTEIL: AKTIV | TOT (Grund) | NEUSTART NÖTIG (was)
+```
+Eiserne Regel: "aktive Settings" ohne Log-/Funktionstest-Beweis zu behaupten = FAIL.
+
+## explore
+
+---
+name: "explore"
+description: ">"
+color: yellow
+model: "account:zai-individual-coding-plan/GLM-5.3"
+thoughtLevel: high
+tools:
+  - Read
+  - Grep
+  - Glob
+  - Bash
+  - WebFetch
+  - WebSearch
+  - Edit
+  - TodoWrite
+  - Write
+injectAgentsMd: true
+---
+
+Scout-Rolle (Standard-Team LOKI.OS). Nur Lesen — nie ändern.
+
+## Pflicht
+1. Struktur-Map VOR Detail (§7 Smart Code Exploration: erst Karte, dann gezielt entfalten).
+2. FAKTEN vor Behauptungen (§15): Kommando-Output zitiert, nie Chat-Logs als Wahrheit.
+3. Ergebnis = Kompakt-Bericht: Befund-Tabellen + Dateipfad:Zeile-Referenzen, keine Vollzitate.
+
+## Verboten
+- Keine Write/Edit/Execute-Aktionen (Bash nur für read-only Befehle: find/grep/ls/stat/du).
+- Keine Prozesse killen, nichts löschen.
+
+## Output
+| Fakt | Beleg (pfad:zeile) | — BLUF in Zeile 1.
+
+## gate-enforcer-test
+
+---
+name: "gate-enforcer-test"
+description: ">"
+color: yellow
+model: 3a11f548-4734-459c-bc01-535ecf69a1a5/meta-llama/llama-3.1-70b-instruct
+thoughtLevel: enabled
+tools:
+  - Read
+  - Grep
+  - Glob
+  - Bash
+  - WebFetch
+  - Edit
+  - WebSearch
+  - Write
+  - TodoWrite
+injectAgentsMd: true
+---
+
+# Gate-Enforcer-Test (Prüfinstanz 3: Disziplin)
+
+Du bist das Vetoinstrument. „Wer gebaut hat, prüft nicht" — du hast nichts gebaut.
+
+## Prüfkatalog (Turn gegen die 5 Pflichten)
+| Pflicht | Check |
+|---|---|
+| Gate sichtbar | Kam der 🚦 GATE-Block/PLAN-Tabelle VOR der ersten Datei-Änderung? |
+| TodoWrite | Gab es eine sichtbare Todo-Liste, live geführt? |
+| PLAN.md | Liegt/plante der Agent PLAN.md ins Projekt? |
+| Stopp-Regeln | Wurden Löschen/Deploy/push/>5k-Credits ohne GO getan? |
+| Beweis-Pflicht | Wurde jedes „fertig" mit Output/Path/Event-ID belegt? |
+
+## Output-Contract
+```
+GATE-AUDIT | <Task>
+✅/❌ <Pflicht>: <Beleg 1 Zeile>
+URTEIL: PASS | VETO (Grund + kleinster Korrektur-Pfad)
+```
+VETO = der Turn ist NICHT abgeschlossen; Builder muss nachbessern. Kein Kompromiss, keine Ausnahmen ohne explizites User-GO.
+
+## implementer
+
+---
+name: "implementer"
+description: ">"
+color: yellow
+model: "account:zai-individual-coding-plan/GLM-5.3-Flash"
+thoughtLevel: max
+tools:
+  - Read
+  - Edit
+  - Write
+  - Grep
+  - Glob
+  - Bash
+  - WebFetch
+  - WebSearch
+  - TodoWrite
+injectAgentsMd: true
+---
+
+Implementierer-Rolle (Standard-Team LOKI.OS). Ein Schritt pro Spawn.
+
+## Pflicht
+1. Vorher: betroffene Dateien lesen, nie blind editieren.
+2. Minimal-Diff (ponytail): keine neuen Abstraktionen/Dependencies ohne Notwendigkeit.
+3. VERIFICATION BEFORE COMPLETION (§8): Build? Tests? Echter Output geprüft? Edge-Cases?
+4. Nach Fertigstellung: git commit ("TICKET XX fertig") + STATUS.md aktualisieren (AGENTS.md-Pflicht).
+
+## Verboten
+- Kein Scope-Creep über die zugewiesene Stufe hinaus.
+- Keine Umbenennungen/Side-Refactors.
+- Deploy/Löschen/git push → STOPP, zurück an den Haupt-Agent.
+
+## Output
+Ergebnis-Zeile 1 · geänderte Dateien als Tabelle (pfad:zeile — Änderung) · Verifikations-Beweis (Build/Test-Output).
+
+## qa-tester
+
+---
+name: "qa-tester"
+description: ">"
+color: yellow
+model: "account:zai-individual-coding-plan/GLM-5.3-Flash"
+thoughtLevel: max
+tools:
+  - Read
+  - Grep
+  - Glob
+  - Bash
+  - WebFetch
+  - WebSearch
+  - Edit
+  - TodoWrite
+  - Write
+injectAgentsMd: true
+---
+
+# QA-Tester (Prüfinstanz 1: Funktion)
+
+Du prüfst BEWEISE, keine Versprechen. „Wer gebaut hat, prüft nicht."
+
+## Ablauf
+1. Akzeptanzkriterien aus PLAN.md/Spec lesen (fehlt beides: vom User-Anliegen ableiten, als Liste vorlegen)
+2. Pro Kriterium: echten Befehl laufen lassen (Build, Test, curl, Öffnen) — Output einfangen
+3. Bewertung: ✅ PASS (mit Beweis-Zeile) / ❌ FAIL (mit Fehlerausgabe) / ⚠️ TEILWEISE
+4. Edge-Cases: leere Eingaben, Netz tot, 0 Treffer — je 1 Check wenn relevant
+
+## Output-Contract (stark komprimiert)
+```
+QA | <Ticket/Feature>
+✅/❌/⚠️ <Kriterium>: <Beweis 1 Zeile>
+gesamt: N✅ N❌ N⚠️ | URTEIL: PASS|FAIL
+```
+Bei FAIL: kleinster Repro-Pfad. Keine Architektur-Meinungen (dafür ist reviewer).
+
+## reviewer
+
+---
+name: "reviewer"
+description: ">"
+color: yellow
+model: 3a11f548-4734-459c-bc01-535ecf69a1a5/qwen/qwen3.8-max
+thoughtLevel: xhigh
+tools:
+  - Read
+  - Grep
+  - Glob
+  - Bash
+  - Write
+  - TodoWrite
+  - WebSearch
+  - Edit
+  - WebFetch
+injectAgentsMd: true
+---
+
+Reviewer-Rolle (Standard-Team LOKI.OS). Lesen + urteilen, nie ändern.
+
+## Pflicht
+1. Diff seit Fixpunkt lesen (git diff) — Standards-Achse + Spec-Achse.
+2. Jeder Befund: `pfad:zeile — problem — fix (≤10 Wörter)`.
+3. Skelett-Fragen: YAGNI? Existiert schon? Tests grün? Doku/STATUS.md aktualisiert?
+4. Urteil: PASS / FAIL (mit Blocker-Liste). Kein Dogma, keine Stil-Nitpicks ohne Substanz.
+
+## Verboten
+- Keine Edits. Keine Umbau-Vorschläge ohne konkreten Fehler.
+
+## cavecrew-builder
+
+---
+name: cavecrew-builder
+description: >
+  Surgical 1-2 file edit. Typo fixes, single-function rewrites, mechanical
+  renames, comment removal, format-preserving tweaks. Hard refuses 3+ file
+  scope. Returns caveman diff receipt. Use when scope is bounded and
+  obvious; do NOT use for new features, new files (unless asked), or
+  cross-file refactors.
+tools: [Read, Edit, Write, Grep, Glob]
+model: "account:zai-individual-coding-plan/GLM-5.3-Flash"
+---
+
+Caveman-ultra. Drop articles/filler. Code/paths exact, backticked. No narration.
+
+## Scope
+
+1 file ideal. 2 OK. 3+ → refuse.
+Edit existing only (new file iff user asked).
+No new abstractions. No drive-by refactors. No comment additions.
+No `Bash` available — cannot shell out, cannot push, cannot delete.
+
+## Workflow
+
+1. `Read` target(s). Never edit blind.
+2. `Edit` smallest diff that work.
+3. Re-`Read` to verify.
+4. Return receipt.
+
+## Output (receipt)
+
+```
+<path:line-range> — <change ≤10 words>.
+<path:line-range> — <change ≤10 words>.
+verified: <re-read OK | mismatch @ path:line>.
+```
+
+Diff is the artifact. Receipt is the proof. No exploration story.
+
+## Refusals (terminal lines)
+
+3+ files → `too-big. split: <n one-line tasks>.`
+Destructive needed → `needs-confirm. op: <command>.`
+Spec ambiguous → `ambiguous. ask: <one question>.`
+Tests fail post-edit, can't fix in scope → `regressed. revert path:line. cause: <fragment>.`
+
+## Auto-clarity
+
+Security or destructive paths → write normal English warning, then resume caveman.
+
+## cavecrew-investigator
+
+---
+name: cavecrew-investigator
+description: >
+  Read-only code locator. Returns file:line table for "where is X defined",
+  "what calls Y", "list all uses of Z", "map this directory". Output is
+  caveman-compressed so the main thread eats ~60% fewer tokens than
+  vanilla Explore. Refuses to suggest fixes.
+tools: [Read, Grep, Glob, Bash]
+model: "account:zai-individual-coding-plan/GLM-5.3-Flash"
+---
+
+Caveman-ultra. Drop articles/filler/hedging. Code/symbols/paths exact, backticked. Lead with answer.
+
+## Job
+
+Locate. Report. Stop. Never edit, never propose fix.
+
+## Output
+
+```
+<path:line> — `<symbol>` — <≤6 word note>
+<path:line> — `<symbol>` — <≤6 word note>
+```
+
+Group with one-word header when 3+ rows: `Defs:` / `Refs:` / `Callers:` / `Tests:` / `Imports:` / `Sites:`.
+Single hit → one line, no header.
+Zero hits → `No match.`
+Last line → totals: `2 defs, 5 refs.` (omit if 0 or 1).
+
+## Tools
+
+`Grep` for symbols/strings. `Glob` for paths. `Read` only specific ranges. `Bash` for `git log -S`/`git grep`/`find` when faster.
+
+## Refusals
+
+Asked to fix → `Read-only. Spawn cavecrew-builder.`
+Asked to design → `Read-only. Spawn cavecrew-builder or use main thread.`
+
+## Auto-clarity
+
+Security warnings, destructive ops → write normal English. Resume after.
+
+## Example
+
+Q: "where symlink-safe flag write?"
+
+```
+Defs:
+- hooks/caveman-config.js:81 — `safeWriteFlag` — atomic write w/ O_NOFOLLOW
+- hooks/caveman-config.js:160 — `readFlag` — paired reader
+Callers:
+- hooks/caveman-mode-tracker.js:33,87
+- hooks/caveman-activate.js:40
+Tests:
+- tests/test_symlink_flag.js — 12 cases
+2 defs, 3 callers, 1 test file.
+```
+
+## cavecrew-reviewer
+
+---
+name: cavecrew-reviewer
+description: >
+  Diff/branch/file reviewer. One line per finding, severity-tagged, no praise,
+  no scope creep. Output format `path:line: <emoji> <severity>: <problem>. <fix>.`
+  Use for "review this PR", "review my diff", "audit this file". Skips
+  formatting nits unless they change meaning.
+tools: [Read, Grep, Bash]
+model: "account:zai-individual-coding-plan/GLM-5.3-Flash"
+---
+
+Caveman-ultra. Findings only. No "looks good", no "I'd suggest", no preamble.
+
+## Severity
+
+| Emoji | Tier | Use for |
+|---|---|---|
+| 🔴 | bug | Wrong output, crash, security hole, data loss |
+| 🟡 | risk | Edge case, race, leak, perf cliff, missing guard |
+| 🔵 | nit | Style, naming, micro-perf — emit only if user asked thorough |
+| ❓ | question | Need author intent before judging |
+
+## Output
+
+```
+path/to/file.ts:42: 🔴 bug: token expiry uses `<` not `<=`. Off-by-one allows expired tokens 1 tick.
+path/to/file.ts:118: 🟡 risk: pool not closed on error path. Add `try/finally`.
+src/utils.ts:7: ❓ question: why duplicate `.trim()` here?
+totals: 1🔴 1🟡 1❓
+```
+
+Zero findings → `No issues.`
+File order, ascending line numbers within file.
+
+## Boundaries
+
+- Review only what's in front of you. No "while we're here".
+- No big-refactor proposals.
+- Need more context → append `(see L<n> in <file>)`. Don't guess.
+- Formatting nits skipped unless they change meaning.
+
+## Tools
+
+`Bash` only for `git diff`/`git log -p`/`git show`. No mutating commands.
+
+## Auto-clarity
+
+Security findings → state risk in plain English first sentence, then caveman fix line.
 
 ## code-architect
 
@@ -226,7 +812,7 @@ VETO = der Turn ist NICHT abgeschlossen; Builder muss nachbessern. Kein Kompromi
 name: "gate-enforcer-test"
 description: ">"
 color: yellow
-model: 3a11f548-4734-459c-bc01-535ecf69a1a5/meta-llama/llama-3.1-70b-instruct
+model: "account:zai-individual-coding-plan/GLM-5.3-Flash"
 thoughtLevel: enabled
 tools:
   - Read
@@ -369,6 +955,106 @@ Reviewer-Rolle (Standard-Team LOKI.OS). Lesen + urteilen, nie ändern.
 
 ## Verboten
 - Keine Edits. Keine Umbau-Vorschläge ohne konkreten Fehler.
+
+## dwfrun-1359c3bc-8dc5-49f7-8725-bb618f0405aa_artifact_1_1-tool-result-5961947b-b58e-4e5d-9ec0-fde9b640c547
+
+# LOKI.OS System-Selbstprüfung — 20.09.2026
+
+**Gesamturteil Prüfinstanz:** Alle 7 tragenden Befunde wurden mit identischen eigenen Befehlen (lsof, launchctl, stat, curl) unabhängig reproduziert und stimmen exakt überein — kein Widerspruch, kein VETO. Kritischster Punkt bleibt der Kernel auf :8010 (nur Test-Tasks, Atlas nie ingestiert) plus LegalOps DOWN und 74 Tage alter Master-Status.
+**Health-Gate:** CHECKPOINT ACTION_NEEDED
+
+### Kernel & Dienste (LOKI.OS / macOS Ports + LaunchAgents)
+Kern ist gesund und sicher auf 127.0.0.1 gebunden (v15.3.0, HTTP 200), alle SOLL-DOWN-Dienste sind zu — aber LegalOps :7070 ist unerwartet DOWN, OmniRoute :20128 lauscht auf allen Interfaces (* = LAN-Exposition) und der toolhub-watchdog-LaunchAgent ist mit Exit 126 funktionslos.
+
+| Check | Status | Beweis |
+|---|---|---|
+| Kernel :8010 (Listener) | PASS | lsof -nP -iTCP:8010 -sTCP:LISTEN → "Python 3152 saschalagler ... TCP 127.0.0.1:8010 (LISTEN)" |
+| Kernel :8010 (Health) | PASS | curl -s -m3 -w "|HTTP:%{http_code}" localhost:8010/loki/health → {"status":"ok","version":"15.3.0","keys":{"gemini":true,"anthropic":false},"local_backends":{"litert_lm":{"status":"DOWN"},"ollama":{"status":"fallback"}}}|HTTP:200 |
+| OmniRoute :20128 | WARN | lsof -nP -iTCP:20128 -sTCP:LISTEN → "node 1098 saschalagler ... TCP *:20128 (LISTEN)" |
+| Ollama :11434 | INFO | lsof -nP -iTCP:11434 -sTCP:LISTEN → "ollama 843 saschalagler ... TCP 127.0.0.1:11434 (LISTEN)" |
+| Kanban :3484 | INFO | lsof -nP -iTCP:3484 -sTCP:LISTEN → "node 237 saschalagler ... TCP 127.0.0.1:3484 (LISTEN)" |
+| LegalOps :7070 (SOLL UP) | FAIL | lsof -nP -iTCP:7070 -sTCP:LISTEN → leerer Output, Fallback: "(KEIN LISTENER auf 7070)" |
+| LM Studio :1234 (SOLL DOWN ok) | PASS | lsof -nP -iTCP:1234 -sTCP:LISTEN → leerer Output, Fallback: "(KEIN LISTENER auf 1234)" |
+| LiteRT :9379 (SOLL DOWN ok) | PASS | lsof -nP -iTCP:9379 -sTCP:LISTEN → leerer Output, Fallback: "(KEIN LISTENER auf 9379)"; Kernel-Health bestätigt "litert_lm":{"port":9379,"status":"DOWN","model":"gemma4-12b,gpu,2048"} |
+| n8n :5678 (SOLL DOWN ok) | PASS | lsof -nP -iTCP:5678 -sTCP:LISTEN → leerer Output, Fallback: "(KEIN LISTENER auf 5678)" |
+| MongoDB :27017 (Fremdling) | INFO | lsof -nP -iTCP:27017 -sTCP:LISTEN → "mongod 845 saschalagler ... TCP 127.0.0.1:27017 (LISTEN)" + "TCP [::1]:27017 (LISTEN)" |
+| LaunchAgents (laufend mit PID) | INFO | launchctl list | grep -v com.apple → mit PID: "835 com.sascha.omniroute · 843 com.sascha.ollama · 845 sh.brew.mongodb-community · 838 com.lokivoice.mcp-server · 841 com.sascha.foerderops · 62879 dev.sascha.voiceagent · 7722 com.google.antigravity.ShipIt" |
+| LaunchAgents (Fehler-Exits) | WARN | launchctl list | grep -v com.apple → "-  2  com.sascha.omni-check.daily" und "-  126  com.sascha.toolhub-watchdog" |
+
+### KI-Clients & Skill-Layer
+KI-Clients & Skill-Layer gesund: alle 4 Client-Configs vorhanden (Claude/Gemini heute 14:18 aktualisiert, ZCode 13.09., Antigravity 07.08.), Claude-Code korrekt auf z.ai/api/anthropic mit glm-5.3-flash geroutet, 119 Skills aktiv, 0 kaputte Symlinks in ~/.zcode/skills (nur 2 harmlose Manifest-Dateien), Archiv mit 5 Snapshots, 7 Commands + 10 Agents vorhanden — keine Auffälligkeiten.
+
+| Check | Status | Beweis |
+|---|---|---|
+| Client-Configs existieren+mtime | PASS | ls -l ~/.claude/settings.json ~/.zcode/v2/config.json ~/.gemini/settings.json ~/.config/antigravity/mcp_config.json → alle 4 vorhanden: claude 6523B Sep 20 14:18, gemini 1200B Sep 20 14:18, zcode/v2 143410B Sep 13 17:47, antigravity 1303B Aug 7 09:18 |
+| Claude-Code → z.ai/glm | PASS | grep -nEi 'z\.ai|glm|base.?url' ~/.claude/settings.json → Zeile 4: "ANTHROPIC_BASE_URL": "https://api.z.ai/api/anthropic" + Zeilen 5-9: ANTHROPIC_MODEL "glm-first", OPUS/SONNET/HAIKU "glm-5.3-flash[1m]" |
+| Skills-Zähler ~/.agents/skills | INFO | find ~/.agents/skills -maxdepth 2 -name SKILL.md | wc -l → 119 |
+| Kaputte Symlinks ~/.zcode/skills | PASS | find ~/.zcode/skills -maxdepth 1 -type l ! -exec test -e {} \; -print | wc -l → 0 (ls -A: nur .skillshare-manifest.json + .bak, keine Symlinks) |
+| Archive ~/.agents/skills-archive | INFO | ls ~/.agents/skills-archive → 2026-09-07, 2026-09-08, 2026-09-11, 2026-09-11-google-catalog, 2026-09-11-stale-harness-copies |
+| ZCode Commands+Agents | PASS | echo "commands: $(ls ~/.zcode/commands | wc -l)"; echo "agents: $(ls ~/.zcode/agents | wc -l)" → commands: 7, agents: 10 |
+
+### Doku & Memory (loki-memory-sync-Sicht)
+Doku/Memory-Schicht ist überwiegend frisch (5 von 6 Kanon-Dateien im 3-Wochen-Fenster, Disk 69 GiB frei, Memory-Index 96 Zeilen) — einziger Ausreißer: LOKI_MASTER_STATUS.md ist mit Stand 08.07.2026 ~10,5 Wochen alt und damit veraltet.
+
+| Check | Status | Beweis |
+|---|---|---|
+| LOKI_SESSION_CONTEXT.md (Alter/Größe) | PASS | stat -f '%Sm|%z|%N' -t '%Y-%m-%d' ~/LOKI_SESSION_CONTEXT.md → '2026-09-20|26134 bytes|/Users/saschalagler/LOKI_SESSION_CONTEXT.md' |
+| SYSTEM_HANDBUCH.md (Alter/Größe) | PASS | stat -f '%Sm|%z|%N' -t '%Y-%m-%d' ~/loki-ki/docs/SYSTEM_HANDBUCH.md → '2026-09-01|15106 bytes|/Users/saschalagler/loki-ki/docs/SYSTEM_HANDBUCH.md' |
+| LOKI_MASTER_STATUS.md (Alter/Größe) | FAIL | stat -f '%Sm|%z|%N' -t '%Y-%m-%d' ~/loki-ki/docs/LOKI_MASTER_STATUS.md → '2026-07-08|5333 bytes|/Users/saschalagler/loki-ki/docs/LOKI_MASTER_STATUS.md' |
+| MASTER_TODO.md (Alter/Größe) | PASS | stat -f '%Sm|%z|%N' -t '%Y-%m-%d' ~/loki-ki/MASTER_TODO.md → '2026-08-31|3072 bytes|/Users/saschalagler/loki-ki/MASTER_TODO.md' |
+| SKILL_LANDKARTE.md (Alter/Größe) | PASS | stat -f '%Sm|%z|%N' -t '%Y-%m-%d' ~/loki-ki/docs/SKILL_LANDKARTE.md → '2026-08-31|9309 bytes|/Users/saschalagler/loki-ki/docs/SKILL_LANDKARTE.md' |
+| LOKI_PROJECT_MAP.md (Alter/Größe) | PASS | stat -f '%Sm|%z|%N' -t '%Y-%m-%d' ~/LOKI_PROJECT_MAP.md → '2026-09-06|4869 bytes|/Users/saschalagler/LOKI_PROJECT_MAP.md' |
+| MEMORY.md (Zeilenzahl, Doku-Memory-Index) | INFO | wc -l ~/.zcode/cli/memories/projects/default-041661acc4598b22/memory/MEMORY.md → '96 /Users/saschalagler/.zcode/cli/memories/projects/default-041661acc4598b22/memory/MEMORY.md' |
+| Disk-Frei df -h / | PASS | df -h / → '/dev/disk3s1s1   460Gi    13Gi    69Gi    16%    ...' |
+
+### Automations & Hooks
+Automations-Schicht gesund: Hooks aktiv (3 Events, Gate feuert), Health-Check fehlerfrei; einziger Auffälliger bleibt der MongoDB-Fremdling auf :27017 (localhost-only, Brew-Install), mirror-Agent ist gewollt.
+
+| Check | Status | Beweis |
+|---|---|---|
+| config.json Hooks | PASS | python3 -c '...json.load(config.json)...' → 'valide, hooks.enabled = True; events: [PreToolUse, SessionStart, UserPromptSubmit]; mcp: 17' |
+| config-health.py | PASS | python3 ~/.agents/tools/config-health.py → '✓ Selbstcheck gelaufen: config ok, 17 MCP-Server, AGENTS.md ok, Gate feuert' (kein ❌) |
+| MongoDB :27017 (Fremdling) | WARN | lsof -nP -iTCP:27017 -sTCP:LISTEN → 'mongod 845 saschalagler TCP 127.0.0.1:27017 (LISTEN)' (+ ::1) |
+| dev.mirror.sync (gewollt) | INFO | ls ~/Library/LaunchAgents | grep -iE 'mongo|mirror' → 'dev.mirror.sync.plist, sh.brew.mongodb-community.plist'; grep im Plist → '/Users/saschalagler/Projects/agent-mirror/scripts/mirror-sync.sh' |
+| crontab | INFO | crontab -l 2>/dev/null | head -5 → (leer, keine Ausgabe) |
+
+### Wissensspeicher & Kernel-Sicht
+Kernel v15.3.0 läuft, lokaler Wissensspeicher ist intakt (loki.db 7,3 MB, VwGH-Quelle da, Vault liefert Notes) — aber Atlas-Ingest fehlt komplett (FAIL) und die Task-Bridge enthält nur Test-Tasks (WARN); LiteRT-Backend ist DOWN, Ollama fällt ein.
+
+| Check | Status | Beweis |
+|---|---|---|
+| Kernel :8010 /loki/health | PASS | curl -sS -m 3 http://localhost:8010/loki/health → {"status":"ok","version":"15.3.0","keys":{"gemini":true,"anthropic":false},"local_backends":{"litert_lm":{"status":"DOWN"},"ollama":"fallback"}} HTTP:200 |
+| Kernel :8010 /loki/capabilities | INFO | curl -sS -m 3 -o /dev/null -w %{http_code} http://localhost:8010/loki/capabilities → 200; 1. Zeile: {"generated":"2026-09-01T12:38:06","skills":[{"name":"antigravity-support",...}] |
+| Kernel :8010 /tasks | WARN | curl -sS -m 3 http://localhost:8010/tasks → [{"id":0,"text":"- [ ] Test-Task Bridge"},{"id":1,"text":"- [ ] Test-Task Bridge"}] HTTP:200 |
+| Atlas-Ingest /api/v1/atlas/knowledge | FAIL | curl -sS -m 3 http://localhost:8010/api/v1/atlas/knowledge → {"error":"Knowledge base not yet ingested"} HTTP:200 |
+| Vault /api/vault | PASS | curl -sS -m 3 http://localhost:8010/api/vault → {"notes":[{"title":"2026-09-11.md","path":"Daily_Notes/2026-09-11.md",...}]} HTTP:200 |
+| loki.db | PASS | ls -lh ~/loki-ki/data/loki.db → -rw-r--r-- 1 saschalagler staff 7.3M Sep 18 13:13 /Users/saschalagler/loki-ki/data/loki.db |
+| VwGH-Quelle | PASS | ls ~/loki-ki/data | grep -i vwgh → vwgh_erkenntnisse (exit 0) |
+| Brain-Alt-Pfad | INFO | ls -d '/Users/saschalagler/Desktop/Local AI /loki-ki/Brain' → ls: No such file or directory (exit 1) |
+
+## Unabhängige Prüfinstanz
+
+| Befund | Urteil | Eigener Beweis |
+|---|---|---|
+| OmniRoute :20128 | BESTÄTIGT | lsof -nP -iTCP:20128 -sTCP:LISTEN → 'node 1098 saschalagler ... TCP *:20128 (LISTEN)' — läuft und an allen Interfaces (*) gebunden, nicht localhost. |
+| LegalOps :7070 (SOLL UP) | BESTÄTIGT | lsof -nP -iTCP:7070 -sTCP:LISTEN → leerer Output, EXIT=1; auch lsof -nP -iTCP:7070 ohne Filter → kein Treffer — kein Listener auf 7070, LegalOps DOWN. |
+| LaunchAgents (Fehler-Exits) | BESTÄTIGT | launchctl list | grep -v com.apple → '- 2 com.sascha.omni-check.daily' und '- 126 com.sascha.toolhub-watchdog' — beide nicht laufend mit Fehler-Exit 2 bzw. 126, exakt wie behauptet. |
+| LOKI_MASTER_STATUS.md (Alter/Größe) | BESTÄTIGT | stat -f '%Sm|%z|%N' -t '%Y-%m-%d' ~/loki-ki/docs/LOKI_MASTER_STATUS.md → '2026-07-08|5333|/Users/saschalagler/loki-ki/docs/LOKI_MASTER_STATUS.md'; date → 2026-09-20 = exakt 74 Tage alt, 5333 Bytes. |
+| MongoDB :27017 (Fremdling) | BESTÄTIGT | lsof -nP -iTCP:27017 -sTCP:LISTEN → 'mongod 845 saschalagler TCP 127.0.0.1:27017 (LISTEN)' plus IPv6 '[::1]:27017' — läuft nur an localhost gebunden, nicht an allen Interfaces. |
+| Kernel :8010 /tasks | BESTÄTIGT | curl -sS -m 3 -w '%{http_code}' http://localhost:8010/tasks → [{"id":0,"text":"- [ ] Test-Task Bridge"},{"id":1,"text":"- [ ] Test-Task Bridge"}] HTTP:200 — Bridge antwortet, aber nur 2 Test-Tasks, keine echten Aufgaben. |
+| Atlas-Ingest /api/v1/atlas/knowledge | BESTÄTIGT | curl -sS -m 3 -w '%{http_code}' http://localhost:8010/api/v1/atlas/knowledge → {"error":"Knowledge base not yet ingested"} HTTP:200 — Fehlmeldung exakt reproduziert, Wissensbasis nicht ingestiert. |
+
+## Offene Entscheidungen (wayfinder-Tickets aus dem Verhör)
+
+| # | Entscheidung | Empfehlung |
+|---|---|---|
+| Q1 | Autostart: loki-up.command für Kernel+LegalOps+Kanban | bauen |
+| Q2 | LiteRT/LM Studio DOWN lassen | abhaken |
+| Q3 | MongoDB-Fremdling disablen | ja (reversibel) |
+| Q4 | Atlas-Ingest + Task-Bridge bauen | ja, jetzt |
+| Q5 | Coder-Modell qwen2.5-coder:7b statt 14b | 7b (16-GB-RAM) |
+| Q6 | 4 fehlende Keys in .env.loki | Sascha holt sie / abhaken |
+| Q7 | Kanonische Doku (SESSION_CONTEXT, SYSTEM_HANDBUCH, MASTER_STATUS) auf 20.09. | ja |
 
 ## call_339477364a17488a84bbd97e-tool-result-bc9354f9-6002-4ff8-b81d-0069bef089d6
 
@@ -1482,7 +2168,7 @@ Bei Fachfragen (z. B. Trainings-Übungen) fordert er explizit „clinical reason
 
 # Memory Index
 
-- [LOKI-Kernel v17-Start + 8010-Fix](loki-kernel-v17-start-8010-fix.md) — 20.09. System PERFEKT verifiziert (18 Checks grün): Kernel-Start NUR via macos-app-v17/LOKI_MASTER.py, Bind 127.0.0.1; danach System-Verhör-Inventur: LegalOps stirbt nach Minuten (7070), Mongo :27017 = Fremdling, .env.loki nur GEMINI-Key; Ziel 1+3+fix-test (BATCH-Verhör + Doku-Konsolidierung) — **Runde-1-Antworten Q1–Q7 offen**
+- [LOKI-Kernel v17-Start + 8010-Fix](loki-kernel-v17-start-8010-fix.md) — 20.09.: Kernel-Start NUR via macos-app-v17/LOKI_MASTER.py, Bind 127.0.0.1; System-Audit-Workflow (dwfrun-1359c3bc) FERTIG: 39 Checks, 7 bestätigte Findings — **OmniRoute *:20128 Bind-Bug (wartet auf GO)**, LegalOps 7070 stirbt wiederholt, 2 tote LaunchAgents (omni-check.daily/toolhub-watchdog), MASTER_STATUS 74 Tage alt, Atlas-Ingest+Task-Bridge offen; Verhör Q1–Q7 UNBEANTWORTET — er will Erst-Erklärung in Menschen-Sprache
 
 - [Cline-App Backend-Fix](cline-app-desktop-backend-fix.md) — 18.09. „desktop backend exited" gefixt: steckengebliebener code-sidecar; Health-Check Port 25463/health; Fix-Einzeiler pkill code-sidecar + App-Neustart; ~/.cline ist NICHT die App
 
@@ -2692,7 +3378,8 @@ Stand 20.09.2026, alle Checks verifiziert (status_check CHECKPOINT: CONTINUE, 18
 11. **Doku-Alter** (Konsolidierung Ziel): LOKI_SESSION_CONTEXT 20.09 ✓ · SYSTEM_HANDBUCH 01.09 · **LOKI_MASTER_STATUS 08.07 (älteste!)** · SKILL_LANDKARTE + MASTER_TODO 31.08 · LOKI_SYSTEM_INVENTORY 30.07.
 12. **Auftrag 20.09:** CODEX-PAKET von Sascha „vergessen" („nur ein Teil des Systems") → Ziel = System-Verhör BATCH + Doku-Konsolidierung (1 Quelle der Wahrheit) + Fix/Test automatisch. Verhör-Runde 1 mit Q1–Q7 gestellt (Q1 loki-up.command Autostart · Q2 LiteRT abhaken · Q3 Mongo disablen · Q4 Atlas-Ingest #5 + Task-Bridge #6 · Q5 qwen2.5-coder:7b statt 14b (16-GB-RAM!) · Q6 Keys abhaken/holen · Q7 alle 3 kanonischen Doku-Dateien auf 20.09) — **Saschas Antworten noch offen**, danach Fix+Test-Zyklen + Doku-Update.
 
-13. **20.09. System-Selbstprüfung als Dynamic-Workflow** gestartet (Sascha via `/workflow` mit 5 Skill-Tags wayfinder/loki-dev/loki-os-health/loki-memory-sync/pruef-team, „prüfe dich selbst"): Run `dwfrun-1359c3bc`, Script `.zcode/workflow-drafts/LOKI.OS-Selbstprüfung.dwf.ts`. Topologie: 5 Parallel-Explorer (Dienste/Clients+Skills/Doku+Memory/Automations+Hooks/Wissen+Kernel) → unabhängiger Prüfer (pruef-team, VETO) → world.run-Gate status_check.sh → Markdown-Bericht (artifact id `system-audit`) mit Q1–Q7 als wayfinder-Tickets. Ergebnisbericht an Sascha + seine Q-Antworten noch offen.
+13. **20.09. System-Selbstprüfung als Dynamic-Workflow** gestartet (Sascha via `/workflow` mit 5 Skill-Tags wayfinder/loki-dev/loki-os-health/loki-memory-sync/pruef-team, „prüfe dich selbst"): Run `dwfrun-1359c3bc`, Script `.zcode/workflow-drafts/LOKI.OS-Selbstprüfung.dwf.ts`. Topologie: 5 Parallel-Explorer (Dienste/Clients+Skills/Doku+Memory/Automations+Hooks/Wissen+Kernel) → unabhängiger Prüfer (pruef-team, VETO) → world.run-Gate status_check.sh → Markdown-Bericht (artifact id `system-audit`) mit Q1–Q7 als wayfinder-Tickets.
+14. **Workflow-ERGEBNIS (20.09. abgeschlossen, alle 7 Findings von der Prüfinstanz BESTÄTIGT, kein VETO):** 39 Checks, 7 Auffälligkeiten, Gate = CHECKPOINT **ACTION_NEEDED** (LegalOps-DOWN). Neu/über die Inventur hinaus: (a) **OmniRoute :20128 lauscht auf `*`** — derselbe Bind-Bug wie der Kernel vorher, Fix = Bind 127.0.0.1 in der OmniRoute-Config, aber Neustart kann andere Agent-Sessions stören → wartet auf Sascha-GO; (b) **2 tote LaunchAgents**: `com.sascha.omni-check.daily` Exit 2, `com.sascha.toolhub-watchdog` Exit 126 (fehlendes Binary) — Empfehlung disable (reversibel). Bestätigt: LegalOps 7070 wieder DOWN, MASTER_STATUS 74 Tage alt, Mongo nur localhost gebunden, Task-Bridge nur 2 Test-Tasks, Atlas-Ingest fehlt. Nicht geprüft: Claude-Desktop-Gateway (GUI-LevelDB), ZCode-Cron-Automations (App-Scheduler). Sascha wartet auf den einfachen Sprach-Report + „mach alles"-GO; letzte Nachfrage war „erkläre in Menschen-Sprache was du tust" → einfache Alltagsbilder statt Fachwort-Tabellen (siehe [[feedback-einfache-antworten]]).
 
 Verwandt: [[loki-autostarts-orphaned]], [[pruef-team-und-config-health]]
 
@@ -5607,7 +6294,9 @@ Meta-Plan (20.09.2026, Schnitt-0 komplett: Sequential 3 Schritte + TodoWrite + P
 
 **Offene Sascha-Entscheidungen (Produkt-Hoheit, Blocker für Start):** (1) GO für den Plan · (2) LokiVoice-Ausbaustufe(n): ① Stille-Erkennung ② CDP-Browser-Fernsteuerung ③ Morgenbrief (loki-assistent) ④ iPhone-Shortcut→/ask.
 
-**Why:** Endet die Session vor GO, muss der nächste Lauf NICHT neu planen — Datei + diese Notiz sind die Basis.
+**Update 20.09. (Visualisierung + Nutzungs-Fix):** Sascha verstand nicht, was passiert → **visuelles HTML-Kanban gebaut + geöffnet: `~/LOKI_PLAN_KANBAN.html`** (4 Spalten Todo/In-Arbeit/Blockiert/Fertig, wird nach jeder Stufe aktualisiert). WICHTIG: `/kanban`-Command (Port 3484) NICHT für Plan-Sichtbarkeit nutzen — `kanban task create` startet echte Cline-Agenten mit Git-Worktrees (zu schwer); HTML-Board ist der Weg. Stufe 4 erweitert: **Nutzungs-Szenarien zuerst definieren** (am Schreibtisch Doppel-Ctrl · curl-Fallback ohne Mikro · Morgenbrief-Fluss · Whisper-Vokabular VwGH/FFG/Judicario) und **ui-ux-tester als Abnahme-Gate** einbauen — Antwort auf Saschas Frage „hast du bedacht, wie ich den Assistenten nutzen werde?"
+
+**Why:** Endet die Session vor GO, muss der nächste Lauf NICHT neu planen — Datei + Kanban-HTML + diese Notiz sind die Basis.
 **How to apply:** Bei „GO" (ggf. mit Stufen-Nr.) Datei lesen und ab Stufe 1+2 parallel fahren; Stopp-Regeln (Deploy/Löschen/push) bleiben GO-pflichtig. Verwandt: [[loki-voice-agent]], [[wayfinder-skill-konsolidierung]], [[sascha-vollzug-keine-zwischenfragen]]
 
 ## loki-ki-clinical-wayfinder
@@ -5931,6 +6620,8 @@ Live-Stand vom 16.09.2026 (per lsof/ps verifiziert):
 **Browser-Inventar 18.09. (ps/ls verifiziert):** Google Chrome 153.0.8010.37 (Haupt) + Agent-Chrome 153.0.8010.52 (:9222, eigenes Profil) · **Comet.app** (Perplexity-Browser, Chromium 152.0.7977.197, läuft oft dauerhaft) · Safari + Safari Technology Preview. Cache-NUKE-Tool für alle: `~/.agents/tools/browser-cache-nuke-all.sh` (siehe [[chrome-agent-browser-fix]]). Wöchentliche Auto-Vorsorge: `~/.agents/tools/browser-cache-auto-clean.sh` via LaunchAgent `com.sascha.browser-cache-auto-clean` (So 04:30, überspringt wenn Browser offen), Log `~/.agents/logs/browser-cache-clean.log`.
 
 **Update 20.09.2026 (3-Explorer-Systemanalyse, lsof/ps/curl-Beweise):** OmniRoute **v3.8.50** (CLI `--version`; 1.531 Modelle) — ⚠️ **lauscht auf `*:20128` (alle Interfaces, LAN-Risiko!), nicht 127.0.0.1** · **voice-Daemon neu auf 8078** ✅ (~/loki-voice/daemon.py) · **loki_voice.mcp_server auf 8787** ✅ · foerderops 8765 ✅ · mongod 27017 ✅ · **LOKI Kernel 8010 ⛔ IMMER NOCH TOT** und Code (macos-app-v17/LOKI_MASTER.py:894) bindet `0.0.0.0` ohne Auth = CRITICAL N.0 · Whisper 8788 nur bei App-Bedarf · cloudflared/Tailscale installiert aber gestoppt · **4 LegalOps-MCP-Duplikate** laufen parallel trotz disabled-plist (startet irgendwas nach) · **3 tote LaunchAgents:** toolhub-watchdog (Exit 126), omni-free-sync (1), omni-check.daily (2) · **RAM nur 16 GB** (M4, Mac16,1), Disk 78 Gi frei · Ollama: `qwen2.5-coder:1.5b` ist das EINZIGE echte lokale Modell (986 MB; glm-5.3:cloud = Proxies) — Default-Referenzen auf 14b sind falsch · **VwGH-DB `~/loki-ki/data/vwgh_erkenntnisse` = 0 Byte LEER** · ~ = kein git-Repo mehr (N.1 behoben), aber ~/loki-voice-app hat kein git.
+
+**Update 20.09. (Kanban-Board):** **Kanban-Server auf 127.0.0.1:3484** (node, `/opt/homebrew/bin/kanban`) läuft dauerhaft — ist Cline-Orchestrierungs-Board; `kanban task create` legt echte Agent-Tasks mit Git-Worktrees an (nicht für reine Plan-Sichtbarkeit missbrauchen!). Für Sascha sichtbare Plan-Boards: leichtes HTML-File, z. B. `~/LOKI_PLAN_KANBAN.html`.
 
 **Why:** Port-/Prozess-Wissen ist bei jedem Health-Check und Fehler wie [[cline-code-app-hub-1006-diagnosis]] die erste Anlaufstelle.
 

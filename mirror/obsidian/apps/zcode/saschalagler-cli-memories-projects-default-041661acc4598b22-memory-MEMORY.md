@@ -7,7 +7,7 @@ tags: [spiegel, zcode]
 
 # Memory Index
 
-- [LOKI-Kernel v17-Start + 8010-Fix](loki-kernel-v17-start-8010-fix.md) — 20.09. System PERFEKT verifiziert (18 Checks grün): Kernel-Start NUR via macos-app-v17/LOKI_MASTER.py, Bind 127.0.0.1; danach System-Verhör-Inventur: LegalOps stirbt nach Minuten (7070), Mongo :27017 = Fremdling, .env.loki nur GEMINI-Key; Ziel 1+3+fix-test (BATCH-Verhör + Doku-Konsolidierung) — **Runde-1-Antworten Q1–Q7 offen**
+- [LOKI-Kernel v17-Start + 8010-Fix](loki-kernel-v17-start-8010-fix.md) — 20.09.: Kernel-Start NUR via macos-app-v17/LOKI_MASTER.py, Bind 127.0.0.1; System-Audit-Workflow (dwfrun-1359c3bc) FERTIG: 39 Checks, 7 bestätigte Findings — **OmniRoute *:20128 Bind-Bug (wartet auf GO)**, LegalOps 7070 stirbt wiederholt, 2 tote LaunchAgents (omni-check.daily/toolhub-watchdog), MASTER_STATUS 74 Tage alt, Atlas-Ingest+Task-Bridge offen; Verhör Q1–Q7 UNBEANTWORTET — er will Erst-Erklärung in Menschen-Sprache
 
 - [Cline-App Backend-Fix](cline-app-desktop-backend-fix.md) — 18.09. „desktop backend exited" gefixt: steckengebliebener code-sidecar; Health-Check Port 25463/health; Fix-Einzeiler pkill code-sidecar + App-Neustart; ~/.cline ist NICHT die App
 
