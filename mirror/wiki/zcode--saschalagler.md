@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-20 16:57 UTC
+Zuletzt gespiegelt: 2026-09-20 17:08 UTC
 
 ## AGENTS
 
@@ -58,6 +58,10 @@ Zuletzt gespiegelt: 2026-09-20 16:57 UTC
 | Projekt onboarden / neu anlegen / ÜBERNEHMEN (Memory-Sweep→Stand→Plan) / fertig machen / testen | **loki-dev** Modi INIT/TAKEOVER/FINISH (ehem. deve/glm-init = konsolidiert) |
 | UI-/UX-Test (Web/Desktop, erschöpfend) | ui-ux-tester (chrome-devtools/computer-use + Vision) |
 | GROSSES Projekt / Arbeit >1 Session | **loki-dev** Modus MAP → wayfinder (Map ch Artieren/abarbeiten; Konfig-Landkarte: ~/.agents/WAYFINDER-GLM.md) |
+| Spec-driven Development / Context-Rot-Schutz | **gsd-core** (Research -> Spec -> Plan -> Vertical Slice) |
+| Multi-Mode Agent-Coding (Architect, Code, Ask, Debug) | **roo-code** (ZCode / AutoClaw / Cline-SDK Integration) |
+| Autonome Iterations-Schleife / Self-Healing bis grün | **ralph-loop** (Continuous Loop bis Test/Task PASS) |
+| AI Code Review / Diff- & PR-Prüfung | **coderabbit** (Security, Performance, Logic, Arch-Check) |
 
 
 
