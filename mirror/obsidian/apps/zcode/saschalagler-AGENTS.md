@@ -1,7 +1,7 @@
 ---
 app: zcode
 quelle: "saschalagler/AGENTS.md"
-stand: 2026-09-18
+stand: 2026-09-20
 tags: [spiegel, zcode]
 ---
 
@@ -51,6 +51,9 @@ tags: [spiegel, zcode]
 | Architektur-Rückfrage | ask-matt |
 | Sicherheitsaudit / App-Pentest (nur eigene Apps) | strix-pentesting |
 | Langzeitgedächtnis / Kontext über Sessions | cognee-memory |
+| „Was habe ich letztes Mal …", Session-Verlauf | deja-history (deja CLI) · Cline-Rohdaten: cline-session-history |
+| „Hatten wir das schon gelöst?" (Cross-Session) | deja-search (MCP-Tool `deja`) |
+| Unklarer Task → erst Fakten sammeln | investigate-first |
 | Doku/Lookup aktueller APIs | find-docs (CLI + MCP-Modus) |
 | Gratis-Modelle / KI-Fallback-Check | `omni-check` (Terminal-Alias) |
 | Build-Wunsch („baue/erstelle/mach mir X") | **loki-dev** Modus BUILD (Director, Zero-Question) |

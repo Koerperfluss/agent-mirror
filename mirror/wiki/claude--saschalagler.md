@@ -1,6 +1,6 @@
 # saschalagler (claude)
 
-Zuletzt gespiegelt: 2026-09-20 14:36 UTC
+Zuletzt gespiegelt: 2026-09-20 14:47 UTC
 
 ## CLAUDE
 
@@ -34,6 +34,9 @@ When the user types `/graphify`, use the installed graphify skill or instruction
 | Architektur-Rückfrage | ask-matt |
 | Sicherheitsaudit / App-Pentest (nur eigene Apps) | strix-pentesting |
 | Langzeitgedächtnis / Kontext über Sessions | cognee-memory |
+| „Was habe ich letztes Mal …", Session-Verlauf | deja-history (deja CLI) · Cline-Rohdaten: cline-session-history |
+| „Hatten wir das schon gelöst?" (Cross-Session) | deja-search (MCP-Tool `deja`) |
+| Unklarer Task → erst Fakten sammeln | investigate-first |
 | Doku/Lookup aktueller APIs | find-docs (CLI + MCP-Modus) |
 | Gratis-Modelle / KI-Fallback-Check | `omni-check` (Terminal-Alias) |
 | Build-Wunsch („baue/erstelle/mach mir X") | **loki-dev** Modus BUILD (Director, Zero-Question) |
