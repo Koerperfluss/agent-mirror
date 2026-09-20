@@ -1,7 +1,7 @@
 ---
 app: claude
 quelle: "web-template/skills/cloudbase-agent-ts/adapter-langgraph.md"
-stand: 2026-09-19
+stand: 2026-09-20
 tags: [spiegel, claude]
 ---
 

@@ -1,6 +1,6 @@
 ---
 name: zcode-adhs-automationen
-description: "13.09. ABGESCHLOSSEN: EINE ZCode-Automation mit ALLEN 6 Briefs (cron 0 9,10,15,16,21 — Zweige per Uhrzeit+Wochentag), Engine 7/7 PASS (daily_sweep/assi brief+feierabend/Hook//feierabend), Kalender via AppleScript bewiesen (KEIN Gmail-Kalender in Calendar.app, Ziel = „Kalender")"
+description: "13.–20.09. LIVE: EINE ZCode-Automation mit ALLEN 6 Briefs (cron 0 9,10,15,16,21 — Zweige per Uhrzeit+Wochentag); alle 6 Zweige mind. 1× real gelaufen (Abend 13./16.09. PASS, Morgen 14./18.09. nachgeholt, Risiko-Scan 20.09. PASS, No-op-Guards korrekt); Lücken-Tage 15./17./19.09. (Mac schläft) → LaunchAgent-Wecker auf GO wartend; Deutsch-Patch weiterhin offen"
 metadata:
   node_type: memory
   type: project
@@ -52,3 +52,9 @@ metadata:
 - 09:00 wieder verpasst (3. Lücken-Morgen: 15./17./18.09. ohne Logbuch bzw. nachgeholt) → 15:00-Freitag-Slot als Nachhol-Lauf genutzt (Zweig-Abweichung dokumentiert). Kalender-Event **„Tagesplan 18.09."** UID `533CCF84-6694-440A-B4C9-E2F21CEF2B6F`, Logbuch `~/.agents/memory/logbuch/2026-09-18.md` (status: offen, DEV-BRIEF: 0 Commits, keine CI; Cline-Yolo-Team „daily digest/documentation maintainer/security reviewer" in Session 712478 gesichtet — mögliche Überschneidung mit Tages-Routine beobachten).
 - **LaunchAgent-Wecker (com.sascha.assi.daily umrüsten) weiter auf GO offen** — Dauerlösung gegen verpasste 09:00-Läufe.
 - 17.09. bleibt Lücken-Tag (kein Logbuch).
+
+## Sechster Lauf (So 20.09. 10:07 — RISIKO-SCAN-Zweig PASS)
+- Erster echter RISIKO-SCAN (Sonntag 10:00-Slot): 0 Commits letzte 24 h in `~/loki-ki` + `~/Projects/*`, 0 uncommittete Änderungen, 0 Engine-Datei-Änderungen → **„Keine Hoch-Risiko-Änderungen gefunden"** als valides Leerergebnis, kein ⚠️-Kalender-Event nötig.
+- Scan im Tages-Logbuch vermerkt: `~/.agents/memory/logbuch/2026-09-20.md` (status: offen, Abend-Zweig 21:00 schließt ab).
+- **19.09. (Samstag) = weiterer Lücken-Tag** — Lücken-Muster: 15./17./19.09. ohne Logbuch; LaunchAgent-Wecker (com.sascha.assi.daily umrüsten) wartet weiterhin auf Saschas „GO Wecker".
+- Lauf-Bilanz 13.–20.09.: Abend-Zweig 2× PASS (13./16.09.), Morgen nachgeholt 2× (14./18.09.), No-op-Guards 2× korrekt (14.09. 16:00, ⌀), Risiko-Scan 1× PASS (20.09.) — alle 6 Zweige mindestens einmal real ausgeführt.
