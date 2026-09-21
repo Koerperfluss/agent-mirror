@@ -7,7 +7,7 @@ tags: [spiegel, zcode]
 
 ---
 name: zcode-adhs-automationen
-description: "13.–20.09. LIVE: EINE ZCode-Automation mit ALLEN 6 Briefs (cron 0 9,10,15,16,21 — Zweige per Uhrzeit+Wochentag); alle 6 Zweige mind. 1× real gelaufen, 7 Läufe gesamt (Abend 13./16./20.09. PASS, Morgen 14./18.09. nachgeholt, Risiko-Scan 20.09. PASS, No-op-Guards korrekt); Lücken-Tage 15./17./19.09. (Mac schläft) → LaunchAgent-Wecker auf GO wartend; Deutsch-Patch weiterhin offen"
+description: "13.–21.09. LIVE: EINE ZCode-Automation mit ALLEN 6 Briefs (cron 0 9,10,15,16,21 — Zweige per Uhrzeit+Wochentag); 10 Läufe, alle 6 Zweige bewiesen, 21.09. erstmals pünktlicher 09:00-Lauf + erster echter P1-Risiko-Finding (loki-voice-Submodul dirty → wartet auf „GO voice-commit"); Risiko-Scan 20./21.09. PASS · Abend 13./16./20.09. PASS · No-ops korrekt; ⚠️ Lücken-Tage 15./17./19.09. (Mac schläft um 09:00); offen: LaunchAgent-Wecker-GO + Deutsch-Patch + voice-commit"
 metadata:
   node_type: memory
   type: project
@@ -83,4 +83,7 @@ metadata:
 - **ℹ️ P2 Config-Drift:** `config.json` wuchs seit Backup 13.09 von 16→**17 MCP-Server** und 1→**4 SessionStart-Hook-Gruppen** (nicht dieser Chat; App läuft). Beobachten.
 - Keine Runtime/Auth/Leak/Cross-Platform-Findings; kein ⚠️-Kalender-Event (nicht kritisch). Scan vermerkt in `2026-09-21.md`.
 - Lauf-Bilanz 13.–21.09.: 9 Läufe (Risiko-Scan 2×, davon 1× mit echtem Finding = Scanner liefert Wert).
+
+## Zehnter Lauf (Mo 21.09. 15:0x — No-op PASS)
+- 15:00-Montag-Slot korrekt 1-Zeilen-No-op (Doku-Sync nur mittwochs); Logbuch 21.09. blieb offen für 21:00-Abend-Lauf. Bilanz: 10 Läufe, noch immer nur 2 offene Punkte: **LaunchAgent-Wecker-GO + Deutsch-Patch**; zusätzlich wartet **„GO voice-commit"** (P1-Finding aus Risiko-Scan: loki-voice-Submodul dirty, 4 Dateien).
 

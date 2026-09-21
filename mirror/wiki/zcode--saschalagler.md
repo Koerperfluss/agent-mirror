@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-21 12:56 UTC
+Zuletzt gespiegelt: 2026-09-21 13:07 UTC
 
 ## AGENTS
 
@@ -2257,7 +2257,7 @@ Bei Fachfragen (z. B. Trainings-Übungen) fordert er explizit „clinical reason
 
 # Memory Index
 
-- [ZCode ADHS-Automations](zcode-adhs-automationen.md) — 13.–21.09. LIVE: **EINE Automation mit ALLEN 6 Briefs** (cron `0 9,10,15,16,21`, Zweige per Uhrzeit+Wochentag; niemals 6 separate — Nutzer-Ziel!) + Engine 7/7 PASS; **9 Läufe, alle 6 Zweige bewiesen: Morgen 21.09. erstmals PÜNKTLICH (UID C1BFC6A3) · Risiko-Scan 21.09. erster echter P1-Finding: loki-voice-Submodul dirty (4 Dateien uncommittet) → wartet auf „GO voice-commit" · Abend 13./16./20.09. PASS (Events 610E2A57/88CCE1A6/6BFDB24A, Fix `open -a Calendar` vor osascript) · 16:00/15:00-No-ops korrekt**; ⚠️ **Lücken-Tage 15./17./19.09. (Mac schläft um 09:00)**; offen auf GO: LaunchAgent com.sascha.assi.daily als Wecker umrüsten + Deutsch-Patch (5066 Strings); 1 Task pro Chat-Limit
+- [ZCode ADHS-Automations](zcode-adhs-automationen.md) — 13.–21.09. LIVE: **EINE Automation mit ALLEN 6 Briefs** (cron `0 9,10,15,16,21`, Zweige per Uhrzeit+Wochentag; niemals 6 separate — Nutzer-Ziel!) + Engine 7/7 PASS; **10 Läufe, alle 6 Zweige bewiesen: Morgen 21.09. erstmals PÜNKTLICH (UID C1BFC6A3) · Risiko-Scan 21.09. erster echter P1-Finding: loki-voice-Submodul dirty (4 Dateien uncommittet) → wartet auf „GO voice-commit" · Abend 13./16./20.09. PASS (Events 610E2A57/88CCE1A6/6BFDB24A, Fix `open -a Calendar` vor osascript) · 16:00/15:00-No-ops korrekt**; ⚠️ **Lücken-Tage 15./17./19.09. (Mac schläft um 09:00)**; offen auf GO: LaunchAgent com.sascha.assi.daily als Wecker umrüsten + Deutsch-Patch (5066 Strings); 1 Task pro Chat-Limit
 
 - [OmniRoute-Rückbau + System-Fixes](omniroute-rueckbau-system-fixes-2026-09-20.md) — 20.09. Abend: Q1–Q7 ALLE ERLEDIGT („fix test"-GO): OmniRoute ABGEBAUT (Nutzer-Wunsch, Plist raus, Regeln auf Direkt-Provider gesynced, Comet läuft bis Reboot); Atlas-Ingest 67 Module (2 Code-Bugs gefixt); Task-Bridge 5 echte Tasks; loki-up.command am Desktop getestet; Mongo zu; 2 tote Agents disabled; 7b-Coder-Modell da; MASTER_STATUS+HANDBUCH aktualisiert (Backups ~/sicherungen/doku-backup-20260920); Endstand CHECKPOINT CONTINUE — offen nur: 4 Keys (Sascha) + Firewall sudo
 
@@ -4312,7 +4312,7 @@ Integration done 2026-08-30: added `web-search-prime`, `zread`, `zai-vision` MCP
 
 ---
 name: zcode-adhs-automationen
-description: "13.–20.09. LIVE: EINE ZCode-Automation mit ALLEN 6 Briefs (cron 0 9,10,15,16,21 — Zweige per Uhrzeit+Wochentag); alle 6 Zweige mind. 1× real gelaufen, 7 Läufe gesamt (Abend 13./16./20.09. PASS, Morgen 14./18.09. nachgeholt, Risiko-Scan 20.09. PASS, No-op-Guards korrekt); Lücken-Tage 15./17./19.09. (Mac schläft) → LaunchAgent-Wecker auf GO wartend; Deutsch-Patch weiterhin offen"
+description: "13.–21.09. LIVE: EINE ZCode-Automation mit ALLEN 6 Briefs (cron 0 9,10,15,16,21 — Zweige per Uhrzeit+Wochentag); 10 Läufe, alle 6 Zweige bewiesen, 21.09. erstmals pünktlicher 09:00-Lauf + erster echter P1-Risiko-Finding (loki-voice-Submodul dirty → wartet auf „GO voice-commit"); Risiko-Scan 20./21.09. PASS · Abend 13./16./20.09. PASS · No-ops korrekt; ⚠️ Lücken-Tage 15./17./19.09. (Mac schläft um 09:00); offen: LaunchAgent-Wecker-GO + Deutsch-Patch + voice-commit"
 metadata:
   node_type: memory
   type: project
@@ -4388,6 +4388,9 @@ metadata:
 - **ℹ️ P2 Config-Drift:** `config.json` wuchs seit Backup 13.09 von 16→**17 MCP-Server** und 1→**4 SessionStart-Hook-Gruppen** (nicht dieser Chat; App läuft). Beobachten.
 - Keine Runtime/Auth/Leak/Cross-Platform-Findings; kein ⚠️-Kalender-Event (nicht kritisch). Scan vermerkt in `2026-09-21.md`.
 - Lauf-Bilanz 13.–21.09.: 9 Läufe (Risiko-Scan 2×, davon 1× mit echtem Finding = Scanner liefert Wert).
+
+## Zehnter Lauf (Mo 21.09. 15:0x — No-op PASS)
+- 15:00-Montag-Slot korrekt 1-Zeilen-No-op (Doku-Sync nur mittwochs); Logbuch 21.09. blieb offen für 21:00-Abend-Lauf. Bilanz: 10 Läufe, noch immer nur 2 offene Punkte: **LaunchAgent-Wecker-GO + Deutsch-Patch**; zusätzlich wartet **„GO voice-commit"** (P1-Finding aus Risiko-Scan: loki-voice-Submodul dirty, 4 Dateien).
 
 
 ## zcode-app-german-ui-patch
@@ -4580,7 +4583,7 @@ Update 2026-08-22 (Repair-Session): Ordner umgezogen nach `~/Desktop/Coworkspace
 
 # Memory Index
 
-- [MA-Standard Pipeline](ma-standard-pipeline.md) — Saschas Kernziel: generische Multi-Agent-Pipeline (3 Analysten→Denkagent→Entwurf→Gegenleser) bei JEDER substanzhaltigen Anfrage automatisch; Draft MA-Standard.dwf.ts liegt fertig; 2 SaveWorkflow-Ablehnungen; offene Apps-GO: brew alt-tab/maccy/itsycal/neohtop/mole + rtrvr.ai-MCP + Remindian-Cask
+- [MA-Standard Pipeline](ma-standard-pipeline.md) — **GESPEICHERT global** (`~/.zcode/workflows/MA-Standard.dwf.ts`, 3 Agenten: Analyst→Denker-Verfasser→Kritischer Leser) + **AUTO-MA-Regel** in sascha-output-standard: bei JEDER substanzhaltigen Anfrage SOFORT selbst starten (CreateWorkflow saved), kein Trigger-Wort, kein GO · offene Apps-GO: brew alt-tab/maccy/itsycal/neohtop/mole + rtrvr.ai-MCP + Remindian-Cask
 
 - [Sascha Output-Standard](sascha-output-standard.md) — NIEMALS Markdown als Ergebnis → druckfähige PDF (weiß, BLUF-Liste + nummerierte Abschnitte); briefmaker-Skill installiert; Aufbau = Saschas Entscheidung; Wort „Fiche" abgelehnt
 
@@ -4732,7 +4735,7 @@ metadata:
 
 ---
 name: ma-standard-pipeline
-description: Saschas Kernforderung (21.09.) — generische Multi-Agent-Pipeline (MA-Standard) bei JEDER substanzhaltigen Anfrage automatisch in EINEM Lauf; 2 SaveWorkflow-Versuche abgelehnt, offene Rückfrage „immer vs. bei Arbeit"
+description: MA-Standard-Workflow GLOBAL GESPEICHERT (21.09.) — schlanke Multi-Agent-Pipeline mit 3 Agenten (Analyst → Denker-Verfasser → Kritischer Leser), Trigger „MA: <Aufgabe>"; Sascha wollte zuerst IMMER/automatisch, hat sich auf 3 Agenten geeinigt
 metadata:
   node_type: memory
   type: feedback
@@ -4743,12 +4746,11 @@ metadata:
 
 **Why:** Er sah den abgeschlossenen Dynamic-Workflow „Thomas-Codex-Analyse" (7 Agents, 9/9 Steps, 8.570.900 Tokens, 1 Artifact, Phasen: 5 Berichte parallel → Denkagent → Entwurf+Gegenlesen → Bericht) und fragte, wie er DAS wieder triggert und warum ich nicht IMMER so arbeite. ZCode-Hürde: Workflows starten nur auf expliziten Wunsch — deshalb habe ich wochenlang einzeln/stufenweise gearbeitet. DAS ist die eigentliche Bremse, nicht fehlende Skills.
 
-**How to apply:**
-1. **Verhaltensregel dauerhaft verankern** (AGENTS.md + Memory): Bei jeder substanzhaltigen Anfrage SOFORT die MA-Pipeline starten (CreateWorkflow), ohne Rückfrage, ohne GO — der User will nie mehr stufenweise Arbeit sehen.
-2. Generisches Workflow-Skript liegt fertig als Draft: `/Users/saschalagler/Desktop/Coworkspace_Ich/PETER JUDICARIO/.zcode/workflow-drafts/MA-Standard.dwf.ts` (3 Analysten [Inhalt/Absicht/Fakten] fan-out → Denkagent → Antwort-Verfasser → Kritischer Leser max. 2 Runden → Markdown-Artifact; args: `auftrag` [string, required] + `material` [json: Liste {typ, pfad, inhalt} — Agenten lesen Pfade selbst]).
-3. **OFFEN:** Zwei SaveWorkflow-Aufrufe wurden von Sascha ABGELEHNT (1. Thomas-Codex-Analyse speichern → „es geht um die multiagent analyse grundlegend ohne kontext"; 2. MA-Standard speichern → „rede ich undeutlich?"). Er will kein Einzelformat-Papier, sondern das GRUNDSÄTZLICHE Verhalten. Bevor erneut gespeichert wird: erst seine offene Frage klären — sollen Mini-Fragen auch durch die Pipeline (meine Empfehlung: nein, nur substanzhaltige, sonst Token-Brand wie Astra) — oder NICHTS mehr nachfragen und Verhalten einfach ab der nächsten Anfrage zeigen.
+**Stand 21.09. (ERLEDIGT):** **MA-Standard ist global gespeichert** unter `~/.zcode/workflows/MA-Standard.dwf.ts` — SCHLANKE Version mit **3 Agenten** (Analyst → Denker-Verfasser → Kritischer Leser, 1 Fix-Runde; Sascha: „SO VIEL DU BRAUCHST NICHT 2 oder 3" = 7er-Version abgelehnt). Args: `auftrag` (string, required) + `material` (json-Liste {typ, pfad} — Agenten lesen Pfade selbst). **Trigger:** Sascha sagt „MA: <Aufgabe>" → CreateWorkflow `saved: { name: "MA-Standard", args: { auftrag, material } }`. Zwei Compile-Fixes beim Speichern: deutsche Anführungszeichen „…" innerhalb von Persona-Strings zerbrechen den TS-String (nur gerade " escapen/vermeiden) + Agentennamen müssen im Run eindeutig sein (2. Verfasser = „Ueberarbeiter").
 
-**Neue Links-Recherche (21.09., späte Nachschübe, „SCHNELLER"):** Video `oy49gvlC4eE` = „There's a Second App Store for Your Mac — How To Use Homebrew"; App-Liste aus Screenshot: AltTab, Maccy, Itsycal, NeoHtop (alle `brew install --cask …`), Mole (tw93, `brew install mole`), CaskHub + Tappie (Links im Screenshot abgeschnitten, zu recherchieren). Ein GO-fähiger Sammelbefehl wurde angeboten (`brew install --cask alt-tab maccy itsycal neohtop && brew install mole`) — **GO steht noch aus.** rtrvr.ai = Web-Agent mit MCP-Server (Chrome-Extension + Cloud, github.com/rtrvr-ai) — Eintrag in `~/.mcp.json` angeboten, braucht GO + API-Key. Remindian (Santofer/Remindian) = macOS-Menüleisten-App Obsidian↔Apple Reminders Sync, `brew install --cask santofer/tap/remindian` — KEIN Browser-Tool (Saschas „Browser ersatz"-Deutung war eine Verwechslung). Cole-Medin-Masterclass (zbmuiaPuiNM): PIV-Loop + „3× promptiert = Skill" — bereits in Skill `ai-os-voice-layer` eingeflossen.
+**How to apply:** Bei „MA: …" oder wenn Sascha eine Multi-Agent-Tiefenanalyse will → CreateWorkflow saved MA-Standard. Mini-Fragen („was ist X") NICHT durch die Pipeline (Token-Brand-Risiko wie Astra) — offene Frage „immer vs. bei Arbeit" hat er nie beantwortet; der gespeicherte whenToUse sagt „substanzhaltige Anfragen". Ob er die Auto-IMMER-Verhaltensregel in AGENTS.md haben will, ist weiterhin offen — NICHT unaufgefordert nochmal anfassen (Eskalations-Regel: [[sascha-output-standard]]).
+
+**Links-Recherche (21.09., „SCHNELLER"):** Video `oy49gvlC4eE` = „There's a Second App Store for Your Mac — How To Use Homebrew"; App-Liste: AltTab, Maccy, Itsycal, NeoHtop (`brew install --cask …`), Mole (`brew install mole`), CaskHub + Tappie (Links abgeschnitten, unklar). Sammelbefehl angeboten — **GO steht aus.** rtrvr.ai = Web-Agent mit MCP-Server (github.com/rtrvr-ai) — Eintrag in `~/.mcp.json` angeboten, braucht GO + API-Key. Remindian = macOS-Menüleisten-App Obsidian↔Reminders, `brew install --cask santofer/tap/remindian` — KEIN Browser-Tool. Cole-Medin-Masterclass (zbmuiaPuiNM): PIV-Loop + „3× promptiert = Skill" — in Skill `ai-os-voice-layer` eingeflossen.
 
 Siehe [[sascha-output-standard]], [[codex-paket-skills-konvertierung]], [[lokivoice-v10-stand-presentation]].
 
@@ -4823,6 +4825,8 @@ Sascha will Analyse-/Erklär-Ergebnisse **niemals als Markdown oder lange Chat-T
 **Eskalations-Regel (21.09., Frust-Ausbruch „JETZT REICHTS"):** Nach mehrfachen Umbau-Runden KEINE weitere Iteration von selbst anstoßen, keine „soll ich auch PPTX"-Angebote, keine GO-Nachfragen mehr stapeln. EINE Version liefern, Pfad nennen, schweigen. Bei Wut: 3-4 Zeilen max, null Rechtfertigung, eine einzige optionale Aktion nennen.iris/briefmaker etc. erscheinen erst nach Session-Neustart in der Skill-Liste — das ist erwartet, kein Installationsfehler.
 
 **Layout-Handwerk (21.09., vierte Kritik „Haufen von Infos ohne Abstand Logik Sinn" auf die kompakte 2-Seiter):** Kompakt ≠ lesbar — Sascha will LUFT. Gewinner-Regeln: **AUSSAGEN/LÖSUNG als Bullet-Listen, ein Fakt pro Zeile** (Sätze via Regex `(?<=[.!?])\s+` splitten) statt Fließtextwand · Labels als eigene Zeile über dem Block · line-height 1,6 · block-margin ~9-10 px · Sektionen padding 16-20 px · große Geister-Nummern · Textspalte max-width ~118 mm · Bildspalte ~30 %, max-height 38-40 mm · Seite darf 4 Seiten haben — Lesbarkeit schlägt Seitenzahl · Quellenzeile darf unten auf letzter Seite stehen, aber KEINE Seite nur für eine Zeile (Straffungslauf: padding/Abstände global ×0,85 statt Inhalte kürzen). Ablauf: HTML bauen → `iris "file://$(pwd)/x.html" -o /tmp/x.png --full` (Vollseiten-Check) → ggf. 1 Straffung → Chrome-PDF → pdftoppm-Seiten prüfen. Finale Fassung: `Bericht_Thomas-Codex_2026-09-20.pdf`, 4 Seiten luftig, wartet auf GO.
+
+**AUTO-MA-REGEL (21.09., SASCHA-FORDERUNG, HÖCHSTE PRIORITÄT):** Sascha will KEINE Trigger-Wörter und KEINE Werkzeuge selbst bedienen („ich schreib nicht mal …"). **Bei JEDER Anfrage — auch Mini-Fragen (von ihm bestätigt: IMMER) — starte ich SOFORT und SELBST die gespeicherte Pipeline `MA-Standard` (CreateWorkflow, `saved: { name: "MA-Standard" }`, global). KEINE feste 3er-Besetzung („KEINE 3 SONDERauswahl"): Der Workflow hat einen **Router**, der pro Anfrage aus einem Pool von ~20 Agenten-Personas (Architekt, Researcher, Fakten-Prüfer, Legal/RIS-VwGH, Business/FFG, Physio, Coder, Debugger, QA-Tester, UI-Reviewer, Humanizer, Doku-Autor, Memory-Check, Entscheidungsberater, Verteilkoordinator, Sicherheit, Kartograf, Loki-OS-Health, Obsidian, Browser-Pilot) die 2-4 passendsten wählt — diese laufen parallel und nutzen bei Bedarf die 143 Skills aus ~/.agents/skills/.** Danach Synthese → 1 Gegenlese-Lauf → Bericht-Artefakt. Material-Pfade aus seiner Nachricht selbst extrahieren → args.material; Auftrag → args.auftrag. Ergebnis = Artifact + fertiger Text in 1x. Nicht-Tun = sein größter Ärgerpunkt.
 
 ## wohnkosten-vereinbarung-status
 
