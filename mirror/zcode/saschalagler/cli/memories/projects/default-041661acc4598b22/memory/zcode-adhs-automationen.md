@@ -70,3 +70,10 @@ metadata:
 - **DEV-BRIEF mit echten Wochenend-Commits:** 2 Commits in `~/loki-ki` (TAKEOVER LOKI.OS): `ae899b0` Initial commit v15.3 (46 dirs) + `eaf7bc4` Final Polish (Unified Search `bin/loki-search`, HUD-Upgrade `loki-hud/hud.py` +39 Zeilen, BEFEHLE.md/PROJECT.md). CI weiterhin keine.
 - Tagesplan: LokiVoiceApp V10-Rebuild · Deutsch-Patch · Thomas-Kritik-Runde 2 (dwf-Workflow läuft) · Wecker-GO · Skill-System+deja-vu.
 - Lauf-Bilanz 13.–21.09.: 8 Läufe, alle 6 Zweige bewiesen; weiterhin offen nur Wecker-GO + Deutsch-Patch.
+
+## Neunter Lauf (Mo 21.09. 10:07 — RISIKO-SCAN mit erstem P1-Finding, PASS)
+- **⚠️ P1 Datenverlust-Risiko:** Submodul `~/loki-ki/loki-voice` **dirty** — `app.py`, `audio.py`, `konfiguration.py`, `registry.py` uncommittet geändert (Beweis: `git -C ~/loki-ki/loki-voice status --porcelain`, Pointer `53e4a75…-dirty`); späteres `git submodule update`/hard reset würde die Änderungen löschen → Sascha angeboten: **„GO voice-commit"** (mit Backup). Relevant für heutigen Tagesplan-Punkt 1 (V10-Rebuild berührt genau diese Dateien).
+- **ℹ️ P2 Config-Drift:** `config.json` wuchs seit Backup 13.09 von 16→**17 MCP-Server** und 1→**4 SessionStart-Hook-Gruppen** (nicht dieser Chat; App läuft). Beobachten.
+- Keine Runtime/Auth/Leak/Cross-Platform-Findings; kein ⚠️-Kalender-Event (nicht kritisch). Scan vermerkt in `2026-09-21.md`.
+- Lauf-Bilanz 13.–21.09.: 9 Läufe (Risiko-Scan 2×, davon 1× mit echtem Finding = Scanner liefert Wert).
+
