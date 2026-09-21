@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-21 14:35 UTC
+Zuletzt gespiegelt: 2026-09-21 14:46 UTC
 
 ## AGENTS
 
@@ -1066,6 +1066,48 @@ Backups: /Users/saschalagler/.zcode/agents/gate-enforcer-test.md.bak-20260921, /
 ## Gates
 - Config-JSON: ✅ parses
 - Alle 10 Agenten mit model-Feld: ✅
+## dwfrun-fa386d13-260b-4dd9-ac03-91df47fa24e3_artifact_2_1-tool-result-e62915c2-cc9c-4b2a-ade0-c7325c864a5a
+
+# LOKI-Datei-Berg — Aufräum- und Konsolidierungsbericht
+
+- **Verschoben (mv-only):** 13 Duplikate → /Users/saschalagler/Desktop/Coworkspace_Ich/_LOKI_KONSOLIDIERUNG_2026-09-21
+- **Kanon-Gate:** ✅ alle 33 Kanon-Pfade existieren
+- **Inventar:** /Users/saschalagler/Desktop/Coworkspace_Ich/_LOKI_KONSOLIDIERUNG_2026-09-21/ARCHIV_INVENTAR.md · Manifest: /Users/saschalagler/Desktop/Coworkspace_Ich/_LOKI_KONSOLIDIERUNG_2026-09-21/manifest_kanon.txt
+
+## Was LOKI.OS sein soll (aus dem Kanon gelesen)
+- Zweck = Exekutivprothese: der Mac wird selbst zum Betriebssystem/Akteur, der Arbeitsgedächtnis + Exekutivfunktionen (Planung, Initiation) des ADHS-Executive-Overload auslagert — '/Users/saschalagler/Desktop/alrround voice /_extract/DEEP DIVE: ARCHITEKTONISCHE SYNTHESE & AGENTIC OS PROOF OF CONCEPT.txt' Z. 11–13, 31–37.
+- Pipeline Stufe 1/2: 2×Ctrl → Voice-Daemon 127.0.0.1:8078 (ffmpeg → Whisper offline → OmniRoute :20128 → GLM → Tool-Loop max. 8 Runden → say); Frage→Antwort, „mach X"→Agent führt aus + beweist; Text-Zugang via curl :8078/ask — '/Users/saschalagler/Desktop/alrround voice /AGENTIC_OS_WISSEN.md' Z. 32–45.
+- Kernel :8010 = Sync-Hub/Herz: FastAPI v15.3, 25 Endpunkte, 8 Domain-Tools, 6 Domänen → Personas P-01…P-06/W-03, Inferenz-Kette LiteRT :9379 → Ollama :11434 → Cloud — '/Users/saschalagler/Desktop/Coworkspace_Ich/LOKI_OS_CODEX_PAKET/CODEX_AGENT_OS_HANDOUT.md' Z. 24–37, 41–69.
+- Kanonischer Zielplan (von Sascha bestätigt) = 4-Level-Modell: L1 Skill+Loop Engineering, L2 Memory+State, L3 Interface/UI, L4 Distribution; alle LOKI-Arbeit daran priorisieren — '/Users/saschalagler/Documents/Obsidian Vault/Knowledge/AIOS Plan — Agentic OS 4-Level-Modell.md' Z. 19–33.
+- Level 2 = Datenspende: Gmail-Sync (API/n8n), Drive + lokale Dateien, Echtzeit-Indizierung → Zweites Gehirn (Knowledge Graph, RAG Deep Search) + Taskmaster + Canvas; Pipeline: Kernel holt Gmail/Drive → Vault → Canvas steuert, welche Persona welche To-dos übernimmt — AIOS Plan Z. 36–41.
+- Level 3 = UI-Nordstern „Logic Terminal"-HUD: Knowledge-Graph-Sphäre, Metriken-Sparklines, Command Deck mit Intents-Queue (Metrics Pull · Inbox Brief · Trend Scan · Plan Today · Wk Review), Audio I/O, Statuszeile CORE·IDLE/LINK·ONLINE/RUNNER·ALIVE — AIOS Plan Z. 45.
+- Datenschutz-Hard-Regel: medizinisch/rechtlich/Förder NUR lokal (LiteRT/LM Studio), nie Cloud; Patienten-/Rechtsdaten verlassen den Mac nicht unverschlüsselt — CODEX Handout Z. 83, 166; DEEP DIVE Z. 76–83.
+- Betrieb: 9 Arbeitsregeln (Fakten-First, GO-Pflicht vor kill/delete, Session-Handoff, keine Parallelsessions) + offene Phasen: Kernel-Auth/127.0.0.1, Watchdog, VwGH-DB-Refill, Voice→Kernel-Kopplung M2–M6 — CODEX Handout Z. 162–171; AGENTIC_OS_WISSEN Z. 62–81; '/Users/saschalagler/loki-ki/MASTER_TODO.md' Z. 15–52.
+
+## Echte Lücken (nach Bestand + laufendem v18-Bau)
+- Gmail/Drive-Sync + Echtzeit-Indizierung (Level 2 „Datenspende") fehlt komplett: weder Kernel noch v18 (nur Brain-FTS5 über lokalen Vault) holen Mails/Drive-Dateien in den Index — Kanon: '/Users/saschalagler/Documents/Obsidian Vault/Knowledge/AIOS Plan — Agentic OS 4-Level-Modell.md' Z. 36+52; v18 deckt laut Auftrag nur Dashboard/Brain/Karte/Loki-fragen.
+- Distribution Level 4 „keeps it for others" gar nicht geplant: nichts paketiert, keine READMEs/Install-Skripte/Weitergabe-Format; v18 ist eine Ein-Mac-App ohne Vertrieb/Lieferweg — Kanon: '/Users/saschalagler/Documents/Obsidian Vault/Knowledge/AIOS Plan — Agentic OS 4-Level-Modell.md' Z. 32, 54, 58.
+- Lokale Datenschutz-Modelle fehlen als Lauffähige Schicht: Soll = Sensibles (medizinisch/rechtlich/Förder) NUR über LiteRT :9379/LM Studio :1234; Ist = nur GLM-Cloud-Proxies, v18-Routen laufen über OmniRoute → Cloud, kein garantierter lokaler Inferenz-Pfad — Kanon: '/Users/saschalagler/Desktop/Coworkspace_Ich/LOKI_OS_CODEX_PAKET/CODEX_AGENT_OS_HANDOUT.md' Z. 76–84; '/Users/saschalagler/Desktop/alrround voice /AGENTIC_OS_WISSEN.md' Z. 58.
+- Proaktive Exekutive fehlt: GSA-Stil (08:00-Briefing, Mahn-/Fristen-Wache, Push gegen Time Blindness) und das Command-Deck „Intents write to system/queue" existieren nur als Konzept; v18 ist rein reaktiv (öffnen → fragen/ansehen) — Kanon: '/Users/saschalagler/Desktop/alrround voice /_extract/DEEP DIVE: ARCHITEKTONISCHE SYNTHESE & AGENTIC OS PROOF OF CONCEPT.txt' Z. 56–66, 145–160; AIOS Plan Z. 45.
+- Taskmaster + interaktiver Canvas fehlen: autonome Task-Zerlegung/Ziel-Tracking (todo.txt) sowie React-Flow-Canvas mit Drag&Drop-Handoffs und Live-Monitoring; Task-Bridge bisher nur Testdaten — Kanon: '/Users/saschalagler/Documents/Obsidian Vault/Knowledge/AIOS Plan — Agentic OS 4-Level-Modell.md' Z. 38–39; '/Users/saschalagler/Desktop/Coworkspace_Ich/LOKI_OS_CODEX_PAKET/CODEX_AGENT_OS_HANDOUT.md' Z. 184.
+- Security-Härtung unangetastet (weder Bestand noch v18): Kernel lauscht auf *:8010 ohne Auth und OmniRoute auf *: — v18 verbindet sich mit :8010, bindet/authentifiziert aber nichts; LAN-RCE-Risiko bleibt, dazu fehlt Kernel-Watchdog — Kanon: '/Users/saschalagler/Desktop/alrround voice /AGENTIC_OS_WISSEN.md' Z. 62–65 + Z. 80; '/Users/saschalagler/loki-ki/MASTER_TODO.md' Z. 15.
+
+## Geschaffene Dokumente
+- /Users/saschalagler/Desktop/Coworkspace_Ich/LOKI_OS_CODEX_PAKET/MASTER_INDEX.md
+- /Users/saschalagler/Documents/Obsidian Vault/Knowledge/LOKI OS — Entwicklungslinie & Lücken.md
+- /Users/saschalagler/LOKI_SESSION_CONTEXT.md
+
+## Müll-Kandidaten (NUR gemeldet, unangetastet)
+- AUSSERHALB DER ZONEN (nur gemeldet, nicht angefasst): 'LokiVoice 2.app' ×2 — /Users/saschalagler/Desktop/Coworkspace_Ich/THOMAS - CHIPS JUDICARIO /Judicario_Sacha_Mac/LokiVoiceApp/LokiVoice 2.app und .../00_PAKET_FUER_THOMAS/LokiVoice 2.app — macOS-Duplikat-Nummerierung; zusätzlich LokiVoice.app ebenfalls doppelt (LokiVoiceApp/ + 00_PAKET_FUER_THOMAS/) und eine 5. Kopie in _ARCHIV/Alter_Codex_Muell/THOMAS_ANLEITUNG/THOMAS_PAKET/LokiVoice.app (Beweis: mdfind + find -name '*.app')
+- .DS_Store-Dateien in allen drei Zonen (mind. 12 Vorkommen, z.B. alrround voice /, CODEX_PAKET, coworkspace-Root, Local AI, ARCHIV, apps) — Finder-Müll, nur melden
+- Leere Ordner: /Users/saschalagler/Desktop/Coworkspace_Ich/PRIVATE PORJEKTE /(Claude) coworkspace/(ALLE) Ai Tools - Files neu /Local AI /AppDevelopment (0 Einträge); alrround voice /_extract/.mimosa/finding-ledger/v1/checkpoints; CODEX_PAKET/Local AI /glm-autotest/.mimosa/finding-ledger/v1/checkpoints (Beweis: find -type d -empty)
+- /Users/saschalagler/Desktop/Coworkspace_Ich/PRIVATE PORJEKTE /(Claude) coworkspace/(ALLE) Ai Tools - Files neu /Local AI /ARCHIV/ .txt (93806 B, Dateiname nur ' .txt' — defekt)
+- Local AI /ARCHIV/loki-ki/~ (Ordner namens '~' mit Backup-Pfad '~/LOKI LOCAL AI' darin — kaputter Backup-Pfad aus versehentlichem rsync/cp)
+- /Users/saschalagler/Desktop/Coworkspace_Ich/PRIVATE PORJEKTE /(Claude) coworkspace/(ALLE) Ai Tools - Files neu /Local AI /loki poerplexity fix / (fast leer: nur .claude + .DS_Store)
+- Local AI /ARCHIV/loki poerplexity fix  (verschachtelt in ARCHIV, gleicher Fast-Leer-Zustand)
+- /Users/saschalagler/loki.pid (6 Byte, verwaiste PID-Datei: enthaelt 19310, ps -p 19310 liefert keinen Prozess — nur melden, nicht loeschen)
+- /Users/saschalagler/loki-ki/docs/.DS_Store (10244 Byte, Finder-Muell in Kanon-Zone — nur melden)
+- /Users/saschalagler/Mirror/agent-mirror/.DS_Store (6148 Byte) und /Users/saschalagler/Mirror/agent-mirror/mirror/.DS_Store — nur melden
 ## dwfrun-1359c3bc-8dc5-49f7-8725-bb618f0405aa_artifact_1_1-tool-result-5961947b-b58e-4e5d-9ec0-fde9b640c547
 
 # LOKI.OS System-Selbstprüfung — 20.09.2026
@@ -6640,6 +6682,7 @@ Beobachtet 06.09.2026 (Session mit Off-Peak-Ticket): Nach User-Paste „ZCode Er
 
 # Memory Index
 
+- [LOKI.OS v18 Endprodukt](loki-os-v18-endprodukt.md) — 21.09. ABEND ALLES FERTIG: v18-App läuft (/Applications/LOKI OS v18.app, Review PASS, BrainView-Fix deployed) + Datei-Berg konsolidiert (⚠️ Archiv-ENDLAGE: Desktop/Coworkspace_Ich/PRIVATE PORJEKTE /_LOKI_KONSOLIDIERUNG_2026-09-21) + 6-Lücken-Roadmap + MASTER_INDEX.md im CODEX_PAKET
 - [LOKI.OS v18 Build + Agent-Diagnose + Aufräumung](loki-os-v18-build.md) — 21.09.: v18-Bau dwfrun-5d491f4f Phase 3/6 (UI+Verbindungs-Bauer aktiv) · Diagnose FERTIG: 3× Abbruch = App-Neustart-SIGTERM beim Mid-Turn-Interrupt, reviewer-Not-Found = qwen/ClinePass, 7 Descriptions+thoughtLevel gefixt (Backups) · Aufräumung läuft als **fa386d13** (32a721cc extern superseded, 30 Cluster); Workflow-Lane zuverlässig, direkte Dispatches sterben bei Turn-Interrupt
 - [ATLAS Versionsstand](atlas-versionsstand.md) — 21.09.: 5173+4173 Server tot; PROD atlas-v5.web.app lebt mit NEUEM Bundle index-DG7Gco4d.js (Redeploy seit 11.09.); ATLAS_MASTER bis 18.09. bearbeitet; Pfad A/B nie entschieden
 - [LOKI Second Brain](loki-second-brain.md) — 20.09. SPÄT FERTIG+GETESTET: ~/loki-brain/ (brain.py+FTS5+git) × Daemon-4-Tools × Obsidian-Vault × M2-Auto-Protokoll; Review PASS (0 HIGH, 2 MED); Builder-Schwarm+Director parallel — NIE wieder von 0 planen, nur erweitern; Handoff-Datei war Basis
@@ -6934,6 +6977,32 @@ LOKI.OS v18 — VOLL-ÜBERNAHME PER WORKFLOW (21.09.2026):
 **DATEI-BERG-AUFRÄUMUNG — Run `dwfrun-32a721cc`** (Script: `.zcode/workflow-drafts/LOKI-Datei-Berg-austristen--Konsolidierung--Entwicklungs-Kanon.dwf.ts`, 21.09. gestartet): Saschas Auftrag „miste aus, sortiere, lösche Duplikate, lies die Entwicklung, bau was offen ist (v18-Run deckt Bauen ab)". 7 Agenten/5 Phasen: 2 Zonen-Scouts (Desktop-Zonen: alrround voice, CODEX_PAKET, coworkspace-„Local AI"-Monster · Rest: Downloads/WhatsApp, Home-Root) → Archivar (Kanon-Plan) → Umzügler (**nur mv, NIE rm**, Ziel `~/Desktop/Coworkspace_Ich/_LOKI_KONSOLIDIERUNG_2026-09-21/` mit manifest_kanon.txt + ARCHIV_INVENTAR.md, Kanon-Gate als bash-Code) → Historiker (liest AGENTIC_OS_WISSEN + DEEP-DIVE-PDF + AIOS-4-Level-Plan + CODEX-Handout → Soll/Lücken) → Doku-Baumeister (MASTER_INDEX.md im CODEX_PAKET, Obsidian „Entwicklungslinie & Lücken", SESSION_CONTEXT-Append). **Geschützte Zonen:** ~/loki-ki (laufend), Google Drive (Sync), Mirror, CODEX_PAKET + alrround voice (Kanon-Quellen); Müll nur gemeldet — Löschen = Sascha-GO. **Stand beim Start: 3 Workflows parallel aktiv** (v18-Bau Phase 2/6 gesund · Agent-Diagnose · Aufräumung); Ergebnisse kommen asynchron per Completion-Notification — bei Wiederaufnahme ALLE drei Run-IDs checken (GetWorkflowRun/ListWorkflowRuns).
 
 Verwandt: [[loki-second-brain]], [[loki-os-harness-sollstand]], [[sascha-arbeitsregeln-hart]], [[sascha-vollzug-keine-zwischenfragen]]
+
+## loki-os-v18-endprodukt
+
+---
+name: loki-os-v18-endprodukt
+description: "LOKI.OS v18 ENDPRODUKT (21.09.): App gebaut+läuft
+  (/Applications/LOKI OS v18.app, ~/loki-ki/macos-app-v18, Review PASS,
+  BrainView-Fix deployed); Datei-Berg aufgeräumt (13 Duplikate,
+  Archiv-Endlage!); 6 echte Lücken als Roadmap verankert"
+metadata:
+  node_type: memory
+  type: project
+  originSessionId: sess_2879174a-220a-46e8-be58-79d65929bc01
+---
+
+LOKI.OS v18 + AUFRÄUMUNG — STAND 21.09.2026 ABEND:
+
+**1) v18-APP (Workflow dwfrun-5d491f4f, Review PASS):** **`/Applications/LOKI OS v18.app`** (Projekt `~/loki-ki/macos-app-v18/`, build.sh Exit 0, Bundle-ID com.saschalagler.lokios.v18). SwiftUI: Dashboard (Status-Karten Kernel/Voice/Brain) · Brain-Live-Suche (FTS5 read-only) · Heute (Daily) · Karte · Loki fragen (:8078). QA bewiesen: Prozess stabil, Daemon-Verbund 8 Tools, Brain 12 Einträge, Fenster-Screenshot /tmp/lokios_v18_qa.png. BrainView.swift:146-Debounce-Fix von mir deployed (PID 53218). Bekannt: Daemon-Status zeigt OmniRoute-Fehler (toter :20128, bewusst abgebaut 20.09.) — Config-Bereinigung offen.
+
+**2) DATEI-BERG (Workflow dwfrun-fa386d13):** 13 Duplikate mv-only konsolidiert, Kanon-Gate MANIFEST_OK (33 Kanon-Pfade, Hash-Beweise sha1/md5). ⚠️ **ARCHIV-ENDLAGE (Vorfall, protokolliert in ARCHIV_INVENTAR.md):** ein paralleler Prozess verlagerte den Baum 2× — Endlage = `/Users/saschalagler/Desktop/Coworkspace_Ich/PRIVATE PORJEKTE /_LOKI_KONSOLIDIERUNG_2026-09-21/` (nicht wie geplant Coworkspace_Ich-Root!). MASTER_INDEX.md im CODEX_PAKET neu. Geschützte Zonen unangetastet (loki-ki, Google Drive, Mirror).
+
+**3) 6 ECHTE LÜCKEN (= Roadmap, Kanon-belegt):** ① Gmail/Drive-Sync + Echtzeit-Indizierung (Level 2) ② Distribution Level 4 (nichts paketiert) ③ lokale Datenschutz-Inferenz (LiteRT :9379/LM Studio statt Cloud-Pflicht) ④ proaktive Exekutive (08:00-Briefing, Fristen-Wache, Push) ⑤ Taskmaster+Canvas (todo.txt, React-Flow) ⑥ Security (Kernel *:8010 ohne Auth, kein Watchdog).
+
+**Müll nur gemeldet (Löschen = Sascha-GO):** LokiVoice 2.app ×2, LokiVoice.app weitere 3 Kopien, ~12 .DS_Store, Ordner '~', ' .txt' defekt 93 KB, loki.pid verwaist, leere Ordner.
+
+Verwandt: [[loki-os-ecosystem-stand]], [[loki-second-brain]], [[loki-voice-agent]]
 
 ## loki-second-brain-handoff
 
