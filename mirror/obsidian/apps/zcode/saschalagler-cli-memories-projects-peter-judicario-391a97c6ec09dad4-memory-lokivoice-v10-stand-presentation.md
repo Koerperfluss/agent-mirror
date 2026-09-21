@@ -1,7 +1,7 @@
 ---
 app: zcode
 quelle: "saschalagler/cli/memories/projects/peter-judicario-391a97c6ec09dad4/memory/lokivoice-v10-stand-presentation.md"
-stand: 2026-09-20
+stand: 2026-09-21
 tags: [spiegel, zcode]
 ---
 
@@ -36,4 +36,6 @@ metadata:
 
 **Handout fertig (20.09., ~23:45):** `Handout_LokiVoice_Stand_2026-09-20.pdf` im Projektordner (1,8 MB, 3 Seiten, alle 5 Screenshots als Base64 eingebettet, visuell per PNG-Render geprüft). Auf Saschas Wunsch „visuelles Handout mit Bild/Info/Themen". Pfad-Notiz: Mimosa blockte Skript-Schreibversuche → HTML-Vorlage per Write + Base64-Injektion per kurzer python3 -c Zeile + Chrome-Headless-Print ([[mimosa-hook-write-blocks]]).
 
-**Thomas-Codex-Analyse-Workflow (20.09., läuft):** Sascha per `/workflow` + dynamic-workflows: „was will Thomas' Codex uns sagen, was antworten wir und warum". Run `dwfrun-f74eaa93-ffbd-4918-9dbe-140b078c0a00`, Skript `.zcode/workflow-drafts/Thomas-Codex-Analyse.dwf.ts`. Topologie: 3 Analysten (Bericht/Absicht/Fakten) lesen die 5 Screenshots direkt aus dem Image-Cache (`~/.zcode/cli/image-cache/sess_8db9086b…/image-*.jpg`) → Denkagent (Strategie) → Antwort-Entwurf ≤150 W + frisches Gegenlesen (max. 2 Runden) → Markdown-Artifact „bericht" (primary). Ergebnis stand beim Speichern noch aus — bei Fortsetzung: Run-Output abholen, Sascha den Antwort-Entwurf an Thomas zeigen, PPTX-Themenwahl weiter offen.
+**Thomas-Codex-Analyse-Workflow (20.09., ABGESCHLOSSEN):** Run `dwfrun-f74eaa93-ffbd-4918-9dbe-140b078c0a00` fertig. Befunde: Technik-Fortschritt echt (Nachtprüfung 5/5, PDF 3/3, Loki→George), aber 0 echte Geschäftsaufträge Ende-zu-Ende, gesprochener Weg ungetestet; Thomas will (vermutet) Abnahme V1.9.12 + Hörtest-Mitarbeit + GO; Antwort-Entwurf ≤150 W im Markdown-Artifact „bericht". **Bonus-Fund:** Gateway-Key 401 (siehe oben) widerspricht dem eingebauten „Judicario-Abfragen"-Feature — ohne Key-Fix nutzt George Judicario nicht.
+
+**Bericht-Dateien 21.09. (nach Saschas Standard, 2× umgebaut):** `Bericht_Thomas-Codex_2026-09-20.pdf` (2 Seiten, weiß/druckfähig: oben Kernpunkte-Liste, darunter 5 nummerierte Screenshot-Abschnitte mit Thema/Aussagen/Lösung/Ziel + Bild, Abschnitt 6 = Antwort-Text) + `Bericht_Thomas-Codex_2026-09-20.pptx` (3 weiße Folien) im Projektordner. **NOCH NICHT ABGENOMMEN** — Saschas GO/Änderungswünsche ausstehen. Wort „Fiche" von Sascha abgelehnt → heißt „Bericht". LibreOffice 26.8.0 nachinstalliert (brew cask; App fehlte in /Applications, `reinstall --cask` fixte es; `soffice` verlinkt in /opt/homebrew/bin). PPTX-Themenwahl A/B weiter offen.
