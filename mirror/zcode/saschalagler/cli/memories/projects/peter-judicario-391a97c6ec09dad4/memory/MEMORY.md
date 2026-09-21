@@ -1,5 +1,7 @@
 # Memory Index
 
+- [MA-Standard Pipeline](ma-standard-pipeline.md) — Saschas Kernziel: generische Multi-Agent-Pipeline (3 Analysten→Denkagent→Entwurf→Gegenleser) bei JEDER substanzhaltigen Anfrage automatisch; Draft MA-Standard.dwf.ts liegt fertig; 2 SaveWorkflow-Ablehnungen; offene Apps-GO: brew alt-tab/maccy/itsycal/neohtop/mole + rtrvr.ai-MCP + Remindian-Cask
+
 - [Sascha Output-Standard](sascha-output-standard.md) — NIEMALS Markdown als Ergebnis → druckfähige PDF (weiß, BLUF-Liste + nummerierte Abschnitte); briefmaker-Skill installiert; Aufbau = Saschas Entscheidung; Wort „Fiche" abgelehnt
 
 - [Codex-Paket Skills-Konvertierung](codex-paket-skills-konvertierung.md) — „Local AI /skills/" sind nur PDF-Handbücher; Mapping zu installierten Skills steht; 5 Konvertierungs-Kandidaten angeboten (design-ux-ui, LOKI-OS-Standard, aannoo, paseo, skillshare), wartet auf Nummernwahl
