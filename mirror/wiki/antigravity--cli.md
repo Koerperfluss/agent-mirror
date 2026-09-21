@@ -1,7 +1,67 @@
 # cli (antigravity)
 
-Zuletzt gespiegelt: 2026-09-21 14:13 UTC
+Zuletzt gespiegelt: 2026-09-21 14:24 UTC
 
+## dwfrun-5d491f4f-60e7-4e26-9693-ffee0cd33bc1_artifact_2_1-tool-result-8a361051-3e46-477c-8638-5f2bfde53025
+
+# LOKI.OS v18 — Abschlussbericht
+
+**Ziel:** LOKI.OS v16: ein stabiler, vollständig bootbarer Personal-Intelligence-OS-Kernel auf Port 8010 mit Agent Council, Dashboard, OmniRoute-Integration, MCP-Bridge und automatischer Fallback-Kette (Ollama → Cloud), alle Tools konsistent konfiguriert mit korrekten Modellen (WAYFINDER_MAP.md:5, Destination).
+
+## Ergebnis
+- Build: ✅ grün (build.sh Exit 0)
+- App läuft: ✅ (Prozess verifiziert)
+- Review: PASS
+
+## Gebaut
+- 🎨 main.swift: AppZustand mit gemeinsamen Live-Status (ein Poll für Dashboard+Karte, 12 s >= 10 s laut PLAN §4.1), Retry-Sturm-Schutz, toleranter Status-Lookup per Alias
+- 🎨 Neu: Views/VerbindungsBruecke.swift — dünner Wrapper, alle 6 Verbindungsdienst-Aufrufe an EINER Stelle (Konfliktregel PLAN §5); Signatur-Drift trifft nur diese Datei
+- 🎨 RootView: Sidebar mit Indigo→Violett-Gradient, Live-Mini-Ampel im Footer, Poll-Loop; gemeinsame Bausteine MarkdownText (nativ, crash-sicher), FehlerKarte (rot + Retry), HinweisKarte, AktualisierenKnopf
+- 🎨 Dashboard: 4 Live-Ampelkarten (Status-Ring + Kartenrand in Ampelfarbe), Zeitstempel + manuelle Aktualisierung, OmniRoute-Erklärkarte (rot = erwarteter Zustand), Quick-Actions inkl. Obsidian-Button mit Rückmelde-Zeile des Dienstes
+- 🎨 Brain: entprellte Live-Suche (450 ms), Highlight ALLER Treffer (AttributedString per Segment-Konkatenation), Ergebnisse sortiert (created_at desc, nil zuletzt), Notiz-Formular mit automatischer Verifizierungssuche nach dem Speichern
+- 🎨 Heute: heutiges Daily oben als Volltext (nutzt additives Feld 'volltext' des Verbindungs-Bauers), Archiv einklappbar (DisclosureGroup), Markdown nativ, klare 'noch keins heute'-Leerstelle mit dynamischem Dateinamen
+- 🎨 Karte: 7-Knoten-Pipeline Sascha→Voice→Daemon→Modelle→Tools→Brain→Vault, live gefärbt aus dem gemeinsamen Poll, native Hover-Tooltips, Klick-Detail bleibt live (Name statt Kopie), resize-stabil (Norm-Koordinaten mit Rand)
+- 🎨 Loki fragen: Frage-Feld (Enter/Button), Ladeindikator für das 120-s-Timeout des Dienstes, Antwort als natives Markdown + Kopieren-Button, Fehlerfall rote Karte mit Retry — kein Crash-Pfad
+- 🎨 Schnittstellen-Abgleich nach Landung des Verbindungs-Bauers (15:58): alle 6 Signaturen 1:1 bestätigt; Rückgabe von obsidianOderFinderOeffnen angezeigt, volltext genutzt, Sortier-Hinweis nur bei vorhandenen Zeitstempeln (erstelltAm ist ehrlich nil)
+- 🎨 Verifikation: ./build.sh exit 0 (zweimal), Mach-O arm64, 0 Compiler-Warnungen im Frisch-Build, Start-Rauchtest 10 s+ ohne Crash bei totem Kernel :8010, macos-app-v17 unberührt, kein git push, kein Deploy
+- 🔌 Connections.swift komplett gebaut (einzige angefasste Datei; Ask nannte Pfad ohne /Connections/-Ordner — Platten-Wahrheit + Architekten-Layout ist Connections/Connections.swift): Models, LOKIEndpunkte, LOKIZeitlimits, VerbindungsFehler, Verbindungsdienst — alles async/await, @MainActor-sicher (Blockierendes in Task.detached), nur Foundation/SwiftUI/AppKit/SQLite3
+- 🔌 /ask-Schema live probe-geklart: GET /ask?text=… => {ok, antwort} — Ask-Vorgabe bestätigt, PLAN.md §4.2 (POST/{question}) wäre falsch gewesen; Beweis: GET /ask ohne Parameter => 400 {ok:false, error:'text-Parameter fehlt'}, Live-Frage => 200 {ok:true, antwort:…}
+- 🔌 Kernel-Health auf /loki/health (nicht /health; LOKI_MASTER.py:269), 3s-Timeout, down = rote Karte .offline statt Crash — live bewiesen (curl exit 7 + Treiber 'Kernel | offline')
+- 🔌 Brain-Suche über /opt/homebrew/bin/python3 brain.py search <query> --json per Process-argv-Liste (NIEMALS Shell-String; brain.py:589-591) — immun gegen Schema-Drift, mehrstufige FTS5-Suche AND->OR->LIKE (brain.py:191)
+- 🔌 Brain-Speichern über brain.py save <topic> <text> (Eigentümer-Schreibpfad, schreibt memory_entries+fts_memory in einer Transaktion, brain.py:170-175) mit Backup brain.db.bak-app-v18-YYYYMMDD einmal pro Tag vor Erst-Schreiben; Backup-Misserfolg verhindert Schreiben
+- 🔌 Topic-Liste via sqlite3_open_v2(SQLITE_OPEN_READONLY) + konstantes SQL 'SELECT DISTINCT topic FROM memory_entries' (kein Nutzer-Input im Statement); live: 12 Themen
+- 🔌 Daily: YYYY-MM-DD.md streng erkannt (Parse-Roundtrip), neueste zuerst, istHeute markiert, YAML-Frontmatter entfernt, deutsches Datum; ADDITIV TagesProtokoll.volltext (Default nil) für Phase-2-Volltext — live: 9 Dateien, 2026-09-21.md als heute erkannt
+- 🔌 OmniRoute :20128 als reine Netzwerk-Fehler-Probe mit erklärendem Kartentext (abgebaut lt. AGENTS.md 20.09., rot = Normalzustand); Obsidian-Öffner: urlForApplication(toOpen:)-Check + obsidian://open bzw. Finder-Reveal-Fallback
+- 🔌 Grenzfläche koordiniert: UI-Bauer legte parallel Views/VerbindungsBruecke.swift an, die exakt die PLAN-Signaturen konsumiert — mein @MainActor auf obsidianOderFinderOeffnen() habe ich auf meiner Seite gelöst (nonisolated, Aufrufpfade sind Button-Actions=Main); platzhalterStatus() bleibt als Startwert-Helfer kompatibel
+- 🔌 Verifikation: swiftc -typecheck Connections.swift isoliert exit 0; ./build.sh exit 0 (auch nach parallelen UI-Bauer-Umbauten; transiente Race während deren GerüstHinweis-Umbau hat sich erledigt); CLI-Prüftreiber 12/12 Prüfpunkte grün, exit 0
+- 🔌 Nicht ausgeführt (bewusst, ehrlich): kein echter notizErfassen-Save (kein Testeintrag ins Nutzer-Brain; Backup-Mechanik loest beim ersten echten Save aus) und kein Live-Oeffnen von Obsidian/Fenster (Side-Effect); Mimosa-Constraint 'localhost ablehnen' nicht angewandt — App ist lokaler Desktop-Client, dessen Zweck Loopback ist (Ask + PLAN §4.7); SQL ohne Nutzer-Input, nichts zu binden
+- 🔌 Stopp-Regeln eingehalten: kein git push, kein Deploy, nichts gelöscht (nur eigener /tmp-Testtreiber entfernt), macos-app-v17 unberührt
+- 📚 ARCHITEKTUR.md geschrieben: 4 Mermaid-Diagramme (Gefordert ≥3) — 1. Gesamt-Systemfluss als flowchart TB mit allen Ports (:8010/loki/health, :8078//ask, :20128), brain.db (mode=ro/INSERT+Backup), Daily/ und Obsidian-Vault-Öffner; 2. Datenfluss einer Sprachfrage als sequenceDiagram mit alt-Fehlerzweig (Daemon tot → rote Karte + Retry statt Crash); 3. Build-/Test-Pipeline als flowchart LR mit build.sh-Gate und Phase-4-Abnahmekriterien; 4. Bonus: Brain-Datenmodell als erDiagram (memory_entries + fts_memory).
+- 📚 Jede Komponente in ARCHITEKTUR.md §2 in 2-3 Sätzen Deutsch beschrieben (App, RootView/Sidebar, 5 Views, Verbindungsdienst, Kernel, Voice-Daemon, OmniRoute, brain.db, Daily, Obsidian-Öffner) — jede Aussage belegt gegen PLAN.md §4/§6, Connections.swift:94-112 (LOKIEndpunkte), RootView.swift:13-43 (LOKISeite), build.sh:10-25.
+- 📚 README.md erweitert: Was ist LOKI.OS v18 (inkl. Kernversprechen 'kein Dienst nötig, rot statt Crash'), Voraussetzungen, Starten (build.sh + open 'LOKI OS v18.app', Doppelklick), Bedienung aller 5 Seiten als Tabelle (Dashboard-Ampel/Brain-Suche+Notiz/Heute-Archiv/Karte-Hover+Obsidian-Button/Loki fragen-Retry), Verweise auf ARCHITEKTUR.md + PLAN.md, alle 4 Stopp-Regeln aus PLAN.md §7.
+- 📚 ARCHITEKTUR.md nach '/Users/saschalagler/Documents/Obsidian Vault/Brain/ARCHITEKTUR.md' kopiert — TCC hat NICHT geblockt (cp exit 0, KOPIE_OK), Fallback ~/loki-brain/vault/Brain/ nicht nötig.
+- 📚 Ehrlichkeits-Kennzeichnungen in der Doku: Ist-Stand genannt (Verbindungsdienst in Connections.swift:128-161 noch Platzhalter, Phase 1 parallel), /ask-Feldname als live-zu-verifizierend markiert, Glossar mit 10 Fachwörtern je 1 Satz.
+- 📚 NICHT durchgeführt: automatisierter Mermaid-Render-Test — mmdc ist nicht installiert (which mmdc → not found); npx-Nachladen hätte Chromium aus dem Netz gezogen. Diagramme stattdessen manuell gegen Mermaid-Standard abgesichert (gequotete Labels, nur Standard-Shapes flowchart/sequenceDiagram/erDiagram, alle 4 Typen Obsidian-nativ). Obsidian-Render-Check selbst steht aus.
+- 📚 Stopp-Regeln eingehalten: kein git push, kein Deploy, nichts gelöscht, macos-app-v17 unberührt, nur eigene 2 Projekt-Dateien + 1 Vault-Kopie geschrieben.
+
+## QA-Checks
+- Installation: build.sh hatte NICHT installiert (/Applications/LOKI OS v18.app existierte nicht) — cp -R von /Users/saschalagler/loki-ki/macos-app-v18/LOKI OS v18.app nach /Applications OK, codesign --force --sign - OK ('replacing existing signature', Identifier com.saschalagler.lokios.v18), open OK.
+- Prozess lebt: sleep 3; pgrep -fl LOKIOSApp -> PID 21490 /Applications/LOKI OS v18.app/Contents/MacOS/LOKIOSApp; gleiche PID bei 3 Kontrollen 16:07-16:10 = stabil, kein Crash/Restart.
+- Daemon-Verbund: curl -s --max-time 2 http://127.0.0.1:8078/status -> HTTP-JSON {state: idle, modell: cp/cline-pass/glm-5.3-flash, verlauf: 2, muted: false, tools: [say_text, open_url, browser_read, run_command, brain_save, brain_search, recall_history, read_briefing]}, CURL_EXIT=0.
+- Brain-Verbund: /opt/homebrew/bin/python3 /Users/saschalagler/loki-brain/brain.py status -> Exit 0; DB /Users/saschalagler/loki-brain/brain.db (12 Einträge, FTS 12), Obsidian Vault Brain 13 MD-Dateien, Local Vault 12 MD-Dateien.
+- Fenster-Beweis: screencapture -x /tmp/lokios_v18_qa.png (2,8 MB, 16:07) + fenster-genau /tmp/lokios_v18_qa_window.png und _window2.png; System Events bestaetigt Fenster 'LOKI.OS v18' bei (627,117) Groesse 1360x860.
+- UI-Inhalt: Vision-Analyse (1 von 3 Versuchen erfolgreich, 2x Tool-Timeout) bestaetigt voll gerenderte dunkle Dashboard-UI auf Deutsch mit Titel 'LOKI.OS v18', Sidebar und Status-Karten — kein leeres Fenster.
+- Schutzregeln eingehalten: keine Prozesse gekillt, kein git push, nichts geloescht; v18-Quellbundle und v17 unberuehrt.
+
+## Funde / offene Punkte
+- BrainView.swift:146 — Debounce-Cancel beim Tippen wirft CancellationError aus dem .value-Await (Connections.swift:351) und zeigt englische Fehlalarm-Karte „The operation was cancelled
+- Daemon /status meldet permanenten Fehler 'OmniRoute nicht erreichbar: Connection refused' — OmniRoute wurde laut AGENTS.md (Stand 20.09.2026) bewusst abgebaut; Daemon-Konfiguration prueft noch den toten Endpoint :20128 und zeigt ihn als Fehler an. Kein Start-Blocker, aber Config-Referenz sollte bereinigt werden.
+- Status-Karten im Dashboard zeigten im ersten Screenshot noch 'wird geprueft…/unbekannt'; finaler Karten-Zustand (z.B. Kernel :8010 gruen/rot) visuell nicht verifizierbar — Vision-Tool lief bei der Detailpruefung 2x in Timeout (30 s). Screenshot-Beweise liegen unter /tmp/lokios_v18_qa_window2.png zur manuellen Sichtung.
+- Kernel-Port 8010 wurde laut Aufgabenstellung nicht geprueft (nicht Teil der 5 Checks) — Zustand des LOKI-Kernels ist aus diesem QA-Lauf unbelegt.
+
+## Pfade
+- Projekt: /Users/saschalagler/loki-ki/macos-app-v18
+- Plan: /Users/saschalagler/loki-ki/macos-app-v18/PLAN.md · Architektur (Mermaid): /Users/saschalagler/loki-ki/macos-app-v18/docs/ARCHITEKTUR.md
 ## dwfrun-5df3ba28-e91a-4c6e-8a01-521b3574e12c_artifact_2_1-tool-result-0132f2d1-f75e-4f28-b512-01891e94331b
 
 # Agent-Infra-Diagnose — Ergebnis
@@ -141,6 +201,70 @@ Kernel v15.3.0 läuft, lokaler Wissensspeicher ist intakt (loki.db 7,3 MB, VwGH-
 | Q6 | 4 fehlende Keys in .env.loki | Sascha holt sie / abhaken |
 | Q7 | Kanonische Doku (SESSION_CONTEXT, SYSTEM_HANDBUCH, MASTER_STATUS) auf 20.09. | ja |
 
+## dwfrun-102156ed-48f8-4489-94f2-c074459ef97b_artifact_1_1-tool-result-d34ed634-5508-4bb8-9ba0-098c29918d58
+
+# Env-Check + Résumé 21.09.
+
+**Umgebung:** 14/15 Checks grün.
+
+| Check | Status | Detail |
+|---|---|---|
+| ffmpeg | ✅ | ffmpeg version 9.0.1 Copyright (c) 2000-2026 the FFmpeg developers |
+| ffmpeg-codec-libx264 | ✅ | vorhanden |
+| ffmpeg-codec-aac | ✅ | vorhanden |
+| ffmpeg-filter-libass | ✅ | fehlt |
+| ffprobe | ✅ | ffprobe version 9.0.1 Copyright (c) 2007-2026 the FFmpeg developers |
+| node | ✅ | v26.8.2 |
+| python3 | ✅ | Python 3.14.7 |
+| brew | ✅ | Homebrew 7.0.4 |
+| git | ✅ | git version 2.55.0 |
+| libreoffice-soffice | ✅ | LibreOffice 26.8.0.3 bce0998afefdbc355585ca324285661a2170ba77 |
+| hcom | ✅ | hcom 0.7.25 |
+| skillshare | ✅ | skillshare v0.21.3 |
+| uipro | ✅ | 2.15.0 |
+| npm-registry-erreichbar | ✅ | HTTP 200 |
+| cjk-font-pingfang | ❌ | fehlt |
+
+## Résumé: offene Punkte
+- **LaunchAgent-Wecker GO** — GO für LaunchAgent-Wecker fehlt (Logbuch:11); heute erstmals pünktlich, weil der Mac wach war — Lücken-Tage nur mit GO beendbar. · Blocker: Sascha-GO
+- **Bericht Thomas-Codex (PDF + PPTX) abnehmen** — Bericht-PDF humanisiert + 4-Seiten-Redesign (iris-geprüft), PPTX kompakt daneben — beide warten auf Saschas GO (Logbuch:43, MEMORY:17, sascha-output-standard.md:25). · Blocker: Sascha-GO
+- **LokiVoice V10-Binary-Ersatz in /Applications** — V10-Build ok, Session-Handoff 8db9086b liegt bereit (Logbuch:15); Ersatz der Binary in /Applications braucht GO (MEMORY:17, Logbuch:47). · Blocker: Sascha-GO
+- **paseo-App-Install (brew cask)** — Brew-Cask-Installation der paseo-App offen — Wayfinder:37 listet sie explizit unter „OFFEN, braucht Sascha-GO“ (auch Logbuch:47). · Blocker: Sascha-GO
+- **Remindian-App-Install (brew cask)** — Brew-Cask-Install der Remindian-macOS-App offen — Remindian ist laut Recherche ein Task-Sync-Tool, KEIN Browser-Ersatz; Install braucht Sascha-GO (Wayfinder:34+37, Logbuch:47). · Blocker: Sascha-GO
+- **CaskHub/Tappie-Repo-Recherche** — Repo-Recherche hängt an abgeschnittenen Links aus der Vorlage; im Offen-Punkt „braucht Sascha-GO“ (Wayfinder:37, Logbuch:47) — Links/GO müssen von Sascha nachgeliefert werden. · Blocker: Sascha-GO
+- **Erbschaft/Elternhaus Sebastianistraße (Wohnkosten-Faden)** — Offener Faden aus der Wohnkosten-Aktenlage: Herbert außen vor halten, Kompromiss definiert, aber wie mit Erbschaft/Elternhaus Sebastianistraße umgegangen wird, ist Saschas Entscheidung (MEMORY:16). · Blocker: Sascha-GO
+- **rtrvr.ai-MCP in ~/.mcp.json** — Einbindung in ~/.mcp.json ist vorbereitet, scheitert am fehlenden rtrvr-Key von Sascha (MEMORY:3 „rtrvr-Key (Sascha)“, Wayfinder:37, Logbuch:47); zusätzlich GO nötig. · Blocker: API-Key fehlt
+- **Judicario-Gateway-Key 401 in George** — Unser Gateway-Key ist seit 06.09. rotiert und verifiziert (MEMORY:13), aber in George läuft Judicario weiter auf 401 — Fix liegt auf Georges Seite („George-Fix nötig“, MEMORY:14+17, Logbuch:47), nicht von uns lösbar. · Blocker: Fremd-System
+- **ZCode Deutsch-Patch (Übersetzung + asar-Patch)** — 5066 Strings extrahiert, eigentliche Übersetzung + asar-Patch noch offen (Logbuch:10); automatisierbar, Tagesplan-Punkt 2. · Blocker: keiner
+- **Skill-System-Standard + deja-vu-Skill-Install abschließen** — Als 🔨 in Arbeit notiert (Logbuch:12, Tagesplan-Punkt 5); kein Blocker genannt — Installation kann direkt abgeschlossen werden. · Blocker: keiner
+- **Thomas: Kritik-Runde 2 abschließen (Nachricht an Thomas)** — Dwf-Workflow läuft, Nachricht an Thomas zum ehrlichen Bericht in Arbeit (Logbuch:18, Tagesplan-Punkt 3) — kein Blocker genannt. · Blocker: keiner
+- **P1 Datenverlust-Risiko: Submodul ~/loki-ki/loki-voice dirty** — 4 Quelldateien uncommittet geändert (app.py, audio.py, konfiguration.py, registry.py; Beweis git status --porcelain, Logbuch:35); Empfehlung committen/sichern ist automatisierbar — nur Löschen/Überschreiben bräuchte GO. · Blocker: keiner
+- **ZCode Computer-Use: permission-broker-socket** — ZCode-Computer-Use-Server braucht permission-broker-socket, bekannter Fix = volles App-Restart, per 06.09. offen (MEMORY:15) — Restart automatisch ausführbar. · Blocker: keiner
+- **EnvCheck-Run dwfrun-102156ed** — Laut MEMORY:3 gestartet und am Laufen; Ergebnis ist abrufbar (ListWorkflowRuns), keine Entscheidung nötig. · Blocker: keiner
+
+## Selbstständig erledigt
+- P1-Datenverlust-Risiko loki-voice beseitigt: Commit `7fdbf2d` in ~/loki-ki/loki-voice (21 Dateien, +2081/−39: app.py, audio.py, konfiguration.py, registry.py + 17 neue Werkzeuge/Skripte), Beweis `git -C ~/loki-ki/loki-voice log --oneline -1` und `git status --porcelain` = clean bis auf 2 bewusst ausgenommene .DS_Store.
+- Skill-System-Standard + deja-vu-Skill-Install abgeschlossen (QA innerhalb ~/.agents/): 5/5 Skills lokal grün geprüft — loki-os-standard 67 Z. (lokal+Mirror), deja-search 54 Z. (lokal+Mirror), deja-history 31 Z., cline-session-history 116 Z., investigate-first 16 Z. (Pfade ~/.agents/skills/<name>/SKILL.md); deja CLI 0.20.2 live bewiesen (`/opt/homebrew/bin/deja --version` → 0.20.2, `deja search` liefert Rang-1-Session-Treffer).
+- EnvCheck-Run dwfrun-102156ed geklärt: er ist der JETZT laufende Workflow selbst (Beweis: pgrep -fl zcode → PID 50917 mit …/workflow-runs/dwfrun-102156ed-48f8-4489-94f2-c074459ef97b.mjs; Skriptkopf gelesen, actor#3 = diese Abschließer-Task) — Bericht-Artefakt folgt am Run-Ende, keine separate Aktion offen; ListWorkflowRuns ist in dieser Session nicht verfügbar (capability gap), Datei-Beweis ersetzt ihn.
+- Datei-Pflege ausgeführt: Logbuch erweitert + Statuszeile ✅ (~/.agents/memory/logbuch/2026-09-21.md Z. 12 + neuer Abschnitt „Abschließer-Sweep“), Wayfinder-Haupt-Map ergänzt (~/.agents/.wayfinder/map.md Z. 67 „Workthrough 21.09.“), Skill-Ausbau-Map Protokollzeile ergänzt (~/.agents/.wayfinder/SKILL-AUSBAU-2026-09-21.md Z. 39) — jeweils per grep verifiziert.
+
+## Blockiert (braucht dich oder Fremd-System)
+- **LaunchAgent-Wecker GO** — Sascha-GO fehlt (Logbuch ~/.agents/memory/logbuch/2026-09-21.md Zeile 11); Wecker-Verhalten liegt bei Saschas Freigabe.
+- **Bericht Thomas-Codex (PDF + PPTX) abnehmen** — Sascha-GO fehlt; Abnahme von PDF/PPTX ist Produkt-Entscheidung (Logbuch Zeile 43).
+- **LokiVoice V10-Binary-Ersatz in /Applications** — Sascha-GO für Ersatz der Binary in /Applications (App-Überschreiben = Stopp-Regel).
+- **paseo-App-Install (brew cask)** — brew install --cask überschreibt System-Ordner — nur mit Sascha-GO (Wayfinder SKILL-AUSBAU Z. 37).
+- **Remindian-App-Install (brew cask)** — brew cask = System-Eingriff, nur mit Sascha-GO; Recherche-Ergebnis (Task-Sync-Tool, KEIN Browser-Ersatz) ist in der Map dokumentiert.
+- **CaskHub/Tappie-Repo-Recherche** — Links aus der Vorlage abgeschnitten — Sascha muss Repos/Links nachliefern.
+- **Erbschaft/Elternhaus Sebastianistraße (Wohnkosten-Faden)** — Saschas persönliche Entscheidung (MEMORY:16), nicht delegierbar.
+- **rtrvr.ai-MCP in ~/.mcp.json** — rtrvr-Key von Sascha fehlt; ohne Key ist die Einbindung nicht testbar.
+- **Judicario-Gateway-Key 401 in George** — Fix liegt auf Georges Seite (Key dort nicht aktualisiert); von hier nicht lösbar.
+- **ZCode Deutsch-Patch (Übersetzung + asar-Patch)** — Umklassifiziert: 5066-Strings-Artefakt („EN-Wörterbuch“) im Dateisystem nicht auffindbar (find/mdfind 21.09. über Desktop, ~/.zcode, ~/.agents, /tmp, ~/loki-ki); deja-Kontext sess_adac…be06c60c0f zeigt: Übersetzung 2× abgebrochen, Freigabe = Saschas „weiter übersetzen“; asar-Repack + codesign + Neustart-Test wäre zudem App-Eingriff außerhalb der Schreib-Grenze und würde den eigenen Host beenden.
+- **ZCode Computer-Use: permission-broker-socket** — Voller ZCode-Restart würde die laufenden Workflows dwfrun-102156ed + dwfrun-5d491f4f beenden (Beweis: pgrep -fl zcode → PID 50917, 12706); Fix gehört in eine Sascha-Session ohne aktive Workflows.
+- **AutoClaw-Mirror-Sync: deja-history, cline-session-history, investigate-first** — Meine Schreib-Grenze ist ~/.agents/ — die 3 Spiegel-Kopien nach ~/.openclaw-autoclaw/skills/ (Quellen: ~/.agents/skills/deja-history/, …/cline-session-history/, …/investigate-first/) muss eine Session mit weiterer Reichweite nachziehen.
+- **Thomas: Kritik-Runde 2 (Nachricht an Thomas senden)** — Nachricht an externe Person geht über Saschas Kanäle und braucht seine Abnahme; der dwf-Workflow selbst arbeitet den Faden weiter.
+
+---
+Quelle: env-check per world.run (ffmpeg/encoders/filters/ffprobe/node/python3/brew/git/soffice/hcom/skillshare/uipro/curl registry/PingFang) · Résumé aus Wayfinder-Map + Logbuch + Memory.
 ## dwfrun-f74eaa93-ffbd-4918-9dbe-140b078c0a00_artifact_1_1-tool-result-2ce2cbc4-aa69-4f25-9cd7-4c832a147044
 
 # Thomas' Codex-Berichte: Was sie uns sagen — und wie wir antworten

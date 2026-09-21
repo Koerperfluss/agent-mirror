@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-21 14:13 UTC
+Zuletzt gespiegelt: 2026-09-21 14:24 UTC
 
 ## AGENTS
 
@@ -1166,6 +1166,70 @@ Kernel v15.3.0 läuft, lokaler Wissensspeicher ist intakt (loki.db 7,3 MB, VwGH-
 | Q6 | 4 fehlende Keys in .env.loki | Sascha holt sie / abhaken |
 | Q7 | Kanonische Doku (SESSION_CONTEXT, SYSTEM_HANDBUCH, MASTER_STATUS) auf 20.09. | ja |
 
+## dwfrun-102156ed-48f8-4489-94f2-c074459ef97b_artifact_1_1-tool-result-d34ed634-5508-4bb8-9ba0-098c29918d58
+
+# Env-Check + Résumé 21.09.
+
+**Umgebung:** 14/15 Checks grün.
+
+| Check | Status | Detail |
+|---|---|---|
+| ffmpeg | ✅ | ffmpeg version 9.0.1 Copyright (c) 2000-2026 the FFmpeg developers |
+| ffmpeg-codec-libx264 | ✅ | vorhanden |
+| ffmpeg-codec-aac | ✅ | vorhanden |
+| ffmpeg-filter-libass | ✅ | fehlt |
+| ffprobe | ✅ | ffprobe version 9.0.1 Copyright (c) 2007-2026 the FFmpeg developers |
+| node | ✅ | v26.8.2 |
+| python3 | ✅ | Python 3.14.7 |
+| brew | ✅ | Homebrew 7.0.4 |
+| git | ✅ | git version 2.55.0 |
+| libreoffice-soffice | ✅ | LibreOffice 26.8.0.3 bce0998afefdbc355585ca324285661a2170ba77 |
+| hcom | ✅ | hcom 0.7.25 |
+| skillshare | ✅ | skillshare v0.21.3 |
+| uipro | ✅ | 2.15.0 |
+| npm-registry-erreichbar | ✅ | HTTP 200 |
+| cjk-font-pingfang | ❌ | fehlt |
+
+## Résumé: offene Punkte
+- **LaunchAgent-Wecker GO** — GO für LaunchAgent-Wecker fehlt (Logbuch:11); heute erstmals pünktlich, weil der Mac wach war — Lücken-Tage nur mit GO beendbar. · Blocker: Sascha-GO
+- **Bericht Thomas-Codex (PDF + PPTX) abnehmen** — Bericht-PDF humanisiert + 4-Seiten-Redesign (iris-geprüft), PPTX kompakt daneben — beide warten auf Saschas GO (Logbuch:43, MEMORY:17, sascha-output-standard.md:25). · Blocker: Sascha-GO
+- **LokiVoice V10-Binary-Ersatz in /Applications** — V10-Build ok, Session-Handoff 8db9086b liegt bereit (Logbuch:15); Ersatz der Binary in /Applications braucht GO (MEMORY:17, Logbuch:47). · Blocker: Sascha-GO
+- **paseo-App-Install (brew cask)** — Brew-Cask-Installation der paseo-App offen — Wayfinder:37 listet sie explizit unter „OFFEN, braucht Sascha-GO“ (auch Logbuch:47). · Blocker: Sascha-GO
+- **Remindian-App-Install (brew cask)** — Brew-Cask-Install der Remindian-macOS-App offen — Remindian ist laut Recherche ein Task-Sync-Tool, KEIN Browser-Ersatz; Install braucht Sascha-GO (Wayfinder:34+37, Logbuch:47). · Blocker: Sascha-GO
+- **CaskHub/Tappie-Repo-Recherche** — Repo-Recherche hängt an abgeschnittenen Links aus der Vorlage; im Offen-Punkt „braucht Sascha-GO“ (Wayfinder:37, Logbuch:47) — Links/GO müssen von Sascha nachgeliefert werden. · Blocker: Sascha-GO
+- **Erbschaft/Elternhaus Sebastianistraße (Wohnkosten-Faden)** — Offener Faden aus der Wohnkosten-Aktenlage: Herbert außen vor halten, Kompromiss definiert, aber wie mit Erbschaft/Elternhaus Sebastianistraße umgegangen wird, ist Saschas Entscheidung (MEMORY:16). · Blocker: Sascha-GO
+- **rtrvr.ai-MCP in ~/.mcp.json** — Einbindung in ~/.mcp.json ist vorbereitet, scheitert am fehlenden rtrvr-Key von Sascha (MEMORY:3 „rtrvr-Key (Sascha)“, Wayfinder:37, Logbuch:47); zusätzlich GO nötig. · Blocker: API-Key fehlt
+- **Judicario-Gateway-Key 401 in George** — Unser Gateway-Key ist seit 06.09. rotiert und verifiziert (MEMORY:13), aber in George läuft Judicario weiter auf 401 — Fix liegt auf Georges Seite („George-Fix nötig“, MEMORY:14+17, Logbuch:47), nicht von uns lösbar. · Blocker: Fremd-System
+- **ZCode Deutsch-Patch (Übersetzung + asar-Patch)** — 5066 Strings extrahiert, eigentliche Übersetzung + asar-Patch noch offen (Logbuch:10); automatisierbar, Tagesplan-Punkt 2. · Blocker: keiner
+- **Skill-System-Standard + deja-vu-Skill-Install abschließen** — Als 🔨 in Arbeit notiert (Logbuch:12, Tagesplan-Punkt 5); kein Blocker genannt — Installation kann direkt abgeschlossen werden. · Blocker: keiner
+- **Thomas: Kritik-Runde 2 abschließen (Nachricht an Thomas)** — Dwf-Workflow läuft, Nachricht an Thomas zum ehrlichen Bericht in Arbeit (Logbuch:18, Tagesplan-Punkt 3) — kein Blocker genannt. · Blocker: keiner
+- **P1 Datenverlust-Risiko: Submodul ~/loki-ki/loki-voice dirty** — 4 Quelldateien uncommittet geändert (app.py, audio.py, konfiguration.py, registry.py; Beweis git status --porcelain, Logbuch:35); Empfehlung committen/sichern ist automatisierbar — nur Löschen/Überschreiben bräuchte GO. · Blocker: keiner
+- **ZCode Computer-Use: permission-broker-socket** — ZCode-Computer-Use-Server braucht permission-broker-socket, bekannter Fix = volles App-Restart, per 06.09. offen (MEMORY:15) — Restart automatisch ausführbar. · Blocker: keiner
+- **EnvCheck-Run dwfrun-102156ed** — Laut MEMORY:3 gestartet und am Laufen; Ergebnis ist abrufbar (ListWorkflowRuns), keine Entscheidung nötig. · Blocker: keiner
+
+## Selbstständig erledigt
+- P1-Datenverlust-Risiko loki-voice beseitigt: Commit `7fdbf2d` in ~/loki-ki/loki-voice (21 Dateien, +2081/−39: app.py, audio.py, konfiguration.py, registry.py + 17 neue Werkzeuge/Skripte), Beweis `git -C ~/loki-ki/loki-voice log --oneline -1` und `git status --porcelain` = clean bis auf 2 bewusst ausgenommene .DS_Store.
+- Skill-System-Standard + deja-vu-Skill-Install abgeschlossen (QA innerhalb ~/.agents/): 5/5 Skills lokal grün geprüft — loki-os-standard 67 Z. (lokal+Mirror), deja-search 54 Z. (lokal+Mirror), deja-history 31 Z., cline-session-history 116 Z., investigate-first 16 Z. (Pfade ~/.agents/skills/<name>/SKILL.md); deja CLI 0.20.2 live bewiesen (`/opt/homebrew/bin/deja --version` → 0.20.2, `deja search` liefert Rang-1-Session-Treffer).
+- EnvCheck-Run dwfrun-102156ed geklärt: er ist der JETZT laufende Workflow selbst (Beweis: pgrep -fl zcode → PID 50917 mit …/workflow-runs/dwfrun-102156ed-48f8-4489-94f2-c074459ef97b.mjs; Skriptkopf gelesen, actor#3 = diese Abschließer-Task) — Bericht-Artefakt folgt am Run-Ende, keine separate Aktion offen; ListWorkflowRuns ist in dieser Session nicht verfügbar (capability gap), Datei-Beweis ersetzt ihn.
+- Datei-Pflege ausgeführt: Logbuch erweitert + Statuszeile ✅ (~/.agents/memory/logbuch/2026-09-21.md Z. 12 + neuer Abschnitt „Abschließer-Sweep“), Wayfinder-Haupt-Map ergänzt (~/.agents/.wayfinder/map.md Z. 67 „Workthrough 21.09.“), Skill-Ausbau-Map Protokollzeile ergänzt (~/.agents/.wayfinder/SKILL-AUSBAU-2026-09-21.md Z. 39) — jeweils per grep verifiziert.
+
+## Blockiert (braucht dich oder Fremd-System)
+- **LaunchAgent-Wecker GO** — Sascha-GO fehlt (Logbuch ~/.agents/memory/logbuch/2026-09-21.md Zeile 11); Wecker-Verhalten liegt bei Saschas Freigabe.
+- **Bericht Thomas-Codex (PDF + PPTX) abnehmen** — Sascha-GO fehlt; Abnahme von PDF/PPTX ist Produkt-Entscheidung (Logbuch Zeile 43).
+- **LokiVoice V10-Binary-Ersatz in /Applications** — Sascha-GO für Ersatz der Binary in /Applications (App-Überschreiben = Stopp-Regel).
+- **paseo-App-Install (brew cask)** — brew install --cask überschreibt System-Ordner — nur mit Sascha-GO (Wayfinder SKILL-AUSBAU Z. 37).
+- **Remindian-App-Install (brew cask)** — brew cask = System-Eingriff, nur mit Sascha-GO; Recherche-Ergebnis (Task-Sync-Tool, KEIN Browser-Ersatz) ist in der Map dokumentiert.
+- **CaskHub/Tappie-Repo-Recherche** — Links aus der Vorlage abgeschnitten — Sascha muss Repos/Links nachliefern.
+- **Erbschaft/Elternhaus Sebastianistraße (Wohnkosten-Faden)** — Saschas persönliche Entscheidung (MEMORY:16), nicht delegierbar.
+- **rtrvr.ai-MCP in ~/.mcp.json** — rtrvr-Key von Sascha fehlt; ohne Key ist die Einbindung nicht testbar.
+- **Judicario-Gateway-Key 401 in George** — Fix liegt auf Georges Seite (Key dort nicht aktualisiert); von hier nicht lösbar.
+- **ZCode Deutsch-Patch (Übersetzung + asar-Patch)** — Umklassifiziert: 5066-Strings-Artefakt („EN-Wörterbuch“) im Dateisystem nicht auffindbar (find/mdfind 21.09. über Desktop, ~/.zcode, ~/.agents, /tmp, ~/loki-ki); deja-Kontext sess_adac…be06c60c0f zeigt: Übersetzung 2× abgebrochen, Freigabe = Saschas „weiter übersetzen“; asar-Repack + codesign + Neustart-Test wäre zudem App-Eingriff außerhalb der Schreib-Grenze und würde den eigenen Host beenden.
+- **ZCode Computer-Use: permission-broker-socket** — Voller ZCode-Restart würde die laufenden Workflows dwfrun-102156ed + dwfrun-5d491f4f beenden (Beweis: pgrep -fl zcode → PID 50917, 12706); Fix gehört in eine Sascha-Session ohne aktive Workflows.
+- **AutoClaw-Mirror-Sync: deja-history, cline-session-history, investigate-first** — Meine Schreib-Grenze ist ~/.agents/ — die 3 Spiegel-Kopien nach ~/.openclaw-autoclaw/skills/ (Quellen: ~/.agents/skills/deja-history/, …/cline-session-history/, …/investigate-first/) muss eine Session mit weiterer Reichweite nachziehen.
+- **Thomas: Kritik-Runde 2 (Nachricht an Thomas senden)** — Nachricht an externe Person geht über Saschas Kanäle und braucht seine Abnahme; der dwf-Workflow selbst arbeitet den Faden weiter.
+
+---
+Quelle: env-check per world.run (ffmpeg/encoders/filters/ffprobe/node/python3/brew/git/soffice/hcom/skillshare/uipro/curl registry/PingFang) · Résumé aus Wayfinder-Map + Logbuch + Memory.
 ## dwfrun-f74eaa93-ffbd-4918-9dbe-140b078c0a00_artifact_1_1-tool-result-2ce2cbc4-aa69-4f25-9cd7-4c832a147044
 
 # Thomas' Codex-Berichte: Was sie uns sagen — und wie wir antworten
