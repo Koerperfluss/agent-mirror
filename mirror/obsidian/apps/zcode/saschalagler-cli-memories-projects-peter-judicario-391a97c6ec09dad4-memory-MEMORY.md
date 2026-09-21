@@ -7,7 +7,7 @@ tags: [spiegel, zcode]
 
 # Memory Index
 
-- [MA-Standard Pipeline](ma-standard-pipeline.md) — **GESPEICHERT global** (`~/.zcode/workflows/MA-Standard.dwf.ts`): Auto-Routing über die ECHTE Installation — Router wählt aus den 25 echten Subagent-Typen 2-4 aus, ordnet MCP-Server (32) + Skills (258) zu, parallel, Synthese, 1 Gegenlesen. + **AUTO-MA-Regel** in sascha-output-standard: bei JEDER Anfrage SOFORT selbst starten, kein Trigger-Wort, kein GO · offene Apps-GO: rtrvr.ai-MCP + Remindian-Cask; Apps alt-tab/maccy/itsycal/neohtop/mole von Sascha selbst installiert (21.09.)
+- [MA-Standard Pipeline](ma-standard-pipeline.md) — **GESPEICHERT global, FINALE (21.09.):** Auto-Routing über die ECHTE Installation — Router wählt aus den 25 echten Subagent-Typen 2-4 aus, ordnet MCP-Server (32) + Skills (258) zu, parallel, Synthese, 1 Gegenlesen. + **AUTO-MA-Regel in ~/.zcode/AGENTS.md §5** = gilt in JEDERM neuen Chat, IMMER (auch Mini-Fragen, „ja") · offene Punkte: rtrvr-Key (Sascha), paseo/Bericht/Binary-GOs, Gateway-Key 401, EnvCheck-Run dwfrun-102156ed läuft; Commands alle 25 behalten
 
 - [Sascha Output-Standard](sascha-output-standard.md) — NIEMALS Markdown als Ergebnis → druckfähige PDF (weiß, BLUF-Liste + nummerierte Abschnitte); briefmaker-Skill installiert; Aufbau = Saschas Entscheidung; Wort „Fiche" abgelehnt
 

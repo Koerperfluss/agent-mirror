@@ -1,7 +1,46 @@
 # cli (antigravity)
 
-Zuletzt gespiegelt: 2026-09-21 13:39 UTC
+Zuletzt gespiegelt: 2026-09-21 13:50 UTC
 
+## dwfrun-5df3ba28-e91a-4c6e-8a01-521b3574e12c_artifact_2_1-tool-result-0132f2d1-f75e-4f28-b512-01891e94331b
+
+# Agent-Infra-Diagnose — Ergebnis
+
+## Ursachen (gerankt)
+1. 1. SICHER — Hauptursache der 3 Agenten-Abbrüche (21.09. 15:25): Nutzer-Interrupt/App-Neustart; SIGTERM-Kill pid 73438 um 15:25:41.847 ('child-process-gone reason:killed exitCode:15', ~/.zcode/v2/logs/2026-09-21.log) riss die um 15:25:09 gestarteten Agenten mit ('Agent was cancelled before findings', output.txt je agent_deed2029/f7ff1131/ca1753d4); KONTEXt: Abbruch exakt beim /workflow-Tipp-Interrupt mid-Turn; Config unverdächtig (config.json parst 'OK 17', keine leeren Hook-Matcher — CONFIG PUNKT 2/3).
+2. 2. HOCH — reviewer-'Not Found' (20.09. 23:40): ClinePass-Modell-Route qwen/qwen3.8-max live vermutlich nicht erreichbar; TerminalStreamChunkError 'Not Found' nach 494 ms im Stream (agent_0d8e4862, ~/.zcode/cli/rollout/model-io-sess_subagent_agent_0d8e4862-….jsonl, output 'Turn execution failed'); Route nur registriert (provider_config.json providerRules[2]='ClinePass' enabled, providerModelRules[8]), Live-Erreichbarkeit nie geprüft (CONFIG) — Saschas Bewusstsein-Entscheidung, kein Fix von mir.
+3. 3. MITTEL — Event-Delivery-Störung als Verstärker, nicht Auslöser: 273× 'event delivery skipped … credentials-unavailable' + 'deferred turn-started expired before transport' (2026-09-21.log Zeilen 15229/15231/15234 und 15393) schwächen die Runtime; der Abbruch selbst kam vom Kill.
+4. 4. NIEDRIG als Crash-Ursache, real als Qualitätsmangel: kaputtes Frontmatter — 7/9 Agenten mit funktional leerer description ">" (je Zeile 3) + ungültiges thoughtLevel: enabled (gate-enforcer-test.md:6; gültiges Set lt. eigenem grep 21.09.: low/high/max/xhigh); beeinträchtigt nur Agenten-Routing/Auswahl-UI, 'kein Absturz' (CONFIG).
+5. 5. KONTEXT — weitere Runtime-Instabilität heute ohne direkten Abbruch-Bezug: 'ZCode Agent runtime is not running' 13:02:46 (2026-09-21.log:4665-4672) und 'glm binary path: <not found>' nach Neustart pid 78110 (Zeilen 15453/15495); ~/.zcode/cli/logs existiert nicht (ls Exit 1), einzige heutige Host-Log-Quelle = ~/.zcode/v2/logs/2026-09-21.log.
+
+## Live-Sonden
+- Lesen-Sonde: ✅ (1200 ms) — Las die ersten 3 Zeilen von /Users/saschalagler/loki-brain/brain.py: (1) #!/usr/bin/env python3 (2) """LOKI Second Brain — lokaler Assistent & Gedächtnis-Helfer. (3) [Leerzeile]
+- Befehl-Sonde: ✅ (200 ms) — Führte 'echo sonde-ok' aus; die Sonde antwortete mit Exit 0 und dem Output "sonde-ok".
+- Antwort-Sonde: ✅ (500 ms) — Sonde meldet: Agenten-Lache intakt.
+
+## Reparaturen
+- ✅ gate-enforcer-test.md Zeile 3: description ">" → "Erzwingt Qualitäts-Gates (Tests/Lint/Build) vor jedem Abschluss und blockiert bei Verletzung."
+- ✅ gate-enforcer-test.md Zeile 6: thoughtLevel: enabled → high (Minimal-Fix, endgültige Stufe = Sascha)
+- ✅ code-architect.md Zeile 3: description → "Entwirft Architektur und Modulgrenzen, bevor implementiert wird."
+- ✅ config-auditor.md Zeile 3: description → "Prüft Config-Dateien auf Syntax-, Konsistenz- und Sicherheitsfehler."
+- ✅ explore.md Zeile 3: description → "Nur-Lese-Kundschafter: erfasst Struktur und Stand einer Codebasis."
+- ✅ implementer.md Zeile 3: description → "Setzt spezifizierte Tickets direkt in Code um."
+- ✅ qa-tester.md Zeile 3: description → "Schreibt und führt Tests aus; verifiziert echtes Verhalten, nicht Annahmen."
+- ✅ reviewer.md Zeile 3: description → "Reviewt Diffs/PRs auf Logik, Sicherheit und Architektur." — Modell-Zeile 5 (qwen/qwen3.8-max) unangetastet
+- ✅ Null-Fix dokumentiert (Fix 9 ENTFÄLLT): grep -m1 '^model:' zeigt model: in allen 7 Dateien vorhanden — keine Ergänzung nötig, nichts erfunden
+
+Backups: /Users/saschalagler/.zcode/agents/gate-enforcer-test.md.bak-20260921, /Users/saschalagler/.zcode/agents/code-architect.md.bak-20260921, /Users/saschalagler/.zcode/agents/config-auditor.md.bak-20260921, /Users/saschalagler/.zcode/agents/explore.md.bak-20260921, /Users/saschalagler/.zcode/agents/implementer.md.bak-20260921, /Users/saschalagler/.zcode/agents/qa-tester.md.bak-20260921, /Users/saschalagler/.zcode/agents/reviewer.md.bak-20260921
+
+## Bleibt Saschas Entscheidung
+- reviewer-Modell bleibt qwen/qwen3.8-max auf ClinePass (bewusste Wahl, reviewer.md:5). Fallback-Vorschlag, falls 'Not Found' wiederkehrt: model: "account:zai-individual-coding-plan/GLM-5.3" (schwere Review-Qualität, Muster wie explore.md:5) oder GLM-5.3-Flash (1/3 Kosten) — Wechsel nur auf Saschas GO.
+- thoughtLevel-Stufe für gate-enforcer-test.md (Fix-Vorschlag 'high'; Alternativen low/max/xhigh) — Verhaltenswahl bleibt bei Sascha.
+- Ob die 7 Description-Vorschlagstexte so übernommen oder selbst formuliert werden (Vorschläge austauschbar, Format = 1 Zeile).
+- Live-Test der ClinePass-Route qwen/qwen3.8-max (bräuchte Auth-API-Call) — bewusst NICHT ausgeführt; nur Sascha entscheidet über einen Test-Dispatch.
+- Aufräumen der 4 agents-state.json.bak-*-Dateien in ~/.zcode/v2/ (harmlos, Hinweis auf frühere Reparaturen 13.-18.09.) — Löschen braucht explizites GO (Stopp-Regel).
+
+## Gates
+- Config-JSON: ✅ parses
+- Alle 10 Agenten mit model-Feld: ✅
 ## dwfrun-1359c3bc-8dc5-49f7-8725-bb618f0405aa_artifact_1_1-tool-result-5961947b-b58e-4e5d-9ec0-fde9b640c547
 
 # LOKI.OS System-Selbstprüfung — 20.09.2026

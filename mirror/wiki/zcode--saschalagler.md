@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-21 13:39 UTC
+Zuletzt gespiegelt: 2026-09-21 13:50 UTC
 
 ## AGENTS
 
@@ -676,7 +676,7 @@ Security findings → state risk in plain English first sentence, then caveman f
 
 ---
 name: "code-architect"
-description: ">"
+description: "Entwirft Architektur und Modulgrenzen, bevor implementiert wird."
 color: yellow
 model: "account:zai-individual-coding-plan/GLM-5.3-Flash"
 thoughtLevel: high
@@ -713,7 +713,7 @@ PLAN.md + Tabelle im Chat (ADHS-Format: Ergebnis zuerst, nummerierte Schritte).
 
 ---
 name: "config-auditor"
-description: ">"
+description: "Prüft Config-Dateien auf Syntax-, Konsistenz- und Sicherheitsfehler."
 color: yellow
 model: "account:zai-individual-coding-plan/GLM-5.3-Flash"
 thoughtLevel: low
@@ -754,7 +754,7 @@ Eiserne Regel: "aktive Settings" ohne Log-/Funktionstest-Beweis zu behaupten = F
 
 ---
 name: "explore"
-description: ">"
+description: "Nur-Lese-Kundschafter: erfasst Struktur und Stand einer Codebasis."
 color: yellow
 model: "account:zai-individual-coding-plan/GLM-5.3"
 thoughtLevel: high
@@ -821,10 +821,10 @@ VETO = der Turn ist NICHT abgeschlossen; Builder muss nachbessern. Kein Kompromi
 
 ---
 name: "gate-enforcer-test"
-description: ">"
+description: "Erzwingt Qualitäts-Gates (Tests/Lint/Build) vor jedem Abschluss und blockiert bei Verletzung."
 color: yellow
 model: "account:zai-individual-coding-plan/GLM-5.3-Flash"
-thoughtLevel: enabled
+thoughtLevel: high
 tools:
   - Read
   - Grep
@@ -863,7 +863,7 @@ VETO = der Turn ist NICHT abgeschlossen; Builder muss nachbessern. Kein Kompromi
 
 ---
 name: "implementer"
-description: ">"
+description: "Setzt spezifizierte Tickets direkt in Code um."
 color: yellow
 model: "account:zai-individual-coding-plan/GLM-5.3-Flash"
 thoughtLevel: max
@@ -900,7 +900,7 @@ Ergebnis-Zeile 1 · geänderte Dateien als Tabelle (pfad:zeile — Änderung) ·
 
 ---
 name: "qa-tester"
-description: ">"
+description: "Schreibt und führt Tests aus; verifiziert echtes Verhalten, nicht Annahmen."
 color: yellow
 model: "account:zai-individual-coding-plan/GLM-5.3-Flash"
 thoughtLevel: max
@@ -939,7 +939,7 @@ Bei FAIL: kleinster Repro-Pfad. Keine Architektur-Meinungen (dafür ist reviewer
 
 ---
 name: "reviewer"
-description: ">"
+description: "Reviewt Diffs/PRs auf Logik, Sicherheit und Architektur."
 color: yellow
 model: 3a11f548-4734-459c-bc01-535ecf69a1a5/qwen/qwen3.8-max
 thoughtLevel: xhigh
@@ -967,6 +967,45 @@ Reviewer-Rolle (Standard-Team LOKI.OS). Lesen + urteilen, nie ändern.
 ## Verboten
 - Keine Edits. Keine Umbau-Vorschläge ohne konkreten Fehler.
 
+## dwfrun-5df3ba28-e91a-4c6e-8a01-521b3574e12c_artifact_2_1-tool-result-0132f2d1-f75e-4f28-b512-01891e94331b
+
+# Agent-Infra-Diagnose — Ergebnis
+
+## Ursachen (gerankt)
+1. 1. SICHER — Hauptursache der 3 Agenten-Abbrüche (21.09. 15:25): Nutzer-Interrupt/App-Neustart; SIGTERM-Kill pid 73438 um 15:25:41.847 ('child-process-gone reason:killed exitCode:15', ~/.zcode/v2/logs/2026-09-21.log) riss die um 15:25:09 gestarteten Agenten mit ('Agent was cancelled before findings', output.txt je agent_deed2029/f7ff1131/ca1753d4); KONTEXt: Abbruch exakt beim /workflow-Tipp-Interrupt mid-Turn; Config unverdächtig (config.json parst 'OK 17', keine leeren Hook-Matcher — CONFIG PUNKT 2/3).
+2. 2. HOCH — reviewer-'Not Found' (20.09. 23:40): ClinePass-Modell-Route qwen/qwen3.8-max live vermutlich nicht erreichbar; TerminalStreamChunkError 'Not Found' nach 494 ms im Stream (agent_0d8e4862, ~/.zcode/cli/rollout/model-io-sess_subagent_agent_0d8e4862-….jsonl, output 'Turn execution failed'); Route nur registriert (provider_config.json providerRules[2]='ClinePass' enabled, providerModelRules[8]), Live-Erreichbarkeit nie geprüft (CONFIG) — Saschas Bewusstsein-Entscheidung, kein Fix von mir.
+3. 3. MITTEL — Event-Delivery-Störung als Verstärker, nicht Auslöser: 273× 'event delivery skipped … credentials-unavailable' + 'deferred turn-started expired before transport' (2026-09-21.log Zeilen 15229/15231/15234 und 15393) schwächen die Runtime; der Abbruch selbst kam vom Kill.
+4. 4. NIEDRIG als Crash-Ursache, real als Qualitätsmangel: kaputtes Frontmatter — 7/9 Agenten mit funktional leerer description ">" (je Zeile 3) + ungültiges thoughtLevel: enabled (gate-enforcer-test.md:6; gültiges Set lt. eigenem grep 21.09.: low/high/max/xhigh); beeinträchtigt nur Agenten-Routing/Auswahl-UI, 'kein Absturz' (CONFIG).
+5. 5. KONTEXT — weitere Runtime-Instabilität heute ohne direkten Abbruch-Bezug: 'ZCode Agent runtime is not running' 13:02:46 (2026-09-21.log:4665-4672) und 'glm binary path: <not found>' nach Neustart pid 78110 (Zeilen 15453/15495); ~/.zcode/cli/logs existiert nicht (ls Exit 1), einzige heutige Host-Log-Quelle = ~/.zcode/v2/logs/2026-09-21.log.
+
+## Live-Sonden
+- Lesen-Sonde: ✅ (1200 ms) — Las die ersten 3 Zeilen von /Users/saschalagler/loki-brain/brain.py: (1) #!/usr/bin/env python3 (2) """LOKI Second Brain — lokaler Assistent & Gedächtnis-Helfer. (3) [Leerzeile]
+- Befehl-Sonde: ✅ (200 ms) — Führte 'echo sonde-ok' aus; die Sonde antwortete mit Exit 0 und dem Output "sonde-ok".
+- Antwort-Sonde: ✅ (500 ms) — Sonde meldet: Agenten-Lache intakt.
+
+## Reparaturen
+- ✅ gate-enforcer-test.md Zeile 3: description ">" → "Erzwingt Qualitäts-Gates (Tests/Lint/Build) vor jedem Abschluss und blockiert bei Verletzung."
+- ✅ gate-enforcer-test.md Zeile 6: thoughtLevel: enabled → high (Minimal-Fix, endgültige Stufe = Sascha)
+- ✅ code-architect.md Zeile 3: description → "Entwirft Architektur und Modulgrenzen, bevor implementiert wird."
+- ✅ config-auditor.md Zeile 3: description → "Prüft Config-Dateien auf Syntax-, Konsistenz- und Sicherheitsfehler."
+- ✅ explore.md Zeile 3: description → "Nur-Lese-Kundschafter: erfasst Struktur und Stand einer Codebasis."
+- ✅ implementer.md Zeile 3: description → "Setzt spezifizierte Tickets direkt in Code um."
+- ✅ qa-tester.md Zeile 3: description → "Schreibt und führt Tests aus; verifiziert echtes Verhalten, nicht Annahmen."
+- ✅ reviewer.md Zeile 3: description → "Reviewt Diffs/PRs auf Logik, Sicherheit und Architektur." — Modell-Zeile 5 (qwen/qwen3.8-max) unangetastet
+- ✅ Null-Fix dokumentiert (Fix 9 ENTFÄLLT): grep -m1 '^model:' zeigt model: in allen 7 Dateien vorhanden — keine Ergänzung nötig, nichts erfunden
+
+Backups: /Users/saschalagler/.zcode/agents/gate-enforcer-test.md.bak-20260921, /Users/saschalagler/.zcode/agents/code-architect.md.bak-20260921, /Users/saschalagler/.zcode/agents/config-auditor.md.bak-20260921, /Users/saschalagler/.zcode/agents/explore.md.bak-20260921, /Users/saschalagler/.zcode/agents/implementer.md.bak-20260921, /Users/saschalagler/.zcode/agents/qa-tester.md.bak-20260921, /Users/saschalagler/.zcode/agents/reviewer.md.bak-20260921
+
+## Bleibt Saschas Entscheidung
+- reviewer-Modell bleibt qwen/qwen3.8-max auf ClinePass (bewusste Wahl, reviewer.md:5). Fallback-Vorschlag, falls 'Not Found' wiederkehrt: model: "account:zai-individual-coding-plan/GLM-5.3" (schwere Review-Qualität, Muster wie explore.md:5) oder GLM-5.3-Flash (1/3 Kosten) — Wechsel nur auf Saschas GO.
+- thoughtLevel-Stufe für gate-enforcer-test.md (Fix-Vorschlag 'high'; Alternativen low/max/xhigh) — Verhaltenswahl bleibt bei Sascha.
+- Ob die 7 Description-Vorschlagstexte so übernommen oder selbst formuliert werden (Vorschläge austauschbar, Format = 1 Zeile).
+- Live-Test der ClinePass-Route qwen/qwen3.8-max (bräuchte Auth-API-Call) — bewusst NICHT ausgeführt; nur Sascha entscheidet über einen Test-Dispatch.
+- Aufräumen der 4 agents-state.json.bak-*-Dateien in ~/.zcode/v2/ (harmlos, Hinweis auf frühere Reparaturen 13.-18.09.) — Löschen braucht explizites GO (Stopp-Regel).
+
+## Gates
+- Config-JSON: ✅ parses
+- Alle 10 Agenten mit model-Feld: ✅
 ## dwfrun-1359c3bc-8dc5-49f7-8725-bb618f0405aa_artifact_1_1-tool-result-5961947b-b58e-4e5d-9ec0-fde9b640c547
 
 # LOKI.OS System-Selbstprüfung — 20.09.2026
@@ -4589,7 +4628,7 @@ Update 2026-08-22 (Repair-Session): Ordner umgezogen nach `~/Desktop/Coworkspace
 
 # Memory Index
 
-- [MA-Standard Pipeline](ma-standard-pipeline.md) — **GESPEICHERT global** (`~/.zcode/workflows/MA-Standard.dwf.ts`): Auto-Routing über die ECHTE Installation — Router wählt aus den 25 echten Subagent-Typen 2-4 aus, ordnet MCP-Server (32) + Skills (258) zu, parallel, Synthese, 1 Gegenlesen. + **AUTO-MA-Regel** in sascha-output-standard: bei JEDER Anfrage SOFORT selbst starten, kein Trigger-Wort, kein GO · offene Apps-GO: rtrvr.ai-MCP + Remindian-Cask; Apps alt-tab/maccy/itsycal/neohtop/mole von Sascha selbst installiert (21.09.)
+- [MA-Standard Pipeline](ma-standard-pipeline.md) — **GESPEICHERT global, FINALE (21.09.):** Auto-Routing über die ECHTE Installation — Router wählt aus den 25 echten Subagent-Typen 2-4 aus, ordnet MCP-Server (32) + Skills (258) zu, parallel, Synthese, 1 Gegenlesen. + **AUTO-MA-Regel in ~/.zcode/AGENTS.md §5** = gilt in JEDERM neuen Chat, IMMER (auch Mini-Fragen, „ja") · offene Punkte: rtrvr-Key (Sascha), paseo/Bericht/Binary-GOs, Gateway-Key 401, EnvCheck-Run dwfrun-102156ed läuft; Commands alle 25 behalten
 
 - [Sascha Output-Standard](sascha-output-standard.md) — NIEMALS Markdown als Ergebnis → druckfähige PDF (weiß, BLUF-Liste + nummerierte Abschnitte); briefmaker-Skill installiert; Aufbau = Saschas Entscheidung; Wort „Fiche" abgelehnt
 
@@ -4741,22 +4780,30 @@ metadata:
 
 ---
 name: ma-standard-pipeline
-description: MA-Standard-Workflow GLOBAL GESPEICHERT (21.09.) — schlanke Multi-Agent-Pipeline mit 3 Agenten (Analyst → Denker-Verfasser → Kritischer Leser), Trigger „MA: <Aufgabe>"; Sascha wollte zuerst IMMER/automatisch, hat sich auf 3 Agenten geeinigt
+description: MA-Standard-Workflow GLOBAL GESPEICHERT (21.09., Finale) — Auto-Routing über die ECHTE Subagent-Installation (Router wählt aus 25 Typen 2-4 aus + ordnet 32 MCP + 258 Skills zu); AUTO-MA-Regel steht in ~/.zcode/AGENTS.md §5 = läuft in JEDERM neuen Chat; IMMER (auch Mini-Fragen, Sascha „ja")
 metadata:
   node_type: memory
   type: feedback
   originSessionId: sess_8db9086b-109a-4839-8ff9-e33012080869
 ---
 
-**Saschas Ziel (21.09., mehrfach eskaliert):** Eine **generische Multi-Agent-Pipeline** (alle ~20 Agenten + Standard-Skills kombiniert), die bei **JEDER Anfrage von ihm automatisch, jedes Mal in EINEM Lauf** durchläuft — „weil die Arbeit dann auf 1x geht und nicht wie jetzt in 1000 Etappen. Das ist dein Ziel seit Wochen. When to use: IMMER."
+**Saschas Ziel (21.09., mehrfach eskaliert):** Eine **generische Multi-Agent-Pipeline**, die bei **JEDER Anfrage automatisch, jedes Mal in EINEM Lauf** durchläuft — „die Arbeit geht auf 1x, nicht in 1000 Etappen. Das ist dein Ziel seit Wochen. When to use: IMMER." KEINE Trigger-Wörter („ich schreib nicht mal …"), kein GO.
 
-**Why:** Er sah den abgeschlossenen Dynamic-Workflow „Thomas-Codex-Analyse" (7 Agents, 9/9 Steps, 8.570.900 Tokens, 1 Artifact, Phasen: 5 Berichte parallel → Denkagent → Entwurf+Gegenlesen → Bericht) und fragte, wie er DAS wieder triggert und warum ich nicht IMMER so arbeite. ZCode-Hürde: Workflows starten nur auf expliziten Wunsch — deshalb habe ich wochenlang einzeln/stufenweise gearbeitet. DAS ist die eigentliche Bremse, nicht fehlende Skills.
+**Why:** Er sah den abgeschlossenen Workflow „Thomas-Codex-Analyse" (7 Agents, 9/9 Steps, 8.570.900 Tokens) und fragte, wie er DAS wieder triggert und warum ich nicht IMMER so arbeite. ZCode-Hürde: Workflows starten nur auf expliziten Wunsch — die eigentliche Bremse, nicht fehlende Skills.
 
-**Stand 21.09. (ERLEDIGT):** **MA-Standard ist global gespeichert** unter `~/.zcode/workflows/MA-Standard.dwf.ts` — SCHLANKE Version mit **3 Agenten** (Analyst → Denker-Verfasser → Kritischer Leser, 1 Fix-Runde; Sascha: „SO VIEL DU BRAUCHST NICHT 2 oder 3" = 7er-Version abgelehnt). Args: `auftrag` (string, required) + `material` (json-Liste {typ, pfad} — Agenten lesen Pfade selbst). **Trigger:** Sascha sagt „MA: <Aufgabe>" → CreateWorkflow `saved: { name: "MA-Standard", args: { auftrag, material } }`. Zwei Compile-Fixes beim Speichern: deutsche Anführungszeichen „…" innerhalb von Persona-Strings zerbrechen den TS-String (nur gerade " escapen/vermeiden) + Agentennamen müssen im Run eindeutig sein (2. Verfasser = „Ueberarbeiter").
+**FINALE Version (21.09., nach 2 Sascha-Korrekturen):** Global gespeichert: `~/.zcode/workflows/MA-Standard.dwf.ts`.
+1. Sascha lehnte 7-Agenten-Version ab: „SO VIEL DU BRAUCHST NICHT 2 oder 3".
+2. Dann lehnte er die feste 3er-Besetzung ab: „KEINE 3 SONDERauswahl autorouting aus allen 20" und „wenn du nichtmal die pipeline verstehst" + Paste der ECHTEN Installations-Liste (25 Subagents, 38 Plugins/258 Skills, 32 MCP-Server, 25 Commands).
+3. **Finale Architektur:** Phase 1 **Router** (kennt die 25 echten Subagent-Typen: general-purpose, Explore, cavecrew-builder/-investigator/-reviewer, code-architect/explorer/reviewer, implementer, qa-tester, config-auditor, gate-enforcer-test, reviewer, visual-judge×4, agent-sdk-verifier-py/-ts, adlc-*) wählt **2-4 passendste** + ordnet MCP-Server (web-search-prime, zai-Vision, context7, claude-mem/deja, loki-legal-ops, chrome-devtools/playwright …) und relevante der **258 Skills** zu. Phase 2 gewählte laufen **parallel** (anonyme Agents im Fan-out — berechnete Namen killen den Run). Phase 3 **Synthese** (Botschaft/Empfehlung/fertiger Text/offenFuerSascha). Phase 4 **1 Kritischer Leser** + ggf. 1 Ueberarbeiter. Phase 5 Bericht-Artifact. Args: `auftrag` (required) + `material` (json {typ, pfad}).
+4. **AUTO-MA-Regel steht in `~/.zcode/AGENTS.md` §5** (nicht nur Projekt-Memory!) = lädt in JEDERM neuen Chat/JEDREM Projekt. Grund: Sascha meldete „in neuem chat passiert nichts vom routing" — die Regel lag vorher nur im Projekt-Memory. **IMMER = auch Mini-Fragen** (auf immer/bei-Arbeit-Frage antwortete er „ja"; früher explizit: „bei jeder anfrage immer jedes mal durchlaufen lassen").
+5. Compile-Fixes beim Speichern (wiederkehrend): deutsche Anführungszeichen mit geradem Schluss-" zerbrechen TS-Strings („…" vermeiden oder ‚…' nutzen) + Subagent-Namen im Run eindeutig (2. Verfasser = „Ueberarbeiter").
 
-**How to apply:** Bei „MA: …" oder wenn Sascha eine Multi-Agent-Tiefenanalyse will → CreateWorkflow saved MA-Standard. Mini-Fragen („was ist X") NICHT durch die Pipeline (Token-Brand-Risiko wie Astra) — offene Frage „immer vs. bei Arbeit" hat er nie beantwortet; der gespeicherte whenToUse sagt „substanzhaltige Anfragen". Ob er die Auto-IMMER-Verhaltensregel in AGENTS.md haben will, ist weiterhin offen — NICHT unaufgefordert nochmal anfassen (Eskalations-Regel: [[sascha-output-standard]]).
+**How to apply:** Bei JEDER substanzhaltigen Anfrage (neue Sessions: AGENTS.md §5 befiehlt es): CreateWorkflow `saved: { name: "MA-Standard", args: { auftrag, material } }` — ohne Rückfrage. Pfade aus Nachricht/Kontext selbst extrahieren.
 
-**Links-Recherche (21.09., „SCHNELLER"):** Video `oy49gvlC4eE` = „There's a Second App Store for Your Mac — How To Use Homebrew"; App-Liste: AltTab, Maccy, Itsycal, NeoHtop (`brew install --cask …`), Mole (`brew install mole`), CaskHub + Tappie (Links abgeschnitten, unklar). Sammelbefehl angeboten — **GO steht aus.** rtrvr.ai = Web-Agent mit MCP-Server (github.com/rtrvr-ai) — Eintrag in `~/.mcp.json` angeboten, braucht GO + API-Key. Remindian = macOS-Menüleisten-App Obsidian↔Reminders, `brew install --cask santofer/tap/remindian` — KEIN Browser-Tool. Cole-Medin-Masterclass (zbmuiaPuiNM): PIV-Loop + „3× promptiert = Skill" — in Skill `ai-os-voice-layer` eingeflossen.
+**Commands (25):** Sascha: **alle behalten** — Grund: die 7 eigenen (/feierabend /init /kanban /projects /standardskill /systemproof /todo) „sollten standardmäßig vor und bei jeder Anfrage durchlaufen" (→ ggf. in MA-Standard integrieren, noch offen).
+
+**Offene Punkte (Stand 21.09. Abend):** rtrvr.ai-MCP braucht Saschas API-Key (rtrvr.ai/cloud, Doku rtrvr.ai/docs/mcp) → dann Eintrag in `~/.mcp.json` · CaskHub gefunden = alielsokary/CaskHub, `brew install --cask caskhub` (0.7.0, macOS 15+) · Tappie/empiricapp NICHT auffindbar · Remindian bereits installiert (/Applications/Remindian.app) · paseo-App-Install + LokiVoice-/Applications-Binary-Ersatz + Gateway-Key 401 = GO/Key-Pflicht · Bericht Thomas-Codex wartet auf GO · EnvCheck-Resume-Run gestartet (dwfrun-102156ed): env-check 14 Checks + Auto-Fix + Résumé offener Punkte + Abschliesser — Ergebnis steht aus.
+- **google-workspace MCP calendar_admin = Permission denied (Scopes)** → funktionierender Fallback: osascript Calendar.app (Event „Logbuch 2026-09-21" 18:00-18:15, ID FE7FF702-A256-458F-8313-9FFE51ACA1B5). Logbuch-Datei `~/.agents/memory/logbuch/<date>.md` existiert ggf. schon (Morgen-Brief) → nur APPEND, „## ✍️ Meine Notizen"-Sektion nie anfassen.
 
 Siehe [[sascha-output-standard]], [[codex-paket-skills-konvertierung]], [[lokivoice-v10-stand-presentation]].
 
@@ -4832,7 +4879,7 @@ Sascha will Analyse-/Erklär-Ergebnisse **niemals als Markdown oder lange Chat-T
 
 **Layout-Handwerk (21.09., vierte Kritik „Haufen von Infos ohne Abstand Logik Sinn" auf die kompakte 2-Seiter):** Kompakt ≠ lesbar — Sascha will LUFT. Gewinner-Regeln: **AUSSAGEN/LÖSUNG als Bullet-Listen, ein Fakt pro Zeile** (Sätze via Regex `(?<=[.!?])\s+` splitten) statt Fließtextwand · Labels als eigene Zeile über dem Block · line-height 1,6 · block-margin ~9-10 px · Sektionen padding 16-20 px · große Geister-Nummern · Textspalte max-width ~118 mm · Bildspalte ~30 %, max-height 38-40 mm · Seite darf 4 Seiten haben — Lesbarkeit schlägt Seitenzahl · Quellenzeile darf unten auf letzter Seite stehen, aber KEINE Seite nur für eine Zeile (Straffungslauf: padding/Abstände global ×0,85 statt Inhalte kürzen). Ablauf: HTML bauen → `iris "file://$(pwd)/x.html" -o /tmp/x.png --full` (Vollseiten-Check) → ggf. 1 Straffung → Chrome-PDF → pdftoppm-Seiten prüfen. Finale Fassung: `Bericht_Thomas-Codex_2026-09-20.pdf`, 4 Seiten luftig, wartet auf GO.
 
-**AUTO-MA-REGEL (21.09., SASCHA-FORDERUNG, HÖCHSTE PRIORITÄT):** Sascha will KEINE Trigger-Wörter und KEINE Werkzeuge selbst bedienen („ich schreib nicht mal …"). **Bei JEDER Anfrage — auch Mini-Fragen (von ihm bestätigt: IMMER) — starte ich SOFORT und SELBST die gespeicherte Pipeline `MA-Standard` (CreateWorkflow, `saved: { name: "MA-Standard" }`, global). KEINE feste 3er-Besetzung („KEINE 3 SONDERauswahl"): Der Workflow hat einen **Router**, der pro Anfrage aus einem Pool von ~20 Agenten-Personas (Architekt, Researcher, Fakten-Prüfer, Legal/RIS-VwGH, Business/FFG, Physio, Coder, Debugger, QA-Tester, UI-Reviewer, Humanizer, Doku-Autor, Memory-Check, Entscheidungsberater, Verteilkoordinator, Sicherheit, Kartograf, Loki-OS-Health, Obsidian, Browser-Pilot) die 2-4 passendsten wählt — diese laufen parallel und nutzen bei Bedarf die 143 Skills aus ~/.agents/skills/.** Danach Synthese → 1 Gegenlese-Lauf → Bericht-Artefakt. Material-Pfade aus seiner Nachricht selbst extrahieren → args.material; Auftrag → args.auftrag. Ergebnis = Artifact + fertiger Text in 1x. Nicht-Tun = sein größter Ärgerpunkt.
+**AUTO-MA-REGEL (21.09., SASCHA-FORDERUNG, HÖCHSTE PRIORITÄT, FINALE FASSUNG):** Sascha will KEINE Trigger-Wörter und KEINE Werkzeuge selbst bedienen („ich schreib nicht mal …"). **Bei JEDER Anfrage — auch Mini-Fragen („ja" = IMMER) — starte ich SOFORT und SELBST die gespeicherte Pipeline `MA-Standard` (CreateWorkflow, `saved: { name: "MA-Standard" }`, global). KEINE feste Agentenzahl („KEINE 3 SONDERauswahl") und KEIN erfundener Pool („wenn du nichtmal die pipeline verstehst" + Paste der echten Liste): Der Router routet über die ECHTE Installation — 25 Subagent-Typen (general-purpose, Explore, cavecrew-*, code-architect/explorer/reviewer, implementer, qa-tester, config-auditor, visual-judge …), wählt 2-4 aus, ordnet die 32 MCP-Server (web-search-prime, zai-Vision, context7, claude-mem/deja, loki-legal-ops, chrome-devtools …) und 258 Skills zu — parallel, dann Synthese → 1 Gegenlese-Lauf → Bericht-Artefakt.** **Die Verhaltensregel steht in `~/.zcode/AGENTS.md` §5** = gilt in JEDERM neuen Chat (Sascha-Panne: lag vorher nur im Projekt-Memory → „in neuem chat passiert nichts vom routing"). Ergebnis = Artifact + fertiger Text in 1x. Nicht-Tun = sein größter Ärgerpunkt.
 
 ## wohnkosten-vereinbarung-status
 
@@ -6466,7 +6513,7 @@ Beobachtet 06.09.2026 (Session mit Off-Peak-Ticket): Nach User-Paste „ZCode Er
 
 # Memory Index
 
-- [LOKI.OS v18 Build + Agent-Diagnose](loki-os-v18-build.md) — 21.09. Run dwfrun-5d491f4f baut GANZES Agentic OS frisch in ~/loki-ki/macos-app-v18/ (11 Agenten/6 Phasen, Build-Gate als Code); Lektion: Workflow-Lane zuverlässig, direkte Dispatches sterben bei Turn-Interrupt; reviewer (qwen/ClinePass) = „Not Found"; Diagnose-Run dwfrun-5df3ba28
+- [LOKI.OS v18 Build + Agent-Diagnose + Aufräumung](loki-os-v18-build.md) — 21.09. 3 Workflows parallel: dwfrun-5d491f4f (v18-Vollbau in ~/loki-ki/macos-app-v18/, Build-Gate als Code) · dwfrun-5df3ba28 (Dispatch-Diagnose) · dwfrun-32a721cc (Datei-Berg → _LOKI_KONSOLIDIERUNG_2026-09-21/, mv-only, Kanon-Gate); Lektion: Workflow-Lane zuverlässig, direkte Dispatches sterben bei Turn-Interrupt; Wiederaufnahme = alle 3 Run-IDs checken
 - [ATLAS Versionsstand](atlas-versionsstand.md) — 21.09.: 5173+4173 Server tot; PROD atlas-v5.web.app lebt mit NEUEM Bundle index-DG7Gco4d.js (Redeploy seit 11.09.); ATLAS_MASTER bis 18.09. bearbeitet; Pfad A/B nie entschieden
 - [LOKI Second Brain](loki-second-brain.md) — 20.09. SPÄT FERTIG+GETESTET: ~/loki-brain/ (brain.py+FTS5+git) × Daemon-4-Tools × Obsidian-Vault × M2-Auto-Protokoll; Review PASS (0 HIGH, 2 MED); Builder-Schwarm+Director parallel — NIE wieder von 0 planen, nur erweitern; Handoff-Datei war Basis
 - [loki-dev Plan alle 5 Modi](loki-dev-plan-alle-modi.md) — 20.09. VOLLZUG BEENDET (alle 6 Stufen ✅): Routing-Sync, Agenten 10/10, VAD+Vocab live; Ausbaustufe ① erledigt, ③ Morgenbrief via Brain real, offen: ② CDP-Browser ④ iPhone; Plan-Datei ~/LOKI_DEV_PLAN_ALLE_MODI.md
@@ -6756,6 +6803,8 @@ LOKI.OS v18 — VOLL-ÜBERNAHME PER WORKFLOW (21.09.2026):
 **Run `dwfrun-5d491f4f`** (Script: `.zcode/workflow-drafts/LOKI.OS-v18--Voll-Übernahme-zum-Endprodukt.dwf.ts`): 11 Agenten, 6 Phasen — 3 Kundschafter (App v17/Kernel/Kanon) → Architekt (Skelett+PLAN.md+build.sh in **~/loki-ki/macos-app-v18/**) → 3 Bau-Worker parallel mit getrennter Datei-Hoheit (UI-Bauer: Sidebar-App mit Dashboard/Brain-Live-Suche/Heute/interaktive Karte/Loki-fragen · Verbindungs-Bauer: Connections.swift zu Daemon :8078, brain.py, brain.db read-only, Kernel :8010, OmniRoute · Doku-Bauer: ARCHITEKTUR.md mit ≥3 Mermaid-Diagrammen auch in Obsidian-Vault) → Build-Gate als Code (bash build.sh, 3 Reparatur-Runden) → QA + Reviewer parallel → Abschluss-Artefakt. Status beim Check: Phase 2/6, Kundschafter 1,6M/800k/614k Tokens ✅, 0 Fehler. **Design-Entscheidung:** natives Premium-Design (Indigo→Violett, SF Symbols) statt Higgsfield-API (keine Keys).
 
 **AGENT-DISPATCH-PROBLEM (Screenshot 21.09. 15:28):** 3 direkte Chat-Dispatches „Agent was cancelled" + früher 1× „Not Found" (subagent_type reviewer). Diagnose: (a) Cancelled = Mid-Turn-Interrupt — Sascha tippte /workflow während die Agenten liefen; KEIN Config-Schaden. (b) Not Found = reviewer läuft auf qwen3.8-max via ClinePass-UUID (3a11f548-…), vermutlich tote Route. **Beweis:** dieselben 3 Kundschafter liefen im Workflow fehlerfrei. **Regel: Langlebige Agenten-Teams über CreateWorkflow fahren; direkte Agent-Dispatches nie mit neuen Nutzer-Nachrichten kollidieren lassen.** Diagnose-Run `dwfrun-5df3ba28` (Config-Auditor + Spurenleser + 3 Live-Sonden + Konfig-Heiler mit Backups + python-Gates auf config.json/model-Felder) lief parallel.
+
+**DATEI-BERG-AUFRÄUMUNG — Run `dwfrun-32a721cc`** (Script: `.zcode/workflow-drafts/LOKI-Datei-Berg-austristen--Konsolidierung--Entwicklungs-Kanon.dwf.ts`, 21.09. gestartet): Saschas Auftrag „miste aus, sortiere, lösche Duplikate, lies die Entwicklung, bau was offen ist (v18-Run deckt Bauen ab)". 7 Agenten/5 Phasen: 2 Zonen-Scouts (Desktop-Zonen: alrround voice, CODEX_PAKET, coworkspace-„Local AI"-Monster · Rest: Downloads/WhatsApp, Home-Root) → Archivar (Kanon-Plan) → Umzügler (**nur mv, NIE rm**, Ziel `~/Desktop/Coworkspace_Ich/_LOKI_KONSOLIDIERUNG_2026-09-21/` mit manifest_kanon.txt + ARCHIV_INVENTAR.md, Kanon-Gate als bash-Code) → Historiker (liest AGENTIC_OS_WISSEN + DEEP-DIVE-PDF + AIOS-4-Level-Plan + CODEX-Handout → Soll/Lücken) → Doku-Baumeister (MASTER_INDEX.md im CODEX_PAKET, Obsidian „Entwicklungslinie & Lücken", SESSION_CONTEXT-Append). **Geschützte Zonen:** ~/loki-ki (laufend), Google Drive (Sync), Mirror, CODEX_PAKET + alrround voice (Kanon-Quellen); Müll nur gemeldet — Löschen = Sascha-GO. **Stand beim Start: 3 Workflows parallel aktiv** (v18-Bau Phase 2/6 gesund · Agent-Diagnose · Aufräumung); Ergebnisse kommen asynchron per Completion-Notification — bei Wiederaufnahme ALLE drei Run-IDs checken (GetWorkflowRun/ListWorkflowRuns).
 
 Verwandt: [[loki-second-brain]], [[loki-os-harness-sollstand]], [[sascha-arbeitsregeln-hart]], [[sascha-vollzug-keine-zwischenfragen]]
 

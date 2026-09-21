@@ -1,13 +1,13 @@
 ---
 app: zcode
 quelle: "saschalagler/agents/config-auditor.md"
-stand: 2026-09-20
+stand: 2026-09-21
 tags: [spiegel, zcode]
 ---
 
 ---
 name: "config-auditor"
-description: ">"
+description: "Prüft Config-Dateien auf Syntax-, Konsistenz- und Sicherheitsfehler."
 color: yellow
 model: "account:zai-individual-coding-plan/GLM-5.3-Flash"
 thoughtLevel: low

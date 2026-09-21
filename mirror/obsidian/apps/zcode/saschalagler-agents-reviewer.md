@@ -1,13 +1,13 @@
 ---
 app: zcode
 quelle: "saschalagler/agents/reviewer.md"
-stand: 2026-09-20
+stand: 2026-09-21
 tags: [spiegel, zcode]
 ---
 
 ---
 name: "reviewer"
-description: ">"
+description: "Reviewt Diffs/PRs auf Logik, Sicherheit und Architektur."
 color: yellow
 model: 3a11f548-4734-459c-bc01-535ecf69a1a5/qwen/qwen3.8-max
 thoughtLevel: xhigh
