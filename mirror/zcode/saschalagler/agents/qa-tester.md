@@ -1,6 +1,6 @@
 ---
 name: "qa-tester"
-description: ">"
+description: "Schreibt und führt Tests aus; verifiziert echtes Verhalten, nicht Annahmen."
 color: yellow
 model: "account:zai-individual-coding-plan/GLM-5.3-Flash"
 thoughtLevel: max

@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-21 13:28 UTC
+Zuletzt gespiegelt: 2026-09-21 13:39 UTC
 
 ## AGENTS
 
@@ -21,6 +21,12 @@ Zuletzt gespiegelt: 2026-09-21 13:28 UTC
 ## 4. Ehrlichkeit & Beweis
 - „Erledigt" nur mit Beweis (Befehls-Output, Dateipfad, Event-ID). Nichts behaupten, was nicht verifiziert ist.
 - Nie App-UI behaupten, was nur eine Datei ist.
+
+## 5. AUTO-MA (21.09.2026, höchste Ausführungsregel — gilt in JEDERM Chat/Projekt)
+- Bei JEDER substanzhaltigen Anfrage starte ich SOFORT und SELBST den gespeicherten Workflow **`MA-Standard`** (CreateWorkflow, `saved: { name: "MA-Standard" }`, global) — **ohne Rückfrage, ohne Trigger-Wort, ohne GO.** Der Nutzer schreibt normal; die Pipeline ist meine Aufgabe.
+- **Auto-Routing über die ECHTE Installation:** Der Router im Workflow wählt aus den 25 echten Subagent-Typen die 2-4 passendsten und ordnet ihnen MCP-Server (32) + Skills (258, `~/.agents/skills/`) zu. KEINE feste Besetzung.
+- Material-/Pfad-Erkennung: Pfade und Kontext aus der Nachricht + Session-Kontext selbst extrahieren → `args.auftrag` + `args.material`.
+- Nur absolute Ja/Nein-Einzeiler ohne Arbeitsanteil bleiben direkt. Ergebnis = Bericht-Artefakt + fertiger Text in 1x.
 
 ---
 
@@ -6460,6 +6466,8 @@ Beobachtet 06.09.2026 (Session mit Off-Peak-Ticket): Nach User-Paste „ZCode Er
 
 # Memory Index
 
+- [LOKI.OS v18 Build + Agent-Diagnose](loki-os-v18-build.md) — 21.09. Run dwfrun-5d491f4f baut GANZES Agentic OS frisch in ~/loki-ki/macos-app-v18/ (11 Agenten/6 Phasen, Build-Gate als Code); Lektion: Workflow-Lane zuverlässig, direkte Dispatches sterben bei Turn-Interrupt; reviewer (qwen/ClinePass) = „Not Found"; Diagnose-Run dwfrun-5df3ba28
+- [ATLAS Versionsstand](atlas-versionsstand.md) — 21.09.: 5173+4173 Server tot; PROD atlas-v5.web.app lebt mit NEUEM Bundle index-DG7Gco4d.js (Redeploy seit 11.09.); ATLAS_MASTER bis 18.09. bearbeitet; Pfad A/B nie entschieden
 - [LOKI Second Brain](loki-second-brain.md) — 20.09. SPÄT FERTIG+GETESTET: ~/loki-brain/ (brain.py+FTS5+git) × Daemon-4-Tools × Obsidian-Vault × M2-Auto-Protokoll; Review PASS (0 HIGH, 2 MED); Builder-Schwarm+Director parallel — NIE wieder von 0 planen, nur erweitern; Handoff-Datei war Basis
 - [loki-dev Plan alle 5 Modi](loki-dev-plan-alle-modi.md) — 20.09. VOLLZUG BEENDET (alle 6 Stufen ✅): Routing-Sync, Agenten 10/10, VAD+Vocab live; Ausbaustufe ① erledigt, ③ Morgenbrief via Brain real, offen: ② CDP-Browser ④ iPhone; Plan-Datei ~/LOKI_DEV_PLAN_ALLE_MODI.md
 - [Saschas harte Arbeitsregeln](sascha-arbeitsregeln-hart.md) — 20.09. gelernt: LOKI OS = ZCode/GLM selbst (keine Agent-Schwärme bei bekannten Fakten), Plan-abgelehnt → STOPP+simple Frage (keine Neu-Analyse), keine Überraschungs-GUI/TCC-Dialoge, nichts ohne GO schreiben, alrround-voice-Files = M4-Prompting-SPEC
@@ -6475,6 +6483,29 @@ Beobachtet 06.09.2026 (Session mit Off-Peak-Ticket): Nach User-Paste „ZCode Er
 - [LOKI-Ki Clinical Wayfinder-Map](loki-ki-clinical-wayfinder.md) — ZWEITE Map in ~/loki-ki/.wayfinder/ (Körperfluss-Automatik): T-01..T-04 alle real+getestet (Pipeline/CLI/Templates/loki.db 7,6 MB); immer BEIDE Wayfinder-Maps prüfen — Sascha brannte, als nur die erste gefunden wurde
 - [LOKI-OS Harness-Settings-Sessions](loki-os-harness-settings-sessions.md) — 3 kanonische Sessions (sess_6ec2db7a/ecb2e5e0/055615ab) mit der 6-Schaltstellen-Architektur; bei Harness-/Architektur-Fragen ZUERST diese laden; deja-Eingriffe additiv-verträglich (20.09. verifiziert)
 - [LOKI-OS-Harness Soll-Stand](loki-os-harness-sollstand.md) — 6 Schaltstellen ~/.zcode (17 MCP, 10 Agenten, 7 Commands, Sync-Quelle, 2 Wayfinder-Maps); Änderungen nur via STANDARD-SKILLS.md + sync-script
+
+## atlas-versionsstand
+
+---
+name: atlas-versionsstand
+description: ATLAS-Versionen IST-Stand 21.09.2026 — beide lokalen Server (5173
+  v8-Dev, 4173 Master-Preview) TOT; PROD atlas-v5.web.app lebt und wurde NEU
+  deployed (Bundle index-DG7Gco4d.js statt Dn3jA4Wx.js vom 11.09.);
+  ATLAS_MASTER/app bis 18.09. bearbeitet.
+metadata:
+  node_type: memory
+  type: project
+  originSessionId: sess_2879174a-220a-46e8-be58-79d65929bc01
+---
+
+ATLAS (Cali Coach) — IST-Stand 21.09.2026 (live verifizert):
+
+- **localhost:5173** (v8 „Barbulls Premium" Design-Sandbox, `~/ATLAS_DESIGN/atlas-v8`): Server tot (Ordner existiert, Stand 11.09.).
+- **localhost:4173** (Master-Preview, `~/Desktop/Coworkspace_Ich/atlas + pliability /ATLAS_MASTER/app`): Server tot; Ordner bis 18.09. aktiv bearbeitet.
+- **https://atlas-v5.web.app** (PROD): live, APK-Download 200 OK, **neues Bundle `index-DG7Gco4d.js`** — seit dem 11.09.-Bericht (da war es `index-Dn3jA4Wx.js` = identisch mit 4173) wurde neu gebaut+deployed. Der alte 11.09.-Bericht „4173 = PROD 1:1" ist damit veraltet.
+- Offene Pfad-Entscheidung (aus Alt-Session): A = v5 stabil halten vs. B = v8-Fusion — von Sascha nie entschieden.
+
+Verwandt: [[loki-os-ecosystem-stand]]
 
 ## chrome-agent-browser-fix
 
@@ -6705,6 +6736,28 @@ LOKI-OS-Harness Soll-Stand (gebaut 13.09.2026 in sess_6ec2db7a/sess_ecb2e5e0/ses
 6. **Orchestrierung:** loki-dev = 1 Pipeline, 5 Modi (INIT/BUILD/TAKEOVER/FINISH/MAP); 2 Wayfinder-Maps: `~/.agents/.wayfinder/map.md` (Skill-Konsolidierung, Tickets 10+11 offen) und `~/loki-ki/.wayfinder/map.md` (LOKI.OS Körperfluss-Automation, T-01…T-04).
 
 Regel-Änderungen immer: 1× in STANDARD-SKILLS.md editieren + `bash ~/.agents/tools/sync-standard-skills.sh` — nie in die Kopien. Verwandt: [[deja-vu-install]].
+
+## loki-os-v18-build
+
+---
+name: loki-os-v18-build
+description: LOKI.OS v18-Vollbau (21.09.2026) per动态 Workflow — Run dwfrun-5d491f4f baut
+  das GANZE Agentic OS als SwiftUI-Endprodukt frisch in ~/loki-ki/macos-app-v18/
+  (v17-Originale unberührt); плюс Agent-Dispatch-Diagnose-Run dwfrun-5df3ba28.
+  Kern-Lektion: Workflow-Lane zuverlässig, direkte Chat-Dispatches sterben bei Turn-Interrupt.
+metadata:
+  type: project
+---
+
+LOKI.OS v18 — VOLL-ÜBERNAHME PER WORKFLOW (21.09.2026):
+
+**Auftrag (Scope-Korrektur):** Sascha: „DES GANZE AGENTIC OS - LOKI.os" (nicht nur Brain) — übernehmen, durchleuchten, alles Offene bauen, neues UI, Verbindungen, modernes Routing, Mermaid-Illus → „übersichtliches nutzbares schönes funktionales Endprojekt" mit Planung/Verteilung/Testung. Ausgelöst per **/workflow** → CreateWorkflow verpflichtend.
+
+**Run `dwfrun-5d491f4f`** (Script: `.zcode/workflow-drafts/LOKI.OS-v18--Voll-Übernahme-zum-Endprodukt.dwf.ts`): 11 Agenten, 6 Phasen — 3 Kundschafter (App v17/Kernel/Kanon) → Architekt (Skelett+PLAN.md+build.sh in **~/loki-ki/macos-app-v18/**) → 3 Bau-Worker parallel mit getrennter Datei-Hoheit (UI-Bauer: Sidebar-App mit Dashboard/Brain-Live-Suche/Heute/interaktive Karte/Loki-fragen · Verbindungs-Bauer: Connections.swift zu Daemon :8078, brain.py, brain.db read-only, Kernel :8010, OmniRoute · Doku-Bauer: ARCHITEKTUR.md mit ≥3 Mermaid-Diagrammen auch in Obsidian-Vault) → Build-Gate als Code (bash build.sh, 3 Reparatur-Runden) → QA + Reviewer parallel → Abschluss-Artefakt. Status beim Check: Phase 2/6, Kundschafter 1,6M/800k/614k Tokens ✅, 0 Fehler. **Design-Entscheidung:** natives Premium-Design (Indigo→Violett, SF Symbols) statt Higgsfield-API (keine Keys).
+
+**AGENT-DISPATCH-PROBLEM (Screenshot 21.09. 15:28):** 3 direkte Chat-Dispatches „Agent was cancelled" + früher 1× „Not Found" (subagent_type reviewer). Diagnose: (a) Cancelled = Mid-Turn-Interrupt — Sascha tippte /workflow während die Agenten liefen; KEIN Config-Schaden. (b) Not Found = reviewer läuft auf qwen3.8-max via ClinePass-UUID (3a11f548-…), vermutlich tote Route. **Beweis:** dieselben 3 Kundschafter liefen im Workflow fehlerfrei. **Regel: Langlebige Agenten-Teams über CreateWorkflow fahren; direkte Agent-Dispatches nie mit neuen Nutzer-Nachrichten kollidieren lassen.** Diagnose-Run `dwfrun-5df3ba28` (Config-Auditor + Spurenleser + 3 Live-Sonden + Konfig-Heiler mit Backups + python-Gates auf config.json/model-Felder) lief parallel.
+
+Verwandt: [[loki-second-brain]], [[loki-os-harness-sollstand]], [[sascha-arbeitsregeln-hart]], [[sascha-vollzug-keine-zwischenfragen]]
 
 ## loki-second-brain-handoff
 
@@ -6950,6 +7003,7 @@ Saschas harte Regeln, gelernt aus dem 20.09.-Zerwürfnis (619k Token in 1 Sessio
 3. **Keine Überraschungs-GUI-Aktionen:** Apps öffnen, Aufnahme-Tests oder TCC-Dialoge („python3.14 möchte aufs Mikrofon") NIE unaufgefordert auslösen — vorher ankündigen. Genau das löste den ersten Stopp aus („du sollst nur planen").
 4. **Nichts ohne Bestätigung:** Nach Plan-Ablehnung keine Dateien/Deliverables „trotzdem" schreiben (AGENTIC_OS_WISSEN.md wurde ohne GO geschrieben → „ich habe nichts bestätigt").
 5. **`~/Desktop/alrround voice /`-Files = M4-optimierte Prompting-SPEC** (5-Schichten: Persona, Output-Disziplin BLUF/Token-Ban, ToT-Verifikation, AT-Daten-Gate, Intercept-Gate) — verstehen → verbessern → Einbau in LokiVoice planen. NICHT als Archiv behandeln.
+8. **Workflows sind die zuverlässige Agenten-Lane (21.09.):** Sascha nutzt /workflow aktiv. Langlebige Agenten-Teams IMMER über CreateWorkflow fahren — direkte Chat-Dispatches sterben, sobald Sascha mid-turn eine neue Nachricht tippt („Agent was cancelled" ×3, 21.09. 15:28), während Workflow-Runs ungestört weiterlaufen (bewiesen: dieselben 3 Kundschafter im Workflow fehlerfrei). Nach einem Workflow-Start: NICHT pollen, Abschluss-Notification abwarten und Nutzer kurz informieren. Bekannt kaputt: subagent_type „reviewer" (qwen3.8-max via ClinePass) wirft „Not Found".
 
 **Why:** Sascha (ADHS) will das GROSSE Bild in SEINEM Orchestrierungs-Format (PLAN-Tabelle, Schwarm-Rollen, Reviewer-Veto) — weder Explorer-Schleifen noch Solo-Mini-Pläne. Plan-Lehnen heißt „Format falsch", nicht „weniger machen".
 **How to apply:** Neuer Build-Auftrag → sofort PLAN-Tabelle konform Standard-Skill-System S.2 mit installierten Subagenten (implementer/qa-tester/reviewer qwen3.8-max/explore), max 3 parallel, PLAN.md ins Projekt, Auto-Vollzug nach Freigabe. GUI/Deploy/Dateien nur nach GO. Verwandt: [[sascha-vollzug-keine-zwischenfragen]] (GO-Phase), [[loki-voice-agent]].

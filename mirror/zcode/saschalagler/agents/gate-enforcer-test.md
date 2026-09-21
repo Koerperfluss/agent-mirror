@@ -1,9 +1,9 @@
 ---
 name: "gate-enforcer-test"
-description: ">"
+description: "Erzwingt Qualitäts-Gates (Tests/Lint/Build) vor jedem Abschluss und blockiert bei Verletzung."
 color: yellow
 model: "account:zai-individual-coding-plan/GLM-5.3-Flash"
-thoughtLevel: enabled
+thoughtLevel: high
 tools:
   - Read
   - Grep

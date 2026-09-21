@@ -1,6 +1,6 @@
 ---
 name: "explore"
-description: ">"
+description: "Nur-Lese-Kundschafter: erfasst Struktur und Stand einer Codebasis."
 color: yellow
 model: "account:zai-individual-coding-plan/GLM-5.3"
 thoughtLevel: high
