@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-21 14:57 UTC
+Zuletzt gespiegelt: 2026-09-21 15:08 UTC
 
 ## AGENTS
 
@@ -6682,6 +6682,8 @@ Beobachtet 06.09.2026 (Session mit Off-Peak-Ticket): Nach User-Paste „ZCode Er
 
 # Memory Index
 
+- [ZCode-Workflow-Bedienung](zcode-workflow-bedienung.md) — /workflow via Chat-Feld/Command-Palette; Runs unter Automations; Workflows überleben Turn-Interrupts (ggü. direkten Agenten)
+
 - [LOKI.OS v18 Endprodukt](loki-os-v18-endprodukt.md) — 21.09. ABEND ALLES FERTIG: v18-App läuft (/Applications/LOKI OS v18.app, Review PASS, BrainView-Fix deployed) + Datei-Berg konsolidiert (⚠️ Archiv-ENDLAGE: Desktop/Coworkspace_Ich/PRIVATE PORJEKTE /_LOKI_KONSOLIDIERUNG_2026-09-21) + 6-Lücken-Roadmap + MASTER_INDEX.md im CODEX_PAKET
 - [LOKI.OS v18 Build + Agent-Diagnose + Aufräumung](loki-os-v18-build.md) — 21.09.: v18-Bau dwfrun-5d491f4f Phase 3/6 (UI+Verbindungs-Bauer aktiv) · Diagnose FERTIG: 3× Abbruch = App-Neustart-SIGTERM beim Mid-Turn-Interrupt, reviewer-Not-Found = qwen/ClinePass, 7 Descriptions+thoughtLevel gefixt (Backups) · Aufräumung läuft als **fa386d13** (32a721cc extern superseded, 30 Cluster); Workflow-Lane zuverlässig, direkte Dispatches sterben bei Turn-Interrupt
 - [ATLAS Versionsstand](atlas-versionsstand.md) — 21.09.: 5173+4173 Server tot; PROD atlas-v5.web.app lebt mit NEUEM Bundle index-DG7Gco4d.js (Redeploy seit 11.09.); ATLAS_MASTER bis 18.09. bearbeitet; Pfad A/B nie entschieden
@@ -7001,6 +7003,10 @@ LOKI.OS v18 + AUFRÄUMUNG — STAND 21.09.2026 ABEND:
 **3) 6 ECHTE LÜCKEN (= Roadmap, Kanon-belegt):** ① Gmail/Drive-Sync + Echtzeit-Indizierung (Level 2) ② Distribution Level 4 (nichts paketiert) ③ lokale Datenschutz-Inferenz (LiteRT :9379/LM Studio statt Cloud-Pflicht) ④ proaktive Exekutive (08:00-Briefing, Fristen-Wache, Push) ⑤ Taskmaster+Canvas (todo.txt, React-Flow) ⑥ Security (Kernel *:8010 ohne Auth, kein Watchdog).
 
 **Müll nur gemeldet (Löschen = Sascha-GO):** LokiVoice 2.app ×2, LokiVoice.app weitere 3 Kopien, ~12 .DS_Store, Ordner '~', ' .txt' defekt 93 KB, loki.pid verwaist, leere Ordner.
+
+**NACHTRAG 21.09. spät:** ① **GO Müll AUSGEFÜHRT:** LokiVoice 2.app ×2 weg (mdfind = 0 Reste), loki.pid, alle .DS_Store, 2 leere Ordner gelöscht; unklares (' .txt' 93 KB, '~'-Ordner) nach Archiv `06_unklar_gesichert/`; Thomas-Lieferpakete bewusst unangetastet. ② **CODEX_PAKET verschoben:** liegt jetzt `Desktop/Coworkspace_Ich/PRIVATE PORJEKTE /LOKI_OS_CODEX_PAKET` — ⚠️ ein PARALLELER PROZESS verschiebt laufend Saschas Ordner (Thomas-Doppel-Verschachtelung, 2× Archiv-Verlagerung); Ursache ungeklärt, Sascha gefragt ob er im Finder sortiert — bei Verdacht nachgehen. ③ **6-Lücken-Workflow gestartet** (dwfrun-d64b276f): Security-Bauer (Kernel localhost+Watchdog, Lücke 6) · Briefing-Bauer (08:00-Push+Fristen-Wache, Lücke 4) · Distributions-Bauer (v18-Zip+INSTALL.md+LÜCKEN_ROADMAP, Lücke 2) · System-Karten-Schreiber (SYSTEM_KARTE.md). Lücken 1 (Gmail/Drive) + 3 (lokale Inferenz) brauchen Saschas API-Zugänge. ④ D3-Verbindungsgraph: `~/loki-ki/docs/loki_os_architektur.html` (21 Knoten, klickbar). ⑤ Skills real: 749 Vault + 143 ~/.agents.
+
+**NACHTRAG 21.09. spät (2): TASKMASTER+KOMMANDOZENTRALE-Workflow gestartet** (dwfrun-ca4a433f, schließt Lücke 5): ① `~/loki-tasks/` (task.py CLI add/list/done/reopen mit Prio+Frist, tasks.json, Spiegel `~/loki-brain/vault/Brain/Tasks.md`) + Start-Tasks (Mikrofon-TCC prio 1, Tier-2-INDEX prio 2) ② Obsidian „LOKI OS Kommandozentrale.md" (Tages-Nutzung + Lücken-Status). Bewusst NICHT angefasst: assi + daemon.py (Konfliktvermeidung mit laufendem d64b276f); Kopplung Taskmaster→Morgenbrief→Sprach-Tool als nächster Schritt dokumentiert. Damit 5/6 Lücken in Arbeit/fertig, nur Lücke 1 (Gmail/Drive) wartet auf Saschas API-Zugänge. Canvas (React-Flow) bleibt Roadmap.
 
 Verwandt: [[loki-os-ecosystem-stand]], [[loki-second-brain]], [[loki-voice-agent]]
 
@@ -7338,6 +7344,28 @@ Wayfinder-Map `**~/.agents/.wayfinder/map.md**` („LOKI Skill-Konsolidierung v2
 **Why:** Sascha sagte „wayfinder los" — Map abarbeiten statt neu planen. 2 Fog-Punkte wurden zu Tickets graduiert.
 
 **How to apply:** 2 offene HITL-Tickets warten auf Saschas Entscheidung (Maps/Todos sind Finder-Dateien, nicht App-UI): (1) `tickets/10-tier2-index.md` — Katalog-INDEX.md für ~115 Tier-2-Referenz-Skills? Optionen: A INDEX.md (Empfehlung) / B nur Routing / C auto-generiert per Script. (2) `tickets/11-archiv-restposten.md` — `skills-archive/2026-09-08/` (19 Ordner, 140 KB) löschen vs. behalten; Löschen nur mit explizitem GO (irreversibel). Bei Antwort: Tickets schließen + map.md Decisions ergänzen. Methodik: `wayfinder`-Skill, Ticket-Claim vor Arbeit, Fog graduation = scharf formulierte Fragen werden Tickets.
+
+## zcode-workflow-bedienung
+
+---
+name: zcode-workflow-bedienung
+description: Wo Sascha /workflow findet und Runs verfolgt (ZCode-UI) —
+  Chat-Feld/Command-Palette, Automations-Ansicht, Live-Boards im Run-Pane;
+  Historie per Agentenfrage
+metadata:
+  node_type: memory
+  type: reference
+  originSessionId: sess_2879174a-220a-46e8-be58-79d65929bc01
+---
+
+ZCode-Workflow-Bedienung für Sascha (gefragt 21.09.2026 „wo ist /workflow"):
+
+- **Starten:** `/workflow` + Auftrag direkt ins ZCode-Chat-Feld tippen ODER Command-Palette öffnen und „workflow" suchen (ruft den dynamic-workflows-Skill auf — dann baut der Agent das Subagenten-Team-Skript und CreateWorkflow startet nach Freigabe).
+- **Laufende/finished Runs sehen:** ZCode-Seitenleiste → **Automations/Workflows**; während des Laufs erscheinen Live-Baustellen-Boards + Bericht-Karten direkt im Run-Pane.
+- **Historie:** Frage den Agenten („zeig Workflow-Historie") → `ListWorkflowRuns` listet alle Runs des Projekts mit Status.
+- Merksatz aus der Diagnose: Direkte Chat-Agenten sterben bei Turn-Interrupt (neue Nachricht mid-Turn), **Workflows laufen unabhängig weiter** — schwere Aufträge bevorzugt als Workflow.
+
+Verwandt: [[loki-os-v18-endprodukt]], [[sascha-arbeitsregeln-hart]]
 
 ## MEMORY
 

@@ -7,6 +7,8 @@ tags: [spiegel, zcode]
 
 # Memory Index
 
+- [ZCode-Workflow-Bedienung](zcode-workflow-bedienung.md) — /workflow via Chat-Feld/Command-Palette; Runs unter Automations; Workflows überleben Turn-Interrupts (ggü. direkten Agenten)
+
 - [LOKI.OS v18 Endprodukt](loki-os-v18-endprodukt.md) — 21.09. ABEND ALLES FERTIG: v18-App läuft (/Applications/LOKI OS v18.app, Review PASS, BrainView-Fix deployed) + Datei-Berg konsolidiert (⚠️ Archiv-ENDLAGE: Desktop/Coworkspace_Ich/PRIVATE PORJEKTE /_LOKI_KONSOLIDIERUNG_2026-09-21) + 6-Lücken-Roadmap + MASTER_INDEX.md im CODEX_PAKET
 - [LOKI.OS v18 Build + Agent-Diagnose + Aufräumung](loki-os-v18-build.md) — 21.09.: v18-Bau dwfrun-5d491f4f Phase 3/6 (UI+Verbindungs-Bauer aktiv) · Diagnose FERTIG: 3× Abbruch = App-Neustart-SIGTERM beim Mid-Turn-Interrupt, reviewer-Not-Found = qwen/ClinePass, 7 Descriptions+thoughtLevel gefixt (Backups) · Aufräumung läuft als **fa386d13** (32a721cc extern superseded, 30 Cluster); Workflow-Lane zuverlässig, direkte Dispatches sterben bei Turn-Interrupt
 - [ATLAS Versionsstand](atlas-versionsstand.md) — 21.09.: 5173+4173 Server tot; PROD atlas-v5.web.app lebt mit NEUEM Bundle index-DG7Gco4d.js (Redeploy seit 11.09.); ATLAS_MASTER bis 18.09. bearbeitet; Pfad A/B nie entschieden
