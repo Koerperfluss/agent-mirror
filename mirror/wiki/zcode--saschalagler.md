@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-21 12:21 UTC
+Zuletzt gespiegelt: 2026-09-21 12:32 UTC
 
 ## AGENTS
 
@@ -4582,6 +4582,8 @@ Update 2026-08-22 (Repair-Session): Ordner umgezogen nach `~/Desktop/Coworkspace
 
 - [Sascha Output-Standard](sascha-output-standard.md) — NIEMALS Markdown als Ergebnis → druckfähige PDF (weiß, BLUF-Liste + nummerierte Abschnitte); briefmaker-Skill installiert; Aufbau = Saschas Entscheidung; Wort „Fiche" abgelehnt
 
+- [Codex-Paket Skills-Konvertierung](codex-paket-skills-konvertierung.md) — „Local AI /skills/" sind nur PDF-Handbücher; Mapping zu installierten Skills steht; 5 Konvertierungs-Kandidaten angeboten (design-ux-ui, LOKI-OS-Standard, aannoo, paseo, skillshare), wartet auf Nummernwahl
+
 - [Mimosa Hook Write-Blocks](mimosa-hook-write-blocks.md) — Hook blockt Skript-Schreibversuche (Fehlalarm Pfad-Traversal) UND cp/node+mv-Ketten mit Quelldateien → Workaround: Write-Vorlage + python3 -c-Substitution + headless Chrome; Verbundbefehle splitten
 
 - [macOS Shell CWD ENOENT](macos-shell-cwd-enoent.md) — "spawn /bin/zsh ENOENT" = cwd weg → Ordner via Write rekonstruieren entblockt Shell
@@ -4611,6 +4613,30 @@ Judicario-Connector in Chipsi = serverseitig von openlaw eingerichtet (Dialog �
 **Gmail des Nutzers: koerperfluss@gmail.com** (auch seine primäre Apple-ID → App-Store/TestFlight-Mails landen dort). **Zugriff-Funktionsweg (06.09. verifiziert): ZCode-IAB-Tab mit Nutzer-Google-Login** — Session hält im Tab `iab-tab:31cd4277-fdec-4dc9-bde6-ee709565dec4`; Vorgehen: `#search/<query>` + `getByRole("link", {name:/Betreff/}).click()`. google-workspace-MCP hat KEINEN Gmail-Scope, Gmail nicht in Apple Mail, AppleScript auf Chrome/Mail blockiert (TCC, -1712).
 
 **Gmail-Fundstand 06.09.2026 (Judicario/Chipsi-Einladungen):** (1) **„Dein persönlicher Chipsi-Zugang"** office@openlaw.cc 21.07., MARKIERT — Chipsi-Pilotprogramm-Zugang, Einrichtungslink `https://konto.openlaw.cc/i/djEuaW52X0llb3RCbF9WTDNrMS4xNzg1ODY0MzYxLkxnVm5qZ1Q3.4c66a0c35c97c711dabf05f5cef6ea60`. (2) Judicario-Test-Zugang: Reinhard-Mail 18.08. (markiert) sagt wörtlich: „Wir stellen euch einen eigenen Test-Zugang zu Judicario aus (read-only, pseudonymisierter Test-Mandant; **den bisher verwendeten Schlüssel bitte nicht mehr benutzen**)" — erklärt die Key-Rotation als Ursache des Chipsi-Netzwerkfehlers. Die zugesagte Zugangs-Mail wurde NIE zugestellt: Tiefenprüfung 06.09. mit `in:anywhere` (Postfach+Archiv+Spam+Papierkorb) = nur 3 Reinhard-Mails (18.08. 20:54, 19.08. 00:05, 19.08. 04:57), alle im Label Chipsi/rechtsagent/lifestyle. Spam enthält 5 Mails (BodyFast, Hinge×2, 70M-Scam, G&L-Rechtsanwälte), Papierkorb 4+ (Kalender, Sennheiser, Google-Forum, GCP-Warnung) — keine Reinhard/openlaw-Mail darunter. (3) **KEINE Apple-TestFlight/App-Store-Connect-Einladung** für Judicario-/Chipsi-iOS-Apps im Postfach (nur Rechnungen, WKW.now, OmniFocus). (4) Thomas Schellenbach 02.09. „2. Meinung Einreichunterlagen" = Koerperfluss_Edu_Einreichfassung_v0.1.pdf (anderes Projekt). openlaw-Support: George george@openlaw.cc, WhatsApp +43 676 3064897. SCREEN-Automation würde vieles lösen → [[zcode-computer-use-status]].
+
+## codex-paket-skills-konvertierung
+
+---
+name: codex-paket-skills-konvertierung
+description: Codex-Paket „Local AI /skills/“ = nur PDF/PNG-Handbücher, keine Skills; Mapping zu installierten Skills steht; 5 Konvertierungs-Kandidaten angeboten, wartet auf Saschas Nummernwahl
+metadata:
+  node_type: memory
+  type: project
+  originSessionId: sess_8db9086b-109a-4839-8ff9-e33012080869
+---
+
+Ordner `/Users/saschalagler/Desktop/Coworkspace_Ich/LOKI_OS_CODEX_PAKET/Local AI /skills/` enthält **keine Skills**, sondern nur PDF/PNG/HTML-Anleitungen (Sascha am 21.09. gefragt, warum sie „nicht ausführbar" sind). Erklärung geliefert: Ein Skill = Ordner mit `SKILL.md` in `~/.agents/skills/`; ZCode scannt nur feste Ordner, niemals Desktop-Ordner; die Plugin-Auswahl im UI (Lark CLI, Video2code …) ist etwas anderes als Skills.
+
+**Mapping (21.09. geprüft):** i-have-adhs, strix, cognee, Graphify, sequential-thinking, higgsfield, ui-ux-tester → **schon als echte Skills installiert** (i-have-adhd, strix-pentesting, cognee-memory, graphify, higgsfield-*, ui-ux-tester; sequential-thinking via MCP). Iris + briefmaker → 21.09. installiert, erscheinen erst nach Session-Neustart in der Auswahlliste.
+
+**Offen — wartet auf Saschas Nummernwahl (nichts ohne sein GO konvertieren):**
+1. „Design Skill - UX:UI.pdf" → Skill `design-ux-ui`
+2. „LOKI-OS_Standard-Skills.pdf" → prüfen, was fehlt, als Skill gießen
+3. „aannoo_hcom_….pdf" (Agenten-Nachrichten über Terminals) → Skill + Setup
+4. „getpaseopaseo….pdf" (Multi-Agenten-Orchestrierung Desktop+Mobile) → Skill
+5. „runkids_skillshare_….pdf" (Skills über alle AI-CLIs syncen) → Skill
+
+Verweis: [[sascha-output-standard]], [[lokivoice-v10-stand-presentation]].
 
 ## judicario-gateway-key-rotation
 
