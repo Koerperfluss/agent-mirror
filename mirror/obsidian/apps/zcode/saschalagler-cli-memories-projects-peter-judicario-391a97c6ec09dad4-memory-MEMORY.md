@@ -7,7 +7,7 @@ tags: [spiegel, zcode]
 
 # Memory Index
 
-- [MA-Standard Pipeline](ma-standard-pipeline.md) — **GESPEICHERT global** (`~/.zcode/workflows/MA-Standard.dwf.ts`, 3 Agenten: Analyst→Denker-Verfasser→Kritischer Leser) + **AUTO-MA-Regel** in sascha-output-standard: bei JEDER substanzhaltigen Anfrage SOFORT selbst starten (CreateWorkflow saved), kein Trigger-Wort, kein GO · offene Apps-GO: brew alt-tab/maccy/itsycal/neohtop/mole + rtrvr.ai-MCP + Remindian-Cask
+- [MA-Standard Pipeline](ma-standard-pipeline.md) — **GESPEICHERT global** (`~/.zcode/workflows/MA-Standard.dwf.ts`): Auto-Routing über die ECHTE Installation — Router wählt aus den 25 echten Subagent-Typen 2-4 aus, ordnet MCP-Server (32) + Skills (258) zu, parallel, Synthese, 1 Gegenlesen. + **AUTO-MA-Regel** in sascha-output-standard: bei JEDER Anfrage SOFORT selbst starten, kein Trigger-Wort, kein GO · offene Apps-GO: rtrvr.ai-MCP + Remindian-Cask; Apps alt-tab/maccy/itsycal/neohtop/mole von Sascha selbst installiert (21.09.)
 
 - [Sascha Output-Standard](sascha-output-standard.md) — NIEMALS Markdown als Ergebnis → druckfähige PDF (weiß, BLUF-Liste + nummerierte Abschnitte); briefmaker-Skill installiert; Aufbau = Saschas Entscheidung; Wort „Fiche" abgelehnt
 
