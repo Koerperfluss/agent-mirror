@@ -7,7 +7,7 @@ tags: [spiegel, zcode]
 
 # Memory Index
 
-- [LOKI.OS v18 Build + Agent-Diagnose + Aufräumung](loki-os-v18-build.md) — 21.09. 3 Workflows parallel: dwfrun-5d491f4f (v18-Vollbau in ~/loki-ki/macos-app-v18/, Build-Gate als Code) · dwfrun-5df3ba28 (Dispatch-Diagnose) · dwfrun-32a721cc (Datei-Berg → _LOKI_KONSOLIDIERUNG_2026-09-21/, mv-only, Kanon-Gate); Lektion: Workflow-Lane zuverlässig, direkte Dispatches sterben bei Turn-Interrupt; Wiederaufnahme = alle 3 Run-IDs checken
+- [LOKI.OS v18 Build + Agent-Diagnose + Aufräumung](loki-os-v18-build.md) — 21.09.: v18-Bau dwfrun-5d491f4f Phase 3/6 (UI+Verbindungs-Bauer aktiv) · Diagnose FERTIG: 3× Abbruch = App-Neustart-SIGTERM beim Mid-Turn-Interrupt, reviewer-Not-Found = qwen/ClinePass, 7 Descriptions+thoughtLevel gefixt (Backups) · Aufräumung läuft als **fa386d13** (32a721cc extern superseded, 30 Cluster); Workflow-Lane zuverlässig, direkte Dispatches sterben bei Turn-Interrupt
 - [ATLAS Versionsstand](atlas-versionsstand.md) — 21.09.: 5173+4173 Server tot; PROD atlas-v5.web.app lebt mit NEUEM Bundle index-DG7Gco4d.js (Redeploy seit 11.09.); ATLAS_MASTER bis 18.09. bearbeitet; Pfad A/B nie entschieden
 - [LOKI Second Brain](loki-second-brain.md) — 20.09. SPÄT FERTIG+GETESTET: ~/loki-brain/ (brain.py+FTS5+git) × Daemon-4-Tools × Obsidian-Vault × M2-Auto-Protokoll; Review PASS (0 HIGH, 2 MED); Builder-Schwarm+Director parallel — NIE wieder von 0 planen, nur erweitern; Handoff-Datei war Basis
 - [loki-dev Plan alle 5 Modi](loki-dev-plan-alle-modi.md) — 20.09. VOLLZUG BEENDET (alle 6 Stufen ✅): Routing-Sync, Agenten 10/10, VAD+Vocab live; Ausbaustufe ① erledigt, ③ Morgenbrief via Brain real, offen: ② CDP-Browser ④ iPhone; Plan-Datei ~/LOKI_DEV_PLAN_ALLE_MODI.md
