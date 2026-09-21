@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-21 08:01 UTC
+Zuletzt gespiegelt: 2026-09-21 08:13 UTC
 
 ## AGENTS
 
@@ -2257,6 +2257,8 @@ Bei Fachfragen (z. B. Trainings-Übungen) fordert er explizit „clinical reason
 
 # Memory Index
 
+- [ZCode ADHS-Automations](zcode-adhs-automationen.md) — 13.–21.09. LIVE: **EINE Automation mit ALLEN 6 Briefs** (cron `0 9,10,15,16,21`, Zweige per Uhrzeit+Wochentag; niemals 6 separate — Nutzer-Ziel!) + Engine 7/7 PASS; **9 Läufe, alle 6 Zweige bewiesen: Morgen 21.09. erstmals PÜNKTLICH (UID C1BFC6A3) · Risiko-Scan 21.09. erster echter P1-Finding: loki-voice-Submodul dirty (4 Dateien uncommittet) → wartet auf „GO voice-commit" · Abend 13./16./20.09. PASS (Events 610E2A57/88CCE1A6/6BFDB24A, Fix `open -a Calendar` vor osascript) · 16:00/15:00-No-ops korrekt**; ⚠️ **Lücken-Tage 15./17./19.09. (Mac schläft um 09:00)**; offen auf GO: LaunchAgent com.sascha.assi.daily als Wecker umrüsten + Deutsch-Patch (5066 Strings); 1 Task pro Chat-Limit
+
 - [OmniRoute-Rückbau + System-Fixes](omniroute-rueckbau-system-fixes-2026-09-20.md) — 20.09. Abend: Q1–Q7 ALLE ERLEDIGT („fix test"-GO): OmniRoute ABGEBAUT (Nutzer-Wunsch, Plist raus, Regeln auf Direkt-Provider gesynced, Comet läuft bis Reboot); Atlas-Ingest 67 Module (2 Code-Bugs gefixt); Task-Bridge 5 echte Tasks; loki-up.command am Desktop getestet; Mongo zu; 2 tote Agents disabled; 7b-Coder-Modell da; MASTER_STATUS+HANDBUCH aktualisiert (Backups ~/sicherungen/doku-backup-20260920); Endstand CHECKPOINT CONTINUE — offen nur: 4 Keys (Sascha) + Firewall sudo
 
 - [LOKI-Kernel v17-Start + 8010-Fix](loki-kernel-v17-start-8010-fix.md) — 20.09.: Kernel-Start NUR via macos-app-v17/LOKI_MASTER.py, Bind 127.0.0.1; System-Audit-Workflow (dwfrun-1359c3bc) FERTIG: 39 Checks, 7 bestätigte Findings — **OmniRoute *:20128 Bind-Bug (wartet auf GO)**, LegalOps 7070 stirbt wiederholt, 2 tote LaunchAgents (omni-check.daily/toolhub-watchdog), MASTER_STATUS 74 Tage alt, Atlas-Ingest+Task-Bridge offen; Verhör Q1–Q7 UNBEANTWORTET — er will Erst-Erklärung in Menschen-Sprache
@@ -4380,6 +4382,13 @@ metadata:
 - **DEV-BRIEF mit echten Wochenend-Commits:** 2 Commits in `~/loki-ki` (TAKEOVER LOKI.OS): `ae899b0` Initial commit v15.3 (46 dirs) + `eaf7bc4` Final Polish (Unified Search `bin/loki-search`, HUD-Upgrade `loki-hud/hud.py` +39 Zeilen, BEFEHLE.md/PROJECT.md). CI weiterhin keine.
 - Tagesplan: LokiVoiceApp V10-Rebuild · Deutsch-Patch · Thomas-Kritik-Runde 2 (dwf-Workflow läuft) · Wecker-GO · Skill-System+deja-vu.
 - Lauf-Bilanz 13.–21.09.: 8 Läufe, alle 6 Zweige bewiesen; weiterhin offen nur Wecker-GO + Deutsch-Patch.
+
+## Neunter Lauf (Mo 21.09. 10:07 — RISIKO-SCAN mit erstem P1-Finding, PASS)
+- **⚠️ P1 Datenverlust-Risiko:** Submodul `~/loki-ki/loki-voice` **dirty** — `app.py`, `audio.py`, `konfiguration.py`, `registry.py` uncommittet geändert (Beweis: `git -C ~/loki-ki/loki-voice status --porcelain`, Pointer `53e4a75…-dirty`); späteres `git submodule update`/hard reset würde die Änderungen löschen → Sascha angeboten: **„GO voice-commit"** (mit Backup). Relevant für heutigen Tagesplan-Punkt 1 (V10-Rebuild berührt genau diese Dateien).
+- **ℹ️ P2 Config-Drift:** `config.json` wuchs seit Backup 13.09 von 16→**17 MCP-Server** und 1→**4 SessionStart-Hook-Gruppen** (nicht dieser Chat; App läuft). Beobachten.
+- Keine Runtime/Auth/Leak/Cross-Platform-Findings; kein ⚠️-Kalender-Event (nicht kritisch). Scan vermerkt in `2026-09-21.md`.
+- Lauf-Bilanz 13.–21.09.: 9 Läufe (Risiko-Scan 2×, davon 1× mit echtem Finding = Scanner liefert Wert).
+
 
 ## zcode-app-german-ui-patch
 
