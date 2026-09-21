@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-21 06:56 UTC
+Zuletzt gespiegelt: 2026-09-21 07:07 UTC
 
 ## AGENTS
 
@@ -4374,6 +4374,12 @@ metadata:
 - Kalender-Event **„Logbuch 20.09.2026"** UID `6BFDB24A-2893-4AA2-A4CE-477B56148BDC` (Ganztages, Kalender „Kalender"), Logbuch `~/.agents/memory/logbuch/2026-09-20.md` → status **abgeschlossen** (Edit: status + ABEND-Sektion vor „✍️ Meine Notizen" eingefügt, append-only).
 - Inhalt: System-Audit 39 Checks/7 Findings + OmniRoute-Rückbau Q1–Q7 (aus [[omniroute-rueckbau-system-fixes-2026-09-20]]), Skill-System-Standard + deja-vu-Skill-Install 🔨, LokiVoiceApp V10-Binary-Rebuild-Handoff 🔨, Deutsch-Patch + Wecker-GO ⏳.
 - **Endbilanz 13.–20.09.: alle 6 Zweige live bewiesen; nur noch 2 offene Punkte: LaunchAgent-Wecker (auf „GO Wecker") + Deutsch-Patch (siehe [[zcode-app-german-ui-patch]]).**
+
+## Achter Lauf (Mo 21.09. 09:05 — Morgen-Brief ERSTMALS PÜNKTLICH, PASS)
+- **Der 09:00-Cron feuerte zum ersten Mal on-time** (Mac war wach) — Nachhol-Logik blieb ungenutzt. Logbuch `~/.agents/memory/logbuch/2026-09-21.md` (status: offen), Kalender-Event **„Tagesplan 21.09."** UID `C1BFC6A3-99DA-4120-B8B1-C46CB9311A31`.
+- **DEV-BRIEF mit echten Wochenend-Commits:** 2 Commits in `~/loki-ki` (TAKEOVER LOKI.OS): `ae899b0` Initial commit v15.3 (46 dirs) + `eaf7bc4` Final Polish (Unified Search `bin/loki-search`, HUD-Upgrade `loki-hud/hud.py` +39 Zeilen, BEFEHLE.md/PROJECT.md). CI weiterhin keine.
+- Tagesplan: LokiVoiceApp V10-Rebuild · Deutsch-Patch · Thomas-Kritik-Runde 2 (dwf-Workflow läuft) · Wecker-GO · Skill-System+deja-vu.
+- Lauf-Bilanz 13.–21.09.: 8 Läufe, alle 6 Zweige bewiesen; weiterhin offen nur Wecker-GO + Deutsch-Patch.
 
 ## zcode-app-german-ui-patch
 
