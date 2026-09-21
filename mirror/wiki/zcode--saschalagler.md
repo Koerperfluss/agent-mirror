@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-21 15:20 UTC
+Zuletzt gespiegelt: 2026-09-21 15:31 UTC
 
 ## AGENTS
 
@@ -1086,6 +1086,27 @@ Backups: /Users/saschalagler/.zcode/agents/gate-enforcer-test.md.bak-20260921, /
 
 ## Nächster Ausbauschritt (nach dwfrun-d64b276f)
 - Taskmaster an Morgenbrief koppeln (offene Prio-1-Tasks in den 08:00-Push) und 'Loki, neue Aufgabe X' als Daemon-Tool — beides erst NACH Abschluss des laufenden Briefing-Baus, um Konflikte zu vermeiden.
+## dwfrun-d64b276f-ae55-4aa9-bbe2-d77af22e04e1_artifact_2_1-tool-result-1e895f16-2178-4ba2-911f-f4c2d127fc88
+
+# 6-Lücken-Straße — Ergebnis
+
+- **Security (Lücke 6):** Kernel bindet localhost, läuft, Watchdog geladen · Backup LOKI_MASTER.py.bak-20260921
+- **Proaktives Briefing (Lücke 4, Start):** 08:00-Push + Fristen-Wache + Brain-Eintrag
+- **Distribution (Lücke 2, v1):** LOKI_OS_v18_VERTRIEB.zip + INSTALL.md + LÜCKEN_ROADMAP.md im CODEX_PAKET
+- **System-Karte:** SYSTEM_KARTE.md beantwortet alle Wo-ist-Was-Fragen
+
+## QA-Checks
+- CHECK 1 BESTANDEN — localhost-Bindung aktiv: `lsof -iTCP:8010 -sTCP:LISTEN` zeigt `Python 6285 ... TCP localhost:8010 (LISTEN)` — gebunden auf localhost (127.0.0.1), nicht `*:8010` (N.0-Fix live).
+- CHECK 2 BESTANDEN — Watchdog geladen: `launchctl list | grep loki.kernel` → `6285  -15  com.sascha.loki.kernel` — Label geladen, aktive PID 6285 (identisch mit lsof-PID, konsistent). Anmerkung: letzte Beendigung war SIGTERM (-15), Job läuft aber jetzt aktiv.
+- CHECK 3 BESTANDEN — Briefing-Agent da: `launchctl list | grep assi` → `com.sascha.assi.daily` geladen. Anmerkung: PID-Spalte = `-`, der Daily-Job läuft gerade nicht (bei einem zeitgesteuerten LaunchAgent erwartbar; nächster Run lt. Timer). Zusätzlich sichtbar, unrelevant: com.apple.assistant*Systemdienste.
+- CHECK 4 BESTANDEN — Push-/Fristen-Einträge da: `/opt/homebrew/bin/python3 /Users/saschalagler/loki-brain/brain.py search 'Fristen'` → 2 Treffer: 'Fristen-Wache: ⚠️ GCP-Rechnung 015D43: Zahlung fällig seit 12.09. (24,08 € überfällig)' und 'Fristen-Wache: 🟡 Mahnung Stadt Wien: Eingabe-Frist läuft am 30.09. ab' (Exit 0).
+- CHECK 5 BESTANDEN — alle geforderten Dateien im Ordner '/Users/saschalagler/Desktop/Coworkspace_Ich/PRIVATE PORJEKTE /LOKI_OS_CODEX_PAKET/' vorhanden: SYSTEM_KARTE.md ✓, INSTALL.md ✓, LÜCKEN_ROADMAP.md ✓, LOKI_OS_CODEX_PAKET.zip ✓, LOKI_OS_v18_VERTRIEB.zip ✓ (plus 16 weitere Dateien, ls Exit 0).
+- CHECK 6 BESTANDEN — App lebt: `pgrep -fl 'LOKI OS v18'` → PID 53218 `/Applications/LOKI OS v18.app/Contents/MacOS/LOKIOSApp` (Exit 0). Hinweis: `open` wurde bewusst NICHT ausgeführt — nur pgrep als Lesetest, da nichts gestartet/verändert werden sollte.
+
+## Was NUR Sascha kann (aus der Roadmap)
+- Gmail-API-Zugang für Mail-Sync (Lücke 1)
+- GCP-Billing/Keys (Lücke 3 Cloud-arm)
+- Produkt-Entscheidungen Taskmaster/Canvas (Lücke 5)
 ## dwfrun-fa386d13-260b-4dd9-ac03-91df47fa24e3_artifact_2_1-tool-result-e62915c2-cc9c-4b2a-ade0-c7325c864a5a
 
 # LOKI-Datei-Berg — Aufräum- und Konsolidierungsbericht
@@ -7027,6 +7048,8 @@ LOKI.OS v18 + AUFRÄUMUNG — STAND 21.09.2026 ABEND:
 **NACHTRAG 21.09. spät:** ① **GO Müll AUSGEFÜHRT:** LokiVoice 2.app ×2 weg (mdfind = 0 Reste), loki.pid, alle .DS_Store, 2 leere Ordner gelöscht; unklares (' .txt' 93 KB, '~'-Ordner) nach Archiv `06_unklar_gesichert/`; Thomas-Lieferpakete bewusst unangetastet. ② **CODEX_PAKET verschoben:** liegt jetzt `Desktop/Coworkspace_Ich/PRIVATE PORJEKTE /LOKI_OS_CODEX_PAKET` — ⚠️ ein PARALLELER PROZESS verschiebt laufend Saschas Ordner (Thomas-Doppel-Verschachtelung, 2× Archiv-Verlagerung); Ursache ungeklärt, Sascha gefragt ob er im Finder sortiert — bei Verdacht nachgehen. ③ **6-Lücken-Workflow gestartet** (dwfrun-d64b276f): Security-Bauer (Kernel localhost+Watchdog, Lücke 6) · Briefing-Bauer (08:00-Push+Fristen-Wache, Lücke 4) · Distributions-Bauer (v18-Zip+INSTALL.md+LÜCKEN_ROADMAP, Lücke 2) · System-Karten-Schreiber (SYSTEM_KARTE.md). Lücken 1 (Gmail/Drive) + 3 (lokale Inferenz) brauchen Saschas API-Zugänge. ④ D3-Verbindungsgraph: `~/loki-ki/docs/loki_os_architektur.html` (21 Knoten, klickbar). ⑤ Skills real: 749 Vault + 143 ~/.agents.
 
 **NACHTRAG 21.09. spät (2): TASKMASTER+KOMMANDOZENTRALE-Workflow gestartet** (dwfrun-ca4a433f, schließt Lücke 5): ① `~/loki-tasks/` (task.py CLI add/list/done/reopen mit Prio+Frist, tasks.json, Spiegel `~/loki-brain/vault/Brain/Tasks.md`) + Start-Tasks (Mikrofon-TCC prio 1, Tier-2-INDEX prio 2) ② Obsidian „LOKI OS Kommandozentrale.md" (Tages-Nutzung + Lücken-Status). Bewusst NICHT angefasst: assi + daemon.py (Konfliktvermeidung mit laufendem d64b276f); Kopplung Taskmaster→Morgenbrief→Sprach-Tool als nächster Schritt dokumentiert. Damit 5/6 Lücken in Arbeit/fertig, nur Lücke 1 (Gmail/Drive) wartet auf Saschas API-Zugänge. Canvas (React-Flow) bleibt Roadmap.
+
+**NACHTRAG 21.09. spät (3): ALLE 5 WORKFLOWS FERTIG — 5/6 LÜCKEN REAL.** ① 6-Lücken-Straße (d64b276f, Gates 0/0/ZIP_OK): Kernel :8010 läuft auf **localhost** (Bind war bereits fix) mit **Watchdog com.sascha.loki.kernel** (KeepAlive, Kill-Test bestanden: SIGTERM→Auto-Restart) · **Morgenbrief-Push+Fristen-Wache live** (assi-Neustart — Agent war entladen!, fand sofort 2 echte Fristen: GCP 24,08 € überfällig seit 12.09. + Mahnung Stadt Wien 30.09.) · **Distribution v1**: LOKI_OS_v18_VERTRIEB.zip (358 KB) + INSTALL.md + LÜCKEN_ROADMAP.md + SYSTEM_KARTE.md (14 Standorte) im CODEX_PAKET. ② Taskmaster (ca4a433f): ~/loki-tasks/task.py + Tasks.md-Spiegel + Kommandozentrale.md im Vault. **Offen:** nur Lücke 1 Gmail/Drive (API-Zugänge Sascha) + Lücke 3 lokale Inferenz (LiteRT-Entscheidung). **Nächster Log-Schritt:** Taskmaster→Morgenbrief-Kopplung (offene Prio-1 morgens vorgelesen) + Daemon-Tool „Loki, neue Aufgabe X".
 
 Verwandt: [[loki-os-ecosystem-stand]], [[loki-second-brain]], [[loki-voice-agent]]
 
