@@ -1,6 +1,6 @@
 # Memory Index
 
-- [MA-Standard Pipeline](ma-standard-pipeline.md) — Saschas Kernziel: generische Multi-Agent-Pipeline (3 Analysten→Denkagent→Entwurf→Gegenleser) bei JEDER substanzhaltigen Anfrage automatisch; Draft MA-Standard.dwf.ts liegt fertig; 2 SaveWorkflow-Ablehnungen; offene Apps-GO: brew alt-tab/maccy/itsycal/neohtop/mole + rtrvr.ai-MCP + Remindian-Cask
+- [MA-Standard Pipeline](ma-standard-pipeline.md) — **GESPEICHERT global** (`~/.zcode/workflows/MA-Standard.dwf.ts`, 3 Agenten: Analyst→Denker-Verfasser→Kritischer Leser) + **AUTO-MA-Regel** in sascha-output-standard: bei JEDER substanzhaltigen Anfrage SOFORT selbst starten (CreateWorkflow saved), kein Trigger-Wort, kein GO · offene Apps-GO: brew alt-tab/maccy/itsycal/neohtop/mole + rtrvr.ai-MCP + Remindian-Cask
 
 - [Sascha Output-Standard](sascha-output-standard.md) — NIEMALS Markdown als Ergebnis → druckfähige PDF (weiß, BLUF-Liste + nummerierte Abschnitte); briefmaker-Skill installiert; Aufbau = Saschas Entscheidung; Wort „Fiche" abgelehnt
 

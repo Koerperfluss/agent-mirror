@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-21 12:45 UTC
+Zuletzt gespiegelt: 2026-09-21 12:56 UTC
 
 ## AGENTS
 
@@ -4580,6 +4580,8 @@ Update 2026-08-22 (Repair-Session): Ordner umgezogen nach `~/Desktop/Coworkspace
 
 # Memory Index
 
+- [MA-Standard Pipeline](ma-standard-pipeline.md) — Saschas Kernziel: generische Multi-Agent-Pipeline (3 Analysten→Denkagent→Entwurf→Gegenleser) bei JEDER substanzhaltigen Anfrage automatisch; Draft MA-Standard.dwf.ts liegt fertig; 2 SaveWorkflow-Ablehnungen; offene Apps-GO: brew alt-tab/maccy/itsycal/neohtop/mole + rtrvr.ai-MCP + Remindian-Cask
+
 - [Sascha Output-Standard](sascha-output-standard.md) — NIEMALS Markdown als Ergebnis → druckfähige PDF (weiß, BLUF-Liste + nummerierte Abschnitte); briefmaker-Skill installiert; Aufbau = Saschas Entscheidung; Wort „Fiche" abgelehnt
 
 - [Codex-Paket Skills-Konvertierung](codex-paket-skills-konvertierung.md) — „Local AI /skills/" sind nur PDF-Handbücher; Mapping zu installierten Skills steht; 5 Konvertierungs-Kandidaten angeboten (design-ux-ui, LOKI-OS-Standard, aannoo, paseo, skillshare), wartet auf Nummernwahl
@@ -4618,25 +4620,30 @@ Judicario-Connector in Chipsi = serverseitig von openlaw eingerichtet (Dialog �
 
 ---
 name: codex-paket-skills-konvertierung
-description: Codex-Paket „Local AI /skills/“ = nur PDF/PNG-Handbücher, keine Skills; Mapping zu installierten Skills steht; 5 Konvertierungs-Kandidaten angeboten, wartet auf Saschas Nummernwahl
+description: Codex-Paket-Skills KOMPLETT konvertiert+installiert (21.09., Agenten-Team R1/B1/Q1) — 10 neue Skills, CLIs hcom/skillshare/uipro grün, QA 17/17 PASS; Wayfinder-Map dokumentiert
 metadata:
   node_type: memory
   type: project
   originSessionId: sess_8db9086b-109a-4839-8ff9-e33012080869
 ---
 
-Ordner `/Users/saschalagler/Desktop/Coworkspace_Ich/LOKI_OS_CODEX_PAKET/Local AI /skills/` enthält **keine Skills**, sondern nur PDF/PNG/HTML-Anleitungen (Sascha am 21.09. gefragt, warum sie „nicht ausführbar" sind). Erklärung geliefert: Ein Skill = Ordner mit `SKILL.md` in `~/.agents/skills/`; ZCode scannt nur feste Ordner, niemals Desktop-Ordner; die Plugin-Auswahl im UI (Lark CLI, Video2code …) ist etwas anderes als Skills.
+Ordner `/Users/saschalagler/Desktop/Coworkspace_Ich/LOKI_OS_CODEX_PAKET/Local AI /skills/` enthält **keine Skills**, sondern nur PDF/PNG/HTML-Anleitungen (Sascha fragte 21.09., warum sie „nicht ausführbar" sind). Erklärung geliefert: Ein Skill = Ordner mit `SKILL.md` in `~/.agents/skills/`; ZCode scannt nur feste Ordner, nie Desktop-Ordner; Plugin-Auswahl im UI ≠ Skills. Neue Skills erscheinen erst nach Session-Neustart in der Auswahlliste (Liste lädt beim Session-Start).
 
-**Mapping (21.09. geprüft):** i-have-adhs, strix, cognee, Graphify, sequential-thinking, higgsfield, ui-ux-tester → **schon als echte Skills installiert** (i-have-adhd, strix-pentesting, cognee-memory, graphify, higgsfield-*, ui-ux-tester; sequential-thinking via MCP). Iris + briefmaker → 21.09. installiert, erscheinen erst nach Session-Neustart in der Auswahlliste.
+**Umsetzung (21.09. Abend, auf Saschas expliziten Befehl „Agenten-Team: alles durchsuchen, recherchieren, downloaden, anpassen, einpegeln, melden wenn alles funktioniert"):** Wayfinder-Map `/Users/saschalagler/.agents/.wayfinder/SKILL-AUSBAU-2026-09-21.md` · Subagent R1 (Web-Recherche, agent_60c30aca) → B1-Agent wurde von Sascha abgebrochen → **Bauphase inline erledigt** → QA per Bash (Frontmatter + Binaries). Ergebnisse:
 
-**Offen — wartet auf Saschas Nummernwahl (nichts ohne sein GO konvertieren):**
-1. „Design Skill - UX:UI.pdf" → Skill `design-ux-ui`
-2. „LOKI-OS_Standard-Skills.pdf" → prüfen, was fehlt, als Skill gießen
-3. „aannoo_hcom_….pdf" (Agenten-Nachrichten über Terminals) → Skill + Setup
-4. „getpaseopaseo….pdf" (Multi-Agenten-Orchestrierung Desktop+Mobile) → Skill
-5. „runkids_skillshare_….pdf" (Skills über alle AI-CLIs syncen) → Skill
+- **agent-hcom** — raw SKILL.md von github.com/aannoo/hcom (`skills/hcom-agent-messaging/`), name-Feld auf `agent-hcom` angeglichen; CLI `brew install aannoo/hcom/hcom` → hcom 0.7.25. (Agent-zu-Agent-Terminal-Messaging.)
+- **skillshare-sync** — CLI `brew install skillshare` → v0.21.3; eigene SKILL.md (Kernbefehle init/sync --all/mcp --dry-run/target/ui; `init` NICHT ausgeführt — schreibt Konfigs, braucht GO).
+- **ui-ux-pro-max** — raw SKILL.md aus Repo `.claude/skills/ui-ux-pro-max/`; `npm i -g ui-ux-pro-max-cli` → uipro 2.15.0 (129k★, 192 Paletten/119 UX-Guidelines).
+- **better-interface / better-ui / better-accessibility** — geklont von github.com/jakubkrehel/skills (7k★) nach `~/.agents/skills/`.
+- **design-ux-ui** — aus PDF „Design Skill - UX:UI" (Palette-Rolle: 1 Mikro-UX-Verbesserung/Lauf, A11y-Checks, <50 Zeilen).
+- **loki-os-standard** — aus PDF „LOKI-OS_Standard-Skills" (Skill-Tree, Ponytail, Plan-Gate, Routing-Tabelle, GLM-Betrieb, Stop-Regeln).
+- **paseo-orchestrate** — eigene SKILL.md (paseo.sh, ~17k★; App-INSTALL NICHT ausgeführt — braucht Sascha-GO).
+- **ai-os-voice-layer** — PDF „Build a Cinematic Website" war FALSCH BENANNT, Inhalt = AI-OS/Voice-Layer-Guide (Claude Code Engine + Obsidian-Vault raw/wiki/outputs + lokale STT/TTS + HUD; direkt LokiVoice-relevant).
+- Alle nach `~/.openclaw-autoclaw/skills/` gespiegelt. **QA: 17/17 PASS** (SKILL.md + Frontmatter + Binaries hcom/skillshare/uipro/iris/soffice).
 
-Verweis: [[sascha-output-standard]], [[lokivoice-v10-stand-presentation]].
+**Recherche-Nebenbefunde:** github.com/Santofer/Remindian = macOS Menubar-App (Obsidian-Tasks ↔ Apple Reminders/Things/Todoist, `brew install --cask santofer/tap/remindian`) — KEIN Browser-Automation-Tool (Sascha hatte „Browser ersatz" vermutet). YouTube zbmuiaPuiNM = Cole Medin „Google … Masterclass on Agentic Engineering": PIV-Loop (Plan→Implement→Validate), AI-Layer mit versionierten Rules/Commands/Skills, „alles 3× Promptierte wird Skill".
+
+Siehe [[sascha-output-standard]], [[ma-standard-pipeline]].
 
 ## judicario-gateway-key-rotation
 
@@ -4718,6 +4725,32 @@ metadata:
 **Humanisierter Bericht 21.09. (Zwischenstand, 2 Seiten — durch Design-Update unten abgelöst):** Sascha-Kritik „sieht gut aus, aber zu wenig Infos — man kann nicht nachvollziehen was was ist" → delegierter Humanizer-Agent (`agent_206971f8-b464-4150-8787-5912b286dedd`, Fortsetzung via SendMessage möglich) erzeugte `/Users/saschalagler/Desktop/Coworkspace_Ich/PETER JUDICARIO/content_thomas.json` (569 statt 200 Wörter Abschnittstext, Zahlen unverändert): Fachwörter erklärt (Credits, Fast-Modus, Heartbeat, Ende-zu-Ende, Gateway-Key, faster-whisper, OpenRouter Free …), je Abschnitt „Was heißt das für dich?"-Zeile. PDF neu gebaut (Schnellweg 1,8 s, 2 Seiten, Antwort-Doppelung entfernt — Antwort nur noch in Abschnitt 6), PNG-geprüft. **NOCH NICHT ABGENOMMEN — GO oder Änderungswünsche ausstehen.** PPTX noch KOMPAKTE alte Fassung (nicht humanisiert) — humanisieren nur auf Saschas Wort.
 
 **Design-Update 21.09. (FINAL, nach „völlig hässlich" + „Infos ohne Abstand Logik"):** Zweite Design-Runde: dunkle KERN-Karte (#0f172a, gelbe Überschrift #fbbf24), Geister-Nummern 1–6, Badge-Labels (AUSSAGEN/LÖSUNG/ZIEL farbig), Karten-Schatten, `@media print` (weißer Druckhintergrund, `print-color-adjust:exact`) — dann dritte Kritik „Textwände ohne Abstand" → **Layout-Handwerk-Pass:** AUSSAGEN/LÖSUNG als Bullet-Listen (1 Fakt pro Zeile, Satz-Split), Labels als eigene Zeile, line-height 1,6, Luft überall, iris-`--full`-Vollseitencheck dazwischen. **Finale Fassung: `Bericht_Thomas-Codex_2026-09-20.pdf`, 4 Seiten luftig (14:07), keine Waisen, Quellenzeile unten auf Seite 4 — wartet auf GO.** PPTX noch KOMPAKTE alte 4-Folien-Fassung (nicht humanisiert/neues Design) — nur auf Saschas Wort nachziehen. Quelle für Rebuilds bleibt `content_thomas.json` + Layout-Regeln in [[sascha-output-standard]]. Antwort-Dopplung vermeiden (Antwort nur in Abschnitt 6).
+
+**MA-Standard-Übergang (21.09.):** Sascha hat danach die GRUNDSÄTZLICHE Forderung gestellt — generische Multi-Agent-Pipeline bei jeder Anfrage automatisch (siehe [[ma-standard-pipeline]]; Draft `.zcode/workflow-drafts/MA-Standard.dwf.ts` liegt bereit, 2 SaveWorkflow-Versuche abgelehnt, Rückfrage „immer vs. bei Arbeit" offen). Der Thomas-Codex-Workflow (dwfrun-f74eaa93, 7 Agents, 8,57 Mio. Tokens, 4 Phasen) ist sein Referenzbild für „wie Arbeit ab jetzt laufen soll".
+
+## ma-standard-pipeline
+
+---
+name: ma-standard-pipeline
+description: Saschas Kernforderung (21.09.) — generische Multi-Agent-Pipeline (MA-Standard) bei JEDER substanzhaltigen Anfrage automatisch in EINEM Lauf; 2 SaveWorkflow-Versuche abgelehnt, offene Rückfrage „immer vs. bei Arbeit"
+metadata:
+  node_type: memory
+  type: feedback
+  originSessionId: sess_8db9086b-109a-4839-8ff9-e33012080869
+---
+
+**Saschas Ziel (21.09., mehrfach eskaliert):** Eine **generische Multi-Agent-Pipeline** (alle ~20 Agenten + Standard-Skills kombiniert), die bei **JEDER Anfrage von ihm automatisch, jedes Mal in EINEM Lauf** durchläuft — „weil die Arbeit dann auf 1x geht und nicht wie jetzt in 1000 Etappen. Das ist dein Ziel seit Wochen. When to use: IMMER."
+
+**Why:** Er sah den abgeschlossenen Dynamic-Workflow „Thomas-Codex-Analyse" (7 Agents, 9/9 Steps, 8.570.900 Tokens, 1 Artifact, Phasen: 5 Berichte parallel → Denkagent → Entwurf+Gegenlesen → Bericht) und fragte, wie er DAS wieder triggert und warum ich nicht IMMER so arbeite. ZCode-Hürde: Workflows starten nur auf expliziten Wunsch — deshalb habe ich wochenlang einzeln/stufenweise gearbeitet. DAS ist die eigentliche Bremse, nicht fehlende Skills.
+
+**How to apply:**
+1. **Verhaltensregel dauerhaft verankern** (AGENTS.md + Memory): Bei jeder substanzhaltigen Anfrage SOFORT die MA-Pipeline starten (CreateWorkflow), ohne Rückfrage, ohne GO — der User will nie mehr stufenweise Arbeit sehen.
+2. Generisches Workflow-Skript liegt fertig als Draft: `/Users/saschalagler/Desktop/Coworkspace_Ich/PETER JUDICARIO/.zcode/workflow-drafts/MA-Standard.dwf.ts` (3 Analysten [Inhalt/Absicht/Fakten] fan-out → Denkagent → Antwort-Verfasser → Kritischer Leser max. 2 Runden → Markdown-Artifact; args: `auftrag` [string, required] + `material` [json: Liste {typ, pfad, inhalt} — Agenten lesen Pfade selbst]).
+3. **OFFEN:** Zwei SaveWorkflow-Aufrufe wurden von Sascha ABGELEHNT (1. Thomas-Codex-Analyse speichern → „es geht um die multiagent analyse grundlegend ohne kontext"; 2. MA-Standard speichern → „rede ich undeutlich?"). Er will kein Einzelformat-Papier, sondern das GRUNDSÄTZLICHE Verhalten. Bevor erneut gespeichert wird: erst seine offene Frage klären — sollen Mini-Fragen auch durch die Pipeline (meine Empfehlung: nein, nur substanzhaltige, sonst Token-Brand wie Astra) — oder NICHTS mehr nachfragen und Verhalten einfach ab der nächsten Anfrage zeigen.
+
+**Neue Links-Recherche (21.09., späte Nachschübe, „SCHNELLER"):** Video `oy49gvlC4eE` = „There's a Second App Store for Your Mac — How To Use Homebrew"; App-Liste aus Screenshot: AltTab, Maccy, Itsycal, NeoHtop (alle `brew install --cask …`), Mole (tw93, `brew install mole`), CaskHub + Tappie (Links im Screenshot abgeschnitten, zu recherchieren). Ein GO-fähiger Sammelbefehl wurde angeboten (`brew install --cask alt-tab maccy itsycal neohtop && brew install mole`) — **GO steht noch aus.** rtrvr.ai = Web-Agent mit MCP-Server (Chrome-Extension + Cloud, github.com/rtrvr-ai) — Eintrag in `~/.mcp.json` angeboten, braucht GO + API-Key. Remindian (Santofer/Remindian) = macOS-Menüleisten-App Obsidian↔Apple Reminders Sync, `brew install --cask santofer/tap/remindian` — KEIN Browser-Tool (Saschas „Browser ersatz"-Deutung war eine Verwechslung). Cole-Medin-Masterclass (zbmuiaPuiNM): PIV-Loop + „3× promptiert = Skill" — bereits in Skill `ai-os-voice-layer` eingeflossen.
+
+Siehe [[sascha-output-standard]], [[codex-paket-skills-konvertierung]], [[lokivoice-v10-stand-presentation]].
 
 ## macos-shell-cwd-enoent
 
