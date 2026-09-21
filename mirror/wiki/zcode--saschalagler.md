@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-21 16:51 UTC
+Zuletzt gespiegelt: 2026-09-21 17:03 UTC
 
 ## AGENTS
 
@@ -6725,7 +6725,7 @@ Beobachtet 06.09.2026 (Session mit Off-Peak-Ticket): Nach User-Paste „ZCode Er
 
 - [ZCode-Workflow-Bedienung](zcode-workflow-bedienung.md) — /workflow via Chat-Feld/Command-Palette; Runs unter Automations; Workflows überleben Turn-Interrupts (ggü. direkten Agenten)
 
-- [LOKI.OS v18 Endprodukt](loki-os-v18-endprodukt.md) — 21.09. ABEND ALLES FERTIG: v18-App läuft (/Applications/LOKI OS v18.app, Review PASS, BrainView-Fix deployed) + Datei-Berg konsolidiert (⚠️ Archiv-ENDLAGE: Desktop/Coworkspace_Ich/PRIVATE PORJEKTE /_LOKI_KONSOLIDIERUNG_2026-09-21) + 6-Lücken-Roadmap + MASTER_INDEX.md im CODEX_PAKET
+- [LOKI.OS v18 Endprodukt](loki-os-v18-endprodukt.md) — 21.09. ALLES FERTIG, 5/6 Lücken real: v18-App läuft (Review PASS) · Kernel localhost+Watchdog · Fristen-Wache live (fand GCP 24,08 € + Mahnung Wien 30.09.) · Distribution v1 (VERTRIEB.zip+INSTALL+ROADMAP+SYSTEM_KARTE im CODEX_PAKET unter PRIVATE PORJEKTE/) · Taskmaster ~/loki-tasks + Kommandozentrale im Vault · Voll-Kopplungs-Workflow e7e52a83 läuft (Briefing←Tasks, Sprache←Tasks 12 Tools, App-Aufgaben-Tab); nur noch Sascha-Freigaben: Mikrofon-TCC, Gmail-API (Lücke 1), LiteRT (Lücke 3)
 - [LOKI.OS v18 Build + Agent-Diagnose + Aufräumung](loki-os-v18-build.md) — 21.09.: v18-Bau dwfrun-5d491f4f Phase 3/6 (UI+Verbindungs-Bauer aktiv) · Diagnose FERTIG: 3× Abbruch = App-Neustart-SIGTERM beim Mid-Turn-Interrupt, reviewer-Not-Found = qwen/ClinePass, 7 Descriptions+thoughtLevel gefixt (Backups) · Aufräumung läuft als **fa386d13** (32a721cc extern superseded, 30 Cluster); Workflow-Lane zuverlässig, direkte Dispatches sterben bei Turn-Interrupt
 - [ATLAS Versionsstand](atlas-versionsstand.md) — 21.09.: 5173+4173 Server tot; PROD atlas-v5.web.app lebt mit NEUEM Bundle index-DG7Gco4d.js (Redeploy seit 11.09.); ATLAS_MASTER bis 18.09. bearbeitet; Pfad A/B nie entschieden
 - [LOKI Second Brain](loki-second-brain.md) — 20.09. SPÄT FERTIG+GETESTET: ~/loki-brain/ (brain.py+FTS5+git) × Daemon-4-Tools × Obsidian-Vault × M2-Auto-Protokoll; Review PASS (0 HIGH, 2 MED); Builder-Schwarm+Director parallel — NIE wieder von 0 planen, nur erweitern; Handoff-Datei war Basis
@@ -7050,6 +7050,8 @@ LOKI.OS v18 + AUFRÄUMUNG — STAND 21.09.2026 ABEND:
 **NACHTRAG 21.09. spät (2): TASKMASTER+KOMMANDOZENTRALE-Workflow gestartet** (dwfrun-ca4a433f, schließt Lücke 5): ① `~/loki-tasks/` (task.py CLI add/list/done/reopen mit Prio+Frist, tasks.json, Spiegel `~/loki-brain/vault/Brain/Tasks.md`) + Start-Tasks (Mikrofon-TCC prio 1, Tier-2-INDEX prio 2) ② Obsidian „LOKI OS Kommandozentrale.md" (Tages-Nutzung + Lücken-Status). Bewusst NICHT angefasst: assi + daemon.py (Konfliktvermeidung mit laufendem d64b276f); Kopplung Taskmaster→Morgenbrief→Sprach-Tool als nächster Schritt dokumentiert. Damit 5/6 Lücken in Arbeit/fertig, nur Lücke 1 (Gmail/Drive) wartet auf Saschas API-Zugänge. Canvas (React-Flow) bleibt Roadmap.
 
 **NACHTRAG 21.09. spät (3): ALLE 5 WORKFLOWS FERTIG — 5/6 LÜCKEN REAL.** ① 6-Lücken-Straße (d64b276f, Gates 0/0/ZIP_OK): Kernel :8010 läuft auf **localhost** (Bind war bereits fix) mit **Watchdog com.sascha.loki.kernel** (KeepAlive, Kill-Test bestanden: SIGTERM→Auto-Restart) · **Morgenbrief-Push+Fristen-Wache live** (assi-Neustart — Agent war entladen!, fand sofort 2 echte Fristen: GCP 24,08 € überfällig seit 12.09. + Mahnung Stadt Wien 30.09.) · **Distribution v1**: LOKI_OS_v18_VERTRIEB.zip (358 KB) + INSTALL.md + LÜCKEN_ROADMAP.md + SYSTEM_KARTE.md (14 Standorte) im CODEX_PAKET. ② Taskmaster (ca4a433f): ~/loki-tasks/task.py + Tasks.md-Spiegel + Kommandozentrale.md im Vault. **Offen:** nur Lücke 1 Gmail/Drive (API-Zugänge Sascha) + Lücke 3 lokale Inferenz (LiteRT-Entscheidung). **Nächster Log-Schritt:** Taskmaster→Morgenbrief-Kopplung (offene Prio-1 morgens vorgelesen) + Daemon-Tool „Loki, neue Aufgabe X".
+
+**NACHTRAG 21.09. spät (4): VOLL-KOPPLUNGS-WORKFLOW GESTARTET** (dwfrun-e7e52a83, Ergebnis offen): 3 Kopplungs-Worker parallel — ① Briefing←Tasks (lib/tasks_summary.sh, max 5 Prio-Aufgaben in Brief+Brain) ② Sprache←Tasks (daemon.py +2 Tools task_add/task_list → 12 gesamt; SYSTEM_PROMPT-Regeln „Loki, neue Aufgabe X/meine Aufgaben"; E2E per curl ohne Mikro) ③ App←Tasks (v18 bekommt Aufgaben-Tab + Dashboard-Statuszeile; build.sh-Gate + Reparateur max 3 Runden) — dann Systemprobe+Reviewer-Veto+Doku. ②③ sind reine Freigaben-Kandidaten: Mikrofon-TCC (Sascha-Klick) → Doppel-Ctrl-Sprachaufgaben; Gmail-API → Lücke 1; LiteRT-Entscheidung → Lücke 3 (Details LÜCKEN_ROADMAP.md im CODEX_PAKET, jetzt unter Desktop/Coworkspace_Ich/PRIVATE PORJEKTE /). 6-Lücken-Run (d64b276f) FERTIG mit Gates 0/0/ZIP_OK: Kernel localhost+Watchdog (Kill-Test bestanden), assi war entladen → neu geladen, Fristen-Wache fand sofort 2 echte Fristen (GCP 24,08 € überfällig; Mahnung Wien 30.09.).
 
 Verwandt: [[loki-os-ecosystem-stand]], [[loki-second-brain]], [[loki-voice-agent]]
 
