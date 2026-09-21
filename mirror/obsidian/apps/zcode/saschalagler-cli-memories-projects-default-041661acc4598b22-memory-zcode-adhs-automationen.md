@@ -7,7 +7,7 @@ tags: [spiegel, zcode]
 
 ---
 name: zcode-adhs-automationen
-description: "13.–21.09. LIVE: EINE ZCode-Automation mit ALLEN 6 Briefs (cron 0 9,10,15,16,21 — Zweige per Uhrzeit+Wochentag); 10 Läufe, alle 6 Zweige bewiesen, 21.09. erstmals pünktlicher 09:00-Lauf + erster echter P1-Risiko-Finding (loki-voice-Submodul dirty → wartet auf „GO voice-commit"); Risiko-Scan 20./21.09. PASS · Abend 13./16./20.09. PASS · No-ops korrekt; ⚠️ Lücken-Tage 15./17./19.09. (Mac schläft um 09:00); offen: LaunchAgent-Wecker-GO + Deutsch-Patch + voice-commit"
+description: "13.–21.09. LIVE: EINE Automation mit ALLEN 6 Briefs (cron `0 9,10,15,16,21`, Zweige per Uhrzeit+Wochentag; niemals 6 separate — Nutzer-Ziel!) + Engine 7/7 PASS; **12 Läufe, alle 6 Zweige bewiesen: Morgen 21.09. erstmals PÜNKTLICH (UID C1BFC6A3) · Risiko-Scan 21.09. erster echter P1-Finding: loki-voice-Submodul dirty → noch AM SELBEN TAG durch Abschließer-Sweep gelöst (Commit 7fdbf2d, 21 Dateien) · Abend 13./16./20./21.09. PASS (Events 610E2A57/88CCE1A6/6BFDB24A/C269B996, Fix `open -a Calendar` vor osascript) · 16:00/15:00-No-ops korrekt**; ⚠️ **Lücken-Tage 15./17./19.09. (Mac schläft um 09:00)**; offen auf GO: LaunchAgent com.sascha.assi.daily als Wecker umrüsten + Deutsch-Patch (5066-Strings-Artefakt WEG — Recovery siehe [[zcode-app-german-ui-patch]]); 1 Task pro Chat-Limit"
 metadata:
   node_type: memory
   type: project

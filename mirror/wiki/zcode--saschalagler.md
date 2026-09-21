@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-21 19:00 UTC
+Zuletzt gespiegelt: 2026-09-21 19:12 UTC
 
 ## AGENTS
 
@@ -4595,7 +4595,7 @@ Integration done 2026-08-30: added `web-search-prime`, `zread`, `zai-vision` MCP
 
 ---
 name: zcode-adhs-automationen
-description: "13.–21.09. LIVE: EINE ZCode-Automation mit ALLEN 6 Briefs (cron 0 9,10,15,16,21 — Zweige per Uhrzeit+Wochentag); 10 Läufe, alle 6 Zweige bewiesen, 21.09. erstmals pünktlicher 09:00-Lauf + erster echter P1-Risiko-Finding (loki-voice-Submodul dirty → wartet auf „GO voice-commit"); Risiko-Scan 20./21.09. PASS · Abend 13./16./20.09. PASS · No-ops korrekt; ⚠️ Lücken-Tage 15./17./19.09. (Mac schläft um 09:00); offen: LaunchAgent-Wecker-GO + Deutsch-Patch + voice-commit"
+description: "13.–21.09. LIVE: EINE Automation mit ALLEN 6 Briefs (cron `0 9,10,15,16,21`, Zweige per Uhrzeit+Wochentag; niemals 6 separate — Nutzer-Ziel!) + Engine 7/7 PASS; **12 Läufe, alle 6 Zweige bewiesen: Morgen 21.09. erstmals PÜNKTLICH (UID C1BFC6A3) · Risiko-Scan 21.09. erster echter P1-Finding: loki-voice-Submodul dirty → noch AM SELBEN TAG durch Abschließer-Sweep gelöst (Commit 7fdbf2d, 21 Dateien) · Abend 13./16./20./21.09. PASS (Events 610E2A57/88CCE1A6/6BFDB24A/C269B996, Fix `open -a Calendar` vor osascript) · 16:00/15:00-No-ops korrekt**; ⚠️ **Lücken-Tage 15./17./19.09. (Mac schläft um 09:00)**; offen auf GO: LaunchAgent com.sascha.assi.daily als Wecker umrüsten + Deutsch-Patch (5066-Strings-Artefakt WEG — Recovery siehe [[zcode-app-german-ui-patch]]); 1 Task pro Chat-Limit"
 metadata:
   node_type: memory
   type: project
@@ -4704,10 +4704,11 @@ metadata:
 - **Lücke:** 9 Keys mit Werten in doppelten Anführungszeichen statt Backticks (u. a. `bots.setup.guide.*`, `settings.skills.diagnostics.code.*`) nicht extrahiert — beim Patchen nachliefern oder unberührt lassen.
 
 ## Offene Schritte (bei „weiter übersetzen")
-1. Übersetzung in 3 Slices (0–1699 / 1700–3399 / 3400–5065) via implementer-Subagents → `/tmp/zcode_i18n/de_part1..3.json`; Gates: Anzahl, Key-Reihenfolge identisch, `{placeholder}`-Parität Ziel 0 Verstöße, json.tool valid. (2 Wellen bereits durch Nutzer-Interrupts abgebrochen.)
-2. m-Dict-Region (252479–583376) durch DE-Dict ersetzen (Backtick-Escapes ` \` ` beachten), asar repacken.
+0. **⚠️ RECOVERY ERST (21.09. bestätigt):** Die Extraktions-Artefakte unter `/tmp/zcode_i18n/` (en_strings.json, extract.py, en_region.txt) sind **WEG** — /tmp ist flüchtig, Abschließer-Sweep 21.09. fand sie nicht (find/mdfind über Desktop, ~/.zcode, ~/.agents, /tmp, ~/loki-ki). **Der einzige Ort der Fakten:** alte Session `sess_adac…be06c60c0f` vom 13.09. → Re-Extraktion aus dem Session-Archiv (`~/.zcode/cli/log/archive/` bzw. Rollouts) ODER Neuintegration (~10 Min, Offsets im Kopf: ZH 709–252475, EN **252479–583376**, 5066 Paare, Zeichen-Offsets!). Lesson: Extraktions-Artefakte nie nach /tmp — ab jetzt nach `~/.agents/` persistieren.
+1. Übersetzung in 3 Slices (0–1699 / 1700–3399 / 3400–5065) via implementer-Subagents → `de_part1..3.json` (PERSISTENT ablegen!); Gates: Anzahl, Key-Reihenfolge identisch, `{placeholder}`-Parität Ziel 0 Verstöße, json.tool valid. (2 Wellen durch Nutzer-Interrupts abgebrochen.)
+2. m-Dict-Region (252479–583376) durch DE-Dict ersetzen (Backtick-Escapes beachten), asar repacken. Achtung: andere Sessions haben seit 13.09. config.json verändert (17 MCP-Server, 4 SessionStart-Hooks) — betrifft asar nicht, aber Neustart beendet laufende dwf-Workflows → nur in einer Sascha-Session ohne aktive Workflows.
 3. **Backup `app.asar.orig`** + `codesign --force --deep -s -` (macOS-27-Beta-AMFI, siehe [[macos-27-beta-status]]) + Re-Patch-Skript gegen App-Updates.
-4. ZCode-Neustart + Textbeleg als Beweis.
+4. ZCode-Neustart + Textbeleg als Beweis. Lücke: 9 Keys mit Double-Quote-Werten (u. a. `bots.setup.guide.*`) beim Patchen nachliefern oder unberührt lassen.
 
 ## zcode-hub-1006-netz-fix
 

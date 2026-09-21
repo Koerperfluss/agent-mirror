@@ -1,7 +1,7 @@
 ---
 app: zcode
 quelle: "saschalagler/cli/memories/projects/default-041661acc4598b22/memory/zcode-app-german-ui-patch.md"
-stand: 2026-09-13
+stand: 2026-09-21
 tags: [spiegel, zcode]
 ---
 
@@ -28,7 +28,8 @@ metadata:
 - **Lücke:** 9 Keys mit Werten in doppelten Anführungszeichen statt Backticks (u. a. `bots.setup.guide.*`, `settings.skills.diagnostics.code.*`) nicht extrahiert — beim Patchen nachliefern oder unberührt lassen.
 
 ## Offene Schritte (bei „weiter übersetzen")
-1. Übersetzung in 3 Slices (0–1699 / 1700–3399 / 3400–5065) via implementer-Subagents → `/tmp/zcode_i18n/de_part1..3.json`; Gates: Anzahl, Key-Reihenfolge identisch, `{placeholder}`-Parität Ziel 0 Verstöße, json.tool valid. (2 Wellen bereits durch Nutzer-Interrupts abgebrochen.)
-2. m-Dict-Region (252479–583376) durch DE-Dict ersetzen (Backtick-Escapes ` \` ` beachten), asar repacken.
+0. **⚠️ RECOVERY ERST (21.09. bestätigt):** Die Extraktions-Artefakte unter `/tmp/zcode_i18n/` (en_strings.json, extract.py, en_region.txt) sind **WEG** — /tmp ist flüchtig, Abschließer-Sweep 21.09. fand sie nicht (find/mdfind über Desktop, ~/.zcode, ~/.agents, /tmp, ~/loki-ki). **Der einzige Ort der Fakten:** alte Session `sess_adac…be06c60c0f` vom 13.09. → Re-Extraktion aus dem Session-Archiv (`~/.zcode/cli/log/archive/` bzw. Rollouts) ODER Neuintegration (~10 Min, Offsets im Kopf: ZH 709–252475, EN **252479–583376**, 5066 Paare, Zeichen-Offsets!). Lesson: Extraktions-Artefakte nie nach /tmp — ab jetzt nach `~/.agents/` persistieren.
+1. Übersetzung in 3 Slices (0–1699 / 1700–3399 / 3400–5065) via implementer-Subagents → `de_part1..3.json` (PERSISTENT ablegen!); Gates: Anzahl, Key-Reihenfolge identisch, `{placeholder}`-Parität Ziel 0 Verstöße, json.tool valid. (2 Wellen durch Nutzer-Interrupts abgebrochen.)
+2. m-Dict-Region (252479–583376) durch DE-Dict ersetzen (Backtick-Escapes beachten), asar repacken. Achtung: andere Sessions haben seit 13.09. config.json verändert (17 MCP-Server, 4 SessionStart-Hooks) — betrifft asar nicht, aber Neustart beendet laufende dwf-Workflows → nur in einer Sascha-Session ohne aktive Workflows.
 3. **Backup `app.asar.orig`** + `codesign --force --deep -s -` (macOS-27-Beta-AMFI, siehe [[macos-27-beta-status]]) + Re-Patch-Skript gegen App-Updates.
-4. ZCode-Neustart + Textbeleg als Beweis.
+4. ZCode-Neustart + Textbeleg als Beweis. Lücke: 9 Keys mit Double-Quote-Werten (u. a. `bots.setup.guide.*`) beim Patchen nachliefern oder unberührt lassen.
