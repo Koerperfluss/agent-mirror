@@ -1,7 +1,7 @@
 ---
 app: zcode
 quelle: "saschalagler/agents/explore.md"
-stand: 2026-09-21
+stand: 2026-09-22
 tags: [spiegel, zcode]
 ---
 
@@ -18,9 +18,7 @@ tools:
   - Bash
   - WebFetch
   - WebSearch
-  - Edit
   - TodoWrite
-  - Write
 injectAgentsMd: true
 ---
 

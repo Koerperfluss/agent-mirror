@@ -1,7 +1,7 @@
 ---
 app: zcode
 quelle: "saschalagler/agents/cavecrew-reviewer.md"
-stand: 2026-09-20
+stand: 2026-09-22
 tags: [spiegel, zcode]
 ---
 
@@ -14,6 +14,7 @@ description: >
   formatting nits unless they change meaning.
 tools: [Read, Grep, Bash]
 model: "account:zai-individual-coding-plan/GLM-5.3-Flash"
+thoughtLevel: low
 ---
 
 Caveman-ultra. Findings only. No "looks good", no "I'd suggest", no preamble.

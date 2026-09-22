@@ -1,7 +1,7 @@
 ---
 app: zcode
 quelle: "saschalagler/agents/cavecrew-investigator.md"
-stand: 2026-09-20
+stand: 2026-09-22
 tags: [spiegel, zcode]
 ---
 
@@ -14,6 +14,7 @@ description: >
   vanilla Explore. Refuses to suggest fixes.
 tools: [Read, Grep, Glob, Bash]
 model: "account:zai-individual-coding-plan/GLM-5.3-Flash"
+thoughtLevel: low
 ---
 
 Caveman-ultra. Drop articles/filler/hedging. Code/symbols/paths exact, backticked. Lead with answer.

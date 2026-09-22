@@ -1,0 +1,30 @@
+---
+app: antigravity
+quelle: "cli/sess_5b46926c-ea38-4d93-833c-ef981b842fd5/dwfrun-7681f8a1-39de-4ea6-9803-07d09dd76973_artifact_1_1-tool-result-ae8025f4-41c2-4da4-a64e-e4aae8bfd86a.md"
+stand: 2026-09-22
+tags: [spiegel, antigravity]
+---
+
+# Chipsi-Fix-Statusbericht
+
+Chipsi lebt (HTTP 303→/login in 0,13 s, selbst gemessen) und das Judicario-Gateway ist gesund (initialize HTTP 200 mit 8 Tools laut Messwert; ohne Key antwortet es mit 401 = alive) — der Ausfall liegt reproduzierbar im openlaw-Synthese-Backend, nicht im lokalen Netz oder im LOKI-Kernel (127.0.0.1:8010 → HTTP 307). Bis zum Fix: im Chipsi-Chat den Judicario-Konnektor ausschalten und ohne Recherche fragen bzw. die Recherche übergangsweise in Claude Desktop mit den 8 at_*-Tools fahren. Die gelesene Doku (PRD_CHIPSI_NOTRUF_ERSTE_HILFE.pdf S.1–5, CHANGELOG_LOKI_APP_0109.md, PLAN_CHIPSI_CONNECTOR.md) liefert keine weitere lokal behebbare Ursache; der lokale loki-legal-ops-Judicario-Wrapper ist kein Ersatz (Live-Test: isError „Unbekanntes Tool im Judicario-Bündel“).
+
+## Messwerte (4/4 bestanden)
+- **chipsi.openlaw.cc erreichbar**: ✅ OK — HTTP 303 in 0.793325s (Redirect = Server lebt)
+- **Judicario-Gateway (initialize + tools/list, korrekt mit Session)**: ✅ OK — initialize HTTP 200, initialized HTTP 202, Tool-Einträge: 8
+- **Docker-Daemon (für MCP_DOCKER in Claude Desktop)**: ✅ OK — läuft, Version 29.8.0
+- **LOKI-Kernel 127.0.0.1:8010**: ✅ OK — HTTP 307 — die Safebox-Meldung in Chipsi liegt NICHT daran (Safebox ist ein openlaw-Kanzleidienst)
+
+## Serverseite (nicht lokal fixbar)
+- Synthese-Backend von chipsi.openlaw.cc: Die LLM-Antwortgenerierung bricht reproduzierbar ab (14:24/14:25/14:27, auch Mini-Frage OHNE Anhänge im frischen Chat) — belegt in NACHRICHT_AN_REINHARD_CHIPSI_FEHLER.md:11–17.
+- Safebox-Dienst in Chipsi: dauerhaft „Safebox getrennt“; SafeBox ist Teil des openlaw-Stacks (PRD_CHIPSI_NOTRUF_ERSTE_HILFE.pdf S.1 „bestehender Stack: Chipsi, Judicario-Gateway, SafeBox, SafeTalk, Eskalationswege“; PLAN_CHIPSI_CONNECTOR.md:161 „Safebox-Connector 5 Werkzeuge, read-only“) — LOKI-Kernel ausgeschlossen (HTTP 307, selbst gemessen).
+- Konnektoren-Anzeige 3 → 2: Account-/serverseitiger Connector-Status bei openlaw, lokal nicht steuerbar.
+- Die Fehlermeldung selbst („Nicht gespeichert: Netzwerkproblem — die Antwort konnte nicht erstellt werden“) ist eine generische Frontend-Meldung von Chipsi auf einen Serverausfall; das reine Netz ist sauber (chipsi.openlaw.cc → HTTP 303 in 0,13 s, selbst gemessen).
+- Falls doch der Gateway-Key betroffen wäre: Key-Verwaltung ist rein serverseitig — 401 „unknown or disabled key“ war laut CHANGELOG_LOKI_APP_0109.md:28 nur vom Gateway-Betreiber fixbar. (Aktueller Key laut Messwert gesund: initialize 200 + 8 Tools; mein Probe ohne Key: 401.)
+
+## Workarounds nach Rang
+1. **Im Chipsi-Chat den Konnektor „Judicario · amtliche Quellen“ für die aktuelle Frage ausschalten (per Chat-Toggle, belegt PLAN_CHIPSI_CONNECTOR.md:227) und die Frage in frischem Chat ohne Recherche neu senden.** (Sascha) — Der Fehler tritt erst bei der Synthese auf; ohne Konnektor-Ergebnisse fällt der größte variable Baustein aus der Antwortgenerierung weg — läuft es dann, ist der Konnektor-Payload der Auslöser, nicht das Netz.
+2. **Antwort-Modus wechseln (Tiefen-/Deep-Recherche aus → Standardmodus) und erneut senden.** (Sascha) — Weniger Tool-Aufrufe pro Antwort entlasten den Synthese-Loop; Hinweis: ein Deep-Modus ist in der gelesenen Doku (PRD S.1–5, PLAN, CHANGELOG) nicht belegt — Testcharakter, aber risikolos.
+3. **Recherche übergangsweise in Claude Desktop fahren: Gateway-Connector ist verbunden und listet 8 at_*-Tools (Messwert: initialize HTTP 200, tools/list = 8 Einträge; mein Probe ohne Key: HTTP 401 = Gateway lebt); Ergebnisse sobald Chipsi wieder synthesiert in die Chipsi-Akten nachpflegen.** (Sascha) — Der gesunde Teil der Kette (amtliche Recherche über gateway.openlaw.cc) bleibt nutzbar, nur der ausgefallene Teil (Chipsi-Synthese) wird umgangen.
+4. **Client-Fehler ausschließen: Chrome-PWA „Chipsi“ entfernen und neu installieren bzw. einmal im Inkognito-Fenster/anderem Chrome-Profil testen.** (Sascha) — Nicht gespeicherte Streaming-Antworten können auch an PWA-Service-Worker/Cache hängen — der einzige noch lokal prüfbare Punkt; in der Doku nicht dokumentiert, daher erst nach Rang 1–3.
+5. **Auf openlaw-Fix abstimmen: die fertige Nachricht an Reinhard senden (NACHRICHT_AN_REINHARD_CHIPSI_FEHLER.md, Stand 22.09. 14:30, fertig zum Kopieren, inkl. Frage „Ist euer Synthese-Backend ausgefallen?“) und bis zur Reparatur nur die Workarounds 1–3 nutzen; lokalen loki-legal-ops-Judicario-Wrapper NICHT als Ersatz einsetzen (Live-Test heute: 2× isError „Unbekanntes Tool im Judicario-Bündel“).** (Sascha) — Alle lokal prüfbaren Ursachen sind gemessen bzw. ausgeschlossen; der verbleibende Defekt liegt eindeutig auf openlaw-Serverseite.

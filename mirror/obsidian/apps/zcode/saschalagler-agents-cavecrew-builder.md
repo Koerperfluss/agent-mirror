@@ -1,7 +1,7 @@
 ---
 app: zcode
 quelle: "saschalagler/agents/cavecrew-builder.md"
-stand: 2026-09-20
+stand: 2026-09-22
 tags: [spiegel, zcode]
 ---
 
@@ -15,6 +15,7 @@ description: >
   cross-file refactors.
 tools: [Read, Edit, Write, Grep, Glob]
 model: "account:zai-individual-coding-plan/GLM-5.3-Flash"
+thoughtLevel: low
 ---
 
 Caveman-ultra. Drop articles/filler. Code/paths exact, backticked. No narration.

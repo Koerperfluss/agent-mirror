@@ -1,15 +1,15 @@
 ---
 app: zcode
 quelle: "saschalagler/cli/memories/projects/default-041661acc4598b22/memory/subagent-dispatch-implementer-workaround.md"
-stand: 2026-09-18
+stand: 2026-09-22
 tags: [spiegel, zcode]
 ---
 
 ---
 name: subagent-dispatch-implementer-workaround
-description: „No reasoning level selected" — Hook-Fix (~/.zcode/fix-subagents.sh)
-  deckt implementer ab, aber 18.09. warfen Explore/general-purpose WEITERHIN den Fehler;
-  Workaround: alles über implementer-Type routen oder Director-direct
+description: „No reasoning level selected" — 22.09. DRITTE Wurzel: eigene Agents
+  (~/.zcode/agents/*.md) hatten model: ohne thoughtLevel: im Frontmatter → gefixt
+  (thoughtLevel eingetragen, fix-subagents.sh erweitert); greift erst nach App-Neustart
 metadata:
   node_type: memory
   type: reference
@@ -24,6 +24,10 @@ metadata:
 3. Die App hat den Fix selbst auf Plugin-Agents ausgeweitet (agent-sdk-verifier-py/ts erhielten Overrides MIT Denkstufe).
 
 **How to apply:** Nichts manuell nötig. Falls Dispatch je wieder „No reasoning level selected" wirft: `~/.zcode/fix-subagents.sh` prüfen/läuft der Hook (config.json SessionStart)? Workaround bis Neustart: `implementer`. Verwandt: [[feedback-auto-team-dispatch]] (Dispatch-Protokoll v2).
+
+**✅ 22.09. DRITTE WURZEL GEFUNDEN + GEFIXT (eigene Agents = Markdown-Dateien):** `cavecrew-*`, `implementer`, `qa-tester` etc. aus `~/.zcode/agents/*.md` lasen den Fehler neu, obwohl agents-state.json komplett war. Echte Ursache (im Bundle zcode.cjs rückverfolgt, Funktion `tee`/`parseSubagentMarkdownSelection`): **Frontmatter der Agent-Dateien hatte `model:` ohne `thoughtLevel:`** → effective selection ohne reasoningLevel → `reasoning-level-missing`. Fix: `thoughtLevel: low` (bzw. vorhandene Stufe) in alle 10 Dateien eingetragen (Backups `/tmp/agents-backup-*`); `fix-subagents.sh` erweitert (fügt fehlende thoughtLevel-Zeilen automatisch ein). **WICHTIG: laufende App cacht das Frontmatter → Fix greift erst nach ZCode-Neustart/neuer Session; general-purpose funktioniert derweil weiter.** general-purpose/Explore (built-ins) funktionierten parallel normal — Fehler betrifft NUR eigene Datei-Agents.
+
+**🔁 22.09. Workflow dwfrun-efb4300b („Alle Agents prüfen und reparieren"):** Sascha rief /workflow „ALLE AGENTS SUCHEN PRÜFEN UND REPARIEREN". Topologie: python3-Inventur → 10 Prüfer-Subagents (1 pro Datei) → 1 Reparateur (Backups /tmp/agents-fix-2209/) → python3-Abschluss-Gate + Bericht-Artefakt. Snippet-Test vorab (EvalWorkflowSnippet) zeigte: alle 10 Dateien + 14 Plugin-Agents zu dem Zeitpunkt technisch grün. Schema-Gefunden aus dem Bundle (zcode.cjs): Overrides-Schlüssel `agentModelSelectionOverrides` = `source:scope:name` (createAgentStateId); **`builtInModelSelectionOverrides` mit Plain-Names eigener Agents funktioniert NICHT** (vergeblich getestet); Auswahl eigener Agents steckt IM Frontmatter (`model:` + `thoughtLevel:`, Funktion `tee`/`parseSubagentMarkdownSelection`).
 
 **⚠️ 18.09. RÜCKFALL (Teilweise):** In der großen LokiVoice-Session warfen **`Explore` und `general-purpose` weiterhin „No reasoning level selected / selection=account:zai-start-plan/GLM-5.3-Flash"**, während **`implementer`-Dispatches parallel erfolgreich liefen** (3/3 implementer gestartet, 1 verifiziert geliefert). Der Hook-Fix deckt offenbar nicht alle Agent-Typen/Provider-Kombinationen (Plan-Account `zai-start-plan` statt `individual-coding-plan` im Fehlertext). **Workaround-Kette bewährt:** (1) Task als `implementer` umformulieren (auch für read-only Scans — „nur lesende Befehle"), (2) sonst Director-Direktausführung. Sascha-Seitiger Dauer-Fix: ZCode-Einstellungen → GLM-5.3-Flash → Denkstufe explizit setzen (App-Setting, nicht config.json).
 

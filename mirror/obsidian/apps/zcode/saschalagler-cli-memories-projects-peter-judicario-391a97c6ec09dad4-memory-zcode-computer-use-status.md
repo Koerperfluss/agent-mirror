@@ -1,7 +1,7 @@
 ---
 app: zcode
 quelle: "saschalagler/cli/memories/projects/peter-judicario-391a97c6ec09dad4/memory/zcode-computer-use-status.md"
-stand: 2026-09-06
+stand: 2026-09-22
 tags: [spiegel, zcode]
 ---
 
@@ -20,4 +20,4 @@ Diagnose 06.09.2026: Nutzer konnte Computer Use in ZCode „nicht aktivieren". B
 
 **Echte Ursache:** Der CUA-MCP-Server (Plugin-Cache 0.5.14, Start via `/Applications/ZCode.app/.../ZCode Helper … __zcode-plugin-host …/dist/mcp/server.js`) beendet sich sofort ohne `--permission-broker-socket` („Plugin host failed: requires --permission-broker-socket"). Der laufende Host (zcode-host-local/CLI-Setup) hatte nach dem Helper-Update keinen Broker hochgezogen → Tools fehlen in der Session, obwohl UI/Config „aktiviert" zeigen.
 
-**Fix:** ZCode komplett beenden (Cmd+Q, nicht nur Fenster) + neu starten → neue Session → mit einem CUA-Tool (`request_access`) testen. Per 06.09. abends offen. Fallback ohne Computer Use: browser-use-IAB + TCC-Dialoge manuell klicken lassen. Relevanter Zusammenhang: [[chipsi-openlaw-setup]] (Gmail-/TestFlight-Prüfung).
+**Fix:** ZCode komplett beenden (Cmd+Q, nicht nur Fenster) + neu starten → neue Session → mit einem CUA-Tool (`request_access`) testen. Per 06.09. abends offen. **Timing-Grenze (21.09., EnvCheck-Abschliesser):** Restart killt laufende Workflow-Hosts (Beweis: pgrep zeigte PIDs 50917/12706 mit aktiven dwfruns) → Fix nur in einer ruhigen Session ohne laufende dwfruns ausführen. Fallback ohne Computer Use: browser-use-IAB + TCC-Dialoge manuell klicken lassen. Relevanter Zusammenhang: [[chipsi-openlaw-setup]] (Gmail-/TestFlight-Prüfung).

@@ -1,14 +1,14 @@
 ---
 app: cline-code
 quelle: "web-template/cloudbase-platform/rule.md"
-stand: 2026-09-19
+stand: 2026-09-22
 tags: [spiegel, cline-code]
 ---
 
 ---
 name: cloudbase-platform
 description: CloudBase platform overview and routing guide. This skill should be used when users need high-level capability selection, platform concepts, console navigation, or cross-platform best practices before choosing a more specific implementation skill.
-version: 2.34.4
+version: 2.34.5
 alwaysApply: false
 ---
 

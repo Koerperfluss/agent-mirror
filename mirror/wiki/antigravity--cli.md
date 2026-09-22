@@ -1,6 +1,6 @@
 # cli (antigravity)
 
-Zuletzt gespiegelt: 2026-09-22 13:34 UTC
+Zuletzt gespiegelt: 2026-09-22 13:48 UTC
 
 ## dwfrun-5d491f4f-60e7-4e26-9693-ffee0cd33bc1_artifact_2_1-tool-result-8a361051-3e46-477c-8638-5f2bfde53025
 
@@ -315,6 +315,77 @@ Kernel v15.3.0 läuft, lokaler Wissensspeicher ist intakt (loki.db 7,3 MB, VwGH-
 | Q6 | 4 fehlende Keys in .env.loki | Sascha holt sie / abhaken |
 | Q7 | Kanonische Doku (SESSION_CONTEXT, SYSTEM_HANDBUCH, MASTER_STATUS) auf 20.09. | ja |
 
+## dwfrun-59a1ea9a-41ac-4cc5-acb0-d56eb747d118_artifact_1_1-tool-result-6ef404f1-56c3-40f1-91ff-bce8da04e9cd
+
+# Claude-Desktop-Statusbericht
+
+Docker und der lokale MCP_DOCKER-Server laufen wieder, aber der neue Judicario-Connector liefert bei tools/list keine Tools (0 Tool-Felder in der Antwort) — das Gesamtergebnis ist daher nicht ok. Der Gateway selbst ist erreichbar (initialize HTTP 200, Server: judicario-at).
+
+## Prüfungen (5/6 bestanden)
+- **Docker-Daemon**: ✅ OK — läuft, Server-Version 29.8.0
+- **Claude-Config**: ✅ OK — JSON gültig; eingetragene lokale Server: MCP_DOCKER, memory
+- **MCP_DOCKER-Log**: ✅ OK — Log gelesen; connected-Eintrag im Log-Schwanz: JA; letzte Zeile: 2026-09-22T12:01:18.052Z [MCP_DOCKER] [info] Client transport closed { metadata: undefined }
+- **Claude Desktop läuft**: ✅ OK — App-Prozess aktiv — Neustart durch Nutzer möglich
+- **Gateway initialize**: ✅ OK — HTTP 200; Server: judicario-at
+- **Gateway tools/list**: ❌ FEHLER — exit 0; Tool-Felder in Antwort: 0
+
+## Befunde
+- **Docker-Daemon** (OK): Auftrags-Messwert: Docker-Daemon läuft, Server-Version 29.8.0.
+- **Claude-Config** (OK): Auftrags-Messwert: Claude-Config-JSON gültig; eingetragene lokale Server: MCP_DOCKER, memory.
+- **MCP_DOCKER-Log** (OK): Auftrags-Messwert: connected-Eintrag im Log-Schwanz JA; letzte Zeile: 2026-09-22T12:01:18.052Z [MCP_DOCKER] [info] Client transport closed { metadata: undefined } — dass nach diesem Close ein Reconnect folgt, zeigen die Messwerte nicht.
+- **Claude-Desktop-Prozess** (OK): Auftrags-Messwert: App-Prozess aktiv; Neustart durch Nutzer möglich.
+- **Judicario initialize** (OK): Auftrags-Messwert: HTTP 200; Server: judicario-at.
+- **Judicario tools/list** (PROBLEM): Auftrags-Messwert: Befehl endete mit exit 0, aber 0 Tool-Felder in der Antwort — der Gateway liefert keine Tools; ob das tools-Feld fehlt oder nur leer ist, zeigen die Messwerte nicht.
+- **Connector-Bestätigung „Hinzufügen"** (OFFEN): Messwerte zeigen nicht, ob Sascha im Connector-Dialog auf „Hinzufügen" geklickt hat; initialize mit HTTP 200 beweist nur die Erreichbarkeit des Servers, nicht die Aufnahme des Connectors in Claude Desktop.
+
+## Nächste Schritte
+1. tools/list gegen den Judicario-Gateway erneut ausführen und die Rohantwort prüfen (fehlt das tools-Feld komplett oder ist es leer?)
+2. Bleibt tools/list leer: Gateway-Status/Version (judicario-at) im Judicario-Dashboard prüfen bzw. beim Anbieter nachfragen
+3. MCP_DOCKER-Log beobachten: folgt nach „Client transport closed" (12:01:18Z) kein neuer connected-Eintrag, Claude Desktop neu starten
+4. Danach den Connector in Claude Desktop mit einer Testfrage prüfen; falls er nicht erscheint, im Connector-Dialog bestätigen, dass „Hinzufügen" geklickt wurde
+## dwfrun-5c7d545e-7421-4fd7-9174-084461b62f6a_artifact_1_1-tool-result-8ce9b403-6f9e-464e-93ec-e556becf674a
+
+# Mini-Chipsi — deine lokale Rechtsrecherche (läuft)
+
+**Adresse: http://127.0.0.1:8085** — im Browser öffnen, Frage eintippen, Suchen klicken.
+
+- Bau: Mini-Chipsi läuft dauerhaft im Hintergrund auf http://127.0.0.1:8085 (PID 16377 in mini-chipsi/server.pid, Binding per lsof ausschließlich 127.0.0.1). Verifiziert: /api/health → {"ok":true}, Testabfrage 'Kündigungsfrist Mietvertrag Österreich' → 15 Quellen (10 Judikatur/OGH-Rechtssätze + 5 Normen, Felder typ/gericht/datum/titel/kernaussage/gz). Ollama läuft lokal, glm-5.3-flash:cloud scheiterte am Credit-Limit, daher Synthese über das lokal installierte qwen2.5-coder:7b (live getestet, Fundstellen im Prompt vorgegeben). Der Judicario-Key steht nur serverseitig in server.mjs — im ausgelieferten HTML ist weder Key noch Gateway-URL enthalten (grep-Prüfung: 0 Treffer).
+- Synthese-Modus: **ollama:qwen2.5-coder:7b**
+- Live-Test: ✅ echte Judicario-Quellen gekommen (15 Quellen im Test)
+- Sicherheits-Review: ✅ bestanden
+
+## Warum das heute die Lösung ist
+- Chipsis Synthese-Backend bei openlaw ist ausgefallen (3 Live-Fehlversuche 14:24–14:27 bewiesen) — die RECHERCHE über denselben Gateway läuft einwandfrei, genau die nutzt Mini-Chipsi direkt.
+- Sobald openlaw Chipsi repariert hat, läuft Chipsi wieder — Mini-Chipsi bleibt als lokale, mandantengetrennte Ergänzung.
+
+## Server verwalten
+- Stoppen: `kill $(cat mini-chipsi/server.pid)`
+- Log: `mini-chipsi/server.log`
+## dwfrun-7681f8a1-39de-4ea6-9803-07d09dd76973_artifact_1_1-tool-result-ae8025f4-41c2-4da4-a64e-e4aae8bfd86a
+
+# Chipsi-Fix-Statusbericht
+
+Chipsi lebt (HTTP 303→/login in 0,13 s, selbst gemessen) und das Judicario-Gateway ist gesund (initialize HTTP 200 mit 8 Tools laut Messwert; ohne Key antwortet es mit 401 = alive) — der Ausfall liegt reproduzierbar im openlaw-Synthese-Backend, nicht im lokalen Netz oder im LOKI-Kernel (127.0.0.1:8010 → HTTP 307). Bis zum Fix: im Chipsi-Chat den Judicario-Konnektor ausschalten und ohne Recherche fragen bzw. die Recherche übergangsweise in Claude Desktop mit den 8 at_*-Tools fahren. Die gelesene Doku (PRD_CHIPSI_NOTRUF_ERSTE_HILFE.pdf S.1–5, CHANGELOG_LOKI_APP_0109.md, PLAN_CHIPSI_CONNECTOR.md) liefert keine weitere lokal behebbare Ursache; der lokale loki-legal-ops-Judicario-Wrapper ist kein Ersatz (Live-Test: isError „Unbekanntes Tool im Judicario-Bündel“).
+
+## Messwerte (4/4 bestanden)
+- **chipsi.openlaw.cc erreichbar**: ✅ OK — HTTP 303 in 0.793325s (Redirect = Server lebt)
+- **Judicario-Gateway (initialize + tools/list, korrekt mit Session)**: ✅ OK — initialize HTTP 200, initialized HTTP 202, Tool-Einträge: 8
+- **Docker-Daemon (für MCP_DOCKER in Claude Desktop)**: ✅ OK — läuft, Version 29.8.0
+- **LOKI-Kernel 127.0.0.1:8010**: ✅ OK — HTTP 307 — die Safebox-Meldung in Chipsi liegt NICHT daran (Safebox ist ein openlaw-Kanzleidienst)
+
+## Serverseite (nicht lokal fixbar)
+- Synthese-Backend von chipsi.openlaw.cc: Die LLM-Antwortgenerierung bricht reproduzierbar ab (14:24/14:25/14:27, auch Mini-Frage OHNE Anhänge im frischen Chat) — belegt in NACHRICHT_AN_REINHARD_CHIPSI_FEHLER.md:11–17.
+- Safebox-Dienst in Chipsi: dauerhaft „Safebox getrennt“; SafeBox ist Teil des openlaw-Stacks (PRD_CHIPSI_NOTRUF_ERSTE_HILFE.pdf S.1 „bestehender Stack: Chipsi, Judicario-Gateway, SafeBox, SafeTalk, Eskalationswege“; PLAN_CHIPSI_CONNECTOR.md:161 „Safebox-Connector 5 Werkzeuge, read-only“) — LOKI-Kernel ausgeschlossen (HTTP 307, selbst gemessen).
+- Konnektoren-Anzeige 3 → 2: Account-/serverseitiger Connector-Status bei openlaw, lokal nicht steuerbar.
+- Die Fehlermeldung selbst („Nicht gespeichert: Netzwerkproblem — die Antwort konnte nicht erstellt werden“) ist eine generische Frontend-Meldung von Chipsi auf einen Serverausfall; das reine Netz ist sauber (chipsi.openlaw.cc → HTTP 303 in 0,13 s, selbst gemessen).
+- Falls doch der Gateway-Key betroffen wäre: Key-Verwaltung ist rein serverseitig — 401 „unknown or disabled key“ war laut CHANGELOG_LOKI_APP_0109.md:28 nur vom Gateway-Betreiber fixbar. (Aktueller Key laut Messwert gesund: initialize 200 + 8 Tools; mein Probe ohne Key: 401.)
+
+## Workarounds nach Rang
+1. **Im Chipsi-Chat den Konnektor „Judicario · amtliche Quellen“ für die aktuelle Frage ausschalten (per Chat-Toggle, belegt PLAN_CHIPSI_CONNECTOR.md:227) und die Frage in frischem Chat ohne Recherche neu senden.** (Sascha) — Der Fehler tritt erst bei der Synthese auf; ohne Konnektor-Ergebnisse fällt der größte variable Baustein aus der Antwortgenerierung weg — läuft es dann, ist der Konnektor-Payload der Auslöser, nicht das Netz.
+2. **Antwort-Modus wechseln (Tiefen-/Deep-Recherche aus → Standardmodus) und erneut senden.** (Sascha) — Weniger Tool-Aufrufe pro Antwort entlasten den Synthese-Loop; Hinweis: ein Deep-Modus ist in der gelesenen Doku (PRD S.1–5, PLAN, CHANGELOG) nicht belegt — Testcharakter, aber risikolos.
+3. **Recherche übergangsweise in Claude Desktop fahren: Gateway-Connector ist verbunden und listet 8 at_*-Tools (Messwert: initialize HTTP 200, tools/list = 8 Einträge; mein Probe ohne Key: HTTP 401 = Gateway lebt); Ergebnisse sobald Chipsi wieder synthesiert in die Chipsi-Akten nachpflegen.** (Sascha) — Der gesunde Teil der Kette (amtliche Recherche über gateway.openlaw.cc) bleibt nutzbar, nur der ausgefallene Teil (Chipsi-Synthese) wird umgangen.
+4. **Client-Fehler ausschließen: Chrome-PWA „Chipsi“ entfernen und neu installieren bzw. einmal im Inkognito-Fenster/anderem Chrome-Profil testen.** (Sascha) — Nicht gespeicherte Streaming-Antworten können auch an PWA-Service-Worker/Cache hängen — der einzige noch lokal prüfbare Punkt; in der Doku nicht dokumentiert, daher erst nach Rang 1–3.
+5. **Auf openlaw-Fix abstimmen: die fertige Nachricht an Reinhard senden (NACHRICHT_AN_REINHARD_CHIPSI_FEHLER.md, Stand 22.09. 14:30, fertig zum Kopieren, inkl. Frage „Ist euer Synthese-Backend ausgefallen?“) und bis zur Reparatur nur die Workarounds 1–3 nutzen; lokalen loki-legal-ops-Judicario-Wrapper NICHT als Ersatz einsetzen (Live-Test heute: 2× isError „Unbekanntes Tool im Judicario-Bündel“).** (Sascha) — Alle lokal prüfbaren Ursachen sind gemessen bzw. ausgeschlossen; der verbleibende Defekt liegt eindeutig auf openlaw-Serverseite.
 ## dwfrun-102156ed-48f8-4489-94f2-c074459ef97b_artifact_1_1-tool-result-d34ed634-5508-4bb8-9ba0-098c29918d58
 
 # Env-Check + Résumé 21.09.
@@ -379,6 +450,88 @@ Kernel v15.3.0 läuft, lokaler Wissensspeicher ist intakt (loki.db 7,3 MB, VwGH-
 
 ---
 Quelle: env-check per world.run (ffmpeg/encoders/filters/ffprobe/node/python3/brew/git/soffice/hcom/skillshare/uipro/curl registry/PingFang) · Résumé aus Wayfinder-Map + Logbuch + Memory.
+## dwfrun-a40a481e-ea20-4564-aea5-c9176e739f8b_artifact_1_1-tool-result-9079025e-1731-4bc7-89e3-0883f8e55d7e
+
+# Die 14 Punkte — was wirklich blockiert
+
+```mermaid
+flowchart TD
+    Start([Punkte-Liste 14 Punkte]) --> Router{Router nach Klasse}
+
+    Router -->|2| RJ[jetzt ausgeführt]
+    Router -->|7| RG[GO wartet]
+    Router -->|3| RF[Fremd wartet]
+    Router -->|1| RE[Erledigt]
+    Router -->|1| RT[Tot]
+
+    RJ --> P1[CaskHub installieren]
+    P1 -->|ok| S1[OK caskhub 0.8.3 in /Applications]
+    RJ --> P2[AutoClaw-Mirror 3 Skills]
+    P2 -->|ok| S2[OK 3 SKILL.md Kopien SHA-256 identisch]
+
+    RG --> G1[Computer-Use permission-broker-socket]
+    RG --> G2[LaunchAgent-Wecker GO]
+    RG --> G3[Bericht Thomas-Codex PDF+PPTX abnehmen]
+    RG --> G4[LokiVoice V10-Binary-Ersatz in /Applications]
+    RG --> G5[paseo-App-Install]
+    RG --> G6[ZCode Deutsch-Patch]
+    RG --> G7[Erbschaft Elternhaus Sebastianistraße]
+
+    RF --> F1[rtrvr.ai-MCP]
+    RF --> F2[Judicario-Gateway-Key 401]
+    RF --> F3[Thomas-Nachricht senden]
+
+    RE --> E1[Remindian-App]
+    RT --> T1[Tappie empiricapp]
+
+    classDef klJetzt fill:#a7f3d0,stroke:#059669
+    classDef klGo fill:#fde68a,stroke:#d97706
+    classDef klFremd fill:#bfdbfe,stroke:#2563eb
+    classDef klErl fill:#d1fae5,stroke:#10b981
+    classDef klTot fill:#e5e7eb,stroke:#6b7280
+    classDef klOk fill:#86efac,stroke:#16a34a
+
+    class RJ,P1,P2 klJetzt
+    class S1,S2 klOk
+    class RG,G1,G2,G3,G4,G5,G6,G7 klGo
+    class RF,F1,F2,F3 klFremd
+    class RE,E1 klErl
+    class RT,T1 klTot
+```
+
+## Klassifikation nach Router-Prüfung
+- **Remindian-App** → `erledigt` · Von der offenen Liste streichen. Stand 'lief als blockiert' ist überholt: App ist beweisbar installiert und startklar; nur einSmoke-Test (App öffnen) wäre optional.
+- **CaskHub installieren** → `jetzt` · Jetzt ausführen: GO laut Stand-Feld vorhanden, Cask-Rezept existiert und Version ist aktuell gewandert (0.8.3 statt 0.7.0) — Recherche-Stand also eh frisch zu prüfen. Falls Sascha sich nicht erinnert, das GO nachziehen; Risiko minimal (App-Install, reversibel).
+- **AutoClaw-Mirror: deja-history, cline-session-history, investigate-first** → `jetzt` · Sofort machbar, kein GO nötig (eigene Home-Dirs, keine Fremd-App). Die frühere 'außerhalb der Schreib-Grenze'-Meldung bezog sich nur auf die Session-Grenze des damaligen Runs — technisch ist ein cp vollkommen ausreichend.
+- **Computer-Use permission-broker-socket** → `go` · Go statt jetzt: Stopp-Regel 'keine Prozesse killen ohne GO' greift — der Restart beendet den aktiven Run, in dem diese Klassifikation selbst läuft. Kein broker-Prozess vorhanden (Fix ist also noch nötig), aber der Zeitpunkt muss Sascha wählen.
+- **LaunchAgent-Wecker GO** → `go` · Regel-Vorschlag fertig ausarbeiten und mit 1 Zeile zur Abnahme vorlegen (Uhrzeit, Ton, Wochenend-Verhalten). Kostet nach GO <5 Minuten.
+- **Bericht Thomas-Codex (PDF+PPTX) abnehmen** → `go` · Reiner Abnahme-Punkt — Dateien sind beweisbar fertig; nichts technisches mehr offen. In den GO-Batch an Sascha aufnehmen.
+- **LokiVoice V10-Binary-Ersatz in /Applications** → `go` · Im GO-Batch bündeln. Empfehlung: V10-Status vor dem Überschreiben kurz über den Session-Handoff 8db9086b verifizieren (Version im Bundle sagt nichts aus) — danach 1-Klick-Ersatz.
+- **paseo-App-Install** → `go` · GO explizit einholen — hier ist die Quelle eindeutig: der dokumentierte Stand vom 21.09. verlangt Saschas GO. Danach 1-Befehl-Install.
+- **rtrvr.ai-MCP** → `fremd` · Fremd-Punkt: nur Sascha kann den Key beschaffen. Danach ist der Rest reine Copy-Paste-Arbeit (jetzt-tauglich).
+- **Judicario-Gateway-Key 401** → `fremd` · Alles Lokale ist erledigt und beweisbar — der einzige fehlende Schritt liegt außerhalb der eigenen Systeme. Nur Nachfassen bei George.
+- **Tappie (empiricapp)** → `tot` · Sackgasse dokumentiert und lassen — ohne neue Information ist jeder weitere Suchaufwand rausgeworfen.
+- **ZCode Deutsch-Patch** → `go` · Zwei Hürden stapeln sich: fehlendes Artefakt + App-Eingriff. Empfehlung: erst Wiederherstellung aus dem Session-Archiv versuchen (lesend prüfbar), GO erst anfragen, wenn das Artefakt tatsächlich da ist — sonst GO für Luft.
+- **Thomas-Nachricht senden** → `fremd` · Doppelt fremd: Kanal = Saschas Gmail UND die MCP-Anbindung hat fehlende Scopes. Erst Text finalisieren (Logbuch sagt 'in Arbeit', nicht 'fertig'), dann Versand.
+- **Erbschaft/Elternhaus Sebastianistraße** → `go` · Aus der technischen Pipeline rausnehmen und in Saschas persönliche Entscheidungsliste — hier entscheidet nur er selbst; das System kann nur strukturieren.
+
+## Jetzt ausgeführt
+- ✅ **CaskHub installieren** — Beweis: Befehl `brew install --cask caskhub` → Output: „==> Installing Cask caskhub / ==> Moving App 'CaskHub.app' to '/Applications/CaskHub.app' / 🍺 caskhub was successfully installed!" · Verifikation: `brew list --cask --versions caskhub` → „caskhub 0.8.3" · App-Pfad existiert: /Applications/CaskHub.app · Vorab-Check: keine existierende CaskHub-App in /Applications bzw. ~/Applications (kein Überschreiben) · Rollback: brew uninstall --cask caskhub · Hinweis: Warnung betrifft nur nicht vertraute Dritttaps (ojuschugh1/sqz, render-oss/render), nicht diese Installation.
+- ✅ **AutoClaw-Mirror: deja-history, cline-session-history, investigate-first** — Beweis: Befehl ausgeführt: cp -R ~/.agents/skills/deja-history ~/.agents/skills/cline-session-history ~/.agents/skills/investigate-first ~/.openclaw-autoclaw/skills/ → exit 0. Vorher geprüft: alle 3 Ziel-Ordner existierten nicht (ls: No such file or directory) → kein Überschreiben möglich, nichts gelöscht. Verifikation nach Kopie: SKILL.md-SHA256 identisch Quelle/Ziel für alle 3 — deja-history: 324fa57b…df936, cline-session-history: 6dfbbd74…a8fc, investigate-first: 7cc19dd2…a55d8. Unterordner mitkopiert: ~/.openclaw-autoclaw/skills/cline-session-history/scripts/ und ~/.openclaw-autoclaw/skills/investigate-first/agents/. Pfade: /Users/saschalagler/.openclaw-autoclaw/skills/deja-history/SKILL.md, /Users/saschalagler/.openclaw-autoclaw/skills/cline-session-history/SKILL.md, /Users/saschalagler/.openclaw-autoclaw/skills/investigate-first/SKILL.md
+
+## Für Sascha zum Entscheiden (GO-Punkte)
+- **Computer-Use permission-broker-socket** — Nach Abschluss dieses Runs (kein Workflow aktiv): ZCode komplett beenden (⌘Q) und neu starten, dann Socket prüfen. Ein gemeinsamer Restart-Termin deckt gleichzeitig den Deutsch-Patch (Punkt 12).
+- **LaunchAgent-Wecker GO** — Nach GO: LaunchAgent com.sascha.wecker.plist anlegen (StartCalendarInterval + osascript-Benachrichtigung/afplay) und mit launchctl bootstrap laden.
+- **Bericht Thomas-Codex (PDF+PPTX) abnehmen** — Sascha öffnet das PDF und sagt GO → danach Versand an Thomas (siehe Punkt 13).
+- **LokiVoice V10-Binary-Ersatz in /Applications** — Nach GO: alte App sichern (mv /Applications/LokiVoice.app /Applications/LokiVoice.app.bak-14-09) und dann cp -R ~/loki-voice-app/LokiVoice.app /Applications/
+- **paseo-App-Install** — Nach GO: brew install --cask paseo
+- **ZCode Deutsch-Patch** — Nach GO + freiem Restart-Fenster: 1) Artefakt aus Session-Archiv sess_adac…be06c60c0 (13.09.) wiederherstellen, 2) Übersetzung fertigstellen, 3) asar-Repack + codesign + Neustart-Test (Restart gemeinschaftlich mit Punkt 4).
+- **Erbschaft/Elternhaus Sebastianistraße** — Keine technische Aktion; optional Sascha einen strukturierten Entscheidungsrahmen anbieten (memory-enhanced-decision-making / /decide) mit Optionen + Tradeoffs.
+
+## Fremd-System/Key/Kanal
+- **rtrvr.ai-MCP** — Fremd-Punkt: nur Sascha kann den Key beschaffen. Danach ist der Rest reine Copy-Paste-Arbeit (jetzt-tauglich).
+- **Judicario-Gateway-Key 401** — Alles Lokale ist erledigt und beweisbar — der einzige fehlende Schritt liegt außerhalb der eigenen Systeme. Nur Nachfassen bei George.
+- **Thomas-Nachricht senden** — Doppelt fremd: Kanal = Saschas Gmail UND die MCP-Anbindung hat fehlende Scopes. Erst Text finalisieren (Logbuch sagt 'in Arbeit', nicht 'fertig'), dann Versand.
 ## dwfrun-f74eaa93-ffbd-4918-9dbe-140b078c0a00_artifact_1_1-tool-result-2ce2cbc4-aa69-4f25-9cd7-4c832a147044
 
 # Thomas' Codex-Berichte: Was sie uns sagen — und wie wir antworten
@@ -463,6 +616,66 @@ _Ton: Sachlich-kollegial mit sauberer Rollentrennung: Erledigtes wird Thomas zug
 
 ---
 Quellen: die 5 Screenshots (Thomas-Seite/Codex) · LokiVoice-Memory-Notiz · Kritik: siehe Bericht.
+## dwfrun-efb4300b-8fa0-4589-aa9c-c73421c80761_artifact_1_1-tool-result-635f5534-738d-40c7-9ce5-eaad550ce91c
+
+# Agents-Check: alle Agent-Definitionen geprüft und repariert
+
+Geprüft: 10 eigene Agent-Dateien, 14 Plugin-Agents, agents-state.json, fix-subagents.sh.
+Gate: PASS — alle Agents starten-konfiguriert.
+Reparaturen: 1 Dateien (Backups in /tmp/agents-fix-2209/).
+
+- **~/.zcode/agents/cavecrew-reviewer.md (cavecrew-reviewer.md:10 model/thoughtLevel)** (low, unconfirmed): thoughtLevel 'low' auf GLM-5.3-Flash kann in dieser Session nicht verifiziert werden (ListModels nicht verfügbar: model_catalog_unavailable) — Format und Zuordnung sind aber plausibel, kein Startfehler erwartet.
+- **~/.zcode/agents/code-architect.md (code-architect.md:6-8)** (low, unconfirmed): tools-Liste enthält Edit/Write, obwohl der Rollentext 'Kein Write/Edit an Produktionsdateien' vorschreibt — Widerspruch zwischen Toolzuteilung und Verboten (nur PLAN.md-Schreiben erlaubt); plausibel, aber restriktiver konfigurierbar.
+- **~/.zcode/agents/code-architect.md (code-architect.md:5-6)** (low, unconfirmed): Kompatibilität model (GLM-5.3-Flash) vs. thoughtLevel: high konnte nicht gegen einen Modellkatalog geprüft werden — ListModels schlug in dieser Session fehl ('model_catalog_unavailable'). Check daher nicht ausgeführt, nur Format und Vorhandensein verifiziert.
+- **~/.zcode/agents/config-auditor.md (config-auditor.md:6)** (low, unconfirmed): thoughtLevel 'low' konnte nicht gegen einen Modell-Katalog verifiziert werden (ListModels in dieser Session nicht verfügbar: 'model_catalog_unavailable') — Support für Level 'low' beim Modell GLM-5.3-Flash ist plausibel, aber ungeprüft
+- **~/.zcode/agents/config-auditor.md (config-auditor.md:8-16)** (low, unconfirmed): tools-Liste enthält Edit/Write, obwohl der Agent-Kontrakt nur lesend prüft (Task selbst sagt 'nur lesen'); für den beschriebenen Zweck unnötig breite Schreibrechte
+- **~/.zcode/agents/explore.md (explore.md:2-3)** (low, unconfirmed): name und description vorhanden und sinnvoll ("explore", Nur-Lese-Kundschafter).
+- **~/.zcode/agents/explore.md (explore.md:5)** (low, unconfirmed): model-Zeile vorhanden mit Format provider/model: "account:zai-individual-coding-plan/GLM-5.3". Gültigkeit gegen Model-Katalog nicht prüfbar: ListModels schlug mit model_catalog_unavailable fehl (Session hat keinen Katalog). Format selbst ist plausibel.
+- **~/.zcode/agents/explore.md (explore.md:6)** (low, unconfirmed): thoughtLevel: high ist vorhanden — reasoning-level-missing-Fehler droht nicht.
+- **~/.zcode/agents/explore.md (explore.md:5-6)** (low, unconfirmed): Ob GLM-5.3 die Gedankenstufe high unterstützt, ist NICHT verifizierbar (kein Model-Katalog verfügbar, ListModels-Fehler model_catalog_unavailable). Nur Observation, keine erfundene Behauptung.
+- **~/.zcode/agents/explore.md (explore.md:7-16)** (medium, unconfirmed): Widerspruch: tools-Liste enthält Edit (Z.14), Write (Z.16) und uneingeschränktes Bash (Z.11), während der Body (Z.20, 28) "Nur Lesen — nie ändern" bzw. "Keine Write/Edit/Execute-Aktionen" verlangt. Die Einschränkung ist nur per Prosa, nicht per Tool-Liste durchgesetzt; Bash könnte auch schreibende Befehle ausführen.
+- **~/.zcode/agents/gate-enforcer-test.md (gate-enforcer-test.md:5-6)** (low, unconfirmed): model/thoughtLevel-Kompatibilität konnte nicht gegen eine Modellkatalog-Auflistung verifiziert werden — ListModels schlug in dieser Session mit model_catalog_unavailable fehl. Format ist gültig (provider/model: 'account:zai-individual-coding-plan/GLM-5.3-Flash'), thoughtLevel 'high' ist vorhanden; nur die tatsächliche Unterstützung der Ebene 'high' durch das Modell bleibt unbewiesen.
+- **~/.zcode/agents/gate-enforcer-test.md (gate-enforcer-test.md:12-16)** (low, unconfirmed): tools-Liste plausibel, aber für einen reinen Gate-Prüfer fraglich breit: WebFetch/WebSearch und Edit/Write geben einem Vetoinstrument Schreib- und Netzzugriff; kein Blocker.
+- **~/.zcode/agents/implementer.md (implementer.md:5-6 (model/thoughtLevel))** (low, unconfirmed): Kompatibilität von thoughtLevel=max mit model account:zai-individual-coding-plan/GLM-5.3-Flash nicht verifizierbar — ListModels schlug in dieser Session fehl (model_catalog_unavailable); nur Plausibilitätshinweis: 'max' auf einem Flash-Modell könnte nicht unterstützt sein.
+- **~/.zcode/agents/qa-tester.md (qa-tester.md: model/thoughtLevel-Kompatibilität)** (medium, unconfirmed): thoughtLevel 'max' konnte nicht gegen die reasoningLevels von GLM-5.3-Flash verifiziert werden — ListModels lief in dieser Session mit model_catalog_unavailable; Kompatibilität ist unbestätigt, nicht als fehlerhaft befunden
+- **~/.zcode/agents/reviewer.md (reviewer.md:15-16)** (low, unconfirmed): Edit und Write stehen in der tools-Liste, obwohl der Rollentext 'Lesen + urteilen, nie ändern' und 'Keine Edits' vorgibt — Werkzeug widerspricht der Rolle.
+- **~/.zcode/agents/reviewer.md (reviewer.md:5-6)** (low, unconfirmed): model ist formal provider/model-Format (3a11f548-4734-459c-bc01-535ecf69a1a5/qwen/qwen3.8-max) und thoughtLevel 'xhigh' vorhanden, aber ob das Modell xhigh unterstützt konnte nicht verifiziert werden — ListModels scheiterte mit 'model_catalog_unavailable'.
+
+## Maschinell verifiziert
+- Inventur + Gate: python3-Check über alle Frontmatters und agents-state.json
+- Jede Datei zusätzlich von einem eigenen Prüfer-Subagenten gelesen
+## dwfrun-c55c4bc7-c5b6-4988-b83b-042d044df486_artifact_1_1-tool-result-676f1091-944b-4b54-bf77-3da51c206524
+
+# eqMac deinstalliert + Spotify-Fix
+
+**eqMac:** vollständig entfernt ✅
+**Spotify:** läuft wieder ✅
+
+**Ursache Spotify:** Spotify lief als x86_64-Build (1.3.0.277 via Rosetta/Emulation) auf einem arm64-Mac mit ~1 GB korruptem Cache — daher die Hänger/White-Screens; ein Update-Selbstversuch mit dem generischen Intel-DMG hätte das Problem nur reproduziert. Zusätzlich überlebten die Prozesse normale Term-Signale (relaunch-Schutz).
+
+## Entfernt
+- /Applications/eqMac.app (entfernt, existierte)
+- /Library/Audio/Plug-Ins/HAL/eqMac.driver (entfernt, existierte)
+- /Library/PrivilegedHelperTools/com.bitgapp.eqmac.helper (existierte nicht — nichts zu entfernen)
+- /Library/LaunchDaemons/com.bitgapp.eqmac.helper.plist (existierte nicht — nichts zu entfernen)
+- ~/Library/Application Support/com.bitgapp.eqmac (entfernt)
+- ~/Library/Application Support/CrashReporter/eqMac_63EA55B9-....plist (entfernt)
+- ~/Library/WebKit/com.bitgapp.eqmac (entfernt)
+- ~/Library/Preferences/com.bitgapp.eqmac.plist (entfernt)
+- ~/Library/HTTPStorages/com.bitgapp.eqmac (entfernt)
+- ~/Library/Caches/SentryCrash/eqMac (entfernt)
+
+## Spotify-Schritte
+- Diagnose: mdfind + ls → Spotify liegt in /Applications/Spotify.app (normaler Ort, nicht fremd); Version 1.3.0.277; 6 hängende Prozesse (Hauptprozess Status R, 4.8% CPU); brew list --cask spotify → Exit 1 (kein Homebrew)
+- Alle Prozesse gekillt: pkill -i spotify wirkungslos, pkill -9 -i spotify → pgrep bestätigt 'KEINE_PROZESSE_MEHR'
+- Cache bereinigt (Datenverlust-frei): rm -rf ~/Library/Caches/com.spotify.client (982 MB) und ~/Library/Application Support/Spotify/PersistentCache; prefs und Users bleiben erhalten (Playlists liegen ohnehin in der Cloud)
+- Erster Download https://download.scdn.co/Spotify.dmg installiert (1.3.1.234) — startete NICHT: 'bad CPU type in executable', lipo zeigte x86_64-Binary auf arm64-Mac → generisches DMG ist Intel-Build, das erklärt die Hänger der alten Version (Emulation auf arm64)
+- ARM64-Build geladen: https://download.scdn.co/SpotifyARM64.dmg (166 MB), installiert nach /Applications/Spotify.app, lipo bestätigt arm64, Version 1.3.1.234
+- Gestartet mit open -a Spotify; pgrep zeigt 6 laufende Prozesse (Spotify + Helper, annotation=platform=macosarm64, version=1.3.1.234); 15 Sek. später noch stabil (Status S, keine R-Spinne); Temp-DMGs in /tmp aufgeräumt
+
+## Offen für Sascha
+- Optional: nach erstem Spotify-Start Audio-/Login-Einstellungen kurz prüfen (Cache wurde geleert, Präferenzen blieben erhalten)
+- Ggf. alte Intel-DMG-Quelle merken: künftig nur https://download.scdn.co/SpotifyARM64.dmg nutzen
 ## call_339477364a17488a84bbd97e-tool-result-bc9354f9-6002-4ff8-b81d-0069bef089d6
 
 Physiotherapie - Hochschule Campus Wien

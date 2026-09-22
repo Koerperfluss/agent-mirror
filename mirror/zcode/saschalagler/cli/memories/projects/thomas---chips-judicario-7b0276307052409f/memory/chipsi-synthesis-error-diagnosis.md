@@ -1,9 +1,9 @@
 ---
 name: chipsi-synthesis-error-diagnosis
-description: Chipsi 22.09. final — Synthese-+Recherche-Ausfall = openlaw-Serverseite
-  (bewiesen); Login-Sperre „Passwort-Konto existiert" (koerperfluss@gmail.com),
-  Sascha muss Passwort/Reset; Ersatz läuft (Mini-Chipsi 8085, Claude Desktop);
-  Neukonfiguration mit Key #2 vorbereitet
+description: Chipsi 22.09. GELÖST — Störer war der Chipsi-verwaltete Konnektor „Judicario
+  · amtliche Quellen" (seit Key-Rotation 04:21); Fix im Chat: verwalteten Konnektor AUS,
+  eigenen Key-Konnektor AN (alle Werkzeuge „Immer") → Synthese baut wieder. Session lebt
+  im Chrome-Profil „Default"; Mini-Chipsi 8085 = Notfall; Reinhard per WhatsApp (RB) informiert
 metadata:
   node_type: memory
   type: project

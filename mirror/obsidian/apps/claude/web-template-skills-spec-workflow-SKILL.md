@@ -1,14 +1,14 @@
 ---
 app: claude
 quelle: "web-template/skills/spec-workflow/SKILL.md"
-stand: 2026-09-16
+stand: 2026-09-22
 tags: [spiegel, claude]
 ---
 
 ---
 name: spec-workflow
 description: Use when medium-to-large changes need explicit requirements, technical design, and task planning before implementation, especially for multi-module work, unclear acceptance criteria, or architecture-heavy requests.
-version: 2.34.4
+version: 2.34.5
 alwaysApply: false
 ---
 

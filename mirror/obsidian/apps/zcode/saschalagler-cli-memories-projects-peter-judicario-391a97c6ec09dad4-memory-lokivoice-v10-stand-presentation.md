@@ -1,7 +1,7 @@
 ---
 app: zcode
 quelle: "saschalagler/cli/memories/projects/peter-judicario-391a97c6ec09dad4/memory/lokivoice-v10-stand-presentation.md"
-stand: 2026-09-21
+stand: 2026-09-22
 tags: [spiegel, zcode]
 ---
 
@@ -42,6 +42,8 @@ metadata:
 
 **Humanisierter Bericht 21.09. (Zwischenstand, 2 Seiten — durch Design-Update unten abgelöst):** Sascha-Kritik „sieht gut aus, aber zu wenig Infos — man kann nicht nachvollziehen was was ist" → delegierter Humanizer-Agent (`agent_206971f8-b464-4150-8787-5912b286dedd`, Fortsetzung via SendMessage möglich) erzeugte `/Users/saschalagler/Desktop/Coworkspace_Ich/PETER JUDICARIO/content_thomas.json` (569 statt 200 Wörter Abschnittstext, Zahlen unverändert): Fachwörter erklärt (Credits, Fast-Modus, Heartbeat, Ende-zu-Ende, Gateway-Key, faster-whisper, OpenRouter Free …), je Abschnitt „Was heißt das für dich?"-Zeile. PDF neu gebaut (Schnellweg 1,8 s, 2 Seiten, Antwort-Doppelung entfernt — Antwort nur noch in Abschnitt 6), PNG-geprüft. **NOCH NICHT ABGENOMMEN — GO oder Änderungswünsche ausstehen.** PPTX noch KOMPAKTE alte Fassung (nicht humanisiert) — humanisieren nur auf Saschas Wort.
 
-**Design-Update 21.09. (FINAL, nach „völlig hässlich" + „Infos ohne Abstand Logik"):** Zweite Design-Runde: dunkle KERN-Karte (#0f172a, gelbe Überschrift #fbbf24), Geister-Nummern 1–6, Badge-Labels (AUSSAGEN/LÖSUNG/ZIEL farbig), Karten-Schatten, `@media print` (weißer Druckhintergrund, `print-color-adjust:exact`) — dann dritte Kritik „Textwände ohne Abstand" → **Layout-Handwerk-Pass:** AUSSAGEN/LÖSUNG als Bullet-Listen (1 Fakt pro Zeile, Satz-Split), Labels als eigene Zeile, line-height 1,6, Luft überall, iris-`--full`-Vollseitencheck dazwischen. **Finale Fassung: `Bericht_Thomas-Codex_2026-09-20.pdf`, 4 Seiten luftig (14:07), keine Waisen, Quellenzeile unten auf Seite 4 — wartet auf GO.** PPTX noch KOMPAKTE alte 4-Folien-Fassung (nicht humanisiert/neues Design) — nur auf Saschas Wort nachziehen. Quelle für Rebuilds bleibt `content_thomas.json` + Layout-Regeln in [[sascha-output-standard]]. Antwort-Dopplung vermeiden (Antwort nur in Abschnitt 6).
+**Design-Update 21.09. (FINAL, nach „völlig hässlich" + „Infos ohne Abstand Logik"):** Zweite Design-Runde: dunkle KERN-Karte (#0f172a, gelbe Überschrift #fbbf24), Geister-Nummern 1–6, Badge-Labels (AUSSAGEN/LÖSUNG/ZIEL farbig), Karten-Schatten, `@media print` (weißer Druckhintergrund, `print-color-adjust:exact`) — dann dritte Kritik „Textwände ohne Abstand" → **Layout-Handwerk-Pass:** AUSSAGEN/LÖSUNG als Bullet-Listen (1 Fakt pro Zeile, Satz-Split), Labels als eigene Zeile, line-height 1,6, Luft überall, iris-`--full`-Vollseitencheck dazwischen. **Finale Fassung: `Bericht_Thomas-Codex_2026-09-20.pdf`, 4 Seiten luftig.**
+
+**ABGENOMMEN (22.09., ohne formales GO):** Sascha erklärte den Bericht-Punkt auf Nachfrage für **„schon lang erledigt"** — das gilt als Abnahme. Kein weiteres GO einholen, keine erneuten Umbau-Runden. Versand der Antwort an Thomas bleibt bei Sascha (fertige Sätze im PDF Abschnitt 6). PPTX bleibt die kompakte 4-Folien-Fassung — humanisieren nur noch auf ausdrückliches Wort. Siehe [[sascha-output-standard]] (Regel: NUR 1 Sache auf einmal, kein AskUserQuestion-Dialog — er schließt solche Dialoge kommentarlos).
 
 **MA-Standard-Übergang (21.09.):** Sascha hat danach die GRUNDSÄTZLICHE Forderung gestellt — generische Multi-Agent-Pipeline bei jeder Anfrage automatisch (siehe [[ma-standard-pipeline]]; Draft `.zcode/workflow-drafts/MA-Standard.dwf.ts` liegt bereit, 2 SaveWorkflow-Versuche abgelehnt, Rückfrage „immer vs. bei Arbeit" offen). Der Thomas-Codex-Workflow (dwfrun-f74eaa93, 7 Agents, 8,57 Mio. Tokens, 4 Phasen) ist sein Referenzbild für „wie Arbeit ab jetzt laufen soll".

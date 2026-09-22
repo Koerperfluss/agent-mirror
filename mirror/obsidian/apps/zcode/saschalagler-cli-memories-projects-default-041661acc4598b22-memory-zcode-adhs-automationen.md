@@ -1,7 +1,7 @@
 ---
 app: zcode
 quelle: "saschalagler/cli/memories/projects/default-041661acc4598b22/memory/zcode-adhs-automationen.md"
-stand: 2026-09-21
+stand: 2026-09-22
 tags: [spiegel, zcode]
 ---
 
@@ -89,4 +89,13 @@ metadata:
 
 ## Elfter Lauf (Mo 21.09. 16:0x — No-op PASS)
 - 16:00-Montag-Slot korrekt 1-Zeilen-No-op (Release-Brief nur freitags); dabei verifiziert: **P1 besteht weiter** (loki-voice noch dirty, 4 Dateien + .DS_Store untracked) — Sascha im No-op-Output daran erinnert. Bilanz: 11 Läufe; offene Punkte unverändert: Wecker-GO · Deutsch-Patch · GO voice-commit.
+
+## Zwölfter Lauf (Mo 21.09. 21:05 — Abend-Zweig PASS, Multi-Writer-Lektion)
+- Kalender-Event **„Logbuch 21.09.2026"** UID `C269B996-812A-4B7B-BA10-1F1F3BCC1E56`, Logbuch `2026-09-21.md` → abgeschlossen.
+- **⚠️ Lektion Multi-Writer-Logbuch:** Beim Append kam „File has been modified since read" — die Abschnitte „Feierabend-Log 21.09." und „Abschließer-Sweep 21.09." (dwfrun-102156ed, actor#3) waren von ANDEREN Workflows dazugekommen. Regel bewährt: **vor jedem Logbuch-Schreiben neu lesen, nur append-only vor „✍️ Meine Notizen"**, eigene Aussagen gegen den aktuellen Datei-Stand korrigieren (mein Morgen-P1 „wartet auf GO voice-commit" war beim Abend-Lauf schon gelöst: Commit `7fdbf2d`, 21 Dateien).
+- Tagesbilanz 21.09.: erster Tag mit allen 3 Läufen pünktlich/vollständig (Morgen 09:05 · Risiko 10:07 mit P1 · Abend 21:05 mit P1-gelöst-Bestätigung); MA-Standard-Pipeline final (siehe MEMORY-Index „Subagent-Dispatch"); Deutsch-Patch-Strings-Artefakt im Dateisystem nicht mehr auffindbar.
+
+## Dreizehnter Lauf (Di 22.09. 15:0x — Morgen-Brief wieder verpasst → Catch-up PASS)
+- **09:00 wieder verpasst** (kein `2026-09-22.md`; Mac schlief — Wecker-GO bleibt DER Hebel). Catch-up 15:0x Dienstag wie am 18.09.: Logbuch `2026-09-22.md` angelegt (status: offen), Kalender-Event **„Tagesplan 22.09."** UID `F2C35605-1BA2-44D7-AD36-5CF3C3615015`.
+- Tagesplan 22.09.: V10-Rebuild (Handoff `8db9086b`, seit 21.09. unangetreten) · Deutsch-Patch-Strings-Wiederherstellung · Wecker-GO · eqMac/Spotify-Fix abschließen (siehe [[eqmac-deinstallation-spotify-fix]]) · Thomas-Bericht-GO. DEV-BRIEF: 0 neue Commits letzte 24 h, keine CI.
 

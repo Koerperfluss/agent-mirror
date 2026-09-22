@@ -1,14 +1,14 @@
 ---
 app: cline-code
 quelle: "web-template/web-development/rule.md"
-stand: 2026-09-16
+stand: 2026-09-22
 tags: [spiegel, cline-code]
 ---
 
 ---
 name: web-development
 description: Use when users need to implement, integrate, debug, build, deploy, or validate a Web frontend after the product direction is already clear, especially for React, Vue, Vite, browser flows, or CloudBase Web integration.
-version: 2.34.4
+version: 2.34.5
 alwaysApply: false
 ---
 

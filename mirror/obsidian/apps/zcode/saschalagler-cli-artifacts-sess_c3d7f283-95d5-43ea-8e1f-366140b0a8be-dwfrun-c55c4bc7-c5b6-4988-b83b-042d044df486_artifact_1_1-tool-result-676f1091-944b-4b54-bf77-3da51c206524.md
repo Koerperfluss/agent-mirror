@@ -1,0 +1,37 @@
+---
+app: zcode
+quelle: "saschalagler/cli/artifacts/sess_c3d7f283-95d5-43ea-8e1f-366140b0a8be/dwfrun-c55c4bc7-c5b6-4988-b83b-042d044df486_artifact_1_1-tool-result-676f1091-944b-4b54-bf77-3da51c206524.md"
+stand: 2026-09-22
+tags: [spiegel, zcode]
+---
+
+# eqMac deinstalliert + Spotify-Fix
+
+**eqMac:** vollständig entfernt ✅
+**Spotify:** läuft wieder ✅
+
+**Ursache Spotify:** Spotify lief als x86_64-Build (1.3.0.277 via Rosetta/Emulation) auf einem arm64-Mac mit ~1 GB korruptem Cache — daher die Hänger/White-Screens; ein Update-Selbstversuch mit dem generischen Intel-DMG hätte das Problem nur reproduziert. Zusätzlich überlebten die Prozesse normale Term-Signale (relaunch-Schutz).
+
+## Entfernt
+- /Applications/eqMac.app (entfernt, existierte)
+- /Library/Audio/Plug-Ins/HAL/eqMac.driver (entfernt, existierte)
+- /Library/PrivilegedHelperTools/com.bitgapp.eqmac.helper (existierte nicht — nichts zu entfernen)
+- /Library/LaunchDaemons/com.bitgapp.eqmac.helper.plist (existierte nicht — nichts zu entfernen)
+- ~/Library/Application Support/com.bitgapp.eqmac (entfernt)
+- ~/Library/Application Support/CrashReporter/eqMac_63EA55B9-....plist (entfernt)
+- ~/Library/WebKit/com.bitgapp.eqmac (entfernt)
+- ~/Library/Preferences/com.bitgapp.eqmac.plist (entfernt)
+- ~/Library/HTTPStorages/com.bitgapp.eqmac (entfernt)
+- ~/Library/Caches/SentryCrash/eqMac (entfernt)
+
+## Spotify-Schritte
+- Diagnose: mdfind + ls → Spotify liegt in /Applications/Spotify.app (normaler Ort, nicht fremd); Version 1.3.0.277; 6 hängende Prozesse (Hauptprozess Status R, 4.8% CPU); brew list --cask spotify → Exit 1 (kein Homebrew)
+- Alle Prozesse gekillt: pkill -i spotify wirkungslos, pkill -9 -i spotify → pgrep bestätigt 'KEINE_PROZESSE_MEHR'
+- Cache bereinigt (Datenverlust-frei): rm -rf ~/Library/Caches/com.spotify.client (982 MB) und ~/Library/Application Support/Spotify/PersistentCache; prefs und Users bleiben erhalten (Playlists liegen ohnehin in der Cloud)
+- Erster Download https://download.scdn.co/Spotify.dmg installiert (1.3.1.234) — startete NICHT: 'bad CPU type in executable', lipo zeigte x86_64-Binary auf arm64-Mac → generisches DMG ist Intel-Build, das erklärt die Hänger der alten Version (Emulation auf arm64)
+- ARM64-Build geladen: https://download.scdn.co/SpotifyARM64.dmg (166 MB), installiert nach /Applications/Spotify.app, lipo bestätigt arm64, Version 1.3.1.234
+- Gestartet mit open -a Spotify; pgrep zeigt 6 laufende Prozesse (Spotify + Helper, annotation=platform=macosarm64, version=1.3.1.234); 15 Sek. später noch stabil (Status S, keine R-Spinne); Temp-DMGs in /tmp aufgeräumt
+
+## Offen für Sascha
+- Optional: nach erstem Spotify-Start Audio-/Login-Einstellungen kurz prüfen (Cache wurde geleert, Präferenzen blieben erhalten)
+- Ggf. alte Intel-DMG-Quelle merken: künftig nur https://download.scdn.co/SpotifyARM64.dmg nutzen

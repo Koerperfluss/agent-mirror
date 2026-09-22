@@ -1,14 +1,14 @@
 ---
 app: cline-code
 quelle: "web-template/auth-tool-cloudbase/rule.md"
-stand: 2026-09-16
+stand: 2026-09-22
 tags: [spiegel, cline-code]
 ---
 
 ---
 name: auth-tool-cloudbase
 description: CloudBase auth provider configuration and login-readiness guide. This skill should be used when users need to inspect, enable, disable, or configure auth providers, publishable-key prerequisites, login methods, SMS/email sender setup, or other provider-side readiness before implementing a client or backend auth flow.
-version: 2.34.4
+version: 2.34.5
 alwaysApply: false
 ---
 

@@ -1,13 +1,19 @@
 ---
 app: zcode
 quelle: "saschalagler/cli/memories/projects/peter-judicario-391a97c6ec09dad4/memory/MEMORY.md"
-stand: 2026-09-21
+stand: 2026-09-22
 tags: [spiegel, zcode]
 ---
 
 # Memory Index
 
-- [MA-Standard Pipeline](ma-standard-pipeline.md) — **GESPEICHERT global, FINALE (21.09.):** Auto-Routing über die ECHTE Installation — Router wählt aus den 25 echten Subagent-Typen 2-4 aus, ordnet MCP-Server (32) + Skills (258) zu, parallel, Synthese, 1 Gegenlesen. + **AUTO-MA-Regel in ~/.zcode/AGENTS.md §5** = gilt in JEDERM neuen Chat, IMMER (auch Mini-Fragen, „ja") · offene Punkte: rtrvr-Key (Sascha), paseo/Bericht/Binary-GOs, Gateway-Key 401, EnvCheck-Run dwfrun-102156ed läuft; Commands alle 25 behalten
+- **NUR 1 SACHE AUF EINMAL (22.09.)** — keine Bündelung, keine AskUserQuestion-Dialoge (werden kommentarlos geschlossen); Entscheidungsfragen = 1 klare Textfrage pro Nachricht mit Empfehlung; Schweigen ≠ Ablehnung/Zustimmung → bestes Judgement, Punkt sauber abschließen (Details in sascha-output-standard)
+
+- [MA-Standard Pipeline](ma-standard-pipeline.md) — **GESPEICHERT global, FINALE (21.09.):** Auto-Routing über die ECHTE Installation — Router wählt aus den 25 echten Subagent-Typen 2-4 aus, ordnet MCP-Server (32) + Skills (258) zu, parallel, Synthese, 1 Gegenlesen. + **AUTO-MA-Regel in ~/.zcode/AGENTS.md §5** = gilt in JEDERM neuen Chat, IMMER (auch Mini-Fragen, „ja") · Commands alle 25 behalten; Feierabend-Log + Kalender-Event (Calendar.app-Fallback, google-workspace = Permission denied)
+
+- [LokiVoice + Thomas-Bericht](lokivoice-v10-stand-presentation.md) — **Bericht Thomas-Codex ABGENOMMEN (22.09., „schon lang erledigt")** — kein GO mehr einholen; Versand bleibt bei Sascha (Sätze im PDF §6) · V10-Binary-Ersatz in /Applications braucht weiterhin GO · PPTX = kompakte Fassung
+
+- [EnvCheck + Blocker-Routing 21./22.09.](envcheck-blocker-routing-2109.md) — EnvCheck dwfrun-102156ed FERTIG: 14/15 grün (libass fehlt, PingFang-Pfad rot), **P1-Datenverlust loki-voice per Commit 7fdbf2d behoben**, 4 Punkte selbst erledigt · Blocker-Routing dwfrun-a40a481e lief (14 Punkte klassifiziert: jetzt/go/fremd/erledigt/tot) · AutoClaw-Mirror per cp MÖGLICH (frühere Grenze war falsch)
 
 - [Sascha Output-Standard](sascha-output-standard.md) — NIEMALS Markdown als Ergebnis → druckfähige PDF (weiß, BLUF-Liste + nummerierte Abschnitte); briefmaker-Skill installiert; Aufbau = Saschas Entscheidung; Wort „Fiche" abgelehnt
 

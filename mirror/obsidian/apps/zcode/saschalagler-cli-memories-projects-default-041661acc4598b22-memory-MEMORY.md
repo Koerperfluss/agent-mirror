@@ -1,13 +1,17 @@
 ---
 app: zcode
 quelle: "saschalagler/cli/memories/projects/default-041661acc4598b22/memory/MEMORY.md"
-stand: 2026-09-21
+stand: 2026-09-22
 tags: [spiegel, zcode]
 ---
 
 # Memory Index
 
-- [ZCode ADHS-Automations](zcode-adhs-automationen.md) — 13.–21.09. LIVE: **EINE Automation mit ALLEN 6 Briefs** (cron `0 9,10,15,16,21`, Zweige per Uhrzeit+Wochentag; niemals 6 separate — Nutzer-Ziel!) + Engine 7/7 PASS; **10 Läufe, alle 6 Zweige bewiesen: Morgen 21.09. erstmals PÜNKTLICH (UID C1BFC6A3) · Risiko-Scan 21.09. erster echter P1-Finding: loki-voice-Submodul dirty (4 Dateien uncommittet) → wartet auf „GO voice-commit" · Abend 13./16./20.09. PASS (Events 610E2A57/88CCE1A6/6BFDB24A, Fix `open -a Calendar` vor osascript) · 16:00/15:00-No-ops korrekt**; ⚠️ **Lücken-Tage 15./17./19.09. (Mac schläft um 09:00)**; offen auf GO: LaunchAgent com.sascha.assi.daily als Wecker umrüsten + Deutsch-Patch (5066 Strings); 1 Task pro Chat-Limit
+- [Subagent-Dispatch: implementer-Workaround](subagent-dispatch-implementer-workaround.md) — **22.09. DRITTE Wurzel: eigene Agents (~/.zcode/agents/*.md) hatten model: ohne thoughtLevel: → Frontmatter-Fix in alle 10 Dateien + fix-subagents.sh erweitert; greift erst nach ZCode-Neustart (App cacht Frontmatter); general-purpose läuft derweil; plain-name-Keys in agents-state.json funktionieren NICHT; Check-Workflow dwfrun-efb4300b**
+
+- [eqMac-Deinstallation + Spotify-Fix](eqmac-deinstallation-spotify-fix.md) — 22.09. FERTIG (dwfrun-c55c4bc7): eqMac vollständig entfernt (App + HAL-Treiber + 6 User-Reste, sudo OK, verifiziert); **Spotify-Ursache = Intel-Build 1.3.0.277 via Rosetta + 982 MB korrupter Cache** → native ARM64 1.3.1.234 installiert, läuft stabil; Lektion: auf dem M4 NIE das generische Intel-DMG nehmen
+
+- [ZCode ADHS-Automations](zcode-adhs-automationen.md) — 13.–22.09. LIVE: **EINE Automation mit ALLEN 6 Briefs** (cron `0 9,10,15,16,21`, Zweige per Uhrzeit+Wochentag; niemals 6 separate — Nutzer-Ziel!) + Engine 7/7 PASS; **13 Läufe, alle 6 Zweige bewiesen: Morgen 21.09. erstmals PÜNKTLICH (UID C1BFC6A3), 22.09. wieder verpasst → Catch-up (UID F2C35605) · Risiko-Scan 21.09. erster echter P1 (loki-voice dirty) → AM SELBEN TAG gelöst (Commit 7fdbf2d) · Abend 13./16./20./21.09. PASS (Events 610E2A57/88CCE1A6/6BFDB24A/C269B996, Fix `open -a Calendar` vor osascript) · 16:00/15:00-No-ops korrekt; ⚠️ Logbuch = Multi-Writer (andere Workflows schreiben mit → vor Append NEU lesen)**; offen auf GO: LaunchAgent com.sascha.assi.daily als Wecker umrüsten + Deutsch-Patch (Recovery); 1 Task pro Chat-Limit
 
 - [OmniRoute-Rückbau + System-Fixes](omniroute-rueckbau-system-fixes-2026-09-20.md) — 20.09. Abend: Q1–Q7 ALLE ERLEDIGT („fix test"-GO): OmniRoute ABGEBAUT (Nutzer-Wunsch, Plist raus, Regeln auf Direkt-Provider gesynced, Comet läuft bis Reboot); Atlas-Ingest 67 Module (2 Code-Bugs gefixt); Task-Bridge 5 echte Tasks; loki-up.command am Desktop getestet; Mongo zu; 2 tote Agents disabled; 7b-Coder-Modell da; MASTER_STATUS+HANDBUCH aktualisiert (Backups ~/sicherungen/doku-backup-20260920); Endstand CHECKPOINT CONTINUE — offen nur: 4 Keys (Sascha) + Firewall sudo
 

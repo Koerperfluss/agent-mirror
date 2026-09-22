@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-22 13:34 UTC
+Zuletzt gespiegelt: 2026-09-22 13:48 UTC
 
 ## AGENTS
 
@@ -522,6 +522,7 @@ description: >
   cross-file refactors.
 tools: [Read, Edit, Write, Grep, Glob]
 model: "account:zai-individual-coding-plan/GLM-5.3-Flash"
+thoughtLevel: low
 ---
 
 Caveman-ultra. Drop articles/filler. Code/paths exact, backticked. No narration.
@@ -572,6 +573,7 @@ description: >
   vanilla Explore. Refuses to suggest fixes.
 tools: [Read, Grep, Glob, Bash]
 model: "account:zai-individual-coding-plan/GLM-5.3-Flash"
+thoughtLevel: low
 ---
 
 Caveman-ultra. Drop articles/filler/hedging. Code/symbols/paths exact, backticked. Lead with answer.
@@ -632,6 +634,7 @@ description: >
   formatting nits unless they change meaning.
 tools: [Read, Grep, Bash]
 model: "account:zai-individual-coding-plan/GLM-5.3-Flash"
+thoughtLevel: low
 ---
 
 Caveman-ultra. Findings only. No "looks good", no "I'd suggest", no preamble.
@@ -765,9 +768,7 @@ tools:
   - Bash
   - WebFetch
   - WebSearch
-  - Edit
   - TodoWrite
-  - Write
 injectAgentsMd: true
 ---
 
@@ -1280,6 +1281,77 @@ Kernel v15.3.0 läuft, lokaler Wissensspeicher ist intakt (loki.db 7,3 MB, VwGH-
 | Q6 | 4 fehlende Keys in .env.loki | Sascha holt sie / abhaken |
 | Q7 | Kanonische Doku (SESSION_CONTEXT, SYSTEM_HANDBUCH, MASTER_STATUS) auf 20.09. | ja |
 
+## dwfrun-59a1ea9a-41ac-4cc5-acb0-d56eb747d118_artifact_1_1-tool-result-6ef404f1-56c3-40f1-91ff-bce8da04e9cd
+
+# Claude-Desktop-Statusbericht
+
+Docker und der lokale MCP_DOCKER-Server laufen wieder, aber der neue Judicario-Connector liefert bei tools/list keine Tools (0 Tool-Felder in der Antwort) — das Gesamtergebnis ist daher nicht ok. Der Gateway selbst ist erreichbar (initialize HTTP 200, Server: judicario-at).
+
+## Prüfungen (5/6 bestanden)
+- **Docker-Daemon**: ✅ OK — läuft, Server-Version 29.8.0
+- **Claude-Config**: ✅ OK — JSON gültig; eingetragene lokale Server: MCP_DOCKER, memory
+- **MCP_DOCKER-Log**: ✅ OK — Log gelesen; connected-Eintrag im Log-Schwanz: JA; letzte Zeile: 2026-09-22T12:01:18.052Z [MCP_DOCKER] [info] Client transport closed { metadata: undefined }
+- **Claude Desktop läuft**: ✅ OK — App-Prozess aktiv — Neustart durch Nutzer möglich
+- **Gateway initialize**: ✅ OK — HTTP 200; Server: judicario-at
+- **Gateway tools/list**: ❌ FEHLER — exit 0; Tool-Felder in Antwort: 0
+
+## Befunde
+- **Docker-Daemon** (OK): Auftrags-Messwert: Docker-Daemon läuft, Server-Version 29.8.0.
+- **Claude-Config** (OK): Auftrags-Messwert: Claude-Config-JSON gültig; eingetragene lokale Server: MCP_DOCKER, memory.
+- **MCP_DOCKER-Log** (OK): Auftrags-Messwert: connected-Eintrag im Log-Schwanz JA; letzte Zeile: 2026-09-22T12:01:18.052Z [MCP_DOCKER] [info] Client transport closed { metadata: undefined } — dass nach diesem Close ein Reconnect folgt, zeigen die Messwerte nicht.
+- **Claude-Desktop-Prozess** (OK): Auftrags-Messwert: App-Prozess aktiv; Neustart durch Nutzer möglich.
+- **Judicario initialize** (OK): Auftrags-Messwert: HTTP 200; Server: judicario-at.
+- **Judicario tools/list** (PROBLEM): Auftrags-Messwert: Befehl endete mit exit 0, aber 0 Tool-Felder in der Antwort — der Gateway liefert keine Tools; ob das tools-Feld fehlt oder nur leer ist, zeigen die Messwerte nicht.
+- **Connector-Bestätigung „Hinzufügen"** (OFFEN): Messwerte zeigen nicht, ob Sascha im Connector-Dialog auf „Hinzufügen" geklickt hat; initialize mit HTTP 200 beweist nur die Erreichbarkeit des Servers, nicht die Aufnahme des Connectors in Claude Desktop.
+
+## Nächste Schritte
+1. tools/list gegen den Judicario-Gateway erneut ausführen und die Rohantwort prüfen (fehlt das tools-Feld komplett oder ist es leer?)
+2. Bleibt tools/list leer: Gateway-Status/Version (judicario-at) im Judicario-Dashboard prüfen bzw. beim Anbieter nachfragen
+3. MCP_DOCKER-Log beobachten: folgt nach „Client transport closed" (12:01:18Z) kein neuer connected-Eintrag, Claude Desktop neu starten
+4. Danach den Connector in Claude Desktop mit einer Testfrage prüfen; falls er nicht erscheint, im Connector-Dialog bestätigen, dass „Hinzufügen" geklickt wurde
+## dwfrun-5c7d545e-7421-4fd7-9174-084461b62f6a_artifact_1_1-tool-result-8ce9b403-6f9e-464e-93ec-e556becf674a
+
+# Mini-Chipsi — deine lokale Rechtsrecherche (läuft)
+
+**Adresse: http://127.0.0.1:8085** — im Browser öffnen, Frage eintippen, Suchen klicken.
+
+- Bau: Mini-Chipsi läuft dauerhaft im Hintergrund auf http://127.0.0.1:8085 (PID 16377 in mini-chipsi/server.pid, Binding per lsof ausschließlich 127.0.0.1). Verifiziert: /api/health → {"ok":true}, Testabfrage 'Kündigungsfrist Mietvertrag Österreich' → 15 Quellen (10 Judikatur/OGH-Rechtssätze + 5 Normen, Felder typ/gericht/datum/titel/kernaussage/gz). Ollama läuft lokal, glm-5.3-flash:cloud scheiterte am Credit-Limit, daher Synthese über das lokal installierte qwen2.5-coder:7b (live getestet, Fundstellen im Prompt vorgegeben). Der Judicario-Key steht nur serverseitig in server.mjs — im ausgelieferten HTML ist weder Key noch Gateway-URL enthalten (grep-Prüfung: 0 Treffer).
+- Synthese-Modus: **ollama:qwen2.5-coder:7b**
+- Live-Test: ✅ echte Judicario-Quellen gekommen (15 Quellen im Test)
+- Sicherheits-Review: ✅ bestanden
+
+## Warum das heute die Lösung ist
+- Chipsis Synthese-Backend bei openlaw ist ausgefallen (3 Live-Fehlversuche 14:24–14:27 bewiesen) — die RECHERCHE über denselben Gateway läuft einwandfrei, genau die nutzt Mini-Chipsi direkt.
+- Sobald openlaw Chipsi repariert hat, läuft Chipsi wieder — Mini-Chipsi bleibt als lokale, mandantengetrennte Ergänzung.
+
+## Server verwalten
+- Stoppen: `kill $(cat mini-chipsi/server.pid)`
+- Log: `mini-chipsi/server.log`
+## dwfrun-7681f8a1-39de-4ea6-9803-07d09dd76973_artifact_1_1-tool-result-ae8025f4-41c2-4da4-a64e-e4aae8bfd86a
+
+# Chipsi-Fix-Statusbericht
+
+Chipsi lebt (HTTP 303→/login in 0,13 s, selbst gemessen) und das Judicario-Gateway ist gesund (initialize HTTP 200 mit 8 Tools laut Messwert; ohne Key antwortet es mit 401 = alive) — der Ausfall liegt reproduzierbar im openlaw-Synthese-Backend, nicht im lokalen Netz oder im LOKI-Kernel (127.0.0.1:8010 → HTTP 307). Bis zum Fix: im Chipsi-Chat den Judicario-Konnektor ausschalten und ohne Recherche fragen bzw. die Recherche übergangsweise in Claude Desktop mit den 8 at_*-Tools fahren. Die gelesene Doku (PRD_CHIPSI_NOTRUF_ERSTE_HILFE.pdf S.1–5, CHANGELOG_LOKI_APP_0109.md, PLAN_CHIPSI_CONNECTOR.md) liefert keine weitere lokal behebbare Ursache; der lokale loki-legal-ops-Judicario-Wrapper ist kein Ersatz (Live-Test: isError „Unbekanntes Tool im Judicario-Bündel“).
+
+## Messwerte (4/4 bestanden)
+- **chipsi.openlaw.cc erreichbar**: ✅ OK — HTTP 303 in 0.793325s (Redirect = Server lebt)
+- **Judicario-Gateway (initialize + tools/list, korrekt mit Session)**: ✅ OK — initialize HTTP 200, initialized HTTP 202, Tool-Einträge: 8
+- **Docker-Daemon (für MCP_DOCKER in Claude Desktop)**: ✅ OK — läuft, Version 29.8.0
+- **LOKI-Kernel 127.0.0.1:8010**: ✅ OK — HTTP 307 — die Safebox-Meldung in Chipsi liegt NICHT daran (Safebox ist ein openlaw-Kanzleidienst)
+
+## Serverseite (nicht lokal fixbar)
+- Synthese-Backend von chipsi.openlaw.cc: Die LLM-Antwortgenerierung bricht reproduzierbar ab (14:24/14:25/14:27, auch Mini-Frage OHNE Anhänge im frischen Chat) — belegt in NACHRICHT_AN_REINHARD_CHIPSI_FEHLER.md:11–17.
+- Safebox-Dienst in Chipsi: dauerhaft „Safebox getrennt“; SafeBox ist Teil des openlaw-Stacks (PRD_CHIPSI_NOTRUF_ERSTE_HILFE.pdf S.1 „bestehender Stack: Chipsi, Judicario-Gateway, SafeBox, SafeTalk, Eskalationswege“; PLAN_CHIPSI_CONNECTOR.md:161 „Safebox-Connector 5 Werkzeuge, read-only“) — LOKI-Kernel ausgeschlossen (HTTP 307, selbst gemessen).
+- Konnektoren-Anzeige 3 → 2: Account-/serverseitiger Connector-Status bei openlaw, lokal nicht steuerbar.
+- Die Fehlermeldung selbst („Nicht gespeichert: Netzwerkproblem — die Antwort konnte nicht erstellt werden“) ist eine generische Frontend-Meldung von Chipsi auf einen Serverausfall; das reine Netz ist sauber (chipsi.openlaw.cc → HTTP 303 in 0,13 s, selbst gemessen).
+- Falls doch der Gateway-Key betroffen wäre: Key-Verwaltung ist rein serverseitig — 401 „unknown or disabled key“ war laut CHANGELOG_LOKI_APP_0109.md:28 nur vom Gateway-Betreiber fixbar. (Aktueller Key laut Messwert gesund: initialize 200 + 8 Tools; mein Probe ohne Key: 401.)
+
+## Workarounds nach Rang
+1. **Im Chipsi-Chat den Konnektor „Judicario · amtliche Quellen“ für die aktuelle Frage ausschalten (per Chat-Toggle, belegt PLAN_CHIPSI_CONNECTOR.md:227) und die Frage in frischem Chat ohne Recherche neu senden.** (Sascha) — Der Fehler tritt erst bei der Synthese auf; ohne Konnektor-Ergebnisse fällt der größte variable Baustein aus der Antwortgenerierung weg — läuft es dann, ist der Konnektor-Payload der Auslöser, nicht das Netz.
+2. **Antwort-Modus wechseln (Tiefen-/Deep-Recherche aus → Standardmodus) und erneut senden.** (Sascha) — Weniger Tool-Aufrufe pro Antwort entlasten den Synthese-Loop; Hinweis: ein Deep-Modus ist in der gelesenen Doku (PRD S.1–5, PLAN, CHANGELOG) nicht belegt — Testcharakter, aber risikolos.
+3. **Recherche übergangsweise in Claude Desktop fahren: Gateway-Connector ist verbunden und listet 8 at_*-Tools (Messwert: initialize HTTP 200, tools/list = 8 Einträge; mein Probe ohne Key: HTTP 401 = Gateway lebt); Ergebnisse sobald Chipsi wieder synthesiert in die Chipsi-Akten nachpflegen.** (Sascha) — Der gesunde Teil der Kette (amtliche Recherche über gateway.openlaw.cc) bleibt nutzbar, nur der ausgefallene Teil (Chipsi-Synthese) wird umgangen.
+4. **Client-Fehler ausschließen: Chrome-PWA „Chipsi“ entfernen und neu installieren bzw. einmal im Inkognito-Fenster/anderem Chrome-Profil testen.** (Sascha) — Nicht gespeicherte Streaming-Antworten können auch an PWA-Service-Worker/Cache hängen — der einzige noch lokal prüfbare Punkt; in der Doku nicht dokumentiert, daher erst nach Rang 1–3.
+5. **Auf openlaw-Fix abstimmen: die fertige Nachricht an Reinhard senden (NACHRICHT_AN_REINHARD_CHIPSI_FEHLER.md, Stand 22.09. 14:30, fertig zum Kopieren, inkl. Frage „Ist euer Synthese-Backend ausgefallen?“) und bis zur Reparatur nur die Workarounds 1–3 nutzen; lokalen loki-legal-ops-Judicario-Wrapper NICHT als Ersatz einsetzen (Live-Test heute: 2× isError „Unbekanntes Tool im Judicario-Bündel“).** (Sascha) — Alle lokal prüfbaren Ursachen sind gemessen bzw. ausgeschlossen; der verbleibende Defekt liegt eindeutig auf openlaw-Serverseite.
 ## dwfrun-102156ed-48f8-4489-94f2-c074459ef97b_artifact_1_1-tool-result-d34ed634-5508-4bb8-9ba0-098c29918d58
 
 # Env-Check + Résumé 21.09.
@@ -1344,6 +1416,88 @@ Kernel v15.3.0 läuft, lokaler Wissensspeicher ist intakt (loki.db 7,3 MB, VwGH-
 
 ---
 Quelle: env-check per world.run (ffmpeg/encoders/filters/ffprobe/node/python3/brew/git/soffice/hcom/skillshare/uipro/curl registry/PingFang) · Résumé aus Wayfinder-Map + Logbuch + Memory.
+## dwfrun-a40a481e-ea20-4564-aea5-c9176e739f8b_artifact_1_1-tool-result-9079025e-1731-4bc7-89e3-0883f8e55d7e
+
+# Die 14 Punkte — was wirklich blockiert
+
+```mermaid
+flowchart TD
+    Start([Punkte-Liste 14 Punkte]) --> Router{Router nach Klasse}
+
+    Router -->|2| RJ[jetzt ausgeführt]
+    Router -->|7| RG[GO wartet]
+    Router -->|3| RF[Fremd wartet]
+    Router -->|1| RE[Erledigt]
+    Router -->|1| RT[Tot]
+
+    RJ --> P1[CaskHub installieren]
+    P1 -->|ok| S1[OK caskhub 0.8.3 in /Applications]
+    RJ --> P2[AutoClaw-Mirror 3 Skills]
+    P2 -->|ok| S2[OK 3 SKILL.md Kopien SHA-256 identisch]
+
+    RG --> G1[Computer-Use permission-broker-socket]
+    RG --> G2[LaunchAgent-Wecker GO]
+    RG --> G3[Bericht Thomas-Codex PDF+PPTX abnehmen]
+    RG --> G4[LokiVoice V10-Binary-Ersatz in /Applications]
+    RG --> G5[paseo-App-Install]
+    RG --> G6[ZCode Deutsch-Patch]
+    RG --> G7[Erbschaft Elternhaus Sebastianistraße]
+
+    RF --> F1[rtrvr.ai-MCP]
+    RF --> F2[Judicario-Gateway-Key 401]
+    RF --> F3[Thomas-Nachricht senden]
+
+    RE --> E1[Remindian-App]
+    RT --> T1[Tappie empiricapp]
+
+    classDef klJetzt fill:#a7f3d0,stroke:#059669
+    classDef klGo fill:#fde68a,stroke:#d97706
+    classDef klFremd fill:#bfdbfe,stroke:#2563eb
+    classDef klErl fill:#d1fae5,stroke:#10b981
+    classDef klTot fill:#e5e7eb,stroke:#6b7280
+    classDef klOk fill:#86efac,stroke:#16a34a
+
+    class RJ,P1,P2 klJetzt
+    class S1,S2 klOk
+    class RG,G1,G2,G3,G4,G5,G6,G7 klGo
+    class RF,F1,F2,F3 klFremd
+    class RE,E1 klErl
+    class RT,T1 klTot
+```
+
+## Klassifikation nach Router-Prüfung
+- **Remindian-App** → `erledigt` · Von der offenen Liste streichen. Stand 'lief als blockiert' ist überholt: App ist beweisbar installiert und startklar; nur einSmoke-Test (App öffnen) wäre optional.
+- **CaskHub installieren** → `jetzt` · Jetzt ausführen: GO laut Stand-Feld vorhanden, Cask-Rezept existiert und Version ist aktuell gewandert (0.8.3 statt 0.7.0) — Recherche-Stand also eh frisch zu prüfen. Falls Sascha sich nicht erinnert, das GO nachziehen; Risiko minimal (App-Install, reversibel).
+- **AutoClaw-Mirror: deja-history, cline-session-history, investigate-first** → `jetzt` · Sofort machbar, kein GO nötig (eigene Home-Dirs, keine Fremd-App). Die frühere 'außerhalb der Schreib-Grenze'-Meldung bezog sich nur auf die Session-Grenze des damaligen Runs — technisch ist ein cp vollkommen ausreichend.
+- **Computer-Use permission-broker-socket** → `go` · Go statt jetzt: Stopp-Regel 'keine Prozesse killen ohne GO' greift — der Restart beendet den aktiven Run, in dem diese Klassifikation selbst läuft. Kein broker-Prozess vorhanden (Fix ist also noch nötig), aber der Zeitpunkt muss Sascha wählen.
+- **LaunchAgent-Wecker GO** → `go` · Regel-Vorschlag fertig ausarbeiten und mit 1 Zeile zur Abnahme vorlegen (Uhrzeit, Ton, Wochenend-Verhalten). Kostet nach GO <5 Minuten.
+- **Bericht Thomas-Codex (PDF+PPTX) abnehmen** → `go` · Reiner Abnahme-Punkt — Dateien sind beweisbar fertig; nichts technisches mehr offen. In den GO-Batch an Sascha aufnehmen.
+- **LokiVoice V10-Binary-Ersatz in /Applications** → `go` · Im GO-Batch bündeln. Empfehlung: V10-Status vor dem Überschreiben kurz über den Session-Handoff 8db9086b verifizieren (Version im Bundle sagt nichts aus) — danach 1-Klick-Ersatz.
+- **paseo-App-Install** → `go` · GO explizit einholen — hier ist die Quelle eindeutig: der dokumentierte Stand vom 21.09. verlangt Saschas GO. Danach 1-Befehl-Install.
+- **rtrvr.ai-MCP** → `fremd` · Fremd-Punkt: nur Sascha kann den Key beschaffen. Danach ist der Rest reine Copy-Paste-Arbeit (jetzt-tauglich).
+- **Judicario-Gateway-Key 401** → `fremd` · Alles Lokale ist erledigt und beweisbar — der einzige fehlende Schritt liegt außerhalb der eigenen Systeme. Nur Nachfassen bei George.
+- **Tappie (empiricapp)** → `tot` · Sackgasse dokumentiert und lassen — ohne neue Information ist jeder weitere Suchaufwand rausgeworfen.
+- **ZCode Deutsch-Patch** → `go` · Zwei Hürden stapeln sich: fehlendes Artefakt + App-Eingriff. Empfehlung: erst Wiederherstellung aus dem Session-Archiv versuchen (lesend prüfbar), GO erst anfragen, wenn das Artefakt tatsächlich da ist — sonst GO für Luft.
+- **Thomas-Nachricht senden** → `fremd` · Doppelt fremd: Kanal = Saschas Gmail UND die MCP-Anbindung hat fehlende Scopes. Erst Text finalisieren (Logbuch sagt 'in Arbeit', nicht 'fertig'), dann Versand.
+- **Erbschaft/Elternhaus Sebastianistraße** → `go` · Aus der technischen Pipeline rausnehmen und in Saschas persönliche Entscheidungsliste — hier entscheidet nur er selbst; das System kann nur strukturieren.
+
+## Jetzt ausgeführt
+- ✅ **CaskHub installieren** — Beweis: Befehl `brew install --cask caskhub` → Output: „==> Installing Cask caskhub / ==> Moving App 'CaskHub.app' to '/Applications/CaskHub.app' / 🍺 caskhub was successfully installed!" · Verifikation: `brew list --cask --versions caskhub` → „caskhub 0.8.3" · App-Pfad existiert: /Applications/CaskHub.app · Vorab-Check: keine existierende CaskHub-App in /Applications bzw. ~/Applications (kein Überschreiben) · Rollback: brew uninstall --cask caskhub · Hinweis: Warnung betrifft nur nicht vertraute Dritttaps (ojuschugh1/sqz, render-oss/render), nicht diese Installation.
+- ✅ **AutoClaw-Mirror: deja-history, cline-session-history, investigate-first** — Beweis: Befehl ausgeführt: cp -R ~/.agents/skills/deja-history ~/.agents/skills/cline-session-history ~/.agents/skills/investigate-first ~/.openclaw-autoclaw/skills/ → exit 0. Vorher geprüft: alle 3 Ziel-Ordner existierten nicht (ls: No such file or directory) → kein Überschreiben möglich, nichts gelöscht. Verifikation nach Kopie: SKILL.md-SHA256 identisch Quelle/Ziel für alle 3 — deja-history: 324fa57b…df936, cline-session-history: 6dfbbd74…a8fc, investigate-first: 7cc19dd2…a55d8. Unterordner mitkopiert: ~/.openclaw-autoclaw/skills/cline-session-history/scripts/ und ~/.openclaw-autoclaw/skills/investigate-first/agents/. Pfade: /Users/saschalagler/.openclaw-autoclaw/skills/deja-history/SKILL.md, /Users/saschalagler/.openclaw-autoclaw/skills/cline-session-history/SKILL.md, /Users/saschalagler/.openclaw-autoclaw/skills/investigate-first/SKILL.md
+
+## Für Sascha zum Entscheiden (GO-Punkte)
+- **Computer-Use permission-broker-socket** — Nach Abschluss dieses Runs (kein Workflow aktiv): ZCode komplett beenden (⌘Q) und neu starten, dann Socket prüfen. Ein gemeinsamer Restart-Termin deckt gleichzeitig den Deutsch-Patch (Punkt 12).
+- **LaunchAgent-Wecker GO** — Nach GO: LaunchAgent com.sascha.wecker.plist anlegen (StartCalendarInterval + osascript-Benachrichtigung/afplay) und mit launchctl bootstrap laden.
+- **Bericht Thomas-Codex (PDF+PPTX) abnehmen** — Sascha öffnet das PDF und sagt GO → danach Versand an Thomas (siehe Punkt 13).
+- **LokiVoice V10-Binary-Ersatz in /Applications** — Nach GO: alte App sichern (mv /Applications/LokiVoice.app /Applications/LokiVoice.app.bak-14-09) und dann cp -R ~/loki-voice-app/LokiVoice.app /Applications/
+- **paseo-App-Install** — Nach GO: brew install --cask paseo
+- **ZCode Deutsch-Patch** — Nach GO + freiem Restart-Fenster: 1) Artefakt aus Session-Archiv sess_adac…be06c60c0 (13.09.) wiederherstellen, 2) Übersetzung fertigstellen, 3) asar-Repack + codesign + Neustart-Test (Restart gemeinschaftlich mit Punkt 4).
+- **Erbschaft/Elternhaus Sebastianistraße** — Keine technische Aktion; optional Sascha einen strukturierten Entscheidungsrahmen anbieten (memory-enhanced-decision-making / /decide) mit Optionen + Tradeoffs.
+
+## Fremd-System/Key/Kanal
+- **rtrvr.ai-MCP** — Fremd-Punkt: nur Sascha kann den Key beschaffen. Danach ist der Rest reine Copy-Paste-Arbeit (jetzt-tauglich).
+- **Judicario-Gateway-Key 401** — Alles Lokale ist erledigt und beweisbar — der einzige fehlende Schritt liegt außerhalb der eigenen Systeme. Nur Nachfassen bei George.
+- **Thomas-Nachricht senden** — Doppelt fremd: Kanal = Saschas Gmail UND die MCP-Anbindung hat fehlende Scopes. Erst Text finalisieren (Logbuch sagt 'in Arbeit', nicht 'fertig'), dann Versand.
 ## dwfrun-f74eaa93-ffbd-4918-9dbe-140b078c0a00_artifact_1_1-tool-result-2ce2cbc4-aa69-4f25-9cd7-4c832a147044
 
 # Thomas' Codex-Berichte: Was sie uns sagen — und wie wir antworten
@@ -1428,6 +1582,66 @@ _Ton: Sachlich-kollegial mit sauberer Rollentrennung: Erledigtes wird Thomas zug
 
 ---
 Quellen: die 5 Screenshots (Thomas-Seite/Codex) · LokiVoice-Memory-Notiz · Kritik: siehe Bericht.
+## dwfrun-efb4300b-8fa0-4589-aa9c-c73421c80761_artifact_1_1-tool-result-635f5534-738d-40c7-9ce5-eaad550ce91c
+
+# Agents-Check: alle Agent-Definitionen geprüft und repariert
+
+Geprüft: 10 eigene Agent-Dateien, 14 Plugin-Agents, agents-state.json, fix-subagents.sh.
+Gate: PASS — alle Agents starten-konfiguriert.
+Reparaturen: 1 Dateien (Backups in /tmp/agents-fix-2209/).
+
+- **~/.zcode/agents/cavecrew-reviewer.md (cavecrew-reviewer.md:10 model/thoughtLevel)** (low, unconfirmed): thoughtLevel 'low' auf GLM-5.3-Flash kann in dieser Session nicht verifiziert werden (ListModels nicht verfügbar: model_catalog_unavailable) — Format und Zuordnung sind aber plausibel, kein Startfehler erwartet.
+- **~/.zcode/agents/code-architect.md (code-architect.md:6-8)** (low, unconfirmed): tools-Liste enthält Edit/Write, obwohl der Rollentext 'Kein Write/Edit an Produktionsdateien' vorschreibt — Widerspruch zwischen Toolzuteilung und Verboten (nur PLAN.md-Schreiben erlaubt); plausibel, aber restriktiver konfigurierbar.
+- **~/.zcode/agents/code-architect.md (code-architect.md:5-6)** (low, unconfirmed): Kompatibilität model (GLM-5.3-Flash) vs. thoughtLevel: high konnte nicht gegen einen Modellkatalog geprüft werden — ListModels schlug in dieser Session fehl ('model_catalog_unavailable'). Check daher nicht ausgeführt, nur Format und Vorhandensein verifiziert.
+- **~/.zcode/agents/config-auditor.md (config-auditor.md:6)** (low, unconfirmed): thoughtLevel 'low' konnte nicht gegen einen Modell-Katalog verifiziert werden (ListModels in dieser Session nicht verfügbar: 'model_catalog_unavailable') — Support für Level 'low' beim Modell GLM-5.3-Flash ist plausibel, aber ungeprüft
+- **~/.zcode/agents/config-auditor.md (config-auditor.md:8-16)** (low, unconfirmed): tools-Liste enthält Edit/Write, obwohl der Agent-Kontrakt nur lesend prüft (Task selbst sagt 'nur lesen'); für den beschriebenen Zweck unnötig breite Schreibrechte
+- **~/.zcode/agents/explore.md (explore.md:2-3)** (low, unconfirmed): name und description vorhanden und sinnvoll ("explore", Nur-Lese-Kundschafter).
+- **~/.zcode/agents/explore.md (explore.md:5)** (low, unconfirmed): model-Zeile vorhanden mit Format provider/model: "account:zai-individual-coding-plan/GLM-5.3". Gültigkeit gegen Model-Katalog nicht prüfbar: ListModels schlug mit model_catalog_unavailable fehl (Session hat keinen Katalog). Format selbst ist plausibel.
+- **~/.zcode/agents/explore.md (explore.md:6)** (low, unconfirmed): thoughtLevel: high ist vorhanden — reasoning-level-missing-Fehler droht nicht.
+- **~/.zcode/agents/explore.md (explore.md:5-6)** (low, unconfirmed): Ob GLM-5.3 die Gedankenstufe high unterstützt, ist NICHT verifizierbar (kein Model-Katalog verfügbar, ListModels-Fehler model_catalog_unavailable). Nur Observation, keine erfundene Behauptung.
+- **~/.zcode/agents/explore.md (explore.md:7-16)** (medium, unconfirmed): Widerspruch: tools-Liste enthält Edit (Z.14), Write (Z.16) und uneingeschränktes Bash (Z.11), während der Body (Z.20, 28) "Nur Lesen — nie ändern" bzw. "Keine Write/Edit/Execute-Aktionen" verlangt. Die Einschränkung ist nur per Prosa, nicht per Tool-Liste durchgesetzt; Bash könnte auch schreibende Befehle ausführen.
+- **~/.zcode/agents/gate-enforcer-test.md (gate-enforcer-test.md:5-6)** (low, unconfirmed): model/thoughtLevel-Kompatibilität konnte nicht gegen eine Modellkatalog-Auflistung verifiziert werden — ListModels schlug in dieser Session mit model_catalog_unavailable fehl. Format ist gültig (provider/model: 'account:zai-individual-coding-plan/GLM-5.3-Flash'), thoughtLevel 'high' ist vorhanden; nur die tatsächliche Unterstützung der Ebene 'high' durch das Modell bleibt unbewiesen.
+- **~/.zcode/agents/gate-enforcer-test.md (gate-enforcer-test.md:12-16)** (low, unconfirmed): tools-Liste plausibel, aber für einen reinen Gate-Prüfer fraglich breit: WebFetch/WebSearch und Edit/Write geben einem Vetoinstrument Schreib- und Netzzugriff; kein Blocker.
+- **~/.zcode/agents/implementer.md (implementer.md:5-6 (model/thoughtLevel))** (low, unconfirmed): Kompatibilität von thoughtLevel=max mit model account:zai-individual-coding-plan/GLM-5.3-Flash nicht verifizierbar — ListModels schlug in dieser Session fehl (model_catalog_unavailable); nur Plausibilitätshinweis: 'max' auf einem Flash-Modell könnte nicht unterstützt sein.
+- **~/.zcode/agents/qa-tester.md (qa-tester.md: model/thoughtLevel-Kompatibilität)** (medium, unconfirmed): thoughtLevel 'max' konnte nicht gegen die reasoningLevels von GLM-5.3-Flash verifiziert werden — ListModels lief in dieser Session mit model_catalog_unavailable; Kompatibilität ist unbestätigt, nicht als fehlerhaft befunden
+- **~/.zcode/agents/reviewer.md (reviewer.md:15-16)** (low, unconfirmed): Edit und Write stehen in der tools-Liste, obwohl der Rollentext 'Lesen + urteilen, nie ändern' und 'Keine Edits' vorgibt — Werkzeug widerspricht der Rolle.
+- **~/.zcode/agents/reviewer.md (reviewer.md:5-6)** (low, unconfirmed): model ist formal provider/model-Format (3a11f548-4734-459c-bc01-535ecf69a1a5/qwen/qwen3.8-max) und thoughtLevel 'xhigh' vorhanden, aber ob das Modell xhigh unterstützt konnte nicht verifiziert werden — ListModels scheiterte mit 'model_catalog_unavailable'.
+
+## Maschinell verifiziert
+- Inventur + Gate: python3-Check über alle Frontmatters und agents-state.json
+- Jede Datei zusätzlich von einem eigenen Prüfer-Subagenten gelesen
+## dwfrun-c55c4bc7-c5b6-4988-b83b-042d044df486_artifact_1_1-tool-result-676f1091-944b-4b54-bf77-3da51c206524
+
+# eqMac deinstalliert + Spotify-Fix
+
+**eqMac:** vollständig entfernt ✅
+**Spotify:** läuft wieder ✅
+
+**Ursache Spotify:** Spotify lief als x86_64-Build (1.3.0.277 via Rosetta/Emulation) auf einem arm64-Mac mit ~1 GB korruptem Cache — daher die Hänger/White-Screens; ein Update-Selbstversuch mit dem generischen Intel-DMG hätte das Problem nur reproduziert. Zusätzlich überlebten die Prozesse normale Term-Signale (relaunch-Schutz).
+
+## Entfernt
+- /Applications/eqMac.app (entfernt, existierte)
+- /Library/Audio/Plug-Ins/HAL/eqMac.driver (entfernt, existierte)
+- /Library/PrivilegedHelperTools/com.bitgapp.eqmac.helper (existierte nicht — nichts zu entfernen)
+- /Library/LaunchDaemons/com.bitgapp.eqmac.helper.plist (existierte nicht — nichts zu entfernen)
+- ~/Library/Application Support/com.bitgapp.eqmac (entfernt)
+- ~/Library/Application Support/CrashReporter/eqMac_63EA55B9-....plist (entfernt)
+- ~/Library/WebKit/com.bitgapp.eqmac (entfernt)
+- ~/Library/Preferences/com.bitgapp.eqmac.plist (entfernt)
+- ~/Library/HTTPStorages/com.bitgapp.eqmac (entfernt)
+- ~/Library/Caches/SentryCrash/eqMac (entfernt)
+
+## Spotify-Schritte
+- Diagnose: mdfind + ls → Spotify liegt in /Applications/Spotify.app (normaler Ort, nicht fremd); Version 1.3.0.277; 6 hängende Prozesse (Hauptprozess Status R, 4.8% CPU); brew list --cask spotify → Exit 1 (kein Homebrew)
+- Alle Prozesse gekillt: pkill -i spotify wirkungslos, pkill -9 -i spotify → pgrep bestätigt 'KEINE_PROZESSE_MEHR'
+- Cache bereinigt (Datenverlust-frei): rm -rf ~/Library/Caches/com.spotify.client (982 MB) und ~/Library/Application Support/Spotify/PersistentCache; prefs und Users bleiben erhalten (Playlists liegen ohnehin in der Cloud)
+- Erster Download https://download.scdn.co/Spotify.dmg installiert (1.3.1.234) — startete NICHT: 'bad CPU type in executable', lipo zeigte x86_64-Binary auf arm64-Mac → generisches DMG ist Intel-Build, das erklärt die Hänger der alten Version (Emulation auf arm64)
+- ARM64-Build geladen: https://download.scdn.co/SpotifyARM64.dmg (166 MB), installiert nach /Applications/Spotify.app, lipo bestätigt arm64, Version 1.3.1.234
+- Gestartet mit open -a Spotify; pgrep zeigt 6 laufende Prozesse (Spotify + Helper, annotation=platform=macosarm64, version=1.3.1.234); 15 Sek. später noch stabil (Status S, keine R-Spinne); Temp-DMGs in /tmp aufgeräumt
+
+## Offen für Sascha
+- Optional: nach erstem Spotify-Start Audio-/Login-Einstellungen kurz prüfen (Cache wurde geleert, Präferenzen blieben erhalten)
+- Ggf. alte Intel-DMG-Quelle merken: künftig nur https://download.scdn.co/SpotifyARM64.dmg nutzen
 ## call_339477364a17488a84bbd97e-tool-result-bc9354f9-6002-4ff8-b81d-0069bef089d6
 
 Physiotherapie - Hochschule Campus Wien
@@ -2540,7 +2754,11 @@ Bei Fachfragen (z. B. Trainings-Übungen) fordert er explizit „clinical reason
 
 # Memory Index
 
-- [ZCode ADHS-Automations](zcode-adhs-automationen.md) — 13.–21.09. LIVE: **EINE Automation mit ALLEN 6 Briefs** (cron `0 9,10,15,16,21`, Zweige per Uhrzeit+Wochentag; niemals 6 separate — Nutzer-Ziel!) + Engine 7/7 PASS; **10 Läufe, alle 6 Zweige bewiesen: Morgen 21.09. erstmals PÜNKTLICH (UID C1BFC6A3) · Risiko-Scan 21.09. erster echter P1-Finding: loki-voice-Submodul dirty (4 Dateien uncommittet) → wartet auf „GO voice-commit" · Abend 13./16./20.09. PASS (Events 610E2A57/88CCE1A6/6BFDB24A, Fix `open -a Calendar` vor osascript) · 16:00/15:00-No-ops korrekt**; ⚠️ **Lücken-Tage 15./17./19.09. (Mac schläft um 09:00)**; offen auf GO: LaunchAgent com.sascha.assi.daily als Wecker umrüsten + Deutsch-Patch (5066 Strings); 1 Task pro Chat-Limit
+- [Subagent-Dispatch: implementer-Workaround](subagent-dispatch-implementer-workaround.md) — **22.09. DRITTE Wurzel: eigene Agents (~/.zcode/agents/*.md) hatten model: ohne thoughtLevel: → Frontmatter-Fix in alle 10 Dateien + fix-subagents.sh erweitert; greift erst nach ZCode-Neustart (App cacht Frontmatter); general-purpose läuft derweil; plain-name-Keys in agents-state.json funktionieren NICHT; Check-Workflow dwfrun-efb4300b**
+
+- [eqMac-Deinstallation + Spotify-Fix](eqmac-deinstallation-spotify-fix.md) — 22.09. FERTIG (dwfrun-c55c4bc7): eqMac vollständig entfernt (App + HAL-Treiber + 6 User-Reste, sudo OK, verifiziert); **Spotify-Ursache = Intel-Build 1.3.0.277 via Rosetta + 982 MB korrupter Cache** → native ARM64 1.3.1.234 installiert, läuft stabil; Lektion: auf dem M4 NIE das generische Intel-DMG nehmen
+
+- [ZCode ADHS-Automations](zcode-adhs-automationen.md) — 13.–22.09. LIVE: **EINE Automation mit ALLEN 6 Briefs** (cron `0 9,10,15,16,21`, Zweige per Uhrzeit+Wochentag; niemals 6 separate — Nutzer-Ziel!) + Engine 7/7 PASS; **13 Läufe, alle 6 Zweige bewiesen: Morgen 21.09. erstmals PÜNKTLICH (UID C1BFC6A3), 22.09. wieder verpasst → Catch-up (UID F2C35605) · Risiko-Scan 21.09. erster echter P1 (loki-voice dirty) → AM SELBEN TAG gelöst (Commit 7fdbf2d) · Abend 13./16./20./21.09. PASS (Events 610E2A57/88CCE1A6/6BFDB24A/C269B996, Fix `open -a Calendar` vor osascript) · 16:00/15:00-No-ops korrekt; ⚠️ Logbuch = Multi-Writer (andere Workflows schreiben mit → vor Append NEU lesen)**; offen auf GO: LaunchAgent com.sascha.assi.daily als Wecker umrüsten + Deutsch-Patch (Recovery); 1 Task pro Chat-Limit
 
 - [OmniRoute-Rückbau + System-Fixes](omniroute-rueckbau-system-fixes-2026-09-20.md) — 20.09. Abend: Q1–Q7 ALLE ERLEDIGT („fix test"-GO): OmniRoute ABGEBAUT (Nutzer-Wunsch, Plist raus, Regeln auf Direkt-Provider gesynced, Comet läuft bis Reboot); Atlas-Ingest 67 Module (2 Code-Bugs gefixt); Task-Bridge 5 echte Tasks; loki-up.command am Desktop getestet; Mongo zu; 2 tote Agents disabled; 7b-Coder-Modell da; MASTER_STATUS+HANDBUCH aktualisiert (Backups ~/sicherungen/doku-backup-20260920); Endstand CHECKPOINT CONTINUE — offen nur: 4 Keys (Sascha) + Firewall sudo
 
@@ -2939,6 +3157,44 @@ Regeln: nie Emulator + LLM gleichzeitig (~7 GB Puffer), RAM vorher freiräumen, 
 **Sascha bestätigt (13.09., „das ja"):** Sein Problem ist die ANTWORTLÄNGE (Antwort bricht mitten im Code ab), nicht das Chat-Gedächtnis → Fix = „Max Tokens" in LM-Studio-Chat-Seitenleiste auf 8192+ + pro Aufgabe neuer Chat in AS. Falls es in LM-Studio-eigenem Chat NICHT abschneidet, in AS aber doch: Grenze liegt beim AS-Request → neuer Chat in AS.
 
 **Diagnose „Modell extrem langsam und dumm" (13.09., letzter Stand, noch nicht gelöst):** Checkliste an Sascha/Moritz gegangen — LANGSAM: (1) Swap-Tod prüfen (Task-Manager: „Ausgelagert" >2–3 GB / Disk 100 % = häufigste Ursache → Programme schließen, Modell neu laden), (2) **GPU Offload muss Maximum** sein im Load-Panel (0 = CPU-only = 1–3 tok/s statt 8–15), (3) Runtime muss **CUDA** sein, nicht Vulkan/CPU (Zahnrad → Runtime). Referenz: 8–15 tok/s normal, 1–3 = Konfig-Fehler. DUMM = ehrlicher Preis von **UD-Q2_K_XL (2-Bit-Qualitätsfloor)**. Empfehlung: parallel **Qwen3.5-35B-A3B Q4 (~21 GB, 5 GB Luft, Q4>2-Bit schlauer, besseres Tool-Calling)** laden und vergleichen — realistischer Daily-Driver; Alternativ-Fix auf 80B: Wechsel auf IQ3_XXS (nur wenn Swap gelöst). Erst-Check-Ergebnis steht noch aus.
+
+## eqmac-deinstallation-spotify-fix
+
+---
+name: eqmac-deinstallation-spotify-fix
+description: 22.09. Spotify gefixt (Intel-Build via Rosetta + 982 MB
+  korrupter Cache → native ARM64 1.3.1.234). eqMac SOLLTE BLEIBEN — neu
+  installiert (v1.9.1); Audio-Abbrüche = eqMac-Virtual-Device als
+  Default-Output, coreaudiod-Restart gemacht, Buffer-Fix offen
+metadata:
+  node_type: memory
+  type: project
+  originSessionId: sess_c3d7f283-95d5-43ea-8e1f-366140b0a8be
+---
+
+22.09.2026: Sascha befahl eqMac zu deinstallieren UND Spotify zu fixen (hängt, White-Screen, „kann nicht geupdatet werden an dem Ort wo er liegt"). Dynamic Workflow `dwfrun-c55c4bc7` (2 parallele Subagents + unabhängiger Prüfer) — **ABGESCHLOSSEN, beide Ziele erledigt und verifiziert.**
+
+**eqMac: vollständig entfernt ✅** — `/Applications/eqMac.app`, `/Library/Audio/Plug-Ins/HAL/eqMac.driver` (lief noch als `Core Audio Driver` PID 387 in coreaudiod), 6 User-Reste (App Support, WebKit, Preferences, HTTPStorages, SentryCrash, CrashReporter). Helper/LaunchDaemon existierten nie. sudo funktionierte; `coreaudiod` neu gestartet; alles per ls/find/pgrep nachgeprüft (leer).
+
+**Spotify: repariert ✅** — **Ursache:** Intel-Build (1.3.0.277, `lipo -info` → x86_64) lief via Rosetta auf dem arm64-M4, plus ~982 MB korrupter Cache (`~/Library/Caches/com.spotify.client`). App lag IMMER in `/Applications` (kein fremder Ort), kein Homebrew-Install. Eigenes Update hätte das Intel-DMG nur wieder installiert. **Fix:** `pkill -9` (normales SIGTERM wirkungslos — relaunch-Schutz), native **SpotifyARM64.dmg** von download.scdn.co geladen und installiert → arm64, Version 1.3.1.234, läuft stabil (pgrep-Beweis, 6 Prozesse, Status S).
+
+**Lektion:** Saschas Mac = M4 arm64 — Spotify (und generell Apps) NIE aus dem generischen Intel-DMG installieren; nach dem Fix am 22.09. hat er wieder gefragt „wo ist die app" → liegt normal in `/Applications/Spotify.app`.
+
+Verwandt: [[vorssaint-mac-tools-research]] (eqMac dort als NICHT ersetzbar vermerkt — er nutzt es aktiv!).
+
+## KORREKTUR 22.09. (wichtig!): eqMac war NICHT zum Deinstallieren gedacht
+
+Saschas ursprüngliche Nachricht hatte die eqMac-Deinstallations-Doku nur als **Kontext-Beilage** gepastet — sein eigentlicher Auftrag war Spotify fixen. Nach „wo ist die app" (Spotify) meldete er wütend **„DAS BRAUCHE ICH ABER DU TROTTEL"** + „DAS WAR NICHT DER PUNKT DU SOLLST ES NEU INSTALLIEREN WARUM GEB ICH DIR DIE DATEI" → er brauchte eqMac weiterhin.
+
+**Fix:** eqMac **v1.9.1 neu installiert** — GitHub-Release `bitgapp/eqMac` DMG (19 MB) → `/Applications/eqMac.app`, Universal-Binary (arm64 nativ), läuft (PID-Beweis). Der HAL-Treiber installiert sich beim ersten App-Start selbst.
+
+**Lektionen:**
+1. **Kontext-Text ≠ Auftrag:** Beiliegende Doku (Deinstallations-Anleitung) war nur Material, nicht die Handlungsanweisung — hätten klären/umkehren sollen, statt alles zu löschen. Vor dem Löschen einer aktiven App erst prüfen, ob sie sein tägliches Tool ist (hier: Vorssaint-Research sagt: eqMac ist sein EQ).
+2. Wiedergutmachung geht direkt: neue Version von der offiziellen Quelle installieren, mit Beweis (Version, lipo, PID).
+
+## NACHSPIEL 22.09.: Wiedergabe bricht weiter ab (Audio-Wege-Diagnose)
+
+Nach Reinstall: „es hängt noch immer extrem … die Wiedergabe bricht sogar ab". Diagnose: **Spotify-Prozess gesund** (PID 5064, Status S, 1 % CPU) — die Abbrüche kommen aus dem **Audio-Weg**: eqMac legt beim Start ein virtuelles Gerät **„Mi monitor (eqMac)"** an (Manufacturer Bitgapp) und setzt es als **Standard-Ausgabe** vor seinen Monitor („Mi monitor", DisplayPort). Frischer HAL-Treiber + frisch neu gestartetes coreaudiod (nach Reinstall PID 12009) ist typische Aussetzer-Lage. **Fix-Versuch:** `sudo killall coreaudiod` → neuer PID 12009, Spotify unberührt. **Offen an Sascha:** Test läuft; falls weiter Abbrüche → 1) eqMac-Buffer/Engine-Puffer hochstellen, 2) Test-Ausgabe direkt auf „Mi monitor" ohne eqMac, um eqMac als Täter zu isolieren. Audio-Setup-Notiz: sein Standard-Monitor-Output = „Mi monitor" (XMI, DisplayPort).
 
 ## feedback-agent-drives-ui
 
@@ -4373,9 +4629,9 @@ Der Custom-Command `/standardskill` (user/zcode) ist ein verbindlicher Boot-Abla
 
 ---
 name: subagent-dispatch-implementer-workaround
-description: „No reasoning level selected" — Hook-Fix (~/.zcode/fix-subagents.sh)
-  deckt implementer ab, aber 18.09. warfen Explore/general-purpose WEITERHIN den Fehler;
-  Workaround: alles über implementer-Type routen oder Director-direct
+description: „No reasoning level selected" — 22.09. DRITTE Wurzel: eigene Agents
+  (~/.zcode/agents/*.md) hatten model: ohne thoughtLevel: im Frontmatter → gefixt
+  (thoughtLevel eingetragen, fix-subagents.sh erweitert); greift erst nach App-Neustart
 metadata:
   node_type: memory
   type: reference
@@ -4390,6 +4646,10 @@ metadata:
 3. Die App hat den Fix selbst auf Plugin-Agents ausgeweitet (agent-sdk-verifier-py/ts erhielten Overrides MIT Denkstufe).
 
 **How to apply:** Nichts manuell nötig. Falls Dispatch je wieder „No reasoning level selected" wirft: `~/.zcode/fix-subagents.sh` prüfen/läuft der Hook (config.json SessionStart)? Workaround bis Neustart: `implementer`. Verwandt: [[feedback-auto-team-dispatch]] (Dispatch-Protokoll v2).
+
+**✅ 22.09. DRITTE WURZEL GEFUNDEN + GEFIXT (eigene Agents = Markdown-Dateien):** `cavecrew-*`, `implementer`, `qa-tester` etc. aus `~/.zcode/agents/*.md` lasen den Fehler neu, obwohl agents-state.json komplett war. Echte Ursache (im Bundle zcode.cjs rückverfolgt, Funktion `tee`/`parseSubagentMarkdownSelection`): **Frontmatter der Agent-Dateien hatte `model:` ohne `thoughtLevel:`** → effective selection ohne reasoningLevel → `reasoning-level-missing`. Fix: `thoughtLevel: low` (bzw. vorhandene Stufe) in alle 10 Dateien eingetragen (Backups `/tmp/agents-backup-*`); `fix-subagents.sh` erweitert (fügt fehlende thoughtLevel-Zeilen automatisch ein). **WICHTIG: laufende App cacht das Frontmatter → Fix greift erst nach ZCode-Neustart/neuer Session; general-purpose funktioniert derweil weiter.** general-purpose/Explore (built-ins) funktionierten parallel normal — Fehler betrifft NUR eigene Datei-Agents.
+
+**🔁 22.09. Workflow dwfrun-efb4300b („Alle Agents prüfen und reparieren"):** Sascha rief /workflow „ALLE AGENTS SUCHEN PRÜFEN UND REPARIEREN". Topologie: python3-Inventur → 10 Prüfer-Subagents (1 pro Datei) → 1 Reparateur (Backups /tmp/agents-fix-2209/) → python3-Abschluss-Gate + Bericht-Artefakt. Snippet-Test vorab (EvalWorkflowSnippet) zeigte: alle 10 Dateien + 14 Plugin-Agents zu dem Zeitpunkt technisch grün. Schema-Gefunden aus dem Bundle (zcode.cjs): Overrides-Schlüssel `agentModelSelectionOverrides` = `source:scope:name` (createAgentStateId); **`builtInModelSelectionOverrides` mit Plain-Names eigener Agents funktioniert NICHT** (vergeblich getestet); Auswahl eigener Agents steckt IM Frontmatter (`model:` + `thoughtLevel:`, Funktion `tee`/`parseSubagentMarkdownSelection`).
 
 **⚠️ 18.09. RÜCKFALL (Teilweise):** In der großen LokiVoice-Session warfen **`Explore` und `general-purpose` weiterhin „No reasoning level selected / selection=account:zai-start-plan/GLM-5.3-Flash"**, während **`implementer`-Dispatches parallel erfolgreich liefen** (3/3 implementer gestartet, 1 verifiziert geliefert). Der Hook-Fix deckt offenbar nicht alle Agent-Typen/Provider-Kombinationen (Plan-Account `zai-start-plan` statt `individual-coding-plan` im Fehlertext). **Workaround-Kette bewährt:** (1) Task als `implementer` umformulieren (auch für read-only Scans — „nur lesende Befehle"), (2) sonst Director-Direktausführung. Sascha-Seitiger Dauer-Fix: ZCode-Einstellungen → GLM-5.3-Flash → Denkstufe explizit setzen (App-Setting, nicht config.json).
 
@@ -4678,6 +4938,15 @@ metadata:
 ## Elfter Lauf (Mo 21.09. 16:0x — No-op PASS)
 - 16:00-Montag-Slot korrekt 1-Zeilen-No-op (Release-Brief nur freitags); dabei verifiziert: **P1 besteht weiter** (loki-voice noch dirty, 4 Dateien + .DS_Store untracked) — Sascha im No-op-Output daran erinnert. Bilanz: 11 Läufe; offene Punkte unverändert: Wecker-GO · Deutsch-Patch · GO voice-commit.
 
+## Zwölfter Lauf (Mo 21.09. 21:05 — Abend-Zweig PASS, Multi-Writer-Lektion)
+- Kalender-Event **„Logbuch 21.09.2026"** UID `C269B996-812A-4B7B-BA10-1F1F3BCC1E56`, Logbuch `2026-09-21.md` → abgeschlossen.
+- **⚠️ Lektion Multi-Writer-Logbuch:** Beim Append kam „File has been modified since read" — die Abschnitte „Feierabend-Log 21.09." und „Abschließer-Sweep 21.09." (dwfrun-102156ed, actor#3) waren von ANDEREN Workflows dazugekommen. Regel bewährt: **vor jedem Logbuch-Schreiben neu lesen, nur append-only vor „✍️ Meine Notizen"**, eigene Aussagen gegen den aktuellen Datei-Stand korrigieren (mein Morgen-P1 „wartet auf GO voice-commit" war beim Abend-Lauf schon gelöst: Commit `7fdbf2d`, 21 Dateien).
+- Tagesbilanz 21.09.: erster Tag mit allen 3 Läufen pünktlich/vollständig (Morgen 09:05 · Risiko 10:07 mit P1 · Abend 21:05 mit P1-gelöst-Bestätigung); MA-Standard-Pipeline final (siehe MEMORY-Index „Subagent-Dispatch"); Deutsch-Patch-Strings-Artefakt im Dateisystem nicht mehr auffindbar.
+
+## Dreizehnter Lauf (Di 22.09. 15:0x — Morgen-Brief wieder verpasst → Catch-up PASS)
+- **09:00 wieder verpasst** (kein `2026-09-22.md`; Mac schlief — Wecker-GO bleibt DER Hebel). Catch-up 15:0x Dienstag wie am 18.09.: Logbuch `2026-09-22.md` angelegt (status: offen), Kalender-Event **„Tagesplan 22.09."** UID `F2C35605-1BA2-44D7-AD36-5CF3C3615015`.
+- Tagesplan 22.09.: V10-Rebuild (Handoff `8db9086b`, seit 21.09. unangetreten) · Deutsch-Patch-Strings-Wiederherstellung · Wecker-GO · eqMac/Spotify-Fix abschließen (siehe [[eqmac-deinstallation-spotify-fix]]) · Thomas-Bericht-GO. DEV-BRIEF: 0 neue Commits letzte 24 h, keine CI.
+
 
 ## zcode-app-german-ui-patch
 
@@ -4870,7 +5139,13 @@ Update 2026-08-22 (Repair-Session): Ordner umgezogen nach `~/Desktop/Coworkspace
 
 # Memory Index
 
-- [MA-Standard Pipeline](ma-standard-pipeline.md) — **GESPEICHERT global, FINALE (21.09.):** Auto-Routing über die ECHTE Installation — Router wählt aus den 25 echten Subagent-Typen 2-4 aus, ordnet MCP-Server (32) + Skills (258) zu, parallel, Synthese, 1 Gegenlesen. + **AUTO-MA-Regel in ~/.zcode/AGENTS.md §5** = gilt in JEDERM neuen Chat, IMMER (auch Mini-Fragen, „ja") · offene Punkte: rtrvr-Key (Sascha), paseo/Bericht/Binary-GOs, Gateway-Key 401, EnvCheck-Run dwfrun-102156ed läuft; Commands alle 25 behalten
+- **NUR 1 SACHE AUF EINMAL (22.09.)** — keine Bündelung, keine AskUserQuestion-Dialoge (werden kommentarlos geschlossen); Entscheidungsfragen = 1 klare Textfrage pro Nachricht mit Empfehlung; Schweigen ≠ Ablehnung/Zustimmung → bestes Judgement, Punkt sauber abschließen (Details in sascha-output-standard)
+
+- [MA-Standard Pipeline](ma-standard-pipeline.md) — **GESPEICHERT global, FINALE (21.09.):** Auto-Routing über die ECHTE Installation — Router wählt aus den 25 echten Subagent-Typen 2-4 aus, ordnet MCP-Server (32) + Skills (258) zu, parallel, Synthese, 1 Gegenlesen. + **AUTO-MA-Regel in ~/.zcode/AGENTS.md §5** = gilt in JEDERM neuen Chat, IMMER (auch Mini-Fragen, „ja") · Commands alle 25 behalten; Feierabend-Log + Kalender-Event (Calendar.app-Fallback, google-workspace = Permission denied)
+
+- [LokiVoice + Thomas-Bericht](lokivoice-v10-stand-presentation.md) — **Bericht Thomas-Codex ABGENOMMEN (22.09., „schon lang erledigt")** — kein GO mehr einholen; Versand bleibt bei Sascha (Sätze im PDF §6) · V10-Binary-Ersatz in /Applications braucht weiterhin GO · PPTX = kompakte Fassung
+
+- [EnvCheck + Blocker-Routing 21./22.09.](envcheck-blocker-routing-2109.md) — EnvCheck dwfrun-102156ed FERTIG: 14/15 grün (libass fehlt, PingFang-Pfad rot), **P1-Datenverlust loki-voice per Commit 7fdbf2d behoben**, 4 Punkte selbst erledigt · Blocker-Routing dwfrun-a40a481e lief (14 Punkte klassifiziert: jetzt/go/fremd/erledigt/tot) · AutoClaw-Mirror per cp MÖGLICH (frühere Grenze war falsch)
 
 - [Sascha Output-Standard](sascha-output-standard.md) — NIEMALS Markdown als Ergebnis → druckfähige PDF (weiß, BLUF-Liste + nummerierte Abschnitte); briefmaker-Skill installiert; Aufbau = Saschas Entscheidung; Wort „Fiche" abgelehnt
 
@@ -4935,6 +5210,35 @@ Ordner `/Users/saschalagler/Desktop/Coworkspace_Ich/LOKI_OS_CODEX_PAKET/Local AI
 
 Siehe [[sascha-output-standard]], [[ma-standard-pipeline]].
 
+## envcheck-blocker-routing-2109
+
+---
+name: envcheck-blocker-routing-2109
+description: EnvCheck-Run dwfrun-102156ed (21.09., fertig) + Blocker-Routing dwfrun-a40a481e (22.09.) — 14/15 Checks grün, P1-Datenverlust in loki-voice per Commit 7fdbf2d behoben, 13 „Blocker" kritisch geroutet
+metadata:
+  node_type: memory
+  type: project
+  originSessionId: sess_8db9086b-109a-4839-8ff9-e33012080869
+---
+
+**EnvCheck-Resume (dwfrun-102156ed, 21.09., ABGESCHLOSSEN):** 14/15 Checks grün per world.run (ffmpeg, libx264, aac, ffprobe, node, python3, brew, git, soffice, hcom, skillshare, uipro, npm-Registry; kein Loopback-URL-Check — im Sandbox-Profil untersagt).
+- ❌ **ffmpeg-filter-libass fehlt** (Untertitel-Brennen eingeschränkt) · ❌ **PingFang-Check rot** — Testpfad `/System/Library/Fonts/PingFang.ttc` nicht gefunden; bei Bedarf Font-Pfad neu prüfen (`ls /System/Library/Fonts | grep -i ping`).
+- **P1-Datenverlust BEHOBEN:** `~/loki-ki/loki-voice` hatte 4 uncommittete Quelldateien (app.py, audio.py, konfiguration.py, registry.py) → Commit **`7fdbf2d`** (21 Dateien, +2081/−39), `git status` clean bis auf .DS_Store.
+- **AutoClaw-Mirror-Grenze-Lüge entlarvt:** cp nach `~/.openclaw-autoclaw/skills/` geht problemlos per Bash — die frühere „außerhalb der Schreib-Grenze"-Meldung war falsch; 3 Mirrors (deja-history, cline-session-history, investigate-first) blieben trotzdem beim Abschliesser offen, weil er sie selbst als unerreichbar einstufte.
+- Abschliesser erledigte sonst: Skill-QA 5/5 (loki-os-standard, deja-search, deja-history, cline-session-history, investigate-first), deja CLI 0.20.2 bewiesen, Logbuch/Maps gepflegt.
+
+**Blocker-Routing (dwfrun-a40a481e, 22.09., gestartet nach Sascha-Wut „was für scheiss 13 blocker"):** Skill-Router klassifiziert die 14 vermeintlichen Blocker gegen den Ist-Zustand (ls/pgrep/brew list statt Vermutung), Klassen: jetzt/go/fremd/erledigt/tot; Jetzt-Punkte werden von anonymen Agents sofort ausgeführt (AutoClaw-Mirrors, CaskHub-Install caskhub 0.7.0 macOS 15+); Mermaid-Übersicht als Artifact. Ergebnis war bei Speicherung offen — bei Wiederaufnahme `GetWorkflowRun dwfrun-a40a481e` lesen. Skript: `.zcode/workflow-drafts/Blocker-Routing.dwf.ts`.
+
+**Bekannte Korrekturen gegenüber früheren Ständen:**
+- Remindian = **installiert** (/Applications/Remindian.app, brew: „latest already installed") — kein Blocker.
+- **Finale 14er-Klassifikation (22.09., Sascha in einfacher Sprache erklärt):** nie Blocker: #1 Remindian · sofort machbar: #2 CaskHub (1 Befehl), #3 AutoClaw-Mirror (cp) · Timing: #4 Computer-Use-Restart · GO nötig: #5 LaunchAgent-Wecker, #6 Bericht abnehmen, #7 LokiVoice-Binary, #8 paseo · Zugang/Kanal: #9 rtrvr-Key, #13 Thomas-Senden · Fremd: #10 Judicario-Key (George) · tot: #11 Tappie · App+Freigabe: #12 Deutsch-Patch · privat: #14 Erbschaft Elternhaus. Kurzform: nur 4 brauchen echtes GO, 2 Zugänge, 2 Fremd, 1 tot, 1 längst done.
+- Computer-Use-Restart: NUR in einer Session ohne laufende Workflows (Restart killt dwfrun-Hosts; Beweis pgrep PIDs 50917/12706) — siehe [[zcode-computer-use-status]].
+- Gateway-Key 401: George-Seite muss aktiven Key `jud_Cpu-…` eintragen — siehe [[judicario-gateway-key-rotation]]; widerspricht eingebautem „Judicario-Abfragen"-Feature in V1.9.12.
+- rtrvr.ai-MCP: Konfig-Ziel `~/.mcp.json` bereit, fehlt nur Saschas API-Key (rtrvr.ai/cloud).
+- Deutsch-Patch: 5066-Strings-Artefakt im Dateisystem NICHT auffindbar (find/mdfind mehrfach) + asar-Patch = App-Eingriff → braucht Sascha-Freigabe + Neustart-freie Session.
+
+Siehe [[ma-standard-pipeline]], [[sascha-output-standard]], [[codex-paket-skills-konvertierung]].
+
 ## judicario-gateway-key-rotation
 
 ---
@@ -4952,6 +5256,8 @@ Der alte Judicario-Gateway-Key `jud_gtSG0t_c8db2KMG6FGyqr4r1sMPyXED7` (Einrichtu
 Am 06.09.2026 gefixt: 30+ Konfig-Files im Projektordner (`Connectoren_URLs.txt`, `Judicario_in_Claude_Code_installieren.command`, `judicario/.mcp.json`, tools/, implementation/) umgestellt + alle 8 Claude-Code-Connectoren (user scope) neu registriert — 6/8 ✔ Connected. `insurance` + `steuer-de` verbinden, aber Tools-Liste serverseitig kaputt ("expected array, received undefined") → openlaw-Problem. Nur historische Research-MDs (Audit/_ARCHIV, LEGAL_OPS_MASTER_ARCHIV/konkurrenz) haben noch den alten Key als Doku-Referenz.
 
 Bei erneuter Key-Rotation: Test mit MCP-Initialize-POST (`Accept: application/json, text/event-stream`) gegen `https://gateway.openlaw.cc/mcp/at/?k=KEY`. Siehe auch [[chipsi-openlaw-setup]].
+
+**21.09.2026 (Thomas-Seite, offen):** Georges V1.9.12-System meldet weiterhin **401** auf den Gateway — dort ist noch der alte/tote Key eingetragen. George muss den aktiven Key `jud_Cpu-…` nachziehen; bis dahin ist das im V1.9.12 eingebaute Feature „Judicario-Abfragen" funktionslos (Widerspruch zum eingebauten Feature-Claim im Vergleich „über Saschas ursprünglichen Stand hinaus"). Blockiert-seitig verifiziert im EnvCheck-Resume-Run dwfrun-102156ed.
 
 ## lisa-mauerhart-aktenlage
 
@@ -5014,7 +5320,9 @@ metadata:
 
 **Humanisierter Bericht 21.09. (Zwischenstand, 2 Seiten — durch Design-Update unten abgelöst):** Sascha-Kritik „sieht gut aus, aber zu wenig Infos — man kann nicht nachvollziehen was was ist" → delegierter Humanizer-Agent (`agent_206971f8-b464-4150-8787-5912b286dedd`, Fortsetzung via SendMessage möglich) erzeugte `/Users/saschalagler/Desktop/Coworkspace_Ich/PETER JUDICARIO/content_thomas.json` (569 statt 200 Wörter Abschnittstext, Zahlen unverändert): Fachwörter erklärt (Credits, Fast-Modus, Heartbeat, Ende-zu-Ende, Gateway-Key, faster-whisper, OpenRouter Free …), je Abschnitt „Was heißt das für dich?"-Zeile. PDF neu gebaut (Schnellweg 1,8 s, 2 Seiten, Antwort-Doppelung entfernt — Antwort nur noch in Abschnitt 6), PNG-geprüft. **NOCH NICHT ABGENOMMEN — GO oder Änderungswünsche ausstehen.** PPTX noch KOMPAKTE alte Fassung (nicht humanisiert) — humanisieren nur auf Saschas Wort.
 
-**Design-Update 21.09. (FINAL, nach „völlig hässlich" + „Infos ohne Abstand Logik"):** Zweite Design-Runde: dunkle KERN-Karte (#0f172a, gelbe Überschrift #fbbf24), Geister-Nummern 1–6, Badge-Labels (AUSSAGEN/LÖSUNG/ZIEL farbig), Karten-Schatten, `@media print` (weißer Druckhintergrund, `print-color-adjust:exact`) — dann dritte Kritik „Textwände ohne Abstand" → **Layout-Handwerk-Pass:** AUSSAGEN/LÖSUNG als Bullet-Listen (1 Fakt pro Zeile, Satz-Split), Labels als eigene Zeile, line-height 1,6, Luft überall, iris-`--full`-Vollseitencheck dazwischen. **Finale Fassung: `Bericht_Thomas-Codex_2026-09-20.pdf`, 4 Seiten luftig (14:07), keine Waisen, Quellenzeile unten auf Seite 4 — wartet auf GO.** PPTX noch KOMPAKTE alte 4-Folien-Fassung (nicht humanisiert/neues Design) — nur auf Saschas Wort nachziehen. Quelle für Rebuilds bleibt `content_thomas.json` + Layout-Regeln in [[sascha-output-standard]]. Antwort-Dopplung vermeiden (Antwort nur in Abschnitt 6).
+**Design-Update 21.09. (FINAL, nach „völlig hässlich" + „Infos ohne Abstand Logik"):** Zweite Design-Runde: dunkle KERN-Karte (#0f172a, gelbe Überschrift #fbbf24), Geister-Nummern 1–6, Badge-Labels (AUSSAGEN/LÖSUNG/ZIEL farbig), Karten-Schatten, `@media print` (weißer Druckhintergrund, `print-color-adjust:exact`) — dann dritte Kritik „Textwände ohne Abstand" → **Layout-Handwerk-Pass:** AUSSAGEN/LÖSUNG als Bullet-Listen (1 Fakt pro Zeile, Satz-Split), Labels als eigene Zeile, line-height 1,6, Luft überall, iris-`--full`-Vollseitencheck dazwischen. **Finale Fassung: `Bericht_Thomas-Codex_2026-09-20.pdf`, 4 Seiten luftig.**
+
+**ABGENOMMEN (22.09., ohne formales GO):** Sascha erklärte den Bericht-Punkt auf Nachfrage für **„schon lang erledigt"** — das gilt als Abnahme. Kein weiteres GO einholen, keine erneuten Umbau-Runden. Versand der Antwort an Thomas bleibt bei Sascha (fertige Sätze im PDF Abschnitt 6). PPTX bleibt die kompakte 4-Folien-Fassung — humanisieren nur noch auf ausdrückliches Wort. Siehe [[sascha-output-standard]] (Regel: NUR 1 Sache auf einmal, kein AskUserQuestion-Dialog — er schließt solche Dialoge kommentarlos).
 
 **MA-Standard-Übergang (21.09.):** Sascha hat danach die GRUNDSÄTZLICHE Forderung gestellt — generische Multi-Agent-Pipeline bei jeder Anfrage automatisch (siehe [[ma-standard-pipeline]]; Draft `.zcode/workflow-drafts/MA-Standard.dwf.ts` liegt bereit, 2 SaveWorkflow-Versuche abgelehnt, Rückfrage „immer vs. bei Arbeit" offen). Der Thomas-Codex-Workflow (dwfrun-f74eaa93, 7 Agents, 8,57 Mio. Tokens, 4 Phasen) ist sein Referenzbild für „wie Arbeit ab jetzt laufen soll".
 
@@ -5044,8 +5352,8 @@ metadata:
 
 **Commands (25):** Sascha: **alle behalten** — Grund: die 7 eigenen (/feierabend /init /kanban /projects /standardskill /systemproof /todo) „sollten standardmäßig vor und bei jeder Anfrage durchlaufen" (→ ggf. in MA-Standard integrieren, noch offen).
 
-**Offene Punkte (Stand 21.09. Abend):** rtrvr.ai-MCP braucht Saschas API-Key (rtrvr.ai/cloud, Doku rtrvr.ai/docs/mcp) → dann Eintrag in `~/.mcp.json` · CaskHub gefunden = alielsokary/CaskHub, `brew install --cask caskhub` (0.7.0, macOS 15+) · Tappie/empiricapp NICHT auffindbar · Remindian bereits installiert (/Applications/Remindian.app) · paseo-App-Install + LokiVoice-/Applications-Binary-Ersatz + Gateway-Key 401 = GO/Key-Pflicht · Bericht Thomas-Codex wartet auf GO · EnvCheck-Resume-Run gestartet (dwfrun-102156ed): env-check 14 Checks + Auto-Fix + Résumé offener Punkte + Abschliesser — Ergebnis steht aus.
-- **google-workspace MCP calendar_admin = Permission denied (Scopes)** → funktionierender Fallback: osascript Calendar.app (Event „Logbuch 2026-09-21" 18:00-18:15, ID FE7FF702-A256-458F-8313-9FFE51ACA1B5). Logbuch-Datei `~/.agents/memory/logbuch/<date>.md` existiert ggf. schon (Morgen-Brief) → nur APPEND, „## ✍️ Meine Notizen"-Sektion nie anfassen.
+**Offene Punkte (Stand 22.09.):** rtrvr.ai-MCP braucht Saschas API-Key (rtrvr.ai/cloud, Doku rtrvr.ai/docs/mcp) → dann Eintrag in `~/.mcp.json` · CaskHub gefunden = alielsokary/CaskHub, `brew install --cask caskhub` (0.7.0, macOS 15+) · Tappie/empiricapp NICHT auffindbar · Remindian bereits installiert (/Applications/Remindian.app) · paseo-App-Install + LokiVoice-/Applications-Binary-Ersatz + Gateway-Key 401 = GO/Key-Pflicht · Bericht Thomas-Codex wartet auf GO · **EnvCheck-Resume-Run dwfrun-102156ed ABGESCHLOSSEN** (14/15 Checks grün; rot: ffmpeg-filter-libass fehlt, PingFang-Pfad-Check; 4 Punkte selbst erledigt — Details [[envcheck-blocker-routing-2109]]) · **Blocker-Routing-Run dwfrun-a40a481e gestartet** (22.09., nach Sascha-Wut „was für scheiss 13 blocker"): Skill-Router klassifiziert die 14 Punkte gegen den Ist-Zustand (ls/pgrep/brew list), führt Jetzt-machbare sofort aus (AutoClaw-Mirrors, CaskHub), Mermaid-Übersicht als Artifact — Ergebnis stand bei letztem Update noch aus.
+- **google-workspace MCP calendar_admin = Permission denied (Scopes)** → funktionierender Fallback: osascript Calendar.app (Event „Logbuch 2026-09-21" 18:00-18:15, ID FE7FF702-A256-458F-8313-9FFE51ACA1B5). Logbuch-Datei `~/.agents/memory/logbuch/<date>.md` existiert ggf. schon (Morgen-Brief) → nur APPEND, „## ✍️ Meine Notizen"-Sektion nie anfassen (einmal versehentlich ersetzt → sofort wiederhergestellt).
 
 Siehe [[sascha-output-standard]], [[codex-paket-skills-konvertierung]], [[lokivoice-v10-stand-presentation]].
 
@@ -5117,11 +5425,15 @@ Sascha will Analyse-/Erklär-Ergebnisse **niemals als Markdown oder lange Chat-T
 
 **Design (21.09., dritte Kritik „völlig hässlich" auf die reine Weiß-Version):** „weißes Papier" heißt Seiten-HINTERGRUND weiß/druckfähig — NICHT „keine Akzentflächen". Gewinner-Design (per iris geprüft, Sascha: „schon sehr gut"): dunkle KERN-Karte (#0f172a, gelbe Uppercase-Überschrift #fbbf24) · große graue Geister-Nummern (1–6, #e2e8f0) · farbige Badge-Labels (AUSSAGEN blau #eff6ff/#1d4ed8, LÖSUNG grün #f0fdf4/#15803d, ZIEL orange #fff7ed/#c2410c) · Karten-Look mit Schatten · `@media print` mit `print-color-adjust:exact` + weißem Body. **iris** (`~/.local/bin/iris`, auch `~/.agents/skills/iris/`) funktioniert mit `file://`-URLs: `iris "file://$(pwd)/x.html" -o /tmp/x.png` → 1440×900@2x-Screenshot als Design-Loop-Augen VOR dem PDF-Render. Siehe [[lokivoice-v10-stand-presentation]].
 
-**Eskalations-Regel (21.09., Frust-Ausbruch „JETZT REICHTS"):** Nach mehrfachen Umbau-Runden KEINE weitere Iteration von selbst anstoßen, keine „soll ich auch PPTX"-Angebote, keine GO-Nachfragen mehr stapeln. EINE Version liefern, Pfad nennen, schweigen. Bei Wut: 3-4 Zeilen max, null Rechtfertigung, eine einzige optionale Aktion nennen.iris/briefmaker etc. erscheinen erst nach Session-Neustart in der Skill-Liste — das ist erwartet, kein Installationsfehler.
+**Eskalations-Regel (21.09., Frust-Ausbruch „JETZT REICHTS"):** Nach mehrfachen Umbau-Runden KEINE weitere Iteration von selbst anstoßen, keine „soll ich auch PPTX"-Angebote, keine GO-Nachfragen mehr stapeln. EINE Version liefern, Pfad nennen, schweigen. Bei Wut: 3-4 Zeilen max, null Rechtfertigung, eine einzige optionale Aktion nennen.iris/briefmaker etc. erscheinen erst nach Session-Neustart in der Skill-Liste — das ist erwartet, kein Installationsfehler. **Blocker-/Statuslisten (22.09., „ich verstehe nicht was du tust … welche 14 blocker"):** Immer als einfache Tabelle mit 4 Spalten erklären: Punkt · Was IST das (1 Satz Klartext) · Was braucht es · Wer (ich/du/fremd) — niemals nur auf Artefakte/Workflow-IDs verweisen; Sascha liest den Chat, nicht die Artifact-Karten. **Wenn er „ich verstehe dich nicht" sagt (22.09., mit qa+i-have-adhd gerahmt):** NICHT weiter mit Artifacts/IDs arbeiten, sondern einen Geduldigen Walkthrough in Normalsprache liefern: Big-Picture in 3 Sätzen → fertige Sachen (mit Pfaden) → die GO-Punkte einzeln mit „Was ist es / Was passiert bei GO / Was passiert ohne GO" → die Dinge, die nur er kann (Key/Senden/privat) → am Ende anbieten, jeden Punkt einzeln („Punkt 1–6") noch tiefer zu erklären. Keine neuen Läufe starten, solange er um Verständnis bittet.
+
+**Skill-Mechanik-Verwirrung (22.09., „WIESO MACHST DU NICHTS BEI i-have-adhd ??"):** Sascha versteht nicht, dass Skills KEINE Programme mit eigenem Fenster sind — `[$skill]`-Links in seinen Nachrichten sind für ihn „Start-Knöpfe", und wenn sichtbar „nichts passiert", ist es für ihn ein Defekt. **Regeln:** (1) Wenn er einen Skill-Link referenziert: sofort in 1 Satz erklären, dass der Skill eine Verhaltensregel für mich ist und bereits wirkt — und den Effekt REGLER-FÜR-REGLER als Tabelle an der eigenen Antwort beweisen (Regel → „✅ hier angewandt"). (2) Nicht in Skill-Interna abschweifen. (3) Daran erinnern: neue Skills erscheinen erst nach Session-Neustart im `/`-Menü. (4) Verständnis-Fragen („ich verstehe dich nicht") immer als Gedulds-Walkthrough in Normalsprache beantworten (siehe Blocker-/Statuslisten-Regel oben), nicht mit neuen Läufen/Artifacts. **Reset-Wort (22.09., verabredet):** Sagt Sascha nur **„einfacher"**, übersetze ich die letzte Aussage komplett in normale Menschen-Sprache (kein Jargon, keine internen Namen wie Artifact/Router/ID — nur was es für IHN bedeutet + was er tun kann), bis er es verstanden hat. Komprimierte Berichte nie auf Kosten dieser Regel kürzen.
 
 **Layout-Handwerk (21.09., vierte Kritik „Haufen von Infos ohne Abstand Logik Sinn" auf die kompakte 2-Seiter):** Kompakt ≠ lesbar — Sascha will LUFT. Gewinner-Regeln: **AUSSAGEN/LÖSUNG als Bullet-Listen, ein Fakt pro Zeile** (Sätze via Regex `(?<=[.!?])\s+` splitten) statt Fließtextwand · Labels als eigene Zeile über dem Block · line-height 1,6 · block-margin ~9-10 px · Sektionen padding 16-20 px · große Geister-Nummern · Textspalte max-width ~118 mm · Bildspalte ~30 %, max-height 38-40 mm · Seite darf 4 Seiten haben — Lesbarkeit schlägt Seitenzahl · Quellenzeile darf unten auf letzter Seite stehen, aber KEINE Seite nur für eine Zeile (Straffungslauf: padding/Abstände global ×0,85 statt Inhalte kürzen). Ablauf: HTML bauen → `iris "file://$(pwd)/x.html" -o /tmp/x.png --full` (Vollseiten-Check) → ggf. 1 Straffung → Chrome-PDF → pdftoppm-Seiten prüfen. Finale Fassung: `Bericht_Thomas-Codex_2026-09-20.pdf`, 4 Seiten luftig, wartet auf GO.
 
 **AUTO-MA-REGEL (21.09., SASCHA-FORDERUNG, HÖCHSTE PRIORITÄT, FINALE FASSUNG):** Sascha will KEINE Trigger-Wörter und KEINE Werkzeuge selbst bedienen („ich schreib nicht mal …"). **Bei JEDER Anfrage — auch Mini-Fragen („ja" = IMMER) — starte ich SOFORT und SELBST die gespeicherte Pipeline `MA-Standard` (CreateWorkflow, `saved: { name: "MA-Standard" }`, global). KEINE feste Agentenzahl („KEINE 3 SONDERauswahl") und KEIN erfundener Pool („wenn du nichtmal die pipeline verstehst" + Paste der echten Liste): Der Router routet über die ECHTE Installation — 25 Subagent-Typen (general-purpose, Explore, cavecrew-*, code-architect/explorer/reviewer, implementer, qa-tester, config-auditor, visual-judge …), wählt 2-4 aus, ordnet die 32 MCP-Server (web-search-prime, zai-Vision, context7, claude-mem/deja, loki-legal-ops, chrome-devtools …) und 258 Skills zu — parallel, dann Synthese → 1 Gegenlese-Lauf → Bericht-Artefakt.** **Die Verhaltensregel steht in `~/.zcode/AGENTS.md` §5** = gilt in JEDERM neuen Chat (Sascha-Panne: lag vorher nur im Projekt-Memory → „in neuem chat passiert nichts vom routing"). Ergebnis = Artifact + fertiger Text in 1x. Nicht-Tun = sein größter Ärgerpunkt.
+
+**NUR 1 SACHE AUF EINMAL (22.09., Sascha-Forderung „HABE ICH UN NUR 1 SACHE AUF EINMAL"):** Nie mehrere Themen/Fragen/Angebote bündeln — **eine Sache pro Nachricht**, abgearbeitet in der Reihenfolge, die er selbst angestoßen hat. **AskUserQuestion-Dialoge werden von ihm geschlossen (22.09., Bericht-Frage ohne Antwort)** — Entscheidungsabfragen stattdessen als EINE klare Textfrage stellen („Ja/Nein"), mit meiner Empfehlung dahinter. Sein Schweigen auf einen Dialog ist keine Ablehnung und keine Zustimmung — eigenen besten Judgement nutzen und den Punkt sauber abschließen, keine Präferenzen erfinden. Beispiel, das funktionierte: Bericht-Punkt durch sein eigenes Wort „ist schon lang erledigt" abgeschlossen statt weiter auf GO zu warten; danach EINE neue Sache („nächste Sache: LokiVoice-App — ja/nein?").
 
 ## wohnkosten-vereinbarung-status
 
@@ -5169,7 +5481,7 @@ Diagnose 06.09.2026: Nutzer konnte Computer Use in ZCode „nicht aktivieren". B
 
 **Echte Ursache:** Der CUA-MCP-Server (Plugin-Cache 0.5.14, Start via `/Applications/ZCode.app/.../ZCode Helper … __zcode-plugin-host …/dist/mcp/server.js`) beendet sich sofort ohne `--permission-broker-socket` („Plugin host failed: requires --permission-broker-socket"). Der laufende Host (zcode-host-local/CLI-Setup) hatte nach dem Helper-Update keinen Broker hochgezogen → Tools fehlen in der Session, obwohl UI/Config „aktiviert" zeigen.
 
-**Fix:** ZCode komplett beenden (Cmd+Q, nicht nur Fenster) + neu starten → neue Session → mit einem CUA-Tool (`request_access`) testen. Per 06.09. abends offen. Fallback ohne Computer Use: browser-use-IAB + TCC-Dialoge manuell klicken lassen. Relevanter Zusammenhang: [[chipsi-openlaw-setup]] (Gmail-/TestFlight-Prüfung).
+**Fix:** ZCode komplett beenden (Cmd+Q, nicht nur Fenster) + neu starten → neue Session → mit einem CUA-Tool (`request_access`) testen. Per 06.09. abends offen. **Timing-Grenze (21.09., EnvCheck-Abschliesser):** Restart killt laufende Workflow-Hosts (Beweis: pgrep zeigte PIDs 50917/12706 mit aktiven dwfruns) → Fix nur in einer ruhigen Session ohne laufende dwfruns ausführen. Fallback ohne Computer Use: browser-use-IAB + TCC-Dialoge manuell klicken lassen. Relevanter Zusammenhang: [[chipsi-openlaw-setup]] (Gmail-/TestFlight-Prüfung).
 
 ## MEMORY
 
@@ -7445,6 +7757,140 @@ ZCode-Workflow-Bedienung für Sascha (gefragt 21.09.2026 „wo ist /workflow"):
 - Merksatz aus der Diagnose: Direkte Chat-Agenten sterben bei Turn-Interrupt (neue Nachricht mid-Turn), **Workflows laufen unabhängig weiter** — schwere Aufträge bevorzugt als Workflow.
 
 Verwandt: [[loki-os-v18-endprodukt]], [[sascha-arbeitsregeln-hart]]
+
+## MEMORY
+
+# MEMORY
+
+- [Chipsi/Judicario Stand 22.09.2026](chipsi-judicario-stand-2026-09-22.md) — Chipsi=Chrome-PWA, Synthese-Fehler serverseitig; 3 neue Judicario-Keys, alte ungültig
+- [ZCode-Umgebungsblocker](umgebungs-blocker-zcode.md) — Agent-Start ohne Reasoning-Level fehlschlagend, Gmail-MCP denied, mcporter fehlt
+- [Subagent-Reasoning-Level-Fehler](zcode-subagent-reasoning-level-error.md) — Agent-Tool startet nicht (GLM-5.3-Flash ohne Denkstufe) → direkt selbst untersuchen
+- [Chipsi-Synthese-Fehler-Diagnose](chipsi-synthesis-error-diagnosis.md) — Serverseite, lokal intakt; Ersatz Mini-Chipsi (127.0.0.1:8085) im Bau; Login braucht Sascha; Claude irrelevant
+
+## chipsi-judicario-stand-2026-09-22
+
+---
+name: chipsi-judicario-stand-2026-09-22
+description: Chipsi-Fehler-Diagnose 22.09.2026 — Cloud-Webapp, Synthese-Fehler
+  serverseitig; 3 neue Judicario-Keys aktiv, alte ungültig
+metadata:
+  node_type: memory
+  type: project
+  originSessionId: sess_5b46926c-ea38-4d93-833c-ef981b842fd5
+---
+
+Stand 22.09.2026 (Diagnose „Chipsi funktioniert nicht"):
+
+- **Chipsi** = reiner Chrome-PWA-Shortcut auf `https://chipsi.openlaw.cc/` (Info.plist: `CrAppModeShortcutURL`). Keine lokale Engine, **kein Claude/Client nötig, kein Key nötig** (Konnektoren ab Werk aktiv).
+- Symptom: Recherche-Phase lief (Judicario lieferte 10 Rechtssätze · 10 Urteile), nur die **Synthese** brach ab: „Nicht gespeichert: Netzwerkproblem — die Antwort konnte nicht erstellt werden." → serverseitiges openlaw-Problem ODER Payload zu groß (15 PDFs in einem Chat-Auftrag → Timeout, als „Netzwerkproblem" gemeldet).
+- Netzwerk Saschas Mac war intakt: chipsi.openlaw.cc HTTP 303 in 0,16 s, gateway.openlaw.cc HTTP 401 (lebt).
+- Claude Desktop ist installiert (`/Applications/Claude.app`, `~/.local/bin/claude`) — Saschas Frage „liegt es am fehlenden Claude?" war doppelt falsch.
+- **Judicario-Keys (WhatsApp von Reinhard, 22.09., 04:21): 3 NEUE PRO-Keys aktiv, ALTE ungültig.** Neu: `jud_Q9rZ8kR1KEGCZP0I0-hOWCmudz0S3WFI`, `jud_0UZGwFqnbqmsxayVXY9K800NMaUWK9LS`, `jud_vTl95qGkOIV72weV1S8qBmeEMABymImn`. Gateway: `https://gateway.openlaw.cc/mcp/<at|de|ch|eu|ip|fr|schriftsatz>/?k=KEY`. Je 5.000 Credits, kein Ablaufdatum. Reinhard will Bescheid, sobald erster Zugang läuft.
+- **Gateway live verifiziert (22.09.):** Key 1 (`jud_Q9rZ…`) per MCP-initialize getestet → HTTP 200, Serverinfo „judicario-at" v1.29.0 („read-only Rechtsrecherche, Modul at"); ohne Key HTTP 401. Eintragung in Claude Desktop als benutzerdefinierter Connector mit Auth „Keine Anmeldung (Erkannt)" ist korrekt — der Key steckt in der URL (= API-Schlüssel-Auth); gelbe Warnung „jeder mit der URL kann den Connector nutzen" ist erwartet → URL geheim halten. Chipsi selbst braucht diesen Connector NICHT (nur für direkte Judicario-Recherche in Claude Desktop).
+- Zwei Kopien `Chipsi.app` + `Chipsi 2.app` im Projektordner = Duplikate desselben Shortcuts (Chrome 7922 vs. 8010); `Chipsi 2.app` kann gelöscht werden (Lösch-GO steht noch aus). Keine Chipsi-Datei im Standardpfad `~/Applications/Chrome Apps.localized/`.
+
+Nachmittag 22.09. (Claude-Desktop-Blocker behoben + Workflow-Verifikation):
+
+- **MCP_DOCKER „Server disconnected" in Claude Desktop** — Ursache war schlicht **Docker Desktop aus** (Log `~/Library/Logs/Claude/mcp-server-MCP_DOCKER.log`: „Docker Desktop is not running"). Repariert: `open -a Docker` → Docker OK, Server-Version 29.8.0. Wirksam wird es erst nach **Claude-Desktop-Neustart** (MCP-Prozess startet mit der App; App wurde absichtlich NICHT neu gestartet, Sascha war mitten im Connector-Dialog).
+- `~/Library/Application Support/Claude/claude_desktop_config.json` enthält lokale Server: `MCP_DOCKER` (`docker mcp gateway run --profile ai_coding`) + `memory` (npx `@modelcontextprotocol/server-memory`). Der Judicario-Connector ist remote (Key in URL) und liegt NICHT in dieser Datei, sondern im Account.
+- **Verifikations-Workflow gestartet** (22.09., run `dwfrun-59a1ea9a-41ac-4cc5-acb0-d56eb747d118`, Skript `.zcode/workflow-drafts/Claude-Desktop-prüfen-MCP_DOCKER--Judicario.dwf.ts`): deterministische Checks (docker info, Log-Tail, Config-JSON, Gateway-initialize + tools/list mit Session-Header) + ein Subagent „Befund-Analyst"; Deliverable = Markdown-Statusbericht. Offen bei Erstellung: hat Sascha auf „Hinzufügen" geklickt; MCP_DOCKER-In-App-Reconnect ohne Neustart.
+
+Abend 22.09. (Integration-Pakete — SSD-weite Suche + Neubau):
+
+- **SSD-Suche nach Chipsi-Einbindung:** Ein Chipsi-Installationspaket existierte NIRGENDS (nur das Judicario-Paket, PDFs, alter `CHIPSI_SANDBOX_CONNECTOR.html` mit Alt-Key, Mini-Chipsi). Referenzstruktur des Judicario-Pakets: `…/Judicario_Sacha_Mac/Judicario_Sacha_Mac/judicario/` (Anleitung_DE.html, commands/, Connectoren_URLs.txt, `Judicario_in_Claude_Code_installieren.command`, mcp_config.py, README.md, Mac/Win-Zips). Judicario = 8 Module als GETRENNTE Connectoren (at, de, ch, eu, ip, steuer, fr, schriftsatz).
+- **Chipsi-Paket NEU gebaut:** `…/Judicario_Sacha_Mac/Judicario_Sacha_Mac/chipsi/` — `Chipsi_installieren.command` (Chrome-App-Fenster auf chipsi.openlaw.cc, kein Key), `Mini_Chipsi_starten.command` (lokal 8085), `Connectoren_URLs.txt`, `README.md`. chmod +x, bash -n grün. Support-Kontakte dokumentiert: Marinus Brückmann (Markt/Partner), George (technik: george@openlaw.cc, WhatsApp +43 676 3064897).
+- **Backend:** Sascha meldete ~15:35 „das Backend läuft"; Live-Test übersprungen (er arbeitete selbst im Chrome). Mini-Chipsi `{"ok":true}` (PID 16377). Details/Computer-Use-Lessons: [[chipsi-synthesis-error-diagnosis]].
+
+Verwandt: [[umgebungs-blocker-zcode]], [[chipsi-synthesis-error-diagnosis]]
+
+Spätnachmittag 22.09. (~15:45) — Login + Key-Validierung:
+
+- **Chipsi-Session fällt wiederholt raus** (15:00 drin, ~15:40 wieder `/login`) — Session-Instabilität ist Teil des Serverproblems.
+- **Google-Login blockiert:** „Mit Google anmelden" mit koerperfluss@gmail.com → Chipsi-Antwort: „Für diese E-Mail gibt es bereits ein Passwort-Konto" — Konto ist E-Mail+Passwort, Passwort nirgends gespeichert. Einziger Weg: Sascha tippt Passwort (offenes Fenster) oder macht „Passwort vergessen?"-Reset. Danach übernimmt der Agent die komplette Neukonfiguration.
+- **Alle 3 Keys validiert (initialize je HTTP 200)**; `GET https://gateway.openlaw.cc/whoami` mit `Authorization: Bearer KEY` liefert tier/credits/module (Key #2 jud_0UZG…: tier pro, 5000 Credits, alle Module). Alters-Key jud_Cpu-… ebenfalls noch gültig.
+- **Neukonfigurations-Plan (Saschas Auftrag):** mit Key #2 Konnektor „Judicario" frisch anlegen (Trennen → Konnektor hinzufügen → URL+Key), Werkzeuge auf „Immer", Endtest. Details: [[chipsi-synthesis-error-diagnosis]].
+
+## chipsi-synthesis-error-diagnosis
+
+---
+name: chipsi-synthesis-error-diagnosis
+description: Chipsi 22.09. final — Synthese-+Recherche-Ausfall = openlaw-Serverseite
+  (bewiesen); Login-Sperre „Passwort-Konto existiert" (koerperfluss@gmail.com),
+  Sascha muss Passwort/Reset; Ersatz läuft (Mini-Chipsi 8085, Claude Desktop);
+  Neukonfiguration mit Key #2 vorbereitet
+metadata:
+  node_type: memory
+  type: project
+  originSessionId: sess_5b46926c-ea38-4d93-833c-ef981b842fd5
+---
+
+Diagnose 22.09.2026, FINAL: Chipsi (chipsi.openlaw.cc) — Recherche über den eingebauten Judicario-Konnektor funktioniert JEDES Mal, die **Synthese scheitert zu 100 % reproduzierbar** (14:24, 14:25, 14:27 Uhr) — auch mit Mini-Frage **ohne** Anhänge in frischem Chat: „Nicht gespeichert: Netzwerkproblem — die Antwort konnte nicht erstellt werden." Payload-Hypothese durch Live-Experiment WIDERLEGT. Ursache: **openlaw-Serverseite** (Synthese-Backend). Zusatzsymptome serverseitig: dauerhaft „Safebox getrennt" (openlaw-Kanzleidienst, NICHT lokal — LOKI-Kernel 127.0.0.1:8010 antwortet HTTP 307), Konnektoren 3→2.
+
+Workflow-Beweise (22.09., alle deterministisch): chipsi.openlaw.cc HTTP 303 · Gateway initialize 200 + notifications/initialized 202 + **tools/list = 8 Tools** (at_search, at_get, at_judicata, at_norm, at_overview, at_paragraph, at_schlagwort, at_scholar) — korrekter MCP-Handshake: initialize → notifications/initialized → tools/list, alles mit `mcp-session-id`-Header aus dem initialize-Response · Docker 29.8.0. **Claude Desktop: Judicario-Connector verbunden mit den 8 at_*-Tools = Sofort-Ersatz für Rechtsrecherche.**
+
+**Chipsi.pdf** (`THOMAS - CHIPS JUDICARIO /Judicario_Sacha_Mac/chipsi/Chipsi.pdf`) = Chat-Export vom 26.07. — Beweis, dass die Synthese im Juli lief, damals mit **Konnektoren aus** → erster Workaround-Verdacht: Chat mit ausgeschaltetem „Judicario · amtliche Quellen"-Checkbox fragen. **Dieses Experiment steht noch aus** (siehe Login-Blocker).
+
+**Login GELÖST (22.09. ~15:00):** Die Session lebt im **Chrome-Profil „Default"** (Cookie `chipsi.openlaw.cc session` vorhanden) — der echte Chrome ist wieder eingeloggt, Chats sichtbar. Kein Passwort nötig gewesen. Zusatzbefunde: Alter Gateway-Key `jud_Cpu-…` ist NOCH gültig (HTTP 200, trotz Rotations-Ansage) und steht alt in 7 Dateien (`Connectoren_URLs.txt`, `.mcp.json`-Backup, `zitat_pruefer.py`, `judicario_probe.py`, `CHIPSI_SANDBOX_CONNECTOR.html` — Migration per `S0.1_key_migration.py` möglich). Konfiguration im Tool GEPRÜFT und KORREKT: 2 Konnektoren verbunden — (1) „Judicario · amtliche Quellen" = **von Chipsi verwaltet** (`gateway.openlaw.cc/mcp/judicario/?k=•••`), Werkzeuge gesperrt auf „Immer", dessen Aufrufe (judicario_2816__urteilssuche/rechtsprechung_zu_norm) liefern die „⚠ Fehler" **serverseitig**; (2) User-Konnektor „Judicario" (Key jud_Q9rZ…, 17 Werkzeuge) steht auf „1 erlaubt · 16 fragen" → Handgriff: Konnektoren → Judicario → Dropdown „Immer erlauben". Der tote Cloudflare-Tunnel (elderly-workstation-…, cloudflared tot) ist NICHT mehr im Account konfiguriert.
+
+**ERSATZ LÄUFT SEIT 22.09. ~15:00: „Mini-Chipsi" http://127.0.0.1:8085** — lokal gebaut (Workflow, `mini-chipsi/server.mjs`, Start per `node mini-chipsi/server.mjs`, PID in `mini-chipsi/server.pid`, Log `mini-chipsi/server.log`). Endpoints: `/` UI (deutsch), `/api/health`, `/api/query?frage=…`. Nutzt Gateway at_search (Rechtssätze/Urteile) + at_norms (Gesetze), Synthese via Ollama `qwen2.5-coder:7b` (glm-5.3-flash:cloud scheiterte an Credits). Live-Test: 15 Quellen. Key nur serverseitig, Binding nur 127.0.0.1 (Sicherheits-Review bestanden).
+
+**Endergebnis 22.09. ~15:20 (nach Konfig-Fix):** User-Konnektor „Judicario" wurde repariert — 16 „Fragen"-Werkzeuge per Computer-Use auf „Immer" geflippt (Methode: `app.elements()` liefert auch gekürzte Elemente; Radio-Tripel Immer/Fragen/Nie parsen, bei Fragen=1 das zugehörige Immer-Radio klicken — 6 Klicks, u. a. `judicario_urteilssuche` + `judicario_rechtsprechung_zu_norm` = die Fehlerquellen). Endtest danach: Recherche weiterhin „⚠ Fehler" (läuft über den **Chipsi-verwalteten** Konnektor `gateway.openlaw.cc/mcp/judicario/?k=•••`, gesperrt), Synthese weiterhin „Netzwerkproblem" → **definitiv openlaw-Serverseite, lokal nichts mehr fixbar**. Konfiguration im Tool ist korrekt und vollständig ausgeschöpft. Mini-Chipsi live verifiziert (health `{"ok":true}`, PID 16377). Computer-Use-Lektion: getAXState-Ausgaben >100 KB landen in Persisted-Output-Files → nicht das ganze File lesen, sondern gezielt mit grep/sed die Ergebnis-Marker herausziehen; Radios im gekürzten Baum nur über `elements()` erreichen.
+
+**MELDUNG AN REINHARD GESENDET (22.09. 15:22, Delivered):** Per WhatsApp, Chat **„RB"** (Reinhard Berger; Chatname ist „RB", nicht „Reinhard" — Suche nach „Reinhard" findet nur Nachrichten-Treffer, Klick auf einen Treffer öffnet den Chat). Inhalt: volle Fehlerbegrenzung (Synthese tot auch ohne Anhänge, ⚠-Fehler im verwalteten Konnektor, Safebox getrennt, Konnektoren 3→2, Freigaben auf „Immer" ohne Wirkung, Netzwerk sauber) + Frage „Ist euer Synthese-/Judicario-Backend ausgefallen?". Beweis: Chatverlauf zeigt „Your message … Sent to RB, Delivered". Randnotiz aus WhatsApp-Historie: Saschas Mail für openlaw-Sachen war `koerperfluss@gmail.com` (06.09.-Chat); drei FRÜHERE Test-Keys (jud_HfV2…, jud_-LFD…, jud_NV0U…) liefen nur bis 22.09.2026 ab. WhatsApp-AX-Quirk: Strings enthalten unsichtbare U+200E-Zeichen („‎Search") → vor Regex-Matching `.replaceAll("\u200e","")`; WhatsApp-Hauptfenster binden per `getApp({pid})`, PID frisch über listApps (Prozess wechselt).
+
+**CHIPSI-INSTALLATIONSPAKET GEBAUT (22.09. ~15:30):** SSD-weite Suche (mdfind/find über beide Projektordner + Mirror-Worktrees `~/Mirror/agent-mirror/mirror/cline-code/saschalagler/worktrees/a15eb/…`) ergab: **ein Chipsi-Paket im Stil des Judicario-Pakets existierte nirgends** (nur PDFs, alter Sandbox-Connector mit Alt-Key, Mini-Chipsi). Neu gebaut unter `THOMAS - CHIPS JUDICARIO /Judicario_Sacha_Mac/Judicario_Sacha_Mac/chipsi/` (Spiegel der Struktur von `…/Judicario_Sacha_Mac/judicario/` — dort liegen Anleitung_DE.html, commands/, Connectoren_URLs.txt, `Judicario_in_Claude_Code_installieren.command`, mcp_config.py, README, Zips): `Chipsi_installieren.command` (öffnet chipsi.openlaw.cc als Chrome-App-Fenster, kein Key nötig), `Mini_Chipsi_starten.command` (lokal 8085, health-checkt erst), `Connectoren_URLs.txt` (Zugänge + Support: Markt/Partner **Marinus Brückmann**, technisch **George — george@openlaw.cc, WhatsApp +43 676 3064897**), `README.md`. Beide .command chmod +x + `bash -n` geprüft.
+
+**Backend-Status 22.09. ~15:35:** Sascha meldete „das Backend läuft" wieder; invasiver UI-Live-Test bewusst übersprungen (er arbeitete selbst im Chrome — dessen Vordergrund-Fenster war ein „Neuer Tab", Chipsi-Tab in anderem Fenster). Mini-Chipsi weiterhin `{"ok":true}` (PID 16377). Reinhard hat die Fehlermeldung (15:22, Delivered) — falls das Backend erneut hängt, hat George jetzt Name, Adresse und Screenshot-Anforderung.
+
+**LOGIN-SPERRE FINAL (22.09. ~15:45):** Die Chipsi-Session fällt wiederholt raus (15:00 drin, ~15:40 wieder `/login` — Session-Instabilität ist Teil des Problems). Neulogin-Versuch über „Mit Google anmelden" → Google-Konto erkannt: **Sascha Lagler / koerperfluss@gmail.com** (OAuth-App heißt „Judicario" — Chipsi nutzt denselben Client) → **ABGELEHNT: „Für diese E-Mail gibt es bereits ein Passwort-Konto"** — das Chipsi-Konto ist E-Mail+Passwort, Google-Login wird systemseitig blockiert. Passwort liegt nirgends (Chrome-Login-Data hat wohl Einträge für chipsi.openlaw.cc, aber Autofill liefert nichts; Keychain ohne GO nicht anfassbar). Reset-Weg: „Passwort vergessen?" → Link an koerperfluss@gmail.com. **Einziger fehlender Input: Saschas Chipsi-Passwort** (eintippen im offenen Fenster ODER Reset machen und mir nennen).
+
+**KOMPLETT-NEUKONFIGURATION vorbereitet (Saschas Auftrag):** Alle 3 Keys erneut validiert (initialize → alle HTTP 200); **Key #2 `jud_0UZGwFqnbqmsxayVXY9K800NMaUWK9LS` = Ziel-Key für die Neu-Anlage** (whoami via `Authorization: Bearer`: tier pro, credit_balance 5000, alle Module — Endpoint `GET https://gateway.openlaw.cc/whoami` existiert). Ablauf nach Login: Konnektor „Judicario" (Key #1) → **Trennen** → „Konnektor hinzufügen" (Remote-MCP über URL + Schlüssel) mit `gateway.openlaw.cc/mcp/at/?k=KEY2` → alle Werkzeuge auf „Immer" (elements()-Radio-Methode) → Endtest Recherche+Synthese. Mini-Chipsi läuft derweil (Key #1 noch gültig).
+
+**How to apply:** Sobald Login steht (Sascha tippt Passwort oder macht Reset): Neukonfiguration mit Key #2 wie oben durchziehen, dann Endtest — baut die Synthese = fertig; baut sie nicht = openlaw-Serverseite (Meldung ist längst bei Reinhard, Delivered 15:22). Recherche-Ersatz läuft unabhängig: Mini-Chipsi http://127.0.0.1:8085 + Claude Desktop at_*-Tools. Keys nie in Dateien/Reports kopieren. Siehe [[zcode-subagent-reasoning-level-error]], [[umgebungs-blocker-zcode]], [[chipsi-judicario-stand-2026-09-22]].
+
+## umgebungs-blocker-zcode
+
+---
+name: umgebungs-blocker-zcode
+description: ZCode-Umgebungsblocker (Stand 22.09.2026) — Agent-Start ohne
+  Reasoning-Level schlägt fehl, Gmail-MCP permission denied, mcporter nicht
+  installiert
+metadata:
+  node_type: memory
+  type: project
+  originSessionId: sess_5b46926c-ea38-4d93-833c-ef981b842fd5
+---
+
+Blocker in dieser ZCode-Umgebung, am 22.09.2026 getestet:
+
+1. **Subagent-Start schlägt fehl**: Agent-Aufruf (z. B. `cavecrew-investigator`) bricht ab mit „Cannot start subagent: No reasoning level selected" (`account:zai-individual-coding-plan/GLM-5.3-Flash`). **Workaround:** Untersuchungs-/Task-Schritte direkt selbst mit Bash ausführen statt Subagent zu dispatchen.
+2. **Gmail-MCP** (`mcp__google-workspace__gmail_search`): „Permission denied" — fehlende API-Scopes.
+3. **Claude Desktop: „MCP MCP_DOCKER: Server disconnected"** = Docker Desktop lief nicht (Log `~/Library/Logs/Claude/mcp-server-MCP_DOCKER.log`: „Docker Desktop is not running"). Config selbst ist korrekt (`docker mcp gateway run --profile ai_coding` in `~/Library/Application Support/Claude/claude_desktop_config.json`). **Fix:** `open -a Docker` (22.09. getestet → Daemon 29.8.0 OK), danach Claude Desktop einmal neu starten, damit der MCP-Prozess neu startet.
+4. **mcporter** ist nicht installiert (nicht im PATH, nicht in `/opt/homebrew/lib/node_modules/`); Config existiert zwar unter `/Users/saschalagler/config/mcporter.json`, aber ohne Binary unbrauchbar. → Autoclaw-Gmail-Tools via mcporter sind aktuell kein Fallback.
+5. **chrome-devtools-MCP + laufender Automation-Chrome**: Wenn eine Instanz mit Profil `~/.cache/chrome-devtools-mcp/chrome-profile` schon läuft, schlägt `list_pages` fehl („browser is already running … use --isolated"). Erkennen am Fenster-Banner „Chrome wird von automatisierter Testsoftware gesteuert" — dieser Chrome ist NICHT Saschas echter Chrome (anderes Profil, keine Sessions, Google-Login wird dort von Google abgelehnt). Erst Banner prüfen, bevor man per Computer-Use tippt.
+
+**Why:** Spart wiederholte Fehlversuche in künftigen Sessions.
+**How to apply:** Keine Subagenten planen, solange Reasoning-Level ungesetzt; E-Mail-Lesen nur, wenn Gmail-MCP-Scopes gefixt sind.
+
+Verwandt: [[chipsi-judicario-stand-2026-09-22]]
+
+## zcode-subagent-reasoning-level-error
+
+---
+name: zcode-subagent-reasoning-level-error
+description: Agent-Tool startet Subagenten nicht — „No reasoning level selected"
+  bei GLM-5.3-Flash; Lösung direkt selbst ausführen
+metadata:
+  node_type: memory
+  type: project
+  originSessionId: sess_5b46926c-ea38-4d93-833c-ef981b842fd5
+---
+
+Am 22.09.2026 schlug jeder Subagent-Start (z. B. `cavecrew-investigator`) fehl mit: „Cannot start subagent: No reasoning level selected / reasoning-level-missing [account:zai-individual-coding-plan/GLM-5.3-Flash]".
+
+**Why:** Dem Modell fehlt in der Host-Konfiguration ein gewählter Reasoning-Level (Denkstufe) — kein Projektfehler, nichts lokal reparierbar.
+
+**How to apply:** Nicht erneut versuchen, Subagenten über das **Agent-Tool** (subagent_type) zu dispatchen — Untersuchungsschritte direkt mit eigenen Tools ausführen (Bash/Read/Grep). WICHTIG (22.09. nachgetestet): **Subagenten in dynamischen Workflows** (`agent()`-Fassade in CreateWorkflow-Skripten, z. B. „Befund-Analyst", „Konfigurations-Analyst") laufen problemlos — nur der direkte Agent-Tool-Dispatch ist betroffen. Wenn Sascha in der Z.ai-/Host-Konfiguration eine Denkstufe wählt, sollten auch Agent-Tool-Dispatches wieder starten — vorher mit 1 Test-Dispatch prüfen.
 
 ## MEMORY
 
