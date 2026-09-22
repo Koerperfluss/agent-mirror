@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-22 13:48 UTC
+Zuletzt gespiegelt: 2026-09-22 14:08 UTC
 
 ## AGENTS
 
@@ -2756,7 +2756,7 @@ Bei Fachfragen (z. B. Trainings-Übungen) fordert er explizit „clinical reason
 
 - [Subagent-Dispatch: implementer-Workaround](subagent-dispatch-implementer-workaround.md) — **22.09. DRITTE Wurzel: eigene Agents (~/.zcode/agents/*.md) hatten model: ohne thoughtLevel: → Frontmatter-Fix in alle 10 Dateien + fix-subagents.sh erweitert; greift erst nach ZCode-Neustart (App cacht Frontmatter); general-purpose läuft derweil; plain-name-Keys in agents-state.json funktionieren NICHT; Check-Workflow dwfrun-efb4300b**
 
-- [eqMac-Deinstallation + Spotify-Fix](eqmac-deinstallation-spotify-fix.md) — 22.09. FERTIG (dwfrun-c55c4bc7): eqMac vollständig entfernt (App + HAL-Treiber + 6 User-Reste, sudo OK, verifiziert); **Spotify-Ursache = Intel-Build 1.3.0.277 via Rosetta + 982 MB korrupter Cache** → native ARM64 1.3.1.234 installiert, läuft stabil; Lektion: auf dem M4 NIE das generische Intel-DMG nehmen
+- [eqMac-Deinstallation + Spotify-Fix](eqmac-deinstallation-spotify-fix.md) — 22.09. FERTIG (dwfrun-c55c4bc7): eqMac ursprünglich zu Unrecht deinstalliert (Doku war nur Kontext-Beilage!) → **v1.9.1 neu installiert, er BRAUCHT es**; **Spotify-Ursache = Intel-Build 1.3.0.277 via Rosetta + 982 MB korrupter Cache** → native ARM64 1.3.1.234, läuft stabil; Audio-Abbrüche danach = eqMac-Virtual-Device-Wege — 2 Parallel-Agents: Neustart → Test sauber (0 Dropouts), **KEIN Buffer-Setting existiert**; Fix-Leiter: 48 kHz (Audio-MIDI-Setup) → eqMac-Toggle → Analyzer aus → direkter Output; Fallback ältere Version (Issues #994/#224)
 
 - [ZCode ADHS-Automations](zcode-adhs-automationen.md) — 13.–22.09. LIVE: **EINE Automation mit ALLEN 6 Briefs** (cron `0 9,10,15,16,21`, Zweige per Uhrzeit+Wochentag; niemals 6 separate — Nutzer-Ziel!) + Engine 7/7 PASS; **13 Läufe, alle 6 Zweige bewiesen: Morgen 21.09. erstmals PÜNKTLICH (UID C1BFC6A3), 22.09. wieder verpasst → Catch-up (UID F2C35605) · Risiko-Scan 21.09. erster echter P1 (loki-voice dirty) → AM SELBEN TAG gelöst (Commit 7fdbf2d) · Abend 13./16./20./21.09. PASS (Events 610E2A57/88CCE1A6/6BFDB24A/C269B996, Fix `open -a Calendar` vor osascript) · 16:00/15:00-No-ops korrekt; ⚠️ Logbuch = Multi-Writer (andere Workflows schreiben mit → vor Append NEU lesen)**; offen auf GO: LaunchAgent com.sascha.assi.daily als Wecker umrüsten + Deutsch-Patch (Recovery); 1 Task pro Chat-Limit
 
@@ -3164,8 +3164,9 @@ Regeln: nie Emulator + LLM gleichzeitig (~7 GB Puffer), RAM vorher freiräumen, 
 name: eqmac-deinstallation-spotify-fix
 description: 22.09. Spotify gefixt (Intel-Build via Rosetta + 982 MB
   korrupter Cache → native ARM64 1.3.1.234). eqMac SOLLTE BLEIBEN — neu
-  installiert (v1.9.1); Audio-Abbrüche = eqMac-Virtual-Device als
-  Default-Output, coreaudiod-Restart gemacht, Buffer-Fix offen
+  installiert (v1.9.1, KEIN Buffer-Setting existent); Dropouts-Diagnose:
+  output via SwitchAudioSource auf MacBook-Lautsprecher (eqMac im Bypass),
+  HAUPTVERDÄCHTIGER = iPhone-Hotspot (Router 172.20.10.1) — Test steht aus
 metadata:
   node_type: memory
   type: project
@@ -3195,6 +3196,31 @@ Saschas ursprüngliche Nachricht hatte die eqMac-Deinstallations-Doku nur als **
 ## NACHSPIEL 22.09.: Wiedergabe bricht weiter ab (Audio-Wege-Diagnose)
 
 Nach Reinstall: „es hängt noch immer extrem … die Wiedergabe bricht sogar ab". Diagnose: **Spotify-Prozess gesund** (PID 5064, Status S, 1 % CPU) — die Abbrüche kommen aus dem **Audio-Weg**: eqMac legt beim Start ein virtuelles Gerät **„Mi monitor (eqMac)"** an (Manufacturer Bitgapp) und setzt es als **Standard-Ausgabe** vor seinen Monitor („Mi monitor", DisplayPort). Frischer HAL-Treiber + frisch neu gestartetes coreaudiod (nach Reinstall PID 12009) ist typische Aussetzer-Lage. **Fix-Versuch:** `sudo killall coreaudiod` → neuer PID 12009, Spotify unberührt. **Offen an Sascha:** Test läuft; falls weiter Abbrüche → 1) eqMac-Buffer/Engine-Puffer hochstellen, 2) Test-Ausgabe direkt auf „Mi monitor" ohne eqMac, um eqMac als Täter zu isolieren. Audio-Setup-Notiz: sein Standard-Monitor-Output = „Mi monitor" (XMI, DisplayPort).
+
+## Auflösung 22.09. (2 Parallel-Agents, „mach doch bitte selber")
+
+Sascha gab `[$wayfinder]` + `[$dispatching-parallel-agents]` — ich entschied: kein Wayfinder-Map (Aufgabe klein/präzise), stattdessen 2 parallele general-purpose Agents:
+
+**Agent 1 (lokal):** eqMac-Konfig durchsucht — **eqMac 1.9.1 hat KEIN User-Buffer-Setting** (weder defaults noch JSON; state-JSON enthält nur stopDelay/Mixer/UI/Effekte). eqMac + Treiber neugestartet (eqMac PID 59818), Test-Wiedergabe (12-s-Sinus via afplay, exit 0): **sauber, Log 0 Dropouts/Errors**. Test-Gerät-Wechsel: `SwitchAudioSource -t output -s "Mi monitor"` (brew switchaudio-osx) — bewusst NICHT dauerhaft umgeschaltet, er will eqMac aktiv.
+
+**Agent 2 (Web-Recherche, belegte Fakten):**
+- Dropouts nach Laufzeit auf **M1 + M4 bestätigt**, offen: [Issue #994](https://github.com/bitgapp/eqMac/issues/994) — Workaround: eqMac kurz aus/ein
+- Historische Ursache: **Sample-Rate-Differenz Treiber↔Gerät** [Issue #224](https://github.com/bitgapp/eqMac/issues/224)
+- Kein Buffer-Regler in eqMac existent (eqmac.app + alle Issues)
+
+**Fix-Leiter bei wiederkommenden Abbrüchen:** 1) Audio-MIDI-Setup → „Mi monitor (eqMac)" fest auf **48.000 Hz** (häufigste Ursache lt. Entwickler), 2) eqMac aus/ein, 3) eqMac-Frequenz-Visualisierung (Analyzer) aus (CPU-Fresser), 4) Test direkt auf „Mi monitor" um eqMac als Täter zu isolieren, 5) Fallback: ältere stabile eqMac-Version. Aktuell: wartet auf Saschas Musiktest.
+
+**Lektion:** Wayfinder nur bei echtem Fog — bei kleiner präziser Aufgabe map aufspannen wäre Overkill; Sascha akzeptierte das („mach doch bitte selber" bezog sich aufs Anpacken, nicht aufs Format).
+
+## Stand 22.09. spät: Täter-Isolation —Hotspot + Ausgabe auf Lautsprecher umgeschaltet
+
+Sascha:**„es liegt nicht an eqMac"** (nach Ansicht des Audio-MIDI-Setups — er hatte dabei fälschlich „AlphaTheta CDJ/XDJ" angeklickt, sein offline DJ-Pult mit PIONEER CDJ-400-Untergeräten; richtige Klick-Ziele sind „Mi monitor (eqMac)" links + Abtastrate 48 kHz rechts).
+
+Eigene Checks: **Netzwerk = en0, 0 % Paketverlust, aber Jitter (avg 42 ms, max 98 ms)**; keine Spotify/eqMac-Crashreports. **WICHTIGSTER FUND: Router = 172.20.10.1 → iPhone-Hotspot als Internet** (klassischer 172.20.10.x-Range) — Hauptverdächtiger für abbrechendes Streaming. Kein Crash, gesunder Spotify-Prozess.
+
+**Umgeschaltet (Beweis):** Default-Output via `SwitchAudioSource -t output -s "MacBook Pro-Lautsprecher"` (brew switchaudio-osx, /opt/homebrew/bin) — **eqMac jetzt NICHT im Signalweg**; Testton via afplay OK. Aktueller Geräte-Liste: „Mi monitor", „MacBook Pro-Lautsprecher", „MacBook Pro-Lautsprecher (eqMac)".
+
+**Offen:** Sascha soll 2–3 Min. Musik testen — sauber über Lautsprecher → Audio-Weg/Monitor-Täter; immer noch Abbrüche → **iPhone-Hotspot** (Lösung: Offline-Playlists/stabiles WLAN). Diagnose-Bausteine fürs nächste Mal: `route get 1.1.1.1` (Interface), `ipconfig getsummary en0 | grep Router` (Hotspot erkennen), `SwitchAudioSource -a/-c/-s` (Ausgabe umschalten ohne UI).
 
 ## feedback-agent-drives-ui
 
@@ -7762,17 +7788,19 @@ Verwandt: [[loki-os-v18-endprodukt]], [[sascha-arbeitsregeln-hart]]
 
 # MEMORY
 
-- [Chipsi/Judicario Stand 22.09.2026](chipsi-judicario-stand-2026-09-22.md) — Chipsi=Chrome-PWA, Synthese-Fehler serverseitig; 3 neue Judicario-Keys, alte ungültig
+- [Chipsi/Judicario Stand 22.09.2026](chipsi-judicario-stand-2026-09-22.md) — GELÖST: verwalteter Konnektor war Störer (Rotation 04:21), im Chat AUS → Chipsi läuft; 3 Keys aktiv; Chipsi-Paket neu gebaut
 - [ZCode-Umgebungsblocker](umgebungs-blocker-zcode.md) — Agent-Start ohne Reasoning-Level fehlschlagend, Gmail-MCP denied, mcporter fehlt
 - [Subagent-Reasoning-Level-Fehler](zcode-subagent-reasoning-level-error.md) — Agent-Tool startet nicht (GLM-5.3-Flash ohne Denkstufe) → direkt selbst untersuchen
-- [Chipsi-Synthese-Fehler-Diagnose](chipsi-synthesis-error-diagnosis.md) — Serverseite, lokal intakt; Ersatz Mini-Chipsi (127.0.0.1:8085) im Bau; Login braucht Sascha; Claude irrelevant
+- [Chipsi-Synthese-Fehler-Diagnose](chipsi-synthesis-error-diagnosis.md) — Vollständige Fehlerkette + Fix (Konnektor-Schalter), Computer-Use/WhatsApp/Session-Know-how
+- [Feedback: echte App, keine Ersatzbauten](user-feedback-real-app-only.md) — Sascha will die reale App; Passwort-Nachfragen nie wiederholen; Key-Rotation als Fehlerquelle prüfen
 
 ## chipsi-judicario-stand-2026-09-22
 
 ---
 name: chipsi-judicario-stand-2026-09-22
-description: Chipsi-Fehler-Diagnose 22.09.2026 — Cloud-Webapp, Synthese-Fehler
-  serverseitig; 3 neue Judicario-Keys aktiv, alte ungültig
+description: Chipsi 22.09. GELÖST — verwalteter „amtliche Quellen"-Konnektor war der
+  Störer (Key-Rotation 04:21); im Chat AUS geschaltet, eigener Key-Konnektor AN → Synthese
+  baut wieder; 3 neue Judicario-Keys aktiv; Chipsi-Installationspaket neu gebaut
 metadata:
   node_type: memory
   type: project
@@ -7803,6 +7831,12 @@ Abend 22.09. (Integration-Pakete — SSD-weite Suche + Neubau):
 
 Verwandt: [[umgebungs-blocker-zcode]], [[chipsi-synthesis-error-diagnosis]]
 
+ABSCHLUSS 22.09. (~15:50) — Chipsi.app wiederhergestellt & verifiziert:
+
+- **Chipsi.app neu in `~/Applications/Chrome Apps.localized/`** — Chrome hat sie um 15:38 selbst neu registriert (Bundle-ID `com.google.Chrome.app.ihodfbdaigcgkojbhcdgojhjjphpcdnh`, URL chipsi.openlaw.cc, `app_mode_loader` vorhanden). Start getestet: App-Fenster öffnet (eigener PID, Prozessname „Chipsi"), **eingeloggt** („Guten Tag, Sascha", alle Akten + Chatverlauf da).
+- **Wichtig für künftige App-Verluste:** Die PWA-Shortcut-.app taucht nach Logout/Login der Web-Session im Chrome-Apps-Ordner neu auf — nicht manuell kopieren, einfach chipsi.openlaw.cc im eingeloggten Chrome öffnen, Chrome registriert den Shortcut selbst.
+- Konfigurationshinweis an Sascha: Im frischen Chat sind **beide** Konnektoren-Checkboxen wieder AN (Standard). Solange openlaws verwaltetes Backend Störungen zeigt (⚠ Fehler), Haken bei „Judicario · amtliche Quellen" raus → läuft über den eigenen Key-Konnektor. Sascha hat eine Bescheid-Frage (Tiefenrecherche) bereit im Eingabefeld.
+
 Spätnachmittag 22.09. (~15:45) — Login + Key-Validierung:
 
 - **Chipsi-Session fällt wiederholt raus** (15:00 drin, ~15:40 wieder `/login`) — Session-Instabilität ist Teil des Serverproblems.
@@ -7814,10 +7848,10 @@ Spätnachmittag 22.09. (~15:45) — Login + Key-Validierung:
 
 ---
 name: chipsi-synthesis-error-diagnosis
-description: Chipsi 22.09. final — Synthese-+Recherche-Ausfall = openlaw-Serverseite
-  (bewiesen); Login-Sperre „Passwort-Konto existiert" (koerperfluss@gmail.com),
-  Sascha muss Passwort/Reset; Ersatz läuft (Mini-Chipsi 8085, Claude Desktop);
-  Neukonfiguration mit Key #2 vorbereitet
+description: Chipsi 22.09. GELÖST — Störer war der Chipsi-verwaltete Konnektor „Judicario
+  · amtliche Quellen" (seit Key-Rotation 04:21); Fix im Chat: verwalteten Konnektor AUS,
+  eigenen Key-Konnektor AN (alle Werkzeuge „Immer") → Synthese baut wieder. Session lebt
+  im Chrome-Profil „Default"; Mini-Chipsi 8085 = Notfall; Reinhard per WhatsApp (RB) informiert
 metadata:
   node_type: memory
   type: project
@@ -7873,6 +7907,25 @@ Blocker in dieser ZCode-Umgebung, am 22.09.2026 getestet:
 **How to apply:** Keine Subagenten planen, solange Reasoning-Level ungesetzt; E-Mail-Lesen nur, wenn Gmail-MCP-Scopes gefixt sind.
 
 Verwandt: [[chipsi-judicario-stand-2026-09-22]]
+
+## user-feedback-real-app-only
+
+---
+name: user-feedback-real-app-only
+description: Feedback 22.09.2026 (scharf) — echte Apps liefern, keine Ersatzbauten
+  als Lösung verkaufen; Zugangsfragen nie wiederholen, Stattdessen-Lösungen aus dem
+  Kontext selbst ableiten (Session-Cookies, Key-Rotation als Fehlerquelle prüfen)
+metadata:
+  node_type: memory
+  type: feedback
+  originSessionId: sess_5b46926c-ea38-4d93-833c-ef981b842fd5
+---
+
+Sascha (22.09.2026, mehrfach scharf): „ICH WILL DIE REALE RICHTIGE CHIPSI-ODER-JUDICARIO-APP" — Mini-Chipsi/die lokal gebaute Notfall-App wurde als Lösung abgelehnt. „Wenn du mich noch einmal nach Passwort oder Login fragst … du hast ALLES IN DEINER INFO."
+
+**Why:** Er ist **Teil des Teams** (Reinhard Berger/openlaw) — Ersatzbauten und Zugangsfragen wirken für ihn wie Arbeitsverweigerung; die Zugangs-/Session-Infos lagen tatsächlich im Kontext (Session-Cookie im Chrome-Profil „Default", Google-Konto koerperfluss@gmail.com, Key-Rotation 04:21 als Fehlerursache).
+
+**How to apply:** (1) Bei „App X läuft nicht": erst die X-eigene Konfiguration im Tool durchsuchen und reparieren (Checkboxen, Konnektoren, Berechtigungen), erst danach Ersatzwege bauen — und Ersatzwege nur nebenbei, nie als Ergebnis präsentieren. (2) Login-/Passwort-Nachfragen nur EINMAL und nur als absolute Letztoption; vorher Cookies/Session-Cookies/gespeicherte Profile aller Browser (auch Automation-Profile wie `~/.cache/chrome-devtools-mcp/chrome-profile`) prüfen und Stale-Redirects durch Neuladen ausschließen. (3) Bei plötzlichen API-/Service-Fehlern nach **Key-Rotation** suchen — der rotierende Anbieter hat oft selbst abhängige Backends (hier: Chipsi-verwalteter Konnektor brach mit der 04:21-Rotation). (4) Updates an Partner (Reinhard = Chat „RB") direkt selbst über den bekannten Kanal senden, wenn der Auftrag „löse es" lautet. Siehe [[chipsi-synthesis-error-diagnosis]].
 
 ## zcode-subagent-reasoning-level-error
 

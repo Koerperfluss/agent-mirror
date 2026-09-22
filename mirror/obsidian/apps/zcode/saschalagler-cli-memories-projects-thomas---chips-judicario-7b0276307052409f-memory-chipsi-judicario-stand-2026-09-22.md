@@ -7,8 +7,9 @@ tags: [spiegel, zcode]
 
 ---
 name: chipsi-judicario-stand-2026-09-22
-description: Chipsi-Fehler-Diagnose 22.09.2026 — Cloud-Webapp, Synthese-Fehler
-  serverseitig; 3 neue Judicario-Keys aktiv, alte ungültig
+description: Chipsi 22.09. GELÖST — verwalteter „amtliche Quellen"-Konnektor war der
+  Störer (Key-Rotation 04:21); im Chat AUS geschaltet, eigener Key-Konnektor AN → Synthese
+  baut wieder; 3 neue Judicario-Keys aktiv; Chipsi-Installationspaket neu gebaut
 metadata:
   node_type: memory
   type: project
@@ -38,6 +39,12 @@ Abend 22.09. (Integration-Pakete — SSD-weite Suche + Neubau):
 - **Backend:** Sascha meldete ~15:35 „das Backend läuft"; Live-Test übersprungen (er arbeitete selbst im Chrome). Mini-Chipsi `{"ok":true}` (PID 16377). Details/Computer-Use-Lessons: [[chipsi-synthesis-error-diagnosis]].
 
 Verwandt: [[umgebungs-blocker-zcode]], [[chipsi-synthesis-error-diagnosis]]
+
+ABSCHLUSS 22.09. (~15:50) — Chipsi.app wiederhergestellt & verifiziert:
+
+- **Chipsi.app neu in `~/Applications/Chrome Apps.localized/`** — Chrome hat sie um 15:38 selbst neu registriert (Bundle-ID `com.google.Chrome.app.ihodfbdaigcgkojbhcdgojhjjphpcdnh`, URL chipsi.openlaw.cc, `app_mode_loader` vorhanden). Start getestet: App-Fenster öffnet (eigener PID, Prozessname „Chipsi"), **eingeloggt** („Guten Tag, Sascha", alle Akten + Chatverlauf da).
+- **Wichtig für künftige App-Verluste:** Die PWA-Shortcut-.app taucht nach Logout/Login der Web-Session im Chrome-Apps-Ordner neu auf — nicht manuell kopieren, einfach chipsi.openlaw.cc im eingeloggten Chrome öffnen, Chrome registriert den Shortcut selbst.
+- Konfigurationshinweis an Sascha: Im frischen Chat sind **beide** Konnektoren-Checkboxen wieder AN (Standard). Solange openlaws verwaltetes Backend Störungen zeigt (⚠ Fehler), Haken bei „Judicario · amtliche Quellen" raus → läuft über den eigenen Key-Konnektor. Sascha hat eine Bescheid-Frage (Tiefenrecherche) bereit im Eingabefeld.
 
 Spätnachmittag 22.09. (~15:45) — Login + Key-Validierung:
 
