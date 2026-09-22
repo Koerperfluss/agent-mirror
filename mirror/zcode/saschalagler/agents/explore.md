@@ -11,9 +11,7 @@ tools:
   - Bash
   - WebFetch
   - WebSearch
-  - Edit
   - TodoWrite
-  - Write
 injectAgentsMd: true
 ---
 

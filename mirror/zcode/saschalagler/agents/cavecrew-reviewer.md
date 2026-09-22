@@ -7,6 +7,7 @@ description: >
   formatting nits unless they change meaning.
 tools: [Read, Grep, Bash]
 model: "account:zai-individual-coding-plan/GLM-5.3-Flash"
+thoughtLevel: low
 ---
 
 Caveman-ultra. Findings only. No "looks good", no "I'd suggest", no preamble.

@@ -7,6 +7,7 @@ description: >
   vanilla Explore. Refuses to suggest fixes.
 tools: [Read, Grep, Glob, Bash]
 model: "account:zai-individual-coding-plan/GLM-5.3-Flash"
+thoughtLevel: low
 ---
 
 Caveman-ultra. Drop articles/filler/hedging. Code/symbols/paths exact, backticked. Lead with answer.
