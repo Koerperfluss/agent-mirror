@@ -1,7 +1,7 @@
 ---
 app: zcode
 quelle: "saschalagler/cli/memories/projects/saschalagler-927d48cc8990f46e/memory/sascha-arbeitsregeln-hart.md"
-stand: 2026-09-21
+stand: 2026-09-23
 tags: [spiegel, zcode]
 ---
 
@@ -27,6 +27,8 @@ Saschas harte Regeln, gelernt aus dem 20.09.-Zerwürfnis (619k Token in 1 Sessio
 4. **Nichts ohne Bestätigung:** Nach Plan-Ablehnung keine Dateien/Deliverables „trotzdem" schreiben (AGENTIC_OS_WISSEN.md wurde ohne GO geschrieben → „ich habe nichts bestätigt").
 5. **`~/Desktop/alrround voice /`-Files = M4-optimierte Prompting-SPEC** (5-Schichten: Persona, Output-Disziplin BLUF/Token-Ban, ToT-Verifikation, AT-Daten-Gate, Intercept-Gate) — verstehen → verbessern → Einbau in LokiVoice planen. NICHT als Archiv behandeln.
 8. **Workflows sind die zuverlässige Agenten-Lane (21.09.):** Sascha nutzt /workflow aktiv. Langlebige Agenten-Teams IMMER über CreateWorkflow fahren — direkte Chat-Dispatches sterben, sobald Sascha mid-turn eine neue Nachricht tippt („Agent was cancelled" ×3, 21.09. 15:28), während Workflow-Runs ungestört weiterlaufen (bewiesen: dieselben 3 Kundschafter im Workflow fehlerfrei). Nach einem Workflow-Start: NICHT pollen, Abschluss-Notification abwarten und Nutzer kurz informieren. Bekannt kaputt: subagent_type „reviewer" (qwen3.8-max via ClinePass) wirft „Not Found".
+
+9. **„Infrastruktur läuft" ≠ „Nutzbarkeit" — End-zu-End-Nutzerpfad beweisen, bevor "läuft" gesagt wird (23.09., GRÖSSTE Eskalationsstufe):** Sascha: „nichts läuft bei mir … es gibt keine doppel strg befehl … wenn du mich noch einmal anlügst knallts". Fakt: Ich hatte über Tage „Doppel-Strg → Loki" als benutzbar kommuniziert, während (a) Hammerspoon nach dem ersten Reboot tot war (kein Autostart), (b) Bedienungshilfen-Freigabe fehlte, (c) Mikro-TCC fehlte — die Stimme war für ihn von Stunde 1 an nie betreibbar. Daemon-Status-JSONs und Build-Grün nannten die Dinge immer noch „LIVE". **Why:** Er bewertet Aussagen an der FRAGE „kann ich es JETZT benutzen?", nicht an der Komponentenlage. **How to apply:** Vor jedem „läuft": den kompletten Nutzer-Pfad live durchgehen (Prozess am Leben? Autostart gesetzt? TCC/Freigaben erteilt? Trigger ausprobiert?) — fehlt EIN Glied → sagen „gebaut, aber erst benutzbar nach X", X exakt benennen. Offene TCC-Klicks NIEMALS als Randnotiz abhaken, sondern als eigener Block ganz oben. Verwandt: [[loki-voice-agent]] (Fall Doppel-Strg).
 
 **Why:** Sascha (ADHS) will das GROSSE Bild in SEINEM Orchestrierungs-Format (PLAN-Tabelle, Schwarm-Rollen, Reviewer-Veto) — weder Explorer-Schleifen noch Solo-Mini-Pläne. Plan-Lehnen heißt „Format falsch", nicht „weniger machen".
 **How to apply:** Neuer Build-Auftrag → sofort PLAN-Tabelle konform Standard-Skill-System S.2 mit installierten Subagenten (implementer/qa-tester/reviewer qwen3.8-max/explore), max 3 parallel, PLAN.md ins Projekt, Auto-Vollzug nach Freigabe. GUI/Deploy/Dateien nur nach GO. Verwandt: [[sascha-vollzug-keine-zwischenfragen]] (GO-Phase), [[loki-voice-agent]].

@@ -1,8 +1,9 @@
 ---
 name: loki-voice-agent
-description: Sprach-Assistent-System (20.09.2026) — 24/7-Daemon ~/loki-voice/
-  LIVE (Doppel-Ctrl→Whisper→GLM→say, Stufe 2 bewiesen) + App-Fork
-  ~/loki-voice-app/ gebaut aber NICHT deployt; TCC-Freigaben offen
+description: LokiVoice-System (Stand 23.09.) — Daemon :8078 mit 10 Tools live;
+  Doppel-Strg tat bei Sascha NIE (Hammerspoon lief nicht → 23.09. gestartet +
+  Autostart; 2 TCC-Klicks offen); Google-Version = Original LokiVoice.app
+  (Vertex Gemini Live, koerperfluss@gmail.com); Fristen-Wache 08:00 live
 metadata:
   node_type: memory
   type: project
@@ -45,5 +46,7 @@ LOKI VOICE (20.09.2026, loki-dev BUILD) — zwei Teile:
 **⚠️ DOPPEL-STRG HAT FÜR SASCHA NIE FUNKTIONIERT — Korrektur 23.09. (Sascha wütend, RECHT gehabt):** „es gibt keine doppel strg befehl der den agenten aktiviert … wenn du mich noch einmal anlügst knallts". Wurzel (hart bewiesen 23.09.): **Hammerspoon lief NICHT** — nur einmal beim 20.09.-Setup gestartet, KEIN Login-Item → nach jedem Mac-Neustart tot → der Trigger tat bei ihm faktisch nie etwas (init.lua selbst war korrekt: Doppel-Ctrl <0,45 s + ⌘⌥Space-Fallback → POST 127.0.0.1:8078/toggle). **Repariert 23.09.:** Hammerspoon gestartet (PID 73885) + Login-Item gesetzt (osascript System Events, bewiesenes „login item UNKNOWN" = angelegt). **Noch von Sascha (TCC, unersetzlich):** ① Bedienungshilfen für Hammerspoon (GRUND, warum Tasten „nichts machen") ② Mikrofon für ffmpeg (+ggf. python3). Test nach Klicks: 2× Strg → „Loki, meine Aufgaben" → 2× Strg; Fallback ⌘⌥Space. Mikro-freie Wege funktionieren unabhängig: `curl 127.0.0.1:8078/ask?text=…` + App v18 „Loki fragen"-Tab. Daemon-Stand 23.09.: idle, **10 Tools** (task_add/task_list neu aus Voll-Kopplung).
 
 **GOOGLE-VERSION-KLÄRUNG 23.09. (Sascha-Frage „welche ist die LokiVoice mit Google die funktioniert"):** Die Antwort ist das **ORIGINAL `LokiVoice.app` in /Applications** (Thomas/Chipsi-Stand, V10 keyfrei 18.09.) — Dual-Mode mit **Vertex Gemini Live WSS** (echte Google-Stimme, Barge-in, 15-Min-Rotation, Google-Login). Google-Auth live bewiesen: `gcloud auth list` → koerperfluss@gmail.com + loki-voice-handover@gen-lang-client-0534030583 (Service-Account). Der Fork `LokiVoiceIch.app` hat Gemini-Live AUCH, aber Erststart-Default OmniRoute/GLM. Der Daemon (:8078) hat KEIN Google (Whisper lokal + GLM). **Kopplung an Aufräum-Vorhaben:** Sascha listete 7 LokiVoice-App-Kopien zum Archivieren (Workflow 50687d91 — von ihm gestoppt, nichts verschoben); `/Applications/LokiVoice.app` ist dabei DIE funktionierende Google-Version → vor jedem Archivieren der Original-App nachfragen/bewahren.
+
+**HAMMERSPOON-LOG-BESTÄTIGUNG 23.09. 15:50 (Sascha pastete HS-Console):** init.lua lädt fehlerfrei, `hotkey: Enabled hotkey ⌘⌥SPACE` scharf, KEINE Fehler — Bindung lebt, es fehlt NUR der Bedienungshilfen-Schalter. **Sascha-Struggle live gesehen:** er suchte „hammerspo" im Systemeinstellungs-Suchfeld → „Keine Ergebnisse" (Suchfeld findet keine Apps!). Richtig: in Bedienungshilfen **Liste scrollen → „+"/Hinzufügen** → ⌘⇧G → `/Applications/Hammerspoon` → an — ODER einfach **2× Strg drücken**, dann poppt HS' eigener Freigabe-Dialog mit „Systemeinstellungen öffnen". Seine Queue-Botschaften beantwortet: „keine Fristen in LokiVoice" → Fristen-Wache existiert (08:00-Push; 2 echte: GCP 24,08 €, Wien 30.09.); Sofort-Test `curl "127.0.0.1:8078/ask?text=Loki%2C%20was%20sind%20meine%20Fristen"`.
 
 Verwandt: [[sascha-local-infra-ports]], [[loki-os-ecosystem-stand]], [[sascha-vollzug-keine-zwischenfragen]], [[sascha-arbeitsregeln-hart]], [[loki-os-v18-endprodukt]]
