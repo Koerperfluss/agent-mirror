@@ -1,7 +1,7 @@
 ---
 app: zcode
 quelle: "saschalagler/cli/memories/projects/default-041661acc4598b22/memory/thomas-tasks-drei-recherchen.md"
-stand: 2026-09-18
+stand: 2026-09-23
 tags: [spiegel, zcode]
 ---
 
@@ -57,7 +57,7 @@ Am 11.09.2026 gestellt und am selben Tag ABGESCHLOSSEN inkl. Paritäts-Build (2 
 
 **14.09. FINAL — MODELL-INVENTAR VOLLSTÄNDIG (Chipsi-Notruf-Quellen neu erschlossen):**
 - **Er wies auf `chipsi notruf/` („dort findest du noch 20 Modelle")** — geliefert, Gesamtzählung **25+ Modelle/Bausteine** aus 3 Quellen. Schlüssel-Dateien: `Judicario_Sacha_Mac/chipsi notruf/S1_LATENZBERICHT_ENTWURF.md` + `PRD_CHIPSI_NOTRUF_ERSTE_HILFE.md` + `S2_READINESS.md`.
-- **S1 §1 — 6 getestete Gemini-Live-Varianten (Vertex, Projekt gen-lang-client-0534030583):** NUR `gemini-live-2.5-flash-native-audio` funktioniert (Stimme Charon, Deutsch); `gemini-3.1-flash-live-preview`, `...preview-12-2025`, `gemini-2.0-flash-001`, `gemini-live-2.5-flash-preview`, `gemini-2.5-flash-native-audio` (ohne live-) = alle ❌ Code 1008. **Merksatz: `live-`-Präfix Pflicht · 15-Min-Session-Limit · OAuth-Token 60 Min · `maxOutputTokens` senden = Fehler 1007.**
+- **S1 §1 (Latenzbericht, Chipsi-Notruf) — KORRIGIERT 23.09., Code-Wahrheit:** LokiVoice Google-Version: Modelle Original = gemini-live-2.5-flash-native-audio (Vertex-Live, hartcodiert VoiceService.swift:115), gemini-3.1-flash-live-preview (AI-Studio-Live-Fallback, VoiceService.swift:121), gemini-2.5-flash (Haupt), gemini-2.5-pro, gemini-3.7-flash (OpenRouter-Katalog); Fork = gemini-3.1-flash-live-preview (Live auf BEIDEN Pfaden, VoiceService.swift:115+117), gemini-3.6-flash (Haupt), gemini-3.5-flash-lite, gemini-3.1-pro-preview — über Routen Vertex-REST generateContent (us-central1, Projekt gen-lang-client-0534030583, gcloud-Bearer) + Vertex-Live-WSS (BidiGenerateContent) + AI-Studio-Live-WSS-Fallback (generativelanguage.googleapis.com) + OpenAI-kompatible generativelanguage/v1beta/openai-Basis. Der alte S1-Merksatz (Nur-ein-Modell-Claim + erfundene Session-/Token-Limits) wurde als Falschinfo entfernt — Original im Backup .bak-vor-faktenfix.
 - **Notruf-PRD §6-Standards (relevant fürs Ziel-App-Design):** Kanzlei-Standard = **„Whisper-Streaming + TTS auf Hetzner"** (Thomas' lokaler/EU-Pfad = unser whisper_server ist PRD-konform); Cloud nur mit Einwilligung; **AI-Studio-Key ist bei Sascha durch Spending-Cap BLOCKIERT** (Vertex-OAuth umgeht — für Thomas beides irrelevant); **OpenRouter-Key-Rotation** als Sicherheits-Warnung aus CLINE_HANDOFF (in App-Keychain-Logik einbauen); **Notruf-Regel: Mikro nur auf Knopfdruck** (App braucht Knopf-Modus neben Dauer-Live).
 - **Orte-Korrektur von Sascha: „orte sind nicht fix 10, schau doch selber nach, keine Vorannahmen"** — bei der Mac-Ausmistung echte Vollsuche über die ganze Platte machen, nicht die bekannte 10er-Liste abarbeiten.
 - **Desktop-Screenshots (15.28.12/15.40.16) vermutlich seine Modell-Listen** — per Read NICHT einsehbar (nur CDN-Upload, siehe [[read-tool-images-cdn-hazard]]); Inventar aus Disk-Dateien stattdessen.
