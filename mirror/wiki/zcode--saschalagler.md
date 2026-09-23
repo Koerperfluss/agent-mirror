@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-23 14:09 UTC
+Zuletzt gespiegelt: 2026-09-23 14:21 UTC
 
 ## AGENTS
 
@@ -7213,6 +7213,7 @@ Beobachtet 06.09.2026 (Session mit Off-Peak-Ticket): Nach User-Paste „ZCode Er
 - [Wayfinder Skill-Konsolidierung](wayfinder-skill-konsolidierung.md) — Map 20.09. abgearbeitet: 9 Tickets zu, 0 broken Symlinks; 2 offene Sascha-Entscheidungen (Tier-2-INDEX.md Option A/B/C · Archiv-Restposten 2026-09-08 löschen nur mit GO)
 - [LOKI-Ki Clinical Wayfinder-Map](loki-ki-clinical-wayfinder.md) — ZWEITE Map in ~/loki-ki/.wayfinder/ (Körperfluss-Automatik): T-01..T-04 alle real+getestet (Pipeline/CLI/Templates/loki.db 7,6 MB); immer BEIDE Wayfinder-Maps prüfen — Sascha brannte, als nur die erste gefunden wurde
 - [LOKI-OS Harness-Settings-Sessions](loki-os-harness-settings-sessions.md) — 3 kanonische Sessions (sess_6ec2db7a/ecb2e5e0/055615ab) mit der 6-Schaltstellen-Architektur; bei Harness-/Architektur-Fragen ZUERST diese laden; deja-Eingriffe additiv-verträglich (20.09. verifiziert)
+- [Session-Quellen: wo finden](session-quellen-wo-finden.md) — zcode-Log = nur Telemetrie; User-Nachrichten in ~/.zcode/cli/rollout/model-io-sess_*.jsonl; Tool-Reste in artifacts/sess_*/
 - [LOKI-OS-Harness Soll-Stand](loki-os-harness-sollstand.md) — 6 Schaltstellen ~/.zcode (17 MCP, 10 Agenten, 7 Commands, Sync-Quelle, 2 Wayfinder-Maps); Änderungen nur via STANDARD-SKILLS.md + sync-script
 
 ## atlas-versionsstand
@@ -7369,7 +7370,11 @@ GEORGE = THOMAS' EIGENES SYSTEM AUF SASCHAS LOKI.OS-BASIS (Stand 23.09.2026):
 
 **NACHTRAG 23.09. spät — KONKRETES THOMAS-PAKET + Sascha-Korrektur zu den Google-Modellen:** Sascha korrigierte zornig meine Gemini-Aussage („läuft nicht über gemini 3.8 und die 4-6 modelle von google") — **Code-Fakten (grep LokiVoiceApp-Sources): 4 Google-Modelle = gemini-2.5-flash (Haupt), 2.5-pro, 3.7-flash, 3.1-flash-live-preview; 2 Routen = generativelanguage.googleapis.com/v1beta/openai + us-central1-aiplatform.googleapis.com** (Details in [[loki-voice-agent]]). **Workflow dwfrun-785af4c4 läuft (Ergebnis offen):** ① Kanban-Board (3484) mit 8 echten Aufgaben füllen ② **`~/Desktop/INFOS_FUER_THOMAS.md`** = konkretes sendefertiges Paket: THOMAS-Aufgaben (Voice mit den 4 Modellen zum Antworten bringen mit Transkript+Log-Beweis · Live-Stimme 3.1-flash-live-preview 1 Session · Configs unverändert via diff-Beweis · je Baustein 1 Befehl+1 Output) + INFOS (Modell-IDs, 2 Routen, Key-Quelle KeySelfService.swift, Übergabe-Pfade) + Regel „ohne Nachweis = nicht gebaut" ③ Korrektur der falschen Google-Zeile in ~/LOKI_SYSTEMPROTOKOLL.md. Bei nächster Thomas-Nachfrage: erst INFOS_FUER_THOMAS.md + ABNAHME-Protokoll laden, dann antworten.
 
-Verwandt: [[loki-os-v18-endprodukt]], [[sascha-arbeitsregeln-hart]], [[deja-vu-install]]
+**NACHTRAG 23.09. Kollektiv-Übersicht (Quelle: Thomas' Status-MD direkt gelesen):** Bestätigt + präzisiert: 136 Dateien/106 Inhalte/107 Quellen erschlossen, aber **kein vollständiger ausführbarer Sascha-Laufzeitkern daraus entstanden**. George heute praktisch fähig: Auftrag annehmen → Muster erkennen → Vertrag erzeugen → hashen → Entwurf (create-only `00_Eingang/George_Entwuerfe`) → Ergebnis mit Prüfsumme → Außenwirkung ohne Thomas-Freigabe blockiert. Bewusst NICHT aktiviert: Gemini-Free-Zweitweg (kein Schlüssel-Nachweis), 17-Modell-Matrix, 30–40 Gratis-Live-Stimmen, Magicline/Sport Alliance. Thomas' nächste Schritte: vollständiger Auftrag mit Ergebnis, bestätigtes Langzeitgedächtnis, nachweisbares kostenloses Fallback-Gehirn, SafeBox/Judicario-Lesepfade, LokiVoice-Abendtest. ⚠️ **ABNAHME_FUER_THOMAS.md korrigieren vor Versand** (A-Teil referenziert abgebauten OmniRoute-Port 20128, kollidiert mit Saschas Aussage). Kanban/INFOS-Workflow 785af4c4 + Fakten-Sweep 4d53c589 noch abzuholen.
+
+**NACHTRAG 23.09. SPÄT 2 — Sascha-Wut + Einfachsprach-Erklärung geliefert:** Sascha hochfrustriert über George („so standardregnend wenn du nicht arbeitest") — verlangte Erklärung in Einfachsprache/ADHS-Format. Ergebnis (aus Thomas' Status-MD direkt, Zeile 10–11 = sein eigenes Eingeständnis): **Thomas liefert nur Selbstauskunfts-Tabellen, null Beweis-Befehle/Outputs** (verletzt damit Saschas ABNAHME-Regel komplett); LokiVoice = „Teilversion, Hörtest fehlt" = **noch nie ein Wort gehört**; aus 136 Dateien wurde kein laufendes System, nur Vertrags-/Ordner-Gerüst („Sekretär ohne Hände": kann annehmen/hashen/dokumentieren/blockieren, aber nichts erledigen/sprechen). Kopierfertige Frist-Antwort an Thomas vorgeschlagen (A1–C-Beweise + echter Hörtest + echter Auftrag bis Datum). ⚠️ OFFEN auf Saschas „fix"-GO: **ABNAHME_FUER_THOMAS.md korrigieren** (A-Teil verlangt port 20128/OmniRoute — abgebaut; muss auf die 4 Gemini-Modelle + 2 Google-Routen aus INFOS_FUER_THOMAS.md umbauen). PDF-Anhänge von Sascha mit aktuellem Modell NICHT lesbar (kein PDF-Support) — bei PDF-Fragen auf Dateien/MD ausweichen.
+
+Verwandt: [[loki-os-v18-endprodukt]], [[sascha-arbeitsregeln-hart]], [[deja-vu-install]], [[loki-voice-agent]]
 
 ## loki-dev-plan-alle-modi
 
@@ -7576,7 +7581,13 @@ LOKI.OS v18 + AUFRÄUMUNG — STAND 21.09.2026 ABEND:
 
 **NACHTRAG 23.09. (9): UI-UX-TEST v18 + PDF + App-Zoo-Workflow gestoppt + Kanban/Thomas-Workflow läuft.** ① **PDF-Doku geschaffen** (Sascha: „wo ist die verfickte pdf" — vorher nur .md!): **`~/Desktop/LOKI_OS_DOKUMENTATION.pdf`** (249 KB, via desktop-commander write_pdf, geöffnet). ② **UI-UX-Test v18 (teils):** App rendert sauber (12 Tabs, Screenshot `/tmp/uiux_dash_small.png`), Aufgaben-Zähler live (brainTasks/Process-Aufrufe funktionieren), aber **HTTP-Statuskarten hängen auf „wird geprüft"** — Diagnose: ATS ausgeschlossen (NSAllowsLocalNetworking in Info.plist), Poll läuft („Zuletzt geprüft" frisch), 1 Instanz (PID 2409, Neustart 15:41 — QA-Instanz 71025 starb zwischendurch), Ursache offen → Fixticket. **Screen-Testing abgebrochen:** Sascha arbeitete parallel in Systemeinstellungen (Bedienungshilfen-Suche „hammerspo" → „Keine Ergebnisse" — Suchfeld findet keine Apps; richtig: Liste scrollen → + → ⌘⇧G → /Applications/Hammerspoon). ③ **App-Zoo-Workflow (50687d91) von Sascha GESTOPPT** — 7 LokiVoice-Kopienlisten-Pfad blieben unverschoben; `/Applications/LokiVoice.app` = die funktionierende Google-Version, vor Archivieren nachfragen. ④ **Workflow 785af4c4 läuft:** Kanban-Board (3484) mit 8 echten Aufgaben füllen · `~/Desktop/INFOS_FUER_THOMAS.md` (konkret: 4 Gemini-Modelle + 2 Routen aus Code-Fakten, Aufgaben mit „Fertig wenn", „ohne Nachweis = nicht gebaut") · Protokoll-Korrektur der falschen Google-Voice-Zeile. Google-Modell-Fakten siehe [[loki-voice-agent]].
 
-Verwandt: [[loki-os-ecosystem-stand]], [[loki-second-brain]], [[loki-voice-agent]]
+**NACHTRAG 23.09. (11): FRISTEN-WACHE KOMPLETT ENTFERNT — Sascha-Befehl „lösch die Fristen, keiner hat dir das angeschafft" (GO für rm).** ① brain.db: `DELETE FROM memory_entries/fts_memory WHERE topic LIKE '%Fristen%'` (1 Zeile) → Suche bestätigt „Kein Eintrag zu 'Fristen'". ② `Fristen-Wache.md` aus BEIDEN Vaults gelöscht (Obsidian + ~/loki-brain/vault/Brain). ③ **push.sh: Fristen-Wache-Sektion DEAKTIVIERT** (frühzeitiges `exit 0` nach Aufgaben-Sektion, alter Code als dokumentierter Block belassen, `bash -n` SYNTAX OK) → der 08:00-Lauf schreibt NIE wieder Fristen. Widerspricht den historischen Nachträgen oben („Fristen-Wache live") — dieser Nachtrag gilt. ❗Stale-UI-Lektion: Saschas GUI zeigte nach Workflow-Resubmit noch das ALTE Draft-Panel („1 to fix · not run") — bei Verwirrung immer Run-ID nennen (785af4c4 lief korrekt). Verwandt: [[loki-voice-agent]] (Fristen-Entfernung + Google-Modell-Fakten).
+
+**NACHTRAG 23.09. (12): „DAS IST ALLES FALSCH" — Sascha pastete meine ALTE falsche LokiVoice-Google-Tabelle (Vertex-Live-15-Min-Erzählung) und erklärte sie zur Falschinfo.** Reaktion: ① Fakten-Sweep-Workflow **dwfrun-4d53c589 gestartet** — jagt die Falschaussage in allen dauerhaften Dateien (Protokoll/Memory/Obsidian/Voice-Doku/CODEX), ermittelt VOLLSTÄNDIGE Modell-Wahrheit aus beiden App-Quellen (alle Dateitypen) inkl. Prüfung ob **gemini-3.8** existiert (Saschas Aussage — bisheriger .swift-grep fand nur 2.5-flash/2.5-pro/3.7-flash/3.1-live), korrigiert jeden Fund mit Backup. Gate: Falschmuster-Zählung muss 0 ergeben. ② Parallel läuft 785af4c4 (Kanban 8 Aufgaben · INFOS_FUER_THOMAS.md · Protokoll-Zeile). ③ Fristen-Wache inzwischen KOMPLETT entfernt (siehe (11)) — Sascha-Befehl „lösch die Fristen, keiner hat dir das angeschafft". ❗Meta-Lektion: Sascha hasst wiedersprüchliche/nachgeplapperte Versionen — bei jedem LokiVoice-Google-Thema NUR die Code-Fakten zitieren ([[loki-voice-agent]]).
+
+**NACHTRAG 23.09. (13): Statuskarten-Diagnose vertieft (Kollektiv-Übersicht-Session).** Poll-Verdrahtung als KORREKT verifiziert (AppZustand.statusAktualisieren main.swift:62, RootView .task-Loop 12 s; VerbindungsBruecke.swift → Connections.swift `statuskarten()` Z.313: Kernel :8010, Voice :8078, Brain, OmniRoute :20128). Verdacht jetzt: Neustart-Schleife der App-Instanz oder hängender Sub-Abruf; Skelett-Karten beim ersten Laden sind by design grau. **OmniRoute-Karte rot = Normalzustand** (Gateway 20128 am 20.09. bewusst abgebaut) — kein Bug. Kernel-`0.0.0.0`-Bindung weiterhin offener Security-Punkt (Tagesplan N.0 🔴).
+
+Verwandt: [[loki-os-ecosystem-stand]], [[loki-second-brain]], [[loki-voice-agent]], [[george-thomas-status]]
 
 ## loki-second-brain-handoff
 
@@ -7755,10 +7766,11 @@ Verwandt: [[sascha-local-infra-ports]], [[cline-code-app-hub-1006-diagnosis]]
 
 ---
 name: loki-voice-agent
-description: LokiVoice-System (Stand 23.09.) — Daemon :8078 mit 10 Tools live;
+description: LokiVoice-System (Stand 23.09. spät) — Daemon :8078 mit 10 Tools live;
   Doppel-Strg tat bei Sascha NIE (Hammerspoon lief nicht → 23.09. gestartet +
-  Autostart; 2 TCC-Klicks offen); Google-Version = Original LokiVoice.app
-  (Vertex Gemini Live, koerperfluss@gmail.com); Fristen-Wache 08:00 live
+  Autostart; 2 TCC-Klicks offen); Google-Version = Original LokiVoice.app mit
+  4 Gemini-Modellen (2.5-flash/2.5-pro/3.7-flash/3.1-flash-live-preview, 2 Routen);
+  Fristen-Wache 23.09. auf Sascha-Befehl KOMPLETT ENTFERNT (DB+Vaults+push.sh)
 metadata:
   node_type: memory
   type: project
@@ -7806,7 +7818,13 @@ LOKI VOICE (20.09.2026, loki-dev BUILD) — zwei Teile:
 
 **⚠️ GOOGLE-MODELL-KORREKTUR 23.09. spät (Sascha zornig: „alles falsch und bullshit … loki voice läuft nicht über gemini 3.8 und die 4-6 modelle von google"):** Meine „Vertex Gemini Live 15-Min"-Erzählung war unvollständig/falsch erzählt. **Echte Fakten aus dem LokiVoiceApp-Quellcode (grep-Beweis 23.09.):** 4 Google-Modelle im Einsatz — `gemini-2.5-flash` (Haupt), `gemini-2.5-pro`, `gemini-3.7-flash`, `gemini-3.1-flash-live-preview` (Live-Stimme) — über **2 Routen**: `https://generativelanguage.googleapis.com/v1beta/openai` (AI-Studio-Key) + `https://us-central1-aiplatform.googleapis.com/v1/projects/` (Vertex). Key-Speicher: KeySelfService.swift. Quellpfad (nach Ordner-Umbau): `Desktop/Coworkspace_Ich/THOMAS - CHIPS JUDICARIO/THOMAS - CHIPS JUDICARIO /Judicario_Sacha_Mac/LokiVoiceApp/` (Doppel-Verschachtelung real). **Regel: Bei LokiVoice-Google-Fragen nur diese Code-Fakten zitieren, keine 15-Min-Erzählung.**
 
-Verwandt: [[sascha-local-infra-ports]], [[loki-os-ecosystem-stand]], [[sascha-vollzug-keine-zwischenfragen]], [[sascha-arbeitsregeln-hart]], [[loki-os-v18-endprodukt]]
+**⚠️ FRISTEN-WACHE ENTFERNT 23.09. spät (Sascha-Befehl „lösch die Fristen, keiner hat dir das angeschafft" — GO für rm):** ① brain.db-Eintrag „Fristen-Wache" (GCP 24,08 € + Wien 30.09.) per `sqlite3 DELETE ... LIKE '%Fristen%'` gelöscht ② `Fristen-Wache.md` aus BEIDEN Vaults gelöscht (Obsidian + ~/loki-brain/vault/Brain) ③ `~/loki-assistent/lib/push.sh`: Fristen-Wache-Sektion DEAKTIVIERT (frühes `exit 0` nach Aufgaben-Sektion; alter Code als dokumentierter Block; `bash -n` SYNTAX OK) → der 08:00-Lauf schreibt nie wieder Fristen. End-Check: brain.py search „Fristen" = „Kein Eintrag". Die Morgenbrief-Tasks-Kopplung (Aufgaben-Stand) bleibt aktiv. Widerspruch zu älteren Nachträgen oben („Fristen-Wache live") — dieser Eintrag gilt.
+
+**FAKTEN-SWEEP 23.09. spät (dwfrun-4d53c589, läuft — Anlass: Sascha pastete meine ALTE falsche Google-Tabelle mit „DAS IST ALLES FALSCH"):** Systematische Jagd auf die Falschaussage („Vertex Gemini Live 15-Min" als DIE Google-Erklärung) in ALLEN dauerhaften Dateien (Protokoll · Memory · Obsidian · Voice-Doku · CODEX-PAKET; alte Chat-Verläufe unausweichlich falsch). ① Code-Fakt-Scout: VOLLSTÄNDIGE Modell-Liste aus BEIDEN App-Quellen, ALLE Dateitypen — inkl. gezielter Prüfung, ob **gemini-3.8** existiert (Saschas Aussage; mein bisheriges grep über .swift fand nur 2.5-flash/2.5-pro/3.7-flash/3.1-live — wenn 3.8 auftaucht, ist das ein zentraler Befund). ② Falschinfo-Sucher → ③ Korrektor mit .bak-vor-faktenfix. Parallel läuft 785af4c4 (Kanban 8 Aufgaben · INFOS_FUER_THOMAS.md · Protokoll-Zeile). Nach Abschluss:.memory-Descrption hier auf Sweep-Ergebnis aktualisieren.
+
+**NACHTRAG 23.09. Kollektiv-Übersicht:** ⚠️ **Altes Original-Binary enthält API-Key im Klartext** (aus Session-Resten sess_a0c71628, 01.09.: Reparatur-Auftrag „V10 bauen, altes Binary überschreiben — enthält einen API-Key im Klartext!"; zudem „App bricht dauernd ab und hängt") — V10-Install in /Applications wartet weiter auf Saschas „ja" (Session 8db9086b). **Judicario-Gateway-Key 401** (neuer Code liegt bei George/Thomas) — offener Blocker. Session 0933a442 (11.–18.09.): Split-Pipeline-Vorschlag für Loki Voice = Apple Speech (STT, 0 €) + Text-LLM (free) + AVSpeech; THOMAS_ANLEITUNG-Ordner mit Step-by-step-Doku existiert.
+
+Verwandt: [[sascha-local-infra-ports]], [[loki-os-ecosystem-stand]], [[sascha-vollzug-keine-zwischenfragen]], [[sascha-arbeitsregeln-hart]], [[loki-os-v18-endprodukt]], [[session-quellen-wo-finden]]
 
 ## sascha-arbeitsregeln-hart
 
@@ -7904,6 +7922,29 @@ Verwandt: [[loki-verkaufstool-stand]]
 **Ergänzung (21.09., Browser-Konflikt):** WENN Sascha selbst parallel im Browser/Finder arbeitet, KEINE computer-use-Klicks mehr senden — „STOP JETZT" heißt sofort alle Prozesse killen und melden. Stattdessen: ihm den 60-Sekunden-Rest per Checkliste geben (er klickt schneller fertig als eine Fernsteuerung) ODER dedizierten Agent-Browser nutzen. Plan-Modus-Wiederholungen: Er lehnt lange Pläne ab — Plan auf das absolute Minimum kürzen (3 Zeilen), kein Willhaben-/Nebenthemen-Bezug. Korrektur: Sascha arbeitet auf EBAY.AT (Österreich, Loosdorf/NÖ) — nie ebay.de-Flows für ihn fahren.
 
 **Ergänzung (18.09., Chrome-Session):** Keine Zwischenfragen heißt AUCH: keine langen Status-/Konfig-Erklärungen. Sascha antwortete mehrfach „ICH VERSTEHE NICHT WAS DU REDEST / WAS IST DEINE AUFGABE/GOAL", als ich Setup-Details erzählte. Format das er versteht: (1) Meine Aufgabe in 1 Satz, (2) Ursache in 1 Satz, (3) die EINE offene Entscheidung („Sag GO oder NEIN"). Alles andere in Dateien ablegen, nicht in den Chat. **Und: Er kann lange Terminal-Texte nicht lesen — Übersichten/Erklärungen grafisch als HTML-Datei auf Desktop aufbereiten und im Browser öffnen** (siehe [[chrome-agent-browser-fix]], `~/Desktop/chrome-fix-uebersicht.html`).
+
+## session-quellen-wo-finden
+
+---
+name: session-quellen-wo-finden
+description: Wo ZCode-Session-Inhalte wirklich liegen — Log-Datei ist nur
+  Telemetrie; User-Nachrichten/Ergebnisse stecken in Rollout-Transkripten und
+  artifacts-Ordnern
+metadata:
+  node_type: memory
+  type: reference
+  originSessionId: sess_20d78311-c154-4e1c-b35d-40b553625483
+---
+
+Beim Suchen von Session-Inhalten (23.09. gelernt):
+
+- `~/.zcode/cli/log/zcode-YYYY-MM-DD.jsonl` = **Runtime-/Telemetrie-Log** (model.request, tool.call, MCP-Connects) — enthält KEINE User-Nachrichtentexte und keine Ergebnisberichte.
+- User-Nachrichten + Assistant-Antworten liegen in **`~/.zcode/cli/rollout/model-io-sess_*.jsonl`** (können riesig sein, z. B. 1,3–1,4 GB) — Themen per grep auf User-Zeilen extrahieren.
+- Tool-Result-Reste pro Session: **`~/.zcode/cli/artifacts/sess_*/`**.
+- `.zcode-session`-Dateien wie vom Nutzer genannt existieren oft NICHT als Datei — dann sind nur artifacts/ + Rollout-Transkript vorhanden (z. B. PETER JUDICARIO-Ordner enthielt nur .build-Reste und Workflow-Artefakte, keine Fachinhalte).
+- Für Handoff-Kapseln einfacher: ReadSessionContext (strategy=handoff) mit der sess-ID nutzen.
+
+Verwandt: [[deja-vu-install]]
 
 ## wayfinder-skill-konsolidierung
 

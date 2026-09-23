@@ -48,4 +48,6 @@ LOKI.OS v18 + AUFRÄUMUNG — STAND 21.09.2026 ABEND:
 
 **NACHTRAG 23.09. (13): Statuskarten-Diagnose vertieft (Kollektiv-Übersicht-Session).** Poll-Verdrahtung als KORREKT verifiziert (AppZustand.statusAktualisieren main.swift:62, RootView .task-Loop 12 s; VerbindungsBruecke.swift → Connections.swift `statuskarten()` Z.313: Kernel :8010, Voice :8078, Brain, OmniRoute :20128). Verdacht jetzt: Neustart-Schleife der App-Instanz oder hängender Sub-Abruf; Skelett-Karten beim ersten Laden sind by design grau. **OmniRoute-Karte rot = Normalzustand** (Gateway 20128 am 20.09. bewusst abgebaut) — kein Bug. Kernel-`0.0.0.0`-Bindung weiterhin offener Security-Punkt (Tagesplan N.0 🔴).
 
+**NACHTRAG 23.09. (14): DOKU-KORREKTUR — die Desktop-PDF enthielt Falsch-Fakten („15-Min-Limit", „Fristen-Wache läuft").** Neu erstellt: **`~/Desktop/LOKI_OS_DOKUMENTATION_KORRIGIERT_v2.pdf`** (Korrektur-Tabelle + gültiger Systemteil, alte PDF bleibt). `~/LOKI_SYSTEMPROTOKOLL.md` Fristen-Wache-Zeile korrigiert („auf Nutzer-GO KOMPLETT entfernt"). Details/Ursachen siehe [[george-thomas-status]] SPÄT 4. PDF-Text per `pdftotext` extrahierbar auch ohne Modell-PDF-Support.
+
 Verwandt: [[loki-os-ecosystem-stand]], [[loki-second-brain]], [[loki-voice-agent]], [[george-thomas-status]]

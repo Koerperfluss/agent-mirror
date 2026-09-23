@@ -7,10 +7,11 @@ tags: [spiegel, zcode]
 
 ---
 name: loki-voice-agent
-description: LokiVoice-System (Stand 23.09.) — Daemon :8078 mit 10 Tools live;
+description: LokiVoice-System (Stand 23.09. spät) — Daemon :8078 mit 10 Tools live;
   Doppel-Strg tat bei Sascha NIE (Hammerspoon lief nicht → 23.09. gestartet +
-  Autostart; 2 TCC-Klicks offen); Google-Version = Original LokiVoice.app
-  (Vertex Gemini Live, koerperfluss@gmail.com); Fristen-Wache 08:00 live
+  Autostart; 2 TCC-Klicks offen); Google-Version = Original LokiVoice.app mit
+  4 Gemini-Modellen (2.5-flash/2.5-pro/3.7-flash/3.1-flash-live-preview, 2 Routen);
+  Fristen-Wache 23.09. auf Sascha-Befehl KOMPLETT ENTFERNT (DB+Vaults+push.sh)
 metadata:
   node_type: memory
   type: project
@@ -58,4 +59,10 @@ LOKI VOICE (20.09.2026, loki-dev BUILD) — zwei Teile:
 
 **⚠️ GOOGLE-MODELL-KORREKTUR 23.09. spät (Sascha zornig: „alles falsch und bullshit … loki voice läuft nicht über gemini 3.8 und die 4-6 modelle von google"):** Meine „Vertex Gemini Live 15-Min"-Erzählung war unvollständig/falsch erzählt. **Echte Fakten aus dem LokiVoiceApp-Quellcode (grep-Beweis 23.09.):** 4 Google-Modelle im Einsatz — `gemini-2.5-flash` (Haupt), `gemini-2.5-pro`, `gemini-3.7-flash`, `gemini-3.1-flash-live-preview` (Live-Stimme) — über **2 Routen**: `https://generativelanguage.googleapis.com/v1beta/openai` (AI-Studio-Key) + `https://us-central1-aiplatform.googleapis.com/v1/projects/` (Vertex). Key-Speicher: KeySelfService.swift. Quellpfad (nach Ordner-Umbau): `Desktop/Coworkspace_Ich/THOMAS - CHIPS JUDICARIO/THOMAS - CHIPS JUDICARIO /Judicario_Sacha_Mac/LokiVoiceApp/` (Doppel-Verschachtelung real). **Regel: Bei LokiVoice-Google-Fragen nur diese Code-Fakten zitieren, keine 15-Min-Erzählung.**
 
-Verwandt: [[sascha-local-infra-ports]], [[loki-os-ecosystem-stand]], [[sascha-vollzug-keine-zwischenfragen]], [[sascha-arbeitsregeln-hart]], [[loki-os-v18-endprodukt]]
+**⚠️ FRISTEN-WACHE ENTFERNT 23.09. spät (Sascha-Befehl „lösch die Fristen, keiner hat dir das angeschafft" — GO für rm):** ① brain.db-Eintrag „Fristen-Wache" (GCP 24,08 € + Wien 30.09.) per `sqlite3 DELETE ... LIKE '%Fristen%'` gelöscht ② `Fristen-Wache.md` aus BEIDEN Vaults gelöscht (Obsidian + ~/loki-brain/vault/Brain) ③ `~/loki-assistent/lib/push.sh`: Fristen-Wache-Sektion DEAKTIVIERT (frühes `exit 0` nach Aufgaben-Sektion; alter Code als dokumentierter Block; `bash -n` SYNTAX OK) → der 08:00-Lauf schreibt nie wieder Fristen. End-Check: brain.py search „Fristen" = „Kein Eintrag". Die Morgenbrief-Tasks-Kopplung (Aufgaben-Stand) bleibt aktiv. Widerspruch zu älteren Nachträgen oben („Fristen-Wache live") — dieser Eintrag gilt.
+
+**FAKTEN-SWEEP 23.09. spät (dwfrun-4d53c589, läuft — Anlass: Sascha pastete meine ALTE falsche Google-Tabelle mit „DAS IST ALLES FALSCH"):** Systematische Jagd auf die Falschaussage („Vertex Gemini Live 15-Min" als DIE Google-Erklärung) in ALLEN dauerhaften Dateien (Protokoll · Memory · Obsidian · Voice-Doku · CODEX-PAKET; alte Chat-Verläufe unausweichlich falsch). ① Code-Fakt-Scout: VOLLSTÄNDIGE Modell-Liste aus BEIDEN App-Quellen, ALLE Dateitypen — inkl. gezielter Prüfung, ob **gemini-3.8** existiert (Saschas Aussage; mein bisheriges grep über .swift fand nur 2.5-flash/2.5-pro/3.7-flash/3.1-live — wenn 3.8 auftaucht, ist das ein zentraler Befund). ② Falschinfo-Sucher → ③ Korrektor mit .bak-vor-faktenfix. Parallel läuft 785af4c4 (Kanban 8 Aufgaben · INFOS_FUER_THOMAS.md · Protokoll-Zeile). Nach Abschluss:.memory-Descrption hier auf Sweep-Ergebnis aktualisieren.
+
+**NACHTRAG 23.09. Kollektiv-Übersicht:** ⚠️ **Altes Original-Binary enthält API-Key im Klartext** (aus Session-Resten sess_a0c71628, 01.09.: Reparatur-Auftrag „V10 bauen, altes Binary überschreiben — enthält einen API-Key im Klartext!"; zudem „App bricht dauernd ab und hängt") — V10-Install in /Applications wartet weiter auf Saschas „ja" (Session 8db9086b). **Judicario-Gateway-Key 401** (neuer Code liegt bei George/Thomas) — offener Blocker. Session 0933a442 (11.–18.09.): Split-Pipeline-Vorschlag für Loki Voice = Apple Speech (STT, 0 €) + Text-LLM (free) + AVSpeech; THOMAS_ANLEITUNG-Ordner mit Step-by-step-Doku existiert.
+
+Verwandt: [[sascha-local-infra-ports]], [[loki-os-ecosystem-stand]], [[sascha-vollzug-keine-zwischenfragen]], [[sascha-arbeitsregeln-hart]], [[loki-os-v18-endprodukt]], [[session-quellen-wo-finden]]
