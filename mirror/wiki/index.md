@@ -1,6 +1,6 @@
 # Arbeits-Wiki
 
-Stand: 2026-09-23 09:59 UTC. Jede Seite fasst ein Projekt über alle Apps hinweg zusammen.
+Stand: 2026-09-23 11:21 UTC. Jede Seite fasst ein Projekt über alle Apps hinweg zusammen.
 
 - [antigravity / 1cf5e412-ad9c-4f02-9f3e-93788dc7476d](antigravity--1cf5e412-ad9c-4f02-9f3e-93788dc7476d.md)
 - [antigravity / Projekt-Task-Planer](antigravity--Projekt-Task-Planer.md)
