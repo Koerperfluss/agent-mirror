@@ -92,3 +92,11 @@ metadata:
 - **09:00 wieder verpasst** (kein `2026-09-22.md`; Mac schlief — Wecker-GO bleibt DER Hebel). Catch-up 15:0x Dienstag wie am 18.09.: Logbuch `2026-09-22.md` angelegt (status: offen), Kalender-Event **„Tagesplan 22.09."** UID `F2C35605-1BA2-44D7-AD36-5CF3C3615015`.
 - Tagesplan 22.09.: V10-Rebuild (Handoff `8db9086b`, seit 21.09. unangetreten) · Deutsch-Patch-Strings-Wiederherstellung · Wecker-GO · eqMac/Spotify-Fix abschließen (siehe [[eqmac-deinstallation-spotify-fix]]) · Thomas-Bericht-GO. DEV-BRIEF: 0 neue Commits letzte 24 h, keine CI.
 
+## Vierzehnter Lauf (Di 22.09. 16:0x — No-op PASS)
+- 16:00-Dienstag-Slot korrekt 1-Zeilen-No-op (Release-Brief nur freitags); P1-Erinnerung unnötig geworden (loki-voice war schon um 16:15 durch Abschließer-Sweep committed).
+
+## Fünfzehnter Lauf (Mi 23.09. 15:0x — DOKU-SYNC erster echter Lauf, PASS mit 1 Finding)
+- **Erster echter DOKU-SYNC-CHECK** (15:00-Mittwoch-Slot, letzte 7 Tage): ⚠️ Finding hohe Konfidenz — **`~/loki-assistent/README.md` Befehls-Tabelle fehlen `assi brief` + `assi feierabend`** (Code seit 13.09., README nie nachgezogen; grep-Beweis: 3 Treffer nur „brief_latest.txt"-Kontext). Auf Saschas „GO doku-fix" wartend (2 Tabellenzeilen, ~2 Min).
+- ✅ Sauber: loki-ki `ae899b0`/`eaf7bc4`/`2bad878` (Doku stets mitgeändert: PROJECT/BEFEHLE/wayfinder) · loki-voice `7fdbf2d` brachte WIKI.md + PLAN_CHIPSI_CONNECTOR.md im selben Commit mit.
+- 23.09.-Morgen wieder verpasst (kein Logbuch um 15:0x) — gestriger Tagesplan 22.09. galt weiter; neuer Git-Commit `2bad878` (Vault-Organisation + wayfinder-Update) im Sync sichtbar. Bilanz: 15 Läufe; offen: Wecker-GO · Deutsch-Patch · GO doku-fix.
+
