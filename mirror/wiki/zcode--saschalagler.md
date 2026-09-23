@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-23 13:44 UTC
+Zuletzt gespiegelt: 2026-09-23 13:56 UTC
 
 ## AGENTS
 
@@ -7365,6 +7365,8 @@ GEORGE = THOMAS' EIGENES SYSTEM AUF SASCHAS LOKI.OS-BASIS (Stand 23.09.2026):
 
 **⚠️ WICHTIGE KORREKTUR (Sascha, zornig, RECHT gehabt):** „Es gibt kein Claude Code das ich benutze" — sein System ist **ZCode**. Beweis aus der Diagnose: letzte Claude-Session-Transcript 15.09. 14:01, deja-Install erst 20.09. 14:18 → Claude-seitiger Recall nie beobachtbar. Skill-Feuer-Mechanik in ZCode (3 Stufen): ① `$skill` im Prompt = hartes Laden ② Routing-Tabelle im AGENTS.md = nur EMPFEHLUNG an den Agenten (kein Zwang) ③ gate-enforcer-Hook feuert nur bei Build-Trigger-Wörtern (baue/erstelle/mach mir/übernimm/onboard/takeover/finish — Regex in ~/.agents/tools/gate-enforcer.py Z.14-19). **Offenes Angebot an Sascha: „GO Trigger"** = gate-enforcer um weitere Trigger erweitern (Lisa→lisa-therapeut, Bug-Wörter→diagnosing-bugs, Erkläre/Status→deja-history), dann feuern Skills garantiert. Claude-seitiger Nebenfund (nur falls Claude je wieder läuft): 6 Routing-Skills fehlen in ~/.claude/skills (loki-os-health, deja-search, gsd-core, roo-code, ralph-loop, coderabbit) — 1× cp -R fixt es.
 
+**SASCHA-WUT AUF THOMAS 23.09. (Neu):** „er weist gar nichts nach, nichts funktioniert bei ihm, er ignoriert alles was ich gesendet habe, jede konfiguration — ich habe ihm eine **36-Modell-Gratis-Voice-Assistenten-Version** gegeben und nichts geht". **Reaktion: ABNAHME-PROTOKOLL gebaut — `~/Desktop/ABNAHME_FUER_THOMAS.md`** (sendefertig): A1–A4 = 36-Modell-Voice-Nachweis (curl /v1/models ≥36 Einträge, Chat-Antwort, Mikro-Test mit Transkript, Config-Screenshot+Diff), B1–B4 = übergebene Konfigurationen (diff gegen Übergabe, fail-closed-Block-Beweis, result_sha256-Output, morning-sync), C = jeder Status-MD-Baustein braucht 1 Befehl+1 Zeile Output, D = SHA256-Abgleich der Übergabe-Dateien. **Regel im Protokoll: kein Output = nicht gebaut.** Nächstes Mal Sascha fragen, ob er es geschickt hat und was Thomas geantwortet hat.
+
 Verwandt: [[loki-os-v18-endprodukt]], [[sascha-arbeitsregeln-hart]], [[deja-vu-install]]
 
 ## loki-dev-plan-alle-modi
@@ -7530,10 +7532,10 @@ Verwandt: [[loki-second-brain]], [[loki-os-harness-sollstand]], [[sascha-arbeits
 
 ---
 name: loki-os-v18-endprodukt
-description: "LOKI.OS v18 ENDPRODUKT (21.09.): App gebaut+läuft
-  (/Applications/LOKI OS v18.app, ~/loki-ki/macos-app-v18, Review PASS,
-  BrainView-Fix deployed); Datei-Berg aufgeräumt (13 Duplikate,
-  Archiv-Endlage!); 6 echte Lücken als Roadmap verankert"
+description: "LOKI.OS v18 ENDPRODUKT (Stand 23.09.): App mit 12 Ansichten
+  inkl. Feature-Port (Board/Projekte/DevTeam/Automation/Skills 601/D3-Architektur)
+  + LOKI_SYSTEMPROTOKOLL.md + PDF-Doku Desktop; offene Bugs: D3-Tab schwarz,
+  Dashboard-HTTP-Karten; App-Zoo ungeräumt (Sascha stoppte Workflow)"
 metadata:
   node_type: memory
   type: project
@@ -7567,6 +7569,8 @@ LOKI.OS v18 + AUFRÄUMUNG — STAND 21.09.2026 ABEND:
 **NACHTRAG 23.09. (8): FEATURE-PORT FERTIG (dwfrun-8a10fc99, Review PASS, Build Exit 0, deployt PID 71025).** Alle Alt-v17-Ansichten in v18, Sidebar jetzt **12 Tabs**: Board (/loki/backends) · Projekte (/api/projects) · Dev-Team (POST /loki/agentos/run) · Automation (/loki/services: n8n down, loki_flow down — ehrlich angezeigt) · **Skills 601/601 aus Kernel** (/loki/capabilities) · Backend-Ampeln Gemini/LiteRT/Ollama (Dashboard + Board) · **Architektur-Tab: D3 offline gebündelt** (20 Knoten/25 Kanten, d3.min.js + architektur.html in Resources, kein CDN — Bundle-Pfad von Review verifiziert). **Offene Restpunkte:** ① **D3-Tab rendert SCHWARZ** (nur Legende; Bundling korrekt → WKWebView-Renderfrage, ungeklärt) ② Dev-Team-Lauf bricht ab — echte Ursache: kein lokales Modell (litert DOWN, Ollama nur fallback = Lücke 3) ③ „Endpoint fehlt"-Banner-Text irreführend (Endpoints existieren, /loki/capabilities/rescan schlägt serverseitig fehl: HTTP 200 status:error) ④ Skills/Board-Hardcode-Text + doppelte Backend-Ampeln (Review-Blemish). ⑤ QA-Sonderfall: parallel lief eine FREMDE Session im Vordergrund (Tab-Wechsel im Screenshot nicht vom QA-Prüfer) — parallele Nutzung möglich. Protokoll `~/LOKI_SYSTEMPROTOKOLL.md` Z.8 aktualisiert.
 
 **NACHTRAG 23.09. (9): LOKIVOICE-APP-ZOO — Sascha listete 7 Kopien zum Aufräumen, Workflow GESTARTET (dwfrun-50687d91) dann von SASCHA SELBST GESTOPPT (stop-reason: user)** → keine einzige Zeile verschoben, alle 7 Kopien liegen original (Beweis nach Stopp: 4 in /Applications, 2 in ~/loki-voice-app, Thomas-Pfade). **NICHT resumed/amenden ohne sein Wort.** Wichtig dazwischen gelernt: `/Applications/LokiVoice.app` = die GOOGLE-Version (Vertex Gemini Live, gcloud auth koerperfluss@gmail.com + Service-Account aktiv) — sie darf nicht blind ins Archiv, siehe [[loki-voice-agent]].
+
+**NACHTRAG 23.09. (10): UI/UX-TEST v18 (pausiert — Sascha arbeitete parallel in Systemeinstellungen) + PDF gebaut.** ① **Echter offener Bug:** Dashboard-Statuskarten bleiben auf „unbekannt/Status wird geprüft …", obwohl Poll läuft („Zuletzt geprüft" tickt alle 12 s frisch) UND Process-Aufrufe funktionieren (Aufgaben-Zähler „1" live, brainTasks ok) — **alle URLSession-calls auf http://127.0.0.1 scheitern/hängen**, ATS ausgeschlossen (NSAllowsLocalNetworking in Info.plist Quelle+Install bewiesen). Flackern beobachtet: AX-Baum 15:46:50 ohne Placeholder, Screenshot 15:47:02 mit Placeholder; App-Instanz wechselte zwischendurch (71025 tot → open startete PID 2409 15:41). Diagnose-Front: holeHTTP vs. Process-Unterschied — ungelöst, bei „weiter testen" wieder aufnehmen. ② **Test-Technik bewährt:** osascript System Events auf SwiftUI-App lesbar (12 Sidebar-Buttons + static texts); Screenshots via screencapture -x -o + sips -Z 1600 + Read. ③ **PDF-Doku fertig (Sascha: „wo ist die verfickte pdf" — gab nie eine, ehrlich zugegeben):** **`~/Desktop/LOKI_OS_DOKUMENTATION.pdf`** (249 KB, write_pdf desktop-commander, geöffnet) — App/12 Ansichten, Stimme+Befehle, Freigaben, Automatiken, Security-Regeln, Pfad-Karte. ④ Systemprotokoll Z.8 auf Port-ergebnis aktualisiert.
 
 Verwandt: [[loki-os-ecosystem-stand]], [[loki-second-brain]], [[loki-voice-agent]]
 
@@ -7747,9 +7751,10 @@ Verwandt: [[sascha-local-infra-ports]], [[cline-code-app-hub-1006-diagnosis]]
 
 ---
 name: loki-voice-agent
-description: Sprach-Assistent-System (20.09.2026) — 24/7-Daemon ~/loki-voice/
-  LIVE (Doppel-Ctrl→Whisper→GLM→say, Stufe 2 bewiesen) + App-Fork
-  ~/loki-voice-app/ gebaut aber NICHT deployt; TCC-Freigaben offen
+description: LokiVoice-System (Stand 23.09.) — Daemon :8078 mit 10 Tools live;
+  Doppel-Strg tat bei Sascha NIE (Hammerspoon lief nicht → 23.09. gestartet +
+  Autostart; 2 TCC-Klicks offen); Google-Version = Original LokiVoice.app
+  (Vertex Gemini Live, koerperfluss@gmail.com); Fristen-Wache 08:00 live
 metadata:
   node_type: memory
   type: project
@@ -7792,6 +7797,8 @@ LOKI VOICE (20.09.2026, loki-dev BUILD) — zwei Teile:
 **⚠️ DOPPEL-STRG HAT FÜR SASCHA NIE FUNKTIONIERT — Korrektur 23.09. (Sascha wütend, RECHT gehabt):** „es gibt keine doppel strg befehl der den agenten aktiviert … wenn du mich noch einmal anlügst knallts". Wurzel (hart bewiesen 23.09.): **Hammerspoon lief NICHT** — nur einmal beim 20.09.-Setup gestartet, KEIN Login-Item → nach jedem Mac-Neustart tot → der Trigger tat bei ihm faktisch nie etwas (init.lua selbst war korrekt: Doppel-Ctrl <0,45 s + ⌘⌥Space-Fallback → POST 127.0.0.1:8078/toggle). **Repariert 23.09.:** Hammerspoon gestartet (PID 73885) + Login-Item gesetzt (osascript System Events, bewiesenes „login item UNKNOWN" = angelegt). **Noch von Sascha (TCC, unersetzlich):** ① Bedienungshilfen für Hammerspoon (GRUND, warum Tasten „nichts machen") ② Mikrofon für ffmpeg (+ggf. python3). Test nach Klicks: 2× Strg → „Loki, meine Aufgaben" → 2× Strg; Fallback ⌘⌥Space. Mikro-freie Wege funktionieren unabhängig: `curl 127.0.0.1:8078/ask?text=…` + App v18 „Loki fragen"-Tab. Daemon-Stand 23.09.: idle, **10 Tools** (task_add/task_list neu aus Voll-Kopplung).
 
 **GOOGLE-VERSION-KLÄRUNG 23.09. (Sascha-Frage „welche ist die LokiVoice mit Google die funktioniert"):** Die Antwort ist das **ORIGINAL `LokiVoice.app` in /Applications** (Thomas/Chipsi-Stand, V10 keyfrei 18.09.) — Dual-Mode mit **Vertex Gemini Live WSS** (echte Google-Stimme, Barge-in, 15-Min-Rotation, Google-Login). Google-Auth live bewiesen: `gcloud auth list` → koerperfluss@gmail.com + loki-voice-handover@gen-lang-client-0534030583 (Service-Account). Der Fork `LokiVoiceIch.app` hat Gemini-Live AUCH, aber Erststart-Default OmniRoute/GLM. Der Daemon (:8078) hat KEIN Google (Whisper lokal + GLM). **Kopplung an Aufräum-Vorhaben:** Sascha listete 7 LokiVoice-App-Kopien zum Archivieren (Workflow 50687d91 — von ihm gestoppt, nichts verschoben); `/Applications/LokiVoice.app` ist dabei DIE funktionierende Google-Version → vor jedem Archivieren der Original-App nachfragen/bewahren.
+
+**HAMMERSPOON-LOG-BESTÄTIGUNG 23.09. 15:50 (Sascha pastete HS-Console):** init.lua lädt fehlerfrei, `hotkey: Enabled hotkey ⌘⌥SPACE` scharf, KEINE Fehler — Bindung lebt, es fehlt NUR der Bedienungshilfen-Schalter. **Sascha-Struggle live gesehen:** er suchte „hammerspo" im Systemeinstellungs-Suchfeld → „Keine Ergebnisse" (Suchfeld findet keine Apps!). Richtig: in Bedienungshilfen **Liste scrollen → „+"/Hinzufügen** → ⌘⇧G → `/Applications/Hammerspoon` → an — ODER einfach **2× Strg drücken**, dann poppt HS' eigener Freigabe-Dialog mit „Systemeinstellungen öffnen". Seine Queue-Botschaften beantwortet: „keine Fristen in LokiVoice" → Fristen-Wache existiert (08:00-Push; 2 echte: GCP 24,08 €, Wien 30.09.); Sofort-Test `curl "127.0.0.1:8078/ask?text=Loki%2C%20was%20sind%20meine%20Fristen"`.
 
 Verwandt: [[sascha-local-infra-ports]], [[loki-os-ecosystem-stand]], [[sascha-vollzug-keine-zwischenfragen]], [[sascha-arbeitsregeln-hart]], [[loki-os-v18-endprodukt]]
 

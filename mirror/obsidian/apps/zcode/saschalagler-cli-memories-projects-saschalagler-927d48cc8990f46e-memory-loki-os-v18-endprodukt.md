@@ -7,10 +7,10 @@ tags: [spiegel, zcode]
 
 ---
 name: loki-os-v18-endprodukt
-description: "LOKI.OS v18 ENDPRODUKT (21.09.): App gebaut+läuft
-  (/Applications/LOKI OS v18.app, ~/loki-ki/macos-app-v18, Review PASS,
-  BrainView-Fix deployed); Datei-Berg aufgeräumt (13 Duplikate,
-  Archiv-Endlage!); 6 echte Lücken als Roadmap verankert"
+description: "LOKI.OS v18 ENDPRODUKT (Stand 23.09.): App mit 12 Ansichten
+  inkl. Feature-Port (Board/Projekte/DevTeam/Automation/Skills 601/D3-Architektur)
+  + LOKI_SYSTEMPROTOKOLL.md + PDF-Doku Desktop; offene Bugs: D3-Tab schwarz,
+  Dashboard-HTTP-Karten; App-Zoo ungeräumt (Sascha stoppte Workflow)"
 metadata:
   node_type: memory
   type: project
@@ -44,5 +44,7 @@ LOKI.OS v18 + AUFRÄUMUNG — STAND 21.09.2026 ABEND:
 **NACHTRAG 23.09. (8): FEATURE-PORT FERTIG (dwfrun-8a10fc99, Review PASS, Build Exit 0, deployt PID 71025).** Alle Alt-v17-Ansichten in v18, Sidebar jetzt **12 Tabs**: Board (/loki/backends) · Projekte (/api/projects) · Dev-Team (POST /loki/agentos/run) · Automation (/loki/services: n8n down, loki_flow down — ehrlich angezeigt) · **Skills 601/601 aus Kernel** (/loki/capabilities) · Backend-Ampeln Gemini/LiteRT/Ollama (Dashboard + Board) · **Architektur-Tab: D3 offline gebündelt** (20 Knoten/25 Kanten, d3.min.js + architektur.html in Resources, kein CDN — Bundle-Pfad von Review verifiziert). **Offene Restpunkte:** ① **D3-Tab rendert SCHWARZ** (nur Legende; Bundling korrekt → WKWebView-Renderfrage, ungeklärt) ② Dev-Team-Lauf bricht ab — echte Ursache: kein lokales Modell (litert DOWN, Ollama nur fallback = Lücke 3) ③ „Endpoint fehlt"-Banner-Text irreführend (Endpoints existieren, /loki/capabilities/rescan schlägt serverseitig fehl: HTTP 200 status:error) ④ Skills/Board-Hardcode-Text + doppelte Backend-Ampeln (Review-Blemish). ⑤ QA-Sonderfall: parallel lief eine FREMDE Session im Vordergrund (Tab-Wechsel im Screenshot nicht vom QA-Prüfer) — parallele Nutzung möglich. Protokoll `~/LOKI_SYSTEMPROTOKOLL.md` Z.8 aktualisiert.
 
 **NACHTRAG 23.09. (9): LOKIVOICE-APP-ZOO — Sascha listete 7 Kopien zum Aufräumen, Workflow GESTARTET (dwfrun-50687d91) dann von SASCHA SELBST GESTOPPT (stop-reason: user)** → keine einzige Zeile verschoben, alle 7 Kopien liegen original (Beweis nach Stopp: 4 in /Applications, 2 in ~/loki-voice-app, Thomas-Pfade). **NICHT resumed/amenden ohne sein Wort.** Wichtig dazwischen gelernt: `/Applications/LokiVoice.app` = die GOOGLE-Version (Vertex Gemini Live, gcloud auth koerperfluss@gmail.com + Service-Account aktiv) — sie darf nicht blind ins Archiv, siehe [[loki-voice-agent]].
+
+**NACHTRAG 23.09. (10): UI/UX-TEST v18 (pausiert — Sascha arbeitete parallel in Systemeinstellungen) + PDF gebaut.** ① **Echter offener Bug:** Dashboard-Statuskarten bleiben auf „unbekannt/Status wird geprüft …", obwohl Poll läuft („Zuletzt geprüft" tickt alle 12 s frisch) UND Process-Aufrufe funktionieren (Aufgaben-Zähler „1" live, brainTasks ok) — **alle URLSession-calls auf http://127.0.0.1 scheitern/hängen**, ATS ausgeschlossen (NSAllowsLocalNetworking in Info.plist Quelle+Install bewiesen). Flackern beobachtet: AX-Baum 15:46:50 ohne Placeholder, Screenshot 15:47:02 mit Placeholder; App-Instanz wechselte zwischendurch (71025 tot → open startete PID 2409 15:41). Diagnose-Front: holeHTTP vs. Process-Unterschied — ungelöst, bei „weiter testen" wieder aufnehmen. ② **Test-Technik bewährt:** osascript System Events auf SwiftUI-App lesbar (12 Sidebar-Buttons + static texts); Screenshots via screencapture -x -o + sips -Z 1600 + Read. ③ **PDF-Doku fertig (Sascha: „wo ist die verfickte pdf" — gab nie eine, ehrlich zugegeben):** **`~/Desktop/LOKI_OS_DOKUMENTATION.pdf`** (249 KB, write_pdf desktop-commander, geöffnet) — App/12 Ansichten, Stimme+Befehle, Freigaben, Automatiken, Security-Regeln, Pfad-Karte. ④ Systemprotokoll Z.8 auf Port-ergebnis aktualisiert.
 
 Verwandt: [[loki-os-ecosystem-stand]], [[loki-second-brain]], [[loki-voice-agent]]
