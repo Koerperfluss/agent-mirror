@@ -7,7 +7,7 @@ tags: [spiegel, zcode]
 
 # Memory Index
 
-- [George/Thomas-Status](george-thomas-status.md) — 23.09.: Thomas baut eigenes System „George" auf Saschas LOKI.OS-Basis (ganze Codebase erhalten); Status-MD ~/Downloads/SASCHA_UMSETZUNGSSTATUS_2026-09-23.md; fail-closed/Ollama; ⚠️ Memory-Pflicht-Fall: bei Personen-/Systemnamen IMMER zuerst deja-Recall
+- [George/Thomas-Status](george-thomas-status.md) — 23.09.: Thomas' „George" = nur Selbstauskunfts-Tabellen, NULL Beweis-Outputs, Stimme nie gehört — ABER WENDE: die 3 Falsch-Fakten (15-Min-Limit, 36-Modell/Port 20128, Fristen-Wache-aktiv) stammten aus MEINEN Doku-Dateien; gefixt: ABNAHME A-Teil neu (Backup .bak-20260923) + LOKI_OS_DOKUMENTATION_KORRIGIERT_v2.pdf + Protokollzeile; Lektion: erst eigene Doku gegen Code prüfen, dann andere kritisieren
 
 - [ZCode-Workflow-Bedienung](zcode-workflow-bedienung.md) — /workflow via Chat-Feld/Command-Palette; Runs unter Automations; Workflows überleben Turn-Interrupts (ggü. direkten Agenten)
 
