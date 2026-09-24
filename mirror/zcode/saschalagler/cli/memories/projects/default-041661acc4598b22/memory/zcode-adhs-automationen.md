@@ -100,3 +100,12 @@ metadata:
 - ✅ Sauber: loki-ki `ae899b0`/`eaf7bc4`/`2bad878` (Doku stets mitgeändert: PROJECT/BEFEHLE/wayfinder) · loki-voice `7fdbf2d` brachte WIKI.md + PLAN_CHIPSI_CONNECTOR.md im selben Commit mit.
 - 23.09.-Morgen wieder verpasst (kein Logbuch um 15:0x) — gestriger Tagesplan 22.09. galt weiter; neuer Git-Commit `2bad878` (Vault-Organisation + wayfinder-Update) im Sync sichtbar. Bilanz: 15 Läufe; offen: Wecker-GO · Deutsch-Patch · GO doku-fix.
 
+## Sechzehnter Lauf (Mi 23.09. 16:0x — No-op PASS) + 23.09.-Abend VERPASST
+- 16:00-Mittwoch-Slot korrekt 1-Zeilen-No-op (Release-Brief nur freitags).
+- **23.09. 21:00-Abend-Lauf wurde NICHT ausgeführt** (Logbuch `2026-09-23.md` blieb status: offen) — erster verpasster Abend-Zweig seit Start. Im 24.09.-Abend-Brief offen gemeldet.
+
+## Siebzehnter Lauf (Do 24.09. 21:0x — Abend-Zweig PASS, Ruhig-Tag-Format)
+- Kalender-Event **„Logbuch 24.09.2026"** UID `9299B443-6943-493A-9BF9-E6E6EA1B524F`, Logbuch `2026-09-24.md` (status: abgeschlossen).
+- **Evidenz-basierter Ruhig-Tag:** Sweep = nur 1 ZCode-Session (die Tages-Routine selbst) + 0 Git-Commits → Brief sagt „kein Arbeits-Output heute" statt zu erfinden (Ehrlichkeits-Regel bewährt). Zusätzlich: verpasster 23.09.-Abend + offene GOs (doku-fix, Deutsch-Patch, Wecker) gemeldet.
+- Bilanz 13.–24.09.: 17 Läufe, alle 6 Zweige bewiesen; Daueroffen: **Wecker-GO · Deutsch-Patch-Recovery · GO doku-fix**.
+
