@@ -1,7 +1,7 @@
 ---
 app: cline-code
 quelle: "web-template/cloud-api-operations/references/recipes/README.md"
-stand: 2026-09-15
+stand: 2026-09-24
 tags: [spiegel, cline-code]
 ---
 
@@ -20,6 +20,7 @@ tags: [spiegel, cline-code]
 | # | Recipe | 文档 | 状态 |
 | --- | --- | --- | --- |
 | 1 | PostgreSQL 存储空间使用率告警 | [pg-storage-alarm.md](./pg-storage-alarm.md) | ✅ 生产实证（2026-09-08） |
+| 2 | ICP 备案提交前自查与等待期查询 | [icp-filing-readiness.md](./icp-filing-readiness.md) | ✅ 生产实证（2026-09-21） |
 
 ## 没有独立 recipe 的场景
 

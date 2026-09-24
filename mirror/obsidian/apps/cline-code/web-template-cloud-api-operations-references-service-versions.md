@@ -1,7 +1,7 @@
 ---
 app: cline-code
 quelle: "web-template/cloud-api-operations/references/service-versions.md"
-stand: 2026-09-15
+stand: 2026-09-24
 tags: [spiegel, cline-code]
 ---
 
@@ -31,6 +31,12 @@ tags: [spiegel, cline-code]
 | `tag` | 标签 | `2018-08-13` |
 | `billing` | 计费 | `2018-07-09` |
 | `region` | 地域 | `2022-06-27` |
+
+## 备案
+
+| service | 产品 | version |
+| --- | --- | --- |
+| `ba` | ICP 备案 | `2020-07-20` |
 
 ## 计算 / 容器 / 存储
 

@@ -1,14 +1,14 @@
 ---
 app: cline-code
 quelle: "web-template/minimal-web-baas-demo/rule.md"
-stand: 2026-09-22
+stand: 2026-09-24
 tags: [spiegel, cline-code]
 ---
 
 ---
 name: minimal-web-baas-demo
 description: "Fast path for a minimal CloudBase Web + database demo (最小前后端 / 最小可用 fullstack / Lovable-like BaaS). Defaults to @cloudbase/js-sdk client CRUD (NoSQL app.database / PG app.rdb), MCP-only schema, preview-first, and forbids cloud functions unless secrets, cron/background jobs, or logic that security rules/RLS cannot express. Use for 搭一套 demo、留言板、Todo、Notes、Kanban, or when users say 带云函数+云数据库 but only need CRUD. NOT for production multi-service backends, CloudRun, WeChat Mini Programs, or tasks that truly need server secrets."
-version: 2.34.5
+version: 2.34.6
 alwaysApply: false
 ---
 

@@ -1,14 +1,14 @@
 ---
 app: cline-code
 quelle: "web-template/auth-web-cloudbase/rule.md"
-stand: 2026-09-22
+stand: 2026-09-24
 tags: [spiegel, cline-code]
 ---
 
 ---
 name: auth-web-cloudbase
 description: CloudBase Web Authentication Quick Guide for frontend integration after auth-tool has already been checked. Provides concise and practical Web authentication solutions with multiple login methods and complete user management.
-version: 2.34.5
+version: 2.34.6
 alwaysApply: false
 ---
 

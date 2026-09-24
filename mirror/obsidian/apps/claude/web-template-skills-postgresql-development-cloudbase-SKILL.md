@@ -1,14 +1,14 @@
 ---
 app: claude
 quelle: "web-template/skills/postgresql-development-cloudbase/SKILL.md"
-stand: 2026-09-22
+stand: 2026-09-24
 tags: [spiegel, claude]
 ---
 
 ---
 name: postgresql-development-cloudbase
 description: "Use when building, debugging, or evaluating CloudBase PostgreSQL / CloudBase PG / PG mode apps, including Postgres schema setup, queryPgDatabase/managePgDatabase, JS SDK v3 app.rdb() CRUD/RPC, PG HTTP API fallback, RLS-style permissions, username-password auth, and Web CMS/admin CRUD flows backed by CloudBase PG."
-version: 2.34.5
+version: 2.34.6
 alwaysApply: false
 ---
 

@@ -1,6 +1,6 @@
 # web-template (claude)
 
-Zuletzt gespiegelt: 2026-09-24 18:53 UTC
+Zuletzt gespiegelt: 2026-09-24 19:05 UTC
 
 ## no_spec
 
@@ -163,7 +163,7 @@ ULIMPORTANT: **只生成 HTML 原型**，其他技术栈由后续开发实现。
 ---
 name: ai-model-nodejs
 description: "Use this skill for Node.js backend AI via @cloudbase/node-sdk (>=3.16.0) — cloud functions, CloudRun, Express/Koa/NestJS, serverless APIs, scheduled jobs, LLM proxies, agent orchestration. The only SDK supporting image generation (ai.createImageModel + generateImage). Text via ai.createModel with groups cloudbase, hunyuan-exp, or custom-*; model ids (e.g. deepseek-v4-flash, glm-5, kimi-k2.6) go in the `model` field of generateText/streamText. MUST run two-step preflight before code — see body. NOT for browser/Web (use ai-model-web) or Mini Program (use ai-model-wechat)."
-version: 2.34.5
+version: 2.34.6
 alwaysApply: false
 ---
 
@@ -439,7 +439,7 @@ Once onboarded, confirm with `DescribeAIModels` that the group is ready, then ca
 ---
 name: ai-model-web
 description: "Use this skill when a browser/Web app (React, Vue, Next, Nuxt, static sites, SPAs, dashboards, AI chat UI, 页面, 前端, 网页) needs AI models via @cloudbase/js-sdk. Default routing for Web/frontend AI — call directly from the browser, do NOT propose a Node.js proxy. Covers generateText and streamText; models via ai.createModel with groups cloudbase, hunyuan-exp, or custom-*, model id in the `model` field. MUST run two-step preflight before code — see body. NOT for Node.js backend (use ai-model-nodejs), Mini Program (use ai-model-wechat), or image generation (Node SDK only)."
-version: 2.34.5
+version: 2.34.6
 alwaysApply: false
 ---
 
@@ -808,7 +808,7 @@ curl "${base}/signup" \
 ---
 name: auth-nodejs-cloudbase
 description: CloudBase Node SDK auth guide for server-side identity, user lookup, and custom login tickets. This skill should be used when Node.js code must read caller identity, inspect end users, or bridge an existing user system into CloudBase; not when configuring providers or building client login UI.
-version: 2.34.5
+version: 2.34.6
 alwaysApply: false
 ---
 
@@ -1054,7 +1054,7 @@ When you load this skill to work on a task:
 ---
 name: auth-tool-cloudbase
 description: CloudBase auth provider configuration and login-readiness guide. This skill should be used when users need to inspect, enable, disable, or configure auth providers, publishable-key prerequisites, login methods, SMS/email sender setup, or other provider-side readiness before implementing a client or backend auth flow.
-version: 2.34.5
+version: 2.34.6
 alwaysApply: false
 ---
 
@@ -1464,7 +1464,7 @@ Use this checklist before generating any CloudBase authentication flow.
 ---
 name: auth-web-cloudbase
 description: CloudBase Web Authentication Quick Guide for frontend integration after auth-tool has already been checked. Provides concise and practical Web authentication solutions with multiple login methods and complete user management.
-version: 2.34.5
+version: 2.34.6
 alwaysApply: false
 ---
 
@@ -1956,7 +1956,7 @@ const cloud = require('wx-server-sdk')
 ---
 name: cloud-api-operations
 description: Operate Tencent Cloud control-plane resources (monitoring/alarms, CLB, CAM roles, COS, MySQL, SCF) via cloud APIs when no dedicated MCP tool covers the task. Use when a task needs control-plane operations beyond CloudBase's own tooling, or when a callCloudApi call failed and needs classifying.
-version: 2.34.5
+version: 2.34.6
 ---
 
 # Cloud API Operations
@@ -2011,6 +2011,7 @@ Priority rule: if `@cloudbase/manager-node` has a matching method, use it; drop 
 Recipes encode the exact call sequence, required parameters, and empirically discovered pitfalls so the flow works on the first pass. One scenario per file — start from the index `./references/recipes/README.md`, whose 状态 column records how far each recipe has been verified:
 
 - **PostgreSQL storage-usage alarm**: `./references/recipes/pg-storage-alarm.md`
+- **ICP filing readiness and wait-time checks**: `./references/recipes/icp-filing-readiness.md`
 
 **Done when**: every parameter value in the call sequence traces to a recipe value marked as verified (实测) or to official docs.
 
@@ -2159,11 +2160,116 @@ https://console.cloud.tencent.com/cam/role/grant?roleName=<角色名>&policyName
 | # | Recipe | 文档 | 状态 |
 | --- | --- | --- | --- |
 | 1 | PostgreSQL 存储空间使用率告警 | [pg-storage-alarm.md](./pg-storage-alarm.md) | ✅ 生产实证（2026-09-08） |
+| 2 | ICP 备案提交前自查与等待期查询 | [icp-filing-readiness.md](./icp-filing-readiness.md) | ✅ 生产实证（2026-09-21） |
 
 ## 没有独立 recipe 的场景
 
 - **MySQL / CVM 等依赖产品告警**：复用 Recipe 1 的框架，换 monitor namespace。
 - **MySQL 备份回档、SCF 函数触发器**：暂无 recipe，从 `api-reference` 的依赖产品段起查。
+
+## icp-filing-readiness
+
+# Recipe 2 — ICP 备案：提交前自查与等待期查询
+
+## When to use
+
+准备用云开发环境作为备案云资源，或已在备案流程中需要把「能不能提、要等多久、被什么卡住」查清楚时：
+
+- 提交前想知道当前云开发环境够不够格当备案云资源（套餐、剩余有效期、固定 IP）
+- 想知道**现在能不能提交下一条备案**（同一主体下多条备案不能并行）
+- 想知道某个省大概要审多少天、这个省对个人/企业有什么硬性限制
+- 想知道某个域名的备案状态（管局是否通过、是否已落地、是否被拦）
+
+本篇管到「查清楚」为止。**提交备案、上传材料、人脸/视频核身**在腾讯云备案小程序里完成，不走云 API；域名注册 / 实名转 [domain](../service-versions.md)；证书申请转 `ssl`；备案通过后往云开发绑自定义域名转 `manageHosting` / HTTP 网关。
+
+## 前置权限
+
+用到的 service：
+
+| service | version | 用途 |
+| --- | --- | --- |
+| `tcb` | `2018-06-08` | 读云开发环境套餐与到期时间 |
+| `ba` | `2020-07-20` | 读备案订单、主体、省份规则、域名状态 |
+
+**凭据身份：账号级。** 备案数据挂在腾讯云账号下，与环境无关 —— 但 `callCloudApi` 有环境绑定门禁，账号级登录后仍需先 `auth(action="set_env", envId=…)` 绑一个环境（任一正常环境即可，不参与备案判定），否则首个调用返回 `ENV_REQUIRED`。
+
+`ba` 的接口是**操作级**授权。账号读自己的备案数据一般不需要额外策略；出现 `UnauthorizedOperation` 时，给**该身份**追加 ICP 备案（`ba`）的读权限，链接拼法与角色载体读法见 [calling-methods.md §3](../calling-methods.md)。
+
+官方接口文档：https://cloud.tencent.com/document/api/243/ （请求域名 `ba.tencentcloudapi.com`）。
+
+## 接口序列
+
+### A. 环境够不够格当备案云资源
+
+| 步 | Action | service | 关键参数 | 取什么 |
+| --- | --- | --- | --- | --- |
+| 1 | DescribeEnvInfo | `tcb` | `{ "EnvId": "<envId>" }` | `EnvInfo.BillingInfo.PackageId`、`ExpireTime` |
+
+判定两条可判定的准入条件：
+
+- **套餐**：`PackageId` 为 `baas_personal` 及以上（免费体验环境不带套餐，不能备案）。
+- **剩余有效期 > 6 个月**：`ExpireTime` 距今必须大于 6 个月。这条最容易不自知 —— 环境刚创建或快到期时，`ExpireTime` 可能只余几周。
+
+第三条「环境已开启云托管固定 IP」公开面没有对应的读 Action，判据只能在控制台读：进入目标环境的**备案管理**页，页面会直接列出三项的状态（例如「剩余有效期不足」「未开启云托管固定 IP」），并给出「续费环境」「开启固定IP」入口。三项都满足时该页才出现「去备案」。
+
+### B. 现在能不能提交备案（同主体互斥判定）
+
+| 步 | Action | service | 关键参数 | 取什么 |
+| --- | --- | --- | --- | --- |
+| 2 | DescribeLastIcpOrderInProgress | `ba` | `{}` | `IcpOrderId` |
+| 3 | DescribeIcpOrders | `ba` | `{ "Offset": 0, "Limit": 10 }` | `TotalCount`、`Rows` |
+| 4 | DescribeUserSummary | `ba` | `{}` | `PassedCount`、`PendingCount` |
+
+步骤 2 是互斥判定的正解：`IcpOrderId` 返回**空串表示当前没有进行中的订单**（实测），可以发起新订单；非空则表示已有一条在路上，此时提交第二条会被拦。提交前先查这一步，比等到被驳回再排查省一轮等待。
+
+步骤 3 看历史订单总量，步骤 4 看通过 / 待处理计数。
+
+### C. 要等多久、这个省有什么硬规则
+
+| 步 | Action | service | 关键参数 | 取什么 |
+| --- | --- | --- | --- | --- |
+| 5 | DescribeEvaluateAuditDays | `ba` | `{}` | `Result`（JSON 字符串，`ProvinceCode` → 预计天数） |
+| 6 | DescribeProvinceRules | `ba` | `{}` | `ProvinceRules[].Personal` / `.Enterprise`（HTML 片段） |
+| 7 | DescribeOrganizationTypes | `ba` | `{}` | `OrganizationTypes[].Type` 与 `CertTypes[]`（主体类型 / 证件类型枚举） |
+
+步骤 5 返回各省预计审核天数（`ProvinceCode` 是六位行政区划码，如 `110000` 北京、`440000` 广东），用来给使用者一个量级预期，而不是「一般 1-20 个工作日」。
+
+步骤 6 返回各省管局对个人 / 企业的硬规则原文（HTML），提交前按自己所在省读一遍，网站命名、域名后缀、负责人年龄这类限制都在里面。
+
+### D. 域名与主体当前状态
+
+| 步 | Action | service | 关键参数 | 取什么 |
+| --- | --- | --- | --- | --- |
+| 8 | DescribeDomainIcpStatus | `ba` | `{ "Domain": "<domain>" }` | `GovStatus`、`LandedStatus`、`AuditTicket`、`Ban` |
+| 9 | DescribeIcpSubject | `ba` | `{}` | `Result`、`ContentData` |
+| 10 | DescribeIcpRegister | `ba` | `{}` | `Webs[]`（该账号已备案的网站） |
+| 11 | DescribeInWhiteList | `ba` | `{}` | `Rows[]` |
+
+步骤 8 的四个布尔字段分别对应：管局是否已通过、是否已落地到腾讯云、是否有核查工单、是否被拦。域名不是自己的、已在别处备案未接入、被列入限制名单，都会在这里体现，不必等到提交后才被打回。
+
+## 踩坑清单
+
+| 坑 | 现象 | 正确做法 |
+| --- | --- | --- |
+| 账号级登录仍被拦 | 首个 `ba` 调用返回 `ENV_REQUIRED`（「当前已登录，但尚未绑定环境」） | 先 `auth(action="set_env", envId=…)`；备案本身与环境无关，绑任一个正常环境即可 |
+| 猜错环境信息 Action | `tcb/DescribeEnvBaseInfo` → `action is invalid or not found` | 环境基础信息用 `tcb/DescribeEnvInfo`（不是 `EnvBaseInfo`） |
+| 以为设备列表能直接查 | `ba/DescribeDevices` / `ba/DescribeTaskDevices` → `missing the required parameter Skey` | `Skey` 来自备案订单流程，公开面拿不到；要判定「环境能否作为备案资源」走序列 A |
+| 以为网站名能独立校验 | `ba/ValidateSiteName` → `missing the required parameter IcpOrderID` | 它只能在已有订单内校验；提交前自查改用序列 C 的省份规则 |
+| 以为能查任意账号 | `ba/CheckAccountNotBeian` 缺 `CheckUin`、`ba/CheckIcpRestrictionsByAh` 缺 `Uin` | 这两个是查指定 Uin 的通道，不是「查我自己」的默认入口 |
+| 域名详情查不了 | `ba/DescribeIcpDomainInfo` 缺 `Type`，补上后又缺 `Value` | 只想看域名备案状态时用 `ba/DescribeDomainIcpStatus`，只需 `Domain` |
+| APP 备案状态查询 | `ba/DescribeAppIcpStatus` → `missing the required parameter CertificateNumber` | 该接口按备案号查，需先有备案号；新申请阶段查不到 |
+| 管局时长查询 | `ba/DescribeAvgAuditDaysByAh` → `missing the required parameter OrderType` | 按省份量级预期用 `ba/DescribeEvaluateAuditDays`（无需参数） |
+| 备案管理页与环境设置页不一致 | 个人版环境：备案管理页给「开启固定IP」入口，但环境设置页**没有**固定公网 IP 卡片 | 固定 IP 的准入以备案管理页的状态为准；环境设置页看不到不代表不可开启，按备案管理页的入口走 |
+| 用环境级凭据路径去查 | 环境级 API Key 只能看到绑定环境，备案数据看不到 | 备案查询用账号级登录取凭据 |
+| 把 `ba` 当成国际站能力 | 国际站账号查不到国内备案数据 | 备案是腾讯云国内站业务，走国内站身份查询 |
+
+## 验证步骤
+
+1. **序列 A**：`DescribeEnvInfo` 返回的 `BillingInfo.PackageId` 非空、`ExpireTime` 可解析为日期，且 `ExpireTime - 今天 > 6 个月`；不满足就先续费 / 升级，不要往下走。
+2. **序列 B**：`DescribeLastIcpOrderInProgress` 返回 `IcpOrderId` —— 空串即「无进行中订单」，非空则停下来先处理这条订单，不要提交第二条。
+3. **序列 C**：`DescribeEvaluateAuditDays` 的 `Result` 能解析成 `ProvinceCode` → 天数的数组，且能对上自己省份的行政区划码；`DescribeProvinceRules` 里能定位到自己省份的 `Personal` / `Enterprise` 段落。
+4. **序列 D**：`DescribeDomainIcpStatus` 返回四个布尔字段。任意一项为 `true` 时，先按对应语义处理（`GovStatus` 已通过、`LandedStatus` 已落地、`AuditTicket` 有工单、`Ban` 被拦），再决定是否发起新订单。
+5. 全链路只调用 `Describe*`，不应产生任何订单或状态变更；若某步返回了订单号或写操作结果，说明参数传错，停止并复核。
 
 ## pg-storage-alarm
 
@@ -2297,6 +2403,12 @@ CreateAlarmPolicy 实测可用的请求体：
 | `billing` | 计费 | `2018-07-09` |
 | `region` | 地域 | `2022-06-27` |
 
+## 备案
+
+| service | 产品 | version |
+| --- | --- | --- |
+| `ba` | ICP 备案 | `2020-07-20` |
+
 ## 计算 / 容器 / 存储
 
 | service | 产品 | version |
@@ -2385,18 +2497,12 @@ CreateAlarmPolicy 实测可用的请求体：
 | `sms` | 短信 | ⚠️ `2019-07-11` / `2021-01-11` |
 | `ses` | 邮件推送 | `2020-10-02` |
 
-## 目标产品不在表里
-
-表里的产品随 MCP 版本增加。不在表里说明当前版本还没收进来 —— 先把 MCP 升到最新版再试；仍然没有，反馈产品名与要调用的 Action，让维护方补表（不要用近义写法硬试，schema 会直接拒绝）。
-
-版本号不需要记：单版本产品调用时可省略，多版本产品缺省时会报错并列出可选值。
-
 ## SKILL
 
 ---
 name: cloud-functions
 description: CloudBase function runtime guide for building, deploying, and debugging your own Event Functions or HTTP Functions. This skill should be used when users need application runtime code on CloudBase, not when they are merely calling CloudBase official platform APIs.
-version: 2.34.5
+version: 2.34.6
 alwaysApply: false
 ---
 
@@ -3348,7 +3454,7 @@ After VPC is bound, public internet egress may require NAT / public gateway in t
 ---
 name: cloud-storage-web
 description: Complete guide for CloudBase cloud storage using Web SDK (@cloudbase/js-sdk) - upload, download, temporary URLs, file management, and best practices.
-version: 2.34.5
+version: 2.34.6
 alwaysApply: false
 ---
 
@@ -4216,7 +4322,7 @@ Component({
 ---
 name: cloudbase-agent
 description: Build and deploy AI agents with CloudBase Agent SDK (TypeScript & Python). Implements the AG-UI protocol for streaming agent-UI communication. Use when deploying agent servers, using LangGraph/LangChain/CrewAI adapters, building custom adapters, understanding AG-UI protocol events, or building web/mini-program UI clients. Supports both TypeScript (@cloudbase/agent-server) and Python (cloudbase-agent-server via FastAPI).
-version: 2.34.5
+version: 2.34.6
 alwaysApply: false
 ---
 
@@ -5603,7 +5709,7 @@ AgentServiceApp().run(
 ---
 name: cloudbase-agent-python
 description: "Build production-ready AI agent backends using the CloudBase Agent Python SDK — create agents with LangGraph/CrewAI/LlamaIndex, serve them via FastAPI with AG-UI protocol streaming + OpenAI-compatible endpoints, add tools (bash, filesystem, MCP, code execution), memory (in-memory, TDAI, MySQL, MongoDB), observability (OpenTelemetry/Langfuse), and middleware (auth, logging). Use this skill when the user wants to create an AI agent server, build a chatbot backend, set up human-in-the-loop workflows, integrate MCP tools, add agent observability, or deploy an agent API — even if they don't explicitly mention 'CloudBase Agent.'"
-version: 2.21.1
+version: 2.34.6
 alwaysApply: true
 ---
 
@@ -6342,7 +6448,7 @@ run({
 ---
 name: cloudbase-agent
 description: "Build and deploy AI agents with Cloudbase Agent (TypeScript), a TypeScript SDK implementing the AG-UI protocol. Use when: (1) deploying agent servers with @cloudbase/agent-server, (2) using LangGraph adapter with ClientStateAnnotation, (3) using LangChain adapter with clientTools(), (4) building custom adapters that implement AbstractAgent, (5) understanding AG-UI protocol events, (6) building web UI clients with @ag-ui/client, (7) building WeChat Mini Program UIs with @cloudbase/agent-ui-miniprogram."
-version: 2.21.1
+version: 2.34.6
 alwaysApply: true
 ---
 
@@ -6611,7 +6717,7 @@ Component({
 ---
 name: cloudbase-cli
 description: CloudBase CLI (tcb, 云开发CLI, Tencent CloudBase命令行) resource management skill. Use when deploying cloud functions, CloudRun, storage, NoSQL/MySQL, static hosting, permissions, CORS/domains via tcb; for CI/CD and batch ops; when the user prefers CLI; or as the first-session fallback when CloudBase MCP tools are not loaded yet (after install/config, before IDE restart). Covers tcb login (device code for Tencent Cloud accounts; --cloudbase-api-key -e for environment API Key without an account; --apiKeyId/--apiKey for CI) and domain commands (fn/hosting/cloudrun/…) as MCP auth/manage parity — do not default to tcb deploy.
-version: 2.34.5
+version: 2.34.6
 alwaysApply: false
 ---
 
@@ -7964,7 +8070,7 @@ tcb storage rm folder/ --dir -e <envId>                # Directory
 ---
 name: cloudbase-code-review
 description: "Code review and validation for CloudBase projects. After writing code for Web / miniprogram / CloudRun / cloud-function projects, call this skill to check for known pitfalls — auth guard misuse, missing database tables, RLS misconfiguration, storage domain setup, and SDK API misuse. Supports automated lint scripts (regex-based) + LLM semantic review."
-version: 2.34.5
+version: 2.34.6
 alwaysApply: false
 ---
 
@@ -8821,7 +8927,7 @@ CloudBase 安全域名机制会拦截未注册的 origin 发出的请求。Vite 
 ---
 name: cloudbase-declarative-deploy
 description: CloudBase declarative deployment from a cloudbaserc config (声明式部署, 配置式部署, cloudbaserc 部署) through the deployBuild / deployPlan / deployApply MCP tools. Use when deploying database, functions, app, hosting, or gateway resources described in cloudbaserc.json/yaml as a single desired-state config, when a user wants to build static hosting artifacts locally first (deployBuild), or wants a dry-run plan before applying (deployPlan), or when handling multi-environment deploys via mode / envOverrides. Covers build-plan-apply flow (deployBuild local build → deployPlan dry-run → deployApply confirm=true), hosting build-output neutralization, envId resolution priority, only/skip filtering, concurrency, and continueOnError. Prefer deployBuild (when hosting declares a buildCommand) and deployPlan before deployApply; do not confuse with per-resource tcb CLI deploy or single-function deploy.
-version: 2.34.5
+version: 2.34.6
 alwaysApply: false
 ---
 
@@ -9253,7 +9359,7 @@ Use this supported cloud path:
 ---
 name: cloudbase-document-database-web-sdk
 description: Use CloudBase document database Web SDK only for confirmed NoSQL collection work. Query, create, update, and delete document data; if the task mentions PostgreSQL / CloudBase PG / app.rdb(), route to postgresql-development instead.
-version: 2.34.5
+version: 2.34.6
 alwaysApply: false
 ---
 
@@ -9990,6 +10096,8 @@ async function paginateWithCount(collectionName, page, pageSize, whereConditions
 
 # Realtime Database with CloudBase
 
+> **Scope:** this page documents document-database `collection.watch()` only — module `@cloudbase/js-sdk/realtime` (`registerRealtime`). PostgreSQL realtime through `app.realtime()` (Broadcast / Presence / Postgres CDC) is a **separate module** — `@cloudbase/js-sdk/realtime-js` (`registerRealtimeJs`) — and the two are not interchangeable. If the project is in PG mode, or the request mentions broadcast / presence / live table changes, read `../postgresql-development-cloudbase/references/realtime.md` instead.
+
 CloudBase document database supports **real-time push** functionality that allows applications to listen to all update events for documents in a specified collection that match query conditions. When monitored documents undergo any changes (such as addition, modification, deletion), the client receives notifications in real-time, enabling real-time data synchronization and updates.
 
 ## Core Features
@@ -10106,8 +10214,6 @@ Be sure to close monitoring when pages or components unmount to prevent memory l
 
 **React Component Example:**
 ```javascript
-import { useEffect } from 'react';
-
 
 ## security-rules
 
@@ -10236,8 +10342,8 @@ await managePermissions({
 
 ---
 name: cloudbase-platform
-description: CloudBase platform overview and routing guide. This skill should be used when users need high-level capability selection, platform concepts, console navigation, or cross-platform best practices before choosing a more specific implementation skill.
-version: 2.34.5
+description: CloudBase platform overview and routing guide. This skill should be used when users need high-level capability selection, platform concepts, console navigation, realtime (broadcast / presence / live database changes), or cross-platform best practices before choosing a more specific implementation skill.
+version: 2.34.6
 alwaysApply: false
 ---
 
@@ -10278,6 +10384,9 @@ If a referenced sibling skill file is missing from this environment, ask the use
 - Official HTTP API clients -> `../http-api-cloudbase/SKILL.md`
 - Document database -> `../cloudbase-document-database-web-sdk/SKILL.md` or `../cloudbase-document-database-in-wechat-miniprogram/SKILL.md`
 - CloudBase PostgreSQL / PG -> `../postgresql-development-cloudbase/SKILL.md`
+- Realtime / live push / channels / live table change subscriptions / multiplayer sync -> `../postgresql-development-cloudbase/references/realtime.md`
+  - **PG mode only.** Run its Step 0 environment probe before writing any realtime code; if the environment has no `realtime` schema, stop and report rather than working around it.
+  - `app.realtime()` (Broadcast / Presence / Postgres CDC) is **not** document-database `collection.watch()`. Do not answer a realtime request with `watch()` code, or the reverse.
 - MySQL relational database / data modeling -> `../relational-database-mcp-cloudbase/SKILL.md` or `../data-model-creation/SKILL.md`
 - Cloud storage -> `../cloud-storage-web/SKILL.md`
 
@@ -10351,9 +10460,6 @@ When working with domain-related tasks, use the correct tool based on the requir
 | **Security Domain (安全域名)** | `manageEnv(action="addSecurityDomain" \| "removeSecurityDomain")` | `domains` (array of host:port strings) | CORS/request source validation for browser uploads. No certificate involved. (Deprecated alias: `envDomainManagement`.) |
 | **Reuse existing Custom Domain** | `queryGateway(listCustomDomains)` → `manageGateway(createRoute)` | `domain` = existing custom domain; route fields | Expose a service/path on an already-bound custom domain. **No certificateId.** Prefer this when a custom domain already exists. |
 | **Bind new Custom Domain (自定义域名)** | `manageGateway(action="bindCustomDomain")` | `domain` (string), `certificateId` (string) | First-time bind of a new public HTTPS domain. Requires certId from SSL console. |
-| **Delete Custom Domain** | `manageGateway(action="deleteCustomDomain")` | `domain` (string) | Remove custom domain binding (only after routes on that domain are deleted). |
-| **Disable / enable gateway route** | `manageGateway(action="disableRoute" \| "enableRoute")` | `path` (required), prefer explicit `domain` | Toggle `Routes[].Enable` via `ModifyHTTPServiceRoute` (not `ModifyGatewayRoute`). |
-| **Disable static hosting default domain** | `queryGateway(listRoutes)` → `manageGateway(disableRoute)` | `domain` = `*.tcloudbaseapp.com` (`DomainType=STATIC_STORE`, `IsDefault=true`), usually `path="/"` | Turns off public access on the shared hosting CDN default host. **Do not use `manageHosting`.** |
 
 ## change-safety-protocol
 
@@ -10635,7 +10741,7 @@ exports.main = async (event) => {
 ---
 name: cloudbase-wechat-integration
 description: CloudBase WeChat integration guide for Mini Program WeChat Pay, Mini Program virtual payment (虚拟支付, wx.requestVirtualPayment), Official Account JSAPI Pay, Native QR-code Pay, Official Account OAuth, openid handling, payment callbacks, and CloudBase Integration Center generated functions. This skill should be used when users ask to add, debug, or extend WeChat payment, virtual payment, or official-account flows on CloudBase.
-version: 2.34.5
+version: 2.34.6
 alwaysApply: false
 ---
 
@@ -11327,7 +11433,7 @@ Use this reference for **虚拟支付**（virtual goods payment）flows: 道具�
 ---
 name: cloudrun-development
 description: CloudBase Run backend development rules (Function mode/Container mode). Use this skill when deploying backend services that require long connections, multi-language support, custom environments, AI agent development, or migrating existing/GitHub apps that need VPC access to MySQL/PostgreSQL/Redis. Also use when diagnosing CloudRun container deploy failures (deploy_failed, readiness/probe failed, image won't start, docker.io pull loops) or a deploy stuck behind a running deploy task. For stateless HTTP services, prefer HTTP cloud functions.
-version: 2.34.5
+version: 2.34.6
 alwaysApply: false
 ---
 
@@ -11696,7 +11802,7 @@ If the user says "PostgreSQL" but the app is a classic TCP client (for example n
 ---
 name: data-model-creation
 description: "[Deprecated] Optional advanced tool for complex data modeling. For simple MySQL table creation, use relational-database-tool directly; for PostgreSQL / CloudBase PG schema work, use postgresql-development. New environments should use PostgreSQL DDL via queryPgDatabase/managePgDatabase — see postgresql-development skill instead."
-version: 2.34.5
+version: 2.34.6
 alwaysApply: false
 metadata:
   priority: "5"
@@ -11819,7 +11925,7 @@ This skill is an **advanced modeling path**, not the default path for database w
 ---
 name: http-api-cloudbase
 description: CloudBase official HTTP API client guide. This skill should be used when backends, scripts, or non-SDK clients must call CloudBase platform APIs over raw HTTP instead of using a platform SDK or MCP management tool.
-version: 2.34.5
+version: 2.34.6
 alwaysApply: false
 ---
 
@@ -12264,7 +12370,7 @@ Use this checklist when the request comes from Android, iOS, Flutter, React Nati
 ---
 name: minimal-web-baas-demo
 description: "Fast path for a minimal CloudBase Web + database demo (最小前后端 / 最小可用 fullstack / Lovable-like BaaS). Defaults to @cloudbase/js-sdk client CRUD (NoSQL app.database / PG app.rdb), MCP-only schema, preview-first, and forbids cloud functions unless secrets, cron/background jobs, or logic that security rules/RLS cannot express. Use for 搭一套 demo、留言板、Todo、Notes、Kanban, or when users say 带云函数+云数据库 but only need CRUD. NOT for production multi-service backends, CloudRun, WeChat Mini Programs, or tasks that truly need server secrets."
-version: 2.34.5
+version: 2.34.6
 alwaysApply: false
 ---
 
@@ -14177,7 +14283,7 @@ async function paginateWithCount(collectionName, page, pageSize, whereConditions
 ---
 name: ops-inspector
 description: AIOps-style CloudBase inspection skill (v3). Use when users need health checks, log diagnosis, alarm interpretation (CPU alert normal?, peak QPS), metrics via queryEnv(action=metrics), or fault playbooks for 429 / function 404 / ACCESS_TOKEN_INVALID / zero invocations. Triggers on 巡检, 诊断, 告警, 峰值 QPS, 限频, 调用量为 0, troubleshooting.
-version: 2.34.5
+version: 2.34.6
 alwaysApply: false
 ---
 
@@ -14502,7 +14608,7 @@ Shared prerequisites for every playbook:
 ---
 name: postgresql-best-practices-cloudbase
 description: "CloudBase PostgreSQL access-pattern and slow-query quality guidance. Use when designing how tables are read and written, eliminating per-row database calls, adding indexes for filters or joins, reviewing high-traffic data access, or explaining a slow SQL query. Not for first-time PG SDK setup, login UI, or NoSQL collections."
-version: 2.34.5
+version: 2.34.6
 alwaysApply: false
 ---
 
@@ -14903,7 +15009,7 @@ Represent each schema change as a local `cloudbase/migrations/<version>_<name>.s
 ---
 name: postgresql-development-cloudbase
 description: "Use when building, debugging, or evaluating CloudBase PostgreSQL / CloudBase PG / PG mode apps, including Postgres schema setup, queryPgDatabase/managePgDatabase, JS SDK v3 app.rdb() CRUD/RPC, PG HTTP API fallback, RLS-style permissions, username-password auth, and Web CMS/admin CRUD flows backed by CloudBase PG."
-version: 2.34.5
+version: 2.34.6
 alwaysApply: false
 ---
 
@@ -15339,11 +15445,13 @@ Use this index after `postgresql-development/SKILL.md` identifies the task as Cl
 3. `app-workflow.md` — end-to-end Web/CMS implementation workflow.
 4. `storage-pg.md` — PG storage bucket/object model, `app.storage.from('bucket')`, and storage RLS.
 5. `http-api.md` — PostgREST `/v1/rdb/rest/...` fallback and auth headers.
-6. `troubleshooting.md` — SDK version, DDL wrapping, role simulation, mini program base-library issues.
+6. `realtime.md` — `app.realtime()` Broadcast / Presence / Postgres CDC: the mandatory environment probe, delivery guarantees, private-channel RLS, and CDC database-side setup.
+7. `troubleshooting.md` — SDK version, DDL wrapping, role simulation, mini program base-library issues.
 
 ## Routing reminders
 
 - PG business data uses `app.rdb().from(...)`, `queryPgDatabase`, and `managePgDatabase`.
+- Realtime (`app.realtime()`, broadcast / presence / postgres_changes) is a **different module** from document-database `collection.watch()`. Probe the environment first — see `realtime.md` Step 0.
 - Do not route PG work to NoSQL `app.database()` / `db.collection(...)` or MySQL `queryMysqlDatabase` / `manageMysqlDatabase`.
 - Browser code must never contain API Key / `service_role` credentials.
 - For owner fields, prefer `varchar(64)` / `text` with database defaults such as `DEFAULT auth.uid()` and omit the owner field from frontend insert payloads. Remember `auth.uid()` is `text`; cast with `::uuid` only when comparing to an existing `uuid` column.
@@ -15384,6 +15492,129 @@ CloudBase PG mode is a Postgres-Native environment mode. It is not simply "addin
 ## Common fit
 
 Prefer PG mode for structured relational data, joins, transactions, row-level permission modeling, `pgvector` / SQL extensions, and apps that benefit from PostgREST and SQL-native authorization.
+
+## realtime
+
+# CloudBase PG Realtime
+
+`app.realtime()` is the PostgreSQL-mode realtime surface. It is Supabase-Realtime compatible and ships three primitives:
+
+| Primitive | Listen type | Use for |
+| --- | --- | --- |
+| Broadcast | `broadcast` | Ephemeral in-channel messages, signaling, cursors, actions |
+| Presence | `presence` | Who is on a channel; join / leave |
+| Postgres CDC | `postgres_changes` | Reacting to `INSERT` / `UPDATE` / `DELETE` on business tables |
+
+It is **not** the document-database `collection.watch()` path. See "Not the same as `watch()`" below.
+
+## Step 0 — Probe the environment before writing any code
+
+Realtime is not enabled on every environment yet. Run this **first**, via `queryPgDatabase` with `action=sql`:
+
+```sql
+SELECT
+  (SELECT count(*) FROM pg_namespace WHERE nspname = 'realtime') AS has_realtime_schema,
+  (SELECT count(*) FROM information_schema.tables WHERE table_schema = 'realtime') AS realtime_table_cnt;
+```
+
+- `has_realtime_schema >= 1` → enabled. Continue.
+- `has_realtime_schema = 0` → **not enabled**. Stop here. Do not write realtime code, do not try to enable it yourself, and do not substitute a hand-rolled polling loop. Tell the user the current environment has no realtime schema (the capability is not generally available yet) and let them file a capability request at the CloudBase developer community: <https://cnb.cool/tencent/cloud/cloudbase/community/-/issues>
+
+Do **not** gate on `pg_publication LIKE 'cloudbase_realtime%'`. A publication count of `0` is normal — it only means no table has CDC enabled yet.
+
+Once the schema exists, confirm the shape you will rely on:
+
+```sql
+SELECT table_name FROM information_schema.tables WHERE table_schema = 'realtime';
+-- expect messages, subscription, schema_migrations
+```
+
+## Not the same as `watch()`
+
+Two independent modules. They do **not** replace each other:
+
+| You want | Module | Register | Call |
+| --- | --- | --- | --- |
+| Document-database collection changes | `@cloudbase/js-sdk/realtime` | `registerRealtime` | `collection.watch()` |
+| Broadcast / Presence / Postgres CDC | `@cloudbase/js-sdk/realtime-js` | `registerRealtimeJs` | `app.realtime()` |
+
+Full-import users get both registered automatically. On-demand imports must register only the one they use. Never answer a realtime question with `watch()` code without confirming which database model the project uses.
+
+## Channel lifecycle
+
+```js
+const realtime = app.realtime();
+const channel = realtime.channel("room:42", { config: { private: true } });
+
+channel
+  .on("broadcast", { event: "move" }, (payload) => { /* ... */ })
+  .on("presence", { event: "sync" }, () => channel.presenceState())
+  .on("presence", { event: "join" }, ({ newPresences }) => { /* ... */ })
+  .on("presence", { event: "leave" }, ({ leftPresences }) => { /* ... */ })
+  .subscribe(async (status, err) => {
+    if (status === "SUBSCRIBED") await channel.track({ user_id: 1, name: "Ada" });
+    if (status === "CHANNEL_ERROR" || status === "TIMED_OUT") console.error(status, err);
+  });
+```
+
+Rules that the SDK does not enforce for you:
+
+- **Bind `presence` and `postgres_changes` listeners before `subscribe()`.** Broadcast handlers may be added later; these two may not.
+- `send()` / `track()` are only valid after `SUBSCRIBED`.
+- Always clean up, or you leak connections: `await channel.unsubscribe()` then `await realtime.removeChannel(channel)`. Use `realtime.removeAllChannels()` to tear everything down.
+- The same `app` instance reuses one realtime client.
+- Node.js needs the optional `ws` dependency. WeChat mini programs must use `app.realtime()` — never `new RealtimeClient()` — and need a base library supporting `wx.connectSocket`.
+
+## Delivery guarantees — treat Broadcast as fire-and-forget
+
+Defaults are `broadcast: { ack: false, self: false }`:
+
+- `ack: false` → `send()` resolves **without** waiting for server confirmation.
+- `self: false` → the sender does not receive its own message.
+- There is no ordering guarantee across messages.
+
+For any state that must converge (turns, scores, board state), do **not** treat a received message as the source of truth:
+
+1. Persist authoritative state in PostgreSQL (`app.rdb()`).
+2. Broadcast carries only a "changed" hint plus a monotonic sequence number.
+3. On a gap, out-of-order arrival, or `resubscribe`, re-read the snapshot from the database instead of replaying a message log.
+4. **Connection hot-cut**: CloudBase keeps a ~270s dual-connection hot-cut to stay under the gateway connection lifetime. A message lost during a cut is indistinguishable from one never sent, so the sequence-plus-snapshot rule above is mandatory, not optional.
+
+Set `ack: true` only where an occasional extra round trip is acceptable.
+
+## Private channels and authorization
+
+`config.private: false` is the default. With a public channel the RLS layer is **not** consulted: anyone who knows or guesses the topic can subscribe and send. For room-scoped game or user data that is unacceptable — `private: true` is required.
+
+`private: true` routes authorization through RLS on `realtime.messages`, which the platform already creates with `topic`, `extension` (`broadcast` / `presence`), `payload`, `event`, `private` columns and RLS **enabled with zero policies**. Zero policies means deny: you must add the policies yourself or every private subscribe and send is rejected.
+
+The helper `realtime.topic()` resolves to `current_setting('realtime.topic')`. Because the SDK prepends `realtime:` when it creates the channel, normalize before comparing:
+
+```sql
+-- Members of a room may read its channel
+CREATE POLICY realtime_room_read ON realtime.messages
+  FOR SELECT TO authenticated
+  USING (
+    extension IN ('broadcast', 'presence')
+    AND EXISTS (
+      SELECT 1 FROM public.room_members m
+      WHERE m.topic = replace(realtime.topic(), 'realtime:', '')
+        AND m.user_id = auth.uid()
+    )
+  );
+
+-- ...and may write to it
+CREATE POLICY realtime_room_write ON realtime.messages
+  FOR INSERT TO authenticated
+  WITH CHECK (
+    extension IN ('broadcast', 'presence')
+    AND EXISTS (
+      SELECT 1 FROM public.room_members m
+      WHERE m.topic = replace(realtime.topic(), 'realtime:', '')
+        AND m.user_id = auth.uid()
+    )
+  );
+```
 
 ## rls-patterns
 
@@ -16553,7 +16784,7 @@ Fix:
 ---
 name: relational-database-mcp-cloudbase
 description: "[Deprecated] This is the required documentation for agents operating on the CloudBase Relational Database through MCP. It defines the canonical SQL management flow with `queryMysqlDatabase`, `manageMysqlDatabase`, `queryPermissions`, and `managePermissions`, including MySQL provisioning, destroy flow, async status checks, safe query execution, schema initialization, and permission updates. New environments should use PostgreSQL — see postgresql-development skill instead."
-version: 2.34.5
+version: 2.34.6
 alwaysApply: false
 metadata:
   priority: "5"
@@ -16799,7 +17030,7 @@ Note: when a user is logged in, `_openid` is automatically populated by the serv
 ---
 name: relational-database-web-cloudbase
 description: "[Deprecated] Use when building frontend Web apps that talk to CloudBase Relational Database via @cloudbase/js-sdk – provides the canonical init pattern so you can then use Supabase-style queries from the browser. New environments should use PostgreSQL with app.rdb() — see postgresql-development skill instead."
-version: 2.34.5
+version: 2.34.6
 alwaysApply: false
 metadata:
   priority: "5"
@@ -17045,7 +17276,7 @@ const app = cloudbase.init({
 ---
 name: spec-workflow
 description: Use when medium-to-large changes need explicit requirements, technical design, and task planning before implementation, especially for multi-module work, unclear acceptance criteria, or architecture-heavy requests.
-version: 2.34.5
+version: 2.34.6
 alwaysApply: false
 ---
 
@@ -17168,7 +17399,7 @@ Create `specs/<spec_name>/tasks.md`.
 ---
 name: ui-design
 description: Use when users need visual direction, interface hierarchy, layout decisions, design specifications, or prototypes before implementing a Web or mini program UI.
-version: 2.34.5
+version: 2.34.6
 alwaysApply: false
 ---
 
@@ -17317,7 +17548,7 @@ Use this checklist before generating any page, component, or visual interface.
 ---
 name: web-development
 description: Use when users need to implement, integrate, debug, build, deploy, or validate a Web frontend after the product direction is already clear, especially for React, Vue, Vite, browser flows, or CloudBase Web integration.
-version: 2.34.5
+version: 2.34.6
 alwaysApply: false
 ---
 
