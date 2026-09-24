@@ -1,11 +1,11 @@
 # Agent Mirror
 
-Stand: 2026-09-23
+Stand: 2026-09-24
 
 ## Apps
-- [[apps/antigravity]] (355 Notizen)
+- [[apps/antigravity]] (356 Notizen)
 - [[apps/cline-code]] (646 Notizen)
 - [[apps/claude]] (320 Notizen)
-- [[apps/zcode]] (1198 Notizen)
+- [[apps/zcode]] (1199 Notizen)
 
 ## Tage
