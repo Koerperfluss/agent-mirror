@@ -1,7 +1,7 @@
 ---
 app: cline-code
 quelle: "web-template/cloudbase-agent-ts/adapter-langgraph.md"
-stand: 2026-09-24
+stand: 2026-09-25
 tags: [spiegel, cline-code]
 ---
 
