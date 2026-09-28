@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-28 18:59 UTC
+Zuletzt gespiegelt: 2026-09-28 19:11 UTC
 
 ## AGENTS
 
@@ -2930,7 +2930,7 @@ Bei Fachfragen (z. B. Trainings-Übungen) fordert er explizit „clinical reason
 
 - [eqMac-Deinstallation + Spotify-Fix](eqmac-deinstallation-spotify-fix.md) — 22.09. FERTIG (dwfrun-c55c4bc7): eqMac ursprünglich zu Unrecht deinstalliert (Doku war nur Kontext-Beilage!) → **v1.9.1 neu installiert, er BRAUCHT es**; **Spotify-Ursache = Intel-Build 1.3.0.277 via Rosetta + 982 MB korrupter Cache** → native ARM64 1.3.1.234, läuft stabil; Audio-Abbrüche danach = eqMac-Virtual-Device-Wege — 2 Parallel-Agents: Neustart → Test sauber (0 Dropouts), **KEIN Buffer-Setting existiert**; Fix-Leiter: 48 kHz (Audio-MIDI-Setup) → eqMac-Toggle → Analyzer aus → direkter Output; Fallback ältere Version (Issues #994/#224)
 
-- [ZCode ADHS-Automations](zcode-adhs-automationen.md) — 13.–29.09. LIVE: **EINE Automation mit ALLEN 6 Briefs** (cron `0 9,10,15,16,21`, Zweige per Uhrzeit+Wochentag; niemals 6 separate — Nutzer-Ziel!) + Engine 7/7 PASS; **21 Läufe, alle 6 Zweige bewiesen: Morgen 21.09. erstmals PÜNKTLICH (UID C1BFC6A3), 22./23./29.09. verpasst → Catch-ups (F2C35605/9CCD68DB) · Risiko-Scan 21.09. erster echter P1 (loki-voice dirty) → AM SELBEN TAG gelöst (Commit 7fdbf2d) · DOKU-SYNC 23.09. erster Lauf: assi-README fehlen brief/feierabend (auf „GO doku-fix") · Abend 13./16./20./21./24.09. PASS (Events 610E2A57/88CCE1A6/6BFDB24A/C269B996/9299B443, Fix `open -a Calendar` vor osascript) · 16:00/15:00-No-ops korrekt; ⚠️ Logbuch = Multi-Writer (andere Workflows schreiben mit → vor Append NEU lesen); Lücken-Tage 15./17./19./22./23./25.–28.09. (Mac schläft)**; offen auf GO: LaunchAgent com.sascha.assi.daily als Wecker umrüsten + Deutsch-Patch (Recovery) + GO doku-fix; 1 Task pro Chat-Limit
+- [ZCode ADHS-Automations](zcode-adhs-automationen.md) — 13.09.–13.10. LIVE: **EINE Automation mit ALLEN 6 Briefs** (cron `0 9,10,15,16,21`, Zweige per Uhrzeit+Wochentag; niemals 6 separate — Nutzer-Ziel!) + Engine 7/7 PASS; **21 Läufe, alle 6 Zweige bewiesen: Morgen 21.09. erstmals PÜNKTLICH (UID C1BFC6A3), Catch-ups 14./18./22./29.09./06.10. · Risiko-Scan 21.09. erster echter P1 (loki-voice dirty) → AM SELBEN TAG gelöst (Commit 7fdbf2d) · DOKU-SYNC 23.09. erster Lauf: assi-README fehlen brief/feierabend (auf „GO doku-fix") · Abend 13./16./20./21./24.09./13.10. PASS (Events 610E2A57/88CCE1A6/6BFDB24A/C269B996/9299B443/2FF9A547, Fix `open -a Calendar` vor osascript) · 16:00/15:00-No-ops korrekt; ⚠️ Logbuch = Multi-Writer (vor Append NEU lesen); Lücken-Wochen 25.–28.09., 30.09.–05.10., 07.–12.10. (Mac aus — Automation kann ausen Mac nicht wecken)**; SSD 13.10.: 73 GiB frei (+31 in 1 Woche, siehe [[ssd-cache-automation]]); offen auf GO: Wecker (com.sascha.assi.daily umrüsten) + Deutsch-Patch-Recovery + GO doku-fix; 1 Task pro Chat-Limit
 
 - [OmniRoute-Rückbau + System-Fixes](omniroute-rueckbau-system-fixes-2026-09-20.md) — 20.09. Abend: Q1–Q7 ALLE ERLEDIGT („fix test"-GO): OmniRoute ABGEBAUT (Nutzer-Wunsch, Plist raus, Regeln auf Direkt-Provider gesynced, Comet läuft bis Reboot); Atlas-Ingest 67 Module (2 Code-Bugs gefixt); Task-Bridge 5 echte Tasks; loki-up.command am Desktop getestet; Mongo zu; 2 tote Agents disabled; 7b-Coder-Modell da; MASTER_STATUS+HANDBUCH aktualisiert (Backups ~/sicherungen/doku-backup-20260920); Endstand CHECKPOINT CONTINUE — offen nur: 4 Keys (Sascha) + Firewall sudo
 
@@ -4804,6 +4804,8 @@ metadata:
 
 Echte Entlastung braucht zusätzlich manuell: Desktop ausmisten (79 GB) — Sascha-Entscheidung.
 
+**13.10.2026 Stand:** `df` = **73 GiB frei** (05.10.: 42 GiB → **+31 GiB** in ~1 Woche). Ursache unbestätigt (Attribution): Kandidat ist diese Automation (12-Uhr-Läufe beim gelegentlichen Mac-Aufwachen in der Funkstille-Woche) — Nachweis über ihr Automation-Log möglich, nicht geprüft. Meldung im Abend-Brief der Tages-Routine ([[zcode-adhs-automationen]]).
+
 ## standardskill-boot-ablauf
 
 ---
@@ -5169,6 +5171,8 @@ metadata:
 - **6 Lücken-Tage 30.09.–05.10.** (Woche 40 = komplette Pause, Evidenz: keine Logbücher/Sessions, letzte Aktivität 29.09.) + 09:00 heute wieder verpasst. Catch-up: Logbuch `2026-10-06.md` (status: offen), Kalender-Event **„Tagesplan 06.10."** UID `8ED6CD3B-458E-4801-8ECE-F507999847E6`. DEV-BRIEF: 0 Commits seit Freitag, keine CI.
 - **Muster endgültig bestätigt:** Die Automation läuft zuverlässig, WANN IMMER der Mac wach ist — jeder verpasste Lauf = Schlaf-Fall. Nur „GO Wecker" (LaunchAgent `com.sascha.assi.daily` umrüsten) beendet das Muster; deutsch/doku/Wecker warten seit Tagen unverändert nur auf Saschas Wort.
 
+## Zwanzigster + Einundzwanzigster Lauf (Mo 13.10. 21:0x — Abend PASS nach 2. Funkstille-Woche)
+- **Zweite Funkstille-Woche 07.–12.10.** (kein Logbuch, keine Sessions — Mac durchgehend aus); heute wieder nur 1 Session (die Tages-Routine selbst) + 0 Commits. Logbuch `~/.agents/memory/logbuch/2026-10-13.md` (status: abgeschlossen), Kalender-Event **„Logbuch 13.10.2026"** UID `2FF9A547-A4F3-41C5-A8C7-EF96454CABA3`.
 
 ## zcode-app-german-ui-patch
 

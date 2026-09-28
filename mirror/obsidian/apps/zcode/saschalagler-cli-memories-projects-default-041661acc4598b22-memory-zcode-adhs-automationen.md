@@ -123,3 +123,9 @@ metadata:
 - **6 Lücken-Tage 30.09.–05.10.** (Woche 40 = komplette Pause, Evidenz: keine Logbücher/Sessions, letzte Aktivität 29.09.) + 09:00 heute wieder verpasst. Catch-up: Logbuch `2026-10-06.md` (status: offen), Kalender-Event **„Tagesplan 06.10."** UID `8ED6CD3B-458E-4801-8ECE-F507999847E6`. DEV-BRIEF: 0 Commits seit Freitag, keine CI.
 - **Muster endgültig bestätigt:** Die Automation läuft zuverlässig, WANN IMMER der Mac wach ist — jeder verpasste Lauf = Schlaf-Fall. Nur „GO Wecker" (LaunchAgent `com.sascha.assi.daily` umrüsten) beendet das Muster; deutsch/doku/Wecker warten seit Tagen unverändert nur auf Saschas Wort.
 
+## Zwanzigster + Einundzwanzigster Lauf (Mo 13.10. 21:0x — Abend PASS nach 2. Funkstille-Woche)
+- **Zweite Funkstille-Woche 07.–12.10.** (kein Logbuch, keine Sessions — Mac durchgehend aus); heute wieder nur 1 Session (die Tages-Routine selbst) + 0 Commits. Logbuch `~/.agents/memory/logbuch/2026-10-13.md` (status: abgeschlossen), Kalender-Event **„Logbuch 13.10.2026"** UID `2FF9A547-A4F3-41C5-A8C7-EF96454CABA3`.
+- **SSD-Fund:** `df` heute = **73 GiB frei** vs. deja-Beweis 05.10. = 42 GiB (**+31 GiB**) — Ursache unbestätigt (Attribution, kein Beweis), Kandidat: tägliche SSD-Cache-Automation (12-Uhr-Läufe bei gelegentlichem Aufwachen); siehe [[ssd-cache-automation]].
+- Ehrlichkeits-Format bewährt bei leerem Tag: Ruhig-Tag + Lücken-Woche als FAKT melden, nichts erfinden; 3 Dauer-GOs (Wecker · Deutsch-Patch · doku-fix) im Brief wiederholt — Sascha hat bis 13.10. keines gegeben.
+- Bilanz 13.09.–13.10.: 21 Läufe, alle 6 Zweige bewiesen, 3 Wochen durchgehend; verpasste Läufe = 100 % Schlaf-Fälle. Offen unverändert: **GO Wecker · Deutsch-Patch-Recovery · GO doku-fix**.
+
