@@ -1,6 +1,6 @@
 ---
 name: zcode-app-german-ui-patch
-description: "ZCode-UI Deutsch 13.09. AKTIV: echte Strings NICHT in langEN.js sondern in out/renderer/assets/IntlProvider-Db46X9QF.js (react-intl); EN-Dict m=Offset 252479–583376, 5066 Paare extrahiert nach /tmp/zcode_i18n/; Übersetzung 2× abgebrochen — bei „weiter übersetzen": de_parts bauen, m-Dict patchen, repacken, codesign"
+description: "ZCode-UI Deutsch 13.09. PAUSIERT (wartet auf „weiter übersetzen"): echte Strings in out/renderer/assets/IntlProvider-Db46X9QF.js (react-intl); EN-Dict m=Zeichen-Offsets 252479–583376, 5066 Paare — Extraktions-Artefakte unter /tmp/zcode_i18n/ SEIT 21.09. WEG (tmp flüchtig) → Recovery aus alter Session sess_adac…be06c60c0f (13.09.) oder Re-Extraktion (~10 Min); bei „weiter übersetzen": Artefakte nach ~/.agents/ persistieren, de_parts bauen, m-Dict patchen, repacken, codesign"
 metadata:
   node_type: memory
   type: project
