@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-28 13:57 UTC
+Zuletzt gespiegelt: 2026-09-28 14:09 UTC
 
 ## AGENTS
 
@@ -5162,12 +5162,19 @@ metadata:
 - **Evidenz-basierter Ruhig-Tag:** Sweep = nur 1 ZCode-Session (die Tages-Routine selbst) + 0 Git-Commits → Brief sagt „kein Arbeits-Output heute" statt zu erfinden (Ehrlichkeits-Regel bewährt). Zusätzlich: verpasster 23.09.-Abend + offene GOs (doku-fix, Deutsch-Patch, Wecker) gemeldet.
 - Bilanz 13.–24.09.: 17 Läufe, alle 6 Zweige bewiesen; Daueroffen: **Wecker-GO · Deutsch-Patch-Recovery · GO doku-fix**.
 
+## Achtzehnter Lauf (Mo 29.09. 15:0x — Morgen-Brief verpasst → Catch-up PASS)
+- 09:00 wieder verpasst + **4 Lücken-Tage 25.–28.09.** (kein Logbuch). Catch-up: Logbuch `2026-09-29.md` (status: offen), Kalender-Event **„Tagesplan 29.09."** UID `9CCD68DB-DDCB-4730-A6A8-B881D4D25BC7`. DEV-BRIEF: 0 Commits seit Freitag, keine CI. Wochenbilanz im Brief: 5 Logbücher, 3 Lücken-Tage in Woche 39.
+
+## Neunzehnter Lauf (Mo 06.10. 16:0x — nach 6 Lücken-Tagen Catch-up PASS)
+- **6 Lücken-Tage 30.09.–05.10.** (Woche 40 = komplette Pause, Evidenz: keine Logbücher/Sessions, letzte Aktivität 29.09.) + 09:00 heute wieder verpasst. Catch-up: Logbuch `2026-10-06.md` (status: offen), Kalender-Event **„Tagesplan 06.10."** UID `8ED6CD3B-458E-4801-8ECE-F507999847E6`. DEV-BRIEF: 0 Commits seit Freitag, keine CI.
+- **Muster endgültig bestätigt:** Die Automation läuft zuverlässig, WANN IMMER der Mac wach ist — jeder verpasste Lauf = Schlaf-Fall. Nur „GO Wecker" (LaunchAgent `com.sascha.assi.daily` umrüsten) beendet das Muster; deutsch/doku/Wecker warten seit Tagen unverändert nur auf Saschas Wort.
+
 
 ## zcode-app-german-ui-patch
 
 ---
 name: zcode-app-german-ui-patch
-description: "ZCode-UI Deutsch 13.09. AKTIV: echte Strings NICHT in langEN.js sondern in out/renderer/assets/IntlProvider-Db46X9QF.js (react-intl); EN-Dict m=Offset 252479–583376, 5066 Paare extrahiert nach /tmp/zcode_i18n/; Übersetzung 2× abgebrochen — bei „weiter übersetzen": de_parts bauen, m-Dict patchen, repacken, codesign"
+description: "ZCode-UI Deutsch 13.09. PAUSIERT (wartet auf „weiter übersetzen"): echte Strings in out/renderer/assets/IntlProvider-Db46X9QF.js (react-intl); EN-Dict m=Zeichen-Offsets 252479–583376, 5066 Paare — Extraktions-Artefakte unter /tmp/zcode_i18n/ SEIT 21.09. WEG (tmp flüchtig) → Recovery aus alter Session sess_adac…be06c60c0f (13.09.) oder Re-Extraktion (~10 Min); bei „weiter übersetzen": Artefakte nach ~/.agents/ persistieren, de_parts bauen, m-Dict patchen, repacken, codesign"
 metadata:
   node_type: memory
   type: project
