@@ -1,5 +1,9 @@
 # Memory Index
 
+- [GLM-5.3 vs Flash: belegte Fakten](glm-53-vs-flash-belegte-fakten.md) — Flash=320B MoE ~8,9× billiger, AA-Index 57; 5.3=Flagship (CyberGym 84,5); beide low/high/max (Default max) — Regel: Plan/Architektur=5.3, Ausführung=Flash; Sascha will direkte belegte Modellurteile, keine Absicher-Floskeln
+
+- [Körperfluss Edu + Förderpilot Takeover](koerperfluss-edu-foerderpilot-takeover.md) — 30.09.: 2 Antigravity-Konvos übernommen (d293022b=Edu, 1926eeee=Pilot/.pb verschlüsselt); Antigravity-Konvo-Extraktion via ~/.gemini/antigravity/conversation_summaries.db; PILOT.AI FERTIG (Commit 9793048, Root=Build-Quelle, liquid-Cloud), Deploy foerder-cockpit wartet auf GO; Edu-Repo 3D-Fix uncommitted, Builder an API-Timeout gescheitert — Neu-Dispatch offen
+
 - [George/Thomas-Status](george-thomas-status.md) — 23.09.: Thomas' „George" = nur Selbstauskunfts-Tabellen, NULL Beweis-Outputs, Stimme nie gehört — ABER WENDE: die 3 Falsch-Fakten (15-Min-Limit, 36-Modell/Port 20128, Fristen-Wache-aktiv) stammten aus MEINEN Doku-Dateien; gefixt: ABNAHME A-Teil neu (Backup .bak-20260923) + LOKI_OS_DOKUMENTATION_KORRIGIERT_v2.pdf + Protokollzeile; Lektion: erst eigene Doku gegen Code prüfen, dann andere kritisieren
 
 - [ZCode-Workflow-Bedienung](zcode-workflow-bedienung.md) — /workflow via Chat-Feld/Command-Palette; Runs unter Automations; Workflows überleben Turn-Interrupts (ggü. direkten Agenten)
