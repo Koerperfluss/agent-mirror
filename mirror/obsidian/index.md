@@ -1,6 +1,6 @@
 # Agent Mirror
 
-Stand: 2026-09-28
+Stand: 2026-09-30
 
 ## Apps
 - [[apps/antigravity]] (356 Notizen)
