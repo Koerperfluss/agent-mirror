@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-30 16:31 UTC
+Zuletzt gespiegelt: 2026-09-30 16:43 UTC
 
 ## AGENTS
 
@@ -7417,7 +7417,9 @@ Beobachtet 06.09.2026 (Session mit Off-Peak-Ticket): Nach User-Paste „ZCode Er
 
 - [GLM-5.3 vs Flash: belegte Fakten](glm-53-vs-flash-belegte-fakten.md) — Flash=320B MoE ~8,9× billiger, AA-Index 57; 5.3=Flagship (CyberGym 84,5); beide low/high/max (Default max) — Regel: Plan/Architektur=5.3, Ausführung=Flash; Sascha will direkte belegte Modellurteile, keine Absicher-Floskeln
 
-- [Körperfluss Edu + Förderpilot FERTIG](koerperfluss-edu-foerderpilot-fertig.md) — 30.09. ENDSTAND: **BEIDE LIVE DEPLOYT mit Hash-Beweis** — koerperfluss.web.app (Bundle SsKngqM3, Edu 5739f09+995c8df) · foerder-cockpit.web.app (Bundle BLJp8wD8, Pilot bis c1b5d17: P0-Passwörter scrubbed inkl. Alt-Kopien, Mimosa-Rescan 0 Findings, Root=Build-Quelle!) · Lektionen: Mimosa/Semgrep blockt open(<Var>) in py (nur pathlib), Parent-Lane+Side-Chat arbeiteten parallel im selben Repo (frisch lesen!) · ⚠️ Sascha-GO offen: 3 Portal-Passwörter ROTIEREN (altes Bundle war live!), Pilot-History-Reset, Edu 9 unpushed, Root/src-Cleanup, Gemini-Proxy
+- [Zoetrope Live-View](zoetrope-live-view.md) — 30.09.: zoe (brew, v0.2.0, Binary `zoe`) gelinkt; Claude-Code-Sessions voll visualisierbar, ZCode-Format NICHT (0 Tool-Calls) → ZCode-Arbeit live in App-Automations sehen; Konverter-Ticket auf GO wartend
+
+- [Körperfluss Edu + Förderpilot FERTIG](koerperfluss-edu-foerderpilot-fertig.md) — 30.09. ENDSTAND: **BEIDE LIVE DEPLOYT mit Hash-Beweis** — koerperfluss.web.app (Bundle SsKngqM3, Edu 5739f09+995c8df) · foerder-cockpit.web.app (Bundle BLJp8wD8, Pilot bis c1b5d17: P0-Passwörter scrubbed inkl. Alt-Kopien, Mimosa-Rescan 0 Findings, Root=Build-Quelle!) · ABENDS: Liquid-Glass-Runde (6 Komponenten) läuft als Workflow dwfrun-9504c5f9 mit Saschas Deploy-GO · Lektionen: Mimosa/Semgrep blockt open(<Var>) in py (nur pathlib), Parent-Lane+Side-Chat arbeiteten parallel im selben Repo (frisch lesen!) · ⚠️ Sascha-GO offen: 3 Portal-Passwörter ROTIEREN (altes Bundle war live!), Pilot-History-Reset, Edu 9 unpushed, Root/src-Cleanup, Gemini-Proxy
 
 - [George/Thomas-Status](george-thomas-status.md) — 23.09.: Thomas' „George" = nur Selbstauskunfts-Tabellen, NULL Beweis-Outputs, Stimme nie gehört — ABER WENDE: die 3 Falsch-Fakten (15-Min-Limit, 36-Modell/Port 20128, Fristen-Wache-aktiv) stammten aus MEINEN Doku-Dateien; gefixt: ABNAHME A-Teil neu (Backup .bak-20260923) + LOKI_OS_DOKUMENTATION_KORRIGIERT_v2.pdf + Protokollzeile; Lektion: erst eigene Doku gegen Code prüfen, dann andere kritisieren
 
@@ -7646,6 +7648,8 @@ Stand 30.09.2026 (Endstand, 9/9 — beide Apps LIVE):
 **Körperfluss Edu Website** — Repo `~/Desktop/Coworkspace_Ich/Körperfluss EDU/Koerperfluss-3D-Upgrade/` (HEAD `995c8df`). LIVE: koerperfluss.web.app (Firebase gen-lang-client-0285074833), Deploy per `firebase deploy --only hosting --project gen-lang-client-0285074833` (site „koerperfluss"). Beweis: live Bundle `index-SsKngqM3.js` = lokal identisch. Commits `5739f09` (UI/UX-Userflow + 3D-Slicing-Käfig-Fix) + `995c8df` (XSS-DOMPurify, matchMedia-Cleanup, Sidebar-Remount). ~123 „ 2"-Duplikate + 41 Routen bewusst unangetastet; **9 unpushed Commits** (Push nur auf GO).
 
 **Förderpilot** — Repo `~/antigravity/Körperfluss-PILOT.AI` (HEAD `c1b5d17`). LIVE: foerder-cockpit.web.app, Live-Bundle `index-BLJp8wD8.js` = lokal identisch, Live-Scan: **0 echte Passwörter, 3 Maskierungs-Marker**. WICHTIG: Root-Dateien sind die aktive Build-Quelle, NICHT src/ (beide Bäume byte-identisch halten — cp via Bash wird vom Mimosa-Hook geblockt, Write/Edit-Tool nutzen). Commits: `9793048` (git init, Userflow, Liquid-Cloud), `c962f10`+`7e31e27` (P0 Passwörter raus, P1/P2 Fixes), `c1b5d17` (alle Mimosa-Findings zu: Passwort-Scrub inkl. Alt-Kopien `körperfluss-pilot.ai/`, geminiService-Throw, pathlib statt `open(`-Variablen; **Rescan 0 Findings**). Lektion: Mimosa/Semgrep blockt JEDE `open(<Variable>)`-Stelle in py — nur pathlib/Literale gehen durch; Gate scannt projektweit, Commits blockiert bis alle Findings gefixt.
+
+**Nachtrag 30.09. abends — Liquid-Glass-Runde LÄUFT als Workflow** (`dwfrun-9504c5f9` „Körperfluss Duo — Liquid-Glass, Deploy & Live-Beweis", Skript `.zcode/workflow-drafts/Körperfluss-Duo--Liquid-Glass-Deploy--Live-Beweis.dwf.ts`): Sascha erteilte **Deploy-GO explizit** („weitermachen und alles neuen aus der aufgabe verteilen deployen"). Der Workflow baut die 6 von Antigravity abgebrochenen Liquid-Glass-Komponenten (Dashboard, FundingDetails, FundingSummary, GlobalSearch, LoginManager, FundingTimeline — je root+src via Edit-Tool, LoginManager-Passwörter bleiben '********'), sichert Antigravity-Rest-Edits per Whitelist-Commit (kein add -A), deployt Pilot (Edu nur falls Live≠Lokal), Screenshots + Live-Beweis via **Content-Hash-Dateinamen-Vergleich** (Vite-Bundle-Name = Inhaltshash → live=lokal beweist passwortfreien Stand). Ergebnis stand noch aus bei Memory-Write.
 
 **⚠️ Sascha-Aktionen (noch offen):** (1) 3 Portal-Passwörter SOFORT rotieren (FFG eCall, AWS Fördermanager, WAW) — altes Bundle war live mit Klartext. (2) Pilot-Git-History-Reset entscheiden (`9793048` enthält alte Passwörter, nie gepusht). (3) Edu: 9 unpushed — Push-GO? (4) Doppelstruktur Root/src-Cleanup (beide Projekte). (5) Gemini-Backend-Proxy (process.env im Browser crasht).
 
@@ -8304,6 +8308,28 @@ ZCode-Workflow-Bedienung für Sascha (gefragt 21.09.2026 „wo ist /workflow"):
 - Merksatz aus der Diagnose: Direkte Chat-Agenten sterben bei Turn-Interrupt (neue Nachricht mid-Turn), **Workflows laufen unabhängig weiter** — schwere Aufträge bevorzugt als Workflow.
 
 Verwandt: [[loki-os-v18-endprodukt]], [[sascha-arbeitsregeln-hart]]
+
+## zoetrope-live-view
+
+---
+name: zoetrope-live-view
+description: Zoetrope (zoe) 30.09. einsatzbereit gebrochen —
+  Claude-Code-Sessions voll visualisierbar, ZCode-Format NICHT (0 Tool-Calls);
+  Binary hieß zoe + war ungelinkt
+metadata:
+  node_type: memory
+  type: reference
+  originSessionId: sess_33b5868e-a2a4-49cf-823a-7563047524e1
+---
+
+Zoetrope (Session-Live-Flowgraph, Sascha wollte „alles sehen, wer welcher Agent wo was macht") — Stand 30.09.2026:
+
+- **Installiert** via brew (furkankly/tap, v0.2.0), Binary heißt **`zoe`** (nicht `zoetrope`!) und war **ungelinkt** → 30.09. per `brew link zoetrope` aktiviert. Nutzen: `zoe` (live im Projektordner folgen), `zoe <file.jsonl|--id|dir>`, `zoe inspect <file>` (headless), `--provider claude|codex`.
+- **Claude-Code-Sessions: voll funktional** — Agenten, Tool-Calls, Queues live/replay (Test: 120 Tool-Calls sichtbar). Codex-Format auch unterstützt.
+- **ZCode-Sessions: NICHT wirklich lesbar** — `zoe` öffnet `~/.zcode/cli/rollout/model-io-sess_*.jsonl`, zeigt aber nur 1 Agent / 0 Tool-Calls (Format wird nicht geparst). ZCode-Arbeit live sehen → stattdessen ZCode-App → Automations/Run-Pane (Phasen-Graph + Live-Board).
+- **Offen angeboten:** Konverter-Ticket ZCode-JSONL → Claude-Format (Sascha muss GO geben).
+
+Verwandt: [[zcode-workflow-bedienung]], [[session-quellen-wo-finden]]
 
 ## MEMORY
 
