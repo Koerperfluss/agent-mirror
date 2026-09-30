@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-30 21:47 UTC
+Zuletzt gespiegelt: 2026-09-30 22:00 UTC
 
 ## AGENTS
 
@@ -1567,6 +1567,72 @@ Build/Lint für alle drei Gruppen: nicht ausgeführt (s. Gates-Tabelle).
 3. **App.tsx root↔src:** Zwischenstand „nicht byte-identisch (fremder Agent, nur Root)" vs. Verifikation „SHA-256-identisch". Ein diff der committeten Dateien (b8cc6a2) klärt es; aus dem Bericht allein nicht entscheidbar.
 4. **Neue Tabs nicht in Produktion getestet:** Screenshots nur via localhost-Preview; Live-Check der Tabs universum-3d und szenario auf foerder-cockpit.web.app ausständig. Zusätzlich OCR-Befund (b) nur code-seitig, nicht per DOM-Gegencheck entkräftet.
 5. **Risikobehaftete Live-Texte + Sicherheits-Scan ohne Follow-up:** Korrektur der UWG/MDR-riskanten Formulierungen und vollständige Mimosa-Audit-Wiederholung jeweils ohne Frist und Verantwortlichen — beides von Sascha zu terminieren (Content- bzw. Infrastruktur-Entscheidung).
+## dwfrun-b8955ed8-58c2-4335-a761-af31b5e794c5_artifact_1_1-tool-result-40fda5a8-6bcf-42cd-be13-c55e0157858a
+
+# FFG-Paket-Check + Nodes + GfS-Mail (30.09./01.10.2026)
+
+## Einreichfähigkeit bis 06.10.
+Realistisch JA bis 06.10. (Frist lt. FRISTEN.md), aber nur mit 3 Sascha-/Team-Aktionen: (1) aktueller George-Finanzbericht statt 27.11.2025-Scan (5 Min), (2) Erklärung datiert + von allen 3 unterschrieben ( Druck/Scan), (3) LOI-Entscheidung (größtes Risiko: fehlende verbindliche Pilotpartner-Erklärung war explizit Ablehnungsgrund Mai 2026 — ohne unterschriebene LOI einreichen statt Frist verstreichen zu lassen, Markt-Konzept deklariert Akquise ehrlich als AP-5-Ziel). Zwischen 18er-Ordner und FINAL.zip wurde NUR die Ortszeile der Erklärung geändert (kosmetisch) — keine der 8 Sperren wurde in der FINAL.zip behoben; die Formales-Sperren (Unterschrift/Datum/Konto/LOI) sind reine HITL-Aufgaben von heute/morgen, alle inhaltlichen Sperren (MDR, Markt, Quellen, Budget-Trennung) sind im Paket sauber gelöst.
+
+## Kritische Punkte (Thomas' 8 Sperren + Saschas Fragen)
+- Unterschrift_Antrag: PROBLEM — Zeichnungsblock S.10 (»Rechtsverbindliche Zeichnung«, 3 Namen) ist komplett leer: pdfimages -list = 0 eingebettete Bilder über alle 10 Seiten, kein Datumsfeld im Block. ANTWORT AUF SASCHAS FRAGE: Der Antrag selbst braucht NICHT alle 3 Unterschriften — gezeichnet wird in eCall nur vom Antragsteller/Vertretungsberechtigten, und das ist laut Kopiervorlage 1.5 »Sascha Lagler (Einzelperson, unbeschränkte Zeichnungsbefugnis)«; die Erst-Einreichung 12/2025 lief ebenso auf »Lagler, Sascha« als Förderwerber (Ablehnungsschreiben 21.05.2026). ALLE 3 Unterschriften sind stattdessen PFLICHT auf der Erklärung (Beilage 06). Empfehlung: Antrag-PDF von Sascha allein zeichnen ODER die 3er-Zeile als »Projektteam (Information)« umlabeln — eine leere »rechtsverbindliche« Zeile wirkt wie Entwurf. Zusatz-Inkonsistenz: Die Beilagenliste S.10 behauptet die Erklärung sei »(unterschrieben)« — sie ist es nicht.
+- Unterschrift_Erklaerung: FEHLT — Datum leer (»Melk / Loosdorf, am ___.___.2026«), alle 3 Unterschriftslinien leer (visuell per PNG-Render bestätigt; pdfimages: 0 Bilder). Das war die EINZIGE Änderung zwischen 18er-Ordner und FINAL.zip (diff -rq: nur 06_Erklaerung_V4.pdf + .DS_Store): »3382 Loosdorf« → »Melk / Loosdorf« — kosmetisch, keine der 8 Sperren behoben.
+- CV_Leon: OK — JA, der CV wird gebraucht: Leon ist im Antrag als Kern-Kopf (160 h, 25 % FlexCo, QA & Barrierefreiheit) genannt und Slot 03 verlangt Qualifikationsnachweise des Kernteams; er ist enthalten (10_CV_Leon_Karnen_FINAL.pdf, 2 S., SSOT-konform zum Antrag: 160 h/25 %/SMS §16, keine Entwurfs-Platzhalter). Kleine Schwäche: Zertifikats-Aussteller (»Digital Accessibility Testing«, »Web-Standards«) sind ohne Institution benannt.
+- CV_Sascha: PROBLEM — Titelzeile »Sascha Lagler BSc (in Ausbildung)« widerspricht dem »BSc« im Antrag (Physio-Bachelor IMC Krems laut CV »09/2021–laufend«); zudem listet der CV »Google Cloud, Firebase« als Kompetenzen, was zur SSOT-Behauptung »0 Google Cloud / 0 US-Cloud / Datensouveränität EU« (MANIFEST + Antrag) in Spannung steht; Standort »3390 Melk« vs. Antrag »3382 Loosdorf« (Erklärung löst es als Doppelort). Keine Entwurfs-Platzhalter.
+- CV_Peter: OK — 1-seitig, plausibel (2× BSc abgeschlossen JKU, MSc in Ausbildung, Freelance-Referenzen cortEXplore/Schützenverein Melk/coach2grow), Standort Loosdorf konsistent zum Antrag, keine Platzhalter, keine Widersprüche.
+- Kontoauszug: PROBLEM — Thomas' Sperre 3 unverändert: KapitalnachweisLAglerSascha.pdf (2 S.) ist der George-Finanzbericht vom 27.11.2025 11:01 (OCR beider Seiten) mit 38.000 € Girokonto + 431,62 € Sparkonto — ca. 10 Monate alt (Vorgabe: max. 4–6 Wochen); saschakonto.pdf ist der Mobile-Screenshot mit nur 94,35 € verfügbar — im Kapitalnachweis-Slot kontraproduktiv. Beide byte-identisch zum 18er-Stand, also seit dem Audit nicht erneuert.
+- LOI: FEHLT — LOI_Pilotpartner_Kneipp.pdf ist eine ununterschriebene MUSTERvorlage mit falschem Kontext: bezogen auf »AWS Seedfinancing Deep Tech bis 800.000 €« mit Deadline »10. Oktober 2025« (nicht FFG eCall 68209806), Rechtsträger »Körperfluss GmbH« (Antragsteller ist aber FlexCo i.G./Einzelperson Lagler), Platzhalter leer ([Adresse der Schule/Firma], Ansprechpartner Name/Funktion/E-Mail/Telefon ____), 0 Unterschriften, kein Datum. Genau die fehlende verbindliche Pilotpartner-Erklärung war Ablehnungsgrund der Erst-Einreichung (Ablehnungsschreiben 21.05.2026) — größtes inhaltliches Risiko der Resubmission.
+- Vertretungsnachweis: OK (entbehrlich per Konstruktion) — Antragsteller in eCall ist die Einzelperson Sascha Lagler mit unbeschränkter Zeichnungsbefugnis (Kopiervorlage Z. 57–59); eine natürliche Person braucht keinen Vertretungsnachweis, die Erst-Einreichung lief identisch; erst bei der geplanten Überbindung auf die FlexCo vor Projektstart wäre deren Nachweis (Firmenbuch) fällig. Eine separate Nachweis-Datei existiert im Paket nicht und muss nicht ergänzt werden — aber die eCall-Adresse aktualisieren (Alt: Prinzlstraße 7/2, 3390 Melk lt. Ablehnung; Neu: Sebastianistraße 15, 3382 Loosdorf).
+
+## Offene Tasks (WER: WAS)
+- Sascha: HEUTE/MORGEN aktuellen George-Finanzbericht exportieren (38.000 € Girokonto, Datum September/Oktober 2026) → ersetzt KapitalnachweisLAglerSascha.pdf; saschakonto.pdf (94,35 €) aus SLOT_05 entfernen.
+- Sascha: Erklärung 06 drucken → Ort/Datum eintragen + alle 3 Unterschriften (Lagler, Fischer, Karnen) → scannen/einsetzen; Datum kann der Agent vorbereiten, die 3 Unterschriften nur das Team.
+- Sascha: LOI-Entscheidung bis 05.10. — (a) Kneipp-Schulen (Ansprechpartner laut Vorlage: »Herr Dodel«) mit bereinigter FFG-LOI nachfassen oder (b) ohne LOI einreichen (Markt-Konzept deklariert Akquise ehrlich als AP-5-Ziel; Risiko: Wiederholung des Ablehnungsgrunds) oder (c) LOI-Muster aus Slot 04 nehmen.
+- Sascha: Bestätigen, ob »BSc« für sich selbst korrekt ist (Physio-Bachelor laut CV laufend) → Wortlaut-Vorgabe für den CV-Fix.
+- Sascha: eCall-Einreichung bis 06.10. klicken + Rechtsträger-Daten prüfen (Einzelperson Sascha Lagler, neue Adresse Sebastianistraße 15 Loosdorf statt Prinzlstraße Melk).
+- Agent: Erklärung + Antrag per Typst neu bauen — Datum »Loosdorf, 30.09./01.10.2026« einsetzen, Datumszeile im Antrag-Zeichnungsblock ergänzen, 3er-Zeile im Antrag auf »Sascha Lagler (Vertretungsberechtigter)« bzw. Projektteam-Info umstellen, Beilagenliste-S.10-Behauptung »(unterschrieben)« korrigieren.
+- Agent: CV_Lagler_Sascha_1seitig überarbeiten — »BSc (in Ausbildung)« durch saubere, wahre Abschluss-Formulierung ersetzen und »Google Cloud, Firebase«-Nennung entfernen (Konsistenz zur 0-US-Cloud-SSOT).
+- Agent: LOI-Vorlage FFG-tauglich machen — AWS-Kontext raus, »Körperfluss GmbH« → korrekten Antragsteller, Platzhalter ([Adresse], Ansprechpartner-Felder) ausfüllbar vorbereiten — als sendfertige Version für die Kneipp-Anfrage.
+- Agent: Nach Saschas Bank-Export + unterschriebener Erklärung frisches FINAL-ZIP schnüren, MANIFEST aktualisieren (Status Slot 05/06) und Datei-für-Datei-Verifikation (Seitenzahlen, Datum, 0 Platzhalter) wiederholen.
+
+## Slots im FINAL-Paket
+- MANIFEST.md — Ehrlicher Slot-Fahrplan (Stand 30.09.), kennzeichnet Erklärung selbst als ⏳ »Unterschreiben«; Behauptung »0 gesperrte Begriffe« von mir verifiziert (grep 938346/Jovanovic/Mauerhart/FO9999/Bescheid: 0 Treffer).
+- SLOT_01_Antrag/00_ANTRAG_V4_DESIGN.pdf (10 S.) — Inhaltlich stark: 8-Punkte-Korrekturmatrix gegen die Ablehnung, MDR sauber abgegrenzt, Finanzierung 130.800 € lückenlos (FFG 45 % + 38.000 € bar + 33.940 € Eigenleistung); ABER Zeichnungsblock leer (0 Bilder, kein Datum) und Antrags-Deck nennt FlexCo i.G. als Antragsteller, während eCall laut Kopiervorlage auf Einzelperson Lagler läuft.
+- SLOT_02_Quellenregister/02_Literaturverzeichnis_V4.pdf (3 S.) — OK: Methodik des Quellenregisters + 23 Kernquellen, DOI/Handle nachgewiesen (18 DOI-Treffer in Textextraktion), Stand 17.09.2026; Antwort auf Thomas' Quellen-Sperre erfüllt.
+- SLOT_03_CVs/CV_Lagler_Sascha_1seitig.pdf (1 S.) — PROBLEM: »BSc (in Ausbildung)«-Widerspruch (Antrag sagt »BSc«) + »Google Cloud, Firebase« vs. 0-US-Cloud-SSOT; sonst sauber und unterschriftsfrei korrekt.
+- SLOT_03_CVs/CV_Fischer_Peter_1seitig.pdf (1 S.) — OK: plausibel (2× BSc JKU, MSc laufend, cortEXplore-Referenzen), konsistent zum Antrag, keine Platzhalter.
+- SLOT_03_CVs/10_CV_Leon_Karnen_FINAL.pdf (2 S.) — OK: als CV für Leon erforderlich (Kern-Kopf 160 h/25 % im Antrag) und enthalten; SSOT-konform (Rolle, Stunden, SMS §16-Abgrenzung), keine Entwurfs-Platzhalter; Zertifikats-Aussteller wären präziser zu benennen.
+- SLOT_04_Markt_LOI/04_Markt_Pilotierungskonzept_V4.pdf (4 S.) — OK: DACH->300-Tabelle mit Methode+Stichtag (17.09.2026), Obergrenzen-Umsatzbetrachtung ohne Prognose-Übertreibung, Akquiseliste 10 Institutionen mit ehrlichem »keine Zusagen«; beantwortet Thomas' Markt-Sperre weitgehend (Pilot-Beleg bleibt schwach, da LOI nur Vorlage).
+- SLOT_04_Markt_LOI/LOI_Pilotpartner_Kneipp.pdf (5 S.) — FEHLT als gültige LOI: Muster mit AWS-Seedfinancing-Kontext (Deadline 10.10.2025), »Körperfluss GmbH«, leeren Platzhaltern ([Adresse], Name/Funktion/E-Mail/Telefon) und 0 Unterschriften;kein Datum.
+- SLOT_05_Kapitalnachweis/KapitalnachweisLAglerSascha.pdf (2 S.) — PROBLEM: George-Finanzbericht vom 27.11.2025 (OCR beider Seiten), weist zwar 38.000 € Giro + 431,62 € Sparkonto aus, ist aber ~10 Monate alt (Thomas: max. 4–6 Wochen).
+- SLOT_05_Kapitalnachweis/saschakonto.pdf (1 S.) — PROBLEM: Mobile-Banking-Screenshot »94,35 € verfügbar« — der von Thomas kritisierte Nachweis, im Kapitalnachweis-Slot kontraproduktiv; entfernen.
+- SLOT_05_Kapitalnachweis/05_Muster_Darlehensvertrag_Maximilian.pdf (2 S.) — Muster, nicht unterschrieben: »Maximilian [Nachname]«, [Straße/PLZ/Ort], [IBAN eintragen], [BIC eintragen], Datum »___.___.2026«; als Eigenmittel-Nachweis erst in ausgefüllter, unterschriebener Form verwendbar.
+- SLOT_05_Kapitalnachweis/05_Muster_Darlehensvertrag_Maximilian.typ — Typst-Quelle des Vertragsmusters; ermöglicht schnelles Ausfüllen/Bauen (typst ist installiert).
+- SLOT_06_Erklaerung/06_Erklaerung_V4.pdf (1 S.) — FEHLT Unterschrift+Datum: einzige inhaltliche Aussage stark (KI-Offenlegung, Quellen, Zahlen, Doppelförderungs-Ausschluss inkl. SMS §16/inno4KMU); »Ort, Datum: Melk / Loosdorf, am ___.___.2026« leer, 3 leere Unterschriftslinien (visuell bestätigt, 0 Bilder).
+- _OPTIONAL/02_eCall_Kopiervorlage_V4.pdf (2 S.) — OK als Arbeitsunterlage: enthält die entscheidende Klausel 1.5 »Antragsteller eCall: Sascha Lagler (Einzelperson), unbeschränkte Zeichnungsbefugnis, Übertragung auf FlexCo vor Projektstart« — Basis der Antwort auf die Unterschriften-Frage.
+- _OPTIONAL/05_Begleitschreiben_V4.pdf (1 S.) — OK: Zahlen konsistent zum Antrag (130.800/58.860/45 %/12 Monate), adressiert die Ablehnungskriterien pointiert; optionaler Slot.
+- _OPTIONAL/08_SMS_Vorabklaerung_Anschreiben_V4.pdf (1 S.) — OK als Vorabklärungs-Anschreiben SMS NÖ §16 RL Arbeit für Leon; optionaler Slot, unabhängig von der FFG-Einreichung.
+- _OPTIONAL/08_SMS_Vorabklaerung_SENDFERTIG.pdf (1 S.) — FAST FERTIG: Sendfertig-Kopie vom 18.09. mit 2 bewusst offenen HITL-Feldern (Leons E-Mail/Telefon in Absenderzeile, GdB-Nachweis als Anhang) vor Versand an post.noe@sozialministeriumservice.at.
+
+## Nodes eingebaut
+- 2 neue FundingNodes + 5 neue FundingLinks in BEIDEN Bäumen (identisch gehalten, diff-bewiesen):
+
+1. Node 'digitalark' (Körperfluss DigitalArk) — src/data.ts:153-167 & data.ts:153-167: type 'technology', status 'draft', group 'Technology'. Evidenzbasierte Wissensbasis/Quellenregister; verweist auf 246 kuratierte Quellen (230 Zotero-Paper + 16 Dossiers, laut modul-bibliothek src/data.ts:109) und Second-Brain-Archiv (Index/Archiv-Ablauf/Fakten-SSOT, src/data.ts:846-876).
+
+2. Node 'tif-noe' (TIF NÖ) — src/data.ts:397-417 & data.ts:397-417: type 'opportunity', status 'pending', group 'Regional'. Förderinstrument: Technologieimpulsförderung NÖ (Innovationsförderung des Landes NÖ, Richtlinie § 62 TIF digi4you), Barzuschuss für Innovationsprojekte NÖ, ~12.000 € (Quelle docs/FOERDER_PORTFOLIO_V3.md:150), Kumulierungshinweis Doppelförderungsverbot + FFG/Land-NÖ-AP-Trennung (AP1/AP2; Regel aus docs/FOERDER_PORTFOLIO_V3.md:6,45).
+
+Links (5, in beiden Dateien): digitalark→projekt-koerperfluss (info), digitalark→modul-bibliothek (synergy), projekt-koerperfluss→tif-noe (primary), tif-noe→inno4kmu (alternative), partner-tip-kahrer→tif-noe (synergy).
+
+Typ-Konformität: alle Felder gegen src/types.ts:3-32 (NodeType/NodeStatus) und :56-75 (NodeDetails) geprüft; nur Pflichtfeld description + minimalste verifizierte Optional-Felder (purpose, category, amount, amountValue, timeline, agency). Kein anderes Element angefasst.
+- Beweis: diff data.ts src/data.ts → 'BEIDE IDENTISCH' (beide Bäume synchron)
+- Beweis: npm run lint (= tsc --noEmit, package.json:10): LINT_EXIT=0, pipe-frei gemessen, keine Fehlerausgaben
+- Beweis: npm run build (= vite build, package.json:8): BUILD_EXIT=0, pipe-frei gemessen, '✓ built in 2.38s' (Chunk-Size-Warning ist pre-existing, kein Fehler)
+- Beweis: grep-Verify: 'digitalark'/'tif-noe' je 2 Node-IDs + 9 Match-Zeilen pro Datei (2 neue Nodes + 5 neue Links + bestehender partner-digitalark)
+- Beweis: Git-Commit 9d904ca auf master: 'Alt-Auftrag 3a.10: DigitalArk-Node + TIF-NÖ-Node in data.ts (beide Bäume)' — 2 files changed, 70 insertions(+), 0 deletions; Whitelist nur data.ts + src/data.ts; git status danach sauber; KEIN Deploy, KEIN Push
+
+## GfS-Mail
+- /Users/saschalagler/Desktop/Coworkspace_Ich/Körperfluss EDU/FÖRDERUNG/GFS_FREISCHALTUNG_MAIL_2026-09-30.md
+- Die Mail an José Alberto (Google for Startups) stellt sich mit Körperfluss vor (KI-Lernplattform medizinische Ausbildung, FFG 68209806, 130.800 €, Live-Demo koerperfluss.web.app), beantragt die Credits-Freischaltung auf GCP-Billing-ID 015D43-AC6CDE-D17A3A und bietet ehrlich die Klärung der überfälligen 24,08 € samt Zahlungsbereitschaft an. Vor dem Absenden muss Sascha die Handy-Nummer im Platzhalter einsetzen und prüfen, ob die 24,08 € inzwischen bereits beglichen sind (dann Absatz 3 kürzen) sowie die richtige Empfänger-Adresse für José Alberto bestätigen.
 ## dwfrun-d0840988-934b-4e87-afa3-61e60f599449_artifact_1_1-tool-result-ddd50d33-bd21-4dc5-9a6a-85c893ff14ad
 
 # Studiensammlung konsolidieren (Körperfluss Edu, Peter-Datenbank): Die Zotero-ID-Datenbank (extrahiert unter /tmp/zotero_
@@ -8083,13 +8149,15 @@ Beobachtet 06.09.2026 (Session mit Off-Peak-Ticket): Nach User-Paste „ZCode Er
 
 # Memory Index
 
+- [Apple-Mail-DB-Abfrage](apple-mail-db-abfrage.md) — lokal Mails prüfen ohne API: sqlite3 auf ~/Library/Mail/V10 Envelope Index, Apple-Epoch +978307200, Betreff nur via subjects-Join; Gmail-MCP = Permission denied
+
 - [GLM-5.3 vs Flash: belegte Fakten](glm-53-vs-flash-belegte-fakten.md) — Flash=320B MoE ~8,9× billiger, AA-Index 57; 5.3=Flagship (CyberGym 84,5); beide low/high/max (Default max) — Regel: Plan/Architektur=5.3, Ausführung=Flash; Sascha will direkte belegte Modellurteile, keine Absicher-Floskeln
 
 - [Zoetrope Live-View](zoetrope-live-view.md) — 30.09. GELÖST: `~/zcode2zoe.py` konvertiert ZCode-Rollout→Claude-Format, 0→924 Tool-Calls in zoe bewiesen; jede Agent-Session eigene rollout-Datei (dwf-actor/subagent_agent); Grenze: Subagent-Knoten im EINEN Graph offen
 
 - [IAB-Browser-GUI-Test-Rezept](iab-browser-gui-test-rezept.md) — 30.09. bewiesen: Live-GUI-Tests via node_repl (ZCODE_PLUGIN_ROOT-Bootstrap je Call, domSnapshot zuerst, SVG-Knoten per evaluate+CUA im selben Kernel, Screenshots via emitImage ansehen)
 
-- [Körperfluss Edu + Förderpilot FERTIG](koerperfluss-edu-foerderpilot-fertig.md) — 30.09. ENDSTAND: **BEIDE LIVE DEPLOYT mit Hash-Beweis** — koerperfluss.web.app (Bundle SsKngqM3, Edu 5739f09+995c8df) · foerder-cockpit.web.app (Bundle BLJp8wD8, Pilot bis c1b5d17: P0-Passwörter scrubbed inkl. Alt-Kopien, Mimosa-Rescan 0 Findings, Root=Build-Quelle!) · ABENDS: Liquid-Glass-Runde (6 Komponenten) läuft als Workflow dwfrun-9504c5f9 mit Saschas Deploy-GO · **Live-GUI-Test: Edu 4/4 PASS, Pilot 3/5 — 2 P1-Defects (D1 Cloud-Analyse-Button wirkungslos, D2 Knoten-Klick ohne Auswahl), Fix gequeued bis Workflow-Ende**; „246 AWMF-Leitlinien" auf Edu = Prüf-Punkt (Halluzinations-Verdacht) · Lektionen: Mimosa/Semgrep blockt open(<Var>) in py (nur pathlib), Parent-Lane+Side-Chat arbeiteten parallel im selben Repo (frisch lesen!) · ⚠️ Sascha-GO offen: 3 Portal-Passwörter ROTIEREN (altes Bundle war live!), Pilot-History-Reset, Edu 9 unpushed, Root/src-Cleanup, Gemini-Proxy
+- [Körperfluss Edu + Förderpilot FERTIG](koerperfluss-edu-foerderpilot-fertig.md) — 30.09./01.10. ENDSTAND: **beide Apps live, Edu auf GitHub (Key-frei, 0 unpushed), Pilot-History resetted (1 Commit), Daily-Wache automation-96fe2a52 (08:30)** · 3D = LeePerrySmith-Glas-Kopf nur Startseite (live bewiesen) · FFG-Paket FINAL.zip geprüft: Antrag zeichnet NUR Sascha, ALLE 3 Unterschriften auf Erklärung 06 (leer!), CV Leon drin+OK, Kontoauszug 10 Monate alt, LOI fehlt (Ablehnungsgrund Mai!) — einreichfähig bis 06.10. mit 3 HITL-Aktionen · **GfS-Mail war REDUNDANT (bereits 23.09. gesendet; seitdem keine Google-Antwort → Nachfassen auf GO)** · Nodes digitalark+tif-noe drin (9d904ca, Revert-Angebot offen) · aktiv: FFG-Einreichung, Google-Key-Rotation, Zotero-Titel-Export, Nachfassen · Lektionen: Mimosa blockt open(<Var>)/Bash-Source-Writes, filter-branch wirft Dateien aus dem Working Tree (aus Bundle restaurieren), Vor „erledigt"-Behauptungen Memory+Mail-DB prüfen
 
 - [George/Thomas-Status](george-thomas-status.md) — 23.09.: Thomas' „George" = nur Selbstauskunfts-Tabellen, NULL Beweis-Outputs, Stimme nie gehört — ABER WENDE: die 3 Falsch-Fakten (15-Min-Limit, 36-Modell/Port 20128, Fristen-Wache-aktiv) stammten aus MEINEN Doku-Dateien; gefixt: ABNAHME A-Teil neu (Backup .bak-20260923) + LOKI_OS_DOKUMENTATION_KORRIGIERT_v2.pdf + Protokollzeile; Lektion: erst eigene Doku gegen Code prüfen, dann andere kritisieren
 
@@ -8114,6 +8182,29 @@ Beobachtet 06.09.2026 (Session mit Off-Peak-Ticket): Nach User-Paste „ZCode Er
 - [LOKI-OS Harness-Settings-Sessions](loki-os-harness-settings-sessions.md) — 3 kanonische Sessions (sess_6ec2db7a/ecb2e5e0/055615ab) mit der 6-Schaltstellen-Architektur; bei Harness-/Architektur-Fragen ZUERST diese laden; deja-Eingriffe additiv-verträglich (20.09. verifiziert)
 - [Session-Quellen: wo finden](session-quellen-wo-finden.md) — zcode-Log = nur Telemetrie; User-Nachrichten in ~/.zcode/cli/rollout/model-io-sess_*.jsonl; Tool-Reste in artifacts/sess_*/
 - [LOKI-OS-Harness Soll-Stand](loki-os-harness-sollstand.md) — 6 Schaltstellen ~/.zcode (17 MCP, 10 Agenten, 7 Commands, Sync-Quelle, 2 Wayfinder-Maps); Änderungen nur via STANDARD-SKILLS.md + sync-script
+
+## apple-mail-db-abfrage
+
+---
+name: apple-mail-db-abfrage
+description: Lokale Apple-Mail-Antwort-Prüfung ohne API — sqlite3 auf Mail V10
+  Envelope Index (Epoch-Offset!), Gmail-API verweigert Scopes
+metadata:
+  node_type: memory
+  type: reference
+  originSessionId: sess_33b5868e-a2a4-49cf-823a-7563047524e1
+---
+
+Apple Mail lokal per SQLite lesen (Sascha-Wunsch „prüf meine Mail lokal am Mac", 01.10.2026 bewiesen):
+
+- DB: `~/Library/Mail/V10/MailData/Envelope Index` (V4 gibt es nicht mehr; immutable öffnen: `sqlite3 "file:...?immutable=1"`)
+- **Apple-Epoch: `datetime(m.date_received+978307200,'unixepoch','localtime')`** (ohne Offset zeigt es ~2057 — erst 31 Jahre abziehen!)
+- Joins: `addresses s ON m.sender=s.ROWID` (Absender `s.address`), `subjects sub ON m.subject=sub.ROWID` (Betreff-Text — `m.subject` selbst ist nur ID/Zahl!)
+- Bewiesene Abfragen: Absender `LIKE '%googleforstartups%'`, Betreff `LIKE '%örperfluss%'`, Datum-Filter `m.date_received > strftime('%s','2026-09-20') - 978307200`
+- Gmail-MCP (`google-workspace gmail_search`) schlägt fehl: „Permission denied" (Scopes nicht gewährt) — Mail-DB ist der zuverlässige lokale Weg.
+- Grenze: Bodies liegen extern — für Betreff/Absender/Datum reicht der Envelope Index.
+
+Verwandt: [[koerperfluss-edu-foerderpilot-fertig]] (GfS-Mail-Verlauf dort), [[chrome-agent-browser-fix]].
 
 ## atlas-versionsstand
 
@@ -8370,7 +8461,11 @@ Stand 30.09.2026 (Endstand, 9/9 — beide Apps LIVE):
 
 **Nachtrag 30.09. Nacht 12 — SESSION-BILANZ (33 Aufgabenkomplexe) + VERGESSENS-CHECK:** Gesamtbilanz der ~15-h-Session erstellt. **2 echte, aus Antigravity-Alt-Aufträgen übernommene und NIE bearbeitete Punkte gefunden:** (1) **Google-for-Startups-Freischaltungs-Mail an José Alberto** (Billing ID 015D43-AC6CDE-D17A3A) — Edu-Alt-Konversation Punkt 7; auf „GO GfS-Mail" liegt Entwurf bereit, Absenden bleibt Sascha. (2) **DigitalArk-Node + TIF-NÖ-Node fehlen in Pilot data.ts** (Alt-Auftrag 3a.10). Sonstiger Rest (Human-in-loop, Sascha): Unterschriften 06_Erklaerung + frischer Kontoauszug SLOT_05 (38.000 €, max 4-6 Wochen alt), FFG AI Ökosysteme 06.10. einreichen/streichen, Google-Key-Rotation (AIzaSyA4BEmY… kursierte öffentlich), Zotero-Titel-Export (CSV mit Titelspalte) für den 291-vs-289-Abgleich. Bewusst auf GO: Root/src-Cleanup + Gemini-Proxy + Edu-Duplikate (~123 „ 2"-Dateien), zoe-v2-Sidechain-Graph, Pilot-Kosmetik (index.tsx-PostHog-Diff, Newline), Cloud-Run-Altversion (GCP-Billing). **Finalzustand:** Edu GitHub 0 unpushed (HEAD daf38a6), Pilot 1 Commit (0746117), beide Apps live (CK9LuOuz/F8t4l3ow), Wache automation-96fe2a52 läuft täglich 08:30.
 
-**⚠️ Sascha-Aktionen (noch offen):** (1) Zotero-Titel-Export (CSV mit Titelspalte). (2) Pilot-History-Reset — ✚ ERLEDIGT 30.09. Nacht (0746117). (3) Edu-Push — ✚ ERLEDIGT (0 unpushed). (4) Monitoring-GO — ✚ ERLEDIGT (automation-96fe2a52). (5) FFG AI Ökosysteme 06.10. entscheiden (Wache erinnert). (6) Google-Key rotieren. (7) GfS-Mail José Alberto + DigitalArk/TIF-NÖ-Nodes (GO-Bit). (8) Unterschriften + SLOT_05-Kontoauszug.
+**⚠️ Sascha-Aktionen (noch offen):** (1) Zotero-Titel-Export (CSV mit Titelspalte). (2) Pilot-History-Reset — ✚ ERLEDIGT 30.09. Nacht (0746117). (3) Edu-Push — ✚ ERLEDIGT (0 unpushed). (4) Monitoring-GO — ✚ ERLEDIGT (automation-96fe2a52). (5) FFG AI Ökosysteme 06.10. entscheiden (Wache erinnert). (6) Google-Key rotieren. (7) GfS-Mail + Nodes — ✚ ERLEDIGT 01.10. (Mail-Entwurf FÖRDERUNG/GFS_FREISCHALTUNG_MAIL_2026-09-30.md, Sascha: Handy-Nr + Absenden; Nodes Commit 9d904ca). (8) FFG-Einreichung: ① frischer George-Finanzbericht (≤6 Wochen alt!), ② Erklärung datiert + ALLE 3 Unterschriften (Druck/Scan), ③ LOI-Entscheidung (ohne LOI einreichen — Akquise ist AP-5-Ziel), ④ Antrag nur SASCHA zeichnen (3er-Zeile als „Projektteam" umlabeln oder leer lassen?), ⑤ CV-Sascha-Widersprüche fixen („BSc (in Ausbildung)", Google-Cloud-vs-EU-SSOT, Doppelort).
+
+**Nachtrag 01.10. N2 — GfS-MAIL-KORREKTUR (Sascha hatte RECHCT, Memory+Mail-DB bewiesen es):** Der GfS-Mail-Entwurf von heute war **REDUNDANT** — die Mail an José Alberto wurde **bereits 23.09. von sascha.lagler@koerperfluss.at via Apple Mail gesendet** (Betreff „Regarding your Google for Startups Cloud Program application"; Antigravity-Session d293022b: „E-Mail an José Alberto & Support via Apple Mail SMTP versendet, Billing 015D43 aktiv ✅"). **LEKTION: Vor Erledigungs-Behauptungen Alt-Aufträge zuerst Memory (deja recall) + lokale Mail-DB prüfen — Sascha forderte genau das.** Mail-Lage (Apple-Mail-DB, s. [[apple-mail-db-abfrage]]): 25.06. echter Google-Kontakt rossignolo@xwf.google.com („Körperfluss - Google Cloud") · 04.09. Antwort cloud-startup-support-bot@google.com · eigene Mail 23.09. · **seit 23.09. KEINE Antwort mehr** (nur Newsletter 28.09. „HealthTech VC AMA") → **echter offener Punkt = NACHFASSEN** (Erinnerungs-Mail an Rossignolo/Support auf GO). DigitalArk-Klärung: DigiArk = Werkzeug-Archiv (Edu-Showcase „18 klinische KI-Tools"); Alt-Auftrag 3a.10 („DigitalArk-Node + TIF-NÖ-Node in data.ts") wurde als Pilot-Nodes erfüllt (9d904ca) — ABER Alt-Session sprach auch von „5 & 6 restlos gestrichen" → **Revert-Angebot liegt bei Sascha** (sag „revert"). Zoetrope für Sascha geöffnet: Terminal-Fenster per `osascript 'tell application "Terminal" to do script "zoe-live"'` (die GUI-Art, zoe zu zeigen — zoe-live/zoe-live runs/zoe-live cline). 8-Punkte-Bilanz geklärt — **AKTIV nur noch: ① FFG-Einreichung (Finanzbericht/Unterschriften/LOI/06.10.) ② Google-Key-Rotation ③ Zotero-Titel-Export ④ Nachfassen-Mail-GO**.
+
+**Nachtrag 01.10. — FFG-PAKET-ANALYSE (dwfrun-b8955ed8):** Thomas' Gesamtexpertise (23.09., 8 Sperren) gegen **UPLOAD_eCall_SLOTS_2026-09-30_FINAL.zip** geprüft: 18er→FINAL änderte NUR die Ortszeile der Erklärung — **keine Sperre behoben**. Kern-Antworten: **Antrag-Unterschrift = NUR Sascha** (Einzelperson, unbeschränkte Zeichnungsbefugnis wie Erst-Einreichung 12/2025; leere „rechtsverbindliche" 3er-Zeile wirkt Entwurf — umlabeln zu „Projektteam (Information)" empfohlen). **ALLE 3 Unterschriften PFLICHT auf Erklärung Beilage 06** (leer + Datum leer). **CV Leon: JA gebraucht + DRIN + OK** (10_CV_Leon_Karnen_FINAL.pdf). CV Peter OK. CV Sascha PROBLEM („BSc (in Ausbildung)"-Widerspruch, Google-Cloud-Kompetenz vs. 0-US-Cloud-SSOT, Melk/Loosdorf). Kontoauszug PROBLEM (George-Bericht 27.11.2025 = 10 Monate alt, Vorgabe 4-6 Wochen; 94,35€-Screenshot kontraproduktiv — raus). LOI FEHLT (ununterschriebenes AWS-Muster mit falschem Kontext — fehlende LOI war Ablehnungsgrund Mai 2026; Empfehlung: ohne einreichen, Markt-Konzept deklariert Akquise ehrlich als AP-5-Ziel). **Einreichfähig bis 06.10.: realistisch JA mit den 3 HITL-Aktionen** (Finanzbericht/Unterschriften/LOI-Entscheid); inhaltliche Sperren (MDR/Markt/Quellen/Budget) im Paket gelöst. Vertretungsnachweis entbehrlich; eCall-Adresse auf Loosdorf aktualisieren (Alt: Prinzlstraße Melk).
 
 Parallele-Lane-Lektion: Parent-Session + Side-Chat arbeiteten GLEICHZEITIG im selben Pilot-Repo (git status mehrfach verändert) — vor Edit immer frisch lesen, keine Kollision erzwungen; Parent holte den letzten Commit `c1b5d17`. Antigravity-Konversationen: `.db` (SQLite, step_payload=Protobuf, per python-strings extrahierbar) oder `.pb` **at-rest verschlüsselt** → Workspace-SSOT nutzen. Detail-Doku je Repo: `FERTIGMACHUNG_2026-09-30.md`. Verwandt: [[loki-os-v18-endprodukt]], [[atlas-versionsstand]], [[koerperfluss-edu-foerderpilot-takeover]]
 
