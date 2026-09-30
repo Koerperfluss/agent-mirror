@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-30 14:42 UTC
+Zuletzt gespiegelt: 2026-09-30 14:54 UTC
 
 ## AGENTS
 
@@ -7415,6 +7415,10 @@ Beobachtet 06.09.2026 (Session mit Off-Peak-Ticket): Nach User-Paste „ZCode Er
 
 # Memory Index
 
+- [GLM-5.3 vs Flash: belegte Fakten](glm-53-vs-flash-belegte-fakten.md) — Flash=320B MoE ~8,9× billiger, AA-Index 57; 5.3=Flagship (CyberGym 84,5); beide low/high/max (Default max) — Regel: Plan/Architektur=5.3, Ausführung=Flash; Sascha will direkte belegte Modellurteile, keine Absicher-Floskeln
+
+- [Körperfluss Edu + Förderpilot Takeover](koerperfluss-edu-foerderpilot-takeover.md) — 30.09.: 2 Antigravity-Konvos übernommen (d293022b=Edu, 1926eeee=Pilot/.pb verschlüsselt); Antigravity-Konvo-Extraktion via ~/.gemini/antigravity/conversation_summaries.db; PILOT.AI FERTIG (Commit 9793048, Root=Build-Quelle, liquid-Cloud), Deploy foerder-cockpit wartet auf GO; Edu-Repo 3D-Fix uncommitted, Builder an API-Timeout gescheitert — Neu-Dispatch offen
+
 - [George/Thomas-Status](george-thomas-status.md) — 23.09.: Thomas' „George" = nur Selbstauskunfts-Tabellen, NULL Beweis-Outputs, Stimme nie gehört — ABER WENDE: die 3 Falsch-Fakten (15-Min-Limit, 36-Modell/Port 20128, Fristen-Wache-aktiv) stammten aus MEINEN Doku-Dateien; gefixt: ABNAHME A-Teil neu (Backup .bak-20260923) + LOKI_OS_DOKUMENTATION_KORRIGIERT_v2.pdf + Protokollzeile; Lektion: erst eigene Doku gegen Code prüfen, dann andere kritisieren
 
 - [ZCode-Workflow-Bedienung](zcode-workflow-bedienung.md) — /workflow via Chat-Feld/Command-Palette; Runs unter Automations; Workflows überleben Turn-Interrupts (ggü. direkten Agenten)
@@ -7606,6 +7610,57 @@ GEORGE = THOMAS' EIGENES SYSTEM AUF SASCHAS LOKI.OS-BASIS (Stand 23.09.2026):
 **NACHTRAG 23.09. SPÄT 7 — KORREKTUR des „nur-Zahlung"-Fazits + Vertex-Zugangsweg für Thomas:** Der SPÄT-6-Satz „Fix nur durch Sascha: Rechnung zahlen" war die HALBE Wahrheit. **Vertex-Route lebt unabhängig vom leeren AI-Studio-Prepay** (Live-Test HTTP 200, gemini-2.5-flash, trafficType ON_DEMAND, mit gcloud-Bearer von koerperfluss@gmail.com; Payload braucht `role:"user"` sonst 400) — genau deshalb nutzt Sascha den Agenten problemlos. **Thomas-Zugang ohne Zahlung:** IAM `aiplatform.user` auf Projekt gen-lang-client-0534030583 für Thomas' Google-Konto + 1× `gcloud auth login` bei Thomas → komplette App (Chat + Vertex-Live-Stimme). **Kandidat-Adresse `irisaidevop@gmail.com`** (einzige in THOMAS-Übergabe-Docs, 7 Treffer) — IAM wartet auf Saschas JA-Bestätigung (Sicherheits-Pflicht, kein Zugang ins Blaue). AI-Studio-Alternative (Key `Thomas-LokiVoice`) bleibt bis Guthaben-Auffüllung 402. THOMAS_PAKET_V2 (dwfrun-76db2298) weiterhin in Build. **NACHTRAG 23.09. SPÄT 8 — THOMAS-ZUGANG GESETZT (Auflösung zu SPÄT 7):** Sascha verwarf Kandidat `irisaidevop@gmail.com` und nannte Thomas' echte Adresse: **`schellenbacher.t@gmail.com`**. Ausgeführt + in Policy verifiziert: `user:schellenbacher.t@gmail.com` → `roles/aiplatform.user` auf Projekt gen-lang-client-0534030583. Thomas-Setup (2 Befehle: google-cloud-sdk cask + `gcloud auth login schellenbacher.t@gmail.com`) dokumentiert in **`~/Desktop/GOOGLE_ZUGANG_FUER_THOMAS.md`** (auch im Thomas-Paket 00_PAKET_FUER_THOMAS/ abgelegt) — danach läuft komplette LokiVoice inkl. Vertex-Live-Stimme ohne AI-Studio-Key/Guthaben, wie bei Sascha (Vertex ON_DEMAND auf dieses Projekt; Entzug per remove-iam-policy-binding). Merkregel: Thomas' Google-Konto = schellenbacher.t@gmail.com. THOMAS_PAKET_V2-App-Build (dwfrun-76db2298) lief bei letztem Check noch; Kanban (8 Tasks mit IDs) + INFOS/ABNAHME + Protokoll-Korrektur fertig (siehe SPÄT 5 + [[loki-voice-agent]] FAKTEN-SWEEP).
 
 Verwandt: [[loki-os-v18-endprodukt]], [[sascha-arbeitsregeln-hart]], [[deja-vu-install]], [[loki-voice-agent]] (VOLL-Modell-Tabelle + Vertex-Beweis)
+
+## glm-53-vs-flash-belegte-fakten
+
+---
+name: glm-53-vs-flash-belegte-fakten
+description: Belegte GLM-5.3 vs GLM-5.3-Flash-Zahlen (30.09.2026) + Sascha will
+  direkte, belegte Modellurteile statt Absicher-Floskeln
+metadata:
+  node_type: memory
+  type: reference
+  originSessionId: sess_4bb898d8-5750-44b0-a776-1dcc731622b8
+---
+
+**Belegte Fakten (WebSearch 30.09.2026):** GLM 5.3 = Flagship (~$1,40/$4,40 pro Mio Tokens), stärker bei Reasoning/Agentic (CyberGym 84,5). GLM-5.3-Flash = 320B-MoE-Budget-Variante, ~**8,9× billiger**, Artificial-Analysis-Intelligence-Index 57 („good, not top-tier"). Kein öffentlicher Head-to-Head. In Saschas Z.AI-Plan laufen beide mit `low/high/max` (Default **max**) — Verifikation via `ListModels`. Session-Beweis 30.09.: Flash-Builder schaffte den Pilot-Build sauber (Commit 9793048) aber mit 4,46 Mio Tokens/65 Tool-Calls (Rework-Schleifen — genau das reduziert 5.3 im Plan-Teil).
+
+**Gültige Routing-Entscheidung:** /plan + Architektur + Gegenlesen + Security = **GLM 5.3 (max)** · Builder-Edits, Scans, Doku, Batch = **Flash (max)**.
+
+**Feedback-Kontext (gleiches Gespräch):** Sascha reagierte gereizt („du wirst doch wissen wie gut deine eigenen modelle sind du trottel"), als ich mit „kein A/B-Benchmark" absicherte. **Warum:** Er will konkrete, quellenbelegte Urteile sofort, keine Verschwurbel-Absicherung. **How to apply:** Bei Modell-/Tool-Qualitätsfragen zuerst selbst Daten holen (WebSearch/ListModels/Session-Evidenz), dann in Zeile 1 ein klares Urteil mit Zahlen — den Rest der Ehrlichkeits-Grenze in 1 Satz anhängen. Verwandt: [[koerperfluss-edu-foerderpilot-takeover]], [[sascha-arbeitsregeln-hart]]
+
+## koerperfluss-edu-foerderpilot-takeover
+
+---
+name: koerperfluss-edu-foerderpilot-takeover
+description: 30.09. Übernahme der 2 Antigravity-Unterhaltungen (Körperfluss Edu
+  Website + Förderpilot) — Standorte, Antigravity-Konvo-Extraktion,
+  Fertigmachungs-Stand und offene Deploy-GO-Punkte
+metadata:
+  node_type: memory
+  type: project
+  originSessionId: sess_4bb898d8-5750-44b0-a776-1dcc731622b8
+---
+
+**Auftrag 30.09.2026:** 2 Antigravity-Unterhaltungen übernehmen und fertig machen: (1) Körperfluss Edu Website (UI/UX/Userflow), (2) Förderpilot (interaktiver vektorbasierter Förderberater, liquid-fluides Förderungsuniversum).
+
+**Antigravity-Konvo-Extraktion (wichtig, wiederverwendbar):**
+- Konvo-Index: `~/.gemini/antigravity/conversation_summaries.db` (SQLite: conversation_id, title, preview, workspace_uris, step_count)
+- Konvo-Daten: `~/.gemini/antigravity/conversations/<id>.db` (SQLite, Schema: steps(idx, step_type, step_payload BLOB=Protobuf)) ODER `<id>.pb` — **.pb ist at-rest VERSCHLÜSSELT** (strings liefert 0 Treffer); dann Workspace-SSOT (MISSION.md, ORIGINAL_REQUEST.md, docs/) als Quelle nutzen
+- Protokoll-Extract-Script: /tmp/ag_convs/extract_edu.py (User-Text in step_payload Typ 14, Bot Typ 15)
+
+**① Edu-Website** (Konvo `d293022b` „KÖRPERFLUSS EDU - AKTUELL", 4845 Steps):
+- Repo: `~/Desktop/Coworkspace_Ich/Körperfluss EDU/Koerperfluss-3D-Upgrade/` · Live: koerperfluss.web.app (Firebase, Projekt **gen-lang-client-0285074833**) · Vite5/React18/TS, Build = `tsc && vite build`
+- 3D-Bug „Slicing-Käfig": DOPPELTE Background3D.tsx (src/ + src/components/ + Finder-Duplikat „Background3D 2.tsx"); Fix = `<AnatomicalModel>` in beiden auskommentiert, aber Stand **uncommitted** und Agent brach mit 429 RESOURCE_EXHAUSTED ab
+- 41 Routen/46 Pages, ~123 „ 2."-Finder-Duplikate, 9 unpushed/53 dirty commits — MVP-Schnitt als Folge-Ticket
+- Builder-Dispatch schlug fehl (Connect-Timeout api.z.ai) — Edu-Bau NICHT fertig
+
+**② Förderpilot** (Konvo `1926eeee` „Refactoring UI Components", 5165 Steps, .pb verschlüsselt):
+- Repo: `~/antigravity/Körperfluss-PILOT.AI` („förder-cockpit-für-startups", React19/Vite6/d3/motion) · **Root ist aktive Build-Quelle** (index.html → /index.tsx → Root-App.tsx), src/ = Kopie; Doppelstruktur Root↔src auf byte-identisch synchronisiert (Bereinigung nur mit GO)
+- **FERTIG (Commit `9793048`)**: Build+Lint grün (vite6, JS 2,08 MB — Code-Splitting offen), 3-Schritte-Copilot-Einstieg, VectorCloud100 liquid-fluid (velocityDecay 0,52, forceX/Y, Bloom-Einstieg, reduced-motion), Beta-Badges auf Nicht-Funktionstabs, TIP-NÖ (70 %/9.900 €, Kornherr ergänzt) + DigitalArk (action_required) auf SSOT korrigiert (existierten schon, nicht duplizieren!), git init + .gitignore (.env!), Doku **FERTIGMACHUNG_2026-09-30.md**
+- Offen: Deploy `npm run build && firebase deploy --only hosting` (site **foerder-cockpit**) = Stopp-Regel, braucht Sascha-GO; Gemini-Key via process.env im Browser (Backend-Proxy fehlt)
+
+**Modell-Empfehlung (30.09., inzwischen belegt):** GLM 5.3 (max) für /Plan/Architektur/Gegenlesen, Flash (max) für Ausführung/Scans/Doku — Flash = 320B MoE, ~8,9× billiger, AA-Index 57; 5.3 = Flagship (CyberGym 84,5); beide mit low/high/max im Z.AI-Plan. Details: [[glm-53-vs-flash-belegte-fakten]]. Verwandt: [[loki-os-v18-endprodukt]], [[sascha-vollzug-keine-zwischenfragen]]
 
 ## loki-dev-plan-alle-modi
 
