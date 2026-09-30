@@ -10,98 +10,6 @@ usage: find [-H | -L | -P] [-EXdsx] [-f path] path ... [expression]
        find [-H | -L | -P] [-EXdsx] -f path [path ...] [expression]
 find: neui: No such file or directory
 Wiki aktualisiert: /Users/saschalagler/Mirror/agent-mirror/mirror/wiki
-2026-09-30 09:55:37 UTC [INFO] Cognee übersprungen (kein Zugang hinterlegt)
-2026-09-30 09:55:37 UTC [INFO] Cognee übersprungen (kein Zugang hinterlegt)
-/Users/saschalagler/Projects/agent-mirror/scripts/archive-to-gcs.sh: line 23: gsutil: command not found
-2026-09-30 09:55:40 UTC [WARN] GCS nicht erreichbar — /Users/saschalagler/.cache/agent-mirror-gcs/mirror-20260930-0907.tar.gz bleibt in Warteschlange
-2026-09-30 09:55:43 UTC [INFO] Lauf beendet: state=ok files=20 
-2026-09-30 10:05:43 UTC [INFO] Starte Spiegelung: /Users/saschalagler → /Users/saschalagler/Mirror/agent-mirror
-2026-09-30 10:05:57 UTC [INFO] antigravity: 0 Datei(en) aktualisiert
-2026-09-30 10:06:07 UTC [INFO] antigravity: 0 Datei(en) aktualisiert
-2026-09-30 10:06:12 UTC [INFO] cline-code: 0 Datei(en) aktualisiert
-2026-09-30 10:06:16 UTC [INFO] cline-code: 0 Datei(en) aktualisiert
-2026-09-30 10:06:20 UTC [INFO] cline-cli: 0 Datei(en) aktualisiert
-2026-09-30 10:06:25 UTC [INFO] claude: 0 Datei(en) aktualisiert
-2026-09-30 10:06:30 UTC [INFO] zcode: 0 Datei(en) aktualisiert
-2026-09-30 10:06:31 UTC [INFO] Commit erstellt: Auto-sync: 2026-09-30 10:06 UTC (20 files)
-ssh: Could not resolve hostname github.com: nodename nor servname provided, or not known
-fatal: Could not read from remote repository.
-
-Please make sure you have the correct access rights
-and the repository exists.
-2026-09-30 10:06:31 UTC [WARN] Remote nicht erreichbar — 1 Commit(s) bleiben lokal und gehen beim nächsten Lauf mit
-Obsidian-Notizbuch aktualisiert: /Users/saschalagler/Mirror/agent-mirror/mirror/obsidian (18 geänderte Notizen)
-head: /Users/saschalagler/Mirror/agent-mirror/mirror/claude/saschalagler/skills/obsidian-second-brain/examples/sample-vault/Ideas/2026-04-27: No such file or directory
-head: —: No such file or directory
-head: Streak: No such file or directory
-head: insurance: No such file or directory
-head: feature.md: No such file or directory
-head: /Users/saschalagler/Mirror/agent-mirror/mirror/claude/saschalagler/skills/obsidian-second-brain/examples/sample-vault/people/Alex: No such file or directory
-head: Rivera.md: No such file or directory
-head: /Users/saschalagler/Mirror/agent-mirror/mirror/claude/saschalagler/skills/obsidian-second-brain/examples/sample-vault/people/Sam: No such file or directory
-head: Patel.md: No such file or directory
-head: /Users/saschalagler/Mirror/agent-mirror/mirror/claude/saschalagler/skills/obsidian-second-brain/examples/sample-vault/wiki/logs/2026-04-27: No such file or directory
-head: —: No such file or directory
-head: Tide: No such file or directory
-head: retention: No such file or directory
-head: rebuild.md: No such file or directory
-head: /Users/saschalagler/Mirror/agent-mirror/mirror/cline-code/saschalagler/worktrees/a15eb/Judicario_Sacha_Mac/Audit: No such file or directory
-head: 2: No such file or directory
-head: +: No such file or directory
-head: Sprachassistent/PLAN_JUDICARIO_CHIPSI.md: No such file or directory
-head: /Users/saschalagler/Mirror/agent-mirror/mirror/cline-code/saschalagler/worktrees/a15eb/Judicario_Sacha_Mac/Audit: No such file or directory
-head: 2: No such file or directory
-head: +: No such file or directory
-head: Sprachassistent/PROVENIENZ.md: No such file or directory
-head: /Users/saschalagler/Mirror/agent-mirror/mirror/cline-code/saschalagler/worktrees/a15eb/Judicario_Sacha_Mac/Audit: No such file or directory
-head: 2: No such file or directory
-head: +: No such file or directory
-head: Sprachassistent/RESEARCH_QUELLEN.md: No such file or directory
-head: /Users/saschalagler/Mirror/agent-mirror/mirror/cline-code/saschalagler/worktrees/a15eb/Judicario_Sacha_Mac/Audit: No such file or directory
-head: 2: No such file or directory
-head: +: No such file or directory
-head: Sprachassistent/TODO_JUDICARIO_CHIPSI.md: No such file or directory
-head: /Users/saschalagler/Mirror/agent-mirror/mirror/cline-code/saschalagler/worktrees/a15eb/Judicario_Sacha_Mac/Audit: No such file or directory
-head: 2: No such file or directory
-head: +: No such file or directory
-head: Sprachassistent/UBIQUITOUS_LANGUAGE.md: No such file or directory
-head: /Users/saschalagler/Mirror/agent-mirror/mirror/cline-code/saschalagler/worktrees/a15eb/Judicario_Sacha_Mac/Audit: No such file or directory
-head: 2: No such file or directory
-head: +: No such file or directory
-head: Sprachassistent/_ARCHIV/ASSISTENT_OPTIONEN.md: No such file or directory
-head: /Users/saschalagler/Mirror/agent-mirror/mirror/cline-code/saschalagler/worktrees/a15eb/Judicario_Sacha_Mac/Audit: No such file or directory
-head: 2: No such file or directory
-head: +: No such file or directory
-head: Sprachassistent/_ARCHIV/AUDIT_2_TIEFENANALYSE.md: No such file or directory
-head: /Users/saschalagler/Mirror/agent-mirror/mirror/cline-code/saschalagler/worktrees/a15eb/Judicario_Sacha_Mac/Audit: No such file or directory
-head: 2: No such file or directory
-head: +: No such file or directory
-head: Sprachassistent/_ARCHIV/JUDICARIO_RESEARCH.md: No such file or directory
-head: /Users/saschalagler/Mirror/agent-mirror/mirror/cline-code/saschalagler/worktrees/a15eb/Judicario_Sacha_Mac/Audit: No such file or directory
-head: 2: No such file or directory
-head: +: No such file or directory
-head: Sprachassistent/_ARCHIV/KOMPLETT_ABGABE_2026.md: No such file or directory
-head: /Users/saschalagler/Mirror/agent-mirror/mirror/cline-code/saschalagler/worktrees/a15eb/Judicario_Sacha_Mac/Audit: No such file or directory
-head: 2: No such file or directory
-head: +: No such file or directory
-head: Sprachassistent/_ARCHIV/QA_SACHA_THOMAS.md: No such file or directory
-head: /Users/saschalagler/Mirror/agent-mirror/mirror/cline-code/saschalagler/worktrees/a15eb/Judicario_Sacha_Mac/Audit: No such file or directory
-head: 2: No such file or directory
-head: +: No such file or directory
-head: Sprachassistent/_ARCHIV/SPRACHASSISTENT_ARCHITEKTUR.md: No such file or directory
-head: /Users/saschalagler/Mirror/agent-mirror/mirror/cline-code/saschalagler/worktrees/a15eb/Judicario_Sacha_Mac/Audit: No such file or directory
-head: 2: No such file or directory
-head: +: No such file or directory
-head: Sprachassistent/_ARCHIV/SPRACHASSISTENT_MARKTFUEHRER_ANALYSE.md: No such file or directory
-head: /Users/saschalagler/Mirror/agent-mirror/mirror/cline-code/saschalagler/worktrees/a15eb/Judicario_Sacha_Mac/Audit: No such file or directory
-head: 2: No such file or directory
-head: +: No such file or directory
-head: Sprachassistent/_ARCHIV/ZUSAMMENARBEIT_BRAINSTORM.md: No such file or directory
-find: /Users/saschalagler/Mirror/agent-mirror/mirror/zcode/atlas: No such file or directory
-usage: find [-H | -L | -P] [-EXdsx] [-f path] path ... [expression]
-       find [-H | -L | -P] [-EXdsx] -f path [path ...] [expression]
-find: neui: No such file or directory
-Wiki aktualisiert: /Users/saschalagler/Mirror/agent-mirror/mirror/wiki
 2026-09-30 10:06:49 UTC [INFO] Cognee übersprungen (kein Zugang hinterlegt)
 2026-09-30 10:06:49 UTC [INFO] Cognee übersprungen (kein Zugang hinterlegt)
 /Users/saschalagler/Projects/agent-mirror/scripts/archive-to-gcs.sh: line 23: gsutil: command not found
@@ -198,3 +106,95 @@ Wiki aktualisiert: /Users/saschalagler/Mirror/agent-mirror/mirror/wiki
 2026-09-30 10:18:03 UTC [INFO] Cognee übersprungen (kein Zugang hinterlegt)
 /Users/saschalagler/Projects/agent-mirror/scripts/archive-to-gcs.sh: line 23: gsutil: command not found
 2026-09-30 10:18:05 UTC [WARN] GCS nicht erreichbar — /Users/saschalagler/.cache/agent-mirror-gcs/mirror-20260930-0931.tar.gz bleibt in Warteschlange
+2026-09-30 10:18:05 UTC [INFO] Lauf beendet: state=deferred files=19 (Remote nicht erreichbar, 3 Commit(s) warten)
+2026-09-30 10:28:05 UTC [INFO] Starte Spiegelung: /Users/saschalagler → /Users/saschalagler/Mirror/agent-mirror
+2026-09-30 10:28:19 UTC [INFO] antigravity: 0 Datei(en) aktualisiert
+2026-09-30 10:28:29 UTC [INFO] antigravity: 0 Datei(en) aktualisiert
+2026-09-30 10:28:38 UTC [INFO] cline-code: 0 Datei(en) aktualisiert
+2026-09-30 10:28:43 UTC [INFO] cline-code: 0 Datei(en) aktualisiert
+2026-09-30 10:28:46 UTC [INFO] cline-cli: 0 Datei(en) aktualisiert
+2026-09-30 10:28:51 UTC [INFO] claude: 0 Datei(en) aktualisiert
+2026-09-30 10:28:57 UTC [INFO] zcode: 0 Datei(en) aktualisiert
+2026-09-30 10:28:57 UTC [INFO] Commit erstellt: Auto-sync: 2026-09-30 10:28 UTC (19 files)
+ssh: Could not resolve hostname github.com: nodename nor servname provided, or not known
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+2026-09-30 10:28:57 UTC [WARN] Remote nicht erreichbar — 5 Commit(s) bleiben lokal und gehen beim nächsten Lauf mit
+Obsidian-Notizbuch aktualisiert: /Users/saschalagler/Mirror/agent-mirror/mirror/obsidian (18 geänderte Notizen)
+head: /Users/saschalagler/Mirror/agent-mirror/mirror/claude/saschalagler/skills/obsidian-second-brain/examples/sample-vault/Ideas/2026-04-27: No such file or directory
+head: —: No such file or directory
+head: Streak: No such file or directory
+head: insurance: No such file or directory
+head: feature.md: No such file or directory
+head: /Users/saschalagler/Mirror/agent-mirror/mirror/claude/saschalagler/skills/obsidian-second-brain/examples/sample-vault/people/Alex: No such file or directory
+head: Rivera.md: No such file or directory
+head: /Users/saschalagler/Mirror/agent-mirror/mirror/claude/saschalagler/skills/obsidian-second-brain/examples/sample-vault/people/Sam: No such file or directory
+head: Patel.md: No such file or directory
+head: /Users/saschalagler/Mirror/agent-mirror/mirror/claude/saschalagler/skills/obsidian-second-brain/examples/sample-vault/wiki/logs/2026-04-27: No such file or directory
+head: —: No such file or directory
+head: Tide: No such file or directory
+head: retention: No such file or directory
+head: rebuild.md: No such file or directory
+head: /Users/saschalagler/Mirror/agent-mirror/mirror/cline-code/saschalagler/worktrees/a15eb/Judicario_Sacha_Mac/Audit: No such file or directory
+head: 2: No such file or directory
+head: +: No such file or directory
+head: Sprachassistent/PLAN_JUDICARIO_CHIPSI.md: No such file or directory
+head: /Users/saschalagler/Mirror/agent-mirror/mirror/cline-code/saschalagler/worktrees/a15eb/Judicario_Sacha_Mac/Audit: No such file or directory
+head: 2: No such file or directory
+head: +: No such file or directory
+head: Sprachassistent/PROVENIENZ.md: No such file or directory
+head: /Users/saschalagler/Mirror/agent-mirror/mirror/cline-code/saschalagler/worktrees/a15eb/Judicario_Sacha_Mac/Audit: No such file or directory
+head: 2: No such file or directory
+head: +: No such file or directory
+head: Sprachassistent/RESEARCH_QUELLEN.md: No such file or directory
+head: /Users/saschalagler/Mirror/agent-mirror/mirror/cline-code/saschalagler/worktrees/a15eb/Judicario_Sacha_Mac/Audit: No such file or directory
+head: 2: No such file or directory
+head: +: No such file or directory
+head: Sprachassistent/TODO_JUDICARIO_CHIPSI.md: No such file or directory
+head: /Users/saschalagler/Mirror/agent-mirror/mirror/cline-code/saschalagler/worktrees/a15eb/Judicario_Sacha_Mac/Audit: No such file or directory
+head: 2: No such file or directory
+head: +: No such file or directory
+head: Sprachassistent/UBIQUITOUS_LANGUAGE.md: No such file or directory
+head: /Users/saschalagler/Mirror/agent-mirror/mirror/cline-code/saschalagler/worktrees/a15eb/Judicario_Sacha_Mac/Audit: No such file or directory
+head: 2: No such file or directory
+head: +: No such file or directory
+head: Sprachassistent/_ARCHIV/ASSISTENT_OPTIONEN.md: No such file or directory
+head: /Users/saschalagler/Mirror/agent-mirror/mirror/cline-code/saschalagler/worktrees/a15eb/Judicario_Sacha_Mac/Audit: No such file or directory
+head: 2: No such file or directory
+head: +: No such file or directory
+head: Sprachassistent/_ARCHIV/AUDIT_2_TIEFENANALYSE.md: No such file or directory
+head: /Users/saschalagler/Mirror/agent-mirror/mirror/cline-code/saschalagler/worktrees/a15eb/Judicario_Sacha_Mac/Audit: No such file or directory
+head: 2: No such file or directory
+head: +: No such file or directory
+head: Sprachassistent/_ARCHIV/JUDICARIO_RESEARCH.md: No such file or directory
+head: /Users/saschalagler/Mirror/agent-mirror/mirror/cline-code/saschalagler/worktrees/a15eb/Judicario_Sacha_Mac/Audit: No such file or directory
+head: 2: No such file or directory
+head: +: No such file or directory
+head: Sprachassistent/_ARCHIV/KOMPLETT_ABGABE_2026.md: No such file or directory
+head: /Users/saschalagler/Mirror/agent-mirror/mirror/cline-code/saschalagler/worktrees/a15eb/Judicario_Sacha_Mac/Audit: No such file or directory
+head: 2: No such file or directory
+head: +: No such file or directory
+head: Sprachassistent/_ARCHIV/QA_SACHA_THOMAS.md: No such file or directory
+head: /Users/saschalagler/Mirror/agent-mirror/mirror/cline-code/saschalagler/worktrees/a15eb/Judicario_Sacha_Mac/Audit: No such file or directory
+head: 2: No such file or directory
+head: +: No such file or directory
+head: Sprachassistent/_ARCHIV/SPRACHASSISTENT_ARCHITEKTUR.md: No such file or directory
+head: /Users/saschalagler/Mirror/agent-mirror/mirror/cline-code/saschalagler/worktrees/a15eb/Judicario_Sacha_Mac/Audit: No such file or directory
+head: 2: No such file or directory
+head: +: No such file or directory
+head: Sprachassistent/_ARCHIV/SPRACHASSISTENT_MARKTFUEHRER_ANALYSE.md: No such file or directory
+head: /Users/saschalagler/Mirror/agent-mirror/mirror/cline-code/saschalagler/worktrees/a15eb/Judicario_Sacha_Mac/Audit: No such file or directory
+head: 2: No such file or directory
+head: +: No such file or directory
+head: Sprachassistent/_ARCHIV/ZUSAMMENARBEIT_BRAINSTORM.md: No such file or directory
+find: /Users/saschalagler/Mirror/agent-mirror/mirror/zcode/atlas: No such file or directory
+usage: find [-H | -L | -P] [-EXdsx] [-f path] path ... [expression]
+       find [-H | -L | -P] [-EXdsx] -f path [path ...] [expression]
+find: neui: No such file or directory
+Wiki aktualisiert: /Users/saschalagler/Mirror/agent-mirror/mirror/wiki
+2026-09-30 10:29:14 UTC [INFO] Cognee übersprungen (kein Zugang hinterlegt)
+2026-09-30 10:29:14 UTC [INFO] Cognee übersprungen (kein Zugang hinterlegt)
+/Users/saschalagler/Projects/agent-mirror/scripts/archive-to-gcs.sh: line 23: gsutil: command not found
+2026-09-30 10:29:16 UTC [WARN] GCS nicht erreichbar — /Users/saschalagler/.cache/agent-mirror-gcs/mirror-20260930-0943.tar.gz bleibt in Warteschlange
