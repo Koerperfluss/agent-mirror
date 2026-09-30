@@ -1,6 +1,6 @@
 # cli (antigravity)
 
-Zuletzt gespiegelt: 2026-09-30 19:23 UTC
+Zuletzt gespiegelt: 2026-09-30 19:36 UTC
 
 ## dwfrun-30bfea17-818b-4041-96c3-2679e47643e2_artifact_1_1-tool-result-289a44de-c635-4a33-8c72-bddbed9d65da
 
@@ -1186,6 +1186,375 @@ Reparaturen: 1 Dateien (Backups in /tmp/agents-fix-2209/).
 ## Offen für Sascha
 - Optional: nach erstem Spotify-Start Audio-/Login-Einstellungen kurz prüfen (Cache wurde geleert, Präferenzen blieben erhalten)
 - Ggf. alte Intel-DMG-Quelle merken: künftig nur https://download.scdn.co/SpotifyARM64.dmg nutzen
+## call_48ba41a5c61549709bb409d3-tool-result-77f38bda-b4be-413e-9a30-dd60c2c2a38c
+
+Thinking more wisely: using the Socratic method to develop critical thinking skills amongst healthcare students - PMC
+
+[
+Skip to main content
+](#main-content)
+
+An official website of the United States government
+
+Here's how you know
+
+Here's how you know
+
+Official websites use .gov
+
+A
+.gov website belongs to an official
+government organization in the United States.
+
+Secure .gov websites use HTTPS
+
+A lock (
+
+Lock
+
+Locked padlock icon
+
+) or https:// means you've safely
+connected to the .gov website. Share sensitive
+information only on official, secure websites.
+
+[
+
+](https://www.ncbi.nlm.nih.gov/)
+
+Search
+
+Log in
+
+-
+
+[
+
+Dashboard
+
+](https://www.ncbi.nlm.nih.gov/myncbi/)
+
+-
+
+[
+
+Publications
+
+](https://www.ncbi.nlm.nih.gov/myncbi/collections/bibliography/)
+
+-
+
+[
+
+Account settings
+
+](https://www.ncbi.nlm.nih.gov/account/settings/)
+
+-
+
+Log out
+
+Search…
+
+Search NCBI
+
+Primary site navigation
+
+Search
+
+Logged in as:
+
+-
+
+[
+
+Dashboard
+
+](https://www.ncbi.nlm.nih.gov/myncbi/)
+
+-
+
+[
+
+Publications
+
+](https://www.ncbi.nlm.nih.gov/myncbi/collections/bibliography/)
+
+-
+
+[
+
+Account settings
+
+](https://www.ncbi.nlm.nih.gov/account/settings/)
+
+Log in
+
+[](/)
+
+Search PMC Full-Text Archive
+
+Search in PMC
+
+-
+
+[
+Journal List
+](/journals/)
+
+-
+
+[
+User Guide
+](/about/userguide/)
+
+
+## call_a012e063d18d41569e0ca200-tool-result-2873861a-195c-43ad-81f7-9b99c60679cc
+
+Linking Free Text Documentation of Functioning and Disability to the ICF With Natural Language Processing - PMC
+
+[
+Skip to main content
+](#main-content)
+
+An official website of the United States government
+
+Here's how you know
+
+Here's how you know
+
+Official websites use .gov
+
+A
+.gov website belongs to an official
+government organization in the United States.
+
+Secure .gov websites use HTTPS
+
+A lock (
+
+Lock
+
+Locked padlock icon
+
+) or https:// means you've safely
+connected to the .gov website. Share sensitive
+information only on official, secure websites.
+
+[
+
+](https://www.ncbi.nlm.nih.gov/)
+
+Search
+
+Log in
+
+-
+
+[
+
+Dashboard
+
+](https://www.ncbi.nlm.nih.gov/myncbi/)
+
+-
+
+[
+
+Publications
+
+](https://www.ncbi.nlm.nih.gov/myncbi/collections/bibliography/)
+
+-
+
+[
+
+Account settings
+
+](https://www.ncbi.nlm.nih.gov/account/settings/)
+
+-
+
+Log out
+
+Search…
+
+Search NCBI
+
+Primary site navigation
+
+Search
+
+Logged in as:
+
+-
+
+[
+
+Dashboard
+
+](https://www.ncbi.nlm.nih.gov/myncbi/)
+
+-
+
+[
+
+Publications
+
+](https://www.ncbi.nlm.nih.gov/myncbi/collections/bibliography/)
+
+-
+
+[
+
+Account settings
+
+](https://www.ncbi.nlm.nih.gov/account/settings/)
+
+Log in
+
+[](/)
+
+Search PMC Full-Text Archive
+
+Search in PMC
+
+-
+
+[
+Journal List
+](/journals/)
+
+-
+
+[
+User Guide
+](/about/userguide/)
+
+
+## call_e41adbfa80ba479e8d12046d-tool-result-ec329cb0-3bfb-4492-b2dd-ed32506a1a89
+
+Findings of the Association for Computational Linguistics: ACL 2024 - ACL Anthology
+ACL Anthology
+
+- AboutAnnouncements
+- Communication channels
+- Related work
+- Copyright
+-
+- Credits
+- Volunteer
+- Development
+- Feedback
+
+- UsingAuthor directory
+- Citing papers
+- Links in the Anthology
+- Data access
+-
+- All FAQs
+-
+-
+###### Details
+
+- Anthology identifiers
+- Names
+- ORCID iDs
+- DOIs
+- Verified authors
+
+- ContributionsSubmissions
+- Corrections
+- Maintain author pages
+- Attachments
+
+- GitHub
+
+## Findings of the Association for Computational Linguistics: ACL 2024
+Lun-Wei Ku,
+Andre Martins,
+Vivek Srikumar
+(Editors)Anthology ID:2024.findings-aclMonth:AugustYear:2024Address:Bangkok, ThailandVenue:FindingsEvents:62nd Annual Meeting of the Association for Computational Linguistics
+|
+Findings of the Association for Computational Linguistics (2024)SIG:Publisher:Association for Computational LinguisticsURL:https://aclanthology.org/2024.findings-acl/DOI:Bib Export formats:BibTeX
+MODS XML
+EndNotePDF:https://aclanthology.org/2024.findings-acl.pdf
+PDF (full)
+BibTeX
+[Search](https://www.semanticscholar.org/search?q=Findings+of+the+Association+for+Computational+Linguistics%3A+ACL+2024)
+
+Show all abstractsHide all abstractspdf
+bib
+
+Findings of the Association for Computational Linguistics: ACL 2024
+Lun-Wei Ku
+|
+Andre Martins
+|
+Vivek Srikumar
+pdf
+bib
+abs
+
+Controllable Data Augmentation for Few-Shot Text Mining with Chain-of-Thought Attribute Manipulation
+Letian Peng
+|
+Yuwei Zhang
+|
+Jingbo Shang
+Prompting large language models (LLMs) for data augmentation has recently become a common practice in few-shot NLP tasks. In this paper, we propose Chain-of-Thought Attribute Manipulation (CoTAM), a novel approach that generates new data from existing examples by only tweaking in the user-provided, task-specific attribute, e.g., sentiment polarity or topic in movie reviews. Instead of conventional latent representation controlling, we leverage the chain-of-thought prompting to directly edit the text in three steps, (1) attribute decomposition, (2) manipulation proposal, and (3) sentence reconstruction. Extensive results on various tasks, such as text (pair) classification and aspect-based sentiment analysis, verify the superiority of CoTAM over other LLM-based augmentation methods with the same number of training examples for both fine-tuning and in-context learning. Remarkably, the 2D visualization of the augmented dataset using principle component analysis revealed a human-recognizable decision boundary that is likely hinted by the attribute manipulation, demonstrating the potential of our proposed approach.
+
+pdf
+bib
+abs
+
+Match More, Extract Better! Hybrid Matching Model for Open Domain Web Keyphrase Extraction
+Mingyang Song
+|
+Liping Jing
+|
+Yi Feng
+Keyphrase extraction aims to automatically extract salient phrases representing the critical information in the source document. Identifying salient phrases is challenging because there is a lot of noisy information in the document, leading to wrong extraction. To address this issue, in this paper, we propose a hybrid matching model for keyphrase extraction, which combines representation-focused and interaction-based matching modules into a unified framework for improving the performance of the keyphrase extraction task. Specifically, HybridMatch comprises (1) a PLM-based Siamese encoder component that represents both candidate phrases and documents, (2) an interaction-focused matching (IM) component that estimates word matches between candidate phrases and the corresponding document at the word level, and (3) a representation-focused matching (RM) component captures context-aware semantic relatedness of each candidate keyphrase at the phrase level. Extensive experimental results on the OpenKP dataset demonstrate that the performance of the proposed model HybridMatch outperforms the recent state-of-the-art keyphrase extraction baselines. Furthermore, we discuss the performance of large language models in keyphrase extraction based on recent studies and our experiments.
+
+pdf
+bib
+abs
+
+AFPQ: Asymmetric Floating Point Quantization for LLMs
+Yijia Zhang
+|
+Sicheng Zhang
+|
+Shijie Cao
+|
+DaYou Du
+|
+Jianyu Wei
+|
+Ting Cao
+|
+Ningyi Xu
+Large language models (LLMs) show great performance in various tasks, but face deployment challenges from limited memory capacity and bandwidth.Low-bit weight quantization can save memory and accelerate inference.Although floating-point (FP) formats show good performance in LLM quantization, they tend to perform poorly with small group sizes or sub-4 bits.We find the reason is that the absence of asymmetry in previous FP quantization makes it unsuitable for handling asymmetric value distribution of LLM weight tensors.In this work, we propose asymmetric FP quantization (AFPQ), which sets separate scales for positive and negative values.Our method leads to large accuracy improvements and can be easily plugged into other quantization methods, including GPTQ and AWQ, for better performance.Besides, no additional storage is needed compared with asymmetric integer (INT) quantization.The code is available at https://github.com/zhangsichengsjtu/AFPQ.
+
+pdf
+bib
+abs
+
+End-to-End Emotion Semantic Parsing
+Xiaotong Jiang
+|
+Zhongqing Wang
+|
+Guodong Zhou
+Emotion detection is the task of automatically associating one or more emotions with a text. The emotions are experienced, targeted, and caused by different semantic constituents. Therefore, it is necessary to incorporate these semantic constituents into the process of emotion detection. In this study, we propose a new task called emotion semantic parsing which aims to parse the emotion and semantic constituents into an abstract semantic tree structure. In particular, we design an end-to-end generation model to capture the relations between emotion and all the semantic constituents, and to generate them jointly. Furthermore, we employ a task decomposition strategy to capture the semantic relation among these constituents in a more cognitive and structural way. Experimental results demonstrate the importance of the proposed task, and indicate the proposed model gives superior performance compared to other models.
+
+pdf
+bib
+abs
+
+Overcoming Catastrophic Forgetting by Exemplar Selection in Task-oriented Dialogue System
+Chen Chen
+
 ## call_339477364a17488a84bbd97e-tool-result-bc9354f9-6002-4ff8-b81d-0069bef089d6
 
 Physiotherapie - Hochschule Campus Wien
