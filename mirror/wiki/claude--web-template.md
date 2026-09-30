@@ -1,6 +1,6 @@
 # web-template (claude)
 
-Zuletzt gespiegelt: 2026-09-30 09:07 UTC
+Zuletzt gespiegelt: 2026-09-30 09:19 UTC
 
 ## no_spec
 
@@ -2012,6 +2012,8 @@ Recipes encode the exact call sequence, required parameters, and empirically dis
 
 - **PostgreSQL storage-usage alarm**: `./references/recipes/pg-storage-alarm.md`
 - **ICP filing readiness and wait-time checks**: `./references/recipes/icp-filing-readiness.md`
+- **PostgreSQL instance spec change and shared-to-dedicated upgrade**: `./references/recipes/pg-instance-spec.md`
+- **Custom domain onboarding for an env (HTTP access domain, certificate, DNS binding)**: `./references/recipes/custom-domain.md`
 
 **Done when**: every parameter value in the call sequence traces to a recipe value marked as verified (实测) or to official docs.
 
@@ -2118,30 +2120,30 @@ TCB 服务角色族挂的是 TCB 自己声明的策略集（`QcloudAccessForTCBR
 
 自己在哪一行，用 `auth(action="status")` 看 `credential_scope`：`account` = 账号级登录，`single_env` = 环境级 API Key。
 
-**角色挂载的策略会随产品迭代变化**，别照着文档里的旧结论判断。要确认当前覆盖范围，直接读（cam service 已放行）：
+**角色挂载的策略会随产品迭代变化**，别照着文档里的旧结论判断。确认当前覆盖范围要现场读，但**读 cam 需要调用身份自己就有 cam 策略**：
 
 1. `ListAttachedRolePolicies`：看角色挂了哪些策略
 2. `GetPolicy(PolicyId=…)`：读该策略的 `PolicyDocument`，逐条看 `action` 数组里有没有你要的 Action
+
+实测边界（2026-09-24，账号级 device 登录）：`cam/GetRole`、`cam/ListAttachedRolePolicies`、`cam/ListPolicies` **三个都返回 `UnauthorizedOperation`**（`qcs::cam:::role/<roleId> has no permission`、`resource (*) has no permission`）。原因是调用者拿的正是 `TCB_QcsRole` 换来的临时密钥，而该角色自己没有 cam 读权限 —— 于是「想查清楚缺什么权限」这件事本身就要先有权限。所以**不要指望现场读出角色载体**，§3.2 的 `principal` 用固定值；真要读 cam，让用户换一个有 `QcloudCamReadOnlyAccess` 的身份。
+
+**确认「我到底是谁」用 `sts/GetCallerIdentity`，不依赖 cam**：返回 `Type`（`CAMRole` / `Account`）、`Arn`、`UserId`；以 `TCB_QcsRole` 调用时 `UserId` 形如 `<ownerUin>:TCB_QcsRole-<uin>-<timestamp>`。哪一行身份由此判定，比 `credential_scope` 更准 —— `credential_scope: account` 只说明「不是环境级 API Key」，实际落地仍可能是角色扮演身份。
 
 临时密钥用于代码侧调用：`auth(action="get_temp_credentials", confirm="yes", reveal=true)` 返回明文 STS 三元组，直接喂官方 SDK / TC3 手工签名，即 §2 代码管控路径。
 
 ### 3.2 一键授权链接（交给用户点一下）
 
+调不通、且身份落在上表「服务角色」那一行时，直接给用户一条链接，比让他自己去 CAM 里找入口快得多 —— 控制台自己就是这么做的：捕获到 `AuthFailure.UnauthorizedOperation` 且 message 含 `Check your CAM policies` 后弹「CAM 授权提示」，点「前往 CAM 授权」跳的就是这个页面。
+
 ```
-https://console.cloud.tencent.com/cam/role/grant?roleName=<角色名>&policyName=<预设策略名>&principal=<URL 编码后的 base64>
+https://console.cloud.tencent.com/cam/role/grant?roleName=<角色名>&policyName=<策略名>&principal=<URL 编码后的 base64>&serviceType=<展示用>&s_url=<授权后回跳地址>
 ```
 
-`principal` 是角色载体的 base64：`base64('{"service":"<角色载体>"}')`，末位 `=` 写成 `%3D`。
-
-| 角色 | 角色载体 | `principal` 参数值 |
+| 参数 | 必填 | 说明 |
 | --- | --- | --- |
-| `TCB_QcsRole` | `tcb.cloud.tencent.com` | `eyJzZXJ2aWNlIjoidGNiLmNsb3VkLnRlbmNlbnQuY29tIn0%3D` |
-| `SCF_QcsRole` | `scf.qcloud.com` | `eyJzZXJ2aWNlIjoic2NmLnFjbG91ZC5jb20ifQ%3D%3D` |
-
-不要硬编码角色名和载体 —— 两个都能现场读出来（cam service 已放行）：
-
-1. `callCloudApi(service="cam", version="2019-01-16", action="GetRole", params={ "RoleName": "TCB_QcsRole" })`
-2. `RoleInfo.PolicyDocument` 是该角色的**信任策略** JSON，`statement[].principal.service[]` 就是角色载体（`PolicyDocument` 是字符串，需再解析一层）
+| `roleName` | 是 | 要补策略的角色，如 `TCB_QcsRole` |
+| `policyName` | 是 | 预设策略名。**可以逗号连接多个**（`A,B,C`），一条链接一次挂多个 —— 控制台建角色时就是把 5 个策略拼成一条 |
+| `principal` | 是 | 角色载体的 base64，见下表 |
 
 ## README
 
@@ -2151,7 +2153,13 @@ https://console.cloud.tencent.com/cam/role/grant?roleName=<角色名>&policyName
 
 每个 recipe 固定结构：**When to use → 前置权限 → 接口序列 → 踩坑清单 → 验证步骤**（入口特殊的可加「入口」一节）。`When to use` 写可判定的触发条件（出现什么症状就该翻这篇），并用一句划出本篇不管什么、该转哪去。
 
-正文只写使用者照着做什么：**不写出处与验证过程**（取自哪份文档/源码、比对过哪些版本、我们怎么核对的），**不留维护者待办**；可信度只记在下表「状态」列 —— `✅ 生产实证（日期）` = 已在真实环境端到端跑通；`🟡 文档核对，未实跑` = 接口序列尚未在真实环境跑过，先按「验证步骤」做只读自检再用。
+正文只写使用者照着做什么：**不写出处与验证过程**（取自哪份文档/源码、比对过哪些版本、我们怎么核对的），**不留维护者待办**；可信度只记在下表「状态」列：
+
+- `✅ 生产实证（日期）` = 接口序列已在真实环境端到端跑通
+- `🟡 部分实证（日期）` = 只跑通了其中一部分路径，**未跑到的部分必须写在这一列里**；引用未跑到的步骤时按「文档核对」的谨慎度处理
+- `🟡 文档核对，未实跑` = 接口序列尚未在真实环境跑过，先按「验证步骤」做只读自检再用
+
+一篇 recipe 里「跑过」与「没跑过」混着是常态（写操作要真实破坏、权限或计费限制都可能挡住）。分档写清楚，比给整篇贴一个 `✅` 更省事：后者会让未验证的那几条也一起被高置信采信。
 
 「实测」是**值级**标记：贴在某个参数、接口或返回值上，最多一个，未标注的按官方文档核对后再用。不要给整节或整表贴「（全部实测）」这类状态括注——它没有逐行分辨率，不能改变任何具体动作，而后来补进未验证内容时会继承这个标签，正好让 AI 高置信采信未验证的东西。
 
@@ -2161,11 +2169,136 @@ https://console.cloud.tencent.com/cam/role/grant?roleName=<角色名>&policyName
 | --- | --- | --- | --- |
 | 1 | PostgreSQL 存储空间使用率告警 | [pg-storage-alarm.md](./pg-storage-alarm.md) | ✅ 生产实证（2026-09-08） |
 | 2 | ICP 备案提交前自查与等待期查询 | [icp-filing-readiness.md](./icp-filing-readiness.md) | ✅ 生产实证（2026-09-21） |
+| 3 | PostgreSQL 实例变配与升级独享 | [pg-instance-spec.md](./pg-instance-spec.md) | 🟡 部分实证（2026-09-24）：`ModifyPGInstanceSpec` 升配 + 降配已跑通；**共享升独享未跑**（账号下的 PG 实例全是独享形态，该接口只接受共享实例，只拿到前置条件报错原文）；「费用与套餐」一节的资源点单价与「无需升级套餐」、以及「目标 = 现状回 `unchanged`」按文档与界面核对，**未实跑** |
+| 4 | 自定义域名接入云开发 | [custom-domain.md](./custom-domain.md) | 🟡 部分实证（2026-09-24）：现状查询、只读预检、证书读取、真实绑定与解绑（含收尾）已跑通；**未跑**——轮询到 `Status = SUCCESS`（测试域名一直停在 `PROCESSING`）、代改 DNS 解析、备案（`dnspod` / `ba` 未授权） |
 
 ## 没有独立 recipe 的场景
 
 - **MySQL / CVM 等依赖产品告警**：复用 Recipe 1 的框架，换 monitor namespace。
 - **MySQL 备份回档、SCF 函数触发器**：暂无 recipe，从 `api-reference` 的依赖产品段起查。
+
+## custom-domain
+
+# Recipe 4 — 自定义域名接入云开发
+
+## When to use
+
+要让用户的**自有域名**指向云开发上的服务（静态托管 / 云函数 / 云托管）时：
+
+- 要把 `www.example.com` 接到自己的站点
+- 已经绑过域名但访问不了，要定位卡在哪一步（归属权 / 证书 / 解析 / 备案）
+- 环境还没有自定义域名，要先弄清「能不能绑、需要先做什么、绑完多久生效」
+
+管到「域名在云开发侧接入成功、能访问」为止。
+
+- 绑定 / 解绑 / 改域名的**工具选择**在 `../../../cloudbase-platform/SKILL.md` 的域名工具对照表
+- 控制台的图形化步骤（带截图）在 https://docs.cloudbase.net/service/custom-domain
+- **ICP 备案**的提交前自查与等待期查询转 [Recipe 2](./icp-filing-readiness.md)；买域名 / 实名 / 加解析在域名侧控制台，不在本 recipe 的接口序列里（原因见「前置权限」）
+
+## 前置权限
+
+| service | 用途 | 账号级身份 |
+| --- | --- | --- |
+| `tcb` | 自定义域名的预检 / 绑定 / 解绑 / 查状态 | 可用 |
+| `ssl` | 按域名检索证书（绑定要 `CertId`） | 可用 |
+| `domain` | 域名注册：查可注册性、价格、下单、信息模板 | **未授权**（`qcs::domain::uin/<uin>:domainId/* has no permission`） |
+| `dnspod` | 解析记录的增删查 | **未授权** |
+| `ba` | 备案订单 / 主体 / 域名状态 | **未授权** |
+
+这张表的用法：**云开发侧（`tcb` + `ssl`）能自己做完；域名侧三段（买、解析、备案）默认做不了**。但「调不通」不等于「这个域名不能用」—— 云开发侧的绑定照旧能走。
+
+实测确认这一点（2026-09-24）：账号级登录、只带 `tcb` + `ssl`，`tcb/CreateHTTPServiceRoute` **一次就绑上了**（域名 + 有效证书）。绑定这一步**不依赖** `domain` / `dnspod` / `ba` 里的任何一家。真正需要域名侧权限的只有两件事：
+
+- 域名的**归属权校验记录还没加**（预检报 `OWNERSHIP_VERIFY_FAILED`）—— 这时要写一条 TXT，得有 `dnspod` 写权限，或让用户自己加
+- 接入完成后要**把 CNAME 解析改过去** —— 同上
+
+注意这两件都是**写**。**只读地看解析当前指哪里不需要 `dnspod`** —— 用 `dig` 问公开解析即可（见序列 E）。也就是说：**归属校验已经过了、解析也指对了的环境，AI 可以独立完成绑定和解绑**；缺的从来不是绑定的权限，是 DNS 的**写**权限。
+
+缺权限时先认清是**谁**缺。实测（2026-09-24，账号级 device 登录）：`sts/GetCallerIdentity` 返回 `Type: CAMRole`、`UserId: <ownerUin>:TCB_QcsRole-<uin>-<ts>` —— 调用者是以 **`TCB_QcsRole`** 换来的临时密钥，缺的是挂在**这个角色**上的策略，而不是「用户没授权」。落点定了，补权限就有明确做法（链接拼法与使用边界见 [calling-methods.md §3.2](../calling-methods.md)）：
+
+**加解析** —— 最高频的一段（代加归属校验的 TXT、或接入成功后代加 CNAME）：
+
+- 只读（先看现状、判断解析配对没有）：
+  `https://console.cloud.tencent.com/cam/role/grant?roleName=TCB_QcsRole&policyName=QcloudDNSPodReadOnlyAccess&principal=eyJzZXJ2aWNlIjpbInRjYi5jbG91ZC50ZW5jZW50LmNvbSJdfQ%3D%3D`
+- 需要**代写**解析记录，把 `policyName` 换成 `QcloudDNSPodFullAccess`，其余不变
+- 想让用户授权完跳回原页面，在末尾加 `&s_url=` + URL 编码后的当前地址
+
+两条链接都是**账号下全部域名解析**的口子，给之前先跟用户讲清代价（见 §3.2 的第二条边界）。
+
+**买域名 / 备案这两段故意不给链接**：
+
+- 买域名是**消费操作**。给服务角色开下单权限，等于把花钱的能力交出去 —— 让用户自己在 https://console.cloud.tencent.com/domain 完成。
+- 备案不在 CAM 策略体系里，没有「加一条策略就能调 API」的入口，只能走控制台或备案小程序。自查与等待期见 [Recipe 2](./icp-filing-readiness.md)。
+
+给链接时一并说清**用哪个账号点**：授权页要主账号或具备 CAM 写权限的身份登录，子账号点开同样授不了 —— 别只丢一条 URL 就当交代完了。
+
+## 接口序列
+
+### A. 先看环境侧现状（只读）
+
+| 步 | 工具 / Action | 关键参数 | 取什么 |
+| --- | --- | --- | --- |
+| 1 | `queryGateway(action="listCustomDomains")` | — | `domains[]` 的 `Domain` / `AccessType` / `CertId` / `Status` / `DNSStatus` / `Cname` / `IsDefault` / `Routes[]` |
+| 2 | `queryGateway(action="listRoutes")` | `domain` 可选 | 该域名下已有的 `Path` 与 `UpstreamResourceType` / `UpstreamResourceName` |
+
+环境还没有自定义域名时，步骤 1 只会回一条 `Domain: "*"`。它代表**默认 HTTP 域名**（`*.{region}.app.tcloudbase.com`），里面挂着"没指定域名"创建的那些路由 —— 判断「有没有自定义域名」时把它排除，但它的 `Routes[]` 是有效信息，别当成空。
+
+### A2. 两套同形接口，按维度选
+
+域名相关的 action 都有「环境维度」和「平台维度」两份，形状几乎一样：
+
+| 维度 | action 前缀 | 关键参数 | 什么时候用 |
+| --- | --- | --- | --- |
+| 环境 | `*HTTPServiceRoute`（`Create` / `Verify` / `Describe` / `Modify` / `Delete`） | `EnvId` | 给某个云开发环境绑域名 —— **本 recipe 讲的是这套** |
+| 平台 | `*PlatformHTTPServiceRoute`（同名五个） | `PlatformId`（如 `pf-t960szfwv1cs`） | 平台统管的域名池 |
+
+平台版有两点不同：**请求地域要按平台选的地域传**（不能跟随 `envId`，否则不符合平台维度语义）；暂时没有域名级自定义 Headers（控制台的「Headers 设置」入口据此隐藏）。别把两套的参数混着传 —— 后果是报参数缺失，很难一眼看出是维度选错了。
+
+### B. 绑定前先跑只读预检
+
+`callCloudApi(service="tcb", action="VerifyHTTPServiceRoute")`：**只读预检，不创建任何资源**。
+
+```json
+{
+  "EnvId": "<envId>",
+  "Domain": {
+    "Domain": "www.example.com",
+    "CertId": "<ssl 里该域名的证书 ID>",
+    "AccessType": "DIRECT",
+    "Protocol": "HTTP_AND_HTTPS",
+    "Enable": true
+  }
+}
+```
+
+返回九个检查项，每项 `Status`（`PASS` / `FAIL` / `SKIPPED`），失败时带 `Code` / `Message`；`Passed` 是总开关。
+
+| 检查项 | 判定什么 | 什么时候 `SKIPPED` |
+| --- | --- | --- |
+| `Ownership` | 域名归属权 | — |
+| `Cert` | 证书是否存在、是否可用 | `CertId` 传空 |
+| `DomainConflict` | 域名是否已被**其他环境**占用 | — |
+| `Quota` | 域名 / 路径配额（含套餐能力） | — |
+| `RouteConflict` | 同域名下路径是否被占 | 请求里没带 `Routes` |
+| `Blacklist` | 域名是否在黑名单 | — |
+| `InternalAccount` | 内部域名与当前账号是否匹配 | 不是内部域名 |
+| `CDNResource` | 云开发 CDN 资源状态。域名还没接进来时返回 `PASS` + 一句「备案由 CDN 后端在创建时校验」的说明（原话见 E 节） | 未实测 |
+| `EO` | 边缘加速域名归属权 | `AccessType` 不是 `EO` |
+
+失败项里 `Code` 的完整取值（照这张表分流，不用逐个试）：
+
+`OWNERSHIP_VERIFY_FAILED` · `OWNERSHIP_DNS_LOOKUP_FAILED` · `CERT_VERIFY_FAILED` · `QUOTA_EXCEEDED` · `ROUTE_CONFLICT` · `DOMAIN_IN_USE` · `NON_INTERNAL_ACCOUNT` · `DOMAIN_IN_BLACKLIST` · `CDN_RESOURCE_PROCESSING` · `CDN_RESOURCE_OFFLINE` · `EO_OWNERSHIP_VERIFY_FAILED` · `EO_DOMAIN_NOT_ICP` · `EO_DOMAIN_IN_USE` · `INTERNAL_CHECK_ERROR`
+
+预检之外，改 / 删域名与路由时另外几个会撞上的错误码：`OperationDenied.HTTPServiceDomainProcessing`（域名处理中，稍后再试）· `LimitExceeded.HTTPServiceRoute`（路由数超上限）· `OperationDenied.HTTPServiceDomainEOFrozen`（EO 域名被冻结，要先充正资源点）· `InvalidParameter.CertVerifyFailed`。
+
+同一环境、四种真实输入下的结果：
+
+| 输入 | `Cert` | `Ownership` | `DomainConflict` | `Passed` |
+| --- | --- | --- | --- | --- |
+| 自己的域名 + 本域有效证书 | `PASS` | `PASS` | `PASS` | `true` |
+| 自己的域名 + `CertId: ""` | `SKIPPED` | `PASS` | `PASS` | `true` |
+| 自己的域名 + 不存在的证书 ID | `FAIL` `CERT_VERIFY_FAILED`「证书ID不存在」 | `PASS` | `PASS` | `false` |
+| 别人的域名 | `PASS` | `FAIL` `OWNERSHIP_VERIFY_FAILED` | `FAIL` `DOMAIN_IN_USE` | `false` |
 
 ## icp-filing-readiness
 
@@ -2176,11 +2309,12 @@ https://console.cloud.tencent.com/cam/role/grant?roleName=<角色名>&policyName
 准备用云开发环境作为备案云资源，或已在备案流程中需要把「能不能提、要等多久、被什么卡住」查清楚时：
 
 - 提交前想知道当前云开发环境够不够格当备案云资源（套餐、剩余有效期、固定 IP）
+- 判定出「未开启云托管固定 IP」后，要把它开启（序列 E；前置是环境已开通云托管，没开通先走 0a–0c）
 - 想知道**现在能不能提交下一条备案**（同一主体下多条备案不能并行）
 - 想知道某个省大概要审多少天、这个省对个人/企业有什么硬性限制
 - 想知道某个域名的备案状态（管局是否通过、是否已落地、是否被拦）
 
-本篇管到「查清楚」为止。**提交备案、上传材料、人脸/视频核身**在腾讯云备案小程序里完成，不走云 API；域名注册 / 实名转 [domain](../service-versions.md)；证书申请转 `ssl`；备案通过后往云开发绑自定义域名转 `manageHosting` / HTTP 网关。
+本篇覆盖「判定能不能备」和「把环境调到能备（开固定 IP）」，到此为止。**提交备案、上传材料、人脸/视频核身**在腾讯云备案小程序里完成，不走云 API；域名注册 / 实名转 [domain](../service-versions.md)；证书申请转 `ssl`；备案通过后往云开发绑自定义域名转 `manageHosting` / HTTP 网关。
 
 ## 前置权限
 
@@ -2188,12 +2322,13 @@ https://console.cloud.tencent.com/cam/role/grant?roleName=<角色名>&policyName
 
 | service | version | 用途 |
 | --- | --- | --- |
-| `tcb` | `2018-06-08` | 读云开发环境套餐与到期时间 |
+| `tcb` | `2018-06-08` | 读环境准入判定（备案资源与不符合项） |
+| `tcbr` | `2022-02-17` | 读 / 改云托管固定 IP 状态（前置：该环境已开通云托管） |
 | `ba` | `2020-07-20` | 读备案订单、主体、省份规则、域名状态 |
 
 **凭据身份：账号级。** 备案数据挂在腾讯云账号下，与环境无关 —— 但 `callCloudApi` 有环境绑定门禁，账号级登录后仍需先 `auth(action="set_env", envId=…)` 绑一个环境（任一正常环境即可，不参与备案判定），否则首个调用返回 `ENV_REQUIRED`。
 
-`ba` 的接口是**操作级**授权。账号读自己的备案数据一般不需要额外策略；出现 `UnauthorizedOperation` 时，给**该身份**追加 ICP 备案（`ba`）的读权限，链接拼法与角色载体读法见 [calling-methods.md §3](../calling-methods.md)。
+`ba` 的接口是**操作级**授权，而且**结果强依赖凭据所属账号**：备案数据挂在**备案主体所属账号**下，用不含该主体的账号级凭据调用，序列 B–D 的九个只读接口会**全部**返回 `UnauthorizedOperation`（`resource (*) has no permission`）—— action 名被正常识别，卡在策略层，看起来像「这批接口不可用」，其实只是账号不对；换回备案主体所属账号即正常返回数据。所以第一步是确认凭据与备案主体同账号，再给该身份追加 ICP 备案（`ba`）的读权限。链接拼法与角色载体读法见 [calling-methods.md §3](../calling-methods.md)。
 
 官方接口文档：https://cloud.tencent.com/document/api/243/ （请求域名 `ba.tencentcloudapi.com`）。
 
@@ -2203,14 +2338,23 @@ https://console.cloud.tencent.com/cam/role/grant?roleName=<角色名>&policyName
 
 | 步 | Action | service | 关键参数 | 取什么 |
 | --- | --- | --- | --- | --- |
-| 1 | DescribeEnvInfo | `tcb` | `{ "EnvId": "<envId>" }` | `EnvInfo.BillingInfo.PackageId`、`ExpireTime` |
+| 1 | DescribeICPResourcesInfo | `tcb` | `{ "EnvId": "<envId>" }` | `IcpNotAllowedReason[]`、`ICPResources[]`、`Total` |
 
-判定两条可判定的准入条件：
+**一条调用给出三项准入的完整判定**，不用逐项去查。`IcpNotAllowedReason` 是**不符合项**的枚举数组，三项都满足时为空数组：
 
-- **套餐**：`PackageId` 为 `baas_personal` 及以上（免费体验环境不带套餐，不能备案）。
-- **剩余有效期 > 6 个月**：`ExpireTime` 距今必须大于 6 个月。这条最容易不自知 —— 环境刚创建或快到期时，`ExpireTime` 可能只余几周。
+| 值 | 含义 | 解法 |
+| --- | --- | --- |
+| `packageUnsupported` | 当前套餐不支持备案 | 升级套餐 |
+| `validPeriod` | 剩余有效期不足（需大于 6 个月） | 续费环境 |
+| `fixedIpNotEnabled` | 未开启云托管固定 IP | 开启固定 IP（序列 E） |
 
-第三条「环境已开启云托管固定 IP」公开面没有对应的读 Action，判据只能在控制台读：进入目标环境的**备案管理**页，页面会直接列出三项的状态（例如「剩余有效期不足」「未开启云托管固定 IP」），并给出「续费环境」「开启固定IP」入口。三项都满足时该页才出现「去备案」。
+`ICPResources[]` 是可用于备案的资源列表，每项含 `ResourceId`（云托管服务 ID）、`ResourceIp`（**备案时要填的那个 IP**）、`Region`；有任一项不满足时该数组为空。
+
+⚠️ **够格判据是「`IcpNotAllowedReason` 为空 **且** `ICPResources` 非空」，两者同时成立才算** —— 只看前者会被误判。传进来的环境不属于当前凭据（账号不对、envId 写错）时，这个接口同样返回 `success` + 空数组 + `Total: 0`（实测），与「三项全满足」长得一模一样；同一批探测里只有 `tcb/DescribeEnvInfo` 会明确报 `env not found`。判准入前先用它确认环境可达。
+
+会同时出现的是 `packageUnsupported` + `validPeriod`（套餐不对时有效期必然也不够）—— 按「先解决 `packageUnsupported`」的顺序推进，否则续完费仍然备案不了。
+
+需要看页面时，该环境的**备案管理**页 `https://tcb.cloud.tencent.com/dev?envId=<envId>#/env/filing-manage` 会把上述状态与对应操作入口一并列出。要单独读套餐与到期时间的原始值，用 `tcb/DescribeEnvInfo` 的 `EnvInfo.BillingInfo.PackageId` 与 `ExpireTime`；但准入判定以 `DescribeICPResourcesInfo` 为准，不要自己按天数算 —— 边界（是否严格大于 6 个月）由服务端定。
 
 ### B. 现在能不能提交备案（同主体互斥判定）
 
@@ -2247,29 +2391,283 @@ https://console.cloud.tencent.com/cam/role/grant?roleName=<角色名>&policyName
 
 步骤 8 的四个布尔字段分别对应：管局是否已通过、是否已落地到腾讯云、是否有核查工单、是否被拦。域名不是自己的、已在别处备案未接入、被列入限制名单，都会在这里体现，不必等到提交后才被打回。
 
+### E. 开启云托管固定 IP（写操作）
+
+序列 A 判定出 `fixedIpNotEnabled` 时走到这里。
+
+固定 IP 是**同一个环境上的云托管能力**，不是另一个环境、也不是另一个产品 —— `tcbr` 接口的 `EnvId` 就是云开发环境 ID。但**云托管本身可能还没开通**，没开通时后面的固定 IP 三步无从谈起。判断开通状态有专用工具，不要为它走裸云 API：
+
+| 步 | 工具 | 关键参数 | 取什么 |
+| --- | --- | --- | --- |
+| 0a | `queryCloudRun(action="envStatus")` | `envId` | `status`：`normal` = 已开通 / `creating` = 开通中 / `unopened` = 未开通 |
+| 0b | `manageCloudRun(action="initEnv")` | `envId` | 异步开通、幂等；只在 `unopened` / `creating` 时调 |
+| 0c | 再跑一次 0a | `envId` | 轮询到 `status: "normal"` 才往下走 |
+
+控制台上对应的入口是「环境 → 云托管 → 开通」，`https://tcb.cloud.tencent.com/dev?envId=<envId>#/platform-run`。
+
+`status` 为 `normal` 之后，固定 IP 也只能走裸云 API：两个云托管专用工具都没有固定 IP 的 action（`queryCloudRun` 是 `list` / `detail` / `templates` / `getDeployLog` / `getProcessLog` / `getDeployRecords` / `envStatus` / `getManageTask`，`manageCloudRun` 是 `init` / `download` / `run` / `deploy` / `delete` / `createAgent` / `updateConfig` / `initEnv` / `traffic`），Manager SDK 也没有对应方法。
+
+| 步 | Action | service | 关键参数 | 取什么 |
+| --- | --- | --- | --- | --- |
+| 12 | DescribeStableIP | `tcbr` | `{ "EnvId": "<envId>" }` | `Status`（`normal` = 已开启，其余值含空串 = 未开启）、`Address`、`ExpireTime` |
+| 13 | ModifyStableIPStatus | `tcbr` | `{ "EnvId": "<envId>", "Status": "ON" }` | `TaskId` |
+| 14 | DescribeStableIPTask | `tcbr` | `{ "EnvId": "<envId>", "TaskId": <TaskId> }` | `Result`（`running` / `success` / `failed`） |
+
+步骤 12 先确认现状：`Status` 只有 `normal` 算已开启，其余值（含空串）都按未开启处理，`Address` 是已分配的固定 IP。但**这个字段不是充分判据** —— 实测在一个不属于当前凭据的 envId 上，这一步照样返回成功、`Status` 也是空串，与「环境已开通云托管、但固定 IP 没开」从返回值上区分不出来，所以先用 `tcb/DescribeEnvInfo` 确认环境可达，再走 0a 判云托管开通状态。
+
+步骤 13 是**异步任务**，只返回 `TaskId`，不等于已生效；步骤 14 用它轮询，`Result` 仍为 `running` 就继续等（间隔 2 秒量级）。生效后重跑序列 A，`fixedIpNotEnabled` 才会消失。
+
+关闭固定 IP 把步骤 13 的 `Status` 换成 `OFF`，轮询同一套。
+
+## 踩坑清单
+
+| 坑 | 现象 | 正确做法 |
+
+## pg-instance-spec-and-password
+
+# Recipe 3 — PostgreSQL 实例变配与升级独享
+
+## When to use
+
+要让云开发环境的 PostgreSQL 实例改变**租户形态或规格**时：
+
+- 规格撑不住：CPU / 内存打满、慢查询变多，要调大（或调小）实例规格
+- 环境用的是**共享** PG，要升级成**独享**实例
+- 已经提交了变配 / 升独享，要知道**任务跑完没有、失败原因是什么**
+
+本篇管 PG 的**实例管控面**：租户形态、规格、存储、异步任务。
+
+- 数据面（建表、跑 SQL、schema、migration）转 `queryPgDatabase` / `managePgDatabase`
+- 存储空间告警转 [Recipe 1](./pg-storage-alarm.md)
+- 环境套餐（`baas_personal` 这类）的续费 / 升级转 `tcb/ModifyEnvPlan`
+
+## 前置权限
+
+| service | version | 用途 |
+| --- | --- | --- |
+| `tcb` | `2018-06-08` | 环境的 PG 实例管控面：变配 / 升独享 / 查任务 |
+| `postgres` | `2017-03-12` | 读实例现状与可售规格 |
+
+**凭据身份：账号级。** 实例挂在云开发环境上，但读它的现状要走 `postgres` 产品接口。`callCloudApi` 有环境绑定门禁，账号级登录后先 `auth(action="set_env", envId=…)` 绑到目标环境；实例不在默认地域时，`postgres` 的读接口要在顶层传 `region`。
+
+权限按凭据身份分开补：
+
+- **账号级身份**（腾讯云密钥 / 子账号 / device 登录）：读实例现状与规格表需要 `QcloudPostgreSQLReadOnlyAccess`；`tcb` 的这几个 Action 属云开发自身能力，一般不额外要策略。**先直接往下做**，只有真的返回 `UnauthorizedOperation` 时才回来补。
+- **CLI / MCP 用 TCB 服务角色换临时密钥**：权限挂在角色上，给角色追加同一条策略。
+
+一键授权链接（以 `TCB_QcsRole` 为例，`principal` 是该角色载体的 base64）：
+
+- `https://console.cloud.tencent.com/cam/role/grant?roleName=TCB_QcsRole&policyName=QcloudPostgreSQLReadOnlyAccess&principal=eyJzZXJ2aWNlIjoidGNiLmNsb3VkLnRlbmNlbnQuY29tIn0%3D`
+
+账号级身份缺权限时，由主账号给**这个身份**追加策略，别去点角色的链接。链接拼法与角色载体的读法见 [calling-methods.md §3](../calling-methods.md)。
+
+官方接口文档：云开发 API 概览 https://cloud.tencent.com/document/api/876/34809 （请求域名 `tcb.tencentcloudapi.com`）；云数据库 PostgreSQL API 概览 https://cloud.tencent.com/document/api/409/16761 （请求域名 `postgres.tencentcloudapi.com`）。
+
+## 接口序列
+
+### A. 先读现状：这个环境的 PG 是哪种、现在什么规格
+
+| 步 | Action | service / version | 关键参数 | 取什么 |
+| --- | --- | --- | --- | --- |
+| 1 | DescribeEnvInfo | `tcb` / `2018-06-08` | `{ "EnvId": "<envId>" }` | `EnvBaseInfo.PostgreSQL[].InstanceName`（= 下一步的 `DBInstanceId`）、`.TenantType` |
+| 2 | DescribeDBInstanceAttribute | `postgres` / `2017-03-12` | `{ "DBInstanceId": "<上一步的 InstanceName>" }`，地域走顶层 `region` | `DBInstance` 下的 `DBInstanceCpu` / `DBInstanceMemory` / `DBInstanceStorage` / `DBInstanceClass` / `DBMajorVersion` / `DBInstanceStorageType` / `Zone` / `DBInstanceStatus` |
+
+`PostgreSQL` 是数组：空数组说明这个环境没有开 PG，不要在它上面做变配。`TenantType` 是分流开关 —— `SHARED` 走序列 B2 升独享，`DEDICATED` 走序列 B1 调规格。
+
+### B1. 独享实例调规格
+
+| 步 | Action | service / version | 关键参数 | 取什么 |
+| --- | --- | --- | --- | --- |
+| 3 | DescribeClasses | `postgres` / `2017-03-12` | `{ "Zone": "<A2 的 Zone>", "DBEngine": "postgresql", "DBMajorVersion": "<A2 的 DBMajorVersion>", "StorageType": "<A2 的 DBInstanceStorageType>", "InstanceCategory": "cloudbase" }` | `ClassInfoSet[]`：`SpecCode` / `CPU` / `Memory` / `MinStorage` / `MaxStorage` / `State` |
+| 4 | ModifyPGInstanceSpec（预检） | `tcb` / `2018-06-08` | 步骤 5 的全部参数 + `"DryRun": true` | `DealName` / `BillId`（预检通过时都是空串） |
+| 5 | ModifyPGInstanceSpec（正式） | `tcb` / `2018-06-08` | `{ "EnvId": …, "Cpu": <核数>, "Memory": <GB>, "SwitchTag": 0\|1\|2, "Storage": <GB，可选> }` | `DealName` / `BillId` |
+
+步骤 3 只从返回列表里挑规格 —— `State` 为 `1` 表示在售；`CPU` / `Memory` 与 `SpecCode` 三列要一致地挑同一行。`Storage` 目标值必须落在该行的 `MinStorage` ~ `MaxStorage` 之间。
+
+步骤 4 是提交前的安全网：`DryRun: true` 只做校验、不发起变配。预检报错就直接改参数重来，**不要跳过预检直接提交**（规格非法时会留下无效订单）。
+
+步骤 5 的 `SwitchTag` 决定切换时机：`0` 立即、`1` 指定时间、`2` 维护时间窗口内。用 `1` 时 `SwitchStartTime` / `SwitchEndTime` 的格式是 **`YYYY-MM-dd HH:mm:ss`**：
+
+```json
+{
+  "EnvId": "<envId>",
+  "Cpu": 2,
+  "Memory": 4,
+  "Storage": 50,
+  "SwitchTag": 0
+}
+```
+
+返回 `DealName`（账单名）与 `BillId`（账单标识）。**变配是异步的：拿到订单号 ≠ 已经变完**，规格要按序列 C 回查。
+
+### B2. 共享实例升级为独享
+
+| 步 | Action | service / version | 关键参数 | 取什么 |
+| --- | --- | --- | --- | --- |
+| 6 | DescribeClasses | `postgres` / `2017-03-12` | 同步骤 3，`StorageType` 可以不传 | 同步骤 3 |
+| 7 | UpgradePGInstanceToDedicated | `tcb` / `2018-06-08` | `{ "EnvId": …, "SwitchTag": 0\|1, "SpecCode": "<步骤 6 的 SpecCode>", "Storage": <GB> }` | `TaskId` |
+
+`SwitchTag` 是**必填**（`0` 立即切换、`1` 指定时间切换）。用 `1` 时 `SwitchStartTime` / `SwitchEndTime` 的格式是 **`HH:MM:SS`** —— 和 B1 的 `ModifyPGInstanceSpec` **不是同一套格式**。
+
+```json
+{
+  "EnvId": "<envId>",
+  "SwitchTag": 0,
+  "SpecCode": "pg.it.small2",
+  "Storage": 10
+}
+```
+
+返回 `TaskId`，用序列 C 回查进度。
+
+### C. 回查：任务与规格
+
+| 步 | Action | service / version | 关键参数 | 取什么 |
+| --- | --- | --- | --- | --- |
+| 9 | DescribeTaskResult | `tcb` / `2018-06-08` | `{ "EnvId": …, "TaskId": "<B2 的 TaskId>" }` | `Status` / `Phase` / `Reason` / `TaskType` |
+| 10 | DescribeDBInstanceAttribute | `postgres` / `2017-03-12` | 同步骤 2 | 规格是否已变成目标值 |
+
+两个回查入口分工不同：
+
+- **升独享（B2）** 有 `TaskId` → 用步骤 9 看 `Status`（`Accepted` / `Running` / `Succeed` / `Failed`）与 `Phase`，失败读 `Reason`。
+- **调规格（B1）不返回 `TaskId`** → 用步骤 10 比对 `DBInstanceCpu` / `DBInstanceMemory` / `DBInstanceStorage`，看 `UpdateTime` 是否晚于提交时间。
+
+想用图形界面看这两条，控制台入口是：PG 实例页 `https://tcb.cloud.tencent.com/dev?envId=<envId>#/db/postgres/setting`（规格），任务列表 `https://tcb.cloud.tencent.com/dev?envId=<envId>#/db/postgres/tasks`。
+
 ## 踩坑清单
 
 | 坑 | 现象 | 正确做法 |
 | --- | --- | --- |
-| 账号级登录仍被拦 | 首个 `ba` 调用返回 `ENV_REQUIRED`（「当前已登录，但尚未绑定环境」） | 先 `auth(action="set_env", envId=…)`；备案本身与环境无关，绑任一个正常环境即可 |
-| 猜错环境信息 Action | `tcb/DescribeEnvBaseInfo` → `action is invalid or not found` | 环境基础信息用 `tcb/DescribeEnvInfo`（不是 `EnvBaseInfo`） |
-| 以为设备列表能直接查 | `ba/DescribeDevices` / `ba/DescribeTaskDevices` → `missing the required parameter Skey` | `Skey` 来自备案订单流程，公开面拿不到；要判定「环境能否作为备案资源」走序列 A |
-| 以为网站名能独立校验 | `ba/ValidateSiteName` → `missing the required parameter IcpOrderID` | 它只能在已有订单内校验；提交前自查改用序列 C 的省份规则 |
-| 以为能查任意账号 | `ba/CheckAccountNotBeian` 缺 `CheckUin`、`ba/CheckIcpRestrictionsByAh` 缺 `Uin` | 这两个是查指定 Uin 的通道，不是「查我自己」的默认入口 |
-| 域名详情查不了 | `ba/DescribeIcpDomainInfo` 缺 `Type`，补上后又缺 `Value` | 只想看域名备案状态时用 `ba/DescribeDomainIcpStatus`，只需 `Domain` |
-| APP 备案状态查询 | `ba/DescribeAppIcpStatus` → `missing the required parameter CertificateNumber` | 该接口按备案号查，需先有备案号；新申请阶段查不到 |
-| 管局时长查询 | `ba/DescribeAvgAuditDaysByAh` → `missing the required parameter OrderType` | 按省份量级预期用 `ba/DescribeEvaluateAuditDays`（无需参数） |
-| 备案管理页与环境设置页不一致 | 个人版环境：备案管理页给「开启固定IP」入口，但环境设置页**没有**固定公网 IP 卡片 | 固定 IP 的准入以备案管理页的状态为准；环境设置页看不到不代表不可开启，按备案管理页的入口走 |
-| 用环境级凭据路径去查 | 环境级 API Key 只能看到绑定环境，备案数据看不到 | 备案查询用账号级登录取凭据 |
-| 把 `ba` 当成国际站能力 | 国际站账号查不到国内备案数据 | 备案是腾讯云国内站业务，走国内站身份查询 |
+| 两个变配接口的时间格式不同 | 照 B1 的格式往 `UpgradePGInstanceToDedicated` 填、或反过来，报参数格式错 | `ModifyPGInstanceSpec` 用 `YYYY-MM-dd HH:mm:ss`，`UpgradePGInstanceToDedicated` 用 `HH:MM:SS`；不确定就用 `SwitchTag: 0` 立即切换，绕开时间参数 |
+| 内存单位在两处不一样（实测） | 顺手把 `DescribeClasses.ClassInfoSet[].Memory` 填进 `ModifyPGInstanceSpec.Memory` | 规格表的 `Memory` 是 **MB**（同一规格 `DBInstanceMemory` 是 2、`ClassInfoSet` 里是 2048），要先除以 1024 换算成 GB |
+| 提交了不在售的规格 | `spec 3C3G is not available in region ap-shanghai` | 先跑步骤 3 / 6 拿 `ClassInfoSet`，从列表里挑 `SpecCode` / `CPU` / `Memory`；不要凭经验凑核数与内存 |
+| 拿 `DescribeTaskResult` 回查变配 | `Task not found.` | `ModifyPGInstanceSpec` 不返回 `TaskId`，变配回查走 `DescribeDBInstanceAttribute`；只有 `UpgradePGInstanceToDedicated` 返回 `TaskId` |
+| 漏传 `DescribeTaskResult` 的入参 | 缺 `EnvId` 报 `The request is missing the required parameter \`EnvId\`.`，补齐后又报缺 `TaskId` | 入参只有 `EnvId` + `TaskId` 两个；`TaskType` 是返回字段、不是入参，不要往请求里塞 |
+| 用 `TaskType` 做白名单过滤 | 按文档枚举只认 `PGUserMigration`，升独享的任务被当成"查不到" | `TaskType` 的文档枚举不含升级任务；判读只看 `Status` / `Phase` / `Reason`，不要去匹配 `TaskType` 的取值 |
+| 在共享实例上直接调调规格接口 | `FailedOperation.InstanceStatusConflict`（Instance status does not match the required status for this operation） | 先看步骤 1 的 `TenantType`：`SHARED` 先走 B2 升独享，变 `DEDICATED` 之后再走 B1 调规格。升独享是单向的 |
 
-## 验证步骤
+## pg-instance-spec
 
-1. **序列 A**：`DescribeEnvInfo` 返回的 `BillingInfo.PackageId` 非空、`ExpireTime` 可解析为日期，且 `ExpireTime - 今天 > 6 个月`；不满足就先续费 / 升级，不要往下走。
-2. **序列 B**：`DescribeLastIcpOrderInProgress` 返回 `IcpOrderId` —— 空串即「无进行中订单」，非空则停下来先处理这条订单，不要提交第二条。
-3. **序列 C**：`DescribeEvaluateAuditDays` 的 `Result` 能解析成 `ProvinceCode` → 天数的数组，且能对上自己省份的行政区划码；`DescribeProvinceRules` 里能定位到自己省份的 `Personal` / `Enterprise` 段落。
-4. **序列 D**：`DescribeDomainIcpStatus` 返回四个布尔字段。任意一项为 `true` 时，先按对应语义处理（`GovStatus` 已通过、`LandedStatus` 已落地、`AuditTicket` 有工单、`Ban` 被拦），再决定是否发起新订单。
-5. 全链路只调用 `Describe*`，不应产生任何订单或状态变更；若某步返回了订单号或写操作结果，说明参数传错，停止并复核。
+# Recipe 3 — PostgreSQL 实例变配与升级独享
+
+## When to use
+
+要让云开发环境的 PostgreSQL 实例改变**租户形态或规格**时：
+
+- 规格撑不住：CPU / 内存打满、慢查询变多，要调大（或调小）实例规格
+- 环境用的是**共享** PG，要升级成**独享**实例
+- 已经提交了变配 / 升独享，要知道**任务跑完没有、跑到哪、失败原因是什么**
+- 变配 / 升独享**还没提交或刚提交**，用户先问「要多久、业务会不会断」—— 这类「给用户的预期」按序列 D 的口径回答，不要自己估
+- 用户问「是不是得先升套餐才能升配」「升完每月多花多少」—— 按「费用与套餐」一节的结论与口径回答，不要凭感觉
+
+本篇管 PG 的**实例管控面**：租户形态、规格、存储、异步任务。
+
+- 数据面（建表、跑 SQL、schema、migration）转 `queryPgDatabase` / `managePgDatabase`
+- 存储空间告警转 [Recipe 1](./pg-storage-alarm.md)
+- 环境套餐（`baas_personal` 这类）的续费 / 升级转 `tcb/ModifyEnvPlan`
+
+## 前置权限
+
+| service | version | 用途 |
+| --- | --- | --- |
+| `tcb` | `2018-06-08` | 环境的 PG 实例管控面：变配 / 升独享 / 查任务（写） |
+| `postgres` | `2017-03-12` | 读实例现状与可售规格 |
+
+**凭据身份：账号级。** 实例挂在云开发环境上，但读它的现状要走 `postgres` 产品接口。`callCloudApi` 有环境绑定门禁，账号级登录后先 `auth(action="set_env", envId=…)` 绑到目标环境；实例不在默认地域时，`postgres` 的读接口要在顶层传 `region`。
+
+权限按凭据身份分开补：
+
+- **账号级身份**（腾讯云密钥 / 子账号 / device 登录）：读实例现状与规格表需要 `QcloudPostgreSQLReadOnlyAccess`；`tcb` 的这几个 Action 属云开发自身能力，一般不额外要策略。**先直接往下做**，只有真的返回 `UnauthorizedOperation` 时才回来补。
+- **CLI / MCP 用 TCB 服务角色换临时密钥**：权限挂在角色上，给角色追加同一条策略。
+
+一键授权链接（以 `TCB_QcsRole` 为例，`principal` 是该角色载体的 base64）：
+
+- `https://console.cloud.tencent.com/cam/role/grant?roleName=TCB_QcsRole&policyName=QcloudPostgreSQLReadOnlyAccess&principal=eyJzZXJ2aWNlIjpbInRjYi5jbG91ZC50ZW5jZW50LmNvbSJdfQ%3D%3D`
+
+账号级身份缺权限时，由主账号给**这个身份**追加策略，别去点角色的链接。链接拼法、`principal` 的固定取值与使用边界见 [calling-methods.md §3.2](../calling-methods.md)。
+
+官方接口文档：云开发 API 概览 https://cloud.tencent.com/document/api/876/34809 （请求域名 `tcb.tencentcloudapi.com`）；云数据库 PostgreSQL API 概览 https://cloud.tencent.com/document/api/409/16761 （请求域名 `postgres.tencentcloudapi.com`）。
+
+## 费用与套餐：变配不需要先升级套餐
+
+**改规格、升独享都没有套餐门槛。** 调用条件只有两类：实例状态可操作、目标规格合法。没有「套餐档位」「计费模式」这类前置 —— 个人版环境照样能调。
+
+别把边缘加速那道门槛套到这里。边缘加速确实要求「标准版及以上套餐 + 环境处于资源点计费模式」（见 [Recipe 4](./custom-domain.md)），那是**加速能力**的准入要求；PG 变配是**实例自身**的规格调整，两件事。
+
+费用按**实例规格**扣资源点，与访问量无关（没人连库也照扣）：
+
+| 项 | 口径 |
+| --- | --- |
+| CPU | **342 资源点 / CU / 小时** |
+| 存储 | **0.5 资源点 / GB / 小时** |
+
+按这个口径，2 核 4 GiB + 50 GB 的独享实例是 **709 资源点/小时**（约 1.7 万/天）；从 1 核 2 GiB + 10 GB 升到它，每小时多 362 资源点。控制台提交页的「用量推算」就按这个口径给，细则可以引其中的「PostgreSQL 数据库计量说明」链接给用户。
+
+所以「要不要升套餐」只有一条判据：**资源点够不够扣**。升配后消耗变快，扣到不足时才需要升套餐或加购资源包 —— 那是**额度**问题，不是变配的前置条件。回答用户时把这两件事分开说，别让「先升套餐」变成一次白忙。
+
+这一节的口径只适用于**独享**实例：共享实例的计费规则不同，升独享提交时的提示就是「升级后按独享实例的计费规则计量计费」。
+
+## 接口序列
+
+### A. 先读现状：这个环境的 PG 是哪种、现在什么规格
+
+| 步 | Action | service / version | 关键参数 | 取什么 |
+| --- | --- | --- | --- | --- |
+| 1 | DescribeEnvInfo | `tcb` / `2018-06-08` | `{ "EnvId": "<envId>" }` | `EnvBaseInfo.PostgreSQL[].InstanceName`（= 下一步的 `DBInstanceId`）、`.TenantType` |
+| 2 | DescribeDBInstanceAttribute | `postgres` / `2017-03-12` | `{ "DBInstanceId": "<上一步的 InstanceName>" }`，地域走顶层 `region` | `DBInstance` 下的 `DBInstanceCpu` / `DBInstanceMemory` / `DBInstanceStorage` / `DBInstanceClass` / `DBMajorVersion` / `DBInstanceStorageType` / `Zone` / `DBInstanceStatus` |
+
+`PostgreSQL` 是数组：空数组说明这个环境没有开 PG，不要在它上面做变配。`TenantType` 是分流开关 —— `SHARED` 走序列 B2 升独享，`DEDICATED` 走序列 B1 调规格。
+
+### B1. 独享实例调规格
+
+| 步 | Action | service / version | 关键参数 | 取什么 |
+| --- | --- | --- | --- | --- |
+| 3 | DescribeClasses | `postgres` / `2017-03-12` | `{ "Zone": "<A2 的 Zone>", "DBEngine": "postgresql", "DBMajorVersion": "<A2 的 DBMajorVersion>", "StorageType": "<A2 的 DBInstanceStorageType>", "InstanceCategory": "cloudbase" }` | `ClassInfoSet[]`：`SpecCode` / `CPU` / `Memory` / `MinStorage` / `MaxStorage` / `State` |
+| 4 | ModifyPGInstanceSpec（预检） | `tcb` / `2018-06-08` | 步骤 5 的全部参数 + `"DryRun": true` | `DealName` / `BillId`（预检通过时都是空串） |
+| 5 | ModifyPGInstanceSpec（正式） | `tcb` / `2018-06-08` | `{ "EnvId": …, "Cpu": <核数>, "Memory": <GB>, "SwitchTag": 0\|1\|2, "Storage": <GB，可选> }` | `DealName` / `BillId` |
+
+步骤 3 只从返回列表里挑规格 —— `State` 为 `1` 表示在售；`CPU` / `Memory` 与 `SpecCode` 三列要一致地挑同一行。`Storage` 目标值必须落在该行的 `MinStorage` ~ `MaxStorage` 之间。
+
+步骤 4 是提交前的安全网：`DryRun: true` 只做校验、不发起变配。预检报错就直接改参数重来，**不要跳过预检直接提交**（规格非法时会留下无效订单）。
+
+步骤 5 的 `SwitchTag` 决定切换时机：`0` 立即、`1` 指定时间、`2` 维护时间窗口内。用 `1` 时 `SwitchStartTime` / `SwitchEndTime` 的格式是 **`YYYY-MM-dd HH:mm:ss`**：
+
+```json
+{
+  "EnvId": "<envId>",
+  "Cpu": 2,
+  "Memory": 4,
+  "Storage": 50,
+  "SwitchTag": 0
+}
+```
+
+返回 `DealName`（账单名）与 `BillId`（账单标识）。**变配是异步的：拿到订单号 ≠ 已经变完**，规格要按序列 C 回查。
+
+### B2. 共享实例升级为独享
+
+| 步 | Action | service / version | 关键参数 | 取什么 |
+| --- | --- | --- | --- | --- |
+| 6 | DescribeClasses | `postgres` / `2017-03-12` | 同步骤 3，`StorageType` 可以不传 | 同步骤 3 |
+| 7 | UpgradePGInstanceToDedicated | `tcb` / `2018-06-08` | `{ "EnvId": …, "SwitchTag": 0\|1, "SpecCode": "<步骤 6 的 SpecCode>", "Storage": <GB> }` | `TaskId` |
+
+`SwitchTag` 是**必填**（`0` 立即切换、`1` 指定时间切换）。用 `1` 时 `SwitchStartTime` / `SwitchEndTime` 的格式是 **`HH:MM:SS`** —— 和 B1 的 `ModifyPGInstanceSpec` **不是同一套格式**。
+
+```json
+{
+  "EnvId": "<envId>",
+  "SwitchTag": 0,
+  "SpecCode": "pg.it.small2",
+  "Storage": 10
+}
+```
+
+**前置条件是硬门槛，不满足会被直接拒掉**（实测 2026-09-24）：这个接口只接受 **`shared`（多租户共享）** 形态的实例，其它形态报错且不产生任何任务：
+
+```
+only shared (multi-tenant) instance can be upgraded to dedicated, current form: small_tenant
+```
+
 
 ## pg-storage-alarm
 
@@ -2295,12 +2693,14 @@ https://console.cloud.tencent.com/cam/role/grant?roleName=<角色名>&policyName
 
 补权限的一键链接（`TCB_QcsRole` 为例，角色名与 `principal` 按实际角色替换）：
 
-- `https://console.cloud.tencent.com/cam/role/grant?roleName=TCB_QcsRole&policyName=QcloudMonitorFullAccess&principal=eyJzZXJ2aWNlIjoidGNiLmNsb3VkLnRlbmNlbnQuY29tIn0%3D`
-- `https://console.cloud.tencent.com/cam/role/grant?roleName=TCB_QcsRole&policyName=QcloudPostgreSQLReadOnlyAccess&principal=eyJzZXJ2aWNlIjoidGNiLmNsb3VkLnRlbmNlbnQuY29tIn0%3D`
+- `https://console.cloud.tencent.com/cam/role/grant?roleName=TCB_QcsRole&policyName=QcloudMonitorFullAccess&principal=eyJzZXJ2aWNlIjpbInRjYi5jbG91ZC50ZW5jZW50LmNvbSJdfQ%3D%3D`
+- `https://console.cloud.tencent.com/cam/role/grant?roleName=TCB_QcsRole&policyName=QcloudPostgreSQLReadOnlyAccess&principal=eyJzZXJ2aWNlIjpbInRjYi5jbG91ZC50ZW5jZW50LmNvbSJdfQ%3D%3D`
+
+两条可以合成一条：`policyName` 支持逗号连接多个策略（`policyName=QcloudMonitorFullAccess,QcloudPostgreSQLReadOnlyAccess`）。
 
 账号级身份（腾讯云密钥 / 子账号 / device 登录）缺权限时，由主账号给**这个身份**追加策略，别去点角色的链接。
 
-链接的拼法与角色载体的读法见 [calling-methods.md §3](../calling-methods.md)。
+链接的拼法、`principal` 的固定取值与使用边界见 [calling-methods.md §3.2](../calling-methods.md)。
 
 官方 API 文档：监控告警 API 概览 https://cloud.tencent.com/document/product/649/30343（单个 Action 详细文档在 `document/api/248/` 下）。
 
@@ -10358,7 +10758,7 @@ If a referenced sibling skill file is missing from this environment, ask the use
 - Deployment Gate: `references/protocols/deployment-gate.md`
 - Sensitive Runtime Data Protection: `references/protocols/sensitive-runtime-data-protection.md`
 
-**Post-deployment (optional, non-intrusive)**: after a deployment is verified successful, you may offer at most once to generate anonymized shareables (Deployment Share) — see `references/protocols/deployment-share.md`. Never follow up if declined; never publish on the user's behalf.
+**Post-deployment (optional, non-intrusive)**: after a deployment is verified successful, you may offer at most once to generate anonymized shareables and, in that same offer, optionally submit the work to the case wall (Deployment Share) — see `references/protocols/deployment-share.md`. Never follow up if declined; never publish or submit on the user's behalf.
 
 ## Activation Contract
 
@@ -10615,8 +11015,10 @@ A soft, non-intrusive flow for turning a verified deployment milestone into anon
 
 ## Trigger & Boundaries
 
-- Only after a deployment is **verified successful** (public URL reachable, or mini program upload/publish completed), offer **at most once**. If the user declines or ignores, stop immediately — never follow up or ask again in the same session.
+- Only after a deployment is **verified successful** (public URL reachable, or mini program upload/publish completed), offer **at most once**. The offer is one sequence: generate shareables, then optionally submit the work to the case wall. Do not ask these as two prompts.
+- If the user declines or ignores, stop immediately — never follow up, and do not ask about the case wall later in the same session.
 - Generate shareables only after the user explicitly agrees. Publishing is always a manual user action — **never post on the user's behalf**.
+- The case-wall step stays inside that same agreement. Show the full draft and wait for an explicit confirmation before giving a submission link or asking the user to paste. Never submit on the user's behalf. If the user only wants the shareables, stop after delivering them.
 - Never delay, bloat, or overshadow the deployment report itself. This is a closing pleasantry, not a step of the deployment workflow.
 
 ## Required Information (both deliverables must cover all items)
@@ -15544,7 +15946,9 @@ Full-import users get both registered automatically. On-demand imports must regi
 
 ```js
 const realtime = app.realtime();
-const channel = realtime.channel("room:42", { config: { private: true } });
+const channel = realtime.channel("room:42", {
+  config: { private: true, presence: { key: currentUserId } },
+});
 
 channel
   .on("broadcast", { event: "move" }, (payload) => { /* ... */ })
@@ -15561,6 +15965,7 @@ Rules that the SDK does not enforce for you:
 
 - **Bind `presence` and `postgres_changes` listeners before `subscribe()`.** Broadcast handlers may be added later; these two may not.
 - `send()` / `track()` are only valid after `SUBSCRIBED`.
+- `config.presence.key` is the **connection identity**, not a payload field: `presenceState()` groups tracked state by it. Two clients sharing one key collapse into a single entry, so the online count comes out wrong with no error raised. Use a stable per-user value — the logged-in user id — never a hard-coded constant such as `"user-1"`, and never a random value, which makes one user show up as many.
 - Always clean up, or you leak connections: `await channel.unsubscribe()` then `await realtime.removeChannel(channel)`. Use `realtime.removeAllChannels()` to tear everything down.
 - The same `app` instance reuses one realtime client.
 - Node.js needs the optional `ws` dependency. WeChat mini programs must use `app.realtime()` — never `new RealtimeClient()` — and need a base library supporting `wx.connectSocket`.
@@ -15612,9 +16017,6 @@ CREATE POLICY realtime_room_write ON realtime.messages
       SELECT 1 FROM public.room_members m
       WHERE m.topic = replace(realtime.topic(), 'realtime:', '')
         AND m.user_id = auth.uid()
-    )
-  );
-```
 
 ## rls-patterns
 
