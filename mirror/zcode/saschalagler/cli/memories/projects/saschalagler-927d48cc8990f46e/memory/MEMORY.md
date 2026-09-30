@@ -2,7 +2,7 @@
 
 - [GLM-5.3 vs Flash: belegte Fakten](glm-53-vs-flash-belegte-fakten.md) — Flash=320B MoE ~8,9× billiger, AA-Index 57; 5.3=Flagship (CyberGym 84,5); beide low/high/max (Default max) — Regel: Plan/Architektur=5.3, Ausführung=Flash; Sascha will direkte belegte Modellurteile, keine Absicher-Floskeln
 
-- [Zoetrope Live-View](zoetrope-live-view.md) — 30.09.: zoe (brew, v0.2.0, Binary `zoe`) gelinkt; Claude-Code-Sessions voll visualisierbar, ZCode-Format NICHT (0 Tool-Calls) → ZCode-Arbeit live in App-Automations sehen; Konverter-Ticket auf GO wartend
+- [Zoetrope Live-View](zoetrope-live-view.md) — 30.09. GELÖST: `~/zcode2zoe.py` konvertiert ZCode-Rollout→Claude-Format, 0→924 Tool-Calls in zoe bewiesen; jede Agent-Session eigene rollout-Datei (dwf-actor/subagent_agent); Grenze: Subagent-Knoten im EINEN Graph offen
 
 - [IAB-Browser-GUI-Test-Rezept](iab-browser-gui-test-rezept.md) — 30.09. bewiesen: Live-GUI-Tests via node_repl (ZCODE_PLUGIN_ROOT-Bootstrap je Call, domSnapshot zuerst, SVG-Knoten per evaluate+CUA im selben Kernel, Screenshots via emitImage ansehen)
 
