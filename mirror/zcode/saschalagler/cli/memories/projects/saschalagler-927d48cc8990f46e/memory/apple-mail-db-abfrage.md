@@ -16,5 +16,6 @@ Apple Mail lokal per SQLite lesen (Sascha-Wunsch „prüf meine Mail lokal am Ma
 - Bewiesene Abfragen: Absender `LIKE '%googleforstartups%'`, Betreff `LIKE '%örperfluss%'`, Datum-Filter `m.date_received > strftime('%s','2026-09-20') - 978307200`
 - Gmail-MCP (`google-workspace gmail_search`) schlägt fehl: „Permission denied" (Scopes nicht gewährt) — Mail-DB ist der zuverlässige lokale Weg.
 - Grenze: Bodies liegen extern — für Betreff/Absender/Datum reicht der Envelope Index.
+- Bewiesener Realfall (01.10., Google-for-Startups-Verlauf): 25.06. echter Google-Mitarbeiter-Kontakt **rossignolo@xwf.google.com** („Körperfluss - Google Cloud") · 04.09. Antwort von cloud-startup-support-bot@google.com · eigene gesendete Mail 23.09. von sascha.lagler@koerperfluss.at · **seit 23.09. keine persönliche Antwort** (nur Newsletter googleforstartups-noreply). googleforstartups-noreply-Mails sind Newsletter, KEINE Antworten — nicht verwechseln.
 
 Verwandt: [[koerperfluss-edu-foerderpilot-fertig]] (GfS-Mail-Verlauf dort), [[chrome-agent-browser-fix]].
