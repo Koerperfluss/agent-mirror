@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-30 13:02 UTC
+Zuletzt gespiegelt: 2026-09-30 13:14 UTC
 
 ## AGENTS
 
@@ -2930,7 +2930,7 @@ Bei Fachfragen (z. B. Trainings-Übungen) fordert er explizit „clinical reason
 
 - [eqMac-Deinstallation + Spotify-Fix](eqmac-deinstallation-spotify-fix.md) — 22.09. FERTIG (dwfrun-c55c4bc7): eqMac ursprünglich zu Unrecht deinstalliert (Doku war nur Kontext-Beilage!) → **v1.9.1 neu installiert, er BRAUCHT es**; **Spotify-Ursache = Intel-Build 1.3.0.277 via Rosetta + 982 MB korrupter Cache** → native ARM64 1.3.1.234, läuft stabil; Audio-Abbrüche danach = eqMac-Virtual-Device-Wege — 2 Parallel-Agents: Neustart → Test sauber (0 Dropouts), **KEIN Buffer-Setting existiert**; Fix-Leiter: 48 kHz (Audio-MIDI-Setup) → eqMac-Toggle → Analyzer aus → direkter Output; Fallback ältere Version (Issues #994/#224)
 
-- [ZCode ADHS-Automations](zcode-adhs-automationen.md) — 13.09.–13.10. LIVE: **EINE Automation mit ALLEN 6 Briefs** (cron `0 9,10,15,16,21`, Zweige per Uhrzeit+Wochentag; niemals 6 separate — Nutzer-Ziel!) + Engine 7/7 PASS; **21 Läufe, alle 6 Zweige bewiesen: Morgen 21.09. erstmals PÜNKTLICH (UID C1BFC6A3), Catch-ups 14./18./22./29.09./06.10. · Risiko-Scan 21.09. erster echter P1 (loki-voice dirty) → AM SELBEN TAG gelöst (Commit 7fdbf2d) · DOKU-SYNC 23.09. erster Lauf: assi-README fehlen brief/feierabend (auf „GO doku-fix") · Abend 13./16./20./21./24.09./13.10. PASS (Events 610E2A57/88CCE1A6/6BFDB24A/C269B996/9299B443/2FF9A547, Fix `open -a Calendar` vor osascript) · 16:00/15:00-No-ops korrekt; ⚠️ Logbuch = Multi-Writer (vor Append NEU lesen); Lücken-Wochen 25.–28.09., 30.09.–05.10., 07.–12.10. (Mac aus — Automation kann ausen Mac nicht wecken)**; SSD 13.10.: 73 GiB frei (+31 in 1 Woche, siehe [[ssd-cache-automation]]); offen auf GO: Wecker (com.sascha.assi.daily umrüsten) + Deutsch-Patch-Recovery + GO doku-fix; 1 Task pro Chat-Limit
+- [ZCode ADHS-Automations](zcode-adhs-automationen.md) — 13.09.–30.09. LIVE: **EINE Automation mit ALLEN 6 Briefs** (cron `0 9,10,15,16,21`, Zweige per Uhrzeit+Wochentag; niemals 6 separate — Nutzer-Ziel!) + Engine 7/7 PASS; **21+ Läufe, alle 6 Zweige bewiesen (Morgen 21.09. erstmals pünktlich C1BFC6A3; Abende PASS 610E2A57/88CCE1A6/6BFDB24A/C269B996/9299B443/2FF9A547; Risiko-Scan P1 loki-voice → selbentags gelöst 7fdbf2d) · DOKU-SYNC 30.09.: 2 Findings — assi-README (brief/feierabend) + NEU lib/push.sh undokumentiert (auf „GO doku-fix", jetzt 3 Zeilen) · ⚠️ UHR-ANOMALIE 30.09.: Uhr sagt 30.09, Logbuch hat zukunftdatierte 06.10/13.10-Dateien — date-Ausgabe vertrauen; Logbuch = Multi-Writer (vor Append NEU lesen); Lücken-Tage/Wochen wenn Mac schläft (Automation weckt nicht)**; offen auf GO: Wecker (com.sascha.assi.daily umrüsten) + Deutsch-Patch-Recovery + GO doku-fix; 1 Task pro Chat-Limit
 
 - [OmniRoute-Rückbau + System-Fixes](omniroute-rueckbau-system-fixes-2026-09-20.md) — 20.09. Abend: Q1–Q7 ALLE ERLEDIGT („fix test"-GO): OmniRoute ABGEBAUT (Nutzer-Wunsch, Plist raus, Regeln auf Direkt-Provider gesynced, Comet läuft bis Reboot); Atlas-Ingest 67 Module (2 Code-Bugs gefixt); Task-Bridge 5 echte Tasks; loki-up.command am Desktop getestet; Mongo zu; 2 tote Agents disabled; 7b-Coder-Modell da; MASTER_STATUS+HANDBUCH aktualisiert (Backups ~/sicherungen/doku-backup-20260920); Endstand CHECKPOINT CONTINUE — offen nur: 4 Keys (Sascha) + Firewall sudo
 
@@ -5055,7 +5055,7 @@ Integration done 2026-08-30: added `web-search-prime`, `zread`, `zai-vision` MCP
 
 ---
 name: zcode-adhs-automationen
-description: "13.–29.09. LIVE: EINE Automation mit ALLEN 6 Briefs (cron `0 9,10,15,16,21`, Zweige per Uhrzeit+Wochentag; niemals 6 separate — Nutzer-Ziel!) + Engine 7/7 PASS; **21 Läufe, alle 6 Zweige bewiesen: Morgen 21.09. erstmals PÜNKTLICH (UID C1BFC6A3), 22./23./29.09. wieder verpasst → Catch-ups (F2C35605/9CCD68DB) · DOKU-SYNC 23.09. erster echter Lauf: Finding = assi-README fehlen brief/feierabend (auf „GO doku-fix") · Risiko-Scan 21.09. erster echter P1 (loki-voice dirty) → AM SELBEN TAG gelöst (Commit 7fdbf2d) · Abend 13./16./20./21./24.09. PASS (Events 610E2A57/88CCE1A6/6BFDB24A/C269B996/9299B443, Fix `open -a Calendar` vor osascript) · 16:00/15:00-No-ops korrekt; ⚠️ **Lücken-Tage 15./17./19./22./23./25.–28.09. (Mac schläft um 09:00)**; offen auf GO: LaunchAgent com.sascha.assi.daily als Wecker umrüsten + Deutsch-Patch (Recovery siehe [[zcode-app-german-ui-patch]]) + GO doku-fix; 1 Task pro Chat-Limit"
+description: "13.09.–30.09. LIVE: EINE Automation mit ALLEN 6 Briefs (cron `0 9,10,15,16,21`, Zweige per Uhrzeit+Wochentag; niemals 6 separate — Nutzer-Ziel!) + Engine 7/7 PASS; **21+ Läufe, alle 6 Zweige bewiesen · DOKU-SYNC 30.09. zweiter Lauf: 2 Findings — assi-README (brief/feierabend, alt) + NEU lib/push.sh undokumentiert (auf „GO doku-fix") · ⚠️ UHR-ANOMALIE 30.09.: Systemuhr sagt 30.09, Logbuch enthält zukunftdatierte 2026-10-06/13-Dateien — nicht angefasst; offen auf GO: Wecker + Deutsch-Patch-Recovery + GO doku-fix (3 Zeilen: brief/feierabend/push.sh); 1 Task pro Chat-Limit"
 metadata:
   node_type: memory
   type: project
