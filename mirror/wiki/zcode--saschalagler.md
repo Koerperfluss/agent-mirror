@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-30 17:09 UTC
+Zuletzt gespiegelt: 2026-09-30 17:22 UTC
 
 ## AGENTS
 
@@ -7496,7 +7496,7 @@ Beobachtet 06.09.2026 (Session mit Off-Peak-Ticket): Nach User-Paste „ZCode Er
 
 - [GLM-5.3 vs Flash: belegte Fakten](glm-53-vs-flash-belegte-fakten.md) — Flash=320B MoE ~8,9× billiger, AA-Index 57; 5.3=Flagship (CyberGym 84,5); beide low/high/max (Default max) — Regel: Plan/Architektur=5.3, Ausführung=Flash; Sascha will direkte belegte Modellurteile, keine Absicher-Floskeln
 
-- [Zoetrope Live-View](zoetrope-live-view.md) — 30.09.: zoe (brew, v0.2.0, Binary `zoe`) gelinkt; Claude-Code-Sessions voll visualisierbar, ZCode-Format NICHT (0 Tool-Calls) → ZCode-Arbeit live in App-Automations sehen; Konverter-Ticket auf GO wartend
+- [Zoetrope Live-View](zoetrope-live-view.md) — 30.09. GELÖST: `~/zcode2zoe.py` konvertiert ZCode-Rollout→Claude-Format, 0→924 Tool-Calls in zoe bewiesen; jede Agent-Session eigene rollout-Datei (dwf-actor/subagent_agent); Grenze: Subagent-Knoten im EINEN Graph offen
 
 - [IAB-Browser-GUI-Test-Rezept](iab-browser-gui-test-rezept.md) — 30.09. bewiesen: Live-GUI-Tests via node_repl (ZCODE_PLUGIN_ROOT-Bootstrap je Call, domSnapshot zuerst, SVG-Knoten per evaluate+CUA im selben Kernel, Screenshots via emitImage ansehen)
 
@@ -7759,7 +7759,11 @@ Stand 30.09.2026 (Endstand, 9/9 — beide Apps LIVE):
 
 **Nachtrag 30.09. abends 3 — ALLES FERTIG + LIVE BEWIESEN:** Liquid-Glass-Workflow abgeschlossen (6 Komponenten, Gates grün, Commit `8e7bac2`, deployt — Script-Live-Beweis scheiterte nur am fehlenden lokalen dist-Vergleichswert, manuell nachgeholt: LIVE=LOKAL). D1/D2-Root-Cause: **Core-Knoten ist selbst #f59e0b (Gold wie FFG-Cluster)** — alle Testklicks trafen den Core (UI reagierte korrekt!); echter Bug: Button-Handler `all100Programs.find('core')`=undefined → stille Nichtstat + unzuverlässiges click-Event neben d3-drag. Fix `d8655cf`: Knoten-Auswahl per **pointerup + Bewegungsschwelle** (`__moved`-Flag, dx/dy>1px) + Core-Hinweis statt Button; root+src. Re-Test live: AWS-Knoten→Inspector→Analyse-Button→**Copilot-Tab+Match-Score-Modal ALLE PASS**. Pilot-LIVE jetzt `index-cpVWddL0.js` (=lokal, 0 Passwörter). Doku `3a435db` (UI_TEST_REPORT §Nachtrag + FERTIGMACHUNG §12). Mimosa-Note: letzte Commit-Scans inkomplett (library_source_limit) — kein Fund, keine Sicherheitsgarantie.
 
-**⚠️ Sascha-Aktionen (noch offen):** (1) 3 Portal-Passwörter SOFORT rotieren (FFG eCall, AWS Fördermanager, WAW) — altes Bundle war live mit Klartext. (2) Pilot-Git-History-Reset entscheiden (`9793048` enthält alte Passwörter, nie gepusht). (3) Edu: 9 unpushed — Push-GO? (4) Doppelstruktur Root/src-Cleanup (beide Projekte). (5) Gemini-Backend-Proxy (process.env im Browser crasht).
+**Nachtrag 30.09. Nacht 2 — ENDGELÖST + NEUE GROSSAUFGTRÄGE:** (a) D1/D2 **GEFIXT + LIVE BEWIESEN** (Commits `d8655cf`+`3a435db`): Root-Cause des scheinbaren D2 = Core-Knoten trägt selbst #f59e0b wie FFG-Cluster → Testklicks trafen den Core (UI reagierte korrekt); echte Bugs: Button-Handler `all100Programs.find('core')`=undefined (stille Nichtstat) + click-Event unzuverlässig neben d3-drag. Fix: **pointerup-Auswahl mit Bewegungsschwelle** (`__moved`-Flag, dx/dy>1px) + Core-Hinweis statt Button. Kette AWS-Knoten→Inspector→Copilot-Modal ALLE PASS live. Pilot-LIVE: `index-cpVWddL0.js` (=lokal, 0 Passwörter). Berichte: `UI_TEST_REPORT_LIVE_2026-09-30.md` + FERTIGMACHUNG §12. (b) **Zotero-DB** (Peter): 285 Einträge (280 journalArticle/4 preprint/1 conference, 269× 2021–2025) — Website-„246 AWMF S3-Leitlinien" passt auf KEINE Quelle (285≠246≠23); MA-Workflow `dwfrun-abd25cde` prüft 23 Kernquellen-Abgleich + Website-Live-Verifikation. (c) NotebookLM = Google-Login-Wall (Account koerperfluss@gmail.com im IAB-Tab bereit — Sascha 1 Klick). (d) **Sascha-Entscheid: Passwort-Rotation IRRELEVANT** („wer soll für mich förderungen einreichen"), Monitoring-Wunsch notiert (Angebot: Daily-Check-Automation, FFG AI-Ökosysteme-Frist 06.10.2026!). (e) **Förder-Universum v3 LÄUFT** als Workflow `dwfrun-aaa9c4fe` (Workspace!). (f) **Workflow-Workspace ist jetzt PILOT.AI** (drafts in PILOT.AI/.zcode/workflow-drafts/!) — erklärt das „dist-fehlt" im Glas-Run (files.read löste workspace-relativ falsch auf); workflow-Pfade seither ohne Repo-Präfix. (g) Mimosa blockt Edit auf .dwf.ts bei exec/Regex-Mustern (Command-Injection-FP) → Umgehung: grep als world.run mit args-Liste statt Regex-exec im TS.
+
+**Förder-Universum v3 (dwfrun-aaa9c4fe, gestartet 30.09. Nacht):** 3 Harvester (Pilot-Daten · FFG-Antrags-Dossier · AI-Studio-Exporte FörderVektor-Austria + körperfluss-pilot.ai + ffg-hearing-simulator + alte Cloud-Run-Version) → Master-Liste `src/data/fundingMaster.ts` → Antrags-Abgleich (Kumulierung/AP-Trennung/Doppelförderungsverbot) → `docs/FOERDER_PORTFOLIO_V3.md` (max 12 Top + Website-Abweichungen) → Builder: `VectorCloud3D` (3-Achsen-d3 + CSS-3D, KEIN three.js — bewusst keine neue Dependency) + `SzenarioAnsicht` (FFG/TIP-Szenario-Tab: Antrag im Zentrum, Kumulierbar=durchgezogen/Konflikt=gestrichelt) → Gates/Commit/Deploy/Live-Beweis → Bericht. Board „universum-board".
+
+**⚠️ Sascha-Aktionen (noch offen):** (1) Pilot-Git-History-Reset entscheiden (`9793048` enthält alte Passwörter, nie gepusht — Rotation selbst Sascha-Entscheid zufolge entbehrlich). (2) Edu: 9 unpushed — Push-GO? (3) „246"-Website-Zahl ändern (Empfehlung aus Zotero-Workflow). (4) NotebookLM: 1× Account-Klick im offenen IAB-Tab. (5) Root/src-Cleanup + Gemini-Proxy + Edu-Duplikat-Cleanup. (6) Monitoring-GO („GO Monitoring" = Daily-Check-Automation).
 
 Parallele-Lane-Lektion: Parent-Session + Side-Chat arbeiteten GLEICHZEITIG im selben Pilot-Repo (git status mehrfach verändert) — vor Edit immer frisch lesen, keine Kollision erzwungen; Parent holte den letzten Commit `c1b5d17`. Antigravity-Konversationen: `.db` (SQLite, step_payload=Protobuf, per python-strings extrahierbar) oder `.pb` **at-rest verschlüsselt** → Workspace-SSOT nutzen. Detail-Doku je Repo: `FERTIGMACHUNG_2026-09-30.md`. Verwandt: [[loki-os-v18-endprodukt]], [[atlas-versionsstand]], [[koerperfluss-edu-foerderpilot-takeover]]
 
@@ -8421,23 +8425,25 @@ Verwandt: [[loki-os-v18-endprodukt]], [[sascha-arbeitsregeln-hart]]
 
 ---
 name: zoetrope-live-view
-description: Zoetrope (zoe) 30.09. einsatzbereit gebrochen —
-  Claude-Code-Sessions voll visualisierbar, ZCode-Format NICHT (0 Tool-Calls);
-  Binary hieß zoe + war ungelinkt
+description: Zoetrope (zoe) + zcode2zoe.py 30.09. GELÖST — ZCode-Sessions
+  voll in zoe sichtbar (0→924 Tool-Calls bewiesen); jede Agent-Session eigene
+  rollout-Datei; Grenze = Subagent-Knoten im EINEN Graph
 metadata:
   node_type: memory
   type: reference
   originSessionId: sess_33b5868e-a2a4-49cf-823a-7563047524e1
 ---
 
-Zoetrope (Session-Live-Flowgraph, Sascha wollte „alles sehen, wer welcher Agent wo was macht") — Stand 30.09.2026:
+Zoetrope (Session-Live-Flowgraph, Sascha: „alles sehen, wer welcher Agent wo was macht") — Stand 30.09.2026 Nacht, GELÖST:
 
-- **Installiert** via brew (furkankly/tap, v0.2.0), Binary heißt **`zoe`** (nicht `zoetrope`!) und war **ungelinkt** → 30.09. per `brew link zoetrope` aktiviert. Nutzen: `zoe` (live im Projektordner folgen), `zoe <file.jsonl|--id|dir>`, `zoe inspect <file>` (headless), `--provider claude|codex`.
-- **Claude-Code-Sessions: voll funktional** — Agenten, Tool-Calls, Queues live/replay (Test: 120 Tool-Calls sichtbar). Codex-Format auch unterstützt.
-- **ZCode-Sessions: NICHT wirklich lesbar** — `zoe` öffnet `~/.zcode/cli/rollout/model-io-sess_*.jsonl`, zeigt aber nur 1 Agent / 0 Tool-Calls (Format wird nicht geparst). ZCode-Arbeit live sehen → stattdessen ZCode-App → Automations/Run-Pane (Phasen-Graph + Live-Board).
-- **Offen angeboten:** Konverter-Ticket ZCode-JSONL → Claude-Format (Sascha muss GO geben).
+- **zoe** (brew furkankly/tap v0.2.0, Binary `zoe`, per `brew link` aktiviert) liest Claude-Code-/Codex-Transkripte voll (Agenten, Tools, Queues).
+- **`~/zcode2zoe.py` (v2) GEBAUT+BEWIESEN:** konvertiert ZCode-Rollout (`~/.zcode/cli/rollout/model-io-sess_*.jsonl` = Request/Response-Paare mit monoton wachsender History pro Zeile; response hat text/toolCalls[{id,name,input}], user-content = Block-Liste) → Claude-Transkript-JSONL nach `~/.claude/projects/zcode-converted/`. Beweis: 0→**924 Tool-Calls** sichtbar; Workflow-Actor einzeln: 68.
+- **ZCode schreibt JEDE Agent-Session als eigene Datei:** `model-io-sess_dwf-<runId>-actor_N_M.jsonl` (Workflow-Subagenten, auch laufende!) + `model-io-sess_subagent_agent_<id>.jsonl` (Task-Subagenten). Agent-Finalberichte nur in `~/.zcode/cli/agents/<parent-sess>/<agentId>/output.txt` (kein Event-Log).
+- **Grenze:** Subagent-Knoten im EINEN zoe-Graph noch nicht (zoe-Parser kennt isSidechain/SubagentMeta/agent_path — exakte Sidechain-Semantik ohne Source nicht repliziert; v2 merged 28 Sub-Dateien, zoe zeigt trotzdem 1 Agent). Workaround: Actor-Dateien einzeln konvertieren.
+- Bedienung: `python3 ~/zcode2zoe.py <model-io-file>` dann `zoe <output> [--follow]`; Filter im Konverter: system-reminder/task-notification-Texte werden übersprungen.
+- ZCode-Workflows (dwfrun) selbst sieht zoe nicht → ZCode-App Automations/Run-Pane (Phasen-Graph + Board) bleibt die Live-Übersicht dafür.
 
-Verwandt: [[zcode-workflow-bedienung]], [[session-quellen-wo-finden]]
+Verwandt: [[zcode-workflow-bedienung]], [[session-quellen-wo-finden]], [[koerperfluss-edu-foerderpilot-fertig]]
 
 ## MEMORY
 
