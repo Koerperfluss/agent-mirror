@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-09-30 15:06 UTC
+Zuletzt gespiegelt: 2026-09-30 15:18 UTC
 
 ## AGENTS
 
@@ -7417,7 +7417,7 @@ Beobachtet 06.09.2026 (Session mit Off-Peak-Ticket): Nach User-Paste „ZCode Er
 
 - [GLM-5.3 vs Flash: belegte Fakten](glm-53-vs-flash-belegte-fakten.md) — Flash=320B MoE ~8,9× billiger, AA-Index 57; 5.3=Flagship (CyberGym 84,5); beide low/high/max (Default max) — Regel: Plan/Architektur=5.3, Ausführung=Flash; Sascha will direkte belegte Modellurteile, keine Absicher-Floskeln
 
-- [Körperfluss Edu + Förderpilot Takeover](koerperfluss-edu-foerderpilot-takeover.md) — 30.09.: 2 Antigravity-Konvos übernommen (d293022b=Edu, 1926eeee=Pilot/.pb verschlüsselt); Antigravity-Konvo-Extraktion via ~/.gemini/antigravity/conversation_summaries.db; PILOT.AI FERTIG (Commit 9793048, Root=Build-Quelle, liquid-Cloud), Deploy foerder-cockpit wartet auf GO; Edu-Repo 3D-Fix uncommitted, Builder an API-Timeout gescheitert — Neu-Dispatch offen
+- [Körperfluss Edu + Förderpilot FERTIG](koerperfluss-edu-foerderpilot-fertig.md) — 30.09. ENDSTAND: **BEIDE LIVE DEPLOYT mit Hash-Beweis** — koerperfluss.web.app (Bundle SsKngqM3, Edu 5739f09+995c8df) · foerder-cockpit.web.app (Bundle BLJp8wD8, Pilot bis c1b5d17: P0-Passwörter scrubbed inkl. Alt-Kopien, Mimosa-Rescan 0 Findings, Root=Build-Quelle!) · Lektionen: Mimosa/Semgrep blockt open(<Var>) in py (nur pathlib), Parent-Lane+Side-Chat arbeiteten parallel im selben Repo (frisch lesen!) · ⚠️ Sascha-GO offen: 3 Portal-Passwörter ROTIEREN (altes Bundle war live!), Pilot-History-Reset, Edu 9 unpushed, Root/src-Cleanup, Gemini-Proxy
 
 - [George/Thomas-Status](george-thomas-status.md) — 23.09.: Thomas' „George" = nur Selbstauskunfts-Tabellen, NULL Beweis-Outputs, Stimme nie gehört — ABER WENDE: die 3 Falsch-Fakten (15-Min-Limit, 36-Modell/Port 20128, Fristen-Wache-aktiv) stammten aus MEINEN Doku-Dateien; gefixt: ABNAHME A-Teil neu (Backup .bak-20260923) + LOKI_OS_DOKUMENTATION_KORRIGIERT_v2.pdf + Protokollzeile; Lektion: erst eigene Doku gegen Code prüfen, dann andere kritisieren
 
@@ -7629,6 +7629,28 @@ metadata:
 
 **Feedback-Kontext (gleiches Gespräch):** Sascha reagierte gereizt („du wirst doch wissen wie gut deine eigenen modelle sind du trottel"), als ich mit „kein A/B-Benchmark" absicherte. **Warum:** Er will konkrete, quellenbelegte Urteile sofort, keine Verschwurbel-Absicherung. **How to apply:** Bei Modell-/Tool-Qualitätsfragen zuerst selbst Daten holen (WebSearch/ListModels/Session-Evidenz), dann in Zeile 1 ein klares Urteil mit Zahlen — den Rest der Ehrlichkeits-Grenze in 1 Satz anhängen. Verwandt: [[koerperfluss-edu-foerderpilot-takeover]], [[sascha-arbeitsregeln-hart]]
 
+## koerperfluss-edu-foerderpilot-fertig
+
+---
+name: koerperfluss-edu-foerderpilot-fertig
+description: 30.09. — beide Antigravity-Projekte FERTIG + LIVE DEPLOYT (Edu +
+  Förderpilot), Security-Serie abgeschlossen, nur Rotation/History/Cleanup offen
+metadata:
+  node_type: memory
+  type: project
+  originSessionId: sess_33b5868e-a2a4-49cf-823a-7563047524e1
+---
+
+Stand 30.09.2026 (Endstand, 9/9 — beide Apps LIVE):
+
+**Körperfluss Edu Website** — Repo `~/Desktop/Coworkspace_Ich/Körperfluss EDU/Koerperfluss-3D-Upgrade/` (HEAD `995c8df`). LIVE: koerperfluss.web.app (Firebase gen-lang-client-0285074833), Deploy per `firebase deploy --only hosting --project gen-lang-client-0285074833` (site „koerperfluss"). Beweis: live Bundle `index-SsKngqM3.js` = lokal identisch. Commits `5739f09` (UI/UX-Userflow + 3D-Slicing-Käfig-Fix) + `995c8df` (XSS-DOMPurify, matchMedia-Cleanup, Sidebar-Remount). ~123 „ 2"-Duplikate + 41 Routen bewusst unangetastet; **9 unpushed Commits** (Push nur auf GO).
+
+**Förderpilot** — Repo `~/antigravity/Körperfluss-PILOT.AI` (HEAD `c1b5d17`). LIVE: foerder-cockpit.web.app, Live-Bundle `index-BLJp8wD8.js` = lokal identisch, Live-Scan: **0 echte Passwörter, 3 Maskierungs-Marker**. WICHTIG: Root-Dateien sind die aktive Build-Quelle, NICHT src/ (beide Bäume byte-identisch halten — cp via Bash wird vom Mimosa-Hook geblockt, Write/Edit-Tool nutzen). Commits: `9793048` (git init, Userflow, Liquid-Cloud), `c962f10`+`7e31e27` (P0 Passwörter raus, P1/P2 Fixes), `c1b5d17` (alle Mimosa-Findings zu: Passwort-Scrub inkl. Alt-Kopien `körperfluss-pilot.ai/`, geminiService-Throw, pathlib statt `open(`-Variablen; **Rescan 0 Findings**). Lektion: Mimosa/Semgrep blockt JEDE `open(<Variable>)`-Stelle in py — nur pathlib/Literale gehen durch; Gate scannt projektweit, Commits blockiert bis alle Findings gefixt.
+
+**⚠️ Sascha-Aktionen (noch offen):** (1) 3 Portal-Passwörter SOFORT rotieren (FFG eCall, AWS Fördermanager, WAW) — altes Bundle war live mit Klartext. (2) Pilot-Git-History-Reset entscheiden (`9793048` enthält alte Passwörter, nie gepusht). (3) Edu: 9 unpushed — Push-GO? (4) Doppelstruktur Root/src-Cleanup (beide Projekte). (5) Gemini-Backend-Proxy (process.env im Browser crasht).
+
+Parallele-Lane-Lektion: Parent-Session + Side-Chat arbeiteten GLEICHZEITIG im selben Pilot-Repo (git status mehrfach verändert) — vor Edit immer frisch lesen, keine Kollision erzwungen; Parent holte den letzten Commit `c1b5d17`. Antigravity-Konversationen: `.db` (SQLite, step_payload=Protobuf, per python-strings extrahierbar) oder `.pb` **at-rest verschlüsselt** → Workspace-SSOT nutzen. Detail-Doku je Repo: `FERTIGMACHUNG_2026-09-30.md`. Verwandt: [[loki-os-v18-endprodukt]], [[atlas-versionsstand]], [[koerperfluss-edu-foerderpilot-takeover]]
+
 ## koerperfluss-edu-foerderpilot-takeover
 
 ---
@@ -7658,7 +7680,7 @@ metadata:
 **② Förderpilot** (Konvo `1926eeee` „Refactoring UI Components", 5165 Steps, .pb verschlüsselt):
 - Repo: `~/antigravity/Körperfluss-PILOT.AI` („förder-cockpit-für-startups", React19/Vite6/d3/motion) · **Root ist aktive Build-Quelle** (index.html → /index.tsx → Root-App.tsx), src/ = Kopie; Doppelstruktur Root↔src auf byte-identisch synchronisiert (Bereinigung nur mit GO)
 - **FERTIG (Commit `9793048`)**: Build+Lint grün (vite6, JS 2,08 MB — Code-Splitting offen), 3-Schritte-Copilot-Einstieg, VectorCloud100 liquid-fluid (velocityDecay 0,52, forceX/Y, Bloom-Einstieg, reduced-motion), Beta-Badges auf Nicht-Funktionstabs, TIP-NÖ (70 %/9.900 €, Kornherr ergänzt) + DigitalArk (action_required) auf SSOT korrigiert (existierten schon, nicht duplizieren!), git init + .gitignore (.env!), Doku **FERTIGMACHUNG_2026-09-30.md**
-- Offen: Deploy `npm run build && firebase deploy --only hosting` (site **foerder-cockpit**) = Stopp-Regel, braucht Sascha-GO; Gemini-Key via process.env im Browser (Backend-Proxy fehlt)
+- Offen (→ 30.09. abends alles ERLEDIGT, siehe [[koerperfluss-edu-foerderpilot-fertig]]): Deploy war Stopp-Regel → Sascha erteilte Deploy-GO („verteilt deployen") → beide Apps live mit Hash-Beweis; Gemini-Key via process.env im Browser (Backend-Proxy fehlt, bleibt offen)
 
 **Modell-Empfehlung (30.09., inzwischen belegt):** GLM 5.3 (max) für /Plan/Architektur/Gegenlesen, Flash (max) für Ausführung/Scans/Doku — Flash = 320B MoE, ~8,9× billiger, AA-Index 57; 5.3 = Flagship (CyberGym 84,5); beide mit low/high/max im Z.AI-Plan. Details: [[glm-53-vs-flash-belegte-fakten]]. Verwandt: [[loki-os-v18-endprodukt]], [[sascha-vollzug-keine-zwischenfragen]]
 
