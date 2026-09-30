@@ -122,3 +122,9 @@ metadata:
 - Ehrlichkeits-Format bewährt bei leerem Tag: Ruhig-Tag + Lücken-Woche als FAKT melden, nichts erfinden; 3 Dauer-GOs (Wecker · Deutsch-Patch · doku-fix) im Brief wiederholt — Sascha hat bis 13.10. keines gegeben.
 - Bilanz 13.09.–13.10.: 21 Läufe, alle 6 Zweige bewiesen, 3 Wochen durchgehend; verpasste Läufe = 100 % Schlaf-Fälle. Offen unverändert: **GO Wecker · Deutsch-Patch-Recovery · GO doku-fix**.
 
+## Zweiundzwanzigster + Dreiundzwanzigster Lauf (Mi 30.09. 15:0x DOKU-SYNC Nr. 2 + 16:0x No-op — PASS)
+- **DOKU-SYNC zweiter Lauf, jetzt 2 Findings:** ⚠️ alt (weiterhin offen): assi-README fehlt `assi brief`/`assi feierabend` (grep 0 Treffer) · ⚠️ **NEU:** `~/loki-assistent/lib/push.sh` („Proaktive Exekutive — Brief pushen + Fristen-Wache v1", neue Datei von fremder Session, macOS-Notifications + Aufgaben-Stand via tasks_summary.sh + brain.py, Pfad-Härtung, exit-immer-0) ist in der README **nicht dokumentiert** (grep „push" = 0). Fix = 3 Tabellenzeilen, wartet auf „GO doku-fix".
+- Git letzte 7 Tage: 0 Commits (die 4 September-Commits ae899b0/eaf7bc4/2bad878/7fdbf2d jetzt >7 Tage alt, alle mit Doku) → kein neuer Bedarf.
+- ⚠️ **UHR-ANOMALIE dokumentiert:** Systemuhr sagt 30.09, Logbuch-Ordner enthält zukunftdatierte `2026-10-06.md` + `2026-10-13.md` — bewusst NICHT angefasst (Kein-Löschen-Regel), nur im Logbuch notiert. Bei zukünftigen Läufen gilt: **`date`-Output ist die Wahrheit**, Logbuch-Datums-Sprünge können Anomalie sein (vor Append immer NEU lesen — Multi-Writer).
+- 16:00-Mittwoch-Slot korrekt 1-Zeilen-No-op. Bilanz: 23 Läufe; offen unverändert: GO Wecker · Deutsch-Patch-Recovery · GO doku-fix (jetzt 3 Zeilen: brief/feierabend/push.sh).
+
