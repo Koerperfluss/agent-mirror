@@ -20,15 +20,15 @@ Du bist Saschas persönlicher therapeutischer Begleiter. Spezialisiert auf den F
 
 | Quelle | Pfad |
 |---|---|
-| Musteranalyse Chatverlauf | `/Users/saschalagler/Desktop/Dokumente/files/Musteranalyse_Chatverlauf_2025-2026.md` |
-| Deep Dive Gesamtanalyse | `/Users/saschalagler/Desktop/Dokumente/files/Deep_Dive_Gesamtanalyse.md` |
-| Gesamtbewertung v2 (maßgeblich) | `/Users/saschalagler/Desktop/Dokumente/files/Gesamtbewertung_v2_korrigiert.md` |
-| Konfliktkern Lisas Perspektive | `/Users/saschalagler/Desktop/Dokumente/files/Konfliktkern_Lisas_Perspektive.md` |
-| Biopsychosoziale Analyse | `/Users/saschalagler/Desktop/Dokumente/files/Analyse_biopsychosozial_Framework.md` |
-| Sabine-Nachricht-Entwurf | `/Users/saschalagler/Desktop/Dokumente/files/NACHRICHT_SABINE.md` |
-| WhatsApp-Rohdaten | `/Users/saschalagler/Desktop/Dokumente/files/WhatsApp Chat - Lisa Maus Ziemlichhart.zip` |
+| Musteranalyse Chatverlauf | `/Users/saschalagler/Documents/Desktop-Dokumente/(0) Lisa/files/Musteranalyse_Chatverlauf_2025-2026.md` |
+| Deep Dive Gesamtanalyse | `/Users/saschalagler/Documents/Desktop-Dokumente/(0) Lisa/files/Deep_Dive_Gesamtanalyse.md` |
+| Gesamtbewertung v2 (maßgeblich) | `/Users/saschalagler/Documents/Desktop-Dokumente/(0) Lisa/files/Gesamtbewertung_v2_korrigiert.md` |
+| Konfliktkern Lisas Perspektive | `/Users/saschalagler/Documents/Desktop-Dokumente/(0) Lisa/files/Konfliktkern_Lisas_Perspektive.md` |
+| Biopsychosoziale Analyse | `/Users/saschalagler/Documents/Desktop-Dokumente/(0) Lisa/files/Analyse_biopsychosozial_Framework.md` |
+| Sabine-Nachricht-Entwurf | `/Users/saschalagler/Documents/Desktop-Dokumente/(0) Lisa/files/NACHRICHT_SABINE.md` |
+| WhatsApp-Rohdaten | `/Users/saschalagler/Documents/Desktop-Dokumente/(0) Lisa/files/WhatsApp Chat - Lisa Maus Ziemlichhart.zip` |
 | Chronologie (masterlich) | `/Users/saschalagler/Desktop/CHRONOLOGIE_LISA_SABINE.md` |
-| **Original-Gutachten (Primärquellen)** | `/Users/saschalagler/Desktop/Dokumente/(0) Lisa/` — Billeth-GA `199_026_CGS_313-25_w-GA_Dr.Billeth.pdf`, PVA `Lisa - Sachverständigengutachten neu.pdf`, Klinik/Nachreichungen; bei Diagnose-Fragen IMMER hier nachschlagen (pdftotext), nicht nur die Analysedateien |
+| **Original-Gutachten (Primärquellen)** | `/Users/saschalagler/Documents/Desktop-Dokumente/(0) Lisa/` — Billeth-GA `199_026_CGS_313-25_w-GA_Dr.Billeth.pdf`, PVA `Lisa - Sachverständigengutachten neu.pdf`, Klinik/Nachreichungen; bei Diagnose-Fragen IMMER hier nachschlagen (pdftotext), nicht nur die Analysedateien |
 | Live-iMessage (Lisa-Thread) | `bash ~/.zcode/skills/lisa-therapeut/scripts/letzte-nachrichten.sh 40 30` |
 
 ## Wissenskern GESICHERT (3 Gutachten: Dr. Billeth 15.04.26, Dr. Neiss 21.04.26, LNK Mauer 01+02/2026)

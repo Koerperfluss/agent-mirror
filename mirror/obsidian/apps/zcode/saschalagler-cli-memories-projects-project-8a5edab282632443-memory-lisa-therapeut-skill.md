@@ -1,13 +1,13 @@
 ---
 app: zcode
 quelle: "saschalagler/cli/memories/projects/project-8a5edab282632443/memory/lisa-therapeut-skill.md"
-stand: 2026-09-07
+stand: 2026-10-01
 tags: [spiegel, zcode]
 ---
 
 ---
 name: lisa-therapeut-skill
-description: Eigener Therapeut-Skill /lisa-therapeut gebaut (07.09.26) — Fall Lisa, 3 Standorte, chat.db-Skript live, Chronologie + Sabine-Export-Fund, IG-Fall abgeschlossen; PSD-Gmail-Threads LIVE gefunden (18.05.26, PSD antwortete 2× → im Bestandsthread antworten statt Kaltanruf) + Florian Hehenberger-Rautner; DEIN_PLAN_JETZT.md = aktiver Plan (Funkstille reaktiv, kein Timeout, PSD-Mail heute); IG-Deutungs-Disziplin (beweist nur Existenz, nie Zustand); Papa-Satz war Saschas eigene Nachricht
+description: Eigener Therapeut-Skill /lisa-therapeut (3 Standorte; ~/.zcode-Ordner war 20.09. geleert → 01.10. wiederhergestellt). LAGE 01.10.26: Lisa Funkstille seit 03.09. (4 Wo), Sascha brach Stillsein (19.09. Drohsatz „terrorisiert", Serien, 29.09. „ich will mich umbringen" = letzte Thread-Nachricht, Therapie läuft). Zettel-Fund: ihr Urteil „ich hatte immer Recht – gespielt – muss weg" datiert 25.12.25 = VOR Silvester/David → Vorwürfe waren nachträgliche Begründung. Desktop-Dateien umgezogen nach ~/Documents/Desktop-Dokumente/(0) Lisa/
 metadata:
   node_type: memory
   type: project
@@ -16,7 +16,13 @@ metadata:
 
 **lisa-therapeut-Skill FERTIG 07.09.2026** — Saschas persönlicher Therapeut-Agent, 3 Kopien: `~/.zcode/skills/lisa-therapeut/` (Frontmatter, kanonisch), `~/.agents/skills/lisa-therapeut/` (Spiegel), `~/.cline/skills/lisa-therapeut/SKILL.md` (Cline-Format). Routing-Zeile in `~/.agents/STANDARD-SKILLS.md` Sektion B (kein Eintrag in skill-routing.md — erst nach Bewährung, dessen eigene Regel).
 
-**Wissen:** Kern aus 4 Analysedateien in `~/Desktop/Dokumente/files/` + Lagenotiz „STAND 07.09.2026" (aktualisierbare Sektion mit Wartungs-Protokoll: bei neuer Lage NUR diese Sektion ersetzen).
+**Wissen:** Kern aus Analysedateien — **⚠️ PFADGEÄNDERT (01.10., Desktop wurde umgezogen, NICHT gelöscht):** alles jetzt in `~/Documents/Desktop-Dokumente/(0) Lisa/files/` (Musteranalyse, Deep_Dive, Gesamtbewertung v2, Konfliktkern, Analyse_biopsychosozial, NACHRICHT_SABINE, WhatsApp-Zip, CHRONOLOGIE_2025-2026.md); Gutachten in `~/Documents/Desktop-Dokumente/(0) Lisa/`; STUFENPLAN + Hilfsstellen-PDF in `...(0) Lisa/STUFENPLAN/`. Alle 3 SKILL.md-Kopien zeigen seit 01.10. auf die neuen Pfade. Lagenotiz jetzt „STAND 01.10.2026" (alte 07.09.-Lage als ARCHIV-Sektion belassen).
+
+**INFRASTRUKTUR-AUSFALL 01.10. entdeckt:** `~/.zcode/skills/` war am 20.09. KOMPLETT geleert (nur .skillshare-manifest-Reste) → lisa-therapeut dort per Write-Tool neu aufgebaut (SKILL.md 14.504 B + Skript). Chronologie/Plan-Dateien vom Desktop-Root verschwunden, aber als MOVE gefunden (mdfind) — bei „Datei existiert nicht" IMMER mdfind vor Neubau.
+
+**LAGE STAND 01.10.2026 (chat.db-belegt):** Lisa: **letzte eigene Nachricht 03.09. — 4 Wochen totale Funkstille**, kein Block sichtbar. Sascha brach die Stillsein-Regel: **19.09.** Monolog-Flut inkl. Drohsatz „hol dir eine neue Nummer weil ich terrorisiert dich … wär's wenn du Angst vor mir hast" (rechtlich gefährlichster Satz des Jahres) → **20.09.** Kehrtwende: Sachen-Angebot „ich bringe alles nach St. Pölten, ich werfe nichts weg" (Laptop/Handy/Kleidung/Zeichnungen/Unterlagen) → **25.–28.09.** Serien („muss ich dich wieder bombardieren") → **29.09.** Liebes-Monolog („ich geh in therapie" — Therapie LÄUFT, positiv) + **16:51 „ich will mich umbringen .." = letzte Nachricht im Thread.** Aktuelle Regeln (1)–(5) im SKILL.md: Suizidäußerung = Vorrang (142/0800 20 11 20/Therapeut), keine weiteren Nachrichten an Lisa, Sachen nur über Dritte, Beweismaterial nicht deuten, null initiativ.
+
+**ZETTEL-FUND (01.10., Fotos von Sascha, ihre Handschrift, im Archiv der Chronologie als [?] verankert):** Privatnotiz datiert „Weihnacht"/25.12.**25** — Selbst-Chronologie: „Papa Tot → Wohnung – 99 % … finanziert – gelöst aus – Simone & ihre Seite – rausgekommen, weiter … finanzieren lassen – → Sascha – Psychose – Wahrheit + endlich Ruhe – Ich hatte immer Recht – gespielt – muss weg." **KERNEINORDNUNG: Das Urteil („immer Recht", „muss weg") steht schriftlich VOR Silvester 31.12./David 16.01. — vor allen späteren „Beweisen" → die Vorwürfe waren die nachträgliche Begründung eines früher gefallenen Urteils (passt zu Festhalten-Tendenz, präventiver Trennung, v2-BLUF).** „Psychose" = mehrdeutig, Struktur legt Kapitel-Label „Sascha-Epoche" nahe (kein medizinischer Ausspruch über ihn oder sie); Alternative (Selbstbezug) nicht ausgeschlossen. Andere Zettel = englische Selbstregulations-Affirmationen („Regulate nervous system") → 100 Selbstliebe-Zettel + 1 Urteils-Zettel koexistieren = Splitting parallel statt sequenziell. Antwortlinie bewährt: Transkript + Datums-Bedeutung liefern, Mehrdeutigkeit ehrlich markieren, Zettel = Therapeut-Material, zurück in Sachen-Karton, nie als Konfrontations-/Beweis-Material.
 
 **Korrektur Faktengeschichte:** Der Papa-Satz („wenn sein papa das mitbekommen würde was du machst", 02.09. 18:09) war SASCHAS eigene Nachricht während der 300-€-Eskalation — Lisas „Red nie wieder über mein papa" (21:16) war ihre Grenzsetzung. Frühere Agenten hatten es ihm als Lisas Angriff verkauft → Wut. Skill verankert: Papa-Thema tot, Muster-Check immer für beide Seiten.
 
