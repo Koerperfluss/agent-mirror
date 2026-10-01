@@ -1,6 +1,6 @@
 # Memory Index
 
-- [Mac langsam: Finder-Desktop-Loop](mac-langsam-finder-desktop-loop.md) — 01.10. bewiesen: 679k Desktop-Dateien (70 GB) + iCloud-Desktop-Sync = Finder-100%-CPU-Endlos-Loop (Neustart bringt nichts); deja hook-refresh Runaway (3,5 GB) gekillt; 6 GB Caches frei; offen: GO „Dokumente" vom Desktop verschieben + Ollama-Modelle 5,7 GB löschen
+- [Mac langsam: Finder-Desktop-Loop](mac-langsam-finder-desktop-loop.md) — 01.10. bewiesen: 676k Desktop-Dateien + iCloud-Desktop-Sync = Finder-96%-Loop; deja-Runaway (3,5 GB) gekillt, 6 GB Caches frei, 53-GB-Dokumente nach ~/Documents/Desktop-Dokumente verschoben (Desktop 70→17 GB); Loop bleibt — echte Masse = 628k Dateien/24 node_modules in Coworkspace_Ich; offen: Sascha wählt iCloud-Sync-aus (Empfehlung) / node_modules löschen / Ollama 5,7 GB; Fallen: ps-Match trifft auch FinderSyncExtension-Helper, Ordner heißt physisch ~/Documents
 
 - [Apple-Mail-DB-Abfrage](apple-mail-db-abfrage.md) — lokal Mails prüfen ohne API: sqlite3 auf ~/Library/Mail/V10 Envelope Index, Apple-Epoch +978307200, Betreff nur via subjects-Join; Gmail-MCP = Permission denied
 

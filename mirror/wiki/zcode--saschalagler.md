@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-01 09:36 UTC
+Zuletzt gespiegelt: 2026-10-01 09:50 UTC
 
 ## AGENTS
 
@@ -8573,6 +8573,8 @@ Beobachtet 06.09.2026 (Session mit Off-Peak-Ticket): Nach User-Paste „ZCode Er
 
 # Memory Index
 
+- [Mac langsam: Finder-Desktop-Loop](mac-langsam-finder-desktop-loop.md) — 01.10. bewiesen: 679k Desktop-Dateien (70 GB) + iCloud-Desktop-Sync = Finder-100%-CPU-Endlos-Loop (Neustart bringt nichts); deja hook-refresh Runaway (3,5 GB) gekillt; 6 GB Caches frei; offen: GO „Dokumente" vom Desktop verschieben + Ollama-Modelle 5,7 GB löschen
+
 - [Apple-Mail-DB-Abfrage](apple-mail-db-abfrage.md) — lokal Mails prüfen ohne API: sqlite3 auf ~/Library/Mail/V10 Envelope Index, Apple-Epoch +978307200, Betreff nur via subjects-Join; Gmail-MCP = Permission denied
 
 - [Judicario-Gateway-MCP-Rezept](judicario-gateway-mcp-rezept.md) — 01.10. GELOST: altes legal_research tot; echter Weg = Streamable-HTTP-Handshake (Session-ID, Dual-Accept, SSE, inkrementelle IDs) + at_search; Key jud_Cpu-… aus Claude-Code-Installer; fertiger Client judicario_mcp_client.py (SSRF-gehärtet)
@@ -8763,6 +8765,8 @@ deja-vu 0.20.2 am 20.09.2026 installiert (`brew install deja-vu`, Binary `/opt/h
 **End-to-End-Beweis (20.09., auf Saschas „beweise es mir"):** Live-JSON-RPC-Handshake gegen `/opt/homebrew/bin/deja mcp` → Server antwortet `deja 0.20.2`, Tool `deja`. Ein `mode:"recall"`-Call auf „eBay Nespresso Kaffee Anzeige" lieferte als Rang-1-Treffer die echte ZCode-Session `sess_942c93ed…` (Nespresso-eBay-Recherche) — Cross-Session-Gedächtnis verifiziert, nicht nur behauptet.
 
 **Additiv-Verifikation (20.09.):** dejás config.json-Eingriff ist ADDITIV — alle 6 Schaltstellen des LOKI-OS-Harness (Hooks valid/keine leeren matcher, 16 Original-MCPs + deja = 17, 10 Agents, 7 Commands, Sync 5/5) intakt; dejás hooks (hook-context, hook-prompt) stehen als zusätzliche Entries neben gate-enforcer/block-dangerous-git/projects.py/config-health. dejás SessionStart- + UserPromptSubmit-Hooks feuern bereits in Live-Sessions (deja-recall-Blöcke im Hook-Kontext beobachtet). Kanonische Harness-Settings-Sessions: [[loki-os-harness-settings-sessions]].
+
+**Runaway- befund (01.10., Mac-Langsamkeit):** `deja hook-refresh` hing 2,5 min bei 104 % CPU + 3,5 GB RSS (PPID 1) und drückte die ganze Maschine — gekillt (`kill <pid>`), weg. Bei erneutem Mac-Lag zuerst `ps aux | grep 'deja hook-refresh'` prüfen. Details: [[mac-langsam-finder-desktop-loop]].
 
 **Claude-seitiger Befund (23.09., Diagnose-Workflow dwfrun-30bfea17):** Sascha nutzt Claude Code FAKTISCH NICHT — letzte Session-Transcript unter ~/.claude/projects/ ist vom 15.09. 14:01, deja-Install erst 20.09. 14:18 (find -newermt 2026-09-20 → leer). Saschas Eindruck „feuert nicht" = Nutzungsverhalten, kein Config-Fehler; dejás Verkabelung (settings.json Z. 103/121 + Wrapper + Binary) ist intakt, aber nie in einer Claude-Session angelaufen. 6 Routing-Skills fehlen zusätzlich in ~/.claude/skills (loki-os-health, deja-search, gsd-core, roo-code, ralph-loop, coderabbit — nur dort, ZCode hat alle). Details: [[george-thomas-status]].
 
@@ -9516,6 +9520,30 @@ LOKI VOICE (20.09.2026, loki-dev BUILD) — zwei Teile:
 **✅ THOMAS-ZUGANG REAL GESETZT 23.09. spät (Auflösung zu SPÄT 7):** Sascha verwarf `irisaidevop@gmail.com` („wie kommst du da drauf") und nannte die echte Adresse: **`schellenbacher.t@gmail.com`**. Ausgeführt: `gcloud projects add-iam-policy-binding gen-lang-client-0534030583 --member="user:schellenbacher.t@gmail.com" --role="roles/aiplatform.user"` — **Binding in der Policy-Output verifiziert**. Thomas' Setup = 2 Befehle (`brew install --cask google-cloud-sdk` + `gcloud auth login schellenbacher.t@gmail.com`) → komplette App (Chat + Vertex-Live-Stimme) läuft wie bei Sascha, ohne AI-Studio-Key/Guthaben. Anleitung: **`~/Desktop/GOOGLE_ZUGANG_FUER_THOMAS.md`** (auch im THOMAS-Paket 00_PAKET_FUER_THOMAS/ abgelegt; enthält Test-curl + ON_DEMAND-Billing-Hinweis + Entzug per remove-iam-policy-binding). THOMAS_PAKET_V2-App-Build (dwfrun-76db2298) lief bei letztem Check noch. Merkregel: Thomas' Google-Konto = **schellenbacher.t@gmail.com**; `irisaidevop@gmail.com` war falscher Kandidat (nicht verwenden).
 
 Verwandt: [[sascha-local-infra-ports]], [[loki-os-ecosystem-stand]], [[sascha-vollzug-keine-zwischenfragen]], [[sascha-arbeitsregeln-hart]], [[loki-os-v18-endprodukt]], [[session-quellen-wo-finden]]
+
+## mac-langsam-finder-desktop-loop
+
+---
+name: mac-langsam-finder-desktop-loop
+description: 01.10.2026 Diagnose Mac-Langsamkeit — Finder 100% CPU Endlos-Loop,
+  Wurzel = 679k Desktop-Dateien + iCloud Desktop-Sync; deja hook-refresh Runaway
+  gekillt; 6 GB Caches freigemacht; 2 GO-Punkte offen
+metadata:
+  node_type: memory
+  type: project
+  originSessionId: sess_31052e71-1af0-456d-92ea-d03c480959da
+---
+
+01.10.2026, ~11:40 Uhr: Saschas M4-Mac langsam. **Wurzel bewiesen: 679.326 Dateien auf `~/Desktop` (70 GB, „Dokumente"-Ordner allein 53 GB) + iCloud „Desktop & Dokumente"-Sync aktiv (`defaults read com.apple.finder FXICloudDriveDesktop` = 1) → Finder hängt in endloser `CA::Transaction`/`NSWindow`-Layout-Schleife (100 % CPU seit Boot, Neustarts inkl. geleertem Saved-State bringen nichts, AX-Abfrage bricht nach 8 s bei 22 Elementen ab).** WindowServer ~50 % = Folgeschaden. Ausgeschlossen: Finder-Fenster-State, Cloud-Extensions (Google Drive/Gemini/OneDrive FinderSync, 3× via `pluginkit -e ignore` deaktiviert — CPU blieb 96 %).
+
+Erledigt mit Beweis:
+- **`deja hook-refresh`-Prozess** (PPID 1, 2,5 min Laufzeit) frisst 3,5 GB RAM + 104 % CPU → gekillt, weg ([[deja-vu-install]]). 
+- **~6 GB Caches gelöscht:** `~/.cache/uv` (4,9 GB, via `uv cache clean`), npm (586 MB), `~/.cache/huggingface/hub` (464 MB). APFS zeigt freed space verzögert (df 38 Gi frei, 92 % belegt).
+- Swap (RAM-Überlauf auf SSD) 547 MB → 1,6 GB gestiegen; ~6 ZCode-Sessions/Prozesse gleichzeitig offen (je 100–450 MB).
+
+**Why:** Nie wieder neu diagnostizieren — die Kette Desktop-Masse × iCloud-Sync × Liquid-Glass-Rendering ist die Erklärung; Extensions/Fenster waren Red Herrings.
+
+**How to apply:** Offene GO-Punkte (nur mit Saschas GO ausführen): (1) **DER FIX:** `mv ~/Desktop/Dokumente ~/Dokumente/Desktop-Dokumente` (53 GB, gleiche Volume = Sekunden-Rename; Sascha soll Zielort bestätigen) — danach ~100 Desktop-Dateien, Finder normal. (2) Ollama-Modelle `qwen2.5-coder:7b` (4,7 GB) + `:1.5b` (986 MB) löschen (+5,7 GB; Sascha nutzt laut Memory nur glm-cloud). Extensions-Revert: `pluginkit -e use -i com.google.drivefs.finderhelper.findersync` (+ Gemini/OneDrive analog). Mac-Neustart löst NICHT — Loop kommt sofort zurück, solange der Desktop voll bleibt.
 
 ## sascha-arbeitsregeln-hart
 
