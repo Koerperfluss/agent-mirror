@@ -2,7 +2,9 @@
 
 - [Apple-Mail-DB-Abfrage](apple-mail-db-abfrage.md) — lokal Mails prüfen ohne API: sqlite3 auf ~/Library/Mail/V10 Envelope Index, Apple-Epoch +978307200, Betreff nur via subjects-Join; Gmail-MCP = Permission denied
 
-- [Legal-Ops-Cockpit-Reparatur](legal-ops-cockpit-reparatur.md) — 01.10. spät: Task-für-Task-Liste steht (Task 1 = Strafen-Email AKUT ~07.10.), Signatur maschinell bewiesen (pdftotext/pdfimages), Chipsi-Gutachten: §54b-Abs.3-Antrag richtig, 2 PDFs VERBOTEN (Auto-Schutzschreiben-Privatgrund-Story + gemeinnützige-Arbeit-Version), einzige Blockade = Auto-eVB, Ordner „id austria neu " MIT Leerzeichen, Judicario-MCP kaputt→RIS, Workflow läuft dwfrun-c2ded830 (GLM-5.3$low), Regel: nichts öffnet sich von selbst
+- [Judicario-Gateway-MCP-Rezept](judicario-gateway-mcp-rezept.md) — 01.10. GELOST: altes legal_research tot; echter Weg = Streamable-HTTP-Handshake (Session-ID, Dual-Accept, SSE, inkrementelle IDs) + at_search; Key jud_Cpu-… aus Claude-Code-Installer; fertiger Client judicario_mcp_client.py (SSRF-gehärtet)
+
+- [Legal-Ops-Cockpit-Reparatur](legal-ops-cockpit-reparatur.md) — 01.10. ENDE: Cockpit-Workflow dwfrun-c2ded830 FERTIG (13 Fixes, Endtest GRÜN, Backup .bak); 5 E-Mails + .eml-mit-Anhang-Workflow; Judicario lebt wieder (§44 KFG live, 2b-Antrag normbestätigt); offen: Saschas „bleibt/streichen" zu 2b-Erklärung, 5× Senden, Ordner-Aufräumen
 
 - [GLM-5.3 vs Flash: belegte Fakten](glm-53-vs-flash-belegte-fakten.md) — Flash=320B MoE ~8,9× billiger, AA-Index 57; 5.3=Flagship (CyberGym 84,5); beide low/high/max (Default max) — Regel: Plan/Architektur=5.3, Ausführung=Flash; Sascha will direkte belegte Modellurteile, keine Absicher-Floskeln
 

@@ -9,7 +9,7 @@ tags: [spiegel, zcode]
 
 - [Apple-Mail-DB-Abfrage](apple-mail-db-abfrage.md) — lokal Mails prüfen ohne API: sqlite3 auf ~/Library/Mail/V10 Envelope Index, Apple-Epoch +978307200, Betreff nur via subjects-Join; Gmail-MCP = Permission denied
 
-- [Legal-Ops-Cockpit-Reparatur](legal-ops-cockpit-reparatur.md) — 01.10. Root-Cause: Ordner „id austria neu " MIT Leerzeichen; Cockpit hatte 0 PDF-Links; Judicario-MCP kaputt→RIS; Workflow dwfrun-20813457; Backend 7070 live; Regel: nichts öffnet sich von selbst
+- [Legal-Ops-Cockpit-Reparatur](legal-ops-cockpit-reparatur.md) — 01.10. spät: Task-für-Task-Liste steht (Task 1 = Strafen-Email AKUT ~07.10.), Signatur maschinell bewiesen (pdftotext/pdfimages), Chipsi-Gutachten: §54b-Abs.3-Antrag richtig, 2 PDFs VERBOTEN (Auto-Schutzschreiben-Privatgrund-Story + gemeinnützige-Arbeit-Version), einzige Blockade = Auto-eVB, Ordner „id austria neu " MIT Leerzeichen, Judicario-MCP kaputt→RIS, Workflow läuft dwfrun-c2ded830 (GLM-5.3$low), Regel: nichts öffnet sich von selbst
 
 - [GLM-5.3 vs Flash: belegte Fakten](glm-53-vs-flash-belegte-fakten.md) — Flash=320B MoE ~8,9× billiger, AA-Index 57; 5.3=Flagship (CyberGym 84,5); beide low/high/max (Default max) — Regel: Plan/Architektur=5.3, Ausführung=Flash; Sascha will direkte belegte Modellurteile, keine Absicher-Floskeln
 

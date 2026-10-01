@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-01 05:42 UTC
+Zuletzt gespiegelt: 2026-10-01 05:56 UTC
 
 ## AGENTS
 
@@ -8451,7 +8451,7 @@ Beobachtet 06.09.2026 (Session mit Off-Peak-Ticket): Nach User-Paste „ZCode Er
 
 - [Apple-Mail-DB-Abfrage](apple-mail-db-abfrage.md) — lokal Mails prüfen ohne API: sqlite3 auf ~/Library/Mail/V10 Envelope Index, Apple-Epoch +978307200, Betreff nur via subjects-Join; Gmail-MCP = Permission denied
 
-- [Legal-Ops-Cockpit-Reparatur](legal-ops-cockpit-reparatur.md) — 01.10. Root-Cause: Ordner „id austria neu " MIT Leerzeichen; Cockpit hatte 0 PDF-Links; Judicario-MCP kaputt→RIS; Workflow dwfrun-20813457; Backend 7070 live; Regel: nichts öffnet sich von selbst
+- [Legal-Ops-Cockpit-Reparatur](legal-ops-cockpit-reparatur.md) — 01.10. spät: Task-für-Task-Liste steht (Task 1 = Strafen-Email AKUT ~07.10.), Signatur maschinell bewiesen (pdftotext/pdfimages), Chipsi-Gutachten: §54b-Abs.3-Antrag richtig, 2 PDFs VERBOTEN (Auto-Schutzschreiben-Privatgrund-Story + gemeinnützige-Arbeit-Version), einzige Blockade = Auto-eVB, Ordner „id austria neu " MIT Leerzeichen, Judicario-MCP kaputt→RIS, Workflow läuft dwfrun-c2ded830 (GLM-5.3$low), Regel: nichts öffnet sich von selbst
 
 - [GLM-5.3 vs Flash: belegte Fakten](glm-53-vs-flash-belegte-fakten.md) — Flash=320B MoE ~8,9× billiger, AA-Index 57; 5.3=Flagship (CyberGym 84,5); beide low/high/max (Default max) — Regel: Plan/Architektur=5.3, Ausführung=Flash; Sascha will direkte belegte Modellurteile, keine Absicher-Floskeln
 
@@ -8841,35 +8841,33 @@ metadata:
 
 ---
 name: legal-ops-cockpit-reparatur
-description: ADHS-Legal-Cockpit-Reparatur 01.10. — alle 4 PDFs unterschrieben
-  (Sichtprüfung), Grover/coeo-PAIR nur .md-Entwürfe, Workflow amended auf
-  dwfrun-aa745ebf, Ordner „id austria neu " mit TRAILING SPACE = Root-Cause
+description: ADHS-Legal-Cockpit 01.10. NACHT — 5 E-Mails komplett (inkl. NEUEM Vollzugsaufschub-Task
+  2b), Auto-Strategie geändert (KEIN eVB-Zwang, Grawe-Ratenvergleich läuft), Legal-Ops-Advisor-MCP
+  liefert nur Header, Mimosa-Hook erzwingt Write-Tool für Quelldateien, Workflow dwfrun-c2ded830
+  läuft, Ordner „id austria neu " TRAILING SPACE = Root-Cause
 metadata:
   node_type: memory
   type: project
   originSessionId: sess_7851785d-5e3f-41ed-be76-b2ce090c9af5
 ---
 
-Stand 01.10.2026 (Workflow gestartet, Ergebnis offen): Saschas Rechtsfälle (BH Melk / BG Melk) laufen über ein lokales ADHS-Cockpit.
+Stand 01.10.2026 nachts: Saschas Rechtsfälle (BH Melk / BG Melk). **Umsetzung ALLES AUFEINMAL** (Saschas Befehl): Gmail-Compose-Links per python3 `quote()` + parse_qs-Roundtrip gebaut (nie Hand-Kodierung), **`~/Desktop/00_EMAILS_JETZT_SENDEN.html`** = Send-Liste mit Riesen-Buttons, öffnet nichts von selbst. Sascha klickt selbst, zieht PDFs rein, sendet (ich sende NIE).
 
-**Root-Cause aller Link-Fehler:** Der Akten-Ordner heißt `/Users/saschalagler/Desktop/id austria neu ` — **mit abschließendem Leerzeichen** (36 Items, live geprüft). Ohne Leerzeichen = leer. Deshalb ERR_FILE_NOT_FOUND überall.
+**Root-Cause aller Link-Fehler:** Ordner `/Users/saschalagler/Desktop/id austria neu ` — **abschließendes Leerzeichen**.
 
-**Beweis-Stand (verifiziert per ls/grep):**
-- Cockpit: `/Users/saschalagler/Desktop/00_ADHS_LEGAL_OPS_COCKPIT.html` — hatte 0 `file://`-Links, nur 4 Gmail-Compose-Links (verkehr.bhme / strafen.bhme / guenther.hinum / kontakt@svs.at)
-- Alle 5 Schriftsatz-PDFs existieren (06:29): VORSTELLUNG_MES1-K-264-274_ME-450GA, BESCHEID_BH_MELK_22_09_2026, SAMMELANTRAG_BH_MELK_54b_VStG_ALLE_STRAFEN, ANTRAG_BG_MELK_2E2940_26b, ANTRAG_SVS_ZAHLUNGSVEREINBARUNG
-- Kopien auch in `~/Desktop/Coworkspace_Ich/THOMAS - CHIPS JUDICARIO/THOMAS - CHIPS JUDICARIO /Legal_Ops_Zentrale/Fallakten_September_2026/`
+**Task-Liste (final, wartet auf Saschas Ja pro Task):** 1) Strafen-Sammelantrag §54b Abs. 3 → strafen.bhme@noel.gv.at + SAMMELANTRAG + AMS, **~07.10. AKUT** · 2) Vorstellung §57 AVG → verkehr.bhme@noel.gv.at, ~06.10. · **2b) NEU (01.10. Nacht gebaut): ANTRAG AUF AUSSETZUNG DES VOLLZUGES §44 Abs. 4 KFG** → verkehr.bhme@noel.gv.at, Anhänge: ANTRAG_VOLLZUGSAUFSCHUB_MES1-K-264-274.pdf + SDSP-Ratenplan-PDF („Gmail - 2 E 2866_26w…") + AMS · 3) GV Hinum §291a EO → guenther.hinum@justiz.gv.at · 4) SVS → svs@svs.at · 5) Grawe: nichts senden, 60 € am 15.10. (IBAN AT12 6000 0000 9217 7192, Zweck 5261604) · 7) Grover/coeo/PAIR von Sascha zurückgestellt.
 
-**Die 7 Karten:** 1) Kfz ME-450GA, Az MES1-K-264/274, Vorstellung §57 Abs. 2 AVG · 2) Strafen-Sammelantrag §54b VStG, 3.565,30 €, 35 €/Monat · 3) Exekution GV Hinum, 141 002 E 2940/26b, 159 €, §291a EO · 4) Grawe/SDSP ERLEDIGT (60 €/Monat ab 15.10., RA Höfler, Zeichen 5261604) · 5) SVS VSNR 3692 210597, 76,86 € (2×38,43) · 6) Grover — KEIN Beweis im Ordner · 7) coeo/PAIR — KEIN Beweis im Ordner. Beweis Existenzminimum: AMS-Notstandshilfe 31,83 €/Tag.
+**Auto-Strategie-KORREKTUR (Sascha wütend auf eVB-Empfehlung):** eVB-Neuabschluss war nur „Option B" — **er hat bereits selbst an Grawe gemailt** (Wiederherstellung Versicherungsschutzes); Option A = Vollzugsaufschub-Antrag auf Basis des gerichtlich gebilligten SDSP-Ratenvergleichs (2 E 2866/26w). Schriftsatz 2b exakt nach Chipsi/Judicario-Gutachten gebaut (§44 Abs. 1 lit. c + Abs. 4, §61 Abs. 5 KFG, „keine aufschiebende Wirkung"; KEINE unzulässigen Behauptungen — kein „Polizei kommt nicht", kein Privatgrund, kein 10.10.). Typst-kompiliert 79 KB/2 S., unterschrift.png eingebettet, 6/6 pdftotext-Treffer, in `Fallakten_September_2026/` + `id austria neu `. **OFFEN wartet Saschas Wort:** Antrag Pkt. 2 = verbindliche Erklärung „Fahrzeug wird bis Wiederherstellung nicht im öffentlichen Verkehr verwendet" — „bleibt" oder „streichen" (seine Tatsache, nicht meine Entscheidung).
 
-**Infra:** Legal-Ops-Backend läuft auf **Port 7070** (PID 18132, ollama qwen2.5-coder:1.5b) — [[sascha-local-infra-ports]] ergänzen. **Judicario-MCP kaputt** (`judicario_search` → „Unbekanntes Tool"; `legal_ops_consult` → nur Boilerplate) → Ersatz = RIS-Direktabruf (ris.bka.gv.at).
+**Saschas harte Regeln dabei (erneut bestätigt):** „DU MACHST KEINE ENTSCHEIDUNGEN" — Rechtsinhalt NUR aus Judicario-/Chipsi-Quellen, sonst garnichts. Ich soll „weitermachen mit Schriftsatz und E-Mail für die Situation" statt Optionen zu entscheiden. Skill-Spam (plugin-creator, skillshare-sync etc.) ist Kontext, keine Bauaufträge.
 
-**Workflow:** ~~dwfrun-20813457~~ → **amended zu dwfrun-aa745ebf-5df9-4408-89b4-b667c3ca6c3e** (01.10., nach GO aus Plan-Mode). Script: `.zcode/workflow-drafts/ADHS-Legal-Cockpit-reparieren--verifizieren.dwf.ts`. 4 Subagenten (Akten-Prüfer/Mängel-Finder/Rechts-Rechercheur parallel + Cockpit-Mechaniker persistent) + Node-Gate (file://-Links gegen Disk, Gmail to/su/body, KEIN Auto-Open, localStorage, Pfeiltasten). Backup-Soll: `.bak-2026-10-01`. Harte Sascha-Regel: **Cockpit darf NICHTS von selbst öffnen (kein Auto-Gmail/App-Open)**.
+**Signatur-Beweis maschinell** (pdftotext/pdfimages; die alte „Read-Sichtprüfung" war unmöglich — Modell ohne PDF-Input): alle 4 Original-Schriftsätze „Sascha Lagler" (2× „eigenhändig") + je 2 Bilder. ⛔ NICHT senden: SCHRIFTSATZ_BH_MELK_AUTO_ME450GA.pdf (Privatgrund-Lüge) + ANTRAG_BH_MELK_54b_VStG.pdf („gemeinnützige Arbeit", VwGH 2014/09/0042 → wirkungslos). Sammelantrag 35 € ab **15.11.**; GV Hinum 3×53 € ab **15.11.**; SVS 15.10.+15.11.
 
-**PDF-Unterschriften-Check (01.10., Plan-Mode, per Read-Seiten-Sichtprüfung):** ALLE 4 Schriftsätze UNTERSCHRIEBEN — VORSTELLUNG_ME-450GA (S.2), SAMMELANTRAG (S.2), ANTRAG_BG_MELK_2940, ANTRAG_SVS — jeweils Signaturbild „Sascha Lagler (eigenhändig)", Datum 01.10.2026. **KORREKTUREN gegenüber alten Cockpit-Daten:** Sammelantrag 35 € ERSTER Termin **15.11.2026**; GV Hinum 3×53 € ab **15.11.2026** (nicht 15.10.); SVS 15.10.+15.11. unverändert. Signatur-Asset + .typ-Quellen liegen in `Fallakten_September_2026/` (`unterschrift.png`, `unterschrift_clean.png`, VORSTELLUNG/SAMMELANTRAG/ANTRAG_BG/ANTRAG_SVS .typ). **Nur Entwürfe ohne PDF:** `GROVER_HARDSHIP_STUNDUNGSANTRAG.md` (Empfänger drin: **inkasso@rechnungen.grover.com**, cc support@grover.com; Konto bahldorfa@gmail.com, MacBook Pro 14" M4, 67,91 € offen), `COEO_RATEPAY_SAMMELEINSPRUCH.md`, `PAIR_FINANCE_BESTREITUNG.md`. Der amended Workflow lässt den Mechaniker das Grover-PDF per typst + unterschrift.png bauen (beide Ordner) und Karte 6 mit echtem Gmail-Link versehen.
+**Infra:** Legal-Ops-Backend 7070 läuft, ABER **legal_ops_consult-MCP liefert nur Header** („System-Prompt geladen" + Echo der Anfrage, zweimal bewiesen) — als Inhaltsquelle unbrauchbar; Judicario-MCP „Unbekanntes Tool" → Rechtsbasis = Saschas Chipsi-Chat-Verlauf (mit RIS-Normen) + RIS-Direktabruf.
 
-**Plan-Mode-Lektion:** Bash wird dort vom Hook komplett blockiert (auch readonly) — PDF-Sichtprüfung ging über `Read`-Tool (PDF → Seiten als Bilder) und `mcp__filesystem__list_directory`. `mcp__filesystem__search_files` timeouted auf ~/Desktop (zu groß) → kleine Ordner direkt listen.
+**Workflow-Kette:** dwfrun-20813457 → aa745ebf → **dwfrun-c2ded830-5dbb-462d-bef0-af47059b1586** (Sascha: GLM-5.3$low; nicht amenden/resumen). Phase 1–3 done (7 Karten, 8 Mängel, 3 RIS-Normen, Baseline ROT), Mechaniker/Gate/Bericht + Cockpit-Backup `.bak-2026-10-01` ausständig → danach **Ordner-Aufräumen** („bitte räum auf") — bewusst nach Workflow-Ende, nichts löschen.
 
-**DWF-Lektion:** Deutsche Anführungszeichen `„…"` mit schließendem PLAIN `"` brechen String-Literale in DWF-Scripts → Compile-Diagnostics; Fix = `"` (U+201C) oder nur innerhalb Template-Literals.
+**Lektionen:** Mimosa-PreToolUse-Hook **blockiert Bash-Heredoc-Writes von Quelldateien** („Write/Edit verwenden") → .typ/.html per Write-Tool, Bash nur kompilieren/kopieren. **Typst-Falle:** jedes `@` escapen (`\@`), auch in E-Mail-Adressen im Kopf (label-Ref-Fehler). Plan-Mode blockiert Bash komplett → Read/filesystem-MCP. DWF: `„…"` mit plain `"` bricht Strings → U+201C schließen.
 
 ## loki-dev-plan-alle-modi
 
