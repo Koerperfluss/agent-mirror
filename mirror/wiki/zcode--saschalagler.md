@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-01 10:04 UTC
+Zuletzt gespiegelt: 2026-10-01 10:19 UTC
 
 ## AGENTS
 
@@ -3093,6 +3093,129 @@ abs
 
 Overcoming Catastrophic Forgetting by Exemplar Selection in Task-oriented Dialogue System
 Chen Chen
+
+## call_fe1f4e977cb54e7a91b86606-tool-result-3c21f2b9-0a8f-46ff-a18f-438fa8059fb6
+
+Releases · vshulcz/deja-vu · GitHub
+
+[Skip to content](#start-of-content)
+
+## Navigation Menu
+
+[](/)[Sign in](/login?return_to=https%3A%2F%2Fgithub.com%2Fvshulcz%2Fdeja-vu%2Freleases)Appearance settings
+
+- PlatformAI CODE CREATION[GitHub CopilotWrite better code with AI](https://github.com/features/copilot)
+- [GitHub Copilot appDirect agents from issue to merge](https://github.com/features/ai/github-app)
+- [MCP RegistryIntegrate external tools](https://github.com/mcp)
+
+- DEVELOPER WORKFLOWS[ActionsAutomate any workflow](https://github.com/features/actions)
+- [CodespacesInstant dev environments](https://github.com/features/codespaces)
+- [IssuesPlan and track work](https://github.com/features/issues)
+- [Code ReviewManage code changes](https://github.com/features/code-review)
+- [Code QualityEnforce quality at merge](https://github.com/features/code-quality)
+
+- APPLICATION SECURITY[GitHub Advanced SecurityFind and fix vulnerabilities](https://github.com/security/advanced-security)
+- [Code securitySecure your code as you build](https://github.com/security/advanced-security/code-security)
+- [Secret protectionStop leaks before they start](https://github.com/security/advanced-security/secret-protection)
+
+- EXPLORE[Why GitHub](https://github.com/why-github)
+- [Documentation](https://docs.github.com)
+- [Blog](https://github.blog)
+- [Changelog](https://github.blog/changelog)
+- [Marketplace](https://github.com/marketplace)
+
+[View all features](https://github.com/features)
+
+- SolutionsBY COMPANY SIZE[Enterprises](https://github.com/enterprise)
+- [Small and medium teams](https://github.com/team)
+- [Startups](https://github.com/enterprise/startups)
+- [Nonprofits](https://github.com/solutions/industry/nonprofits)
+
+- BY USE CASE[App Modernization](https://github.com/solutions/use-case/app-modernization)
+- [DevSecOps](https://github.com/solutions/use-case/devsecops)
+- [DevOps](https://github.com/solutions/use-case/devops)
+- [CI/CD](https://github.com/solutions/use-case/ci-cd)
+- [View all use cases](https://github.com/solutions/use-case)
+
+- BY INDUSTRY[Healthcare](https://github.com/solutions/industry/healthcare)
+- [Financial services](https://github.com/solutions/industry/financial-services)
+- [Manufacturing](https://github.com/solutions/industry/manufacturing)
+- [Government](https://github.com/solutions/industry/government)
+- [View all industries](https://github.com/solutions/industry)
+
+[View all solutions](https://github.com/solutions)
+
+- ResourcesEXPLORE BY TOPIC[AI](https://github.com/resources/articles?topic=ai)
+- [Software Development](https://github.com/resources/articles?topic=software-development)
+- [DevOps](https://github.com/resources/articles?topic=devops)
+- [Security](https://github.com/resources/articles?topic=security)
+- [View all topics](https://github.com/resources/articles)
+
+- EXPLORE BY TYPE[Customer stories](https://github.com/customer-stories)
+- [Events & webinars](https://github.com/resources/events)
+- [Ebooks & reports](https://github.com/resources/whitepapers)
+- [Business insights](https://github.com/solutions/executive-insights)
+- [GitHub Skills](https://skills.github.com)
+
+- SUPPORT & SERVICES[Documentation](https://docs.github.com)
+- [Customer support](https://support.github.com)
+- [Community forum](https://github.com/orgs/community/discussions)
+- [Trust center](https://github.com/trust-center)
+- [Partners](https://github.com/partners)
+
+[View all resources](https://github.com/resources)
+
+- Open SourceCOMMUNITY[GitHub SponsorsFund open source developers](https://github.com/open-source/sponsors)
+
+- PROGRAMS[Security Lab](https://securitylab.github.com)
+- [Maintainer Community](https://maintainers.github.com)
+- [GitHub Stars](https://stars.github.com)
+- [Archive Program](https://archiveprogram.github.com)
+
+- REPOSITORIES[Topics](https://github.com/topics)
+- [Trending](https://github.com/trending)
+- [Collections](https://github.com/collections)
+
+- EnterpriseENTERPRISE SOLUTIONS[Enterprise platformAI-powered developer platform](https://github.com/enterprise)
+
+- AVAILABLE ADD-ONS[GitHub Advanced SecurityEnterprise-grade security features](https://github.com/security/advanced-security)
+- [Copilot for BusinessEnterprise-grade AI features](https://github.com/features/copilot/copilot-business)
+- [Premium SupportEnterprise-grade 24/7 support](https://github.com/enterprise/premium-support)
+
+- [Pricing](https://github.com/pricing)
+Search/
+
+[Sign in](/login?return_to=https%3A%2F%2Fgithub.com%2Fvshulcz%2Fdeja-vu%2Freleases)
+[Sign up](/signup?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F%3Cuser-name%3E%2F%3Crepo-name%3E%2Freleases%2Findex&source=header-repo&source_repo=vshulcz%2Fdeja-vu)Appearance settings
+
+You signed in with another tab or window. Reload to refresh your session.
+You signed out in another tab or window. Reload to refresh your session.
+You switched accounts on another tab or window. Reload to refresh your session.
+
+Dismiss alert
+
+{{ message }}
+
+[
+vshulcz
+](/vshulcz)
+/
+
+[deja-vu](/vshulcz/deja-vu)
+
+Public
+
+-
+[
+
+Notifications
+](/login?return_to=%2Fvshulcz%2Fdeja-vu) You must be signed in to change notification settings
+
+-
+[
+
+Fork
+108
 
 ## call_339477364a17488a84bbd97e-tool-result-bc9354f9-6002-4ff8-b81d-0069bef089d6
 
@@ -8606,7 +8729,7 @@ Beobachtet 06.09.2026 (Session mit Off-Peak-Ticket): Nach User-Paste „ZCode Er
 - [Lokale Infra & Ports](sascha-local-infra-ports.md) — OmniRoute 20128, Ollama 11434, LOKI 8010, Cline Code.app standalone
 - [LOKI Verkaufstool Stand](loki-verkaufstool-stand.md) — **Alle 6 eBay.at-Anzeigen LIVE (2006 €, Konto saschlagle_0)**. NEU 20.09. VII: 3 neue Objekte — **Nespresso Gemini CS203** (Schild druckt „CS200 Pro", Service-Manual beweist CS203; Max-Preise wh 390 €/eBay 399 €) · **KTM Life One Rad** (Opa, wh 199 VB/eBay 179) · **ATX-Scheiben 199 €** (keine Fotos). **eBay im 9222-Chrome eingeloggt; Kaffee-Draft 5202586051500 zu 95 % CDP-gebaut — Rest: Merkmal „Modell" + Publish (Sascha 1 Min)**; willhaben-Rad-Entwurf fertig (nur Farbe+Publish). Ordner `~/Desktop/PRojekte /VERKAUF-Nespresso-Gemini-CS203/` + `VERKAUF-KTM-Life-One-Rad/`. CDP-eBay-Playbook im File. AT-Fokus Loosdorf/NÖ
 - [Sascha Vollzug-Regel](sascha-vollzug-keine-zwischenfragen.md) — Komplettlösungen ohne Zwischenfragen; GO gilt bis zum fertigen Ergebnis; nur bei Passwort/Stopp-Regeln nachfragen
-- [deja-vu installiert](deja-vu-install.md) — deja 0.20.2 via brew (Session-Suche über 739 Sessions); Vollintegration 20.09. per `deja install --auto`: 15 MCP/13 Hooks/14 Guidance inkl. ZCode config.json; Session-Start-Recall ab Neustart aktiv; MCP-Recall live bewiesen (Nespresso-Treffer)
+- [deja-vu installiert](deja-vu-install.md) — deja 0.20.2 (brew, 739 Sessions); **01.10. FIX: alle 5 deja-Hooks aus ~/.claude/settings.json entfernt (Backup .bak-20261001) — Ursache: jede deja-Suche spawnt Background-Refresh („refreshing in the background") = bei 3,6-GB-Index 100-%-CPU-Amok; MCP + Terminal-Suche bleiben; Rückgängig = Backup zurück**; Fallen: `deja hook --help` läuft als SUCHE (kein hook-Subbefehl), ps-Match trifft auch FinderSyncExtension-Helper
 - [Wayfinder Skill-Konsolidierung](wayfinder-skill-konsolidierung.md) — Map 20.09. abgearbeitet: 9 Tickets zu, 0 broken Symlinks; 2 offene Sascha-Entscheidungen (Tier-2-INDEX.md Option A/B/C · Archiv-Restposten 2026-09-08 löschen nur mit GO)
 - [LOKI-Ki Clinical Wayfinder-Map](loki-ki-clinical-wayfinder.md) — ZWEITE Map in ~/loki-ki/.wayfinder/ (Körperfluss-Automatik): T-01..T-04 alle real+getestet (Pipeline/CLI/Templates/loki.db 7,6 MB); immer BEIDE Wayfinder-Maps prüfen — Sascha brannte, als nur die erste gefunden wurde
 - [LOKI-OS Harness-Settings-Sessions](loki-os-harness-settings-sessions.md) — 3 kanonische Sessions (sess_6ec2db7a/ecb2e5e0/055615ab) mit der 6-Schaltstellen-Architektur; bei Harness-/Architektur-Fragen ZUERST diese laden; deja-Eingriffe additiv-verträglich (20.09. verifiziert)
@@ -8766,7 +8889,9 @@ deja-vu 0.20.2 am 20.09.2026 installiert (`brew install deja-vu`, Binary `/opt/h
 
 **Additiv-Verifikation (20.09.):** dejás config.json-Eingriff ist ADDITIV — alle 6 Schaltstellen des LOKI-OS-Harness (Hooks valid/keine leeren matcher, 16 Original-MCPs + deja = 17, 10 Agents, 7 Commands, Sync 5/5) intakt; dejás hooks (hook-context, hook-prompt) stehen als zusätzliche Entries neben gate-enforcer/block-dangerous-git/projects.py/config-health. dejás SessionStart- + UserPromptSubmit-Hooks feuern bereits in Live-Sessions (deja-recall-Blöcke im Hook-Kontext beobachtet). Kanonische Harness-Settings-Sessions: [[loki-os-harness-settings-sessions]].
 
-**Runaway- befund (01.10., Mac-Langsamkeit, REPRODUZIERBAR):** `deja hook-refresh` feuert bei JEDEM Session-Start in den Amok (3× bewiesen: 104 % + 3,5 GB, dann 88,4 % + 2,3 GB, 2,5 min Laufzeit, PPID 1) — jedes Mal per `kill <pid>` gestoppt, kommt aber zurück. Bug in 0.20.2-Hook-Integration; Lösungsvorschlag an Sascha: deja-Hooks pausieren („GO B") bis Fix. Bei Mac-Lag IMMER zuerst `ps aux | grep 'deja hook-refresh'` prüfen. Details: [[mac-langsam-finder-desktop-loop]].
+**Runaway- befund (01.10., Mac-Langsamkeit, REPRODUZIERBAR):** `deja hook-refresh` feuert bei JEDEM Session-Start in den Amok (3× bewiesen: 104 % + 3,5 GB, dann 88,4 % + 2,3 GB, 2,5 min Laufzeit, PPID 1) — jedes Mal per `kill <pid>` gestoppt, kommt aber zurück. Bei Mac-Lag IMMER zuerst `ps aux | grep 'deja hook-refresh'` prüfen. Details: [[mac-langsam-finder-desktop-loop]].
+
+**FIX GESETZT (01.10., „GO B", bewiesen):** Ursache: JEDE deja-Suche (auch die deja-recall-Hooks je Prompt) spawnt einen Background-Refresh (deja druckt wörtlich „refreshing in the background"); bei 3,6-GB-Index/282 Sessions + Rollout-Dateien bis 500 MB = Minuten 100 % CPU + 2–3,5 GB RAM. Keine offizielle Absperr-Option (keine DEJA_*-Env-Vars im Binary, `--no-embed` nur für Suche, brew: 0.20.2 = aktuell). **Fix: alle 5 deja-Hooks aus `~/.claude/settings.json` entfernt** (SessionStart, UserPromptSubmit, PreToolUse, PostToolUse, PreCompact) — Backup `settings.json.bak-20261001`. `~/.zcode/cli/config.json` hatte KEINE deja-hooks (nur mcpServer.deja, der bleibt ✓). deja-MCP + Terminal-Suche bleiben nutzbar; Auto-Recall je Prompt ist weg. Rückgängig = Backup zurückkopieren. ⚠️ `deja hook --help` führt KEINE Hilfe aus, sondern läuft als SUCHE — echte Hook-Befehle heißen `deja hook-prompt/hook-context/hook-tool`. Research-Agent zu dejavu-GitHub-Bug lief noch (Ergebnis nachlegen, Report-Ziel: `~/loki-ki/logs/research_dejavu_hook_refresh_2026-10-01.md`).
 
 **Claude-seitiger Befund (23.09., Diagnose-Workflow dwfrun-30bfea17):** Sascha nutzt Claude Code FAKTISCH NICHT — letzte Session-Transcript unter ~/.claude/projects/ ist vom 15.09. 14:01, deja-Install erst 20.09. 14:18 (find -newermt 2026-09-20 → leer). Saschas Eindruck „feuert nicht" = Nutzungsverhalten, kein Config-Fehler; dejás Verkabelung (settings.json Z. 103/121 + Wrapper + Binary) ist intakt, aber nie in einer Claude-Session angelaufen. 6 Routing-Skills fehlen zusätzlich in ~/.claude/skills (loki-os-health, deja-search, gsd-core, roo-code, ralph-loop, coderabbit — nur dort, ZCode hat alle). Details: [[george-thomas-status]].
 
@@ -9547,6 +9672,8 @@ Erledigt mit Beweis:
 **Diagnose-Fallen (nie wieder):** (1) `ps aux | grep 'MacOS/Finder'` matcht auch Gemini/OneDrive/Google-FinderSyncExtension-Helper — echten Finder per höchster PID NACH `sleep`-Abstand zum killall identifizieren (ohne sleep sampelt man die Extension, CPU 0). (2) Ordner physisch `~/Documents`, nicht `~/Dokumente` (deutsche Namen sind nur Finder-Anzeige). (3) `mv` auf gleichem Volume = O(1)-Rename, trotz 53 GB.
 
 **Nachtrag 01.10. ~12:00 („seit gestern"-Wurzel + Disk-Entlastung bewiesen):** Auslöser = Saschas Nachtsession bis 02:57 (antigravity-Zeitstempel) → Schreibflut (WhatsApp-iCloud-Backups Media/Document/Video.tar, CloudDocs client.db, deja-Index-Wachstum) drückte Disk auf 92 %. **`tmutil thinlocalsnapshots / 999999999999 4` → Disk 39 → 82 GB frei (92 % → 82 %)** — größter Sofort-Hebel, safe. **Docker.raw = 72 GB** (`~/Library/Containers/com.docker.docker/Data/vms/0/data/Docker.raw`), Docker läuft NICHT aktiv (nur vmnetd-Helper) — größter einzelner Disk-Fresser. **macOS-BETA im Einsatz: 27.2 Build 26B5091g (g = Seed)** — Liquid-Glass-Finder-Loop ist plausibel ein Beta-Bug; Softwareupdate prüfen ist Ultimativ-Lösung. deja hook-refresh sprang 3× wieder an (88–104 % CPU, 2–3,5 GB, bei JEDEM Session-Start) = reproduzierbarer Bug.
+
+**Nachtrag 01.10. ~12:30 („GO A+B" ausgeführt, bewiesen):** (1) **Docker-Grundsanierung:** `docker system prune -a --volumes -f` → **5,083 GB befreit**, 18 → 3 Images (438 MB, nur Docker-Desktop-eigene). ⚠️ **KORREKTUR der eigenen Aussage: Docker.raw ist apparent 72 GB, aber `du` real nur 5,7 GB (Sparse-Datei!)** — Docker war NIEMALS der große Disk-Fresser; bei scheinbar riesigen Dateien IMMER `du` neben `ls -lh` prüfen. Docker-Settings (`~/Library/Group Containers/group.com.docker/settings-store.json`, Backup .bak-20261001): NumCPUs 2, diskSizeMiB 32768, MemoryMiB 4096, AutoStart False; `docker info` zeigte nach Neustart teils noch Alt-Werte (4 CPUs) — Limits greifen ggf. erst beim nächsten VM-Restart. (2) **deja-Fix dauerhaft:** 5 Hooks aus ~/.claude/settings.json entfernt — Details [[deja-vu-install]]. (3) **Disk-Endstand: 85 GB frei (81 % belegt), heute +47 GB gesamt.** Rest der ~350 GB = macOS-Systemdaten/Purgeable + CloudDocs (ohne sudo nicht aufräumbar); echte Daten-Fresser: Documents 53, Library 47 (App Support 17, Mobile Documents 10), Desktop 17, Pictures 9,2, Music 5,6 GB, /Applications 21 GB. (4) **Finder-Loop besteht WEITER (~97 % CPU)**; Load 5,6 (von 17), Swap 1,4 GB. Loop-Ende = Softwareupdate der Beta (26B5091g) oder iCloud-Desktop-Sync aus — Sascha hat noch nicht entschieden. Docker-Inventur zeigte KEINE Projekt-Datenbanken (Volumes nur Extension-Kram, 812 MB).
 
 **How to apply — offene Entscheidung an Sascha (Stand 01.10.):** (1) **Empfehlung: iCloud „Desktop & Dokumente"-Sync AUS** (Systemeinstellungen → Apple-ID → iCloud → Drive) — Dateien bleiben lokal, wahrscheinlichstes Loop-Ende, umkehrbar. (2) Optional: 24 `node_modules` löschen (regenerierbar via `npm install`, ~600k Dateien weg; bricht Dev-Server bis reinstall). (3) Ollama-Modelle `qwen2.5-coder:7b` (4,7 GB) + `:1.5b` (986 MB) löschen = +5,7 GB (nur glm-cloud in Nutzung). Mac-Neustart löst NICHT — Loop kommt zurück, solange 628k Dateien + Sync aktiv. ⚠️ Sascha ist frustriert von Jargon — Berichte in einfachen Sätzen + Tabellen, keine Fachwort-Wände ([[sascha-arbeitsregeln-hart]]).
 
