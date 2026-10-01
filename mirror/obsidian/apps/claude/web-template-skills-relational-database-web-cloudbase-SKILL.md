@@ -1,14 +1,14 @@
 ---
 app: claude
 quelle: "web-template/skills/relational-database-web-cloudbase/SKILL.md"
-stand: 2026-09-24
+stand: 2026-10-01
 tags: [spiegel, claude]
 ---
 
 ---
 name: relational-database-web-cloudbase
 description: "[Deprecated] Use when building frontend Web apps that talk to CloudBase Relational Database via @cloudbase/js-sdk – provides the canonical init pattern so you can then use Supabase-style queries from the browser. New environments should use PostgreSQL with app.rdb() — see postgresql-development skill instead."
-version: 2.34.6
+version: 2.34.8
 alwaysApply: false
 metadata:
   priority: "5"

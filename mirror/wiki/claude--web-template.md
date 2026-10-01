@@ -1,6 +1,6 @@
 # web-template (claude)
 
-Zuletzt gespiegelt: 2026-10-01 09:02 UTC
+Zuletzt gespiegelt: 2026-10-01 09:22 UTC
 
 ## no_spec
 
@@ -163,7 +163,7 @@ ULIMPORTANT: **只生成 HTML 原型**，其他技术栈由后续开发实现。
 ---
 name: ai-model-nodejs
 description: "Use this skill for Node.js backend AI via @cloudbase/node-sdk (>=3.16.0) — cloud functions, CloudRun, Express/Koa/NestJS, serverless APIs, scheduled jobs, LLM proxies, agent orchestration. The only SDK supporting image generation (ai.createImageModel + generateImage). Text via ai.createModel with groups cloudbase, hunyuan-exp, or custom-*; model ids (e.g. deepseek-v4-flash, glm-5, kimi-k2.6) go in the `model` field of generateText/streamText. MUST run two-step preflight before code — see body. NOT for browser/Web (use ai-model-web) or Mini Program (use ai-model-wechat)."
-version: 2.34.6
+version: 2.34.8
 alwaysApply: false
 ---
 
@@ -439,7 +439,7 @@ Once onboarded, confirm with `DescribeAIModels` that the group is ready, then ca
 ---
 name: ai-model-web
 description: "Use this skill when a browser/Web app (React, Vue, Next, Nuxt, static sites, SPAs, dashboards, AI chat UI, 页面, 前端, 网页) needs AI models via @cloudbase/js-sdk. Default routing for Web/frontend AI — call directly from the browser, do NOT propose a Node.js proxy. Covers generateText and streamText; models via ai.createModel with groups cloudbase, hunyuan-exp, or custom-*, model id in the `model` field. MUST run two-step preflight before code — see body. NOT for Node.js backend (use ai-model-nodejs), Mini Program (use ai-model-wechat), or image generation (Node SDK only)."
-version: 2.34.6
+version: 2.34.8
 alwaysApply: false
 ---
 
@@ -808,7 +808,7 @@ curl "${base}/signup" \
 ---
 name: auth-nodejs-cloudbase
 description: CloudBase Node SDK auth guide for server-side identity, user lookup, and custom login tickets. This skill should be used when Node.js code must read caller identity, inspect end users, or bridge an existing user system into CloudBase; not when configuring providers or building client login UI.
-version: 2.34.6
+version: 2.34.8
 alwaysApply: false
 ---
 
@@ -1054,7 +1054,7 @@ When you load this skill to work on a task:
 ---
 name: auth-tool-cloudbase
 description: CloudBase auth provider configuration and login-readiness guide. This skill should be used when users need to inspect, enable, disable, or configure auth providers, publishable-key prerequisites, login methods, SMS/email sender setup, or other provider-side readiness before implementing a client or backend auth flow.
-version: 2.34.6
+version: 2.34.8
 alwaysApply: false
 ---
 
@@ -1464,7 +1464,7 @@ Use this checklist before generating any CloudBase authentication flow.
 ---
 name: auth-web-cloudbase
 description: CloudBase Web Authentication Quick Guide for frontend integration after auth-tool has already been checked. Provides concise and practical Web authentication solutions with multiple login methods and complete user management.
-version: 2.34.6
+version: 2.34.8
 alwaysApply: false
 ---
 
@@ -1956,7 +1956,7 @@ const cloud = require('wx-server-sdk')
 ---
 name: cloud-api-operations
 description: Operate Tencent Cloud control-plane resources (monitoring/alarms, CLB, CAM roles, COS, MySQL, SCF) via cloud APIs when no dedicated MCP tool covers the task. Use when a task needs control-plane operations beyond CloudBase's own tooling, or when a callCloudApi call failed and needs classifying.
-version: 2.34.6
+version: 2.34.8
 ---
 
 # Cloud API Operations
@@ -2902,7 +2902,7 @@ CreateAlarmPolicy 实测可用的请求体：
 ---
 name: cloud-functions
 description: CloudBase function runtime guide for building, deploying, and debugging your own Event Functions or HTTP Functions. This skill should be used when users need application runtime code on CloudBase, not when they are merely calling CloudBase official platform APIs.
-version: 2.34.6
+version: 2.34.8
 alwaysApply: false
 ---
 
@@ -3854,7 +3854,7 @@ After VPC is bound, public internet egress may require NAT / public gateway in t
 ---
 name: cloud-storage-web
 description: Complete guide for CloudBase cloud storage using Web SDK (@cloudbase/js-sdk) - upload, download, temporary URLs, file management, and best practices.
-version: 2.34.6
+version: 2.34.8
 alwaysApply: false
 ---
 
@@ -4722,7 +4722,7 @@ Component({
 ---
 name: cloudbase-agent
 description: Build and deploy AI agents with CloudBase Agent SDK (TypeScript & Python). Implements the AG-UI protocol for streaming agent-UI communication. Use when deploying agent servers, using LangGraph/LangChain/CrewAI adapters, building custom adapters, understanding AG-UI protocol events, or building web/mini-program UI clients. Supports both TypeScript (@cloudbase/agent-server) and Python (cloudbase-agent-server via FastAPI).
-version: 2.34.6
+version: 2.34.8
 alwaysApply: false
 ---
 
@@ -6109,7 +6109,7 @@ AgentServiceApp().run(
 ---
 name: cloudbase-agent-python
 description: "Build production-ready AI agent backends using the CloudBase Agent Python SDK — create agents with LangGraph/CrewAI/LlamaIndex, serve them via FastAPI with AG-UI protocol streaming + OpenAI-compatible endpoints, add tools (bash, filesystem, MCP, code execution), memory (in-memory, TDAI, MySQL, MongoDB), observability (OpenTelemetry/Langfuse), and middleware (auth, logging). Use this skill when the user wants to create an AI agent server, build a chatbot backend, set up human-in-the-loop workflows, integrate MCP tools, add agent observability, or deploy an agent API — even if they don't explicitly mention 'CloudBase Agent.'"
-version: 2.34.6
+version: 2.34.8
 alwaysApply: true
 ---
 
@@ -6848,7 +6848,7 @@ run({
 ---
 name: cloudbase-agent
 description: "Build and deploy AI agents with Cloudbase Agent (TypeScript), a TypeScript SDK implementing the AG-UI protocol. Use when: (1) deploying agent servers with @cloudbase/agent-server, (2) using LangGraph adapter with ClientStateAnnotation, (3) using LangChain adapter with clientTools(), (4) building custom adapters that implement AbstractAgent, (5) understanding AG-UI protocol events, (6) building web UI clients with @ag-ui/client, (7) building WeChat Mini Program UIs with @cloudbase/agent-ui-miniprogram."
-version: 2.34.6
+version: 2.34.8
 alwaysApply: true
 ---
 
@@ -7117,7 +7117,7 @@ Component({
 ---
 name: cloudbase-cli
 description: CloudBase CLI (tcb, 云开发CLI, Tencent CloudBase命令行) resource management skill. Use when deploying cloud functions, CloudRun, storage, NoSQL/MySQL, static hosting, permissions, CORS/domains via tcb; for CI/CD and batch ops; when the user prefers CLI; or as the first-session fallback when CloudBase MCP tools are not loaded yet (after install/config, before IDE restart). Covers tcb login (device code for Tencent Cloud accounts; --cloudbase-api-key -e for environment API Key without an account; --apiKeyId/--apiKey for CI) and domain commands (fn/hosting/cloudrun/…) as MCP auth/manage parity — do not default to tcb deploy.
-version: 2.34.6
+version: 2.34.8
 alwaysApply: false
 ---
 
@@ -8470,7 +8470,7 @@ tcb storage rm folder/ --dir -e <envId>                # Directory
 ---
 name: cloudbase-code-review
 description: "Code review and validation for CloudBase projects. After writing code for Web / miniprogram / CloudRun / cloud-function projects, call this skill to check for known pitfalls — auth guard misuse, missing database tables, RLS misconfiguration, storage domain setup, and SDK API misuse. Supports automated lint scripts (regex-based) + LLM semantic review."
-version: 2.34.6
+version: 2.34.8
 alwaysApply: false
 ---
 
@@ -9327,7 +9327,7 @@ CloudBase 安全域名机制会拦截未注册的 origin 发出的请求。Vite 
 ---
 name: cloudbase-declarative-deploy
 description: CloudBase declarative deployment from a cloudbaserc config (声明式部署, 配置式部署, cloudbaserc 部署) through the deployBuild / deployPlan / deployApply MCP tools. Use when deploying database, functions, app, hosting, or gateway resources described in cloudbaserc.json/yaml as a single desired-state config, when a user wants to build static hosting artifacts locally first (deployBuild), or wants a dry-run plan before applying (deployPlan), or when handling multi-environment deploys via mode / envOverrides. Covers build-plan-apply flow (deployBuild local build → deployPlan dry-run → deployApply confirm=true), hosting build-output neutralization, envId resolution priority, only/skip filtering, concurrency, and continueOnError. Prefer deployBuild (when hosting declares a buildCommand) and deployPlan before deployApply; do not confuse with per-resource tcb CLI deploy or single-function deploy.
-version: 2.34.6
+version: 2.34.8
 alwaysApply: false
 ---
 
@@ -9759,7 +9759,7 @@ Use this supported cloud path:
 ---
 name: cloudbase-document-database-web-sdk
 description: Use CloudBase document database Web SDK only for confirmed NoSQL collection work. Query, create, update, and delete document data; if the task mentions PostgreSQL / CloudBase PG / app.rdb(), route to postgresql-development instead.
-version: 2.34.6
+version: 2.34.8
 alwaysApply: false
 ---
 
@@ -10743,7 +10743,7 @@ await managePermissions({
 ---
 name: cloudbase-platform
 description: CloudBase platform overview and routing guide. This skill should be used when users need high-level capability selection, platform concepts, console navigation, realtime (broadcast / presence / live database changes), or cross-platform best practices before choosing a more specific implementation skill.
-version: 2.34.6
+version: 2.34.8
 alwaysApply: false
 ---
 
@@ -11143,7 +11143,7 @@ exports.main = async (event) => {
 ---
 name: cloudbase-wechat-integration
 description: CloudBase WeChat integration guide for Mini Program WeChat Pay, Mini Program virtual payment (虚拟支付, wx.requestVirtualPayment), Official Account JSAPI Pay, Native QR-code Pay, Official Account OAuth, openid handling, payment callbacks, and CloudBase Integration Center generated functions. This skill should be used when users ask to add, debug, or extend WeChat payment, virtual payment, or official-account flows on CloudBase.
-version: 2.34.6
+version: 2.34.8
 alwaysApply: false
 ---
 
@@ -11835,7 +11835,7 @@ Use this reference for **虚拟支付**（virtual goods payment）flows: 道具�
 ---
 name: cloudrun-development
 description: CloudBase Run backend development rules (Function mode/Container mode). Use this skill when deploying backend services that require long connections, multi-language support, custom environments, AI agent development, or migrating existing/GitHub apps that need VPC access to MySQL/PostgreSQL/Redis. Also use when diagnosing CloudRun container deploy failures (deploy_failed, readiness/probe failed, image won't start, docker.io pull loops) or a deploy stuck behind a running deploy task. For stateless HTTP services, prefer HTTP cloud functions.
-version: 2.34.6
+version: 2.34.8
 alwaysApply: false
 ---
 
@@ -12204,7 +12204,7 @@ If the user says "PostgreSQL" but the app is a classic TCP client (for example n
 ---
 name: data-model-creation
 description: "[Deprecated] Optional advanced tool for complex data modeling. For simple MySQL table creation, use relational-database-tool directly; for PostgreSQL / CloudBase PG schema work, use postgresql-development. New environments should use PostgreSQL DDL via queryPgDatabase/managePgDatabase — see postgresql-development skill instead."
-version: 2.34.6
+version: 2.34.8
 alwaysApply: false
 metadata:
   priority: "5"
@@ -12327,7 +12327,7 @@ This skill is an **advanced modeling path**, not the default path for database w
 ---
 name: http-api-cloudbase
 description: CloudBase official HTTP API client guide. This skill should be used when backends, scripts, or non-SDK clients must call CloudBase platform APIs over raw HTTP instead of using a platform SDK or MCP management tool.
-version: 2.34.6
+version: 2.34.8
 alwaysApply: false
 ---
 
@@ -12772,7 +12772,7 @@ Use this checklist when the request comes from Android, iOS, Flutter, React Nati
 ---
 name: minimal-web-baas-demo
 description: "Fast path for a minimal CloudBase Web + database demo (最小前后端 / 最小可用 fullstack / Lovable-like BaaS). Defaults to @cloudbase/js-sdk client CRUD (NoSQL app.database / PG app.rdb), MCP-only schema, preview-first, and forbids cloud functions unless secrets, cron/background jobs, or logic that security rules/RLS cannot express. Use for 搭一套 demo、留言板、Todo、Notes、Kanban, or when users say 带云函数+云数据库 but only need CRUD. NOT for production multi-service backends, CloudRun, WeChat Mini Programs, or tasks that truly need server secrets."
-version: 2.34.6
+version: 2.34.8
 alwaysApply: false
 ---
 
@@ -14685,7 +14685,7 @@ async function paginateWithCount(collectionName, page, pageSize, whereConditions
 ---
 name: ops-inspector
 description: AIOps-style CloudBase inspection skill (v3). Use when users need health checks, log diagnosis, alarm interpretation (CPU alert normal?, peak QPS), metrics via queryEnv(action=metrics), or fault playbooks for 429 / function 404 / ACCESS_TOKEN_INVALID / zero invocations. Triggers on 巡检, 诊断, 告警, 峰值 QPS, 限频, 调用量为 0, troubleshooting.
-version: 2.34.6
+version: 2.34.8
 alwaysApply: false
 ---
 
@@ -15010,7 +15010,7 @@ Shared prerequisites for every playbook:
 ---
 name: postgresql-best-practices-cloudbase
 description: "CloudBase PostgreSQL access-pattern and slow-query quality guidance. Use when designing how tables are read and written, eliminating per-row database calls, adding indexes for filters or joins, reviewing high-traffic data access, or explaining a slow SQL query. Not for first-time PG SDK setup, login UI, or NoSQL collections."
-version: 2.34.6
+version: 2.34.8
 alwaysApply: false
 ---
 
@@ -15411,7 +15411,7 @@ Represent each schema change as a local `cloudbase/migrations/<version>_<name>.s
 ---
 name: postgresql-development-cloudbase
 description: "Use when building, debugging, or evaluating CloudBase PostgreSQL / CloudBase PG / PG mode apps, including Postgres schema setup, queryPgDatabase/managePgDatabase, JS SDK v3 app.rdb() CRUD/RPC, PG HTTP API fallback, RLS-style permissions, username-password auth, and Web CMS/admin CRUD flows backed by CloudBase PG."
-version: 2.34.6
+version: 2.34.8
 alwaysApply: false
 ---
 
@@ -17186,7 +17186,7 @@ Fix:
 ---
 name: relational-database-mcp-cloudbase
 description: "[Deprecated] This is the required documentation for agents operating on the CloudBase Relational Database through MCP. It defines the canonical SQL management flow with `queryMysqlDatabase`, `manageMysqlDatabase`, `queryPermissions`, and `managePermissions`, including MySQL provisioning, destroy flow, async status checks, safe query execution, schema initialization, and permission updates. New environments should use PostgreSQL — see postgresql-development skill instead."
-version: 2.34.6
+version: 2.34.8
 alwaysApply: false
 metadata:
   priority: "5"
@@ -17432,7 +17432,7 @@ Note: when a user is logged in, `_openid` is automatically populated by the serv
 ---
 name: relational-database-web-cloudbase
 description: "[Deprecated] Use when building frontend Web apps that talk to CloudBase Relational Database via @cloudbase/js-sdk – provides the canonical init pattern so you can then use Supabase-style queries from the browser. New environments should use PostgreSQL with app.rdb() — see postgresql-development skill instead."
-version: 2.34.6
+version: 2.34.8
 alwaysApply: false
 metadata:
   priority: "5"
@@ -17678,7 +17678,7 @@ const app = cloudbase.init({
 ---
 name: spec-workflow
 description: Use when medium-to-large changes need explicit requirements, technical design, and task planning before implementation, especially for multi-module work, unclear acceptance criteria, or architecture-heavy requests.
-version: 2.34.6
+version: 2.34.8
 alwaysApply: false
 ---
 
@@ -17801,7 +17801,7 @@ Create `specs/<spec_name>/tasks.md`.
 ---
 name: ui-design
 description: Use when users need visual direction, interface hierarchy, layout decisions, design specifications, or prototypes before implementing a Web or mini program UI.
-version: 2.34.6
+version: 2.34.8
 alwaysApply: false
 ---
 
@@ -17950,7 +17950,7 @@ Use this checklist before generating any page, component, or visual interface.
 ---
 name: web-development
 description: Use when users need to implement, integrate, debug, build, deploy, or validate a Web frontend after the product direction is already clear, especially for React, Vue, Vite, browser flows, or CloudBase Web integration.
-version: 2.34.6
+version: 2.34.8
 alwaysApply: false
 ---
 

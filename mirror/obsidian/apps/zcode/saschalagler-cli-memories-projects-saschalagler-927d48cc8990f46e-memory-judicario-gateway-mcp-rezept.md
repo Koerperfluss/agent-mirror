@@ -38,6 +38,10 @@ metadata:
 
 **Wichtig bei leeren Ergebnissen:** Gateway warnt selbst — aus 0 Treffern KEINE thematische Aussage ableiten.
 
+**Korpus-Lücken (01.10. live getestet):** `at_norms` enthält NICHT alles — `§ 291a EO` und `§ 57 AVG` trotz 3 gezielter Query-Varianten nicht auffindbar (nur Fehltreffer: Staatsbürgerschafts-/ORF-Gesetz, AsylG, FinStrG). Live bestätigt dagegen: `at|vstg|54b` und `at|kfg|44` (Wortlaut komplett). Lücke umgehen = RIS-Direktabruf (ris.bka.gv.at, die amtliche Quelle hinter Judicario).
+
+**Client-Bugfix (01.10.):** In judicario_mcp_client.py muss `self.session = None` VOR dem ersten `initialize`-Aufruf gesetzt werden — sonst AttributeError ('JudicarioMCP' object has no attribute 'session'), weil _post self.session liest, bevor initialize es liefert.
+
 **Fertiger Client (Dauerlösung):** `~/Desktop/Coworkspace_Ich/THOMAS - CHIPS JUDICARIO/THOMAS - CHIPS JUDICARIO /Legal_Ops_Zentrale/legal-ops-advisor/judicario_mcp_client.py` — Nutzung: `python3 judicario_mcp_client.py "Suchbegriffe" --corpus at_norms`. Mimosa-geprüft: SSRF-Schutz nötig (nur https, Host-Pinning gateway.openlaw.cc, aufgelöste IPs gegen privat/loopback/link-local prüfen, Redirects verboten) — ohne diese Checks blockt Mimosa den Write.
 
 Verwandt: [[legal-ops-cockpit-reparatur]]

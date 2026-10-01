@@ -1,7 +1,7 @@
 ---
 app: zcode
 quelle: "saschalagler/cli/memories/projects/saschalagler-927d48cc8990f46e/memory/apple-mail-db-abfrage.md"
-stand: 2026-09-30
+stand: 2026-10-01
 tags: [spiegel, zcode]
 ---
 
@@ -30,5 +30,8 @@ Apple Mail lokal per SQLite lesen (Sascha-Wunsch „prüf meine Mail lokal am Ma
 - **Case-Recap-Pattern:** Follow-up-Mail muss Historie rekapitulieren (Antragsdatum → Fragen → Antworten-Datum → Stille seit…) + konkrete Fragen stellen (Status? Was fehlt? Call?) — nicht nur „kurzes Follow-up" (Sascha-Vorwurf „ist das eine sinnvolle Email?" beim ersten Entwurf berechtigt).
 - **ÜBERSEHENE THREAD-Mails (01.10. Korrektur):** Ein Mail-DB-Scan nach Absender-LIKE übersieht Antworten aus ZWEIT-Adressen desselben Google-Teams: Jose Alberto schrieb 02.04./07.04. von **josealbertop@xwf.google.com** (xWF = Teleperformance-Zweitadresse, parallel zu josealbertop@google.com!) — meine früheren `%google%`-Scans listeten sie trotzdem nicht prominent. **Bei Case-Rekonstruktion IMMER alle Adressvarianten des Teams abfragen** (`xwf.google.com OR google.com`) und den Komplett-Thread von Sascha als PDFs anfordern (er liefert sie) — der 02.04.-Mail-Inhalt (Website-Bedingungen + Spending-Timeline + „dann buche ich den Territory-Manager") war DER offen gebliebene Punkt, nicht Google-Stille.
 - **Accounts-Check per AppleScript (zuverlässiger als atplist-Files):** `osascript -e 'tell application "Mail" to get email addresses of every account'` → Saschas 3 Absender: koerperfuss@icloud.com (iCloud-Standard!), sascha.lagler@koerperfluss.at (Case-Account), startup@koerperfluss.at. atplist via plutil lief leer — AppleScript ist der verlässliche Weg.
+- **KORREKTUR (01.10. ~09:45, Mail-DB-Beweis — ältere Einträge hier sind FALSCH):** Apple Mail hat DOCH das Gmail-Konto koerperfluss@gmail.com (IMAP-Account `E501B849-…`, Ordner `imap://E501B849-…/Archive|Drafts|Sent%20Messages` in mailboxes-Tabelle). Saschas „natürlich nicht" bezog sich auf die Frage, OB ER ÜBER MAIL ARBEITET — nicht ob das Konto existiert. .eml-Dateien öffnen in Mail problemlos als lesbare Nachricht mit Anhang (SVS-.eml live gezeigt). **Aber: er sendet darüber NICHT** — .eml-Doppelklick importiert die Mail nur (landet im Ordner **Archive** statt als Entwurf/Send-Fenster zu erscheinen); sein tatsächlicher Sendeweg bleibt Gmail-Web-Compose-Links + PDFs reinziehen.
+- **Gesendet-Check-Rezept (01.10. bewiesen):** `SELECT s.subject, mb.url, datetime(m.date_sent+978307200,'unixepoch','localtime') FROM messages m JOIN subjects s ON m.subject=s.ROWID JOIN mailboxes mb ON m.mailbox=mb.ROWID WHERE …` — `mb.url LIKE '%Sent%'` ist der verlässliche Sent-Test; importierte/geöffnete .eml stehen nur unter `/Archive`. DB vor Abfrage nach /tmp kopieren (inkl. -wal). Datum zeigt 2057 (bekanntes Offset-Artefakt, hier über date_sent statt date_received).
+- **Send-Status der 5 Rechtsfall-Mails (01.10. ~09:45 bewiesen):** KEINE gesendet — Sent-Ordner enthält nur alte Google-Case-Mails (letzte 01:56 = Case #00303154); Strafen-.eml nur in Archive (Bauzeit 08:20), die anderen 4 fehlen komplett in der DB. Bei „sind die gesendet?" IMMER Sent-Ordner per DB prüfen, nie Screenshots glauben (geöffnete .eml sieht wie gesendet aus: To/Anhang/Timestamp sichtbar).
 
 Verwandt: [[koerperfluss-edu-foerderpilot-fertig]] (GfS-Mail-Verlauf dort), [[chrome-agent-browser-fix]].

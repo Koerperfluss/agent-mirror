@@ -8,8 +8,8 @@ tags: [spiegel, zcode]
 ---
 name: legal-ops-cockpit-reparatur
 description: ADHS-Legal-Cockpit 01.10. ABSCHLUSS — Cockpit GRÜN (dwfrun-c2ded830),
-  5 .eml MIT Anhängen md5-GRÜN (dwfrun-1ff46e60 nach Slash-Bug-Fix), Judicario lebt
-  (at_search, §44 KFG live), 2b-Erklärung bleibt (Empfehlung); Sascha sendet selbst
+  .eml-Weg TOT für Sascha (Apple Mail hat kein Gmail-Konto), echter Sendeweg = Send-Liste
+  Gmail-Web-Links + PDFs reinziehen; Judicario lebt (at_search, §44 KFG live)
 metadata:
   node_type: memory
   type: project
@@ -37,4 +37,10 @@ Stand 01.10.2026 final: Saschas Rechtsfälle (BH Melk / BG Melk) — **ALLE Work
 
 **Saschas Regeln dabei (bestätigt):** „DU MACHST KEINE ENTSCHEIDUNGEN — JUDICARIO/CHIPSI CONNECTOREN SONST GARNICHTS"; alles auf einmal vorbereiten, dann task-weise Ja/Nein; „bitte warte alle workflows ab und gib bescheid" = blockieren + konsolidierter Endbericht. legal_ops_consult-MCP nutzlos (nur Header-Echo). ⛔ NICHT senden: SCHRIFTSATZ_BH_MELK_AUTO_ME450GA.pdf (Privatgrund-Lüge) + ANTRAG_BH_MELK_54b_VStG.pdf („gemeinnützige Arbeit" wirkungslos, VwGH 2014/09/0042). Sammelantrag 35 € ab 15.11.; GV Hinum 3×53 € ab 15.11.; SVS 15.10.+15.11.
 
-**Infra/Lektionen:** Backend 7070 läuft. Mimosa blockt Bash-Heredoc-Writes von Quelldateien → Write-Tool. Typst: jedes `@` escapen. Plan-Mode blockt Bash. DWF: „…"-Anführungszeichen brechen Strings. `ListWorkflowRuns` zeigte 0 Runs (unzuverlässig) — Status per GetWorkflowRun/Benachrichtigung.
+**Infra/Lektionen:** Backend 7070 läuft. Mimosa blockt Bash-Heredoc-Writes von Quelldateien → Write-Tool. Typst: jedes `@` escapen. Plan-Mode blockt Bash. DWF: „…"-Anführungszeichen brechen Strings. `ListWorkflowRuns` zeigte 0 Runs (unzuverlässig) — Status per GetWorkflowRun/Benachrichtigung. ⚠️ DWF-Drafts landen im CWD: nach `cd` in einen Projektordner schreibt `.zcode/workflow-drafts/` DORTHIN (E-Mail-Draft lag in `Fallakten_September_2026/.zcode/workflow-drafts/`) — Edit mit RELATIVEM Pfad schlägt dann fehl, absoluten Pfad suchen (find).
+
+**Send-Status 01.10. ~09:45 (Mail-DB-Beweis, auf „sind die jetzt gesendet?"):** **KEINE der 5 Mails gesendet.** Sent-Ordner (`imap://E501B849-…/Sent%20Messages`) enthält nur alte Google-Case-Mails (letzte 01:56, Case #00303154); Strafen-.eml existiert nur im **Archive**-Ordner (importiert beim Öffnen, Bauzeit 08:20), die anderen 4 fehlen komplett in der Mail-DB. **KORREKTUR zu oben: Apple Mail HAT doch das Gmail-Konto** (IMAP E501B849; „natürlich nicht" galt der Arbeitsweise-Frage) — .eml öffnen lesbar MIT Anhang, werden aber nur importiert statt als Send-Fenster geöffnet. Sascha hatte den Gmail-Compose-Tab für Mail 1 (Strafen) im Browser offen — manueller Weg läuft. Angebot steht: Chrome/Comet-Neustart mit Debug-Port → 5 echte Gmail-Entwürfe mit Anhängen (wartet auf GO + Chrome-vs-Comet-Antwort). → [[apple-mail-db-abfrage]]
+
+**Mail-Text-Qualität bestätigt (01.10., Sascha-Frage „der Text reicht so?"):** JA — Bewehrten-Mails sind bewusst Begleitschreiben (Rechtsinhalt steht im unterschriebenen PDF): Formel **Bezug (GZ) → Anlage benennen → konkrete Bitte**. Alle 5 enthalten GZ-Referenzen + Normzitat + Beträge/Daten; 2b hat die wichtige Bitte um **schriftliche Bestätigung** (ohne sie ist Behörden-Schweigen kein Verstoß). Bewusst NICHT im Mailtext: Rechtsvorträge, neue Tatsachenbehauptungen, Emotionen. Meine Abgabe: jetzt senden statt feilen — Fristen (Strafen ~07.10.) wiegen schwerer als Formulierungs-Nuancen.
+
+**Normen-Belegstatus der 5 Mails (01.10., Sascha-Frage „ist das von Judicario bestätigt?"):** 2 von 4 zitierten Normen **live gateway-belegt** — § 54b VStG (`at|vstg|54b`, Abs. 1 „binnen zwei Wochen" = Mahnungs-Logik) und § 44 KFG (`at|kfg|44`) → betrifft die fristenkritischen Mails 1 + 2b. § 291a EO und § 57 AVG **nicht gateway-belegbar** (at_norms-Korpus-Lücke, siehe [[judicario-gateway-mcp-rezept]]) — Quelle bleibt Chipsi-Gutachten („amtlich abgeglichene Fundstellen") + RIS-Link; Nachzug via RIS-Direktabruf angeboten, fürs Senden aber kein Blocker. → [[judicario-gateway-mcp-rezept]]

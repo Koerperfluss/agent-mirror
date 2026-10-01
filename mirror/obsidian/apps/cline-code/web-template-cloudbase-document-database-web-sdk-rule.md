@@ -1,14 +1,14 @@
 ---
 app: cline-code
 quelle: "web-template/cloudbase-document-database-web-sdk/rule.md"
-stand: 2026-09-24
+stand: 2026-10-01
 tags: [spiegel, cline-code]
 ---
 
 ---
 name: cloudbase-document-database-web-sdk
 description: Use CloudBase document database Web SDK only for confirmed NoSQL collection work. Query, create, update, and delete document data; if the task mentions PostgreSQL / CloudBase PG / app.rdb(), route to postgresql-development instead.
-version: 2.34.6
+version: 2.34.8
 alwaysApply: false
 ---
 

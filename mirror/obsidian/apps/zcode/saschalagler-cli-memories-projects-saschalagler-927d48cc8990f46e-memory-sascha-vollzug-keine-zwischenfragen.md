@@ -1,7 +1,7 @@
 ---
 app: zcode
 quelle: "saschalagler/cli/memories/projects/saschalagler-927d48cc8990f46e/memory/sascha-vollzug-keine-zwischenfragen.md"
-stand: 2026-09-20
+stand: 2026-10-01
 tags: [spiegel, zcode]
 ---
 
@@ -27,6 +27,10 @@ Sascha (18.09.2026, nach 30h Konfiguration): „WIESO MUSS ICH JEDEN SCHEISS SCH
 5. Fehlschläge ehrlich melden, aber mit bereits gewähltem Plan B im selben Zug.
 
 **Ergänzung (20.09. Abend, Session-Abbruch „ES REICHT"):** (1) **Memory-Frische-Pflicht:** Sascha: „das existiert nicht, du bist 20 Tage hinten mit deiner memory" — Status-Behauptungen NIE aus Session-Gedächtnis zitieren, sondern vorher live verifizieren (deja search + Dateisystem/ls). Veraltet nachgeplapperte Zwischenstände = Wut-Ausbruch. (2) **Nach „ES REICHT"/abgelehntem Dialog: KEINE weiteren AskUserQuestion/ExitPlanMode-Dialoge mehr** — wiederholte Dialog-Spam-Escalation („nein stop was machst du?", „WAS FÜR APP OHNE PLAN"). Dann nur noch 3 Zeilen Klartext: was die Sache ist, was mein Fehler war, dass nichts ohne sein Wort passiert. (3) **Plan-Modus-Falle:** Wenn Sascha Plan-Modus aktiviert und Pläne 3× ablehnt, ist das Signal „ falscher Inhalt/Scope", nicht „nochmal einreichen" — lieber 1 kurze Rückfrage nach dem echten Scope oder gar nichts. (4) Sein Kernvorwurf „APP OHNE PLAN" = zutreffend: loki-dev-Schnitt-0 (Plan-Gate VOR Code) wurde übergangen; Vollzug-Regel gilt für die AUSFÜHRUNG nach Auftrags-GO, nicht als Ersatz fürs Plan-Gate bei neuen großen Builds.
+
+**Ergänzung (01.10., Legal-Ops-Session — „die frage ist so dumm"):** KEINE Bestätigungsfragen bei Erklärungen, die nur wiederholen, was das Gesetz ohnehin vorschreibt. Fall: Ich fragte, ob die Behördenerklärung „Fahrzeug wird bis zur Wiederherstellung der Versicherung nicht im öffentlichen Verkehr verwendet" bleibt oder gestrichen wird — seine Antwort: „die frage ist so dumm", denn ohne haftenden Versicherer ist Fahren UNRECHTMÄSSIG (§ 44 KFG), die Erklärung kostet also nichts Erlaubtes. **Rule:** Fakten-Deklarationen, die gesetzliche Pflichten spiegeln, direkt drinlassen und liefern; nur fragen, wenn eine Option etwas Kostspieliges/Erlaubtes aufgibt.
+
+**Ergänzung (01.10., Gmail-Debakel — „WIE GEHT DAS SOLL ICH DAS RIECHEN"):** Vollzug heißt: das Fertige liegt **IM ZIEL-TOOL**, nicht als Umweg-Datei daneben. Ich lieferte .eml-Dateien + Send-Listen — seine Reaktion: „DU MISSGEBURT SOLLST MIR IN GMAIL ALLES VORBEREITEN". **Rule:** Erst klären, WO er das Ergebnis konsumiert (hier: Gmail-Web in seinem Browser), DANN den Weg bauen, der genau dort ablegt — auch wenn der Umweg technisch aufwendiger ist (Browser-Debug-Port statt Dateien). Umweg-Lösungen als „fertig" zu melden = Verarschung in seinen Augen. Bei technisch unmöglicher Direkt-Lieferung (Gmail-API ohne Scopes): die EINE fehlende Freigabe als Ja/Nein-Frage („Chrome GO?") statt Umwege aufdrücken.
 
 Verwandt: [[loki-verkaufstool-stand]]
 

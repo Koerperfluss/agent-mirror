@@ -1,14 +1,14 @@
 ---
 app: claude
 quelle: "web-template/skills/cloud-api-operations/SKILL.md"
-stand: 2026-09-30
+stand: 2026-10-01
 tags: [spiegel, claude]
 ---
 
 ---
 name: cloud-api-operations
 description: Operate Tencent Cloud control-plane resources (monitoring/alarms, CLB, CAM roles, COS, MySQL, SCF) via cloud APIs when no dedicated MCP tool covers the task. Use when a task needs control-plane operations beyond CloudBase's own tooling, or when a callCloudApi call failed and needs classifying.
-version: 2.34.6
+version: 2.34.8
 ---
 
 # Cloud API Operations

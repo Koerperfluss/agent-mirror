@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-01 09:02 UTC
+Zuletzt gespiegelt: 2026-10-01 09:22 UTC
 
 ## AGENTS
 
@@ -8638,6 +8638,9 @@ Apple Mail lokal per SQLite lesen (Sascha-Wunsch „prüf meine Mail lokal am Ma
 - **Case-Recap-Pattern:** Follow-up-Mail muss Historie rekapitulieren (Antragsdatum → Fragen → Antworten-Datum → Stille seit…) + konkrete Fragen stellen (Status? Was fehlt? Call?) — nicht nur „kurzes Follow-up" (Sascha-Vorwurf „ist das eine sinnvolle Email?" beim ersten Entwurf berechtigt).
 - **ÜBERSEHENE THREAD-Mails (01.10. Korrektur):** Ein Mail-DB-Scan nach Absender-LIKE übersieht Antworten aus ZWEIT-Adressen desselben Google-Teams: Jose Alberto schrieb 02.04./07.04. von **josealbertop@xwf.google.com** (xWF = Teleperformance-Zweitadresse, parallel zu josealbertop@google.com!) — meine früheren `%google%`-Scans listeten sie trotzdem nicht prominent. **Bei Case-Rekonstruktion IMMER alle Adressvarianten des Teams abfragen** (`xwf.google.com OR google.com`) und den Komplett-Thread von Sascha als PDFs anfordern (er liefert sie) — der 02.04.-Mail-Inhalt (Website-Bedingungen + Spending-Timeline + „dann buche ich den Territory-Manager") war DER offen gebliebene Punkt, nicht Google-Stille.
 - **Accounts-Check per AppleScript (zuverlässiger als atplist-Files):** `osascript -e 'tell application "Mail" to get email addresses of every account'` → Saschas 3 Absender: koerperfuss@icloud.com (iCloud-Standard!), sascha.lagler@koerperfluss.at (Case-Account), startup@koerperfluss.at. atplist via plutil lief leer — AppleScript ist der verlässliche Weg.
+- **KORREKTUR (01.10. ~09:45, Mail-DB-Beweis — ältere Einträge hier sind FALSCH):** Apple Mail hat DOCH das Gmail-Konto koerperfluss@gmail.com (IMAP-Account `E501B849-…`, Ordner `imap://E501B849-…/Archive|Drafts|Sent%20Messages` in mailboxes-Tabelle). Saschas „natürlich nicht" bezog sich auf die Frage, OB ER ÜBER MAIL ARBEITET — nicht ob das Konto existiert. .eml-Dateien öffnen in Mail problemlos als lesbare Nachricht mit Anhang (SVS-.eml live gezeigt). **Aber: er sendet darüber NICHT** — .eml-Doppelklick importiert die Mail nur (landet im Ordner **Archive** statt als Entwurf/Send-Fenster zu erscheinen); sein tatsächlicher Sendeweg bleibt Gmail-Web-Compose-Links + PDFs reinziehen.
+- **Gesendet-Check-Rezept (01.10. bewiesen):** `SELECT s.subject, mb.url, datetime(m.date_sent+978307200,'unixepoch','localtime') FROM messages m JOIN subjects s ON m.subject=s.ROWID JOIN mailboxes mb ON m.mailbox=mb.ROWID WHERE …` — `mb.url LIKE '%Sent%'` ist der verlässliche Sent-Test; importierte/geöffnete .eml stehen nur unter `/Archive`. DB vor Abfrage nach /tmp kopieren (inkl. -wal). Datum zeigt 2057 (bekanntes Offset-Artefakt, hier über date_sent statt date_received).
+- **Send-Status der 5 Rechtsfall-Mails (01.10. ~09:45 bewiesen):** KEINE gesendet — Sent-Ordner enthält nur alte Google-Case-Mails (letzte 01:56 = Case #00303154); Strafen-.eml nur in Archive (Bauzeit 08:20), die anderen 4 fehlen komplett in der DB. Bei „sind die gesendet?" IMMER Sent-Ordner per DB prüfen, nie Screenshots glauben (geöffnete .eml sieht wie gesendet aus: To/Anhang/Timestamp sichtbar).
 
 Verwandt: [[koerperfluss-edu-foerderpilot-fertig]] (GfS-Mail-Verlauf dort), [[chrome-agent-browser-fix]].
 
@@ -8885,6 +8888,10 @@ metadata:
 
 **Wichtig bei leeren Ergebnissen:** Gateway warnt selbst — aus 0 Treffern KEINE thematische Aussage ableiten.
 
+**Korpus-Lücken (01.10. live getestet):** `at_norms` enthält NICHT alles — `§ 291a EO` und `§ 57 AVG` trotz 3 gezielter Query-Varianten nicht auffindbar (nur Fehltreffer: Staatsbürgerschafts-/ORF-Gesetz, AsylG, FinStrG). Live bestätigt dagegen: `at|vstg|54b` und `at|kfg|44` (Wortlaut komplett). Lücke umgehen = RIS-Direktabruf (ris.bka.gv.at, die amtliche Quelle hinter Judicario).
+
+**Client-Bugfix (01.10.):** In judicario_mcp_client.py muss `self.session = None` VOR dem ersten `initialize`-Aufruf gesetzt werden — sonst AttributeError ('JudicarioMCP' object has no attribute 'session'), weil _post self.session liest, bevor initialize es liefert.
+
 **Fertiger Client (Dauerlösung):** `~/Desktop/Coworkspace_Ich/THOMAS - CHIPS JUDICARIO/THOMAS - CHIPS JUDICARIO /Legal_Ops_Zentrale/legal-ops-advisor/judicario_mcp_client.py` — Nutzung: `python3 judicario_mcp_client.py "Suchbegriffe" --corpus at_norms`. Mimosa-geprüft: SSRF-Schutz nötig (nur https, Host-Pinning gateway.openlaw.cc, aufgelöste IPs gegen privat/loopback/link-local prüfen, Redirects verboten) — ohne diese Checks blockt Mimosa den Write.
 
 Verwandt: [[legal-ops-cockpit-reparatur]]
@@ -9007,8 +9014,8 @@ metadata:
 ---
 name: legal-ops-cockpit-reparatur
 description: ADHS-Legal-Cockpit 01.10. ABSCHLUSS — Cockpit GRÜN (dwfrun-c2ded830),
-  5 .eml MIT Anhängen md5-GRÜN (dwfrun-1ff46e60 nach Slash-Bug-Fix), Judicario lebt
-  (at_search, §44 KFG live), 2b-Erklärung bleibt (Empfehlung); Sascha sendet selbst
+  .eml-Weg TOT für Sascha (Apple Mail hat kein Gmail-Konto), echter Sendeweg = Send-Liste
+  Gmail-Web-Links + PDFs reinziehen; Judicario lebt (at_search, §44 KFG live)
 metadata:
   node_type: memory
   type: project
@@ -9036,7 +9043,13 @@ Stand 01.10.2026 final: Saschas Rechtsfälle (BH Melk / BG Melk) — **ALLE Work
 
 **Saschas Regeln dabei (bestätigt):** „DU MACHST KEINE ENTSCHEIDUNGEN — JUDICARIO/CHIPSI CONNECTOREN SONST GARNICHTS"; alles auf einmal vorbereiten, dann task-weise Ja/Nein; „bitte warte alle workflows ab und gib bescheid" = blockieren + konsolidierter Endbericht. legal_ops_consult-MCP nutzlos (nur Header-Echo). ⛔ NICHT senden: SCHRIFTSATZ_BH_MELK_AUTO_ME450GA.pdf (Privatgrund-Lüge) + ANTRAG_BH_MELK_54b_VStG.pdf („gemeinnützige Arbeit" wirkungslos, VwGH 2014/09/0042). Sammelantrag 35 € ab 15.11.; GV Hinum 3×53 € ab 15.11.; SVS 15.10.+15.11.
 
-**Infra/Lektionen:** Backend 7070 läuft. Mimosa blockt Bash-Heredoc-Writes von Quelldateien → Write-Tool. Typst: jedes `@` escapen. Plan-Mode blockt Bash. DWF: „…"-Anführungszeichen brechen Strings. `ListWorkflowRuns` zeigte 0 Runs (unzuverlässig) — Status per GetWorkflowRun/Benachrichtigung.
+**Infra/Lektionen:** Backend 7070 läuft. Mimosa blockt Bash-Heredoc-Writes von Quelldateien → Write-Tool. Typst: jedes `@` escapen. Plan-Mode blockt Bash. DWF: „…"-Anführungszeichen brechen Strings. `ListWorkflowRuns` zeigte 0 Runs (unzuverlässig) — Status per GetWorkflowRun/Benachrichtigung. ⚠️ DWF-Drafts landen im CWD: nach `cd` in einen Projektordner schreibt `.zcode/workflow-drafts/` DORTHIN (E-Mail-Draft lag in `Fallakten_September_2026/.zcode/workflow-drafts/`) — Edit mit RELATIVEM Pfad schlägt dann fehl, absoluten Pfad suchen (find).
+
+**Send-Status 01.10. ~09:45 (Mail-DB-Beweis, auf „sind die jetzt gesendet?"):** **KEINE der 5 Mails gesendet.** Sent-Ordner (`imap://E501B849-…/Sent%20Messages`) enthält nur alte Google-Case-Mails (letzte 01:56, Case #00303154); Strafen-.eml existiert nur im **Archive**-Ordner (importiert beim Öffnen, Bauzeit 08:20), die anderen 4 fehlen komplett in der Mail-DB. **KORREKTUR zu oben: Apple Mail HAT doch das Gmail-Konto** (IMAP E501B849; „natürlich nicht" galt der Arbeitsweise-Frage) — .eml öffnen lesbar MIT Anhang, werden aber nur importiert statt als Send-Fenster geöffnet. Sascha hatte den Gmail-Compose-Tab für Mail 1 (Strafen) im Browser offen — manueller Weg läuft. Angebot steht: Chrome/Comet-Neustart mit Debug-Port → 5 echte Gmail-Entwürfe mit Anhängen (wartet auf GO + Chrome-vs-Comet-Antwort). → [[apple-mail-db-abfrage]]
+
+**Mail-Text-Qualität bestätigt (01.10., Sascha-Frage „der Text reicht so?"):** JA — Bewehrten-Mails sind bewusst Begleitschreiben (Rechtsinhalt steht im unterschriebenen PDF): Formel **Bezug (GZ) → Anlage benennen → konkrete Bitte**. Alle 5 enthalten GZ-Referenzen + Normzitat + Beträge/Daten; 2b hat die wichtige Bitte um **schriftliche Bestätigung** (ohne sie ist Behörden-Schweigen kein Verstoß). Bewusst NICHT im Mailtext: Rechtsvorträge, neue Tatsachenbehauptungen, Emotionen. Meine Abgabe: jetzt senden statt feilen — Fristen (Strafen ~07.10.) wiegen schwerer als Formulierungs-Nuancen.
+
+**Normen-Belegstatus der 5 Mails (01.10., Sascha-Frage „ist das von Judicario bestätigt?"):** 2 von 4 zitierten Normen **live gateway-belegt** — § 54b VStG (`at|vstg|54b`, Abs. 1 „binnen zwei Wochen" = Mahnungs-Logik) und § 44 KFG (`at|kfg|44`) → betrifft die fristenkritischen Mails 1 + 2b. § 291a EO und § 57 AVG **nicht gateway-belegbar** (at_norms-Korpus-Lücke, siehe [[judicario-gateway-mcp-rezept]]) — Quelle bleibt Chipsi-Gutachten („amtlich abgeglichene Fundstellen") + RIS-Link; Nachzug via RIS-Direktabruf angeboten, fürs Senden aber kein Blocker. → [[judicario-gateway-mcp-rezept]]
 
 ## loki-dev-plan-alle-modi
 
@@ -9592,6 +9605,10 @@ Sascha (18.09.2026, nach 30h Konfiguration): „WIESO MUSS ICH JEDEN SCHEISS SCH
 5. Fehlschläge ehrlich melden, aber mit bereits gewähltem Plan B im selben Zug.
 
 **Ergänzung (20.09. Abend, Session-Abbruch „ES REICHT"):** (1) **Memory-Frische-Pflicht:** Sascha: „das existiert nicht, du bist 20 Tage hinten mit deiner memory" — Status-Behauptungen NIE aus Session-Gedächtnis zitieren, sondern vorher live verifizieren (deja search + Dateisystem/ls). Veraltet nachgeplapperte Zwischenstände = Wut-Ausbruch. (2) **Nach „ES REICHT"/abgelehntem Dialog: KEINE weiteren AskUserQuestion/ExitPlanMode-Dialoge mehr** — wiederholte Dialog-Spam-Escalation („nein stop was machst du?", „WAS FÜR APP OHNE PLAN"). Dann nur noch 3 Zeilen Klartext: was die Sache ist, was mein Fehler war, dass nichts ohne sein Wort passiert. (3) **Plan-Modus-Falle:** Wenn Sascha Plan-Modus aktiviert und Pläne 3× ablehnt, ist das Signal „ falscher Inhalt/Scope", nicht „nochmal einreichen" — lieber 1 kurze Rückfrage nach dem echten Scope oder gar nichts. (4) Sein Kernvorwurf „APP OHNE PLAN" = zutreffend: loki-dev-Schnitt-0 (Plan-Gate VOR Code) wurde übergangen; Vollzug-Regel gilt für die AUSFÜHRUNG nach Auftrags-GO, nicht als Ersatz fürs Plan-Gate bei neuen großen Builds.
+
+**Ergänzung (01.10., Legal-Ops-Session — „die frage ist so dumm"):** KEINE Bestätigungsfragen bei Erklärungen, die nur wiederholen, was das Gesetz ohnehin vorschreibt. Fall: Ich fragte, ob die Behördenerklärung „Fahrzeug wird bis zur Wiederherstellung der Versicherung nicht im öffentlichen Verkehr verwendet" bleibt oder gestrichen wird — seine Antwort: „die frage ist so dumm", denn ohne haftenden Versicherer ist Fahren UNRECHTMÄSSIG (§ 44 KFG), die Erklärung kostet also nichts Erlaubtes. **Rule:** Fakten-Deklarationen, die gesetzliche Pflichten spiegeln, direkt drinlassen und liefern; nur fragen, wenn eine Option etwas Kostspieliges/Erlaubtes aufgibt.
+
+**Ergänzung (01.10., Gmail-Debakel — „WIE GEHT DAS SOLL ICH DAS RIECHEN"):** Vollzug heißt: das Fertige liegt **IM ZIEL-TOOL**, nicht als Umweg-Datei daneben. Ich lieferte .eml-Dateien + Send-Listen — seine Reaktion: „DU MISSGEBURT SOLLST MIR IN GMAIL ALLES VORBEREITEN". **Rule:** Erst klären, WO er das Ergebnis konsumiert (hier: Gmail-Web in seinem Browser), DANN den Weg bauen, der genau dort ablegt — auch wenn der Umweg technisch aufwendiger ist (Browser-Debug-Port statt Dateien). Umweg-Lösungen als „fertig" zu melden = Verarschung in seinen Augen. Bei technisch unmöglicher Direkt-Lieferung (Gmail-API ohne Scopes): die EINE fehlende Freigabe als Ja/Nein-Frage („Chrome GO?") statt Umwege aufdrücken.
 
 Verwandt: [[loki-verkaufstool-stand]]
 
