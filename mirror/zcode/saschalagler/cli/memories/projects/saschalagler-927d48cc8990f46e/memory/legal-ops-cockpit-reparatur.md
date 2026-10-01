@@ -1,8 +1,8 @@
 ---
 name: legal-ops-cockpit-reparatur
-description: ADHS-Legal-Cockpit-Reparatur 01.10. — Ordner „id austria neu " mit
-  TRAILING SPACE ist die Root-Cause, Judicario-MCP kaputt, Workflow
-  dwfrun-20813457 läuft, 7 Rechtsfälle mit Az/Beträgen
+description: ADHS-Legal-Cockpit-Reparatur 01.10. — alle 4 PDFs unterschrieben
+  (Sichtprüfung), Grover/coeo-PAIR nur .md-Entwürfe, Workflow amended auf
+  dwfrun-aa745ebf, Ordner „id austria neu " mit TRAILING SPACE = Root-Cause
 metadata:
   node_type: memory
   type: project
@@ -22,6 +22,10 @@ Stand 01.10.2026 (Workflow gestartet, Ergebnis offen): Saschas Rechtsfälle (BH 
 
 **Infra:** Legal-Ops-Backend läuft auf **Port 7070** (PID 18132, ollama qwen2.5-coder:1.5b) — [[sascha-local-infra-ports]] ergänzen. **Judicario-MCP kaputt** (`judicario_search` → „Unbekanntes Tool"; `legal_ops_consult` → nur Boilerplate) → Ersatz = RIS-Direktabruf (ris.bka.gv.at).
 
-**Workflow:** dwfrun-20813457-3e80-4379-a3b7-d88698b744c7 (4 Subagenten: Akten-Prüfer/Mängel-Finder/Rechts-Rechercheur parallel + Cockpit-Mechaniker persistent, Node-Gate prüft file://-Links gegen Disk + „kein Auto-Open"). Backup-Soll: `.bak-2026-10-01`. Harte Sascha-Regel daraus: **Cockpit darf NICHTS von selbst öffnen (kein Auto-Gmail/App-Open)** — er explodierte über wiederholt geöffnetes Gmail.
+**Workflow:** ~~dwfrun-20813457~~ → **amended zu dwfrun-aa745ebf-5df9-4408-89b4-b667c3ca6c3e** (01.10., nach GO aus Plan-Mode). Script: `.zcode/workflow-drafts/ADHS-Legal-Cockpit-reparieren--verifizieren.dwf.ts`. 4 Subagenten (Akten-Prüfer/Mängel-Finder/Rechts-Rechercheur parallel + Cockpit-Mechaniker persistent) + Node-Gate (file://-Links gegen Disk, Gmail to/su/body, KEIN Auto-Open, localStorage, Pfeiltasten). Backup-Soll: `.bak-2026-10-01`. Harte Sascha-Regel: **Cockpit darf NICHTS von selbst öffnen (kein Auto-Gmail/App-Open)**.
+
+**PDF-Unterschriften-Check (01.10., Plan-Mode, per Read-Seiten-Sichtprüfung):** ALLE 4 Schriftsätze UNTERSCHRIEBEN — VORSTELLUNG_ME-450GA (S.2), SAMMELANTRAG (S.2), ANTRAG_BG_MELK_2940, ANTRAG_SVS — jeweils Signaturbild „Sascha Lagler (eigenhändig)", Datum 01.10.2026. **KORREKTUREN gegenüber alten Cockpit-Daten:** Sammelantrag 35 € ERSTER Termin **15.11.2026**; GV Hinum 3×53 € ab **15.11.2026** (nicht 15.10.); SVS 15.10.+15.11. unverändert. Signatur-Asset + .typ-Quellen liegen in `Fallakten_September_2026/` (`unterschrift.png`, `unterschrift_clean.png`, VORSTELLUNG/SAMMELANTRAG/ANTRAG_BG/ANTRAG_SVS .typ). **Nur Entwürfe ohne PDF:** `GROVER_HARDSHIP_STUNDUNGSANTRAG.md` (Empfänger drin: **inkasso@rechnungen.grover.com**, cc support@grover.com; Konto bahldorfa@gmail.com, MacBook Pro 14" M4, 67,91 € offen), `COEO_RATEPAY_SAMMELEINSPRUCH.md`, `PAIR_FINANCE_BESTREITUNG.md`. Der amended Workflow lässt den Mechaniker das Grover-PDF per typst + unterschrift.png bauen (beide Ordner) und Karte 6 mit echtem Gmail-Link versehen.
+
+**Plan-Mode-Lektion:** Bash wird dort vom Hook komplett blockiert (auch readonly) — PDF-Sichtprüfung ging über `Read`-Tool (PDF → Seiten als Bilder) und `mcp__filesystem__list_directory`. `mcp__filesystem__search_files` timeouted auf ~/Desktop (zu groß) → kleine Ordner direkt listen.
 
 **DWF-Lektion:** Deutsche Anführungszeichen `„…"` mit schließendem PLAIN `"` brechen String-Literale in DWF-Scripts → Compile-Diagnostics; Fix = `"` (U+201C) oder nur innerhalb Template-Literals.
