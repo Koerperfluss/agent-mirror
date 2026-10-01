@@ -2,6 +2,8 @@
 
 - [Apple-Mail-DB-Abfrage](apple-mail-db-abfrage.md) — lokal Mails prüfen ohne API: sqlite3 auf ~/Library/Mail/V10 Envelope Index, Apple-Epoch +978307200, Betreff nur via subjects-Join; Gmail-MCP = Permission denied
 
+- [Legal-Ops-Cockpit-Reparatur](legal-ops-cockpit-reparatur.md) — 01.10. Root-Cause: Ordner „id austria neu " MIT Leerzeichen; Cockpit hatte 0 PDF-Links; Judicario-MCP kaputt→RIS; Workflow dwfrun-20813457; Backend 7070 live; Regel: nichts öffnet sich von selbst
+
 - [GLM-5.3 vs Flash: belegte Fakten](glm-53-vs-flash-belegte-fakten.md) — Flash=320B MoE ~8,9× billiger, AA-Index 57; 5.3=Flagship (CyberGym 84,5); beide low/high/max (Default max) — Regel: Plan/Architektur=5.3, Ausführung=Flash; Sascha will direkte belegte Modellurteile, keine Absicher-Floskeln
 
 - [Zoetrope Live-View](zoetrope-live-view.md) — 30.09. GELÖST: `~/zcode2zoe.py` konvertiert ZCode-Rollout→Claude-Format, 0→924 Tool-Calls in zoe bewiesen; jede Agent-Session eigene rollout-Datei (dwf-actor/subagent_agent); Grenze: Subagent-Knoten im EINEN Graph offen
