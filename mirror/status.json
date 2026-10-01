@@ -1,9 +1,9 @@
 {
-  "state": "ok",
-  "finishedAt": "2026-10-01T08:20:30Z",
+  "state": "deferred",
+  "finishedAt": "2026-10-01T08:34:46Z",
   "lastPushAt": "2026-10-01T08:20:05Z",
   "files": 20,
-  "pendingCommits": 0,
-  "note": "",
+  "pendingCommits": 2,
+  "note": "Remote nicht erreichbar, 2 Commit(s) warten",
   "host": "Sascha"
 }
