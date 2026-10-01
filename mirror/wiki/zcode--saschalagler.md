@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-01 05:28 UTC
+Zuletzt gespiegelt: 2026-10-01 05:42 UTC
 
 ## AGENTS
 
@@ -8841,9 +8841,9 @@ metadata:
 
 ---
 name: legal-ops-cockpit-reparatur
-description: ADHS-Legal-Cockpit-Reparatur 01.10. — Ordner „id austria neu " mit
-  TRAILING SPACE ist die Root-Cause, Judicario-MCP kaputt, Workflow
-  dwfrun-20813457 läuft, 7 Rechtsfälle mit Az/Beträgen
+description: ADHS-Legal-Cockpit-Reparatur 01.10. — alle 4 PDFs unterschrieben
+  (Sichtprüfung), Grover/coeo-PAIR nur .md-Entwürfe, Workflow amended auf
+  dwfrun-aa745ebf, Ordner „id austria neu " mit TRAILING SPACE = Root-Cause
 metadata:
   node_type: memory
   type: project
@@ -8863,7 +8863,11 @@ Stand 01.10.2026 (Workflow gestartet, Ergebnis offen): Saschas Rechtsfälle (BH 
 
 **Infra:** Legal-Ops-Backend läuft auf **Port 7070** (PID 18132, ollama qwen2.5-coder:1.5b) — [[sascha-local-infra-ports]] ergänzen. **Judicario-MCP kaputt** (`judicario_search` → „Unbekanntes Tool"; `legal_ops_consult` → nur Boilerplate) → Ersatz = RIS-Direktabruf (ris.bka.gv.at).
 
-**Workflow:** dwfrun-20813457-3e80-4379-a3b7-d88698b744c7 (4 Subagenten: Akten-Prüfer/Mängel-Finder/Rechts-Rechercheur parallel + Cockpit-Mechaniker persistent, Node-Gate prüft file://-Links gegen Disk + „kein Auto-Open"). Backup-Soll: `.bak-2026-10-01`. Harte Sascha-Regel daraus: **Cockpit darf NICHTS von selbst öffnen (kein Auto-Gmail/App-Open)** — er explodierte über wiederholt geöffnetes Gmail.
+**Workflow:** ~~dwfrun-20813457~~ → **amended zu dwfrun-aa745ebf-5df9-4408-89b4-b667c3ca6c3e** (01.10., nach GO aus Plan-Mode). Script: `.zcode/workflow-drafts/ADHS-Legal-Cockpit-reparieren--verifizieren.dwf.ts`. 4 Subagenten (Akten-Prüfer/Mängel-Finder/Rechts-Rechercheur parallel + Cockpit-Mechaniker persistent) + Node-Gate (file://-Links gegen Disk, Gmail to/su/body, KEIN Auto-Open, localStorage, Pfeiltasten). Backup-Soll: `.bak-2026-10-01`. Harte Sascha-Regel: **Cockpit darf NICHTS von selbst öffnen (kein Auto-Gmail/App-Open)**.
+
+**PDF-Unterschriften-Check (01.10., Plan-Mode, per Read-Seiten-Sichtprüfung):** ALLE 4 Schriftsätze UNTERSCHRIEBEN — VORSTELLUNG_ME-450GA (S.2), SAMMELANTRAG (S.2), ANTRAG_BG_MELK_2940, ANTRAG_SVS — jeweils Signaturbild „Sascha Lagler (eigenhändig)", Datum 01.10.2026. **KORREKTUREN gegenüber alten Cockpit-Daten:** Sammelantrag 35 € ERSTER Termin **15.11.2026**; GV Hinum 3×53 € ab **15.11.2026** (nicht 15.10.); SVS 15.10.+15.11. unverändert. Signatur-Asset + .typ-Quellen liegen in `Fallakten_September_2026/` (`unterschrift.png`, `unterschrift_clean.png`, VORSTELLUNG/SAMMELANTRAG/ANTRAG_BG/ANTRAG_SVS .typ). **Nur Entwürfe ohne PDF:** `GROVER_HARDSHIP_STUNDUNGSANTRAG.md` (Empfänger drin: **inkasso@rechnungen.grover.com**, cc support@grover.com; Konto bahldorfa@gmail.com, MacBook Pro 14" M4, 67,91 € offen), `COEO_RATEPAY_SAMMELEINSPRUCH.md`, `PAIR_FINANCE_BESTREITUNG.md`. Der amended Workflow lässt den Mechaniker das Grover-PDF per typst + unterschrift.png bauen (beide Ordner) und Karte 6 mit echtem Gmail-Link versehen.
+
+**Plan-Mode-Lektion:** Bash wird dort vom Hook komplett blockiert (auch readonly) — PDF-Sichtprüfung ging über `Read`-Tool (PDF → Seiten als Bilder) und `mcp__filesystem__list_directory`. `mcp__filesystem__search_files` timeouted auf ~/Desktop (zu groß) → kleine Ordner direkt listen.
 
 **DWF-Lektion:** Deutsche Anführungszeichen `„…"` mit schließendem PLAIN `"` brechen String-Literale in DWF-Scripts → Compile-Diagnostics; Fix = `"` (U+201C) oder nur innerhalb Template-Literals.
 
@@ -100044,6 +100048,34 @@ Kein neues UI · keine Cloud (Speicher 100 % lokal) · keine ATLAS-/Ökosystem-R
 
 ## Ergebnis
 - Agents steuern EINEN Chrome, Login bleibt, Cache getrennt, Memory sauber
+## plan-sess_7851785d-5e3f-41ed-be76-b2ce090c9af5
+
+## Antwort auf deine Frage (bewiesen, nicht geraten)
+
+**JA — alle 4 sendefertigen PDFs sind mit deiner Unterschrift versehen.** Ich habe jede Seite jedes PDFs komplett gelesen (Sichtprüfung, nicht nur grep):
+
+| PDF | Unterschrift | Inhalt geprüft |
+|---|---|---|
+| **VORSTELLUNG_MES1-K-264-274_ME-450GA.pdf** | ✅ Signaturbild „eigenhändig", S. 2 | § 57 Abs. 2+3 AVG, 5 Anträge, Datum 01.10.2026 |
+| **SAMMELANTRAG_BH_MELK_54b_VStG_ALLE_STRAFEN.pdf** | ✅ Signaturbild „eigenhändig", S. 2 | alle 5 GZ, 35 €/Monat **ab 15.11.2026** (neu!), Vollstreckungsaufschub, Beilagen |
+| **ANTRAG_BG_MELK_2E2940_26b.pdf** | ✅ Signaturbild „eigenhändig" | § 291a EO, 3×53 € **ab 15.11.2026**, IBAN korrekt |
+| **ANTRAG_SVS_ZAHLUNGSVEREINBARUNG.pdf** | ✅ Signaturbild „eigenhändig" | 2×38,43 € (15.10. + 15.11.), VSNR ok |
+
+Die Signaturquelle **`unterschrift.png`** liegt im Fallakten-Ordner — die `.typ`-Quellen aller Schriftsätze ebenfalls.
+
+**NICHT unterschrieben (nur Entwürfe, kein PDF):** `GROVER_HARDSHIP_STUNDUNGSANTRAG.md` (Karte 6 — Empfänger steht aber drin: **inkasso@rechnungen.grover.com**), `COEO_RATEPAY_SAMMELEINSPRUCH.md` + `PAIR_FINANCE_BESTREITUNG.md` (Karte 7).
+
+## Plan (nach GO — ich mache alles alleine, du kommst zurück und klickst nur)
+
+1. **Laufenden Workflow `dwfrun-20813457` per AmendWorkflow erweitern** (Prüfer laufen gerade, deren Arbeit bleibt im Cache — kostet fast nichts):
+   - Der Cockpit-Mechaniker kompiliert **Grover-PDF**: `GROVER_HARDSHIP_STUNDUNGSANTRAG.md` → PDF (typst) **mit `unterschrift.png`**, abgelegt in `id austria neu ` + `Fallakten_September_2026`.
+   - Karte 6 bekommt den echten 1-Klick-Gmail-Link an inkasso@rechnungen.grover.com (cc support@grover.com) statt nur Suchlink.
+   - Karte 7: Empfänger aus den coeo/PAIR-Entwürfen übernehmen (falls drin), sonst Gmail-Suchlinks — nichts wird erfunden.
+   - Cockpit-Daten korrigiert übernehmen: Ratenbeginn **15.11.2026** (Sammelantrag + GV Hinum), nicht 15.10.
+2. **Workflow läuft fertig**: Baseline-Gate → Reparatur → Node-Automatiktest (alle file://-Ziele auf Disk geprüft, Gmail-Links vollständig, KEIN Auto-Open, localStorage, Pfeiltasten) → Prüfbericht.
+3. **Endkontrolle durch mich**: Gate-Ergebnis + Dateipfade als Beweis melden. Du öffnest dann selbst das fertige Cockpit — nichts startet von selbst.
+
+**Nicht drin:** Senden in Gmail (deine 1-Min-Klicks), Original-Cockpit wird als Backup gesichert (`.bak-2026-10-01`), keine Dateien gelöscht.
 ## plan-sess_942c93ed-7e28-481c-b0f2-f18c143f79c7
 
 **Gemini CS203 — Live-Recherche fertig, Vorlagen jetzt schreiben**
