@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-01 06:11 UTC
+Zuletzt gespiegelt: 2026-10-01 06:26 UTC
 
 ## AGENTS
 
@@ -2250,6 +2250,56 @@ Chipsi lebt (HTTP 303→/login in 0,13 s, selbst gemessen) und das Judicario-Gat
 3. **Recherche übergangsweise in Claude Desktop fahren: Gateway-Connector ist verbunden und listet 8 at_*-Tools (Messwert: initialize HTTP 200, tools/list = 8 Einträge; mein Probe ohne Key: HTTP 401 = Gateway lebt); Ergebnisse sobald Chipsi wieder synthesiert in die Chipsi-Akten nachpflegen.** (Sascha) — Der gesunde Teil der Kette (amtliche Recherche über gateway.openlaw.cc) bleibt nutzbar, nur der ausgefallene Teil (Chipsi-Synthese) wird umgangen.
 4. **Client-Fehler ausschließen: Chrome-PWA „Chipsi“ entfernen und neu installieren bzw. einmal im Inkognito-Fenster/anderem Chrome-Profil testen.** (Sascha) — Nicht gespeicherte Streaming-Antworten können auch an PWA-Service-Worker/Cache hängen — der einzige noch lokal prüfbare Punkt; in der Doku nicht dokumentiert, daher erst nach Rang 1–3.
 5. **Auf openlaw-Fix abstimmen: die fertige Nachricht an Reinhard senden (NACHRICHT_AN_REINHARD_CHIPSI_FEHLER.md, Stand 22.09. 14:30, fertig zum Kopieren, inkl. Frage „Ist euer Synthese-Backend ausgefallen?“) und bis zur Reparatur nur die Workarounds 1–3 nutzen; lokalen loki-legal-ops-Judicario-Wrapper NICHT als Ersatz einsetzen (Live-Test heute: 2× isError „Unbekanntes Tool im Judicario-Bündel“).** (Sascha) — Alle lokal prüfbaren Ursachen sind gemessen bzw. ausgeschlossen; der verbleibende Defekt liegt eindeutig auf openlaw-Serverseite.
+## dwfrun-1ff46e60-fd4b-4cbb-8658-03f75d73f119_artifact_1_1-tool-result-ca68f6c6-47dd-4020-bda1-4dbab3281c2d
+
+# Fertige E-Mails mit PDF-Anhaengen — Beweisbericht
+
+Gmail-Web-Links koennen keine Anhaenge vorbefuellen (Google-Limitierung). Deshalb liegen jetzt 5 fertige .eml-Dateien mit eingebetteten PDFs bereit: Doppelklick oeffnet sie im Mail-Programm mit Anhang — nur noch Senden.
+
+| E-Mail | Empfaenger | Anhaenge | Beweis |
+|---|---|---|---|
+| 1_STRAFEN_Sammelantrag_54b_VStG.eml | strafen.bhme@noel.gv.at | SAMMELANTRAG_BH_MELK_54b_VStG_ALLE_STRAFEN.pdf, AMS_Bescheid_Notstandshilfe_Sascha_Lagler_18_09_2026.pdf | md5-identisch verifiziert |
+| 2_VERKEHR_Vorstellung_57_AVG.eml | verkehr.bhme@noel.gv.at | VORSTELLUNG_MES1-K-264-274_ME-450GA.pdf | md5-identisch verifiziert |
+| 2b_VERKEHR_Vollzugsaufschub_44_KFG.eml | verkehr.bhme@noel.gv.at | ANTRAG_VOLLZUGSAUFSCHUB_MES1-K-264-274.pdf, Gmail - 2 E 2866_26w (Ihr Zeichen 5261604) – Ratenzahlungsangebot, Unpfändbarkeit § 291a EO & Antrag BG Melk – Sascha Lagler.pdf, AMS_Bescheid_Notstandshilfe_Sascha_Lagler_18_09_2026.pdf | md5-identisch verifiziert |
+| 3_GV_HINUM_291a_EO.eml | guenther.hinum@justiz.gv.at | ANTRAG_BG_MELK_2E2940_26b.pdf, AMS_Bescheid_Notstandshilfe_Sascha_Lagler_18_09_2026.pdf | md5-identisch verifiziert |
+| 4_SVS_Ratenzahlung.eml | svs@svs.at | ANTRAG_SVS_ZAHLUNGSVEREINBARUNG.pdf | md5-identisch verifiziert |
+
+## Automatik-Pruefung (md5 je Anhang gegen Quell-PDF)
+- 1_STRAFEN_Sammelantrag_54b_VStG.eml: 2 Anhaenge md5-identisch (SAMMELANTRAG_BH_MELK_54b_VStG_ALLE_STRAFEN.pdf, AMS_Bescheid_Notstandshilfe_Sascha_Lagler_18_09_2026.pdf)
+- 2_VERKEHR_Vorstellung_57_AVG.eml: 1 Anhaenge md5-identisch (VORSTELLUNG_MES1-K-264-274_ME-450GA.pdf)
+- 2b_VERKEHR_Vollzugsaufschub_44_KFG.eml: 3 Anhaenge md5-identisch (ANTRAG_VOLLZUGSAUFSCHUB_MES1-K-264-274.pdf, Gmail - 2 E 2866_26w (Ihr Zeichen 5261604) – Ratenzahlungsangebot, Unpfändbarkeit § 291a EO & Antrag BG Melk – Sascha Lagler.pdf, AMS_Bescheid_Notstandshilfe_Sascha_Lagler_18_09_2026.pdf)
+- 3_GV_HINUM_291a_EO.eml: 2 Anhaenge md5-identisch (ANTRAG_BG_MELK_2E2940_26b.pdf, AMS_Bescheid_Notstandshilfe_Sascha_Lagler_18_09_2026.pdf)
+- 4_SVS_Ratenzahlung.eml: 1 Anhaenge md5-identisch (ANTRAG_SVS_ZAHLUNGSVEREINBARUNG.pdf)
+
+## Offen / nicht geprueft
+- Absenden bleibt bei Sascha (Doppelklick + Senden); es wurde nichts versendet
+- Apple Mail muss das Konto koerperfluss@gmail.com enthalten, sonst in einem anderen Mail-Programm oeffnen
+- Die verbindliche Erklaerung in 2b (Fahrzeug wird bis zur Wiederherstellung des Versicherungsschutzes nicht im oeffentlichen Verkehr verwendet) steht unterschrieben im PDF — Sascha hat sie noch nicht bestaetigt
+
+## Unabhaengiger Blick
+**Ergebnis: Bericht nennt Prüfergebnisse, liefert aber weder Pfade noch Hash-Werte — 4 unklare Stellen, 6 unbelegte Behauptungen, 5 Lücken. Nur Text gelesen, keine Dateien geprüft.**
+
+## 1. Unklare Stellen
+1. **„md5-identisch verifiziert"** — womit identisch? Die Prüfungs-Sektion sagt „gegen Quell-PDF", aber neither Quell-Pfade noch Hash-Werte stehen im Bericht. Leser kann es nicht nachvollziehen.
+2. **Anhang Nr. 2 in 2b** („Gmail - 2 E 2866_26w (Ihr Zeichen …).pdf") — Dateiname enthält Kommas; unklar ob 1 oder mehrere Dateien. Format unklar (PDF-Export einer Gmail-Mail?).
+3. **„steht unterschrieben im PDF — Sascha hat sie noch nicht bestaetigt"** — Widerspruch: unterschrieben, aber nicht bestätigt? Wer hat unterschrieben, was fehlt zur Bestätigung? Und: darf 2b trotzdem versandfertig sein?
+4. **Zwei Geschäftszahlen ohne Erklärung**: 2 E 2866/26w (in 2b-Anhang) vs. 2E2940/26b (E-Mail 3) — beides BG Melk, Verhältnis unklar.
+
+## 2. Behauptungen ohne Beleg im Text
+1. „Google-Limitierung" für Gmail-Anhänge — keine Quelle.
+2. „5 fertige .eml-Dateien … bereit" — kein Speicherort, keine Auflistung als Dateisystem-Beweis.
+3. „md5-identisch" ×9 — keine Hash-Werte, kein Befehl, kein Output im Bericht.
+4. „Doppelklick oeffnet sie im Mail-Programm mit Anhang" — nicht getestet belegt.
+5. Empfängeradressen (strafen.bhme@…, guenther.hinum@…, svs@svs.at) — keine Herkunft.
+6. „unterschrieben im PDF" (2b) — keine Prüfung dokumentiert.
+
+## 3. Was fehlt
+1. **Absoluter Pfad** der 5 .eml-Dateien.
+2. **md5-Werte + Quell-PDF-Pfade** (Reproduzierbarkeit der Prüfung).
+3. **Betreff/Text/From** der E-Mails — Bericht sagt nichts über den Inhalt der Mails; From (koerperfluss@gmail.com) erscheint nur indirekt im „Offen"-Abschnitt.
+4. **Dateigrößen** der .eml (Empfänger-Größenlimits).
+5. **Nächster Schritt zu 2b** — Erklärung unbestätigt, Mail trotzdem fertig: Risiko nicht als blockierend markiert.
+
 ## dwfrun-c2ded830-5dbb-462d-bef0-af47059b1586_artifact_3_1-tool-result-5fe8521d-391c-43cd-9ce3-e6770c49fd44
 
 # ADHS Legal Ops Cockpit — Prüf- und Reparaturbericht
@@ -8527,7 +8577,7 @@ Beobachtet 06.09.2026 (Session mit Off-Peak-Ticket): Nach User-Paste „ZCode Er
 
 - [Judicario-Gateway-MCP-Rezept](judicario-gateway-mcp-rezept.md) — 01.10. GELOST: altes legal_research tot; echter Weg = Streamable-HTTP-Handshake (Session-ID, Dual-Accept, SSE, inkrementelle IDs) + at_search; Key jud_Cpu-… aus Claude-Code-Installer; fertiger Client judicario_mcp_client.py (SSRF-gehärtet)
 
-- [Legal-Ops-Cockpit-Reparatur](legal-ops-cockpit-reparatur.md) — 01.10. ENDE: Cockpit-Workflow dwfrun-c2ded830 FERTIG (13 Fixes, Endtest GRÜN, Backup .bak); 5 E-Mails + .eml-mit-Anhang-Workflow; Judicario lebt wieder (§44 KFG live, 2b-Antrag normbestätigt); offen: Saschas „bleibt/streichen" zu 2b-Erklärung, 5× Senden, Ordner-Aufräumen
+- [Legal-Ops-Cockpit-Reparatur](legal-ops-cockpit-reparatur.md) — 01.10. ABSCHLUSS: Cockpit GRÜN (dwfrun-c2ded830, Backup .bak) + 5 .eml MIT Anhängen md5-GRÜN (dwfrun-1ff46e60 nach Slash-Bug-Fix via Subagent-Eskalation); Judicario lebt (§44 KFG live); 2b-Erklärung bleibt (Empfehlung); Rest = Sascha: 5× senden (~06./07.10.!), 60 € 15.10., Ordner-Aufräumen
 
 - [GLM-5.3 vs Flash: belegte Fakten](glm-53-vs-flash-belegte-fakten.md) — Flash=320B MoE ~8,9× billiger, AA-Index 57; 5.3=Flagship (CyberGym 84,5); beide low/high/max (Default max) — Regel: Plan/Architektur=5.3, Ausführung=Flash; Sascha will direkte belegte Modellurteile, keine Absicher-Floskeln
 
@@ -8956,36 +9006,35 @@ metadata:
 
 ---
 name: legal-ops-cockpit-reparatur
-description: ADHS-Legal-Cockpit 01.10. ENDE — Cockpit-Workflow dwfrun-c2ded830 FERTIG (13 Fixes,
-  Endtest GRÜN, Backup .bak-2026-10-01), Judicario LEBT wieder (at_search-Handshake, §44-KFG-live),
-  .eml-Workflow dwfrun-8bdd1aa5 lief, Ordner „id austria neu " TRAILING SPACE = Root-Cause
+description: ADHS-Legal-Cockpit 01.10. ABSCHLUSS — Cockpit GRÜN (dwfrun-c2ded830),
+  5 .eml MIT Anhängen md5-GRÜN (dwfrun-1ff46e60 nach Slash-Bug-Fix), Judicario lebt
+  (at_search, §44 KFG live), 2b-Erklärung bleibt (Empfehlung); Sascha sendet selbst
 metadata:
   node_type: memory
   type: project
   originSessionId: sess_7851785d-5e3f-41ed-be76-b2ce090c9af5
 ---
 
-Stand 01.10.2026 nachts: Saschas Rechtsfälle (BH Melk / BG Melk). **Umsetzung ALLES AUFEINMAL** (Saschas Befehl): Gmail-Compose-Links per python3 `quote()` + parse_qs-Roundtrip gebaut (nie Hand-Kodierung), **`~/Desktop/00_EMAILS_JETZT_SENDEN.html`** = Send-Liste mit Riesen-Buttons, öffnet nichts von selbst. Sascha klickt selbst, zieht PDFs rein, sendet (ich sende NIE).
+Stand 01.10.2026 final: Saschas Rechtsfälle (BH Melk / BG Melk) — **ALLE Workflows fertig, alles maschinell verifiziert, nichts gesendet (Senden = Sascha)**.
 
 **Root-Cause aller Link-Fehler:** Ordner `/Users/saschalagler/Desktop/id austria neu ` — **abschließendes Leerzeichen**.
 
-**Task-Liste (final, wartet auf Saschas Ja pro Task):** 1) Strafen-Sammelantrag §54b Abs. 3 → strafen.bhme@noel.gv.at + SAMMELANTRAG + AMS, **~07.10. AKUT** · 2) Vorstellung §57 AVG → verkehr.bhme@noel.gv.at, ~06.10. · **2b) NEU (01.10. Nacht gebaut): ANTRAG AUF AUSSETZUNG DES VOLLZUGES §44 Abs. 4 KFG** → verkehr.bhme@noel.gv.at, Anhänge: ANTRAG_VOLLZUGSAUFSCHUB_MES1-K-264-274.pdf + SDSP-Ratenplan-PDF („Gmail - 2 E 2866_26w…") + AMS · 3) GV Hinum §291a EO → guenther.hinum@justiz.gv.at · 4) SVS → svs@svs.at · 5) Grawe: nichts senden, 60 € am 15.10. (IBAN AT12 6000 0000 9217 7192, Zweck 5261604) · 7) Grover/coeo/PAIR von Sascha zurückgestellt.
+**Deliverables (alle bewiesen):**
+- **5 fertige `.eml` MIT Anhängen** in `~/Desktop/EMAILS_FERTIG_ZUM_SENDEN/` (1_STRAFEN→strafen.bhme@noel.gv.at, 2_VERKEHR_Vorstellung, 2b_VERKEHR_Vollzugsaufschub, 3_GV_HINUM→guenther.hinum@justiz.gv.at, 4_SVS→svs@svs.at). **md5-Gate GRÜN**: jeder Anhang byte-identisch mit Quell-PDF (Empfänger/Betreff/Namen geprüft). Doppelklick → Mail-Fenster mit Anhang → Sascha sendet nur noch. Gmail-Web kann KEINE Anhänge vorbefüllen (Google-Limit) → .eml mit `X-Unsent: 1` ist der „mit Anhang"-Weg; Apple Mail braucht Konto koerperfluss@gmail.com.
+- **Cockpit repariert** (dwfrun-c2ded830: 13 Änderungen, Node-Endtest GRÜN, Backup `.bak-2026-10-01`; vorher verified: 6/7 Karten, 0 RIS-Links, 0 file://-Links usw.).
+- **Send-Liste** `~/Desktop/00_EMAILS_JETZT_SENDEN.html` (5 Gmail-Links + .eml-Sektion, grep-Beweis) + Beweisbericht-Artefakt „E-Mails mit Anhaengen".
+- **Schriftsatz 2b** ANTRAG_VOLLZUGSAUFSCHUB §44 Abs. 4 KFG (typst, 79 KB, unterschrift.png) — **Judicario-live normbestätigt** (`at|kfg|44`: Abs. 1 lit. c, Abs. 3 keine aufschiebende Wirkung, Abs. 4 unverzügliche Ablieferung).
+- **Judicario-Client** judicario_mcp_client.py → [[judicario-gateway-mcp-rezept]].
 
-**Auto-Strategie-KORREKTUR (Sascha wütend auf eVB-Empfehlung):** eVB-Neuabschluss war nur „Option B" — **er hat bereits selbst an Grawe gemailt** (Wiederherstellung Versicherungsschutzes); Option A = Vollzugsaufschub-Antrag auf Basis des gerichtlich gebilligten SDSP-Ratenvergleichs (2 E 2866/26w). Schriftsatz 2b exakt nach Chipsi/Judicario-Gutachten gebaut (§44 Abs. 1 lit. c + Abs. 4, §61 Abs. 5 KFG, „keine aufschiebende Wirkung"; KEINE unzulässigen Behauptungen — kein „Polizei kommt nicht", kein Privatgrund, kein 10.10.). Typst-kompiliert 79 KB/2 S., unterschrift.png eingebettet, 6/6 pdftotext-Treffer, in `Fallakten_September_2026/` + `id austria neu `. **OFFEN wartet Saschas Wort:** Antrag Pkt. 2 = verbindliche Erklärung „Fahrzeug wird bis Wiederherstellung nicht im öffentlichen Verkehr verwendet" — „bleibt" oder „streichen" (seine Tatsache, nicht meine Entscheidung).
+**2b-Erklärung (antragsfern geklärt):** Sascha fragte „warum fragst du das?" → geantwortet mit Begründung + **Empfehlung „bleibt"** (ohne haftenden Versicherer ist Fahren ohnehin unzulässig — Erklärung kostet nichts Erlaubtes, ist Hebel ggü. §61 Abs. 5 KFG). Default: bleibt drin, „streichen" widerruft jederzeit.
 
-**Saschas harte Regeln dabei (erneut bestätigt):** „DU MACHST KEINE ENTSCHEIDUNGEN" — Rechtsinhalt NUR aus Judicario-/Chipsi-Quellen, sonst garnichts. Ich soll „weitermachen mit Schriftsatz und E-Mail für die Situation" statt Optionen zu entscheiden. Skill-Spam (plugin-creator, skillshare-sync etc.) ist Kontext, keine Bauaufträge.
+**Saschas Rest-Aktionen:** 1) 5× .eml-Doppelklick + Senden (Fristen: Strafen ~07.10., Vorstellung ~06.10.) · 2) 60 € am 15.10. an SDSP (IBAN AT12 6000 0000 9217 7192, Zweck 5261604) · 3) noch fällig: **Ordner-Aufräumen** („bitte räum auf" — nichts löschen, nach Workflows).
 
-**Signatur-Beweis maschinell** (pdftotext/pdfimages; die alte „Read-Sichtprüfung" war unmöglich — Modell ohne PDF-Input): alle 4 Original-Schriftsätze „Sascha Lagler" (2× „eigenhändig") + je 2 Bilder. ⛔ NICHT senden: SCHRIFTSATZ_BH_MELK_AUTO_ME450GA.pdf (Privatgrund-Lüge) + ANTRAG_BH_MELK_54b_VStG.pdf („gemeinnützige Arbeit", VwGH 2014/09/0042 → wirkungslos). Sammelantrag 35 € ab **15.11.**; GV Hinum 3×53 € ab **15.11.**; SVS 15.10.+15.11.
+** Slash-Bug + Fix (wichtig für künftige Gates):** .eml-Workflow dwfrun-8bdd1aa5 scheiterte still — in meiner TASKS-Konstante fehlte der `/` nach dem Leerzeichen-Ordner (`D + "FILE.pdf"` statt `D + "/FILE.pdf"`); Gate-Ausnahme → leere stdout → „Pruef-Skript ohne Ausgabe". **email-bauer-Subagent eskalierte mit exakter Diagnose** (§14-Eskalations-Loop zahlt sich aus!) → 7 Draft-Edits (Pfade + os.path.exists-Guard im Gate) → AmendWorkflow → **dwfrun-1ff46e60 GRÜN**. Lektion: Gate-Skripte müssen Datei-Opens absichern; Konstanten, die in Builder-Ask UND Gate fließen, einmal richtig bauen; Trailing-Space-Ordner Pfade IMMER mit `$D/$file`-Muster.
 
-**Infra:** Legal-Ops-Backend 7070 läuft, ABER **legal_ops_consult-MCP liefert nur Header** („System-Prompt geladen" + Echo der Anfrage, zweimal bewiesen) — als Inhaltsquelle unbrauchbar; Judicario-MCP „Unbekanntes Tool" → Rechtsbasis = Saschas Chipsi-Chat-Verlauf (mit RIS-Normen) + RIS-Direktabruf.
+**Saschas Regeln dabei (bestätigt):** „DU MACHST KEINE ENTSCHEIDUNGEN — JUDICARIO/CHIPSI CONNECTOREN SONST GARNICHTS"; alles auf einmal vorbereiten, dann task-weise Ja/Nein; „bitte warte alle workflows ab und gib bescheid" = blockieren + konsolidierter Endbericht. legal_ops_consult-MCP nutzlos (nur Header-Echo). ⛔ NICHT senden: SCHRIFTSATZ_BH_MELK_AUTO_ME450GA.pdf (Privatgrund-Lüge) + ANTRAG_BH_MELK_54b_VStG.pdf („gemeinnützige Arbeit" wirkungslos, VwGH 2014/09/0042). Sammelantrag 35 € ab 15.11.; GV Hinum 3×53 € ab 15.11.; SVS 15.10.+15.11.
 
-**Workflow-Kette:** dwfrun-20813457 → aa745ebf → **dwfrun-c2ded830 = FERTIG (01.10. früh, Benachrichtigung liegt vor)**: Cockpit repariert, **13 Änderungen, Node-Endtest GRÜN** (alle file://-Ziele auf Disk, Gmail-Links to/su/body, kein Auto-Open, localStorage, Pfeiltasten), Backup `.bak-2026-10-01`, Artefacts „ADHS Legal Ops Cockpit (repariert)" + „Prüf- und Reparaturbericht". Bestätigte Vor-Mängel (alle verified): nur 6/7 Karten (Inkasso-Karte fehlte), 0 RIS-Links, 0 file://-Links, Karte 4 ohne Gmail/PDF-Button, Karte 3 ohne §291a-Beweiskopf, falsche Zähler „von 5". → jetzt fällig: **Ordner-Aufräumen** („bitte räum auf") — nichts löschen. Achtung: `ListWorkflowRuns` zeigte 0 Runs — Historie dort unzuverlässig, Status nur per GetWorkflowRun/Benachrichtigung.
-
-**JUDICARIO LEBT WIEDER (Durchbruch, gleiche Nacht):** Root-Cause „Unbekanntes Tool" = altes `legal_research` existiert am Gateway nicht mehr. Echter Weg: Streamable-HTTP-Handshake (initialize → `Mcp-Session-Id` → `at_search`), rotierter Key `jud_Cpu-…` aus dem Claude-Code-Installer ( konkurrenz/-Ordner). Live-Beweis: `at|kfg|44` Volltext — **Abs. 3 (keine aufschiebende Wirkung bei lit. c) + Abs. 4 (unverzügliche Ablieferung)** bestätigen den 2b-Antrag normgenau; VwGH-Suche 0 Treffer → nichts draus abgeleitet. Dauerlösung: **`judicario_mcp_client.py`** im legal-ops-advisor-Ordner (SSRF-gehärtet, Mimosa-geprüft). Voll-Rezept → [[judicario-gateway-mcp-rezept]].
-
-**NEU (01.10. spät): „MIT ANHANG"-Workflow dwfrun-8bdd1aa5** — Saschas Kern-Verlangen: E-Mails MIT Anhängen. Fakt: **Gmail-Web-Compose-URLs können KEINE Anhänge vorbefüllen** (Google-Limitierung, kein file-Param) → Lösung = **fertige `.eml`-Dateien (RFC 5322, multipart/mixed) mit PDF-Anhängen als Payload** in `~/Desktop/EMAILS_FERTIG_ZUM_SENDEN/`: Doppelklick öffnet Mail-Fenster MIT Anhang → Sascha drückt nur Senden. 5 Dateien (1/2/2b/3/4), From koerperfluss@gmail.com, Header `X-Unsent: 1`, Date/Message-ID via email.utils. Beweis = **md5-Gate**: python3-Gate parst jede .eml und vergleicht md5 jedes Anhangs gegen Quell-PDF (byte-identisch), Fix-Loop ≤3. Vorbedingung: Apple Mail muss Konto koerperfluss@gmail.com haben. Gmail-Web-Links bleiben Zweitweg in der Send-Liste (die der Workflow um .eml-Sektion erweitert).
-
-**Lektionen:** Mimosa-PreToolUse-Hook **blockiert Bash-Heredoc-Writes von Quelldateien** („Write/Edit verwenden") → .typ/.html per Write-Tool, Bash nur kompilieren/kopieren. **Typst-Falle:** jedes `@` escapen (`\@`), auch in E-Mail-Adressen im Kopf (label-Ref-Fehler). Plan-Mode blockiert Bash komplett → Read/filesystem-MCP. DWF: `„…"` mit plain `"` bricht Strings → U+201C schließen.
+**Infra/Lektionen:** Backend 7070 läuft. Mimosa blockt Bash-Heredoc-Writes von Quelldateien → Write-Tool. Typst: jedes `@` escapen. Plan-Mode blockt Bash. DWF: „…"-Anführungszeichen brechen Strings. `ListWorkflowRuns` zeigte 0 Runs (unzuverlässig) — Status per GetWorkflowRun/Benachrichtigung.
 
 ## loki-dev-plan-alle-modi
 
@@ -9476,6 +9525,8 @@ Saschas harte Regeln, gelernt aus dem 20.09.-Zerwürfnis (619k Token in 1 Sessio
 
 10. **„Suche doch selber" — Erledigungs-Checks sind MEINE Aufgabe (01.10., nach redundantem GfS-Mail-Entwurf):** Sascha („email an google wurde bereits erledigt … SUCHE DOCH DIE MEMORY LAYER DURCH"): Bevor ich einen Alt-Auftrag als offen erfülle oder Sascha eine Aufgabe zurückgebe, MUSS ich zuerst selbst deja-Recall + lokale Datenquellen (Apple-Mail-DB, Projekt-CSVs/PDFs, Memory-Dateien) nach „wurde schon erledigt" durchsuchen. Der Fall: Mail an José Alberto war seit 23.09. gesendet (Antigravity-Session + Mail-DB bewiesen es) — ich entwarf sie redundant neu und Sascha musste mich korrigieren. **How to apply:** Jede „offene Aufgabe" aus Alt-Konversationen → erst 1 deja-Recall + 1 lokale Datei-/Mail-DB-Suche, DANN erst als offen melden oder erledigen; nie „X fehlt" behaupten, ohne die Ablage-Ordner drumherum geprüft zu haben (die Lösung lag neben dem titellosen PDF: Meine Bibliothek.csv mit Titeln).
 
+11. **„Alles auf einmal, dann task-weise Ja/Nein" — Legal-Ops-Modus (01.10.):** Sascha („du bereitest ALLES VOR … MIT ANHANG"): erst KOMPLETT vorbereiten (jede E-Mail mit Anhang + Beweis), DANN am Ende nur noch task-für-task Ja/Nein/Weiter fragen. Bei Rückfragen zu Einzelpunkten will er **Empfehlung + Begründung als Default**, keine offenen Entscheidungsfragen („warum fragst du das?" auf die 2b-Erklärung → Antwort: Empfehlung „bleibt" mit Judicario-Begründung, widerrufbar). Rechtsinhalt NUR aus Judicario-/Chipsi-Quellen — keine eigenen Rechtsentscheide. „Bitte warte alle Workflows ab und gib Bescheid" = blockierend warten + EIN konsolidierter Endbericht mit Beweisen.
+
 **Why:** Sascha (ADHS) will das GROSSE Bild in SEINEM Orchestrierungs-Format (PLAN-Tabelle, Schwarm-Rollen, Reviewer-Veto) — weder Explorer-Schleifen noch Solo-Mini-Pläne. Plan-Lehnen heißt „Format falsch", nicht „weniger machen".
 **How to apply:** Neuer Build-Auftrag → sofort PLAN-Tabelle konform Standard-Skill-System S.2 mit installierten Subagenten (implementer/qa-tester/reviewer qwen3.8-max/explore), max 3 parallel, PLAN.md ins Projekt, Auto-Vollzug nach Freigabe. GUI/Deploy/Dateien nur nach GO. Verwandt: [[sascha-vollzug-keine-zwischenfragen]] (GO-Phase), [[loki-voice-agent]].
 
@@ -9607,6 +9658,8 @@ ZCode-Workflow-Bedienung für Sascha (gefragt 21.09.2026 „wo ist /workflow"):
 - **Laufende/finished Runs sehen:** ZCode-Seitenleiste → **Automations/Workflows**; während des Laufs erscheinen Live-Baustellen-Boards + Bericht-Karten direkt im Run-Pane.
 - **Historie:** Frage den Agenten („zeig Workflow-Historie") → `ListWorkflowRuns` listet alle Runs des Projekts mit Status.
 - Merksatz aus der Diagnose: Direkte Chat-Agenten sterben bei Turn-Interrupt (neue Nachricht mid-Turn), **Workflows laufen unabhängig weiter** — schwere Aufträge bevorzugt als Workflow.
+- **Gotcha 01.10.: Draft-Pfad folgt dem CWD.** CreateWorkflow legt `.zcode/workflow-drafts/<name>.dwf.ts` RELATIV zum aktuellen Arbeitsverzeichnis ab — nach einem persistierten `cd` (z. B. typst-Compile im Projektordner) landete der Draft in `<Projektordner>/.zcode/workflow-drafts/` statt `~/.zcode/…`, und Edit sagte „File does not exist". Vor Edit/Amend: CWD prüfen oder per `find` lokalisieren; nach `cd` in Bash-Kommandos zurückwechseln.
+- **Gate-Robustheit (01.10., md5-Gate-Silent-Fail):** world.run-Gate-Skripte müssen jede Datei-öffnen mit exists-Check absichern — eine Ausnahme = leere stdout = irreführendes „keine Ausgabe"; und Pfade-Konstanten, die in Builder-Ask UND Gate interpoliert werden, müssen einmal stimmen (Trailing-Space-Ordner: immer `$D/$file`-Muster). Der §14-Eskalations-Loop funktioniert hervorragend: der Bau-Subagent diagnostizierte meinen Skript-Bug per Eskalation exakt → AmendWorkflow-Fix → GRÜN.
 
 Verwandt: [[loki-os-v18-endprodukt]], [[sascha-arbeitsregeln-hart]]
 
