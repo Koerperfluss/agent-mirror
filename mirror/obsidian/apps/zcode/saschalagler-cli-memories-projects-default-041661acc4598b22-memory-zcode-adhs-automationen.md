@@ -145,3 +145,12 @@ metadata:
 - **⚠️ Neues Finding aus dem Sweep:** dwfrun-Lauf meldet **md5-Prüflauf-Fehler in `~/Desktop/EMAILS_FERTIG_ZUM_SENDEN`** (Ordner existiert, ls-Beweis) — Tagesplan-Punkt 1; Details (welche Datei/Hash) nur im dwf-Run selbst.
 - Tagesplan: md5-Fehler klären · GO doku-fix · GO Wecker · Deutsch-Patch-Recovery · dwfrun beobachten. Bilanz: 25 Läufe; offene GOs unverändert + neu der md5-Fall.
 
+## Sechsundzwanzigster Lauf (Do 01.10. 10:07 — RISIKO-SCAN mit neuem ⚠️ P1: Pointer-Fix, PASS)
+- **⚠️ P1 — Submodul-Pointer im Parent NICHT verankert:** Der Sicherungs-Commit `7fdbf2d` existiert nur IM Submodul `loki-voice`; Parent `loki-ki` zeigt weiter auf den ALTEN Stand (Beweis: `git -C ~/loki-ki status --porcelain` → ` M loki-voice`). Ein `git submodule update` im Parent würde den alten Stand auschecken und `7fdbf2d` abkoppeln. **Fix = „GO pointer-fix"**: im Parent `git add loki-voice && git commit` (wartet auf Sascha-GO, da Commit = Stopp-Regel). Spiegelbild des 21.09.-P1 (damals fehlte der Commit IM Submodul, heute die Verankerung IM Parent).
+- ℹ️ P2: `~/loki-ki/.wayfinder/map.md` uncommittet (Map-Drift) · **`macos-app-v18/LOKI OS v18.app/…/LOKIOSApp`** (kompiliertes Binary) uncommittet — v18-Build nicht im Git verankert.
+- ℹ️ md5-Fall (`~/Desktop/EMAILS_FERTIG_ZUM_SENDEN`, 3 .eml heute geändert): wird **aktiv vom dwf-Workflow bearbeitet** (md5-Prüflauf) → bewusst KEINE Doppeldiagnose vom Risiko-Scan, Ergebnis kommt aus dessen Lauf.
+- ✅ 0 Commits 24 h · Engine-Dateien unverändert · loki-voice nur .DS_Store (bekannt). Nicht kritisch → kein ⚠️-Kalender-Event. Scan in `2026-10-01.md` vermerkt. Bilanz: 26 Läufe; GOs: Wecker · Deutsch-Patch · doku-fix · **pointer-fix (NEU)**.
+
+## Siebenundzwanzigster Lauf (Do 01.10. 15:0x — No-op PASS)
+- 15:00-Donnerstag-Slot korrekt 1-Zeilen-No-op (Doku-Sync nur mittwochs); Logbuch 01.10. blieb offen für 21:00-Abend-Lauf. Bilanz: 27 Läufe; GOs unverändert (Wecker · Deutsch-Patch · doku-fix · pointer-fix) + md5-Fall läuft im dwf-Workflow.
+
