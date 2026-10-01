@@ -1,5 +1,7 @@
 # Memory Index
 
+- [Mac langsam: Finder-Desktop-Loop](mac-langsam-finder-desktop-loop.md) — 01.10. bewiesen: 679k Desktop-Dateien (70 GB) + iCloud-Desktop-Sync = Finder-100%-CPU-Endlos-Loop (Neustart bringt nichts); deja hook-refresh Runaway (3,5 GB) gekillt; 6 GB Caches frei; offen: GO „Dokumente" vom Desktop verschieben + Ollama-Modelle 5,7 GB löschen
+
 - [Apple-Mail-DB-Abfrage](apple-mail-db-abfrage.md) — lokal Mails prüfen ohne API: sqlite3 auf ~/Library/Mail/V10 Envelope Index, Apple-Epoch +978307200, Betreff nur via subjects-Join; Gmail-MCP = Permission denied
 
 - [Judicario-Gateway-MCP-Rezept](judicario-gateway-mcp-rezept.md) — 01.10. GELOST: altes legal_research tot; echter Weg = Streamable-HTTP-Handshake (Session-ID, Dual-Accept, SSE, inkrementelle IDs) + at_search; Key jud_Cpu-… aus Claude-Code-Installer; fertiger Client judicario_mcp_client.py (SSRF-gehärtet)

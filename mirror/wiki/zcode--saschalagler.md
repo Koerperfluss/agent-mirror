@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-01 09:22 UTC
+Zuletzt gespiegelt: 2026-10-01 09:36 UTC
 
 ## AGENTS
 
@@ -8719,6 +8719,8 @@ Stand 18.09.2026 — **AUSGEFÜHRT + VERIFIZIERT**: Agent-Chrome läuft auf `htt
 
 **Nachtrag 12 (20.09., eBay-RTE-iframe-Typen):** eBay-Listing-Beschreibung = iframe `se-rte-frame__summary` mit Editor-Div `.se-rte-editor__rich`. (1) `Input.insertText`, synthetische ClipboardEvents und execCommand-`insertText` landen ALLE NICHT im Editor — nur echte `Input.dispatchKeyEvent`-Paare (keyDown+keyUp, text=ch; Enter: code "Enter", text "\r"). (2) **Koordinaten-Falle:** Rects von Elementen INNERHALB des iframes sind iframe-lokal — Seiten-Koordinaten = iframe-Rect + Element-Rect, und nach scrollIntoView Koordinaten NEU messen. (3) Editor-DOM niemals per `innerHTML` anfassen (zerstört den Editor; eBay-Draft-Autosave + Reload rettet den Stand). (4) Formular-Flow mit Beweis: `/sl/prelist/suggest` (Keyword @keyword-Input + Enter) → identify → Zustand-Label → „Weiter zum Angebot" → Fotos `#fehelix-uploader` (setFileInputFiles) → Publish „Artikel kostenlos einstellen"; Versandservice über „Ersten Versandservice hinzufügen" + Label-Mausklick + „Fertig". Vollständiges Playbook: loki-verkaufstool-stand.md, Stand 20.09. VII.
 
+**Nachtrag 13 (01.10., Block auch in Chrome 154 bestätigt + Alternativen-Status):** Saschas Standard-Chrome 154.0.8037.58 mit `--remote-debugging-port=9223` gestartet (Prozess ps-Beweis) → Port bleibt komplett leer auf 127.0.0.1 UND localhost — der 136+-Debug-Block gilt unverändert, Profil-Kopie wäre der einzige CDP-Weg (siehe Nachtrag 10). Andere Gmail-Automatisierungswege am 01.10. ebenfalls beweisbar tot: Gmail-API-MCP „Permission denied" (Scopes), ZCode-IAB (control-browser-Skill: file chooser/upload explizit UNSUPPORTED — bei Browser-Upload-Aufgaben IMMER zuerst im Skill-Doku nachlesen), AutoClaw-mcporter-Binary existiert nicht (nur Config unter `~/.openclaw-autoclaw/workspace/config/mcporter.json`). Vorhandene Python-WS-Libs: `websocket-client` + `websockets` OK (für den Tag, an dem ein Agent-Profil mit Port läuft). → [[legal-ops-cockpit-reparatur]]
+
 ## cline-code-app-hub-1006-diagnosis
 
 ---
@@ -9050,6 +9052,10 @@ Stand 01.10.2026 final: Saschas Rechtsfälle (BH Melk / BG Melk) — **ALLE Work
 **Mail-Text-Qualität bestätigt (01.10., Sascha-Frage „der Text reicht so?"):** JA — Bewehrten-Mails sind bewusst Begleitschreiben (Rechtsinhalt steht im unterschriebenen PDF): Formel **Bezug (GZ) → Anlage benennen → konkrete Bitte**. Alle 5 enthalten GZ-Referenzen + Normzitat + Beträge/Daten; 2b hat die wichtige Bitte um **schriftliche Bestätigung** (ohne sie ist Behörden-Schweigen kein Verstoß). Bewusst NICHT im Mailtext: Rechtsvorträge, neue Tatsachenbehauptungen, Emotionen. Meine Abgabe: jetzt senden statt feilen — Fristen (Strafen ~07.10.) wiegen schwerer als Formulierungs-Nuancen.
 
 **Normen-Belegstatus der 5 Mails (01.10., Sascha-Frage „ist das von Judicario bestätigt?"):** 2 von 4 zitierten Normen **live gateway-belegt** — § 54b VStG (`at|vstg|54b`, Abs. 1 „binnen zwei Wochen" = Mahnungs-Logik) und § 44 KFG (`at|kfg|44`) → betrifft die fristenkritischen Mails 1 + 2b. § 291a EO und § 57 AVG **nicht gateway-belegbar** (at_norms-Korpus-Lücke, siehe [[judicario-gateway-mcp-rezept]]) — Quelle bleibt Chipsi-Gutachten („amtlich abgeglichene Fundstellen") + RIS-Link; Nachzug via RIS-Direktabruf angeboten, fürs Senden aber kein Blocker. → [[judicario-gateway-mcp-rezept]]
+
+**FINALSTAND 01.10. ~09:40 — Automatisierungsfrage ENDGÜLTIG ZU („letzte chance … mach es einfach selber"):** Alle 5 Wege zu „Anhang automatisch in Saschas Gmail" beweisbar TOT: (1) Gmail-API-Konnektor → „Permission denied" (kein Scope); (2) Chrome-CDP → Chrome 154 mit `--remote-debugging-port=9223` gestartet (Prozess bewiesen), Port bleibt LEER — [[chrome-agent-browser-fix]]-Block gilt auch für 154; Test-Chrome danach sauber beendet (0 Prozesse); (3) ZCode-IAB → file chooser/upload **explizit unsupported** (control-browser-Skill-Doku); (4) Apple Mail → .eml öffnen/importieren ja, aber kein „Als Sendefenster" und Sascha will den Weg nicht; (5) AutoClaw-mcporter → **Binary existiert nicht** (nur config in `~/.openclaw-autoclaw/workspace/config/`). Konsequenz: EINZIGER Weg = Sascha klickt selbst in Gmail-Web (Send-Liste `00_EMAILS_JETZT_SENDEN.html`, Cmd+R nicht vergessen) — mein Angebot: Live-Screenshot-Begleitung pro Karte (er schickt Screen, ich nenne das nächste Klickziel). Reihenfolge nach Fristen: 2 → 2b → 1 → 3 → 4.
+
+**2b-Unterschrift abgehakt (Sascha, „es passt obnwohl meine unterschrift nicht die richtige ist .. aber egal"):** Er kennt die Abweichung und schickt es trotzdem — Frist wiegt schwerer. Bei Behörden-Nachfrage PDF in 2 Min. neu kompilieren (typ + unterschrift.png vorhanden). Send-Status Session-Ende: weiterhin NICHTS gesendet (Mail-DB-Beweis oben).
 
 ## loki-dev-plan-alle-modi
 
