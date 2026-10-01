@@ -7,6 +7,10 @@ tags: [spiegel, zcode]
 
 # Memory Index
 
+- [Browser-Ersatz-Recherche](browser-ersatz-recherche.md) — 02.10. Kandidaten: Comet+Zen+Dia+BrowserOS+Raycast AI+DeepSeek DSH; Comet/Safari-TP schon installiert; alte „core"-Unterhaltung nicht gefunden (Google-Doc = AutoClaw-Benefits, Login nötig); Raycast läuft mit GLM-5.3 Context 1M
+
+- [Homebrew-Taps-Workflow](homebrew-taps-workflow.md) — 02.10. Run dwfrun-05fa4a67: Tap-Trust-Befunde (ojuschugh1/sqz, render-oss/render) + node@20 + /usr/local/include/node; nur Entscheidungsvorlage, trust/untap = User-GO
+
 - [Mac langsam: Finder-Desktop-Loop](mac-langsam-finder-desktop-loop.md) — 01.10. ABSCHLUSS: deja-VOLL-FIX (0.21.4 + Kill-Switch + Hooks raus → 0 Amok-Prozesse), Docker gesund (prune 5,1 GB, Limits), Disk 39→86 GB frei, Load 17→4,0, Swap 1,6→0,99 GB · Finder-96%-Loop = bewiesener macOS-BETA-Bug 27.2/26B5091g (SwiftUI-GlassContainer↔AppKit-Layout-Loop; 6 Angriffe alle negativ inkl. Transparenz-aus per Computer-Use; kein Update verfügbar; Beta installiert 19.09.) · offen: Sascha-Sache „Beta verlassen" (Empfehlung) / iCloud-Sync-aus / node_modules / Ollama 5,7 GB · Fallen: ps-Match trifft auch FinderSyncExtension-Helper (PIDs recyceln!), Ordner heißt physisch ~/Documents, Docker.raw apparent≠du real (Sparse!)
 
 - [Apple-Mail-DB-Abfrage](apple-mail-db-abfrage.md) — lokal Mails prüfen ohne API: sqlite3 auf ~/Library/Mail/V10 Envelope Index, Apple-Epoch +978307200, Betreff nur via subjects-Join; Gmail-MCP = Permission denied

@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-01 22:56 UTC
+Zuletzt gespiegelt: 2026-10-01 23:10 UTC
 
 ## AGENTS
 
@@ -3168,6 +3168,39 @@ abs
 Overcoming Catastrophic Forgetting by Exemplar Selection in Task-oriented Dialogue System
 Chen Chen
 
+## dwfrun-05fa4a67-facf-4b3c-9797-5162b67b106b_artifact_1_1-tool-result-84e7a3a2-6054-414d-aac1-0c7b1f943140
+
+# Homebrew-Doctor-Befunde: Entscheidungsvorlage
+
+## Inventar
+- Getappte Taps: aannoo/hcom, bysiber/cleardisk, dart-lang/dart, furkankly/tap, mongodb/brew, ojuschugh1/sqz, render-oss/render, santofer/tap
+- Aus nicht vertrauten Taps installiert: sqz (v1.0.9) — Formel aus untrusted Tap ojuschugh1/sqz; `brew info sqz` verweigert: 'Refusing to load formula ojuschugh1/sqz/sqz from untrusted tap ojuschugh1/sqz'. Keg existiert: /opt/homebrew/Cellar/sqz, Link /opt/homebrew/bin/sqz → ../Cellar/sqz/1.0.9/bin/sqz., render — ACHTUNG: installiertes render (2.28.0, CLI von render.com) kommt NICHT aus render-oss/render, sondern aus homebrew-core (brew info render: 'From: https://github.com/Homebrew/homebrew-core/.../Formula/r/render.rb'); es ist aber gleichzeitig ein untrusted Tap getappt.
+- Unlinked kegs: ffmpeg, certifi
+- node@20-Abhängige: keine
+- /usr/local/include/node: /usr/local/include/node enthält Node.js-Header-Dateien (u.a. node_api.h, node_api_types.h, node_buffer.h, node_object_wrap.h, common.gypi, config.gypi, libplatform, cppgc) — typische Contents des node-Include-Verzeichnisses. brew doctor meldet sie als 'Unexpected header files: /usr/local/include/node/*'. Passend dazu ist node und node@20 via Homebrew installiert; ZUORDNUNG zu einer konkreten Installation (brew-node oder ein außerhalb installiertes Node) wurde nicht eindeutig verifiziert — Homebrew selbst erkennt den Pfad nicht als sein eigenes (deshalb die Warning).
+
+## Taps
+### ojuschugh1/sqz
+- Homebrew-Tap 'ojuschugh1/sqz' (Repo: github.com/ojuschugh1/homebrew-sqz) ist der persönliche Third-Party-Tap des Einzel-Entwicklers GitHub-User 'ojuschugh1' und paketiert dessen eigenes Projekt 'ojuschugh1/sqz' — ein Rust-Tool für LLM-Kontextkomprimierung (byte-exact re-expandierbar, offline, keine LLM-Calls), Elastic License 2.0. Keine Organisation dahinter erkennbar.
+- Inhalt: Der Tap enthält 1 Formel: Formula/sqz.rb — installiert `sqz` (CLI, kontextkomprimierung für AI-Coding-Agents) und `sqz-mcp` (MCP-Server), bezogen aus GitHub-Release-Artifacts (nicht aus Quellcode gebaut). Lokal verifiziert (brew tap-info): Tap ist installiert, als 'Untrusted' markiert, Formel `sqz` ist installiert (brew list zeigt sqz unter formulae). Keine Casks im Tap.
+- Vertrauenswürdigkeit: Legitim aber klein: Hauptprojekt ojuschugh1/sqz hat 635 Stars / 43 Forks / 282 Commits, aktive Entwicklung (letzter Tap-Commit laut brew tap-info vor 8 Tagen; Tap-Repo: 13 Commits, 1 Star/Fork, automatischer Formel-Update-Workflow mit SHA256-Checksums bei Releases). Nicht in Homebrew core reviewiert; Binaries kommen aus GitHub-Releases des eigenen Projekts. Keine Security-Warnungen gefunden, aber keine unabhängige Prüfung der Release-Artifacts möglich.
+- **Empfehlung: `trust-tap`** — Tap und Projekt sind real, aktiv und inhaltlich plausibel (635 Stars, frische Commits), aber ein persönlicher Third-Party-Tap ohne Core-Review — vertrauenswürdig genug zum Weiterverwenden, kein Grund zur Entfernung, aber Formel-Checksums bei Updates im Auge behalten.
+- Unabhängiger Check: confirmed
+### render-oss/render
+- Offizieller Homebrew-Tap der GitHub-Organisation 'render-oss' (verifizierbar: org mit 16 Repos, website=render.com, erstellt 2022-09-20; die Repos render-oss/cli und render-oss/render-cli gehören derselben Org). Es ist der Homebrew-Tap des Cloud-Hosting-Providers Render.com (render.com) für dessen CLI-Tool 'Render' — kein Einzelentwickler.
+- Inhalt: Enthält 2 Formeln: render.rb (Render CLI v1.1.2, Apache-2.0, baut aus github.com/render-oss/cli mit Go, livecheck auf github_latest) und render-deprecated.rb. Nichts davon ist lokal installiert — Prüfung nicht Teil dieses Asks, nur Web-Recherche (GitHub-API: api.github.com/repos/render-oss/homebrew-render, /contents/Formula, letzte Commits; raw render.rb).
+- Vertrauenswürdigkeit: Legitim und authentisch (offizielle Org von render.com, Formel zieht Source vom eigenen Repo, sha256-Pinned, Apache-2.0), aber TOT: Repo am 06.05.2026 archiviert, read-only; letzter Commit 07.04.2026 (Merge PR #38 'Pin Homebrew actions', Autor Oleg Gusakov); nur 5 Stars/1 Fork. Render.com verweist in den offiziellen Docs (render.com/docs/cli) inzwischen NUR noch auf `brew install render` aus homebrew-core — der Tap wird nirgends mehr empfohlen.
+- **Empfehlung: `untap`** — Der Tap ist der offizielle Render.com-Tap und sicher, wurde aber am 06.05.2026 archiviert (read-only) und ist durch das homebrew-core-Formula `brew install render` abgelöst — behalten bringt nichts, entfernen.
+- Unabhängiger Check: confirmed
+
+## Weitere Befunde
+- **node@20 deprecated (leere Dependents): node@20 entfernen mit `brew uninstall node@20` — `brew uses --installed node@20` lieferte leer (keine abhängigen Formeln) und brew info node@20 kündigt Disabling zum 2026-10-28 an (26 Tage).** (confirmed) — Selbst verifiziert: `brew uses --installed node@20` leer (nur node selbst hat Dependents: marp-cli, mongosh, mongodb-community), `brew list --versions` zeigt node 26.8.2 + node@20 20.20.2, und `brew info node@20` sagt "Deprecated because it is not supported upstream! It will be disabled on 2026-10-28" — da nichts abhängt, ist Entfernen praktisch gefahrlos; Ignorieren vermeintlich harmlos, aber Homebrew disabled die Formel am 28.10. eh.
+
+- **/usr/local/include/node (Unexpected header files): Nicht blind löschen: Verzeichnis erst umbenennen (`sudo mv /usr/local/include/node /usr/local/include/node.bak`), eine Weile testen, dann löschen — und falls `/usr/local/bin/node` existiert, auch das prüfen, bevor geräumt wird.
+** (confirmed) — Selbst verifiziert: `ls /usr/local/include/node` zeigt genau die beschriebenen Header (node_api.h, node_buffer.h, node_version.h, common.gypi, cppgc, libplatform, uv...), `ls -ld` zeigt Owner root:wheel mit Datum May 21 2025 — also NICHT von Homebrew (brew auf arm64 installiert nach /opt/homebrew, dort verweist include/node -> ../Cellar/node/26.8.2), und aktives node ist /opt/homebrew/bin/node v26.8.2; die Header stammen daher von einer Nicht-Brew-Installation (vermutlich alter Intel-Brew- oder nodejs.org-Install), sind für das aktive Node nicht nötig, aber die Zuordnung ist unverifiziert (root:wheel, Mai 2025) — Löschen mit Umbenennen-Vorlauf praktisch gefahrlos, Voll-GO erst nach Testperiode.
+
+
+> Trust-/Untap-Befehle wurden NICHT ausgeführt — Ausführung nur auf GO.
 ## call_fe1f4e977cb54e7a91b86606-tool-result-3c21f2b9-0a8f-46ff-a18f-438fa8059fb6
 
 Releases · vshulcz/deja-vu · GitHub
@@ -8810,6 +8843,10 @@ Beobachtet 06.09.2026 (Session mit Off-Peak-Ticket): Nach User-Paste „ZCode Er
 
 # Memory Index
 
+- [Browser-Ersatz-Recherche](browser-ersatz-recherche.md) — 02.10. Kandidaten: Comet+Zen+Dia+BrowserOS+Raycast AI+DeepSeek DSH; Comet/Safari-TP schon installiert; alte „core"-Unterhaltung nicht gefunden (Google-Doc = AutoClaw-Benefits, Login nötig); Raycast läuft mit GLM-5.3 Context 1M
+
+- [Homebrew-Taps-Workflow](homebrew-taps-workflow.md) — 02.10. Run dwfrun-05fa4a67: Tap-Trust-Befunde (ojuschugh1/sqz, render-oss/render) + node@20 + /usr/local/include/node; nur Entscheidungsvorlage, trust/untap = User-GO
+
 - [Mac langsam: Finder-Desktop-Loop](mac-langsam-finder-desktop-loop.md) — 01.10. ABSCHLUSS: deja-VOLL-FIX (0.21.4 + Kill-Switch + Hooks raus → 0 Amok-Prozesse), Docker gesund (prune 5,1 GB, Limits), Disk 39→86 GB frei, Load 17→4,0, Swap 1,6→0,99 GB · Finder-96%-Loop = bewiesener macOS-BETA-Bug 27.2/26B5091g (SwiftUI-GlassContainer↔AppKit-Layout-Loop; 6 Angriffe alle negativ inkl. Transparenz-aus per Computer-Use; kein Update verfügbar; Beta installiert 19.09.) · offen: Sascha-Sache „Beta verlassen" (Empfehlung) / iCloud-Sync-aus / node_modules / Ollama 5,7 GB · Fallen: ps-Match trifft auch FinderSyncExtension-Helper (PIDs recyceln!), Ordner heißt physisch ~/Documents, Docker.raw apparent≠du real (Sparse!)
 
 - [Apple-Mail-DB-Abfrage](apple-mail-db-abfrage.md) — lokal Mails prüfen ohne API: sqlite3 auf ~/Library/Mail/V10 Envelope Index, Apple-Epoch +978307200, Betreff nur via subjects-Join; Gmail-MCP = Permission denied
@@ -8905,6 +8942,31 @@ ATLAS (Cali Coach) — IST-Stand 21.09.2026 (live verifizert):
 - Offene Pfad-Entscheidung (aus Alt-Session): A = v5 stabil halten vs. B = v8-Fusion — von Sascha nie entschieden.
 
 Verwandt: [[loki-os-ecosystem-stand]]
+
+## browser-ersatz-recherche
+
+---
+name: browser-ersatz-recherche
+description: 02.10. Saschas Browser-Ersatz-Recherche — Kandidaten (Comet
+  installiert, Zen, Dia, BrowserOS, Raycast AI, DeepSeek DSH) + alte
+  „core"-Unterhaltung NICHT gefunden
+metadata:
+  node_type: memory
+  type: project
+  originSessionId: sess_d0a56c40-be0f-4eda-b4d6-af76432d4f52
+---
+
+02.10.2026 — Sascha suchte die alte Unterhaltung über „Browser-Ersatz" („core") + verglich Kandidaten.
+
+**Befunde:**
+- Alte Unterhaltung NICHT gefunden (deja 51 Treffer leer). Google-Doc `1UNV8UQgW5YAC2iW4T7gKFRW7CQHACtNpuDiafosFfFA` ist NICHT die Unterhaltung, sondern „AutoClaw GLM Coding Plan Member Benefits" — nur mit Google-Login lesbar; google-workspace docs_read: Permission denied. Muss von Sascha einmal im eingeloggten Browser geöffnet werden.
+- Quellen geladen: **Raycast AI** ($8/Mo, Screen Awareness, BYOK, Ollama), **Zen Browser** (Firefox-Fork, Workspaces/Split View, KEIN AI), **DeepSeek Harness DSH** (MIT, Open Source, `npx @deepseek-ai/dsh web`, Plugin-System).
+- PDF = CaskHub-Browserliste (Homebrew-cask-GUI): **Comet + Safari Technology Preview bereits INSTALLIERT** („Open"-Buttons), Rest nur Download-Kandidaten.
+- Empfehlung abgegeben: AI-Agent-Browser → Comet (schon da); ohne Cloud → Zen; Raycast/DSH = Ergänzung, kein Ersatz.
+
+**Raycast-Setup von Sascha (Screenshot):** Modell-ID GLM-5.3, Context 1.000.000, Reasoning low/fast/high/max, Smart configuration an, PDF/Video-Input aktiviert — passt zu [[glm-53-vs-flash-belegte-fakten]] (glm-first, BYOK).
+
+Verwandt: [[chrome-agent-browser-fix]], [[deja-vu-install]]
 
 ## chrome-agent-browser-fix
 
@@ -9076,6 +9138,23 @@ metadata:
 **Gültige Routing-Entscheidung:** /plan + Architektur + Gegenlesen + Security = **GLM 5.3 (max)** · Builder-Edits, Scans, Doku, Batch = **Flash (max)**.
 
 **Feedback-Kontext (gleiches Gespräch):** Sascha reagierte gereizt („du wirst doch wissen wie gut deine eigenen modelle sind du trottel"), als ich mit „kein A/B-Benchmark" absicherte. **Warum:** Er will konkrete, quellenbelegte Urteile sofort, keine Verschwurbel-Absicherung. **How to apply:** Bei Modell-/Tool-Qualitätsfragen zuerst selbst Daten holen (WebSearch/ListModels/Session-Evidenz), dann in Zeile 1 ein klares Urteil mit Zahlen — den Rest der Ehrlichkeits-Grenze in 1 Satz anhängen. Verwandt: [[koerperfluss-edu-foerderpilot-takeover]], [[sascha-arbeitsregeln-hart]]
+
+## homebrew-taps-workflow
+
+---
+name: homebrew-taps-workflow
+description: 02.10. Homebrew-Tap-Trust-Entscheidung als Workflow dwfrun-05fa4a67
+  gestartet — ojuschugh1/sqz + render-oss/render untrusted, nur
+  Entscheidungsvorlage, keine trust/untap-Befehle
+metadata:
+  node_type: memory
+  type: project
+  originSessionId: sess_ea4d6e7b-84b7-4777-8062-4dc0a3123686
+---
+
+02.10.2026: Homebrew-Doctor-Befunde via `/workflow` analysiert (Run **dwfrun-05fa4a67-facf-4b3c-9797-5162b67b106b**, Script `.zcode/workflow-drafts/Homebrew-Taps-prüfen.dwf.ts`): Befunde = 2 nicht vertraute Taps `ojuschugh1/sqz` + `render-oss/render`, node@20 deprecated, `/usr/local/include/node` unexpected headers, unlinked kegs (ffmpeg, certifi, …). Workflow: brew-Inventar → Web-Recherche je Tap → unabhängiger Prüfer → Markdown-Bericht „Homebrew-Taps: Entscheidungsvorlage" (Artifact).
+
+**Nicht ausgeführt (bewusst, User-GO-Pflicht):** `brew trust`, `brew untap`, Link, Löschen von /usr/local/include/node. Bericht liefert nur Empfehlung. Ergebnis lag zum Zeitpunkt des Memory-Writes noch aus — bei Rückfragen Run-Status via GetWorkflowRun/ListWorkflowRuns prüfen. Siehe [[deja-vu-install]] (brew-Ökosystem).
 
 ## iab-browser-gui-test-rezept
 

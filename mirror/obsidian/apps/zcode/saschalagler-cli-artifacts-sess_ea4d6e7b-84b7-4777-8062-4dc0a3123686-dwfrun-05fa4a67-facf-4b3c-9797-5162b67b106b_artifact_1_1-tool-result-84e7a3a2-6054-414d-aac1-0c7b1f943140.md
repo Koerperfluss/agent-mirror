@@ -1,0 +1,38 @@
+---
+app: zcode
+quelle: "saschalagler/cli/artifacts/sess_ea4d6e7b-84b7-4777-8062-4dc0a3123686/dwfrun-05fa4a67-facf-4b3c-9797-5162b67b106b_artifact_1_1-tool-result-84e7a3a2-6054-414d-aac1-0c7b1f943140.md"
+stand: 2026-10-01
+tags: [spiegel, zcode]
+---
+
+# Homebrew-Doctor-Befunde: Entscheidungsvorlage
+
+## Inventar
+- Getappte Taps: aannoo/hcom, bysiber/cleardisk, dart-lang/dart, furkankly/tap, mongodb/brew, ojuschugh1/sqz, render-oss/render, santofer/tap
+- Aus nicht vertrauten Taps installiert: sqz (v1.0.9) — Formel aus untrusted Tap ojuschugh1/sqz; `brew info sqz` verweigert: 'Refusing to load formula ojuschugh1/sqz/sqz from untrusted tap ojuschugh1/sqz'. Keg existiert: /opt/homebrew/Cellar/sqz, Link /opt/homebrew/bin/sqz → ../Cellar/sqz/1.0.9/bin/sqz., render — ACHTUNG: installiertes render (2.28.0, CLI von render.com) kommt NICHT aus render-oss/render, sondern aus homebrew-core (brew info render: 'From: https://github.com/Homebrew/homebrew-core/.../Formula/r/render.rb'); es ist aber gleichzeitig ein untrusted Tap getappt.
+- Unlinked kegs: ffmpeg, certifi
+- node@20-Abhängige: keine
+- /usr/local/include/node: /usr/local/include/node enthält Node.js-Header-Dateien (u.a. node_api.h, node_api_types.h, node_buffer.h, node_object_wrap.h, common.gypi, config.gypi, libplatform, cppgc) — typische Contents des node-Include-Verzeichnisses. brew doctor meldet sie als 'Unexpected header files: /usr/local/include/node/*'. Passend dazu ist node und node@20 via Homebrew installiert; ZUORDNUNG zu einer konkreten Installation (brew-node oder ein außerhalb installiertes Node) wurde nicht eindeutig verifiziert — Homebrew selbst erkennt den Pfad nicht als sein eigenes (deshalb die Warning).
+
+## Taps
+### ojuschugh1/sqz
+- Homebrew-Tap 'ojuschugh1/sqz' (Repo: github.com/ojuschugh1/homebrew-sqz) ist der persönliche Third-Party-Tap des Einzel-Entwicklers GitHub-User 'ojuschugh1' und paketiert dessen eigenes Projekt 'ojuschugh1/sqz' — ein Rust-Tool für LLM-Kontextkomprimierung (byte-exact re-expandierbar, offline, keine LLM-Calls), Elastic License 2.0. Keine Organisation dahinter erkennbar.
+- Inhalt: Der Tap enthält 1 Formel: Formula/sqz.rb — installiert `sqz` (CLI, kontextkomprimierung für AI-Coding-Agents) und `sqz-mcp` (MCP-Server), bezogen aus GitHub-Release-Artifacts (nicht aus Quellcode gebaut). Lokal verifiziert (brew tap-info): Tap ist installiert, als 'Untrusted' markiert, Formel `sqz` ist installiert (brew list zeigt sqz unter formulae). Keine Casks im Tap.
+- Vertrauenswürdigkeit: Legitim aber klein: Hauptprojekt ojuschugh1/sqz hat 635 Stars / 43 Forks / 282 Commits, aktive Entwicklung (letzter Tap-Commit laut brew tap-info vor 8 Tagen; Tap-Repo: 13 Commits, 1 Star/Fork, automatischer Formel-Update-Workflow mit SHA256-Checksums bei Releases). Nicht in Homebrew core reviewiert; Binaries kommen aus GitHub-Releases des eigenen Projekts. Keine Security-Warnungen gefunden, aber keine unabhängige Prüfung der Release-Artifacts möglich.
+- **Empfehlung: `trust-tap`** — Tap und Projekt sind real, aktiv und inhaltlich plausibel (635 Stars, frische Commits), aber ein persönlicher Third-Party-Tap ohne Core-Review — vertrauenswürdig genug zum Weiterverwenden, kein Grund zur Entfernung, aber Formel-Checksums bei Updates im Auge behalten.
+- Unabhängiger Check: confirmed
+### render-oss/render
+- Offizieller Homebrew-Tap der GitHub-Organisation 'render-oss' (verifizierbar: org mit 16 Repos, website=render.com, erstellt 2022-09-20; die Repos render-oss/cli und render-oss/render-cli gehören derselben Org). Es ist der Homebrew-Tap des Cloud-Hosting-Providers Render.com (render.com) für dessen CLI-Tool 'Render' — kein Einzelentwickler.
+- Inhalt: Enthält 2 Formeln: render.rb (Render CLI v1.1.2, Apache-2.0, baut aus github.com/render-oss/cli mit Go, livecheck auf github_latest) und render-deprecated.rb. Nichts davon ist lokal installiert — Prüfung nicht Teil dieses Asks, nur Web-Recherche (GitHub-API: api.github.com/repos/render-oss/homebrew-render, /contents/Formula, letzte Commits; raw render.rb).
+- Vertrauenswürdigkeit: Legitim und authentisch (offizielle Org von render.com, Formel zieht Source vom eigenen Repo, sha256-Pinned, Apache-2.0), aber TOT: Repo am 06.05.2026 archiviert, read-only; letzter Commit 07.04.2026 (Merge PR #38 'Pin Homebrew actions', Autor Oleg Gusakov); nur 5 Stars/1 Fork. Render.com verweist in den offiziellen Docs (render.com/docs/cli) inzwischen NUR noch auf `brew install render` aus homebrew-core — der Tap wird nirgends mehr empfohlen.
+- **Empfehlung: `untap`** — Der Tap ist der offizielle Render.com-Tap und sicher, wurde aber am 06.05.2026 archiviert (read-only) und ist durch das homebrew-core-Formula `brew install render` abgelöst — behalten bringt nichts, entfernen.
+- Unabhängiger Check: confirmed
+
+## Weitere Befunde
+- **node@20 deprecated (leere Dependents): node@20 entfernen mit `brew uninstall node@20` — `brew uses --installed node@20` lieferte leer (keine abhängigen Formeln) und brew info node@20 kündigt Disabling zum 2026-10-28 an (26 Tage).** (confirmed) — Selbst verifiziert: `brew uses --installed node@20` leer (nur node selbst hat Dependents: marp-cli, mongosh, mongodb-community), `brew list --versions` zeigt node 26.8.2 + node@20 20.20.2, und `brew info node@20` sagt "Deprecated because it is not supported upstream! It will be disabled on 2026-10-28" — da nichts abhängt, ist Entfernen praktisch gefahrlos; Ignorieren vermeintlich harmlos, aber Homebrew disabled die Formel am 28.10. eh.
+
+- **/usr/local/include/node (Unexpected header files): Nicht blind löschen: Verzeichnis erst umbenennen (`sudo mv /usr/local/include/node /usr/local/include/node.bak`), eine Weile testen, dann löschen — und falls `/usr/local/bin/node` existiert, auch das prüfen, bevor geräumt wird.
+** (confirmed) — Selbst verifiziert: `ls /usr/local/include/node` zeigt genau die beschriebenen Header (node_api.h, node_buffer.h, node_version.h, common.gypi, cppgc, libplatform, uv...), `ls -ld` zeigt Owner root:wheel mit Datum May 21 2025 — also NICHT von Homebrew (brew auf arm64 installiert nach /opt/homebrew, dort verweist include/node -> ../Cellar/node/26.8.2), und aktives node ist /opt/homebrew/bin/node v26.8.2; die Header stammen daher von einer Nicht-Brew-Installation (vermutlich alter Intel-Brew- oder nodejs.org-Install), sind für das aktive Node nicht nötig, aber die Zuordnung ist unverifiziert (root:wheel, Mai 2025) — Löschen mit Umbenennen-Vorlauf praktisch gefahrlos, Voll-GO erst nach Testperiode.
+
+
+> Trust-/Untap-Befehle wurden NICHT ausgeführt — Ausführung nur auf GO.
