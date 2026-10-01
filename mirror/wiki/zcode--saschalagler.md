@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-01 23:25 UTC
+Zuletzt gespiegelt: 2026-10-01 23:39 UTC
 
 ## AGENTS
 
@@ -8960,6 +8960,8 @@ Beobachtet 06.09.2026 (Session mit Off-Peak-Ticket): Nach User-Paste „ZCode Er
 
 # Memory Index
 
+- [Browser-Doppelsystem-Setup](browser-doppelsystem-setup.md) — 02.10. Zen (/Applications/Zen.app) + BrowserOS/neo installiert, **MCP live :9000/mcp (browseros_mcp v0.0.165, 24 Tools)**, ZCode ~/.mcp.json angebunden (bak-20261002); offen: GLM-Key (Sascha), Ports 9000/9001/9200 auf *: LAN-Risiko
+
 - [Browser-Ersatz-Recherche](browser-ersatz-recherche.md) — 02.10. Kandidaten: Comet+Zen+Dia+BrowserOS+Raycast AI+DeepSeek DSH; Comet/Safari-TP schon installiert; alte „core"-Unterhaltung nicht gefunden (Google-Doc = AutoClaw-Benefits, Login nötig); Raycast läuft mit GLM-5.3 Context 1M
 
 - [Homebrew-Taps-Workflow](homebrew-taps-workflow.md) — 02.10. Run dwfrun-05fa4a67: Tap-Trust-Befunde (ojuschugh1/sqz, render-oss/render) + node@20 + /usr/local/include/node; nur Entscheidungsvorlage, trust/untap = User-GO
@@ -9059,6 +9061,31 @@ ATLAS (Cali Coach) — IST-Stand 21.09.2026 (live verifizert):
 - Offene Pfad-Entscheidung (aus Alt-Session): A = v5 stabil halten vs. B = v8-Fusion — von Sascha nie entschieden.
 
 Verwandt: [[loki-os-ecosystem-stand]]
+
+## browser-doppelsystem-setup
+
+---
+name: browser-doppelsystem-setup
+description: 02.10. Browser-Ersatz aufgebaut — Doppel-System Zen (Fokus) +
+  BrowserOS neo (Agent-Motor), MCP live an :9000/mcp, ZCode angebunden
+metadata:
+  node_type: memory
+  type: project
+  originSessionId: sess_d0a56c40-be0f-4eda-b4d6-af76432d4f52
+---
+
+02.10.2026 — Saschas Browser-Ersatz-Projekt (Doppel-Browser-System nach seinem ADHS-Plan-PDF):
+
+- **Zen Browser** installiert: `/Applications/Zen.app` (brew cask `zen`) — Fokus-Browser für Sascha, Workspaces/Compact Mode von ihm einzurichten.
+- **BrowserOS 0.50.5** installiert: `/Applications/BrowserOS.app` (brew cask `browseros`) + **BrowserOS neo** 0.50.5 von Sascha selbst via `browseros-ai/tap` (Terminal-Log 01:19). Agent-Motor.
+- **MCP-Server LIVE bewiesen** (POST initialize + tools/list): `http://localhost:9000/mcp` UND `:9200/mcp` — serverInfo `browseros_mcp` v0.0.165, **24 Tools** (tabs, navigate, snapshot, act, screenshot, evaluate, pdf, connector_mcp_servers für 45+ Apps …). GUI-Toggle NICHT nötig; Docs-Port 9239 = nur Beispiel. Weitere Ports: 9100 (leer), 9001.
+- **ZCode angebunden**: `~/.mcp.json` → `mcpServers.browseros = {transport: {type: streamableHttp, url: http://localhost:9000/mcp}}` (22 Server, Backup `~/.mcp.json.bak-20261002`). Lädt nach ZCode-Neustart.
+- **Gologin** 4.18.3 installiert (`/Applications/Gologin.app`, Anti-Detect, braucht Sascha-Login) — für Anti-Bot-Fälle (eBay etc.).
+- GLM BYOK in BrowserOS: Settings → AI & Agents → „Add OpenAI Compatible" (z.ai = OpenAI-kompatibel) — **Sascha muss Key selbst eintragen** (kein Key-Fishing).
+
+**Why:** Sascha wollte „Browser-Ersatz" gearbeitet haben, nicht Vergleiche; sein PDF definiert Zen=Fokus, BrowserOS=Agent-Hintergrundmotor via MCP.
+
+**How to apply:** Browser-Automation für Agenten → BrowserOS-MCP (:9000/mcp) statt nur Chrome-9222; bei „Browser"-Fragen beide Apps + Ports prüfen (`lsof -nP -iTCP -sTCP:LISTEN | grep -i browseros`). ⚠️ Ports 9000/9001/9200 lauschen auf `*:` (LAN-exponiert, gleiche Klasse wie Kernel-8010-Fall) — Fix noch offen. Verwandt: [[sascha-local-infra-ports]], [[chrome-agent-browser-fix]].
 
 ## browser-ersatz-recherche
 
