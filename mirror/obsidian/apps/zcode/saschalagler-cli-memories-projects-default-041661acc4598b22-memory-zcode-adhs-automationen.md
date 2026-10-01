@@ -7,7 +7,7 @@ tags: [spiegel, zcode]
 
 ---
 name: zcode-adhs-automationen
-description: "13.09.–01.10. LIVE: EINE Automation mit ALLEN 6 Briefs (cron `0 9,10,15,16,21`, Zweige per Uhrzeit+Wochentag; niemals 6 separate — Nutzer-Ziel!) + Engine 7/7 PASS; **25 Läufe, alle 6 Zweige bewiesen · DOKU-SYNC 30.09.: 2 Findings (assi-README brief/feierabend + lib/push.sh, auf „GO doku-fix") · ⚠️ 01.10. NEU: md5-Prüflauf-Fehler in ~/Desktop/EMAILS_FERTIG_ZUM_SENDEN (dwfrun) · ⚠️ UHR-ANOMALIE 30.09. dokumentiert (date-Output = Wahrheit, Logbuch vor Append NEU lesen) · offen auf GO: Wecker + Deutsch-Patch-Recovery + GO doku-fix (3 Zeilen); 1 Task pro Chat-Limit"
+description: "13.09.–01.10. LIVE: EINE Automation mit ALLEN 6 Briefs (cron `0 9,10,15,16,21`, Zweige per Uhrzeit+Wochentag; niemals 6 separate — Nutzer-Ziel!) + Engine 7/7 PASS; **26 Läufe, alle 6 Zweige bewiesen · ⚠️ P1 01.10.: loki-voice-Sicherung 7fdbf2d im PARENT loki-ki NICHT verankert (M loki-voice) → auf „GO pointer-fix" · DOKU-SYNC 30.09.: 2 Findings (assi-README brief/feierabend + lib/push.sh, auf „GO doku-fix") · ⚠️ UHR-ANOMALIE 30.09. dokumentiert (date-Output = Wahrheit, Logbuch vor Append NEU lesen) · offen auf GO: Wecker + Deutsch-Patch-Recovery + GO doku-fix (3 Zeilen) + GO pointer-fix; 1 Task pro Chat-Limit"
 metadata:
   node_type: memory
   type: project
