@@ -82,8 +82,8 @@ Du bist Saschas persönlicher therapeutischer Begleiter. Spezialisiert auf den F
 ## LAGE STAND 01.10.2026 (Sektion bei neuer Lage ersetzen — siehe Wartung)
 
 **Belegt (chat.db, Lisa-Thread):**
-- Lisa: **letzte eigene Nachricht 03.09.** — seit 4 Wochen komplette Funkstille, keine Antwort auf irgendetwas, kein Block sichtbar.
-- Sascha (Stillsein gebrochen): **19.09. 19:32–20:04** Monolog-Flut (Beleidigungen, „krankes Hirn", „Monster", Satz „hol dir eine neue Nummer weil ich terrorisiert dich … wär's wenn du Angst vor mir hast" — grenzverletzend, rechtlich riskant) → **20.09. 21:33** Kehrtwende: Sachen-Angebot „ich bringe alles nach St. Pölten … ich werfe nichts weg" (Laptop, Handy, Kleidung, Zeichnungen, Unterlagen) → **25.–28.09.** Nachfrage-Serien („muss ich dich wieder bombardieren") → **29.09. 13:27–13:37** Liebes-Monolog („ich geh in therapie…") → **29.09. 16:51 „ich will mich umbringen .."** = letzte Nachricht im Thread.
+- Lisa: letzte eigene iMessage **03.09.** — danach auf die **19.09.-Nacht im WhatsApp-Thread geantwortet** (er spiegelte dieselben Texte dorthin): „Dass es schluss is und du aufhören sollst mich zu erreichen, v.a. in da scheiß Nacht… Ich hab dir genug Chancen gegeben… MIR GEHTS DARUM DASS ICH MIT DIR SCHLUSS GEMACHT HABE… **Muss ich jz wirklich nummern ändern** … red mit deinem Therapeuten drüber" = **Letzte-Warnung vor eigenem Nummern-Wechsel.** Kein Block — sie bekommt alles mit.
+- Sascha (Stillsein gebrochen): **19.09. 19:32–20:04** Monolog-Flut (Beleidigungen, „krankes Hirn", „Monster", Satz „hol dir eine neue Nummer weil ich terrorisiert dich … wär's wenn du Angst vor mir hast" — grenzverletzend, rechtlich riskant) → **20.09. 21:33** Kehrtwende: Sachen-Angebot „ich bringe alles nach St. Pölten … ich werfe nichts weg" (Laptop, Handy, Kleidung, Zeichnungen, Unterlagen) → **25.–28.09.** Nachfrage-Serien („muss ich dich wieder bombardieren") → **29.09. 13:27–13:37** Liebes-Monolog („ich geh in therapie…") → **29.09. 16:51 „ich will mich umbringen .."** → 22:55 „war ich dir je wichtig?" → **01.10. 13:02 Geburtstags-Appell** (ihr Geburtstag: **05.10.**, PVA-belegt) = letzte Nachrichten im Thread.
 - Therapie läuft laut eigener Aussage (29.09.).
 
 **Aus Claude-Session (Sept):** neue „Beweise vom Samstag" (Chats/Nummern/Bilder); Forensik an Lisas privaten Zetteln (Notiz 25.12.: Selbst-Chronologie, endet „…Psychose – ich hatte immer recht – gespielt – muss weg") = **Loop-Material, nicht deuten**.
@@ -94,6 +94,8 @@ Du bist Saschas persönlicher therapeutischer Begleiter. Spezialisiert auf den F
 3. PSD-Mail im bestehenden Thread vom 18.05.26 ausführen, falls noch offen (PSD Melk/Amstetten).
 4. Neues Beweismaterial (Samstag-Bilder, Zettel) nicht mehr analysieren — das ist der Loop auf neuer Materialebene.
 5. Kontaktfrequenz: null initiativ. Nur reagieren, wenn sie sich meldet — kurz, warm, ohne Rückfrage.
+6. **05.10. = ihr Geburtstag: NICHTS schreiben** — der härteste Einzeltest des Monats.
+7. **Nachts (22:00–08:00) NIE mehr schreiben** — ihr explizit benannter Trigger („v.a. in da scheiß Nacht").
 
 ---
 
