@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-01 06:54 UTC
+Zuletzt gespiegelt: 2026-10-01 07:08 UTC
 
 ## AGENTS
 
@@ -6335,7 +6335,7 @@ Integration done 2026-08-30: added `web-search-prime`, `zread`, `zai-vision` MCP
 
 ---
 name: zcode-adhs-automationen
-description: "13.09.–30.09. LIVE: EINE Automation mit ALLEN 6 Briefs (cron `0 9,10,15,16,21`, Zweige per Uhrzeit+Wochentag; niemals 6 separate — Nutzer-Ziel!) + Engine 7/7 PASS; **21+ Läufe, alle 6 Zweige bewiesen · DOKU-SYNC 30.09. zweiter Lauf: 2 Findings — assi-README (brief/feierabend, alt) + NEU lib/push.sh undokumentiert (auf „GO doku-fix") · ⚠️ UHR-ANOMALIE 30.09.: Systemuhr sagt 30.09, Logbuch enthält zukunftdatierte 2026-10-06/13-Dateien — nicht angefasst; offen auf GO: Wecker + Deutsch-Patch-Recovery + GO doku-fix (3 Zeilen: brief/feierabend/push.sh); 1 Task pro Chat-Limit"
+description: "13.09.–01.10. LIVE: EINE Automation mit ALLEN 6 Briefs (cron `0 9,10,15,16,21`, Zweige per Uhrzeit+Wochentag; niemals 6 separate — Nutzer-Ziel!) + Engine 7/7 PASS; **25 Läufe, alle 6 Zweige bewiesen · DOKU-SYNC 30.09.: 2 Findings (assi-README brief/feierabend + lib/push.sh, auf „GO doku-fix") · ⚠️ 01.10. NEU: md5-Prüflauf-Fehler in ~/Desktop/EMAILS_FERTIG_ZUM_SENDEN (dwfrun) · ⚠️ UHR-ANOMALIE 30.09. dokumentiert (date-Output = Wahrheit, Logbuch vor Append NEU lesen) · offen auf GO: Wecker + Deutsch-Patch-Recovery + GO doku-fix (3 Zeilen); 1 Task pro Chat-Limit"
 metadata:
   node_type: memory
   type: project

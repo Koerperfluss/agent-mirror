@@ -1,13 +1,13 @@
 ---
 app: zcode
 quelle: "saschalagler/cli/memories/projects/default-041661acc4598b22/memory/zcode-adhs-automationen.md"
-stand: 2026-09-30
+stand: 2026-10-01
 tags: [spiegel, zcode]
 ---
 
 ---
 name: zcode-adhs-automationen
-description: "13.09.–30.09. LIVE: EINE Automation mit ALLEN 6 Briefs (cron `0 9,10,15,16,21`, Zweige per Uhrzeit+Wochentag; niemals 6 separate — Nutzer-Ziel!) + Engine 7/7 PASS; **21+ Läufe, alle 6 Zweige bewiesen · DOKU-SYNC 30.09. zweiter Lauf: 2 Findings — assi-README (brief/feierabend, alt) + NEU lib/push.sh undokumentiert (auf „GO doku-fix") · ⚠️ UHR-ANOMALIE 30.09.: Systemuhr sagt 30.09, Logbuch enthält zukunftdatierte 2026-10-06/13-Dateien — nicht angefasst; offen auf GO: Wecker + Deutsch-Patch-Recovery + GO doku-fix (3 Zeilen: brief/feierabend/push.sh); 1 Task pro Chat-Limit"
+description: "13.09.–01.10. LIVE: EINE Automation mit ALLEN 6 Briefs (cron `0 9,10,15,16,21`, Zweige per Uhrzeit+Wochentag; niemals 6 separate — Nutzer-Ziel!) + Engine 7/7 PASS; **25 Läufe, alle 6 Zweige bewiesen · DOKU-SYNC 30.09.: 2 Findings (assi-README brief/feierabend + lib/push.sh, auf „GO doku-fix") · ⚠️ 01.10. NEU: md5-Prüflauf-Fehler in ~/Desktop/EMAILS_FERTIG_ZUM_SENDEN (dwfrun) · ⚠️ UHR-ANOMALIE 30.09. dokumentiert (date-Output = Wahrheit, Logbuch vor Append NEU lesen) · offen auf GO: Wecker + Deutsch-Patch-Recovery + GO doku-fix (3 Zeilen); 1 Task pro Chat-Limit"
 metadata:
   node_type: memory
   type: project
@@ -139,4 +139,9 @@ metadata:
 - Kalender-Event **„Logbuch 30.09.2026"** UID `22442356-46A6-442F-8ED7-7A856E979E1D` (Ganztages, Kalender „Kalender"), Logbuch `~/.agents/memory/logbuch/2026-09-30.md` → status **abgeschlossen** (vor Append frisch gelesen — diesmal KEIN Multi-Writer-Konflikt, Datei unverändert seit 15:00).
 - Inhalt: Doku-Sync-2-Findings bestätigt (auf „GO doku-fix") · dwfrun-Workflows mehrfach aktiv (nur Tool-Traffic, Zweck nicht extrahierbar — Ehrlichkeits-Evidenzgrenze) · CleanMyMac/Mole/Vorssaint-Session aktiv · 0 Git-Commits heute.
 - **Erster Tag, an dem alle 3 angetretenen Zweige vertragsgemäß liefen (15:00 Doku-Sync · 16:00 No-op · 21:00 Abend)** — Zweig-Guards voll bewährt. Bilanz: 24 Läufe; offen unverändert: GO Wecker · Deutsch-Patch-Recovery · GO doku-fix.
+
+## Fünfundzwanzigster Lauf (Do 01.10. 09:05 — Morgen-Brief pünktlich PASS, neues ⚠️ md5-Finding)
+- Kalender-Event **„Tagesplan 01.10."** UID `5CE47B81-B258-47AD-920B-E9D86C13EF57`, Logbuch `2026-10-01.md` (status: offen). DEV-BRIEF: 0 Commits seit Mittwoch, keine CI.
+- **⚠️ Neues Finding aus dem Sweep:** dwfrun-Lauf meldet **md5-Prüflauf-Fehler in `~/Desktop/EMAILS_FERTIG_ZUM_SENDEN`** (Ordner existiert, ls-Beweis) — Tagesplan-Punkt 1; Details (welche Datei/Hash) nur im dwf-Run selbst.
+- Tagesplan: md5-Fehler klären · GO doku-fix · GO Wecker · Deutsch-Patch-Recovery · dwfrun beobachten. Bilanz: 25 Läufe; offene GOs unverändert + neu der md5-Fall.
 
