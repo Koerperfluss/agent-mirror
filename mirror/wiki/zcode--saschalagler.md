@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-01 05:56 UTC
+Zuletzt gespiegelt: 2026-10-01 06:11 UTC
 
 ## AGENTS
 
@@ -2250,6 +2250,80 @@ Chipsi lebt (HTTP 303→/login in 0,13 s, selbst gemessen) und das Judicario-Gat
 3. **Recherche übergangsweise in Claude Desktop fahren: Gateway-Connector ist verbunden und listet 8 at_*-Tools (Messwert: initialize HTTP 200, tools/list = 8 Einträge; mein Probe ohne Key: HTTP 401 = Gateway lebt); Ergebnisse sobald Chipsi wieder synthesiert in die Chipsi-Akten nachpflegen.** (Sascha) — Der gesunde Teil der Kette (amtliche Recherche über gateway.openlaw.cc) bleibt nutzbar, nur der ausgefallene Teil (Chipsi-Synthese) wird umgangen.
 4. **Client-Fehler ausschließen: Chrome-PWA „Chipsi“ entfernen und neu installieren bzw. einmal im Inkognito-Fenster/anderem Chrome-Profil testen.** (Sascha) — Nicht gespeicherte Streaming-Antworten können auch an PWA-Service-Worker/Cache hängen — der einzige noch lokal prüfbare Punkt; in der Doku nicht dokumentiert, daher erst nach Rang 1–3.
 5. **Auf openlaw-Fix abstimmen: die fertige Nachricht an Reinhard senden (NACHRICHT_AN_REINHARD_CHIPSI_FEHLER.md, Stand 22.09. 14:30, fertig zum Kopieren, inkl. Frage „Ist euer Synthese-Backend ausgefallen?“) und bis zur Reparatur nur die Workarounds 1–3 nutzen; lokalen loki-legal-ops-Judicario-Wrapper NICHT als Ersatz einsetzen (Live-Test heute: 2× isError „Unbekanntes Tool im Judicario-Bündel“).** (Sascha) — Alle lokal prüfbaren Ursachen sind gemessen bzw. ausgeschlossen; der verbleibende Defekt liegt eindeutig auf openlaw-Serverseite.
+## dwfrun-c2ded830-5dbb-462d-bef0-af47059b1586_artifact_3_1-tool-result-5fe8521d-391c-43cd-9ce3-e6770c49fd44
+
+# ADHS Legal Ops Cockpit — Prüf- und Reparaturbericht
+
+## Ergebnis
+Cockpit repariert: 13 Änderungen. Automatik-Test Endstand: GRÜN — alle Links und Buttons maschinell geprüft. Ordner-Name endet auf einem echten Leerzeichen (/Users/saschalagler/Desktop/id austria neu ) — genau daran sind alle bisherigen Links gescheitert; alle PDF-Links sind jetzt URL-kodiert und gegen die Disk geprüft. Das Cockpit öffnet nichts von selbst: Gmail und PDFs starten nur auf deinen Klick.
+
+## Die 7 Karten — belegte Fakten aus den Originaldokumenten
+| Karte | Fall | Az | Betrag | Datum | Beweis | belegt |
+|---|---|---|---|---|---|---|
+| K1 | Kfz ME-450GA | MES1-K-264/274 |  | 22. September 2026 | RS_%20Lagler%20Sascha,%203382%20Loosdorf,%20Sebastianistra%C3%9Fe%2015(5).pdf | ✅ |
+| K2 | BH Melk Strafen | MES2-V-25 33409/6 | € 3.565,30 | 23. September 2026 | Mahnung_ME_MES2-V-2533409_6.pdf | ✅ |
+| K3 | Exekution GV Hinum | 141 002 E 2940/26 b | 159,00 EUR | 29.09.2026 | 141_002_E_2940-26_b-Note.pdf | ✅ |
+| K4 | Grawe/SDSP | 141 002 E 2866/26 w | EUR 594,90 s.A. | 28. September 2026 | Gmail - 2 E 2866_26w (Ihr Zeichen 5261604) – Ratenzahlungsangebot, Unpfändbarkeit § 291a EO & Antrag BG Melk – Sascha Lagler.pdf | ✅ |
+| K5 | SVS | VSNR 3692 210597 | 76,86 € | 22.09.2026 | H0020260923121033.pdf | ✅ |
+| K6 | Grover |  |  |  | — | ❌ |
+| K7 | Inkasso coeo & PAIR Finance |  |  |  | — | ❌ |
+
+## Reparaturen
+- Pfad-Korrektur: Die HTML lag nicht am Desktop-Root, sondern in '/Users/saschalagler/Desktop/id austria neu /00_ADHS_LEGAL_OPS_COCKPIT.html' (ls-Beweis) — dort repariert; zusätzlich auch eine Kopie an den im Auftrag genannten Desktop-Root-Pfad gelegt, da dort keine Datei existierte.
+- Backup zuerst: cp nach '/Users/saschalagler/Desktop/00_ADHS_LEGAL_OPS_COCKPIT.html.bak-2026-10-01', SHA a506bdb9… identisch mit Original verifiziert.
+- Grover-PDF erstellt (vor dem HTML): GROVER_HARDSHIP_STUNDUNGSANTRAG.typ aus der MD gesetzt, typst 0.15.1 compile OK, DIN A4 2 Seiten (pdfinfo), Signatur rechtsbündig über Linie mit 'Sascha Lagler (eigenhändig)' (pdftotext-Beweis), kopiert BOTH nach Fallakten_September_2026 UND 'id austria neu '.
+- 7 Karten statt 6: task-view-1 bis task-view-7, tab-btn 1-7, totalTasks=7, check-task 1-7, 'Fall X von 7' auf jeder Karte (Mängel 1 + 7 behoben; Python-Check: 7/7/7/7).
+- Karte 7 NEU: Inkasso coeo & PAIR Finance mit Empfängern aus den Fallakten-MDs übernommen (coeo: info@coeo-inkasso.de, cc service@coeo-inkasso.at; PAIR: service@pairfinance.com, cc forderung@pairfinance.com — wirklich in den MDs vorhanden, nichts erfunden), 2 separate 1-Klick-Gmail-Buttons; offen auf der Karte vermerkt: kein Beweisdokument hinterlegt.
+- RIS-Links + wörtlicher Wortlaut: Rechts-Beweisköpfe (details-Elemente) mit Norm, Kurzform, RIS-Link und Original-Wortlaut für § 57 Abs. 2 AVG (K1), § 54b Abs. 1a/3 VStG (K2) und § 291a EO (K3, K4, K7) exakt aus der gelieferten JSON-Liste; 5 ris.bka.gv.at-Verweise im HTML (vorher 0).
+- Alle 13 Datei-Links als href='file:///Users/saschalagler/Desktop/id%20austria%20neu%20/…' URL-kodiert (inkl. %20 am Ordnerende); Python-Verifikation: 13/13 dekodierten Pfade existieren real — inkl. RS-Bescheid mit doppelkodierten %2520/%25C3%259F im Dateinamen und Gmail-SDSP-PDF mit En-Dash/%C3%BC/%C2%A7/%26.
+- Beweis-anzeigen-Links ergänzt: K1 RS-Bescheid, K2 AMS-Bescheid + Mahnung MES2-V-2533409/6, K3 GV-Note 2940/26b, K4 Gmail-SDSP-Ratenplan, K5 SVS-Zahlungserinnerung H0020260923121033; K6 und K7 sagen offen 'Kein Beweisdokument hinterlegt'.
+- Karte 4 (Grawe/SDSP) umgebaut zur ERLEDIGT-Überwachungskarte: KEIN Sende-Button (wie gefordert), Erinnerung an 1. Rate 60 € am 15.10.2026 + eVB abwarten, Beweis-Link auf den Gmail-SDSP-Ratenplan.
+- Raten-Daten exakt wie in den Original-PDFs übernommen: K2 Sammelantrag 35 €/Monat erste Fälligkeit 15.11.2026; K3 3 × 53 € ab 15.11.2026 mit IBAN AT22 6000 0101 1019 5295; K5 38,43 € am 15.10. + 38,43 € am 15.11.2026 (Empfänger auf svs@svs.at korrigiert, war kontakt@svs.at mit falschen Terminen 15.11./15.12.); K4 Grawe 60 € ab 15.10.2026.
+- Gmail-1-Klick-Buttons jetzt klickgebaut über openGmail() mit encodeURIComponent (K1, K2, K3, K5, K6 mit cc support+hilfe@grover.com, K7 coeo + PAIR) statt handkodierter URLs; window.open ausschließlich im Klick-Handler (grep-Beweis: 1 realer Aufruf + 1 Kommentar), DOMContentLoaded-Init zeigt nur Status + Karte 1 — keine Auto-Aktion beim Laden.
+- Fortschritt: localStorage (adhs_task_1-7), Fortschrittsbalken, Erledigt-Haken je Karte, Zähler 'X von 7' konsistent; Pfeiltasten-Navigation links/rechts (in Eingabefeldern deaktiviert); Altlast 'Aufgabe X von 5' komplett entfernt (0 Treffer).
+- Verifikation: node --check auf das extrahierte Inline-JS (13.157 Bytes) — JS-SYNTAX OK; alle 3 Kopien per shasum identisch (9b1ffec8…).
+
+## Automatik-Test (Endstand)
+- 12 PDF-Links: alle Pfade existieren auf der Disk
+- localStorage vorhanden
+- Pfeiltasten-Navigation vorhanden
+- 12 referenzierte PDFs: alle vorhanden
+
+## Rechtsgrundlagen (RIS statt Judicario — das Judicario-MCP antwortet derzeit „Unbekanntes Tool“)
+- **§ 57 Abs. 2 AVG** — Sascha Lagler kann gegen einen Bescheid der BH Melk binnen zwei Wochen bei der erlassenden Behörde Vorstellung erheben; aufschiebende Wirkung hat die Vorstellung nur, wenn sie gegen die Vorschreibung einer Geldleistung gerichtet ist. — [RIS](https://www.ris.bka.gv.at/GeltendeFassung.wxe?Abfrage=Bundesnormen&Gesetzesnummer=10005768&Paragraf=57), Wortlaut abgerufen (Automatik-Linktest: HTTP 200)
+- **§ 54b Abs. 1a und Abs. 3 VStG** — Bei einer Verwaltungsstrafe von BG Melk kann Sascha Lagler wegen seiner wirtschaftlichen Notlage (Beweis: Notstandshilfe 31,83 €/Tag) auf Antrag Aufschub oder Ratenzahlung verlangen, was die Strafvollstreckung aufschiebt; die Mahnung kostet zusätzlich 5 Euro Kostenbeitrag. — [RIS](https://www.ris.bka.gv.at/GeltendeFassung.wxe?Abfrage=Bundesnormen&Gesetzesnummer=10005770&Paragraf=54b), Wortlaut abgerufen (Automatik-Linktest: HTTP 200)
+- **§ 291a EO** — Für Sascha Lagler ist bei einer Forderungsexekution die Notstandshilfe (31,83 €/Tag) als Existenzminimum geschützt: Bei täglicher Leistung gilt der 30. Teil des Ausgleichszulagenrichtsatzes als unpfändbarer Grundbetrag, solange die Berechnungsgrundlage diesen nicht übersteigt. — [RIS](https://www.ris.bka.gv.at/GeltendeFassung.wxe?Abfrage=Bundesnormen&Gesetzesnummer=10001700&Paragraf=291a), Wortlaut abgerufen (Automatik-Linktest: HTTP 200)
+
+## Nicht geprüft
+- Karten 6 (Grover) und 7 (Inkasso): keine Beweisdokumente im Akten-Ordner — Empfänger und Forderungen müssen aus dem Gmail verifiziert werden
+- Gmail-Anmeldung und tatsächlicher Versand wurden nicht getestet (nur Link-Form) — nichts wurde gesendet
+- Native Legal Ops App (GUI) nicht getestet; ihr Backend auf Port 7070 lief während der Prüfung
+
+## Unabhängiger Blick
+**Ergebnis: Bericht ist im Kern belegt, hat aber 3 offene Inkonsistenzen, 6 unbelegte Behauptungen und 4 Lücken.**
+
+## 1. Unklare Stellen
+1. **"13 Änderungen"** — Zählerbasis unklar: Die Reparatur-Liste hat ~13 Bullets, aber keiner ist nummeriert; nicht nachprüfbar, was die 13 sind.
+2. **12 vs. 13 PDF-Links** — Reparatur-Sektion sagt "alle 13 Datei-Links", Automatik-Test sagt "12 PDF-Links". Widerspruch, nicht aufgeklärt.
+3. **Zwei verschiedene SHAs** — Backup: `a506bdb9…`, Kopien: `9b1ffec8…`. Vermutlich Original-vor-Reparatur vs. repariert, aber der Bericht erklärt es nicht.
+4. **"3 Kopien"** — es werden nur 2 Orte genannt (Desktop-Root + `id austria neu `). Wo ist die dritte?
+5. **"Mängel 1 + 7 behoben"** — Mängelliste wird referenziert, aber nicht gezeigt; Leser kann nicht prüfen, was Mängel 1 und 7 waren.
+6. **"EUR 594,90 s.A."** (K4) — Abkürzung unklar (sicher anzunehmen: "sonstige Angaben"?), wird nicht erklärt.
+
+## 2. Behauptungen ohne Beleg im Text
+1. **"genau daran sind alle bisherigen Links gescheitert"** — Kausalbehauptung über frühere Fehlversuche; kein Fehl-Log, kein Vorher-Nachher-Beweis.
+2. **"HTTP 200" bei allen 3 RIS-Links** — nur behauptet, kein curl-Output zitiert.
+3. **Judicario antwortet "Unbekanntes Tool"** — keine Fehlerausgabe zitiert.
+4. **Empfänger K7 "wirklich in den MDs vorhanden, nichts erfunden"** — kein MD-Dateipfad, kein Zitat.
+5. **Notstandshilfe 31,83 €/Tag** — als Beweis in den Rechtsgrundlagen benutzt, aber nirgends belegt (welches Dokument?).
+6. **"alle Buttons maschinell geprüft"** (Ergebnis-Zeile) — der Bericht selbst sagt unten, Gmail-Buttons nur auf Link-Form geprüft, nichts geklickt. "GRÜN — alle Links und Buttons" überzieht damit den tatsächlichen Test.
+
+## 3. Was fehlt
+1. **Kanonische Datei** — jetzt existieren 2 (bzw. 3?) aktive Kopien; der Bericht sagt nicht, welche künftig die maßgebliche ist (Änderungs-/Sync-Konflikt-Risiko).
+2. **Browser-Render-Test** — nur `node --check` auf JS-Syntax; ob das HTML überhaupt lädt und die Karten darstellen, wurde nicht geprüft.
+3. **Karten 6 + 7 Inhalte** — Betrag, Az, Fristen komplett leer; die Gmail-Verifikation ist nur angekündigt, nicht geliefert.
+4. **Roh-Beweise** — Python-/grep-Ergebnisse werden nur zusammengefasst ("13/13", "0 Treffer"), keine Befehle + Outputs — damit ist "GRÜN" aus dem Bericht allein nicht reproduzierbar.
+
 ## dwfrun-001d072c-937a-4113-b119-d92316126c98_artifact_1_1-tool-result-9e575f78-8806-425c-a174-8bb66f5f5692
 
 # Ziel-Bericht: Chat-Prüfung 21./22.09.
@@ -8451,7 +8525,9 @@ Beobachtet 06.09.2026 (Session mit Off-Peak-Ticket): Nach User-Paste „ZCode Er
 
 - [Apple-Mail-DB-Abfrage](apple-mail-db-abfrage.md) — lokal Mails prüfen ohne API: sqlite3 auf ~/Library/Mail/V10 Envelope Index, Apple-Epoch +978307200, Betreff nur via subjects-Join; Gmail-MCP = Permission denied
 
-- [Legal-Ops-Cockpit-Reparatur](legal-ops-cockpit-reparatur.md) — 01.10. spät: Task-für-Task-Liste steht (Task 1 = Strafen-Email AKUT ~07.10.), Signatur maschinell bewiesen (pdftotext/pdfimages), Chipsi-Gutachten: §54b-Abs.3-Antrag richtig, 2 PDFs VERBOTEN (Auto-Schutzschreiben-Privatgrund-Story + gemeinnützige-Arbeit-Version), einzige Blockade = Auto-eVB, Ordner „id austria neu " MIT Leerzeichen, Judicario-MCP kaputt→RIS, Workflow läuft dwfrun-c2ded830 (GLM-5.3$low), Regel: nichts öffnet sich von selbst
+- [Judicario-Gateway-MCP-Rezept](judicario-gateway-mcp-rezept.md) — 01.10. GELOST: altes legal_research tot; echter Weg = Streamable-HTTP-Handshake (Session-ID, Dual-Accept, SSE, inkrementelle IDs) + at_search; Key jud_Cpu-… aus Claude-Code-Installer; fertiger Client judicario_mcp_client.py (SSRF-gehärtet)
+
+- [Legal-Ops-Cockpit-Reparatur](legal-ops-cockpit-reparatur.md) — 01.10. ENDE: Cockpit-Workflow dwfrun-c2ded830 FERTIG (13 Fixes, Endtest GRÜN, Backup .bak); 5 E-Mails + .eml-mit-Anhang-Workflow; Judicario lebt wieder (§44 KFG live, 2b-Antrag normbestätigt); offen: Saschas „bleibt/streichen" zu 2b-Erklärung, 5× Senden, Ordner-Aufräumen
 
 - [GLM-5.3 vs Flash: belegte Fakten](glm-53-vs-flash-belegte-fakten.md) — Flash=320B MoE ~8,9× billiger, AA-Index 57; 5.3=Flagship (CyberGym 84,5); beide low/high/max (Default max) — Regel: Plan/Architektur=5.3, Ausführung=Flash; Sascha will direkte belegte Modellurteile, keine Absicher-Floskeln
 
@@ -8724,6 +8800,45 @@ Live-GUI-Blackbox-Test (web-gui-tester-Skill) im ZCode-In-App-Browser — Stand 
 
 Verwandt: [[koerperfluss-edu-foerderpilot-fertig]], [[zoetrope-live-view]], [[session-quellen-wo-zu-finden]]
 
+## judicario-gateway-mcp-rezept
+
+---
+name: judicario-gateway-mcp-rezept
+description: Judicario/OpenLaw-Gateway DIREKT ansprechen (Rezept 01.10.2026) —
+  altes Tool legal_research existiert nicht mehr; echter Weg =
+  Streamable-HTTP-MCP-Handshake + at_search; fertiger Client
+  judicario_mcp_client.py
+metadata:
+  node_type: memory
+  type: reference
+  originSessionId: sess_7851785d-5e3f-41ed-be76-b2ce090c9af5
+---
+
+# Judicario-Gateway: so geht es WIRKLICH (bewiesen 01.10.2026)
+
+**Ursache der Dauer-Störung („Unbekanntes Tool" überall, auch im loki-legal-ops-MCP):** Das Gateway kennt das alte Tool `legal_research` (aus judicario_connector.py) nicht mehr.
+
+**Der funktionierende Weg — Streamable-HTTP-MCP-Handshake:**
+1. POST `https://gateway.openlaw.cc/mcp/{module}/?k={KEY}` mit JSON-RPC `initialize` (protocolVersion 2025-03-26) → Antwort-Header **`Mcp-Session-Id`** mitnehmen
+2. `notifications/initialized` mit Session-Header
+3. `tools/call` mit Tool **`{module}_search`** (z. B. `at_search`), Args: `query`, `corpus`, `limit`, `gericht`, `year_from/to`
+
+**Stolperfallen (alle live getroffen):**
+- Ohne `Accept: application/json, text/event-stream` → **HTTP 406**
+- Ohne `Mcp-Session-Id` → **HTTP 400 "Missing session ID"**
+- Wiederverwendte JSON-RPC-Request-ID mit anderer Payload → Fehler „Dieselbe Request-ID wurde bereits … verwendet" → **IDs hochzählen**
+- Antworten kommen als **SSE** (`event: message` / `data:`-Zeilen) → data-Zeilen joinen, dann JSON parsen
+
+**Key:** rotiert 06.09.2026 → `jud_Cpu-…` (steht in `Judicario_in_Claude_Code_installieren.command` im konkurrenz-Ordner); der alte `jud_gtSG0t…` in judicario_connector.py ist veraltet. Key via `JUDICARIO_API_KEY`-Env übersteuern.
+
+**Korpora (Modul at):** `at_norms` (Gesetze!), `at_rs` (Rechtssätze), `at_vwgh`, `at_lvwg`, `at_bvwg`, `at_vfgh`, `at_bfg`, `at_te`, `at_wk`, `at_kommentar`, `at_lehrbuch`. Module: at de ch eu ip steuer insurance steuer-de. Live bewiesen: `at|kfg|44` Volltext inkl. Abs. 3+4.
+
+**Wichtig bei leeren Ergebnissen:** Gateway warnt selbst — aus 0 Treffern KEINE thematische Aussage ableiten.
+
+**Fertiger Client (Dauerlösung):** `~/Desktop/Coworkspace_Ich/THOMAS - CHIPS JUDICARIO/THOMAS - CHIPS JUDICARIO /Legal_Ops_Zentrale/legal-ops-advisor/judicario_mcp_client.py` — Nutzung: `python3 judicario_mcp_client.py "Suchbegriffe" --corpus at_norms`. Mimosa-geprüft: SSRF-Schutz nötig (nur https, Host-Pinning gateway.openlaw.cc, aufgelöste IPs gegen privat/loopback/link-local prüfen, Redirects verboten) — ohne diese Checks blockt Mimosa den Write.
+
+Verwandt: [[legal-ops-cockpit-reparatur]]
+
 ## koerperfluss-edu-foerderpilot-fertig
 
 ---
@@ -8841,10 +8956,9 @@ metadata:
 
 ---
 name: legal-ops-cockpit-reparatur
-description: ADHS-Legal-Cockpit 01.10. NACHT — 5 E-Mails komplett (inkl. NEUEM Vollzugsaufschub-Task
-  2b), Auto-Strategie geändert (KEIN eVB-Zwang, Grawe-Ratenvergleich läuft), Legal-Ops-Advisor-MCP
-  liefert nur Header, Mimosa-Hook erzwingt Write-Tool für Quelldateien, Workflow dwfrun-c2ded830
-  läuft, Ordner „id austria neu " TRAILING SPACE = Root-Cause
+description: ADHS-Legal-Cockpit 01.10. ENDE — Cockpit-Workflow dwfrun-c2ded830 FERTIG (13 Fixes,
+  Endtest GRÜN, Backup .bak-2026-10-01), Judicario LEBT wieder (at_search-Handshake, §44-KFG-live),
+  .eml-Workflow dwfrun-8bdd1aa5 lief, Ordner „id austria neu " TRAILING SPACE = Root-Cause
 metadata:
   node_type: memory
   type: project
@@ -8865,7 +8979,11 @@ Stand 01.10.2026 nachts: Saschas Rechtsfälle (BH Melk / BG Melk). **Umsetzung A
 
 **Infra:** Legal-Ops-Backend 7070 läuft, ABER **legal_ops_consult-MCP liefert nur Header** („System-Prompt geladen" + Echo der Anfrage, zweimal bewiesen) — als Inhaltsquelle unbrauchbar; Judicario-MCP „Unbekanntes Tool" → Rechtsbasis = Saschas Chipsi-Chat-Verlauf (mit RIS-Normen) + RIS-Direktabruf.
 
-**Workflow-Kette:** dwfrun-20813457 → aa745ebf → **dwfrun-c2ded830-5dbb-462d-bef0-af47059b1586** (Sascha: GLM-5.3$low; nicht amenden/resumen). Phase 1–3 done (7 Karten, 8 Mängel, 3 RIS-Normen, Baseline ROT), Mechaniker/Gate/Bericht + Cockpit-Backup `.bak-2026-10-01` ausständig → danach **Ordner-Aufräumen** („bitte räum auf") — bewusst nach Workflow-Ende, nichts löschen.
+**Workflow-Kette:** dwfrun-20813457 → aa745ebf → **dwfrun-c2ded830 = FERTIG (01.10. früh, Benachrichtigung liegt vor)**: Cockpit repariert, **13 Änderungen, Node-Endtest GRÜN** (alle file://-Ziele auf Disk, Gmail-Links to/su/body, kein Auto-Open, localStorage, Pfeiltasten), Backup `.bak-2026-10-01`, Artefacts „ADHS Legal Ops Cockpit (repariert)" + „Prüf- und Reparaturbericht". Bestätigte Vor-Mängel (alle verified): nur 6/7 Karten (Inkasso-Karte fehlte), 0 RIS-Links, 0 file://-Links, Karte 4 ohne Gmail/PDF-Button, Karte 3 ohne §291a-Beweiskopf, falsche Zähler „von 5". → jetzt fällig: **Ordner-Aufräumen** („bitte räum auf") — nichts löschen. Achtung: `ListWorkflowRuns` zeigte 0 Runs — Historie dort unzuverlässig, Status nur per GetWorkflowRun/Benachrichtigung.
+
+**JUDICARIO LEBT WIEDER (Durchbruch, gleiche Nacht):** Root-Cause „Unbekanntes Tool" = altes `legal_research` existiert am Gateway nicht mehr. Echter Weg: Streamable-HTTP-Handshake (initialize → `Mcp-Session-Id` → `at_search`), rotierter Key `jud_Cpu-…` aus dem Claude-Code-Installer ( konkurrenz/-Ordner). Live-Beweis: `at|kfg|44` Volltext — **Abs. 3 (keine aufschiebende Wirkung bei lit. c) + Abs. 4 (unverzügliche Ablieferung)** bestätigen den 2b-Antrag normgenau; VwGH-Suche 0 Treffer → nichts draus abgeleitet. Dauerlösung: **`judicario_mcp_client.py`** im legal-ops-advisor-Ordner (SSRF-gehärtet, Mimosa-geprüft). Voll-Rezept → [[judicario-gateway-mcp-rezept]].
+
+**NEU (01.10. spät): „MIT ANHANG"-Workflow dwfrun-8bdd1aa5** — Saschas Kern-Verlangen: E-Mails MIT Anhängen. Fakt: **Gmail-Web-Compose-URLs können KEINE Anhänge vorbefüllen** (Google-Limitierung, kein file-Param) → Lösung = **fertige `.eml`-Dateien (RFC 5322, multipart/mixed) mit PDF-Anhängen als Payload** in `~/Desktop/EMAILS_FERTIG_ZUM_SENDEN/`: Doppelklick öffnet Mail-Fenster MIT Anhang → Sascha drückt nur Senden. 5 Dateien (1/2/2b/3/4), From koerperfluss@gmail.com, Header `X-Unsent: 1`, Date/Message-ID via email.utils. Beweis = **md5-Gate**: python3-Gate parst jede .eml und vergleicht md5 jedes Anhangs gegen Quell-PDF (byte-identisch), Fix-Loop ≤3. Vorbedingung: Apple Mail muss Konto koerperfluss@gmail.com haben. Gmail-Web-Links bleiben Zweitweg in der Send-Liste (die der Workflow um .eml-Sektion erweitert).
 
 **Lektionen:** Mimosa-PreToolUse-Hook **blockiert Bash-Heredoc-Writes von Quelldateien** („Write/Edit verwenden") → .typ/.html per Write-Tool, Bash nur kompilieren/kopieren. **Typst-Falle:** jedes `@` escapen (`\@`), auch in E-Mail-Adressen im Kopf (label-Ref-Fehler). Plan-Mode blockiert Bash komplett → Read/filesystem-MCP. DWF: `„…"` mit plain `"` bricht Strings → U+201C schließen.
 

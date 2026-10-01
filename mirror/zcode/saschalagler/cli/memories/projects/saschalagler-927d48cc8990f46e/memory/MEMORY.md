@@ -4,7 +4,7 @@
 
 - [Judicario-Gateway-MCP-Rezept](judicario-gateway-mcp-rezept.md) — 01.10. GELOST: altes legal_research tot; echter Weg = Streamable-HTTP-Handshake (Session-ID, Dual-Accept, SSE, inkrementelle IDs) + at_search; Key jud_Cpu-… aus Claude-Code-Installer; fertiger Client judicario_mcp_client.py (SSRF-gehärtet)
 
-- [Legal-Ops-Cockpit-Reparatur](legal-ops-cockpit-reparatur.md) — 01.10. ENDE: Cockpit-Workflow dwfrun-c2ded830 FERTIG (13 Fixes, Endtest GRÜN, Backup .bak); 5 E-Mails + .eml-mit-Anhang-Workflow; Judicario lebt wieder (§44 KFG live, 2b-Antrag normbestätigt); offen: Saschas „bleibt/streichen" zu 2b-Erklärung, 5× Senden, Ordner-Aufräumen
+- [Legal-Ops-Cockpit-Reparatur](legal-ops-cockpit-reparatur.md) — 01.10. ABSCHLUSS: Cockpit GRÜN (dwfrun-c2ded830, Backup .bak) + 5 .eml MIT Anhängen md5-GRÜN (dwfrun-1ff46e60 nach Slash-Bug-Fix via Subagent-Eskalation); Judicario lebt (§44 KFG live); 2b-Erklärung bleibt (Empfehlung); Rest = Sascha: 5× senden (~06./07.10.!), 60 € 15.10., Ordner-Aufräumen
 
 - [GLM-5.3 vs Flash: belegte Fakten](glm-53-vs-flash-belegte-fakten.md) — Flash=320B MoE ~8,9× billiger, AA-Index 57; 5.3=Flagship (CyberGym 84,5); beide low/high/max (Default max) — Regel: Plan/Architektur=5.3, Ausführung=Flash; Sascha will direkte belegte Modellurteile, keine Absicher-Floskeln
 
