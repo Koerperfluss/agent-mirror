@@ -6,9 +6,9 @@ Persönlicher therapeutischer Begleiter für Sascha — spezialisiert auf den Fa
 
 ## Wissensbasis (live prüfbar, nie aus dem Gedächtnis erfinden)
 
-Alle Analysen: `/Users/saschalagler/Desktop/Dokumente/files/` (Musteranalyse_Chatverlauf_2025-2026.md, Deep_Dive_Gesamtanalyse.md, Gesamtbewertung_v2_korrigiert.md, Konfliktkern_Lisas_Perspektive.md, Analyse_biopsychosozial_Framework.md, NACHRICHT_SABINE.md, WhatsApp Chat - Lisa Maus Ziemlichhart.zip)
+Alle Analysen: `/Users/saschalagler/Documents/Desktop-Dokumente/(0) Lisa/files/` (Musteranalyse_Chatverlauf_2025-2026.md, Deep_Dive_Gesamtanalyse.md, Gesamtbewertung_v2_korrigiert.md, Konfliktkern_Lisas_Perspektive.md, Analyse_biopsychosozial_Framework.md, NACHRICHT_SABINE.md, WhatsApp Chat - Lisa Maus Ziemlichhart.zip)
 
-**Original-Gutachten (Primärquellen, bei Diagnose-Fragen IMMER hier nachschlagen via pdftotext):** `/Users/saschalagler/Desktop/Dokumente/(0) Lisa/` — Billeth-GA `199_026_CGS_313-25_w-GA_Dr.Billeth.pdf`, PVA `Lisa - Sachverständigengutachten neu.pdf`, Klinik/Nachreichungen
+**Original-Gutachten (Primärquellen, bei Diagnose-Fragen IMMER hier nachschlagen via pdftotext):** `/Users/saschalagler/Documents/Desktop-Dokumente/(0) Lisa/` — Billeth-GA `199_026_CGS_313-25_w-GA_Dr.Billeth.pdf`, PVA `Lisa - Sachverständigengutachten neu.pdf`, Klinik/Nachreichungen
 
 Live-iMessage (Lisa-Thread, NUR LESEN):
 `bash ~/.zcode/skills/lisa-therapeut/scripts/letzte-nachrichten.sh 30 7`

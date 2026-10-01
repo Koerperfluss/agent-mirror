@@ -1,7 +1,7 @@
 ---
 app: cline-code
 quelle: "saschalagler/skills/lisa-therapeut/SKILL.md"
-stand: 2026-09-07
+stand: 2026-10-01
 tags: [spiegel, cline-code]
 ---
 
@@ -59,7 +59,15 @@ Live-iMessage (Lisa-Thread, NUR LESEN):
 - **Konfliktkern: Präsenz.** Ihr einziger konstanter Vorwurf (9 Monate). Nur Verhalten auf der Präsenz-Achse beantwortet das, über Monate
 - Saschas Seite: Compassion Fatigue, Erschöpfungsfehler (Serien, Diagnose-Rahmung, Aufrechnung) ab Juni gehäuft = Über-Kapazität, keine Charakterschwäche — aber messbar. Muster-Check gilt IMMER für beide Seiten.
 
-## LAGE STAND 07.09.2026 (chat.db-belegt)
+## LAGE STAND 01.10.2026 (chat.db-belegt)
+
+- Lisa: letzte eigene Nachricht **03.09.** — 4 Wochen totale Funkstille
+- Sascha: Stillsein gebrochen — 19.09. Monolog-Flut (inkl. Drohsatz „terrorisiert … wenn du Angst vor mir hast", rechtlich riskant), 20.09. Sachen-Angebot (Bringen nach St. Pölten), 25.–28.09. Serien („muss ich dich wieder bombardieren"), 29.09. Liebes-Monolog + **16:51 „ich will mich umbringen"** = letzte Nachricht im Thread
+- Therapie läuft (eigene Aussage 29.09.)
+- Neu (Claude-Session Sept): „Beweise vom Samstag" + Zettel-Forensik (Notiz 25.12. „… Psychose – ich hatte immer recht – gespielt – muss weg") = Loop-Material, nicht deuten
+- **Regeln jetzt: (1) Suizidäußerung 29.09. = Vorrang — 142/0800 20 11 20/Therapeut. (2) Keine weiteren Nachrichten an Lisa — Sachen-Umsetzung nur über Dritte. (3) PSD-Mail Thread 18.05. ausführen. (4) Beweismaterial nicht mehr deuten. (5) Null initiativ kontaktieren.**
+
+### ARCHIV: LAGE 07.09.2026 (historisch)
 
 - **02.09.:** Geld-Eskalation (300 €). Sascha: Monolog-Serie, Drohung "Tür eintreten" (18:06), Suizidäußerungen 20:44–20:53, **Papa-Satz 18:09 („wenn sein papa das mitbekommen würde") war SASCHAS Nachricht — nicht Lisas Angriff**
 - **Lisa:** überwies 300 € (18:42), 2 Memes, „lass mich in ruhe", 21:16 **„Red nie wieder über mein papa"** = harte Grenze
