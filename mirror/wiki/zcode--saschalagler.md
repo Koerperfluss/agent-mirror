@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-01 23:39 UTC
+Zuletzt gespiegelt: 2026-10-01 23:53 UTC
 
 ## AGENTS
 
@@ -8964,7 +8964,7 @@ Beobachtet 06.09.2026 (Session mit Off-Peak-Ticket): Nach User-Paste „ZCode Er
 
 - [Browser-Ersatz-Recherche](browser-ersatz-recherche.md) — 02.10. Kandidaten: Comet+Zen+Dia+BrowserOS+Raycast AI+DeepSeek DSH; Comet/Safari-TP schon installiert; alte „core"-Unterhaltung nicht gefunden (Google-Doc = AutoClaw-Benefits, Login nötig); Raycast läuft mit GLM-5.3 Context 1M
 
-- [Homebrew-Taps-Workflow](homebrew-taps-workflow.md) — 02.10. Run dwfrun-05fa4a67: Tap-Trust-Befunde (ojuschugh1/sqz, render-oss/render) + node@20 + /usr/local/include/node; nur Entscheidungsvorlage, trust/untap = User-GO
+- [Homebrew-Taps-Workflow](homebrew-taps-workflow.md) — 02.10. VOLLZUG durch Sascha bewiesen: sqz getrustet ✅, node@20 entfernt ✅ (47 MB), ffmpeg gelinkt ✅; offen: `untap render-oss/render --force` (Paradox-Fix), `brew link --overwrite certifi`, `sudo mv /usr/local/include/node` (Passwort), brew doctor
 
 - [Mac langsam: Finder-Desktop-Loop](mac-langsam-finder-desktop-loop.md) — 01.10. ABSCHLUSS: deja-VOLL-FIX (0.21.4 + Kill-Switch + Hooks raus → 0 Amok-Prozesse), Docker gesund (prune 5,1 GB, Limits), Disk 39→86 GB frei, Load 17→4,0, Swap 1,6→0,99 GB · Finder-96%-Loop = bewiesener macOS-BETA-Bug 27.2/26B5091g (SwiftUI-GlassContainer↔AppKit-Layout-Loop; 6 Angriffe alle negativ inkl. Transparenz-aus per Computer-Use; kein Update verfügbar; Beta installiert 19.09.) · offen: Sascha-Sache „Beta verlassen" (Empfehlung) / iCloud-Sync-aus / node_modules / Ollama 5,7 GB · Fallen: ps-Match trifft auch FinderSyncExtension-Helper (PIDs recyceln!), Ordner heißt physisch ~/Documents, Docker.raw apparent≠du real (Sparse!)
 
@@ -9287,18 +9287,33 @@ metadata:
 
 ---
 name: homebrew-taps-workflow
-description: 02.10. Homebrew-Tap-Trust-Entscheidung als Workflow dwfrun-05fa4a67
-  gestartet — ojuschugh1/sqz + render-oss/render untrusted, nur
-  Entscheidungsvorlage, keine trust/untap-Befehle
+description: 02.10. Homebrew-Tap-Trust VOLLZUG — sqz getrustet ✅, node@20 entfernt ✅,
+  ffmpeg gelinkt ✅; offen: untap render braucht --force, certifi link --overwrite,
+  sudo mv include/node (Passwort), brew doctor Endkontrolle
 metadata:
   node_type: memory
   type: project
   originSessionId: sess_ea4d6e7b-84b7-4777-8062-4dc0a3123686
 ---
 
-02.10.2026: Homebrew-Doctor-Befunde via `/workflow` analysiert (Run **dwfrun-05fa4a67-facf-4b3c-9797-5162b67b106b**, Script `.zcode/workflow-drafts/Homebrew-Taps-prüfen.dwf.ts`): Befunde = 2 nicht vertraute Taps `ojuschugh1/sqz` + `render-oss/render`, node@20 deprecated, `/usr/local/include/node` unexpected headers, unlinked kegs (ffmpeg, certifi, …). Workflow: brew-Inventar → Web-Recherche je Tap → unabhängiger Prüfer → Markdown-Bericht „Homebrew-Taps: Entscheidungsvorlage" (Artifact).
+02.10.2026: Homebrew-Doctor-Befunde via `/workflow` analysiert (Run **dwfrun-05fa4a67-facf-4b3c-9797-5162b67b106b**, ABGESCHLOSSEN, alle 4 Befunde verified). Ergebnis:
 
-**Nicht ausgeführt (bewusst, User-GO-Pflicht):** `brew trust`, `brew untap`, Link, Löschen von /usr/local/include/node. Bericht liefert nur Empfehlung. Ergebnis lag zum Zeitpunkt des Memory-Writes noch aus — bei Rückfragen Run-Status via GetWorkflowRun/ListWorkflowRuns prüfen. Siehe [[deja-vu-install]] (brew-Ökosystem).
+| Befund | Empfehlung | Beleg |
+|---|---|---|
+| `ojuschugh1/sqz` | `brew trust ojuschugh1/sqz` | sqz real+aktiv (635 Stars, 282 Commits, Tap-Commit vor 8 Tagen, SHA256-Checksums); persönlicher Tap ohne Core-Review → Checksums im Auge behalten |
+| `render-oss/render` | `brew untap render-oss/render` | offizieller Render.com-Tap, aber Repo 06.05.2026 archiviert (read-only); Docs empfehlen nur noch `brew install render` (homebrew-core) |
+| node@20 deprecated | `brew uninstall node@20` | `brew uses --installed node@20` = leer; Homebrew disabled Formel am 2026-10-28 |
+| `/usr/local/include/node` | NICHT blind löschen — erst `sudo mv node node.bak`, testen, dann löschen | root:wheel, Mai 2025 → NICHT von Homebrew (brew=/opt/homebrew, aktives node v26.8.2); vermutlich alte Intel-Brew/nodejs.org-Install |
+
+**VOLLZUG durch Sascha am 02.10. (Terminal-Output bewiesen):** trust sqz ✅ · node@20 uninstall ✅ (2.068 files, 47,4 MB) · ffmpeg link ✅ (110 Symlinks, ffmpeg-full 9.0.2 → ffmpeg 9.0.1_1 gewechselt).
+
+**Rest-Befehle (Stand Ende der Session offen):**
+- `brew untap render-oss/render` blockiert paradox (untrusted tap kann nicht geladen werden, um enttappt zu werden) → **Fix: `brew untap render-oss/render --force`**
+- `brew link certifi` blockiert: alte Dateien in `/opt/homebrew/lib/python3.14/site-packages/certifi/` → **Fix: `brew link --overwrite certifi`**
+- `sudo mv /usr/local/include/node …/node.bak` lief NICHT (hat auf Passwort gewartet) — noch offen
+- Endkontrolle: `brew doctor`
+
+Bericht-Artifact „Homebrew-Taps: Entscheidungsvorlage" (dwfrun-05fa4a67). Siehe [[deja-vu-install]] (brew-Ökosystem).
 
 ## iab-browser-gui-test-rezept
 
@@ -9445,6 +9460,8 @@ Stand 30.09.2026 (Endstand, 9/9 — beide Apps LIVE):
 **Nachtrag 01.10. Nacht — PAKET-KORREKTUREN FERTIG (dwfrun-e8f2a43b, erster Lauf dwfrun-68e964a4 brach an Quota code 1005 „exceed quota limit" ab — Start-Plan leer; Sascha stellte in GUI auf Individual-Plan um, Nachfolger lief komplett):** (1) **Antrag neu gebaut 12/12 PASS**: antrag_master.typ war von der Platte VERSCHWUNDEN (Paketordner nur noch 2 Dateien!) — nur im APFS-Time-Machine-Snapshot com.apple.TimeMachine.2026-09-28-140440.local (mount_apfs -s → /tmp/snap28) — gerettet; Edits: Zeichnungsblock „Rechtsverbindliche…FlexCo"→„Projektteam (Information)" nur Sascha (40/35/25%-Grid raus), Anlagenliste bereinigt (entfernte Dateien raus, „(unterschrieben)"-Behauptung raus), „100 % MDR"→„rein didaktische Zweckbestimmung (Kap. 1.1)"; typst 0.15.1 Rebuild Exit 0, 10 S., pypdf 12/12 PASS → SLOT_01/00_ANTRAG_V4_DESIGN.pdf (323.843 B), Altstand in _ARCHIV_KORRIGIERTE/ (⚠️ enthält noch Alt-PDF — von Verifikator als Diskrepanz notiert). (2) **Checkliste Zeile 21 korrigiert** (03/05/06-Wartestände präzisiert). (3) **4 korrupte PDFs repariert** (3 Auftrags- + 1 zusätzlich entdeckte Kopie; mv→.korrupt.bak + copy2 intakter Quelle + pypdf-Verify; md5 = intakte Quellen bewiesen). (4) **Unabhängiger Verifikator 4/4 PASS.** ⚠️ **DANGER-ZIP: ~/Downloads/WhatsApp/UPLOAD_eCall_SLOTS_2026-09-18.zip enthält fabrizierten Leon-CV + alte Belege — versehentlich hochladbar; Rename wartet auf Saschas GO** (das FINAL.zip unter FÖRDERUNG existiert nicht mehr — Verbleib unbekannt). Randbefunde: Dangling-Symlink Desktop/TO DOS/Förderungen → falsches Ziel; leere „ 2"-Duplikatordner; gesendete Google-Mail = Q1/2027-Spending (Widerspruch-Risiko zur früheren Q3/Q4-2026-Prognose). **Rest HITL unverändert: ① Leons CV → SLOT_03 ② George-Beleg → SLOT_05 ③ Erklärung 3× unterschreiben → SLOT_06 ④ „GO ZIP"** (dann finaler ZIP-Bau). Unterrichtetes Muster: Zeitbudget-Hinweis in Agent-Ask verhindert Web-Recherche-Hänger; Namens-Kollision `const report` vs. eingebaute report() = Compile-Fehler (Variable umbenennen); agent() mit Literalfix in fan-out = Duplicate-Name-Runtod.
 
 **Nachtrag 02.10. — ANTRAG-REWORK VOLL (dwfrun-7fa1550e, 7 Phasen, auf zai-api/GLM-5.3-Flash wegen leeren Start-Plan):** (1) **Antrag komplett laienverständlich NEU geschrieben** (13 S.): 8-Punkte-Korrekturmatrix GESAMT ENTFERNT (interne Thomas-Verweise = TABU im Antrag), Thomas-Punkte INHALTLICH verteilt (MDR-Abgrenzung, Budget-Abgrenzung, LOI = AP-5-Meilenstein M5.2, Pilot ohne Partnerrolle + interner Fallback), xLSTM verständlich (JKU Linz, O(L) statt O(L²), Beck/Pöppel 2024), Fachbegriffe 1-Satz-Erklärt; pypdf 14/14 SOLL + 9/9 DARF-NICHT PASS. (2) **NAME-FIX: Leon heißt KARNER nicht Karnen** (DOCX-Beweis 'Leon Karner MSc., Chemiker, Univ.-Assistent U Wien') — Antrag 7 Stellen gefixt. (3) **BUDGET-FIX Seite 10/11:** '2× Eigenkapital'-Illusion war 38.000 Bar + 33.940 fehlgelebt als 'Eigenleistungen' + Summenzeile 71.940 doppelt. RICHTIG: **SVS-Startförderung § 16 RL Arbeit (Gründungsbeihilfe Leon KARNER) 33.940 € als Finanzierungszeile 'beantragt' EINGEBAUT** — Restfinanzierung = NUR 38.000 € Bar-Eigenmittel Sascha (SUMME PASS 58.860+33.940+38.000=130.800). **Entschärft den George-Blocker: nur noch 38.000 € nachweisbar nötig!** (33.940 belegt aus Businessplan-Option-B; Finanzplanung-V0.4 hatte KEINE SVS-Zeile.) (4) **Leon-CV echt aus WhatsApp-DOCX** (1 S., MSc Chemiker, U Wien/Parma/Pfizer) in beide Slots. (5) **Kapitalnachweis Stand 01.10.2026** (ehrlich als Selbstauskunft gekennzeichnet: Beträge vom 27.11.2025, kein Bank-Nachweis; George/BAWAG Giro 38.000 + Smart Sparen 431,62) in beide Slots + READMEs. (6) **Quellen-Realität: Sascha hatte RECHT** — 290 Zotero/289 Titel + NotebookLM 284; Bibliothek sportmedizinisch-klinisch (Sport ~15/40, Physio ~8, Psych ~8, Medizin ~8, Neuro ~4, KI 1) → 23er-Register deckt <10 %; Empfehlung: 30–60 klinische Studien nachführen + Zotero/NotebookLM als 'Arbeitsregister' benennen. (7) **Erklärung (Beilage 06): NICHT signiert, 2 Kopien** — beste: Desktop/TO DOS /Förderungen/06_Erklaerung_V4.pdf (Ort '3382 Loosdorf' schon drin, md5 080bd3ef); Zielordner FINAL_entpackt/SLOT_06_Erklaerung/ existiert noch nicht (beim GO-ZIP). ⚠️ Achtung: Paket-Pfad heißt wirklich **'FÖDERUNG' ohne R** (Saschas eigener Ordnername). Rest: Erklärung drucken + 3× unterschreiben → SLOT_06 → GO ZIP. Bericht-Artefakt 'FFG-Antrag-Rework Bericht'.
+
+**Nachtrag 02.10. — REGISTER-ANHANG-LISTE FERTIG (Saschas Antwort auf 'wieso nur erwägen? wieso keine Liste?'):** Er wollte die FERTIGE Liste, keine Empfehlung — direkt aus Zotero-CSV gebaut (python, kein Workflow): **`FÖDERUNG/REGISTER_ANHANG_STUDIENLISTE_2026-10-02.md`** — **290 Zotero-Einträge → 130 nach Dubletten-Bereinigung (160 Dubletten raus, primär Telegram-Chat-Importe) → 48 kuratierte Refs in 5 Gruppen**: A Leitlinien/Konsensus 9 (Bern Consensus 2022 Schulter/RTS, Sport-Injury-Psychology-Konsensus, ATS-Pulmonale Reha, ESC/ASCO-Updates) · B klinische Kernstudien 15 (ACL-RTS ×3, Hamstring ×2, Adduktoren-RTS-Kohorte, Volleyball-RTS, Neuroreha/MS, Sportpsych-Reha — prio-sortiert) · C Reviews/Studien klinisch 20 · D Didaktik/Clinical Reasoning 3 · E KI 1. Jeder Eintrag FFG-Zitierformat Autor (Jahr). Titel. Journal — DOI. Kopf erklärt Verknüpfung: 23 Kern-Refs (KI-Methodik) + 48 Anhang (klinische Interdisziplinarität) + 290er-Arbeitsregister. **Offen auf Sascha-Wort: „GO PDF"** → Register-PDF (Beilage 02) neu bauen (Kern 23 + Anhang 48 + Arbeitsregister-Verweis) → SLOT_02; danach einreichfertig bis auf Erklärungs-Unterschriften.
 
 Parallele-Lane-Lektion: Parent-Session + Side-Chat arbeiteten GLEICHZEITIG im selben Pilot-Repo (git status mehrfach verändert) — vor Edit immer frisch lesen, keine Kollision erzwungen; Parent holte den letzten Commit `c1b5d17`. Antigravity-Konversationen: `.db` (SQLite, step_payload=Protobuf, per python-strings extrahierbar) oder `.pb` **at-rest verschlüsselt** → Workspace-SSOT nutzen. Detail-Doku je Repo: `FERTIGMACHUNG_2026-09-30.md`. Verwandt: [[loki-os-v18-endprodukt]], [[atlas-versionsstand]], [[koerperfluss-edu-foerderpilot-takeover]]
 
