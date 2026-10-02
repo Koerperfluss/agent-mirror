@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-02 10:42 UTC
+Zuletzt gespiegelt: 2026-10-02 10:58 UTC
 
 ## AGENTS
 
@@ -8960,6 +8960,8 @@ Beobachtet 06.09.2026 (Session mit Off-Peak-Ticket): Nach User-Paste „ZCode Er
 
 # Memory Index
 
+- [AutoClaw Sprache/Translocation-Fix](autoclaw-sprache-translocation-fix.md) — 02.10. zh-CN→en-US per settings.json (beide Apps), AutoClaw2-Quarantäne entfernt; App→Config-Ordner-Tabelle; Deutsch wird nicht angeboten
+
 - [Browser-Doppelsystem-Setup](browser-doppelsystem-setup.md) — 02.10. Zen (/Applications/Zen.app) + BrowserOS/neo installiert, **MCP live :9000/mcp (browseros_mcp v0.0.165, 24 Tools)**, ZCode ~/.mcp.json angebunden (bak-20261002); offen: GLM-Key (Sascha), Ports 9000/9001/9200 auf *: LAN-Risiko
 
 - [Browser-Ersatz-Recherche](browser-ersatz-recherche.md) — 02.10. Kandidaten: Comet+Zen+Dia+BrowserOS+Raycast AI+DeepSeek DSH; Comet/Safari-TP schon installiert; alte „core"-Unterhaltung nicht gefunden (Google-Doc = AutoClaw-Benefits, Login nötig); Raycast läuft mit GLM-5.3 Context 1M
@@ -9061,6 +9063,31 @@ ATLAS (Cali Coach) — IST-Stand 21.09.2026 (live verifizert):
 - Offene Pfad-Entscheidung (aus Alt-Session): A = v5 stabil halten vs. B = v8-Fusion — von Sascha nie entschieden.
 
 Verwandt: [[loki-os-ecosystem-stand]]
+
+## autoclaw-sprache-translocation-fix
+
+---
+name: autoclaw-sprache-translocation-fix
+description: 02.10. AutoClaw-Chinesisch-Fix per settings.json +
+  AutoClaw2-Quarantäne entfernt; App→Config-Ordner-Zuordnung dokumentiert
+metadata:
+  node_type: memory
+  type: project
+  originSessionId: sess_676af85d-22de-45e5-bc46-645ec289e5c8
+---
+
+02.10.2026 — AutoClaw-Apps nach Update zuordnen + fixen:
+
+| App | Version | Bundle-ID | Config-Ordner |
+|---|---|---|---|
+| AutoClaw.app | 1.18.5 | com.zhipuai.autoclaw | `~/Library/Application Support/autoclaw/` |
+| AutoClaw2.app | 2.0.1 | com.zhipuai.autoclaw2 | `~/Library/Application Support/AutoClaw-official/` |
+| ZCode.app | 3.14.4 | dev.zcode.app | `~/Library/Application Support/ZCode/` |
+
+- **Sprache-Fix:** `"language": "zh-CN"` in `settings.json` → `appearance.language = "en-US"` (AutoClaw1 gefixt, Backup `settings.json.bak-20261002-sprache`; AutoClaw2 hatte keine settings.json → mit `{"appearance":{"language":"en-US"}}` vorbefüllt). Deutsch wird NICHT angeboten (AutoClaw2 hat 16 Locales, kein `de-DE`).
+- **AppTranslocation:** AutoClaw2 lief aus Quarantäne (AppTranslocation = zufälliger Read-Only-Pfad) → `xattr -dr com.apple.quarantine /Applications/AutoClaw2.app` entfernt, Beweis: xattr zeigt nur noch `provenance`. Neustart nötig.
+- ZCode läuft am z.ai Coding Plan (Beweis: Session auf `account:zai-start-plan/GLM-5.3-Flash`) — kein separater Login nötig.
+- Settings-Mechanismus beider AutoClaw-Versionen: `settings.json` in Electron-userData, erscheint erst nach erster Änderung (AutoClaw2 main.cjs referenziert es).
 
 ## browser-doppelsystem-setup
 

@@ -7,6 +7,8 @@ tags: [spiegel, zcode]
 
 # Memory Index
 
+- [AutoClaw Sprache/Translocation-Fix](autoclaw-sprache-translocation-fix.md) — 02.10. zh-CN→en-US per settings.json (beide Apps), AutoClaw2-Quarantäne entfernt; App→Config-Ordner-Tabelle; Deutsch wird nicht angeboten
+
 - [Browser-Doppelsystem-Setup](browser-doppelsystem-setup.md) — 02.10. Zen (/Applications/Zen.app) + BrowserOS/neo installiert, **MCP live :9000/mcp (browseros_mcp v0.0.165, 24 Tools)**, ZCode ~/.mcp.json angebunden (bak-20261002); offen: GLM-Key (Sascha), Ports 9000/9001/9200 auf *: LAN-Risiko
 
 - [Browser-Ersatz-Recherche](browser-ersatz-recherche.md) — 02.10. Kandidaten: Comet+Zen+Dia+BrowserOS+Raycast AI+DeepSeek DSH; Comet/Safari-TP schon installiert; alte „core"-Unterhaltung nicht gefunden (Google-Doc = AutoClaw-Benefits, Login nötig); Raycast läuft mit GLM-5.3 Context 1M
