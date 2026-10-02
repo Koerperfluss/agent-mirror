@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-02 13:18 UTC
+Zuletzt gespiegelt: 2026-10-02 13:35 UTC
 
 ## AGENTS
 
@@ -100628,6 +100628,16 @@ yarn global add typescript-language-server typescript
 - [typescript-language-server on npm](https://www.npmjs.com/package/typescript-language-server)
 - [GitHub Repository](https://github.com/typescript-language-server/typescript-language-server)
 
+## boost
+
+---
+description: Startet den Boost Multi-Agent Orchestrator für parallele Bearbeitung komplexer Aufgaben
+---
+
+1. Analysiere das aktuelle Ziel und teile es in 2-4 parallele Arbeitsstränge auf.
+2. Weise jedem Strang den spezialisierten Agenten und die passenden Tools zu.
+3. Führe die Aufgaben parallel aus, konsolidiere die Ergebnisse und präsentiere eine zusammenfassende Status-Matrix.
+
 ## feierabend
 
 ---
@@ -100680,6 +100690,16 @@ description: Öffnet das Kanban-Board (Task-Management, Port 3484)
 3. Warte 2 s, öffne `http://localhost:3484` im Browser (`open http://localhost:3484`).
 4. Zeige die aktuellen Tasks als Tabelle (Titel | Status | Agent).
 
+## migrate-workflows
+
+---
+description: Migriert und synchronisiert alle Workflow-Drafts aus ~/.zcode/workflow-drafts nach ~/.zcode/workflows
+---
+
+1. Kopiere alle `.dwf.ts`-Dateien aus `~/.zcode/workflow-drafts/` nach `~/.zcode/workflows/`.
+2. Liste alle registrierten Workflows tabellarisch auf (`Name | Dateiname | Status`).
+3. Zeige an, welche Workflows nun via `/dwf` oder im ZCode UI ausführbar sind.
+
 ## standardskill
 
 ---
@@ -100718,6 +100738,16 @@ Führe SOFORT alle 6 Checks aus und antworte NUR mit der Tabelle + URTEIL:
 | Check | ✅/❌ | Beweis (1 Zeile) |
 |---|---|---|
 URTEIL: **SYSTEM AKTIV** (6/6) | **TEILWEISE** (n/6, nenne die toten) | **TOT** (<3/6 → sag „gate tot" im Haupt-Chat, dort wird das Prozess-Log gelesen)
+
+## teamwork-preview
+
+---
+description: Startet ein Agenten-Team zur autonomen Bearbeitung großer Projekte mit Fortschrittsvorschau
+---
+
+1. Erstelle eine detaillierte Roadmap mit Meilensteinen für das Projekt.
+2. Starte die Team-Koordination über die registrierten Spezial-Agenten.
+3. Zeige eine Live-Vorschau des Fortschritts und der erzeugten Artefakte an.
 
 ## todo
 
