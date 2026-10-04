@@ -1,15 +1,15 @@
 ---
 app: zcode
 quelle: "saschalagler/cli/memories/projects/saschalagler-927d48cc8990f46e/memory/loki-os-ecosystem-stand.md"
-stand: 2026-09-20
+stand: 2026-10-04
 tags: [spiegel, zcode]
 ---
 
 ---
 name: loki-os-ecosystem-stand
-description: Agentic-OS-Gesamtinventur (20.09.2026, 3 Explorer verifiziert) — 10
-  Harnesses, 1075 Skills, 21 MCPs; kritische Baustellen Kernel 8010 tot, VwGH-DB
-  leer, Phantome (Phi, STANDARD-Skills, cognee)
+description: Agentic-OS-Gesamtinventur — 20.09. Vollanalyse (10 Harnesses, 1075
+  Skills, 21 MCPs) + 05.10. Re-Count (466 Skills/3 Roots, 134 Duplikate, 22
+  MCPs); Workflow-Killer #1 = leerer Start-Plan, Fallback zai-api/GLM-5.3-Flash
 metadata:
   node_type: memory
   type: project
@@ -29,5 +29,7 @@ Systemanalyse von Saschas Agentic OS (20.09.2026, alle Fakten mit lsof/ps/ls/cur
 **Wunsch-Befund (aus seinen Doku):** Saschas eigentlicher Traum = Stimme als Eingang ins Agentic OS: 24/7 mithören, nur antworten bei „Loki" oder belegtem Fehler, Diktat→Tasks (`~/.loki/safebox/tasks.json` + `~/loki-ki/todo.txt`), lokal/DSGVO-first, 0 € Laufkosten (SPRACHASSISTENT_ARCHITEKTUR.md §1–7, ORIGINAL_REQUEST.md R1–R3, DEEP-DIVE „Exekutivprothese").
 
 **Kanonische Architektur-Quelle (20.09. entdeckt):** `~/Desktop/Coworkspace_Ich/LOKI_OS_CODEX_PAKET/` — CODEX_AGENT_OS_HANDOUT.md (Gesamt-Architektur: Kernel :8010 mit 25 Endpunkten, 6 Domänen-Personas P-01…W-03, 8 Domain-Tools, Inferenz-Regel „Sensibles NUR lokal", 9 Arbeitsregeln inkl. „keine parallelen Agent-Sessions auf denselben Ordnern") · LOKI_MASTER_STATUS.md (16 Projekte-Portfolio) · WAYFINDER_MAP.md (v16-Destination: bootbarer Kernel + OmniRoute + MCP-Bridge) · AUDIT/STRIX/SYSTEM_HANDBUCH. Bei LOKI.OS-Architekturfragen ZUERST dieses Paket lesen. Hinweis: Kernel-Stand dort 01.–07.09. (lief damals); heute ist 8010 tot.
+
+**Re-Count 05.10.2026 (Bash-verifiziert, nach Workload-Woche):** 466 Skills in 3 Roots (zcode 201 / agents 144 / autoclaw 121) · **134 Duplikate** zwischen zcode- und agents-Root · 22 MCP-Server in ~/.mcp.json (MCP_DOCKER, chrome-devtools, claude-mem, context7, deja, desktop-commander, filesystem, firebase, firestore, github, gitlab, google-cloud-storage …) · 15 Hook-Regeln (~/.claude/settings.json). **Modell-Lage (Workflow-killer #1):** Session-Modell = zai-start-plan GLM-5.3-Flash mit LEERER Quota (code 1005, network_error) — Start-Plan-gebundene Workflows sterben; **`zai-api/GLM-5.3-Flash` = funktionsfähiger Fallback** (bewiesen in 2 großen Workflows); Individual-Plan-Modell tauchte zwischenzeitlich aus der Modell-Liste ab. **Fix-Muster:** bei jedem CreateWorkflow `subagent_model` EXPLIZIT setzen + Zeitbudget-Hinweis in jeden Agent-Ask (verhindert Web-Recherche-Hänger 20–90 min).
 
 Verwandt: [[loki-voice-agent]], [[sascha-local-infra-ports]], [[sascha-arbeitsregeln-hart]]
