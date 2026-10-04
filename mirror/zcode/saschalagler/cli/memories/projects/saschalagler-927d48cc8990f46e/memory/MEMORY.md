@@ -1,6 +1,6 @@
 # Memory Index
 
-- [FFG 1.-Anlauf-Historie (Original-Unterlagen)](ffg-1-anlauf-historie-originalunterlagen.md) — 05.10. alle 25 Original-PDFs gelesen: Projekt.Start 66244243 15.09.2025 6.000 € bedingt → **08.07.2026 0 €** („keine Förderung, Ausführungsqualität"); Ablehnung 21.05.2026 (Neuheitsgehalt/QS/Schwierigkeit, wörtliche Gründe drin); Nachreichung Macek 14.04.→27.04.; Zoom 13.04./01.07.; **Chat-Aufzeichnungs-Pfade** (rollout-jsonl, artifacts, deja, claude-mem, Antigravity-.db)
+- [FFG 1.-Anlauf-Historie (Original-Unterlagen)](ffg-1-anlauf-historie-originalunterlagen.md) — 05.10. alle 25 Original-PDFs gelesen: Projekt.Start 66244243 15.09.2025 6.000 € bedingt → **08.07.2026 0 €**; Ablehnung 21.05.2026 (wörtliche Gründe) · **05.10. V6-FULLZUG: Antrag komplett NEU im exakten FFG-Zielformat des eingereichten Vollantrags 1b (Quellen: ffg-notary + Pitchdeck), 14 S. md5 00b338c50096; Sascha KEIN BSc (Studium unterbrochen, neuer CV); Leon=QA & Wissensvalidierung; unsignierte LOI raus; FINAL_entpackt abgeräumt→aus Zweit-Kopie „PAKET_68209806 2" gerettet; FINALE ZIP UPLOAD_eCall_SLOTS_V6_2026-10-05.zip md5 7880cb2a… + EINREICH_LISTE_V6**
 
 - [AutoClaw Sprache/Translocation-Fix](autoclaw-sprache-translocation-fix.md) — 02.10. zh-CN→en-US per settings.json (beide Apps), AutoClaw2-Quarantäne entfernt; App→Config-Ordner-Tabelle; Deutsch wird nicht angeboten
 

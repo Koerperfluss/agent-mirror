@@ -7,6 +7,8 @@ tags: [spiegel, zcode]
 
 # Memory Index
 
+- [FFG 1.-Anlauf-Historie (Original-Unterlagen)](ffg-1-anlauf-historie-originalunterlagen.md) — 05.10. alle 25 Original-PDFs gelesen: Projekt.Start 66244243 15.09.2025 6.000 € bedingt → **08.07.2026 0 €** („keine Förderung, Ausführungsqualität"); Ablehnung 21.05.2026 (Neuheitsgehalt/QS/Schwierigkeit, wörtliche Gründe drin); Nachreichung Macek 14.04.→27.04.; Zoom 13.04./01.07.; **Chat-Aufzeichnungs-Pfade** (rollout-jsonl, artifacts, deja, claude-mem, Antigravity-.db)
+
 - [AutoClaw Sprache/Translocation-Fix](autoclaw-sprache-translocation-fix.md) — 02.10. zh-CN→en-US per settings.json (beide Apps), AutoClaw2-Quarantäne entfernt; App→Config-Ordner-Tabelle; Deutsch wird nicht angeboten
 
 - [Browser-Doppelsystem-Setup](browser-doppelsystem-setup.md) — 02.10. Zen (/Applications/Zen.app) + BrowserOS/neo installiert, **MCP live :9000/mcp (browseros_mcp v0.0.165, 24 Tools)**, ZCode ~/.mcp.json angebunden (bak-20261002); offen: GLM-Key (Sascha), Ports 9000/9001/9200 auf *: LAN-Risiko
