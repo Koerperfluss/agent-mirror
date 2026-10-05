@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-04 23:36 UTC
+Zuletzt gespiegelt: 2026-10-04 23:50 UTC
 
 ## AGENTS
 
@@ -8968,7 +8968,7 @@ Beobachtet 06.09.2026 (Session mit Off-Peak-Ticket): Nach User-Paste „ZCode Er
 
 # Memory Index
 
-- [FFG 1.-Anlauf-Historie (Original-Unterlagen)](ffg-1-anlauf-historie-originalunterlagen.md) — 05.10. alle 25 Original-PDFs gelesen: Projekt.Start 66244243 15.09.2025 6.000 € bedingt → **08.07.2026 0 €** („keine Förderung, Ausführungsqualität"); Ablehnung 21.05.2026 (Neuheitsgehalt/QS/Schwierigkeit, wörtliche Gründe drin); Nachreichung Macek 14.04.→27.04.; Zoom 13.04./01.07.; **Chat-Aufzeichnungs-Pfade** (rollout-jsonl, artifacts, deja, claude-mem, Antigravity-.db)
+- [FFG 1.-Anlauf-Historie (Original-Unterlagen)](ffg-1-anlauf-historie-originalunterlagen.md) — 05.10. alle 25 Original-PDFs gelesen: Projekt.Start 66244243 15.09.2025 6.000 € bedingt → **08.07.2026 0 €**; Ablehnung 21.05.2026 (wörtliche Gründe) · **05.10. V6-FULLZUG: Antrag komplett NEU im exakten FFG-Zielformat des eingereichten Vollantrags 1b (Quellen: ffg-notary + Pitchdeck), 14 S. md5 00b338c50096; Sascha KEIN BSc (Studium unterbrochen, neuer CV); Leon=QA & Wissensvalidierung; unsignierte LOI raus; FINAL_entpackt abgeräumt→aus Zweit-Kopie „PAKET_68209806 2" gerettet; FINALE ZIP UPLOAD_eCall_SLOTS_V6_2026-10-05.zip md5 7880cb2a… + EINREICH_LISTE_V6**
 
 - [AutoClaw Sprache/Translocation-Fix](autoclaw-sprache-translocation-fix.md) — 02.10. zh-CN→en-US per settings.json (beide Apps), AutoClaw2-Quarantäne entfernt; App→Config-Ordner-Tabelle; Deutsch wird nicht angeboten
 
@@ -9310,6 +9310,22 @@ Quelle: `/Users/saschalagler/Desktop/ffg - 1 antrag + businessplan+nachtrag+2ver
 - **Antigravity-Chats:** `.db`/`.pbtxt` in den Projektordnern (PILOT.AI/.antigravity/ 25 MB, 3d-Upgrade 63 MB, lesbar)
 - **Sachstand-SSOT:** `FÖDERUNG/FFG_ReSubmission_PAKET_68209806/KANON_PROTOKOLL_FFG_2026-10-05.md` + `BEWEISKETTE_2026-10-04.md` + `Desktop/HANDOUT_FFG_SITZUNG_2026-10-05.md`
 
+## FFG-NOTARY + PITCHDECK + EINGEREICHTER VOLLANTRAG = STRUKTUR-QUELLEN (Sascha-Korrektur 05.10.: „WAR DAS PITCHDECK, NICHT DEIN AUFBAU")
+
+- **`/Users/saschalagler/Desktop/ffg-notary/`** = Saschas FFG-Notary-Cockpit v2.5 (April 2026): README + `Aufbau vorgabe/` (aws/FFG-Businessplan-Leitfaden-Strukturierung 4 S. + Businessplan-PDF + STRUKTUR-PNG) + `master - ff antrag projekt/` mit **1) BASIS FFG ANTRAG BASISPROGRAMM KLEINPROJEKT.pdf** (19 S., eingereichter eCall-Print 18.12.2025 08:03) + **1b) Körperfluss…pdf (24 S. = der EINGEREICHTE Vollantrag)** + 1c) 1.3-Kapitel + 1d) Finanz-PNG; `output/` = 7 Businessplan-Kapitel-MDs (01_Executive…07_SWOT); `agents/` = Investigator/Auditor/Redakteur-Python (LM-Studio lokal).
+- **Kanonisches FFG-Zielformat (TOC des 1b-Vollantrags):** 1. Projektbeschreibung (1.1 Projektziele · 1.2 Neuheit gegenüber dem Stand der Technik · 1.3 Entwicklungsinhalte, Herausforderungen und Lösungsvorschläge · 1.4 Nutzen [1.4.1 Zielgruppen/1.4.2 Mehrwert/1.4.3 USP] · 1.5 Nachhaltige Wirkung [Ökologie/Soziales/Ökonomie]) → 2. Finanzierung und Folgekosten → 3. Ökonomisches Potenzial und Verwertung (3.1 Marktchancen · 3.2 Geschäftsmodell [Erlösmodell/Vertriebskonzept]) → 4. Volkswirtschaftliche Aspekte (4.1 Wirtschaftsstandort · 4.2 Soziale Aspekte).
+- **Pitchdeck** (`drive-download-20261004T233636Z-1-001/pitch deck .pdf`, 5 S.): „KÖRPERFLUSS – Adaptive KI für Therapie, Training und Lehre"; Intake→Mindmap-Engine (prüfbarer JSON-Output); B2C 99 €/39 €/79 €-Abo, B2B 199 €/Seat; TAM ~15 Mio., LTV:CAC > 3×; Teamrollen-Matrix M0–M12. (Im V6-Antrag bewusst NUR die Antrag-konsistenten Zahlen verwendet — Campus-Lizenz 3.000 € + 12,50 €/Student.)
+
+## V6-FINALSTAND (05.10.2026, ~01:47 — Vollzug, Details auch in [[koerperfluss-edu-foerderpilot-fertig]] §V6-REBUILD)
+
+- **Neuer Antrag** `antrag_v6_ffg_zielformat.typ` → `00_ANTRAG_V6_DESIGN.pdf` (14 S., md5 00b338c50096): exaktes 1b-Zielformat + KPIs Z1–Z5; kompiliert und pypdf-verifiziert (alle Kapitel OK, Alt-Dreck 0×: „Sascha Lagler, BSc", „BSc Physiotherapie (IMC", „Bankbestätigung", LOI-Datei, „Head of QA & Accessibility", „FlexCo (i. Gr.)").
+- **Sascha ist KEIN fertiger BSc** (Sascha: „ICH BIN KEIN FERTIGER MBSC") — Wahrheit aus seinem Versandfertig-CV 2026: „Physiotherapie-Studium IMC FH Krems (2021–2023, 62 ECTS, derzeit unterbrochen)" + OptimaMed/SeneCura geriatrische Praxis; neues `CV_Lagler_Sascha_1seitig.pdf` (e8d79dc75122) nur aus diesen Fakten gebaut.
+- **Peter-CV** Original aus `~/Downloads/WhatsApp/UPLOAD_eCall_SLOTS_2026-09-18/SLOT_03_CVs/` (md5 172ad268ccf4, BSc BSc JKU + MSc AI in Ausbildung) — Slot-03-Lücke geschlossen; Leon-CV fa239b49fb60 bleibt.
+- **LOI-Entscheid:** `LOI_Pilotpartner_Kneipp.pdf` war unsignierte Selbst-Vorlage (110 KB, „Dr. Kneip"-Schreibweise!) → aus ZIP+Antrag raus; im Antrag nur M5.2-Plan-Text.
+- **Disk-Zwischenfall:** `FINAL_entpackt/` des 1. Pakets wurde abgeräumt (nur frischer SLOT_03 blieb) — gerettet über Zweit-Kopie **`FFG_ReSubmission_PAKET_68209806 2/`** (alle Slot-PDFs md5-verifiziert zurückkopiert).
+- **Finales ZIP:** `UPLOAD_eCall_SLOTS_V6_2026-10-05.zip` (661.436 B, **md5 7880cb2a5e000b0194a46171346417dd**, 7 PDFs/5 Slots, 3 CVs) + **`EINREICH_LISTE_V6_2026-10-05.md`** im Paketordner (Slot-Tabelle, kopierbare Verify-Befehle, 7 eCall-Schritte; Maske-Startdatum-Empfehlung **01.01.2027** — 01.01.2026 liegt in der Vergangenheit).
+- Technik-Falle neu: typst interpretiert `@` in Markup als Label (`koerperfluss@gmail.com` → `#("koerperfluss@gmail.com")` escapen); zsh spawnete zeitweise ENOENT (System-Glitch) → Desktop-Commander-`start_process` als Ersatz-Shell funktioniert.
+
 Verwandt: [[koerperfluss-edu-foerderpilot-fertig]], [[ffg-1-anlauf-historie-originalunterlagen]]
 
 ## george-thomas-status
@@ -9577,6 +9593,16 @@ Stand 30.09.2026 (Endstand, 9/9 — beide Apps LIVE):
 **Nachtrag 05.10. spät 5 — Saschas 5-Fragen-Gespräch beantwortet („REDE ICH UNDEUTLICH? besprich es mit mir") — er wollte das GESPRÄCH, keine Agents:** Nach „NICHTS DAVON STIMMT" + Pfade-Liste + Wunsch nach Wayfinder/kanban-Übersicht: **KEIN Workflow, KEIN Scan — die 5 Fragen direkt aus dem belegten Stand beantwortet:** (1) **Dokument-Struktur 2. Anlauf** = 12 Kapitel FFG-Zielformat (Kurzbeschreibung/Ausgangslage/xLSTM/Safety/Module+LTI/Markt/AP-Plan/Team/Finanzierung/Risiken/Offenlegung), laienverständlich; ⚠️ ehrlich: Portal will Beschreibung als ONLINE-Masken-Text, 13-S.-PDF = Ausarbeitung/Anlage + Copy-Quelle. (2) **Thomas' 8 Sperren: 6/8 bewiesen gelöst**, 2 hängen an Sascha (Submit-Zeichnung) bzw. bewusste Strategie (LOI). (3) **Leon richtig integriert** (Karner, 160 h, SVS, echter CV) — **mit 1 ehrlicher offener Frage: Leons CV (Chemiker MSc, U Wien) zeigt KEINE Accessibility/QA-Qualifikation → Passung Rolle↔CV dünn, Gutachter-Frage.** (4) **1. Anlauf 18.12.2025 belegt**: eCall-Vollantrag 08:03, Lagler/Melk, qubitec.io-Kalkulation, Team Fischer/Lagler/**MAUERHART (Lisa!)**, Eigenanteil 71.940 unklar, KEINE CVs/Erklärung/Kapitalnachweis, Ablehnung 21.05.2026 (FO999938346-0004, u. a. fehlende Pilotpartner). (5) **2. Anlauf = Unterschiede-Tabelle** (Loosdorf/Leon statt Lisa/SVS-Zeile/laienverständlich/echte Beilagen/ehrlicher Pilot). **3 Entscheidungen an Sascha gestellt, wartend:** (a) Leons CV-Rollen-Passung — Leon soll 2–3 Sätze echten QA-Background liefern (falls real) ODER Antrag-Rolle soften · (b) LOI-Risiko — ohne einreichen (Empfehlung, parallel nachfassen) ODER 2 Wochen Kneipp/Vodder warten · (c) **Saschas eigener CV „BSc (in Ausbildung)"-Widerspruch** — ist der Physio-BSc IMC Krems abgeschlossen? Ja/Nein braucht er für den CV-Fix (Thomas-Sperre 4, noch offen). ANTWORTEN AUF DIE 3 PUNKTE = letzte offene Präzis-Fixes, dann ist die ZIP endgültig.
 
 Parallele-Lane-Lektion: Parent-Session + Side-Chat arbeiteten GLEICHZEITIG im selben Pilot-Repo (git status mehrfach verändert) — vor Edit immer frisch lesen, keine Kollision erzwungen; Parent holte den letzten Commit `c1b5d17`. Antigravity-Konversationen: `.db` (SQLite, step_payload=Protobuf, per python-strings extrahierbar) oder `.pb` **at-rest verschlüsselt** → Workspace-SSOT nutzen. Detail-Doku je Repo: `FERTIGMACHUNG_2026-09-30.md`. Verwandt: [[loki-os-v18-endprodukt]], [[atlas-versionsstand]], [[koerperfluss-edu-foerderpilot-takeover]]
+
+
+## V6-REBUILD (05.10.2026, 01:47) — ANTRAG KOMPLETT NEU
+- Neuer Antrag: antrag_v6_ffg_zielformat.typ -> 00_ANTRAG_V6_DESIGN.pdf (14 S., md5 00b338c50096) — STRUKTUR = exaktes FFG-Zielformat des eingereichten Vollantrags 18.12.2025 (1. Projektbeschreibung 1.1-1.5 -> 2. Finanzierung -> 3. Verwertung -> 4. Volkswirtschaftliche Aspekte), KPIs Z1-Z5
+- Sascha NICHT fertig studiert: BSc ueberall entfernt -> Physiotherapie-Studium IMC FH Krems 2021-2023, 62 ECTS, derzeit unterbrochen; neuer CV_Lagler_Sascha_1seitig.pdf (e8d79dc75122) NUR aus echtem 2026-Versandfertig-CV
+- Leon = QA & Wissensvalidierung (MSc Chemie); Peter-CV Original (172ad268ccf4) aus Downloads/WhatsApp in Slots kopiert — Slot-03-Luecke geschlossen
+- LOI_Pilotpartner_Kneipp.pdf = unsignierte Vorlage -> RAUS aus ZIP; im Antrag nur noch M5.2-Plan-Text
+- FINAL_entpackt des 1. Pakets wurde auf Disk ABGERAUMT — gerettet ueber Zweit-Kopie FFG_ReSubmission_PAKET_68209806 2/ (alle Slot-PDFs md5-verifiziert zurueckkopiert)
+- FINALE ZIP: UPLOAD_eCall_SLOTS_V6_2026-10-05.zip (661.436 B, md5 7880cb2a5e000b0194a46171346417dd, 7 PDFs, 3 CVs)
+- Einreich-Liste mit Proof-of-Concept: EINREICH_LISTE_V6_2026-10-05.md im Paketordner; Startdatum-Empfehlung Maske: 01.01.2027 (01.01.2026 liegt in der Vergangenheit)
 
 ## koerperfluss-edu-foerderpilot-takeover
 
