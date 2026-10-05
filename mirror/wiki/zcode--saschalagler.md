@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-05 11:48 UTC
+Zuletzt gespiegelt: 2026-10-05 12:02 UTC
 
 ## AGENTS
 
@@ -4880,6 +4880,14 @@ Verwandt: [[thomas-tasks-drei-recherchen]], [[feedback-pruefinstanz-pflicht]]
 - **Cline-Kollegen-Prinzip:** Sascha läuft parallel eine zweite ZCode-Session (Provider ClinePass/MiMo-V2.6-Pro) als „Kollege" — die minet Prüfkopf/WhatsApp-Bilder (`LokiVoiceApp/Sources`: PruefkopfService.swift, SafeTalkContacts.swift, WhisperSTTEngine.swift, KeySelfService.swift von Aug 14–18). **Nicht doppelt arbeiten — vor Tasks prüfen, was Parallel-Sessions schon liefern.**
 - **Cline.app** existiert unter /Applications/Cline.app; Cline-TUI-CLI ist nur interaktiv (headless exit 137/9).
 
+**Nachtrag 05.10. 14:00 (GEMEINSAME LIVE-TESTUNG + Ausgrabung, nach Sascha-Korrektur):**
+- **Sascha-Korrektur (wütend):** Ziel ist NICHT Dokumenten-Mining, sondern **MIT Cline GEMEINSAM die App live testen** — zwei Prüfer parallel, ein Protokoll. Ergebnis: `08_GEMEINSAME_LIVETESTUNG.md` (Lane A = ZCode-ich ✅, Lane B = Cline-Kollege, schreibt Ergebnisse in denselben Abschnitt).
+- **Runde-2-Live-Funde (13:55–14:00):** „Antwortstil wählen" = **Slash-Modi**: `/gutachten` · **`/pruefung` („Fachprüfungs-Modus: Luna plant, Fallstricke aus der Judikatur", 3–6 Min — Prüfinstanz-Persona „Luna" ist in der App!)** · `/tiefenrecherche` (1–2 Min) · `/kurz` (≤10 Sätze) · `/normen` · `/mandantenbrief`. Zweitmeinung-Button an jeder Antwort. Neues-Dokument-Menü: Leeres Word-Dokument · Datei öffnen (DOCX/PDF/Bild) · PDF öffnen · **Neue E-Mail** („Im Editor schreiben") · **WhatsApp verfassen** — „Aus Vorlage" entfernt (JUD-0 ✅). Kontextzähler 500k + tok/s im Banner.
+- **AUSGRABUNG fertig:** `06_AUSGRABUNG_AUDITS12_PRUEFKOPF_2026-10-05.md` + .pdf — Audit 2 = `…/Audit 2 + Sprachassistent/_ARCHIV/AUDIT_2_TIEFENANALYSE.md` (04.08., „Judicario=Motor · Chipsi=Auto", 5 Qualitäts-Tests alle korrekt); Audit 1 nur als eingeflossener Vorgänger (Anhang B, mit Scheinecker v1.4, 5-Fragen-Test, Peter-Matrix). **Prüfkopf:** `PruefkopfService.swift` 353 Zeilen (Aussagen-Extraktion THEMA/TERMINE/ENTSCHEIDUNGEN/AUFGABEN/UNKLARHEITEN → Judicario-MCP + SafeBox-Prüfung → nur belegte Hinweise → Freigabe), 2 Kopien, live verdrahtet via `pruefenLiveStreamChunk()` aus LocalVoiceService.swift:444 + VoiceService.swift:749; gebaut 17.–18.08. von Cline (Sessions 1786933744437, 1786935387376, 1786965445943, 1787055118931).
+- **Kollegen-Task:** `07_TASK_FUER_CLINE_KOLLEGEN.md` + Lane B im 08er-Protokoll (Zweitmeinung-Tiefentest, Editor-Durchgang, Konnektor-Dialog, 28-Screens-Abgleich → Ergebnis `07_EINWAENDE_ABGLEICH.md`).
+- **Board läuft weiter** (Board-State 14:01 aktualisiert); Login der Live-App überlebt MCP-Browser-Restart (Cookie-Profil).
+- **Verhaltens-Lektion:** Sascha will ERGEBNIS-Arbeit statt Blocker-Meldungen — Subagent-Dispatch tot = direkt selbst arbeiten („Director-Direktmodus"), nie wieder „wartet auf Neustart" als Zustand melden.
+
 ## cline-app-desktop-backend-fix
 
 ---
@@ -6538,6 +6546,8 @@ metadata:
 **⚠️ 18.09. SPÄT (2. Beobachtung):** Implementer kann komplette Commits SELBST machen (62c3597 „Add STT and TTS pickers") und Dateien des Directors LÖSCHEN/ÜBERSCHREIBEN (mein LLMProviders.swift wurde durch seine AIProviders.swift ersetzt; seine Abschlus-Reports kamen teils gar nicht als Notification, Arbeit lag aber im Tree). Konsequenz: Nach implementer-Läufen IMMER `git log`/`git status` + Kollisions-Check (Dublett-Module, tote Referenzen) — siehe [[thomas-tasks-drei-recherchen]] Kollisions-Lektion.
 
 **⚠️ 05.10. VIERTE WURZEL (bewiesen, 2× Dispatch-Test):** agents-state.json hatte 16 Overrides auf den toten Provider `omniroute/glm-first` (reasoningLevel max) → „Cannot start subagent: Reasoning level unsupported … selection=omniroute/glm-first". Fix: alle 4 Override-Sektionen geleert (Backup `~/sicherungen/agents-state-20261005/`). **ABER: Auch NACH korrekter Disk-Konfig (Sascha hat via UI auf GLM-5.3-Flash umgestellt, verifiziert per cat) schlägt Dispatch weiter mit omniroute/glm-first fehl — die LAUFENDE App hält die alte Selektion im Speicher.** Einziger Fix = ZCode ⌘Q-Neustart; kein In-Session-Workaround bekannt (implementer-Workaround half diesmal auch nicht, gleicher Fehler). Merksatz: Override-Quelle = agents-state.json + Agent-Frontmatter + App-Speichercache — erst Neustart, dann Dispatch-Test mit 1-Zeilen-Task.
+
+**⚠️ 05.10. 14:05 — DISPATCH-TEST-KARTEN = UI-MÜLL (Sascha wütend):** JEDER fehlgeschlagene Dispatch-Test hinterlässt eine rote „SubAgent · … Failed"-Karte in Saschas ZCode-UI — 3 Tests hintereinander (13:10/13:39/13:50) = 3 rote Karten, er drehte durch („was ist damit du trottel"). **Regel: nie wieder wiederholte Dispatch-Tests — MAXIMAL 1 Test nach einem echten Fix, sonst gar keiner; Karten sind harmlos (nichts läuft/hängt), aber er sieht sie als Müll.** Antworten auf „was ist diese Karte": gescheiterter Startversuch, kein Prozess, keine Kosten.
 
 **⚠️ 18.09. (3. Beobachtung):** implementer kann auch silent FERTIG sein und danach weitere Edits machen — TaskOutput „No task found" heißt nicht verloren; Arbeit lag im Tree (git log bewies seinen Picker-Commit). Und: gelöschte Director-Dateien können im Projekt-`_ARCHIV/` liegen (Kollisions-Auflösung des Agenten) — vor Re-Implementierung IMMER erst Archiv/Tree prüfen, sonst baut man Duplikate.
 
