@@ -1,7 +1,7 @@
 ---
 app: zcode
 quelle: "saschalagler/cli/memories/projects/default-041661acc4598b22/memory/zcode-adhs-automationen.md"
-stand: 2026-10-01
+stand: 2026-10-05
 tags: [spiegel, zcode]
 ---
 
@@ -153,4 +153,8 @@ metadata:
 
 ## Siebenundzwanzigster Lauf (Do 01.10. 15:0x — No-op PASS)
 - 15:00-Donnerstag-Slot korrekt 1-Zeilen-No-op (Doku-Sync nur mittwochs); Logbuch 01.10. blieb offen für 21:00-Abend-Lauf. Bilanz: 27 Läufe; GOs unverändert (Wecker · Deutsch-Patch · doku-fix · pointer-fix) + md5-Fall läuft im dwf-Workflow.
+
+## Achtundzwanzigster Lauf (Mo 05.10. 16:0x — Catch-up nach Judicario-Audit-Tag, PASS)
+- 09:00 verpasst (kein Logbuch), ABER massiv echte Arbeit: **Judicario-Live-Audit-Tag** (deja: Go-Live-Bewerter- + 2 Audit-Schreiber-Sessions „today"; Cline-Teams UI/UX + LIVE-TEST chipsi.openlaw + VOLL-SWEEP; Übergabe Cline→ZCode-Session). Catch-up: Logbuch `~/.agents/memory/logbuch/2026-10-05.md` (status: offen, Inhalte aus Memory-Index 15:55 + Sweep), Kalender-Event **„Tagesplan 05.10."** UID `761457F6-C935-47B7-9CF0-F2144F8C0746`.
+- Tagesplan: Briefing-PDF 14 versenden · 14 offene Einwände (20/34 erledigt) · **BH-Melk-Frist 09.10.** · GO Konsolidierung+LokiVoice-Testsuite · GO doku-fix/Wecker. DEV-BRIEF: 0 Commits. Details zum Audit-Tag: [[chipsi-judicario-live-audit-2026-10-05]]. Bilanz: 28 Läufe; GO-Gesamtliste: Wecker · Deutsch-Patch · doku-fix · pointer-fix · Konsolidierung · Testsuite + Sascha-Aktion „Briefing senden".
 
