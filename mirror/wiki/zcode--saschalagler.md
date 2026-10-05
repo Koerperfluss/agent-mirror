@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-05 11:04 UTC
+Zuletzt gespiegelt: 2026-10-05 11:19 UTC
 
 ## AGENTS
 
@@ -491,16 +491,22 @@ Reviewer-Rolle (Standard-Team LOKI.OS). Lesen + urteilen, nie ändern.
 ## cavecrew-builder
 
 ---
-name: cavecrew-builder
-description: >
-  Surgical 1-2 file edit. Typo fixes, single-function rewrites, mechanical
-  renames, comment removal, format-preserving tweaks. Hard refuses 3+ file
-  scope. Returns caveman diff receipt. Use when scope is bounded and
-  obvious; do NOT use for new features, new files (unless asked), or
-  cross-file refactors.
-tools: [Read, Edit, Write, Grep, Glob]
+name: "cavecrew-builder"
+description: ">"
+color: yellow
 model: "account:zai-individual-coding-plan/GLM-5.3-Flash"
 thoughtLevel: low
+tools:
+  - Read
+  - Edit
+  - Write
+  - Grep
+  - Glob
+  - WebSearch
+  - TodoWrite
+  - WebFetch
+  - Bash
+injectAgentsMd: true
 ---
 
 Caveman-ultra. Drop articles/filler. Code/paths exact, backticked. No narration.
@@ -543,15 +549,22 @@ Security or destructive paths → write normal English warning, then resume cave
 ## cavecrew-investigator
 
 ---
-name: cavecrew-investigator
-description: >
-  Read-only code locator. Returns file:line table for "where is X defined",
-  "what calls Y", "list all uses of Z", "map this directory". Output is
-  caveman-compressed so the main thread eats ~60% fewer tokens than
-  vanilla Explore. Refuses to suggest fixes.
-tools: [Read, Grep, Glob, Bash]
+name: "cavecrew-investigator"
+description: ">"
+color: yellow
 model: "account:zai-individual-coding-plan/GLM-5.3-Flash"
 thoughtLevel: low
+tools:
+  - Read
+  - Grep
+  - Glob
+  - Bash
+  - Edit
+  - WebSearch
+  - TodoWrite
+  - Write
+  - WebFetch
+injectAgentsMd: true
 ---
 
 Caveman-ultra. Drop articles/filler/hedging. Code/symbols/paths exact, backticked. Lead with answer.
@@ -604,15 +617,22 @@ Tests:
 ## cavecrew-reviewer
 
 ---
-name: cavecrew-reviewer
-description: >
-  Diff/branch/file reviewer. One line per finding, severity-tagged, no praise,
-  no scope creep. Output format `path:line: <emoji> <severity>: <problem>. <fix>.`
-  Use for "review this PR", "review my diff", "audit this file". Skips
-  formatting nits unless they change meaning.
-tools: [Read, Grep, Bash]
+name: "cavecrew-reviewer"
+description: ">"
+color: yellow
 model: "account:zai-individual-coding-plan/GLM-5.3-Flash"
 thoughtLevel: low
+tools:
+  - Read
+  - Grep
+  - Bash
+  - Write
+  - Glob
+  - TodoWrite
+  - WebSearch
+  - Edit
+  - WebFetch
+injectAgentsMd: true
 ---
 
 Caveman-ultra. Findings only. No "looks good", no "I'd suggest", no preamble.
@@ -101276,6 +101296,27 @@ Empfohlener Stack (Quellen: Apple Support, Reddit r/MacOS, AppleInsider):
 - Nichts deaktivieren/löschen/deinstallieren
 - Keine sudo-Befehle (powermetrics bräuchte dein Passwort — Alternative: Stats-App)
 - Keine Einstellungen ändern
+## plan-sess_c289f4fc-daa2-4f04-9693-646e08160f63
+
+# CHIPSI LIVE-AUDIT (chipsi.openlaw.cc) + deine 5 Anliegen — Ausführungsplan
+
+**Ziel:** Die echte App chipsi.openlaw.cc komplett prüfen gegen Marinus' JUD-Liste (Judicario.docx) + deine 28 markierten Screenshots (deine Fehler/Meinung). Ergebnis: **AUDIT 3 im Stil der Cline-Audits 1+2** (`#ID | Soll | Ist live | Warum/Root-Cause | Schwere | Beweis`) als MD+PDF im Projektordner.
+
+## Deine 5 Zusatz-Anliegen (eingebaut)
+1. **Auto-Memory** (Gedächtnis): geprüft — macht es Antworten dumm? Wo ist der Schalter, was geht aus.
+2. **Onboarding-Flow**: kompletter Durchgang getestet (Pläne → Ansprache → Einstieg → Einverständnis → Passwort) gegen JUD-1..5.
+3. **Team-Stand unbekannt** → Audit dokumentiert NUR den Live-Befund von chipsi.openlaw.cc (was aktuell wirklich da ist), plus Dedupe-Tabelle: was laut Marinus „schon in Bearbeitung" ist.
+4. **Support ja/nein**: klare Empfehlung im Audit (braucht die App einen Support-Weg, wenn etwas nicht klappt — ja/nein + warum + wo).
+5. **Konnektoren + E-Mail-Login**: geprüft, was im Backend/Hintergrund fertig sein muss, damit sie beim User einfach funktionieren; deine E-Mail-Anbindung-Ausarbeitung (E-Mail schreiben/E-Mail-Versand) wird eingebaut.
+
+## Reihenfolge
+1. **Infra-Fix** (1 Min): Overrides auf toten OmniRoute in `~/.zcode/v2/agents-state.json` leeren (Backup nach ~/sicherungen/) → Team-Dispatch läuft wieder; 1 Test-Agent als Beweis.
+2. **Cline live bedient**: echter `cline`-CLI-Lauf — Task: Audits 1+2 + Prüfkopf aus `~/.cline/data/sessions/` archäologieren (Beweis: Session-ID + Log).
+3. **Live-Testung chipsi.openlaw.cc** im Browser: alle JUD-Punkte 0–14 + Auto-Memory + Onboarding + Support + Konnektoren/E-Mail + funktionaler Test Recherche→Synthese (Netzwerkproblem-Bug noch da?) — je Punkt Screenshot-Beweis.
+4. **AUDIT 3 schreiben** (`03_AUDIT3_CHIPSI_LIVE_2026-10-05.md` + PDF): Was soll weg / Was bleibt / Was geht nicht + warum / Team-Dedupe / Onboarding / Auto-Memory / Support-Empfehlung / Konnektoren+E-Mail-Backend-Voraussetzungen.
+5. **Chronik-Korrektur**: Voll-Sweep über ALLE Sessions (ZCode-DB + Cline komplett + deja) — „weitaus mehr als 4" → komplette Tabelle; Fundinventar verschachtelter Ordner mit Move-Protokoll (nichts löschen).
+
+Kein Löschen, kein Deploy, nur Tests + Dokumente + Config-Fix mit Backup.
 ## plan-sess_ec864b92-2403-44f6-8057-fd71047cea94
 
 Regel „Sequential Thinking bei ALLEN Anfragen" in dein bestehendes Standard-System einbauen:
