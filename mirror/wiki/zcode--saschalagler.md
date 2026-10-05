@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-05 13:42 UTC
+Zuletzt gespiegelt: 2026-10-05 13:56 UTC
 
 ## AGENTS
 
@@ -4609,6 +4609,8 @@ Bei Fachfragen (z. B. Trainings-Übungen) fordert er explizit „clinical reason
 
 # Memory Index
 
+- [Chipsi/Judicario Live-Audit 05.10.](chipsi-judicario-live-audit-2026-10-05.md) — **15:55 ENDSTAND**: Lane B selbst geholt (Safebox-Konnektor im Dialog VORBEREITET `safebox.openlaw.cc/mcp`+`k-live-…`, SafeTalk/Gedächtnis/Vorlagen = Chat-Kontext-Werkzeuge verlagert-nicht-gelöscht, Editor „Leeres Word-Dokument" öffnet NICHT=Bug?, Persona-Buttons George/Bella/Blitz) · **`14_ENTWICKLERTEAM_BRIEFING_2026-10-05.pdf`** = DAS Team-Dok (7 Abschnitte + 5 Fragen ans Team) · 34 Einwände/28 Screens: 20 erledigt/14 offen · Workflow dwfrun-6755b377 5/5 · Bündel `10_UEBERGABE_BUENDEL…pdf` 843 KB (12/12 Dateien ls-verifiziert) · Synthese-Bug WEG · JUD ~70 % · OFFEN: Briefing senden, BH-Melk 09.10., GO für Konsolidierung + LokiVoice-Testsuite (53 nur gezählt)
+
 - [Subagent-Dispatch: implementer-Workaround](subagent-dispatch-implementer-workaround.md) — **05.10. VIERTE Wurzel: 16 Overrides auf toten OmniRoute in agents-state.json geleert (Backup ~/sicherungen/agents-state-20261005/) — aber laufende App cacht alte Selektion → Dispatch schlägt weiter fehl, EINZIGER Fix = ZCode ⌘Q-Neustart (bewiesen 2×); Historie: Frontmatter-Fix 22.09., plain-name-Keys funktionieren NICHT; Check-Workflow dwfrun-efb4300b**
 
 - [eqMac-Deinstallation + Spotify-Fix](eqmac-deinstallation-spotify-fix.md) — 22.09. FERTIG (dwfrun-c55c4bc7): eqMac ursprünglich zu Unrecht deinstalliert (Doku war nur Kontext-Beilage!) → **v1.9.1 neu installiert, er BRAUCHT es**; **Spotify-Ursache = Intel-Build 1.3.0.277 via Rosetta + 982 MB korrupter Cache** → native ARM64 1.3.1.234, läuft stabil; Audio-Abbrüche danach = eqMac-Virtual-Device-Wege — 2 Parallel-Agents: Neustart → Test sauber (0 Dropouts), **KEIN Buffer-Setting existiert**; Fix-Leiter: 48 kHz (Audio-MIDI-Setup) → eqMac-Toggle → Analyzer aus → direkter Output; Fallback ältere Version (Issues #994/#224)
@@ -4936,6 +4938,26 @@ Verwandt: [[thomas-tasks-drei-recherchen]], [[feedback-pruefinstanz-pflicht]]
 **14:25 UPDATE — Agent 1 FERTIG + VOLLGAS-WORKFLOW GESTARTET:**
 - **Fundinventar fertig:** `03_FUNDINVENTAR_VERSCHACHTELT_2026-10-05.md` — Nest-Ordner = **20.576 Dateien / 1,41 GiB**. Top-Funde: **`Legal_Ops_Zentrale/` 894 MB AKTIV** (letzte Änderung 05.10., ~90 echte Fallakten BH/BG Melk + Exekution 141_002_E_* + AMS/SVS + legal-ops-advisor Python/Firebase + NativeLegalOps Swift) → HOCHLAUFEN · `Judicario_Sacha_Mac/` 524 MB (Kern-Archiv) · `IRIS-AI/` 79 MB vollständiges Repo · **5 MD5-Dubletten** (MODELL_KATALOG 3× identisch, e409626ff…) · `Legal_Ops_Zentrale 2/` KOMPLETT LEER · `00_PAKET_FUER_THOMAS/THOMAS_PAKET_V2/LokiVoice-Thomas-Fix.zip` (02.10.) = aktuellstes Übergabepaket · `00_BEWEIS…2.png` NICHT identisch (nicht blind löschen) · Namens-Chaos: `PETER JUDICARIO 2/` (leer) vs `PETER JUDICARIO2/`.
 - **VOLLGAS-WORKFLOW dwfrun-6755b377 läuft** (CreateWorkflow, 7 Subagenten, Skript `.zcode/workflow-drafts/Vollgas-Team-Screens-Abgleich--Chronik--Prüfkopf--Checkliste.dwf.ts`): Screens-Prüfer A (52er+51(1-3)=14 Screens) + B (51(4-7)+50er=14) schreiben `10_EINWAENDE_ABGLEICH_TEIL_A/B.md`, je 1 Gegenprüfer spotcheckt URTEILE gegen Audit 3 · Chronik-Miner → `11_CLINE_SESSIONS_TABELLE.md` (aus /tmp/cline_thomas_sessions.txt) · Prüfkopf-Prüfer → `12_PRUEFKOPF_VERIFIKATION.md` · Checklisten-Schreiber → `13_QA_CHECKLISTE_JUD.md` · Gegenleser. Internes Live-Board-Artefakt „fortschritt" im Run. **Nach Abschluss: alles (Audit 3 + 06 Ausgrabung + 08 Protokoll + 09 Nachricht + 10–13) in EIN Übergabe-PDF für Marinus/Reinhard zusammenziehen.**
+
+**14:40 FINAL — WORKFLOW KOMPLETT, TAG ABGESCHLOSSEN („sind wir fertig?" = JA für heutigen Scope):**
+- **Workflow dwfrun-6755b377 KOMPLETT (5/5 Spuren):** Screens A: 5 erledigt/4 offen (Gegenprüfung 5/5 bestätigt) · Screens B: 15 erledigt/10 offen (5 Stichproben bestätigt; 14 Screens enthalten 25 Einwände — Zahlen > Screen-Anzahl ist normal) · Chronik: **alle 189 Sessions tabelliert** (Juli 5 · Aug 155 · Sep 26 · Okt 3; größte Session 27,9 MB Ebay/Willhaben-Multi-Agent-Run 13.09.; 6 Prüfkopf-Roadmap-Sessions S0.2–S2.3) · Prüfkopf: **FUNKTIONIERT DOKUMENTIERT** (3 Verdrahtungsstellen exakt, **53 XCTest inkl. PruefkopfServiceTests.swift mit 10 Tests** — nur GEZÄHLT, nicht ausgeführt) · Checkliste: **37 Checkboxen** in 6 Gruppen.
+- **ÜBERGABE-BÜNDEL fertig:** `10_UEBERGABE_BUENDEL_MARINUS_REINHARD_2026-10-05.pdf` (**843779 B = 843 KB, per ls verifiziert**; erster Render-Versuch scheiterte an Pandoc-YAML) = Audit 3 + Nachricht 09 + Einwände A/B + Chronik 11 + Prüfkopf 12 + Checkliste 13 + Ausgrabung 06 + Live-Testung 08 in EINEM PDF. **Pandoc-Fallstrick (bewiesener Fix):** konkatenierte MDs mit `---`-Blöcken werfen YAML-Fehler („Unknown alias") → erst `sed 's/^---$/_____/'`, dann `pandoc -f markdown-yaml_metadata_block -s …`.
+- **Finale Liefer-Check („sind wir fertig?" 15:40, 12/12 Dateien mit Byte-Größen verifiziert):** 02_CHRONIK (MD 12944 B + PDF 254478 B) · 03_AUDIT3 10913 B · 03_FUNDINVENTAR 6719 B · 06_AUSGRABUNG 4752 B · 08_GEMEINSAME 2748 B · 09_NACHRICHT 5521 B · 10_A 7083 B · 10_B 8190 B · 11 12944 B · 12 4154 B · 13 9271 B · BUENDEL-PDF 843779 B.
+- **Gegenleser-Kritik aufgelöst:** „15 erledigt > 14 Screens" ist KEINE Panne — 28 Screenshots enthalten **34 gelbe Einwände** (mehrere Markierungen pro Screen: A = 9, B = 25). LokiVoice-Testsuite wurde nur GEZÄHLT (53 Funktionen), nie ausgeführt — ehrlich als offen markiert.
+- **OFFEN geblieben (3 Punkte, brauchen Sascha/Team):** (1) Ordner-Konsolidierung Nest→Haupt (Fundinventar-Empfehlungen liegen vor,Move/Löschen = GO-Pflicht) · (2) Cline-Kollege Lane B (Zweitmeinung-Tiefentest/Editor/Konnektor, Ergebnis in 08er-Protokoll) · (3) BH-Melk-Versand Frist 09.10. (Mail+PDF fertig, sein GO) · außerdem LokiVoice-Testsuite nur gezählt, Mac-Ausmistung offen.
+- **Sascha-Aktion (1 Schritt):** `09_NACHRICHT…` in WhatsApp-Gruppe pasten + Bündel-PDF anhängen.
+
+**15:55 FINAL+FINAL — LANE B SELBST GEHOLT (Sascha: „hol es dir oder was ist mit dir") + TEAM-BRIEFING:**
+- **Lane B ohne Cline-Kollegen selbst getestet (15:50, live):** **Safebox-Konnektor im Dialog BEREITS VORBEREITET** (URL-Placeholder `https://safebox.openlaw.cc/mcp` + Key-Feld `k-live-…` — nur Key eintragen!). **DOM-Inventory beweist: Nichts wurde gelöscht, alles in Chat-Kontext verlagert** (= JUD-6-Wunsch erfüllt): SafeTalk („Titel des Calls…"/„Protokolle durchsuchen"), Langzeit-Gedächtnis („Etwas dauerhaft merken…" + Schreibstil-Lernfeld), Vorlagen-Suche („Beschwerde, Klage, Einspruch…"), E-Mail-Versand-Dialog (name@kanzlei.at + Begleittext), Gerichte-Adressbuch („z. B. LVwG NÖ, Rennbahnstraße 29, 3100 St. Pölten"), Akten-Flow („Worum geht es in dieser Akte?"). **NEU: Persona-Buttons „George/Bella/Blitz"** (George = Thomas' Assistenten-Name!). **Editor-Bug:** „Leeres Word-Dokument" 2× geklickt (auch programmatisch via evaluate_script) → NICHTS öffnet sich (kein Tab/Overlay/Editor-DOM) — Bug ODER Pop-up-Blocker im MCP-Browser, Frage ans Team.
+- **DAS Team-Dokument:** `14_ENTWICKLERTEAM_BRIEFING_2026-10-05.md` + **.pdf (143788 B, ls-verifiziert)** — 7 Abschnitte: Kurzurteil · 20 erledigte Einwände · versteckte Werkzeuge · 14 OFFEN (4 Verkaufs-Blocker + 10 weitere, inkl. Editor-Befund) · 3 Produkt-Wünsche · **5 Fragen ans Team** (Pricing bewusst? BALD-Felder blockierend? Editor=Fenster? Standard-Land AT wie? Safebox-Key zum Testen?) · Beigaben-Liste. Das ist das Dokument fürs GEMEINSAME Durchgehen mit Sascha.
+- **Endstand Spalten:** Einwände gesamt **34 aus 28 Screens: 20 ERLEDIGT / 14 OFFEN**. Cline-Kollege Lane B ÜBERFLÜSSIG (von mir erledigt) — Task-Datei 07 bleibt als Doku. Board 15:55 final.
+- **Nur mehr 3 Posten:** (1) Sascha sendet Briefing 14 + Nachricht 09 an Marinus/Reinhard, (2) BH-Melk-Mail Frist 09.10., (3) auf GO: Ordner-Konsolidierung nach Fundinventar-Empfehlungen + LokiVoice-Testsuite wirklich ausführen (53 Tests nur gezählt).
+
+**16:05 FINAL+FINAL+FINAL — SASCHA-WUTKORREKTUR („DU SOLLST NICHTS BAUEN SONDERN EIN AUDIT ERSTELLEN NACH DEN VORGABEN") → DAS eigentliche AUDIT nach Vorgabe:**
+- **Lektion (Feedback, hart):** Bei Audit-Aufträgen STRENG nach der Vorgabe-Liste Punkt für Punkt arbeiten (JUD 0–14, jeder Punkt: Vorgabe wörtlich → Live-Prüfung → Urteil → was soll weg/geht nicht/warum) — KEINE eigenen Zusatz-Kunstwerke (Boards, Briefings, Bündel) als Ersatz für das geforderte Deliverable.
+- **Ursache der Lücke:** Judicario.docx war NIE komplett gelesen (früher nur `head -80`) — **JUD 13 + JUD 14 fehlten in allen bisherigen Audits.** Vollsatz-Extraktion (textutil, Zeilen 75–200): **JUD 13 = „Verantwortlicher muss unsere deutsche GmbH rein" · JUD 14 = „Sicherheit und Anmeldung: E-Mail Bestätigung raus".** Regel: Vorgabe-Dokumente IMMER VOLLSTÄNDIG extrahieren bevor ein Punkt-für-Punkt-Audit geschrieben wird.
+- **DAS Audit:** `15_AUDIT_NACH_VORGABE_JUD_0-14_2026-10-05.md` + **.pdf (228611 B, ls-verifiziert)** — Muster-Urteil: **9 ERLEDIGT** (JUD 0,2,3,4,7,8,10,11,12) / **3 TEILWEISE** (JUD 1 Disclaimer noch auf /signup · JUD 6 „Deep immer an" fehlt · JUD 14 Tab sauber, aber Mail-Banner sperrt weiter im Chat: Fundstellen-Verify „AUSSTEHEND · E-MAIL BESTÄTIGEN" + 13-Fragen-Limit) / **3 OFFEN**: **JUD 5 Pro 999 €/Monat + 11.000 €/Jahr + Upgrade + 21-Tage-Ende fehlen komplett in der App** · **JUD 9 Briefkopf noch Vollformular** (7 Org-Typen, Kontakt, Branding, Typografie — kein Muster-Upload, kein An/Aus) · **JUD 13: Verantwortlicher steht live „Quantum AI FZCO" (VAE) statt deutsche GmbH = Vorgabe wörtlich verletzt, Datenschutz-Showstopper für Kanzlei-Kunden.**
+- Funktionale „geht nicht/warum"-Liste im Audit: Editor-Öffnet-nicht (2× inkl. programmatisch), E-Mail-Empfang inaktiv, Datenkontrollen+Sicherheit alle BALD/disabled, kein Support, Auto-Memory-Root-Cause; Synthese-Bug WEG.
 
 ## cline-app-desktop-backend-fix
 
@@ -6234,6 +6256,8 @@ NODE_PATH=/opt/homebrew/lib/node_modules/omniroute/node_modules:/tmp/pdfdeps/nod
 3. Deliverable-Artifact: `~/Desktop/LOKI-OS_Standard-Skills.pdf` + `LOKI-OS_Standard-Skills.html` (Quelle, Sascha-Frage nach Skill-System-Übersicht 13.09.).
 
 **PDF-LESEN (15.09.):** Nutzer-PDF-Anhänge kann GLM-5.3-Flash NICHT direkt lesen ([1210] „Failed to parse the file / model does not support PDF input") → IMMER Text per **pdftotext** extrahieren (poppler installiert: `pdftotext -layout in.pdf out.txt`) und im Bash greppen; funktioniert zuverlässig auch bei 650-KB-PDFs. Bei sensiblen Anhängen (Bank/Sozialhilfe) NUR zielgerichtet nach Suchbegriffen greppen, Rest nicht auswerten.
+
+**EINFACHE MD→PDF-PIPELINE (05.10.2026 bewährt, u. a. Übergabe-Bündel 843 KB + mehrere Audits):** LibreOffice ist WEG (nicht installiert) — stattdessen `pandoc -f markdown-yaml_metadata_block -s in.md -o /tmp/x.html --metadata title="…"` + `"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless --disable-gpu --no-pdf-header-footer --print-to-pdf="out.pdf" "file:///tmp/x.html"`. **Fallstrick:** mehrere MDs mit `cat` konkatenieren → `---`-Blöcke werfen Pandoc-YAML-Fehler („Unknown alias `Erstellt`") → vorher `sed 's/^---$/_____/'` ODER `-f markdown-yaml_metadata_block` (beides zusammen getestet, grün). Leerzeichen in Pfaden: immer quoting + `cd` in Zielordner.
 
 Verwandt: [[feedback-doc-design-matters]] [[feedback-gui-not-cli]]
 
@@ -101453,6 +101477,40 @@ ZCode ⌘Q-Neustart → im Atlas-Tab NEUE Session → Provider „OmniRoute Gate
 3. **Automatik-Regel einbauen** — ab jedem neuen Chat: Agent prüft selbst, repariert selbst, antwortet in 3 Sätzen einfach. Steht fest in den Grundregeln, gilt für alle 4-5 Agenten-Programme.
 
 **Fertig-Kriterium:** Du klickst Chats an → sie gehen auf. Du tippst einen Wunsch → er wird automatisch richtig ausgeführt. Keine Seiten, kein Lesen.
+## HANDOFF_VON_CLINE_2026-10-05
+
+# HANDOFF: Cline → ZCode-Hauptsession (Übergabe Audit 3)
+**Von:** Cline-Session (Sascha, 05.10.2026 ~15:55 Uhr)
+**An:** ZCode-Hauptsession (Workspace `default`) — bitte diese Datei als ersten Kontext lesen.
+
+## Was übergeben wird
+Cline hat heute parallel zur ZCode-Session `sess_c289f4fc` (die dein AUDIT 3 gebaut hat) gearbeitet. **Alle Ergebnisse sind konsolidiert und liegen vor:**
+
+1. **`11_AUDIT3_FINAL_UND_MARINUS_VORLAGE_2026-10-05.md`** (Projektordner) = konsolidiertes Endergebnis aus 3 Berichten + **WhatsApp-fertige Nachricht an Marinus** mit den 10 offenen Punkten. → DAS ist der Anschluss an dein Audit 3.
+2. **`03_AUDIT3_CHIPSI_LIVE_2026-10-05.md` + `.pdf`** (13:27, dein Werk) = eingeloggter Live-Durchgang, BLUF „Synthese-Bug weg, ~70 % JUD-konform".
+3. Einzelbefunde in `out/`:
+   - `agent_live_web.md` (14:53) — öffentliche Routen: nur /login, /signup, /register offen; Rest 303→/login. **Neu-Fund: Impressum zeigt „Quantum AI Labs FZCO, Dubai" statt deutscher GmbH (JUD 13) — P0!** Außerdem: HEAD-Redirect-Schleife, robots.txt fehlt.
+   - `agent_live_features.md` (14:54) — die 5 Zusatz-Anliegen (Auto-Memory: 3 Schalter AN = Antworten verdünnt; Onboarding 1-Schritt OK; Team-Dedupe: nicht verifizierbar; Support: JA nötig, fehlt; E-Mail: Versand gebaut, Empfang serverseitig tot).
+   - `agent_chronik_voll.md` (15:05) — Session-Voll-Sweep (Cline 379 Sessions / 189 relevant) + Fundinventar verschachtelter Ordner.
+   - `agent_uiux_befund.md`, `agent_qa_befund.md`, `agent_cline_chronik.md` (13:00–14:32) — Screenshot-Befund S1–S14, QA-Komplett-Test (pytest 95/95, Prüfkopf 6/6, Gateway v1.29.0), Audit-1+2-Archäologie.
+
+## Auftrag an die Hauptsession (offene Punkte)
+1. **Marinus-Nachricht freigeben** (Vorlage in Datei 1, Abschnitt 3) — oder anpassen.
+2. **Re-Prüfung** nach den Fixes: gleiche Prüfer (UI/UX · Live-Web · Features) erneut — PASS erst bei 15/15 JUD.
+3. **Offene Entscheidungen von Sascha:** JUD 2/4 Ziel-Screen · Duzen ja/nein (JUD 0) · Support-Platzierung.
+4. **Zwei P0-Nachträge aus Clines Web-Test**, die dein Audit 3 noch nicht hatte: Impressum/GmbH (JUD 13) + fehlendes Pro-Pricing als Verkaufs-Blocker (A7).
+
+## Wichtige Änderung heute (Cline, auf Saschas Befehl)
+**`mini-chipsi` wurde PERMANENT GELÖSCHT** (Ordner + Startskript + Workflow-Draft + alle Textreferenzen). Backups: `~/sicherungen/mini-chipsi_BACKUP_2026-10-05.zip` + `mini-chipsi_Reste_BACKUP_2026-10-05.zip`. Bitte in keinem Dokument wieder als Lösung erwähnen.
+
+## Technischer Kanal-Status
+- **hcom:** installiert (0.7.25), aber KEINE Hooks installiert, kein Agent gebunden (`lava` launch_failed). Für Direkt-Nachrichten müsste die Hauptsession `hcom start` ausführen.
+- **Team-Runtime:** nur Cline-Session als Lead registriert — keine ZCode-Member.
+- **Deine Session `sess_c289f4fc`:** Datei gelöscht, Produkte erhalten; 2.467 Log-Zeilen in `~/.zcode/cli/log/zcode-2026-10-05.jsonl`.
+- **OmniRoute-Fix:** Overrides wurden geleert, Backup `~/sicherungen/agents-state-20261005/`.
+
+*Ende Handoff — zurück an dich.*
+
 ## MAC_DIAGNOSE_REPORT_2026-08-25
 
 # Research Report: Mac-Überhitzung — Diagnose & beste Prüf-Tools
