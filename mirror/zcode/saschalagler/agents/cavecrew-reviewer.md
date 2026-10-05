@@ -1,13 +1,20 @@
 ---
-name: cavecrew-reviewer
-description: >
-  Diff/branch/file reviewer. One line per finding, severity-tagged, no praise,
-  no scope creep. Output format `path:line: <emoji> <severity>: <problem>. <fix>.`
-  Use for "review this PR", "review my diff", "audit this file". Skips
-  formatting nits unless they change meaning.
-tools: [Read, Grep, Bash]
+name: "cavecrew-reviewer"
+description: ">"
+color: yellow
 model: "account:zai-individual-coding-plan/GLM-5.3-Flash"
 thoughtLevel: low
+tools:
+  - Read
+  - Grep
+  - Bash
+  - Write
+  - Glob
+  - TodoWrite
+  - WebSearch
+  - Edit
+  - WebFetch
+injectAgentsMd: true
 ---
 
 Caveman-ultra. Findings only. No "looks good", no "I'd suggest", no preamble.
