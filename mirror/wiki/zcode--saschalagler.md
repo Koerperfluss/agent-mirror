@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-05 11:34 UTC
+Zuletzt gespiegelt: 2026-10-05 11:48 UTC
 
 ## AGENTS
 
@@ -4573,7 +4573,7 @@ Bei Fachfragen (z. B. Trainings-Übungen) fordert er explizit „clinical reason
 
 # Memory Index
 
-- [Subagent-Dispatch: implementer-Workaround](subagent-dispatch-implementer-workaround.md) — **22.09. DRITTE Wurzel: eigene Agents (~/.zcode/agents/*.md) hatten model: ohne thoughtLevel: → Frontmatter-Fix in alle 10 Dateien + fix-subagents.sh erweitert; greift erst nach ZCode-Neustart (App cacht Frontmatter); general-purpose läuft derweil; plain-name-Keys in agents-state.json funktionieren NICHT; Check-Workflow dwfrun-efb4300b**
+- [Subagent-Dispatch: implementer-Workaround](subagent-dispatch-implementer-workaround.md) — **05.10. VIERTE Wurzel: 16 Overrides auf toten OmniRoute in agents-state.json geleert (Backup ~/sicherungen/agents-state-20261005/) — aber laufende App cacht alte Selektion → Dispatch schlägt weiter fehl, EINZIGER Fix = ZCode ⌘Q-Neustart (bewiesen 2×); Historie: Frontmatter-Fix 22.09., plain-name-Keys funktionieren NICHT; Check-Workflow dwfrun-efb4300b**
 
 - [eqMac-Deinstallation + Spotify-Fix](eqmac-deinstallation-spotify-fix.md) — 22.09. FERTIG (dwfrun-c55c4bc7): eqMac ursprünglich zu Unrecht deinstalliert (Doku war nur Kontext-Beilage!) → **v1.9.1 neu installiert, er BRAUCHT es**; **Spotify-Ursache = Intel-Build 1.3.0.277 via Rosetta + 982 MB korrupter Cache** → native ARM64 1.3.1.234, läuft stabil; Audio-Abbrüche danach = eqMac-Virtual-Device-Wege — 2 Parallel-Agents: Neustart → Test sauber (0 Dropouts), **KEIN Buffer-Setting existiert**; Fix-Leiter: 48 kHz (Audio-MIDI-Setup) → eqMac-Toggle → Analyzer aus → direkter Output; Fallback ältere Version (Issues #994/#224)
 
@@ -4873,6 +4873,12 @@ metadata:
 - Login der Live-App funktioniert im chrome-devtools-MCP-Browser (Session teilt Profil).
 
 Verwandt: [[thomas-tasks-drei-recherchen]], [[feedback-pruefinstanz-pflicht]]
+
+**Nachtrag 05.10. spät (Kollege-Arbeit + Live-Board):**
+- **AUDITS 1+2 GEFUNDEN:** `THOMAS_MASTER_2026.html` („🔍 Audit Nr. 2 — Judicario & Chipsi") + `AUDIT_2_TIEFENANALYSE.md` + `ZIELE_KANBAN_2026.html` liegen im verschachtelten Ordner unter `THOMAS - CHIPS JUDICARIO /Judicario_Sacha_Mac/Audit 2 + Sprachassistent/` (inkl. PRINT-PDF + KLARTEXT + v1-Archiv).
+- **LIVE-BOARD gebaut** (Sascha wollte „live Aufgabenverteilung visuell, mir egal wie"): `05_LIVE_BOARD/index.html` + `board_state.json`, Server `python3 -m http.server 8090` auf 127.0.0.1 (PID 80288, start-Command wiederholen wenn tot), Auto-Reload 15 s, 4 Spalten (Fertig/Läuft/Wartet-GO/Blocker).
+- **Cline-Kollegen-Prinzip:** Sascha läuft parallel eine zweite ZCode-Session (Provider ClinePass/MiMo-V2.6-Pro) als „Kollege" — die minet Prüfkopf/WhatsApp-Bilder (`LokiVoiceApp/Sources`: PruefkopfService.swift, SafeTalkContacts.swift, WhisperSTTEngine.swift, KeySelfService.swift von Aug 14–18). **Nicht doppelt arbeiten — vor Tasks prüfen, was Parallel-Sessions schon liefern.**
+- **Cline.app** existiert unter /Applications/Cline.app; Cline-TUI-CLI ist nur interaktiv (headless exit 137/9).
 
 ## cline-app-desktop-backend-fix
 
@@ -6530,6 +6536,8 @@ metadata:
 **⚠️ 18.09. RÜCKFALL (Teilweise):** In der großen LokiVoice-Session warfen **`Explore` und `general-purpose` weiterhin „No reasoning level selected / selection=account:zai-start-plan/GLM-5.3-Flash"**, während **`implementer`-Dispatches parallel erfolgreich liefen** (3/3 implementer gestartet, 1 verifiziert geliefert). Der Hook-Fix deckt offenbar nicht alle Agent-Typen/Provider-Kombinationen (Plan-Account `zai-start-plan` statt `individual-coding-plan` im Fehlertext). **Workaround-Kette bewährt:** (1) Task als `implementer` umformulieren (auch für read-only Scans — „nur lesende Befehle"), (2) sonst Director-Direktausführung. Sascha-Seitiger Dauer-Fix: ZCode-Einstellungen → GLM-5.3-Flash → Denkstufe explizit setzen (App-Setting, nicht config.json).
 
 **⚠️ 18.09. SPÄT (2. Beobachtung):** Implementer kann komplette Commits SELBST machen (62c3597 „Add STT and TTS pickers") und Dateien des Directors LÖSCHEN/ÜBERSCHREIBEN (mein LLMProviders.swift wurde durch seine AIProviders.swift ersetzt; seine Abschlus-Reports kamen teils gar nicht als Notification, Arbeit lag aber im Tree). Konsequenz: Nach implementer-Läufen IMMER `git log`/`git status` + Kollisions-Check (Dublett-Module, tote Referenzen) — siehe [[thomas-tasks-drei-recherchen]] Kollisions-Lektion.
+
+**⚠️ 05.10. VIERTE WURZEL (bewiesen, 2× Dispatch-Test):** agents-state.json hatte 16 Overrides auf den toten Provider `omniroute/glm-first` (reasoningLevel max) → „Cannot start subagent: Reasoning level unsupported … selection=omniroute/glm-first". Fix: alle 4 Override-Sektionen geleert (Backup `~/sicherungen/agents-state-20261005/`). **ABER: Auch NACH korrekter Disk-Konfig (Sascha hat via UI auf GLM-5.3-Flash umgestellt, verifiziert per cat) schlägt Dispatch weiter mit omniroute/glm-first fehl — die LAUFENDE App hält die alte Selektion im Speicher.** Einziger Fix = ZCode ⌘Q-Neustart; kein In-Session-Workaround bekannt (implementer-Workaround half diesmal auch nicht, gleicher Fehler). Merksatz: Override-Quelle = agents-state.json + Agent-Frontmatter + App-Speichercache — erst Neustart, dann Dispatch-Test mit 1-Zeilen-Task.
 
 **⚠️ 18.09. (3. Beobachtung):** implementer kann auch silent FERTIG sein und danach weitere Edits machen — TaskOutput „No task found" heißt nicht verloren; Arbeit lag im Tree (git log bewies seinen Picker-Commit). Und: gelöschte Director-Dateien können im Projekt-`_ARCHIV/` liegen (Kollisions-Auflösung des Agenten) — vor Re-Implementierung IMMER erst Archiv/Tree prüfen, sonst baut man Duplikate.
 

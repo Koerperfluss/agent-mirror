@@ -1,7 +1,7 @@
 ---
 app: zcode
 quelle: "saschalagler/cli/memories/projects/default-041661acc4598b22/memory/subagent-dispatch-implementer-workaround.md"
-stand: 2026-09-22
+stand: 2026-10-05
 tags: [spiegel, zcode]
 ---
 
@@ -32,5 +32,7 @@ metadata:
 **⚠️ 18.09. RÜCKFALL (Teilweise):** In der großen LokiVoice-Session warfen **`Explore` und `general-purpose` weiterhin „No reasoning level selected / selection=account:zai-start-plan/GLM-5.3-Flash"**, während **`implementer`-Dispatches parallel erfolgreich liefen** (3/3 implementer gestartet, 1 verifiziert geliefert). Der Hook-Fix deckt offenbar nicht alle Agent-Typen/Provider-Kombinationen (Plan-Account `zai-start-plan` statt `individual-coding-plan` im Fehlertext). **Workaround-Kette bewährt:** (1) Task als `implementer` umformulieren (auch für read-only Scans — „nur lesende Befehle"), (2) sonst Director-Direktausführung. Sascha-Seitiger Dauer-Fix: ZCode-Einstellungen → GLM-5.3-Flash → Denkstufe explizit setzen (App-Setting, nicht config.json).
 
 **⚠️ 18.09. SPÄT (2. Beobachtung):** Implementer kann komplette Commits SELBST machen (62c3597 „Add STT and TTS pickers") und Dateien des Directors LÖSCHEN/ÜBERSCHREIBEN (mein LLMProviders.swift wurde durch seine AIProviders.swift ersetzt; seine Abschlus-Reports kamen teils gar nicht als Notification, Arbeit lag aber im Tree). Konsequenz: Nach implementer-Läufen IMMER `git log`/`git status` + Kollisions-Check (Dublett-Module, tote Referenzen) — siehe [[thomas-tasks-drei-recherchen]] Kollisions-Lektion.
+
+**⚠️ 05.10. VIERTE WURZEL (bewiesen, 2× Dispatch-Test):** agents-state.json hatte 16 Overrides auf den toten Provider `omniroute/glm-first` (reasoningLevel max) → „Cannot start subagent: Reasoning level unsupported … selection=omniroute/glm-first". Fix: alle 4 Override-Sektionen geleert (Backup `~/sicherungen/agents-state-20261005/`). **ABER: Auch NACH korrekter Disk-Konfig (Sascha hat via UI auf GLM-5.3-Flash umgestellt, verifiziert per cat) schlägt Dispatch weiter mit omniroute/glm-first fehl — die LAUFENDE App hält die alte Selektion im Speicher.** Einziger Fix = ZCode ⌘Q-Neustart; kein In-Session-Workaround bekannt (implementer-Workaround half diesmal auch nicht, gleicher Fehler). Merksatz: Override-Quelle = agents-state.json + Agent-Frontmatter + App-Speichercache — erst Neustart, dann Dispatch-Test mit 1-Zeilen-Task.
 
 **⚠️ 18.09. (3. Beobachtung):** implementer kann auch silent FERTIG sein und danach weitere Edits machen — TaskOutput „No task found" heißt nicht verloren; Arbeit lag im Tree (git log bewies seinen Picker-Commit). Und: gelöschte Director-Dateien können im Projekt-`_ARCHIV/` liegen (Kollisions-Auflösung des Agenten) — vor Re-Implementierung IMMER erst Archiv/Tree prüfen, sonst baut man Duplikate.
