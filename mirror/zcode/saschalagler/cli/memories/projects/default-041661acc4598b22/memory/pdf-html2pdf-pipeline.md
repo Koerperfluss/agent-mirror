@@ -29,4 +29,6 @@ NODE_PATH=/opt/homebrew/lib/node_modules/omniroute/node_modules:/tmp/pdfdeps/nod
 
 **PDF-LESEN (15.09.):** Nutzer-PDF-Anhänge kann GLM-5.3-Flash NICHT direkt lesen ([1210] „Failed to parse the file / model does not support PDF input") → IMMER Text per **pdftotext** extrahieren (poppler installiert: `pdftotext -layout in.pdf out.txt`) und im Bash greppen; funktioniert zuverlässig auch bei 650-KB-PDFs. Bei sensiblen Anhängen (Bank/Sozialhilfe) NUR zielgerichtet nach Suchbegriffen greppen, Rest nicht auswerten.
 
+**EINFACHE MD→PDF-PIPELINE (05.10.2026 bewährt, u. a. Übergabe-Bündel 843 KB + mehrere Audits):** LibreOffice ist WEG (nicht installiert) — stattdessen `pandoc -f markdown-yaml_metadata_block -s in.md -o /tmp/x.html --metadata title="…"` + `"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless --disable-gpu --no-pdf-header-footer --print-to-pdf="out.pdf" "file:///tmp/x.html"`. **Fallstrick:** mehrere MDs mit `cat` konkatenieren → `---`-Blöcke werfen Pandoc-YAML-Fehler („Unknown alias `Erstellt`") → vorher `sed 's/^---$/_____/'` ODER `-f markdown-yaml_metadata_block` (beides zusammen getestet, grün). Leerzeichen in Pfaden: immer quoting + `cd` in Zielordner.
+
 Verwandt: [[feedback-doc-design-matters]] [[feedback-gui-not-cli]]
