@@ -7,6 +7,8 @@ tags: [spiegel, zcode]
 
 # Memory Index
 
+- [BrowserOS lokale Modelle](browseros-lokale-modelle-setup.md) — 05.10. Ollama Context 20000 in LaunchAgent gepatcht (Backup ~/sicherungen/ollama-20261005/); **qwen2.5-coder:7b = Hauptmodell für beide Browser**; LM Studio (gemma-4-12b-qat/glm-4.6v-flash, Port 1234) = 2. Option, nie parallel; CaskHub-Adopt erklärt (21 Casks, brew übernimmt Updates); OFFEN: Settings-Klicks in BrowserOS + neo
+
 - [Chipsi/Judicario Live-Audit 05.10.](chipsi-judicario-live-audit-2026-10-05.md) — **15:55 ENDSTAND**: Lane B selbst geholt (Safebox-Konnektor im Dialog VORBEREITET `safebox.openlaw.cc/mcp`+`k-live-…`, SafeTalk/Gedächtnis/Vorlagen = Chat-Kontext-Werkzeuge verlagert-nicht-gelöscht, Editor „Leeres Word-Dokument" öffnet NICHT=Bug?, Persona-Buttons George/Bella/Blitz) · **`14_ENTWICKLERTEAM_BRIEFING_2026-10-05.pdf`** = DAS Team-Dok (7 Abschnitte + 5 Fragen ans Team) · 34 Einwände/28 Screens: 20 erledigt/14 offen · Workflow dwfrun-6755b377 5/5 · Bündel `10_UEBERGABE_BUENDEL…pdf` 843 KB (12/12 Dateien ls-verifiziert) · Synthese-Bug WEG · JUD ~70 % · OFFEN: Briefing senden, BH-Melk 09.10., GO für Konsolidierung + LokiVoice-Testsuite (53 nur gezählt)
 
 - [Subagent-Dispatch: implementer-Workaround](subagent-dispatch-implementer-workaround.md) — **05.10. VIERTE Wurzel: 16 Overrides auf toten OmniRoute in agents-state.json geleert (Backup ~/sicherungen/agents-state-20261005/) — aber laufende App cacht alte Selektion → Dispatch schlägt weiter fehl, EINZIGER Fix = ZCode ⌘Q-Neustart (bewiesen 2×); Historie: Frontmatter-Fix 22.09., plain-name-Keys funktionieren NICHT; Check-Workflow dwfrun-efb4300b**

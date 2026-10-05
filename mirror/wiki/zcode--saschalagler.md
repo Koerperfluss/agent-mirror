@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-05 20:26 UTC
+Zuletzt gespiegelt: 2026-10-05 20:41 UTC
 
 ## AGENTS
 
@@ -4609,6 +4609,8 @@ Bei Fachfragen (z. B. Trainings-Übungen) fordert er explizit „clinical reason
 
 # Memory Index
 
+- [BrowserOS lokale Modelle](browseros-lokale-modelle-setup.md) — 05.10. Ollama Context 20000 in LaunchAgent gepatcht (Backup ~/sicherungen/ollama-20261005/); **qwen2.5-coder:7b = Hauptmodell für beide Browser**; LM Studio (gemma-4-12b-qat/glm-4.6v-flash, Port 1234) = 2. Option, nie parallel; CaskHub-Adopt erklärt (21 Casks, brew übernimmt Updates); OFFEN: Settings-Klicks in BrowserOS + neo
+
 - [Chipsi/Judicario Live-Audit 05.10.](chipsi-judicario-live-audit-2026-10-05.md) — **15:55 ENDSTAND**: Lane B selbst geholt (Safebox-Konnektor im Dialog VORBEREITET `safebox.openlaw.cc/mcp`+`k-live-…`, SafeTalk/Gedächtnis/Vorlagen = Chat-Kontext-Werkzeuge verlagert-nicht-gelöscht, Editor „Leeres Word-Dokument" öffnet NICHT=Bug?, Persona-Buttons George/Bella/Blitz) · **`14_ENTWICKLERTEAM_BRIEFING_2026-10-05.pdf`** = DAS Team-Dok (7 Abschnitte + 5 Fragen ans Team) · 34 Einwände/28 Screens: 20 erledigt/14 offen · Workflow dwfrun-6755b377 5/5 · Bündel `10_UEBERGABE_BUENDEL…pdf` 843 KB (12/12 Dateien ls-verifiziert) · Synthese-Bug WEG · JUD ~70 % · OFFEN: Briefing senden, BH-Melk 09.10., GO für Konsolidierung + LokiVoice-Testsuite (53 nur gezählt)
 
 - [Subagent-Dispatch: implementer-Workaround](subagent-dispatch-implementer-workaround.md) — **05.10. VIERTE Wurzel: 16 Overrides auf toten OmniRoute in agents-state.json geleert (Backup ~/sicherungen/agents-state-20261005/) — aber laufende App cacht alte Selektion → Dispatch schlägt weiter fehl, EINZIGER Fix = ZCode ⌘Q-Neustart (bewiesen 2×); Historie: Frontmatter-Fix 22.09., plain-name-Keys funktionieren NICHT; Check-Workflow dwfrun-efb4300b**
@@ -4864,6 +4866,32 @@ Verwandt: [[skill-install-conventions]]
 **Update 06.09. (Abend):** Skills konsolidiert zu **loki-dev** (Master `~/.agents/skills/loki-dev/`, 5 Modi INIT/BUILD/TAKEOVER/FINISH/MAP) — glm-init/glm-build/deve/lokiomnidevteam-plan/-execute sind jetzt 3-Zeilen-Wrapper (Autoclaws Originale in `SKILL.md.bak-20260906`). **Schnitt-0-Orchestrierungs-Gate** eingebaut (Pflicht-Schritt): Sequential-Thinking-Zerlegung → TodoWrite sofort → PLAN-Tabelle im Chat (Stufe|Agent|Skill|Modell|~Tokens|~Zeit|Dep) → PLAN.md im Projekt; Grund: Nutzervorwurf „Plan nie sichtbar" war berechtigt — Skills sind passiver Text ohne Enforcement, jetzt ist das Gate in loki-dev + STANDARD-SKILLS (alle Harnesses gesynct) verankert. Parallelitäts-Regel dynamisiert: Task-Graph-berechnet, Budget-Default 3 (Quota-Schutz ZAI-Caps), mehr mit 1-Zeilen-Begründung. **mac-operator** Agent angelegt (Agent 5 in openclaw.json, Guard-Roots 5) — bedient Programme/macOS, Stop-Regel: nie User-Services killen ohne GO.
 
 **Update 06.09. 17:20 („alles und abfahrt"):** (a) **Atlas-Takeover läuft LIVE im full-stack-builder-Chat**: Handoff (ZCODE_HANDOFF.md + TAKEOVER-Modus) war 17:05 gesendet; Agent bearbeitet ihn — **während Agent arbeitet NICHT in den Chat schreiben** (Verfälschung/Unterbrechung). AutoClaw-Projekt-Chats damit „grafisch sortiert" erfüllt: Atlas→full-stack-builder + Dienste→mac-operator; Rest läuft bewusst über ZCode. (b) **mac-operator-Chatverlauf liegt NICHT in `agents/<name>/sessions/*.jsonl`** — dort nur Heartbeat-Sessions („[OpenClaw heartbeat poll]"→„NO_REPLY"); echte Chats vermutlich in SQLite/trajectory. (c) **CG-vs-AX-Diskrepanz**: `CGWindowListCopyWindowInfo` kann existierende Fenster übersehen, während System-Events-AX sie meldet („windows: 1, frontmost: true") — bei Fenster-Suche IMMER auch AX fragen, nicht nur Quartz.
+
+## browseros-lokale-modelle-setup
+
+---
+name: browseros-lokale-modelle-setup
+description: 05.10. Ollama/LM-Studio-Setup für BrowserOS + BrowserOS neo —
+  Context 20000 in LaunchAgent gepatcht, GUI-Klicks in beiden Browsern offen
+metadata:
+  node_type: memory
+  type: project
+  originSessionId: sess_89b60861-cb00-4f8b-9681-cda41c4070c2
+---
+
+05.10.2026 — Sascha will **BrowserOS** und **BrowserOS neo** (beide in /Applications, separate Chromium-Profile) mit lokalen Modellen betreiben (Chat Mode; Doku: docs.browseros.com, Kritikpunkt = Context ≥ 15000–20000 nötig, sonst Agent-Loop).
+
+**Server-Seite FERTIG (verifiziert):**
+- Ollama 0.35.1 läuft als LaunchAgent `~/Library/LaunchAgents/com.sascha.ollama.plist` — **OLLAMA_CONTEXT_LENGTH=20000 eingetragen** (war Default 4096 = zu wenig), Backup: `~/sicherungen/ollama-20261005/`
+- Modelle vorhanden: `qwen2.5-coder:7b` (4,7 GB, passt in 16 GB RAM, empfohlen als Model ID) + `qwen2.5-coder:1.5b`
+- LM Studio-Server läuft zusätzlich auf `http://localhost:1234/v1/` mit `glm-4.6v-flash` + `gemma-4-12b-qat` (Alternativ-Weg via „OpenAI Compatible"-Karte, hält nur solange LM Studio offen ist)
+
+**OFFEN (GUI-Klicks, kann ich nicht per CLI):** je Browser in `chrome://browseros/settings` → Ollama-Karte **USE** → Model ID `qwen2.5-coder:7b` → Context Window `20000` → Save. Gleiche Klicks in BrowserOS UND BrowserOS neo. Empfehlung war Ollama (Autostart-Dienst) statt LM Studio. Auf Wunsch per computer-use machbar. Siehe auch [[mac-setup-16gb-m4]], [[sigma-local-ai-stack]].
+
+**05.10. Ergänzung (Sascha-Fragen zu CaskHub/Modell-Landschaft, erklärt):**
+- **CaskHub „Adopt"** = manuell installierte Apps (LM Studio 0.4.25+1, Spotify, ZCode, Tailscale, Rectangle, VLC 3.0.23, Google Drive 130→132, Warp sogar 1 Version älter) in Homebrew-Verwaltung überführen → brew updated sie zentral. 21 Casks stehen zur Adoption. Empfohlen adopten: LM Studio (Spotify-ARM64-Debakel-Prävention), Spotify, ZCode, Tailscale, Rectangle, VLC, Vorssaint. Adopt ändert nur Verwaltung, nicht die App.
+- **LM-Studio-Modelle (nutzbar, Port 1234):** `gemma-4-12b-qat` (6,66 GB GGUF, Vision+Tool-Calling) und `glm-4.6v-flash` (6,61 GB MLX, Vision, zai-org 9B). Auf 16 GB nie beide parallel laden. Alternative für Browser via „OpenAI Compatible"-Karte.
+- **Ollama-Modelle:** `qwen2.5-coder:7b` (4,7 GB) = Hauptmodell für beide Browser; `qwen2.5-coder:1.5b` (1 GB) = Mini-Fallback; glm-5.3-flash:cloud = Cloud, kein Lokalbetrieb. `gpt-oss-20b` (12 GB) als besserer Chat möglich, aber auf dem fanless Air 16 GB nicht alltagstauglich. **Finale Empfehlung: beide Browser auf Ollama + qwen2.5-coder:7b, LM Studio nur zum Spielen/Vision.**
 
 ## cdp-skill-browser-harness
 
