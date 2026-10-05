@@ -21,3 +21,9 @@ metadata:
 - Login der Live-App funktioniert im chrome-devtools-MCP-Browser (Session teilt Profil).
 
 Verwandt: [[thomas-tasks-drei-recherchen]], [[feedback-pruefinstanz-pflicht]]
+
+**Nachtrag 05.10. spät (Kollege-Arbeit + Live-Board):**
+- **AUDITS 1+2 GEFUNDEN:** `THOMAS_MASTER_2026.html` („🔍 Audit Nr. 2 — Judicario & Chipsi") + `AUDIT_2_TIEFENANALYSE.md` + `ZIELE_KANBAN_2026.html` liegen im verschachtelten Ordner unter `THOMAS - CHIPS JUDICARIO /Judicario_Sacha_Mac/Audit 2 + Sprachassistent/` (inkl. PRINT-PDF + KLARTEXT + v1-Archiv).
+- **LIVE-BOARD gebaut** (Sascha wollte „live Aufgabenverteilung visuell, mir egal wie"): `05_LIVE_BOARD/index.html` + `board_state.json`, Server `python3 -m http.server 8090` auf 127.0.0.1 (PID 80288, start-Command wiederholen wenn tot), Auto-Reload 15 s, 4 Spalten (Fertig/Läuft/Wartet-GO/Blocker).
+- **Cline-Kollegen-Prinzip:** Sascha läuft parallel eine zweite ZCode-Session (Provider ClinePass/MiMo-V2.6-Pro) als „Kollege" — die minet Prüfkopf/WhatsApp-Bilder (`LokiVoiceApp/Sources`: PruefkopfService.swift, SafeTalkContacts.swift, WhisperSTTEngine.swift, KeySelfService.swift von Aug 14–18). **Nicht doppelt arbeiten — vor Tasks prüfen, was Parallel-Sessions schon liefern.**
+- **Cline.app** existiert unter /Applications/Cline.app; Cline-TUI-CLI ist nur interaktiv (headless exit 137/9).
