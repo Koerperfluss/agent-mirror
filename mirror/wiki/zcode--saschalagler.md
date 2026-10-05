@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-05 12:02 UTC
+Zuletzt gespiegelt: 2026-10-05 12:17 UTC
 
 ## AGENTS
 
@@ -4888,6 +4888,19 @@ Verwandt: [[thomas-tasks-drei-recherchen]], [[feedback-pruefinstanz-pflicht]]
 - **Board läuft weiter** (Board-State 14:01 aktualisiert); Login der Live-App überlebt MCP-Browser-Restart (Cookie-Profil).
 - **Verhaltens-Lektion:** Sascha will ERGEBNIS-Arbeit statt Blocker-Meldungen — Subagent-Dispatch tot = direkt selbst arbeiten („Director-Direktmodus"), nie wieder „wartet auf Neustart" als Zustand melden.
 
+**Nachtrag 05.10. 14:09 — SASCHA HAT NEUGESTARTET, TEAM LÄUFT:**
+- **Dispatch wieder aktiv** („DISPATCH OK — Neustart wirksam", 17,5 s) → Blocker-Spalte im Board GELEERT (14:10).
+- **2 Hintergrund-Agents gestartet:** Agent 1 = Voll-Inventar des verschachtelten Doppel-Ordners → `03_FUNDINVENTAR_VERSCHACHTELT_2026-10-05.md`; Agent 2 = Kopiervorlage an Marinus/Reinhard (8 offene Punkte + Auto-Memory-Defaults + Support + E-Mail-Empfang) → `09_NACHRICHT_AN_MARINUS_REINHARD_2026-10-05.md`. Beide liefern Dateien in den Projektordner — bei Wiederaufnahme deren Existenz prüfen, nicht neu bauen.
+- **Nächster Schritt:** Sobald Lane B (Cline) + die 2 Agents liefern → alles in EIN Übergabe-PDF für Marinus/Reinhard/Thomas ziehen (JUD-Liste vs. Live-Stand vs. Saschas Einwände).
+
+**14:10 UPDATE:** Subagent-Dispatch nach Saschas ZCode-Neustart WIEDER DA (Test „DISPATCH OK", 17,5 s) — 2 Hintergrund-Agenten gestartet: Fundinventar verschachtelter Ordner (03_FUNDINVENTAR_VERSCHACHTELT_2026-10-05.md) + Marinus-Nachricht (09_NACHRICHT_AN_MARINUS_REINHARD_2026-10-05.md). Neu: 08_GEMEINSAME_LIVETESTUNG.md (Lane A ZCode fertig: Slash-Modi inkl. /pruefung mit Prüfinstanz-Persona „Luna", Zweitmeinung, Dokument-Editor mit E-Mail+WhatsApp, 500k-Kontext; Lane B = Cline-Kollege). Live-Board: 05_LIVE_BOARD/ + Server 127.0.0.1:8090 (PID 80288). Chronik-PDF mit Nachtrag neu gerendert.
+
+**14:15 UPDATE — Agent 2 FERTIG:** `09_NACHRICHT_AN_MARINUS_REINHARD_2026-10-05.md` (42 Zeilen, verifiziert: Anerkennung ~70 % + 8 offene Punkte inkl. A7 Pro-Preise = Verkaufsblocker + 3 Produkt-Wünsche Auto-Memory-Defaults/Support/E-Mail-Empfang, Fachbegriffe im Klartext erklärt) — **zum 1:1-Pasten in die WhatsApp-Gruppe bereit, Sascha muss nur noch senden.** Chronik-PDF neu gerendert (254 KB, Nachtrag 05.10. drin, grep-geprüft). Memory-File mit 14:10-Update ergänzt. Offen: Agent 1 (Fundinventar) liefert noch, Cline Lane B ausstehend — danach EIN Übergabe-PDF bauen.
+
+**14:25 UPDATE — Agent 1 FERTIG + VOLLGAS-WORKFLOW GESTARTET:**
+- **Fundinventar fertig:** `03_FUNDINVENTAR_VERSCHACHTELT_2026-10-05.md` — Nest-Ordner = **20.576 Dateien / 1,41 GiB**. Top-Funde: **`Legal_Ops_Zentrale/` 894 MB AKTIV** (letzte Änderung 05.10., ~90 echte Fallakten BH/BG Melk + Exekution 141_002_E_* + AMS/SVS + legal-ops-advisor Python/Firebase + NativeLegalOps Swift) → HOCHLAUFEN · `Judicario_Sacha_Mac/` 524 MB (Kern-Archiv) · `IRIS-AI/` 79 MB vollständiges Repo · **5 MD5-Dubletten** (MODELL_KATALOG 3× identisch, e409626ff…) · `Legal_Ops_Zentrale 2/` KOMPLETT LEER · `00_PAKET_FUER_THOMAS/THOMAS_PAKET_V2/LokiVoice-Thomas-Fix.zip` (02.10.) = aktuellstes Übergabepaket · `00_BEWEIS…2.png` NICHT identisch (nicht blind löschen) · Namens-Chaos: `PETER JUDICARIO 2/` (leer) vs `PETER JUDICARIO2/`.
+- **VOLLGAS-WORKFLOW dwfrun-6755b377 läuft** (CreateWorkflow, 7 Subagenten, Skript `.zcode/workflow-drafts/Vollgas-Team-Screens-Abgleich--Chronik--Prüfkopf--Checkliste.dwf.ts`): Screens-Prüfer A (52er+51(1-3)=14 Screens) + B (51(4-7)+50er=14) schreiben `10_EINWAENDE_ABGLEICH_TEIL_A/B.md`, je 1 Gegenprüfer spotcheckt URTEILE gegen Audit 3 · Chronik-Miner → `11_CLINE_SESSIONS_TABELLE.md` (aus /tmp/cline_thomas_sessions.txt) · Prüfkopf-Prüfer → `12_PRUEFKOPF_VERIFIKATION.md` · Checklisten-Schreiber → `13_QA_CHECKLISTE_JUD.md` · Gegenleser. Internes Live-Board-Artefakt „fortschritt" im Run. **Nach Abschluss: alles (Audit 3 + 06 Ausgrabung + 08 Protokoll + 09 Nachricht + 10–13) in EIN Übergabe-PDF für Marinus/Reinhard zusammenziehen.**
+
 ## cline-app-desktop-backend-fix
 
 ---
@@ -6548,6 +6561,8 @@ metadata:
 **⚠️ 05.10. VIERTE WURZEL (bewiesen, 2× Dispatch-Test):** agents-state.json hatte 16 Overrides auf den toten Provider `omniroute/glm-first` (reasoningLevel max) → „Cannot start subagent: Reasoning level unsupported … selection=omniroute/glm-first". Fix: alle 4 Override-Sektionen geleert (Backup `~/sicherungen/agents-state-20261005/`). **ABER: Auch NACH korrekter Disk-Konfig (Sascha hat via UI auf GLM-5.3-Flash umgestellt, verifiziert per cat) schlägt Dispatch weiter mit omniroute/glm-first fehl — die LAUFENDE App hält die alte Selektion im Speicher.** Einziger Fix = ZCode ⌘Q-Neustart; kein In-Session-Workaround bekannt (implementer-Workaround half diesmal auch nicht, gleicher Fehler). Merksatz: Override-Quelle = agents-state.json + Agent-Frontmatter + App-Speichercache — erst Neustart, dann Dispatch-Test mit 1-Zeilen-Task.
 
 **⚠️ 05.10. 14:05 — DISPATCH-TEST-KARTEN = UI-MÜLL (Sascha wütend):** JEDER fehlgeschlagene Dispatch-Test hinterlässt eine rote „SubAgent · … Failed"-Karte in Saschas ZCode-UI — 3 Tests hintereinander (13:10/13:39/13:50) = 3 rote Karten, er drehte durch („was ist damit du trottel"). **Regel: nie wieder wiederholte Dispatch-Tests — MAXIMAL 1 Test nach einem echten Fix, sonst gar keiner; Karten sind harmlos (nichts läuft/hängt), aber er sieht sie als Müll.** Antworten auf „was ist diese Karte": gescheiterter Startversuch, kein Prozess, keine Kosten.
+
+**✅ 05.10. 14:09 — FALL KOMPLETT GELÖST (Endbeweis):** Sascha hat ZCode neu geöffnet (⌘Q + Neustart) → 1-Zeilen-Test-Dispatch: **„DISPATCH OK — Neustart wirksam"** (general-purpose, 17,5 s). Die Kette ist damit bewiesen: Konfig auf Disk korrigieren (Overrides leeren ODER Sascha stellt im UI um) → **App-Neustart ist der unverzichtbare letzte Schritt** → Dispatch läuft. Danach sofort 2 Hintergrund-Agents gestartet (Fundinventar + Marinus-Nachricht) — liefen sauber. Merksatz final: disk-fix → restart → EIN Test → direkt Teams starten, keine weiteren Einzel-Tests (Karten-Regel oben).
 
 **⚠️ 18.09. (3. Beobachtung):** implementer kann auch silent FERTIG sein und danach weitere Edits machen — TaskOutput „No task found" heißt nicht verloren; Arbeit lag im Tree (git log bewies seinen Picker-Commit). Und: gelöschte Director-Dateien können im Projekt-`_ARCHIV/` liegen (Kollisions-Auflösung des Agenten) — vor Re-Implementierung IMMER erst Archiv/Tree prüfen, sonst baut man Duplikate.
 
