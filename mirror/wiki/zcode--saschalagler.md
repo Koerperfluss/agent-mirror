@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-04 23:50 UTC
+Zuletzt gespiegelt: 2026-10-05 00:04 UTC
 
 ## AGENTS
 
@@ -8968,7 +8968,7 @@ Beobachtet 06.09.2026 (Session mit Off-Peak-Ticket): Nach User-Paste „ZCode Er
 
 # Memory Index
 
-- [FFG 1.-Anlauf-Historie (Original-Unterlagen)](ffg-1-anlauf-historie-originalunterlagen.md) — 05.10. alle 25 Original-PDFs gelesen: Projekt.Start 66244243 15.09.2025 6.000 € bedingt → **08.07.2026 0 €**; Ablehnung 21.05.2026 (wörtliche Gründe) · **05.10. V6-FULLZUG: Antrag komplett NEU im exakten FFG-Zielformat des eingereichten Vollantrags 1b (Quellen: ffg-notary + Pitchdeck), 14 S. md5 00b338c50096; Sascha KEIN BSc (Studium unterbrochen, neuer CV); Leon=QA & Wissensvalidierung; unsignierte LOI raus; FINAL_entpackt abgeräumt→aus Zweit-Kopie „PAKET_68209806 2" gerettet; FINALE ZIP UPLOAD_eCall_SLOTS_V6_2026-10-05.zip md5 7880cb2a… + EINREICH_LISTE_V6**
+- [FFG 1.-Anlauf-Historie (Original-Unterlagen)](ffg-1-anlauf-historie-originalunterlagen.md) — 05.10. alle 25 Original-PDFs gelesen: Projekt.Start 66244243 15.09.2025 6.000 € bedingt → **08.07.2026 0 €**; Ablehnung 21.05.2026 (wörtliche Gründe) · **05.10. V6-FULLZUG: Antrag komplett NEU im exakten FFG-Zielformat des eingereichten Vollantrags 1b (Quellen: ffg-notary + Pitchdeck), 14 S. md5 00b338c50096; Sascha KEIN BSc (Studium unterbrochen, neuer CV); Leon=QA & Wissensvalidierung; unsignierte LOI raus; FINAL_entpackt abgeräumt→aus Zweit-Kopie gerettet · EINREICH-ORDNER = „FÖDERUNG/FFG Kleinprojekt Körperfluss Edu Anlauf 2/" (7 klar benannte PDFs KEIN ZIP + 00_LIES_MICH, V6-ZIP md5 7880cb2a… als Fallback) · FÖDERUNG aufgeräumt: 13 Objekte → _ARCHIV/AUFRAEUM_2026-10-05_02h (nichts gelöscht, Protokoll drin) · /bin/zsh-ENOENT-Ausfall → Desktop-Commander als Ersatz; typst-@-Falle**
 
 - [AutoClaw Sprache/Translocation-Fix](autoclaw-sprache-translocation-fix.md) — 02.10. zh-CN→en-US per settings.json (beide Apps), AutoClaw2-Quarantäne entfernt; App→Config-Ordner-Tabelle; Deutsch wird nicht angeboten
 
@@ -9603,6 +9603,12 @@ Parallele-Lane-Lektion: Parent-Session + Side-Chat arbeiteten GLEICHZEITIG im se
 - FINAL_entpackt des 1. Pakets wurde auf Disk ABGERAUMT — gerettet ueber Zweit-Kopie FFG_ReSubmission_PAKET_68209806 2/ (alle Slot-PDFs md5-verifiziert zurueckkopiert)
 - FINALE ZIP: UPLOAD_eCall_SLOTS_V6_2026-10-05.zip (661.436 B, md5 7880cb2a5e000b0194a46171346417dd, 7 PDFs, 3 CVs)
 - Einreich-Liste mit Proof-of-Concept: EINREICH_LISTE_V6_2026-10-05.md im Paketordner; Startdatum-Empfehlung Maske: 01.01.2027 (01.01.2026 liegt in der Vergangenheit)
+
+## ANLAUF-2-FINALORDNER + FÖDERUNG-AUFRÄUM (05.10.2026, ~02h, Saschas GO „räum auf")
+- **EINREICH-ORDNER = `FÖDERUNG/FFG Kleinprojekt Körperfluss Edu Anlauf 2/`** (Sascha benannte ihn so) — KEIN ZIP, 7 klar benannte PDFs: 01_VOLLANTRAG_Koerperfluss_Edu_68209806.pdf · 02_LITERATURVERZEICHNIS_23_Quellen_mit_DOI.pdf · 03a/03b/03c_CV_Sascha/Peter/Leon_1seitig.pdf · 04_MARKT_DACH_Pilotierungskonzept.pdf · 05_KAPITALNACHWEIS_Eigenmittel_38000EUR_Selbstauskunft.pdf + **00_LIES_MICH_EINREICHUNG.md** (md5-Tabelle + 6 eCall-Schritte). Voller Antragskopf eCall 68209806 auf FFG-Vorgabe-Struktur.
+- **FÖDERUNG aufgeräumt (13 Objekte → `_ARCHIV_FFG_WILDWUCHS_2026-10/AUFRAEUM_2026-10-05_02h/`, NICHTS gelöscht, Protokoll `00_AUFRAEUM_PROTOKOLL.md` im Archiv):** Paket-Zweit-Kopie „FFG_ReSubmission_PAKET_68209806 2/", „ffg part 2", antrag_v4.txt, Lose-PDF-Duplikate (Ablehnung/Kostenanerkennung/LitV4/xlstm-docx/„httpsecall…"-Langname), alte Strategien (Inklusions-Funding, Gemini, mp3, Text-CFF). Verbleib bewusst: Anlauf-2-Ordner · PAKET_68209806 (_BUILD/KANON/BEWEISKETTE/EINREICH_LISTE/V6-ZIP) · 1.-Antrag-Originale · ffg-notary · Businessplan-Ordner · Förderungen/google/HARVESTS/STUDIEN_BANK/ZOTERO · FRISTEN.md + 3 Mail-Drafts + antragsprofil.json.
+- **Rest-Verhalten (keine neuen Aufgaben erfinden):** Sascha braucht NUR ecall.ffg.at → 68209806 → Start 01.01.2027 → 7 PDFs in Slots → Portal-Erklärung → zeichnen (nur Sascha) → SUBMIT (bis 31.12.2026).
+- **Umgebung-Falle: /bin/zsh spawn ENOENT fiel mitten in der Session aus** (Bash-Tool tot) → Desktop-Commander start_process funktionierte weiter; typst-@-Falle: in typst-Markup `koerperfluss@gmail.com` wird als Label/Reference geparst → `#("koerperfluss@gmail.com")` als String-Literal schreiben.
 
 ## koerperfluss-edu-foerderpilot-takeover
 
