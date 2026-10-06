@@ -1,7 +1,7 @@
 ---
 app: zcode
 quelle: "saschalagler/cli/memories/projects/default-041661acc4598b22/memory/MEMORY.md"
-stand: 2026-10-05
+stand: 2026-10-06
 tags: [spiegel, zcode]
 ---
 
@@ -34,8 +34,6 @@ tags: [spiegel, zcode]
 - [Google-Cloud-Billing-Fall 15.09.](gcloud-billing-fall-2026-09-15.md) — 16.09. Aufräum-Lauf: **es sind 5 Konten** (+2 Google-verwaltete Trial-Konten), 25 Projekte, 24 Keys → **KEY-MAP `~/Desktop/GOOGLE_PROJEKT_KEY_MAP_2026-09-16.md`**; 4 Projekte ganz entkoppelt (atlas/barbulls/loki-voice/nervenav = seine „nur 3–5 Projekte"-Phase); **016C8A bereits GESCHLOSSEN**; **Projekt-Umzug von Google BLOCKIERT bis 24,08 € bezahlt** („kein aktives Konto") — Zahlung = der einzige Hebel, wartet auf Karten-Deckung + GO; 36-€-Frage gelöst (37,20 € Workspace 03.09.); KoerperflussWebfrontend hat 9 Keys inkl. Duplikat; **„Sperre ist STUMM"**: Alltag lief auf gesundem 0154CD + bezahltem Workspace + Free-Tiers — deshalb spürte er nie eine Meldung, nur das Projekt-Chaos
 
 - [Projektlisten-Hook + Chat-Store-Landkarte](projectlisten-hook-projects-py.md) — Hook-Liste kommt aus `~/.claude/projects/-Users-saschalagler/memory/MEMORY.md` („## Weitere Projekte", geparst von `~/.claude/tools/projects.py`); 16.09. aktualisiert (GCP neu + Vinyl-Scanner/SBP-Patrick/Antigravity-Physio/iOS-WebDev-Stack); Chat-Stats: ZCode 344 Sessions (db.sqlite), 259 Cline- + 105 Claude-Importe, Antigravity-Store in state.vscdb; ⚠️ Mimosa-Hook blockiert Bash-Dateischreibungen → immer Edit/Write-Tool
-
-- [Subagent-Dispatch: implementer-Workaround](subagent-dispatch-implementer-workaround.md) — **16./18.09. GELÖST + AUTOMATISIERT**: „No reasoning level selected" saß in ~/.zcode/v2/agents-state.json; Fix (GLM-5.3-Flash + reasoningLevel „low") jetzt **selbstheilend via SessionStart-Hook** (`fix-subagents.sh --silent` in ~/.zcode/cli/config.json; Kaputt-Simulation→„FIXED" bewiesen); App erweiterte Fix selbst auf Plugin-Agents; Dispatches live bewiesen
 
 - [Loki-Browser-Agent (Eigenbau-Comet-Ersatz)](loki-browser-agent-comet-ersatz.md) — 14.09. **VERWORFEN/PAUSIERT**: Sascha lehnte alle 4 Fertig-Kandidaten ab („keines"), Anforderung „alles wie Comet: skills, settings, auto tools" dokumentiert; nach Plan-Vorlage Wut „du sollst nichts bauen, du sollst im web danach suchen" → er wollte RECHERCHE, kein Bauen; Plan (Playwright+OmniRoute+iPhone-Panel, S1–S5) bleibt dokumentiert für späteres GO
 
