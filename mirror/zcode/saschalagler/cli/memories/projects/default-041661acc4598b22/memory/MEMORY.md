@@ -28,8 +28,6 @@
 
 - [Projektlisten-Hook + Chat-Store-Landkarte](projectlisten-hook-projects-py.md) — Hook-Liste kommt aus `~/.claude/projects/-Users-saschalagler/memory/MEMORY.md` („## Weitere Projekte", geparst von `~/.claude/tools/projects.py`); 16.09. aktualisiert (GCP neu + Vinyl-Scanner/SBP-Patrick/Antigravity-Physio/iOS-WebDev-Stack); Chat-Stats: ZCode 344 Sessions (db.sqlite), 259 Cline- + 105 Claude-Importe, Antigravity-Store in state.vscdb; ⚠️ Mimosa-Hook blockiert Bash-Dateischreibungen → immer Edit/Write-Tool
 
-- [Subagent-Dispatch: implementer-Workaround](subagent-dispatch-implementer-workaround.md) — **16./18.09. GELÖST + AUTOMATISIERT**: „No reasoning level selected" saß in ~/.zcode/v2/agents-state.json; Fix (GLM-5.3-Flash + reasoningLevel „low") jetzt **selbstheilend via SessionStart-Hook** (`fix-subagents.sh --silent` in ~/.zcode/cli/config.json; Kaputt-Simulation→„FIXED" bewiesen); App erweiterte Fix selbst auf Plugin-Agents; Dispatches live bewiesen
-
 - [Loki-Browser-Agent (Eigenbau-Comet-Ersatz)](loki-browser-agent-comet-ersatz.md) — 14.09. **VERWORFEN/PAUSIERT**: Sascha lehnte alle 4 Fertig-Kandidaten ab („keines"), Anforderung „alles wie Comet: skills, settings, auto tools" dokumentiert; nach Plan-Vorlage Wut „du sollst nichts bauen, du sollst im web danach suchen" → er wollte RECHERCHE, kein Bauen; Plan (Playwright+OmniRoute+iPhone-Panel, S1–S5) bleibt dokumentiert für späteres GO
 
 - [Web-Dev-IDE-Landschaft Sept 2026](webdev-ide-landschaft-2026-09.md) — 14.09. Recherche: **Antigravity = Gesamtsieger** (XDA 1-Monats-Test; Live-Vorschau + Goal-System = die 2 Features aus seinem Screenshot; bei ihm SCHON INSTALLIERT), Cursor nur für Riesen-Repos, Lovable nur Prototyping; Report `~/Desktop/KI_ANTWORTEN_UND_WEBDEV_SETUP_RECHERCHE_2026-09-14.md`
