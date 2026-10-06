@@ -1,6 +1,6 @@
 # web-template (cline-code)
 
-Zuletzt gespiegelt: 2026-10-06 16:57 UTC
+Zuletzt gespiegelt: 2026-10-06 17:11 UTC
 
 ## rule
 
