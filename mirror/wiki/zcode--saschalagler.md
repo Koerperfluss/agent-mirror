@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-08 12:59 UTC
+Zuletzt gespiegelt: 2026-10-08 13:13 UTC
 
 ## AGENTS
 
@@ -4611,7 +4611,7 @@ Bei Fachfragen (z. B. Trainings-Übungen) fordert er explizit „clinical reason
 
 - [BrowserOS lokale Modelle](browseros-lokale-modelle-setup.md) — 05.10. Ollama Context 20000 in LaunchAgent gepatcht (Backup ~/sicherungen/ollama-20261005/); **qwen2.5-coder:7b = Hauptmodell für beide Browser**; LM Studio (gemma-4-12b-qat/glm-4.6v-flash, Port 1234) = 2. Option, nie parallel; CaskHub-Adopt erklärt (21 Casks, brew übernimmt Updates); OFFEN: Settings-Klicks in BrowserOS + neo
 
-- [Chipsi/Judicario Live-Audit 05.10.](chipsi-judicario-live-audit-2026-10-05.md) — **15:55 ENDSTAND**: Lane B selbst geholt (Safebox-Konnektor im Dialog VORBEREITET `safebox.openlaw.cc/mcp`+`k-live-…`, SafeTalk/Gedächtnis/Vorlagen = Chat-Kontext-Werkzeuge verlagert-nicht-gelöscht, Editor „Leeres Word-Dokument" öffnet NICHT=Bug?, Persona-Buttons George/Bella/Blitz) · **`14_ENTWICKLERTEAM_BRIEFING_2026-10-05.pdf`** = DAS Team-Dok (7 Abschnitte + 5 Fragen ans Team) · 34 Einwände/28 Screens: 20 erledigt/14 offen · Workflow dwfrun-6755b377 5/5 · Bündel `10_UEBERGABE_BUENDEL…pdf` 843 KB (12/12 Dateien ls-verifiziert) · Synthese-Bug WEG · JUD ~70 % · OFFEN: Briefing senden, BH-Melk 09.10., GO für Konsolidierung + LokiVoice-Testsuite (53 nur gezählt)
+- [Chipsi/Judicario Live-Audit 05.10.](chipsi-judicario-live-audit-2026-10-05.md) — 16:05 FINAL: **eigentliches AUDIT nach Vorgabe `15_AUDIT_NACH_VORGABE_JUD_0-14`** (JUD 13+14 waren NIE gelesen — Lektion: Vorgabe-Dokumente VOLLSTÄNDIG extrahieren!): **9 ERLEDIGT / 3 TEILWEISE (JUD 1 Disclaimer auf /signup, JUD 6 Deep-Immer fehlt, JUD 14 Mail-Banner sperrt) / 3 OFFEN (JUD 5 Pro 999 €/Monat+11.000 €/Jahr fehlen=Verkaufsblocker, JUD 9 Briefkopf-Vollformular, JUD 13 Verantwortlicher=Quantum AI FZCO VAE statt deutsche GmbH=Datenschutz-Showstopper)** · 15:55: Lane B selbst geholt (Safebox-Konnektor VORBEREITET, Editor-Bug, Persona-Buttons George/Bella/Blitz) · Briefing-PDF 14 + Bündel-PDF 10 (843 KB) fertig · 06.10. LokiVoice-Thomas-Fix.zip gebündelt · 08.10. BH-Melk-Frist 09.10. als Kalender-FRIST-Event gewarnt (Unterlagen Sozialhilfeneu-Ordner verifiziert) · OFFEN: Briefing senden, 14 Einwände, GO Konsolidierung + Testsuite (53 nur gezählt)
 
 - [Subagent-Dispatch: implementer-Workaround](subagent-dispatch-implementer-workaround.md) — **05.10. VIERTE Wurzel: 16 Overrides auf toten OmniRoute in agents-state.json geleert (Backup ~/sicherungen/agents-state-20261005/) — aber laufende App cacht alte Selektion → Dispatch schlägt weiter fehl, EINZIGER Fix = ZCode ⌘Q-Neustart (bewiesen 2×); Historie: Frontmatter-Fix 22.09., plain-name-Keys funktionieren NICHT; Check-Workflow dwfrun-efb4300b**
 
@@ -4995,6 +4995,11 @@ Verwandt: [[thomas-tasks-drei-recherchen]], [[feedback-pruefinstanz-pflicht]]
 - **Ursache der Lücke:** Judicario.docx war NIE komplett gelesen (früher nur `head -80`) — **JUD 13 + JUD 14 fehlten in allen bisherigen Audits.** Vollsatz-Extraktion (textutil, Zeilen 75–200): **JUD 13 = „Verantwortlicher muss unsere deutsche GmbH rein" · JUD 14 = „Sicherheit und Anmeldung: E-Mail Bestätigung raus".** Regel: Vorgabe-Dokumente IMMER VOLLSTÄNDIG extrahieren bevor ein Punkt-für-Punkt-Audit geschrieben wird.
 - **DAS Audit:** `15_AUDIT_NACH_VORGABE_JUD_0-14_2026-10-05.md` + **.pdf (228611 B, ls-verifiziert)** — Muster-Urteil: **9 ERLEDIGT** (JUD 0,2,3,4,7,8,10,11,12) / **3 TEILWEISE** (JUD 1 Disclaimer noch auf /signup · JUD 6 „Deep immer an" fehlt · JUD 14 Tab sauber, aber Mail-Banner sperrt weiter im Chat: Fundstellen-Verify „AUSSTEHEND · E-MAIL BESTÄTIGEN" + 13-Fragen-Limit) / **3 OFFEN**: **JUD 5 Pro 999 €/Monat + 11.000 €/Jahr + Upgrade + 21-Tage-Ende fehlen komplett in der App** · **JUD 9 Briefkopf noch Vollformular** (7 Org-Typen, Kontakt, Branding, Typografie — kein Muster-Upload, kein An/Aus) · **JUD 13: Verantwortlicher steht live „Quantum AI FZCO" (VAE) statt deutsche GmbH = Vorgabe wörtlich verletzt, Datenschutz-Showstopper für Kanzlei-Kunden.**
 - Funktionale „geht nicht/warum"-Liste im Audit: Editor-Öffnet-nicht (2× inkl. programmatisch), E-Mail-Empfang inaktiv, Datenkontrollen+Sicherheit alle BALD/disabled, kein Support, Auto-Memory-Root-Cause; Synthese-Bug WEG.
+
+**Nachtrag 06.10.–08.10.:**
+- **06.10.:** `LokiVoice-Thomas-Fix.zip` liegt gebündelt im Projektordner bereit (Fix für Thomas verpackt; aus Tages-Routine-Sweep).
+- **08.10.:** **BH-Melk-Frist 09.10.** wurde per Tages-Routine als eigenes FRIST-Ganztages-Event im Kalender angelegt (UID 5483233B-00EF-44A6-A89A-823B8D16D691). Unterlagen per mdfind verifiziert: `~/Desktop/Sozialhilfeneu/id austria/rechnugrn/Exekutionsverfahren Melk 22.07/BH MELK SOZUIALHILFE/` (Hilfsfonds_Antrag_FINAL, Belege inkl. 10_BHMelk_Verwergsstrafen_257EUR.pdf) + Gewerbemeldung in AMS-Ordner + GoogleDrive (`GewerbemeldungBHMelk:Datenverarbeitung&Infotechnik.pdf`).
+- Weiter offen: Briefing 14 + Nachricht 09 an Marinus/Reinhard senden · 14 Einwände (20/34 erledigt) · GO Ordner-Konsolidierung · LokiVoice-Testsuite (53 nur gezählt) · JUD 5/9/13 (Pricing, Briefkopf, deutsche GmbH).
 
 ## cline-app-desktop-backend-fix
 
