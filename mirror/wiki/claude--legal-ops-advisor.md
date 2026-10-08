@@ -1,6 +1,6 @@
 # legal-ops-advisor (claude)
 
-Zuletzt gespiegelt: 2026-10-08 14:10 UTC
+Zuletzt gespiegelt: 2026-10-08 14:24 UTC
 
 ## SKILL
 
