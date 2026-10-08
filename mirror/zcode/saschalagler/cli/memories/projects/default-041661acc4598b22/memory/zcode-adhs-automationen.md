@@ -1,6 +1,6 @@
 ---
 name: zcode-adhs-automationen
-description: "13.09.–07.10. LIVE: EINE Automation mit ALLEN 6 Briefs (cron `0 9,10,15,16,21`, Zweige per Uhrzeit+Wochentag; niemals 6 separate — Nutzer-Ziel!) + Engine 7/7 PASS; **30 Läufe, alle 6 Zweige bewiesen · ⚠️ P1 01.10.: loki-voice-Sicherung 7fdbf2d im PARENT loki-ki NICHT verankert (M loki-voice) → auf „GO pointer-fix" · DOKU-SYNC 30.09.+07.10.: 2 Findings bestätigt (assi-README brief/feierabend + lib/push.sh, auf „GO doku-fix"; brief.py neues mtime von fremder Session) · ⚠️ UHR-ANOMALIE dokumentiert (date-Output = Wahrheit, Zukunftdatei 06.10. beim echten Datum zum gültigen Logbuch umgebaut, Logbuch vor Append NEU lesen) · BH-Melk-Frist 09.10. im Brief gewarnt · offen auf GO: Wecker + Deutsch-Patch-Recovery + GO doku-fix (3 Zeilen) + GO pointer-fix; 1 Task pro Chat-Limit"
+description: "13.09.–08.10. LIVE: EINE Automation mit ALLEN 6 Briefs (cron `0 9,10,15,16,21`, Zweige per Uhrzeit+Wochentag; niemals 6 separate — Nutzer-Ziel!) + Engine 7/7 PASS; **32 Läufe, alle 6 Zweige bewiesen · ⚠️ P1 01.10.: loki-voice-Sicherung 7fdbf2d im PARENT loki-ki NICHT verankert (M loki-voice) → auf „GO pointer-fix" · DOKU-SYNC 30.09.+07.10.: 2 Findings bestätigt (assi-README brief/feierabend + lib/push.sh, auf „GO doku-fix"; brief.py neues mtime von fremder Session) · ⚠️ UHR-ANOMALIE dokumentiert (date-Output = Wahrheit, Zukunftdatei 06.10. beim echten Datum zum gültigen Logbuch umgebaut, Logbuch vor Append NEU lesen) · BH-Melk-Frist 09.10.: FRIST-Ganztages-Event im Kalender bestätigt (UID 5483233B) · offen auf GO: Wecker + Deutsch-Patch-Recovery + GO doku-fix (3 Zeilen) + GO pointer-fix; 1 Task pro Chat-Limit"
 metadata:
   node_type: memory
   type: project
@@ -156,4 +156,9 @@ metadata:
 - **07.10. Abend (A5D5D9FE-18BC-49B3-B4C9-2CF72D886C35):** 2 Läufe tagsüber verpasst (09:00+15:00-Doku-Sync, Mac aus) — **Doku-Sync im Abend-Lauf nachgeholt**: beide README-Findings (brief/feierabend + push.sh) weiterhin offen, `lib/brief.py` neues mtime von fremder Session (unbestätigt). 0 Commits, 6 Antigravity-Brains.
 - **08.10. 15:0x Catch-up (Do):** Tagesplan fehlte + **BH-Melk-Frist MORGEN** → Logbuch `2026-10-08.md` + Tagesplan-Event `3F6BEAD0-0A0D-4E3F-9968-F396A937B351` + **eigenes FRIST-Ganztages-Event für 09.10.** UID `5483233B-00EF-44A6-A89A-823B8D16D691`. BH-Melk-Unterlagen per mdfind verifiziert: `~/Desktop/Sozialhilfeneu/…/BH MELK SOZUIALHILFE/` (Hilfsfonds_Antrag_FINAL, Belege) + Gewerbemeldung (AMS + GoogleDrive). Frist stammt aus Judicario-Audit-Logbuch/Thomas-Memory.
 - Bilanz 13.09.–08.10.: **31 Läufe**, alle 6 Zweige mehrfach bewiesen; verpasste Läufe = 100 % Schlaf-Fälle. Offene GOs: **Wecker · doku-fix (3 Zeilen) · pointer-fix · Deutsch-Patch-Recovery** + Sascha-Aktionen (Briefing senden, BH-Melk bis 09.10.).
+
+## Zweiunddreißigster Lauf (Do 08.10. 16:0x — No-op PASS + FRIST-Event im Kalender bestätigt)
+- 16:00-Donnerstag-Slot korrekt 1-Zeilen-No-op (Release-Brief nur freitags).
+- **FRIST-Event live bestätigt:** Calendar-`whose`-Query nach „FRIST" fand **„🚨 FRIST: BH-Melk-Dringlichkeitsantrag"** (UID 5483233B…) — daneben nur das themenfremde „Start Bewerbungsfrist FH Wien". Event sitzt also sauber für 09.10. im Kalender „Kalender" und ist auf Mac+iPhone sichtbar.
+- Bilanz: 32 Läufe; GOs unverändert (Wecker · doku-fix · pointer-fix · Deutsch-Patch-Recovery) + Sascha-Aktion BH-Melk (Frist 09.10.) + Briefing-Versand.
 
