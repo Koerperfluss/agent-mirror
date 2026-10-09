@@ -1,13 +1,13 @@
 ---
 app: zcode
 quelle: "saschalagler/cli/memories/projects/default-041661acc4598b22/memory/zcode-adhs-automationen.md"
-stand: 2026-10-08
+stand: 2026-10-09
 tags: [spiegel, zcode]
 ---
 
 ---
 name: zcode-adhs-automationen
-description: "13.09.–08.10. LIVE: EINE Automation mit ALLEN 6 Briefs (cron `0 9,10,15,16,21`, Zweige per Uhrzeit+Wochentag; niemals 6 separate — Nutzer-Ziel!) + Engine 7/7 PASS; **32 Läufe, alle 6 Zweige bewiesen · ⚠️ P1 01.10.: loki-voice-Sicherung 7fdbf2d im PARENT loki-ki NICHT verankert (M loki-voice) → auf „GO pointer-fix" · DOKU-SYNC 30.09.+07.10.: 2 Findings bestätigt (assi-README brief/feierabend + lib/push.sh, auf „GO doku-fix"; brief.py neues mtime von fremder Session) · ⚠️ UHR-ANOMALIE dokumentiert (date-Output = Wahrheit, Zukunftdatei 06.10. beim echten Datum zum gültigen Logbuch umgebaut, Logbuch vor Append NEU lesen) · BH-Melk-Frist 09.10.: FRIST-Ganztages-Event im Kalender bestätigt (UID 5483233B) · offen auf GO: Wecker + Deutsch-Patch-Recovery + GO doku-fix (3 Zeilen) + GO pointer-fix; 1 Task pro Chat-Limit"
+description: "13.09.–09.10. LIVE: EINE Automation mit ALLEN 6 Briefs (cron `0 9,10,15,16,21`, Zweige per Uhrzeit+Wochentag; niemals 6 separate — Nutzer-Ziel!) + Engine 7/7 PASS; **33 Läufe, alle 6 Zweige bewiesen · 09.10. FRIST-Tag: Übergabe-an-Reinhard-PDF fertig gebündelt · BH-Melk Einreich-Status aus Systemen NICHT ableitbar (Sascha muss prüfen) · ⚠️ P1 01.10.: loki-voice-Pointer 7fdbf2d im PARENT loki-ki NICHT verankert → auf „GO pointer-fix" · DOKU-SYNC 30.09.+07.10.: 2 Findings (assi-README brief/feierabend + lib/push.sh, auf „GO doku-fix") · UHR-ANOMALIE: date-Output = Wahrheit, Logbuch vor Append NEU lesen · offen auf GO: Wecker + Deutsch-Patch-Recovery + doku-fix + pointer-fix; 1 Task pro Chat-Limit"
 metadata:
   node_type: memory
   type: project

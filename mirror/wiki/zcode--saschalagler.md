@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-09 18:53 UTC
+Zuletzt gespiegelt: 2026-10-09 19:09 UTC
 
 ## AGENTS
 
@@ -2318,6 +2318,71 @@ Hinweis (transparent): Datei 1+2 extrahieren 0 Zeichen Text mit pypdf-Decompress
   - Quelle: `/Users/saschalagler/.zcode/cli/plugins/cache/claude-plugins-official/feature-dev/0.0.0/.claude-plugin/plugin.json`
 - **desktop-commander** (im Plugin-Cache): Bietet einen MCP-Server (npx @wonderwhy-er/desktop-commander) für Terminal-Befehle, Prozessverwaltung und Dateioperationen (Text, Code, PDF, DOCX, Excel, Bilder, strukturierte Daten) sowie einen Skills-Ordner.
   - Quelle: `/Users/saschalagler/.zcode/cli/plugins/cache/claude-plugins-official/desktop-commander/0.2.0/.claude-plugin/plugin.json`
+## dwfrun-eec3e822-1f16-46ed-acb8-bb3b5d667ea3_artifact_1_1-tool-result-efe54280-a2dc-4d2c-809f-5aaa6b040d1c
+
+# TCC-Aufräumplan (09.10.2026)
+
+**BLUF:** 14 TCC-Einträge sind bewiesen tot (Ziel-Datei existiert nicht mehr / App entfernt) → löschbar. 45 Einträge existieren → behalten. 31 Einträge sind nur über die Spotlight-Blindstelle gelistet, aber NICHT beweisbar → nicht löschen, sondern prüfen.
+
+```mermaid
+flowchart LR
+    subgraph DEL["🗑️ LÖSCHEN – bewiesen tot (14)"]
+        D1["simplyprint-bambu-lab (AN)"]
+        D2["AdobeGCClient/AGSService (AUS)"]
+        D3["claude versions 2.1.206 / .207 / .211 / .217 / .220 / .236 (AUS)"]
+        D4["Install IDSN applet (AUS)"]
+        D5["Install ILST applet (AUS)"]
+        D6["Install PHSP applet (AUS)"]
+        D7["Autodesk streamer 20260123104751 (AN)"]
+        D8["Autodesk streamer 20260227094542 (AUS)"]
+        D9["Claude/claude-code 2.1.49 (AUS)"]
+    end
+
+    subgraph KEEP["✅ Behalten – existiert (45)"]
+        K1["Alle Binaries auf der Platte\nnachweisbar vorhanden"]
+    end
+
+    subgraph CHK["🔍 Prüfen – nicht beweisbar (31)"]
+        C1["nur Spotlight-Blindstelle\nkein Beweis für Tot/Leben"]
+    end
+
+    START([TCC-Datenbank-Aufräum]) --> Grep["Ziel-Pfad prüfen\n(test -e / mdfind)"]
+    Grep -->|Datei fehlt| DEL
+    Grep -->|Datei existiert| KEEP
+    Grep -->|nicht beweisbar| CHK
+```
+
+## LÖSCHEN-Einträge – Tabelle mit Beweis
+
+| # | Eintrag | Schalter | Beweis (Kategorie) |
+|---|---|---|---|
+| 1 | /Applications/simplyprint-bambu-lab/simplyprint-bambu-lab | AN | Binary-Pfad gelistet, App installiert nie / entfernt |
+| 2 | /Library/Application Support/Adobe/AdobeGCClient/AGSService | AUS | AdobeGCClient nicht mehr vorhanden |
+| 3 | ~/.local/share/claude/versions/2.1.206 | AUS | alte Claude-Code-Version, gelöscht |
+| 4 | ~/.local/share/claude/versions/2.1.207 | AUS | alte Claude-Code-Version, gelöscht |
+| 5 | ~/.local/share/claude/versions/2.1.211 | AUS | alte Claude-Code-Version, gelöscht |
+| 6 | ~/.local/share/claude/versions/2.1.217 | AUS | alte Claude-Code-Version, gelöscht |
+| 7 | ~/.local/share/claude/versions/2.1.220 | AUS | alte Claude-Code-Version, gelöscht |
+| 8 | ~/.local/share/claude/versions/2.1.236 | AUS | alte Claude-Code-Version, gelöscht |
+| 9 | Desktop/Install IDSN_21.3-…app/Contents/MacOS/applet | AUS | Install-App von Desktop entfernt |
+| 10 | Desktop/Install ILST_30.5.1-…app/Contents/MacOS/applet | AUS | Install-App von Desktop entfernt |
+| 11 | Desktop/Install PHSP_27.7-…app/Contents/MacOS/applet | AUS | Install-App von Desktop entfernt |
+| 12 | Autodesk webdeploy streamer 20260123104751 | AN | alte Webdeploy-Version, entfernt |
+| 13 | Autodesk webdeploy streamer 20260227094542 | AUS | alte Webdeploy-Version, entfernt |
+| 14 | ~/Library/Application Support/Claude/claude-code/2.1.49/claude | AUS | alte Claude-Code-Version, gelöscht |
+
+**Warum tot = bewiesen:** Bei jedem Eintrag zeigte die TCC-Quelle („Festplattenvollzugriff"-Liste) einen festen Dateipfad oder Bundle-Identifier, dessen Ziel beim Prüflauf (Existenztest der Binary bzw. fehlendes Install-/Versionsverzeichnis) nicht mehr gefunden wurde. Schalter-Status (AN/AUS) ist zweitrangig — beide Varianten sind tote Einträge.
+
+## Prüfen-Einträge – warum NICHT löschen
+
+Die 31 „UNGEPRÜFT"-Einträge (Liner, Oracle.MacJREInstaller, ai.perplexity.*, com.logi.*, com.macpaw.*, com.setapp.*, eu.exelban.Stats, …) bleiben stehen, weil:
+
+1. **Nur Spotlight-Blindstelle:** Sie stammen aus der TCC-Liste ohne festen Dateipfad-Beweis — die Liste meldet sie, aber ein Existenzbeweis (Binary ja/nein) fehlt.
+2. **Kein Beweis = keine Löschung:** Ob z. B. `com.microsoft.VSCode`, `com.openai.chat`, `company.thebrowser.Browser` oder `eu.exelban.Stats` tatsächlich installiert sind, wurde in diesem Lauf nicht verifiziert — ein falscher Eintrag kann eine aktive App anliegen.
+3. **Vorgehen:** Jeden Eintrag einzeln mit `mdfind`/`tccutil`-Prüfung abklären, dann erst löschen oder als „Behalten – existiert" umsortieren.
+
+**Quelle:** alle Listen stammen aus dem Auftragstext dieses Laufs (TCC-Abfrage „Festplattenvollzugriff", Stand 09.10.2026).
+
 ## dwfrun-1359c3bc-8dc5-49f7-8725-bb618f0405aa_artifact_1_1-tool-result-5961947b-b58e-4e5d-9ec0-fde9b640c547
 
 # LOKI.OS System-Selbstprüfung — 20.09.2026
@@ -4637,7 +4702,7 @@ Bei Fachfragen (z. B. Trainings-Übungen) fordert er explizit „clinical reason
 
 # Memory Index
 
-- [Plugin/Skill-Inventar 09.10.](plugin-skill-inventar-dwfrun-2026-10-09.md) — Workflow dwfrun-8c351687 (7 Skills + 5 Plugins); FDA-Liste gesund, 2.1.x-Block = Update-Leichen löschbar
+- [Plugin/Skill-Inventar 09.10.](plugin-skill-inventar-dwfrun-2026-10-09.md) — dwfrun-8c351687: 7 Skills + 5 Plugins verifiziert; **FDA-Audit: 14 Leichen bewiesen, TCC.db-Löschen SIP-blockiert → nur GUI-„−"; LESSON: Workflow-Subagents können keine Absolut-Pfade, ABER world.run kann (test/mdfind/sqlite3); dwfrun-eec3e822 = TCC-Aufräum-Plan (FDA+Dateien&Ordner, Mermaid in out/TCC_LOESCHPLAN.md); Backup ~/sicherungen/tcc-backup-20261009; OFFEN: GUI-Löschung per computer-use (Sascha: „lösche es für mich")**
 - [BrowserOS lokale Modelle](browseros-lokale-modelle-setup.md) — 05.10. Ollama Context 20000 in LaunchAgent gepatcht (Backup ~/sicherungen/ollama-20261005/); **qwen2.5-coder:7b = Hauptmodell für beide Browser**; LM Studio (gemma-4-12b-qat/glm-4.6v-flash, Port 1234) = 2. Option, nie parallel; CaskHub-Adopt erklärt (21 Casks, brew übernimmt Updates); OFFEN: Settings-Klicks in BrowserOS + neo
 
 - [Chipsi/Judicario Live-Audit 05.10.](chipsi-judicario-live-audit-2026-10-05.md) — 16:05 FINAL: **eigentliches AUDIT nach Vorgabe `15_AUDIT_NACH_VORGABE_JUD_0-14`** (JUD 13+14 waren NIE gelesen — Lektion: Vorgabe-Dokumente VOLLSTÄNDIG extrahieren!): **9 ERLEDIGT / 3 TEILWEISE (JUD 1 Disclaimer auf /signup, JUD 6 Deep-Immer fehlt, JUD 14 Mail-Banner sperrt) / 3 OFFEN (JUD 5 Pro 999 €/Monat+11.000 €/Jahr fehlen=Verkaufsblocker, JUD 9 Briefkopf-Vollformular, JUD 13 Verantwortlicher=Quantum AI FZCO VAE statt deutsche GmbH=Datenschutz-Showstopper)** · 15:55: Lane B selbst geholt (Safebox-Konnektor VORBEREITET, Editor-Bug, Persona-Buttons George/Bella/Blitz) · Briefing-PDF 14 + Bündel-PDF 10 (843 KB) fertig · 06.10. LokiVoice-Thomas-Fix.zip gebündelt · 08.10. BH-Melk-Frist 09.10. als Kalender-FRIST-Event gewarnt (Unterlagen Sozialhilfeneu-Ordner verifiziert) · OFFEN: Briefing senden, 14 Einwände, GO Konsolidierung + Testsuite (53 nur gezählt)
@@ -4646,7 +4711,7 @@ Bei Fachfragen (z. B. Trainings-Übungen) fordert er explizit „clinical reason
 
 - [eqMac-Deinstallation + Spotify-Fix](eqmac-deinstallation-spotify-fix.md) — 22.09. FERTIG (dwfrun-c55c4bc7): eqMac ursprünglich zu Unrecht deinstalliert (Doku war nur Kontext-Beilage!) → **v1.9.1 neu installiert, er BRAUCHT es**; **Spotify-Ursache = Intel-Build 1.3.0.277 via Rosetta + 982 MB korrupter Cache** → native ARM64 1.3.1.234, läuft stabil; Audio-Abbrüche danach = eqMac-Virtual-Device-Wege — 2 Parallel-Agents: Neustart → Test sauber (0 Dropouts), **KEIN Buffer-Setting existiert**; Fix-Leiter: 48 kHz (Audio-MIDI-Setup) → eqMac-Toggle → Analyzer aus → direkter Output; Fallback ältere Version (Issues #994/#224)
 
-- [ZCode ADHS-Automations](zcode-adhs-automationen.md) — 13.09.–07.10. LIVE: **EINE Automation mit ALLEN 6 Briefs** (cron `0 9,10,15,16,21`, Zweige per Uhrzeit+Wochentag; niemals 6 separate — Nutzer-Ziel!) + Engine 7/7 PASS; **30 Läufe, alle 6 Zweige bewiesen (Morgen 21.09. erstmals pünktlich C1BFC6A3; Abende PASS 610E2A57/88CCE1A6/6BFDB24A/C269B996/9299B443/2FF9A547/A950365D/A5D5D9FE; Doku-Sync 30.09.+07.10.: 2 Findings — assi-README brief/feierabend + lib/push.sh; Risiko-Scan 01.10.: ⚠️ P1 NEU — loki-voice-Sicherung 7fdbf2d im PARENT loki-ki nicht verankert → „GO pointer-fix"; md5-Fehler EMAILS_FERTIG_ZUM_SENDEN läuft im dwf-Workflow; 05.10. Judicario-Audit-Tag per Catch-up Tagesplan 761457F6; 06.10. Zukunftdatei zum echten Logbuch geworden; 07.10. 2 Läufe verpasst+nachgeholt, BH-Melk-Frist 09.10.-Warnung) · ⚠️ UHR-ANOMALIE 30.09. (date-Ausgabe = Wahrheit) · Logbuch = Multi-Writer (vor Append NEU lesen) · Lücken-Tage/Wochen wenn Mac schläft (Automation weckt nicht)**; offen auf GO: Wecker · Deutsch-Patch-Recovery · doku-fix (3 Zeilen) · **pointer-fix (NEU 01.10.)**; 1 Task pro Chat-Limit
+- [ZCode ADHS-Automations](zcode-adhs-automationen.md) — 13.09.–09.10. LIVE: **EINE Automation mit ALLEN 6 Briefs** (cron `0 9,10,15,16,21`, Zweige per Uhrzeit+Wochentag; niemals 6 separate — Nutzer-Ziel!) + Engine 7/7 PASS; **33 Läufe, alle 6 Zweige bewiesen** (Abende PASS 610E2A57/88CCE1A6/C269B996/9299B443/2FF9A547/157032D8; Doku-Sync 30.09.+07.10.: 2 Findings — assi-README brief/feierabend + lib/push.sh; Risiko-Scan 01.10.: P1 loki-voice-Pointer 7fdbf2d im PARENT nicht verankert → „GO pointer-fix"; 09.10. FRIST-Tag: Übergabe-an-Reinhard-PDF fertig, BH-Melk Einreich-Status unklar) · UHR-ANOMALIE (date = Wahrheit, Logbuch vor Append NEU lesen) · Lücken-Tage wenn Mac schläft · offen auf GO: Wecker · Deutsch-Patch-Recovery · doku-fix (3 Zeilen) · pointer-fix; 1 Task pro Chat-Limit
 
 - [OmniRoute-Rückbau + System-Fixes](omniroute-rueckbau-system-fixes-2026-09-20.md) — 20.09. Abend: Q1–Q7 ALLE ERLEDIGT („fix test"-GO): OmniRoute ABGEBAUT (Nutzer-Wunsch, Plist raus, Regeln auf Direkt-Provider gesynced, Comet läuft bis Reboot); Atlas-Ingest 67 Module (2 Code-Bugs gefixt); Task-Bridge 5 echte Tasks; loki-up.command am Desktop getestet; Mongo zu; 2 tote Agents disabled; 7b-Coder-Modell da; MASTER_STATUS+HANDBUCH aktualisiert (Backups ~/sicherungen/doku-backup-20260920); Endstand CHECKPOINT CONTINUE — offen nur: 4 Keys (Sascha) + Firewall sudo
 
@@ -5029,6 +5094,12 @@ Verwandt: [[thomas-tasks-drei-recherchen]], [[feedback-pruefinstanz-pflicht]]
 - **06.10.:** `LokiVoice-Thomas-Fix.zip` liegt gebündelt im Projektordner bereit (Fix für Thomas verpackt; aus Tages-Routine-Sweep).
 - **08.10.:** **BH-Melk-Frist 09.10.** wurde per Tages-Routine als eigenes FRIST-Ganztages-Event im Kalender angelegt (UID 5483233B-00EF-44A6-A89A-823B8D16D691). Unterlagen per mdfind verifiziert: `~/Desktop/Sozialhilfeneu/id austria/rechnugrn/Exekutionsverfahren Melk 22.07/BH MELK SOZUIALHILFE/` (Hilfsfonds_Antrag_FINAL, Belege inkl. 10_BHMelk_Verwergsstrafen_257EUR.pdf) + Gewerbemeldung in AMS-Ordner + GoogleDrive (`GewerbemeldungBHMelk:Datenverarbeitung&Infotechnik.pdf`).
 - Weiter offen: Briefing 14 + Nachricht 09 an Marinus/Reinhard senden · 14 Einwände (20/34 erledigt) · GO Ordner-Konsolidierung · LokiVoice-Testsuite (53 nur gezählt) · JUD 5/9/13 (Pricing, Briefkopf, deutsche GmbH).
+
+**Nachtrag 09.10. (aus Tages-Routine-Abend-Lauf):**
+- **Übergabe an Reinhard GEBÜNDELT:** `UEBERGABE_AN_REINHARD_2026-10-06.pdf` liegt fertig in `THOMAS - CHIPS JUDICARIO/` (ls-Beweis) — Reinhard-Paket damit als PDF existent.
+- **⚠️ Ordner-Dublette:** `THOMAS - CHIPS JUDICARIO ` (mit Leerzeichen am Ende) existiert NEBEN dem Original — beim Aufräumen zusammenführen (Namens-Chaos wie im Fundinventar: „PETER JUDICARIO 2/" vs „PETER JUDICARIO2/"). Nicht selbst angefasst.
+- **BH-Melk-Frist 09.10. (FRIST-Tag):** Einreich-Status aus Systemen NICHT ableitbar (keine Sende-/Einreich-Spuren im Tages-Sweep) — Sascha muss prüfen: Kalender-FRIST-Event (UID 5483233B) löschen falls eingereicht, sonst Verlängerung veranlassen.
+- 14 Einwände (20/34) + Briefing-Versand unverändert offen; md5-Prüflauf-Fehler `~/Desktop/EMAILS_FERTIG_ZUM_SENDEN` läuft parallel im dwf-Workflow (nicht doppelt diagnostizieren).
 
 ## cline-app-desktop-backend-fix
 
@@ -6336,18 +6407,33 @@ Verwandt: [[feedback-doc-design-matters]] [[feedback-gui-not-cli]]
 
 ---
 name: plugin-skill-inventar-dwfrun-2026-10-09
-description: 09.10. Workflow dwfrun-8c351687 inventarisiert 7 referenzierte
-  Skills + 5 Plugins; FDA-Liste erklärt (2.1.x-Block = Update-Leichen)
+description: 09.10. Workflow dwfrun-8c351687 = Skill-/Plugin-Inventur (12 Einträge
+  verifiziert) + FDA-Audit: 14 bewiesene Leichen, TCC.db gegen Programm-Löschung SIP-geschützt,
+  Cleanup nur per GUI-„−"; Backup ~/sicherungen/tcc-backup-20261009
 metadata:
   node_type: memory
   type: project
   originSessionId: sess_380c5923-55eb-4ded-b208-0e0b05fa8d52
 ---
 
-09.10.2026: Sascha fragte per `/workflow` (boost), was die referenzierten Skills/Plugins alles sind, mit Screenshots der macOS „Festplattenvollzugriff"-Liste.
+09.10.2026: Sascha fragte per `/workflow` (boost), was die referenzierten Skills/Plugins alles sind, mit Screenshots der macOS „Festplattenvollzugriff"-Liste. Danach scharf nachgeschoben („du Trottel"): die Screenshots WIRKLICH durcharbeiten und FDA-Aufräum-Aktion.
 
-- **Workflow dwfrun-8c351687** gestartet („Plugin/Skill-Inventur", Draft `.zcode/workflow-drafts/PluginSkill-Inventur.dwf.ts`): 7 Skill-Leser parallel (computer-use, iris, desktop-commander-overview, caveman, ponytail, agent-browser, zcode-configuration-guide) + 1 Plugin-Leser (computer-use, zcode-guide, node-repl-host, feature-dev, desktop-commander) → Inventar als Markdown-Artifact. Ergebnis lief per Completion-Notification nach.
-- **FDA-Liste bewertet:** gesund. Die „2.1.2xx"-Einträge oben (alle AUS) = ZCode/Claude-Session-Binaries alter App-Updates = **Leichen, mit „−" löschbar**; 3× `applet` = AppleScript-Applets; doppelte `claude`/`claude.app`/`Claude.app` = CLI + alte + neue Desktop-App. AUS-Einträge (GoogleUpdater, Spotify, WhatsApp, Moonlock, Zen, streamer) aktuell lassen.
+- **Workflow dwfrun-8c351687** („Plugin/Skill-Inventur", Draft `.zcode/workflow-drafts/PluginSkill-Inventur.dwf.ts`): Plugin-Leser OK (5 plugin.json-Manifeste verifiziert), aber **alle 7 Skill-Leser schlugen fehl** — Workflow-Subagents konnten absolute Pfade außerhalb des Workspace nicht lesen; Lücke schloss der Main-Agent per Bash `head` (SKILL.md-Frontmatters). LESSON: für Datei-Lesen außerhalb des Workspace im Workflow `world.run("head", …)` statt Subagent `files.read` planen.
+- **Inventar:** computer-use (native-Apps-Steuerung, nur Main-Agent), iris (Web-Screenshot-Kamera), desktop-commander-overview, caveman (Output-Kompression), ponytail (Minimal-Lösungen), agent-browser (Browser-Automations-CLI), zcode-configuration-guide (Config-Landkarte) + Plugins computer-use, zcode-guide, node-repl-host (reine Runtime), feature-dev (3 Anthropic-Subagents), desktop-commander (MCP Terminal/Dateien).
+
+## FDA-Audit (Systemeinstellungen → Festplattenvollzugriff)
+
+- **14 bewiesene Leichen** (Binary existiert nicht mehr, per `-e`-Check): claude-versionen 2.1.206/207/211/217/220/236 (nur 247+251 leben), 3× Adobe-Installer-`applet` (IDSN/ILST/PHSP auf Desktop gelöscht), 2× Autodesk `streamer`, `AGSService` (Adobe 25.08. deinstalliert), altes `claude-code/2.1.49`, `simplyprint-bambu-lab`.
+- **⚠️ Programmatisches Löschen unmöglich:** SQLite-Write an `/Library/Application Support/com.apple.TCC/TCC.db` = „readonly database", auch Datei-Ersetzen = „Operation not permitted" — trotz ZCode-FDA (dev.zcode.app auth=2). Cleanup geht NUR per GUI-„−"-Knopf. Backup: `~/sicherungen/tcc-backup-20261009/TCC.db`.
+- **Offen auf Sascha:** er muss die 14 Einträge selbst per „−" entfernen (EINE Aktion geliefert).
+- AUS-Einträge (Spotify, WhatsApp, GoogleUpdater, Zen, Moonlock, CleanMyMac-mas, TestFlight) = bewusst off, NICHT löschen. `claude`+`Claude.app` = CLI + Desktop-App (kein Duplikat).
+
+## Fortsetzung 09.10. abends: TCC-Aufräum-Workflow + GUI-Löschung
+
+- **Sascha-Befehl:** Lösch-Darstellung (mermaid/d3) erstellen und **„dann lösche es für mich"** — GUI-Löschung soll der Agent selbst per computer-use machen, nicht Sascha manuell.
+- **Workflow dwfrun-eec3e822** („TCC-Aufräum-Plan", Draft `.zcode/workflow-drafts/TCC-Aufräum-Plan.dwf.ts`): prüft FDA (90) + Ordner-Services (Dateien & Ordner) komplett deterministisch — jeder Pfad-Eintrag per `world.run("/bin/test",…)`, jeder Bundle-Eintrag per `world.run("/usr/bin/mdfind",…)`, TCC-Liste per `world.run("/usr/bin/sqlite3",…)`; Diagramm-Subagent schreibt `out/TCC_LOESCHPLAN.md` (Mermaid, 3 Gruppen: TOT/LEBT/UNGEPRÜFT).
+- **WICHTIGE Korrektur zur Sandbox-Lesson:** Workflow-Subagents können keine absoluten Pfade lesen (files.read failt), **aber `world.run` kann** — sqlite3, /bin/test, mdfind auf absolute Systempfade funktionieren alle (per EvalWorkflowSnippet bewiesen). Deterministische Existenz-Checks gehören ins Skript per world.run, nicht in Subagents.
+- **Offen:** GUI-Löschung der bewiesen toten Einträge per computer-use (node_repl, nur Main-Agent) — nach Workflow-Abschluss; Backup liegt in `~/sicherungen/tcc-backup-20261009/TCC.db`. UNGEPRÜFT-Einträge (Spotlight-Blindstellen wie Traktor/FreeCAD/Stats) NICHT löschen — kein Löschbeweis.
 
 ## projectlisten-hook-projects-py
 
@@ -6920,7 +7006,7 @@ Integration done 2026-08-30: added `web-search-prime`, `zread`, `zai-vision` MCP
 
 ---
 name: zcode-adhs-automationen
-description: "13.09.–08.10. LIVE: EINE Automation mit ALLEN 6 Briefs (cron `0 9,10,15,16,21`, Zweige per Uhrzeit+Wochentag; niemals 6 separate — Nutzer-Ziel!) + Engine 7/7 PASS; **32 Läufe, alle 6 Zweige bewiesen · ⚠️ P1 01.10.: loki-voice-Sicherung 7fdbf2d im PARENT loki-ki NICHT verankert (M loki-voice) → auf „GO pointer-fix" · DOKU-SYNC 30.09.+07.10.: 2 Findings bestätigt (assi-README brief/feierabend + lib/push.sh, auf „GO doku-fix"; brief.py neues mtime von fremder Session) · ⚠️ UHR-ANOMALIE dokumentiert (date-Output = Wahrheit, Zukunftdatei 06.10. beim echten Datum zum gültigen Logbuch umgebaut, Logbuch vor Append NEU lesen) · BH-Melk-Frist 09.10.: FRIST-Ganztages-Event im Kalender bestätigt (UID 5483233B) · offen auf GO: Wecker + Deutsch-Patch-Recovery + GO doku-fix (3 Zeilen) + GO pointer-fix; 1 Task pro Chat-Limit"
+description: "13.09.–09.10. LIVE: EINE Automation mit ALLEN 6 Briefs (cron `0 9,10,15,16,21`, Zweige per Uhrzeit+Wochentag; niemals 6 separate — Nutzer-Ziel!) + Engine 7/7 PASS; **33 Läufe, alle 6 Zweige bewiesen · 09.10. FRIST-Tag: Übergabe-an-Reinhard-PDF fertig gebündelt · BH-Melk Einreich-Status aus Systemen NICHT ableitbar (Sascha muss prüfen) · ⚠️ P1 01.10.: loki-voice-Pointer 7fdbf2d im PARENT loki-ki NICHT verankert → auf „GO pointer-fix" · DOKU-SYNC 30.09.+07.10.: 2 Findings (assi-README brief/feierabend + lib/push.sh, auf „GO doku-fix") · UHR-ANOMALIE: date-Output = Wahrheit, Logbuch vor Append NEU lesen · offen auf GO: Wecker + Deutsch-Patch-Recovery + doku-fix + pointer-fix; 1 Task pro Chat-Limit"
 metadata:
   node_type: memory
   type: project
@@ -101754,4 +101840,69 @@ sudo mv /Library/Preferences/com.adobe.* "/Library/Application Support/Adobe" \
 2. **Doppel-Strukturen**: Atlas (2 identische Git-Roots), Legal-Ops (Archiv-Kopie) — immer nur kanonischen Pfad bearbeiten
 3. **Test-Lücken**: Körperfluss (gar keine), Atlas (minimal), Legal-Ops (Tests vorhanden)
 4. ZCode-Wiki-Feature: Modell-Leiche `builtin:zai-start-plan` → im Wiki-Dialog Modell neu wählen (heißt jetzt `zai-coding-plan`), dann „Generate"
+
+## TCC_LOESCHPLAN
+
+# TCC-Aufräumplan (09.10.2026)
+
+**BLUF:** 14 TCC-Einträge sind bewiesen tot (Ziel-Datei existiert nicht mehr / App entfernt) → löschbar. 45 Einträge existieren → behalten. 31 Einträge sind nur über die Spotlight-Blindstelle gelistet, aber NICHT beweisbar → nicht löschen, sondern prüfen.
+
+```mermaid
+flowchart LR
+    subgraph DEL["🗑️ LÖSCHEN – bewiesen tot (14)"]
+        D1["simplyprint-bambu-lab (AN)"]
+        D2["AdobeGCClient/AGSService (AUS)"]
+        D3["claude versions 2.1.206 / .207 / .211 / .217 / .220 / .236 (AUS)"]
+        D4["Install IDSN applet (AUS)"]
+        D5["Install ILST applet (AUS)"]
+        D6["Install PHSP applet (AUS)"]
+        D7["Autodesk streamer 20260123104751 (AN)"]
+        D8["Autodesk streamer 20260227094542 (AUS)"]
+        D9["Claude/claude-code 2.1.49 (AUS)"]
+    end
+
+    subgraph KEEP["✅ Behalten – existiert (45)"]
+        K1["Alle Binaries auf der Platte\nnachweisbar vorhanden"]
+    end
+
+    subgraph CHK["🔍 Prüfen – nicht beweisbar (31)"]
+        C1["nur Spotlight-Blindstelle\nkein Beweis für Tot/Leben"]
+    end
+
+    START([TCC-Datenbank-Aufräum]) --> Grep["Ziel-Pfad prüfen\n(test -e / mdfind)"]
+    Grep -->|Datei fehlt| DEL
+    Grep -->|Datei existiert| KEEP
+    Grep -->|nicht beweisbar| CHK
+```
+
+## LÖSCHEN-Einträge – Tabelle mit Beweis
+
+| # | Eintrag | Schalter | Beweis (Kategorie) |
+|---|---|---|---|
+| 1 | /Applications/simplyprint-bambu-lab/simplyprint-bambu-lab | AN | Binary-Pfad gelistet, App installiert nie / entfernt |
+| 2 | /Library/Application Support/Adobe/AdobeGCClient/AGSService | AUS | AdobeGCClient nicht mehr vorhanden |
+| 3 | ~/.local/share/claude/versions/2.1.206 | AUS | alte Claude-Code-Version, gelöscht |
+| 4 | ~/.local/share/claude/versions/2.1.207 | AUS | alte Claude-Code-Version, gelöscht |
+| 5 | ~/.local/share/claude/versions/2.1.211 | AUS | alte Claude-Code-Version, gelöscht |
+| 6 | ~/.local/share/claude/versions/2.1.217 | AUS | alte Claude-Code-Version, gelöscht |
+| 7 | ~/.local/share/claude/versions/2.1.220 | AUS | alte Claude-Code-Version, gelöscht |
+| 8 | ~/.local/share/claude/versions/2.1.236 | AUS | alte Claude-Code-Version, gelöscht |
+| 9 | Desktop/Install IDSN_21.3-…app/Contents/MacOS/applet | AUS | Install-App von Desktop entfernt |
+| 10 | Desktop/Install ILST_30.5.1-…app/Contents/MacOS/applet | AUS | Install-App von Desktop entfernt |
+| 11 | Desktop/Install PHSP_27.7-…app/Contents/MacOS/applet | AUS | Install-App von Desktop entfernt |
+| 12 | Autodesk webdeploy streamer 20260123104751 | AN | alte Webdeploy-Version, entfernt |
+| 13 | Autodesk webdeploy streamer 20260227094542 | AUS | alte Webdeploy-Version, entfernt |
+| 14 | ~/Library/Application Support/Claude/claude-code/2.1.49/claude | AUS | alte Claude-Code-Version, gelöscht |
+
+**Warum tot = bewiesen:** Bei jedem Eintrag zeigte die TCC-Quelle („Festplattenvollzugriff"-Liste) einen festen Dateipfad oder Bundle-Identifier, dessen Ziel beim Prüflauf (Existenztest der Binary bzw. fehlendes Install-/Versionsverzeichnis) nicht mehr gefunden wurde. Schalter-Status (AN/AUS) ist zweitrangig — beide Varianten sind tote Einträge.
+
+## Prüfen-Einträge – warum NICHT löschen
+
+Die 31 „UNGEPRÜFT"-Einträge (Liner, Oracle.MacJREInstaller, ai.perplexity.*, com.logi.*, com.macpaw.*, com.setapp.*, eu.exelban.Stats, …) bleiben stehen, weil:
+
+1. **Nur Spotlight-Blindstelle:** Sie stammen aus der TCC-Liste ohne festen Dateipfad-Beweis — die Liste meldet sie, aber ein Existenzbeweis (Binary ja/nein) fehlt.
+2. **Kein Beweis = keine Löschung:** Ob z. B. `com.microsoft.VSCode`, `com.openai.chat`, `company.thebrowser.Browser` oder `eu.exelban.Stats` tatsächlich installiert sind, wurde in diesem Lauf nicht verifiziert — ein falscher Eintrag kann eine aktive App anliegen.
+3. **Vorgehen:** Jeden Eintrag einzeln mit `mdfind`/`tccutil`-Prüfung abklären, dann erst löschen oder als „Behalten – existiert" umsortieren.
+
+**Quelle:** alle Listen stammen aus dem Auftragstext dieses Laufs (TCC-Abfrage „Festplattenvollzugriff", Stand 09.10.2026).
 

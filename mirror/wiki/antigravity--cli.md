@@ -1,6 +1,6 @@
 # cli (antigravity)
 
-Zuletzt gespiegelt: 2026-10-09 18:53 UTC
+Zuletzt gespiegelt: 2026-10-09 19:09 UTC
 
 ## dwfrun-cbe44067-32c7-4a38-800e-206b4b4823d4_artifact_1_1-tool-result-3f2bcea8-8bd5-4aa2-aa2e-2a34d6f279c2
 
@@ -1324,6 +1324,99 @@ Hinweis (transparent): Datei 1+2 extrahieren 0 Zeichen Text mit pypdf-Decompress
 ## Was von Menschen kommen muss
 
 - ① Leons ECHTER CV → SLOT_03 ② George-Kapitalnachweis → SLOT_05 ③ 06_Erklaerung drucken + 3× unterschreiben → SLOT_06 ④ dann 'GO ZIP'.
+## dwfrun-8c351687-e006-4090-a465-21b28f4193af_artifact_1_1-tool-result-e1d09649-4e02-4a87-81a4-7cbb8d077315
+
+# Inventar: Skills & Plugins (09.10.2026)
+
+- **computer-use** (unbekannt): SKILL.md nicht gefunden/lesbar
+  - Quelle: `/Users/saschalagler/.zcode/cli/plugins/cache/zcode-plugins-official/computer-use/0.6.3/skills/computer-use/SKILL.md`
+- **iris** (unbekannt): SKILL.md nicht gefunden/lesbar
+  - Quelle: `/Users/saschalagler/.zcode/skills/iris/SKILL.md`
+- **desktop-commander-overview** (unbekannt): SKILL.md nicht gefunden/lesbar
+  - Quelle: `/Users/saschalagler/.zcode/cli/plugins/cache/claude-plugins-official/desktop-commander/0.2.0/skills/desktop-commander-overview/SKILL.md`
+- **caveman** (unbekannt): SKILL.md nicht gefunden/lesbar
+  - Quelle: `/Users/saschalagler/.zcode/skills/caveman/SKILL.md`
+- **ponytail** (unbekannt): SKILL.md nicht gefunden/lesbar
+  - Quelle: `/Users/saschalagler/.zcode/skills/ponytail/SKILL.md`
+- **agent-browser** (unbekannt): SKILL.md nicht gefunden/lesbar
+  - Quelle: `/Users/saschalagler/.zcode/skills/agent-browser/SKILL.md`
+- **zcode-configuration-guide** (unbekannt): SKILL.md nicht gefunden/lesbar
+  - Quelle: `/Users/saschalagler/.zcode/cli/plugins/cache/zcode-plugins-official/zcode-guide/0.3.0/skills/zcode-configuration-guide/SKILL.md`
+- **computer-use** (im Plugin-Cache): Stellt Z.ai-Skills bereit, um Desktop-Apps per Maus, Tastatur und UI-Element-Steuerung zu automatisieren (Skills-Ordner: "skills").
+  - Quelle: `/Users/saschalagler/.zcode/cli/plugins/cache/zcode-plugins-official/computer-use/0.6.3/.zcode-plugin/plugin.json`
+- **zcode-guide** (im Plugin-Cache): Z.ai-Skills als Nutzungs- und Selbst-Diagnose-Guide: erklärt Konfiguration und Fehlersuche für MCP-Server, Befehle, Skills, Hooks und Plugins in ZCode.
+  - Quelle: `/Users/saschalagler/.zcode/cli/plugins/cache/zcode-plugins-official/zcode-guide/0.3.0/.zcode-plugin/plugin.json`
+- **node-repl-host** (im Plugin-Cache): Gemeinsamer node_repl-Runtime-Host für ZCode-Offizielle-Capabilities; laut plugin.json nicht nutzerorientiert — kein eigener Skill, wird von Browser Use und Computer Use genutzt und von diesen mit Skills/Doku/Runtime-Assets versehen.
+  - Quelle: `/Users/saschalagler/.zcode/cli/plugins/cache/zcode-plugins-official/node-repl-host/0.6.0/.zcode-plugin/plugin.json`
+- **feature-dev** (im Plugin-Cache): Anthropic-Plugin (Version 0.0.0) mit einem umfassenden Feature-Development-Workflow und spezialisierten Agenten für Codebase-Exploration, Architekturdesign und Qualitäts-Review.
+  - Quelle: `/Users/saschalagler/.zcode/cli/plugins/cache/claude-plugins-official/feature-dev/0.0.0/.claude-plugin/plugin.json`
+- **desktop-commander** (im Plugin-Cache): Bietet einen MCP-Server (npx @wonderwhy-er/desktop-commander) für Terminal-Befehle, Prozessverwaltung und Dateioperationen (Text, Code, PDF, DOCX, Excel, Bilder, strukturierte Daten) sowie einen Skills-Ordner.
+  - Quelle: `/Users/saschalagler/.zcode/cli/plugins/cache/claude-plugins-official/desktop-commander/0.2.0/.claude-plugin/plugin.json`
+## dwfrun-eec3e822-1f16-46ed-acb8-bb3b5d667ea3_artifact_1_1-tool-result-efe54280-a2dc-4d2c-809f-5aaa6b040d1c
+
+# TCC-Aufräumplan (09.10.2026)
+
+**BLUF:** 14 TCC-Einträge sind bewiesen tot (Ziel-Datei existiert nicht mehr / App entfernt) → löschbar. 45 Einträge existieren → behalten. 31 Einträge sind nur über die Spotlight-Blindstelle gelistet, aber NICHT beweisbar → nicht löschen, sondern prüfen.
+
+```mermaid
+flowchart LR
+    subgraph DEL["🗑️ LÖSCHEN – bewiesen tot (14)"]
+        D1["simplyprint-bambu-lab (AN)"]
+        D2["AdobeGCClient/AGSService (AUS)"]
+        D3["claude versions 2.1.206 / .207 / .211 / .217 / .220 / .236 (AUS)"]
+        D4["Install IDSN applet (AUS)"]
+        D5["Install ILST applet (AUS)"]
+        D6["Install PHSP applet (AUS)"]
+        D7["Autodesk streamer 20260123104751 (AN)"]
+        D8["Autodesk streamer 20260227094542 (AUS)"]
+        D9["Claude/claude-code 2.1.49 (AUS)"]
+    end
+
+    subgraph KEEP["✅ Behalten – existiert (45)"]
+        K1["Alle Binaries auf der Platte\nnachweisbar vorhanden"]
+    end
+
+    subgraph CHK["🔍 Prüfen – nicht beweisbar (31)"]
+        C1["nur Spotlight-Blindstelle\nkein Beweis für Tot/Leben"]
+    end
+
+    START([TCC-Datenbank-Aufräum]) --> Grep["Ziel-Pfad prüfen\n(test -e / mdfind)"]
+    Grep -->|Datei fehlt| DEL
+    Grep -->|Datei existiert| KEEP
+    Grep -->|nicht beweisbar| CHK
+```
+
+## LÖSCHEN-Einträge – Tabelle mit Beweis
+
+| # | Eintrag | Schalter | Beweis (Kategorie) |
+|---|---|---|---|
+| 1 | /Applications/simplyprint-bambu-lab/simplyprint-bambu-lab | AN | Binary-Pfad gelistet, App installiert nie / entfernt |
+| 2 | /Library/Application Support/Adobe/AdobeGCClient/AGSService | AUS | AdobeGCClient nicht mehr vorhanden |
+| 3 | ~/.local/share/claude/versions/2.1.206 | AUS | alte Claude-Code-Version, gelöscht |
+| 4 | ~/.local/share/claude/versions/2.1.207 | AUS | alte Claude-Code-Version, gelöscht |
+| 5 | ~/.local/share/claude/versions/2.1.211 | AUS | alte Claude-Code-Version, gelöscht |
+| 6 | ~/.local/share/claude/versions/2.1.217 | AUS | alte Claude-Code-Version, gelöscht |
+| 7 | ~/.local/share/claude/versions/2.1.220 | AUS | alte Claude-Code-Version, gelöscht |
+| 8 | ~/.local/share/claude/versions/2.1.236 | AUS | alte Claude-Code-Version, gelöscht |
+| 9 | Desktop/Install IDSN_21.3-…app/Contents/MacOS/applet | AUS | Install-App von Desktop entfernt |
+| 10 | Desktop/Install ILST_30.5.1-…app/Contents/MacOS/applet | AUS | Install-App von Desktop entfernt |
+| 11 | Desktop/Install PHSP_27.7-…app/Contents/MacOS/applet | AUS | Install-App von Desktop entfernt |
+| 12 | Autodesk webdeploy streamer 20260123104751 | AN | alte Webdeploy-Version, entfernt |
+| 13 | Autodesk webdeploy streamer 20260227094542 | AUS | alte Webdeploy-Version, entfernt |
+| 14 | ~/Library/Application Support/Claude/claude-code/2.1.49/claude | AUS | alte Claude-Code-Version, gelöscht |
+
+**Warum tot = bewiesen:** Bei jedem Eintrag zeigte die TCC-Quelle („Festplattenvollzugriff"-Liste) einen festen Dateipfad oder Bundle-Identifier, dessen Ziel beim Prüflauf (Existenztest der Binary bzw. fehlendes Install-/Versionsverzeichnis) nicht mehr gefunden wurde. Schalter-Status (AN/AUS) ist zweitrangig — beide Varianten sind tote Einträge.
+
+## Prüfen-Einträge – warum NICHT löschen
+
+Die 31 „UNGEPRÜFT"-Einträge (Liner, Oracle.MacJREInstaller, ai.perplexity.*, com.logi.*, com.macpaw.*, com.setapp.*, eu.exelban.Stats, …) bleiben stehen, weil:
+
+1. **Nur Spotlight-Blindstelle:** Sie stammen aus der TCC-Liste ohne festen Dateipfad-Beweis — die Liste meldet sie, aber ein Existenzbeweis (Binary ja/nein) fehlt.
+2. **Kein Beweis = keine Löschung:** Ob z. B. `com.microsoft.VSCode`, `com.openai.chat`, `company.thebrowser.Browser` oder `eu.exelban.Stats` tatsächlich installiert sind, wurde in diesem Lauf nicht verifiziert — ein falscher Eintrag kann eine aktive App anliegen.
+3. **Vorgehen:** Jeden Eintrag einzeln mit `mdfind`/`tccutil`-Prüfung abklären, dann erst löschen oder als „Behalten – existiert" umsortieren.
+
+**Quelle:** alle Listen stammen aus dem Auftragstext dieses Laufs (TCC-Abfrage „Festplattenvollzugriff", Stand 09.10.2026).
+
 ## dwfrun-1359c3bc-8dc5-49f7-8725-bb618f0405aa_artifact_1_1-tool-result-5961947b-b58e-4e5d-9ec0-fde9b640c547
 
 # LOKI.OS System-Selbstprüfung — 20.09.2026
