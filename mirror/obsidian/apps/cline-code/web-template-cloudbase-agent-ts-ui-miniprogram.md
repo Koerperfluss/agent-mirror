@@ -1,7 +1,7 @@
 ---
 app: cline-code
 quelle: "web-template/cloudbase-agent-ts/ui-miniprogram.md"
-stand: 2026-10-08
+stand: 2026-10-09
 tags: [spiegel, cline-code]
 ---
 
