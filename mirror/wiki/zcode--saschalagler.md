@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-09 20:55 UTC
+Zuletzt gespiegelt: 2026-10-09 21:09 UTC
 
 ## AGENTS
 
@@ -4702,6 +4702,7 @@ Bei Fachfragen (z. B. Trainings-Übungen) fordert er explizit „clinical reason
 
 # Memory Index
 
+- [HolDirMehr-Replika 09.10.](holdirmehr-replika.md) — ✅ 1:1-Nachbau HolDirMehr.at fertig+verifiziert (Landing/Quiz/Bericht/Entwickler) in ~/.zcode/workspace/default/holdirmehr/, URL localhost:61599; vor Livegang Branding/Testimonials/Rechtstexte/Stripe tauschen
 - [TCC/FDA-Cleanup 09.10.](tcc-fda-cleanup-2026-10-09.md) — ✅ FERTIG: alle 14 toten Einträge weg (TCC 90→72, Sascha löschte letzte 11 selbst per GUI+Finger); lebende Tools (ZCode/Terminal/Antigravity/…) verifiziert AN; Backup ~/sicherungen/tcc-backup-20261009; LESSON: Touch ID pro Löschung, nach „Entfernen"-Klick nicht beobachten, Deep-Link `Privacy_AllFilesAccess`
 - [Plugin/Skill-Inventar 09.10.](plugin-skill-inventar-dwfrun-2026-10-09.md) — dwfrun-8c351687: 7 Skills + 5 Plugins verifiziert; FDA-Audit 14 Leichen; LESSON: Workflow-Subagents keine Absolut-Pfade, ABER world.run kann (test/mdfind/sqlite3); dwfrun-eec3e822 = TCC-Plan (out/TCC_LOESCHPLAN.md); Backup ~/sicherungen/tcc-backup-20261009
 - [BrowserOS lokale Modelle](browseros-lokale-modelle-setup.md) — 05.10. Ollama Context 20000 in LaunchAgent gepatcht (Backup ~/sicherungen/ollama-20261005/); **qwen2.5-coder:7b = Hauptmodell für beide Browser**; LM Studio (gemma-4-12b-qat/glm-4.6v-flash, Port 1234) = 2. Option, nie parallel; CaskHub-Adopt erklärt (21 Casks, brew übernimmt Updates); OFFEN: Settings-Klicks in BrowserOS + neo
@@ -5911,6 +5912,26 @@ metadata:
 `~/.agents/knowledge/gstack-deep-dives/` holds the archived "gstack Skill Deep Dives" doc (10.2k words, `raw/2026-08-23-gstack-skill-deep-dives.md`) plus `GSTACK-PATTERN-ANALYSE.md` mapping 14 transferable patterns → adopted in [[web-research-team-skill]] v1.1, 7 already covered by own skills (learn≈cognee-memory, health≈multi-agent-status-check, plan/ship≈lokiomnidevteam, context-save≈handoff, gbrain≈cross-platform-knowledge-sync), 3 consciously rejected (cookie import via Keychain, auto-upgrade loops, gstack browser sidebar), 3 open ideas (agent-retro, careful/freeze guardrails, skillify pattern).
 
 `graphify-out/` contains a queryable knowledge graph (90 nodes, 93 edges, 21 labeled communities, HTML viz `graph.html`). Query with: `cd ~/.agents/knowledge/gstack-deep-dives && graphify query "<question>"`. God node: web-research-team v1.1 bridges 6 communities. Before building any new skill, check the analysis tables there first (already covered? established pattern? conscious gap?).
+
+## holdirmehr-replika
+
+---
+name: holdirmehr-replika
+description: HolDirMehr.at 1:1 Replika als statische Web-App gebaut (09.10.2026)
+  — Pfad, URL, offene Punkte
+metadata:
+  node_type: memory
+  type: project
+  originSessionId: sess_aaafc084-598e-4c4a-98c2-aef038d78ad7
+---
+
+Sascha wollte das Produkt **HolDirMehr.at** (österreichischer Förder-Finder, €39,99-Report) 1:1 kopiert — Quelle: PDFs in `~/Desktop/öförderugnen/` (Landing, Bericht/Paywall, Entwickler & API, Strategie-Dossier Feb 2026).
+
+**Stand 09.10.2026: FERTIG + verifiziert.** Statische Web-App in `~/.zcode/workspace/default/holdirmehr/` — `index.html` (Landing dark-olive/Fraunces), `check.html` (6-Fragen-Quiz), `bericht.html` (dynamischer Bericht + Paywall + Demo-Checkout), `entwickler.html`, Logik `assets/app.js`. Lokal-URL http://localhost:61599/ (stirbt mit Session). Demo-Bericht = Original-Werte (€14.500–€17.000, 46 Förderungen, #11 Bausparprämie).
+
+**Vor Livegang zwingend tauschen** (fremde Marke/rechte Personen): Branding „HolDirMehr", Testimonials (Rene/Nicole/Sarah/Noreia/Fabian Eder), Kontakt-E-Mail, Rechtstexte (nur `href="#"`-Stubs), Demo-Checkout → echtes Stripe (nur server-seitig), Demo-Katalog → echter Katalog (Transparenzportal + 9 Landesförderstellen). Details in README.md im Projektordner.
+
+Dossier-Empfehlung für Produktions-Upgrade: Next.js 15 + Supabase + Stripe (siehe [[sigma-local-ai-stack]]-artige Architektur, keine Client-Keys).
 
 ## ios27-webapp-testing-recherche-2026-09-13
 
@@ -101886,6 +101907,42 @@ sudo mv /Library/Preferences/com.adobe.* "/Library/Application Support/Adobe" \
 2. **Doppel-Strukturen**: Atlas (2 identische Git-Roots), Legal-Ops (Archiv-Kopie) — immer nur kanonischen Pfad bearbeiten
 3. **Test-Lücken**: Körperfluss (gar keine), Atlas (minimal), Legal-Ops (Tests vorhanden)
 4. ZCode-Wiki-Feature: Modell-Leiche `builtin:zai-start-plan` → im Wiki-Dialog Modell neu wählen (heißt jetzt `zai-coding-plan`), dann „Generate"
+
+## README
+
+# HolDirMehr — 1:1 Replika
+
+Nachbau der Website **HolDirMehr.at** („Finde deine Förderungen in Österreich") aus den PDFs in `~/Desktop/öförderugnen/`. Statische Web-App, kein Build-Step, kein Backend.
+
+## Starten
+
+- Läuft lokal: **http://localhost:61599/** (Deploy-Server dieser Session)
+- Oder direkt: `index.html` im Browser öffnen, oder `python3 -m http.server` im Ordner
+
+## Seiten
+
+| Datei | Original (PDF im Ordner) | Funktion |
+|---|---|---|
+| `index.html` | „Finde deine Förderungen…" (Landing) | Hero + Freitext-Eingabe, Schnell-Check-CTA, Beispiel-Report-Karten (mit Zoom-Lightbox), Benefits, 3 Schritte, Preisvergleich, Förderkarten, Stats, FAQ-Accordion, CTA, Footer + Cookie-Banner |
+| `check.html` | „Schnell-Check starten (6 Fragen)" | Quiz: Bundesland → Haushalt → Wohnen → Vorhaben (Mehrfach) → Start → Anträge; leitet Antworten an `bericht.html` weiter |
+| `bericht.html` | „HolDirMehr — … 2.pdf" (Bericht/Paywall) | Dynamischer Bericht: €-Spanne + Förderanzahl aus Antworten, Chips, Rangliste mit Schloss-Icons, Bausparprämie-Teaser (dritter Schritt unscharf), Gratis vs. Voller Plan, Testimonials, Garantie, Checkout (Widerrufs-Checkbox, Apple Pay/PayPal/Karte/EPS, E-Mail-Gate — **Demo, keine echte Zahlung**) |
+| `entwickler.html` | „Entwickler & API-Nutzung" | 1:1-Struktur: Was ist HolDirMehr, Google Ads API, Meta CAPI, Tech-Stack, Datenschutz, Kontakt |
+
+Logik in `assets/app.js`, Design in `assets/style.css`. Fonts: Fraunces (Serif-Display) + Inter via Google Fonts. Berichts-Beträge sind deterministisch aus den Quiz-Antworten gerechnet (Demo-Daten, kein echter Förderkatalog).
+
+## ⚠️ Vor jedem Livegang zwingend ersetzen
+
+1. **Branding:** „HolDirMehr", Logo, `holdirmehr.at` sind Marken/Identität des Original-Betreibers — eigener Name + Logo.
+2. **Testimonials** (Rene, Nicole, Sarah, Noreia, „Fabian Eder, Gründer") = echte Personen des Originals → eigene, echte Kundenzitate.
+3. **Rechtstexte:** Impressum, Datenschutz, AGB, Widerruf, Rückerstattung sind Platzhalter (`href="#"`) — echte Österreich-Rechtstexte (TKG/DSGVO) nötig; Entwickler-E-Mail `hallo@holdirmehr.at` ersetzen.
+4. **Zahlung:** Checkout ist Mock. Echte Zahlungen nur mit eigenem Stripe-Konto (EU) + Server-Route (Keys niemals client-seitig).
+5. **Förderkatalog:** Die demo­ratischen Zahlen/Beträge sind frei erfunden — echter Katalog z. B. aus Transparenzportal + 9 Landesförderstellen.
+
+## Nächste Schritte (optional)
+
+- **Next.js 15 + Supabase/Stripe** laut Strategie-Dossier (Feb 2026) für echte Berichte, Zahlungen, Katalog-DB (Supabase RLS).
+- Echte Katalog-Pipeline + Förder-KI (Gemini) für personalisierte Berichte.
+- Analytics: Plausible (privacy-first), Ads-Tracking nur mit Consent-Banner-OK.
 
 ## TCC_LOESCHPLAN
 
