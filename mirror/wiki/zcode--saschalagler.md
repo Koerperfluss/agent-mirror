@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-09 19:40 UTC
+Zuletzt gespiegelt: 2026-10-09 19:56 UTC
 
 ## AGENTS
 
@@ -4702,7 +4702,7 @@ Bei Fachfragen (z. B. Trainings-Übungen) fordert er explizit „clinical reason
 
 # Memory Index
 
-- [TCC/FDA-Cleanup 09.10.](tcc-fda-cleanup-2026-10-09.md) — 12 tote FDA-Einträge bewiesen+bereit; TCC.db-Löschen SIP-blockiert, nur GUI; computer-use klickt „−", aber **Touch-ID-Pflicht pro Klick** — Dialog offen, wartet auf Saschas Fingerabdruck + „weiter"; Deep-Link `Privacy_AllFilesAccess` navigiert zuverlässig
+- [TCC/FDA-Cleanup 09.10.](tcc-fda-cleanup-2026-10-09.md) — ✅ FERTIG: alle 14 toten Einträge weg (TCC 90→72, Sascha löschte letzte 11 selbst per GUI+Finger); lebende Tools (ZCode/Terminal/Antigravity/…) verifiziert AN; Backup ~/sicherungen/tcc-backup-20261009; LESSON: Touch ID pro Löschung, nach „Entfernen"-Klick nicht beobachten, Deep-Link `Privacy_AllFilesAccess`
 - [Plugin/Skill-Inventar 09.10.](plugin-skill-inventar-dwfrun-2026-10-09.md) — dwfrun-8c351687: 7 Skills + 5 Plugins verifiziert; FDA-Audit 14 Leichen; LESSON: Workflow-Subagents keine Absolut-Pfade, ABER world.run kann (test/mdfind/sqlite3); dwfrun-eec3e822 = TCC-Plan (out/TCC_LOESCHPLAN.md); Backup ~/sicherungen/tcc-backup-20261009
 - [BrowserOS lokale Modelle](browseros-lokale-modelle-setup.md) — 05.10. Ollama Context 20000 in LaunchAgent gepatcht (Backup ~/sicherungen/ollama-20261005/); **qwen2.5-coder:7b = Hauptmodell für beide Browser**; LM Studio (gemma-4-12b-qat/glm-4.6v-flash, Port 1234) = 2. Option, nie parallel; CaskHub-Adopt erklärt (21 Casks, brew übernimmt Updates); OFFEN: Settings-Klicks in BrowserOS + neo
 
@@ -6805,21 +6805,23 @@ metadata:
 
 ---
 name: tcc-fda-cleanup-2026-10-09
-description: 09.10. TCC/FDA-Aufräum-Lauf — 2/12 tote Einträge gelöscht,
-  11 offen (TCC-Zahl 88), GUI-Löschung braucht Saschas Touch ID + Settings-App
-  instabil (startet laufend neu); Wartung fortsetzen bei „go"
+description: 09.10. TCC/FDA-Aufräum-Lauf ABGESCHLOSSEN — alle 14 toten Einträge weg
+  (TCC 90→72), lebende Tools verifiziert unversehrt; gelernt macOS 27 verlangt Touch
+  ID pro „Entfernen“-Klick (Unlock hält NICHT über mehrere Löschungen); Settings-Deep-Link
+  als zuverlässiger Navigationsweg
 metadata:
   node_type: memory
   type: project
   originSessionId: sess_380c5923-55eb-4ded-b208-0e0b05fa8d52
 ---
 
-**Stand 09.10.2026 spät: 2/12 GELÖSCHT (AGSService + alter streamer 20260123 — Saschas Touch ID hielt für mehrere Löschungen!), TCC-Zählung 88 (vorher 90). 11 offen.**
+**09.10. Abend FERTIG: Sascha hat die letzten 11 toten Einträge selbst per GUI gelöscht (Zeile klicken → „−“ → Touch ID pro Löschung). Beweis: TCC-Datenbank 88→72 Einträge, Suchliste aller 11 Toten liefert LEERES Ergebnis.**
 
-- **Noch zu löschen (bewiesen tot):** `2.1.206/207/211/217/220/236`, `applet` ×3, `simplyprint-bambu-lab`, `streamer` (20260227). NICHT anfassen: `2.1.247/251`, alle AUS-Einträge, `claude`/`claude.app`-Zeilen (mehrdeutig). Backup: `~/sicherungen/tcc-backup-20261009/TCC.db`.
-- **GUI-Instabilität:** Systemeinstellungen startete im Lauf 3× neu (PID wechselte 14919→26928→32648, Fenster leer) — deshalb brachen Loops ab. Workflow dwfrun-eec3e822-Löschloop: nach „Entfernen"-Klick hängt `getAXState` im Auth-Dialog (wartet auf Settle → Timeout) — daher pro Löschung: klicken, Sascha drückt Finger, dann weiter.
-- **Entscheidung für Sascha angeboten:** (a) Agent klickt erste Zeile+Entfernen, er drückt Finger (Unlock hält mehrfach), Rest im Rutsch — wartet auf „go"; oder (b) er löscht die 11 selbst (Zeile → „−"). Danach TCC-DB-Gegenprüfung (`sqlite3 … count(*)`).
-- „Dateien & Ordner"-Bereich (74 Apps): keine pfad-basierten Leichen, nur Spotlight-„?"-Treffer = kein Löschbeweis.
+- **Endstand:** 14 tote Einträge identifiziert (Workflow dwfrun-eec3e822, jeder Pfad per `test -e` bewiesen) → alle 14 weg (2 über meine GUI-Klicks + Saschas Finger: AGSService, alter streamer 20260123; 11 durch Sascha selbst: 2.1.206/207/211/217/220/236, applet ×3, simplyprint-bambu-lab, streamer 20260227). Er löschte auch claude.app/2.1.251 — harmlos, CLI fragt FDA einfach neu an.
+- **Verifiziert unversehrt (auth=2):** dev.zcode.app, Terminal, Konsole, Antigravity (beide), AutoClaw, Cline, Comet, node. Backup: `~/sicherungen/tcc-backup-20261009/TCC.db`.
+- **Regel fürs nächste Mal:** macOS 27 verlangt Touch ID für JEDE einzelne FDA-Löschung — Unlock hält NICHT über mehrere Löschungen (Agent kann klicken, ohne Finger pro Dialog passiert nichts). Bei Batch: nach „Entfernen“-Klick NICHT beobachten (getAXState hängt am Auth-Dialog → 8-s-Deadline-Timeout), sofort nächste Zeile klicken.
+- **GUI-Fallstricke:** Settings-App restartete 3× (PID-Wechsel 14919→26928→32648); Sidebar-Klicks geben Stale-Element-Fehler → zuverlässigster Weg: Deep-Link `/usr/bin/open "x-apple.systempreferences:com.apple.preference.security?Privacy_AllFilesAccess"`. Finder findet TCC-Leichen nicht (Dateien existieren nicht mehr = der Beweis) — Sascha musste das erklärt bekommen.
+- „Dateien & Ordner“ (74 Apps): keine pfad-basierten Leichen, nur Spotlight-„?“ = kein Löschbeweis → unangetastet.
 - Verwandt: [[plugin-skill-inventar-dwfrun-2026-10-09]], [[macos-27-beta-status]] (Beta-Instabilität)
 
 ## thomas-tasks-drei-recherchen

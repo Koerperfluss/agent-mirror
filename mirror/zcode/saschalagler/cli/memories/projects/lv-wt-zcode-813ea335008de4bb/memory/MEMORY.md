@@ -1,0 +1,1 @@
+- [LokiVoiceApp Multi-Agent-Setup](loki-voice-app-multi-agent-setup.md) — Haupt-Repo ~/loki-voice-app, Worktree ~/lv-wt-zcode, Integrator löscht Worktrees, Mimosa-Hook, Test-Befehl
