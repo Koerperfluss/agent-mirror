@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-09 18:38 UTC
+Zuletzt gespiegelt: 2026-10-09 18:53 UTC
 
 ## AGENTS
 
@@ -2290,6 +2290,34 @@ Hinweis (transparent): Datei 1+2 extrahieren 0 Zeichen Text mit pypdf-Decompress
 ## Was von Menschen kommen muss
 
 - ① Leons ECHTER CV → SLOT_03 ② George-Kapitalnachweis → SLOT_05 ③ 06_Erklaerung drucken + 3× unterschreiben → SLOT_06 ④ dann 'GO ZIP'.
+## dwfrun-8c351687-e006-4090-a465-21b28f4193af_artifact_1_1-tool-result-e1d09649-4e02-4a87-81a4-7cbb8d077315
+
+# Inventar: Skills & Plugins (09.10.2026)
+
+- **computer-use** (unbekannt): SKILL.md nicht gefunden/lesbar
+  - Quelle: `/Users/saschalagler/.zcode/cli/plugins/cache/zcode-plugins-official/computer-use/0.6.3/skills/computer-use/SKILL.md`
+- **iris** (unbekannt): SKILL.md nicht gefunden/lesbar
+  - Quelle: `/Users/saschalagler/.zcode/skills/iris/SKILL.md`
+- **desktop-commander-overview** (unbekannt): SKILL.md nicht gefunden/lesbar
+  - Quelle: `/Users/saschalagler/.zcode/cli/plugins/cache/claude-plugins-official/desktop-commander/0.2.0/skills/desktop-commander-overview/SKILL.md`
+- **caveman** (unbekannt): SKILL.md nicht gefunden/lesbar
+  - Quelle: `/Users/saschalagler/.zcode/skills/caveman/SKILL.md`
+- **ponytail** (unbekannt): SKILL.md nicht gefunden/lesbar
+  - Quelle: `/Users/saschalagler/.zcode/skills/ponytail/SKILL.md`
+- **agent-browser** (unbekannt): SKILL.md nicht gefunden/lesbar
+  - Quelle: `/Users/saschalagler/.zcode/skills/agent-browser/SKILL.md`
+- **zcode-configuration-guide** (unbekannt): SKILL.md nicht gefunden/lesbar
+  - Quelle: `/Users/saschalagler/.zcode/cli/plugins/cache/zcode-plugins-official/zcode-guide/0.3.0/skills/zcode-configuration-guide/SKILL.md`
+- **computer-use** (im Plugin-Cache): Stellt Z.ai-Skills bereit, um Desktop-Apps per Maus, Tastatur und UI-Element-Steuerung zu automatisieren (Skills-Ordner: "skills").
+  - Quelle: `/Users/saschalagler/.zcode/cli/plugins/cache/zcode-plugins-official/computer-use/0.6.3/.zcode-plugin/plugin.json`
+- **zcode-guide** (im Plugin-Cache): Z.ai-Skills als Nutzungs- und Selbst-Diagnose-Guide: erklärt Konfiguration und Fehlersuche für MCP-Server, Befehle, Skills, Hooks und Plugins in ZCode.
+  - Quelle: `/Users/saschalagler/.zcode/cli/plugins/cache/zcode-plugins-official/zcode-guide/0.3.0/.zcode-plugin/plugin.json`
+- **node-repl-host** (im Plugin-Cache): Gemeinsamer node_repl-Runtime-Host für ZCode-Offizielle-Capabilities; laut plugin.json nicht nutzerorientiert — kein eigener Skill, wird von Browser Use und Computer Use genutzt und von diesen mit Skills/Doku/Runtime-Assets versehen.
+  - Quelle: `/Users/saschalagler/.zcode/cli/plugins/cache/zcode-plugins-official/node-repl-host/0.6.0/.zcode-plugin/plugin.json`
+- **feature-dev** (im Plugin-Cache): Anthropic-Plugin (Version 0.0.0) mit einem umfassenden Feature-Development-Workflow und spezialisierten Agenten für Codebase-Exploration, Architekturdesign und Qualitäts-Review.
+  - Quelle: `/Users/saschalagler/.zcode/cli/plugins/cache/claude-plugins-official/feature-dev/0.0.0/.claude-plugin/plugin.json`
+- **desktop-commander** (im Plugin-Cache): Bietet einen MCP-Server (npx @wonderwhy-er/desktop-commander) für Terminal-Befehle, Prozessverwaltung und Dateioperationen (Text, Code, PDF, DOCX, Excel, Bilder, strukturierte Daten) sowie einen Skills-Ordner.
+  - Quelle: `/Users/saschalagler/.zcode/cli/plugins/cache/claude-plugins-official/desktop-commander/0.2.0/.claude-plugin/plugin.json`
 ## dwfrun-1359c3bc-8dc5-49f7-8725-bb618f0405aa_artifact_1_1-tool-result-5961947b-b58e-4e5d-9ec0-fde9b640c547
 
 # LOKI.OS System-Selbstprüfung — 20.09.2026
@@ -4609,6 +4637,7 @@ Bei Fachfragen (z. B. Trainings-Übungen) fordert er explizit „clinical reason
 
 # Memory Index
 
+- [Plugin/Skill-Inventar 09.10.](plugin-skill-inventar-dwfrun-2026-10-09.md) — Workflow dwfrun-8c351687 (7 Skills + 5 Plugins); FDA-Liste gesund, 2.1.x-Block = Update-Leichen löschbar
 - [BrowserOS lokale Modelle](browseros-lokale-modelle-setup.md) — 05.10. Ollama Context 20000 in LaunchAgent gepatcht (Backup ~/sicherungen/ollama-20261005/); **qwen2.5-coder:7b = Hauptmodell für beide Browser**; LM Studio (gemma-4-12b-qat/glm-4.6v-flash, Port 1234) = 2. Option, nie parallel; CaskHub-Adopt erklärt (21 Casks, brew übernimmt Updates); OFFEN: Settings-Klicks in BrowserOS + neo
 
 - [Chipsi/Judicario Live-Audit 05.10.](chipsi-judicario-live-audit-2026-10-05.md) — 16:05 FINAL: **eigentliches AUDIT nach Vorgabe `15_AUDIT_NACH_VORGABE_JUD_0-14`** (JUD 13+14 waren NIE gelesen — Lektion: Vorgabe-Dokumente VOLLSTÄNDIG extrahieren!): **9 ERLEDIGT / 3 TEILWEISE (JUD 1 Disclaimer auf /signup, JUD 6 Deep-Immer fehlt, JUD 14 Mail-Banner sperrt) / 3 OFFEN (JUD 5 Pro 999 €/Monat+11.000 €/Jahr fehlen=Verkaufsblocker, JUD 9 Briefkopf-Vollformular, JUD 13 Verantwortlicher=Quantum AI FZCO VAE statt deutsche GmbH=Datenschutz-Showstopper)** · 15:55: Lane B selbst geholt (Safebox-Konnektor VORBEREITET, Editor-Bug, Persona-Buttons George/Bella/Blitz) · Briefing-PDF 14 + Bündel-PDF 10 (843 KB) fertig · 06.10. LokiVoice-Thomas-Fix.zip gebündelt · 08.10. BH-Melk-Frist 09.10. als Kalender-FRIST-Event gewarnt (Unterlagen Sozialhilfeneu-Ordner verifiziert) · OFFEN: Briefing senden, 14 Einwände, GO Konsolidierung + Testsuite (53 nur gezählt)
@@ -6302,6 +6331,23 @@ NODE_PATH=/opt/homebrew/lib/node_modules/omniroute/node_modules:/tmp/pdfdeps/nod
 **EINFACHE MD→PDF-PIPELINE (05.10.2026 bewährt, u. a. Übergabe-Bündel 843 KB + mehrere Audits):** LibreOffice ist WEG (nicht installiert) — stattdessen `pandoc -f markdown-yaml_metadata_block -s in.md -o /tmp/x.html --metadata title="…"` + `"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless --disable-gpu --no-pdf-header-footer --print-to-pdf="out.pdf" "file:///tmp/x.html"`. **Fallstrick:** mehrere MDs mit `cat` konkatenieren → `---`-Blöcke werfen Pandoc-YAML-Fehler („Unknown alias `Erstellt`") → vorher `sed 's/^---$/_____/'` ODER `-f markdown-yaml_metadata_block` (beides zusammen getestet, grün). Leerzeichen in Pfaden: immer quoting + `cd` in Zielordner.
 
 Verwandt: [[feedback-doc-design-matters]] [[feedback-gui-not-cli]]
+
+## plugin-skill-inventar-dwfrun-2026-10-09
+
+---
+name: plugin-skill-inventar-dwfrun-2026-10-09
+description: 09.10. Workflow dwfrun-8c351687 inventarisiert 7 referenzierte
+  Skills + 5 Plugins; FDA-Liste erklärt (2.1.x-Block = Update-Leichen)
+metadata:
+  node_type: memory
+  type: project
+  originSessionId: sess_380c5923-55eb-4ded-b208-0e0b05fa8d52
+---
+
+09.10.2026: Sascha fragte per `/workflow` (boost), was die referenzierten Skills/Plugins alles sind, mit Screenshots der macOS „Festplattenvollzugriff"-Liste.
+
+- **Workflow dwfrun-8c351687** gestartet („Plugin/Skill-Inventur", Draft `.zcode/workflow-drafts/PluginSkill-Inventur.dwf.ts`): 7 Skill-Leser parallel (computer-use, iris, desktop-commander-overview, caveman, ponytail, agent-browser, zcode-configuration-guide) + 1 Plugin-Leser (computer-use, zcode-guide, node-repl-host, feature-dev, desktop-commander) → Inventar als Markdown-Artifact. Ergebnis lief per Completion-Notification nach.
+- **FDA-Liste bewertet:** gesund. Die „2.1.2xx"-Einträge oben (alle AUS) = ZCode/Claude-Session-Binaries alter App-Updates = **Leichen, mit „−" löschbar**; 3× `applet` = AppleScript-Applets; doppelte `claude`/`claude.app`/`Claude.app` = CLI + alte + neue Desktop-App. AUS-Einträge (GoogleUpdater, Spotify, WhatsApp, Moonlock, Zen, streamer) aktuell lassen.
 
 ## projectlisten-hook-projects-py
 

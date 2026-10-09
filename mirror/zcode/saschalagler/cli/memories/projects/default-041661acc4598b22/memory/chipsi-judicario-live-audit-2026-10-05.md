@@ -73,3 +73,9 @@ Verwandt: [[thomas-tasks-drei-recherchen]], [[feedback-pruefinstanz-pflicht]]
 - **06.10.:** `LokiVoice-Thomas-Fix.zip` liegt gebündelt im Projektordner bereit (Fix für Thomas verpackt; aus Tages-Routine-Sweep).
 - **08.10.:** **BH-Melk-Frist 09.10.** wurde per Tages-Routine als eigenes FRIST-Ganztages-Event im Kalender angelegt (UID 5483233B-00EF-44A6-A89A-823B8D16D691). Unterlagen per mdfind verifiziert: `~/Desktop/Sozialhilfeneu/id austria/rechnugrn/Exekutionsverfahren Melk 22.07/BH MELK SOZUIALHILFE/` (Hilfsfonds_Antrag_FINAL, Belege inkl. 10_BHMelk_Verwergsstrafen_257EUR.pdf) + Gewerbemeldung in AMS-Ordner + GoogleDrive (`GewerbemeldungBHMelk:Datenverarbeitung&Infotechnik.pdf`).
 - Weiter offen: Briefing 14 + Nachricht 09 an Marinus/Reinhard senden · 14 Einwände (20/34 erledigt) · GO Ordner-Konsolidierung · LokiVoice-Testsuite (53 nur gezählt) · JUD 5/9/13 (Pricing, Briefkopf, deutsche GmbH).
+
+**Nachtrag 09.10. (aus Tages-Routine-Abend-Lauf):**
+- **Übergabe an Reinhard GEBÜNDELT:** `UEBERGABE_AN_REINHARD_2026-10-06.pdf` liegt fertig in `THOMAS - CHIPS JUDICARIO/` (ls-Beweis) — Reinhard-Paket damit als PDF existent.
+- **⚠️ Ordner-Dublette:** `THOMAS - CHIPS JUDICARIO ` (mit Leerzeichen am Ende) existiert NEBEN dem Original — beim Aufräumen zusammenführen (Namens-Chaos wie im Fundinventar: „PETER JUDICARIO 2/" vs „PETER JUDICARIO2/"). Nicht selbst angefasst.
+- **BH-Melk-Frist 09.10. (FRIST-Tag):** Einreich-Status aus Systemen NICHT ableitbar (keine Sende-/Einreich-Spuren im Tages-Sweep) — Sascha muss prüfen: Kalender-FRIST-Event (UID 5483233B) löschen falls eingereicht, sonst Verlängerung veranlassen.
+- 14 Einwände (20/34) + Briefing-Versand unverändert offen; md5-Prüflauf-Fehler `~/Desktop/EMAILS_FERTIG_ZUM_SENDEN` läuft parallel im dwf-Workflow (nicht doppelt diagnostizieren).
