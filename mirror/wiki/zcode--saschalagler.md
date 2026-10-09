@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-09 19:23 UTC
+Zuletzt gespiegelt: 2026-10-09 19:40 UTC
 
 ## AGENTS
 
@@ -6805,23 +6805,22 @@ metadata:
 
 ---
 name: tcc-fda-cleanup-2026-10-09
-description: 09.10. TCC/FDA-Aufräum-Lauf — 12 tote
-  Festplattenvollzugriff-Einträge bewiesen+bereit, Löschversuche blockiert (SIP
-  + Touch-ID-Pflicht pro Klick), wartet auf Saschas Fingerabdruck
+description: 09.10. TCC/FDA-Aufräum-Lauf — 2/12 tote Einträge gelöscht,
+  11 offen (TCC-Zahl 88), GUI-Löschung braucht Saschas Touch ID + Settings-App
+  instabil (startet laufend neu); Wartung fortsetzen bei „go"
 metadata:
   node_type: memory
   type: project
   originSessionId: sess_380c5923-55eb-4ded-b208-0e0b05fa8d52
 ---
 
-**Stand 09.10.2026 Abend: 12 tote FDA-Einträge verifiziert, GUI-Löschung läuft — Touch-ID-Dialog offen, wartet auf Sascha.**
+**Stand 09.10.2026 spät: 2/12 GELÖSCHT (AGSService + alter streamer 20260123 — Saschas Touch ID hielt für mehrere Löschungen!), TCC-Zählung 88 (vorher 90). 11 offen.**
 
-- **Löschen bereit (bewiesen tot per `test -e`, Workflow dwfrun-eec3e822):** `2.1.206/207/211/217/220/236` (6 alte claude-CLI-Versionen; nur 2.1.247+2.1.251 existieren), `AGSService` (Adobe 25.08. deinstalliert), `applet` ×3 (Adobe-Desktop-Installateur weg), `simplyprint-bambu-lab` (Ordner weg), `streamer` ×1–2 (Autodesk webdeploy weg). Diagramm/Tabelle: Workspace `out/TCC_LOESCHPLAN.md` (Workflow-Artikel „TCC-Löschplan mit Diagramm").
-- **Bewusst NICHT löschen:** `claude`/`claude.app`-Zeilen (UI-Zuordnung mehrdeutig — eines ist der lebende claude-code-Bundle-Eintrag), alle AUS-Einträge (Spotify/WhatsApp/GoogleUpdater/Moonlock/Zen/CaskHub …) = nur bewusst deaktiviert.
-- **Technik-Fakten (bewiesen):** Lesen von `/Library/Application Support/com.apple.TCC/TCC.db` klappt mit FDA; **Schreiben blockiert SIP** (sqlite „readonly database" UND `cp`-Ersetzen „Operation not permitted") — GUI „−"-Knopf ist der einzige Weg. Backup: `~/sicherungen/tcc-backup-20261009/TCC.db`.
-- **GUI-Automatisierung (computer-use via node_repl):** Sidebar-Klicks in Systemeinstellungen navigieren NICHT wenn Fenster im Hintergrund; zuverlässig = Deep-Link `open "x-apple.systempreferences:com.apple.preference.security?Privacy_AllFilesAccess"`. Klick auf „Entfernen" löst **jedes Mal** Touch-ID/Passwort-Dialog aus („Systemeinstellungen entsperren") — Unlock hielt nicht über Dialog hinweg. Bootstrap muss in JEDEN node_repl-Call (`app`-Binding überlebt Zelle nicht).
+- **Noch zu löschen (bewiesen tot):** `2.1.206/207/211/217/220/236`, `applet` ×3, `simplyprint-bambu-lab`, `streamer` (20260227). NICHT anfassen: `2.1.247/251`, alle AUS-Einträge, `claude`/`claude.app`-Zeilen (mehrdeutig). Backup: `~/sicherungen/tcc-backup-20261009/TCC.db`.
+- **GUI-Instabilität:** Systemeinstellungen startete im Lauf 3× neu (PID wechselte 14919→26928→32648, Fenster leer) — deshalb brachen Loops ab. Workflow dwfrun-eec3e822-Löschloop: nach „Entfernen"-Klick hängt `getAXState` im Auth-Dialog (wartet auf Settle → Timeout) — daher pro Löschung: klicken, Sascha drückt Finger, dann weiter.
+- **Entscheidung für Sascha angeboten:** (a) Agent klickt erste Zeile+Entfernen, er drückt Finger (Unlock hält mehrfach), Rest im Rutsch — wartet auf „go"; oder (b) er löscht die 11 selbst (Zeile → „−"). Danach TCC-DB-Gegenprüfung (`sqlite3 … count(*)`).
 - „Dateien & Ordner"-Bereich (74 Apps): keine pfad-basierten Leichen, nur Spotlight-„?"-Treffer = kein Löschbeweis.
-- Verwandt: [[plugin-skill-inventar-dwfrun-2026-10-09]]
+- Verwandt: [[plugin-skill-inventar-dwfrun-2026-10-09]], [[macos-27-beta-status]] (Beta-Instabilität)
 
 ## thomas-tasks-drei-recherchen
 
