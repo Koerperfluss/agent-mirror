@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-09 19:09 UTC
+Zuletzt gespiegelt: 2026-10-09 19:23 UTC
 
 ## AGENTS
 
@@ -4702,7 +4702,8 @@ Bei Fachfragen (z. B. Trainings-Übungen) fordert er explizit „clinical reason
 
 # Memory Index
 
-- [Plugin/Skill-Inventar 09.10.](plugin-skill-inventar-dwfrun-2026-10-09.md) — dwfrun-8c351687: 7 Skills + 5 Plugins verifiziert; **FDA-Audit: 14 Leichen bewiesen, TCC.db-Löschen SIP-blockiert → nur GUI-„−"; LESSON: Workflow-Subagents können keine Absolut-Pfade, ABER world.run kann (test/mdfind/sqlite3); dwfrun-eec3e822 = TCC-Aufräum-Plan (FDA+Dateien&Ordner, Mermaid in out/TCC_LOESCHPLAN.md); Backup ~/sicherungen/tcc-backup-20261009; OFFEN: GUI-Löschung per computer-use (Sascha: „lösche es für mich")**
+- [TCC/FDA-Cleanup 09.10.](tcc-fda-cleanup-2026-10-09.md) — 12 tote FDA-Einträge bewiesen+bereit; TCC.db-Löschen SIP-blockiert, nur GUI; computer-use klickt „−", aber **Touch-ID-Pflicht pro Klick** — Dialog offen, wartet auf Saschas Fingerabdruck + „weiter"; Deep-Link `Privacy_AllFilesAccess` navigiert zuverlässig
+- [Plugin/Skill-Inventar 09.10.](plugin-skill-inventar-dwfrun-2026-10-09.md) — dwfrun-8c351687: 7 Skills + 5 Plugins verifiziert; FDA-Audit 14 Leichen; LESSON: Workflow-Subagents keine Absolut-Pfade, ABER world.run kann (test/mdfind/sqlite3); dwfrun-eec3e822 = TCC-Plan (out/TCC_LOESCHPLAN.md); Backup ~/sicherungen/tcc-backup-20261009
 - [BrowserOS lokale Modelle](browseros-lokale-modelle-setup.md) — 05.10. Ollama Context 20000 in LaunchAgent gepatcht (Backup ~/sicherungen/ollama-20261005/); **qwen2.5-coder:7b = Hauptmodell für beide Browser**; LM Studio (gemma-4-12b-qat/glm-4.6v-flash, Port 1234) = 2. Option, nie parallel; CaskHub-Adopt erklärt (21 Casks, brew übernimmt Updates); OFFEN: Settings-Klicks in BrowserOS + neo
 
 - [Chipsi/Judicario Live-Audit 05.10.](chipsi-judicario-live-audit-2026-10-05.md) — 16:05 FINAL: **eigentliches AUDIT nach Vorgabe `15_AUDIT_NACH_VORGABE_JUD_0-14`** (JUD 13+14 waren NIE gelesen — Lektion: Vorgabe-Dokumente VOLLSTÄNDIG extrahieren!): **9 ERLEDIGT / 3 TEILWEISE (JUD 1 Disclaimer auf /signup, JUD 6 Deep-Immer fehlt, JUD 14 Mail-Banner sperrt) / 3 OFFEN (JUD 5 Pro 999 €/Monat+11.000 €/Jahr fehlen=Verkaufsblocker, JUD 9 Briefkopf-Vollformular, JUD 13 Verantwortlicher=Quantum AI FZCO VAE statt deutsche GmbH=Datenschutz-Showstopper)** · 15:55: Lane B selbst geholt (Safebox-Konnektor VORBEREITET, Editor-Bug, Persona-Buttons George/Bella/Blitz) · Briefing-PDF 14 + Bündel-PDF 10 (843 KB) fertig · 06.10. LokiVoice-Thomas-Fix.zip gebündelt · 08.10. BH-Melk-Frist 09.10. als Kalender-FRIST-Event gewarnt (Unterlagen Sozialhilfeneu-Ordner verifiziert) · OFFEN: Briefing senden, 14 Einwände, GO Konsolidierung + Testsuite (53 nur gezählt)
@@ -6799,6 +6800,28 @@ metadata:
 **✅ 05.10. 14:09 — FALL KOMPLETT GELÖST (Endbeweis):** Sascha hat ZCode neu geöffnet (⌘Q + Neustart) → 1-Zeilen-Test-Dispatch: **„DISPATCH OK — Neustart wirksam"** (general-purpose, 17,5 s). Die Kette ist damit bewiesen: Konfig auf Disk korrigieren (Overrides leeren ODER Sascha stellt im UI um) → **App-Neustart ist der unverzichtbare letzte Schritt** → Dispatch läuft. Danach sofort 2 Hintergrund-Agents gestartet (Fundinventar + Marinus-Nachricht) — liefen sauber. Merksatz final: disk-fix → restart → EIN Test → direkt Teams starten, keine weiteren Einzel-Tests (Karten-Regel oben).
 
 **⚠️ 18.09. (3. Beobachtung):** implementer kann auch silent FERTIG sein und danach weitere Edits machen — TaskOutput „No task found" heißt nicht verloren; Arbeit lag im Tree (git log bewies seinen Picker-Commit). Und: gelöschte Director-Dateien können im Projekt-`_ARCHIV/` liegen (Kollisions-Auflösung des Agenten) — vor Re-Implementierung IMMER erst Archiv/Tree prüfen, sonst baut man Duplikate.
+
+## tcc-fda-cleanup-2026-10-09
+
+---
+name: tcc-fda-cleanup-2026-10-09
+description: 09.10. TCC/FDA-Aufräum-Lauf — 12 tote
+  Festplattenvollzugriff-Einträge bewiesen+bereit, Löschversuche blockiert (SIP
+  + Touch-ID-Pflicht pro Klick), wartet auf Saschas Fingerabdruck
+metadata:
+  node_type: memory
+  type: project
+  originSessionId: sess_380c5923-55eb-4ded-b208-0e0b05fa8d52
+---
+
+**Stand 09.10.2026 Abend: 12 tote FDA-Einträge verifiziert, GUI-Löschung läuft — Touch-ID-Dialog offen, wartet auf Sascha.**
+
+- **Löschen bereit (bewiesen tot per `test -e`, Workflow dwfrun-eec3e822):** `2.1.206/207/211/217/220/236` (6 alte claude-CLI-Versionen; nur 2.1.247+2.1.251 existieren), `AGSService` (Adobe 25.08. deinstalliert), `applet` ×3 (Adobe-Desktop-Installateur weg), `simplyprint-bambu-lab` (Ordner weg), `streamer` ×1–2 (Autodesk webdeploy weg). Diagramm/Tabelle: Workspace `out/TCC_LOESCHPLAN.md` (Workflow-Artikel „TCC-Löschplan mit Diagramm").
+- **Bewusst NICHT löschen:** `claude`/`claude.app`-Zeilen (UI-Zuordnung mehrdeutig — eines ist der lebende claude-code-Bundle-Eintrag), alle AUS-Einträge (Spotify/WhatsApp/GoogleUpdater/Moonlock/Zen/CaskHub …) = nur bewusst deaktiviert.
+- **Technik-Fakten (bewiesen):** Lesen von `/Library/Application Support/com.apple.TCC/TCC.db` klappt mit FDA; **Schreiben blockiert SIP** (sqlite „readonly database" UND `cp`-Ersetzen „Operation not permitted") — GUI „−"-Knopf ist der einzige Weg. Backup: `~/sicherungen/tcc-backup-20261009/TCC.db`.
+- **GUI-Automatisierung (computer-use via node_repl):** Sidebar-Klicks in Systemeinstellungen navigieren NICHT wenn Fenster im Hintergrund; zuverlässig = Deep-Link `open "x-apple.systempreferences:com.apple.preference.security?Privacy_AllFilesAccess"`. Klick auf „Entfernen" löst **jedes Mal** Touch-ID/Passwort-Dialog aus („Systemeinstellungen entsperren") — Unlock hielt nicht über Dialog hinweg. Bootstrap muss in JEDEN node_repl-Call (`app`-Binding überlebt Zelle nicht).
+- „Dateien & Ordner"-Bereich (74 Apps): keine pfad-basierten Leichen, nur Spotlight-„?"-Treffer = kein Löschbeweis.
+- Verwandt: [[plugin-skill-inventar-dwfrun-2026-10-09]]
 
 ## thomas-tasks-drei-recherchen
 
