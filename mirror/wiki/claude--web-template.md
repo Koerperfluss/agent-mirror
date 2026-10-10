@@ -1,6 +1,6 @@
 # web-template (claude)
 
-Zuletzt gespiegelt: 2026-10-10 19:30 UTC
+Zuletzt gespiegelt: 2026-10-10 19:46 UTC
 
 ## no_spec
 
@@ -158,12 +158,36 @@ ULIMPORTANT: **只生成 HTML 原型**，其他技术栈由后续开发实现。
 - 涉及数据库/UI设计
 - 需要详细规划和文档的项目
 
+## LICENSE
+
+MIT License
+
+Copyright (c) 2025 Tencent CloudBase
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE. 
 ## SKILL
 
 ---
 name: ai-model-nodejs
 description: "Use this skill for Node.js backend AI via @cloudbase/node-sdk (>=3.16.0) — cloud functions, CloudRun, Express/Koa/NestJS, serverless APIs, scheduled jobs, LLM proxies, agent orchestration. The only SDK supporting image generation (ai.createImageModel + generateImage). Text via ai.createModel with groups cloudbase, hunyuan-exp, or custom-*; model ids (e.g. deepseek-v4-flash, glm-5, kimi-k2.6) go in the `model` field of generateText/streamText. MUST run two-step preflight before code — see body. NOT for browser/Web (use ai-model-web) or Mini Program (use ai-model-wechat)."
-version: 2.34.8
+version: 2.35.1
+license: MIT
 alwaysApply: false
 ---
 
@@ -279,7 +303,6 @@ Eligibility alone is not enough. **Do not write `createModel("cloudbase")` yet.*
    Returns `AIModelGroups: AIModelGroup[]` with `GroupName`, `Type` (`builtin` / `custom`), `Models: [{ Model, EnableMCP, Tags }]`, `Status` (1 / 2), `BaseUrl`, `Secret`, `Remark`. The main managed `GroupName` is `cloudbase`.
 
 2. **Never assume a model is already enabled.** Inspect `AIModelGroups[?].Models[].Model` for the target group. If the text model you plan to use (e.g. `deepseek-v4-flash`, or whatever the user asked for) is missing from the `cloudbase` group's `Models[]`, jump to step 4 and enable it — do not call `createModel("cloudbase")` yet. Image generation uses `createImageModel("hunyuan-image")` + `model: "hunyuan-image"`; verify it is likewise enabled before the call.
-
 
 ## api-reference
 
@@ -434,12 +457,36 @@ Once onboarded, confirm with `DescribeAIModels` that the group is ready, then ca
 
 > Custom-model billing is covered by the third-party provider and does not draw from the Token Credits resource pack. Field casing follows the live contract — fall back to camelCase on `InvalidParameter`.
 
+## LICENSE
+
+MIT License
+
+Copyright (c) 2025 Tencent CloudBase
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE. 
 ## SKILL
 
 ---
 name: ai-model-web
 description: "Use this skill when a browser/Web app (React, Vue, Next, Nuxt, static sites, SPAs, dashboards, AI chat UI, 页面, 前端, 网页) needs AI models via @cloudbase/js-sdk. Default routing for Web/frontend AI — call directly from the browser, do NOT propose a Node.js proxy. Covers generateText and streamText; models via ai.createModel with groups cloudbase, hunyuan-exp, or custom-*, model id in the `model` field. MUST run two-step preflight before code — see body. NOT for Node.js backend (use ai-model-nodejs), Mini Program (use ai-model-wechat), or image generation (Node SDK only)."
-version: 2.34.8
+version: 2.35.1
+license: MIT
 alwaysApply: false
 ---
 
@@ -555,7 +602,6 @@ Eligibility alone is not enough. **Do not write `createModel("cloudbase")` yet.*
 
 1. **List groups configured in the current env:**
 
-   ```
 
 ## SKILL
 
@@ -803,12 +849,36 @@ curl "${base}/signup" \
   -H "x-request-id: ${requestID}" \
   -u "${clientId}:${clientSecret}" \
 
+## LICENSE
+
+MIT License
+
+Copyright (c) 2025 Tencent CloudBase
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE. 
 ## SKILL
 
 ---
 name: auth-nodejs-cloudbase
 description: CloudBase Node SDK auth guide for server-side identity, user lookup, and custom login tickets. This skill should be used when Node.js code must read caller identity, inspect end users, or bridge an existing user system into CloudBase; not when configuring providers or building client login UI.
-version: 2.34.8
+version: 2.35.1
+license: MIT
 alwaysApply: false
 ---
 
@@ -924,7 +994,6 @@ When you load this skill to work on a task:
 ---
 
 ## Node auth architecture – how Node fits into CloudBase Auth
-
 
 ## SKILL
 
@@ -1049,12 +1118,36 @@ When you load this skill to work on a task:
 
 ---
 
+## LICENSE
+
+MIT License
+
+Copyright (c) 2025 Tencent CloudBase
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE. 
 ## SKILL
 
 ---
 name: auth-tool-cloudbase
 description: CloudBase auth provider configuration and login-readiness guide. This skill should be used when users need to inspect, enable, disable, or configure auth providers, publishable-key prerequisites, login methods, SMS/email sender setup, or other provider-side readiness before implementing a client or backend auth flow.
-version: 2.34.8
+version: 2.35.1
+license: MIT
 alwaysApply: false
 ---
 
@@ -1459,12 +1552,36 @@ Use this checklist before generating any CloudBase authentication flow.
 - Platform-specific auth path is selected.
 - The next skill to read is explicit before code generation starts.
 
+## LICENSE
+
+MIT License
+
+Copyright (c) 2025 Tencent CloudBase
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE. 
 ## SKILL
 
 ---
 name: auth-web-cloudbase
 description: CloudBase Web Authentication Quick Guide for frontend integration after auth-tool has already been checked. Provides concise and practical Web authentication solutions with multiple login methods and complete user management.
-version: 2.34.8
+version: 2.35.1
+license: MIT
 alwaysApply: false
 ---
 
@@ -1580,7 +1697,6 @@ const app = cloudbase.init({
   // real login preferred; signInAnonymously() only for public demo data.
   // Use auth.getSession() for route guards; deprecated getLoginState()
   // may return a misleading uid without a real session.
-  auth: { detectSessionInUrl: true }, // required
 
 ## extended-guide
 
@@ -1951,12 +2067,36 @@ Use this when you need to know **who is calling** your cloud function:
 const cloud = require('wx-server-sdk')
 
 
+## LICENSE
+
+MIT License
+
+Copyright (c) 2025 Tencent CloudBase
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE. 
 ## SKILL
 
 ---
 name: cloud-api-operations
 description: Operate Tencent Cloud control-plane resources (monitoring/alarms, CLB, CAM roles, COS, MySQL, SCF) via cloud APIs when no dedicated MCP tool covers the task. Use when a task needs control-plane operations beyond CloudBase's own tooling, or when a callCloudApi call failed and needs classifying.
-version: 2.34.8
+version: 2.35.1
+license: MIT
 ---
 
 # Cloud API Operations
@@ -2897,12 +3037,36 @@ CreateAlarmPolicy 实测可用的请求体：
 | `sms` | 短信 | ⚠️ `2019-07-11` / `2021-01-11` |
 | `ses` | 邮件推送 | `2020-10-02` |
 
+## LICENSE
+
+MIT License
+
+Copyright (c) 2025 Tencent CloudBase
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE. 
 ## SKILL
 
 ---
 name: cloud-functions
 description: CloudBase function runtime guide for building, deploying, and debugging your own Event Functions or HTTP Functions. This skill should be used when users need application runtime code on CloudBase, not when they are merely calling CloudBase official platform APIs.
-version: 2.34.8
+version: 2.35.1
+license: MIT
 alwaysApply: false
 ---
 
@@ -3018,7 +3182,6 @@ Personal-tier image builds (`imageConfig.imageType="personal"` with `local` / `c
 
 ### Enterprise-tier builds require a login state with CAM permission
 
-`cloud` / `local` builds against an enterprise registry mint a TCR token through CAM (as does `autoGrant`). Environment-level API Keys and OAuth-issued STS credentials carry no CAM policy, so those calls fail with `UnauthorizedOperation`. The MCP probes the login state before starting a real enterprise build and refuses up front rather than failing midway; treat that error as a routing signal, not a retryable fault:
 
 ## checklist
 
@@ -3849,12 +4012,36 @@ For TCP migration only, connection payloads may be fetched via `queryMysqlDataba
 
 After VPC is bound, public internet egress may require NAT / public gateway in that VPC. Prefer fixing that network path over removing VPC just to “make outbound work” when the DB is private.
 
+## LICENSE
+
+MIT License
+
+Copyright (c) 2025 Tencent CloudBase
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE. 
 ## SKILL
 
 ---
 name: cloud-storage-web
 description: Complete guide for CloudBase cloud storage using Web SDK (@cloudbase/js-sdk) - upload, download, temporary URLs, file management, and best practices.
-version: 2.34.8
+version: 2.35.1
+license: MIT
 alwaysApply: false
 ---
 
@@ -3970,7 +4157,6 @@ Use instead:
 | `createSignedUrl(path, expiresIn)` | `await` → `{ data: { signedUrl } }` | `await` → `{ data: { fullSignedURL } }` |
 | `getPublicUrl(path)` | `await` → `{ data: { publicUrl } }` | **同步调用（不 await）** → `{ data: { publicUrl } }` |
 
-Source: [webv3/storage.md](https://docs.cloudbase.net/api-reference/webv3/storage.md) · [webv3-pg/storage.md](https://docs.cloudbase.net/api-reference/webv3-pg/storage.md)（raw markdown）。
 
 ## SKILL
 
@@ -4717,12 +4903,36 @@ Component({
         parameters: {
           type: "object",
 
+## LICENSE
+
+MIT License
+
+Copyright (c) 2025 Tencent CloudBase
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE. 
 ## SKILL
 
 ---
 name: cloudbase-agent
 description: Build and deploy AI agents with CloudBase Agent SDK (TypeScript & Python). Implements the AG-UI protocol for streaming agent-UI communication. Use when deploying agent servers, using LangGraph/LangChain/CrewAI adapters, building custom adapters, understanding AG-UI protocol events, or building web/mini-program UI clients. Supports both TypeScript (@cloudbase/agent-server) and Python (cloudbase-agent-server via FastAPI).
-version: 2.34.8
+version: 2.35.1
+license: MIT
 alwaysApply: false
 ---
 
@@ -4751,6 +4961,29 @@ This skill supports **TypeScript** and **Python**. Determine the language first,
 
 **⚠️ IMPORTANT:** After determining the language, you MUST read the corresponding skill file above. Do NOT proceed with any code generation until you have read it. Each language skill file is self-contained with its own quick start, routing table, deployment instructions, and adapter guides.
 
+## LICENSE
+
+MIT License
+
+Copyright (c) 2025 Tencent CloudBase
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE. 
 ## adapter-coze
 
 # Coze Adapter
@@ -6109,7 +6342,8 @@ AgentServiceApp().run(
 ---
 name: cloudbase-agent-python
 description: "Build production-ready AI agent backends using the CloudBase Agent Python SDK — create agents with LangGraph/CrewAI/LlamaIndex, serve them via FastAPI with AG-UI protocol streaming + OpenAI-compatible endpoints, add tools (bash, filesystem, MCP, code execution), memory (in-memory, TDAI, MySQL, MongoDB), observability (OpenTelemetry/Langfuse), and middleware (auth, logging). Use this skill when the user wants to create an AI agent server, build a chatbot backend, set up human-in-the-loop workflows, integrate MCP tools, add agent observability, or deploy an agent API — even if they don't explicitly mention 'CloudBase Agent.'"
-version: 2.34.8
+version: 2.35.1
+license: MIT
 alwaysApply: true
 ---
 
@@ -6225,8 +6459,30 @@ Follow the **4-step deployment pipeline** in [agent-deployment](agent-deployment
 
 ---
 
-## Architecture
 
+## LICENSE
+
+MIT License
+
+Copyright (c) 2025 Tencent CloudBase
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE. 
 ## adapter-development
 
 # Building Custom Adapters
@@ -6848,7 +7104,8 @@ run({
 ---
 name: cloudbase-agent
 description: "Build and deploy AI agents with Cloudbase Agent (TypeScript), a TypeScript SDK implementing the AG-UI protocol. Use when: (1) deploying agent servers with @cloudbase/agent-server, (2) using LangGraph adapter with ClientStateAnnotation, (3) using LangChain adapter with clientTools(), (4) building custom adapters that implement AbstractAgent, (5) understanding AG-UI protocol events, (6) building web UI clients with @ag-ui/client, (7) building WeChat Mini Program UIs with @cloudbase/agent-ui-miniprogram."
-version: 2.34.8
+version: 2.35.1
+license: MIT
 alwaysApply: true
 ---
 
@@ -7112,12 +7369,36 @@ Component({
         parameters: {
           type: "object",
 
+## LICENSE
+
+MIT License
+
+Copyright (c) 2025 Tencent CloudBase
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE. 
 ## SKILL
 
 ---
 name: cloudbase-cli
 description: CloudBase CLI (tcb, 云开发CLI, Tencent CloudBase命令行) resource management skill. Use when deploying cloud functions, CloudRun, storage, NoSQL/MySQL, static hosting, permissions, CORS/domains via tcb; for CI/CD and batch ops; when the user prefers CLI; or as the first-session fallback when CloudBase MCP tools are not loaded yet (after install/config, before IDE restart). Covers tcb login (device code for Tencent Cloud accounts; --cloudbase-api-key -e for environment API Key without an account; --apiKeyId/--apiKey for CI) and domain commands (fn/hosting/cloudrun/…) as MCP auth/manage parity — do not default to tcb deploy.
-version: 2.34.8
+version: 2.35.1
+license: MIT
 alwaysApply: false
 ---
 
@@ -7233,7 +7514,6 @@ Use when the user wants to manage CloudBase resources via command line, **or** w
 - [ ] Confirmed target envId with the user?
 - [ ] Used `--help` for unfamiliar commands?
 - [ ] Used `--dry-run` before destructive operations?
-- [ ] Verified the result after each operation?
 
 ## access
 
@@ -8465,12 +8745,36 @@ tcb storage rm folder/ --dir -e <envId>                # Directory
 ⚠️ Deleting 2+ files triggers a confirmation prompt. Use `--force` to skip (required in CI/scripts).
 
 
+## LICENSE
+
+MIT License
+
+Copyright (c) 2025 Tencent CloudBase
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE. 
 ## SKILL
 
 ---
 name: cloudbase-code-review
 description: "Code review and validation for CloudBase projects. After writing code for Web / miniprogram / CloudRun / cloud-function projects, call this skill to check for known pitfalls — auth guard misuse, missing database tables, RLS misconfiguration, storage domain setup, and SDK API misuse. Supports automated lint scripts (regex-based) + LLM semantic review."
-version: 2.34.8
+version: 2.35.1
+license: MIT
 alwaysApply: false
 ---
 
@@ -9322,12 +9626,36 @@ await cloudbase.commonService("tcb", TCB_VERSION).call({
 
 CloudBase 安全域名机制会拦截未注册的 origin 发出的请求。Vite 默认的 `localhost:5173` 不在白名单中，浏览器直传 CloudBase 存储时会因跨域失败。agent 在写本地项目时需要主动把 dev server 地址加入安全域名。
 
+## LICENSE
+
+MIT License
+
+Copyright (c) 2025 Tencent CloudBase
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE. 
 ## SKILL
 
 ---
 name: cloudbase-declarative-deploy
 description: CloudBase declarative deployment from a cloudbaserc config (声明式部署, 配置式部署, cloudbaserc 部署) through the deployBuild / deployPlan / deployApply MCP tools. Use when deploying database, functions, app, hosting, or gateway resources described in cloudbaserc.json/yaml as a single desired-state config, when a user wants to build static hosting artifacts locally first (deployBuild), or wants a dry-run plan before applying (deployPlan), or when handling multi-environment deploys via mode / envOverrides. Covers build-plan-apply flow (deployBuild local build → deployPlan dry-run → deployApply confirm=true), hosting build-output neutralization, envId resolution priority, only/skip filtering, concurrency, and continueOnError. Prefer deployBuild (when hosting declares a buildCommand) and deployPlan before deployApply; do not confuse with per-resource tcb CLI deploy or single-function deploy.
-version: 2.34.8
+version: 2.35.1
+license: MIT
 alwaysApply: false
 ---
 
@@ -9443,7 +9771,6 @@ explicit envId param  >  cloudbaserc `envId`  >  logged-in / bound environment
 ```
 
 If none can be resolved, the tool errors out. Prefer confirming the resolved envId
-with the user before applying to production.
 
 ## config-schema
 
@@ -9754,12 +10081,36 @@ Use this supported cloud path:
 
 `installCmd` / `buildCmd` / `deployCmd` are pipeline declarations (staticCmd) executed by
 
+## LICENSE
+
+MIT License
+
+Copyright (c) 2025 Tencent CloudBase
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE. 
 ## SKILL
 
 ---
 name: cloudbase-document-database-web-sdk
 description: Use CloudBase document database Web SDK only for confirmed NoSQL collection work. Query, create, update, and delete document data; if the task mentions PostgreSQL / CloudBase PG / app.rdb(), route to postgresql-development instead.
-version: 2.34.8
+version: 2.35.1
+license: MIT
 alwaysApply: false
 ---
 
@@ -9875,7 +10226,6 @@ Important rules:
 ## Working rules for a coding agent
 
 1. **Start from the auth model**
-   - If the page relies on logged-in user identity, read the Web auth skill before writing database code.
 
 ## aggregation
 
@@ -10738,12 +11088,176 @@ await managePermissions({
 });
 ```
 
+## LICENSE
+
+MIT License
+
+Copyright (c) 2025 Tencent CloudBase
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE. 
+## SKILL
+
+---
+name: cloudbase-mcp
+description: CloudBase MCP reference. Use when connecting local or remote MCP, calling tools from the shell with mcporter, reading tool schemas, choosing the domestic or international endpoint, setting site, region, cloud mode, or plugin flags, or contributing a fix to the open-source MCP server, skills, or CLI.
+version: 2.35.1
+license: MIT
+alwaysApply: false
+---
+
+# CloudBase MCP
+
+Open source:
+
+- GitHub: https://github.com/TencentCloudBase/CloudBase-AI-ToolKit
+- Domestic mirror: https://cnb.cool/tencent/cloud/cloudbase/CloudBase-AI-ToolKit
+
+The server source is `mcp/` in that repo. The package name is `@cloudbase/cloudbase-mcp`.
+
+## Sibling skills (local only)
+
+Sibling CloudBase skills ship beside this skill. Use local relative paths such as `../cloudbase-cli/SKILL.md`.
+
+If a referenced sibling skill file is missing from this environment, ask the user to install the full CloudBase plugin (or the missing skill). Do **not** HTTP-fetch remote skill or protocol markdown into the agent context.
+
+- MCP setup, mcporter commands, and auth examples: `../cloudbase/references/mcp-setup.md`
+- CLI fallback when MCP tools are not loaded: `../cloudbase-cli/SKILL.md`
+- MCP vs CLI decision tree: `../cloudbase/references/tooling-fallback.md`
+
+## When to use
+
+- The user is connecting MCP, or choosing local versus remote.
+- The user or the agent calls CloudBase tools from the shell with mcporter, or needs a tool schema before calling.
+- The user needs the site, region, cloud-mode, or plugin switches that already exist.
+- A bug is in this repo's MCP server, skills, or CLI, and the fix should be a pull request.
+
+## Do not use this for
+
+- Creating or changing cloud resources. Use the matching domain skill, or `../cloudbase-cli/SKILL.md` when MCP tools are not loaded.
+- Cloud platform, permission, or account problems that are not code in this repo. Those go to an issue, not a pull request.
+
+## Connection
+
+| Mode | Address |
+|------|---------|
+| Remote, domestic | `https://tcb-api.cloud.tencent.com/mcp/v1` |
+| Remote, international | `https://tcb-api.tencentcloud.com/mcp/v1` |
+| Local | `npx @cloudbase/cloudbase-mcp@latest` (Node.js 18.15+) |
+
+The hostname decides the site. Remote URLs do not take a `site` query parameter.
+
+- Interactive clients: put only the URL in the IDE config. The IDE opens a browser for login. This is the usual path.
+- CI: add `env_id` and headers `X-TencentCloud-SecretId` / `X-TencentCloud-SecretKey`.
+- Local stdio for the international site: `TCB_SITE=intl` and `TCB_REGION=ap-singapore`.
+
+Remote mode cannot upload local files or download templates. The international site does not expose NoSQL tools.
+
+## Calling tools with mcporter
+
+When this session has no native MCP tools, use mcporter. The command list and the auth examples live in `../cloudbase/references/mcp-setup.md`. Read that file before login, environment binding, or `manageEnv`.
+
+Check whether the server is configured:
+
+```bash
+npx mcporter list | grep cloudbase
+```
+
+If it is missing, add a stdio server named `cloudbase` in `config/mcporter.json`:
+
+```json
+{
+  "mcpServers": {
+    "cloudbase": {
+      "command": "npx",
+      "args": ["@cloudbase/cloudbase-mcp@latest"],
+      "description": "CloudBase MCP",
+      "lifecycle": "keep-alive"
+    }
+  }
+}
+```
+
+Read the schema before the first call. `describe` without `--all-parameters` omits parameters.
+
+```bash
+npx mcporter describe cloudbase --all-parameters
+npx mcporter list cloudbase --schema
+```
+
+Call a tool with `server.tool` and `key=value` arguments:
+
+```bash
+npx mcporter call cloudbase.queryEnv action=list --output json
+```
+
+Do not put a Secret ID, Secret Key, or environment ID into `mcporter.json`. Login stays on `cloudbase.auth` or `tcb login`, as written in `mcp-setup.md`.
+
+## Environment
+
+| Name | Effect |
+|------|--------|
+| `TCB_SITE` | `domestic` or `intl`. `ap-singapore` exists on both sites; a domestic Singapore environment must set `TCB_SITE=domestic`. |
+| `TCB_REGION` | API region, such as `ap-shanghai` or `ap-singapore`. |
+| `CLOUDBASE_MCP_CLOUD_MODE` or `MCP_CLOUD_MODE` | `true` disables local file and process tools for a self-hosted caller. |
+| `CLOUDBASE_MCP_PLUGINS_ENABLED` / `CLOUDBASE_MCP_PLUGINS_DISABLED` | Comma-separated plugin names for a local server. |
+| `enable_plugins` / `disable_plugins` | The same switch on a remote URL, comma-separated. |
+
+Plugin names are the ones in `mcp/src/server.ts` (`env`, `database`, `functions`, `hosting`, `storage`, and the rest). Hosted remote servers leave `feedback` off unless `enable_plugins` includes it. A local server includes it by default.
+
+## Contributing
+
+Read `CONTRIBUTING.md` at the repo root. Fork, use a feature branch, and follow the commit types listed there (`feat`, `fix`, `docs`, and the rest). Install with corepack and `pnpm install`.
+
+- A bug in MCP, a skill, or the CLI: open a pull request.
+- The cloud platform, a permission, or the account: open an issue. Do not put an environment ID or a secret in the text.
+- `prepareFeedback` only returns the new-issue page for the current site. Write the text in the chat. The user logs in and submits it.
+
+## LICENSE
+
+MIT License
+
+Copyright (c) 2025 Tencent CloudBase
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE. 
 ## SKILL
 
 ---
 name: cloudbase-platform
 description: CloudBase platform overview and routing guide. This skill should be used when users need high-level capability selection, platform concepts, console navigation, realtime (broadcast / presence / live database changes), or cross-platform best practices before choosing a more specific implementation skill.
-version: 2.34.8
+version: 2.35.1
+license: MIT
 alwaysApply: false
 ---
 
@@ -10859,7 +11373,6 @@ When working with domain-related tasks, use the correct tool based on the requir
 |-------------|------|------------|---------|
 | **Security Domain (安全域名)** | `manageEnv(action="addSecurityDomain" \| "removeSecurityDomain")` | `domains` (array of host:port strings) | CORS/request source validation for browser uploads. No certificate involved. (Deprecated alias: `envDomainManagement`.) |
 | **Reuse existing Custom Domain** | `queryGateway(listCustomDomains)` → `manageGateway(createRoute)` | `domain` = existing custom domain; route fields | Expose a service/path on an already-bound custom domain. **No certificateId.** Prefer this when a custom domain already exists. |
-| **Bind new Custom Domain (自定义域名)** | `manageGateway(action="bindCustomDomain")` | `domain` (string), `certificateId` (string) | First-time bind of a new public HTTPS domain. Requires certId from SSL console. |
 
 ## change-safety-protocol
 
@@ -11138,12 +11651,36 @@ exports.main = async (event) => {
 
 > Before writing or deploying Cloud Function / CloudRun HTTP handlers, debug routes, or container images, follow `cloudbase-platform/references/protocols/sensitive-runtime-data-protection.md`.
 
+## LICENSE
+
+MIT License
+
+Copyright (c) 2025 Tencent CloudBase
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE. 
 ## SKILL
 
 ---
 name: cloudbase-wechat-integration
 description: CloudBase WeChat integration guide for Mini Program WeChat Pay, Mini Program virtual payment (虚拟支付, wx.requestVirtualPayment), Official Account JSAPI Pay, Native QR-code Pay, Official Account OAuth, openid handling, payment callbacks, and CloudBase Integration Center generated functions. This skill should be used when users ask to add, debug, or extend WeChat payment, virtual payment, or official-account flows on CloudBase.
-version: 2.34.8
+version: 2.35.1
+license: MIT
 alwaysApply: false
 ---
 
@@ -11830,12 +12367,36 @@ Use this reference for **虚拟支付**（virtual goods payment）flows: 道具�
 ## Implementation Checklist
 
 
+## LICENSE
+
+MIT License
+
+Copyright (c) 2025 Tencent CloudBase
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE. 
 ## SKILL
 
 ---
 name: cloudrun-development
 description: CloudBase Run backend development rules (Function mode/Container mode). Use this skill when deploying backend services that require long connections, multi-language support, custom environments, AI agent development, or migrating existing/GitHub apps that need VPC access to MySQL/PostgreSQL/Redis. Also use when diagnosing CloudRun container deploy failures (deploy_failed, readiness/probe failed, image won't start, docker.io pull loops) or a deploy stuck behind a running deploy task. For stateless HTTP services, prefer HTTP cloud functions.
-version: 2.34.8
+version: 2.35.1
+license: MIT
 alwaysApply: false
 ---
 
@@ -11951,7 +12512,6 @@ Use CloudBase Run when the task needs a deployed backend service rather than a s
 
 - CloudBase PG → `app.rdb()`（js-sdk v3 / node-sdk，走 PG HTTP 网关；详见 `../postgresql-development-cloudbase/SKILL.md`）
 - NoSQL → `app.database()`；对象存储 → `app.storage`
-- 新应用 / CloudBase 原生数据 → 数据层直接按 SDK 路径设计，部署时完全不需要 VPC 配置；若只用到这些数据面，还可结合上一节的「HTTP 云函数优先」进一步免掉云托管
 
 ## image-deploy-troubleshooting
 
@@ -12199,12 +12759,36 @@ If the user says "PostgreSQL" but the app is a classic TCP client (for example n
   }
 }
 
+## LICENSE
+
+MIT License
+
+Copyright (c) 2025 Tencent CloudBase
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE. 
 ## SKILL
 
 ---
 name: data-model-creation
 description: "[Deprecated] Optional advanced tool for complex data modeling. For simple MySQL table creation, use relational-database-tool directly; for PostgreSQL / CloudBase PG schema work, use postgresql-development. New environments should use PostgreSQL DDL via queryPgDatabase/managePgDatabase — see postgresql-development skill instead."
-version: 2.34.8
+version: 2.35.1
+license: MIT
 alwaysApply: false
 metadata:
   priority: "5"
@@ -12320,14 +12904,37 @@ This skill is an **advanced modeling path**, not the default path for database w
 | phone | `phone` |
 | URL | `url` |
 | image | `x-image` |
-| file | `x-file` |
 
+## LICENSE
+
+MIT License
+
+Copyright (c) 2025 Tencent CloudBase
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE. 
 ## SKILL
 
 ---
 name: http-api-cloudbase
 description: CloudBase official HTTP API client guide. This skill should be used when backends, scripts, or non-SDK clients must call CloudBase platform APIs over raw HTTP instead of using a platform SDK or MCP management tool.
-version: 2.34.8
+version: 2.35.1
+license: MIT
 alwaysApply: false
 ---
 
@@ -12443,7 +13050,6 @@ Before implementing any HTTP API calls, you should:
    - `auth` - Authentication API
    - `cloudrun` - CloudRun API
    - `storage` - Storage API
-   - `ai_model` - AI 大模型接入 API
 
 ## checklist
 
@@ -12767,12 +13373,36 @@ Use this checklist when the request comes from Android, iOS, Flutter, React Nati
 - OpenAPI source has been checked (`searchKnowledgeBase` with the right `apiName`).
 - The auth method and request base URL are fixed before code generation.
 
+## LICENSE
+
+MIT License
+
+Copyright (c) 2025 Tencent CloudBase
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE. 
 ## SKILL
 
 ---
 name: minimal-web-baas-demo
 description: "Fast path for a minimal CloudBase Web + database demo (最小前后端 / 最小可用 fullstack / Lovable-like BaaS). Defaults to @cloudbase/js-sdk client CRUD (NoSQL app.database / PG app.rdb), MCP-only schema, preview-first, and forbids cloud functions unless secrets, cron/background jobs, or logic that security rules/RLS cannot express. Use for 搭一套 demo、留言板、Todo、Notes、Kanban, or when users say 带云函数+云数据库 but only need CRUD. NOT for production multi-service backends, CloudRun, WeChat Mini Programs, or tasks that truly need server secrets."
-version: 2.34.8
+version: 2.35.1
+license: MIT
 alwaysApply: false
 ---
 
@@ -12888,7 +13518,6 @@ Any partner host (WorkBuddy, CodeBuddy connectors, vertical expert prompts, ISV 
 
 | Host capability | Recommended packaging |
 | --- | --- |
-| Full CloudBase Sites plugin | Rely on SessionStart Rule 5 injection + this skill on demand for non-Sites cwd demos. Prefer Sites with `CLOUDBASE_SITES_AUTO_INIT=1` for empty-cwd preview. Never guess 5173 — read `.cloudbase-sites/preview.json`. |
 
 ## SKILL
 
@@ -14680,12 +15309,36 @@ async function paginateWithCount(collectionName, page, pageSize, whereConditions
         countQuery.count()
     ]);
 
+## LICENSE
+
+MIT License
+
+Copyright (c) 2025 Tencent CloudBase
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE. 
 ## SKILL
 
 ---
 name: ops-inspector
 description: AIOps-style CloudBase inspection skill (v3). Use when users need health checks, log diagnosis, alarm interpretation (CPU alert normal?, peak QPS), metrics via queryEnv(action=metrics), or fault playbooks for 429 / function 404 / ACCESS_TOKEN_INVALID / zero invocations. Triggers on 巡检, 诊断, 告警, 峰值 QPS, 限频, 调用量为 0, troubleshooting.
-version: 2.34.8
+version: 2.35.1
+license: MIT
 alwaysApply: false
 ---
 
@@ -14801,7 +15454,6 @@ If CLS is not enabled, note this as a **warning** — log-based diagnosis will b
 ```
 queryFunctions(action="listFunctions")
 ```
-
 
 ## alarm-interpretation
 
@@ -15005,12 +15657,36 @@ Shared prerequisites for every playbook:
 ### Tools (in order)
 
 
+## LICENSE
+
+MIT License
+
+Copyright (c) 2025 Tencent CloudBase
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE. 
 ## SKILL
 
 ---
 name: postgresql-best-practices-cloudbase
 description: "CloudBase PostgreSQL access-pattern and slow-query quality guidance. Use when designing how tables are read and written, eliminating per-row database calls, adding indexes for filters or joins, reviewing high-traffic data access, or explaining a slow SQL query. Not for first-time PG SDK setup, login UI, or NoSQL collections."
-version: 2.34.8
+version: 2.35.1
+license: MIT
 alwaysApply: false
 ---
 
@@ -15406,12 +16082,36 @@ CloudBase PG is one database per environment. Do not plan a second database or a
 
 Represent each schema change as a local `cloudbase/migrations/<version>_<name>.sql` file and apply it through `applyMigration`. In disposable environments, a new migration may deliberately rebuild a table. In persistent environments, use forward-compatible expand/migrate/contract changes and a new migration for every correction.
 
+## LICENSE
+
+MIT License
+
+Copyright (c) 2025 Tencent CloudBase
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE. 
 ## SKILL
 
 ---
 name: postgresql-development-cloudbase
 description: "Use when building, debugging, or evaluating CloudBase PostgreSQL / CloudBase PG / PG mode apps, including Postgres schema setup, queryPgDatabase/managePgDatabase, JS SDK v3 app.rdb() CRUD/RPC, PG HTTP API fallback, RLS-style permissions, username-password auth, and Web CMS/admin CRUD flows backed by CloudBase PG."
-version: 2.34.8
+version: 2.35.1
+license: MIT
 alwaysApply: false
 ---
 
@@ -15527,7 +16227,6 @@ CloudBase PG (`app.rdb()`, `app.storage.from('bucket')`) uses **different API me
 7. Implement browser-side business data with the CloudBase JS SDK v3 PostgreSQL API first: `app.rdb().from(table)`. Use the latest `@cloudbase/js-sdk` when `app.rdb` is missing (`xxx.rdb is not a function` means the SDK is too old).
 8. Do not manually fetch a CloudBase Auth bearer token from browser code for PG CRUD. In particular, do not call non-canonical helpers such as `currentUser.getIdToken()` unless you have verified that exact method exists in the installed SDK. Prefer `app.rdb()` so the SDK carries the active session.
 9. Use the official CloudBase PG SQL auth helpers in policies: `auth.uid()` for JWT `sub`, `auth.role()` for `anon` / `authenticated` / `service_role`, `auth.jwt()` for full claims, and `auth.email()` when email is needed. Still verify the policy through the real app session before claiming it works:
-   - Log in through the real app path.
 
 ## app-workflow
 
@@ -17181,12 +17880,36 @@ Fix:
 3. Ensure the DB security group / allowlist accepts the CloudRun subnet CIDR on port 5432.
 4. Do not assume enabling CloudBase PG mode alone makes an existing open-source app connect without VPC + a TCP-reachable endpoint.
 
+## LICENSE
+
+MIT License
+
+Copyright (c) 2025 Tencent CloudBase
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE. 
 ## SKILL
 
 ---
 name: relational-database-mcp-cloudbase
-description: "[Deprecated] This is the required documentation for agents operating on the CloudBase Relational Database through MCP. It defines the canonical SQL management flow with `queryMysqlDatabase`, `manageMysqlDatabase`, `queryPermissions`, and `managePermissions`, including MySQL provisioning, destroy flow, async status checks, safe query execution, schema initialization, and permission updates. New environments should use PostgreSQL — see postgresql-development skill instead."
-version: 2.34.8
+description: "[Deprecated] This is the required documentation for agents operating on the CloudBase Relational Database through MCP. It defines the canonical SQL management flow with `queryMysqlDatabase`, `manageMysqlDatabase`, `queryPermissions`, and `managePermissions`, including destroy flow, async status checks, safe query execution, schema initialization, and permission updates. MySQL provisioning is no longer available through MCP; new environments should use PostgreSQL — see postgresql-development skill instead."
+version: 2.35.1
+license: MIT
 alwaysApply: false
 metadata:
   priority: "5"
@@ -17203,7 +17926,7 @@ If a referenced sibling skill file is missing from this environment, ask the use
 
 ### Use this first when
 
-- The agent must inspect SQL data, execute SQL statements, provision or destroy MySQL, initialize table structure, or manage table security rules through MCP tools.
+- The agent must inspect SQL data, execute SQL statements, destroy an existing MySQL instance, initialize table structure, or manage table security rules through MCP tools.
 
 ### Read before writing code if
 
@@ -17221,7 +17944,8 @@ If a referenced sibling skill file is missing from this environment, ask the use
 ### Common mistakes / gotchas
 
 - Initializing SDKs in an MCP management flow.
-- Running write SQL or DDL before checking whether MySQL is provisioned and ready.
+- Running write SQL or DDL before confirming the environment already has a ready MySQL instance.
+- Trying to create a MySQL instance through MCP. Provisioning has been retired from the tool surface: new environments use PostgreSQL, and instances are only created in the console.
 - Treating document database tasks as MySQL management tasks.
 - Skipping `_openid` and permissions review after creating new SQL tables.
 - Destroying MySQL without explicit confirmation or without checking whether the environment still needs the instance.
@@ -17232,9 +17956,8 @@ If a referenced sibling skill file is missing from this environment, ask the use
 Use this skill when an **agent** needs to operate on **CloudBase Relational Database via MCP tools**, for example:
 
 - Inspecting or querying SQL data
-- Provisioning MySQL for an environment
-- Destroying MySQL for an environment
-- Polling MySQL provisioning status
+- Destroying an existing MySQL instance
+- Polling an in-flight MySQL task (create tasks are started in the console — MCP no longer creates instances)
 - Modifying data or schema (INSERT/UPDATE/DELETE/DDL)
 - Initializing tables and indexes after MySQL is ready
 - Reading or changing table permissions
@@ -17251,15 +17974,15 @@ Do **NOT** use this skill for:
    - In this context, **never initialize SDKs for CloudBase Relational Database**; use MCP tools instead.
 
 2. **Pick the right tool for the job**
-   - Read-only SQL and provisioning status checks -> `queryMysqlDatabase`
-   - MySQL provisioning, MySQL destruction, write SQL, DDL, schema initialization -> `manageMysqlDatabase`
+   - Read-only SQL and create/destroy task status checks -> `queryMysqlDatabase`
+   - MySQL destruction, write SQL, DDL, schema initialization -> `manageMysqlDatabase`
    - Inspect permissions -> `queryPermissions(action="getResourcePermission")`
    - Change permissions -> `managePermissions(action="updateResourcePermission")`
 
 3. **Always be explicit about safety**
    - Before destructive operations (DELETE, DROP, etc.), summarize what you are about to run and why.
    - Prefer `queryMysqlDatabase(action="getInstanceInfo")` or a read-only SQL check before writes.
-   - Provisioning or destroying MySQL requires explicit confirmation because both actions have environment-level impact.
+   - Destroying MySQL requires explicit confirmation because it has environment-level impact; provisioning is not offered here at all.
 
 ---
 
@@ -17269,11 +17992,11 @@ These tools are the supported way to interact with CloudBase Relational Database
 
 ### 1. `queryMysqlDatabase`
 
-- **Purpose:** Query SQL data and provisioning state.
+- **Purpose:** Query SQL data and instance / task state.
 - **Use for:**
   - Running `SELECT` and other read-only SQL queries with `action="runQuery"`
   - Checking whether MySQL already exists with `action="getInstanceInfo"` (lifecycle only — no connection credentials)
-  - Inspecting asynchronous provisioning progress with `action="describeCreateResult"` or `action="describeTaskStatus"`
+  - Inspecting an in-flight create or destroy task with `action="describeCreateResult"` or `action="describeTaskStatus"` (create tasks originate in the console)
   - **Exception only:** `action="getConnectionInfo"` returns the raw connection/cluster payload (may include credentials) for migrating existing TCP/ORM clients. Do **not** use this for new business CRUD — prefer Web/Node SDK or `runQuery` / `runStatement`.
 
 **Example flow:**
@@ -17289,20 +18012,19 @@ These tools are the supported way to interact with CloudBase Relational Database
 
 ### 2. `manageMysqlDatabase`
 
-- **Purpose:** Manage SQL lifecycle and execute mutating SQL.
+- **Purpose:** Manage an existing SQL instance and execute mutating SQL.
 - **Use for:**
-  - Provisioning MySQL with `action="provisionMySQL"`
   - Destroying MySQL with `action="destroyMySQL"`
   - Executing `INSERT`, `UPDATE`, `DELETE`, `CREATE TABLE`, `ALTER TABLE`, `DROP TABLE` with `action="runStatement"`
   - Initializing tables and indexes with `action="initializeSchema"`
+
+**Provisioning is not available here.** `provisionMySQL` has been removed from the action set: a call carrying it fails schema validation, and a missing instance returns `MYSQL_NOT_CREATED` with a console entry rather than a create hint.
 
 **Important:** When creating a new table, you **must** include the `_openid` column for per-user access control:
 
 ```sql
 _openid VARCHAR(64) DEFAULT '' NOT NULL
 ```
-
-Note: when a user is logged in, `_openid` is automatically populated by the server from the authenticated session. Do not manually fill it in normal inserts.
 
 ## SKILL
 
@@ -17427,12 +18149,36 @@ _openid VARCHAR(64) DEFAULT '' NOT NULL
 Note: when a user is logged in, `_openid` is automatically populated by the server from the authenticated session. Do not manually fill it in normal inserts.
 
 
+## LICENSE
+
+MIT License
+
+Copyright (c) 2025 Tencent CloudBase
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE. 
 ## SKILL
 
 ---
 name: relational-database-web-cloudbase
 description: "[Deprecated] Use when building frontend Web apps that talk to CloudBase Relational Database via @cloudbase/js-sdk – provides the canonical init pattern so you can then use Supabase-style queries from the browser. New environments should use PostgreSQL with app.rdb() — see postgresql-development skill instead."
-version: 2.34.8
+version: 2.35.1
+license: MIT
 alwaysApply: false
 metadata:
   priority: "5"
@@ -17467,7 +18213,7 @@ If a referenced sibling skill file is missing from this environment, ask the use
 
 ### Do NOT use for
 
-- MCP-based SQL provisioning, schema changes, or permissions management.
+- MCP-based SQL management, schema changes, or permissions management (provisioning is not offered through MCP).
 - Backend/Node service access.
 - Document database operations.
 
@@ -17482,7 +18228,7 @@ If a referenced sibling skill file is missing from this environment, ask the use
 
 - Confirm the caller is a Web frontend.
 - Keep one shared CloudBase app and one shared relational DB client.
-- Route MySQL provisioning/schema work to `relational-database-mcp-cloudbase`. If the task says PostgreSQL, CloudBase PG, PG mode, `app.rdb()`, `queryPgDatabase`, `managePgDatabase`, or RLS, route to `postgresql-development-cloudbase` instead.
+- Route MySQL management/schema work on an existing instance to `relational-database-mcp-cloudbase` (it does not provision). If the task says PostgreSQL, CloudBase PG, PG mode, `app.rdb()`, `queryPgDatabase`, `managePgDatabase`, or RLS, route to `postgresql-development-cloudbase` instead.
 - Handle auth separately before data access.
 
 ## Overview
@@ -17548,7 +18294,6 @@ const app = cloudbase.init({
 });
 
 export const db = app.rdb();
-```
 
 ## SKILL
 
@@ -17673,12 +18418,36 @@ const app = cloudbase.init({
   env: "your-env-id"
 });
 
+## LICENSE
+
+MIT License
+
+Copyright (c) 2025 Tencent CloudBase
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE. 
 ## SKILL
 
 ---
 name: spec-workflow
 description: Use when medium-to-large changes need explicit requirements, technical design, and task planning before implementation, especially for multi-module work, unclear acceptance criteria, or architecture-heavy requests.
-version: 2.34.8
+version: 2.35.1
+license: MIT
 alwaysApply: false
 ---
 
@@ -17795,13 +18564,36 @@ What to do:
 
 Create `specs/<spec_name>/tasks.md`.
 
+## LICENSE
 
+MIT License
+
+Copyright (c) 2025 Tencent CloudBase
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE. 
 ## SKILL
 
 ---
 name: ui-design
 description: Use when users need visual direction, interface hierarchy, layout decisions, design specifications, or prototypes before implementing a Web or mini program UI.
-version: 2.34.8
+version: 2.35.1
+license: MIT
 alwaysApply: false
 ---
 
@@ -17917,7 +18709,6 @@ DESIGN SPECIFICATION
    ❌ FORBIDDEN COLORS: purple (#800080-#9370DB), violet (#8B00FF-#EE82EE), indigo (#4B0082-#6610F2), fuchsia (#FF00FF-#FF77FF), blue-purple gradients
 4. Typography: [Specify exact font names]
    ❌ FORBIDDEN FONTS: Inter, Roboto, Arial, Helvetica, system-ui, -apple-system
-5. Layout Strategy: [Describe specific asymmetric/diagonal/overlapping approach]
 
 ## checklist
 
@@ -17945,12 +18736,36 @@ Use this checklist before generating any page, component, or visual interface.
 - Aesthetic direction, palette, and typography are explicit.
 - The next implementation skill is known before UI code starts.
 
+## LICENSE
+
+MIT License
+
+Copyright (c) 2025 Tencent CloudBase
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE. 
 ## SKILL
 
 ---
 name: web-development
 description: Use when users need to implement, integrate, debug, build, deploy, or validate a Web frontend after the product direction is already clear, especially for React, Vue, Vite, browser flows, or CloudBase Web integration.
-version: 2.34.8
+version: 2.35.1
+license: MIT
 alwaysApply: false
 ---
 
@@ -18066,7 +18881,6 @@ Use this skill for Web engineering work such as:
 
 1. **Clarify the execution surface**
    - Confirm whether the task is framework setup, page implementation, debugging, deployment, validation, or CloudBase integration.
-   - Keep the work scoped to the actual Web app surface instead of spreading into unrelated backend changes.
 
 ## browser-testing
 

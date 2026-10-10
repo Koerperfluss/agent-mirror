@@ -1,14 +1,15 @@
 ---
 app: claude
 quelle: "web-template/skills/data-model-creation/SKILL.md"
-stand: 2026-10-01
+stand: 2026-10-10
 tags: [spiegel, claude]
 ---
 
 ---
 name: data-model-creation
 description: "[Deprecated] Optional advanced tool for complex data modeling. For simple MySQL table creation, use relational-database-tool directly; for PostgreSQL / CloudBase PG schema work, use postgresql-development. New environments should use PostgreSQL DDL via queryPgDatabase/managePgDatabase — see postgresql-development skill instead."
-version: 2.34.8
+version: 2.35.1
+license: MIT
 alwaysApply: false
 metadata:
   priority: "5"

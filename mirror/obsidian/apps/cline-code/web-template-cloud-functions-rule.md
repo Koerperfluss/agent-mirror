@@ -1,14 +1,15 @@
 ---
 app: cline-code
 quelle: "web-template/cloud-functions/rule.md"
-stand: 2026-10-01
+stand: 2026-10-10
 tags: [spiegel, cline-code]
 ---
 
 ---
 name: cloud-functions
 description: CloudBase function runtime guide for building, deploying, and debugging your own Event Functions or HTTP Functions. This skill should be used when users need application runtime code on CloudBase, not when they are merely calling CloudBase official platform APIs.
-version: 2.34.8
+version: 2.35.1
+license: MIT
 alwaysApply: false
 ---
 

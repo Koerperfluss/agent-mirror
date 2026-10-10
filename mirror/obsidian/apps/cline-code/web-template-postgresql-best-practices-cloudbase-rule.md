@@ -1,14 +1,15 @@
 ---
 app: cline-code
 quelle: "web-template/postgresql-best-practices-cloudbase/rule.md"
-stand: 2026-10-01
+stand: 2026-10-10
 tags: [spiegel, cline-code]
 ---
 
 ---
 name: postgresql-best-practices-cloudbase
 description: "CloudBase PostgreSQL access-pattern and slow-query quality guidance. Use when designing how tables are read and written, eliminating per-row database calls, adding indexes for filters or joins, reviewing high-traffic data access, or explaining a slow SQL query. Not for first-time PG SDK setup, login UI, or NoSQL collections."
-version: 2.34.8
+version: 2.35.1
+license: MIT
 alwaysApply: false
 ---
 

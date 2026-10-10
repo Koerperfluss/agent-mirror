@@ -1,14 +1,15 @@
 ---
 app: cline-code
 quelle: "web-template/postgresql-development-cloudbase/rule.md"
-stand: 2026-10-01
+stand: 2026-10-10
 tags: [spiegel, cline-code]
 ---
 
 ---
 name: postgresql-development-cloudbase
 description: "Use when building, debugging, or evaluating CloudBase PostgreSQL / CloudBase PG / PG mode apps, including Postgres schema setup, queryPgDatabase/managePgDatabase, JS SDK v3 app.rdb() CRUD/RPC, PG HTTP API fallback, RLS-style permissions, username-password auth, and Web CMS/admin CRUD flows backed by CloudBase PG."
-version: 2.34.8
+version: 2.35.1
+license: MIT
 alwaysApply: false
 ---
 

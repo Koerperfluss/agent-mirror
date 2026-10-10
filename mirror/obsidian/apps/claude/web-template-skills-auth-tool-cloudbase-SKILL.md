@@ -1,14 +1,15 @@
 ---
 app: claude
 quelle: "web-template/skills/auth-tool-cloudbase/SKILL.md"
-stand: 2026-10-01
+stand: 2026-10-10
 tags: [spiegel, claude]
 ---
 
 ---
 name: auth-tool-cloudbase
 description: CloudBase auth provider configuration and login-readiness guide. This skill should be used when users need to inspect, enable, disable, or configure auth providers, publishable-key prerequisites, login methods, SMS/email sender setup, or other provider-side readiness before implementing a client or backend auth flow.
-version: 2.34.8
+version: 2.35.1
+license: MIT
 alwaysApply: false
 ---
 

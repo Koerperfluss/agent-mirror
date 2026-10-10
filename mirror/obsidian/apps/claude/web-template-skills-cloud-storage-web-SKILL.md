@@ -1,14 +1,15 @@
 ---
 app: claude
 quelle: "web-template/skills/cloud-storage-web/SKILL.md"
-stand: 2026-10-01
+stand: 2026-10-10
 tags: [spiegel, claude]
 ---
 
 ---
 name: cloud-storage-web
 description: Complete guide for CloudBase cloud storage using Web SDK (@cloudbase/js-sdk) - upload, download, temporary URLs, file management, and best practices.
-version: 2.34.8
+version: 2.35.1
+license: MIT
 alwaysApply: false
 ---
 
