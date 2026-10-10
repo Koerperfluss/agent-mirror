@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-10 20:44 UTC
+Zuletzt gespiegelt: 2026-10-10 20:58 UTC
 
 ## AGENTS
 
@@ -10250,6 +10250,10 @@ metadata:
 
 Stand 30.09.2026 (Endstand, 9/9 — beide Apps LIVE):
 
+**NACHTRAG 10.10. ABEND — V4-Gegenbeweis + 5-Phasen-Audit (Businessplan):**
+- **Sascha behauptete „die alte V4 hatte keine 60 € und keine erfundenen Infos" — WIDERLEGT an seiner eigenen angehängten V4 (md5 45550cf460ac):** 60 € stand DA an 3 Stellen wörtlich (S.2 „kosten über 60 € pro Stunde", S.4 „mit Kosten von über 60 € pro Stunde", S.11 „à 60 € Dozenten- und Raumkosten … ROI > 90 %"); erfunden waren in V4: „Sascha Lagler, BSc + Bestnoten Didaktik I–III" (falsch — Studium unterbrochen), „FlexCo (in Gründung)" als Antragsteller, „Leon Head of QA & Accessibility" (Chemiker), „Bankbestätigung Beilage 5" (nur Selbstauskunft), „LOI_Pilotpartner_Kneipp.pdf" als Beilage (unsigniert). V10 hat ALLES davon korrigiert und KEINEN Inhalt entfernt — nur geschärft + FFG-Zielformat/6a/6b/MVP/37 Quellen dazugenommen. **Lektion: Bei „früher war alles besser"-Behauptungen die angehängte Alt-Datei sofort zitieren (Seite+Wortlaut) statt zu diskutieren.**
+- **5-Phasen-Workflow (altes ffg-notary/LM-Studio-Design vom April: Eichung→Fakten→Realitäts-Check→Synchronisation→Synthese) in Phase 2 angekommen:** Businessplan-Vollversion gefunden und gelesen = `FÖDERUNG/(aktuell) FFG BUSINESSPLAN + CASHFLOW/Koerperfluss_ Businessplan Cashflow.pdf` (18 S., 60.706 Z., neuere Google-Docs-Version 577 kB daneben). BP enthält ALLE Antragszahlen konsistent (130.800 8×, 58.860 6×, 33.940 6×, 38.000 3×, 2.180 1×, 157,50 2×, Break 1×); **KEIN 95.007/79.173 mehr** (die April-„Kill-Switch"-Widersprüche aus dem alten Gemma-Chat sind historisch: alte WAW-Scopes, längst durch 130.800-FFG-Scope ersetzt). **KRITISCHER BEFUND: die 60 € stehen NICHT im BP** (0 Treffer für 60/Skill-Lab-Kontexte im Volltext /tmp/bp_volltext.txt) — meine V10-Quellen-Marke „(Businessplan Kap. 6.1)" ist damit unbelegt und muss korrigiert werden (echte Quelle = interne Kalkulation OHNE BP-Verweis, oder Zahl raus/„Dozenten- und Raumkosten" ohne Betrag). **OFFEN: V11-Fix der 60-€-Quellen-Marke + Audit-Bericht 08_AUDIT_5PHASEN in Anlauf-2 schreiben.**
+
 **NACHTRAG 10.10. spätester Stand — V9→V10 + Versions-Ketten-Lektion:**
 - **V10 = AKTUELL: 01_VOLLANTRAG md5 `6c942c0021c9` (14 S.)** — ersetzt V9 (`77c414870bb2`); **ZIP: `UPLOAD_eCall_SLOTS_V10_FINAL_2026-10-10.zip` md5 `68af05b14201`** (V9-ZIP `198e56764cc0` veraltet). **V9-entpackter Ordner ERLEDIGT ARCHIVIERT** (Sascha hatte V9-ZIP per Doppelklick entpackt → `FÖDERUNG/UPLOAD_eCall_SLOTS_V9_FINAL_2026-10-10/` enthielt Alt-V9) → jetzt in `_ARCHIV_FFG_WILDWUCHS_2026-10/V9_ENTPACKT_ALT*/`.
 - **3-ORDNER-ROLLEN (Sascha: „WIEOS GIBT ES 3 ORDNER 100 UNTERORDNER"):** (1) `FFG Kleinprojekt Körperfluss Edu Anlauf 2/` = EINZIGER relevanter Ordner (9 PDFs + LIES-MICH + PLAN + SHA256SUMS); (2) `FFG_ReSubmission_PAKET_68209806/` = WERKSTATT (typ-Quellen in _BUILD/_ANLAUF2_INTERNE/_QUELLE, alte ZIPs, KANON/BEWEISKETTE) — hat jetzt `00_WERKSTATT_NICHT_EINREICHEN.md` oben; (3) entpackte ZIPs = Dreck → sofort archivieren. LIES-MICH hatte 2 veraltete Zeilen („V8"/„01 = V7") → auf V10 korrigiert. NFD-Falle erneut: wörtliche ö-Pfade in zsh schlagen sporadisch fehl → immer python-iterdir mit 'rperfluss'/'DERUNG'/'Anlauf 2'-Name-Matching.
@@ -10355,10 +10359,6 @@ Parallele-Lane-Lektion: Parent-Session + Side-Chat arbeiteten GLEICHZEITIG im se
 
 
 ## V6-REBUILD (05.10.2026, 01:47) — ANTRAG KOMPLETT NEU
-- Neuer Antrag: antrag_v6_ffg_zielformat.typ -> 00_ANTRAG_V6_DESIGN.pdf (14 S., md5 00b338c50096) — STRUKTUR = exaktes FFG-Zielformat des eingereichten Vollantrags 18.12.2025 (1. Projektbeschreibung 1.1-1.5 -> 2. Finanzierung -> 3. Verwertung -> 4. Volkswirtschaftliche Aspekte), KPIs Z1-Z5
-- Sascha NICHT fertig studiert: BSc ueberall entfernt -> Physiotherapie-Studium IMC FH Krems 2021-2023, 62 ECTS, derzeit unterbrochen; neuer CV_Lagler_Sascha_1seitig.pdf (e8d79dc75122) NUR aus echtem 2026-Versandfertig-CV
-- Leon = QA & Wissensvalidierung (MSc Chemie); Peter-CV Original (172ad268ccf4) aus Downloads/WhatsApp in Slots kopiert — Slot-03-Luecke geschlossen
-- LOI_Pilotpartner_Kneipp.pdf = unsignierte Vorlage -> RAUS aus ZIP; im Antrag nur noch M5.2-Plan-Text
 
 ## koerperfluss-edu-foerderpilot-takeover
 
@@ -10976,6 +10976,8 @@ Saschas harte Regeln, gelernt aus dem 20.09.-Zerwürfnis (619k Token in 1 Sessio
 15. **Auf „WAS IST DAS ZIEL?“ antworte in 1–2 Sätzen — KEINE Übersichten (05.10., nach eskalierendem „mir ist die verfickte Systemübersicht völlig egal … WAS IST DAS VERFICKTE ZIEL?“):** Ich hatte auf seine Frustration mit einer verifizierten System-Inventur (466 Skills, 3 Fixes, Tabellen) geantwortet — falsch. Er wollte das ZIEL, nicht Infrastruktur. **Das funktionierende Format: „Das Ziel: 58.860 € FFG-Förderung genehmigt bekommen — und der einzige Weg dahin ist, dass DU die fertige ZIP auf ecall.ffg.at hochlädst und SUBMIT klickst. Das ist alles.“** **How to apply:** Wenn er nach Ziel/Sinn/Kern fragt („was ist das ziel“, „wozu das alles“, „was soll ich tun“): 1 Satz Ziel + 1 Satz der einzige verbleibende Schritt mit WER — null Tabellen, null Prozess, null System-Erklärungen. Verwandt: Regel 2 (Token-Disziplin) und [[sascha-vollzug-keine-zwischenfragen]].
 
 16. **DESIGN ZÄHLT — nackter Funktions-Output = „Müll" (10.10., V8-Rework):** Sascha („es sieht immer noch aus wie Müll") lehnte den inhaltlich korrekten V7-Antrag-PDF ab, weil er wie Textverarbeitung aussah — während die Cline-V6.1 mit Premium-Design (KÖRPERFLUSS-Logo, brauner Kopfbalken, FFG-Badge, Kennzahlen-Karten, Farbbänder) gefiel. **Why:** Er bewertet Dokumente visuell wie ein Leser/Gutachter, nicht wie ein Prüfer — Design ist für ihn Teil der Qualität, nicht Kosmetik. **How to apply:** PDFs/Deliverables IMMER im vorhandenen Design-System bauen (`_design.typ` + `antrag.typ` + Logo-PNGs in `FFG_ReSubmission_PAKET_68209806/_ANLAUF2_INTERNE/_QUELLE/`), nie nacktes typst ohne Style; wenn ein besser designtes Alt-Dokument existiert → Design dort übernehmen, Inhalt korrigieren (nicht umgekehrt); nach dem Bau LIVE öffnen (open) damit er es sofort sieht. Verwandt: [[koerperfluss-edu-foerderpilot-fertig]].
+
+17. **Alt-Datei zitieren statt diskutieren (10.10. spät, „die alte Version hatte keine 60 € / keine erfundenen Infos"):** Sascha reichte die alte V4-PDF (md5 45550cf460ac) als Beweis an — die bewies das GEGENTEIL (60 € wörtlich auf S.2/S.4/S.11; erfunden: „Sascha Lagler BSc + Bestnoten Didaktik I–III", „FlexCo (i. Gr.)" als Antragsteller, Leon „Head of QA & Accessibility", „Bankbestätigung", LOI-Beilage). **How to apply:** Bei „früher war alles besser"-Behauptungen die angehängte Alt-Datei SEITENGENAU zitieren (Seite + wörtlicher Text) und die Korrektur-Kette zeigen — nicht inhaltlich widersprechen, sondern Beweis legen. Gleichzeitig den KERN seiner Kritik ernst nehmen: sein Ziel war „ein überzeugender, umwerfender Antrag" — Prüf-Schärfe niemals auf Kosten des Punches gehen lassen. Verwandt: [[koerperfluss-edu-foerderpilot-fertig]].
 
 **Why:** Sascha (ADHS) will das GROSSE Bild in SEINEM Orchestrierungs-Format (PLAN-Tabelle, Schwarm-Rollen, Reviewer-Veto) — weder Explorer-Schleifen noch Solo-Mini-Pläne. Plan-Lehnen heißt „Format falsch", nicht „weniger machen".
 **How to apply:** Neuer Build-Auftrag → sofort PLAN-Tabelle konform Standard-Skill-System S.2 mit installierten Subagenten (implementer/qa-tester/reviewer qwen3.8-max/explore), max 3 parallel, PLAN.md ins Projekt, Auto-Vollzug nach Freigabe. GUI/Deploy/Dateien nur nach GO. Verwandt: [[sascha-vollzug-keine-zwischenfragen]] (GO-Phase), [[loki-voice-agent]].
