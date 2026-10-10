@@ -4,7 +4,9 @@ Nachbau der Website **HolDirMehr.at** („Finde deine Förderungen in Österreic
 
 ## Starten
 
-- Läuft lokal: **http://localhost:61599/** (Deploy-Server dieser Session)
+- **ONLINE (dauerhaft, Firebase Hosting): https://foerderungen-sascha.web.app/**
+- Lokal: Doppelklick auf `index.html` (Katalog ist als `assets/katalog.js` eingebettet) oder Desktop-`HolDirMehr-starten.command`
+- Deploy-Update: `firebase deploy --only hosting` (Projekt foerderungen-sascha)
 - Oder direkt: `index.html` im Browser öffnen, oder `python3 -m http.server` im Ordner
 
 ## Seiten
