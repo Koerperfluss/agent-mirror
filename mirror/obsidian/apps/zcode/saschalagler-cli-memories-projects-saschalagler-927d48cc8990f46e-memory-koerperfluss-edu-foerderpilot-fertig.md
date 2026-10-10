@@ -264,3 +264,11 @@ Parallele-Lane-Lektion: Parent-Session + Side-Chat arbeiteten GLEICHZEITIG im se
 - **V13 FINAL: 14 S., md5 f458c5afd42b** -> 01 Anlauf-2 + Slot 01; ZIP UPLOAD_eCall_SLOTS_V13_FINAL.zip md5 92403651de3e (9 PDFs)
 - FINALE AUDIT-LAGE: 9/9 PDFs ✓, 14/14 Inhaltschecks ✓ (inkl. kein 60-€/kein Thomas/kein Melk/kein BSc/Loosdorf/Summenprobe), 08_GESAMT_AUDIT.md im Ordner
 - ENDE: nur noch Sascha: Kontoauszug + eCall (Loosdorf, 01.01.2027, 9 PDFs, zeichnen, SUBMIT bis 31.12.)
+
+
+## 10.10. NIGHT-2 — 10 STRATEGIE-VARIANTEN DES ANTRAGS (Sascha-Wunsch: '10x vollstaendiger Neuaufbau')
+- Keine Farb-Varianten, sondern 10 ERZAEHL-ACHSEN (Spines), alle vollstaendige Antraege im FFG-Zielformat, gleicher Belegbestand (130.800/58.860/33.940/38.000/2.180, 37 Quellen, Loosdorf, kein Thomas, kein 60-EUR):
+  01 TIEFTECH (aktuelle Einreichfassung ~diese Achse) · 02 DIDAKTIK · 03 SICHERHEIT · 04 MARKT/BFSG · 05 TEAM · 06 MOMENTUM (Projekt.Start) · 07 INTEGRATION (LTI) · 08 STANDORT (JKU/Austria) · 09 SCHLANK-MVP · 10 EVIDENZ
+- Ort: PAKET/_ANLAUF2_INTERNE/_VARIANTEN/VARIANT_01..10/ANTRAG_XX_*.pdf (je 1 PDF) + WELCHE_VARIANTE_WARUM.md (Vergleichstabelle: Spine/welche Ablehnungspunkte/Risiko + Vorgaben + Ablauf)
+- Design-System-#note braucht (title, body) — Callouts in Varianten als direkte #block-Formatierung geloest
+- Einreichfassung bleibt V13 (md5 f458c5afd42b) bis Sascha eine Variante waehlt; dann baue ich die gewaehlte Achse zur neuen Einreichfassung aus
