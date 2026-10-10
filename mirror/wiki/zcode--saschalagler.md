@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-10 04:56 UTC
+Zuletzt gespiegelt: 2026-10-10 05:10 UTC
 
 ## AGENTS
 
@@ -4961,6 +4961,7 @@ Bei Fachfragen (z. B. Trainings-Übungen) fordert er explizit „clinical reason
 
 # Memory Index
 
+- [Saschas Lage NÖ 10.10.](sascha-lage-noe.md) — 29, arbeitslos/AMS-Sperre (~€300/Monat), Miete €350, Loosdorf Bez. Melk, keine Kinder → Förder-Recherche + App-Profil darauf kalibriert
 - [HolDirMehr-Replika 09.-10.10.](holdirmehr-replika.md) — ✅ VOLLVERSION: 1.148 echte Förderungen gecrawlt (data/katalog.json), Suche/Filter/Detailseiten/Bericht-Matching gratis, ~/.zcode/workspace/default/holdirmehr/, URL localhost:61599; ⚠️ NUR PRIVAT (Katalog © holdirmehr.at)
 - [TCC/FDA-Cleanup 09.10.](tcc-fda-cleanup-2026-10-09.md) — ✅ FERTIG: alle 14 toten Einträge weg (TCC 90→72, Sascha löschte letzte 11 selbst per GUI+Finger); lebende Tools (ZCode/Terminal/Antigravity/…) verifiziert AN; Backup ~/sicherungen/tcc-backup-20261009; LESSON: Touch ID pro Löschung, nach „Entfernen"-Klick nicht beobachten, Deep-Link `Privacy_AllFilesAccess`
 - [Plugin/Skill-Inventar 09.10.](plugin-skill-inventar-dwfrun-2026-10-09.md) — dwfrun-8c351687: 7 Skills + 5 Plugins verifiziert; FDA-Audit 14 Leichen; LESSON: Workflow-Subagents keine Absolut-Pfade, ABER world.run kann (test/mdfind/sqlite3); dwfrun-eec3e822 = TCC-Plan (out/TCC_LOESCHPLAN.md); Backup ~/sicherungen/tcc-backup-20261009
@@ -6192,7 +6193,7 @@ Sascha wollte das Produkt **HolDirMehr.at** (österreichischer Förder-Finder, �
 
 Dossier-Empfehlung für Produktions-Upgrade: Next.js 15 + Supabase + Stripe (siehe [[sigma-local-ai-stack]]-artige Architektur, keine Client-Keys).
 
-**10.10. ABENDS: ONLINE + personalisiert.** 🔴 **Dauerhaft online: https://foerderungen-sascha.web.app/** (Firebase Hosting, Projekt `foerderungen-sascha`, koerperfluss@gmail.com, Spark gratis; Update: `firebase deploy --only hosting` im Projektordner; ⚠️ LEKTION: firebase_init überschrieb index.html — git restore rettete sie; nach firebase_init IMMER git status prüfen; firebase.json braucht `"site":"foerderungen-sascha"`). Brand neutralisiert → „Meine Förderungen", Testimonials echter Personen + Fabian-Eder-Zitat entfernt, noindex + robots Disallow-all. Personalisiert: Strict „Nur NÖ + Bundesweit" (default AN, behebt Saschas Bug „warum Vorarlberg bei NÖ"), Firmen/Gemeinden default AUS, Profil in localStorage (Quiz speichert → Landing „Mein Bericht"), echte €-Summe im Berichtskopf, Zusatzangaben Beruf/Behinderung, PDF-Druck, katalog.js embedded → Doppelklick-fähig, Desktop-`HolDirMehr-starten.command` (Port 8788). GitHub-Pages SCHEITERT (Koerperfluss-Account: „Actions has been disabled for this user"). Workflow dwfrun-e3a76000 holt Listing-Einträge nach (Ziel 502 NÖ + 533 bundesweit, Original-Angabe) — Ergebnis-Nachdeploy offen.
+**10.10. ABENDS: ONLINE + personalisiert.** 🔴 **Dauerhaft online: https://foerderungen-sascha.web.app/** (Firebase Hosting, Projekt `foerderungen-sascha`, koerperfluss@gmail.com, Spark gratis; Update: `firebase deploy --only hosting` im Projektordner; ⚠️ LEKTION: firebase_init überschrieb index.html — git restore rettete sie; nach firebase_init IMMER git status prüfen; firebase.json braucht `"site":"foerderungen-sascha"`). Brand neutralisiert → „Meine Förderungen", Testimonials echter Personen + Fabian-Eder-Zitat entfernt, noindex + robots Disallow-all. Personalisiert: Strict „Nur NÖ + Bundesweit" (default AN, behebt Saschas Bug „warum Vorarlberg bei NÖ"), Firmen/Gemeinden default AUS, Profil in localStorage (Quiz speichert → Landing „Mein Bericht"), echte €-Summe im Berichtskopf, Zusatzangaben Beruf/Behinderung, PDF-Druck, katalog.js embedded → Doppelklick-fähig, Desktop-`HolDirMehr-starten.command` (Port 8788). GitHub-Pages SCHEITERT (Koerperfluss-Account: „Actions has been disabled for this user"). Workflow dwfrun-e3a76000 FERTIG + nachdeployt (Deploy 1791608111263): **Katalog jetzt 1.772 Förderungen (506 NÖ + 495 bundesweit, Ziel 502/533 getroffen; 611 neue Detailseiten + 15 Listing-Minimaleinträge)**, live verifiziert auf foerderungen-sascha.web.app; Auch im git (Commit „Katalog vervollständigt").
 
 ## ios27-webapp-testing-recherche-2026-09-13
 
@@ -6807,6 +6808,17 @@ Am 26.08.2026 lud das Read-Tool beim Öffnen lokaler Familienfoto-JPEGs diese zu
 3. Vor jedem Bild-Upload in irgendeinem Tool kurz prüfen, ob ein lokaler Weg existiert — Sascha arbeitet datensparsam ([[foto-restaurierung-opa-a4]]).
 
 **Ergänzung 06.09. — funktionierende Screenshot-Pipeline (nur für nicht-private UI-Screenshots):** CUA-`screenshot` liefert ablaufende signierte CDN-URLs zurück. Kette: CUA screenshot → URL mit `curl` nach /tmp laden → `Read` lädt sie erneut aufs CDN (frische, gültige Signatur!) → **diese frische Read-URL an `analyze_image` (4_5v) übergeben funktioniert zuverlässig**; alte/expired URLs und lokale Datei-Pfade geben Fehler 1210 „图片输入格式/解析错误". Zoom-Frames (`zoom`-Tool) funktionieren genauso. Das ist für UI-Verifikation ok (App-Inhalte), für private Fotos weiter verboten (Punkt 1).
+
+## sascha-lage-noe
+
+---
+name: sascha-lage-noe
+description: Saschas aktuelle persönliche Lage (Okt 2026): arbeitslos/AMS-Sperre, Loosdorf NÖ, akute Finanznot — für Förder-Recherchen
+metadata:
+  type: user
+---
+
+Saschas Lage (Stand 10.10.2026, von ihm selbst geschildert): 29 J., männlich, Single, keine Kinder, **3382 Loosdorf (Bezirk Melk, NÖ)**, Mietwohnung **€350/Monat**. **Arbeitslos mit AMS-Sperre** — dieser Monat nur ~€300, davor 6 Wochen 0, davor 3 Monate Abzug. Ehemaliger Arbeitgeber hält Lohn + Lohnzettel zurück (→ AK Melk: Lohnklage). Für seine Förder-App ([[holdirmehr-replika]]) gilt: Profil NÖ + Single + Miete + Vorhaben Beruf/Notlage/Gesundheit/Wohnen, Zusatzangabe „Arbeitslos / AMS". Soziale Daten nur zur Aufgabenlösung verwenden, respektvoll behandeln.
 
 ## sequential-thinking-always
 
@@ -101806,7 +101818,9 @@ Nachbau der Website **HolDirMehr.at** („Finde deine Förderungen in Österreic
 
 ## Starten
 
-- Läuft lokal: **http://localhost:61599/** (Deploy-Server dieser Session)
+- **ONLINE (dauerhaft, Firebase Hosting): https://foerderungen-sascha.web.app/**
+- Lokal: Doppelklick auf `index.html` (Katalog ist als `assets/katalog.js` eingebettet) oder Desktop-`HolDirMehr-starten.command`
+- Deploy-Update: `firebase deploy --only hosting` (Projekt foerderungen-sascha)
 - Oder direkt: `index.html` im Browser öffnen, oder `python3 -m http.server` im Ordner
 
 ## Seiten
