@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-10 05:53 UTC
+Zuletzt gespiegelt: 2026-10-10 06:08 UTC
 
 ## AGENTS
 
@@ -4961,6 +4961,7 @@ Bei Fachfragen (z. B. Trainings-Übungen) fordert er explizit „clinical reason
 
 # Memory Index
 
+- [Token-Sparen 10.10.](feedback-token-sparen.md) — Vereinbarung: 5 Werkzeuge reichen fürs Förder-Projekt (Rest 90+ Skills überflüssig); keine Workflows ohne konkreten Auftrag, max. 2–3 Tags, keine Seiten-Pastes, App/Dateien statt Chat
 - [Saschas Lage NÖ 10.10.](sascha-lage-noe.md) — 29, arbeitslos/AMS-Sperre (~€300/Monat), Miete €350, Loosdorf Bez. Melk, keine Kinder → Förder-Recherche + App-Profil darauf kalibriert
 - [HolDirMehr-Replika 09.-10.10.](holdirmehr-replika.md) — ✅ **ONLINE: foerderungen-sascha.web.app** (Firebase, privat, noindex) + 1.772 echte Förderungen (506 NÖ + 495 BW), Matching auf Sascha scharf (Arbeitslos/AMS, Kinder-Demotion); LESSON: Boost-Regex nie gegen Kategorie-Namen matchen; ⚠️ Katalog © holdirmehr.at
 - [TCC/FDA-Cleanup 09.10.](tcc-fda-cleanup-2026-10-09.md) — ✅ FERTIG: alle 14 toten Einträge weg (TCC 90→72, Sascha löschte letzte 11 selbst per GUI+Finger); lebende Tools (ZCode/Terminal/Antigravity/…) verifiziert AN; Backup ~/sicherungen/tcc-backup-20261009; LESSON: Touch ID pro Löschung, nach „Entfernen"-Klick nicht beobachten, Deep-Link `Privacy_AllFilesAccess`
@@ -5976,6 +5977,33 @@ Sascha hat es 2× scharf eingefordert (07.09. „hast du prüfinstanz die logik 
 
 **How to apply:** In Master-Prompts/Plänen eine eigene „PRÜFINSTANZ"-Sektion: (1) unabhängig vom Implementierer („Wer gebaut hat, prüft nicht"), (2) prüft nach JEDER Stufe gegen DONE-WHEN-Kriterien, (3) PASS/FAIL mit Befund-Tabelle (Ort | Problem | Fix) + Vetorecht (FAIL = Stufe zurück, kein Weiterarbeiten bis PASS), (4) berichtet nur dem Nutzer, nicht dem Bau-Team, (5) in ZCode konkret: @reviewer (Code/Standards/Regressionen) + ui-ux-tester (visuell) + Performance-Check (Lighthouse/60 fps). Auch bei Analysen: Ergebnisse erst gegenprüfen lassen, dann ausführen. [[feedback-aufbau-vor-deploy]] [[loki-dev-gate-enforcement]] [[atlas-stand-2026-09-08]]
 
+## feedback-token-sparen
+
+---
+name: feedback-token-sparen
+description: 10.10. Vereinbarung mit Sascha — Token drastisch sparen,
+  Tool-Minimalismus für Förder-App-Projekt (5 Werkzeuge reichen, Rest explizit
+  „brauche ich nicht")
+metadata:
+  node_type: memory
+  type: feedback
+  originSessionId: sess_aaafc084-598e-4c4a-98c2-aef038d78ad7
+---
+
+**10.10.2026 — Sascha forderte „Token-Verbrauch drastisch reduzieren".** Erklärung, worauf es hinauslief (von ihm akzeptiert, keine Korrektur):
+
+**Für das Förder-App-Projekt ([[holdirmehr-replika]]) braucht es nur 5 Werkzeuge:** die App selbst (foerderungen-sascha.web.app), die Desktop-Checkliste `FOERDERUNGEN_FUER_MICH_LOOSDORF.md`, ZCode (GLM-Flash), Firebase-MCP (nur bei Deploy), Browser-Verifikation. **Explizit als überflüssig benannt:** graphify, gsd-core, brainstorming, coderabbit, cavecrew, wizard, wayfinder, briefmaker, sync-gbrain, plan-tune/design-review, skillify, agent-cluster, ask-matt, ponytail, caveman-Familie, higgsfield-*, Subagent-Team (nur bei großen Umbauten).
+
+**Why:** Sascha pastete wieder 20+ Skill-Tags ohne konkreten Auftrag und lässt Workflows ohne Ziel starten — beides verbrennt genau die Tokens, die er sparen will. Ich habe den workflowlosen Start verweigert und nach EINEM konkreten Satz gefragt (seine eigenen Spar-Regeln als Begründung — keine Korrektur gekommen).
+
+**How to apply:**
+1. Kein Workflow/ein Subagent-Fanout ohne explizite, konkrete Aufgabe — erst 1 Frage stellen.
+2. Skill-Tag-Wände (>3 Tags ohne Task): kurz auf die Spar-Regeln verweisen, Aufgabe erfragen statt Skills laden.
+3. Ganze Webseiten-Pastes (1.700+ Zeilen) ablehnen → nur Link + 1 Satz Frage; Inhalt selbst holen bei Bedarf.
+4. Fertige Dateien wiederverwenden (Desktop-Checkliste, README, Reports) statt neu bauen.
+5. 1 Aufgabe = 1 kurzer Chat (schon seine alte Regel).
+6. Antworten kompakt, Tabellen statt Prosa — siehe [[feedback-einfache-antworten]].
+
 ## foerderops-assistent
 
 ---
@@ -6195,7 +6223,9 @@ Dossier-Empfehlung für Produktions-Upgrade: Next.js 15 + Supabase + Stripe (sie
 
 **10.10. ABENDS: ONLINE + personalisiert.** 🔴 **Dauerhaft online: https://foerderungen-sascha.web.app/** (Firebase Hosting, Projekt `foerderungen-sascha`, koerperfluss@gmail.com, Spark gratis; Update: `firebase deploy --only hosting` im Projektordner; ⚠️ LEKTION: firebase_init überschrieb index.html — git restore rettete sie; nach firebase_init IMMER git status prüfen; firebase.json braucht `"site":"foerderungen-sascha"`). Brand neutralisiert → „Meine Förderungen", Testimonials echter Personen + Fabian-Eder-Zitat entfernt, noindex + robots Disallow-all. Personalisiert: Strict „Nur NÖ + Bundesweit" (default AN, behebt Saschas Bug „warum Vorarlberg bei NÖ"), Firmen/Gemeinden default AUS, Profil in localStorage (Quiz speichert → Landing „Mein Bericht"), echte €-Summe im Berichtskopf, Zusatzangaben Beruf/Behinderung, PDF-Druck, katalog.js embedded → Doppelklick-fähig, Desktop-`HolDirMehr-starten.command` (Port 8788). GitHub-Pages SCHEITERT (Koerperfluss-Account: „Actions has been disabled for this user"). Workflow dwfrun-e3a76000 FERTIG + nachdeployt (Deploy 1791608111263): **Katalog jetzt 1.772 Förderungen (506 NÖ + 495 bundesweit, Ziel 502/533 getroffen; 611 neue Detailseiten + 15 Listing-Minimaleinträge)**, live verifiziert auf foerderungen-sascha.web.app; Auch im git (Commit „Katalog vervollständigt").
 
-**10.10. SPÄT: Sascha-Personalisierung + Ranking-Bug-Lektion.** Neu live (Firebase 1791608735256 + 1791609577710, beide verifiziert): Vorhaben-Option **„Finanzielle Notlage & Sozialhilfe"** im Quiz (Keywords: sozialhilfe/notstandshilfe/notlage/spontanhilfe/energiehilfe/härtefall/lebensunterhalt), Zusatzangabe **„Arbeitslos / AMS"** (+4 bei notstandshilfe/arbeitslosengeld/arbeitslos/AMS, +3 bei sozialhilfe/notlage…), **Kinder-Demotion** (Single/keine Kinder ohne Familie-Vorhaben → Baby/Kinderbetreuungs-Einträge −6). 🔴 **RANKING-BUG-LEKTION:** Der Arbeitslos-Boost-Regex enthielt `arbeitsuch` — das matchte den Kategorienamen „Beruf & Arbeitssuche" selbst, wodurch ALLE Berufs-Förderungen (Pendlerhilfen etc.) gewannen und die für ihn relevanten Notstandshilfe/Sozialhilfe-Einträge unterm Tisch blieben. Fix: Boost nur auf `notstandshilfe|arbeitslosengeld|arbeitslos\b|arbeitsmarktservice|\bams\b`. Nach Fix Top-15 sim + live getestet (Notstandshilfe, Fachkräftestipendium, Lebensunterhalt-Beihilfe, Sozialhilfe NÖ, Spontanhilfe oben; Pendler/FiT-Frauen raus). **LESSON: Boost-Keywords nie gegen Bereich-Strings matchen lassen — Regex gegen die eigene Kategorieliste testen (python-Sim des Scorings vor Deploy).**
+**10.10. SPÄT: Sascha-Personalisierung + Ranking-Bug-Lektion.** Neu live (Firebase 1791608735256 + 1791609577710, beide verifiziert): Vorhaben-Option **„Finanzielle Notlage & Sozialhilfe"** im Quiz (Keywords: sozialhilfe/notstandshilfe/notlage/spontanhilfe/energiehilfe/härtefall/lebensunterhalt), Zusatzangabe **„Arbeitslos / AMS"** (+4 bei notstandshilfe/arbeitslosengeld/arbeitslos/AMS, +3 bei sozialhilfe/notlage…), **Kinder-Demotion** (Single/keine Kinder ohne familie-Vorhaben → Baby/Kinderbetreuungs-Einträge −6). 🔴 **RANKING-BUG-LEKTION:** Der Arbeitslos-Boost-Regex enthielt `arbeitsuch` — das matchte den Kategorienamen „Beruf & Arbeitssuche" selbst, wodurch ALLE Berufs-Förderungen (Pendlerhilfen etc.) gewannen und die für ihn relevanten Notstandshilfe/Sozialhilfe-Einträge unterm Tisch blieben. Fix: Boost nur auf `notstandshilfe|arbeitslosengeld|arbeitslos\b|arbeitsmarktservice|\bams\b`. Nach Fix Top-15 sim + live getestet (Notstandshilfe, Fachkräftestipendium, Lebensunterhalt-Beihilfe, Sozialhilfe NÖ, Spontanhilfe oben; Pendler/FiT-Frauen raus). **LESSON: Boost-Keywords nie gegen Bereich-Strings matchen lassen — Regex gegen die eigene Kategorieliste testen (python-Sim des Scorings vor Deploy).**
+
+**10.10. SPÄTESTENS: Sascha nutzt noch die ALTEN localhost-Tabs.** Er druckte ein PDF von localhost:61599 (05:08) = veralteter Browser-Cache mit Paywall/„44 Förderungen"/Demo-Zeilen, und sein In-App-Browser-Tab lag weiterhin auf der alten bericht.html-URL mit Vorhaben „Familie & Kinder" (falsches Profil). **STANDARD-UMLEITUNG: immer auf https://foerderungen-sascha.web.app verweisen („Mein Bericht" lädt localStorage-Profil), alte localhost:61599-Tabs für tot erklären.** Bei „seltsamer alter Ansicht" zuerst Cache/URL prüfen, bevor irgendwas am Code gefixt wird. Persönliche Checkliste liegt als `~/Desktop/FOERDERUNGEN_FUER_MICH_LOOSDORF.md` (40 kuratierte Förderungen mit Links + AKtionsplan AK-Melk → BH-Melk → Wohnschirm → Heizkostenzuschuss 22.10. → soogut). Siehe auch [[feedback-token-sparen]].
 
 ## ios27-webapp-testing-recherche-2026-09-13
 
@@ -11222,7 +11252,7 @@ Am 22.09.2026 schlug jeder Subagent-Start (z. B. `cavecrew-investigator`) fehl m
 
 ---
 name: verkaufshub-inventar-und-workflow
-description: Verkaufshub-Stand (66 Einträge, M1 61/66, Verkaufsfertig-Team dwfrun-cc0608f8 läuft) + Workflow-Erkenntnisse (amend, Flash, Mimosa-Hook, Node20 weg)
+description: Verkaufshub-Stand (66 Einträge, M1 61/66 stockend, Team dwfrun-cc0608f8 QUOTA-STOPP 1308 Reset 17:15, 4/6 Worker fertig) + Cockpit hub.html live + Workflow-Erkenntnisse
 metadata:
   node_type: memory
   type: project
