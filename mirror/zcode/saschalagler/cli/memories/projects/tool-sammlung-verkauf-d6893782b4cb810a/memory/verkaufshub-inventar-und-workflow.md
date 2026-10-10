@@ -1,6 +1,6 @@
 ---
 name: verkaufshub-inventar-und-workflow
-description: Verkaufshub-Stand (67 Einträge: 66/66 bewertet + vinyl-scanner #67 in Bewertung; dwfrun-50980de7 fertig = Listings 66/66; Team dwfrun-cc0608f8 Resume A/B/C offen bis Quota-Reset 17:15) + hub.html Cockpit :3300 + Workflow-Erkenntnisse
+description: Verkaufshub-Finalstand (67/67 bewertet + 67/67 Listings + systemweite Platten-Suche abgeschlossen, GOAL.md im Repo; Team dwfrun-cc0608f8 Resume offen bis Quota-Reset 17:15) + hub.html Cockpit :3300 + Workflow-Erkenntnisse
 metadata:
   node_type: memory
   type: project
