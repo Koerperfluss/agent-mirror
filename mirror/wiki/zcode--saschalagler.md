@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-10 04:40 UTC
+Zuletzt gespiegelt: 2026-10-10 04:56 UTC
 
 ## AGENTS
 
@@ -2997,6 +2997,19 @@ Reparaturen: 1 Dateien (Backups in /tmp/agents-fix-2209/).
 ## Maschinell verifiziert
 - Inventur + Gate: python3-Check über alle Frontmatters und agents-state.json
 - Jede Datei zusätzlich von einem eigenen Prüfer-Subagenten gelesen
+## dwfrun-e3a76000-708a-4263-8213-a88eff93222c_artifact_2_1-tool-result-7cdce567-bf2c-4664-96df-b69d47819e53
+
+# Katalog-Vervollständigung: NÖ + Bundesweit
+
+Ziel war die Original-Vollständigkeit (Original-Angabe: **502 NÖ + 533 bundesweit**).
+
+- NÖ-Listing: **505 Einträge** gelesen (505 mit Detail-Seite) — curl mit Chrome-UA über die NÖ-Listing-Seite und alle 16 Themen-Unterseiten (keine ?page=-Pagination vorhanden), <a href="/foerderung/…">-Links geparst, Titel = Ankertext, nach Name dedupliziert.
+- Bundesweit-Listing: **532 Einträge** gelesen (532 mit Detail-Seite) — curl mit Browser-UA auf /foerderungen/bundesweit (plus ?page=2 und alle 15 Themen-Unterseiten /foerderungen/bundesweit/<thema>, die aber alle serverseitig identisch/leer waren — keine echte Pagination), dann 533 eindeutige /foerderung/-Links mit Anchor-Text extrahiert, 1 Duplikatname entfernt.
+- Neue Detailseiten geholt: **611**, nur mit Name: **15**, fehlgeschlagen: **15**
+- Katalog danach: **1772 gesamt · 506 NÖ · 495 bundesweit** (deterministisch aus der Datei gezählt)
+- assets/katalog.js regenerated: ja (lädt mit 1772 Einträgen)
+
+_Differenz zu 502/533 = Einträge der Original-Listing-Seiten, die dort ohne Detailseite laufen oder nur intern gefiltert werden._
 ## dwfrun-1fa50c64-4e43-4909-bdda-8ddaf49fc4a0_artifact_1_1-tool-result-5d09bb7e-0233-41b6-8c4d-0d0362117488
 
 # TODO & ZIELE — VERKAUFS-HUB (2026-10-10)
@@ -6178,6 +6191,8 @@ Sascha wollte das Produkt **HolDirMehr.at** (österreichischer Förder-Finder, �
 **Vor Livegang zwingend tauschen** (fremde Marke/rechte Personen): Branding „HolDirMehr", Testimonials (Rene/Nicole/Sarah/Noreia/Fabian Eder), Kontakt-E-Mail, Rechtstexte (nur `href="#"`-Stubs), Demo-Checkout → echtes Stripe (nur server-seitig), Demo-Katalog → echter Katalog (Transparenzportal + 9 Landesförderstellen). Details in README.md im Projektordner.
 
 Dossier-Empfehlung für Produktions-Upgrade: Next.js 15 + Supabase + Stripe (siehe [[sigma-local-ai-stack]]-artige Architektur, keine Client-Keys).
+
+**10.10. ABENDS: ONLINE + personalisiert.** 🔴 **Dauerhaft online: https://foerderungen-sascha.web.app/** (Firebase Hosting, Projekt `foerderungen-sascha`, koerperfluss@gmail.com, Spark gratis; Update: `firebase deploy --only hosting` im Projektordner; ⚠️ LEKTION: firebase_init überschrieb index.html — git restore rettete sie; nach firebase_init IMMER git status prüfen; firebase.json braucht `"site":"foerderungen-sascha"`). Brand neutralisiert → „Meine Förderungen", Testimonials echter Personen + Fabian-Eder-Zitat entfernt, noindex + robots Disallow-all. Personalisiert: Strict „Nur NÖ + Bundesweit" (default AN, behebt Saschas Bug „warum Vorarlberg bei NÖ"), Firmen/Gemeinden default AUS, Profil in localStorage (Quiz speichert → Landing „Mein Bericht"), echte €-Summe im Berichtskopf, Zusatzangaben Beruf/Behinderung, PDF-Druck, katalog.js embedded → Doppelklick-fähig, Desktop-`HolDirMehr-starten.command` (Port 8788). GitHub-Pages SCHEITERT (Koerperfluss-Account: „Actions has been disabled for this user"). Workflow dwfrun-e3a76000 holt Listing-Einträge nach (Ziel 502 NÖ + 533 bundesweit, Original-Angabe) — Ergebnis-Nachdeploy offen.
 
 ## ios27-webapp-testing-recherche-2026-09-13
 
@@ -11208,6 +11223,8 @@ Stand 2026-10-10, nachmittag (Projekt TOOL-SAMMLUNG-VERKAUF):
 - **ZCode-Workflow-Gelernt**: (a) `subagent_model` NICHT setzen → Session-Modell GLM-5.3-Flash (Highspeed-Spawn wird abgelehnt). (b) `AmendWorkflow` auf laufendem Run importiert fertige Arbeit per Cache. (c) WebSearch war im Subagent durchgehend 429 → alle Marktpreise = Vorwissen-Anker "unbestätigt".
 - **KANBAN.md existiert nirgends**; Obsidian-Pfad `/Users/saschalagler/Desktop/Local AI /loki-ki/Brain/Tool-Verkauf/` existiert NICHT auf der Platte (alter Paste-Kontext). HUB-ARCHITEKTUR.md existiert (Sep 16); backend/main.py hat nur 5 GET-Endpunkte, POST /api/agenten/{id}/start fehlt.
 - Stopp-Regeln: kein Gumroad-Upload/Deploy/git-push ohne Nutzer-GO. Offene GO-Punkte: Firebase-Redeploy, Gumroad-Upload, push, Apple-Developer-Zertifikat (Notarization LokiVoice/LegalOps), M4 OmniRoute-Keys-Säuberung (Recon war quotageblockt, Reset 15:59).
+- **M1-Fortschritt**: Shard-Relaunch nach Runner-Patch, Stand 57/66 bewertet (Background-Warter `exec_f4afbafa` pollt bis "66 Tools · 66 bewertet", dann M2: KANBAN.md + STATUS/DASHBOARD-Refresh). Shard-Logs puffern unter nohup — `runner.py status` ist die Wahrheit, nicht log-Tails.
+- **Hub-URLs (alle 4 live, HTTP 200, am 10.10. geprüft)**: Storefront http://localhost:3300 · Cockpit http://localhost:3300/dashboard · Backend http://localhost:8055/api/status · Prod https://gen-lang-client-0532713295.web.app. Alle zeigen den Stand vom LETZTEN BUILD (56 Tools, vor M0-Merge) — neuer Inhalt nur nach Rebuild + Firebase-Redeploy-GO. Nutzer fragt immer wieder "wo ist der Hub" → direkt diese 4 Links + Hinweis statischer Build-Stand geben.
 
 ## MEMORY
 
@@ -102246,7 +102263,9 @@ Nachbau der Website **HolDirMehr.at** („Finde deine Förderungen in Österreic
 
 ## Starten
 
-- Läuft lokal: **http://localhost:61599/** (Deploy-Server dieser Session)
+- **ONLINE (dauerhaft, Firebase Hosting): https://foerderungen-sascha.web.app/**
+- Lokal: Doppelklick auf `index.html` (Katalog ist als `assets/katalog.js` eingebettet) oder Desktop-`HolDirMehr-starten.command`
+- Deploy-Update: `firebase deploy --only hosting` (Projekt foerderungen-sascha)
 - Oder direkt: `index.html` im Browser öffnen, oder `python3 -m http.server` im Ordner
 
 ## Seiten

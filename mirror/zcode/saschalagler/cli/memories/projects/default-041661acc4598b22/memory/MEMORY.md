@@ -1,5 +1,6 @@
 # Memory Index
 
+- [Saschas Lage NÖ 10.10.](sascha-lage-noe.md) — 29, arbeitslos/AMS-Sperre (~€300/Monat), Miete €350, Loosdorf Bez. Melk, keine Kinder → Förder-Recherche + App-Profil darauf kalibriert
 - [HolDirMehr-Replika 09.-10.10.](holdirmehr-replika.md) — ✅ VOLLVERSION: 1.148 echte Förderungen gecrawlt (data/katalog.json), Suche/Filter/Detailseiten/Bericht-Matching gratis, ~/.zcode/workspace/default/holdirmehr/, URL localhost:61599; ⚠️ NUR PRIVAT (Katalog © holdirmehr.at)
 - [TCC/FDA-Cleanup 09.10.](tcc-fda-cleanup-2026-10-09.md) — ✅ FERTIG: alle 14 toten Einträge weg (TCC 90→72, Sascha löschte letzte 11 selbst per GUI+Finger); lebende Tools (ZCode/Terminal/Antigravity/…) verifiziert AN; Backup ~/sicherungen/tcc-backup-20261009; LESSON: Touch ID pro Löschung, nach „Entfernen"-Klick nicht beobachten, Deep-Link `Privacy_AllFilesAccess`
 - [Plugin/Skill-Inventar 09.10.](plugin-skill-inventar-dwfrun-2026-10-09.md) — dwfrun-8c351687: 7 Skills + 5 Plugins verifiziert; FDA-Audit 14 Leichen; LESSON: Workflow-Subagents keine Absolut-Pfade, ABER world.run kann (test/mdfind/sqlite3); dwfrun-eec3e822 = TCC-Plan (out/TCC_LOESCHPLAN.md); Backup ~/sicherungen/tcc-backup-20261009
