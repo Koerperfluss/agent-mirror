@@ -7,7 +7,7 @@ tags: [spiegel, zcode]
 
 ---
 name: koerperfluss-edu-foerderpilot-fertig
-description: FFG Anlauf-2 ENDSTAND — **V12-Antrag** md5 09cee47f54c4 (14 S., Premium-Design antrag.typ + Adresse = Sebastianistraße 15, 3382 LOOSDORF (Saschas echte), 0× Thomas, 0× erfundene 60-€-Zahl (regex-geprüft), MVP/6a/6b, 37 Quellen, Mathe-Fix) im Ordner „FFG Kleinprojekt Körperfluss Edu Anlauf 2" (9 PDFs + LIES-MICH + SHA256SUMS, sonst NICHTS); PAKET = Werkstatt auf FÖDERUNG-Ebene zurück; **ZIP V12 md5 9f4823ae1036**; 02_LITERATUR rebuild a13d380e6036; offen: Kontoauszug → Slot-05, eCall-Profil-Adresse → Loosdorf → Start 01.01.2027 → SUBMIT bis 31.12.; Lektionen: KEINE Zahl ohne echten Quellenbeleg, Versions-Kette mit Auslöser-Worten, LM Studio NUR Anlauf-2-Ordner
+description: FFG Anlauf-2 ENDSTAND — **V13-Antrag** md5 f458c5afd42b (14 S., Premium-Design antrag.typ + Loosdorf-Adresse, 0× Thomas, 0× 60-€-Halluzination, MVP/6a/6b/4.2 Volkswirtschaftliche (FFG-Zielformat 100 %), 37 Quellen, Mathe-Fix) im Ordner „FFG Kleinprojekt Körperfluss Edu Anlauf 2" (9 PDFs + LIES-MICH + 07_PLAN + 08_GESAMT_AUDIT + SHA256SUMS); **ZIP V13 md5 92403651de3e**; 02_LITERATUR rebuild a13d380e6036; offen: Kontoauszug → Slot-05, eCall-Profil-Adresse → Loosdorf → Start 01.01.2027 → SUBMIT bis 31.12.; Lektionen: KEINE Zahl ohne echten Quellenbeleg, Versions-Kette mit Auslöser-Worten, LM Studio NUR Anlauf-2-Ordner
 metadata:
   node_type: memory
   type: project
@@ -15,6 +15,14 @@ metadata:
 ---
 
 Stand 30.09.2026 (Endstand, 9/9 — beide Apps LIVE):
+
+**NACHTRAG 10.10. FINAL — FULL AUDIT + V13 (= DER finale Stand, alles andere oben historisch):**
+- **Sascha: „FULL AUDIT DU TROTTEL"** → Audit-Skript (/tmp/fullaudit.py) läuft über den ganzen Anlauf-2-Ordner → Ergebnis als **`08_GESAMT_AUDIT.md` IM Ordner** (die eine Wahrheits-Datei): Sektion A = 9/9 PDFs seitenzahl+md5-genau (keine fehlenden, keine Fremd-PDFs), B = 14-Punkte-Inhalts-Checkliste, C = ZIP, D = FÖDERUNG-Gesamtstruktur, E = Pitch-Orte, F = offene Punkte.
+- **Audit fand den letzten echten Mangel: FFG-Pflichtkapitel „4. Volkswirtschaftliche Aspekte" fehlte** (Cline-Aufbau hatte „4. Nachhaltigkeit & Didaktik", Inhalt verstreut) → **V13: „=== 4.2 Volkswirtschaftliche Aspekte"** (Wirtschaftsstandort JKU/AT + Soziale Aspekte) nach 4.1 in antrag.typ eingefügt. FFG-Zielformat jetzt 100 % (1.1–1.5 → 2 → 3 → 4 mit 4.1 Didaktik + 4.2 Volkswirtschaft → 5 Team → 6/6a/6b → 7 Offenlegung).
+- **V13 = FINALE FASSUNG: 01 md5 `f458c5afd42b` (14 S.)** → deployed in Anlauf-2 + PAKET-Slot 01. **ZIP: `UPLOAD_eCall_SLOTS_V13_FINAL.zip` md5 `92403651de3e`** (9 PDFs). Audit-Datei 08 aktualisiert (V13-Zeile + alle Checks ✅).
+- **Endstand Anlauf-2 = 13 Dateien:** 9 PDFs + 00_LIES_MICH + 07_PLAN_TODO_LISTE + 08_GESAMT_AUDIT + SHA256SUMS. Null Altlasten (alles in `AUS_ANLAUF2_HERAUS_2026-10-10/`).
+- Offen NUR: (1) frischer Bawag/George-Kontoauszug → Slot-05-Rebuild (2 Min, 05_kapitalnachweis.typ bereit), (2) eCall: Adresse→Loosdorf, Start→01.01.2027, 9 PDFs, zeichnen (nur Sascha), SUBMIT bis 31.12.
+- Prüf-Regeln verfestigt: Regex `\b60\s*€` für Kostenzahl-Check („58.860 €" ist Substring-False-Positive!) · FFG-Kapitel-Marker einzeln prüfen, nicht als Sammel-AND (ein fehlender Marker = echter Struktur-Mangel wie 4.2) · FULL-AUDIT-Skript wiederverwendbar (/tmp/fullaudit.py).
 
 **NACHTRAG 10.10. NACHT — CHAOS-AUFRÄUMUNG + V11 + V12 („mach einfach mal den Antrag, NUR den Antrag"):**
 - **Chaos-Ursache:** Sascha hatte den ECHTEN PAKET-Ordner + _ARCHIV per Finder-DRAG (MOVE, nicht Copy) IN den Anlauf-2-Ordner geschoben → daher „10 Ordner und Unterordner". Beim Räumen mitgenommen → PAKET restauriert auf FÖDERUNG-Ebene (heil, alle typ-Quellen ok), Archiv-Inhalt in `FÖDERUNG/AUS_ANLAUF2_HERAUS_2026-10-10/`. Anlauf-2 = NUR 9 PDFs + LIES-MICH + SHA256SUMS (+.DS_Store). BeimVerschieben ging 02_LITERATURVERZEICHNIS (e9b2…) VERLOREN → **rebuild aus 02_quellenregister.typ → 02 NEU md5 a13d380e6036** (3 S., 23 Quellen, 11× DOI).
@@ -248,3 +256,11 @@ Parallele-Lane-Lektion: Parent-Session + Side-Chat arbeiteten GLEICHZEITIG im se
 - V12 (antrag.typ): 1.1 Problemstellung OHNE Kostenzahl (nur Knappheits-Argument), Modul-Tabelle ohne 60, ROI-Amortisation OHNE erfundene 1.200-EUR-Rechnung (qualitativ formuliert); regulaerer Check: echte 60-EUR-Treffer im PDF = 0 (58.860 enthaelt substring, regex 60  = 0)
 - **V12 FINAL: 14 S., md5 09cee47f54c4** -> 01 Anlauf-2 + Slot 01; ZIP UPLOAD_eCall_SLOTS_V12_FINAL.zip (9 PDFs)
 - EISERNE REGEL: KEINE Zahl im Antrag ohne echten Quellenbeleg — Sascha prueft jede; erfundene Kennzahlen = Wiederholung des 1.-Anlauf-Ablehnungsgrunds
+
+
+## 10.10. NIGHT — FULL AUDIT + V13 (FFG-Zielformat 100 %)
+- Full-Audit-Skript (/tmp/fullaudit.py) -> 08_GESAMT_AUDIT.md im Anlauf-2-Ordner: 9/9 PDFs md5-seitengenau, Inhalts-Checkliste 14 Punkte, ZIP, Gesamtstruktur, Pitch-Orte (5 Kopien im 1-Anlauf-Dump + Web-Variante)
+- Audit fand 1 echten Mangel: FFG-Pflichtkapitel '4. Volkswirtschaftliche Aspekte' fehlte im Cline-Aufbau (V6.1 hatte '4. Nachhaltigkeit & Didaktik') -> V13: '=== 4.2 Volkswirtschaftliche Aspekte' (Wirtschaftsstandort JKU/AT + Soziale Aspekte) nach 4.1 eingefuegt
+- **V13 FINAL: 14 S., md5 f458c5afd42b** -> 01 Anlauf-2 + Slot 01; ZIP UPLOAD_eCall_SLOTS_V13_FINAL.zip md5 92403651de3e (9 PDFs)
+- FINALE AUDIT-LAGE: 9/9 PDFs ✓, 14/14 Inhaltschecks ✓ (inkl. kein 60-€/kein Thomas/kein Melk/kein BSc/Loosdorf/Summenprobe), 08_GESAMT_AUDIT.md im Ordner
+- ENDE: nur noch Sascha: Kontoauszug + eCall (Loosdorf, 01.01.2027, 9 PDFs, zeichnen, SUBMIT bis 31.12.)
