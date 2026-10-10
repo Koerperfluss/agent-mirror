@@ -7,7 +7,7 @@ tags: [spiegel, zcode]
 
 ---
 name: koerperfluss-edu-foerderpilot-fertig
-description: FFG Anlauf-2 ENDSTAND — **V7-Antrag** md5 9047bce8c91d (16 S., Merge aus V6+6a/6b+MVP+37 Quellen, korrekte Melk-Adresse) im Ordner „FFG Kleinprojekt Körperfluss Edu Anlauf 2"; Pitchdeck KEINE FFG-Beilage; eCall-Ablauf aus 1.-Anlauf-Print belegt; nur Sascha: frischer Kontoauszug + SUBMIT bis 31.12.
+description: FFG Anlauf-2 ENDSTAND — **V8-Antrag** md5 ed3898eb581c (14 S., Premium-Design antrag.typ + alle Korrekturen: Melk-Adresse, 0× Thomas, MVP/6a/6b, 37 Quellen, Mathe-Fix) im Ordner „FFG Kleinprojekt Körperfluss Edu Anlauf 2" (11 Dateien, hilfsfrei); 06_KOSTEN md5 762cde7a19dd auf V8-Pagination; ZIP V8 md5 551ae3a13d53; nur Sascha: frischer Kontoauszug (optional) + ecall.ffg.at → 68209806 → Start 01.01.2027 → SUBMIT bis 31.12.
 metadata:
   node_type: memory
   type: project
@@ -169,3 +169,12 @@ Parallele-Lane-Lektion: Parent-Session + Side-Chat arbeiteten GLEICHZEITIG im se
 - SHA256SUMS.txt neu generiert; LIES-MICH aktualisiert (06-Zeile)
 - ALLE typ-Quellen verortet: _ANLAUF2_INTERNE/_QUELLE/ (03a/03b/03c, 02, 02b, 04, 05, 06, _design.typ) + _BUILD/ (antrag_v6_ffg_zielformat.typ = V7) — 05_kapitalnachweis.typ existiert, frischer Auszug -> 2-Min-Rebuild
 - ENDE: einreichbereit; nur Sascha: 9 PDFs hochladen (oder ZIP), Start 01.01.2027, zeichnen, SUBMIT bis 31.12.
+
+
+## 10.10. V8-FINAL — DESIGN-REWORK (Sascha: 'es sieht aus wie Muell')
+- V8 = Cline-Design-System (antrag.typ, 981 Z., _design.typ, koerperfluss_logo/emblem/kopfzeile.png) mit V7-Korrekturen: Adresse Sebastianistraesse(Loosdorf=PETER!) -> Prinzlstr. 7/2 Melk (2 St.), 'Partner Thomas' NAMENTLICH 0x (5 St. generisiert, FFG-'belastbare Angaben'-Risiko), Slot-Tabelle auf echte Anlauf-2-Dateinamen + Beilage-06-Zeile
+- **V8 FINAL: 14 S., md5 ed3898eb581c** -> 01 im Anlauf-2-Ordner + Slot 01 im PAKET; alte V7 (typst-Design) -> _ANLAUF2_INTERNE/_ALT/01_V7_typst_design_ERSETZT.pdf
+- 06_KOSTEN erneut auf V8-Pagination abgeglichen (Kap.2=S.9, Kap.3=S.9-10, Kap.5=S.11, 'V8, 14 S.') -> **06 md5 762cde7a19dd**
+- FINALE ZIP: UPLOAD_eCall_SLOTS_V8_FINAL_2026-10-10.zip md5 551ae3a13d53 (9 PDFs); SHA256SUMS + LIES-MICH (V8-Zeile) aktualisiert
+- typ-Quelle fuer V8: FFG_ReSubmission_PAKET_68209806/_ANLAUF2_INTERNE/_QUELLE/antrag.typ (kompiliert mit typst 0.15.1, Logo-PNGs im selben Ordner noetig)
+- SASCHA-REGEL bestätigt: DESIGN zählt — er will Premium-Look (Logo/Karten/Farbbänder), nicht funktionalen Text-Output; kuenftig immer _design.typ-System statt nacktes typst

@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-10 11:54 UTC
+Zuletzt gespiegelt: 2026-10-10 12:32 UTC
 
 ## AGENTS
 
@@ -9677,7 +9677,7 @@ Beobachtet 06.09.2026 (Session mit Off-Peak-Ticket): Nach User-Paste „ZCode Er
 
 # Memory Index
 
-- [FFG 1.-Anlauf-Historie (Original-Unterlagen)](ffg-1-anlauf-historie-originalunterlagen.md) — 05.10. alle 25 Original-PDFs gelesen: Projekt.Start 66244243 15.09.2025 6.000 € bedingt → **08.07.2026 0 €**; Ablehnung 21.05.2026 (wörtliche Gründe) · **10.10. ENDSTAND: V7-Antrag md5 9047bce8c91d (16 S.) = EINE einreichbare Fassung** (V6 + Kap. 6a Abnahmekriterien + 6b Datenschutz + MVP-Stufen + Didaktik-Begleitung + 37 Quellen, korrekte Melk-Adresse — Sebastianistraße = PETERS Adresse, kein Thomas-Name = Ablehnungsgrund-Schutz); **Einreich-Ordner = „FÖDERUNG/FFG Kleinprojekt Körperfluss Edu Anlauf 2/"** (9 PDFs: 01 V7 · 02/02b · 03a/b/c CVs (Sascha KEIN BSc, Studium unterbrochen) · 04 · 05 Kapitalnachweis ⚠️ Saldo 27.11.2025 · 06 KOSTEN) + 00_LIES_MICH + 07_PLAN_TODO_LISTE; Mathe-Fix 109.000 + 21.800 GKZ = 130.800; **Pitchdeck KEINE FFG-Beilage** (ecall-Print beweist); Desktop-Dreck → _ALT/DESKTOP_DRECK; Cline-Team tot (429 + Token abgelaufen); LM-Studio-Falle: Gemma 756 % Kontext = PDFs nicht gelesen; **Regel: Dokument-Delikte LIVE öffnen (open), nicht nur berichten** · FÖDERUNG aufgeräumt: 13 Objekte → _ARCHIV/AUFRAEUM_2026-10-05_02h · /bin/zsh-ENOENT → Desktop-Commander; typst-@-Falle · Nur noch Sascha: frischer Kontoauszug + ecall.ffg.at → 68209806 → Start 01.01.2027 → SUBMIT bis 31.12.
+- [FFG 1.-Anlauf-Historie (Original-Unterlagen)](ffg-1-anlauf-historie-originalunterlagen.md) — 05.10. alle 25 Original-PDFs gelesen: Projekt.Start 66244243 15.09.2025 6.000 € bedingt → **08.07.2026 0 €**; Ablehnung 21.05.2026 (wörtliche Gründe) · **10.10. ENDSTAND: V8-Antrag md5 ed3898eb581c (14 S., PREMIUM-DESIGN aus antrag.typ/_design.typ mit KÖRPERFLUSS-Logo/Karten/Farb-Bändern)** = EINE einreichbare Fassung (V6.1-Design + Korrekturen: **Melk-Adresse statt Sebastianistraße = PETERS Adresse**, „Partner Thomas" namentlich 0× = Ablehnungsgrund-Schutz, MVP-Stufen, Kap. 6a Abnahmekriterien + 6b Datenschutz, 37 Quellen, Mathe-Fix 109.000 + 21.800 GKZ = 130.800); **06_KOSTEN md5 762cde7a19dd** (Zitate auf V8-Pagination S. 9/10/11 abgeglichen); **Einreich-Ordner = „FÖDERUNG/FFG Kleinprojekt Körperfluss Edu Anlauf 2/"** — exakt 11 Dateien (9 PDFs: 01 V8 · 02/02b · 03a/b/c CVs, Sascha KEIN BSc/Studium unterbrochen · 04 · 05 Kapitalnachweis ⚠️ Saldo 27.11.2025 · 06) + LIES-MICH + 07_PLAN_TODO_LISTE; alle 8 Hilfsordner → PAKET/_ANLAUF2_INTERNE, typ-Quellen dort (_QUELLE/antrag.typ + 03a/b/c, 02, 02b, 04, 05, 06, _design.typ); **ZIP V8 md5 551ae3a13d53** · **Pitchdeck KEINE FFG-Beilage** (ecall-Print beweist) · Kostenplan = Antrag Kap. 1.3 S. 7 + Kap. 2 S. 10 UND 06-KOSTEN-PDF · Desktop-/Ordner-Dreck → _ANLAUF2_INTERNE/_ALT (+DESKTOP_DRECK) · Cline-Team tot (429 + cline-pass-Token 07.08. abgelaufen → App Logout/Login); LM-Studio-Falle: Gemma 756 % Kontext = PDFs nicht gelesen · **Regeln: Dokumente LIVE öffnen (open)** · **DESIGN zählt — nie nacktes typst, immer _design.typ-System** · Nur noch Sascha: (optional) frischer Kontoauszug + ecall.ffg.at → 68209806 → Start 01.01.2027 → zeichnen → SUBMIT bis 31.12.
 
 - [AutoClaw Sprache/Translocation-Fix](autoclaw-sprache-translocation-fix.md) — 02.10. zh-CN→en-US per settings.json (beide Apps), AutoClaw2-Quarantäne entfernt; App→Config-Ordner-Tabelle; Deutsch wird nicht angeboten
 
@@ -10205,7 +10205,7 @@ Verwandt: [[legal-ops-cockpit-reparatur]]
 
 ---
 name: koerperfluss-edu-foerderpilot-fertig
-description: FFG Anlauf-2 ENDSTAND — **V7-Antrag** md5 9047bce8c91d (16 S., Merge aus V6+6a/6b+MVP+37 Quellen, korrekte Melk-Adresse) im Ordner „FFG Kleinprojekt Körperfluss Edu Anlauf 2"; Pitchdeck KEINE FFG-Beilage; eCall-Ablauf aus 1.-Anlauf-Print belegt; nur Sascha: frischer Kontoauszug + SUBMIT bis 31.12.
+description: FFG Anlauf-2 ENDSTAND — **V8-Antrag** md5 ed3898eb581c (14 S., Premium-Design antrag.typ + alle Korrekturen: Melk-Adresse, 0× Thomas, MVP/6a/6b, 37 Quellen, Mathe-Fix) im Ordner „FFG Kleinprojekt Körperfluss Edu Anlauf 2" (11 Dateien, hilfsfrei); 06_KOSTEN md5 762cde7a19dd auf V8-Pagination; ZIP V8 md5 551ae3a13d53; nur Sascha: frischer Kontoauszug (optional) + ecall.ffg.at → 68209806 → Start 01.01.2027 → SUBMIT bis 31.12.
 metadata:
   node_type: memory
   type: project
@@ -10939,7 +10939,9 @@ Saschas harte Regeln, gelernt aus dem 20.09.-Zerwürfnis (619k Token in 1 Sessio
 
 15. **Auf „WAS IST DAS ZIEL?“ antworte in 1–2 Sätzen — KEINE Übersichten (05.10., nach eskalierendem „mir ist die verfickte Systemübersicht völlig egal … WAS IST DAS VERFICKTE ZIEL?“):** Ich hatte auf seine Frustration mit einer verifizierten System-Inventur (466 Skills, 3 Fixes, Tabellen) geantwortet — falsch. Er wollte das ZIEL, nicht Infrastruktur. **Das funktionierende Format: „Das Ziel: 58.860 € FFG-Förderung genehmigt bekommen — und der einzige Weg dahin ist, dass DU die fertige ZIP auf ecall.ffg.at hochlädst und SUBMIT klickst. Das ist alles.“** **How to apply:** Wenn er nach Ziel/Sinn/Kern fragt („was ist das ziel“, „wozu das alles“, „was soll ich tun“): 1 Satz Ziel + 1 Satz der einzige verbleibende Schritt mit WER — null Tabellen, null Prozess, null System-Erklärungen. Verwandt: Regel 2 (Token-Disziplin) und [[sascha-vollzug-keine-zwischenfragen]].
 
-**Why:** Sascha (ADHS) will das GROSSE Bild in SEINEM Orchestrierungs-Format (PLAN-Tabelle, Schwarm-Rollen, Reviewer-Veto) — weder Explorer-Schleifen noch Solo-Mini-Pläne. Plan-Lehnen heißt „Format falsch“, nicht „weniger machen“.
+16. **DESIGN ZÄHLT — nackter Funktions-Output = „Müll" (10.10., V8-Rework):** Sascha („es sieht immer noch aus wie Müll") lehnte den inhaltlich korrekten V7-Antrag-PDF ab, weil er wie Textverarbeitung aussah — während die Cline-V6.1 mit Premium-Design (KÖRPERFLUSS-Logo, brauner Kopfbalken, FFG-Badge, Kennzahlen-Karten, Farbbänder) gefiel. **Why:** Er bewertet Dokumente visuell wie ein Leser/Gutachter, nicht wie ein Prüfer — Design ist für ihn Teil der Qualität, nicht Kosmetik. **How to apply:** PDFs/Deliverables IMMER im vorhandenen Design-System bauen (`_design.typ` + `antrag.typ` + Logo-PNGs in `FFG_ReSubmission_PAKET_68209806/_ANLAUF2_INTERNE/_QUELLE/`), nie nacktes typst ohne Style; wenn ein besser designtes Alt-Dokument existiert → Design dort übernehmen, Inhalt korrigieren (nicht umgekehrt); nach dem Bau LIVE öffnen (open) damit er es sofort sieht. Verwandt: [[koerperfluss-edu-foerderpilot-fertig]].
+
+**Why:** Sascha (ADHS) will das GROSSE Bild in SEINEM Orchestrierungs-Format (PLAN-Tabelle, Schwarm-Rollen, Reviewer-Veto) — weder Explorer-Schleifen noch Solo-Mini-Pläne. Plan-Lehnen heißt „Format falsch", nicht „weniger machen".
 **How to apply:** Neuer Build-Auftrag → sofort PLAN-Tabelle konform Standard-Skill-System S.2 mit installierten Subagenten (implementer/qa-tester/reviewer qwen3.8-max/explore), max 3 parallel, PLAN.md ins Projekt, Auto-Vollzug nach Freigabe. GUI/Deploy/Dateien nur nach GO. Verwandt: [[sascha-vollzug-keine-zwischenfragen]] (GO-Phase), [[loki-voice-agent]].
 
 ## sascha-local-infra-ports

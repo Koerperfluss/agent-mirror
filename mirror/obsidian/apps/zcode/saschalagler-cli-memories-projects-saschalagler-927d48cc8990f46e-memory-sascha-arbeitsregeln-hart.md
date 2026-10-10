@@ -1,7 +1,7 @@
 ---
 app: zcode
 quelle: "saschalagler/cli/memories/projects/saschalagler-927d48cc8990f46e/memory/sascha-arbeitsregeln-hart.md"
-stand: 2026-10-04
+stand: 2026-10-10
 tags: [spiegel, zcode]
 ---
 
@@ -44,5 +44,7 @@ Saschas harte Regeln, gelernt aus dem 20.09.-Zerwürfnis (619k Token in 1 Sessio
 
 15. **Auf „WAS IST DAS ZIEL?“ antworte in 1–2 Sätzen — KEINE Übersichten (05.10., nach eskalierendem „mir ist die verfickte Systemübersicht völlig egal … WAS IST DAS VERFICKTE ZIEL?“):** Ich hatte auf seine Frustration mit einer verifizierten System-Inventur (466 Skills, 3 Fixes, Tabellen) geantwortet — falsch. Er wollte das ZIEL, nicht Infrastruktur. **Das funktionierende Format: „Das Ziel: 58.860 € FFG-Förderung genehmigt bekommen — und der einzige Weg dahin ist, dass DU die fertige ZIP auf ecall.ffg.at hochlädst und SUBMIT klickst. Das ist alles.“** **How to apply:** Wenn er nach Ziel/Sinn/Kern fragt („was ist das ziel“, „wozu das alles“, „was soll ich tun“): 1 Satz Ziel + 1 Satz der einzige verbleibende Schritt mit WER — null Tabellen, null Prozess, null System-Erklärungen. Verwandt: Regel 2 (Token-Disziplin) und [[sascha-vollzug-keine-zwischenfragen]].
 
-**Why:** Sascha (ADHS) will das GROSSE Bild in SEINEM Orchestrierungs-Format (PLAN-Tabelle, Schwarm-Rollen, Reviewer-Veto) — weder Explorer-Schleifen noch Solo-Mini-Pläne. Plan-Lehnen heißt „Format falsch“, nicht „weniger machen“.
+16. **DESIGN ZÄHLT — nackter Funktions-Output = „Müll" (10.10., V8-Rework):** Sascha („es sieht immer noch aus wie Müll") lehnte den inhaltlich korrekten V7-Antrag-PDF ab, weil er wie Textverarbeitung aussah — während die Cline-V6.1 mit Premium-Design (KÖRPERFLUSS-Logo, brauner Kopfbalken, FFG-Badge, Kennzahlen-Karten, Farbbänder) gefiel. **Why:** Er bewertet Dokumente visuell wie ein Leser/Gutachter, nicht wie ein Prüfer — Design ist für ihn Teil der Qualität, nicht Kosmetik. **How to apply:** PDFs/Deliverables IMMER im vorhandenen Design-System bauen (`_design.typ` + `antrag.typ` + Logo-PNGs in `FFG_ReSubmission_PAKET_68209806/_ANLAUF2_INTERNE/_QUELLE/`), nie nacktes typst ohne Style; wenn ein besser designtes Alt-Dokument existiert → Design dort übernehmen, Inhalt korrigieren (nicht umgekehrt); nach dem Bau LIVE öffnen (open) damit er es sofort sieht. Verwandt: [[koerperfluss-edu-foerderpilot-fertig]].
+
+**Why:** Sascha (ADHS) will das GROSSE Bild in SEINEM Orchestrierungs-Format (PLAN-Tabelle, Schwarm-Rollen, Reviewer-Veto) — weder Explorer-Schleifen noch Solo-Mini-Pläne. Plan-Lehnen heißt „Format falsch", nicht „weniger machen".
 **How to apply:** Neuer Build-Auftrag → sofort PLAN-Tabelle konform Standard-Skill-System S.2 mit installierten Subagenten (implementer/qa-tester/reviewer qwen3.8-max/explore), max 3 parallel, PLAN.md ins Projekt, Auto-Vollzug nach Freigabe. GUI/Deploy/Dateien nur nach GO. Verwandt: [[sascha-vollzug-keine-zwischenfragen]] (GO-Phase), [[loki-voice-agent]].
