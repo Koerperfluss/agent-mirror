@@ -20,12 +20,19 @@ Nachbau der Website **HolDirMehr.at** („Finde deine Förderungen in Österreic
 |---|---|---|
 | `index.html` | „Finde deine Förderungen…" (Landing) | Hero + Freitext-Eingabe, Schnell-Check-CTA, Beispiel-Report-Karten (mit Zoom-Lightbox), Benefits, 3 Schritte, Preisvergleich (€0 statt €39,99), Förderkarten, Stats, FAQ-Accordion, CTA, Footer + Cookie-Banner |
 | `check.html` | „Schnell-Check starten (6 Fragen)" | Quiz: Bundesland → Haushalt → Wohnen → Vorhaben (Mehrfach) → Start → Anträge; leitet Antworten an `bericht.html` weiter |
-| `bericht.html` | „HolDirMehr — … 2.pdf" (Bericht) | **Freier Bericht**: €-Spanne + Förderanzahl aus Antworten, Chips, Rangliste **ohne Schlösser** — jede Förderung klickbar mit **ausklappbarem Antrags-Plan** (Schritte, Unterlagen-Checkliste, Experten-Tipp), Gratis/Voll-Split und Checkout entfernt |
+| `foerderungen.html` | `/foerderungen` (live) | **Echter Katalog: 1.148 Förderungen** aus `data/katalog.json` (gecrawlt von holdirmehr.at, Stand 10.10.2026) — Volltextsuche + Bundesland-/Bereichsfilter, „Mehr anzeigen" |
+| `foerderung.html?id=slug` | `/foerderung/<slug>` (live) | Detailseite je Förderung: Betrag, Beschreibung, Bereich, Antragsteller, Prüfdatum, **Link zum offiziellen Antrag** (1.138×), ähnliche Förderungen |
+| `bericht.html` | „HolDirMehr — … 2.pdf" (Bericht) | Quiz-Antworten matchen gegen den **echten Katalog** (Keywords + Bundesland-Gewichtung) — echte Programme, echte Beträge, aufklappbar, kostenlos |
 | `entwickler.html` | „Entwickler & API-Nutzung" | 1:1-Struktur, Zahlungs-/Purchase-Stellen auf Lead-Modell umgeschrieben |
 
 Logik in `assets/app.js` (Förder-Katalog `CATALOG` mit vollständigen Plänen), Design in `assets/style.css`. Fonts: Fraunces + Inter via Google Fonts. Berichts-Beträge sind deterministisch aus den Quiz-Antworten gerechnet (Demo-Daten, kein echter Förderkatalog).
 
-## ⚠️ Vor jedem Livegang zwingend ersetzen
+## ⚠️ Wichtig
+
+- **NUR PRIVAT NUTZEN, NICHT ÖFFENTLICH DEPLOYEN:** Der Katalog (1.148 Einträge, `data/katalog.json`) ist die Datenbank von holdirmehr.at (© dessen Betreiber) — exakt 1:1 kopiert auf Saschas Wunsch für private, lokale Nutzung. Kein Public-Hosting, kein Weiterverkauf.
+- **Katalog aktualisieren:** `cat <slugs-von-sitemap> | python3 crawl-artig` — der Crawler liegt in `/tmp/holdirmehr_crawl.py` (stdin=URLs, stdout=JSON); Slugs: Sitemap `https://holdirmehr.at/sitemap.xml` → alle `/foerderung/*`.
+- **Branding/Testimonials/Rechtstexte** sind weiterhin vom Original übernommen (siehe oben) — vor jedem Livegang ersetzen.
+- **Demo-Beträge im Bericht-Kopf** (€-Spanne) sind geschätzt; die Förderkarten zeigen echte Beträge aus dem Katalog.
 
 1. **Branding:** „HolDirMehr", Logo, `holdirmehr.at` sind Marken/Identität des Original-Betreibers — eigener Name + Logo.
 2. **Testimonials** (Rene, Nicole, Sarah, Noreia, „Fabian Eder, Gründer") = echte Personen des Originals → eigene, echte Kundenzitate.
