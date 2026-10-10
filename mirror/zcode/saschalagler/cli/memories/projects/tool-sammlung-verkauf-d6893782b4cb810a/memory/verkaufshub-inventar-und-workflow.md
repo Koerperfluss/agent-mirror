@@ -1,6 +1,6 @@
 ---
 name: verkaufshub-inventar-und-workflow
-description: Verkaufshub-Stand (66 Einträge, M1 61/66, Verkaufsfertig-Team dwfrun-cc0608f8 läuft) + Workflow-Erkenntnisse (amend, Flash, Mimosa-Hook, Node20 weg)
+description: Verkaufshub-Stand (66 Einträge, M1 61/66 stockend, Team dwfrun-cc0608f8 QUOTA-STOPP 1308 Reset 17:15, 4/6 Worker fertig) + Cockpit hub.html live + Workflow-Erkenntnisse
 metadata:
   node_type: memory
   type: project
