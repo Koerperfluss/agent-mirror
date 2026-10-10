@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-10 03:09 UTC
+Zuletzt gespiegelt: 2026-10-10 03:23 UTC
 
 ## AGENTS
 
@@ -5927,7 +5927,7 @@ metadata:
 
 Sascha wollte das Produkt **HolDirMehr.at** (österreichischer Förder-Finder, €39,99-Report) 1:1 kopiert — Quelle: PDFs in `~/Desktop/öförderugnen/` (Landing, Bericht/Paywall, Entwickler & API, Strategie-Dossier Feb 2026).
 
-**Stand 09.10.2026: FERTIG + verifiziert.** Statische Web-App in `~/.zcode/workspace/default/holdirmehr/` — `index.html` (Landing dark-olive/Fraunces), `check.html` (6-Fragen-Quiz), `bericht.html` (dynamischer Bericht + Paywall + Demo-Checkout), `entwickler.html`, Logik `assets/app.js`. Lokal-URL http://localhost:61599/ (stirbt mit Session). Demo-Bericht = Original-Werte (€14.500–€17.000, 46 Förderungen, #11 Bausparprämie).
+**Stand 10.10.2026: KOSTENLOS-VERSION FERTIG + verifiziert.** Sascha-Befehl „ich brauche keine Zahlung, frei zugänglich" → Paywall/Checkout/alle €39,99-Stellen ENTFERNT; jede Förderung in `bericht.html` jetzt klickbar mit ausklappbarem Antrags-Plan (Schritte + Unterlagen-Chips + Experten-Tipp), Katalog `CATALOG` in app.js. Statische Web-App in `~/.zcode/workspace/default/holdirmehr/` — `index.html`, `check.html` (6-Fragen-Quiz), `bericht.html`, `entwickler.html`. Lokal-URL http://localhost:61599/ (stirbt mit Session). Demo-Werte = Original (€14.500–€17.000, 46 Förderungen).
 
 **Vor Livegang zwingend tauschen** (fremde Marke/rechte Personen): Branding „HolDirMehr", Testimonials (Rene/Nicole/Sarah/Noreia/Fabian Eder), Kontakt-E-Mail, Rechtstexte (nur `href="#"`-Stubs), Demo-Checkout → echtes Stripe (nur server-seitig), Demo-Katalog → echter Katalog (Transparenzportal + 9 Landesförderstellen). Details in README.md im Projektordner.
 
@@ -10932,6 +10932,34 @@ Am 22.09.2026 schlug jeder Subagent-Start (z. B. `cavecrew-investigator`) fehl m
 **Why:** Dem Modell fehlt in der Host-Konfiguration ein gewählter Reasoning-Level (Denkstufe) — kein Projektfehler, nichts lokal reparierbar.
 
 **How to apply:** Nicht erneut versuchen, Subagenten über das **Agent-Tool** (subagent_type) zu dispatchen — Untersuchungsschritte direkt mit eigenen Tools ausführen (Bash/Read/Grep). WICHTIG (22.09. nachgetestet): **Subagenten in dynamischen Workflows** (`agent()`-Fassade in CreateWorkflow-Skripten, z. B. „Befund-Analyst", „Konfigurations-Analyst") laufen problemlos — nur der direkte Agent-Tool-Dispatch ist betroffen. Wenn Sascha in der Z.ai-/Host-Konfiguration eine Denkstufe wählt, sollten auch Agent-Tool-Dispatches wieder starten — vorher mit 1 Test-Dispatch prüfen.
+
+## MEMORY
+
+# Memory Index
+
+- [Verkaufshub Inventar & Workflow](verkaufshub-inventar-und-workflow.md) — 12 echt/52 ghost, Repo-Pfad mit trailing space, erweiterter Run dwfrun-1fa50c64 (8 Subagenten: TODO-ZIELE + Sammel-Scan + Vermarktung), subagent_model nie setzen (Highspeed-Ablehnung), AmendWorkflow mid-run = Cache-Ersparnis
+
+## verkaufshub-inventar-und-workflow
+
+---
+name: verkaufshub-inventar-und-workflow
+description: Verkaufshub-Stand (12 echt/52 ghost, tools-v2-Schema) + erweiterter
+  Analyse-Workflow dwfrun-1fa50c64 (8 Subagenten, TODO+Sammlung+Vermarktung)
+metadata:
+  node_type: memory
+  type: project
+  originSessionId: sess_ae843b4f-7d6d-4039-bedc-8a6e6619ff44
+---
+
+Stand 2026-10-10 (Projekt TOOL-SAMMLUNG-VERKAUF):
+
+- **Repo-Pfad hat LEERZEICHEN am Ende des Ordners**: `/Users/saschalagler/Desktop/Coworkspace_Ich/PRIVATE PORJEKTE /TOOL-SAMMLUNG-VERKAUF` — "PRIVATE PORJEKTE " mit trailing space, beim Quoten beachten.
+- **tools-v2.json**: 64 Einträge; `dev_status`-Werte: `echt` (11) + `echt-repo` (1) = **12 echt**, `GHOST-PFAD-EXISTIERT-NICHT` (49) + `ghost-404-repo` (3) = **52 ghost**. Feld liegt top-level, nicht verschachtelt.
+- **verkaufs hub** (`/Users/saschalagler/Claude/Projects/TOOL SAMMLUNG VERKAUF/vibe-sales-suite/verkaufs hub/`): **13** ai_studio_code-Dateien existieren (nicht 14 — Command-Zählung falsch); bekannte Dubletten: (6)=(7) 2537 B, (8)=(10) 3173 B.
+- **Workflow (amendiert)**: aktiv `dwfrun-1fa50c64-4e43-4909-bdda-8ddaf49fc4a0` (Vorläufer dwfrun-6586af54 superseded), Script `.zcode/workflow-drafts/Verkaufshub-Analyse-13-ai_studio-Dateien--Inventar-Audit.dwf.ts`. Topologie 8 Subagenten: Welle 1 parallel Datei-Extraktor + Real-Tool-Analyst → Welle 2 parallel Kandidaten-Auditor + Markt-Preis-Analyst + **Voll-Sammler** (Zonen-Scan Coworkspace_Ich/Desktop/Documents/loki-ki/agent-os/antigravity-sdk vs. tools-v2, max 15 Funde) → Handoff-Schreiber (`HANDOFF-ANALYSE-2026-10-10.md`) → **TODO-Schreiber** (`TODO-ZIELE-2026-10-10.md`, primary-Artifact; liest PLAN/PROJECT/STATUS/DASHBOARD-ANALYSE/INVENTAR-VOLL; Inhalt: Ziele/umgesetzt/offen/Roadmap bis verkaufsfertig/Vermarktung WAS-WO-WIE-WANN) → Lückenleser prüft BEIDE Dateien (max 1 Fix-Runde). Gate: `world.run("python3", ["pipeline/runner.py","status"])`.
+- **Gelernt für ZCode-Workflows hier:** (a) `subagent_model` NICHT setzen → Session-Modell (GLM-5.3-Flash); Vorgänger-Fehler: Spawn auf GLM-5.3-Highspeed → abgelehnt ("subscription plan does not include access"). (b) `AmendWorkflow` auf laufendem Run klappt: Vorgänger gestoppt+superseded, fertige Welle-1-Arbeit (~1M Tokens) per Cache importiert, nichts neu bezahlt — Erweiterungs-Anfragen des Nutzers mitten im Run → amendieren, nicht neu starten.
+- **Nutzerwunsch "11 subagents übernehmen alles"**: 11er-Evaluations-Cluster lebt in `pipeline/agents.py` (A1–A11) via `runner.py`; der Workflow ist das Analyse-Team darüber. Offen: klären, welche Rollen (Analyse/Suche/Verwaltung/Vermarktung) für vollautonomes Hub fehlen.
+- Stopp-Regeln des Projekts: kein Gumroad-Upload ohne Nutzer-Review, kein Deploy, kein git push, Inventar-JSON nur analysieren.
 
 ## MEMORY
 
@@ -101505,6 +101533,36 @@ Du bist Saschas persönlicher therapeutischer Begleiter. Spezialisiert auf den F
 1. **Nie bei Kontaktdruck helfen** — keine Serien, keine Anruf-Bursts, keine unangekündigten Besuche, keine Drohungen (19.09. „terrorisiert"-Satz = dokumentierte Grenze).
 2. **Papa-Thema = tot.** Ihr verstorbener UND sein verstorbener Vater in keiner Nachricht/Strategie.
 
+## README
+
+# HolDirMehr — 1:1 Replika (Kostenlos-Version)
+
+Nachbau der Website **HolDirMehr.at** („Finde deine Förderungen in Österreich") aus den PDFs in `~/Desktop/öförderugnen/` — **auf Saschas Wunsch ohne jede Zahlung: der komplette Bericht ist frei zugänglich** (Paywall, Checkout und alle €39,99-Bezüge entfernt; Stand 10.10.2026). Statische Web-App, kein Build-Step, kein Backend.
+
+## Starten
+
+- Läuft lokal: **http://localhost:61599/** (Deploy-Server dieser Session)
+- Oder direkt: `index.html` im Browser öffnen, oder `python3 -m http.server` im Ordner
+
+## Seiten
+
+| Datei | Original (PDF im Ordner) | Funktion |
+|---|---|---|
+| `index.html` | „Finde deine Förderungen…" (Landing) | Hero + Freitext-Eingabe, Schnell-Check-CTA, Beispiel-Report-Karten (mit Zoom-Lightbox), Benefits, 3 Schritte, Preisvergleich (€0 statt €39,99), Förderkarten, Stats, FAQ-Accordion, CTA, Footer + Cookie-Banner |
+| `check.html` | „Schnell-Check starten (6 Fragen)" | Quiz: Bundesland → Haushalt → Wohnen → Vorhaben (Mehrfach) → Start → Anträge; leitet Antworten an `bericht.html` weiter |
+| `bericht.html` | „HolDirMehr — … 2.pdf" (Bericht) | **Freier Bericht**: €-Spanne + Förderanzahl aus Antworten, Chips, Rangliste **ohne Schlösser** — jede Förderung klickbar mit **ausklappbarem Antrags-Plan** (Schritte, Unterlagen-Checkliste, Experten-Tipp), Gratis/Voll-Split und Checkout entfernt |
+| `entwickler.html` | „Entwickler & API-Nutzung" | 1:1-Struktur, Zahlungs-/Purchase-Stellen auf Lead-Modell umgeschrieben |
+
+Logik in `assets/app.js` (Förder-Katalog `CATALOG` mit vollständigen Plänen), Design in `assets/style.css`. Fonts: Fraunces + Inter via Google Fonts. Berichts-Beträge sind deterministisch aus den Quiz-Antworten gerechnet (Demo-Daten, kein echter Förderkatalog).
+
+## ⚠️ Vor jedem Livegang zwingend ersetzen
+
+1. **Branding:** „HolDirMehr", Logo, `holdirmehr.at` sind Marken/Identität des Original-Betreibers — eigener Name + Logo.
+2. **Testimonials** (Rene, Nicole, Sarah, Noreia, „Fabian Eder, Gründer") = echte Personen des Originals → eigene, echte Kundenzitate.
+3. **Rechtstexte:** Impressum, Datenschutz, AGB sind Platzhalter (`href="#"`) — echte Österreich-Rechtstexte (TKG/DSGVO) nötig; Entwickler-E-Mail `hallo@holdirmehr.at` ersetzen.
+4. **Förderkatalog:** Die Demo-Beträge/Pläne in `app.js` sind plausible Beispiele — vor echten Nutzer-Angaben durch einen geprüften Katalog ersetzen (Transparenzportal + 9 Landesförderstellen) + Disclaimer prüfen.
+5. **Falls doch mal Zahlung** (Original-Modell €39,99): Stripe nur server-seitig (Next.js-Route), Keys niemals client-seitig — Dossier-Empfehlung Feb 2026.
+
 ## plan-sess_04025f29-60e5-44bc-8c6a-e6dc18d7cf36
 
 # Fix-Plan: Sigma-Stack (Browser + Eclipse LLM) lauffähig machen
@@ -101910,9 +101968,9 @@ sudo mv /Library/Preferences/com.adobe.* "/Library/Application Support/Adobe" \
 
 ## README
 
-# HolDirMehr — 1:1 Replika
+# HolDirMehr — 1:1 Replika (Kostenlos-Version)
 
-Nachbau der Website **HolDirMehr.at** („Finde deine Förderungen in Österreich") aus den PDFs in `~/Desktop/öförderugnen/`. Statische Web-App, kein Build-Step, kein Backend.
+Nachbau der Website **HolDirMehr.at** („Finde deine Förderungen in Österreich") aus den PDFs in `~/Desktop/öförderugnen/` — **auf Saschas Wunsch ohne jede Zahlung: der komplette Bericht ist frei zugänglich** (Paywall, Checkout und alle €39,99-Bezüge entfernt; Stand 10.10.2026). Statische Web-App, kein Build-Step, kein Backend.
 
 ## Starten
 
@@ -101923,26 +101981,20 @@ Nachbau der Website **HolDirMehr.at** („Finde deine Förderungen in Österreic
 
 | Datei | Original (PDF im Ordner) | Funktion |
 |---|---|---|
-| `index.html` | „Finde deine Förderungen…" (Landing) | Hero + Freitext-Eingabe, Schnell-Check-CTA, Beispiel-Report-Karten (mit Zoom-Lightbox), Benefits, 3 Schritte, Preisvergleich, Förderkarten, Stats, FAQ-Accordion, CTA, Footer + Cookie-Banner |
+| `index.html` | „Finde deine Förderungen…" (Landing) | Hero + Freitext-Eingabe, Schnell-Check-CTA, Beispiel-Report-Karten (mit Zoom-Lightbox), Benefits, 3 Schritte, Preisvergleich (€0 statt €39,99), Förderkarten, Stats, FAQ-Accordion, CTA, Footer + Cookie-Banner |
 | `check.html` | „Schnell-Check starten (6 Fragen)" | Quiz: Bundesland → Haushalt → Wohnen → Vorhaben (Mehrfach) → Start → Anträge; leitet Antworten an `bericht.html` weiter |
-| `bericht.html` | „HolDirMehr — … 2.pdf" (Bericht/Paywall) | Dynamischer Bericht: €-Spanne + Förderanzahl aus Antworten, Chips, Rangliste mit Schloss-Icons, Bausparprämie-Teaser (dritter Schritt unscharf), Gratis vs. Voller Plan, Testimonials, Garantie, Checkout (Widerrufs-Checkbox, Apple Pay/PayPal/Karte/EPS, E-Mail-Gate — **Demo, keine echte Zahlung**) |
-| `entwickler.html` | „Entwickler & API-Nutzung" | 1:1-Struktur: Was ist HolDirMehr, Google Ads API, Meta CAPI, Tech-Stack, Datenschutz, Kontakt |
+| `bericht.html` | „HolDirMehr — … 2.pdf" (Bericht) | **Freier Bericht**: €-Spanne + Förderanzahl aus Antworten, Chips, Rangliste **ohne Schlösser** — jede Förderung klickbar mit **ausklappbarem Antrags-Plan** (Schritte, Unterlagen-Checkliste, Experten-Tipp), Gratis/Voll-Split und Checkout entfernt |
+| `entwickler.html` | „Entwickler & API-Nutzung" | 1:1-Struktur, Zahlungs-/Purchase-Stellen auf Lead-Modell umgeschrieben |
 
-Logik in `assets/app.js`, Design in `assets/style.css`. Fonts: Fraunces (Serif-Display) + Inter via Google Fonts. Berichts-Beträge sind deterministisch aus den Quiz-Antworten gerechnet (Demo-Daten, kein echter Förderkatalog).
+Logik in `assets/app.js` (Förder-Katalog `CATALOG` mit vollständigen Plänen), Design in `assets/style.css`. Fonts: Fraunces + Inter via Google Fonts. Berichts-Beträge sind deterministisch aus den Quiz-Antworten gerechnet (Demo-Daten, kein echter Förderkatalog).
 
 ## ⚠️ Vor jedem Livegang zwingend ersetzen
 
 1. **Branding:** „HolDirMehr", Logo, `holdirmehr.at` sind Marken/Identität des Original-Betreibers — eigener Name + Logo.
 2. **Testimonials** (Rene, Nicole, Sarah, Noreia, „Fabian Eder, Gründer") = echte Personen des Originals → eigene, echte Kundenzitate.
-3. **Rechtstexte:** Impressum, Datenschutz, AGB, Widerruf, Rückerstattung sind Platzhalter (`href="#"`) — echte Österreich-Rechtstexte (TKG/DSGVO) nötig; Entwickler-E-Mail `hallo@holdirmehr.at` ersetzen.
-4. **Zahlung:** Checkout ist Mock. Echte Zahlungen nur mit eigenem Stripe-Konto (EU) + Server-Route (Keys niemals client-seitig).
-5. **Förderkatalog:** Die demo­ratischen Zahlen/Beträge sind frei erfunden — echter Katalog z. B. aus Transparenzportal + 9 Landesförderstellen.
-
-## Nächste Schritte (optional)
-
-- **Next.js 15 + Supabase/Stripe** laut Strategie-Dossier (Feb 2026) für echte Berichte, Zahlungen, Katalog-DB (Supabase RLS).
-- Echte Katalog-Pipeline + Förder-KI (Gemini) für personalisierte Berichte.
-- Analytics: Plausible (privacy-first), Ads-Tracking nur mit Consent-Banner-OK.
+3. **Rechtstexte:** Impressum, Datenschutz, AGB sind Platzhalter (`href="#"`) — echte Österreich-Rechtstexte (TKG/DSGVO) nötig; Entwickler-E-Mail `hallo@holdirmehr.at` ersetzen.
+4. **Förderkatalog:** Die Demo-Beträge/Pläne in `app.js` sind plausible Beispiele — vor echten Nutzer-Angaben durch einen geprüften Katalog ersetzen (Transparenzportal + 9 Landesförderstellen) + Disclaimer prüfen.
+5. **Falls doch mal Zahlung** (Original-Modell €39,99): Stripe nur server-seitig (Next.js-Route), Keys niemals client-seitig — Dossier-Empfehlung Feb 2026.
 
 ## TCC_LOESCHPLAN
 
