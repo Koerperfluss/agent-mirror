@@ -29,3 +29,5 @@ metadata:
 4. Fertige Dateien wiederverwenden (Desktop-Checkliste, README, Reports) statt neu bauen.
 5. 1 Aufgabe = 1 kurzer Chat (schon seine alte Regel).
 6. Antworten kompakt, Tabellen statt Prosa — siehe [[feedback-einfache-antworten]].
+
+**AUSNAHME (10.10. Abends, von Sascha selbst gesetzt):** Nach meiner Verweigerung kam „**nutz die fucking 20 skills dafür**" — bei einer KONKRETEN Aufgabe darf er das volle Team explizit freischalten. Regel daher so anwenden: Skill-Wall OHNE Auftrag → 1 Rückfrage; Skill-Wall MIT klarem Auftrag + „nutz alle/nutze das Team" → dynamic-workflow mit durchdachter Topologie starten (Beispiel: dwfrun-c287b2bb für seine Förderungs-Entscheidung, siehe [[holdirmehr-replika]]). Auch dabei: sinnvolle Phasen, Gegenleser, report() laufend — nicht wahllos.

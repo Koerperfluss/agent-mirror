@@ -8,7 +8,7 @@ tags: [spiegel, zcode]
 # Memory Index
 
 - [Token-Sparen 10.10.](feedback-token-sparen.md) — Vereinbarung: 5 Werkzeuge reichen fürs Förder-Projekt (Rest 90+ Skills überflüssig); keine Workflows ohne konkreten Auftrag, max. 2–3 Tags, keine Seiten-Pastes, App/Dateien statt Chat
-- [Saschas Lage NÖ 10.10.](sascha-lage-noe.md) — 29, arbeitslos/AMS-Sperre (~€300/Monat), Miete €350, Loosdorf Bez. Melk, keine Kinder → Förder-Recherche + App-Profil darauf kalibriert
+- [Saschas Lage NÖ 10.10.](sascha-lage-noe.md) — 29, arbeitslos/AMS-Sperre (Okt: 390 € Zufluss, Anspruch 839,89 €), Miete €350, Loosdorf Bez. Melk, keine Kinder; 🔴 KEIN Mietrückstand, ÖGK+Strom bereits betreut → Förder-Recherche + App-Profil darauf kalibriert
 - [HolDirMehr-Replika 09.-10.10.](holdirmehr-replika.md) — ✅ **ONLINE: foerderungen-sascha.web.app** (Firebase, privat, noindex) + 1.772 echte Förderungen (506 NÖ + 495 BW), Matching auf Sascha scharf (Arbeitslos/AMS, Kinder-Demotion); LESSON: Boost-Regex nie gegen Kategorie-Namen matchen; ⚠️ Katalog © holdirmehr.at
 - [TCC/FDA-Cleanup 09.10.](tcc-fda-cleanup-2026-10-09.md) — ✅ FERTIG: alle 14 toten Einträge weg (TCC 90→72, Sascha löschte letzte 11 selbst per GUI+Finger); lebende Tools (ZCode/Terminal/Antigravity/…) verifiziert AN; Backup ~/sicherungen/tcc-backup-20261009; LESSON: Touch ID pro Löschung, nach „Entfernen"-Klick nicht beobachten, Deep-Link `Privacy_AllFilesAccess`
 - [Plugin/Skill-Inventar 09.10.](plugin-skill-inventar-dwfrun-2026-10-09.md) — dwfrun-8c351687: 7 Skills + 5 Plugins verifiziert; FDA-Audit 14 Leichen; LESSON: Workflow-Subagents keine Absolut-Pfade, ABER world.run kann (test/mdfind/sqlite3); dwfrun-eec3e822 = TCC-Plan (out/TCC_LOESCHPLAN.md); Backup ~/sicherungen/tcc-backup-20261009

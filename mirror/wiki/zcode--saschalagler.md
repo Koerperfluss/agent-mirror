@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-10 06:22 UTC
+Zuletzt gespiegelt: 2026-10-10 06:50 UTC
 
 ## AGENTS
 
@@ -4962,7 +4962,7 @@ Bei Fachfragen (z. B. Trainings-Übungen) fordert er explizit „clinical reason
 # Memory Index
 
 - [Token-Sparen 10.10.](feedback-token-sparen.md) — Vereinbarung: 5 Werkzeuge reichen fürs Förder-Projekt (Rest 90+ Skills überflüssig); keine Workflows ohne konkreten Auftrag, max. 2–3 Tags, keine Seiten-Pastes, App/Dateien statt Chat
-- [Saschas Lage NÖ 10.10.](sascha-lage-noe.md) — 29, arbeitslos/AMS-Sperre (~€300/Monat), Miete €350, Loosdorf Bez. Melk, keine Kinder → Förder-Recherche + App-Profil darauf kalibriert
+- [Saschas Lage NÖ 10.10.](sascha-lage-noe.md) — 29, arbeitslos/AMS-Sperre (Okt: 390 € Zufluss, Anspruch 839,89 €), Miete €350, Loosdorf Bez. Melk, keine Kinder; 🔴 KEIN Mietrückstand, ÖGK+Strom bereits betreut → Förder-Recherche + App-Profil darauf kalibriert
 - [HolDirMehr-Replika 09.-10.10.](holdirmehr-replika.md) — ✅ **ONLINE: foerderungen-sascha.web.app** (Firebase, privat, noindex) + 1.772 echte Förderungen (506 NÖ + 495 BW), Matching auf Sascha scharf (Arbeitslos/AMS, Kinder-Demotion); LESSON: Boost-Regex nie gegen Kategorie-Namen matchen; ⚠️ Katalog © holdirmehr.at
 - [TCC/FDA-Cleanup 09.10.](tcc-fda-cleanup-2026-10-09.md) — ✅ FERTIG: alle 14 toten Einträge weg (TCC 90→72, Sascha löschte letzte 11 selbst per GUI+Finger); lebende Tools (ZCode/Terminal/Antigravity/…) verifiziert AN; Backup ~/sicherungen/tcc-backup-20261009; LESSON: Touch ID pro Löschung, nach „Entfernen"-Klick nicht beobachten, Deep-Link `Privacy_AllFilesAccess`
 - [Plugin/Skill-Inventar 09.10.](plugin-skill-inventar-dwfrun-2026-10-09.md) — dwfrun-8c351687: 7 Skills + 5 Plugins verifiziert; FDA-Audit 14 Leichen; LESSON: Workflow-Subagents keine Absolut-Pfade, ABER world.run kann (test/mdfind/sqlite3); dwfrun-eec3e822 = TCC-Plan (out/TCC_LOESCHPLAN.md); Backup ~/sicherungen/tcc-backup-20261009
@@ -6004,6 +6004,8 @@ metadata:
 5. 1 Aufgabe = 1 kurzer Chat (schon seine alte Regel).
 6. Antworten kompakt, Tabellen statt Prosa — siehe [[feedback-einfache-antworten]].
 
+**AUSNAHME (10.10. Abends, von Sascha selbst gesetzt):** Nach meiner Verweigerung kam „**nutz die fucking 20 skills dafür**" — bei einer KONKRETEN Aufgabe darf er das volle Team explizit freischalten. Regel daher so anwenden: Skill-Wall OHNE Auftrag → 1 Rückfrage; Skill-Wall MIT klarem Auftrag + „nutz alle/nutze das Team" → dynamic-workflow mit durchdachter Topologie starten (Beispiel: dwfrun-c287b2bb für seine Förderungs-Entscheidung, siehe [[holdirmehr-replika]]). Auch dabei: sinnvolle Phasen, Gegenleser, report() laufend — nicht wahllos.
+
 ## foerderops-assistent
 
 ---
@@ -6226,6 +6228,12 @@ Dossier-Empfehlung für Produktions-Upgrade: Next.js 15 + Supabase + Stripe (sie
 **10.10. SPÄT: Sascha-Personalisierung + Ranking-Bug-Lektion.** Neu live (Firebase 1791608735256 + 1791609577710, beide verifiziert): Vorhaben-Option **„Finanzielle Notlage & Sozialhilfe"** im Quiz (Keywords: sozialhilfe/notstandshilfe/notlage/spontanhilfe/energiehilfe/härtefall/lebensunterhalt), Zusatzangabe **„Arbeitslos / AMS"** (+4 bei notstandshilfe/arbeitslosengeld/arbeitslos/AMS, +3 bei sozialhilfe/notlage…), **Kinder-Demotion** (Single/keine Kinder ohne familie-Vorhaben → Baby/Kinderbetreuungs-Einträge −6). 🔴 **RANKING-BUG-LEKTION:** Der Arbeitslos-Boost-Regex enthielt `arbeitsuch` — das matchte den Kategorienamen „Beruf & Arbeitssuche" selbst, wodurch ALLE Berufs-Förderungen (Pendlerhilfen etc.) gewannen und die für ihn relevanten Notstandshilfe/Sozialhilfe-Einträge unterm Tisch blieben. Fix: Boost nur auf `notstandshilfe|arbeitslosengeld|arbeitslos\b|arbeitsmarktservice|\bams\b`. Nach Fix Top-15 sim + live getestet (Notstandshilfe, Fachkräftestipendium, Lebensunterhalt-Beihilfe, Sozialhilfe NÖ, Spontanhilfe oben; Pendler/FiT-Frauen raus). **LESSON: Boost-Keywords nie gegen Bereich-Strings matchen lassen — Regex gegen die eigene Kategorieliste testen (python-Sim des Scorings vor Deploy).**
 
 **10.10. SPÄTESTENS: Sascha nutzt noch die ALTEN localhost-Tabs.** Er druckte ein PDF von localhost:61599 (05:08) = veralteter Browser-Cache mit Paywall/„44 Förderungen"/Demo-Zeilen, und sein In-App-Browser-Tab lag weiterhin auf der alten bericht.html-URL mit Vorhaben „Familie & Kinder" (falsches Profil). **STANDARD-UMLEITUNG: immer auf https://foerderungen-sascha.web.app verweisen („Mein Bericht" lädt localStorage-Profil), alte localhost:61599-Tabs für tot erklären.** Bei „seltsamer alter Ansicht" zuerst Cache/URL prüfen, bevor irgendwas am Code gefixt wird. Persönliche Checkliste liegt als `~/Desktop/FOERDERUNGEN_FUER_MICH_LOOSDORF.md` (40 kuratierte Förderungen mit Links + AKtionsplan AK-Melk → BH-Melk → Wohnschirm → Heizkostenzuschuss 22.10. → soogut). Siehe auch [[feedback-token-sparen]].
+
+**10.10. NIGHT: Workflow dwfrun-c287b2bb LÄUFT (Ergebnis offen).** Nach Saschas expliziter Freigabe („nutz die fucking 20 skills dafür") dynamic-workflow gestartet: Kandidatenliste deterministisch per world.run(python3) aus katalog.json → **4 Prüfer-Agents** verifizieren je ~30 der ~122 Kandidaten gegen sein Profil (Web-Nachweis offizieller Quellen pro BEANTRAGEN) → **Gegenleser** (frischer Kontext, zweifelhafte BEANTRAGEN = ⚠️) → **Synthese-Schreiber** schreibt `holdirmehr/out/BEANTRAGEN_FUER_MICH.md` (veröffentlicht als Primary-Artifact). Abschluss-Notification ausstehend → dann: Ergebnis in Chat zusammenfassen + Datei ggf. auf Desktop spiegeln (neben FOERDERUNGEN_FUER_MICH_LOOSDORF.md). Script-File: `.zcode/workflow-drafts/Förderungs-Entscheidung-für-Sascha-prüfen.dwf.ts` (Standard-Verzeichnis ist workspace/.zcode/workflow-drafts — NICHT das Unterprojekt-Verzeichnis).
+
+**10.10. INTERAKTIVER AKTIONSPLAN: `plan.html` LIVE** (in allen Headern verlinkt „✓ Plan"; lokaler Deploy-Server wechselte auf Port 51079, Deploy-Server ist session-gebunden). 11 Aufgaben in 4 Sektionen (MONTAG-3-Hebel / Online-Anträge / Diese Woche / Ab 22.10.), Abhak-Status in localStorage `hdm-plan-v1`, Progressbar, Copy-Button + Mailto für die fertige BH-Melk-E-Mail, 🤖-Hinweise „sag ‚Mach OBS/ÖGK mit mir' → Browser-Agent begleitet Formular" (agent-browser/computer-use noch NICHT damit benutzt — Angebot steht). Detail-Daten eingebettet: OBS 183,60 €/Jahr, ÖGK 7,55 €/Medikament (Grenze 1.217,96 € netto), OBS-Grenze 1.465,40 €, Strom-Sozialtarif ~300 €/Jahr, Handy-Zuschuss bis 12 €/Monat, HibL ~200–500 €. Sascha meldete selbst (via andere KI) ein App-Update mit härteren Filtern: harte Ländersperre (8 Bundesländer sofort verworfen), Gemeinde-Fremd-Filter (nur Loosdorf/Melk + Landesweit), Fallback auf Notlage/Wohnen/Gesundheit statt Familie — live bestätigt unter foerderungen-sascha.web.app.
+
+**10.10. NACHT-KORREKTUREN (nach Saschas Fakten-Fix).** ⚠️ **Mehrere Sessions editieren dieselben Dateien** — katalog-ui.js war zwischenzeitlich von einer anderen Session geändert (Arbeitslos-Boosts +5/+4, erweiterte Notlage-Keywords inkl. wohnschirm/rezeptgebühr/befreiung); vor Edits IMMER frisch lesen, nicht aus dem eigenen Kontext editieren. plan.html korrigiert nach Saschas Angabe: **kein Mietrückstand** → Wohnschirm-Punkt nur noch Vorsorge/Beratung; **ÖGK + Strom = bereits betreut** → in plan.html vorabgehakt + Sektion „LAUFEND — BEREITS BETREUT". Matching weiter geschärft: Behinderungs-Einträge werden jetzt bereits bei „Keine Angabe" gedemoted (−6, nur bei explizit „Ja" Boost) — löste Saschas Bericht-Störer (Treppenlifte, Behinderungsfonds, KFZ); **Todesfall/Bestattung/Hospiz/Witwen-/Waisenrente generell −6** (Keyword-Verseher in Notlage-Liste). Paywall-Frage geklärt: Das Original gibt gratis nur die Vorschau (Beträge + erste Schritte), der 39,99-Report ist paywalled und wird NICHT umgangen — aber der komplette Katalog ist öffentlich und bereits extrahiert → Saschas App = der Paid-Report, gratis; es gibt dort nichts Zusätzliches mehr zu holen. Workflow dwfrun-c287b2bb (122 Kandidaten-Verifikation, 6 Agents) noch offen — bei Notification: out/BEANTRAGEN_FUER_MICH.md prüfen, auf Desktop spiegeln, ggf. ⚠️-unbestätigte Einträge nachfassen.
 
 ## ios27-webapp-testing-recherche-2026-09-13
 
@@ -6850,7 +6858,9 @@ metadata:
   type: user
 ---
 
-Saschas Lage (Stand 10.10.2026, von ihm selbst geschildert): 29 J., männlich, Single, keine Kinder, **3382 Loosdorf (Bezirk Melk, NÖ)**, Mietwohnung **€350/Monat**. **Arbeitslos mit AMS-Sperre** — dieser Monat nur ~€300, davor 6 Wochen 0, davor 3 Monate Abzug. Ehemaliger Arbeitgeber hält Lohn + Lohnzettel zurück (→ AK Melk: Lohnklage). Für seine Förder-App ([[holdirmehr-replika]]) gilt: Profil NÖ + Single + Miete + Vorhaben Beruf/Notlage/Gesundheit/Wohnen, Zusatzangabe „Arbeitslos / AMS". Soziale Daten nur zur Aufgabenlösung verwenden, respektvoll behandeln.
+Saschas Lage (Stand 10.10.2026, von ihm selbst geschildert): 29 J., männlich, Single, keine Kinder, **Sebastianistraße 15, 3382 Loosdorf (Bezirk Melk, NÖ)**, Mietwohnung **€350/Monat** (Vermieter: Herbert; Tel 0660 425 3366, koerperfluss@gmail.com). **Arbeitslos mit AMS-Sperre** — AMS-Zufluss Oktober: **390 €** (davor 6 Wochen 0, davor 3 Monate Abzug) → Differenzanspruch Sozialhilfe **839,89 €** (1.229,89 € Richtsatz − 390 €). Fertige E-Mail an **Herrn Schauer, BH Melk (soziales.bhme@noel.gv.at)** liegt in seiner App (plan.html, Copy-Button). Ehemaliger Arbeitgeber hält Lohn + Lohnzettel zurück (→ AK Melk: Lohnklage). Sein **Abarbeitungs-Cockpit: https://foerderungen-sascha.web.app/plan.html** (Aufgaben, Abhak speichert lokal; Angebot: „Mach OBS mit mir" = Browser-Agent begleitet Online-Anträge). Für seine Förder-App ([[holdirmehr-replika]]) gilt: Profil NÖ + Single + Miete + Vorhaben Beruf/Notlage/Gesundheit/Wohnen, Zusatzangabe „Arbeitslos / AMS". Soziale Daten nur zur Aufgabenlösung verwenden, respektvoll behandeln.
+
+**🔴 KORREKTUREN von Sascha 10.10. (zornig, scharf):** (1) **KEIN Mietrückstand** — die 1.050-€-Wohnschirm-Miete-Annahme war falsch; Wohnschirm nur als Vorsorge-Thema, plan.html entsprechend umgebaut. (2) **ÖGK und Strom sind bereits betreut** (Rezeptgebühren-/Sozialtarif-Themen laufen schon) — in plan.html als „bereits betreut" vorabgehakt. Bei Fakten-Korrekturen SOFORT anwenden, nicht nachfragen. (3) Er wollte zusätzlich „alle Infos zum Projekt aus ZCode/Cline/Antigravity" gesammelt haben; **explizit NICHT im Scope: AgentCluster-Orchestrator/-Marketing, Wayfinder-Tickets** („fremdes Teilprojekt, nicht die Aufgabe").
 
 **Recherche-Stand 10.10. (verifiziert):** Sozialhilfe NÖ 2026 = **max. 1.229,89 €/Monat** Alleinstehende inkl. Wohnbedarf (737,93 + 491,96; noe.gv.at + AK NÖ), Schonvermögen €7.379,34. **NÖ Heizkostenzuschuss 150 €** — alte Frist 31.03.2026 ausgelaufen, neue Runde startet ca. **22.10.2026** beim Gemeindeamt des Hauptwohnsitzes. Kern-Handlungsplan an ihn geliefert: ① AK Melk (Hummelstraße 1, kostenlos — Lohnklage + Sperrbescheid-Beschwerde, Zuflussprinzip-Argument gegen fiktive Anrechnung der AMS-Sperre), ② BH Melk Sozialhilfe, ③ Wohnschirm Miete via Caritas St. Pölten (+43 2742 841390) / Verein Wohnen (+43 2742 47076), ④ Heizkostenzuschuss ab 22.10., ⑤ soogut Sozialmarkt Melk (Einkaufspass) + OBS/ORF- + EAG-Befreiung. Sein persönlicher Bericht-Link mit Profil-Params existiert; App zeigt nach Fix die relevanten Treffer (Notstandshilfe, Fachkräftestipendium, Sozialhilfe NÖ, Spontanhilfe NÖ…). Pendlerhilfen gelten erst wieder mit Job.
 
@@ -11252,7 +11262,7 @@ Am 22.09.2026 schlug jeder Subagent-Start (z. B. `cavecrew-investigator`) fehl m
 
 ---
 name: verkaufshub-inventar-und-workflow
-description: Verkaufshub-Stand (67 Einträge: 66/66 bewertet + vinyl-scanner #67 in Bewertung; dwfrun-50980de7 fertig = Listings 66/66; Team dwfrun-cc0608f8 Resume A/B/C offen bis Quota-Reset 17:15) + hub.html Cockpit :3300 + Workflow-Erkenntnisse
+description: Verkaufshub-Finalstand (67/67 bewertet + 67/67 Listings + systemweite Platten-Suche abgeschlossen, GOAL.md im Repo; Team dwfrun-cc0608f8 Resume offen bis Quota-Reset 17:15) + hub.html Cockpit :3300 + Workflow-Erkenntnisse
 metadata:
   node_type: memory
   type: project
@@ -101887,6 +101897,45 @@ Logik in `assets/app.js` (Förder-Katalog `CATALOG` mit vollständigen Plänen),
 4. **Förderkatalog:** Die Demo-Beträge/Pläne in `app.js` sind plausible Beispiele — vor echten Nutzer-Angaben durch einen geprüften Katalog ersetzen (Transparenzportal + 9 Landesförderstellen) + Disclaimer prüfen.
 5. **Falls doch mal Zahlung** (Original-Modell €39,99): Stripe nur server-seitig (Next.js-Route), Keys niemals client-seitig — Dossier-Empfehlung Feb 2026.
 
+## README
+
+# HolDirMehr — 1:1 Replika (Kostenlos-Version)
+
+Nachbau der Website **HolDirMehr.at** („Finde deine Förderungen in Österreich") aus den PDFs in `~/Desktop/öförderugnen/` — **auf Saschas Wunsch ohne jede Zahlung: der komplette Bericht ist frei zugänglich** (Paywall, Checkout und alle €39,99-Bezüge entfernt; Stand 10.10.2026). Statische Web-App, kein Build-Step, kein Backend.
+
+## Starten
+
+- **ONLINE (dauerhaft, Firebase Hosting): https://foerderungen-sascha.web.app/**
+- Lokal: Doppelklick auf `index.html` (Katalog ist als `assets/katalog.js` eingebettet) oder Desktop-`HolDirMehr-starten.command`
+- Deploy-Update: `firebase deploy --only hosting` (Projekt foerderungen-sascha)
+- Oder direkt: `index.html` im Browser öffnen, oder `python3 -m http.server` im Ordner
+
+## Seiten
+
+| Datei | Original (PDF im Ordner) | Funktion |
+|---|---|---|
+| `index.html` | „Finde deine Förderungen…" (Landing) | Hero + Freitext-Eingabe, Schnell-Check-CTA, Beispiel-Report-Karten (mit Zoom-Lightbox), Benefits, 3 Schritte, Preisvergleich (€0 statt €39,99), Förderkarten, Stats, FAQ-Accordion, CTA, Footer + Cookie-Banner |
+| `check.html` | „Schnell-Check starten (6 Fragen)" | Quiz: Bundesland → Haushalt → Wohnen → Vorhaben (Mehrfach) → Start → Anträge; leitet Antworten an `bericht.html` weiter |
+| `foerderungen.html` | `/foerderungen` (live) | **Echter Katalog: 1.148 Förderungen** aus `data/katalog.json` (gecrawlt von holdirmehr.at, Stand 10.10.2026) — Volltextsuche + Bundesland-/Bereichsfilter, „Mehr anzeigen" |
+| `foerderung.html?id=slug` | `/foerderung/<slug>` (live) | Detailseite je Förderung: Betrag, Beschreibung, Bereich, Antragsteller, Prüfdatum, **Link zum offiziellen Antrag** (1.138×), ähnliche Förderungen |
+| `bericht.html` | „HolDirMehr — … 2.pdf" (Bericht) | Quiz-Antworten matchen gegen den **echten Katalog** (Keywords + Bundesland-Gewichtung) — echte Programme, echte Beträge, aufklappbar, kostenlos |
+| `entwickler.html` | „Entwickler & API-Nutzung" | 1:1-Struktur, Zahlungs-/Purchase-Stellen auf Lead-Modell umgeschrieben |
+
+Logik in `assets/app.js` (Förder-Katalog `CATALOG` mit vollständigen Plänen), Design in `assets/style.css`. Fonts: Fraunces + Inter via Google Fonts. Berichts-Beträge sind deterministisch aus den Quiz-Antworten gerechnet (Demo-Daten, kein echter Förderkatalog).
+
+## ⚠️ Wichtig
+
+- **NUR PRIVAT NUTZEN, NICHT ÖFFENTLICH DEPLOYEN:** Der Katalog (1.148 Einträge, `data/katalog.json`) ist die Datenbank von holdirmehr.at (© dessen Betreiber) — exakt 1:1 kopiert auf Saschas Wunsch für private, lokale Nutzung. Kein Public-Hosting, kein Weiterverkauf.
+- **Katalog aktualisieren:** `cat <slugs-von-sitemap> | python3 crawl-artig` — der Crawler liegt in `/tmp/holdirmehr_crawl.py` (stdin=URLs, stdout=JSON); Slugs: Sitemap `https://holdirmehr.at/sitemap.xml` → alle `/foerderung/*`.
+- **Branding/Testimonials/Rechtstexte** sind weiterhin vom Original übernommen (siehe oben) — vor jedem Livegang ersetzen.
+- **Demo-Beträge im Bericht-Kopf** (€-Spanne) sind geschätzt; die Förderkarten zeigen echte Beträge aus dem Katalog.
+
+1. **Branding:** „HolDirMehr", Logo, `holdirmehr.at` sind Marken/Identität des Original-Betreibers — eigener Name + Logo.
+2. **Testimonials** (Rene, Nicole, Sarah, Noreia, „Fabian Eder, Gründer") = echte Personen des Originals → eigene, echte Kundenzitate.
+3. **Rechtstexte:** Impressum, Datenschutz, AGB sind Platzhalter (`href="#"`) — echte Österreich-Rechtstexte (TKG/DSGVO) nötig; Entwickler-E-Mail `hallo@holdirmehr.at` ersetzen.
+4. **Förderkatalog:** Die Demo-Beträge/Pläne in `app.js` sind plausible Beispiele — vor echten Nutzer-Angaben durch einen geprüften Katalog ersetzen (Transparenzportal + 9 Landesförderstellen) + Disclaimer prüfen.
+5. **Falls doch mal Zahlung** (Original-Modell €39,99): Stripe nur server-seitig (Next.js-Route), Keys niemals client-seitig — Dossier-Empfehlung Feb 2026.
+
 ## plan-sess_04025f29-60e5-44bc-8c6a-e6dc18d7cf36
 
 # Fix-Plan: Sigma-Stack (Browser + Eclipse LLM) lauffähig machen
@@ -102345,6 +102394,94 @@ Logik in `assets/app.js` (Förder-Katalog `CATALOG` mit vollständigen Plänen),
 3. **Rechtstexte:** Impressum, Datenschutz, AGB sind Platzhalter (`href="#"`) — echte Österreich-Rechtstexte (TKG/DSGVO) nötig; Entwickler-E-Mail `hallo@holdirmehr.at` ersetzen.
 4. **Förderkatalog:** Die Demo-Beträge/Pläne in `app.js` sind plausible Beispiele — vor echten Nutzer-Angaben durch einen geprüften Katalog ersetzen (Transparenzportal + 9 Landesförderstellen) + Disclaimer prüfen.
 5. **Falls doch mal Zahlung** (Original-Modell €39,99): Stripe nur server-seitig (Next.js-Route), Keys niemals client-seitig — Dossier-Empfehlung Feb 2026.
+
+## BEANTRAGEN_FUER_MICH
+
+# BEANTRAGEN FÜR MICH — Sascha (Loosdorf, AMS-Sperre, ~300 €/Monat)
+
+## 1) BLUF
+**6 Dinge sind SOFORT beantragbar** — ohne Voraussetzung, die du jetzt nicht erfüllst: **Spontanhilfe NÖ** (Geld-Notlage), **Wohnungssicherung NÖ Mitte** (kostenlose Beratung, begleitet Wohnbeihilfe/WOHNSCHIRM), **Hilfe zur sozialen Eingliederung** (⚠️ UNBESTÄTIGT — vorher klären, ob reine Existenzsicherung abgedeckt ist), **Rezeptgebührenbefreiung** (Einkommensgrenze klar unterschritten), **Mental-Health-Hotline** (kostenlos, sofort anrufen), **ÖGK-Gesundheitscheck** (auch ohne laufende Versicherung). Alles andere hängt an einer Bedingung (Sperre, Sozialhilfe-Bezug, AK-Mitgliedschaft, Rückstände) → Abschnitt 3.
+
+**Aktion-Reihenfolge: 1. BH Melk (Sozialhilfe/Eingliederung) → 2. AMS (Status klären) → 3. Gemeindeamt Loosdorf (Heizkostenzuschuss-Info) → 4. online/telefonisch (Spontanhilfe, OBS, E-Control).**
+
+## 2) Tabelle BEANTRAGEN (nach Aktion-Reihenfolge)
+
+| # | Name | Wo/Wie | Betrag | Quelle-URL |
+|---|---|---|---|---|
+| 1 | **Hilfe zur sozialen Eingliederung NÖ** ⚠️ UNBESTÄTIGT | **BH Melk**, Hauptplatz 1, ☎ 02752/53100 — Antrag Amt der NÖ Landesregierung/zuständiger Sozialdienst; vor Antrag klären, ob bloße Existenzsicherung (Mindestsicherung-Nachfolger) abgedeckt ist (Katalog zielt auf Betreuung/Unterbringung via Träger) | Bedarfsorientiert (deckt Miete 350 € vs. Einkommen ~300 € ab) | ris.bka.gv.at / transparenzportal.gv.at (web-verifiziert; Katalog-Beschreibung passt ggf. nicht auf reine Geldnot) |
+| 2 | **Wohnungssicherung NÖ Mitte** | Kostenlose Wohnberatung, zuständig für **Wohnbezirk Melk**; dort zusätzlich **Wohnbeihilfe- + WOHNSCHIRM-Anträge** mitbegleiten lassen | Kostenlos (Beratung + Antragshilfe) | Katalog-Kurzbeschreibung, unbestätigt (Webcheck-Timeout) |
+| 3 | **Individuelle Spontanhilfe NÖ** (Rotes Kreuz NÖ, Tulln) | sozialarbeit@no.roteskreuz.at, ☎ 059144-50530; Beratungsgespräch mit Einkommens- + Rechnungsnachweis | Zuschuss, bargeldlos als Gutschein/Überweisung direkt an Gläubiger | roteskreuz.at (Suche „Spontanhilfe"); sozialinfo.noe.gv.at (verifiziert 10.10.2026) |
+| 4 | **Rezeptgebührenbefreiung** (Zuzahlungsbefreiung) | **ÖGK** — Befreiungserklärung beantragen; exakte 2026er Grenze dort erfragen | Befreiung von Rezeptgebühr (~€ 7,55/R. Stand 2026 — bei Kasse prüfen) | Katalog-Kurzbeschreibung (ÖGK-Regel; Web-Verif. rate-limitiert) |
+| 5 | **NÖ Mental-Health-Hotline + Soforthilfe** | **Telefonseelsorge 142** (kostenlos, anonym); NÖ-Angebote via noetutgut.at | Kostenlos | telefonseelsorge.at / noetutgut.at (web-bestätigt) |
+| 6 | **Vorsorgeuntersuchung für Nichtversicherte** | **ÖGK-Gesundheitscheck** — Termin buchen, 1×/Jahr kostenlos ab 18 mit Wohnsitz AT, auch ohne aktuellen Versicherungsschutz | Kostenlos | oegk.at (web-bestätigt) |
+
+## 3) Tabelle BEDINGT (Name · exakte Bedingung)
+
+| Name | Bedingung |
+|---|---|
+| **AK-extra Digi-Bonus (AK NÖ)** | Nur mit aktueller AK-NÖ-Mitgliedschaft (letzte Beschäftigung in NÖ); im reinen ALG/Notstandshilfe-Bezug i.d.R. keine Mitgliedschaft. ⚠️ Quelle unbestätigt |
+| **Umschulungsgeld (AMS/PVA)** | Nur wenn AMS eine Umschulung/Auswahl- und Planungsphase verfügbar macht — aktuell keine laufend. ⚠️ unbestätigt |
+| **Arbeitslosengeld** | Erst NACH Ablauf der AMS-Sperre; offene Lohnforderungen ggü. Ex-Arbeitgeber mit Lohnzettel nachweisen (Beiziehung durch AMS beantragen). ⚠️ unbestätigt |
+| **Unfallversicherungsbeiträge (ALG-Bezieher)** | Läuft automatisch bei ALG/Notstandshilfe-Bezug — kein Antrag, entfällt solange Sperre läuft. ⚠️ unbestätigt |
+| **Beihilfe Kursnebenkosten** | Nur während AMS-Förderkurs (Fahrt/Unterkunft/Verpflegung) mit AMS-Kursverfügung. ⚠️ unbestätigt |
+| **Kautionsdarlehen Land NÖ** | Nur im Rahmen NÖ-Sozialhilfe (Hilfe in besonderen Lebenslagen) + nachweisbare Mietskaution — erst Sozialhilfe beantragen/bewilligt. Quelle: noe.gv.at/Sozialhilfe/Infoblatt.pdf |
+| **NÖ Bildungsförderung** | Nur mit (Vor-)Nachweis geplanter/laufender Weiterbildung/Umschulung mit positivem Abschlussziel. ⚠️ unbestätigt |
+| **ÖGK Psychotherapie-Zuschuss (Wahltherapeut:in)** | Nur für ÖGK-Versicherte mit bewilligter Leistungsausweitung; im Arbeitslosigkeitsbezug über **PVA** versichert → dort analogen Zuschuss erfragen. ⚠️ unbestätigt |
+| **ORF-Befreiung** | Nur mit Befreiungsleistung (Sozialhilfe/Mindestsicherung, erh. Familienbeihilfe, Blindenbeihilfe) — reiner ALG-/Notstandshilfe-Bezug genügt NICHT. ⚠️ unbestätigt |
+| **Bildungsbonus BRP (AK NÖ)** | Nur mit AK-NÖ-Mitgliedschaft + abgelegten BRP-Prüfungsteilen. ⚠️ unbestätigt |
+| **Notstandshilfe** | Erst wenn ALG-Anspruch erschöpft/erloschen (Sperre verzögert Erlöschen) + weiter arbeitslos gemeldet + bedürftig; seit 2026 Übergang zur Arbeitslosensicherung, Anspruchsstopp während Sperre. Einzelfälle bei AMS/PVA prüfen. ⚠️ unbestätigt (oesterreich.gv.at 404) |
+| **Schulungszuschlag** | Nur während AMS-Schulungsteilnahme (z. B. 2,67 €/Tag 2026) — entsteht erst mit Schulungsbeginn. ⚠️ unbestätigt (ams.at 404) |
+| **AK Sozialfonds Bildung (AK NÖ)** | Nur mit AK-NÖ-Mitgliedschaft (Beschäftigung) + Bildungsausgaben-Nachweis. ⚠️ unbestätigt |
+| **Vorweggenommene Werbungskosten (Karenz)** | Nur bei gesetzlicher Karenz (MSchG/VKG) + steuerpflichtigem Einkommen — nicht in Karenz, ~300 €/Monat: fraglich. ⚠️ unbestätigt |
+| **Krankheitskosten absetzen (außergew. Belastung)** | Nur bei nachgewiesenen Krankheitskosten (Selbstbehalt ~6 % des Jahreseinkommens) + genug steuerpflichtigem Einkommen — lohnt bei ~300 €/Monat i.d.R. nicht. ⚠️ unbestätigt |
+| **Verbund Stromhilfefonds** | Nur bei offenen Strom-Rückständen/drohender Abschaltung; Voraussetzung: Energieberatung bei **Caritas**. Quelle: verbund.com/soziales (verifiziert 10.10.2026) |
+| **Sozialhilfe-Zusatzleistung Härtefall „Wohnen" (NÖ)** | Nur wenn Sozialhilfe-Sachbearbeitung NÖ die Wohnsituation als Härtefall einstuft; Einstieg: erst Sozialhilfe-Antrag + über Sozialarbeit NÖ (Wohnbezirk Melk) bringen lassen. ⚠️ unbestätigt |
+| **ÖGK-Unterstützungsfonds (z. B. Zahnersatz)** | Nur wenn aktuell ÖGK-versichert (e-card) + konkreter Eigenanteil ansteht + wirtschaftliche Notlage nachgewiesen. ⚠️ unbestätigt |
+| **WOHNSCHIRM MIETE** | Nur bei Mietrückständen/drohender Delogierung; Zugang nur über kostenlose Sozialarbeit-Beratung VOR dem Antrag. Quelle: sozialministerium.gv.at / oesterreich.gv.at (verifiziert 10.10.2026) |
+| **Bildungsbonus Rechnungswesen (AK NÖ)** | Nur nach erfolgreichem Abschluss eines AMS-geförderten Kurses; AMS-Sperre blockiert Förderung bis zur Aufhebung. ⚠️ Katalog |
+| **EVN Energiehilfe Fonds NÖ** | Nur bei offenen Energie-Rückständen/drohender Abschaltung; Antrag über **Caritas/Diakonie NÖ** (Einzelfall, kein fixer Betrag). ⚠️ unbestätigt |
+| **NÖ Heizkostenzuschuss 2025/26** | Frist 31.03.2026 **abgelaufen** — nur wenn neue Runde 2026/27 (erwartet ab Herbst 2026) eröffnet: Antrag beim **Gemeindeamt Loosdorf**; Voraussetzungen (Hauptwohnsitz NÖ ≥6 Mon., Staatsbürgerschaft, Heizkosten-Nachweis, Einkommen unter Grenze) grundsätzlich erfüllt. Quelle: noe.gv.at (verifiziert 10.10.2026) |
+| **Beihilfe zu den Kurskosten** | Nur bei AMS-vermitteltem/gefördertem Kurs bzw. AMS-Kostenübernahme; laut Katalog eigentlich Zielgruppe Menschen mit Behinderung → VORHER mit AMS-Betreuer klären. ⚠️ Katalog |
+| **WOHNSCHIRM ENERGIE** | Nur bei Energie-Rückstand, der (drohende) Abschaltung begründet; knüpft an niedriges Einkommen + Wohnbeihilfe-Anspruch/Wohnkostenservice-Beratung. Quelle: sozialministerium.gv.at (verifiziert 10.10.2026) |
+| **Tarifkalkulator E-Control** | Keine Geldleistung — kostenloses Vergleichstool; nutzen, wenn aktueller Strom-/Gastarif teurer als günstigster Tarif. Quelle: e-control.at |
+| **Vorstellungsbeihilfe** | Nur pro Vorstellungsgespräch mit Belegen + im AMS-Betreuungsverhältnis; bei laufender Sperre vorher mit Berater klären. Quelle: ams.at/arbeitsuchende (web-verifiziert) |
+| **Überbrückungshilfe (AMS)** | Nur wenn ALG-/Notstandshilfe-Anspruch erschöpft oder wegen Sperre unbezahlt + Notlage; Voraussetzungen vor Antrag beim AMS prüfen. ⚠️ unbestätigt (ams.at 404) |
+| **NÖ Qualifizierungs-/Beschäftigungsmaßnahmen** | Nur während aktiver AMS-Verantwortung; bei Sperre nur mit Ausnahmegenehmigung bzw. nach Sperren-Ende. Quelle: ams.at |
+| **Sozialhilfe-Zusatzleistung Härtefall (NÖ, allgemein)** | Nur für bereits anerkannte NÖ-Sozialhilfe-Bezieher — zuerst Sozialhilfe bei **BH Melk** beantragen. Quelle: noe.gv.at/Sozialhilfe (web-bestätigt) |
+| **Sozialhilfe-Krankenversicherung (Bund)** | Nur bei Sozialhilfe-Bezug ohne eigenen KV-Schutz — bei AMS-Sperre droht KV-Ausfall: genau dieser Fall → erst Sozialhilfe beantragen. Quelle: noe.gv.at/Sozialhilfe |
+| **ÖGK Kur/Rehabilitation** | Nur mit aktiver Versicherung/Leistungsbezug + ärztlicher Verordnung; bei Sperre Versicherungsschutz offen → prüfen. Quelle: gesundheitskasse.at (web-bestätigt; Selbstbehalt 11–27 €/Tag) |
+| **Zuschuss Fernsprechentgelt (~10 €/Monat)** | Nur für definierte Bezieherkreise (u. a. Sozialhilfe-, Pflegegeldbezieher); erst Sozialhilfe, dann Antrag über **obs.at**. Quelle: obs.at/befreiung (web-bestätigt) |
+| **Hilfsfonds Verbrechensopfer (Kostenübernahme)** | Nur Opfer einer Straftat besonderer Schwere/Tragweite mit gesundheitlichen Folgen; Lohn-Rückhaltung zählt nur, wenn **Strafanzeige** läuft → Anzeige ggü. Ex-Arbeitgeber stellen (passt zur AMS-Beschwerde), dann via Weißer Ring. Quelle: sozialministeriumservice.gv.at (web-bestätigt) |
+
+## 4) NEIN-Gruppe (Zusammenfassung)
+- Alle Leistungen, die **ausschließlich an AK-NÖ-Mitgliedschaft (Beschäftigung)** knüpfen, sind während Arbeitslosigkeit nicht nutzbar — solange kein AK-Beitrag läuft.
+- Steuerliche Posten (Krankheitskosten, Karenz-Werbungskosten) lohnen bei ~300 €/Monat **nicht** (Selbstbehalt/Einkommen zu niedrig).
+- Automatische Leistungen ohne Antrag (Unfallversicherung, Sozialversicherung während ALG-Bezug) laufen **nur mit tatsächlichem Leistungsbezug** — aktuell durch die Sperre blockiert.
+- Heizkostenzuschuss 2025/26: **Frist abgelaufen (31.03.2026)** — nur neue Runde 2026/27 beobachten.
+
+## 5) Unterlagen-Set (für ALLE Anträge parat legen)
+| # | Unterlage | Wofür |
+|---|---|---|
+| 1 | **Meldezettel** (Hauptwohnsitz Loosdorf) | Sozialhilfe, Wohnbeihilfe, Heizkostenzuschuss, OBS |
+| 2 | **Ausweis** (Personalausweis/Reisepass) | Alle Anträge, Identitätsnachweis |
+| 3 | **Mietvertrag** | Sozialhilfe (Miete 350 €), Wohnbeihilfe, WOHNSCHIRM, Kautionsdarlehen |
+| 4 | **Kontobelege 3 Monate** (Kontoauszüge) | Einkommens-/Bedarfsnachweis bei allen Geldleistungen |
+| 5 | **AMS-Bescheide** (Sperre, Ablehnungen) | Sozialhilfe, Spontanhilfe, AMS-Anliegen, Wohnberatung |
+| 6 | **Lohnzettel** (falls vorhanden, Ex-Arbeitgeber) | Arbeitslosengeld-Neuantrag nach Sperre, Lohnforderung, Strafanzeige |
+
+## 6) Kontaktablock
+
+```
+AK Melk · Hummelstraße 1
+BH Melk · Hauptplatz 1 · ☎ 02752/53100
+Gemeindeamt Loosdorf
+Caritas St. Pölten · ☎ 02742/841390
+Verein Wohnen · ☎ 02742/47076
+obs.at (ORF-/Telefonbeiträge Befreiung)
+```
+
+---
+*Quellenstatus: „web-verifiziert/web-bestätigt" = in dieser Recherche geprüft (10.10.2026); „Katalog-Kurzbeschreibung, unbestätigt" = holdirmehr/data/katalog.json, ohne unabhängigen Web-Check (Rate-Limit/Timeout/404). „⚠️ UNBESTÄTIGT" markiert Einträge laut Gegenleser bzw. Quellenstatus. Fachbegriffe: **BH** = Bezirkshauptmannschaft (Bezirksverwaltungsbehörde des Landes), **ALG** = Arbeitslosengeld, **ÖGK** = Österreichische Gesundheitskasse (Krankenkasse), **OBS** = ORF-Beitrags Service.*
 
 ## TCC_LOESCHPLAN
 
