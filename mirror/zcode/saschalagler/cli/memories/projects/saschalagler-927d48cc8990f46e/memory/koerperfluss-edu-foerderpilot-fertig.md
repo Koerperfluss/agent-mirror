@@ -113,3 +113,13 @@ Parallele-Lane-Lektion: Parent-Session + Side-Chat arbeiteten GLEICHZEITIG im se
 - **FÖDERUNG aufgeräumt (13 Objekte → `_ARCHIV_FFG_WILDWUCHS_2026-10/AUFRAEUM_2026-10-05_02h/`, NICHTS gelöscht, Protokoll `00_AUFRAEUM_PROTOKOLL.md` im Archiv):** Paket-Zweit-Kopie „FFG_ReSubmission_PAKET_68209806 2/", „ffg part 2", antrag_v4.txt, Lose-PDF-Duplikate (Ablehnung/Kostenanerkennung/LitV4/xlstm-docx/„httpsecall…"-Langname), alte Strategien (Inklusions-Funding, Gemini, mp3, Text-CFF). Verbleib bewusst: Anlauf-2-Ordner · PAKET_68209806 (_BUILD/KANON/BEWEISKETTE/EINREICH_LISTE/V6-ZIP) · 1.-Antrag-Originale · ffg-notary · Businessplan-Ordner · Förderungen/google/HARVESTS/STUDIEN_BANK/ZOTERO · FRISTEN.md + 3 Mail-Drafts + antragsprofil.json.
 - **Rest-Verhalten (keine neuen Aufgaben erfinden):** Sascha braucht NUR ecall.ffg.at → 68209806 → Start 01.01.2027 → 7 PDFs in Slots → Portal-Erklärung → zeichnen (nur Sascha) → SUBMIT (bis 31.12.2026).
 - **Umgebung-Falle: /bin/zsh spawn ENOENT fiel mitten in der Session aus** (Bash-Tool tot) → Desktop-Commander start_process funktionierte weiter; typst-@-Falle: in typst-Markup `koerperfluss@gmail.com` wird als Label/Reference geparst → `#("koerperfluss@gmail.com")` als String-Literal schreiben.
+
+
+## 10.10.2026 — MATHE-FIX + HARNESS-KONVERGENZ (Anlauf-2-Ordner Endstand)
+- ECHTER FEHLER in V6 gefunden+gefixt: GESAMTZEILE behauptete 2.180 h à 50 EUR/h = 130.800 (falsch!) -> jetzt 109.000 EUR Personal (2.180 h x 50) + 21.800 EUR GKZ (20%) = 130.800. Neues md5 01_VOLLANTRAG: 5285948404ff
+- Cline-Lane (Saschas separater Team-Run) hat in DENSELBEN Ordner geschrieben: 02b_QUELLENREGISTER_KLINISCH (42103ea758f1, 14 klinische Reviews/RCTs) + 06_KOSTEN_UND_FINANZIERUNG (90995438bb3a, 4 S., Businessplan-Ersatz) — beide sachlich OK, in LIES-MICH aufgenommen. Alte 01 (Cline-V6.1, 1,3 MB) -> _ALT/
+- Cline-Team-Agenten tot: 429 daily free limit (xiaomi/mimo Gratis-Modell) + cline-pass Token seit 07.08. abgelaufen; Fix = Cline-App Logout/Login oder OpenRouter
+- Anlauf-2-Ordner = 9 PDFs Endstand (01 V6 + 02/02b + 03a/b/c + 04 + 05 + 06) + 00_LIES_MICH + 07_PLAN_TODO_LISTE (Werdegang-Kette 18.12.2025 bis 10.10.2026, 8-Ablehnungspunkte-Abdeckungstabelle, Harness-Ist-Analyse)
+- EINZIGER echter Blocker: frischer Kapitalnachweis (Saldo 27.11.2025 = 10+ Monate alt, Selbstauskunft) — Sascha muss Kontoauszug ziehen, dann Slot 05 neu
+- eCall-Fakten aus Saschas Portal-Screenshots: Login saschakoerperfluss zeigt 68209806 (Vollantrag abgelehnt) + 66244243 (abgeschlossen); Nachrichtenliste bestaetigt Zoom-Gespraech 01.07. (Gruber) und alle Antwortschritte
+- Empfehlung ausgesprochen: JETZT mit V6 einreichen (Frist 31.12.), V6.1-Extras (MVP-Stufen 1.3, 6a Abnahmekriterien, 6b Datenschutz) nur optional als V7-Merge
