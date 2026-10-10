@@ -1,13 +1,13 @@
 ---
 app: zcode
 quelle: "saschalagler/cli/memories/projects/saschalagler-927d48cc8990f46e/memory/MEMORY.md"
-stand: 2026-10-05
+stand: 2026-10-10
 tags: [spiegel, zcode]
 ---
 
 # Memory Index
 
-- [FFG 1.-Anlauf-Historie (Original-Unterlagen)](ffg-1-anlauf-historie-originalunterlagen.md) — 05.10. alle 25 Original-PDFs gelesen: Projekt.Start 66244243 15.09.2025 6.000 € bedingt → **08.07.2026 0 €**; Ablehnung 21.05.2026 (wörtliche Gründe) · **05.10. V6-FULLZUG: Antrag komplett NEU im exakten FFG-Zielformat des eingereichten Vollantrags 1b (Quellen: ffg-notary + Pitchdeck), 14 S. md5 00b338c50096; Sascha KEIN BSc (Studium unterbrochen, neuer CV); Leon=QA & Wissensvalidierung; unsignierte LOI raus; FINAL_entpackt abgeräumt→aus Zweit-Kopie gerettet · EINREICH-ORDNER = „FÖDERUNG/FFG Kleinprojekt Körperfluss Edu Anlauf 2/" (7 klar benannte PDFs KEIN ZIP + 00_LIES_MICH, V6-ZIP md5 7880cb2a… als Fallback) · FÖDERUNG aufgeräumt: 13 Objekte → _ARCHIV/AUFRAEUM_2026-10-05_02h (nichts gelöscht, Protokoll drin) · /bin/zsh-ENOENT-Ausfall → Desktop-Commander als Ersatz; typst-@-Falle**
+- [FFG 1.-Anlauf-Historie (Original-Unterlagen)](ffg-1-anlauf-historie-originalunterlagen.md) — 05.10. alle 25 Original-PDFs gelesen: Projekt.Start 66244243 15.09.2025 6.000 € bedingt → **08.07.2026 0 €**; Ablehnung 21.05.2026 (wörtliche Gründe) · **10.10. ENDSTAND: V7-Antrag md5 9047bce8c91d (16 S.) = EINE einreichbare Fassung** (V6 + Kap. 6a Abnahmekriterien + 6b Datenschutz + MVP-Stufen + Didaktik-Begleitung + 37 Quellen, korrekte Melk-Adresse — Sebastianistraße = PETERS Adresse, kein Thomas-Name = Ablehnungsgrund-Schutz); **Einreich-Ordner = „FÖDERUNG/FFG Kleinprojekt Körperfluss Edu Anlauf 2/"** (9 PDFs: 01 V7 · 02/02b · 03a/b/c CVs (Sascha KEIN BSc, Studium unterbrochen) · 04 · 05 Kapitalnachweis ⚠️ Saldo 27.11.2025 · 06 KOSTEN) + 00_LIES_MICH + 07_PLAN_TODO_LISTE; Mathe-Fix 109.000 + 21.800 GKZ = 130.800; **Pitchdeck KEINE FFG-Beilage** (ecall-Print beweist); Desktop-Dreck → _ALT/DESKTOP_DRECK; Cline-Team tot (429 + Token abgelaufen); LM-Studio-Falle: Gemma 756 % Kontext = PDFs nicht gelesen; **Regel: Dokument-Delikte LIVE öffnen (open), nicht nur berichten** · FÖDERUNG aufgeräumt: 13 Objekte → _ARCHIV/AUFRAEUM_2026-10-05_02h · /bin/zsh-ENOENT → Desktop-Commander; typst-@-Falle · Nur noch Sascha: frischer Kontoauszug + ecall.ffg.at → 68209806 → Start 01.01.2027 → SUBMIT bis 31.12.
 
 - [AutoClaw Sprache/Translocation-Fix](autoclaw-sprache-translocation-fix.md) — 02.10. zh-CN→en-US per settings.json (beide Apps), AutoClaw2-Quarantäne entfernt; App→Config-Ordner-Tabelle; Deutsch wird nicht angeboten
 

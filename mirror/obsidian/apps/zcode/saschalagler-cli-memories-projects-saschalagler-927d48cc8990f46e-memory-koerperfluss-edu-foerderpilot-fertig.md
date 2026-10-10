@@ -7,8 +7,7 @@ tags: [spiegel, zcode]
 
 ---
 name: koerperfluss-edu-foerderpilot-fertig
-description: 30.09. — beide Antigravity-Projekte FERTIG + LIVE DEPLOYT (Edu +
-  Förderpilot), Security-Serie abgeschlossen, nur Rotation/History/Cleanup offen
+description: FFG Anlauf-2 ENDSTAND — **V7-Antrag** md5 9047bce8c91d (16 S., Merge aus V6+6a/6b+MVP+37 Quellen, korrekte Melk-Adresse) im Ordner „FFG Kleinprojekt Körperfluss Edu Anlauf 2"; Pitchdeck KEINE FFG-Beilage; eCall-Ablauf aus 1.-Anlauf-Print belegt; nur Sascha: frischer Kontoauszug + SUBMIT bis 31.12.
 metadata:
   node_type: memory
   type: project
@@ -125,8 +124,48 @@ Parallele-Lane-Lektion: Parent-Session + Side-Chat arbeiteten GLEICHZEITIG im se
 ## 10.10.2026 — MATHE-FIX + HARNESS-KONVERGENZ (Anlauf-2-Ordner Endstand)
 - ECHTER FEHLER in V6 gefunden+gefixt: GESAMTZEILE behauptete 2.180 h à 50 EUR/h = 130.800 (falsch!) -> jetzt 109.000 EUR Personal (2.180 h x 50) + 21.800 EUR GKZ (20%) = 130.800. Neues md5 01_VOLLANTRAG: 5285948404ff
 - Cline-Lane (Saschas separater Team-Run) hat in DENSELBEN Ordner geschrieben: 02b_QUELLENREGISTER_KLINISCH (42103ea758f1, 14 klinische Reviews/RCTs) + 06_KOSTEN_UND_FINANZIERUNG (90995438bb3a, 4 S., Businessplan-Ersatz) — beide sachlich OK, in LIES-MICH aufgenommen. Alte 01 (Cline-V6.1, 1,3 MB) -> _ALT/
+
+## 10.10. FINAL — V7-MERGE = DIE EINE EINREICHBARE FASSUNG (Endstand, nichts mehr offen von Agenten-Seite)
+- **V7-Antrag gebaut (antrag_v6_ffg_zielformat.typ erweitert): 16 S., md5 9047bce8c91d** = V6-Basis (Melk-Adresse, Mathe-Fix 109.000+21.800) + aus der Cline-V6.1 gemergt: **Kap. 6a** Abnahmekriterien-Tabellen H-1/H-2 (Durchsatz ≥2,5×, Recall@10 +12 Pp., Zitierbarkeit 100 %), **Kap. 6b** Datenschutz-Feldvalidierung (Art. 28 DSGVO, synthetische Fälle, 4 Abbruchkriterien), **MVP-Stufen 1–3** (18 Module ≠ Gleichstand, bewusst ausgeklammert), **Didaktische Begleitung** (0 €-Allianz, ABSICHTLICH generisch — „Partner Thomas" namentlich wäre Wiederholung des Ablehnungsgrundes „wenig belastbare Angaben"), **37 Kernreferenzen** (Slot 02+02b), Recall@5→@10 vereinheitlicht, Slot-Tabelle auf Anlauf-2-Dateinamen + 06-Zeile, Peters xLSTM-Vorarbeiten sauber deklariert (koerperfluss_xlstm_rag_ueberblick.docx = kein Fördergegenstand)
+- **KRITISCHER ADR-FUND in Cline-V6.1:** Sebastianistraße 15, 3382 Loosdorf als Sascha-Adresse = PETERS Adresse (sein CV-Standort)! Sascha = Prinzlstraße 7/2 Melk (eCall-Print + CV 2026). V7 hat korrekt Melk, „Sebastianistraße" 0×, „Thomas" 0× verifiziert
+- **Kostenplan-Lage (Sascha-Frage „wo ist der Kostenplan"):** 2 Stellen — im V7 (Kap. 1.3 Summenprobe S. 7 + Kap. 2 S. 10) UND als 06_KOSTEN_UND_FINANZIERUNG.pdf. **06 neu kompiliert: Zitate an V7-Pagination angeglichen (Kap. 2=S. 10, Kap. 3=S. 10–11, Kap. 5=S. 13, V7-Dateiname) → 06 NEU md5 1701769df000** (alt 90995438bb3a)
+- **Anlauf-2-Ordner ENTRUEMPELT: exakt 11 Dateien** (9 PDFs + 00_LIES_MICH + 07_PLAN_TODO_LISTE + SHA256SUMS.txt); die 8 Cline-Hilfsordner (_PREVIEW/_PRUEFUNG/_QUELLE/_VERGLEICH/_ARCHIV_HTML/_INTERN/.wayfinder/_ALT) → **FFG_ReSubmission_PAKET_68209806/_ANLAUF2_INTERNE/** (nichts gelöscht; ALLE typ-Quellen dort verortet: 02/02b/03a/03b/03c/04/**05_kapitalnachweis.typ** (frischer Auszug → 2-Min-Rebuild)/06/_design.typ; V7-typ bleibt in _BUILD/)
+- **Desktop-Root-DRECK geräumt:** 01 alt (md5 530271ed), 04, 06 vom Desktop → _ALT/DESKTOP_DRECK/ — Sascha hatte die Altkopien gesehen und gefragt „was ist der Dreck"; 04/06 waren byte-identische Ordner-Duplikate
+- **Finales ZIP: UPLOAD_eCall_SLOTS_V7_2026-10-10.zip, md5 312bc1645caa** (9 PDFs, ohne .DS_Store/.md) in FÖDERUNG/; SHA256SUMS.txt neu
+- **LM-Studio-Falle belegt:** Gemma-4-12b lief bei Saschas PDF-Prüfung mit **756 % Kontextauslastung** (233k Tokens in 34k-Fenster) → Modell hat die PDFs NIE gelesen, „85 % fertig"-Urteil teils geraten. Bei LM-Studio-Zweitprüfung: wenige Dateien/Anfrage oder Long-Context-Modell
+- **Pitchdeck-Frage beantwortet (beweisbar):** FFG verlangt KEIN Pitchdeck (Beilagenliste im 1.-Anlauf ecall-Print 19 S. enthält keins; pitch deck .pdf = internes Qubitec-Partner-Sales-Doc) — Anlauf 2 ohne Slides einreichen
+- **eCall-Ablauf (aus 18.12.2025-Print):** Maske ausfüllen (Basisinfo/KMU/Beschreibungen) → Kostenplan in Maske (Zahlen aus 06/Kap. 1.3) → 9 PDFs in Slots → Portal-Richtigkeits-Erklärung ✓ → digital zeichnen (nur Sascha) → SUBMIT → Formalprüfung → Gutachten. Projektstart **01.01.2027** setzen
+- **Reaktionsmuster bestätigt:** Sascha „ALLES ÖFFNEN UND SICHTBAR LIVE" = nicht berichten, sondern Dateien per `open` in Finder/Preview öffnen +live prüfbar machen (3-Min-Checkliste: Deckblatt → Team-Karten S. 8–9 → AP-Tabelle → Slot-Zuordnung S. 14+). Nur Sascha übrig: frischer Kontoauszug (optional, wasserdicht) + SUBMIT bis 31.12.2026
 - Cline-Team-Agenten tot: 429 daily free limit (xiaomi/mimo Gratis-Modell) + cline-pass Token seit 07.08. abgelaufen; Fix = Cline-App Logout/Login oder OpenRouter
 - Anlauf-2-Ordner = 9 PDFs Endstand (01 V6 + 02/02b + 03a/b/c + 04 + 05 + 06) + 00_LIES_MICH + 07_PLAN_TODO_LISTE (Werdegang-Kette 18.12.2025 bis 10.10.2026, 8-Ablehnungspunkte-Abdeckungstabelle, Harness-Ist-Analyse)
 - EINZIGER echter Blocker: frischer Kapitalnachweis (Saldo 27.11.2025 = 10+ Monate alt, Selbstauskunft) — Sascha muss Kontoauszug ziehen, dann Slot 05 neu
 - eCall-Fakten aus Saschas Portal-Screenshots: Login saschakoerperfluss zeigt 68209806 (Vollantrag abgelehnt) + 66244243 (abgeschlossen); Nachrichtenliste bestaetigt Zoom-Gespraech 01.07. (Gruber) und alle Antwortschritte
 - Empfehlung ausgesprochen: JETZT mit V6 einreichen (Frist 31.12.), V6.1-Extras (MVP-Stufen 1.3, 6a Abnahmekriterien, 6b Datenschutz) nur optional als V7-Merge
+
+## 10.10.2026 Nachmittag — FFG-VORLAGEN-FAQ AN SASCHA BEANTWORTET (aus eCall-Print-Beweisen)
+- **AKTUELLER Antrag = `01_VOLLANTRAG_Koerperfluss_Edu_68209806.pdf`** (md5 5285948404ff, 14 S., 10.10. 13:19, mit Mathe-Fix 109.000+21.800). Name MIT `_68209806`-Suffix = immer der richtige; alte V6.1 liegt in `_ALT/`
+- **Pitchdeck = KEINE FFG-Beilage** (bewiesen: Beilagenliste im ecall-Print vom 18.12.2025, 19 S.): `pitch deck .pdf` (5 S., Qubitec-Ordner) war internes Partner-Sales-Dokument; FFG liest Projektbeschreibung+Slots, Slides wirken gegen F&E-Tiefe. Auch für Anlauf 2 kein Pitchdeck nötig
+- **eCall-Einreich-Ablauf (aus 1.-Anlauf-Print):** 1. Basisinformation-Maske (Titel/Adresse/130.800/58.860/Start) → 2. KMU-Status bestätigen → 3. Beschreibungs-Freitext + 14-S.-PDF-Upload → 4. Kostenplan in Maske (Zahlen aus Slot 06/Kap. 1.3) → 5. 9 PDFs in Slots → 6. nur Sascha zeichnen → SUBMIT → Formalprüfung (1. Anlauf: Ganss) → Gutachten
+- **FFG-Zielformat-Vorlage (bewiesen am TOC des 1. Vollantrags 1b, 24 S.):** 1. Projektbeschreibung (1.1 Ziele · 1.2 Neuheit · 1.3 Entwicklungsinhalte · 1.4 Nutzen [Zielgruppen/Mehrwert/USP] · 1.5 Nachhaltige Wirkung [Ökologie/Soziales/Ökonomie]) → 2. Finanzierung und Folgekosten → 3. Ökonomisches Potenzial und Verwertung (3.1 Marktchancen · 3.2 Geschäftsmodell) → 4. Volkswirtschaftliche Aspekte. Bewertungskriterien = genau die 4 Ablehnungsdimensionen (Neuheit/Lösungsqualität/Schwierigkeit/Verwertung)
+- **LM-Studio-Falle (Saschas eigene Logs):** Gemma-4-12b-qat lief bei **756 % Kontextauslastung** (233k Tokens in 34k-Fenster) → die „85 % fertig"-Prüfung war teils geraten, das Modell las die PDFs nicht. Regel: weniger Dateien pro Anfrage oder long-context-Modell (Gemma-4-E4B-2M-Slot)
+
+## 10.10.2026 Abend — LIVE-SICHTBAR-PFLICHT
+- Sascha: „ALLES ÖFFNEN UND SICHTBAR LIVE" — er will Endergebnisse nicht als Text-Bericht, sondern **live auf dem Schirm**: `open <Ordner>` (Finder) + `open <PDFs>` (Preview) via Desktop-Commander start_process. Vollzogen: Anlauf-2-Ordner + alle 9 PDFs + 00_LIES_MICH + 07_PLAN_TODO_LISTE geöffnet (Outputs ALLE-OFFEN/REST-OFFEN). Neue Regel: bei Dokument-/Paket-Delikten IMMER zuerst die Dateien öffnen, dann zusammenfassen.
+
+
+## 10.10. spaeter — V7-MERGE: Die EINE einreichbare Fassung steht
+- Sascha fand Desktop-Zweitschriften (01 alt, 04, 06 auf Desktop-Root) und fragte welches gilt -> DRECK analysiert: die Cline-V6.1 (md5 530271ed) hatte MEHR als mein V6 (Kap. 6a Abnahmekriterien, 6b Datenschutz, MVP-Stufen 1-3, Didaktik-Begleitung, 37 Quellen) ABER falsche Adresse (Sebastianistraesse 15 Loosdorf = PETERS Adresse, nicht Saschas Melk) und 'Partner Thomas' namentlich
+- V7 = Merge gebaut (antrag_v6_ffg_zielformat.typ erweitert): V6-Basis (Melk-Adresse, Mathe-Fix, kein Thomas-Name) + 6a + 6b + MVP-Stufen + Didaktik-Begleitung (generisch, 0 EUR-Allianz) + 37 Kernreferenzen (Slot 02+02b) + Recall@10 + Slot-Tabelle mit V7-Dateinamen
+- **V7: 16 S., md5 9047bce8c91d** -> ersetzt 01 in Anlauf-2-Ordner UND SLOT_01 im PAKET; alte 01 (Mathefix-V6) -> _ALT/01_V6_mathefix_ERSETZT_durch_V7.pdf; 3 Desktop-Root-Doppel -> _ALT/DESKTOP_DRECK/
+- LIES-MICH aktualisiert: 01 = V7 md5 9047bce8c91d, 16 S.
+- Verifikation: alle Zielformat-Kapitel + 6a + 6b + MVP + 37 Quellen OK, Sebastianistraesse 0x, Thomas-Name 0x (Bewusst generisch formuliert — unverifizierbarer Partnername waere Wiederholung des Ablehnungsgrundes 'wenig belastbare Angaben')
+
+
+## 10.10. FINAL — ANLAUF-2 ORDNER = 11 DATEIEN, ALLES KONSISTENT
+- Sascha fragte 'wo ist der Kostenplan' -> Antwort: im Antrag V7 (Kap. 1.3 Summenprobe S.7 + Kap. 2 S.10) UND als 06_KOSTEN_UND_FINANZIERUNG.pdf (4 S.)
+- Anlauf-2-Ordner ENTRUEMPELT: alle 8 Cline-Hilfsordner (_PREVIEW/_PRUEFUNG/_QUELLE/_VERGLEICH/_ARCHIV_HTML/_INTERN/.wayfinder/_ALT) -> FFG_ReSubmission_PAKET_68209806/_ANLAUF2_INTERNE/ (Quellen bleiben, nichts geloescht); Ordner = nur noch 11 Dateien (9 PDFs + LIES-MICH + PLAN + SHA256SUMS)
+- 06_KOSTEN neu kompiliert (typ in _ANLAUF2_INTERNE/_QUELLE/): Zitate an V7-Pagination angeglichen (Kap.2=S.10, Kap.3=S.10-11, Kap.5=S.13, Dateiname V7) -> **06 NEU md5 1701769df000** (alt 90995438bb3a)
+- FINALE ZIP mit V7+06: UPLOAD_eCall_SLOTS_V7_2026-10-10.zip md5 312bc1645caa (9 PDFs, ohne .DS_Store/.md)
+- SHA256SUMS.txt neu generiert; LIES-MICH aktualisiert (06-Zeile)
+- ALLE typ-Quellen verortet: _ANLAUF2_INTERNE/_QUELLE/ (03a/03b/03c, 02, 02b, 04, 05, 06, _design.typ) + _BUILD/ (antrag_v6_ffg_zielformat.typ = V7) — 05_kapitalnachweis.typ existiert, frischer Auszug -> 2-Min-Rebuild
+- ENDE: einreichbereit; nur Sascha: 9 PDFs hochladen (oder ZIP), Start 01.01.2027, zeichnen, SUBMIT bis 31.12.
