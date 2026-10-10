@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-10 12:32 UTC
+Zuletzt gespiegelt: 2026-10-10 12:52 UTC
 
 ## AGENTS
 
@@ -4966,6 +4966,7 @@ Bei Fachfragen (z. B. Trainings-Übungen) fordert er explizit „clinical reason
 - [HolDirMehr-Replika 09.-10.10.](holdirmehr-replika.md) — ✅ **ONLINE: foerderungen-sascha.web.app** (Firebase, privat, noindex) + 1.772 echte Förderungen (506 NÖ + 495 BW), Matching auf Sascha scharf (Arbeitslos/AMS, Kinder-Demotion); LESSON: Boost-Regex nie gegen Kategorie-Namen matchen; ⚠️ Katalog © holdirmehr.at
 - [TCC/FDA-Cleanup 09.10.](tcc-fda-cleanup-2026-10-09.md) — ✅ FERTIG: alle 14 toten Einträge weg (TCC 90→72, Sascha löschte letzte 11 selbst per GUI+Finger); lebende Tools (ZCode/Terminal/Antigravity/…) verifiziert AN; Backup ~/sicherungen/tcc-backup-20261009; LESSON: Touch ID pro Löschung, nach „Entfernen"-Klick nicht beobachten, Deep-Link `Privacy_AllFilesAccess`
 - [Plugin/Skill-Inventar 09.10.](plugin-skill-inventar-dwfrun-2026-10-09.md) — dwfrun-8c351687: 7 Skills + 5 Plugins verifiziert; FDA-Audit 14 Leichen; LESSON: Workflow-Subagents keine Absolut-Pfade, ABER world.run kann (test/mdfind/sqlite3); dwfrun-eec3e822 = TCC-Plan (out/TCC_LOESCHPLAN.md); Backup ~/sicherungen/tcc-backup-20261009
+- [LM Studio Mac Gemma4 Settings](lm-studio-mac-gemma4-2026-10-10.md) — M4/16GB: 1–10 tok/s = Kontext 33k+F16-KV → Fix 16K/q8_0/Batch 512 → 25–35 tok/s; Coder-Next läuft auf Mac nie
 - [BrowserOS lokale Modelle](browseros-lokale-modelle-setup.md) — 05.10. Ollama Context 20000 in LaunchAgent gepatcht (Backup ~/sicherungen/ollama-20261005/); **qwen2.5-coder:7b = Hauptmodell für beide Browser**; LM Studio (gemma-4-12b-qat/glm-4.6v-flash, Port 1234) = 2. Option, nie parallel; CaskHub-Adopt erklärt (21 Casks, brew übernimmt Updates); OFFEN: Settings-Klicks in BrowserOS + neo
 
 - [Chipsi/Judicario Live-Audit 05.10.](chipsi-judicario-live-audit-2026-10-05.md) — 16:05 FINAL: **eigentliches AUDIT nach Vorgabe `15_AUDIT_NACH_VORGABE_JUD_0-14`** (JUD 13+14 waren NIE gelesen — Lektion: Vorgabe-Dokumente VOLLSTÄNDIG extrahieren!): **9 ERLEDIGT / 3 TEILWEISE (JUD 1 Disclaimer auf /signup, JUD 6 Deep-Immer fehlt, JUD 14 Mail-Banner sperrt) / 3 OFFEN (JUD 5 Pro 999 €/Monat+11.000 €/Jahr fehlen=Verkaufsblocker, JUD 9 Briefkopf-Vollformular, JUD 13 Verantwortlicher=Quantum AI FZCO VAE statt deutsche GmbH=Datenschutz-Showstopper)** · 15:55: Lane B selbst geholt (Safebox-Konnektor VORBEREITET, Editor-Bug, Persona-Buttons George/Bella/Blitz) · Briefing-PDF 14 + Bündel-PDF 10 (843 KB) fertig · 06.10. LokiVoice-Thomas-Fix.zip gebündelt · 08.10. BH-Melk-Frist 09.10. als Kalender-FRIST-Event gewarnt (Unterlagen Sozialhilfeneu-Ordner verifiziert) · OFFEN: Briefing senden, 14 Einwände, GO Konsolidierung + Testsuite (53 nur gezählt)
@@ -6333,6 +6334,35 @@ Fix = alte Varianten aus `~/Applications/` entfernen (Lösch-Stopp-Regel → GO)
 **Offene Tickets:** (1) [GO] App-Varianten aufräumen, (2) `NativeLegalOps/run_e2e_tests.sh` durchlaufen, (3) LokiVoice-Endpunkte live testen (ein Thomas-System mit LOKI Voice).
 
 **How to apply:** Bei „Legal-Ops-App kaputt": zuerst prüfen WELCHE der 4 Varianten gestartet wurde, nicht Code debuggen; Backend-Verifikation = `curl 127.0.0.1:7070/health` + `lsof -iTCP:7070`. Verwandt: [[loki-project-map]] [[autoclaw-full-stack-builder]]
+
+## lm-studio-mac-gemma4-2026-10-10
+
+---
+name: lm-studio-mac-gemma4-2026-10-10
+description: LM Studio auf Saschas MAC (M4 16 GB) — Gemma 4 12B QAT lief 1–10
+  tok/s / „Not enough resources"; Ursache Kontext 33k + F16-KV; vergebene
+  Settings-Korrektur (16K + q8_0 + Batch 512) → Erwartung 25–35 tok/s
+metadata:
+  node_type: memory
+  type: project
+  originSessionId: sess_76c021dd-2b0c-45c9-8bb5-7c4706ca4b81
+---
+
+**Stand 13.09.2026 (Session-Ende):** LM Studio läuft auch auf Saschas **MAC** (Apple M4, 16 GB Unified Memory, davon ~12,28 GB GPU-nutzbar laut LM-Studio-Hardware-Survey, macOS 27.2) — **getrennt vom MOOLAPTOP-Setup** (siehe [[coding-modelle-android-studio-2026-09-13]]).
+
+**Symptom:** Gemma 4 12B QAT (Q4_0, GGUF) lief mit **1–10 tok/s** + rotes Banner „Not enough resources to load the model" (Estimated 12,28 GB = exakt an der GPU-Grenze). Ursache per Screenshot hart belegt: **Kontextlänge 33245 + KV-Cache F16** → Load spilt ins RAM-Swap.
+
+**Vergebene Settings-Korrektur (Lade-Dialog/Load Parameters):**
+- Kontextlänge 33245 → **16384** (Haupt-Hebel)
+- K- UND V-Cache-Quantisierung F16 → **q8_0** (Flash Attention war schon AN = Voraussetzung; laut LM Studio experimentell — bei Problemen zurück auf F16 und stattdessen Kontext 8192)
+- Evaluierungs-Batch 2048 → **512**, Physical Batch 1120 → **512**
+- Max Concurrent Predictions 4 → **1**, Context Checkpoints 32 → **4**
+- UNVERÄNDERT lassen: GPU Offload 48 (alle Layer), „Modell im Speicher behalten" AN, mmap AN
+- Erwartung danach **~25–35 tok/s** (M4 ist bei 12B nicht der Flaschenhals)
+
+**Harte Grenze:** Qwen3-Coder-Next 80B läuft auf dem 16-GB-Mac **nie** (min. ~27 GB) — Mac-Klasse für Coding = **Gemma 4 12B QAT** (gute Wahl, multimodal + Code-Benchmarks). Coder-Next bleibt MOOLAPTOP-only.
+
+Relates: [[mac-setup-16gb-m4]] (RAM-Constraint), [[browseros-lokale-modelle-setup]] (LM Studio als 2. Mac-Option, Port 1234, nie parallel zu Ollama).
 
 ## loki-autostarts-orphaned
 
@@ -9677,7 +9707,7 @@ Beobachtet 06.09.2026 (Session mit Off-Peak-Ticket): Nach User-Paste „ZCode Er
 
 # Memory Index
 
-- [FFG 1.-Anlauf-Historie (Original-Unterlagen)](ffg-1-anlauf-historie-originalunterlagen.md) — 05.10. alle 25 Original-PDFs gelesen: Projekt.Start 66244243 15.09.2025 6.000 € bedingt → **08.07.2026 0 €**; Ablehnung 21.05.2026 (wörtliche Gründe) · **10.10. ENDSTAND: V8-Antrag md5 ed3898eb581c (14 S., PREMIUM-DESIGN aus antrag.typ/_design.typ mit KÖRPERFLUSS-Logo/Karten/Farb-Bändern)** = EINE einreichbare Fassung (V6.1-Design + Korrekturen: **Melk-Adresse statt Sebastianistraße = PETERS Adresse**, „Partner Thomas" namentlich 0× = Ablehnungsgrund-Schutz, MVP-Stufen, Kap. 6a Abnahmekriterien + 6b Datenschutz, 37 Quellen, Mathe-Fix 109.000 + 21.800 GKZ = 130.800); **06_KOSTEN md5 762cde7a19dd** (Zitate auf V8-Pagination S. 9/10/11 abgeglichen); **Einreich-Ordner = „FÖDERUNG/FFG Kleinprojekt Körperfluss Edu Anlauf 2/"** — exakt 11 Dateien (9 PDFs: 01 V8 · 02/02b · 03a/b/c CVs, Sascha KEIN BSc/Studium unterbrochen · 04 · 05 Kapitalnachweis ⚠️ Saldo 27.11.2025 · 06) + LIES-MICH + 07_PLAN_TODO_LISTE; alle 8 Hilfsordner → PAKET/_ANLAUF2_INTERNE, typ-Quellen dort (_QUELLE/antrag.typ + 03a/b/c, 02, 02b, 04, 05, 06, _design.typ); **ZIP V8 md5 551ae3a13d53** · **Pitchdeck KEINE FFG-Beilage** (ecall-Print beweist) · Kostenplan = Antrag Kap. 1.3 S. 7 + Kap. 2 S. 10 UND 06-KOSTEN-PDF · Desktop-/Ordner-Dreck → _ANLAUF2_INTERNE/_ALT (+DESKTOP_DRECK) · Cline-Team tot (429 + cline-pass-Token 07.08. abgelaufen → App Logout/Login); LM-Studio-Falle: Gemma 756 % Kontext = PDFs nicht gelesen · **Regeln: Dokumente LIVE öffnen (open)** · **DESIGN zählt — nie nacktes typst, immer _design.typ-System** · Nur noch Sascha: (optional) frischer Kontoauszug + ecall.ffg.at → 68209806 → Start 01.01.2027 → zeichnen → SUBMIT bis 31.12.
+- [FFG 1.-Anlauf-Historie (Original-Unterlagen)](ffg-1-anlauf-historie-originalunterlagen.md) — 05.10. alle 25 Original-PDFs gelesen: Projekt.Start 66244243 15.09.2025 6.000 € bedingt → **08.07.2026 0 €**; Ablehnung 21.05.2026 (wörtliche Gründe) · **10.10. FINAL: V9-Antrag md5 77c414870bb2 (14 S., PREMIUM-DESIGN antrag.typ: Logo/Karten/Farb-Bänder + MVP-Stufen, Kap. 6a Abnahmekriterien, 6b Datenschutz, 37 Quellen, Mathe-Fix 109.000+21.800=130.800, „Thomas" 0×)** = EINE einreichbare Fassung im Ordner **„FÖDERUNG/FFG Kleinprojekt Körperfluss Edu Anlauf 2/"** (11 Dateien, hilfsfrei; Quellen in PAKET/_ANLAUF2_INTERNE/_QUELLE) · **ADRESSE = Sebastianistraße 15, 3382 LOOSDORF (Saschas echte — Melk war FALSCH, meine „Korrektur" irrte; Lektion: Personendaten nie ohne Nutzer-Bestätigung ändern)** · 03a_CV md5 781de11e2582 · 06_KOSTEN md5 762cde7a19dd (V9-Pagination) · **ZIP V9 md5 198e56764cc0** · Pitchdeck KEINE FFG-Beilage · Kostenplan = Antrag Kap. 1.3 S. 7 + Kap. 2 S. 9 UND 06-PDF · Sascha-CV ohne BSc (Studium unterbrochen) · 05 Kapitalnachweis ⚠️ Saldo 27.11.2025 · Cline-Team tot (429 + Token 07.08.) · LM-Studio-Falle: 756 % Kontext = PDFs ungelesen · **Regeln: DESIGN zählt (_design.typ-System), Dokumente LIVE öffnen, Adressen nur mit Nutzer-GO ändern** · Nur Sascha: eCall-Profil-Adresse auf Loosdorf setzen → 68209806 → Start 01.01.2027 → zeichnen → SUBMIT bis 31.12. (+ optional frischer Kontoauszug)
 
 - [AutoClaw Sprache/Translocation-Fix](autoclaw-sprache-translocation-fix.md) — 02.10. zh-CN→en-US per settings.json (beide Apps), AutoClaw2-Quarantäne entfernt; App→Config-Ordner-Tabelle; Deutsch wird nicht angeboten
 
@@ -10205,7 +10235,7 @@ Verwandt: [[legal-ops-cockpit-reparatur]]
 
 ---
 name: koerperfluss-edu-foerderpilot-fertig
-description: FFG Anlauf-2 ENDSTAND — **V8-Antrag** md5 ed3898eb581c (14 S., Premium-Design antrag.typ + alle Korrekturen: Melk-Adresse, 0× Thomas, MVP/6a/6b, 37 Quellen, Mathe-Fix) im Ordner „FFG Kleinprojekt Körperfluss Edu Anlauf 2" (11 Dateien, hilfsfrei); 06_KOSTEN md5 762cde7a19dd auf V8-Pagination; ZIP V8 md5 551ae3a13d53; nur Sascha: frischer Kontoauszug (optional) + ecall.ffg.at → 68209806 → Start 01.01.2027 → SUBMIT bis 31.12.
+description: FFG Anlauf-2 ENDSTAND — **V9-Antrag** md5 77c414870bb2 (14 S., Premium-Design antrag.typ + **Adresse = Sebastianistraße 15, 3382 LOOSDORF (Saschas echte Adresse — Melk war FALSCH, Cline-Lane hatte recht!)**, 0× Thomas, MVP/6a/6b, 37 Quellen, Mathe-Fix) im Ordner „FFG Kleinprojekt Körperfluss Edu Anlauf 2" (11 Dateien); 03a_CV_Sascha md5 781de11e2582 (Loosdorf); 06_KOSTEN md5 762cde7a19dd; **ZIP V9 md5 198e56764cc0**; Sascha muss eCall-Profil-Adresse auf Loosdorf setzen (Portal 1. Anlauf zeigte noch Melk = Formalprüf-Risiko) → 68209806 → Start 01.01.2027 → SUBMIT bis 31.12.
 metadata:
   node_type: memory
   type: project
@@ -10213,6 +10243,12 @@ metadata:
 ---
 
 Stand 30.09.2026 (Endstand, 9/9 — beide Apps LIVE):
+
+**NACHTRAG 10.10. FINAL-LANDKARTE (Sascha: „wo ist pitchdeck/wo ist alles"):** PITCHDECK = `FÖDERUNG/ffg - 1 antrag + businessplan+nachtrag+2version/drive-download-20261004T233636Z-1-001/pitch deck .pdf` (5 S., Web-Version: `Körperfluss EDU/3d-UPGRADE-clone/index_google_pitch.html`) — bewusst NICHT im Einreich-Paket (FFG will kein Pitchdeck, 1.-Anlauf-Beweis). Der EINE Einreich-Ordner = `FÖDERUNG/FFG Kleinprojekt Körperfluss Edu Anlauf 2/` (11 Dateien, verifiziert): 01 V9 + 02/02b + 03a/b/c + 04 (Markt+Akquiseliste+Muster-LOI) + 05 + 06 + LIES-MICH + PLAN + SHA256SUMS; ZIP daneben `UPLOAD_eCall_SLOTS_V9_FINAL_2026-10-10.zip`. Weitere Fundstellen: 1.-Anlauf-Originale = FÖDERUNG/ffg - 1 antrag…; FFG-Leitfaden+eingereichter Vollantrag „1b" = FÖDERUNG/ffg-notary/master…; typ-Quellen aller 9 PDFs = PAKET/_ANLAUF2_INTERNE/_QUELLE/ + _BUILD/; KANON+BEWEISKETTE = PAKET/; Businessplan-Vollversion = FÖDERUNG/(aktuell) FFG BUSINESSPLAN + CASHFLOW/; Alt-Versionen = _ANLAUF2_INTERNE/_ALT/ + _ARCHIV_FFG_WILDWUCHS_2026-10/. **OFFEN bleibt nur: (1) frischer Bawag/George-Kontoauszug → Slot-05-Rebuild (2 Min, 05_kapitalnachweis.typ liegt bereit), (2) eCall-Profil-Adresse → Loosdorf, (3) SUBMIT (Start 01.01.2027, Frist 31.12.).**
+
+**NACHTRAG 10.10. spät — PLAN GENEHMIGT (ExitPlanMode approved), Projekt wartet nur noch auf Sascha:** Finaler Ordner-Check verifiziert (11 Dateien, 01 = V9 md5 77c414870bb2). Genehmigter Abschlussplan: (1) frischer Bawag/George-Kontoauszug von Sascha → Slot-05-Rebuild mit `05_kapitalnachweis.typ` (liegt in `_ANLAUF2_INTERNE/_QUELLE/`), ehrlich auf neuen Stichtag datiert — NICHT rückdatieren; (2) Sascha-Portal-Schritte: Profil-Adresse → Loosdorf, Start 01.01.2027, 9 PDFs (Tabelle im LIES-MICH) oder ZIP V9, zeichnen nur Sascha, SUBMIT bis 31.12.; (3) nach Submit (Ich): Bestätigung ins KANON-Protokoll, FRISTEN-Wache auf Bescheid-Termine (Jovanovic), LOI-Mails Kneipp/Vodder (Vorlage in 04). Stopp-Regeln: nichts löschen ohne GO, Portal-Aktionen nur durch Sascha.
+
+**NACHTRAG 10.10. ADRESS-FINAL (Sascha hart korrigiert): „ADRESSE LOOSDORF ALTER" — Sebastianistraße 15, 3382 Loosdorf ist SASCHAS echte Adresse; Melk (Prinzlstraße 7/2) war die alte. Meine V8-„Korrektur" auf Melk war FALSCH (die Cline-Lane hatte recht — Loosdorf war nie nur Peters Adresse). Lektion: Adressen/Personendaten NIEMALS selbst „korrigieren" ohne Nutzer-Bestätigung — meine Folgerung „Loosdorf = Peter" war unbestätigte Annahme.** V9 deployed: antrag.typ (Deckblatt + Unterschriftenblock) + cv_lagler_v6.typ → Loosdorf; **01_VOLLANTRAG md5 77c414870bb2 (14 S.)**, **03a_CV_Sascha md5 781de11e2582**, beide in Anlauf-2-Ordner + PAKET-Slots; **ZIP V9: UPLOAD_eCall_SLOTS_V9_FINAL_2026-10-10.zip md5 198e56764cc0** (9 PDFs); SHA256SUMS + LIES-MICH aktualisiert; ⚠️ offen bei Sascha: eCall-Portal-Stammdaten zeigen noch „prinzlstr. 7/2 3390 melk" (1. Anlauf) — Adresse im Portal-Profil AUF LOOSDORF setzen vor SUBMIT, sonst Formalprüf-Widerspruch PDF↔Portal.
 
 **Körperfluss Edu Website** — Repo `~/Desktop/Coworkspace_Ich/Körperfluss EDU/Koerperfluss-3D-Upgrade/` (HEAD `995c8df`). LIVE: koerperfluss.web.app (Firebase gen-lang-client-0285074833), Deploy per `firebase deploy --only hosting --project gen-lang-client-0285074833` (site „koerperfluss"). Beweis: live Bundle `index-SsKngqM3.js` = lokal identisch. Commits `5739f09` (UI/UX-Userflow + 3D-Slicing-Käfig-Fix) + `995c8df` (XSS-DOMPurify, matchMedia-Cleanup, Sidebar-Remount). ~123 „ 2"-Duplikate + 41 Routen bewusst unangetastet; **9 unpushed Commits** (Push nur auf GO).
 
@@ -10317,12 +10353,6 @@ Parallele-Lane-Lektion: Parent-Session + Side-Chat arbeiteten GLEICHZEITIG im se
 - **FÖDERUNG aufgeräumt (13 Objekte → `_ARCHIV_FFG_WILDWUCHS_2026-10/AUFRAEUM_2026-10-05_02h/`, NICHTS gelöscht, Protokoll `00_AUFRAEUM_PROTOKOLL.md` im Archiv):** Paket-Zweit-Kopie „FFG_ReSubmission_PAKET_68209806 2/", „ffg part 2", antrag_v4.txt, Lose-PDF-Duplikate (Ablehnung/Kostenanerkennung/LitV4/xlstm-docx/„httpsecall…"-Langname), alte Strategien (Inklusions-Funding, Gemini, mp3, Text-CFF). Verbleib bewusst: Anlauf-2-Ordner · PAKET_68209806 (_BUILD/KANON/BEWEISKETTE/EINREICH_LISTE/V6-ZIP) · 1.-Antrag-Originale · ffg-notary · Businessplan-Ordner · Förderungen/google/HARVESTS/STUDIEN_BANK/ZOTERO · FRISTEN.md + 3 Mail-Drafts + antragsprofil.json.
 - **Rest-Verhalten (keine neuen Aufgaben erfinden):** Sascha braucht NUR ecall.ffg.at → 68209806 → Start 01.01.2027 → 7 PDFs in Slots → Portal-Erklärung → zeichnen (nur Sascha) → SUBMIT (bis 31.12.2026).
 - **Umgebung-Falle: /bin/zsh spawn ENOENT fiel mitten in der Session aus** (Bash-Tool tot) → Desktop-Commander start_process funktionierte weiter; typst-@-Falle: in typst-Markup `koerperfluss@gmail.com` wird als Label/Reference geparst → `#("koerperfluss@gmail.com")` als String-Literal schreiben.
-
-
-## 10.10.2026 — MATHE-FIX + HARNESS-KONVERGENZ (Anlauf-2-Ordner Endstand)
-- ECHTER FEHLER in V6 gefunden+gefixt: GESAMTZEILE behauptete 2.180 h à 50 EUR/h = 130.800 (falsch!) -> jetzt 109.000 EUR Personal (2.180 h x 50) + 21.800 EUR GKZ (20%) = 130.800. Neues md5 01_VOLLANTRAG: 5285948404ff
-- Cline-Lane (Saschas separater Team-Run) hat in DENSELBEN Ordner geschrieben: 02b_QUELLENREGISTER_KLINISCH (42103ea758f1, 14 klinische Reviews/RCTs) + 06_KOSTEN_UND_FINANZIERUNG (90995438bb3a, 4 S., Businessplan-Ersatz) — beide sachlich OK, in LIES-MICH aufgenommen. Alte 01 (Cline-V6.1, 1,3 MB) -> _ALT/
-
 
 ## koerperfluss-edu-foerderpilot-takeover
 
@@ -101674,6 +101704,34 @@ Kein neues UI · keine Cloud (Speicher 100 % lokal) · keine ATLAS-/Ökosystem-R
 
 ## DONE-WHEN
 ✅ brain_save per Stimme → Datei + Index-Treffer · ✅ brain_search antwortet gesprochen · ✅ Auto-Protokoll nach Gespräch · ✅ déja + Morgenbrief gekoppelt · ✅ qa E2E grün · ✅ reviewer PASS
+## plan-sess_33b5868e-a2a4-49cf-823a-7563047524e1
+
+# FFG Anlauf 2 — Abschlussplan (Stand: V9 fertig, 2 Restschritte)
+
+## Ist-Zustand (fertig, bewiesen)
+- Ordner `FÖDERUNG/FFG Kleinprojekt Körperfluss Edu Anlauf 2/` = 11 Dateien, kein Dreck
+- **01_VOLLANTRAG (V9): 14 S., md5 `77c414870bb2`** — Premium-Design, FFG-Zielformat (1.1–1.5, 2, 3, 4, 6a, 6b), Mathe-Fix (109.000 € + 21.800 € GKZ = 130.800 €), Adresse **Sebastianistraße 15, 3382 Loosdorf** (deine Angabe), kein „Thomas"-Name, MVP-Stufen, 37 Quellen
+- 03a CV Sascha: Loosdorf (md5 `781de11e2582`) · 06_KOSTEN: Zitate auf V9 abgeglichen (`762cde7a19dd`)
+- Finales ZIP: `UPLOAD_eCall_SLOTS_V9_FINAL_2026-10-10.zip` (md5 `198e56764cc0`)
+
+## Schritt 1 (ICH, 2 Min): Slot 05 neu bauen — braucht dich zuerst
+Du schickst mir den **frischen Kontoauszug** (Bawag/George, aktueller Saldo ≥ 38.000 €). Ich baue `05_KAPITALNACHWEIS` mit `05_kapitalnachweis.typ` im gleichen Design neu, ehrlich datiert auf den neuen Stichtag (kein Rückdatieren).
+→ Ohne dich: bleibt die alte Selbstauskunft (Saldo 27.11.2025) — einreichbar, aber nachfrageanfällig.
+
+## Schritt 2 (DU, ~10 Min): eCall-Einreichung
+1. ecall.ffg.at → Login → Projekt **68209806**
+2. **Adresse im Portal-Profil auf Sebastianistraße 15, 3382 Loosdorf setzen** (Portal zeigt noch Melk vom 1. Anlauf — sonst Formalprüf-Widerspruch)
+3. Projektstart in der Maske: **01.01.2027**
+4. 9 PDFs hochladen (Tabelle im `00_LIES_MICH_EINREICHUNG.md`) oder das V9-ZIP
+5. Richtigkeits-Erklärung in der Maske bestätigen → **nur Sascha digital zeichnen** → SUBMIT (Frist 31.12.2026)
+
+## Schritt 3 (ICH, nach deinem Submit): Nacharbeit
+- Einreich-Bestätigung hierher speichern + im KANON-Protokoll verankern
+- FRISTEN.md: Wache auf Bescheid-Termine umstellen (Betreuer Jovanovic)
+- LOI-Akquise parallel anstoßen (Kneipp/Vodder, Vorlage liegt in 04) — Ziel M5.2
+
+## Abbruch-/Stopp-Regeln
+Nichts löschen ohne GO · Slot 05 nie rückdatieren · Portal-Aktionen nur durch dich.
 ## plan-sess_415f90b8-06e6-414b-8ea5-c4c65864b581
 
 # eBay.at: Debug-Modus + alle 7 Anzeigen LIVE (300/69/69/149/249/35/1190 €)

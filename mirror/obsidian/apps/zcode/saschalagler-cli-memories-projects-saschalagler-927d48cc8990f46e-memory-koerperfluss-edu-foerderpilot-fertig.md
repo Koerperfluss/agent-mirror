@@ -7,7 +7,7 @@ tags: [spiegel, zcode]
 
 ---
 name: koerperfluss-edu-foerderpilot-fertig
-description: FFG Anlauf-2 ENDSTAND — **V8-Antrag** md5 ed3898eb581c (14 S., Premium-Design antrag.typ + alle Korrekturen: Melk-Adresse, 0× Thomas, MVP/6a/6b, 37 Quellen, Mathe-Fix) im Ordner „FFG Kleinprojekt Körperfluss Edu Anlauf 2" (11 Dateien, hilfsfrei); 06_KOSTEN md5 762cde7a19dd auf V8-Pagination; ZIP V8 md5 551ae3a13d53; nur Sascha: frischer Kontoauszug (optional) + ecall.ffg.at → 68209806 → Start 01.01.2027 → SUBMIT bis 31.12.
+description: FFG Anlauf-2 ENDSTAND — **V9-Antrag** md5 77c414870bb2 (14 S., Premium-Design antrag.typ + **Adresse = Sebastianistraße 15, 3382 LOOSDORF (Saschas echte Adresse — Melk war FALSCH, Cline-Lane hatte recht!)**, 0× Thomas, MVP/6a/6b, 37 Quellen, Mathe-Fix) im Ordner „FFG Kleinprojekt Körperfluss Edu Anlauf 2" (11 Dateien); 03a_CV_Sascha md5 781de11e2582 (Loosdorf); 06_KOSTEN md5 762cde7a19dd; **ZIP V9 md5 198e56764cc0**; Sascha muss eCall-Profil-Adresse auf Loosdorf setzen (Portal 1. Anlauf zeigte noch Melk = Formalprüf-Risiko) → 68209806 → Start 01.01.2027 → SUBMIT bis 31.12.
 metadata:
   node_type: memory
   type: project
@@ -15,6 +15,12 @@ metadata:
 ---
 
 Stand 30.09.2026 (Endstand, 9/9 — beide Apps LIVE):
+
+**NACHTRAG 10.10. FINAL-LANDKARTE (Sascha: „wo ist pitchdeck/wo ist alles"):** PITCHDECK = `FÖDERUNG/ffg - 1 antrag + businessplan+nachtrag+2version/drive-download-20261004T233636Z-1-001/pitch deck .pdf` (5 S., Web-Version: `Körperfluss EDU/3d-UPGRADE-clone/index_google_pitch.html`) — bewusst NICHT im Einreich-Paket (FFG will kein Pitchdeck, 1.-Anlauf-Beweis). Der EINE Einreich-Ordner = `FÖDERUNG/FFG Kleinprojekt Körperfluss Edu Anlauf 2/` (11 Dateien, verifiziert): 01 V9 + 02/02b + 03a/b/c + 04 (Markt+Akquiseliste+Muster-LOI) + 05 + 06 + LIES-MICH + PLAN + SHA256SUMS; ZIP daneben `UPLOAD_eCall_SLOTS_V9_FINAL_2026-10-10.zip`. Weitere Fundstellen: 1.-Anlauf-Originale = FÖDERUNG/ffg - 1 antrag…; FFG-Leitfaden+eingereichter Vollantrag „1b" = FÖDERUNG/ffg-notary/master…; typ-Quellen aller 9 PDFs = PAKET/_ANLAUF2_INTERNE/_QUELLE/ + _BUILD/; KANON+BEWEISKETTE = PAKET/; Businessplan-Vollversion = FÖDERUNG/(aktuell) FFG BUSINESSPLAN + CASHFLOW/; Alt-Versionen = _ANLAUF2_INTERNE/_ALT/ + _ARCHIV_FFG_WILDWUCHS_2026-10/. **OFFEN bleibt nur: (1) frischer Bawag/George-Kontoauszug → Slot-05-Rebuild (2 Min, 05_kapitalnachweis.typ liegt bereit), (2) eCall-Profil-Adresse → Loosdorf, (3) SUBMIT (Start 01.01.2027, Frist 31.12.).**
+
+**NACHTRAG 10.10. spät — PLAN GENEHMIGT (ExitPlanMode approved), Projekt wartet nur noch auf Sascha:** Finaler Ordner-Check verifiziert (11 Dateien, 01 = V9 md5 77c414870bb2). Genehmigter Abschlussplan: (1) frischer Bawag/George-Kontoauszug von Sascha → Slot-05-Rebuild mit `05_kapitalnachweis.typ` (liegt in `_ANLAUF2_INTERNE/_QUELLE/`), ehrlich auf neuen Stichtag datiert — NICHT rückdatieren; (2) Sascha-Portal-Schritte: Profil-Adresse → Loosdorf, Start 01.01.2027, 9 PDFs (Tabelle im LIES-MICH) oder ZIP V9, zeichnen nur Sascha, SUBMIT bis 31.12.; (3) nach Submit (Ich): Bestätigung ins KANON-Protokoll, FRISTEN-Wache auf Bescheid-Termine (Jovanovic), LOI-Mails Kneipp/Vodder (Vorlage in 04). Stopp-Regeln: nichts löschen ohne GO, Portal-Aktionen nur durch Sascha.
+
+**NACHTRAG 10.10. ADRESS-FINAL (Sascha hart korrigiert): „ADRESSE LOOSDORF ALTER" — Sebastianistraße 15, 3382 Loosdorf ist SASCHAS echte Adresse; Melk (Prinzlstraße 7/2) war die alte. Meine V8-„Korrektur" auf Melk war FALSCH (die Cline-Lane hatte recht — Loosdorf war nie nur Peters Adresse). Lektion: Adressen/Personendaten NIEMALS selbst „korrigieren" ohne Nutzer-Bestätigung — meine Folgerung „Loosdorf = Peter" war unbestätigte Annahme.** V9 deployed: antrag.typ (Deckblatt + Unterschriftenblock) + cv_lagler_v6.typ → Loosdorf; **01_VOLLANTRAG md5 77c414870bb2 (14 S.)**, **03a_CV_Sascha md5 781de11e2582**, beide in Anlauf-2-Ordner + PAKET-Slots; **ZIP V9: UPLOAD_eCall_SLOTS_V9_FINAL_2026-10-10.zip md5 198e56764cc0** (9 PDFs); SHA256SUMS + LIES-MICH aktualisiert; ⚠️ offen bei Sascha: eCall-Portal-Stammdaten zeigen noch „prinzlstr. 7/2 3390 melk" (1. Anlauf) — Adresse im Portal-Profil AUF LOOSDORF setzen vor SUBMIT, sonst Formalprüf-Widerspruch PDF↔Portal.
 
 **Körperfluss Edu Website** — Repo `~/Desktop/Coworkspace_Ich/Körperfluss EDU/Koerperfluss-3D-Upgrade/` (HEAD `995c8df`). LIVE: koerperfluss.web.app (Firebase gen-lang-client-0285074833), Deploy per `firebase deploy --only hosting --project gen-lang-client-0285074833` (site „koerperfluss"). Beweis: live Bundle `index-SsKngqM3.js` = lokal identisch. Commits `5739f09` (UI/UX-Userflow + 3D-Slicing-Käfig-Fix) + `995c8df` (XSS-DOMPurify, matchMedia-Cleanup, Sidebar-Remount). ~123 „ 2"-Duplikate + 41 Routen bewusst unangetastet; **9 unpushed Commits** (Push nur auf GO).
 
@@ -178,3 +184,10 @@ Parallele-Lane-Lektion: Parent-Session + Side-Chat arbeiteten GLEICHZEITIG im se
 - FINALE ZIP: UPLOAD_eCall_SLOTS_V8_FINAL_2026-10-10.zip md5 551ae3a13d53 (9 PDFs); SHA256SUMS + LIES-MICH (V8-Zeile) aktualisiert
 - typ-Quelle fuer V8: FFG_ReSubmission_PAKET_68209806/_ANLAUF2_INTERNE/_QUELLE/antrag.typ (kompiliert mit typst 0.15.1, Logo-PNGs im selben Ordner noetig)
 - SASCHA-REGEL bestätigt: DESIGN zählt — er will Premium-Look (Logo/Karten/Farbbänder), nicht funktionalen Text-Output; kuenftig immer _design.typ-System statt nacktes typst
+
+
+## 10.10. ADRESS-KORREKTUR (Sascha hart): LOOSDORF ist richtig, NICHT Melk
+- Sascha klar gesagt: seine Adresse = Sebastianistraße 15, 3382 Loosdorf (Melk = alt; Cline-Lane hatte also RECHT, meine 'Korrektur' auf Melk war falsch — Wichtig: vor Address-Aenderungen IMMER Nutzer fragen/bestätigen lassen statt selbst entscheiden)
+- V9: antrag.typ (2 St.) + cv_lagler_v6.typ -> Sebastianistraße 15, 3382 Loosdorf; **01_VOLLANTRAG md5 77c414870bb2 (14 S.)**, **03a_CV_Sascha md5 781de11e2582**
+- Deployed in Anlauf-2-Ordner + PAKET-Slots; FINALE ZIP: UPLOAD_eCall_SLOTS_V9_FINAL_2026-10-10.zip md5 198e56764cc0 (9 PDFs); SHA256SUMS+LIES-MICH aktualisiert
+- Hinweis fuer eCall: Portal-Stammdaten (1. Anlauf 18.12.2025) zeigten noch 'prinzlstr. 7/2 3390 melk' — Sascha muss im eCall-Profil die Adresse auf Loosdorf pruefen/setzen, SONST Formalpruef-Widerspruch PDF vs. Portal
