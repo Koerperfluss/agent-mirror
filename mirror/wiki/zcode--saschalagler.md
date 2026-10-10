@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-10 05:10 UTC
+Zuletzt gespiegelt: 2026-10-10 05:24 UTC
 
 ## AGENTS
 
@@ -4962,7 +4962,7 @@ Bei Fachfragen (z. B. Trainings-Übungen) fordert er explizit „clinical reason
 # Memory Index
 
 - [Saschas Lage NÖ 10.10.](sascha-lage-noe.md) — 29, arbeitslos/AMS-Sperre (~€300/Monat), Miete €350, Loosdorf Bez. Melk, keine Kinder → Förder-Recherche + App-Profil darauf kalibriert
-- [HolDirMehr-Replika 09.-10.10.](holdirmehr-replika.md) — ✅ VOLLVERSION: 1.148 echte Förderungen gecrawlt (data/katalog.json), Suche/Filter/Detailseiten/Bericht-Matching gratis, ~/.zcode/workspace/default/holdirmehr/, URL localhost:61599; ⚠️ NUR PRIVAT (Katalog © holdirmehr.at)
+- [HolDirMehr-Replika 09.-10.10.](holdirmehr-replika.md) — ✅ **ONLINE: foerderungen-sascha.web.app** (Firebase, privat, noindex) + 1.772 echte Förderungen (506 NÖ + 495 BW), Matching auf Sascha scharf (Arbeitslos/AMS, Kinder-Demotion); LESSON: Boost-Regex nie gegen Kategorie-Namen matchen; ⚠️ Katalog © holdirmehr.at
 - [TCC/FDA-Cleanup 09.10.](tcc-fda-cleanup-2026-10-09.md) — ✅ FERTIG: alle 14 toten Einträge weg (TCC 90→72, Sascha löschte letzte 11 selbst per GUI+Finger); lebende Tools (ZCode/Terminal/Antigravity/…) verifiziert AN; Backup ~/sicherungen/tcc-backup-20261009; LESSON: Touch ID pro Löschung, nach „Entfernen"-Klick nicht beobachten, Deep-Link `Privacy_AllFilesAccess`
 - [Plugin/Skill-Inventar 09.10.](plugin-skill-inventar-dwfrun-2026-10-09.md) — dwfrun-8c351687: 7 Skills + 5 Plugins verifiziert; FDA-Audit 14 Leichen; LESSON: Workflow-Subagents keine Absolut-Pfade, ABER world.run kann (test/mdfind/sqlite3); dwfrun-eec3e822 = TCC-Plan (out/TCC_LOESCHPLAN.md); Backup ~/sicherungen/tcc-backup-20261009
 - [BrowserOS lokale Modelle](browseros-lokale-modelle-setup.md) — 05.10. Ollama Context 20000 in LaunchAgent gepatcht (Backup ~/sicherungen/ollama-20261005/); **qwen2.5-coder:7b = Hauptmodell für beide Browser**; LM Studio (gemma-4-12b-qat/glm-4.6v-flash, Port 1234) = 2. Option, nie parallel; CaskHub-Adopt erklärt (21 Casks, brew übernimmt Updates); OFFEN: Settings-Klicks in BrowserOS + neo
@@ -6195,6 +6195,8 @@ Dossier-Empfehlung für Produktions-Upgrade: Next.js 15 + Supabase + Stripe (sie
 
 **10.10. ABENDS: ONLINE + personalisiert.** 🔴 **Dauerhaft online: https://foerderungen-sascha.web.app/** (Firebase Hosting, Projekt `foerderungen-sascha`, koerperfluss@gmail.com, Spark gratis; Update: `firebase deploy --only hosting` im Projektordner; ⚠️ LEKTION: firebase_init überschrieb index.html — git restore rettete sie; nach firebase_init IMMER git status prüfen; firebase.json braucht `"site":"foerderungen-sascha"`). Brand neutralisiert → „Meine Förderungen", Testimonials echter Personen + Fabian-Eder-Zitat entfernt, noindex + robots Disallow-all. Personalisiert: Strict „Nur NÖ + Bundesweit" (default AN, behebt Saschas Bug „warum Vorarlberg bei NÖ"), Firmen/Gemeinden default AUS, Profil in localStorage (Quiz speichert → Landing „Mein Bericht"), echte €-Summe im Berichtskopf, Zusatzangaben Beruf/Behinderung, PDF-Druck, katalog.js embedded → Doppelklick-fähig, Desktop-`HolDirMehr-starten.command` (Port 8788). GitHub-Pages SCHEITERT (Koerperfluss-Account: „Actions has been disabled for this user"). Workflow dwfrun-e3a76000 FERTIG + nachdeployt (Deploy 1791608111263): **Katalog jetzt 1.772 Förderungen (506 NÖ + 495 bundesweit, Ziel 502/533 getroffen; 611 neue Detailseiten + 15 Listing-Minimaleinträge)**, live verifiziert auf foerderungen-sascha.web.app; Auch im git (Commit „Katalog vervollständigt").
 
+**10.10. SPÄT: Sascha-Personalisierung + Ranking-Bug-Lektion.** Neu live (Firebase 1791608735256 + 1791609577710, beide verifiziert): Vorhaben-Option **„Finanzielle Notlage & Sozialhilfe"** im Quiz (Keywords: sozialhilfe/notstandshilfe/notlage/spontanhilfe/energiehilfe/härtefall/lebensunterhalt), Zusatzangabe **„Arbeitslos / AMS"** (+4 bei notstandshilfe/arbeitslosengeld/arbeitslos/AMS, +3 bei sozialhilfe/notlage…), **Kinder-Demotion** (Single/keine Kinder ohne Familie-Vorhaben → Baby/Kinderbetreuungs-Einträge −6). 🔴 **RANKING-BUG-LEKTION:** Der Arbeitslos-Boost-Regex enthielt `arbeitsuch` — das matchte den Kategorienamen „Beruf & Arbeitssuche" selbst, wodurch ALLE Berufs-Förderungen (Pendlerhilfen etc.) gewannen und die für ihn relevanten Notstandshilfe/Sozialhilfe-Einträge unterm Tisch blieben. Fix: Boost nur auf `notstandshilfe|arbeitslosengeld|arbeitslos\b|arbeitsmarktservice|\bams\b`. Nach Fix Top-15 sim + live getestet (Notstandshilfe, Fachkräftestipendium, Lebensunterhalt-Beihilfe, Sozialhilfe NÖ, Spontanhilfe oben; Pendler/FiT-Frauen raus). **LESSON: Boost-Keywords nie gegen Bereich-Strings matchen lassen — Regex gegen die eigene Kategorieliste testen (python-Sim des Scorings vor Deploy).**
+
 ## ios27-webapp-testing-recherche-2026-09-13
 
 ---
@@ -6819,6 +6821,8 @@ metadata:
 ---
 
 Saschas Lage (Stand 10.10.2026, von ihm selbst geschildert): 29 J., männlich, Single, keine Kinder, **3382 Loosdorf (Bezirk Melk, NÖ)**, Mietwohnung **€350/Monat**. **Arbeitslos mit AMS-Sperre** — dieser Monat nur ~€300, davor 6 Wochen 0, davor 3 Monate Abzug. Ehemaliger Arbeitgeber hält Lohn + Lohnzettel zurück (→ AK Melk: Lohnklage). Für seine Förder-App ([[holdirmehr-replika]]) gilt: Profil NÖ + Single + Miete + Vorhaben Beruf/Notlage/Gesundheit/Wohnen, Zusatzangabe „Arbeitslos / AMS". Soziale Daten nur zur Aufgabenlösung verwenden, respektvoll behandeln.
+
+**Recherche-Stand 10.10. (verifiziert):** Sozialhilfe NÖ 2026 = **max. 1.229,89 €/Monat** Alleinstehende inkl. Wohnbedarf (737,93 + 491,96; noe.gv.at + AK NÖ), Schonvermögen €7.379,34. **NÖ Heizkostenzuschuss 150 €** — alte Frist 31.03.2026 ausgelaufen, neue Runde startet ca. **22.10.2026** beim Gemeindeamt des Hauptwohnsitzes. Kern-Handlungsplan an ihn geliefert: ① AK Melk (Hummelstraße 1, kostenlos — Lohnklage + Sperrbescheid-Beschwerde, Zuflussprinzip-Argument gegen fiktive Anrechnung der AMS-Sperre), ② BH Melk Sozialhilfe, ③ Wohnschirm Miete via Caritas St. Pölten (+43 2742 841390) / Verein Wohnen (+43 2742 47076), ④ Heizkostenzuschuss ab 22.10., ⑤ soogut Sozialmarkt Melk (Einkaufspass) + OBS/ORF- + EAG-Befreiung. Sein persönlicher Bericht-Link mit Profil-Params existiert; App zeigt nach Fix die relevanten Treffer (Notstandshilfe, Fachkräftestipendium, Sozialhilfe NÖ, Spontanhilfe NÖ…). Pendlerhilfen gelten erst wieder mit Job.
 
 ## sequential-thinking-always
 
