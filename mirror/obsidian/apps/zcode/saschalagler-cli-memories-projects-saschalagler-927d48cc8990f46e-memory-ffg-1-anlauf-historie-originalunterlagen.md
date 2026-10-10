@@ -90,3 +90,15 @@ Die ORIGINAL-Inhalte des eingereichten Vollantrags (24 S., Version, die abgelehn
 - **Qubitec-Spreadsheet (97cd73):** aeltere Kalkulation mit Lisa, Restfinanzierungs-Zeilen; historisch
 - **Weitere Original-Pfade:** GoogleDrive Altbestand 'Projekt Koerperfluss/Altbestand bis 10.05.2026/2) FFG Kleinprojekt/' (KapitalnachweisLAglerSascha.pdf, Loi-kneipp.pdf, Finanzplanung .numbers/.gsheet, C1+Projektvorbereitung_Deutsch.pdf); Desktop/KICK OFF/pitch + CVs-1Seitig; ffg-notary/input (3a Vollantrag, 3b KMU-RL, DEFENSIV-MATRIX docx, WAW/Linz/OXYDATA)
 - **ACTIONABLE fuer V14 (falls Sascha will):** Wettbewerbs-Tabelle + MSE/IPE-Problemframing + SDG-Belegzahlen aus dem Original in V13 mergen (alle schon FFG-bekannt = legitim, staerken 'Neuheitsgehalt' und 'Nutzen' mit echten Quellen)
+
+
+## V14 (11.10., 00:39) — Original-Gold ist DRIN
+- **01_VOLLANTRAG V14: 16 S., md5 020cc905e548** — aus Original uebernommen: Wettbewerbstabelle Ada/Infermedica/Symptoma/Physitrack (1.4, nach USP), KPI-Haertung (Z1: 3 Fallsimulationen Fach-Review · Z4: 0 unbelegte Therapieempfehlungen · Z5: >=70 % Likert 4-5 + Verfuegbarkeit >=99 % — Originale Z2/Z3/Z4-Formalstil), MSE/GBD-Satz in 1.1 (qualitativ, keine Zahl)
+- V13 archiviert: _ANLAUF2_INTERNE/_VERSIONEN/01_VOLLANTRAG_V13_f458c5afd42b.pdf
+- ZIP: UPLOAD_eCall_SLOTS_V14_FINAL_2026-10-11.zip md5 a95c33a10d07 (9 PDFs) — V13-ZIP 92403651de3e abgeloest
+- SHA256SUMS (9 PDFs), 00_LIES_MICH + 08_GESAMT_AUDIT auf V14/md5 020cc905e548 aktualisiert; 06_KOSTEN unveraendert korrekt (zitiert keine Antrags-md5)
+- NICHT uebernommen aus Original: Lisa Mauerhart (Team bleibt Fischer/Lagler/Karner), Ursprungs-KPI-Z1 'MVP-Stack 0 Blocker' + Z5 'IPE +15 %' (V13s xLSTM-Ziele sind die eigentliche Neuheits-Antwort), SDG-Zahlen 250-300kg/-50%CO2/+15-20% (Register-Belege fehlen = 60-EUR-Regel)
+- Ursprungs-PDF liegt im Einreich-Ordner LIVE offen (Preview)
+- Regex-Falle: naive `60\s*EUR` matcht FALSE-POSITIVE in „…600 EUR"-Beträgen (9.600, 1.600 …) — immer `\b60\s*EUR` (Word-Boundary); gleiche Falle bei `Global Burden`-Check (Bindestrich-Kompositum „Global-Burden-of-Disease" matcht mit Leerzeichen nicht)
+- pypdf-Seitenzahl kann von erwarteter Zahl abweichen (V13 14 S. → V14 16 S. nach Tabelle+Ergänzungen — ok, FFG hat keine harte Seitenlimit für die Projektbeschreibung; Original hatte 24 S.)
+- Saschas letzte Nachricht vor V14 = Paste der ORIGINAL-Dokumente OHNE Begleittext → impliziter Auftrag „Original gegen aktuelle Fassung abgleichen + Gold mergen" — bei solchen textlosen Pasten den impliziten Abgleich vollziehen statt nachfragen (Vollzug-Regel)
