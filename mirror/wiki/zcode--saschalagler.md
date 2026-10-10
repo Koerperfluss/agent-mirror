@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-10 11:10 UTC
+Zuletzt gespiegelt: 2026-10-10 11:26 UTC
 
 ## AGENTS
 
@@ -10318,6 +10318,11 @@ Parallele-Lane-Lektion: Parent-Session + Side-Chat arbeiteten GLEICHZEITIG im se
 - **FÖDERUNG aufgeräumt (13 Objekte → `_ARCHIV_FFG_WILDWUCHS_2026-10/AUFRAEUM_2026-10-05_02h/`, NICHTS gelöscht, Protokoll `00_AUFRAEUM_PROTOKOLL.md` im Archiv):** Paket-Zweit-Kopie „FFG_ReSubmission_PAKET_68209806 2/", „ffg part 2", antrag_v4.txt, Lose-PDF-Duplikate (Ablehnung/Kostenanerkennung/LitV4/xlstm-docx/„httpsecall…"-Langname), alte Strategien (Inklusions-Funding, Gemini, mp3, Text-CFF). Verbleib bewusst: Anlauf-2-Ordner · PAKET_68209806 (_BUILD/KANON/BEWEISKETTE/EINREICH_LISTE/V6-ZIP) · 1.-Antrag-Originale · ffg-notary · Businessplan-Ordner · Förderungen/google/HARVESTS/STUDIEN_BANK/ZOTERO · FRISTEN.md + 3 Mail-Drafts + antragsprofil.json.
 - **Rest-Verhalten (keine neuen Aufgaben erfinden):** Sascha braucht NUR ecall.ffg.at → 68209806 → Start 01.01.2027 → 7 PDFs in Slots → Portal-Erklärung → zeichnen (nur Sascha) → SUBMIT (bis 31.12.2026).
 - **Umgebung-Falle: /bin/zsh spawn ENOENT fiel mitten in der Session aus** (Bash-Tool tot) → Desktop-Commander start_process funktionierte weiter; typst-@-Falle: in typst-Markup `koerperfluss@gmail.com` wird als Label/Reference geparst → `#("koerperfluss@gmail.com")` als String-Literal schreiben.
+
+
+## 10.10.2026 — MATHE-FIX + HARNESS-KONVERGENZ (Anlauf-2-Ordner Endstand)
+- ECHTER FEHLER in V6 gefunden+gefixt: GESAMTZEILE behauptete 2.180 h à 50 EUR/h = 130.800 (falsch!) -> jetzt 109.000 EUR Personal (2.180 h x 50) + 21.800 EUR GKZ (20%) = 130.800. Neues md5 01_VOLLANTRAG: 5285948404ff
+- Cline-Lane (Saschas separater Team-Run) hat in DENSELBEN Ordner geschrieben: 02b_QUELLENREGISTER_KLINISCH (42103ea758f1, 14 klinische Reviews/RCTs) + 06_KOSTEN_UND_FINANZIERUNG (90995438bb3a, 4 S., Businessplan-Ersatz) — beide sachlich OK, in LIES-MICH aufgenommen. Alte 01 (Cline-V6.1, 1,3 MB) -> _ALT/
 
 ## koerperfluss-edu-foerderpilot-takeover
 
