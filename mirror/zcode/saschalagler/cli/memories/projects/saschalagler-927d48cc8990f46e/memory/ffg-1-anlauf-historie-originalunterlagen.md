@@ -102,3 +102,12 @@ Die ORIGINAL-Inhalte des eingereichten Vollantrags (24 S., Version, die abgelehn
 - Design-Fixes (in antrag.typ, alle bewiesen): Kernumfang-Tabelle + Schicht-Tabelle + Callout `breakable:false`; 3 erzwungene `#pagebreak()` in 1.3 entfernt (Plattform/LTI/Arbeitsplan fließen); `#v(0.NNfr)`-Spacer in Blöcken = FALLE (fr dehnt im Block aus → Tabellen springen ans Seitenende; immer fixe `#v(6pt)`); Hypothesen-Seite gefüllt mit Benchmark-Methodik-Tabelle (Methodik, keine neuen Zahlen)
 - ZIP V14-FINAL: md5 07086aa735e1 (9 PDFs) — ersetzt a95c33a10d07
 - **STEHENDE REGEL von Sascha (11.10.):** Am Ende IMMER visual-judge (/iris) über die fertige Datei laufen lassen und ihm die geprüfte Datei zeigen (Pfad + Verdict). Render-PNGs → pdf:visual-judge-Subagent → Verdicts abarbeiten → Repair-Loop bis PASS.
+
+
+## V14b FINAL (11.10.) — Gemini-Kritik geprueft, valide Teile gefixt
+- **01_VOLLANTRAG V14b: 15 S., md5 93c132fe9b85** · **04_MARKT: md5 a056698de299** · ZIP d5e636e01458 (9 PDFs) · visual-judge Runde 8: 4/4 PASS (S.1/5/6/7)
+- FIXIERT (Geminis valide Punkte): '0 % Halluzination' 2x + 'Vollständige Halluzinationsfreiheit' -> deterministische Halluzinationsminimierung; 'garantiert absolute Datensouveränität (100 % DSGVO)' -> datensouverän, DSGVO-konform; 'Partner Thomas' aus Beilage 04 raus (Antrag war schon generisch — Inkonsistenz!)
+- GEMINI-HALTUNG: er hatte eine AELTERE Fassung (zitierte Thomas im Vollantrag — dort seit V11 0x). Seine Formalia (150k/45 %/20 % GKZ/50-Punkte-Schwelle) decken sich mit unserem Stand. Sein LOI-Basisschluss war doppelboedig: erst 'Blocker', am Ende seines Chats selbst: 'LOI laut Leitfaden NICHT Pflicht, Einreichen ohne ist förderrechtlich gedeckt — dann Beilage 04 bereinigen'
+- BEWUSST NICHT geaendert (Sascha-Linie, dokumentiert): 'keine Zusagen'-Hinweis + Muster-LOI + AP-5-Nachreichen (Thomas-Joker-Strategie), SVS 33.940 'beantragt' mit Luecken-Erklärung, B2C-Marktmodell 33,3 Mio (transparente Rechenprobe in 04)
+- OFFENE Sascha-Risiken (gemeldet): SVS könnte wegfallen -> Lücke 33.940 (steht im Antrag selbst); Kapitalnachweis 27.11.2025 veraltet -> frischer Auszug; Leon-Rolle 'Chemiker prüft Medizin-Evidenz' -> optional schärfen auf DoE/QA-Audits
+- Backups: _VERSIONEN/01_VOLLANTRAG_V14a_15S_b80f561a3b7a.pdf + /tmp/antrag.typ.bak_v14a
