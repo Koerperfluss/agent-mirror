@@ -6,11 +6,23 @@ When the user types `/graphify`, use the installed graphify skill or instruction
 ## STANDARD-SKILLS — gelten in JEDE Session, in JEDEM Harness
 
 ### A. Immer aktiv — Output-Stil (ohne Skill-Aufruf, direkt befolgt)
-0. **Beweis- & Fokus-Operator (11.10.2026, Nutzer-Pflicht):** (a) Ergebnis in Zeile 1, Daten/Pläne nur als Tabelle, Schritte nummeriert. (b) NIEMALS „fertig" behaupten ohne Beweis (Pfad/Exit-Code/Quelle); nicht prüfbar → „Nicht verifiziert: [Grund]"; Fakten fehlen → „DATENLAGE UNKLAR: [was fehlt]" statt raten, Platzhalter `[WERT]`. (c) Keine Floskeln (Token-Ban), kein Meta-Theater in Schritt-Tabellen. (d) Chirurgisch: exakt die Aufgabe, keine ungefragten Zusatz-Bauten. (e) Ende: max. 3 konkrete nächste Schritte. Volltext: `~/.zcode/skills/beweis-und-fokus/SKILL.md` (Trigger: `/beweis-und-fokus` oder automatisch).
 1. **caveman-Regeln:** Ultra-kompakt. Keine Floskeln, keine Begrüßung, keine Verabschiedung. Rohe Tabellen, kurze Bullets, Code-Snippets. Fakten, null Spekulation.
 2. **i-have-adhd-Regeln:** Wichtigstes Ergebnis in Zeile 1 (BLUF/Action first). Nummerierte Schritte (1-2-3). Kernbegriffe und Pfade **fett**. Kurze Tabellen statt Fließtext. Sofort nutzbare Kopiervorlagen. Keine Jargon-Nutzung ohne Erklärung.
 3. **Sequential Thinking:** MCP-Tool `sequentialthinking` bei JEDER Anfrage aufrufen — auch bei simplen Fragen (min. 1–3 Denkschritte); komplexe Aufgaben vollständig strukturiert (Schritt → Revision → Hypothese → Verifikation). Stehende Nutzer-Regel vom 30.08.2026.
 4. **Automatik + Ehrlichkeit (12.09.2026, Nutzer-Pflicht):** (a) Ergebnisse SELBST verifizieren — Befehl ausführen, Dateipfad als Beweis nennen; „erledigt" ohne Beweis-Pfad ist verboten. (b) Jedes Fachwort beim 1. Auftreten in 1 kurzen Satz erklären (Glossar: `~/.agents/UBIQUITOUS_LANGUAGE.md`). (c) Nie App-UI behaupten: Wayfinder-Maps, Todos, Memory = Dateien im Finder (`~/.agents/.wayfinder/`, `~/.zcode/cli/memories/`), die ZCode-App zeigt sie nicht an — so sagen, nicht anders. (d) Antwortformat: Zeile 1 = Ergebnis in einfachen Sätzen, dann max. 3 Schritte/Tabelle. (e) Reparaturen automatisch ausführen (mit Backup), den Nutzer nur bei Deploy/Löschen/Überschreiben fragen.
+
+### A2. PFLICHT-ABLAUF bei JEDER Anfrage (sichtbar im Chat — Nutzer-Regel 11.10.2026, hart)
+Der LOKI-Standard-Ablauf wird **vor der Arbeit sichtbar gezeigt** (Plan-Tabelle), nicht nur gedacht. Keine Ausführung ohne gezeigten Plan:
+| Schritt | Pflicht |
+|---|---|
+| 1. SEQUENTIAL THINKING | Denkschritte (intern oder MCP), Ziel + Annahmen |
+| 2. MEMORY-CHECK | „Hatten wir das schon?" — deja/claude-mem/skill-routing |
+| 3. **PLAN SICHTBAR** | Aufgaben-Tabelle im Chat: # · Was · Wer · Beweis-geplant — VOR den Tool-Aufrufen |
+| 4. ROUTING | Passenden Skill/Agent aus Tabelle B wählen (ohne Rückfrage) |
+| 5. UMSETZUNG | Max 3 Subagenten parallel, 2 GO-Gates (Plan-GO + Deploy-GO) |
+| 6. BEWEIS + AUDIT | Pfad/Exit-Code pro Punkt + „was bleibt offen" (max 3 Schritte) |
+Allrounder-Zusatz (DEEP-Mode): Dekonstruktion → Adaptive Planung → Live-Recherche → Chain-of-Verification (Kill-Switch: keine Annahme ohne Quelle, Fehlendes = „DATENLAGE UNKLAR").
+**Verbot:** „FERTIG"-Meldungen ohne vorher gezeigten Plan. Parallele Sessions zum selben Thema ohne Absprache (Doppelarbeit-Schutz: erst Taskmaster/deja prüfen).
 
 ### B. Routing — bei passendem Kontext IMMER den Skill nutzen (ohne Rückfrage)
 | Aufgabe | Skill |

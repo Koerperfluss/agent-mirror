@@ -173,3 +173,10 @@ metadata:
 - Heute zusätzlich sichtbar (fremde Session): `MEINE_FOERDERUNGEN_SASCHA.pdf` (449 KB, 36 Optionen, 6 Tabellen) auf dem Desktop geliefert — siehe [[holdirmehr-replika]].
 - Bilanz: 36 Läufe; Dauer-GOs: Wecker · Deutsch-Patch-Recovery · doku-fix (3 Zeilen) · pointer-fix · **commit-wache (NEU)**.
 
+## Siebenunddreißigster Lauf (So 11.10. 09:05 — Morgen-Brief pünktlich PASS)
+- Kalender-Event **„Tagesplan 11.10."** UID `B5F28A09-C33A-4640-B40B-2244E9FA92E4`, Logbuch `~/.agents/memory/logbuch/2026-10-11.md` (status: offen). DEV-BRIEF entfiel (Sonntag — dokumentiert).
+- Tagesplan: 1) Hermes-Learning-Loop-Kopplung + Enforcement-Recherche abschließen (Cline-Läufe heute aktiv) · 2) LegalOps-MCP-Duplikate-Liste abarbeiten (Cline) · 3) **„GO commit-wache" + „GO pointer-fix"** (beide LokiVoice-P1 weiter: `app.py`/`konfiguration.py`/`tests/test_konfiguration.py` dirty seit Sa + Parent-Pointer seit 01.10) · 4) „GO doku-fix" + „GO Wecker" · 5) Deutsch-Patch-Strings.
+- Gestern sichtbar (Sa 10.10., deja+Platte): **`LM_STUDIO_SETTINGS_2026-10-10.pdf`** (257 KB, für Moritz — beide Rechner bedienbar) + **holdirmehr-Katalog-Merge 1772 Einträge** (1148+624, 2 Duplikate verworfen) — siehe [[holdirmehr-replika]] und [[lm-studio-mac-gemma4-2026-10-10]].
+- Auch heute im Sweep: PDF-Bearbeitungs-Session („Zahlen/Worte in PDF ändern + Metadaten") — nur Aktivität vermerkt, Inhalt nicht bewertet.
+- Bilanz: 37 Läufe; Dauer-GOs unverändert: Wecker · Deutsch-Patch-Recovery · doku-fix (3 Zeilen) · pointer-fix · commit-wache.
+

@@ -1,7 +1,7 @@
 ---
 app: zcode
 quelle: "saschalagler/cli/memories/projects/saschalagler-927d48cc8990f46e/memory/loki-os-v18-endprodukt.md"
-stand: 2026-09-23
+stand: 2026-10-11
 tags: [spiegel, zcode]
 ---
 
@@ -56,5 +56,7 @@ LOKI.OS v18 + AUFRÄUMUNG — STAND 21.09.2026 ABEND:
 **NACHTRAG 23.09. (13): Statuskarten-Diagnose vertieft (Kollektiv-Übersicht-Session).** Poll-Verdrahtung als KORREKT verifiziert (AppZustand.statusAktualisieren main.swift:62, RootView .task-Loop 12 s; VerbindungsBruecke.swift → Connections.swift `statuskarten()` Z.313: Kernel :8010, Voice :8078, Brain, OmniRoute :20128). Verdacht jetzt: Neustart-Schleife der App-Instanz oder hängender Sub-Abruf; Skelett-Karten beim ersten Laden sind by design grau. **OmniRoute-Karte rot = Normalzustand** (Gateway 20128 am 20.09. bewusst abgebaut) — kein Bug. Kernel-`0.0.0.0`-Bindung weiterhin offener Security-Punkt (Tagesplan N.0 🔴).
 
 **NACHTRAG 23.09. (14): DOKU-KORREKTUR — die Desktop-PDF enthielt Falsch-Fakten („15-Min-Limit", „Fristen-Wache läuft").** Neu erstellt: **`~/Desktop/LOKI_OS_DOKUMENTATION_KORRIGIERT_v2.pdf`** (Korrektur-Tabelle + gültiger Systemteil, alte PDF bleibt). `~/LOKI_SYSTEMPROTOKOLL.md` Fristen-Wache-Zeile korrigiert („auf Nutzer-GO KOMPLETT entfernt"). Details/Ursachen siehe [[george-thomas-status]] SPÄT 4. PDF-Text per `pdftotext` extrahierbar auch ohne Modell-PDF-Support.
+
+**NACHTRAG 11.10.2026 (15): APP-ZOO TEIL-AUFRÄUMUNG AUSGEFÜHRT (Sascha-GO „GO beide" im Chat — drehte die 23.09.-Ablehnung um).** ① GO 1: Alte v17-Companion-App (`~/loki-ki/macos-app-v17/LOKI_OS.app`, lief heimlich im Hintergrund als PID 4326) beendet — Kernel :8010 unberührt geprüft. ② GO 2: `LOKI Brain.app` aus /Applications **mv-only** archiviert nach `~/Desktop/Coworkspace_Ich/_APPS_ARCHIV_2026-10-11/` (dorthin auch die abgelöste Abfahrtsliste-LOKI-OS.html). **/Applications jetzt nur: LOKI OS v18.app + LokiVoice.app** (Voice bleibt bis Stimm-Test; Repo-Kopien = Werkstatt, bewusst bleibend). Zusätzlich am 11.10.: Kernel war morgens TOT (KeepAlive hatte nicht gezogen — never-bootstrapped) → Reparatur via `launchctl bootstrap` (Rezept in [[loki-os-livestatus-2026-10-11]]); v18-Bugs (D3-Tab schwarz, HTTP-Karten) als Task #19 im Taskmaster.
 
 Verwandt: [[loki-os-ecosystem-stand]], [[loki-second-brain]], [[loki-voice-agent]], [[george-thomas-status]]
