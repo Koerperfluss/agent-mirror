@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-11 10:47 UTC
+Zuletzt gespiegelt: 2026-10-11 11:09 UTC
 
 ## AGENTS
 
@@ -7667,28 +7667,30 @@ Verifiziert 26.08.2026. Clines Audit-Bericht war mostly richtig, hatte aber 2 Fe
 
 # Memory Index
 
-- [Offene Aufgabe: Wissensgrundlagen-Update](offene-aufgabe-wissensgrundlagen-update.md) — Körperfluss Edu/Förderpilot anhand GEMINI_APP_IMPORT-Vorlagen aktualisieren, Stand 11.10.2026 unvollendet
+- [Offene Aufgabe: Wissensgrundlagen-Update](offene-aufgabe-wissensgrundlagen-update.md) — Kern erledigt 11.10. (3 Gems + SECOND_BRAIN 13), nur Körperfluss EDU (Desktop-TCC) offen
 - [Session-Umgebung: Shell defekt](session-umgebung-shell-defekt.md) — spawn /bin/zsh ENOENT am 2026-10-11; App-Neustart ist die Lösung
 
 ## offene-aufgabe-wissensgrundlagen-update
 
 ---
 name: offene-aufgabe-wissensgrundlagen-update
-description: Offene Aufgabe — Wissensgrundlagen der
-  Körperfluss-Edu-/Förderpilot-Projekte anhand neuer
-  foerderguru-/agentallrounder-Prompts aktualisieren
+description: Wissensgrundlagen-Update Körperfluss/Förderpilot — Kernteil
+  erledigt 11.10.2026, nur Körperfluss EDU (Desktop) offen
 metadata:
   node_type: memory
   type: project
   originSessionId: sess_1896791b-68d1-4fe1-be96-cacde5b2e86d
 ---
 
-Nutzer-Auftrag vom 2026-10-11: Die Prompting-Infos / Wissensgrundlagen der Projekte **Körperfluss Edu** und **Förderpilot** (unter `/Users/saschalagler/Desktop/Coworkspace_Ich/FIRMEN PROJEKTE`) sind veraltet und sollen anhand der neuen Inhalte aus `/Users/saschalagler/Desktop/GEMINI_APP_IMPORT/` (Unterordner `foerderguru`, `agentallrounder`) aktualisiert und erweitert werden.
+Auftrag vom 2026-10-11 (Prompting-Infos der Wissensgrundlagen aktualisieren/erweitern anhand der neuen Gem-Prompts): **Kern erledigt am 11.10.2026**:
 
-Stand: Aufgabe unvollendet — die Wissensgrundlagen-Datei konnte nicht gefunden werden (Shell tot, kein Verzeichnis-Listing). Neue Vorlagen bereits vollständig erfasst: `~/.agents/skills/foerderguru/SKILL.md` (Förderberater AT/EU, Stand 11.10.2026) und `~/.agents/skills/agentallrounder/SKILL.md` (Universal-Ops-Omni-Architect v8.5). Siehe [[session-umgebung-shell-defekt]].
+1. `~/.agents/skills/foerderguru/SKILL.md` — neuer Abschnitt 6 „PROJEKT-WISSENSGRUNDLAGE KÖRPERFLUSS" (SSOT-Kernzahlen, Cap-Table, 0 Pilotpartner, Kill-Switch). Backup: `SKILL.md.bak-2026-10-11`.
+2. `~/.agents/skills/agentallrounder/SKILL.md` + `allrounder/SKILL.md` — Abschnitt 9 „PROJEKT-KONTEXT-KERNEL KÖRPERFLUSS", synchron gehalten. Backups je `.bak-2026-10-11`.
+3. `~/antigravity/Körperfluss-PILOT.AI/SECOND_BRAIN/13_PROMPTING_STANDARDS.md` neu angelegt + Zeile in `00_INDEX.md` ergänzt.
 
-**Why:** Ohne diese Info würde die Aufgabe in einer neuen Session komplett neu begonnen statt fortgesetzt.
-**How to apply:** Neue Session: zuerst Wissensgrundlagen-Datei in den beiden Projekten lokalisieren, dann Update anhand der beiden SKILL.md-Vorlagen (Anti-Halluzination-Kill-Switch, Pflicht-Tabellen, ADHS-Output-Protokoll) durchführen.
+`~/.gemini/config/skills/` ist mit `~/.agents/skills/` verknüpft/gemountet — Edits wirken automatisch in beiden (verifiziert per Re-Read).
+
+**Noch offen:** Körperfluss-EDU-Projekt unter `~/Desktop/Coworkspace_Ich/FIRMEN PROJEKTE/` — für ZCode TCC-blockiert (jeder Desktop-Read = „File does not exist"). Fix: Systemeinstellungen → Datenschutz & Sicherheit → Dateien und Ordner → ZCode → Desktop; danach ZCode-Neustart und EDU-Wissensgrundlagen nach demselben Muster (Projekt-SSOT-Abschnitt + Verweis auf 13_PROMPTING_STANDARDS.md) aktualisieren. Siehe [[session-umgebung-shell-defekt]] (Shell-ENOENT gilt evtl. nur für die Session vom 11.10.).
 
 ## session-umgebung-shell-defekt
 
@@ -9806,7 +9808,7 @@ Beobachtet 06.09.2026 (Session mit Off-Peak-Ticket): Nach User-Paste „ZCode Er
 
 - [LOKI.OS v18 Endprodukt](loki-os-v18-endprodukt.md) — 23.09.: Feature-Port FERTIG (8a10fc99, Review PASS, PID 71025): alle v17-Ansichten in v18 (12 Tabs, Skills 601/601, D3-Architektur-Tab offline) — offen: D3-Tab rendert schwarz, Dev-Team braucht lokales Modell (Lücke 3), „Endpoint fehlt"-Banner irreführend · Gesamtübersicht: **~/LOKI_SYSTEMPROTOKOLL.md** (bei Status-Fragen ZUERST lesen!) · App-Zoo: Aufräum-Workflow 50687d91 von Sascha GESTOPPT (nichts verschoben); 5/6 Lücken real; nur Sascha-Freigaben: Mikro-TCC, Gmail-API (Lücke 1), LiteRT (Lücke 3)
 - [LOKI.OS v18 Build + Agent-Diagnose + Aufräumung](loki-os-v18-build.md) — 21.09.: v18-Bau dwfrun-5d491f4f Phase 3/6 (UI+Verbindungs-Bauer aktiv) · Diagnose FERTIG: 3× Abbruch = App-Neustart-SIGTERM beim Mid-Turn-Interrupt, reviewer-Not-Found = qwen/ClinePass, 7 Descriptions+thoughtLevel gefixt (Backups) · Aufräumung läuft als **fa386d13** (32a721cc extern superseded, 30 Cluster); Workflow-Lane zuverlässig, direkte Dispatches sterben bei Turn-Interrupt
-- [ATLAS Versionsstand](atlas-versionsstand.md) — 21.09.: 5173+4173 Server tot; PROD atlas-v5.web.app lebt mit NEUEM Bundle index-DG7Gco4d.js (Redeploy seit 11.09.); ATLAS_MASTER bis 18.09. bearbeitet; Pfad A/B nie entschieden
+- [ATLAS Versionsstand](atlas-versionsstand.md) — 21.09.: 5173+4173 Server tot; PROD atlas-v5.web.app lebt mit NEUEM Bundle index-DG7Gco4d.js (Redeploy seit 11.09.); ATLAS_MASTER bis 18.09. bearbeitet; Pfad A/B nie entschieden · **11.10. VOLL-TESTUNG: Web PASS (0 Bugs) · iOS BUILD SUCCEEDED (-destination-Falle, Bundle app.barbulls.atlas) · ANDROID GELÖST (JDK-8→21 JAVA_HOME-Fix, app-debug.apk 28 MB) · Code-Analyse: alle Features da, kein Cloud-Storage = Privacy-Design · ECHTER BUG #28: „Analyse starten" startet Video-Pose-Analyse nicht (Task offen)**
 - [LOKI Second Brain](loki-second-brain.md) — 20.09. SPÄT FERTIG+GETESTET: ~/loki-brain/ (brain.py+FTS5+git) × Daemon-4-Tools × Obsidian-Vault × M2-Auto-Protokoll; Review PASS (0 HIGH, 2 MED); Builder-Schwarm+Director parallel — NIE wieder von 0 planen, nur erweitern; Handoff-Datei war Basis
 - [loki-dev Plan alle 5 Modi](loki-dev-plan-alle-modi.md) — 20.09. VOLLZUG BEENDET (alle 6 Stufen ✅): Routing-Sync, Agenten 10/10, VAD+Vocab live; Ausbaustufe ① erledigt, ③ Morgenbrief via Brain real, offen: ② CDP-Browser ④ iPhone; Plan-Datei ~/LOKI_DEV_PLAN_ALLE_MODI.md
 - [Saschas harte Arbeitsregeln](sascha-arbeitsregeln-hart.md) — 20.09. gelernt: LOKI OS = ZCode/GLM selbst (keine Agent-Schwärme bei bekannten Fakten), Plan-abgelehnt → STOPP+simple Frage (keine Neu-Analyse), keine Überraschungs-GUI/TCC-Dialoge, nichts ohne GO schreiben, alrround-voice-Files = M4-Prompting-SPEC · 01.10. ergänzt: §11 Empfehlung+Default statt Fragen (auch wenn Quelle determiniert), §12 signierte Originale byte-identisch wiederverwenden + Stale-View-Check (Disk-Beweis vor Argument)
@@ -9927,6 +9929,12 @@ Verwandt: [[loki-os-ecosystem-stand]]
 - **Android: BUILD FAILED (18s)** — „Could not resolve all artifacts for configuration 'classpath'" (Gradle-Config-Auflösung, kein Code-Fehler). → Task #28. Alte funktionierende APKs existieren weiter: `app/build/outputs/apk/release/app-release.apk` + `app/src/main/assets/public/download/ATLAS-v5.apk`.
 - **Code-Analyse (explore-Subagent, Belege app/src/):** ALLE 4 Features existieren — File-Upload = JSON-Import/Export Übungs-DB (DatabaseTab.tsx:103/66-73), Video-Upload + Kamera LOKAL via MediaPipe (VisionPanel.tsx:618/710, pose.ts:411 „Frames verlassen das Gerät nie"), Trainingsplan (data/plans.ts + TrainingsplaeneTab + GTG gtgDb.ts), Logbuch (logbookDb.ts IndexedDB + SessionRunner.tsx painScore). **Kein Firebase Storage (0 Grep-Treffer) = Privacy-Design, kein Bug.** YouTube-Links statt Video-Storage (exercise.ts:14).
 - **ATLAS-Auftrags-Lücken gegenüber Saschas Wortlaut** (seine Rechnung „DAS WAREN AUCH NICHT DIE AUFGABEN" bezog sich u. a. darauf, dass ich seinen Auftrag nie als komplette Checkliste zeigte): ❌ Android-Fix · ⚠️ File-/Video-Upload-Echtdurchlauf · ⚠️ Nutzbarkeits-/Verständnis-Bewertung · ❌ „Optimierung der ganzen App" nicht begonnen. Test-Beweise: Desktop/TEST_ATLAS_11-10.png, TEST_ATLAS_IOS_11-10.png (pendiert), TEST_HUB_11-10.png.
+
+**11.10. NACHMITTAG — Android GELÖST + Video-Upload getestet (echter Bug gefunden):**
+
+- **Android ✅ GELÖST (Subagent, BUILD SUCCESSFUL 1m8s, APK `app/build/outputs/apk/debug/app-debug.apk` 28 MB frisch):** Ursachen-Kette: System-JDK = **Java 8**, AGP 8.13 braucht ≥17, Capacitor kompiliert source 21 → Fix rein Umgebungs-seitig: `export JAVA_HOME="/opt/homebrew/opt/openjdk@21/libexec/openjdk.jdk/Contents/Home"` + `./gradlew assembleDebug --offline` (alle Artifacts im Cache). Zero-Code-Diff. Dauerhaft-Option (bewusst NICHT gesetzt): `~/.gradle/gradle.properties` → `org.gradle.java.home=…openjdk@21…`. Copy-Vorlage steht im File.
+- **Video-Upload-Nachtest (Subagent, URTEIL FAIL 4✅ 3❌ 1⚠️):** File-Upload App-seitig ✅ (Video landet sauber im `<video>`, Name angezeigt) — **echter Bug: „Analyse starten" startet die Verarbeitung NICHT** (video friert bei currentTime 0.02, 14 Gelenkwinkel bleiben „–", play() resolvet aber sofort wieder paused; keine Fehlermeldung) → **Task #28 (P2, Projekt ATLAS): „Analyse-Button startet Video-Pose-Analyse nicht — vermutlich requestVideoFrameCallback/Playback-Loop"**. flutter-skill `upload` ist für diese App unbrauchbar (Chrome-154-Quirk: file chooser „files.length is 0") — funktionierender Workaround = DataTransfer-Injection + change-Event. Kleinstrepro: PROD → Form-Check → Vision → „Video wählen" → MP4 → „Analyse starten".
+- Privacy-Pilot Ollama (qwen3.5:9b, FFG-Frage): erster Aufruf = 2-Min-Timeout (Modell-Ladezeit beim Kaltstart), Retry offen — gehört zu Task #8 Hermes-Pilot.
 
 ## autoclaw-sprache-translocation-fix
 
@@ -10821,6 +10829,11 @@ Interaktive Karte: `~/.zcode/v2/visualizations/c99caef…/loki-os-universum.html
 
 **Chat-Analyse (datenbasiert, 99 heutige Nachrichten aus dem Archiv):** 6 Aufgabengruppen (A Team ✓ · B Sehen ✓ · C Konsolidieren ✓ · D Reparieren ✓ · E Verstehen ✓ · F Apps teils) — Kern-Rest = **#17 Live-Lauf + Saschas 2 TCC-Klicks (#10) + #8/#9 App-Entscheidungen**. 2 verlorene Cline-Aufträge geborgen: **#26 claude-mem Chroma-Fehler** (prewarm exit 1, Ports 37777/21012/37778, P2 offen) · **#27 legal-ops-omni bei Cline** (war Symlink in Quelle `~/.agents/skills → ~/.gemini/config/skills` → echte Kopie + sync cline → **da, done**). Taskmaster: 20 offen (#1–27, #12/#27 done).
 
+**TCC-AUFLÖSUNG (12:0x, Sascha befahl „LÖSE ES DOCH"):** Die „2 Klicks" = **PHANTOM**. Systemeinstellungen „Gerätesteuerung und Datenzugriff" live via computer-use (node_repl, App "System Settings") ausgelesen: **Hammerspoon ✓, LokiVoice ✓, ZCode ✓, ZCode Computer Use ✓, AutoClaw ✓ — alle Checkboxen = 1.** Mikrofon-Funktionstest: `ffmpeg -f avfoundation -i ":0" -t 3` → **470 KB Aufnahme, 0 Permission-Fehler**. Tasks #10/#1 faktisch entwertet (noch offen im Taskmaster, können zu). TCC-DB selbst SIP-geschützt (sqlite „unable to open database file") — Umweg unnötig, Berechtigungen waren längst da. Lektion: TCC-Verdacht erst PANEL-LIVE-Auslesen (computer-use), nie blind auf Klick-Anweisung bestehen.
+- **Voice-Daemon 8078 starb zwischendurch** (lebte 08:0x, pgrep/lsof leer ~12:0x; LaunchAgent war „geladen" aber nicht im Domain) → `launchctl bootstrap gui/501 ~/Library/LaunchAgents/com.saschalagler.lokivoice.plist` revivete ihn (idle, glm-5.3-flash). **say_text = HTTP 404 auf alle getesteten Pfade** (/say_text, /api/say_text, /say, /tts) — Endpoint-Format ungeklärt; Doppel-Strg→sprechen = Saschas physischer Test, steht aus. Mikrofon selbst ist NICHT der Blocker (siehe oben).
+- **Privacy-Pilot Ollama:** qwen3.5:9b via /api/generate (FFG-Frage) → **2-Min-Timeout** (Kaltstart-Ladezeit); Retry offen, gehört zu Task #8.
+- **Taskmaster-Update (12:0x):** **#17 done** (appagentteam Live-Flug 1 auf ATLAS+HUB), neu **#28 = ATLAS Bug „Analyse-Button startet Video-Pose-Analyse nicht"** (P2, Projekt ATLAS; Details in [[atlas-versionsstand]]) — Android-Build-Fix wurde vom implementer-Subagenten GELÖST ohne eigene Task-Nummer (JDK-8→21-Environment-Fix, Details in [[atlas-versionsstand]]). ATLAS-Vertiefungs-Subagent (Datenbank-CRUD/Überblick/Seed-Pläne) lief beim letzten Stand noch. 1 Subagent-Fehlstart: Android-Versuch 1 starb mit „Model request failed" → sofortiger Retry funktionierte.
+
 ## loki-os-v18-build
 
 ---
@@ -11399,6 +11412,7 @@ metadata:
 - **Detaillierter Projektstand** (66/66 bewertet, Vermarktungs-Reihenfolge Bar-Bulls→LegalOps→LokiVoice→agent-mirror→Körperfluss, Mimosa/git-blocks, storefront-Build kaputt) steht im Projekt-Memory: `~/Mirror/agent-mirror/mirror/zcode/saschalagler/cli/memories/projects/tool-sammlung-verkauf-d6893782b4cb810a/memory/verkaufshub-inventar-und-workflow.md` — bei Hub-Arbeiten ZUERST lesen.
 - **11.10. Test-Pipeline-Lauf:** :3300 war TOT → `python3 -m http.server 3300 --bind 127.0.0.1` im Repo gestartet (KEIN LaunchAgent — stirbt beim Reboot). flutter-skill explore: 0 Bugs, nur favicon-404. Backend :8055 aus (Steuer-Buttons tot ohne es; Start = uvicorn main:app nur auf GO). Beweis: `~/Desktop/TEST_HUB_11-10.png`.
 - **11.10. Design-Urteil Sascha:** altes hub.html = „absolut MÜLL" — Vision: **3D, modern, fluid, Liquid-Glass, Higgsfield-Vibe, reactive**. → `hub-glass.html` gebaut (Repo-Root + Kopie in storefront/out-firebase): animierte Gradient-Blobs, backdrop-blur Glass-Karten mit 3D-Tilt, live Suche + Tier/Verkaufen-Filter, Daten via `fetch('./tools-v2.json')` (funktioniert nur über HTTP :3300, nicht file://). **Alte hub.html unberührt** — Sascha-Vergleich/Verdict steht aus. Falls Verdict „glass gut": hub.html ersetzen + hub_refresh.sh-Kette prüfen (die regeneriert das alte).
+- **11.10. Flug 2 (Pipeline, alle bewiesen):** Backend :8055 gestartet (`python3 -m uvicorn main:app --host 127.0.0.1 --port 8055` aus Repo-Root) → **LEBT: 64 tools_in_db**, Agenten-Log sichtbar (A1 Market Research ✅, A2 Competition ✅ — aber ⚠ **„Modell glm-first: HTTP Error 400"** = OmniRoute-tot-Folge; die 15 Agenten brauchen einen anderen Modell-Weg → „GO Agenten-Modell fixen" offen bei Sascha). `/api/jobs` leer. :3300 (python http.server) starb 2× und wurde jeweils neu gestartet — **stirbt bei Reboot, kein LaunchAgent** (bei Cockpit-Nutzung erst curl-Check). hub-glass.html Funktionstest via Playwright-DOM: 67 Karten, Stats korrekt (20 verkaufen-ja / 52 Ghost — Ghost-Flag = bekannter Inventar-Stand), **Live-Suche bewiesen: „atlas" filtert 67→8 Treffer alle korrekt**. 1 Console-Error = nur favicon-404. Test-Trap: synthetic `new Event('input')` braucht `bubbles:true`, sonst greift der delegated Listener nicht (Test-Artefakt, kein App-Bug).
 - **810k-Cline-Session `1789109742185_p3730`** („VERKAUFS HUB - 11 Agent monster", inputTokens 304 M, 8,3 MB messages, FAILED) = war ursprünglich ein **ATLAS-Xcode/Web-Abgleich** („xcode app passt fast, gleiche sie mit web app ab, apk android zum verteilen") — Titel kam aus späterem Kontext. Schadlos schließbar.
 - **Verwandt:** [[appagentteam-flutter-skill-live]] (Pipeline), [[atlas-versionsstand]] (ATLAS-Volltestung), [[sascha-vollzug-keine-zwischenfragen]]
 
@@ -11642,7 +11656,7 @@ Am 22.09.2026 schlug jeder Subagent-Start (z. B. `cavecrew-investigator`) fehl m
 
 ---
 name: verkaufshub-inventar-und-workflow
-description: Verkaufshub-Finalstand (67/67 bewertet + 67/67 Listings + systemweite Platten-Suche abgeschlossen, GOAL.md im Repo; Team dwfrun-cc0608f8 Resume offen bis Quota-Reset 17:15) + hub.html Cockpit :3300 + Workflow-Erkenntnisse
+description: Verkaufshub FINAL (67/67 bewertet, 67 Listings, Auto-Pilot-Runde 13/13 Pläne, 15 vorschlaege, ANLEITUNG-VERKAUFSHUB.md + 📖-Button im Hub; Team dwfrun-cc0608f8 Resume + Mimosa-Commit-Whitelist offen) + Workflow-Erkenntnisse
 metadata:
   node_type: memory
   type: project
@@ -103197,6 +103211,123 @@ obs.at (ORF-/Telefonbeiträge Befreiung)
 
 ---
 *Quellenstatus: „web-verifiziert/web-bestätigt" = in dieser Recherche geprüft (10.10.2026); „Katalog-Kurzbeschreibung, unbestätigt" = holdirmehr/data/katalog.json, ohne unabhängigen Web-Check (Rate-Limit/Timeout/404). „⚠️ UNBESTÄTIGT" markiert Einträge laut Gegenleser bzw. Quellenstatus. Fachbegriffe: **BH** = Bezirkshauptmannschaft (Bezirksverwaltungsbehörde des Landes), **ALG** = Arbeitslosengeld, **ÖGK** = Österreichische Gesundheitskasse (Krankenkasse), **OBS** = ORF-Beitrags Service.*
+
+## OPTIMIERTE_LISTE_V2
+
+# OPTIMIERTE LISTE V2 — Sascha, Loosdorf (Stand 11.10.2026)
+
+**Profil (aktualisiert):** 29, Single, keine Kinder · arbeitslos + AMS-Sperre (~390 € diesen Monat, Beschwerde läuft) · Miete 350 €, 3382 Loosdorf (Bez. Melk) · keine Behinderung · **GEWERBE vorhanden** · **ÖGK + Strom bereits betreut (Sozialarbeiterin)** · **KEIN Mietrückstand** · Ex-Arbeitgeber hält Lohn + Lohnzettel zurück, AK-Termin geplant.
+
+**Wahrheitsquelle für Bedingungen:** Liste 2 (`BEANTRAGEN_FUER_MICH.md`, web-geprüft 10.10.2026). Wo L1 widerspricht → L2 gewinnt, Korrektur notiert.
+**Labels:** ✅ web-verifiziert · 🔶 Katalog-basiert · ⚠️ DATENLAGE UNKLAR
+
+---
+
+## BLUF
+
+**Der Hebel Nr. 1 bleibt Sozialhilfe bei der BH Melk** — sie schaltet fast alles andere frei (Krankenversicherung des Bundes, OBS, Fernsprechentgelt, Härtefall-Zusatzleistungen, Heizkostenzuschuss-Logik). Vorher/danach: **AK Melk** (Lohnklage + Beschwerde gegen Sperre — kostenlos, keine Vorbedingung). **Gewerbe ist ein eigener Hebel** (FFG Innovationsscheck 10.000 €, SVS-Klärfall) — aber vor Sozialhilfe-Antrag klären, wie Gewerbe-Einkünfte angerechnet werden. Wohnschirm Miete ist **jetzt hinfällig** (kein Rückstand) und bleibt nur als Notfall notiert. Änderungen vs. L1: 6 Einträge raus (falscher Bezirk, keine Kinder, AK-Mitgliedschaft), 4 Neueinträge aus L2.
+
+**Aktion-Reihenfolge:** 1. AK Melk (Termin läuft) → 2. BH Melk Sozialhilfe → 3. AMS (Beschwerde/Überbrückungshilfe) → 4. Gemeindeamt Loosdorf (Heizkostenzuschuss 2026/27 ab ~22.10.) → 5. Gewerbe-Block (FFG + SVS).
+
+---
+
+## 1) SOFORT — ohne Vorbedingung (diese Woche)
+
+*Hinweis: „ohne Vorbedingung" bezieht sich auf die kostenlose AK-Beratung. Der Rechtsschutz (Vertretung in der Lohnklage) setzt i. d. R. eine AK-Mitgliedschaft voraus, die ohne laufende Beschäftigung nicht besteht (L2) — das im AK-Termin klären.*
+
+| # | Was | Wie/Wo | Nutzen | Conf. |
+|---|---|---|---|---|
+| 1 | **AK Melk: Lohnklage + Beschwerde AMS-Sperre (BVwG)** | Arbeiterkammer Melk, Hummelstraße 1 — Termin ist geplant; Lohnzettel-Rückhaltung = Anzeige/Lohnklage möglich | Schlüssel für ALG nach Sperre; **Rechtsschutz für die Lohnklage selbst fraglich ohne AK-Mitgliedschaft** (L2: Mitgliedschaft braucht laufende Beschäftigung → im Termin klären) | ✅ (L1 lokal + L2) |
+| 2 | **Sozialhilfe NÖ** (NÖ SH-Ausführungsgesetz) | **BH Melk**, Hauptplatz 1, ☎ 02752/53100 — Zuflussprinzip nennen, Sperrbescheid + Beschwerde vorlegen; **Gewerbe-Einkünfte vorher offenlegen** (Anrechnung klären) | Bedarfsorientiert, deckt die Differenz (Miete 350 € vs. Einkommen ~390 €) — L1 nannte 1.229,89 € max., **L2-Korrektur: bedarfsorientiert, kein Fixanspruch; kein konkreter Betrag belegt** | ✅/🔶 |
+| 3 | **Individuelle Spontanhilfe NÖ** (Rotes Kreuz NÖ) | sozialarbeit@no.roteskreuz.at, ☎ 059144-50530; Einkommens- + Rechnungsnachweis | Einmal-Zuschuss, bargeldlos an Gläubiger | ✅ |
+| 4 | **Rezeptgebührenbefreiung** | ÖGK — Befreiungserklärung; Grenze klar unterschritten | ~7,55 €/Rezept (2026, bei Kasse prüfen) | ✅ |
+| 5 | **Wohnungssicherung NÖ Mitte** (Wosi) | Kostenlose Wohnberatung, zuständig Bez. Melk — lassen sich Wohnbeihilfe-Antrag begleiten (KEIN Wohnschirm — siehe Notfall) | Beratung + Antragshilfe kostenlos | 🔶 |
+| 6 | **NÖ Mental-Health-Hotline** | Telefonseelsorge 142 / noetutgut.at | Kostenlos | ✅ |
+| 7 | **ÖGK-Gesundheitscheck** (auch ohne laufenden Schutz) | oegk.at — Termin buchen | Kostenlos | ✅ |
+| 8 | **E-Control-Tarifkalkulator** | e-control.at — Strom-/Gastarif vergleichen (Strom ist betreut → mit Sozialarbeiterin checken) | kostenloses Tool, oft 100+ €/Jahr | ✅ |
+| 9 | **Hilfe zur sozialen Eingliederung NÖ** | BH Melk — **vorher klären**, ob reine Existenzsicherung abgedeckt (L2: ⚠️ UNBESTÄTIGT, Katalog zielt auf Betreuung/Unterbringung) | ggf. Therapie-/Betreuungskosten | ⚠️ |
+
+## 2) BEDINGT (vor allem NACH Sozialhilfe-Bewilligung — die Bedingung schaltet frei)
+
+| Was | Bedingung | Nutzen | Conf. |
+|---|---|---|---|
+| **Hilfsfonds Verbrechensopfer (Kostenübernahme)** | **ZWEI Vorbedingungen (L2):** 1. laufende **Strafanzeige** wegen Lohn-Rückhaltung (passt zur AK-Taktik), 2. Straftat besonderer Schwere/Tragweite **mit gesundheitlichen Folgen** — beides über Weißer Ring/Sozialministeriumservice | Kostenübernahme im Einzelfall — **prüfen, nicht garantieren** | ✅ (Quelle web-bestätigt, Anspruch ⚠️) |
+| **ÖGK Psychotherapie-Zuschuss (Wahltherapeut:in)** | Nur für ÖGK-Versicherte mit bewilligter Leistungsausweitung; im Arbeitslosigkeitsbezug über **PVA** versichert → dort analogen Zuschuss erfragen | Zuschuss zu Psychotherapie | ⚠️ (L2-Neueintrag, unbestätigt) |
+| **ÖGK-Unterstützungsfonds (z. B. Zahnersatz)** | Nur wenn aktuell ÖGK-versichert (e-card) + konkreter Eigenanteil ansteht + wirtschaftliche Notlage nachgewiesen | Übernahme des Eigenanteils im Einzelfall | ⚠️ (L2-Neueintrag, unbestätigt) |
+| **ÖGK Kur/Rehabilitation** | Nur mit aktiver Versicherung/Leistungsbezug + ärztlicher Verordnung; bei Sperre Versicherungsschutz offen → prüfen | Kur/Rehab, **Selbstbehalt 11–27 €/Tag** | ✅ (L2-Neueintrag, web-bestätigt) |
+| **OBS-Befreiung (ORF-Beitragspflicht)** | L2-Regel: **reiner ALG-/Notstandshilfe-Bezug genügt NICHT** — Befreiungsleistung (Sozialhilfe) nötig → erst nach Bescheid über obs.at | ~25–30 €/Monat **(Betrag unbelegt, ⚠️)** | ✅ (L2) |
+| **Zuschuss Fernsprechentgelt** | Bezieherkreis inkl. Sozialhilfebezieher; Antrag via obs.at (nach OBS) | **~10 €/Monat (L2)**; L1/Gemini nannten ~12 € — L2 gewinnt | ✅ |
+| **Sozialhilfe-Krankenversicherung (Bund)** | Sozialhilfe-Bezug **ohne eigenen KV-Schutz** — bei AMS-Sperre droht KV-Ausfall: genau dieser Fall → mit Bescheid aktiv machen | KV-Schutz gesichert | ✅ (L2-Neueintrag) |
+| **Sozialhilfe-Zusatzleistung Härtefall „Wohnen"** | Nur für **anerkannte** Sozialhilfe-Bezieher; Einstufung durch Sozialarbeit NÖ (Wohnbezirk Melk) | Miet-/Wohnkosten-Zuschlag | 🔶 |
+| **Kautionsdarlehen Land NÖ** | Nur im Rahmen NÖ-Sozialhilfe + nachweisbare Mietskaution — nur falls Umzug unausweichlich | zinsfreies Darlehen | 🔶 |
+| **Heizkostenzuschuss 150 € (Runde 2026/27)** | Runde 2025/26 **Frist 31.03.2026 abgelaufen** (L2-Korrektur); neue Runde erwartet ab ~22.10.2026 beim **Gemeindeamt Loosdorf**; Voraussetzungen (Hauptwohnsitz NÖ ≥6 Mon., **Staatsbürgerschaft** [L2], Einkommensgrenze, Heizkosten-Nachweis) grds. erfüllt | 150 € | ✅ |
+| **NÖ Wohnzuschuss** | NUR wenn Wohnung mit NÖ Wohnbauförderung gebaut — **beim Vermieter nachfragen** | monatlicher Zuschuss | 🔶 |
+
+## 3) BEI AMS-Maßnahmen (erst wenn AMS was verfügbar macht / Sperre weg)
+
+| Was | Bedingung | Conf. |
+|---|---|---|
+| **Überbrückungshilfe AMS** | Nur wenn ALG/Notstandshilfe wegen Sperre unbezahlt **+ Notlage** — Voraussetzungen beim AMS prüfen (L2-Neueintrag) | ✅ (Quelle web, Detail ⚠️) |
+| **Arbeitslosengeld** | Erst **nach Ablauf der Sperre**; Lohnzettel/Lohnnachweis über AMS-Beiziehung — hängt an AK-Termin | 🔶 |
+| **Notstandshilfe** | Erst wenn ALG erschöpft; Anspruchsstopp während Sperre | ⚠️ |
+| **Schulungszuschlag (2,67 €/Tag), Beihilfe Lebensunterhalt (bis 34 €/Tag), Kurskosten/Nebenkosten (bis 100 %), Fachkräftestipendium, Umschulungsgeld (ALG+22 % — ⚠️ Prozentsatz unbelegt, L2 nennt keinen Betrag)** | Nur während laufender AMS-Schulung/Umschulung mit Kursverfügung | 🔶/⚠️ |
+| **Vorstellungsbeihilfe** | Pro Vorstellungsgespräch mit Belegen + Betreuungsverhältnis; bei Sperre vorher mit Berater klären | ✅ |
+| **NÖ Qualifizierungs-/Beschäftigungsmaßnahmen, NÖ Bildungsförderung (bis 2.500 €), Kombilohnbeihilfe (Arbeitgeber-Argument)** | Nur bei aktiver AMS-Verantwortung / Einstellung | 🔶 |
+| **Pendlerhilfen (Land NÖ + AK, bis 1.200 €)** | NUR falls 2025 tatsächlich gependelt — Frist **31.10.2026** rückwirkend — **DATENLAGE UNKLAR: hast du 2025 gependelt?** | ⚠️ |
+| **SMS Arbeits-Assistenz** | Kostenloses Job-Coaching — kann parallel laufen | 🔶 |
+
+## 4) GEWERBE (eigener Hebel — Sozialhilfe-Anrechnung vorher klären!)
+
+| Was | Bedingung/Hinweis | Conf. |
+|---|---|---|
+| **FFG Innovationsscheck (bis 10.000 €)** | Gewerbe vorhanden = Voraussetzung erfüllt; **nicht in L1/L2-Katalogen — aus Saschas Vorgabe übernommen**, Bedingungen (Innovation, F&E-Leistung, Abrechnung) auf ffg.at prüfen | 🔶 |
+| **SVS-Klärfall** | Gewerbe + (drohende) Sozialhilfe → SVS-Mindestbeiträge vs. Befreiung/Niedrigverdienstatbestand klären; Sozialarbeiterin + SVS kontaktieren, VOR Sozialhilfe-Antrag Ein-/Anrechnung dokumentieren | ⚠️ |
+| **AMS Unternehmensgründungsprogramm (UGP)** | Nur mit AMS-Zustimmung; 6 Monate Existenzsicherung + Beratung — Gewerbe schon vorhanden → ggf. nur Beratungsteil, mit AMS-Betreuer klären | 🔶 |
+| **Sozialhilfe-Anrechnung Gewerbeeinkünfte** | Gewerbliche Einnahmen zählen beim Zuflussprinzip — **voller Transparenz-Antrag ist Pflicht**, Anrechnung ggf. auf Bedarfssatz | ⚠️ |
+
+## 5) NICHT-OPTIONEN (kurz — raus aus der aktiven Liste)
+
+- **WOHNSCHIRM MIETE** — kein Mietrückstand → **hinfällig**; bleibt NOTFALL (bei drohender Delogierung: über Wosi/Caritas, Zugang nur mit Beratung VOR Antrag). ✅
+- **WOHNSCHIRM ENERGIE / EVN Energiehilfe / Verbund Stromhilfefonds** — nur bei Energie-Rückständen/drohender Abschaltung; Strom wird betreut → nur Notfall notieren. ✅
+- **AK-Programme (Digi-Bonus 220 €, AK Sozialfonds Bildung 1.500 €, BRP-Bildungsbonus)** — brauchen AK-Mitgliedschaft = laufende Beschäftigung → **raus aus 'jetzt'**, erst wieder bei Anstellung. ✅
+- **Caritas Wohnungssicherung NÖ Ost** — falscher Bezirk (Melk = NÖ Mitte) → gestrichen. 🔶
+- **Armen- und Bürgerspitalstiftung Wiener Neustadt** — örtlich nicht zuständig (Bez. Melk) → gestrichen. ⚠️
+- **Familienhärteausgleich** — ohne Kinder kein Anwendungsfall → gestrichen. ⚠️
+- **Heizkostenzuschuss 2025/26** — Frist abgelaufen. ✅
+- **Steuerposten (Krankheitskosten, Karenz-Werbungskosten)** — bei ~390 €/Monat lohnt nicht (Selbstbehalt/Einkommen). 🔶
+- **Schuldnerberatung NÖ** (aus Saschas Gemini-Liste) — nicht im Katalog; sinnvoll als Begleitung (z. B. über Sozialarbeit NÖ / Caritas), **DATENLAGE UNKLAR** zu konkreter Anlaufstelle im Bez. Melk. ⚠️
+- **HibL (Hilfe in besonderen Lebenslagen)** — Teil der NÖ Sozialhilfe bei BH Melk → keine eigene Aktion, im Sozialhilfe-Gespräch miterledigen. 🔶
+- **Strom-Sozialtarif/EAG** — **bereits betreut** durch Sozialarbeiterin → nur Status erfragen, kein eigener Antrag. ✅
+
+## 6) Unterlagen-Set (für ALLE Anträge)
+
+| # | Unterlage | Wofür |
+|---|---|---|
+| 1 | Meldezettel (Loosdorf) | Sozialhilfe, Wohnbeihilfe, Heizkostenzuschuss, OBS |
+| 2 | Ausweis | Alle Anträge |
+| 3 | Mietvertrag | Sozialhilfe, Wohnbeihilfe |
+| 4 | Kontoauszüge 3 Monate | Einkommens-/Bedarfsnachweis |
+| 5 | AMS-Bescheide (Sperre) + Beschwerde-Nachweis | Sozialhilfe, Spontanhilfe, Überbrückungshilfe |
+| 6 | Lohnzettel / Lohnnachweis (falls vorhanden) | ALG nach Sperre, Lohnklage, Strafanzeige |
+| 7 | **Gewerbeschein + letzte Gewerbe-Einnahmen** (NEU) | Sozialhilfe-Anrechnung, FFG, SVS |
+
+## 7) Kontakte
+
+```
+AK Melk · Hummelstraße 1 (Termin läuft)
+BH Melk, Abt. Soziales · Hauptplatz 1 · ☎ 02752/53100
+Gemeindeamt Loosdorf (Heizkostenzuschuss 2026/27)
+Verein Wohnen / Wosi NÖ Mitte · ☎ 02742/47076
+Caritas St. Pölten · ☎ 02742/841390
+Rotes Kreuz NÖ (Spontanhilfe) · ☎ 059144-50530
+obs.at · e-control.at · noetutgut.at / 142
+FFG · ffg.at (Innovationsscheck) · SVS (svs.at)
+```
+
+---
+*Quellen: L1 = `~/Desktop/öförderugnen/FOERDERUNGEN_FUER_MICH_LOOSDORF.md` (Katalog + Web, 10.10.2026) · L2 = `holdirmehr/out/BEANTRAGEN_FUER_MICH.md` (6 BEANTRAGEN / 33 BEDINGT / 54 NEIN, web-geprüft 10.10.2026, Wahrheitsquelle) · L3 = Saschas Gemini-Liste (11 Hebel, alle in L1/L2 enthalten bzw. hier als ⚠️ markiert). Keine Rechtsberatung — die AK berät kostenlos.*
+
+Geprüft: Analyst + adversarialer Kritiker (10.10.2026)
 
 ## TCC_LOESCHPLAN
 

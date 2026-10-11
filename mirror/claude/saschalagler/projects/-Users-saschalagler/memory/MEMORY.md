@@ -44,6 +44,9 @@ python scraper_vwgh.py --dry-run            # kein Schreiben
 - Sequential Thinking: MCP-Tool `sequentialthinking` bei JEDER Anfrage aufrufen (Nutzer-Regel 30.08.2026, kanonisch in ~/.agents/STANDARD-SKILLS.md A.3)
 
 ## Weitere Projekte
+- [TOOL-SAMMLUNG-VERKAUF / Verkaufs-HUB](verkaufshub-inventar-und-workflow.md) — 11.10. AKTUELL: Cockpit hub-glass.html :3300 (Liquid-Glass-Neubau, Suche live bewiesen), Backend :8055 (64 Tools, 15 Agenten), ATLAS-Testflüge via appagentteam; offen: Agenten-Modell-Weg (glm-first HTTP 400), Firebase-Redeploy-GO, 52/67 Ghost-Tools
+- [ATLAS Cali Coach — TESTSTAND 11.10.](atlas-cali-coach.md) — kanonisch `~/Desktop/Coworkspace_Ich/atlas + pliability /ATLAS_MASTER`; WEB (atlas-v5.web.app) 0 Bugs · iOS BUILD SUCCEEDED + Simulator-Lauf · Android APK 28 MB gebaut (Fix: JAVA_HOME=openjdk@21) · offener Bug: Video-„Analyse starten" triggert Analyse-Loop nicht · Test-Pipeline: appagentteam + flutter-skill 0.9.37 (Native-Binary-Symlink)
+- [appagentteam + flutter-skill](appagentteam-flutter-skill-live.md) — 11.10. App-Dev+Test-Team (R1–R7), in 6 Programmen synchron; Aufruf /appagentteam; erster Live-Flug 11.10. (ATLAS + HUB, 0 Bugs)
 - [LOKI Second Brain](loki-brain.md) — ~/loki-brain/ & ~/loki-voice/ (Port 8078); lokaler Assistent mit Obsidian Vault Storage, FTS5 unicode61 Suche mit Frage-Parsing, M2 Auto-Sitzungsprotokoll (Daily/), déjà-Kopplung, assi-Morgenbrief, Iris Plugin, Zoetrope Doku; 100% lokal.
 - [LOKI.OS konsolidiert](loki-os.md) — EINE Boot-Kette (com.loki.v15→MASTER_BOOT v15.3.0), EIN Frontend (macos-app-v17, kein Xcode nötig), Dashboard v15.3 mit 7 Tabs + Bedienkanal; Wahrheit=capabilities_map (527 Skills); Redundanzen in `~/loki-ki/_archive/`
 - [Gemini API Stack](gemini-api-stack.md) — 4 Skills kanonisch in `~/.agents/skills` + symlinked; Docs-MCP in 8 Configs (Antigravity nutzt `serverUrl`!); Googles Endpunkt liefert 429 → llms.txt-Fallback; Sync: `~/agent-os/gemini-stack-sync.sh`

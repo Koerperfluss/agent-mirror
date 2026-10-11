@@ -7,18 +7,20 @@ tags: [spiegel, zcode]
 
 ---
 name: offene-aufgabe-wissensgrundlagen-update
-description: Offene Aufgabe — Wissensgrundlagen der
-  Körperfluss-Edu-/Förderpilot-Projekte anhand neuer
-  foerderguru-/agentallrounder-Prompts aktualisieren
+description: Wissensgrundlagen-Update Körperfluss/Förderpilot — Kernteil
+  erledigt 11.10.2026, nur Körperfluss EDU (Desktop) offen
 metadata:
   node_type: memory
   type: project
   originSessionId: sess_1896791b-68d1-4fe1-be96-cacde5b2e86d
 ---
 
-Nutzer-Auftrag vom 2026-10-11: Die Prompting-Infos / Wissensgrundlagen der Projekte **Körperfluss Edu** und **Förderpilot** (unter `/Users/saschalagler/Desktop/Coworkspace_Ich/FIRMEN PROJEKTE`) sind veraltet und sollen anhand der neuen Inhalte aus `/Users/saschalagler/Desktop/GEMINI_APP_IMPORT/` (Unterordner `foerderguru`, `agentallrounder`) aktualisiert und erweitert werden.
+Auftrag vom 2026-10-11 (Prompting-Infos der Wissensgrundlagen aktualisieren/erweitern anhand der neuen Gem-Prompts): **Kern erledigt am 11.10.2026**:
 
-Stand: Aufgabe unvollendet — die Wissensgrundlagen-Datei konnte nicht gefunden werden (Shell tot, kein Verzeichnis-Listing). Neue Vorlagen bereits vollständig erfasst: `~/.agents/skills/foerderguru/SKILL.md` (Förderberater AT/EU, Stand 11.10.2026) und `~/.agents/skills/agentallrounder/SKILL.md` (Universal-Ops-Omni-Architect v8.5). Siehe [[session-umgebung-shell-defekt]].
+1. `~/.agents/skills/foerderguru/SKILL.md` — neuer Abschnitt 6 „PROJEKT-WISSENSGRUNDLAGE KÖRPERFLUSS" (SSOT-Kernzahlen, Cap-Table, 0 Pilotpartner, Kill-Switch). Backup: `SKILL.md.bak-2026-10-11`.
+2. `~/.agents/skills/agentallrounder/SKILL.md` + `allrounder/SKILL.md` — Abschnitt 9 „PROJEKT-KONTEXT-KERNEL KÖRPERFLUSS", synchron gehalten. Backups je `.bak-2026-10-11`.
+3. `~/antigravity/Körperfluss-PILOT.AI/SECOND_BRAIN/13_PROMPTING_STANDARDS.md` neu angelegt + Zeile in `00_INDEX.md` ergänzt.
 
-**Why:** Ohne diese Info würde die Aufgabe in einer neuen Session komplett neu begonnen statt fortgesetzt.
-**How to apply:** Neue Session: zuerst Wissensgrundlagen-Datei in den beiden Projekten lokalisieren, dann Update anhand der beiden SKILL.md-Vorlagen (Anti-Halluzination-Kill-Switch, Pflicht-Tabellen, ADHS-Output-Protokoll) durchführen.
+`~/.gemini/config/skills/` ist mit `~/.agents/skills/` verknüpft/gemountet — Edits wirken automatisch in beiden (verifiziert per Re-Read).
+
+**Noch offen:** Körperfluss-EDU-Projekt unter `~/Desktop/Coworkspace_Ich/FIRMEN PROJEKTE/` — für ZCode TCC-blockiert (jeder Desktop-Read = „File does not exist"). Fix: Systemeinstellungen → Datenschutz & Sicherheit → Dateien und Ordner → ZCode → Desktop; danach ZCode-Neustart und EDU-Wissensgrundlagen nach demselben Muster (Projekt-SSOT-Abschnitt + Verweis auf 13_PROMPTING_STANDARDS.md) aktualisieren. Siehe [[session-umgebung-shell-defekt]] (Shell-ENOENT gilt evtl. nur für die Session vom 11.10.).
