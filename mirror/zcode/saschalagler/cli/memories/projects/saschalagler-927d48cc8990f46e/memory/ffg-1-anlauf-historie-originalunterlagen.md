@@ -95,3 +95,10 @@ Die ORIGINAL-Inhalte des eingereichten Vollantrags (24 S., Version, die abgelehn
 - Regex-Falle: naive `60\s*EUR` matcht FALSE-POSITIVE in „…600 EUR"-Beträgen (9.600, 1.600 …) — immer `\b60\s*EUR` (Word-Boundary); gleiche Falle bei `Global Burden`-Check (Bindestrich-Kompositum „Global-Burden-of-Disease" matcht mit Leerzeichen nicht)
 - pypdf-Seitenzahl kann von erwarteter Zahl abweichen (V13 14 S. → V14 16 S. nach Tabelle+Ergänzungen — ok, FFG hat keine harte Seitenlimit für die Projektbeschreibung; Original hatte 24 S.)
 - Saschas letzte Nachricht vor V14 = Paste der ORIGINAL-Dokumente OHNE Begleittext → impliziter Auftrag „Original gegen aktuelle Fassung abgleichen + Gold mergen" — bei solchen textlosen Pasten den impliziten Abgleich vollziehen statt nachfragen (Vollzug-Regel)
+
+
+## V14-FINALE (11.10., 02:30) — Visual-Judge-Loop komplett
+- **V14 FINAL: 15 S. (nicht 16!), md5 b80f561a3b7a** — Visual-Judge (pdf:visual-judge, 7 Runden): R1 14/16 → Fixes → **15/15 PASS** (keine verwaisten Überschriften/Split-Boxen; 18-Tools-Tabelle mit repeat-header)
+- Design-Fixes (in antrag.typ, alle bewiesen): Kernumfang-Tabelle + Schicht-Tabelle + Callout `breakable:false`; 3 erzwungene `#pagebreak()` in 1.3 entfernt (Plattform/LTI/Arbeitsplan fließen); `#v(0.NNfr)`-Spacer in Blöcken = FALLE (fr dehnt im Block aus → Tabellen springen ans Seitenende; immer fixe `#v(6pt)`); Hypothesen-Seite gefüllt mit Benchmark-Methodik-Tabelle (Methodik, keine neuen Zahlen)
+- ZIP V14-FINAL: md5 07086aa735e1 (9 PDFs) — ersetzt a95c33a10d07
+- **STEHENDE REGEL von Sascha (11.10.):** Am Ende IMMER visual-judge (/iris) über die fertige Datei laufen lassen und ihm die geprüfte Datei zeigen (Pfad + Verdict). Render-PNGs → pdf:visual-judge-Subagent → Verdicts abarbeiten → Repair-Loop bis PASS.
