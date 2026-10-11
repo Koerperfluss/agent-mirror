@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-11 11:09 UTC
+Zuletzt gespiegelt: 2026-10-11 11:41 UTC
 
 ## AGENTS
 
@@ -3337,6 +3337,103 @@ _Nächster Schritt: Lanes + Audit 3 + Nachricht 09 zu einem PDF-Bündel für Mar
 ## Offen für Sascha
 - Optional: nach erstem Spotify-Start Audio-/Login-Einstellungen kurz prüfen (Cache wurde geleert, Präferenzen blieben erhalten)
 - Ggf. alte Intel-DMG-Quelle merken: künftig nur https://download.scdn.co/SpotifyARM64.dmg nutzen
+## dwfrun-fb29e93d-66a7-44f8-97ca-529354b2e34a_artifact_1_1-tool-result-da214bfb-cc10-4ddf-b92f-ce025ed56ae1
+
+# LOKI Skill-Ökosystem-Audit — Anthropic-Anpassungen vs. eigene Skills, 11.10.2026
+
+## 1) KPI-Tabelle
+
+| Kennzahl | Wert | Quelle / Methodik |
+|---|---|---|
+| Lokale Skill-Roots | 3 | `.zcode/skills`, `.agents/skills`, Plugin-Cache |
+| Gescannte SKILL.md-Dateien | 690 + 142 + 379 = 1.211 | Inventare der drei Roots |
+| Effektive Uniques | 205 + 138 + 295 = **638** | Dedup nach Skill-Namen |
+| Anthropic-Angebote (Vergleichsset) | 276 | Vendor-Suiten-Katalog |
+| gstack-Dubletten | 547 SKILL.md unter `~/gstack` (~70 % der .zcode-Dateien sind Kopien) | `find ~/gstack -name SKILL.md \| wc -l` |
+| Root-Überschneidungen .zcode × .agents | 135 Namen doppelt | `comm -12 <(ls ~/.zcode/skills) <(ls ~/.agents/skills) \| wc -l` |
+| Plugin-Cache-Altversionen | browser-use 8×, computer-use 5×, documents/pdf je 2× (siehe Gegenkontrolle) | Cache-Auflistung |
+| Korrigierte Unique-Zahl .zcode/skills | **751** (Symlinks folgen) statt 690 | `find -L ~/.zcode/skills -name SKILL.md \| sort -u \| wc -l` — methodikabhängig |
+
+## 2) Kernbefunde
+
+| # | Befund | Details |
+|---|---|---|
+| 1 | **DOPPELT — gstack-Replikationsblock** | 55+ Skills je 10× unter `/Users/saschalagler/gstack/` (Repo-Root + .agents/.cursor/.factory/.gbrain/.hermes/.kiro/.openclaw/.opencode/.slate), z. B. autoplan, ship, qa, spec, learn. Ca. 485 der 690 Dateien in `.zcode/skills` sind Kopien; Unique-Ratio 205/690. |
+| 2 | **DOPPELT — Skills-Wurzel-Überlappung** | `.zcode/skills` und `.agents/skills` spiegeln sich (agent-browser, better-ui, caveman, cognee-memory, deja-search, loki-dev, lisa-therapeut je 2×). Beleg: `/Users/saschalagler/.zcode/skills/agent-browser/SKILL.md` und `/Users/saschalagler/.agents/skills/agent-browser/SKILL.md`. |
+| 3 | **DOPPELT — Version-Müll im Plugin-Cache** | browser-use 8× (0.1.0–0.5.1: control-browser, web-gui-tester), computer-use 5×, github-Skills je 2×, diagnosing-* + zcode-configuration-guide je 3×. Alte Versionen werden mitgeladen statt nur der neuesten. *(Korrektur siehe Gegenkontrolle: documents/pdf/pptx/xlsx je nur 2 Versionen.)* |
+| 4 | **ECHTES PENDANT BESSER — Anthropic Financial-Suite** | run-fpa (10 Skills) + write-research inkl. dcf-model, morning-note, rolling-forecast *(korrigiert: 17, nicht 18 Skills)* hat lokal KEIN Gegenstück auf vergleichbarem Niveau. hexin-stock/wind-docs/wind-economic-MCPs liefern nur Rohdaten, keine Modellierungs-/Report-Pipeline. |
+| 5 | **ECHTES PENDANT BESSER — Desktop-Commander-Gruppe** | 6 Skills (computer-health-check, knowledge-base, obsidian-vault, terminal, ai-tools-setup) existieren lokal nur als Plugin; kein lokal gepflegtes Pendant. obsidian-second-brain überschneidet sich mit obsidian-vault ohne klare Trennung. |
+| 6 | **AT-ABDECKUNG (LOKI-Stärke)** | lisa-therapeut (2×), legal-ops-omni, legal, foerderguru, pva-bankverbindung-advisor, studienchecker, physio* — plus loki-legal-ops-mcp (search_vwgh_fts5, search_ffg_programs). Kein Anthropic-Angebot deckt österreichisches Verwaltungsrecht/FFG-Förder-Workflow ab — echter LOKI-Moat. |
+| 7 | **ECHTE LÜCKE — Unity** | 31 Unity-Skills, keine Game-Dev/Unity-Domäne lokal (kein Unity-, Godot- oder Engine-Skill in den drei Inventaren). |
+| 8 | **ECHTE LÜCKE — Betriebs-Suiten** | Small Business (44) + Sales (36) + Operations (9) + Customer Support (5) + Box (5) fehlen komplett; run-fpa deckt nur Finanz-Modellierung, google-workspace/judicario nur Teilbereiche. |
+| 9 | **ECHTE LÜCKE (schwach) — Automationen** | Zapier (4) / Synthflow (2) / Noibu (8) / Brand-voice-Tribe-AI (5) / Qodo (4): stehende Automationen, Voice-Agent-QA, eCommerce-Funnel-Analytik, Guideline-Enforcement, Cross-Repo-Index fehlen. Teilersatz: higgsfield-brandkit (visuell), coderabbit (Review), deja (Session-History, kein Repo-Index). |
+| 10 | **META-BEFUND** | 276 Anthropic-Angebote vs. 690+142+379 lokale Dateien, aber nur 638 effektive Uniques. Konsolidierung (gstack-Kopien, Plugin-Altvversionen, .zcode×.agents-Spiegel) ist der größte Hebel; danach füllen die 4 Lücken (Unity, SMB/Sales/Ops/Support, Zapier/Voice/Noibu, Brand-Pipeline) die letzten Differenzen. |
+
+## 3) Optimierungs-Empfehlungen (nach Priorität)
+
+| Prio | Empfehlung | Maßnahme | Beweis/Evidence |
+|---|---|---|---|
+| **hoch** | gstack-Replikationsblock konsolidieren (größter Hebel: 547 SKILL.md ≈ 70 % der Dateien) | VORSCHLAG (Löschen nur nach Nutzer-Bestätigung): Nicht die Kopien löschen, sondern gstack EINMALIG via Symlink/Mount einbinden; Kanonquelle `/Users/saschalagler/gstack/<skill>/SKILL.md` behalten. Vorher diff-Check, ob alle Kopien identisch sind. — *Vollständig neu formuliert durch Gegenkontrolle (siehe Abschnitt 4): Symlink existiert bereits; Maßnahme zielt jetzt auf gstack-interne 9 Tool-Roots + Test-Fixture-Leaks.* | `find /Users/saschalagler/gstack -name SKILL.md \| wc -l` = 547; `ls -d /Users/saschalagler/gstack/.agents/.cursor/.opencode` existiert; `/Users/saschalagler/gstack/autoplan/SKILL.md` vorhanden. |
+| **hoch** | .zcode/skills ↔ .agents/skills Spiegelung auflösen (135 doppelte Namen) | EIN Root als Kanonquelle festlegen (Empfehlung: `.agents/skills` für LOKI-eigene Skills, da AGENTS.md dort skill-routing verankert), `.zcode/skills` per Symlink statt spiegeln. Vorher `diff -r`, wo Kopien divergieren. — *Einschränkung aus Gegenkontrolle: .zcode/skills ist bereits Symlink-Farm auf .claude/skills; echte Dubletten-Lage prüfen, nicht einfach verschieben.* | `comm -12 <(ls ~/.zcode/skills) <(ls ~/.agents/skills) \| wc -l` = 135. |
+| **hoch** | Plugin-Cache: Altvversionen aufräumen | Retention-Policy im Plugin-Manager setzen (nur neueste Version cachen); Altversionen nach Nutzer-Bestätigung löschen (Cache, kein gepflegter Code). Nie genutzte Plugins (alibaba/dingtalk/wecom/tencent-meeting-cli, gitlab, example-plugin) deaktivieren statt cachen. — *Korrektur: docx/pdf/pptx/xlsx haben je nur 2 Versionen; „~84 Dateien Müll" ist unverifiziert.* | browser-use: 0.1.0, 0.2.1, 0.3.0, 0.3.1, 0.4.0, 0.4.1, 0.4.2, 0.5.1; computer-use: 5 Versionen (0.5.13–0.6.4). |
+| **mittel** | gemini-skill-Dubletten auflösen: `_sources`-Archiv wird als aktive Skills geladen | `_sources` in `.agents/skills` aus dem Skill-Scan-Pfad ausschließen; die 4 `_sources__gemini-skills__skills__*`-Spiegel auf .zcode-Seite nicht als aktive Skills laden. | gemini-api-dev/-interactions-api/-live-api-dev/-omni-flash-api je 2×; `_sources/gemini-skills` existiert (verifiziert). |
+| **mittel** | Anthropic Financial-Suite aktiv nutzen — lokal nichts Vergleichbares | Beide Schichten betreiben: hexin-stock/wind-* MCPs (Rohdaten) + run-fpa/write-research (Modellierung). Pilot: morgendliche Portfolio-Note (write-research:morning-note + get_stock_performance) für FFG/ATLAS-Projekte — erst bewerten, dann embedden. — *Korrektur: Pfad ist `~/.zcode/cli/plugins/cache/zcode-plugins-official/run-fpa/0.1.1/` (nicht claude-plugins-official); write-research = 17 Skills.* | run-fpa (10 Skills, 0.1.1) + write-research (17 Skills, 0.1.1) im Cache verifiziert. |
+| **mittel** | Skills-Meta-Layer als Wartungs-Hub etablieren | Mit managing-skills + writing-great-skills eine Duplikat-Erkennungs-Routine bauen (find + md5-Hash über SKILL.md, Report statt Auto-Delete), Ausgabe nach `/Users/saschalagler/loki-ki/docs/SKILL_LANDKARTE.md`. Erst danach die Aufräum-Vorschläge ausführen. | Beide Skills vorhanden: `~/.zcode/skills/managing-skills/SKILL.md`, `~/.zcode/skills/writing-great-skills/SKILL.md` (je 2× über beide Roots). |
+| **niedrig** | Unity-Lücke bewusst NICHT schließen (dokumentierte Nichtentscheidung) | Plugin nicht aktivieren (kein Anwendungsfall im LOKI-Kern). Bei Game-Dev-Bedarf (MASTER_TODO prüfen) nur Kern-Skills freischalten. | Kein Unity/Godot/Engine-Skill in allen 3 lokalen Inventaren. |
+| **niedrig** | Betriebs-Suiten (SMB 44 / Sales 36 / Ops 9 / Support 5) gezielt pro Anwendungsfall testen, nicht en bloc | Operations/Runbook passt zum loki-os-health-Workflow (guter Test-Kandidat). CRM/Sales/Box nur bei Kundenprojekt mit Salesforce/HubSpot/Box; sonst NICHT laden (YAGNI, Ponytail-Sprosse 1). | mcporter/AutoClaw-Tools decken nur punktuelle Calls, keine Prozess-Pipelines. |
+| **niedrig** | Zapier/Noibu/Synthflow/Brand-voice: nur bei konkretem Automations-Bedarf | Test-Pilot definieren: Zapier-Konnektor für loki-os-health-Alerts (Systemdiagnose → Ticket/Benachrichtigung). Ohne Pilot: nicht aktivieren. Code-Review bleibt bei coderabbit. | Lokale mcporter-Calls sind singulär, keine stehenden Automationen. |
+| **niedrig** | AT-Domänen-Moat schützen: AT-Lücken als Stärke behalten | Nichts ändern — Lücken bewusst offen lassen; nur in LOKI_SYSTEM_INVENTORY.md / SKILL_LANDKARTE.md als Nicht-Ziel dokumentieren, damit künftige Scans sie nicht wieder als „Lücke" melden. | lisa-therapeut, legal-ops-omni, foerderguru, pva-bankverbindung-advisor, studienchecker vorhanden; kein Legal-Plugin im Cache. |
+
+## 4) Gegenkontrolle
+
+**BLUF:** 10 von 10 Pfad-Beweisen stimmen im Kern, aber 4 Empfehlungen haben Fehlannahmen, die die Maßnahme verändern würden: gstack ist **bereits symlinked** (Vorschlag 1 zum Teil überflüssig), der Finance-Plugin-Pfad ist falsch geschrieben, die Versions-Zählung der Dokumenten-Plugins stimmt nicht, write-research hat 17 nicht 18 Skills.
+
+### Geprüfte Befunde (nur Lesezugriff, alle Befehle im Prüf-Workflow ausgeführt)
+
+| # | Behauptung | Urteil | Beweis |
+|---|---|---|---|
+| 1 | gstack: 547 SKILL.md | ✅ bestätigt | `find ~/gstack -name SKILL.md \| wc -l` → **547** |
+| 1 | `.agents/.cursor/.opencode` in gstack existieren | ✅ bestätigt | `ls -d` → alle 3 vorhanden |
+| 1 | `~/gstack/autoplan/SKILL.md` vorhanden | ✅ bestätigt | `ls` → vorhanden |
+| 1 | „55+ Skills je 10×" | ⚠️ teilweise | Real: **54 Skills je Root × 9 Roots** (`.slate .opencode .openclaw .kiro .hermes .gbrain .factory .cursor .agents`, je 54), nicht 55+/10× |
+| 1 | „claude nur 9× / .slate abweichend" | ✅ bestätigt | claude fehlt in den Hidden-Roots; `.slate` separat mit 54 SKILL.md |
+| 1 | Kern-Vorschlag „gstack via Symlink einbinden" | ❌ **schon erledigt — Fehlannahme** | `~/.claude/skills/gstack -> ~/gstack` (Symlink bewiesen); `.zcode/skills` ist eine **Symlink-Farm** (200 Symlinks → `.claude/skills`, nur 5 reale Dirs). Echte Duplikation liegt **innerhalb** `~/gstack` (9 Tool-Roots) und im Leak von Test-Fixtures (`alpha -> .claude/skills/gstack/test/fixtures/context-bill/tree-a/alpha`) |
+| 2 | 135 Namens-Überschneidungen .zcode × .agents | ✅ bestätigt | `comm -12 … \| wc -l` → **135** |
+| 2 | „spiegeln sich" | ⚠️ mechanisch anders | `.zcode/skills` = Symlinks, `.agents/skills` = reale Dirs; Stichproben: `caveman` byte-identisch (`diff -rq`), `lisa-therapeut` in beiden, `autoplan` **nur in .zcode** |
+| 3 | browser-use: 8 Versionen 0.1.0–0.5.1 | ✅ exakt bestätigt | Cache-Liste: 0.1.0, 0.2.1, 0.3.0, 0.3.1, 0.4.0, 0.4.1, 0.4.2, 0.5.1 |
+| 3 | computer-use 5× | ✅ bestätigt | 0.5.13, 0.5.14, 0.6.1, 0.6.3, 0.6.4 |
+| 3 | „docx/pdf 7×, pptx/xlsx 6×" | ❌ NICHT bestätigt | documents/pdf/presentations/spreadsheets haben je **2 Versionen** (0.1.7, 0.1.8) — vermutlich wurden Dateien statt Versionen gezählt |
+| 3 | gitlab-Cache-Leiche, example-plugin | ✅ konsistent | `gitlab/0.1.3` + `example-plugin/0.2.0+0.2.3` im Cache (MCP-Entfernung 06.09. laut AGENTS.md, nicht neu verifizierbar) |
+| 4 | `_sources/gemini-skills` + 4 Dubletten | ✅ bestätigt | `_sources/gemini-skills` existiert; 4 `_sources__gemini-skills__skills__*`-Symlinks in `.zcode/skills` — Archiv wird aktiv geladen |
+| 5 | run-fpa + write-research lokal vorhanden | ⚠️ Pfad falsch, Sachverhalt richtig | Bewiesener Pfad: `~/.zcode/cli/plugins/cache/**zcode**-plugins-official/run-fpa/0.1.1` (10 Skills) + `write-research/0.1.1` (**17** Skills, nicht 18). Der genannte Pfad `claude-plugins-official/…` existiert **nicht** |
+| 6–8 | Unity-/SMB-/Sales-/Zapier-Zahlen | ⚠️ nicht reproduzierbar | Keine Unity/Salesforce-Skills in der Session-Skill-Liste (konsistent), aber Zahlen 44/36/9/5 stammen aus dem Analyse-Inventar, das nicht einsehbar war: **DATENLAGE UNKLAR** |
+| 9 | managing-skills + writing-great-skills vorhanden | ✅ bestätigt | 4 Pfade existieren (beide Roots) |
+| 10 | AT-Domänen-Skills vorhanden, keine AT-Legal-Suite | ✅ konsistent | lisa-therapeut, legal-ops-omni, foerderguru, pva-bankverbindung-advisor, studienchecker in `.agents/skills`; kein Legal-Plugin im Plugin-Cache |
+| — | „205/690 Uniques in .zcode/skills" | ❌ NICHT reproduziert | `find -L ~/.zcode/skills -name SKILL.md \| sort -u \| wc -l` → **751** (Symlinks folgen); 690 stammt aus früherer Session mit anderer Dedup-Methodik — Zahl ist methodikabhängig |
+
+### Korrekturen für die Umsetzung
+
+1. **Vorschlag 1 neu formuliert:** Nicht „Symlink einbinden" (existiert schon), sondern (a) gstack-interne 9 Tool-Roots klären (gstacks eigener Replikationsmechanismus — Löschung betrifft Tool-Interops) und (b) gstack-Test-Fixture-Leaks (`test/fixtures`) aus dem Skill-Scan ausschließen.
+2. **Vorschlag 5:** Pfad korrigiert auf `zcode-plugins-official`; write-research = **17** Skills.
+3. **Vorschlag 3:** docx/pdf/pptx/xlsx haben je **2** Versionen, nicht 6–7 — das „~84 Dateien Müll"-Total ist unverifiziert und entsprechend anzupassen.
+
+## 5) Was NICHT geprüft wurde
+
+Ehrliche Liste der Prüf-Lücken — diese Punkte sind weder bestätigt noch widerlegt:
+
+| Punkt | Warum ungeprüft |
+|---|---|
+| „~84 Dateien Müll"-Summe im Plugin-Cache | Keine Datei-/Byte-Zählung über alle Altversionen ausgeführt; Summe unverifiziert |
+| Unity (31), Small Business (44), Sales (36), Operations (9), Support (5), Box (5), Zapier (4), Noibu (8), Synthflow (2), Brand-voice (5), Qodo (4) | Zahlen stammen aus dem Analyse-Inventar der Findings; nur Sichtprüfung der Session-Skill-Liste (keine Unity/Salesforce-Skills dort), keine eigene Zählung im Anthropic-Katalog |
+| Byte-Identität aller 135 `.zcode × .agents`-Namenspaare | Nur 3 Stichproben (caveman, lisa-therapeut, autoplan); keine vollständige `diff -r`-Analyse |
+| Diff-Check der 54 gstack-Skills über die 9/10 Roots | Nicht ausgeführt — unbekannt, ob alle Kopien identisch sind; „claude nur 9×" mechanisch bestätigt, aber Kopien-Identität offen |
+| MCP-Entfernung von gitlab am 06.09. | Basierend auf AGENTS.md-Angabe; der Cache-Eintrag `gitlab/0.1.3` als Leiche ist plausibel, aber nicht gegen die MCP-Config neu verifiziert |
+| YAML-Integrität / Beschreibungs-Qualität der Skills (Folded-Scalar-Problem aus früherer Session) | Nicht Teil dieses Audits; der Scan-Bug (`desc_len=1` bei `description: >`) aus der früheren Session wurde hier nicht erneut getestet |
+| `.claude/skills` als vierter Root | Wurde nur im Rahmen der Symlink-Farm-Analyse angeschnitten (200 Symlinks, 5 reale Dirs), nicht als eigenständiges Inventar gezählt |
+
+---
+*Erstellt 11.10.2026 · Zahlen in Abschnitten 1–3 stammen aus den übergebenen Audit-Findings und -Empfehlungen; Abschnitt 4 dokumentiert die Gegenkontrolle mit korrigierten Werten.*
+
 ## call_48ba41a5c61549709bb409d3-tool-result-77f38bda-b4be-413e-9a30-dd60c2c2a38c
 
 Thinking more wisely: using the Socratic method to develop critical thinking skills amongst healthcare students - PMC
@@ -4975,8 +5072,8 @@ Bei Fachfragen (z. B. Trainings-Übungen) fordert er explizit „clinical reason
 # Memory Index
 
 - [Token-Sparen 10.10.](feedback-token-sparen.md) — Vereinbarung: 5 Werkzeuge reichen fürs Förder-Projekt (Rest 90+ Skills überflüssig); keine Workflows ohne konkreten Auftrag, max. 2–3 Tags, keine Seiten-Pastes, App/Dateien statt Chat
-- [Saschas Lage NÖ 10.10.](sascha-lage-noe.md) — 29, arbeitslos/AMS-Sperre (Okt: 390 € Zufluss, Anspruch 839,89 €), Miete €350, Loosdorf Bez. Melk, keine Kinder; 🔴 KEIN Mietrückstand, ÖGK+Strom betreut, **GEWERBESCHEIN existiert** (FFG Innovationsscheck 10k/SVS offen) → Förder-Recherche + App-Profil darauf kalibriert
-- [HolDirMehr-Replika 09.-10.10.](holdirmehr-replika.md) — ✅ **ONLINE: foerderungen-sascha.web.app** (Firebase, privat, noindex) + 1.772 echte Förderungen (506 NÖ + 495 BW), Matching auf Sascha scharf (Arbeitslos/AMS, Kinder-Demotion); LESSON: Boost-Regex nie gegen Kategorie-Namen matchen; ⚠️ Katalog © holdirmehr.at
+- [Saschas Lage NÖ 10.10.](sascha-lage-noe.md) — 29, arbeitslos/AMS-Sperre (Okt: 390 € Zufluss), Miete €350, Loosdorf Bez. Melk, keine Kinder; 🔴 KEIN Mietrückstand, ÖGK+Strom betreut, **GEWERBESCHEIN existiert** → finale geprüfte Liste V2 auf Desktop
+- [HolDirMehr-Replika 09.-11.10.](holdirmehr-replika.md) — ✅ **ONLINE: foerderungen-sascha.web.app** + **1.772 Förderungen** + **finale Liste V2** (2 Workflows: 93 geprüft → 6/33/54, dann Optimierung; Labels ✅/🔶/⚠️); PDF+MD+plan.html V2 synchron; ⚠️ Katalog © holdirmehr.at
 - [TCC/FDA-Cleanup 09.10.](tcc-fda-cleanup-2026-10-09.md) — ✅ FERTIG: alle 14 toten Einträge weg (TCC 90→72, Sascha löschte letzte 11 selbst per GUI+Finger); lebende Tools (ZCode/Terminal/Antigravity/…) verifiziert AN; Backup ~/sicherungen/tcc-backup-20261009; LESSON: Touch ID pro Löschung, nach „Entfernen"-Klick nicht beobachten, Deep-Link `Privacy_AllFilesAccess`
 - [Plugin/Skill-Inventar 09.10.](plugin-skill-inventar-dwfrun-2026-10-09.md) — dwfrun-8c351687: 7 Skills + 5 Plugins verifiziert; FDA-Audit 14 Leichen; LESSON: Workflow-Subagents keine Absolut-Pfade, ABER world.run kann (test/mdfind/sqlite3); dwfrun-eec3e822 = TCC-Plan (out/TCC_LOESCHPLAN.md); Backup ~/sicherungen/tcc-backup-20261009
 - [LM Studio Mac Gemma4 Settings](lm-studio-mac-gemma4-2026-10-10.md) — M4/16GB: 1–10 tok/s = Kontext 33k+F16-KV → Fix 16K/q8_0/Batch 512 → 25–35 tok/s; Coder-Next läuft auf Mac nie
@@ -6256,6 +6353,12 @@ Dossier-Empfehlung für Produktions-Upgrade: Next.js 15 + Supabase + Stripe (sie
 
 **10.10. MORGEN: dwfrun-c287b2bb-Ergebnis VERIFIZIERT (deja-Beweis):** Die 51-Tabellenzeilen-Datei (**11.891 B**) existiert und ist vollständig — **6 BEANTRAGEN / 33 BEDINGT** (Ask behauptete „32", awk-Korrektur: 33 Namen) + Unterlagen- + Kontaktablock (AK Melk, BH…) + Gegenleser-Markierungen drin. Katalog-Abgleich per Python-Match gegen `data/katalog.json` Feld `name` lief für alle 6 ✅ (Beispiel: „Individuelle Spontanhilfe NÖ" = NÖ, akute Notlage, Gutschein/Überweisung, nicht bar — passt zu Mietrückstand/Notlage 300 €). **Einreichen durch Sascha ausstehend** (Profil: 29 J., arbeitslos/AMS-Sperre ~300 €, siehe [[sascha-lage-noe]]). Tages-Routine sah parallel neue Förder-Websuchen (AK NÖ Digi-Bonus, soziale Eingliederung, Mental-Health-Hotline, Rotes Kreuz Spontanhilfe) — Recherche-Welle läuft weiter.
 
+**11.10. FINAL: Beide Verifikations-Workflows abgeschlossen → LISTE V2 ist der finale Stand.**
+- **dwfrun-c287b2bb** ERRORED nur am letzten Publish-Schritt (DriverError: artifact path), aber **107 Steps settled: 93 Kandidaten → 6 BEANTRAGEN / 33 BEDINGT / 54 NEIN** (4,8 M Tokens, 7 Agents done). `out/BEANTRAGEN_FUER_MICH.md` (11.891 B) wurde vom Fixer doch geschrieben. Kritische Korrekturen vs. meine 36er-Liste: **OBS-Befreiung braucht Sozialhilfe-Bescheid** (reiner ALG/NHK-Bezug genügt NICHT!) · **AK-Programme (Digi-Bonus/Sozialfonds/BRP) brauchen AK-Mitgliedschaft = laufende Beschäftigung** → während Arbeitslosigkeit raus · **Arbeitslosensicherung 2026** (Notstandshilfe-Anspruchsstopp während Sperre) · Neueinträge: Sozialhilfe-Krankenversicherung (Bund, fängt KV-Ausfall bei Sperre), AMS-Überbrückungshilfe, Hilfsfonds Verbrechensopfer (Voraussetzung: Strafanzeige gegen Ex-Arbeitgeber + Gesundheitsfolgen), E-Control-Tarifkalkulator. Web-Verifikation war nur TEILWEISE möglich (Z.AI-Suche 429, ams.at/oesterreich.gv.at 404) → ⚠️-Labels ehrlich lassen.
+- **dwfrun-0f83d4b4** (Listen-Optimierung, COMPLETED): Analyst stellte 3 Listen gegenüber (L1=Desktop-36er, L2=Verdicts als Wahrheitsquelle, L3=Saschas Gemini-Liste) → **`out/OPTIMIERTE_LISTE_V2.md`** (12.235 B), adversarialer Kritiker fand **8 Fehler (1 hoch)** — Hilfsfonds fälschlich „ohne Vorbedingung" (hat 2!), Fernsprechentgelt 12 vs 10 €-Widerspruch, unbelegte ~930 €-Zahl (bedarfsorientiert, kein Fixanspruch!), 3 fehlende ÖGK-Einträge — Finalisierer behob sie.
+- **Deliverables V2 (alle synchron):** Desktop `MEINE_FOERDERUNGEN_FINAL_V2.md` + **`MEINE_FOERDERUNGEN_FINAL_V2.pdf`** (384 KB, schöne Tabellen mit Confidence-Labels ✅/🔶/⚠️) + **plan.html V2** (24 Tasks in 6 Sektionen: Sofort 9 / Nach Sozialhilfe-Bewilligung 5 / Bei AMS 4 / Gewerbe 3 / Ab 22.10.; localStorage `hdm-plan-v2`; Confidence-Badges je Task; E-Mail-Text um Gewerbe-Offenlegungssatz erweitert). Live verifiziert auf foerderungen-sascha.web.app. V2 ersetzt `MEINE_FOERDERUNGEN_SASCHA.pdf` (V1, 36 Optionen, teils überholt).
+- **Workflow-Authoring-Fehler-Lektionen:** `const x = agent(...).ask<T>()` ohne await → x ist Node, nicht Result (muss `await agent(...).ask(...)`) · report()-Tags brauchen deklarierte artifact-presets · doppelte const-Namen nach Edit · artifact.file-Publish kann an Datei-Timing scheitern (Fixer-Pattern funktioniert, File landet trotzdem).
+
 ## ios27-webapp-testing-recherche-2026-09-13
 
 ---
@@ -6923,6 +7026,8 @@ Saschas Lage (Stand 10.10.2026, von ihm selbst geschildert): 29 J., männlich, S
 **🔴 10.10. SPÄT — GEWERBESCHEIN EXISTIERT** (AskUserQuestion beantwortet: „Ja, Gewerbeschein existiert") — widerspricht seiner älteren Aussage „keine Firma"! Konsequenzen: **FFG Innovationsscheck bis 10.000 €** (passt zu seinem App-Projekt als Innovationsleistung), **SVS Unterstützungsfonds** (Notfallhilfe Selbstständige), **SVS-vs-ÖGK-Krankenversicherung klären** (Gewerbe = SVS-Pflicht ~180 €/Mindestbeitrag, Doppelbeitrags-Risiko), Verluste steuerlich sammeln + Gewinnfreibetrag (~4.950 €) bei künftigem Gewinn, **Gründungsbeihilfe nur falls Gewerbe frisch angemeldet** (nach Sperren-Beginn? ungeklärt). ⚠️ Sozialhilfe-Kontext: Gewerbe-Einkommen wird angerechnet. Diese 4 Punkte hängen als GEWERBE-Sektion in plan.html (Tasks g1–g4). Bei „lenk nicht ab" = keine Zusatzfragen/Exkurse, direkt liefern. Original-Seite holdirmehr.at weiterhin im Wartungsmodus (alle Quiz-Routen 308→503) — Gratis-Schnell-Check mit seinen Antworten nachholen, sobald online.
 
 **10.10. MASTER-LISTE geliefert** (auf sein „LISTE MIR ALLE VERFICKTEN OPTIONEN"): alle 33 realen Optionen als eine Chat-Master-Liste in 7 Gruppen (A Geld jetzt 1–7 / B Miete-Wohnen 8–11 / C Fixkosten→0 € 12–19 / D Arbeit+AMS 20–26 / E Gewerbe 27–31 / F Recht 32–33 + Locals), mit Bezugsquellen Desktop-Datei + plan.html; kanonische Reihenfolge **„1 → 32 → 9 → 16+12"** (Sozialhilfe-E-Mail → AK Melk → Wohnungssicherung → Heizkostenzuschuss+ORF). Er war mit der Optionen-Übersicht überfordert — bei Überforderung: EINE nummerierte Master-Liste statt Verweis auf mehrere Dateien. **PDF-Version zusätzlich auf Desktop: `MEINE_FOERDERUNGEN_SASCHA.pdf`** (449 KB, via desktop-commander write_pdf aus Markdown — 36 Optionen in 6 Tabellen + Kontakte-Tabelle + Unterlagen-Set; sein Wunsch „als eine schöne Liste" → PDF-Export der Master-Liste, nicht neue Recherche).
+
+**11.10. FINALE LISTE V2 (ersetzt alles Vorherige):** Zwei Agenten-Workflows verifizierten und optimierten (dwfrun-c287b2bb: 93 Kandidaten → 6 BEANTRAGEN/33 BEDINGT/54 NEIN; dwfrun-0f83d4b4: 3-Listen-Vergleich + adversarialer Kritiker, 8 Fehler behoben). **Deliverables: Desktop `MEINE_FOERDERUNGEN_FINAL_V2.md` + `MEINE_FOERDERUNGEN_FINAL_V2.pdf` (384 KB)** + plan.html V2 (24 Tasks, 6 Sektionen, Confidence-Labels ✅/🔶/⚠️ je Eintrag). Wichtige V2-Korrekturen: **OBS/ORF-Befreiung braucht Sozialhilfe-Bescheid** (ALG/NHK genügt nicht — von „Sofort" auf „Nach Bewilligung" verschoben) · **AK-Programme raus** (brauchen AK-Mitgliedschaft = Beschäftigung) · Sozialhilfe ist **bedarfsorientiert, kein Fixanspruch** (die 839,89-€-Rechnung ist Schätzung, „~930 €" unbelegt) · NEU: Sozialhilfe-Krankenversicherung des Bundes (KV-Ausfall bei Sperre), AMS-Überbrückungshilfe, Hilfsfonds Verbrechensopfer (braucht Strafanzeige + Gesundheitsfolgen), 3 Streichungen (Caritas NÖ Ost falscher Bezirk, Bürgerspitalstiftung Wr. Neustadt, Familienhärteausgleich). **⚠️ DATENLAGE-UNKLAR-Einträge brauchen Amt/AK-Bestätigung vor Antrag** — Original-Quiz von holdirmehr.at weiter im Wartungsmodus (kein Vergleich möglich).
 
 ## sequential-thinking-always
 
@@ -9813,7 +9918,7 @@ Beobachtet 06.09.2026 (Session mit Off-Peak-Ticket): Nach User-Paste „ZCode Er
 - [loki-dev Plan alle 5 Modi](loki-dev-plan-alle-modi.md) — 20.09. VOLLZUG BEENDET (alle 6 Stufen ✅): Routing-Sync, Agenten 10/10, VAD+Vocab live; Ausbaustufe ① erledigt, ③ Morgenbrief via Brain real, offen: ② CDP-Browser ④ iPhone; Plan-Datei ~/LOKI_DEV_PLAN_ALLE_MODI.md
 - [Saschas harte Arbeitsregeln](sascha-arbeitsregeln-hart.md) — 20.09. gelernt: LOKI OS = ZCode/GLM selbst (keine Agent-Schwärme bei bekannten Fakten), Plan-abgelehnt → STOPP+simple Frage (keine Neu-Analyse), keine Überraschungs-GUI/TCC-Dialoge, nichts ohne GO schreiben, alrround-voice-Files = M4-Prompting-SPEC · 01.10. ergänzt: §11 Empfehlung+Default statt Fragen (auch wenn Quelle determiniert), §12 signierte Originale byte-identisch wiederverwenden + Stale-View-Check (Disk-Beweis vor Argument)
 - [LOKI Voice Agent](loki-voice-agent.md) — 24/7-Daemon ~/loki-voice/ LIVE (Doppel-Ctrl→Whisper→glm-5.3-flash→say, Stufe 2 bewiesen) + App-Fork ~/loki-voice-app/ gebaut, NICHT deployt; Rest (Tests/Deploy/mac_action/Ollama-Fix) durch Plan-Modus-Streit NICHT ausgeführt; Original-Stand real 18.09. (V10 keyfrei); TCC-Klicks offen; Prompt-Architektur verortet (alles hardcoded, whisper ohne initial_prompt)
-- [Agentic-OS-Inventur](loki-os-ecosystem-stand.md) — 20.09. Vollanalyse: 10 Harnesses/1075 Skills/21 MCPs; kritisch: Kernel 8010 tot+0.0.0.0-Bind, VwGH-DB leer, 4 LegalOps-Duplikate, Phantome Phi/STANDARD-Skills/cognee; **05.10. Re-Count: 466 Skills/3 Roots (134 Duplikate), 22 MCPs — Workflow-Killer #1 = leerer Start-Plan → subagent_model immer explizit + Zeitbudget in jeden Ask** · **11.10.: Anthropic-Anpassungen vs. LOKI (276 Skills/32 Konnektoren/26 Plugins — 0 Plugins nötig, Dashboard ANTHROPIC_VS_LOKI_SKILLS_2026-10-11.html) + Audit-Workflow dwfrun-58c1fba0 (7 Subagenten, Deliverable ~/Desktop/LOKI_SKILL_AUDIT_2026-10-11.md); MODELL-ID-ÄNDERUNG: `zai-api/GLM-5.3-Flash` jetzt UNGÜLTIG → `account:zai-individual-coding-plan/GLM-5.3-Flash`** · Saschas Traum = Voice→Agentic-OS-Kopplung
+- [Agentic-OS-Inventur](loki-os-ecosystem-stand.md) — 20.09. Vollanalyse: 10 Harnesses/1075 Skills/21 MCPs; kritisch: Kernel 8010 tot+0.0.0.0-Bind, VwGH-DB leer, 4 LegalOps-Duplikate, Phantome Phi/STANDARD-Skills/cognee; 05.10. Re-Count: 466 Skills/3 Roots (134 Duplikate), 22 MCPs · **11.10. SKILL-AUDIT FERTIG (dwfrun-fb29e93d, Report ~/Desktop/LOKI_SKILL_AUDIT_2026-10-11.md, Dashboard ANTHROPIC_VS_LOKI_SKILLS_2026-10-11.html): 1211 SKILL.md gescannt, eff. 638 Uniques · Cache-Altversionen ≈670 Dateien/111 MB · 135 Paare zcode×agents = 130 identisch, 5 abweichend (qa/projects/lisa-therapeut/obsidian-second-brain/ios-swift-development) · gstack 547 = Symlink-Farm-Artefakt (nicht konsolidieren!), qa divergiert gstack≠.agents · 3 Sascha-GOs offen: GO1 Cache aufräumen, GO2 Kanon-Roots für die 5, GO3 fixture-Leak aus Scan · Anthropic-Verdict: 0 von 26 Plugins nötig, nur Supabase ggf. · Modell-ID: `account:zai-individual-coding-plan/GLM-5.3-Flash` (zai-api ungültig) · Workflow-Lektionen: Subagent-Namen im fan-out index-sicher bauen, Quota 1308 (5h) läuft selbst durch, GUI-Settings-Änderung supersedet Run mit Cache** · Saschas Traum = Voice→Agentic-OS-Kopplung
 - [Chrome Agent-Browser Fix](chrome-agent-browser-fix.md) — Agent-Browser läuft auf 9222 (persistentes Profil, Login bleibt); Service-Worker-Cache = Ursache „Websites alt" (177 Worker); chrome-cache-nuke.sh wartet auf GO; Übersicht: ~/Desktop/chrome-fix-uebersicht.html
 - [Cline Hub 1006-Diagnose](cline-code-app-hub-1006-diagnosis.md) — „Hub connection closed" = lokaler Daemon-Crash, Server meist OK
 - [Lokale Infra & Ports](sascha-local-infra-ports.md) — OmniRoute 20128, Ollama 11434, LOKI 8010, Cline Code.app standalone
@@ -10697,10 +10802,13 @@ Verwandt: [[wayfinder-skill-konsolidierung]], [[loki-os-ecosystem-stand]]
 
 ---
 name: loki-os-ecosystem-stand
-description: Agentic-OS-Gesamtinventur — 20.09. Vollanalyse (10 Harnesses, 1075
-  Skills, 21 MCPs) + 05.10. Re-Count (466 Skills/3 Roots, 134 Duplikate, 22
-  MCPs) + 11.10. Anthropic-Plugin-Verdict (0 von 26 nötig, Dashboard-Pfad);
-  Workflow-Killer #1 = leerer Start-Plan, Fallback zai-api/GLM-5.3-Flash
+description: Agentic-OS-Gesamtinventar — 20.09. Vollanalyse (10 Harnesses, 1075
+  Skills, 21 MCPs) + 05.10. Re-Count (466 Skills/3 Roots, 22 MCPs) + 11.10.
+  Anthropic-Plugin-Verdict (0 von 26 nötig) + 11.10. Skill-Audit FINAL (1211
+  Dateien/638 Uniques, 111 MB Cache-Müll, 5 abweichende Skill-Paare) — 3
+  Sascha-GOs (Cache/qa-Kanon/Fixture-Leak) offen; Ladezeit-Behauptung RETRAKTIERT
+  (Harness dedupliziert beim Laden) — Workflow-Killer #1 = leerer
+  Start-Plan, subagent_model immer explizit
 metadata:
   node_type: memory
   type: project
@@ -10725,7 +10833,7 @@ Systemanalyse von Saschas Agentic OS (20.09.2026, alle Fakten mit lsof/ps/ls/cur
 
 **Anthropic-Plugin-Analyse 11.10.2026 (Claude-Anpassungen-Seite vs. LOKI-Skills):** Claude-Verzeichnis = 276 Skills (3 Sascha-eigene: sascha-precision-mode, tool-monetarisierung, technischer-erklarer-style [deaktiviert] + 273 von Anthropic/Partnern) · 32 Konnektoren (25 verbunden, judicario + MCP_DOCKER + memory = Kerne) · 26 Plugins. **Verdict: 0 von 26 Plugins nötig** — Legal (US-Recht) verliert gegen judicario/loki-legal-ops (AT/DE/CH), Engineering/Productivity/Search verliert gegen coderabbit/deja/loki-brain; einziger Testkandidat = Data-Plugin (nur Skills, kein MCP); Empfehlung: nur Supabase-Konnektor verbinden (falls Körperfluss/ATLAS Supabase nutzen — ungeklärt). Vergleichs-Dashboard: **~/Desktop/ANTHROPIC_VS_LOKI_SKILLS_2026-10-11.html**; Quell-Paste: ~/.zcode/tmp/paste-attachments/2026-10-11/pasted-text-20261011-121026-cb42efe4.txt (1631 Zeilen).
 
-**Skill-Audit-Workflow 11.10. (läuft/nach Verlangen):** Nach Sascha-Vorwurf „kein Plan, kein investigativ Team, du verstehst nicht was du siehst" hat er /workflow verlangt → **dwfrun-58c1fba0** („Skill-Ökosystem-Audit: Anthropic vs. LOKI", subagent_model = `account:zai-individual-coding-plan/GLM-5.3-Flash` — ACHTUNG: `zai-api/GLM-5.3-Flash` wird inzwischen von ListModels/CreateWorkflow ABGELEHNT, neue ID-Form nötig; 05.10.-Notiz oben damit überholt): 7 Subagenten (3 Ermittler scannen ~/.zcode/skills, ~/.agents/skills, Plugin-Cache · Anthropic-Analyst liest die 1631-Zeilen-Paste · Synthesizer → Optimierer → unabhängiger Gegenleser mit kaltem Blick → Berichtsschreiber). Deliverable: **~/Desktop/LOKI_SKILL_AUDIT_2026-10-11.md** (KPIs, 5–10 Optimierungsempfehlungen mit Pfad-Beweis, Gegenkontrolle bestätigt/NICHT bestätigt). Regel: nichts löschen/ändern, Löschen nur als Vorschlag auf Sascha-GO. Script-Datei: .zcode/workflow-drafts/Skill-Ökosystem-Audit-Anthropic-vs.-LOKI.dwf.ts.
+**Skill-Audit-Workflow 11.10. (ABGESCHLOSSEN + nachkorrigiert):** Nach Sascha-Vorwurf „kein Plan, kein investigativ Team" → Workflow dwfrun-58c1fba0 (Fehler: Subagenten-Name „Ermittler·skills" doppelt — computed names nötig in fan-out!) → amend → dwfrun-d33b58c0 → Sascha-Settings-Änderung im GUI (Flash$low, max 3 parallel) → superseded → **dwfrun-fb29e93d FERTIG** (kurzer Quota-Stopp code 1308 „5h limit, Reset 23:25" lief von selbst durch). Deliverable: **~/Desktop/LOKI_SKILL_AUDIT_2026-10-11.md** (gegengelesen + 2. Nachmess-Welle). **Ergebnisse:** 1211 SKILL.md gescannt (zcode 690 / agents 142 / cache 379), eff. ~638 Uniques · **Plugin-Cache-Altversionen ≈670 Dateien / ≈111 MB** (GO 1, reiner Cache, ~0 Risiko) · **135 Namenspaare zcode×agents: 130 byte-identisch, 5 ABWEICHEND** (qa, projects, lisa-therapeut, obsidian-second-brain, ios-swift-development — GO 2, Kanon-Root je Skill klären; `qa` weicht auch gstack vs .agents, md5 d36b8c… ≠ 9c2626…, Sascha muss sagen welche Version gilt) · **gstack: 547 SKILL.md = Symlink-Farm-Artefakt** (Hidden-Roots .agents/.cursor/.opencode… sind Symlinks, nur 1 reale Kopie je Skill — „54×9-Kopien" war falsch; NICHT konsolidieren, das ist gstacks eigener Tool-Interop) · test/fixtures-Leak nur 2 Dateien (GO 3, aus Skill-Scan ausschließen) · 3 Sascha-GOs offen (GO1 Cache / GO2 Kanon-Roots / GO3 Fixture-Leak), danach Wartungs-Routine aus managing-skills+writing-great-skills. Korrekturen Sascha: run-fpa/write-research liegen unter **zcode-plugins-official** (nicht claude-), write-research = 17 Skills, docx/pdf/pptx/xlsx je 2 Versionen. Workflow-Lektionen: Subagenten-Namen im fan-out IMMER mit Index uniqueness-sicher bauen; GUI-Settings-Änderung am laufenden Run = supersede mit Cache-Import. **RETRAKTION 11.10. (Sascha-Sritte berechtigt):** die Behauptung „1211 Skills werden pro Session geladen → Ladezeit-/Context-Kosten" war NICHT gemessen und zurückgezogen — der Harness dedupliziert Dubletten beim Laden (Session-Liste zeigt je Skill 1 Eintrag); der einzige belegte funktionale Risk-Punkt = die 5 inhaltlich abweichenden Paare (inkl. `qa`). 1211/638 = nur Festplatten-/Aufräum-Fakten, keine Performance-Behauptung mehr.
 
 Verwandt: [[loki-voice-agent]], [[sascha-local-infra-ports]], [[sascha-arbeitsregeln-hart]], [[pflicht-ablauf-plan-sichtbar]]
 
@@ -10833,6 +10941,10 @@ Interaktive Karte: `~/.zcode/v2/visualizations/c99caef…/loki-os-universum.html
 - **Voice-Daemon 8078 starb zwischendurch** (lebte 08:0x, pgrep/lsof leer ~12:0x; LaunchAgent war „geladen" aber nicht im Domain) → `launchctl bootstrap gui/501 ~/Library/LaunchAgents/com.saschalagler.lokivoice.plist` revivete ihn (idle, glm-5.3-flash). **say_text = HTTP 404 auf alle getesteten Pfade** (/say_text, /api/say_text, /say, /tts) — Endpoint-Format ungeklärt; Doppel-Strg→sprechen = Saschas physischer Test, steht aus. Mikrofon selbst ist NICHT der Blocker (siehe oben).
 - **Privacy-Pilot Ollama:** qwen3.5:9b via /api/generate (FFG-Frage) → **2-Min-Timeout** (Kaltstart-Ladezeit); Retry offen, gehört zu Task #8.
 - **Taskmaster-Update (12:0x):** **#17 done** (appagentteam Live-Flug 1 auf ATLAS+HUB), neu **#28 = ATLAS Bug „Analyse-Button startet Video-Pose-Analyse nicht"** (P2, Projekt ATLAS; Details in [[atlas-versionsstand]]) — Android-Build-Fix wurde vom implementer-Subagenten GELÖST ohne eigene Task-Nummer (JDK-8→21-Environment-Fix, Details in [[atlas-versionsstand]]). ATLAS-Vertiefungs-Subagent (Datenbank-CRUD/Überblick/Seed-Pläne) lief beim letzten Stand noch. 1 Subagent-Fehlstart: Android-Versuch 1 starb mit „Model request failed" → sofortiger Retry funktionierte.
+
+**AKTUELLE PROJEKT-TAFEL (13:1x, Sascha: „WO SIND ALLE AKTUELLEN PROJEKTE — nichts ist aktuell"):** Nach letzter Aktivität über alle Harnesses: 1. LOKI.OS (jetzt) · 2. Verkaufs-HUB (heute: Backend :8055 mit 64 Tools live, Agenten-Modell glm-first HTTP 400 → Fix bei Sascha-GO) · 3. ATLAS (heute: Web/iOS/Android alle gebaut+getestet, Bug #28) · 4. Cline „Customize"-Session läuft · 5. Antigravity: 4 Sessions heute Nacht bis 05:15 (Inhalt in SQLite-DBs = Phase 2) · 6. Körperfluss/FFG V14 (wartet auf Saschas eCall-Finish) · Ruhen: Physio-Assistent, SBP Patrick, Vinyl-Scanner, Judicario, GCP-Billing (24,08 € offen), BAR BULLS, GoPro, Legal Ops. **„Förder-Cockpit" = KEIN eigenes Projekt** — es ist eine Tool-Karte im Verkaufs-HUB (Tier A, Verkaufen: später) mit **GHOST-Pfad (Ordner existiert nicht mehr)** — Sascha-Interesse „wiederfinden" steht offen (Vollplatten-Suche anbieten).
+
+**KANON-PROJEKTLISTE DAUERHAFT AKTUALISIERT (13:1x):** `~/.claude/projects/-Users-saschalagler/memory/MEMORY.md` → Abschnitt „## Weitere Projekte" (Quelle der SessionStart-Projektliste via projects.py) um 3 Zeilen erweitert, oben eingefügt: TOOL-SAMMLUNG-VERKAUF/Verkaufs-HUB (11.10. Stand) · ATLAS-TESTSTAND 11.10. (Web/iOS/Android + Bug #28; korrigiert auch die alte ATLAS-Zeile, die noch auf „Atlas Cali Plan" zeigte statt ATLAS_MASTER) · appagentteam+flutter-skill. Ab nächstem SessionStart zeigt die Projektliste den aktuellen Stand statt 15.09.-Daten.
 
 ## loki-os-v18-build
 
@@ -102174,6 +102286,52 @@ Die Signaturquelle **`unterschrift.png`** liegt im Fallakten-Ordner — die `.ty
 4. **THOMAS-ANGEBOT.md** — kurze Angebotsnachricht mit Fair-Preis-Begründung
 
 Quellen: [willhaben Gemini-Listings](https://www.willhaben.at/iad/kaufen-und-verkaufen/l/nespresso-gemini) · [ricardo.ch](https://www.ricardo.ch) · [ebay.at](https://www.ebay.at)
+## plan-sess_9bb02160-ce23-4582-a594-371c1f798aa5
+
+## VERKAUFS-AGENTEN-HUB — nach dem bewährten 13.09.-Freigabe-Design (Zielbogen → Anforderung → 4 Wellen → Risiko → Start-Checkliste)
+
+**Dein Zielbogen — 6 Antworten, von mir vorausgefüllt aus allem, was du heute erklärt hast (korrigiere mit 1 Wort, sonst gilt das):**
+- **F01 Angebot/Markt:** ALLE deine Tools (67 im Inventar + Finder findet Neues) verkaufsfertig machen und verkaufen — Markt: DACH/Ebay/Gumroad/eigene Seiten, „China" vom 13.09. ist hinfällig
+- **F02 Entscheider:** Sascha (Einzelentscheider)
+- **F03 Kostenregel:** Pipeline-Agenten laufen auf Ollama lokal (0 €, kein „high demand"-Risiko aus Run 1); ZCode-Schwarm auf Flash
+- **F04 Zeitfenster:** JETZT — Welle 1 startet sofort nach Freigabe, Durchlauf heute
+- **F05 Eigent.app:** Browser-Auge für App-Tests (bewiesen aktiv auf :9222)
+- **F06 Erfolg:** ALLE-TOOLS-Dokument existiert + 15/15 Pläne vollständig + Top-3-Tools umgesetzt + je Tool Marktplatz+Taktik — 8/8 Checkliste
+
+### Phase A — Freigabe (jetzt)
+Ich lege den Hub als Datei an (wie am 13.09.): Zielbogen mit den 6 Antworten, Anforderungsdokument (Scope: 67 Tools + zukünftige Funde; Lieferobjekte unten; Kriterien), Risiko-Rollback-Tabelle. Deine Freigabe = dieses Plan-GO.
+
+### Phase B — Produktion in 4 Wellen (11+ Agentenrollen, je Welle Verifikation)
+
+**WELLE 1 · BASIS/MOTOR** (Modelle: Ollama lokal — killt das „high demand"-Risiko von Run 1)
+- Motor-Fix: runner.py LLM-Kette von OmniRoute(:20128, tot) auf Ollama :11434 umstellen (Backup vorher; beweis: grep = 0 OmniRoute, 1 erfolgreicher Agenten-Call)
+- **NEUER Agent A0 „Tool-Finder"**: periodische Platten-Suche (gleiche bewährte Marker-Logik) → Delta gegen tools-v2.json → Neuzugänge als Entwürfe (Erstlauf sofort; Erwartung 0 neue, Beweis im finder.log)
+
+**WELLE 2 · BEWERTUNG/PLÄNE**
+- Auto-Pilot-Runde 2 bis **15/15** plan.json vollständig (A12 Entwicklungsplan + A13 Artefakte + A14 Marketing — nur defekte werden neu generiert)
+- Marktplatz-Shortlist je Tool (wo genau: Gumroad/eBay/eigene Seite) aus den vorhandenen Markt-Analysen (A1/A2-Nachlauf)
+
+**WELLE 3 · AUSBAUEN (Umsetzung, nicht nur Plan)**
+- Top-3 nach Verkaufsreihenfolge (Paraletts/Bar-Bulls → Legal Ops → LokiVoice): appagentteam-Schwarm setzt die offenen A12-Pläne + Verkaufsfertig-Rest-Tickets um (max 3 Subagenten parallel)
+- Verkaufsreife-Einstufung je Tool: 🟢 sofort / 🟡 braucht dich (Gumroad-Link, Zertifikat, Deploy-GO) / 🔴 braucht Ausbau / ⚫ Ghost/eingestellt (inkl. „omniroute" streichen)
+
+**WELLE 4 · SYNTHESE**
+- Das Gesamtdokument **„ALLE TOOLS von Anfang bis jetzt"** (MD im Repo + PDF auf Desktop): je Tool Tier · Stand · Preis · Kanal · Wert · Lücken · Reife-Stempel — plus die ehrliche Antwort auf „kann ich alle verkaufen?"
+- Hub-Refresh + Marktplatz/Taktik je Karte sichtbar
+
+### Phase C — Übergabe
+Start-Checkliste quergeprüft (8/8), alles lokal abgelegt, Bericht mit Beweis-Pfaden. **Kein Deploy, kein Gumroad-Upload, kein push — das bleibt dein GO.**
+
+### Risiko & Rollback (mit Abbruchkriterien, aus Run-1-Erfahrung gelernt)
+| Risiko | Abbruchkriterium | Rollback |
+|---|---|---|
+| Ollama-Modell zu langsam/fehlerhaft | 3 Fehlversuche je Agenten-Welle | Z.ai-Key-Datei-Fallback (Pfad-basiert, kein Key im Code) |
+| Quota 429 am ZCode-Schwarm (Welle 3) | 429 beim Spawn | Welle pausieren, inline weiter, Welle 3 später fortsetzen |
+| Ghost-Tools verstopfen die Runde | Auto-Pilot schreibt Ghost-Pläne | Ghost/eingestellt-Tools von Runde 2 ausgeschlossen |
+| Unvollständige Pläne (A13-Fehler wie gestern) | Runde endet < 15/15 | Nur defekte löschen + Einzel-Retry statt Komplett-Runde |
+
+### Dauer & Aufwand
+W1 ~15 Min · W2 ~30–60 Min (Auto-Pilot) · W3 ~60–90 Min · W4 ~20 Min. Alles lokal, kein externes Publish.
 ## SKILL
 
 ---
@@ -102537,6 +102695,250 @@ Logik in `assets/app.js` (Förder-Katalog `CATALOG` mit vollständigen Plänen),
 3. **Rechtstexte:** Impressum, Datenschutz, AGB sind Platzhalter (`href="#"`) — echte Österreich-Rechtstexte (TKG/DSGVO) nötig; Entwickler-E-Mail `hallo@holdirmehr.at` ersetzen.
 4. **Förderkatalog:** Die Demo-Beträge/Pläne in `app.js` sind plausible Beispiele — vor echten Nutzer-Angaben durch einen geprüften Katalog ersetzen (Transparenzportal + 9 Landesförderstellen) + Disclaimer prüfen.
 5. **Falls doch mal Zahlung** (Original-Modell €39,99): Stripe nur server-seitig (Next.js-Route), Keys niemals client-seitig — Dossier-Empfehlung Feb 2026.
+
+## README
+
+# HolDirMehr — 1:1 Replika (Kostenlos-Version)
+
+Nachbau der Website **HolDirMehr.at** („Finde deine Förderungen in Österreich") aus den PDFs in `~/Desktop/öförderugnen/` — **auf Saschas Wunsch ohne jede Zahlung: der komplette Bericht ist frei zugänglich** (Paywall, Checkout und alle €39,99-Bezüge entfernt; Stand 10.10.2026). Statische Web-App, kein Build-Step, kein Backend.
+
+## Starten
+
+- **ONLINE (dauerhaft, Firebase Hosting): https://foerderungen-sascha.web.app/**
+- Lokal: Doppelklick auf `index.html` (Katalog ist als `assets/katalog.js` eingebettet) oder Desktop-`HolDirMehr-starten.command`
+- Deploy-Update: `firebase deploy --only hosting` (Projekt foerderungen-sascha)
+- Oder direkt: `index.html` im Browser öffnen, oder `python3 -m http.server` im Ordner
+
+## Seiten
+
+| Datei | Original (PDF im Ordner) | Funktion |
+|---|---|---|
+| `index.html` | „Finde deine Förderungen…" (Landing) | Hero + Freitext-Eingabe, Schnell-Check-CTA, Beispiel-Report-Karten (mit Zoom-Lightbox), Benefits, 3 Schritte, Preisvergleich (€0 statt €39,99), Förderkarten, Stats, FAQ-Accordion, CTA, Footer + Cookie-Banner |
+| `check.html` | „Schnell-Check starten (6 Fragen)" | Quiz: Bundesland → Haushalt → Wohnen → Vorhaben (Mehrfach) → Start → Anträge; leitet Antworten an `bericht.html` weiter |
+| `foerderungen.html` | `/foerderungen` (live) | **Echter Katalog: 1.148 Förderungen** aus `data/katalog.json` (gecrawlt von holdirmehr.at, Stand 10.10.2026) — Volltextsuche + Bundesland-/Bereichsfilter, „Mehr anzeigen" |
+| `foerderung.html?id=slug` | `/foerderung/<slug>` (live) | Detailseite je Förderung: Betrag, Beschreibung, Bereich, Antragsteller, Prüfdatum, **Link zum offiziellen Antrag** (1.138×), ähnliche Förderungen |
+| `bericht.html` | „HolDirMehr — … 2.pdf" (Bericht) | Quiz-Antworten matchen gegen den **echten Katalog** (Keywords + Bundesland-Gewichtung) — echte Programme, echte Beträge, aufklappbar, kostenlos |
+| `entwickler.html` | „Entwickler & API-Nutzung" | 1:1-Struktur, Zahlungs-/Purchase-Stellen auf Lead-Modell umgeschrieben |
+
+Logik in `assets/app.js` (Förder-Katalog `CATALOG` mit vollständigen Plänen), Design in `assets/style.css`. Fonts: Fraunces + Inter via Google Fonts. Berichts-Beträge sind deterministisch aus den Quiz-Antworten gerechnet (Demo-Daten, kein echter Förderkatalog).
+
+## ⚠️ Wichtig
+
+- **NUR PRIVAT NUTZEN, NICHT ÖFFENTLICH DEPLOYEN:** Der Katalog (1.148 Einträge, `data/katalog.json`) ist die Datenbank von holdirmehr.at (© dessen Betreiber) — exakt 1:1 kopiert auf Saschas Wunsch für private, lokale Nutzung. Kein Public-Hosting, kein Weiterverkauf.
+- **Katalog aktualisieren:** `cat <slugs-von-sitemap> | python3 crawl-artig` — der Crawler liegt in `/tmp/holdirmehr_crawl.py` (stdin=URLs, stdout=JSON); Slugs: Sitemap `https://holdirmehr.at/sitemap.xml` → alle `/foerderung/*`.
+- **Branding/Testimonials/Rechtstexte** sind weiterhin vom Original übernommen (siehe oben) — vor jedem Livegang ersetzen.
+- **Demo-Beträge im Bericht-Kopf** (€-Spanne) sind geschätzt; die Förderkarten zeigen echte Beträge aus dem Katalog.
+
+1. **Branding:** „HolDirMehr", Logo, `holdirmehr.at` sind Marken/Identität des Original-Betreibers — eigener Name + Logo.
+2. **Testimonials** (Rene, Nicole, Sarah, Noreia, „Fabian Eder, Gründer") = echte Personen des Originals → eigene, echte Kundenzitate.
+3. **Rechtstexte:** Impressum, Datenschutz, AGB sind Platzhalter (`href="#"`) — echte Österreich-Rechtstexte (TKG/DSGVO) nötig; Entwickler-E-Mail `hallo@holdirmehr.at` ersetzen.
+4. **Förderkatalog:** Die Demo-Beträge/Pläne in `app.js` sind plausible Beispiele — vor echten Nutzer-Angaben durch einen geprüften Katalog ersetzen (Transparenzportal + 9 Landesförderstellen) + Disclaimer prüfen.
+5. **Falls doch mal Zahlung** (Original-Modell €39,99): Stripe nur server-seitig (Next.js-Route), Keys niemals client-seitig — Dossier-Empfehlung Feb 2026.
+
+## BEANTRAGEN_FUER_MICH
+
+# BEANTRAGEN FÜR MICH — Sascha (Loosdorf, AMS-Sperre, ~300 €/Monat)
+
+## 1) BLUF
+**6 Dinge sind SOFORT beantragbar** — ohne Voraussetzung, die du jetzt nicht erfüllst: **Spontanhilfe NÖ** (Geld-Notlage), **Wohnungssicherung NÖ Mitte** (kostenlose Beratung, begleitet Wohnbeihilfe/WOHNSCHIRM), **Hilfe zur sozialen Eingliederung** (⚠️ UNBESTÄTIGT — vorher klären, ob reine Existenzsicherung abgedeckt ist), **Rezeptgebührenbefreiung** (Einkommensgrenze klar unterschritten), **Mental-Health-Hotline** (kostenlos, sofort anrufen), **ÖGK-Gesundheitscheck** (auch ohne laufende Versicherung). Alles andere hängt an einer Bedingung (Sperre, Sozialhilfe-Bezug, AK-Mitgliedschaft, Rückstände) → Abschnitt 3.
+
+**Aktion-Reihenfolge: 1. BH Melk (Sozialhilfe/Eingliederung) → 2. AMS (Status klären) → 3. Gemeindeamt Loosdorf (Heizkostenzuschuss-Info) → 4. online/telefonisch (Spontanhilfe, OBS, E-Control).**
+
+## 2) Tabelle BEANTRAGEN (nach Aktion-Reihenfolge)
+
+| # | Name | Wo/Wie | Betrag | Quelle-URL |
+|---|---|---|---|---|
+| 1 | **Hilfe zur sozialen Eingliederung NÖ** ⚠️ UNBESTÄTIGT | **BH Melk**, Hauptplatz 1, ☎ 02752/53100 — Antrag Amt der NÖ Landesregierung/zuständiger Sozialdienst; vor Antrag klären, ob bloße Existenzsicherung (Mindestsicherung-Nachfolger) abgedeckt ist (Katalog zielt auf Betreuung/Unterbringung via Träger) | Bedarfsorientiert (deckt Miete 350 € vs. Einkommen ~300 € ab) | ris.bka.gv.at / transparenzportal.gv.at (web-verifiziert; Katalog-Beschreibung passt ggf. nicht auf reine Geldnot) |
+| 2 | **Wohnungssicherung NÖ Mitte** | Kostenlose Wohnberatung, zuständig für **Wohnbezirk Melk**; dort zusätzlich **Wohnbeihilfe- + WOHNSCHIRM-Anträge** mitbegleiten lassen | Kostenlos (Beratung + Antragshilfe) | Katalog-Kurzbeschreibung, unbestätigt (Webcheck-Timeout) |
+| 3 | **Individuelle Spontanhilfe NÖ** (Rotes Kreuz NÖ, Tulln) | sozialarbeit@no.roteskreuz.at, ☎ 059144-50530; Beratungsgespräch mit Einkommens- + Rechnungsnachweis | Zuschuss, bargeldlos als Gutschein/Überweisung direkt an Gläubiger | roteskreuz.at (Suche „Spontanhilfe"); sozialinfo.noe.gv.at (verifiziert 10.10.2026) |
+| 4 | **Rezeptgebührenbefreiung** (Zuzahlungsbefreiung) | **ÖGK** — Befreiungserklärung beantragen; exakte 2026er Grenze dort erfragen | Befreiung von Rezeptgebühr (~€ 7,55/R. Stand 2026 — bei Kasse prüfen) | Katalog-Kurzbeschreibung (ÖGK-Regel; Web-Verif. rate-limitiert) |
+| 5 | **NÖ Mental-Health-Hotline + Soforthilfe** | **Telefonseelsorge 142** (kostenlos, anonym); NÖ-Angebote via noetutgut.at | Kostenlos | telefonseelsorge.at / noetutgut.at (web-bestätigt) |
+| 6 | **Vorsorgeuntersuchung für Nichtversicherte** | **ÖGK-Gesundheitscheck** — Termin buchen, 1×/Jahr kostenlos ab 18 mit Wohnsitz AT, auch ohne aktuellen Versicherungsschutz | Kostenlos | oegk.at (web-bestätigt) |
+
+## 3) Tabelle BEDINGT (Name · exakte Bedingung)
+
+| Name | Bedingung |
+|---|---|
+| **AK-extra Digi-Bonus (AK NÖ)** | Nur mit aktueller AK-NÖ-Mitgliedschaft (letzte Beschäftigung in NÖ); im reinen ALG/Notstandshilfe-Bezug i.d.R. keine Mitgliedschaft. ⚠️ Quelle unbestätigt |
+| **Umschulungsgeld (AMS/PVA)** | Nur wenn AMS eine Umschulung/Auswahl- und Planungsphase verfügbar macht — aktuell keine laufend. ⚠️ unbestätigt |
+| **Arbeitslosengeld** | Erst NACH Ablauf der AMS-Sperre; offene Lohnforderungen ggü. Ex-Arbeitgeber mit Lohnzettel nachweisen (Beiziehung durch AMS beantragen). ⚠️ unbestätigt |
+| **Unfallversicherungsbeiträge (ALG-Bezieher)** | Läuft automatisch bei ALG/Notstandshilfe-Bezug — kein Antrag, entfällt solange Sperre läuft. ⚠️ unbestätigt |
+| **Beihilfe Kursnebenkosten** | Nur während AMS-Förderkurs (Fahrt/Unterkunft/Verpflegung) mit AMS-Kursverfügung. ⚠️ unbestätigt |
+| **Kautionsdarlehen Land NÖ** | Nur im Rahmen NÖ-Sozialhilfe (Hilfe in besonderen Lebenslagen) + nachweisbare Mietskaution — erst Sozialhilfe beantragen/bewilligt. Quelle: noe.gv.at/Sozialhilfe/Infoblatt.pdf |
+| **NÖ Bildungsförderung** | Nur mit (Vor-)Nachweis geplanter/laufender Weiterbildung/Umschulung mit positivem Abschlussziel. ⚠️ unbestätigt |
+| **ÖGK Psychotherapie-Zuschuss (Wahltherapeut:in)** | Nur für ÖGK-Versicherte mit bewilligter Leistungsausweitung; im Arbeitslosigkeitsbezug über **PVA** versichert → dort analogen Zuschuss erfragen. ⚠️ unbestätigt |
+| **ORF-Befreiung** | Nur mit Befreiungsleistung (Sozialhilfe/Mindestsicherung, erh. Familienbeihilfe, Blindenbeihilfe) — reiner ALG-/Notstandshilfe-Bezug genügt NICHT. ⚠️ unbestätigt |
+| **Bildungsbonus BRP (AK NÖ)** | Nur mit AK-NÖ-Mitgliedschaft + abgelegten BRP-Prüfungsteilen. ⚠️ unbestätigt |
+| **Notstandshilfe** | Erst wenn ALG-Anspruch erschöpft/erloschen (Sperre verzögert Erlöschen) + weiter arbeitslos gemeldet + bedürftig; seit 2026 Übergang zur Arbeitslosensicherung, Anspruchsstopp während Sperre. Einzelfälle bei AMS/PVA prüfen. ⚠️ unbestätigt (oesterreich.gv.at 404) |
+| **Schulungszuschlag** | Nur während AMS-Schulungsteilnahme (z. B. 2,67 €/Tag 2026) — entsteht erst mit Schulungsbeginn. ⚠️ unbestätigt (ams.at 404) |
+| **AK Sozialfonds Bildung (AK NÖ)** | Nur mit AK-NÖ-Mitgliedschaft (Beschäftigung) + Bildungsausgaben-Nachweis. ⚠️ unbestätigt |
+| **Vorweggenommene Werbungskosten (Karenz)** | Nur bei gesetzlicher Karenz (MSchG/VKG) + steuerpflichtigem Einkommen — nicht in Karenz, ~300 €/Monat: fraglich. ⚠️ unbestätigt |
+| **Krankheitskosten absetzen (außergew. Belastung)** | Nur bei nachgewiesenen Krankheitskosten (Selbstbehalt ~6 % des Jahreseinkommens) + genug steuerpflichtigem Einkommen — lohnt bei ~300 €/Monat i.d.R. nicht. ⚠️ unbestätigt |
+| **Verbund Stromhilfefonds** | Nur bei offenen Strom-Rückständen/drohender Abschaltung; Voraussetzung: Energieberatung bei **Caritas**. Quelle: verbund.com/soziales (verifiziert 10.10.2026) |
+| **Sozialhilfe-Zusatzleistung Härtefall „Wohnen" (NÖ)** | Nur wenn Sozialhilfe-Sachbearbeitung NÖ die Wohnsituation als Härtefall einstuft; Einstieg: erst Sozialhilfe-Antrag + über Sozialarbeit NÖ (Wohnbezirk Melk) bringen lassen. ⚠️ unbestätigt |
+| **ÖGK-Unterstützungsfonds (z. B. Zahnersatz)** | Nur wenn aktuell ÖGK-versichert (e-card) + konkreter Eigenanteil ansteht + wirtschaftliche Notlage nachgewiesen. ⚠️ unbestätigt |
+| **WOHNSCHIRM MIETE** | Nur bei Mietrückständen/drohender Delogierung; Zugang nur über kostenlose Sozialarbeit-Beratung VOR dem Antrag. Quelle: sozialministerium.gv.at / oesterreich.gv.at (verifiziert 10.10.2026) |
+| **Bildungsbonus Rechnungswesen (AK NÖ)** | Nur nach erfolgreichem Abschluss eines AMS-geförderten Kurses; AMS-Sperre blockiert Förderung bis zur Aufhebung. ⚠️ Katalog |
+| **EVN Energiehilfe Fonds NÖ** | Nur bei offenen Energie-Rückständen/drohender Abschaltung; Antrag über **Caritas/Diakonie NÖ** (Einzelfall, kein fixer Betrag). ⚠️ unbestätigt |
+| **NÖ Heizkostenzuschuss 2025/26** | Frist 31.03.2026 **abgelaufen** — nur wenn neue Runde 2026/27 (erwartet ab Herbst 2026) eröffnet: Antrag beim **Gemeindeamt Loosdorf**; Voraussetzungen (Hauptwohnsitz NÖ ≥6 Mon., Staatsbürgerschaft, Heizkosten-Nachweis, Einkommen unter Grenze) grundsätzlich erfüllt. Quelle: noe.gv.at (verifiziert 10.10.2026) |
+| **Beihilfe zu den Kurskosten** | Nur bei AMS-vermitteltem/gefördertem Kurs bzw. AMS-Kostenübernahme; laut Katalog eigentlich Zielgruppe Menschen mit Behinderung → VORHER mit AMS-Betreuer klären. ⚠️ Katalog |
+| **WOHNSCHIRM ENERGIE** | Nur bei Energie-Rückstand, der (drohende) Abschaltung begründet; knüpft an niedriges Einkommen + Wohnbeihilfe-Anspruch/Wohnkostenservice-Beratung. Quelle: sozialministerium.gv.at (verifiziert 10.10.2026) |
+| **Tarifkalkulator E-Control** | Keine Geldleistung — kostenloses Vergleichstool; nutzen, wenn aktueller Strom-/Gastarif teurer als günstigster Tarif. Quelle: e-control.at |
+| **Vorstellungsbeihilfe** | Nur pro Vorstellungsgespräch mit Belegen + im AMS-Betreuungsverhältnis; bei laufender Sperre vorher mit Berater klären. Quelle: ams.at/arbeitsuchende (web-verifiziert) |
+| **Überbrückungshilfe (AMS)** | Nur wenn ALG-/Notstandshilfe-Anspruch erschöpft oder wegen Sperre unbezahlt + Notlage; Voraussetzungen vor Antrag beim AMS prüfen. ⚠️ unbestätigt (ams.at 404) |
+| **NÖ Qualifizierungs-/Beschäftigungsmaßnahmen** | Nur während aktiver AMS-Verantwortung; bei Sperre nur mit Ausnahmegenehmigung bzw. nach Sperren-Ende. Quelle: ams.at |
+| **Sozialhilfe-Zusatzleistung Härtefall (NÖ, allgemein)** | Nur für bereits anerkannte NÖ-Sozialhilfe-Bezieher — zuerst Sozialhilfe bei **BH Melk** beantragen. Quelle: noe.gv.at/Sozialhilfe (web-bestätigt) |
+| **Sozialhilfe-Krankenversicherung (Bund)** | Nur bei Sozialhilfe-Bezug ohne eigenen KV-Schutz — bei AMS-Sperre droht KV-Ausfall: genau dieser Fall → erst Sozialhilfe beantragen. Quelle: noe.gv.at/Sozialhilfe |
+| **ÖGK Kur/Rehabilitation** | Nur mit aktiver Versicherung/Leistungsbezug + ärztlicher Verordnung; bei Sperre Versicherungsschutz offen → prüfen. Quelle: gesundheitskasse.at (web-bestätigt; Selbstbehalt 11–27 €/Tag) |
+| **Zuschuss Fernsprechentgelt (~10 €/Monat)** | Nur für definierte Bezieherkreise (u. a. Sozialhilfe-, Pflegegeldbezieher); erst Sozialhilfe, dann Antrag über **obs.at**. Quelle: obs.at/befreiung (web-bestätigt) |
+| **Hilfsfonds Verbrechensopfer (Kostenübernahme)** | Nur Opfer einer Straftat besonderer Schwere/Tragweite mit gesundheitlichen Folgen; Lohn-Rückhaltung zählt nur, wenn **Strafanzeige** läuft → Anzeige ggü. Ex-Arbeitgeber stellen (passt zur AMS-Beschwerde), dann via Weißer Ring. Quelle: sozialministeriumservice.gv.at (web-bestätigt) |
+
+## 4) NEIN-Gruppe (Zusammenfassung)
+- Alle Leistungen, die **ausschließlich an AK-NÖ-Mitgliedschaft (Beschäftigung)** knüpfen, sind während Arbeitslosigkeit nicht nutzbar — solange kein AK-Beitrag läuft.
+- Steuerliche Posten (Krankheitskosten, Karenz-Werbungskosten) lohnen bei ~300 €/Monat **nicht** (Selbstbehalt/Einkommen zu niedrig).
+- Automatische Leistungen ohne Antrag (Unfallversicherung, Sozialversicherung während ALG-Bezug) laufen **nur mit tatsächlichem Leistungsbezug** — aktuell durch die Sperre blockiert.
+- Heizkostenzuschuss 2025/26: **Frist abgelaufen (31.03.2026)** — nur neue Runde 2026/27 beobachten.
+
+## 5) Unterlagen-Set (für ALLE Anträge parat legen)
+| # | Unterlage | Wofür |
+|---|---|---|
+| 1 | **Meldezettel** (Hauptwohnsitz Loosdorf) | Sozialhilfe, Wohnbeihilfe, Heizkostenzuschuss, OBS |
+| 2 | **Ausweis** (Personalausweis/Reisepass) | Alle Anträge, Identitätsnachweis |
+| 3 | **Mietvertrag** | Sozialhilfe (Miete 350 €), Wohnbeihilfe, WOHNSCHIRM, Kautionsdarlehen |
+| 4 | **Kontobelege 3 Monate** (Kontoauszüge) | Einkommens-/Bedarfsnachweis bei allen Geldleistungen |
+| 5 | **AMS-Bescheide** (Sperre, Ablehnungen) | Sozialhilfe, Spontanhilfe, AMS-Anliegen, Wohnberatung |
+| 6 | **Lohnzettel** (falls vorhanden, Ex-Arbeitgeber) | Arbeitslosengeld-Neuantrag nach Sperre, Lohnforderung, Strafanzeige |
+
+## 6) Kontaktablock
+
+```
+AK Melk · Hummelstraße 1
+BH Melk · Hauptplatz 1 · ☎ 02752/53100
+Gemeindeamt Loosdorf
+Caritas St. Pölten · ☎ 02742/841390
+Verein Wohnen · ☎ 02742/47076
+obs.at (ORF-/Telefonbeiträge Befreiung)
+```
+
+---
+*Quellenstatus: „web-verifiziert/web-bestätigt" = in dieser Recherche geprüft (10.10.2026); „Katalog-Kurzbeschreibung, unbestätigt" = holdirmehr/data/katalog.json, ohne unabhängigen Web-Check (Rate-Limit/Timeout/404). „⚠️ UNBESTÄTIGT" markiert Einträge laut Gegenleser bzw. Quellenstatus. Fachbegriffe: **BH** = Bezirkshauptmannschaft (Bezirksverwaltungsbehörde des Landes), **ALG** = Arbeitslosengeld, **ÖGK** = Österreichische Gesundheitskasse (Krankenkasse), **OBS** = ORF-Beitrags Service.*
+
+## OPTIMIERTE_LISTE_V2
+
+# OPTIMIERTE LISTE V2 — Sascha, Loosdorf (Stand 11.10.2026)
+
+**Profil (aktualisiert):** 29, Single, keine Kinder · arbeitslos + AMS-Sperre (~390 € diesen Monat, Beschwerde läuft) · Miete 350 €, 3382 Loosdorf (Bez. Melk) · keine Behinderung · **GEWERBE vorhanden** · **ÖGK + Strom bereits betreut (Sozialarbeiterin)** · **KEIN Mietrückstand** · Ex-Arbeitgeber hält Lohn + Lohnzettel zurück, AK-Termin geplant.
+
+**Wahrheitsquelle für Bedingungen:** Liste 2 (`BEANTRAGEN_FUER_MICH.md`, web-geprüft 10.10.2026). Wo L1 widerspricht → L2 gewinnt, Korrektur notiert.
+**Labels:** ✅ web-verifiziert · 🔶 Katalog-basiert · ⚠️ DATENLAGE UNKLAR
+
+---
+
+## BLUF
+
+**Der Hebel Nr. 1 bleibt Sozialhilfe bei der BH Melk** — sie schaltet fast alles andere frei (Krankenversicherung des Bundes, OBS, Fernsprechentgelt, Härtefall-Zusatzleistungen, Heizkostenzuschuss-Logik). Vorher/danach: **AK Melk** (Lohnklage + Beschwerde gegen Sperre — kostenlos, keine Vorbedingung). **Gewerbe ist ein eigener Hebel** (FFG Innovationsscheck 10.000 €, SVS-Klärfall) — aber vor Sozialhilfe-Antrag klären, wie Gewerbe-Einkünfte angerechnet werden. Wohnschirm Miete ist **jetzt hinfällig** (kein Rückstand) und bleibt nur als Notfall notiert. Änderungen vs. L1: 6 Einträge raus (falscher Bezirk, keine Kinder, AK-Mitgliedschaft), 4 Neueinträge aus L2.
+
+**Aktion-Reihenfolge:** 1. AK Melk (Termin läuft) → 2. BH Melk Sozialhilfe → 3. AMS (Beschwerde/Überbrückungshilfe) → 4. Gemeindeamt Loosdorf (Heizkostenzuschuss 2026/27 ab ~22.10.) → 5. Gewerbe-Block (FFG + SVS).
+
+---
+
+## 1) SOFORT — ohne Vorbedingung (diese Woche)
+
+*Hinweis: „ohne Vorbedingung" bezieht sich auf die kostenlose AK-Beratung. Der Rechtsschutz (Vertretung in der Lohnklage) setzt i. d. R. eine AK-Mitgliedschaft voraus, die ohne laufende Beschäftigung nicht besteht (L2) — das im AK-Termin klären.*
+
+| # | Was | Wie/Wo | Nutzen | Conf. |
+|---|---|---|---|---|
+| 1 | **AK Melk: Lohnklage + Beschwerde AMS-Sperre (BVwG)** | Arbeiterkammer Melk, Hummelstraße 1 — Termin ist geplant; Lohnzettel-Rückhaltung = Anzeige/Lohnklage möglich | Schlüssel für ALG nach Sperre; **Rechtsschutz für die Lohnklage selbst fraglich ohne AK-Mitgliedschaft** (L2: Mitgliedschaft braucht laufende Beschäftigung → im Termin klären) | ✅ (L1 lokal + L2) |
+| 2 | **Sozialhilfe NÖ** (NÖ SH-Ausführungsgesetz) | **BH Melk**, Hauptplatz 1, ☎ 02752/53100 — Zuflussprinzip nennen, Sperrbescheid + Beschwerde vorlegen; **Gewerbe-Einkünfte vorher offenlegen** (Anrechnung klären) | Bedarfsorientiert, deckt die Differenz (Miete 350 € vs. Einkommen ~390 €) — L1 nannte 1.229,89 € max., **L2-Korrektur: bedarfsorientiert, kein Fixanspruch; kein konkreter Betrag belegt** | ✅/🔶 |
+| 3 | **Individuelle Spontanhilfe NÖ** (Rotes Kreuz NÖ) | sozialarbeit@no.roteskreuz.at, ☎ 059144-50530; Einkommens- + Rechnungsnachweis | Einmal-Zuschuss, bargeldlos an Gläubiger | ✅ |
+| 4 | **Rezeptgebührenbefreiung** | ÖGK — Befreiungserklärung; Grenze klar unterschritten | ~7,55 €/Rezept (2026, bei Kasse prüfen) | ✅ |
+| 5 | **Wohnungssicherung NÖ Mitte** (Wosi) | Kostenlose Wohnberatung, zuständig Bez. Melk — lassen sich Wohnbeihilfe-Antrag begleiten (KEIN Wohnschirm — siehe Notfall) | Beratung + Antragshilfe kostenlos | 🔶 |
+| 6 | **NÖ Mental-Health-Hotline** | Telefonseelsorge 142 / noetutgut.at | Kostenlos | ✅ |
+| 7 | **ÖGK-Gesundheitscheck** (auch ohne laufenden Schutz) | oegk.at — Termin buchen | Kostenlos | ✅ |
+| 8 | **E-Control-Tarifkalkulator** | e-control.at — Strom-/Gastarif vergleichen (Strom ist betreut → mit Sozialarbeiterin checken) | kostenloses Tool, oft 100+ €/Jahr | ✅ |
+| 9 | **Hilfe zur sozialen Eingliederung NÖ** | BH Melk — **vorher klären**, ob reine Existenzsicherung abgedeckt (L2: ⚠️ UNBESTÄTIGT, Katalog zielt auf Betreuung/Unterbringung) | ggf. Therapie-/Betreuungskosten | ⚠️ |
+
+## 2) BEDINGT (vor allem NACH Sozialhilfe-Bewilligung — die Bedingung schaltet frei)
+
+| Was | Bedingung | Nutzen | Conf. |
+|---|---|---|---|
+| **Hilfsfonds Verbrechensopfer (Kostenübernahme)** | **ZWEI Vorbedingungen (L2):** 1. laufende **Strafanzeige** wegen Lohn-Rückhaltung (passt zur AK-Taktik), 2. Straftat besonderer Schwere/Tragweite **mit gesundheitlichen Folgen** — beides über Weißer Ring/Sozialministeriumservice | Kostenübernahme im Einzelfall — **prüfen, nicht garantieren** | ✅ (Quelle web-bestätigt, Anspruch ⚠️) |
+| **ÖGK Psychotherapie-Zuschuss (Wahltherapeut:in)** | Nur für ÖGK-Versicherte mit bewilligter Leistungsausweitung; im Arbeitslosigkeitsbezug über **PVA** versichert → dort analogen Zuschuss erfragen | Zuschuss zu Psychotherapie | ⚠️ (L2-Neueintrag, unbestätigt) |
+| **ÖGK-Unterstützungsfonds (z. B. Zahnersatz)** | Nur wenn aktuell ÖGK-versichert (e-card) + konkreter Eigenanteil ansteht + wirtschaftliche Notlage nachgewiesen | Übernahme des Eigenanteils im Einzelfall | ⚠️ (L2-Neueintrag, unbestätigt) |
+| **ÖGK Kur/Rehabilitation** | Nur mit aktiver Versicherung/Leistungsbezug + ärztlicher Verordnung; bei Sperre Versicherungsschutz offen → prüfen | Kur/Rehab, **Selbstbehalt 11–27 €/Tag** | ✅ (L2-Neueintrag, web-bestätigt) |
+| **OBS-Befreiung (ORF-Beitragspflicht)** | L2-Regel: **reiner ALG-/Notstandshilfe-Bezug genügt NICHT** — Befreiungsleistung (Sozialhilfe) nötig → erst nach Bescheid über obs.at | ~25–30 €/Monat **(Betrag unbelegt, ⚠️)** | ✅ (L2) |
+| **Zuschuss Fernsprechentgelt** | Bezieherkreis inkl. Sozialhilfebezieher; Antrag via obs.at (nach OBS) | **~10 €/Monat (L2)**; L1/Gemini nannten ~12 € — L2 gewinnt | ✅ |
+| **Sozialhilfe-Krankenversicherung (Bund)** | Sozialhilfe-Bezug **ohne eigenen KV-Schutz** — bei AMS-Sperre droht KV-Ausfall: genau dieser Fall → mit Bescheid aktiv machen | KV-Schutz gesichert | ✅ (L2-Neueintrag) |
+| **Sozialhilfe-Zusatzleistung Härtefall „Wohnen"** | Nur für **anerkannte** Sozialhilfe-Bezieher; Einstufung durch Sozialarbeit NÖ (Wohnbezirk Melk) | Miet-/Wohnkosten-Zuschlag | 🔶 |
+| **Kautionsdarlehen Land NÖ** | Nur im Rahmen NÖ-Sozialhilfe + nachweisbare Mietskaution — nur falls Umzug unausweichlich | zinsfreies Darlehen | 🔶 |
+| **Heizkostenzuschuss 150 € (Runde 2026/27)** | Runde 2025/26 **Frist 31.03.2026 abgelaufen** (L2-Korrektur); neue Runde erwartet ab ~22.10.2026 beim **Gemeindeamt Loosdorf**; Voraussetzungen (Hauptwohnsitz NÖ ≥6 Mon., **Staatsbürgerschaft** [L2], Einkommensgrenze, Heizkosten-Nachweis) grds. erfüllt | 150 € | ✅ |
+| **NÖ Wohnzuschuss** | NUR wenn Wohnung mit NÖ Wohnbauförderung gebaut — **beim Vermieter nachfragen** | monatlicher Zuschuss | 🔶 |
+
+## 3) BEI AMS-Maßnahmen (erst wenn AMS was verfügbar macht / Sperre weg)
+
+| Was | Bedingung | Conf. |
+|---|---|---|
+| **Überbrückungshilfe AMS** | Nur wenn ALG/Notstandshilfe wegen Sperre unbezahlt **+ Notlage** — Voraussetzungen beim AMS prüfen (L2-Neueintrag) | ✅ (Quelle web, Detail ⚠️) |
+| **Arbeitslosengeld** | Erst **nach Ablauf der Sperre**; Lohnzettel/Lohnnachweis über AMS-Beiziehung — hängt an AK-Termin | 🔶 |
+| **Notstandshilfe** | Erst wenn ALG erschöpft; Anspruchsstopp während Sperre | ⚠️ |
+| **Schulungszuschlag (2,67 €/Tag), Beihilfe Lebensunterhalt (bis 34 €/Tag), Kurskosten/Nebenkosten (bis 100 %), Fachkräftestipendium, Umschulungsgeld (ALG+22 % — ⚠️ Prozentsatz unbelegt, L2 nennt keinen Betrag)** | Nur während laufender AMS-Schulung/Umschulung mit Kursverfügung | 🔶/⚠️ |
+| **Vorstellungsbeihilfe** | Pro Vorstellungsgespräch mit Belegen + Betreuungsverhältnis; bei Sperre vorher mit Berater klären | ✅ |
+| **NÖ Qualifizierungs-/Beschäftigungsmaßnahmen, NÖ Bildungsförderung (bis 2.500 €), Kombilohnbeihilfe (Arbeitgeber-Argument)** | Nur bei aktiver AMS-Verantwortung / Einstellung | 🔶 |
+| **Pendlerhilfen (Land NÖ + AK, bis 1.200 €)** | NUR falls 2025 tatsächlich gependelt — Frist **31.10.2026** rückwirkend — **DATENLAGE UNKLAR: hast du 2025 gependelt?** | ⚠️ |
+| **SMS Arbeits-Assistenz** | Kostenloses Job-Coaching — kann parallel laufen | 🔶 |
+
+## 4) GEWERBE (eigener Hebel — Sozialhilfe-Anrechnung vorher klären!)
+
+| Was | Bedingung/Hinweis | Conf. |
+|---|---|---|
+| **FFG Innovationsscheck (bis 10.000 €)** | Gewerbe vorhanden = Voraussetzung erfüllt; **nicht in L1/L2-Katalogen — aus Saschas Vorgabe übernommen**, Bedingungen (Innovation, F&E-Leistung, Abrechnung) auf ffg.at prüfen | 🔶 |
+| **SVS-Klärfall** | Gewerbe + (drohende) Sozialhilfe → SVS-Mindestbeiträge vs. Befreiung/Niedrigverdienstatbestand klären; Sozialarbeiterin + SVS kontaktieren, VOR Sozialhilfe-Antrag Ein-/Anrechnung dokumentieren | ⚠️ |
+| **AMS Unternehmensgründungsprogramm (UGP)** | Nur mit AMS-Zustimmung; 6 Monate Existenzsicherung + Beratung — Gewerbe schon vorhanden → ggf. nur Beratungsteil, mit AMS-Betreuer klären | 🔶 |
+| **Sozialhilfe-Anrechnung Gewerbeeinkünfte** | Gewerbliche Einnahmen zählen beim Zuflussprinzip — **voller Transparenz-Antrag ist Pflicht**, Anrechnung ggf. auf Bedarfssatz | ⚠️ |
+
+## 5) NICHT-OPTIONEN (kurz — raus aus der aktiven Liste)
+
+- **WOHNSCHIRM MIETE** — kein Mietrückstand → **hinfällig**; bleibt NOTFALL (bei drohender Delogierung: über Wosi/Caritas, Zugang nur mit Beratung VOR Antrag). ✅
+- **WOHNSCHIRM ENERGIE / EVN Energiehilfe / Verbund Stromhilfefonds** — nur bei Energie-Rückständen/drohender Abschaltung; Strom wird betreut → nur Notfall notieren. ✅
+- **AK-Programme (Digi-Bonus 220 €, AK Sozialfonds Bildung 1.500 €, BRP-Bildungsbonus)** — brauchen AK-Mitgliedschaft = laufende Beschäftigung → **raus aus 'jetzt'**, erst wieder bei Anstellung. ✅
+- **Caritas Wohnungssicherung NÖ Ost** — falscher Bezirk (Melk = NÖ Mitte) → gestrichen. 🔶
+- **Armen- und Bürgerspitalstiftung Wiener Neustadt** — örtlich nicht zuständig (Bez. Melk) → gestrichen. ⚠️
+- **Familienhärteausgleich** — ohne Kinder kein Anwendungsfall → gestrichen. ⚠️
+- **Heizkostenzuschuss 2025/26** — Frist abgelaufen. ✅
+- **Steuerposten (Krankheitskosten, Karenz-Werbungskosten)** — bei ~390 €/Monat lohnt nicht (Selbstbehalt/Einkommen). 🔶
+- **Schuldnerberatung NÖ** (aus Saschas Gemini-Liste) — nicht im Katalog; sinnvoll als Begleitung (z. B. über Sozialarbeit NÖ / Caritas), **DATENLAGE UNKLAR** zu konkreter Anlaufstelle im Bez. Melk. ⚠️
+- **HibL (Hilfe in besonderen Lebenslagen)** — Teil der NÖ Sozialhilfe bei BH Melk → keine eigene Aktion, im Sozialhilfe-Gespräch miterledigen. 🔶
+- **Strom-Sozialtarif/EAG** — **bereits betreut** durch Sozialarbeiterin → nur Status erfragen, kein eigener Antrag. ✅
+
+## 6) Unterlagen-Set (für ALLE Anträge)
+
+| # | Unterlage | Wofür |
+|---|---|---|
+| 1 | Meldezettel (Loosdorf) | Sozialhilfe, Wohnbeihilfe, Heizkostenzuschuss, OBS |
+| 2 | Ausweis | Alle Anträge |
+| 3 | Mietvertrag | Sozialhilfe, Wohnbeihilfe |
+| 4 | Kontoauszüge 3 Monate | Einkommens-/Bedarfsnachweis |
+| 5 | AMS-Bescheide (Sperre) + Beschwerde-Nachweis | Sozialhilfe, Spontanhilfe, Überbrückungshilfe |
+| 6 | Lohnzettel / Lohnnachweis (falls vorhanden) | ALG nach Sperre, Lohnklage, Strafanzeige |
+| 7 | **Gewerbeschein + letzte Gewerbe-Einnahmen** (NEU) | Sozialhilfe-Anrechnung, FFG, SVS |
+
+## 7) Kontakte
+
+```
+AK Melk · Hummelstraße 1 (Termin läuft)
+BH Melk, Abt. Soziales · Hauptplatz 1 · ☎ 02752/53100
+Gemeindeamt Loosdorf (Heizkostenzuschuss 2026/27)
+Verein Wohnen / Wosi NÖ Mitte · ☎ 02742/47076
+Caritas St. Pölten · ☎ 02742/841390
+Rotes Kreuz NÖ (Spontanhilfe) · ☎ 059144-50530
+obs.at · e-control.at · noetutgut.at / 142
+FFG · ffg.at (Innovationsscheck) · SVS (svs.at)
+```
+
+---
+*Quellen: L1 = `~/Desktop/öförderugnen/FOERDERUNGEN_FUER_MICH_LOOSDORF.md` (Katalog + Web, 10.10.2026) · L2 = `holdirmehr/out/BEANTRAGEN_FUER_MICH.md` (6 BEANTRAGEN / 33 BEDINGT / 54 NEIN, web-geprüft 10.10.2026, Wahrheitsquelle) · L3 = Saschas Gemini-Liste (11 Hebel, alle in L1/L2 enthalten bzw. hier als ⚠️ markiert). Keine Rechtsberatung — die AK berät kostenlos.*
+
+Geprüft: Analyst + adversarialer Kritiker (10.10.2026)
 
 ## README
 

@@ -145,3 +145,6 @@ spawn_agent(systemPrompt: "<role-specific prompt>", task: "<sub-task prompt + co
 5. For dependent tasks, wait for the blocker to finish before spawning the next.
 6. When all agents finish, run `/code-review` on the combined diff.
 7. Update the Obsidian project note with a run summary.
+
+## Action 2.5 — Repo-Infra (portiert 2026-09-08, Quelle: automated-project-onboarding — archiviert)
+Bei „neues Projekt": (1) AGENTS.md anlegen, `.clinerules` als Symlink darauf. (2) SESSION_CONTEXT.md-Skelett. (3) MCP-Check gegen `~/.mcp.json`. (4) `kanban task create` für offene Punkte. (5) Audit-Regel F-2: NIEMALS das Home-Verzeichnis als Git-Root.
