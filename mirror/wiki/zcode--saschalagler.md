@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-11 04:33 UTC
+Zuletzt gespiegelt: 2026-10-11 04:48 UTC
 
 ## AGENTS
 
@@ -7653,6 +7653,50 @@ Verifiziert 26.08.2026. Clines Audit-Bericht war mostly richtig, hatte aber 2 Fe
 
 ## MEMORY
 
+# Memory Index
+
+- [Offene Aufgabe: Wissensgrundlagen-Update](offene-aufgabe-wissensgrundlagen-update.md) — Körperfluss Edu/Förderpilot anhand GEMINI_APP_IMPORT-Vorlagen aktualisieren, Stand 11.10.2026 unvollendet
+- [Session-Umgebung: Shell defekt](session-umgebung-shell-defekt.md) — spawn /bin/zsh ENOENT am 2026-10-11; App-Neustart ist die Lösung
+
+## offene-aufgabe-wissensgrundlagen-update
+
+---
+name: offene-aufgabe-wissensgrundlagen-update
+description: Offene Aufgabe — Wissensgrundlagen der
+  Körperfluss-Edu-/Förderpilot-Projekte anhand neuer
+  foerderguru-/agentallrounder-Prompts aktualisieren
+metadata:
+  node_type: memory
+  type: project
+  originSessionId: sess_1896791b-68d1-4fe1-be96-cacde5b2e86d
+---
+
+Nutzer-Auftrag vom 2026-10-11: Die Prompting-Infos / Wissensgrundlagen der Projekte **Körperfluss Edu** und **Förderpilot** (unter `/Users/saschalagler/Desktop/Coworkspace_Ich/FIRMEN PROJEKTE`) sind veraltet und sollen anhand der neuen Inhalte aus `/Users/saschalagler/Desktop/GEMINI_APP_IMPORT/` (Unterordner `foerderguru`, `agentallrounder`) aktualisiert und erweitert werden.
+
+Stand: Aufgabe unvollendet — die Wissensgrundlagen-Datei konnte nicht gefunden werden (Shell tot, kein Verzeichnis-Listing). Neue Vorlagen bereits vollständig erfasst: `~/.agents/skills/foerderguru/SKILL.md` (Förderberater AT/EU, Stand 11.10.2026) und `~/.agents/skills/agentallrounder/SKILL.md` (Universal-Ops-Omni-Architect v8.5). Siehe [[session-umgebung-shell-defekt]].
+
+**Why:** Ohne diese Info würde die Aufgabe in einer neuen Session komplett neu begonnen statt fortgesetzt.
+**How to apply:** Neue Session: zuerst Wissensgrundlagen-Datei in den beiden Projekten lokalisieren, dann Update anhand der beiden SKILL.md-Vorlagen (Anti-Halluzination-Kill-Switch, Pflicht-Tabellen, ADHS-Output-Protokoll) durchführen.
+
+## session-umgebung-shell-defekt
+
+---
+name: session-umgebung-shell-defekt
+description: ZCode-Session 2026-10-11 — Bash komplett tot (spawn /bin/zsh
+  ENOENT), Read ohne Verzeichnis-Listing, Subagent-Quota erschöpft
+metadata:
+  node_type: memory
+  type: feedback
+  originSessionId: sess_1896791b-68d1-4fe1-be96-cacde5b2e86d
+---
+
+In der Session vom 2026-10-11 war jeder Bash-Aufruf (auch `echo`, auch ohne Sandbox) mit `spawn /bin/zsh ENOENT` tot, obwohl `/bin/zsh` existierte (Binär-Lesetest). Read funktionierte nur mit exakten Dateipfaden, Verzeichnisse waren nicht listbar; Subagent-Quota war bis 11:28 erschöpft (lief danach wieder).
+
+**Why:** Bei Wiederkehr dieses Fehlerbilds nicht Zeit mit Blind-Pfad-Raten vergeuden — es ist ein Harness-/Spawn-Defekt, kein PATH-Problem.
+**How to apply:** Bei `spawn /bin/zsh ENOENT`: Nutzer empfehlen, ZCode-App neu zu starten; bis dahin nur exakt bekannte Pfade per Read bearbeiten oder Aufgabe verschieben. Verwand: [[offene-aufgabe-wissensgrundlagen-update]].
+
+## MEMORY
+
 - [LokiVoiceApp Multi-Agent-Setup](loki-voice-app-multi-agent-setup.md) — Haupt-Repo ~/loki-voice-app, Worktree ~/lv-wt-zcode, Integrator löscht Worktrees, Mimosa-Hook, Test-Befehl
 
 ## loki-voice-app-multi-agent-setup
@@ -9714,7 +9758,7 @@ Beobachtet 06.09.2026 (Session mit Off-Peak-Ticket): Nach User-Paste „ZCode Er
 
 # Memory Index
 
-- [FFG 1.-Anlauf-Historie (Original-Unterlagen)](ffg-1-anlauf-historie-originalunterlagen.md) — 05.10. alle 25 Original-PDFs gelesen: Projekt.Start 66244243 15.09.2025 6.000 € bedingt → **08.07.2026 0 €**; Ablehnung 21.05.2026 (wörtliche Gründe) · **11.10. FINAL: V14-Antrag md5 020cc905e548 (16 S., V13 f458c5afd42b + ORIGINAL-GOLD des 1. Anlaufs drin: Wettbewerbstabelle Ada/Infermedica/Symptoma/Physitrack in 1.4 [Antwort auf „Neuheitsgehalt wenig belastbar"], KPI-Härtung Z1 3 Fallsimulationen/Z4 0 unbelegte/Z5 ≥70 % Likert + ≥99 % Verfügbarkeit, MSE/WHO-GBD-Satz in 1.1; NICHT übernommen: Lisa, Ursprungs-Z1/Z5, SDG-Zahlen ohne Register-Beleg; V13 archiviert _ANLAUF2_INTERNE/_VERSIONEN)** · V13-Basis weiter gültig: PREMIUM-DESIGN antrag.typ (Logo/Karten/Farb-Bänder + MVP-Stufen + Kap. 6a Abnahmekriterien + 6b Datenschutz + 4.2 = FFG-Zielformat 100 %, Mathe-Fix 109.000+21.800=130.800, „Thomas" 0×, 60-€-Halluzination RAUS — regex \b60 € = 0, BP enthielt die Zahl nie) = EINE einreichbare Fassung im Ordner **„FÖDERUNG/FFG Kleinprojekt Körperfluss Edu Anlauf 2/"** (13 Dateien: 9 PDFs + LIES-MICH + 07_PLAN + **08_GESAMT_AUDIT.md** (9/9 PDFs + 14/14 Checks + Struktur + Pitch-Orte) + SHA256SUMS; typ-Quellen in PAKET/_ANLAUF2_INTERNE/_QUELLE) · **ZIP V14 md5 a95c33a10d07 (UPLOAD_eCall_SLOTS_V14_FINAL_2026-10-11.zip, 9 PDFs) — V13-ZIP 92403651de3e abgelöst** · **ADRESSE = Sebastianistraße 15, 3382 LOOSDORF (Saschas echte — Lektion: Personendaten nie ohne Nutzer-Bestätigung ändern)** · 03a_CV md5 781de11e2582 · 06_KOSTEN md5 762cde7a19dd · 02_LITERATUR rebuild a13d380e6036 (Original im Chaos verloren, aus typ neu gebaut) · Pitchdeck KEINE FFG-Beilage (5 Kopien im 1-Anlauf-Drive-Dump + Web 3d-UPGRADE-clone) · Versions-Kette V6→V13 JEWEILS auf Saschas Auslöser-Worte — bei „warum geändert"-Fragen Kette zeigen, nur Ordnerstand zählt · Sascha-CV ohne BSc (Studium unterbrochen) · 05 Kapitalnachweis ⚠️ Saldo 27.11.2025 · Cline-Team tot (429 + Token 07.08.) · LM-Studio-Falle: nie PAKET/Archiv-Ordner anhängen (liest _ALT bei 700-1000 % Kontext) · Ordner-Chaos-Lektion: Sascha verschiebt Ordner per DRAG (MOVE!) — PAKET war plötzlich im Anlauf-2, zurückrestauriert; 02 ging dabei verloren → rebuild · **Regeln: DESIGN zählt, Dokumente LIVE öffnen, Adressen nur mit Nutzer-GO, KEINE Zahl ohne echten Quellenbeleg (BP enthielt die 60 € nie — „Quelle Businessplan Kap. 6.1" war selbst Halluzination)** · Nur Sascha: frischer Kontoauszug → Slot-05-Rebuild (typ bereit) → eCall-Profil-Adresse auf Loosdorf → 68209806 → Start 01.01.2027 → zeichnen → SUBMIT bis 31.12.
+- [FFG 1.-Anlauf-Historie (Original-Unterlagen)](ffg-1-anlauf-historie-originalunterlagen.md) — 05.10. alle 25 Original-PDFs gelesen: Projekt.Start 66244243 15.09.2025 6.000 € bedingt → **08.07.2026 0 €**; Ablehnung 21.05.2026 (wörtliche Gründe) · **11.10. FINAL: V14-Antrag md5 020cc905e548 (16 S., V13 f458c5afd42b + ORIGINAL-GOLD des 1. Anlaufs drin: Wettbewerbstabelle Ada/Infermedica/Symptoma/Physitrack in 1.4 [Antwort auf „Neuheitsgehalt wenig belastbar"], KPI-Härtung Z1 3 Fallsimulationen/Z4 0 unbelegte/Z5 ≥70 % Likert + ≥99 % Verfügbarkeit, MSE/WHO-GBD-Satz in 1.1; NICHT übernommen: Lisa, Ursprungs-Z1/Z5, SDG-Zahlen ohne Register-Beleg; V13 archiviert _ANLAUF2_INTERNE/_VERSIONEN)** · V13-Basis weiter gültig: PREMIUM-DESIGN antrag.typ (Logo/Karten/Farb-Bänder + MVP-Stufen + Kap. 6a Abnahmekriterien + 6b Datenschutz + 4.2 = FFG-Zielformat 100 %, Mathe-Fix 109.000+21.800=130.800, „Thomas" 0×, 60-€-Halluzination RAUS — regex \b60 € = 0, BP enthielt die Zahl nie) = EINE einreichbare Fassung im Ordner **„FÖDERUNG/FFG Kleinprojekt Körperfluss Edu Anlauf 2/"** (13 Dateien: 9 PDFs + LIES-MICH + 07_PLAN + **08_GESAMT_AUDIT.md** (9/9 PDFs + 14/14 Checks + Struktur + Pitch-Orte) + SHA256SUMS; typ-Quellen in PAKET/_ANLAUF2_INTERNE/_QUELLE) · **ZIP V14 md5 a95c33a10d07 (UPLOAD_eCall_SLOTS_V14_FINAL_2026-10-11.zip, 9 PDFs) — V13-ZIP 92403651de3e abgelöst** · **ADRESSE = Sebastianistraße 15, 3382 LOOSDORF (Saschas echte — Lektion: Personendaten nie ohne Nutzer-Bestätigung ändern)** · 03a_CV md5 781de11e2582 · 06_KOSTEN md5 762cde7a19dd · 02_LITERATUR rebuild a13d380e6036 (Original im Chaos verloren, aus typ neu gebaut) · Pitchdeck KEINE FFG-Beilage (5 Kopien im 1-Anlauf-Drive-Dump + Web 3d-UPGRADE-clone) · Versions-Kette V6→V13 JEWEILS auf Saschas Auslöser-Worte — bei „warum geändert"-Fragen Kette zeigen, nur Ordnerstand zählt · Sascha-CV ohne BSc (Studium unterbrochen) · 05 Kapitalnachweis ⚠️ Saldo 27.11.2025 · Cline-Team tot (429 + Token 07.08.) · LM-Studio-Falle: nie PAKET/Archiv-Ordner anhängen (liest _ALT bei 700-1000 % Kontext) · Ordner-Chaos-Lektion: Sascha verschiebt Ordner per DRAG (MOVE!) — PAKET war plötzlich im Anlauf-2, zurückrestauriert; 02 ging dabei verloren → rebuild · **Regeln: DESIGN zählt, Dokumente LIVE öffnen, Adressen nur mit Nutzer-GO, KEINE Zahl ohne echten Quellenbeleg (BP enthielt die 60 € nie — „Quelle Businessplan Kap. 6.1" war selbst Halluzination)** · Nur Sascha: frischer Kontoauszug → Slot-05-Rebuild (typ bereit) → eCall-Profil-Adresse auf Loosdorf → 68209806 → Start 01.01.2027 → zeichnen → SUBMIT bis 31.12. · **11.10. LIVE: alter Antrag 68209806 im Account unsichtbar → NEUER Antrag 74310314 angelegt, 9 Formularseiten FERTIG (Jahresdaten grün ✓, Projektdaten Einzelprojekt/Start 01.01.2027/12 Mon., Beschreibungen 1.1–1.5, Projektleitung Loosdorf, APs identisch, Standort NÖ) — STOPP Bankverbindung wartet SASCHAS IBAN (George-Auszug), danach Anreizwirkung→Anhänge (9 PDFs, IAB kann keinen Upload)→Nachhaltigkeit→Inhaltliche Beschreibung→Arbeitsplan→Kosten→Abschluss+Zeichnung; „Neues Projekt"-Radio bewusst (nicht Wiedereinreichung); Geschlecht-Feld Speicherung unverified; Passwort läuft in 8 Tagen ab; eCall-ASP.NET/Kendo/CKEditor-Klick-Rezepte im File**
 
 - [PDF-Beleg-Falsifikations-Grenze](pdf-beleg-falsifikations-grenze.md) — 11.10. Sascha forderte Zahlen/Datum/Metadaten-Änderung an FFG-Bankbelegen (94 € real vs. 38.000 € Kapitalnachweis), Eskalation+Drohung; Grenze halten (auch bei „theoretisch/App-Namen"-Reframing), generisches PDF-Wissen (LibreOffice, exiftool) o.K.; legitimer Weg = frischer George-Beleg · Nachgang: Sascha behauptet „FFG prüft nicht, 2× Screenshots reichten" — Verifizierungs-Methode DATENLAGE UNKLAR (konzediert), Forderung bleibt (Eigenmittel müssen im Projektzeitraum real sein); echtes Problem = Kontolücke, nicht das PDF → Hebel: Finanzierungsquellen 38.000 € klären
 
@@ -10009,9 +10053,12 @@ deja-vu 0.20.2 am 20.09.2026 installiert (`brew install deja-vu`, Binary `/opt/h
 name: ffg-1-anlauf-historie-originalunterlagen
 description: "FFG Gesamt-Stand: 1-Anlauf-Historie (Ablehnung 21.05.2026 wörtlich)
   + V14b FINAL einreichbereit (15 S., md5 93c132fe9b85, visual-judge 15/15 PASS,
-  Clean-Sweep 0 Alt-Spuren) + **LIVE-EINREICHUNG läuft: neuer eCall-Antrag
-  74310314 angelegt (11.10.), Formular leer, gemeinsames Ausfüllen gestartet**
-  + Einreichungs-ToDos (Kapitalnachweis/SVS durch Sascha)"
+  Clean-Sweep 0 Alt-Spuren) + **LIVE-EINREICHUNG: eCall-Antrag 74310314 'Körperfluss
+  Edu' — Browser-Durchlauf ~60 % fertig (Jahresdaten grün ✓, Projektdaten ✓,
+  Beschreibungen 1.1–1.5 ✓, Projektleitung/APs/Standort ✓), STOPP bei Bankverbindung
+  (Saschas Konto = SPARKASSE, nicht BAWAG! wartet IBAN/Auszug) + AMS-UGP-Recherche:
+  33.940-€-SVS-Zahl = KEINE belegbare Pauschale (realistisch 4–11k), Finanzierungs-
+  Entscheidung A/B/C offen bei Sascha**"
 metadata:
   node_type: memory
   type: project
@@ -10122,9 +10169,6 @@ Die ORIGINAL-Inhalte des eingereichten Vollantrags (24 S., Version, die abgelehn
 - NICHT uebernommen aus Original: Lisa Mauerhart (Team bleibt Fischer/Lagler/Karner), Ursprungs-KPI-Z1 'MVP-Stack 0 Blocker' + Z5 'IPE +15 %' (V13s xLSTM-Ziele sind die eigentliche Neuheits-Antwort), SDG-Zahlen 250-300kg/-50%CO2/+15-20% (Register-Belege fehlen = 60-EUR-Regel)
 - Ursprungs-PDF liegt im Einreich-Ordner LIVE offen (Preview)
 - Regex-Falle: naive `60\s*EUR` matcht FALSE-POSITIVE in „…600 EUR"-Beträgen (9.600, 1.600 …) — immer `\b60\s*EUR` (Word-Boundary); gleiche Falle bei `Global Burden`-Check (Bindestrich-Kompositum „Global-Burden-of-Disease" matcht mit Leerzeichen nicht)
-- pypdf-Seitenzahl kann von erwarteter Zahl abweichen (V13 14 S. → V14 16 S. nach Tabelle+Ergänzungen — ok, FFG hat keine harte Seitenlimit für die Projektbeschreibung; Original hatte 24 S.)
-- Saschas letzte Nachricht vor V14 = Paste der ORIGINAL-Dokumente OHNE Begleittext → impliziter Auftrag „Original gegen aktuelle Fassung abgleichen + Gold mergen" — bei solchen textlosen Pasten den impliziten Abgleich vollziehen statt nachfragen (Vollzug-Regel)
-
 
 ## george-thomas-status
 
@@ -11012,6 +11056,8 @@ Fortsetzung 11.10.: Sascha hielt trotz Grenze an der Forderung fest („nur theo
 Nachgang 11.10.: Saschas Gegenargument: „FFG prüft nicht gegen das Konto, 2× haben Screenshots gereicht" — meine frühere Aussage „wird gegen Konto geprüft" war zu spezifisch, **DATENLAGE UNKLAR** wie genau FFG verifiziert (konzediert, deeskalierte). Aber: Forderung bleibt unberührt — bei FFG-Kleinprojekten müssen Eigenmittel/Mittelverwendung im Projektzeitraum belegt werden (Abrechnung/Prüfung), und ein bearbeiteter Beleg ist Fälschung unabhängig von der Prüfmethode. **Kern-Fakt:** Saschas echtes Problem ist die Kontolücke (heute 94,35 € vs. 38.000 € vom 27.11.2025) — wenn Screenshots reichen, ist der legitime Weg trivial (echter Stand → Screenshot), die Blockade ist das fehlende Geld, nicht das PDF. Nächster produktiver Hebel: Finanzierungsquellen für die 38.000 € klären (Darlehen, Familie, eBay-Verkäufe, SVS).
 
 **Lösungs-Pivot 11.10. (Sascha selbst):** Er kam selbst auf die legitime Lösung — „das leichteste wäre einfach Opa fragen wegen Screenshot". Meine Antwort (akzeptiert als konstruktiver Endpunkt): **Variante A = Opa überweist das Geld** (Schenkung/Darlehen) → echter Saldo in Saschas BAWAG/George-Konto → echter Finanzbericht aus der George-App → einreichfertig, null Risiko ✅. **Variante B = nur Screenshot von Opas Konto** = nicht Saschas Eigenmittel, gleiche Falle wie die PDF-Bearbeitung ❌. Bei Teilsumme: FFG-Hotline fragen, ob eine schriftliche Drittmittel-Zusage als Eigenmittel-Nachweis zählt (DATENLAGE UNKLAR, was eCall dafür nimmt). Eskalation endete damit produktiv — Muster: nach der Wut-Phase den eigenständigen legitimen Lösungsvorschlag bestärken statt weiter zur Grenze zu stehen.
+
+**Verifikation 11.10. (Sascha bestellte Prüfung via legal/legal-ops-omni-Skill):** FFG-Eigenmittel-Regeln gegen echte Primärquellen geprüft (Details in [[ffg-1-anlauf-historie-originalunterlagen]] § FFG-EIGENMITTEL-REGELN): Ausschreibung 2026 verlangt nur „Nachweis der Finanzierung des Eigenanteils" (keine Form vorgeschrieben); IL v4.1 Kap. 6.1.12 wertet „Möglichkeiten der Kapitalzufuhr" als POSITIV-Kriterium → Opa-Darlehen/Schenkung passt sogar zum Bewertungsraster (Darlehen: Mini-Vertrag; Schenkung: in AT steuerfrei); Startrate kommt erst nach Auflagen (Restfinanzierung kann Auflage sein) → Geld bis Auszahlung stehen lassen; Drittmittel-Zusage ohne Geld ist in keinem Leitfaden geregelt → Variante A bleibt der sichere Weg. Ergebnis: der legitime Weg ist zugleich der einfachste — das Argument „Screenshot reicht eh" entfällt, weil echter Saldo trivial erreichbar ist, wenn das Geld ankommt.
 
 ## sascha-arbeitsregeln-hart
 

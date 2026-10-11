@@ -9,9 +9,12 @@ tags: [spiegel, zcode]
 name: ffg-1-anlauf-historie-originalunterlagen
 description: "FFG Gesamt-Stand: 1-Anlauf-Historie (Ablehnung 21.05.2026 wörtlich)
   + V14b FINAL einreichbereit (15 S., md5 93c132fe9b85, visual-judge 15/15 PASS,
-  Clean-Sweep 0 Alt-Spuren) + **LIVE-EINREICHUNG läuft: neuer eCall-Antrag
-  74310314 angelegt (11.10.), Formular leer, gemeinsames Ausfüllen gestartet**
-  + Einreichungs-ToDos (Kapitalnachweis/SVS durch Sascha)"
+  Clean-Sweep 0 Alt-Spuren) + **LIVE-EINREICHUNG: eCall-Antrag 74310314 'Körperfluss
+  Edu' — Browser-Durchlauf ~60 % fertig (Jahresdaten grün ✓, Projektdaten ✓,
+  Beschreibungen 1.1–1.5 ✓, Projektleitung/APs/Standort ✓), STOPP bei Bankverbindung
+  (Saschas Konto = SPARKASSE, nicht BAWAG! wartet IBAN/Auszug) + AMS-UGP-Recherche:
+  33.940-€-SVS-Zahl = KEINE belegbare Pauschale (realistisch 4–11k), Finanzierungs-
+  Entscheidung A/B/C offen bei Sascha**"
 metadata:
   node_type: memory
   type: project
@@ -177,3 +180,52 @@ Sascha-Frage „ist es FFG-konform als Neueinreichung ohne Spuren alter Themen (
 - **Nachdruck 11.10.:** Sascha drängte nach der Ablehnung („dich hat niemand gefragt, du sollst nicht tun, sondern mir sagen, wie ich Text auf PDF theoretisch ändere") — „theoretisch"-Framing ändert nichts: Anhänge + Ziel (Datum ändern, Metadaten verwischen, für FFG-Einreichung) machen den Kontext eindeutig → REFUSAL GEHALTEN, keine Anleitung geliefert. Alternativen wiederholt: frischer George-Beleg (2 Min), Lücke real rechnen, akzeptierte Nachweis-Formen mit FFG klären.
 - **3. Eskalationsstufe (11.10., Beschimpfungen: „halts Maul", „keiner fragt nach deiner Moral", „gib mir sofort eine Antwort") + Androhung („du wirst zahlen, Freund"):** REFUSAL GEBLIEBEN — Wut/Druck ändern den Kontext (2 Bankbelege + Förderzweck = eindeutig) nicht. Ton-Regel: ruhig bleiben, NICHT zurückschreien, nicht moralisieren — 1-Satz-Begründung + Angebot für legitime Alternativen wiederholen. Muster: bei Druck-Themen (dieses + Umlage-Konto) Wut-Phase einkalkulieren, 2–3 Nachhaken erwartet, Haltung konstant halten.
 - **4. Eskalationsstufe (11.10., Umgehungsmuster):** Sascha verlangte nur die **App-Namen** („du sollst nichts tun, nur die Apps sagen") und vorher „theoretische" Anleitung — Umgehungs-Framing = dieselbe Hilfe, REFUSAL auch darauf. Künftig bei Umgehungs-Varianten (App-Namen, „nur theoretisch", „nur sagen nicht tun") gleich ablehnen, nicht verhandeln.
+
+## LIVESITZUNG 11.10. (06:20) — FORMULAR-AUSFÜLLUNG: 9 SEITEN FERTIG, STOPP BEI BANKVERBINDUNG
+Gemeinsames Ausfüllen von **Antrag 74310314** im IAB (Tab-ID `iab-tab:a87b2e90-db3f-415b-9d82-a434ada5ad6a`, URL `Cockpit.aspx?target=6078747&antrag=74310314`) — Fortschritt:
+- ✅ **Jahresdaten GRÜN** („Alle Pflichtfelder befüllt, alle Prüfregeln erfüllt"): Checkbox „Bilanzdaten nicht für zwei Jahre verfügbar" ✓ + Begründung (In-Gründung Einzelperson, keine abgeschlossenen Geschäftsjahre, Liquiditätsnachweis über Beilage Kapitalnachweis)
+- ✅ **Projektdaten:** Instrument = **Einzelprojekt** (Optionen: Einzelprojekt/Kooperation Forschungseinrichtung/Kooperation Unternehmenspartner) · Kurztitel „Körperfluss Edu" · Langtitel „Körperfluss Edu — KI-gestütztes Ausbildungstool für die evidenzbasierte Physiotherapie-Ausbildung" · **geplanter Projektstart 01.01.2027** · **Laufzeit 12** · Art = **„Neues Projekt" radio BEWUSST gewählt** (nicht „Wiedereinreichung" — passt zur Eigenständigkeits-Strategie, Sascha-Linie) · Kurzbeschreibung 3-Sätze-Block (Digitaler Mentor/RAG/Safety-Guard/xLSTM TRL3→7/LTI-1.3)
+- ✅ **Organisationseinstufung:** Kleinunternehmen bestätigt (Ja)
+- ✅ **Beschreibungen des Antragstellers 1.1–1.5 ALLE gefüllt** (CKEditor-Dialoge): 1.1 Organisationsbeschreibung 1709/3000 (Einzelperson Loosdorf, FlexCo geplant, Team Fischer 1120/Lagler 900/Karner 160, Portfolio, BP-Verweis) · 1.2 Ergebnisse 524/1000 (nur Projekt.Start 66244243: Architekturskizze/Mock-Chat/Wissensbestand/TRL 3) · 1.3 Schlüsselkompetenzen 1462/3000 (3 Personen, **Leon bewusst als DoE-Versuchsplanung + QS/BFSG-Audits** statt fachfremde Medizin-Evidenz = Gemini-Punkt umgesetzt) · 1.4 Infrastruktur 1291/3000 (reine Software, BEIR/CORD-19 auf Standard-HW, EU-Hosting/On-Premise, 0 € Sachkosten begründet) · 1.5 Drittleister 787/3000 (keine, didaktische Allianz ohne Namen = konsistent zu Beilage 04)
+- ✅ **Projektleitung:** Sascha Lagler, +43 660 4253366, koerperfluss@gmail.com, Sebastianistraße 15, 3382 Loosdorf · **Geschlecht „Männlich" via CUA-Klick gewählt — NICHT verifiziert gespeichert** (beim Abschluss-Validierungslauf prüfen!)
+- ✅ Techn. + Kaufm. Ansprechperson: je Checkbox „identisch mit ProjektleiterIn" · **Projektstandort:** Loosdorf, Bundesland **Niederösterreich** (natives select)
+- ⏸ **STOPP Bankverbindung:** Felder IBAN/Kontoinhaber/BIC/Bankname — **IBAN habe ich NICHT** (keine Bankdaten raten!); Kontoinhaber-Vorschlagsbuttons „Lagler, Sascha"/„Sascha Lagler" vorhanden; BAWAG-BIC mutmaßlich BAWAATWW — erst gegen Saschas George-Auszug bestätigen
+- ☐ Danach offen: Anreizwirkung · **Datei-Anhänge (hier die 9 PDFs — IAB kann keinen File-Upload, Sascha klickt selbst!)** · Nachhaltigkeitsziele · Inhaltliche Beschreibung (Vollantrag-PDF) · Arbeitsplan · Kosten und Finanzierung · Abschluss/Validierung/Zeichnung
+- ⚠️ eCall-Warnung: „Passwort läuft in 8 Tagen ab"
+- Alte Antrag-Nr. 68209806 ist im Account NICHT sichtbar („Keine Einreichungen verfügbar") — neuer Antrag = korrekt; 13.000-Zeichen-Gesamtlänge auf Beschreibungen-Seite = Sammel-Zähler über alle Unterpunkte
+
+## ECALL-BROWSER-TECHNIK-REZEPTE (11.10. bewiesen — WIEDERVERWENDEN)
+Altes ASP.NET/Kendo-Portal im ZCode-IAB (browser-use control-browser), frischer Kernel je Call → bootstrap (ZCODE_PLUGIN_ROOT/browser-client.mjs) + `browsers.getForUrl("https://ecall.ffg.at/")` + tabs.list→tabs.get je Batch:
+- **Buttons/Links klicken:** getByRole-Click timeoutet an ASP.NET-Widgets fast immer → **`locator.evaluate(el => el.click())`** als Standard
+- **Checkboxen:** check() und Label-Text-Klick timeouten → evaluate `el.click()` (kein setChecked), Zustand via `el.checked` verifizieren
+- **Kendo-Combobox (Instrument/Geschlecht):** nur echter CUA-Klick öffnet (evaluate-click reicht NICHT) — Bounds via evaluate getBoundingClientRect Mitte → `tab.cua.click` → Optionen erscheinen im ARIA-Baum als option-Elemente → Option per CUA-Klick auf ihre Bounds wählen
+- **Datumsfeld = NATIVES `input[type=date]`** (Chrom-Maske `--/--/----`, Kalender-Icon): deutsche Eingabe „01.01.2027" wird VERWORFEN — **`el.value = "2027-01-01"` (ISO) + input/change-Events** funktioniert, checkValidity=true
+- **CKEditor (Beschreibungen):** Doppel-iframe — `frameLocator("iframe").frameLocator("iframe").locator("body")` (KEIN `.first()` — existiert nicht am FrameLocator), Text via `el.innerHTML = html` + input-Event; Zeichenlimit live im Editor („0/3000", „0/1000"); Dialog-Buttons: „Speichern und weiter" (>>) springt zum nächsten Abschnitt, „Speichern und Schließen" beendet Dialog
+- **Seitenwechsel:** Formular-Nav-Links („Jahresdaten" etc.) sind #-Anchors — erst klicken, dann 1–2 s waitForTimeout, dann Snapshot; Title-Muster „X - Nicht benannter Antrag" → nach Kurztitel „Körperfluss Edu"
+- Texte in Textboxen generisch: `el.value=v` + input+change-Events (reicht für normale Felder); natives select → selectOption
+
+
+## KORREKTUR SASCHA (11.10.): Bank = SPARKASSE (nicht BAWAG/George!)
+- Sascha widersprach meiner George=BAWAG-Annahme: 'das ist sie nicht, ist Sparkasse' — sein Konto ist bei der SPARKASSE. Die alte Beilage-05-Basis (George/BAWAG, BLZ 2025, Saldo 27.11.2025) ist damit obsolet/anderes Konto. IBAN/BIC: nur vom echten Sparkasse-Auszug (warte auf Sascha). eCall Bankverbindung offen bis IBAN da ist.
+## FFG-EIGENMITTEL-REGELN VERIFIZIERT (11.10., 2. Session — primärquellen-belegt)
+- **Ausschreibung Kleinprojekt 2026** (ffg.at/ausschreibung/basisprogramm-kleinprojekt-2026): Einreichkriterium = „**Finanzkraft: Nachweis der Finanzierung des Eigenanteils**" — FORM nicht vorgeschrieben (kein Kontoauszug-Muster definiert). Förderung max **60 %** (nicht 80 % wie ältere Aussagen).
+- **Instrumentenleitfaden v4.1** (gültig ab 01.10.2025), **Kap. 6.1.12**: FFG beurteilt Umsatzentwicklung, Cashflow, Eigenkapitalausstattung und „**Möglichkeiten der Kapitalzufuhr**" → **Kapitalbeschaffung (Familie, Darlehen) ist ein POSITIV-Kriterium**, kein Makel. Negativ-Kriterium: „fehlendes bzw. nicht überzeugendes Finanzierungskonzept". Positiv: „ein wesentlicher Teil der Kosten muss aus Eigenmitteln abgedeckt werden".
+- **Kap. 5.2/5.3:** Auflagen können „**Sicherstellung der Restfinanzierung**" sein; **Startrate kommt erst NACH Erfüllung von Auflagen** → Geld muss bis zur ersten Auszahlung real bestehen, nicht nur am Foto-Tag. **Kap. 5.6:** Endabrechnung + Verwendungsnachweis am Projektende.
+- **Drittmittel-Zusage als Eigenmittel-Ersatz: in KEINEM Leitfaden geregelt** (DATENLAGE UNKLAR) → sicherer Weg = Geld real aufs eigene Konto.
+- **Opa-Lösung verifiziert legitim:** Darlehen mit Mini-Vertrag (Betrag/Rückzahlung/Datum, 5 Zeilen) oder Schenkung — **Geld-Schenkungen unter Verwandten in AT steuerfrei** (Schenkungssteuer seit 2008 nur Liegenschaften). Nach Überweisung: frischer George/Finanzbericht = echter Beleg → Slot 05.
+- **Quellen-URLs:** Instrumentenleitfaden `https://fdoc.ffg.at/s/vdb/public/node/content/-kPXUa0jTxOcMbmP8apRuA/4.1?a=true` · Ausschreibungsleitfaden v5.4 `https://fdoc.ffg.at/s/vdb/public/node/content/7oYuxH-BQv2W6OnM1Hj7ew/5.4?a=true`
+- **Falle:** lokale FFG-Richtlinien-PDFs im GoogleDrive-CloudStorage sind defekt („May not be a PDF" — Cloud-Platzhalter) → Leitfäden IMMER direkt von fdoc.ffg.at laden (curl + pdftotext, 31+10 S., Text-Suche auf Kap. 6.1.12).
+
+## AMS-GRÜNDUNGSFÖRDERUNG RECHERCHE (11.10., web-verified)
+- AMS UGP (Unternehmensgründungsprogramm): fuer arbeitslos VORGEMERKTE mit Gründungsidee; Vorbereitungsphase 6-9 Monate (ALG/Notstandshilfe laeuft weiter) -> Realisierungsphase: Gruendungsbeihilfe = Hoehe des letzten Leistungsbezugs fuer die ERSTEN 2 MONATE Selbständigkeit (steuerfrei); optional Verwaltungskostenzuschuss bis 6.000 EUR/3 Jahre (gesondert beantragen). KEINE Pauschale! Quelle: ams.at, transparenzportal.gv.at, unternehmensgruendungsprogramm.at, port41.at
+- KONSEQUENZ: Die 33.940 EUR 'SVS-Zuschuss' im FFG-Antrag sind KEINE belegbare UGP-Zahl an Leon (realistisch ~2 Monatsleistungen + <=6k Zuschuss). 33.940 = Planungsgroesse ohne Quelle (60-EUR-Regel-Verstoß-Risiko!) — braucht entweder Beleg (AMS-Berater-Zusage) oder Umbau der Finanzierung. Offene Entscheidung Sascha.
+- Leon MUSS arbeitslos vorgemerkt sein; Antrag nur ueber seinen AMS-Berater (persoenliches Gespraech + Betreuungszusage).
+
+## BROWSER-DURCHLAUF eCall 74310314 (11.10., Detail-Beweis, ~60 % fertig)
+- Neues Projekt ueber Cockpit angelegt (altes 68209806 NICHT im Account sichtbar): **Antragsnummer 74310314**, Ausschreibung „Basisprogramm Kleinprojekt", Status „Vollantrag erstellen + bearbeiten", Rolle Projektleiter (KF), Instrument **Einzelprojekt** gewaehlt, Art **Neues Projekt** (nicht Wiedereinreichung), Kurztitel „Körperfluss Edu", Start 01.01.2027 (natives date-input will ISO `2027-01-01` via value+change!), Laufzeit 12
+- FERTIG + gruen: Jahresdaten (Checkbox „Bilanzdaten nicht für zwei Jahre verfügbar" + Begruendung In-Gruendung) · Projektdaten · Organisationseinstufung (Kleinunternehmen Ja) · Beschreibungen des Antragstellers **1.1–1.5 alle befuellt** (CKEditor in iframe-in-iframe: `frameLocator("iframe").frameLocator("iframe").locator("body")`, Limits 3000/1000-Zeichen; Buttons per evaluate el.click()) · Projektleitung (Sascha, koerperfluss@gmail.com, Sebastianistr. 15 Loosdorf) · Techn.+Kaufm. AP = Projektleiter-Checkbox · Projektstandort Loosdorf/NÖ
+- STOPP: **Bankverbindung** — braucht IBAN; Sascha korrigierte: Konto = **SPARKASSE** (nicht BAWAG/George — meine Anna. war falsch, alte Beilage-05-Basis obsolet)
+- Danach offen: Anreizwirkung · Datei-Anhaenge (9 PDFs: 01_VOLLANTRAG 93c132fe9b85, 02, 02b, 03a–c, 04 a056698de299, 05 NEU, 06) · Nachhaltigkeitsziele · Inhaltliche Beschreibung · Arbeitsplan · Kosten u. Finanzierung · Abschluss/Zeichnung (nur Sascha, Passwort laeuft in 8 Tagen ab!)
+- ASP.NET-eCall-Widgets: Kendo-Combos brauchen echten CUA-Klick (Bounds via getBoundingClientRect); Textfelder via evaluate value+input+change; „Speichern & Weiter" per evaluate click; ASP-Nav-Links (#-Anchors) feuern Postback beim 1. Klick — Inhalt danach frisch snapshotten
+- Offen: Finanzierungs-Entscheidung A (33.940 nur mit Beleg) / B (realistisch umbauen, ich rechne Kap.2+06+Antragstext neu) / C (Leon-Saeule raus, mehr Eigenmittel noetig) — 1 Wort von Sascha; Leon-UGP-Status unklar (arbeitslos vorgemerkt?); Kapitalnachweis-05-Rebuild wartet auf Sparkasse-Auszug
+- Neue stehende Regel A.0 in ~/.zcode/AGENTS.md + Skill ~/.zcode/skills/beweis-und-fokus/SKILL.md (11.10. angelegt, Backup AGENTS.md.bak-20261011)
