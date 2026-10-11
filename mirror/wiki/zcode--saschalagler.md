@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-11 07:42 UTC
+Zuletzt gespiegelt: 2026-10-11 08:21 UTC
 
 ## AGENTS
 
@@ -9770,6 +9770,8 @@ Beobachtet 06.09.2026 (Session mit Off-Peak-Ticket): Nach User-Paste „ZCode Er
 
 # Memory Index
 
+- [VERKAUFS HUB = Tool-Sammlung-Verkauf](verkaufshub-tool-sammlung.md) — 11.10. identifiziert + getestet: Cockpit hub.html :3300 (Server neu gestartet, 0 Bugs), 67 Tools/15 Agenten, **hub-glass.html Liquid-Glass-Redesign gebaut** (Sascha: altes Design = Müll, Vision 3D/fluid/Higgsfield — Verdict offen), Detailstand im agent-mirror-Memory; 810k-Cline-Session = failed ATLAS-Xcode-Abgleich, schadlos schließbar
+
 - [FFG 1.-Anlauf-Historie (Original-Unterlagen)](ffg-1-anlauf-historie-originalunterlagen.md) — 05.10. alle 25 Original-PDFs gelesen: Projekt.Start 66244243 15.09.2025 6.000 € bedingt → **08.07.2026 0 €**; Ablehnung 21.05.2026 (wörtliche Gründe) · **11.10. FINAL: V14-Antrag md5 020cc905e548 (16 S., V13 f458c5afd42b + ORIGINAL-GOLD des 1. Anlaufs drin: Wettbewerbstabelle Ada/Infermedica/Symptoma/Physitrack in 1.4 [Antwort auf „Neuheitsgehalt wenig belastbar"], KPI-Härtung Z1 3 Fallsimulationen/Z4 0 unbelegte/Z5 ≥70 % Likert + ≥99 % Verfügbarkeit, MSE/WHO-GBD-Satz in 1.1; NICHT übernommen: Lisa, Ursprungs-Z1/Z5, SDG-Zahlen ohne Register-Beleg; V13 archiviert _ANLAUF2_INTERNE/_VERSIONEN)** · V13-Basis weiter gültig: PREMIUM-DESIGN antrag.typ (Logo/Karten/Farb-Bänder + MVP-Stufen + Kap. 6a Abnahmekriterien + 6b Datenschutz + 4.2 = FFG-Zielformat 100 %, Mathe-Fix 109.000+21.800=130.800, „Thomas" 0×, 60-€-Halluzination RAUS — regex \b60 € = 0, BP enthielt die Zahl nie) = EINE einreichbare Fassung im Ordner **„FÖDERUNG/FFG Kleinprojekt Körperfluss Edu Anlauf 2/"** (13 Dateien: 9 PDFs + LIES-MICH + 07_PLAN + **08_GESAMT_AUDIT.md** (9/9 PDFs + 14/14 Checks + Struktur + Pitch-Orte) + SHA256SUMS; typ-Quellen in PAKET/_ANLAUF2_INTERNE/_QUELLE) · **ZIP V14 md5 a95c33a10d07 (UPLOAD_eCall_SLOTS_V14_FINAL_2026-10-11.zip, 9 PDFs) — V13-ZIP 92403651de3e abgelöst** · **ADRESSE = Sebastianistraße 15, 3382 LOOSDORF (Saschas echte — Lektion: Personendaten nie ohne Nutzer-Bestätigung ändern)** · 03a_CV md5 781de11e2582 · 06_KOSTEN md5 762cde7a19dd · 02_LITERATUR rebuild a13d380e6036 (Original im Chaos verloren, aus typ neu gebaut) · Pitchdeck KEINE FFG-Beilage (5 Kopien im 1-Anlauf-Drive-Dump + Web 3d-UPGRADE-clone) · Versions-Kette V6→V13 JEWEILS auf Saschas Auslöser-Worte — bei „warum geändert"-Fragen Kette zeigen, nur Ordnerstand zählt · Sascha-CV ohne BSc (Studium unterbrochen) · 05 Kapitalnachweis ⚠️ Saldo 27.11.2025 · Cline-Team tot (429 + Token 07.08.) · LM-Studio-Falle: nie PAKET/Archiv-Ordner anhängen (liest _ALT bei 700-1000 % Kontext) · Ordner-Chaos-Lektion: Sascha verschiebt Ordner per DRAG (MOVE!) — PAKET war plötzlich im Anlauf-2, zurückrestauriert; 02 ging dabei verloren → rebuild · **Regeln: DESIGN zählt, Dokumente LIVE öffnen, Adressen nur mit Nutzer-GO, KEINE Zahl ohne echten Quellenbeleg (BP enthielt die 60 € nie — „Quelle Businessplan Kap. 6.1" war selbst Halluzination)** · Nur Sascha: frischer Kontoauszug → Slot-05-Rebuild (typ bereit) → eCall-Profil-Adresse auf Loosdorf → 68209806 → Start 01.01.2027 → zeichnen → SUBMIT bis 31.12. · **11.10. LIVE: alter Antrag 68209806 im Account unsichtbar → NEUER Antrag 74310314 angelegt, 9 Formularseiten FERTIG (Jahresdaten grün ✓, Projektdaten Einzelprojekt/Start 01.01.2027/12 Mon., Beschreibungen 1.1–1.5, Projektleitung Loosdorf, APs identisch, Standort NÖ) — STOPP Bankverbindung wartet SASCHAS IBAN (George-Auszug), danach Anreizwirkung→Anhänge (9 PDFs, IAB kann keinen Upload)→Nachhaltigkeit→Inhaltliche Beschreibung→Arbeitsplan→Kosten→Abschluss+Zeichnung; „Neues Projekt"-Radio bewusst (nicht Wiedereinreichung); Geschlecht-Feld Speicherung unverified; Passwort läuft in 8 Tagen ab; eCall-ASP.NET/Kendo/CKEditor-Klick-Rezepte im File**
 
 - [PDF-Beleg-Falsifikations-Grenze](pdf-beleg-falsifikations-grenze.md) — 11.10. Sascha forderte Zahlen/Datum/Metadaten-Änderung an FFG-Bankbelegen (94 € real vs. 38.000 € Kapitalnachweis), Eskalation+Drohung; Grenze halten (auch bei „theoretisch/App-Namen"-Reframing), generisches PDF-Wissen (LibreOffice, exiftool) o.K.; legitimer Weg = frischer George-Beleg · Nachgang: Sascha behauptet „FFG prüft nicht, 2× Screenshots reichten" — Verifizierungs-Methode DATENLAGE UNKLAR (konzediert), Forderung bleibt (Eigenmittel müssen im Projektzeitraum real sein); echtes Problem = Kontolücke, nicht das PDF → Hebel: Finanzierungsquellen 38.000 € klären
@@ -9915,6 +9917,8 @@ ATLAS (Cali Coach) — IST-Stand 21.09.2026 (live verifizert):
 Verwandt: [[loki-os-ecosystem-stand]]
 
 **11.10.2026 Pipeline-Test (erster appagentteam-Live-Flug):** flutter-skill explore auf PROD atlas-v5.web.app → 20 Steps geplant, 3 genutzt, 1 Seite/10 Elemente; Buttons COACH, LOGBUCH, DATENBANK, ÜBERBLICK getippt ✓; **0 Bugs, 0 Accessibility-Issues**; Playwright: 0 Console-Errors, Titel „ATLAS — Calisthenics Coach". Beweise: `~/Desktop/TEST_ATLAS_11-10.png` + explore-report.html (cwd ~/). Muster: flutter-skill `screenshot` via serve+FS_PORT HING → Playwright-Screenshot als Fallback (explore/snap = flutter-skill, visuelle Beweise = Playwright). Die 810k-Cline-Session „VERKAUFS HUB - 11 Agent monster" (sess 1789109742185_p3730, 8,3 MB messages, inputTokens 304 M) = FAILED ATLAS-Xcode/Web-Abgleich-Session — schadlos schließbar.
+
+**11.10.2026 VOLL-TESTUNG gestartet (Sascha: „vollautonome Atlas testung ios app web app android app, optimierung, fokus: Funktion, intuitive Bedienung, File-Upload, Video-Upload, Userflow Trainingsplan/Logbuch"):** 4 Background-Läufe, Ergebnisse PENDING: (1) Subagent qa-tester = Web-Funktionstest via flutter-skill CLI (serve :3745, Uploads/Flows, max 25 Aktionen, Bug-Tabelle), (2) Subagent explore = Code-Analyse ATLAS_MASTER (existiert File-/Video-Upload/Trainingsplan/Logbuch überhaupt? Datei:Zeile), (3) iOS-Build: `xcodebuild -project "$A/app/ios/App/App.xcodeproj" -scheme App -sdk iphonesimulator -derivedDataPath /tmp/atlas_ios -quiet build CODE_SIGNING_ALLOWED=NO` (Capacitor 8.5.1 via CapApp-SPM, Xcode-27-Beta.6; A = Pfad mit trailing space quoten!), (4) Android: `cd "$A/app/android" && ./gradlew assembleDebug`. Projektstruktur: ATLAS_MASTER/app = Capacitor (dist + ios/App + android + firebase.json + index.html). Voll-Report folgt wenn Notifications da.
 
 ## autoclaw-sprache-translocation-fix
 
@@ -11360,6 +11364,26 @@ Beim Suchen von Session-Inhalten (23.09. gelernt):
 - Für Handoff-Kapseln einfacher: ReadSessionContext (strategy=handoff) mit der sess-ID nutzen.
 
 Verwandt: [[deja-vu-install]]
+
+## verkaufshub-tool-sammlung
+
+---
+name: verkaufshub-tool-sammlung
+description: VERKAUFS HUB = Projekt TOOL-SAMMLUNG-VERKAUF — hub.html Cockpit :3300 (Server 11.10. gestartet), 67 Tools/15 Agenten, hub-glass.html Liquid-Glass-Redesign gebaut, Detailstand im agent-mirror-Memory; 810k-Cline-Session = fehlgeschlagener ATLAS-Xcode-Abgleich (Titel irreführend)
+metadata:
+  node_type: memory
+  type: project
+  originSessionId: sess_9bb02160-ce23-4582-a594-371c1f798aa5
+---
+
+11.10.2026 identifiziert + getestet (Cline-Screen „VERKAUFS HUB - 11 Agent monster", 810k Tokens):
+
+- **Identität:** „VERKAUFS HUB" = Projekt **`/Users/saschalagler/Desktop/Coworkspace_Ich/PRIVATE PORJEKTE /TOOL-SAMMLUNG-VERKAUF`** (Ordnername mit trailing space quoten!). 67 Tools in `tools-v2.json` (61 bewertet, 20 „verkaufen: ja"), Cockpit `hub.html` (85 KB, Tabs Cockpit/Kanban/Top-Werte, Steuerleiste Auto-Pilot/A15-Priorisieren/Hub-aktualisieren via Backend :8055), 15 Agenten (agents.py, planer.py, autopilot.py, hub_api.py Router).
+- **Detaillierter Projektstand** (66/66 bewertet, Vermarktungs-Reihenfolge Bar-Bulls→LegalOps→LokiVoice→agent-mirror→Körperfluss, Mimosa/git-blocks, storefront-Build kaputt) steht im Projekt-Memory: `~/Mirror/agent-mirror/mirror/zcode/saschalagler/cli/memories/projects/tool-sammlung-verkauf-d6893782b4cb810a/memory/verkaufshub-inventar-und-workflow.md` — bei Hub-Arbeiten ZUERST lesen.
+- **11.10. Test-Pipeline-Lauf:** :3300 war TOT → `python3 -m http.server 3300 --bind 127.0.0.1` im Repo gestartet (KEIN LaunchAgent — stirbt beim Reboot). flutter-skill explore: 0 Bugs, nur favicon-404. Backend :8055 aus (Steuer-Buttons tot ohne es; Start = uvicorn main:app nur auf GO). Beweis: `~/Desktop/TEST_HUB_11-10.png`.
+- **11.10. Design-Urteil Sascha:** altes hub.html = „absolut MÜLL" — Vision: **3D, modern, fluid, Liquid-Glass, Higgsfield-Vibe, reactive**. → `hub-glass.html` gebaut (Repo-Root + Kopie in storefront/out-firebase): animierte Gradient-Blobs, backdrop-blur Glass-Karten mit 3D-Tilt, live Suche + Tier/Verkaufen-Filter, Daten via `fetch('./tools-v2.json')` (funktioniert nur über HTTP :3300, nicht file://). **Alte hub.html unberührt** — Sascha-Vergleich/Verdict steht aus. Falls Verdict „glass gut": hub.html ersetzen + hub_refresh.sh-Kette prüfen (die regeneriert das alte).
+- **810k-Cline-Session `1789109742185_p3730`** („VERKAUFS HUB - 11 Agent monster", inputTokens 304 M, 8,3 MB messages, FAILED) = war ursprünglich ein **ATLAS-Xcode/Web-Abgleich** („xcode app passt fast, gleiche sie mit web app ab, apk android zum verteilen") — Titel kam aus späterem Kontext. Schadlos schließbar.
+- **Verwandt:** [[appagentteam-flutter-skill-live]] (Pipeline), [[atlas-versionsstand]] (ATLAS-Volltestung), [[sascha-vollzug-keine-zwischenfragen]]
 
 ## wayfinder-skill-konsolidierung
 
