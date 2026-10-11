@@ -25,4 +25,6 @@ metadata:
 - **MCP-Regel:** flutter-skill-MCP (253 Tools) NIE global in `~/.mcp.json` (Context-Tax) — nur projektweise `.mcp.json` im App-Projekt. Backup: `~/.mcp.json.bak-2026-10-11` (unverändert, 22 Server).
 - Flutter-SDK selbst ist NICHT installiert (nur Dart via Homebrew) — Flutter-App-Builds brauchen erst `brew install --cask flutter`.
 
+**Cline-Sync 11.10.:** appagentteam via `skillshare sync cline` verteilt (~/.cline/skills/appagentteam/SKILL.md, 143 Skills gesamt). **skillshare-Lektion:** Quelle ist `sources.skills: ~/.agents/skills` (config.yaml) — dort müssen Skills als **echte Ordner** liegen; **Symlinks in der Quelle werden von der Discovery übersprungen** (140 statt 157). `~/.config/skillshare/skills/` ist nur das „universal"-Target, nicht die Quelle. skillshare sync sichert Backups nach `~/.local/share/skillshare/backups/`. Cline-Warnung: always-loaded Context ~10,6k Tokens (Budget 10k).
+
 **Ordner-Analyse (Desktop/Coworkspace_Ich/PRIVATE PORJEKTE /Skill Lsite agentic os/):** flutter-skill-main = E2E-Repo (Quelle für sdks/ios, sdks/android, e2e-testing-Skill) → EINGEBUNDEN. IRIS-AI-main = Electron-App (iris-Skill existiert separat). OmniRoute = Router (20.09. auf Nutzer-Wunsch abgebaut). Auto Sync & Save = Bun/React-Projekt (unklarer Nutzen, kein Handlungsbedarf).

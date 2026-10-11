@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-11 05:45 UTC
+Zuletzt gespiegelt: 2026-10-11 06:00 UTC
 
 ## AGENTS
 
@@ -9809,6 +9809,8 @@ Beobachtet 06.09.2026 (Session mit Off-Peak-Ticket): Nach User-Paste „ZCode Er
 - [LOKI-OS Harness-Settings-Sessions](loki-os-harness-settings-sessions.md) — 3 kanonische Sessions (sess_6ec2db7a/ecb2e5e0/055615ab) mit der 6-Schaltstellen-Architektur; bei Harness-/Architektur-Fragen ZUERST diese laden; deja-Eingriffe additiv-verträglich (20.09. verifiziert)
 - [Session-Quellen: wo finden](session-quellen-wo-finden.md) — zcode-Log = nur Telemetrie; User-Nachrichten in ~/.zcode/cli/rollout/model-io-sess_*.jsonl; Tool-Reste in artifacts/sess_*/
 - [LOKI-OS-Harness Soll-Stand](loki-os-harness-sollstand.md) — 6 Schaltstellen ~/.zcode (17 MCP, 10 Agenten, 7 Commands, Sync-Quelle, 2 Wayfinder-Maps); Änderungen nur via STANDARD-SKILLS.md + sync-script
+- [/appagentteam + flutter-skill live](appagentteam-flutter-skill-live.md) — 11.10. Skill einsatzbereit, Native-Binary-Symlink-Fix (ENOEXEC-Falle), MCP nur projektweise
+- [LOKI.OS Live-Status 11.10.](loki-os-livestatus-2026-10-11.md) — Kernel 8010 TOT · Ollama NEU: qwen3.5:9b lokal · Hammerspoon down · Hermes/Eigent/AutoClaw2-Versionen + Integration-Plan
 
 ## appagentteam-flutter-skill-live
 
@@ -9831,6 +9833,8 @@ metadata:
 - **Live bewiesen (Exit 0):** `flutter-skill serve https://example.com --port=3742` + `FS_PORT=3742 flutter-skill snap` → echter Accessibility-Content. serve nutzt CDP **9222** = Agent-Chrome (passt zu [[browser-doppelsystem-setup]]).
 - **MCP-Regel:** flutter-skill-MCP (253 Tools) NIE global in `~/.mcp.json` (Context-Tax) — nur projektweise `.mcp.json` im App-Projekt. Backup: `~/.mcp.json.bak-2026-10-11` (unverändert, 22 Server).
 - Flutter-SDK selbst ist NICHT installiert (nur Dart via Homebrew) — Flutter-App-Builds brauchen erst `brew install --cask flutter`.
+
+**Cline-Sync 11.10.:** appagentteam via `skillshare sync cline` verteilt (~/.cline/skills/appagentteam/SKILL.md, 143 Skills gesamt). **skillshare-Lektion:** Quelle ist `sources.skills: ~/.agents/skills` (config.yaml) — dort müssen Skills als **echte Ordner** liegen; **Symlinks in der Quelle werden von der Discovery übersprungen** (140 statt 157). `~/.config/skillshare/skills/` ist nur das „universal"-Target, nicht die Quelle. skillshare sync sichert Backups nach `~/.local/share/skillshare/backups/`. Cline-Warnung: always-loaded Context ~10,6k Tokens (Budget 10k).
 
 **Ordner-Analyse (Desktop/Coworkspace_Ich/PRIVATE PORJEKTE /Skill Lsite agentic os/):** flutter-skill-main = E2E-Repo (Quelle für sdks/ios, sdks/android, e2e-testing-Skill) → EINGEBUNDEN. IRIS-AI-main = Electron-App (iris-Skill existiert separat). OmniRoute = Router (20.09. auf Nutzer-Wunsch abgebaut). Auto Sync & Save = Bun/React-Projekt (unklarer Nutzen, kein Handlungsbedarf).
 
@@ -10696,6 +10700,33 @@ LOKI-OS-Harness Soll-Stand (gebaut 13.09.2026 in sess_6ec2db7a/sess_ecb2e5e0/ses
 6. **Orchestrierung:** loki-dev = 1 Pipeline, 5 Modi (INIT/BUILD/TAKEOVER/FINISH/MAP); 2 Wayfinder-Maps: `~/.agents/.wayfinder/map.md` (Skill-Konsolidierung, Tickets 10+11 offen) und `~/loki-ki/.wayfinder/map.md` (LOKI.OS Körperfluss-Automation, T-01…T-04).
 
 Regel-Änderungen immer: 1× in STANDARD-SKILLS.md editieren + `bash ~/.agents/tools/sync-standard-skills.sh` — nie in die Kopien. **Skills-Mirror (23.09., Sascha-Wut über „6 geroutete Skills fehlen in Claude komplett"):** sync-standard-skills.sh um Mirror-Loop erweitert (Backup `.bak-20260923`) — linkt ab jetzt JEDE fehlende Skill-Mappe aus `~/.agents/skills` als Symlink nach `~/.claude/skills` (kanonisch+Symlink-Muster, sess_055615ab). 23.09. gelinkt: loki-os-health, deja-search, gsd-core, roo-code, ralph-loop, coderabbit + automatisch 3 weitere (frontend-design-hub, fc-nginx-website, skillshare-sync) — alle ✅ SKILL.md erreichbar verifiziert. Kontext: Sascha nutzt Claude Code faktisch nicht (letzte Session 15.09., deja-Install 20.09.) — ZCode ist sein System. Verwandt: [[deja-vu-install]].
+
+## loki-os-livestatus-2026-10-11
+
+---
+name: loki-os-livestatus-2026-10-11
+description: 11.10. Live-Status Deltas — Kernel 8010 TOT, Ollama NEUE lokale
+  Modelle (qwen3.5:9b), Hammerspoon down, Hermes/Eigent/AutoClaw2-Versionen,
+  paseo-PDF-Name
+metadata:
+  node_type: memory
+  type: project
+  originSessionId: sess_9bb02160-ce23-4582-a594-371c1f798aa5
+---
+
+11.10.2026 LIVE-GEPRÜFT (curl/pgrep/defaults, Beweise in LOKI-Universum-Visualisierung):
+
+- **LOKI-Kernel :8010 TOT** (HTTP 000) — im Systemprotokoll 23.09. noch ✅. Watchdog `com.sascha.loki.kernel` hat nicht gehalten → Kernel-Neustart prüfen.
+- **Ollama :11434 lebt mit NEUEN lokalen Modellen:** `qwen3.5:9b`, `qwen2.5-coder:7b`, `qwen2.5-coder:1.5b` + glm-5.3:cloud/flash:cloud. Memory vom 30.08. („kein echtes lokales Modell") ist ÜBERHOLT — Privacy-Modus (§12) jetzt real möglich.
+- **OmniRoute :20128 TOT** (abgebaut auf Nutzer-Wunsch 20.09., korrekt so).
+- **Hammerspoon läuft NICHT** (pgrep leer) → Doppel-Strg-Voice-Trigger tot; die 2 TCC-Klicks (Bedienungshilfen + Mikrofon) weiter offen.
+- **Voice-Daemon :8078 lebt** (idle, glm-5.3-flash, Tools say/open_url/browser_read/run_command/brain_save…).
+- **Apps:** Hermes.app = com.nousresearch.hermes v0.17.0 · Eigent.app = com.eigent.app v1.0.4 · AutoClaw2.app = com.zhipuai.autoclaw2 v2.0.1. LOKI Apps: LOKI OS v18, LOKI Brain, LokiVoice in /Applications.
+- **Skills-Zahl live:** zcode 204 · agents 157 · claude 200 · autoclaw 121 (Total 682).
+- paseo-PDF heißt exakt `getpaseopaseo Orchestrate multiple coding agents from desktop and mobile.pdf` (im Skill-Liste-Ordner).
+- **Integration-Vorschlag:** AutoClaw2 = Produktivitäts-Connector (läuft schon via mcporter) · Hermes = Privacy-Worker mit Ollama-qwen3.5:9b (Pilot) · Eigent = visuelles Kontrollzimmer für Agenten-Schwärme (Test). ZCode bleibt Director, 2 GO-Gates.
+
+Interaktive Karte: `~/.zcode/v2/visualizations/c99caef…/loki-os-universum.html` (Session-Visualisierungsordner). Verwandt: [[appagentteam-flutter-skill-live]] · [[loki-os-ecosystem-stand]]
 
 ## loki-os-v18-build
 
