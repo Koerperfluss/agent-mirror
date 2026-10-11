@@ -1,6 +1,6 @@
 # esbenp.prettier-vscode-12.4.0-universal (claude)
 
-Zuletzt gespiegelt: 2026-10-11 19:37 UTC
+Zuletzt gespiegelt: 2026-10-11 19:51 UTC
 
 ## vscode-test-writer
 
