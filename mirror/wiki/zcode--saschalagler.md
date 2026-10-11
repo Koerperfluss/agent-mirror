@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-11 12:47 UTC
+Zuletzt gespiegelt: 2026-10-11 13:15 UTC
 
 ## AGENTS
 
@@ -16295,6 +16295,8 @@ Verwandt: [[loki-os-ecosystem-stand]]
 - **Video-Upload-Nachtest (Subagent, URTEIL FAIL 4✅ 3❌ 1⚠️):** File-Upload App-seitig ✅ (Video landet sauber im `<video>`, Name angezeigt) — **echter Bug: „Analyse starten" startet die Verarbeitung NICHT** (video friert bei currentTime 0.02, 14 Gelenkwinkel bleiben „–", play() resolvet aber sofort wieder paused; keine Fehlermeldung) → **Task #28 (P2, Projekt ATLAS): „Analyse-Button startet Video-Pose-Analyse nicht — vermutlich requestVideoFrameCallback/Playback-Loop"**. flutter-skill `upload` ist für diese App unbrauchbar (Chrome-154-Quirk: file chooser „files.length is 0") — funktionierender Workaround = DataTransfer-Injection + change-Event. Kleinstrepro: PROD → Form-Check → Vision → „Video wählen" → MP4 → „Analyse starten".
 - Privacy-Pilot Ollama (qwen3.5:9b, FFG-Frage): erster Aufruf = 2-Min-Timeout (Modell-Ladezeit beim Kaltstart), Retry offen — gehört zu Task #8 Hermes-Pilot.
 
+**11.10. SPÄT — ATLAS Flug 2 Vertiefung (qa-tester-Subagent, URTEIL PASS 9✅ 1❌ 2⚠️):** DATENBANK-CRUD voll bewiesen (Suche „Planche"→9 Treffer, Bearbeiten→Cues+„QA-CRUD-2026"→speichern→persistiert→revertiert ✓), Seed-Pläne beide vollständig („ATLAS Master Protocol V9.2" + „Sascha Trainingsplan — ATLAS Periodisierung 2026/27") + „In Logbuch übernehmen" → 2 Trainingstage ✓, Delete-Flow ✓ (0 Tage danach). **NEUE App-Bugs (Tasks wert):** (1) „Trainingstag löschen" destruktiv OHNE Bestätigungsdialog, (2) Chart zeigt Achse + „Noch keine Trainingsdaten" gleichzeitig (Doppel-State), (3) Seed-Import-Mapping kalenderfern („Sa: Konter-Tag"→Mo. 12.10., „Mo/Do"→So. 11.10., beide unbelegtes „Deload"-Label), (4) „ÜBERBLICK"-Tab existiert nicht (Wochen-Übersicht auf Start verteilt — prüfen ob Spec). **flutter-skill-Tooling-Lektionen:** `screenshot` hängt IMMER (30s-Timeout, auch HTTP-Fallback) — visueller Beweis nur über a11y-snap/eval/CDP oder Playwright; `type_text`/`press_key` desync in Flutter-Web-Feldern (Cmd+A landet mitten im Wort) — sauberer Weg: `execCommand('selectAll'/'insertText')` synchronisiert mit Flutter-State. Open: Create/Delete einzelner Übungen (Dialog), echter Video-Upload-Echtdurchlauf (→ Task #28).
+
 ## autoclaw-sprache-translocation-fix
 
 ---
@@ -17211,6 +17213,8 @@ Interaktive Karte: `~/.zcode/v2/visualizations/c99caef…/loki-os-universum.html
 
 **KANON-PROJEKTLISTE DAUERHAFT AKTUALISIERT (13:1x):** `~/.claude/projects/-Users-saschalagler/memory/MEMORY.md` → Abschnitt „## Weitere Projekte" (Quelle der SessionStart-Projektliste via projects.py) um 3 Zeilen erweitert, oben eingefügt: TOOL-SAMMLUNG-VERKAUF/Verkaufs-HUB (11.10. Stand) · ATLAS-TESTSTAND 11.10. (Web/iOS/Android + Bug #28; korrigiert auch die alte ATLAS-Zeile, die noch auf „Atlas Cali Plan" zeigte statt ATLAS_MASTER) · appagentteam+flutter-skill. Ab nächstem SessionStart zeigt die Projektliste den aktuellen Stand statt 15.09.-Daten.
 
+**SPÄT 11.10. — Verkaufs-AGENTEN-HUB nach dem 13.09.-Freigabe-Muster (Sascha approve den Lebenszyklus-Plan):** ZIEL gespiegelt und bestätigt: FINDEN → BEWERTEN → AUSBAUEN → VERKAUFSFERTIG → MARKT für ALLE Tools. Details/Beweise in [[verkaufshub-tool-sammlung]] (Ghost-Audit 35 gerettet, runner-Kette 2.0 Z.ai-Coding GLM-4.6, Auto-Pilot 50 Tools läuft, hub-glass v2 hell nach 404media-Guide, omniroute.autostart bootout). Verwandt: [[pflicht-ablauf-plan-sichtbar]] (Plan-Mode-Ablauf: 2 Plan-Verwerfungen, erst beim 3. Plan — ausgerichtet am ZIEL statt am Technik-Patch — wurde approved).
+
 ## loki-os-v18-build
 
 ---
@@ -17776,7 +17780,7 @@ Verwandt: [[deja-vu-install]]
 
 ---
 name: verkaufshub-tool-sammlung
-description: VERKAUFS HUB = Projekt TOOL-SAMMLUNG-VERKAUF — hub.html Cockpit :3300 (Server 11.10. gestartet), 67 Tools/15 Agenten, hub-glass.html Liquid-Glass-Redesign gebaut, Detailstand im agent-mirror-Memory; 810k-Cline-Session = fehlgeschlagener ATLAS-Xcode-Abgleich (Titel irreführend)
+description: VERKAUFS HUB = Projekt TOOL-SAMMLUNG-VERKAUF — 11.10. NACHMITTAG: GHOST-AUDIT (35/52 gerettet — „ES GIBT ALLE" war richtig!), Motor auf Z.ai-Coding GLM-4.6 umgestellt (OmniRoute raus, VERSUCHE-Kette), Auto-Pilot über ALLE 50 echten Tools läuft, hub-glass v2 hell nach 404media-Guide
 metadata:
   node_type: memory
   type: project
@@ -17792,6 +17796,13 @@ metadata:
 - **11.10. Flug 2 (Pipeline, alle bewiesen):** Backend :8055 gestartet (`python3 -m uvicorn main:app --host 127.0.0.1 --port 8055` aus Repo-Root) → **LEBT: 64 tools_in_db**, Agenten-Log sichtbar (A1 Market Research ✅, A2 Competition ✅ — aber ⚠ **„Modell glm-first: HTTP Error 400"** = OmniRoute-tot-Folge; die 15 Agenten brauchen einen anderen Modell-Weg → „GO Agenten-Modell fixen" offen bei Sascha). `/api/jobs` leer. :3300 (python http.server) starb 2× und wurde jeweils neu gestartet — **stirbt bei Reboot, kein LaunchAgent** (bei Cockpit-Nutzung erst curl-Check). hub-glass.html Funktionstest via Playwright-DOM: 67 Karten, Stats korrekt (20 verkaufen-ja / 52 Ghost — Ghost-Flag = bekannter Inventar-Stand), **Live-Suche bewiesen: „atlas" filtert 67→8 Treffer alle korrekt**. 1 Console-Error = nur favicon-404. Test-Trap: synthetic `new Event('input')` braucht `bubbles:true`, sonst greift der delegated Listener nicht (Test-Artefakt, kein App-Bug).
 - **810k-Cline-Session `1789109742185_p3730`** („VERKAUFS HUB - 11 Agent monster", inputTokens 304 M, 8,3 MB messages, FAILED) = war ursprünglich ein **ATLAS-Xcode/Web-Abgleich** („xcode app passt fast, gleiche sie mit web app ab, apk android zum verteilen") — Titel kam aus späterem Kontext. Schadlos schließbar.
 - **Verwandt:** [[appagentteam-flutter-skill-live]] (Pipeline), [[atlas-versionsstand]] (ATLAS-Volltestung), [[sascha-vollzug-keine-zwischenfragen]]
+
+**11.10. NACHMITTAG — GHOST-AUDIT (Sascha haderte „ES GIBT ALLE, warum Ghosts" — RECHT gehabt):** Alle 52 ghost-flagged Tools maschinell geprüft (3 Suchorte: HUB-Basis, ~/ direkt, Spotlight-Fallback): **6 existieren direkt · 29 existieren WOANDERS** (Hauptfund: komplette Kopie unter `/Users/saschalagler/Claude/Projects/TOOL SAMMLUNG VERKAUF/AI_STUDIO_EXPORTS/` — iCloud-artige Dubletten-Lage!) · **17 wirklich weg** (davon 7 mit „(noch zu exportieren)" = nie physisch existent; foerder-cockpit hatte Müll-Pfad „körperfluss-pilot.ai (3× identisch)"). **35 Flags+Pfade in tools-v2.json korrigiert** (Backup `tools-v2.backup-ghost-audit-20261011.json`), neue Verteilung: **36 echt-repo + 14 echt + 17 ghost-export-ausstehend**. Browser-Beweis hub-glass: „echt 50 · export offen 17". ⚠️ Zähl-Falle: `grep -c ghost` zählt nur ZEILEN (3) — Frontend zählte 52; immer pro Tool zählen. Audit-Skript-Falle: fehlender import → NameError landete im except und zählte fälschlich „weg" — Ergebnis-Verteilung immer auf Plausibilität prüfen.
+- **MOTOR UMGEBAUT (OmniRoute ENTFERNT, grep=0):** `runner.py` VERSUCHE-Kette (Backup `runner_backup_20261011.txt`): (1) **Z.ai Coding-Endpoint** `https://api.z.ai/api/coding/paas/v4` + Key rekursiv aus `~/.zcode/cli/config.json` → `/mcp/servers/zai-mcp-server/env/Z_AI_API_KEY` (49 Zeichen) — **GLM-4.6 antwortet „BEREIT" ✓** (paas/v4 mit diesem Key = 429, „glm" allein = 400; NUR coding/paas/v4 + glm-4.6 funktioniert). (2) Platform-Key (von Sascha gepastet, ABER **1113 Insufficient balance** — gespeichert `~/.config/loki/zai_platform_key` chmod 600, an Kette angehängt für nach Recharge). (3) Ollama lokal qwen2.5-coder:7b → qwen3.5:9b (Fallback bewiesen: „BEREIT"). llm()-Schleife doppelt verschachtelt (base→modell). planer.py-Import gefixt (`OMNI`/`BASE_URL`-Import entfernt, nur llm/json_aus/TOOLS) — **Lektion: nach Umbau ALLE Importeure greppen (planer.py brach instant → Auto-Pilot „skippte" alle in Sekunden statt zu arbeiten).** autopilot.py `RUNDENCAP 20→67`.
+- **AUTO-PILOT RUNDE ÜBER ALLE (14:45 gestartet, läuft):** 50 Plan-Kandidaten (echte Tools inkl. 35 gerettete; 17 export-ausstehend automatisch ausgeschlossen) × A12+A13+A14 auf GLM-4.6, detached, hub_refresh + Selbstbeendigung am Ende. Hintergrund-Warter (grep „RUNDE BEENDET" ≥3) angelautet — Abschluss-Meldung kommt als Task-Notification.
+- **hub-glass v2 (hell nach 404media-Design-Guide-PDF, das Sascha beigelegt hatte):** Inter, Pill-Tags, pastell-Blobs, Weißraum + 3D-Tilt — 67 Karten, „echt 50 / export offen 17" live korrekt (Playwright-DOM bewiesen). Screenshot `~/Desktop/HUB_GLASS_V2_11-10.png`. Playwright-navigate-Timout-Trap: Seite lädt trotzdem → gleich evaluate statt neu navigieren.
+- **P5:** `launchctl bootout gui/501/com.omniroute.autostart` — LaunchAgent-Rest deaktiviert.
+- **P4 offen:** ALLE-TOOLS-Doku (MD+PDF, Reife-Stempel 🟢🟡🔴⚫) erst NACH Runden-Ende (sonst veraltet). Sascha-GO für Recharge des Platform-Keys = optionaler Qualitäts-Hebel.
 
 ## wayfinder-skill-konsolidierung
 
