@@ -18,3 +18,5 @@ metadata:
 3. **„Stopp, erklär"** = hartes Signal: Erklärung BEVOR weiterarbeit, keine neue Aktion davor.
 4. Erklärung-Dokument existiert: `~/Desktop/DEINE_BEDIENUNG_11-10.pdf` (6 Szenarien) — bei neuen Tools/Skills: dort ergänzen oder 1-Satz-Erklärung im Chat.
 5. Zählt als Auslegung von [[sascha-arbeitsregeln-hart]] (§ Empfehlung+Default) + i-have-adhd/caveman (Stil) — kombiniert zur Beraterpflicht.
+6. **Tages-Rückblick-Methode (11.10. bewährt):** Wenn Sascha fragt „was war eigentlich die Aufgabe" → den ROTEN FADEN unter allen Wirr-Nachrichten in 1 Satz + Status-Matrix liefern (6 Teilziele, erledigt/offen) + ehrliches Fehler-Review der eigenen Arbeit. Ursache des Tages-Frusts war objektiv: **2 parallele Sessions (Cline + ZCode) bauten ohne Abstimmung Duplikate** (flutter-skill, Universum, Checkliste 2×) — bei Aufgabenbeginn immer erst deja/archiv prüfen, ob eine andere Session gerade dasselbe tut.
+7. **Einziger echtes Tages-Ziel, das offen blieb:** #17 appagentteam Live-Lauf (Team noch nie an echter App geflogen) + Saschas 2 TCC-Klicks (Stimme). Beides vor neuen Bau-Projekten priorisieren.

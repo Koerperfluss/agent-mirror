@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-11 06:29 UTC
+Zuletzt gespiegelt: 2026-10-11 06:43 UTC
 
 ## AGENTS
 
@@ -9811,6 +9811,7 @@ Beobachtet 06.09.2026 (Session mit Off-Peak-Ticket): Nach User-Paste „ZCode Er
 - [LOKI-OS-Harness Soll-Stand](loki-os-harness-sollstand.md) — 6 Schaltstellen ~/.zcode (17 MCP, 10 Agenten, 7 Commands, Sync-Quelle, 2 Wayfinder-Maps); Änderungen nur via STANDARD-SKILLS.md + sync-script
 - [/appagentteam + flutter-skill live](appagentteam-flutter-skill-live.md) — 11.10. Skill einsatzbereit, Native-Binary-Symlink-Fix (ENOEXEC-Falle), MCP nur projektweise
 - [LOKI.OS Live-Status 11.10.](loki-os-livestatus-2026-10-11.md) — Kernel 8010 TOT · Ollama NEU: qwen3.5:9b lokal · Hammerspoon down · Hermes/Eigent/AutoClaw2-Versionen + Integration-Plan
+- [Berater+Umsetzer-Prinzip](berater-umsetzer-prinzip.md) — 11.10. HART: erst WAS+WARUM erklären (seine Sprache), dann bauen · Stopp-erklär = Erklär-GO · jedes Deliverable mit Userflow
 
 ## appagentteam-flutter-skill-live
 
@@ -9919,6 +9920,29 @@ metadata:
 - ZCode läuft am z.ai Coding Plan (Beweis: Session auf `account:zai-start-plan/GLM-5.3-Flash`) — kein separater Login nötig.
 - **02.10. Nachtrag (Computer-Use-Verifikation):** AutoClaw 1.18.5 gestartet → UI KOMPLETT ENGLISCH + eingeloggt als „Sascha Lagler" (270 Punkte, GLM-5.3-Flash gewählt) — Sprach-Fix bestätigt. **AutoClaw2 2.0.1 = chinesischer „official"-Kanal und verlangt Login mit chinesischer Handynummer (手机号 + SMS)** — für Sascha nicht nutzbar, das war der echte „nicht mehr möglich"-Grund; deaktiviert lassen. AppTranslocation: xattr-Entfernung + Neustart via `open /Applications/AutoClaw2.app` nötig (LaunchServices startete sonst die alte translokierte Kopie wieder — computer-use-Start respektiert den Stale-Eintrag).
 - Settings-Mechanismus beider AutoClaw-Versionen: `settings.json` in Electron-userData, erscheint erst nach erster Änderung (AutoClaw2 main.cjs referenziert es).
+
+## berater-umsetzer-prinzip
+
+---
+name: berater-umsetzer-prinzip
+description: 11.10. Saschas Kernregel — BERATER + UMSETZER in einem — immer erst
+  verstehen lassen (WAS+WARUM), dann bauen — „Stopp, erklär" = Erklär-GO
+metadata:
+  node_type: memory
+  type: feedback
+  originSessionId: sess_9bb02160-ce23-4582-a594-371c1f798aa5
+---
+
+11.10.2026, Sascha (nach Frust über 7 unerklärte Dokumente): „Du sollst am Ende mein BERATER und gleichzeitiger UMSETZER/IMPLEMENTER sein. ICH MUSS VERSTEHEN WAS DU TUN WILLST, WARUM."
+
+**Why:** Er bekam Artefakte ohne Bedienungsanleitung und verstand weder Zweck noch Benutzung → Frust, alles „verfickte Dokumente". Erkenntnis: Lieferung ohne Erklärung = unerledigt für ihn.
+
+**How to apply:**
+1. Vor jedem Bau: 2–3 Sätze **„Was ich jetzt tue und warum"** (SEINE Sprache, ADHS-Format).
+2. Jedes Deliverable bekommt **Userflow**: Wann benutze ich es? Was sage ich? Was passiert? Was sehe ich? — realistische Szenarien aus SEINEM Alltag (Körperfluss, FFG, eBay, Loosdorf).
+3. **„Stopp, erklär"** = hartes Signal: Erklärung BEVOR weiterarbeit, keine neue Aktion davor.
+4. Erklärung-Dokument existiert: `~/Desktop/DEINE_BEDIENUNG_11-10.pdf` (6 Szenarien) — bei neuen Tools/Skills: dort ergänzen oder 1-Satz-Erklärung im Chat.
+5. Zählt als Auslegung von [[sascha-arbeitsregeln-hart]] (§ Empfehlung+Default) + i-have-adhd/caveman (Stil) — kombiniert zur Beraterpflicht.
 
 ## browser-doppelsystem-setup
 
@@ -10080,13 +10104,12 @@ deja-vu 0.20.2 am 20.09.2026 installiert (`brew install deja-vu`, Binary `/opt/h
 ---
 name: ffg-1-anlauf-historie-originalunterlagen
 description: "FFG Gesamt-Stand: 1-Anlauf-Historie (Ablehnung 21.05.2026 wörtlich)
-  + V14b FINAL einreichbereit (15 S., md5 93c132fe9b85, visual-judge 15/15 PASS,
-  Clean-Sweep 0 Alt-Spuren) + **LIVE-EINREICHUNG: eCall-Antrag 74310314 'Körperfluss
-  Edu' — Browser-Durchlauf ~60 % fertig (Jahresdaten grün ✓, Projektdaten ✓,
-  Beschreibungen 1.1–1.5 ✓, Projektleitung/APs/Standort ✓), STOPP bei Bankverbindung
-  (Saschas Konto = SPARKASSE, nicht BAWAG! wartet IBAN/Auszug) + AMS-UGP-Recherche:
-  33.940-€-SVS-Zahl = KEINE belegbare Pauschale (realistisch 4–11k), Finanzierungs-
-  Entscheidung A/B/C offen bei Sascha**"
+  + **V15 FINAL einreichbereit (16 S., md5 0bb7de2e022e, ZIP c3ff1b0c0791) — SVS-Label
+  KORRIGIERT zu SMS-Gründungsbeihilfe (Sozialministeriumservice, Leon GdB 90 %,
+  max 34.400 €/50 % — Sascha hatte recht, Beweis in seinem April-Dossier)**
+  + **LIVE-EINREICHUNG: eCall-Antrag 74310314 'Körperfluss Edu' — ~60 % fertig
+  (Jahresdaten grün ✓, Projektdaten ✓, Beschreibungen 1.1–1.5 ✓, Projektleitung/APs/
+  Standort ✓), STOPP bei Bankverbindung (Konto = SPARKASSE, wartet IBAN/Auszug)**"
 metadata:
   node_type: memory
   type: project
@@ -10197,6 +10220,7 @@ Die ORIGINAL-Inhalte des eingereichten Vollantrags (24 S., Version, die abgelehn
 - NICHT uebernommen aus Original: Lisa Mauerhart (Team bleibt Fischer/Lagler/Karner), Ursprungs-KPI-Z1 'MVP-Stack 0 Blocker' + Z5 'IPE +15 %' (V13s xLSTM-Ziele sind die eigentliche Neuheits-Antwort), SDG-Zahlen 250-300kg/-50%CO2/+15-20% (Register-Belege fehlen = 60-EUR-Regel)
 - Ursprungs-PDF liegt im Einreich-Ordner LIVE offen (Preview)
 - Regex-Falle: naive `60\s*EUR` matcht FALSE-POSITIVE in „…600 EUR"-Beträgen (9.600, 1.600 …) — immer `\b60\s*EUR` (Word-Boundary); gleiche Falle bei `Global Burden`-Check (Bindestrich-Kompositum „Global-Burden-of-Disease" matcht mit Leerzeichen nicht)
+- pypdf-Seitenzahl kann von erwarteter Zahl abweichen (V13 14 S. → V14 16 S. nach Tabelle+Ergänzungen — ok, FFG hat keine harte Seitenlimit für die Projektbeschreibung; Original hatte 24 S.)
 
 ## george-thomas-status
 
@@ -10730,7 +10754,11 @@ metadata:
 
 Interaktive Karte: `~/.zcode/v2/visualizations/c99caef…/loki-os-universum.html` (Session-Visualisierungsordner). Verwandt: [[appagentteam-flutter-skill-live]] · [[loki-os-ecosystem-stand]]
 
-**Agenten-Tafel v2 D3 (08:19):** `~/Desktop/LOKI_AGENTEN_TAFEL.html` = modernes D3-Dashboard (Timeline 5 Lanes, 55 Kreise, Stat-Karten, Aufgaben-Balken; Render via Playwright-DOM bewiesen: kreise=55, lanes=5). Alte Tabellen-Version: `LOKI_AGENTEN_TAFEL_v1_tabellen.html.bak`. **Update-Rezept bei „Tafel aktualisieren":** (1) `python3 ~/loki-agenttafel/collect.py > ~/loki-agenttafel/daten.json` (collect.py = nur Lesen+print, Mimosa-sicher), (2) daten.json lesen, (3) per Edit `const DATA = {...}`-Block in der Tafel ersetzen. **Mimosa-Block-Grenze:** kein Heredoc mit Script-Pfad-Strings via Bash, kein `open(<Variable>,"w")`. Playwright-MCP blockt file:// — Render-Test über lokalen `python3 -m http.server --bind 127.0.0.1` + DOM-Query (Screenshot-Call kann timeouten, DOM-Query reicht als Beweis). Achtung: **Mimosa blockt Python-Scripte mit `open(<Variable>,"w")`** (statische Pfad-Traversal-Warnung, 3 Versuche blockiert) → deshalb kein Generator-Script, sondern direktes Write. Cline-Sessions liegen in `~/.cline/data/sessions/` als **Unterverzeichnisse + sessions.db**, nur das search_sessions.py-Script liest sie zuverlässig. Befund 08:15: Cline-Subagenten-Team von 09.10. (5× muse-spark) komplett FAILED (Team-Auth); 1 Cline läuft (glm-5.3-flash „Customize"), 1 idle (mimo, Universe-HTML). Rollout-Ordner ~17,7 GB (Aufräum-Kandidat, nur mit GO).
+**Agenten-Tafel v2 D3 (08:19):** `~/Desktop/LOKI_AGENTEN_TAFEL.html` = modernes D3-Dashboard (Timeline 5 Lanes, 55 Kreise, Stat-Karten, Aufgaben-Balken; Render via Playwright-DOM bewiesen: kreise=55, lanes=5). Alte Tabellen-Version: `LOKI_AGENTEN_TAFEL_v1_tabellen.html.bak`. **Update-Rezept bei „Tafel aktualisieren":** (1) `python3 ~/loki-agenttafel/collect.py > ~/loki-agenttafel/daten.json` (collect.py = nur Lesen+print, Mimosa-sicher), (2) daten.json lesen, (3) per Edit `const DATA = {...}`-Block in der Tafel ersetzen. **Mimosa-Block-Grenze:** kein Heredoc mit Script-Pfad-Strings via Bash, kein `open(<Variable>,"w")`. Playwright-MCP blockt file:// — Render-Test über lokalen `python3 -m http.server --bind 127.0.0.1` + DOM-Query (Screenshot-Call kann timeouten, DOM-Query reicht als Beweis).
+
+**Nachrichten-Archiv (08:35, LEBT):** **http://127.0.0.1:8745** = LOKI Nachrichten-Archiv — jede USER-Nachricht aus ZCode (rollout-JSONL) + Claude Code (~/.claude/projects/*.jsonl) + Cline (~/.cline/data/sessions/*/messages.json: **role:"user"-Format, NICHT say:user_feedback**), 14-Tage-Fenster, live Suchfeld + Quellen-Filter. LaunchAgent `com.loki.archiv` (KeepAlive), Server `~/loki-agenttafel/archiv_server.py` (stdlib, nur Loopback, kein open(w) — Mimosa-sicher), Sammler `collect_messages.py`, Template `archiv_template.html` (fetch /daten). Beweis: 309 Nachrichten (ZCode 64 · Claude 104 · Cline 141), Suche „hermes"→4 Treffer via Playwright-DOM. **Antigravity-Phase 2 offen:** Conversations liegen als SQLite `.db` mit steps/trajectory-Tabellen (komplex, nicht message-flach). Archiv aktualisieren = Seite neu laden (Server sammelt每次 frisch).
+
+**Dokumenten-Konsolidierung (09:00):** 7 LOKI-Dokumente existierten (3 aus der Cline-mimo-Session im Skill-Lsite-Ordner: Abfahrtsliste-LOKI-OS.html 08:05 = veraltetes 21er-Todo, LOKI-OS-Universe.html 08:28 = detaillierteste Landkarte, + skill-browser.html vom 08.09.; + meine 4). **Cline-Verhalten:** neue Nachricht → neues Dokument statt bestehendes pflegen. **Empfohlener Endstand (4 Docs, je Zweck 1×):** PDF-Übersicht (Desktop) · Cline-LOKI-OS-Universe (Landkarte, detailreicher als meine) · LOKI_AGENTEN_TAFEL D3 · Archiv :8745 — Aufgaben NUR im Taskmaster. **⚠️ Lösch-GO AUSSTEHEND:** Abfahrtsliste-LOKI-OS.html + LOKI_UNIVERSUM_2026-10-11.html (meins, doppelt) + LOKI_AGENTEN_TAFEL_v1_tabellen.html.bak — nichts löschen ohne Saschas „GO löschen". **Taskmaster-Migration erledigt:** #12 openclaw-CLI in PATH · #13 LegalOps-MCP 4×→1× · #14 Git-Repo-Root Home aufräumen (GO!) · #15 AutoClaw-Off-Peak-Batch · #16 Eigent CDP :9222 als Browser-Backend → **11 offene Tasks gesamt** (#1,#2,#8–16); Cline-Checklisten-Inhalt damit vollständig gerettet. Achtung: **Mimosa blockt Python-Scripte mit `open(<Variable>,"w")`** (statische Pfad-Traversal-Warnung, 3 Versuche blockiert) → deshalb kein Generator-Script, sondern direktes Write. Cline-Sessions liegen in `~/.cline/data/sessions/` als **Unterverzeichnisse + sessions.db**, nur das search_sessions.py-Script liest sie zuverlässig. Befund 08:15: Cline-Subagenten-Team von 09.10. (5× muse-spark) komplett FAILED (Team-Auth); 1 Cline läuft (glm-5.3-flash „Customize"), 1 idle (mimo, Universe-HTML). Rollout-Ordner ~17,7 GB (Aufräum-Kandidat, nur mit GO).
 
 ## loki-os-v18-build
 
