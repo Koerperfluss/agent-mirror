@@ -1,8 +1,10 @@
 ---
 name: cline-code-app-hub-1006-diagnosis
-description: "Hub connection closed (code=1006)" in Cline Code.app = lokaler Hub-Daemon-Crash, NICHT Server-Ausfall
+description: "Hub connection closed (code=1006)" in Cline Code.app = lokaler Hub-Daemon-Crash, NICHT Server-Ausfall + 11.10. Provider-Modell-Pin-Reparatur (kat-coder-pro tot, OmniRoute abgeschaltet)
 
 11.10. Full-Fix bewiesen: kill -9 + open -a Cline → Hub-Daemon mit Args (--host 127.0.0.1 --port 25463 --pathname /hub), /health=200, Socket ESTABLISHED. ECONNRESET=transient: Key-Test aus providers.json (`zai-coding-plan`, https://api.z.ai/api/coding/paas/v4 + /chat/completions) → HTTP 200 glm-5.3. WICHTIG: Composer-Provider ≠ Run-Provider — Goal-Runs sind auf Startzeit-Provider (cline-pass/muse-spark) gepinnt und crashen weiter; Fix = Run killen/neue Nachricht im Composer mit Z.AI. GUI-Injection erreicht den Cline-Webview nicht (AX leer, Tastatur landet nicht) — Senden per Enter selbst.
+
+**11.10. spät — Modell-Pin-Audit (Sascha: „Modelle rotieren seit Wochen nicht"):** Nichts ist serverseitig eingefroren — (a) api.cline.bot `/api/v1/models` (mit cline-pass apiKey) → 458 Modelle, frische bis 08.10.; eingefroren war nur Saschas Pin in providers.json, und der zeigte auf TOTES Modell `kwaipilot/kat-coder-pro` (nicht mehr in Serverliste!) → Pin repariert auf `meta/muse-spark-1.3` (Backup providers.json.bak-20261011-models), App neu gestartet. (b) Z.AI Coding Plan: 9 Modelle live (glm-4.5…5.3, NEU glm-5.3-flashx), Pin glm-5.3 gültig. (c) OmniRoute :20128 TOT (kein Prozess, HTTP 000) — seit 20.09. Nutzer-Beschluss „abgebaut", deshalb keine Free-Rotation dort. (d) Usage/Billing-Curl → immer 401 „re-authenticate" auch mit OAuth-Token (App signiert Requests selbst) — echte Zahlen nur in Cline-Settings → Usage; DATENLAGE UNKLAR über API. (e) Modell-Pin-Regel: Pin = Senderknopf — Liste aktualisiert die App selbst, Pin ändert sich nur manuell in der UI.
 metadata:
   type: project
 ---

@@ -1,7 +1,7 @@
 ---
 app: claude
 quelle: "web-template/skills/minimal-web-baas-demo/SKILL.md"
-stand: 2026-10-10
+stand: 2026-10-11
 tags: [spiegel, claude]
 ---
 
@@ -116,6 +116,7 @@ Stack priority for this path: **Web SDK CRUD > MCP schema > template warmup > cl
 | NoSQL browser CRUD | `../cloudbase-document-database-web-sdk/SKILL.md` |
 | PG browser CRUD + MCP schema | `../postgresql-development-cloudbase/SKILL.md` |
 | Auth provider readiness | `../auth-tool-cloudbase/SKILL.md` then `../auth-web-cloudbase/SKILL.md` |
+| MCP connection, calling tools from the shell with mcporter, plugin flags | `../cloudbase-mcp/SKILL.md` |
 
 Prefer `searchKnowledgeBase(mode="skill", skillName="minimal-web-baas-demo")` (or the sibling dir id) when local skill files are unavailable. **Do not** dump every CloudBase skill at session start.
 

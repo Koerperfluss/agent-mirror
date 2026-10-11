@@ -1,6 +1,6 @@
 # web-template (claude)
 
-Zuletzt gespiegelt: 2026-10-11 21:31 UTC
+Zuletzt gespiegelt: 2026-10-11 21:46 UTC
 
 ## no_spec
 
@@ -11218,7 +11218,7 @@ Do not put a Secret ID, Secret Key, or environment ID into `mcporter.json`. Logi
 | `CLOUDBASE_MCP_PLUGINS_ENABLED` / `CLOUDBASE_MCP_PLUGINS_DISABLED` | Comma-separated plugin names for a local server. |
 | `enable_plugins` / `disable_plugins` | The same switch on a remote URL, comma-separated. |
 
-Plugin names are the ones in `mcp/src/server.ts` (`env`, `database`, `functions`, `hosting`, `storage`, and the rest). Hosted remote servers leave `feedback` off unless `enable_plugins` includes it. A local server includes it by default.
+Plugin names are the ones in `mcp/src/server.ts` (`env`, `database`, `functions`, `hosting`, `storage`, and the rest). A local server and a hosted remote server enable the same default set; turn one off for a given caller with `disable_plugins` on the remote URL or `CLOUDBASE_MCP_PLUGINS_DISABLED` on a local server.
 
 ## Contributing
 
@@ -13509,6 +13509,7 @@ Stack priority for this path: **Web SDK CRUD > MCP schema > template warmup > cl
 | NoSQL browser CRUD | `../cloudbase-document-database-web-sdk/SKILL.md` |
 | PG browser CRUD + MCP schema | `../postgresql-development-cloudbase/SKILL.md` |
 | Auth provider readiness | `../auth-tool-cloudbase/SKILL.md` then `../auth-web-cloudbase/SKILL.md` |
+| MCP connection, calling tools from the shell with mcporter, plugin flags | `../cloudbase-mcp/SKILL.md` |
 
 Prefer `searchKnowledgeBase(mode="skill", skillName="minimal-web-baas-demo")` (or the sibling dir id) when local skill files are unavailable. **Do not** dump every CloudBase skill at session start.
 
@@ -13517,7 +13518,6 @@ Prefer `searchKnowledgeBase(mode="skill", skillName="minimal-web-baas-demo")` (o
 Any partner host (WorkBuddy, CodeBuddy connectors, vertical expert prompts, ISV wrappers) should treat this skill as the **compact fast-path brief**. Reuse the sniff order above; do not invent a cloud-function-first demo path.
 
 | Host capability | Recommended packaging |
-| --- | --- |
 
 ## SKILL
 
