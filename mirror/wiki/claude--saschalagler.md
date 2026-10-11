@@ -1,6 +1,6 @@
 # saschalagler (claude)
 
-Zuletzt gespiegelt: 2026-10-11 05:31 UTC
+Zuletzt gespiegelt: 2026-10-11 05:45 UTC
 
 ## CLAUDE
 
@@ -1586,6 +1586,129 @@ metadata:
 Projektordner (kanonisch): `~/Desktop/Coworkspace_Ich/private Porjekte/vinyl-scanner` (ZCode-Workspace-Projekt, 14 Sessions, letzte 12.09.2026 mit Nespresso-Gebrauchtpreis-Recherche "Realistische Gebrauchtmarktpreise für die Nespresso-Maschinen").
 
 Status 15.09.: kein offener Auftrag; Recherche-Ergebnisse liegen im letzten Vinyl-Scanner-Chat. Nächster sinnvoller Schritt bei Wiederaufnahme: Wayfinder-Karte nur falls >1 Session Aufwand.
+
+## flutter-tool-priority
+
+# Tool Selection Priority for Flutter Testing
+
+## 🚨 CRITICAL RULE
+
+**For ANY Flutter app testing, ALWAYS use flutter-skill. NEVER use Dart MCP.**
+
+This is a HARD RULE with ZERO exceptions.
+
+---
+
+## Decision Tree
+
+```
+┌─────────────────────────────────────┐
+│ User wants to test Flutter app?    │
+└───────────┬─────────────────────────┘
+            │
+            ├─ YES → Use flutter-skill EXCLUSIVELY
+            │         │
+            │         ├─ Launch:    launch_app (with --vm-service-port=50000)
+            │         ├─ Inspect:   inspect, get_widget_tree
+            │         ├─ Interact:  tap, swipe, enter_text
+            │         ├─ Validate:  screenshot, get_logs
+            │         ├─ Debug:     get_errors, diagnose
+            │         └─ Lifecycle: hot_reload, stop_app
+            │
+            └─ NO (non-Flutter) → Use other appropriate tools
+```
+
+---
+
+## Trigger Keywords → flutter-skill
+
+When you see ANY of these keywords, use flutter-skill:
+
+### English
+- "test [Flutter] app"
+- "launch app"
+- "run on iOS/Android"
+- "simulator"
+- "emulator"
+- "verify [feature]"
+- "check [button/screen]"
+- "E2E test"
+- "integration test"
+- "UI test"
+- "automate [flow]"
+- "screenshot"
+- "tap/click [element]"
+- "enter/input text"
+
+### 中文
+- "测试应用"
+- "启动应用"
+- "iOS测试"
+- "Android测试"
+- "模拟器"
+- "验证功能"
+- "检查界面"
+- "集成测试"
+- "界面测试"
+- "自动化测试"
+- "截图"
+- "点击"
+- "输入文本"
+
+**Action**: IMMEDIATELY use flutter-skill tools.
+
+---
+
+## Forbidden Patterns
+
+### ❌ NEVER Do This
+
+```python
+# WRONG - Using Dart MCP for Flutter testing
+mcp__dart__launch_app(...)
+mcp__dart__get_app_logs(...)
+mcp__dart__hot_reload(...)
+mcp__dart__get_widget_tree(...)
+```
+
+**Why wrong**: Dart MCP lacks UI automation. Only ~40% capability.
+
+### ✅ ALWAYS Do This
+
+```python
+# CORRECT - Using flutter-skill
+launch_app(extra_args: ["--vm-service-port=50000"])
+get_logs()
+hot_reload()
+inspect()  # Much better than get_widget_tree
+```
+
+**Why correct**: flutter-skill has 100% capability for Flutter testing.
+
+---
+
+## Common Mistakes to Avoid
+
+### Mistake 1: "Dart MCP for lifecycle, flutter-skill for UI"
+
+❌ **WRONG**:
+```
+Step 1: mcp__dart__launch_app()      # Wrong!
+Step 2: mcp__dart__get_app_logs()    # Wrong!
+Step 3: flutter-skill tap()          # Now you're mixing tools
+```
+
+✅ **CORRECT**:
+```
+Step 1: launch_app()                 # ✅
+Step 2: get_logs()                   # ✅
+Step 3: tap()                        # ✅
+# Single tool, complete workflow
+```
+
+### Mistake 2: "Dart MCP works with DTD by default"
+
+❌ **WRONG reasoning**:
 
 ## context7
 

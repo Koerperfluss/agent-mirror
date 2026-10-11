@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-11 05:31 UTC
+Zuletzt gespiegelt: 2026-10-11 05:45 UTC
 
 ## AGENTS
 
@@ -9809,6 +9809,30 @@ Beobachtet 06.09.2026 (Session mit Off-Peak-Ticket): Nach User-Paste „ZCode Er
 - [LOKI-OS Harness-Settings-Sessions](loki-os-harness-settings-sessions.md) — 3 kanonische Sessions (sess_6ec2db7a/ecb2e5e0/055615ab) mit der 6-Schaltstellen-Architektur; bei Harness-/Architektur-Fragen ZUERST diese laden; deja-Eingriffe additiv-verträglich (20.09. verifiziert)
 - [Session-Quellen: wo finden](session-quellen-wo-finden.md) — zcode-Log = nur Telemetrie; User-Nachrichten in ~/.zcode/cli/rollout/model-io-sess_*.jsonl; Tool-Reste in artifacts/sess_*/
 - [LOKI-OS-Harness Soll-Stand](loki-os-harness-sollstand.md) — 6 Schaltstellen ~/.zcode (17 MCP, 10 Agenten, 7 Commands, Sync-Quelle, 2 Wayfinder-Maps); Änderungen nur via STANDARD-SKILLS.md + sync-script
+
+## appagentteam-flutter-skill-live
+
+---
+name: appagentteam-flutter-skill-live
+description: 11.10.2026 — /appagentteam-Skill live + flutter-skill 0.9.37
+  Native-Binary-Fix (npm-Wrapper-ENOEXEC-Falle) + projektweise-MCP-Regel
+metadata:
+  node_type: memory
+  type: project
+  originSessionId: sess_9bb02160-ce23-4582-a594-371c1f798aa5
+---
+
+11.10.2026 ABSCHLUSS: **/appagentteam-Skill existiert und ist einsatzbereit** (`~/.zcode/skills/appagentteam/SKILL.md` — R1–R7-Rollen, 6 Phasen, von Parallel-Session angelegt, von mir um bewiesene Fix-Details erweitert) + `~/.zcode/skills/e2e-testing/SKILL.md` aus dem lokalen Repo vorhanden + Routing-Eintrag in `~/.agents/skill-routing.md`.
+
+**flutter-skill auf diesem Mac:**
+- `~/.local/bin/flutter-skill` = **Symlink auf Native-Binary** `~/.flutter-skill/bin/flutter-skill-macos-arm64-v0.9.37` (NICHT der npm-Wrapper!)
+- **Falle:** npm-Wrapper cli.js crashet mit `spawn ENOEXEC` (Postinstall lädt 0-Byte-Binary; Node-Spawn scheitert, direkter exec läuft). GitHub-Release v0.9.36 hat KEINE Assets → Binary von v0.9.37 holen, unter Wrapper-erwartetem Namen (`-v0.9.36`) ODER Symlink direkt aufs Binary legen (gemacht). Bei npm-Update: Symlink neu setzen.
+- **CLI-Trap:** `--port=N` als erstes Argument = „Unknown command" → `FS_PORT=3742 flutter-skill snap` oder Flags nach Subcommand.
+- **Live bewiesen (Exit 0):** `flutter-skill serve https://example.com --port=3742` + `FS_PORT=3742 flutter-skill snap` → echter Accessibility-Content. serve nutzt CDP **9222** = Agent-Chrome (passt zu [[browser-doppelsystem-setup]]).
+- **MCP-Regel:** flutter-skill-MCP (253 Tools) NIE global in `~/.mcp.json` (Context-Tax) — nur projektweise `.mcp.json` im App-Projekt. Backup: `~/.mcp.json.bak-2026-10-11` (unverändert, 22 Server).
+- Flutter-SDK selbst ist NICHT installiert (nur Dart via Homebrew) — Flutter-App-Builds brauchen erst `brew install --cask flutter`.
+
+**Ordner-Analyse (Desktop/Coworkspace_Ich/PRIVATE PORJEKTE /Skill Lsite agentic os/):** flutter-skill-main = E2E-Repo (Quelle für sdks/ios, sdks/android, e2e-testing-Skill) → EINGEBUNDEN. IRIS-AI-main = Electron-App (iris-Skill existiert separat). OmniRoute = Router (20.09. auf Nutzer-Wunsch abgebaut). Auto Sync & Save = Bun/React-Projekt (unklarer Nutzen, kein Handlungsbedarf).
 
 ## apple-mail-db-abfrage
 
@@ -101960,6 +101984,85 @@ Quellen: [willhaben Gemini-Listings](https://www.willhaben.at/iad/kaufen-und-ver
 ## SKILL
 
 ---
+name: appagentteam
+description: "Startet ein App-Dev-Agent-Team (Architekt, iOS, Android, Web/Flutter, QA-E2E, Code-Reviewer, Workflow-Optimierer) das Features entwickelt, die App per flutter-skill E2E durchtestet, Reviews macht und Workflows optimiert. Nutzen wenn der User /appagentteam aufruft oder ein App-Projekt 'vom Team entwickeln und testen' will."
+---
+
+# /appagentteam — App-Dev-Agent-Team (Sub-Agenten-Cluster)
+
+Team-Orchestrierung fuer App-Entwicklung: bauen → E2E-testen (flutter-skill) → reviewen → Workflow optimieren. Alle Behauptungen mit Befehlsausgabe/Exit-Code belegen (Beweispflicht).
+
+## Bezugspfade
+
+| Item | Pfad |
+| :--- | :--- |
+| flutter-skill CLI | `/Users/saschalagler/.local/bin/flutter-skill` → **Symlink auf Native-Binary** `~/.flutter-skill/bin/flutter-skill-macos-arm64-v0.9.37` (live getestet 11.10.2026: `serve` + `snap` auf example.com, Exit 0) |
+
+⚠️ **Installations-Falle (behoben, bei npm-Update erneut anwenden):** Der npm-Wrapper (`cli.js`, v0.9.36) crashet mit `spawn ENOEXEC` (Postinstall lädt 0-Byte-Binary; Node-Spawn scheitert an Gatekeeper/provenance). Fix:
+```bash
+curl -sL "https://github.com/ai-dashboad/flutter-skill/releases/download/v<TAG>/flutter-skill-macos-arm64" -o ~/.flutter-skill/bin/flutter-skill-macos-arm64-v<TAG> && chmod +x ~/.flutter-skill/bin/flutter-skill-macos-arm64-v<TAG>
+ln -sf ~/.flutter-skill/bin/flutter-skill-macos-arm64-v<TAG> ~/.local/bin/flutter-skill
+```
+
+⚠️ **CLI-Trap:** Flags als ERSTES Argument = „Unknown command". Flags NACH dem Subcommand oder als Env: `FS_PORT=3742 flutter-skill snap`.
+
+🔒 **MCP nur projektweise, NIE global** (253 Tools = Context-Tax in jeder Session). Im App-Projekt `.mcp.json`: `{"mcpServers":{"flutter-skill":{"command":"flutter-skill","args":["server"]}}}`. Globale `~/.mcp.json` bleibt unberührt.
+
+⚙️ **Betriebsregeln:** max 3 PARALLEL-Subagenten (Discovery/Build/Test) · nur 2 GO-Gates (Plan-GO + Deploy-GO) · Modell-Routing: Plan/Architektur = GLM-5.3, Ausführung/Tests = GLM-5.3-Flash (`subagent_model` explizit). flutter-skill `serve` nutzt CDP 9222 = Agent-Chrome (Browser-Doppelsystem-kompatibel).
+| E2E-Quell-Skill | `/Users/saschalagler/Desktop/Coworkspace_Ich/PRIVATE PORJEKTE /Skill Lsite agentic os/flutter-skill-main/skills/e2e-testing/SKILL.md` |
+| E2E- integrierter Skill | `~/.zcode/skills/e2e-testing/SKILL.md` |
+| Aufgaben-Verteilung | `~/.zcode/skills/skill-aware-task-distribution/SKILL.md` |
+| Lean-Build | `~/.zcode/skills/lean-build/SKILL.md` |
+| UI-Tester | `~/.zcode/skills/ui-ux-tester/SKILL.md` |
+
+## Rollen (Sub-Agenten, via `spawn_agent` parallel starten)
+
+| ID | Rolle | Aufgabe | Werkzeug-Anchor |
+| :--- | :--- | :--- | :--- |
+| R1 | Architect / PM | Scope zerlegen, Plan, Schnittstellen | lean-build, domain-modeling |
+| R2 | iOS-Dev | Swift/SwiftUI + FlutterSkillSDK | developing-ios-apps |
+| R3 | Android-Dev | Kotlin + flutter-skill-android | — |
+| R4 | Web/Flutter-Dev | Flutter-Code, 2-Zeilen-Bridge in main() | e2e-testing |
+| R5 | QA-E2E | Core-Loop + explore/monkey, Bug-Report | e2e-testing, ui-ux-tester |
+| R6 | Code-Reviewer | Diff-Review, Konventionen, Sicherheit | code-review |
+| R7 | Workflow-Optimizer | Build/Test-Zeiten, CI, Auto-Heal | better-ui, backend-development |
+
+## Ablauf (Phasen, immer in Reihenfolge)
+
+| Phase | Aktion | Ergebnis / Exit-Nachweis |
+| :--- | :--- | :--- |
+| 0 Plan | R1 zerlegt Feature-Request, legt Task-Liste an (`team_task create`) | Tasks mit Depends-On |
+| 1 Build | R2/R3/R4 parallel via `spawn_agent`; Git-Commit je Feature | `git log -1` pro Modul |
+| 2 E2E | R5: `flutter-skill init` → `launch` → Core-Loop → `explore --depth=3` | Screenshots + Exit-Codes, Testprotokoll |
+| 3 Review | R6 prueft alle Diffs der Phase 1–2 | Diff-Befunde, keine offenen P0 |
+| 4 Optimize | R7 misst Build/Test-Zeit, kuerzt Workflows | Vorher/Nachher-Zeiten |
+| 5 Report | BLUF-Report + 3 naechste Schritte | GFM-Tabelle, Beweise pro Zeile |
+
+## E2E-Testregeln (R5, verbindlich)
+
+1. Immer `screenshot()` vor und nach jeder Aktion.
+2. Zielen per semantischem `ref:` (nicht Koordinaten).
+3. Nach Navigation `wait_for_element` mit Timeout; bei Timeout `get_logs()`/`get_errors()`.
+4. Jeder gefundene Bug: Screenshopf + Reprodu-Schritte + Logauszug.
+5. Abschluss: `flutter-skill monkey <app> --actions=100` (Crash-Suche) + `explore --depth=3`.
+
+## Start (User-Aufruf)
+
+```
+/appagentteam <Pfad-zur-App> "<Feature oder Testziel>"
+```
+
+Ohne Argumente: aktuelles Verzeichnis als App-Pfad, Testziel vom User in einer Runde erfragen (eine Frage, Optionen: Feature bauen / E2E testen / beides).
+
+## Stopp-Regeln
+
+- Kein Loopen: gleicher Fehler 2x → Stopp, Befund melden.
+- Keine Behauptung ohne Exit-Code/Screenshot.
+- Loeschen von Projekt-Code nur mit Bestaetigung.
+
+## SKILL
+
+---
 name: beweis-und-fokus
 description: "Beweis- & Fokus-Operator v1.0 (destilliert aus agentallrounder v8.5 + beweis-und-fokus-operator). Erzwingt: Zeile 1 = Ergebnis, Tabellen statt Fließtext, Beweis für jede Behauptung (Pfad/Exit-Code/Quelle), Null Toleranz für Floskeln und Halluzination, Dual-Mode QUICK/DEEP, 'DATENLAGE UNKLAR'-Stopp statt Raten, max. 3 nächste Schritte. Für JEDEN Task aktivieren, der Ergebnisse liefert."
 ---
@@ -101994,6 +102097,91 @@ Verboten: gerne, hoffe, beachten Sie, zusammenfassend, viel Erfolg, Interessante
 
 ## 6. ABSCHLUSS
 Jede DEEP-Antwort endet mit **🎯 NÄCHSTE SCHRITTE (max. 3)** — konkrete Handlungen mit Verantwortlichkeit (ICH/DU), keine Statusfloskeln.
+
+## SKILL
+
+---
+name: e2e-testing
+description: "AI-powered E2E-Testing fuer jede App (Flutter, React Native, iOS Swift, Android Kotlin, Electron, Tauri, Web) ueber flutter-skill MCP. Agent sieht Bildschirm, tippt, scrollt, inspiziert UI-Baum, verifiziert State — null Testcode. Nutzen wenn der User eine App UI end-to-end testen, Smoke-Tests, Formular-Flows oder Navigation pruefen will, cross-platform."
+---
+
+# E2E-Testing — 8 Plattformen, null Testcode (lokal integriert)
+
+`flutter-skill` (npm v0.9.36, global installiert unter `/Users/saschalagler/.local/bin/flutter-skill`) ist ein MCP-Server + CLI, der AI-Agenten mit laufenden Apps verbindet: Screenshots, Taps, Texteingabe, Scroll, UI-Inspektion, Logs — per Naturallanguage.
+
+Quelle (Primärquellen, Stand 2026-10-11):
+- Lokal: `/Users/saschalagler/Desktop/Coworkspace_Ich/PRIVATE PORJEKTE /Skill Lsite agentic os/flutter-skill-main/skills/e2e-testing/SKILL.md`
+- Repo: https://github.com/ai-dashboad/flutter-skill (npm `flutter-skill`, pub.dev `flutter_skill`)
+- Nachweis Install: `which flutter-skill` → `/Users/saschalagler/.local/bin/flutter-skill`, `--version` → `0.9.36`, Exit 0
+- Nativer Binary (ohne Flutter-SDK): `/Users/saschalagler/.flutter-skill/bin/flutter-skill-macos-arm64-v0.9.37` (Mach-O arm64, `--version` → 0.9.37, Exit 0; als v0.9.36-Filename kopiert, damit der npm-Wrapper ihn findet — Flutter-SDK fehlt auf diesem Mac, Dart-Runtime-Fallback schlaegt fehl)
+- Live-Smoke-Test 2026-10-11: `flutter-skill serve https://example.com` + `tools` (Exit 0, Tool-Liste u. a. `tap`, `type_text`, `screenshot`, `snapshot`) + `snap` (Exit 0, echter Seiteninhalt)
+
+## Plattformen
+
+| Plattform | Setup |
+|-----------|-------|
+| Flutter (iOS/Android/Web) | `flutter pub add flutter_skill` + 2 Zeilen in `main()` |
+| React Native | `npm install flutter-skill-react-native` |
+| iOS (Swift/UIKit) | SPM: `FlutterSkillSDK` |
+| Android (Kotlin) | Gradle: `flutter-skill-android` |
+| Electron / Tauri / KMP / MAUI | npm / cargo / Gradle / NuGet |
+| Web (beliebige Seite) | kein SDK noetig: `flutter-skill serve <url>` |
+
+## MCP-Konfig (in die MCP-Config des Hosts eintragen)
+
+```json
+{
+  "mcpServers": {
+    "flutter-skill": {
+      "command": "flutter-skill",
+      "args": ["server"]
+    }
+  }
+}
+```
+
+## CLI (ohne MCP, fuer Skripte/CI)
+
+```bash
+flutter-skill init            # Projekt-Patch: Testing-Bridge einbauen
+flutter-skill launch .        # App starten, VM-Service-URI ablesen
+flutter-skill serve <url>     # bestehende Website/App per HTTP ausliefern
+flutter-skill snap            # Accessibility-Tree (~200 Tokens statt ~4000)
+flutter-skill screenshot /tmp/ss.jpg
+flutter-skill tap "Login"
+flutter-skill type "hello@example.com"
+flutter-skill explore <url> --depth=3      # autonome Bug-Suche
+flutter-skill monkey <url> --actions=100   # Fuzzing, Crash-Detection
+```
+
+## Core-Loop (immer in dieser Reihenfolge)
+
+```
+screenshot() → inspect_interactive() → tap(ref)/enter_text(ref) → screenshot() → wait_for_element()
+```
+
+- Nach `screenshot()`: erwarteten Screen bestaetigen, Aktion erst dann.
+- Nach `tap`/`enter_text`: `screenshot()` auf UI-Reaktion.
+- Nach Navigation: `wait_for_element(key: "...", timeout: 5000)`. Timeout → `screenshot()` + `get_logs()`/`get_errors()`.
+- `inspect_interactive()` leer → Screen-Load pruefen, `get_logs()`, kurz neu versuchen.
+
+## Semantische Refs (zielrobust gegen UI-Aenderungen)
+
+```
+button:Login   input:Email   toggle:Dark Mode   button:Submit[1]
+Format: {role}:{content}[{index}]   Rollen: button, input, toggle, slider, select, link, item
+```
+
+Ziel-Prioritaet: `ref:` > `key:` > `text:` > Koordinaten (letzter Weg).
+
+## Validierungs-Checkpoints (Beweispflicht)
+
+| Aktion | Nachweis-Pflicht |
+| :--- | :--- |
+| `launch_app()` | VM-Service-URI im Output, sonst: Framework vorhanden? kompiliert App? |
+| `inspect_interactive()` | >0 Elemente, sonst screenshot + retry |
+| Tap/Text | screenshot mit erwartetem State |
+| Navigation | `wait_for_element` Erfolg; bei Timeout logs/errors |
 
 ## SKILL
 
