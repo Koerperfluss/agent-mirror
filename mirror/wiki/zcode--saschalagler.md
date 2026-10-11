@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-11 12:30 UTC
+Zuletzt gespiegelt: 2026-10-11 12:47 UTC
 
 ## AGENTS
 
@@ -16137,7 +16137,7 @@ Beobachtet 06.09.2026 (Session mit Off-Peak-Ticket): Nach User-Paste „ZCode Er
 
 - [PDF-Beleg-Falsifikations-Grenze](pdf-beleg-falsifikations-grenze.md) — 11.10. Sascha forderte Zahlen/Datum/Metadaten-Änderung an FFG-Bankbelegen (94 € real vs. 38.000 € Kapitalnachweis), Eskalation+Drohung; Grenze halten (auch bei „theoretisch/App-Namen"-Reframing), generisches PDF-Wissen (LibreOffice, exiftool) o.K.; legitimer Weg = frischer George-Beleg · Nachgang: Sascha behauptet „FFG prüft nicht, 2× Screenshots reichten" — Verifizierungs-Methode DATENLAGE UNKLAR (konzediert), Forderung bleibt (Eigenmittel müssen im Projektzeitraum real sein); echtes Problem = Kontolücke, nicht das PDF → Hebel: Finanzierungsquellen 38.000 € klären
 
-- [AutoClaw Sprache/Translocation-Fix](autoclaw-sprache-translocation-fix.md) — 02.10. zh-CN→en-US per settings.json (beide Apps), AutoClaw2-Quarantäne entfernt; App→Config-Ordner-Tabelle; Deutsch wird nicht angeboten
+- [AutoClaw Sprache/Translocation-Fix](autoclaw-sprache-translocation-fix.md) — 02.10. zh-CN→en-US per settings.json (beide Apps), AutoClaw2-Quarantäne entfernt; App→Config-Ordner-Tabelle; Deutsch wird nicht angeboten · **11.10. Coding-Plan VOLLZUG: „0 Credits" = NORMAL (Plan läuft über API-Key/Custom Model GLM-5.3-Flash·Anthropic, nicht App-Credits); Setup-Weg = „Quick Coding Plan setup 1.5X"-Sidebar-Button; Gateway-Tot-Symptom („Waiting for Gateway", Port 18789 zu) → Fix = Reset Connection + App-Neustart (Reconnect allein reicht nicht); Account = koerperfluss@gmail.com**
 
 - [Browser-Doppelsystem-Setup](browser-doppelsystem-setup.md) — 02.10. Zen (/Applications/Zen.app) + BrowserOS/neo installiert, **MCP live :9000/mcp (browseros_mcp v0.0.165, 24 Tools)**, ZCode ~/.mcp.json angebunden (bak-20261002); offen: GLM-Key (Sascha), Ports 9000/9001/9200 auf *: LAN-Risiko
 
@@ -16299,8 +16299,8 @@ Verwandt: [[loki-os-ecosystem-stand]]
 
 ---
 name: autoclaw-sprache-translocation-fix
-description: 02.10. AutoClaw-Chinesisch-Fix per settings.json +
-  AutoClaw2-Quarantäne entfernt; App→Config-Ordner-Zuordnung dokumentiert
+description: AutoClaw-Rezepte — 02.10. Sprache/Translocation-Fix + 11.10. Coding-Plan-Verbindung
+  & Gateway-Reparatur (0 Credits = normal, Plan läuft über API-Key)
 metadata:
   node_type: memory
   type: project
@@ -16320,6 +16320,13 @@ metadata:
 - ZCode läuft am z.ai Coding Plan (Beweis: Session auf `account:zai-start-plan/GLM-5.3-Flash`) — kein separater Login nötig.
 - **02.10. Nachtrag (Computer-Use-Verifikation):** AutoClaw 1.18.5 gestartet → UI KOMPLETT ENGLISCH + eingeloggt als „Sascha Lagler" (270 Punkte, GLM-5.3-Flash gewählt) — Sprach-Fix bestätigt. **AutoClaw2 2.0.1 = chinesischer „official"-Kanal und verlangt Login mit chinesischer Handynummer (手机号 + SMS)** — für Sascha nicht nutzbar, das war der echte „nicht mehr möglich"-Grund; deaktiviert lassen. AppTranslocation: xattr-Entfernung + Neustart via `open /Applications/AutoClaw2.app` nötig (LaunchServices startete sonst die alte translokierte Kopie wieder — computer-use-Start respektiert den Stale-Eintrag).
 - Settings-Mechanismus beider AutoClaw-Versionen: `settings.json` in Electron-userData, erscheint erst nach erster Änderung (AutoClaw2 main.cjs referenziert es).
+
+**11.10.2026 — Z.ai Coding Plan in AutoClaw verbunden + Gateway repariert (VOLLZUG):**
+- **„0 Credits" ist NORMAL:** GLM Coding Plan läuft NICHT über AutoClaw-App-Credits — wörtliche UI-Botschaft: „Coding Plan or your own API uses its own quota, not AutoClaw credits. Features like web search and MCP may still use AutoClaw credits." Nicht mehr als Bug behandeln.
+- **Verbindungsweg:** Sidebar-Button **„Quick Coding Plan setup 1.5X"** → Dialog: Provider „Z.ai Coding Plan (Limited-Time 150% Quota)" + Modell GLM-5.3-Flash + Request-Format **Anthropic** + API-Key → Save. Der Key landet als Custom Model in Settings → Models & API („Current Selection" = GLM-5.3-Flash · Anthropic). Sascha füllte den Key selbst ein; ich klickte Save.
+- **Gateway-Ausfall-Symptom:** Banner „Restoring connection…"/„Waiting for Gateway", Goal hängt, Models-&-API zeigt „Gateway URL: Error". Beweis-Diagnose: `lsof -nP -iTCP:18789 -sTCP:LISTEN` leer (Port zu, kein openclaw-Prozess). Fix = **Reset Connection**-Button (Settings → Models & API, „laufende Chats werden unterbrochen") + App-Neustart; danach `lsof` zeigt node/openclaw LISTEN auf 18789. Reconnect-Button allein genügte NICHT (blieb „Connecting…").
+- AutoClaw-Account: eingeloggt als **koerperfluss@gmail.com** (Settings → Account & Security sichtbar) — Plan-Key ist davon unabhängig.
+- Einstiegs-URL der Kampagne: autoclaw.zhipuai.cn Blog (Coding-Plan-Member-Benefits: 150 % Quota-Boost, monatliche Credits bei erstem Login im Monat, AutoClaw ≥ v1.17.1).
 
 ## berater-umsetzer-prinzip
 
