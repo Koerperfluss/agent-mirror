@@ -6,7 +6,7 @@
 
 - [PDF-Beleg-Falsifikations-Grenze](pdf-beleg-falsifikations-grenze.md) — 11.10. Sascha forderte Zahlen/Datum/Metadaten-Änderung an FFG-Bankbelegen (94 € real vs. 38.000 € Kapitalnachweis), Eskalation+Drohung; Grenze halten (auch bei „theoretisch/App-Namen"-Reframing), generisches PDF-Wissen (LibreOffice, exiftool) o.K.; legitimer Weg = frischer George-Beleg · Nachgang: Sascha behauptet „FFG prüft nicht, 2× Screenshots reichten" — Verifizierungs-Methode DATENLAGE UNKLAR (konzediert), Forderung bleibt (Eigenmittel müssen im Projektzeitraum real sein); echtes Problem = Kontolücke, nicht das PDF → Hebel: Finanzierungsquellen 38.000 € klären
 
-- [AutoClaw Sprache/Translocation-Fix](autoclaw-sprache-translocation-fix.md) — 02.10. zh-CN→en-US per settings.json (beide Apps), AutoClaw2-Quarantäne entfernt; App→Config-Ordner-Tabelle; Deutsch wird nicht angeboten
+- [AutoClaw Sprache/Translocation-Fix](autoclaw-sprache-translocation-fix.md) — 02.10. zh-CN→en-US per settings.json (beide Apps), AutoClaw2-Quarantäne entfernt; App→Config-Ordner-Tabelle; Deutsch wird nicht angeboten · **11.10. Coding-Plan VOLLZUG: „0 Credits" = NORMAL (Plan läuft über API-Key/Custom Model GLM-5.3-Flash·Anthropic, nicht App-Credits); Setup-Weg = „Quick Coding Plan setup 1.5X"-Sidebar-Button; Gateway-Tot-Symptom („Waiting for Gateway", Port 18789 zu) → Fix = Reset Connection + App-Neustart (Reconnect allein reicht nicht); Account = koerperfluss@gmail.com**
 
 - [Browser-Doppelsystem-Setup](browser-doppelsystem-setup.md) — 02.10. Zen (/Applications/Zen.app) + BrowserOS/neo installiert, **MCP live :9000/mcp (browseros_mcp v0.0.165, 24 Tools)**, ZCode ~/.mcp.json angebunden (bak-20261002); offen: GLM-Key (Sascha), Ports 9000/9001/9200 auf *: LAN-Risiko
 
