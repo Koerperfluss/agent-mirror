@@ -5,47 +5,32 @@ stand: 2026-10-11
 tags: [spiegel, zcode]
 ---
 
-## VERKAUFS-AGENTEN-HUB — nach dem bewährten 13.09.-Freigabe-Design (Zielbogen → Anforderung → 4 Wellen → Risiko → Start-Checkliste)
+## VERKAUFS-HUB KOMPLETT — Alle 67 Tools durch das Agenten-Team, Ghost-Audit, Modell-Spektrum, Design nach deinem Guide
 
-**Dein Zielbogen — 6 Antworten, von mir vorausgefüllt aus allem, was du heute erklärt hast (korrigiere mit 1 Wort, sonst gilt das):**
-- **F01 Angebot/Markt:** ALLE deine Tools (67 im Inventar + Finder findet Neues) verkaufsfertig machen und verkaufen — Markt: DACH/Ebay/Gumroad/eigene Seiten, „China" vom 13.09. ist hinfällig
-- **F02 Entscheider:** Sascha (Einzelentscheider)
-- **F03 Kostenregel:** Pipeline-Agenten laufen auf Ollama lokal (0 €, kein „high demand"-Risiko aus Run 1); ZCode-Schwarm auf Flash
-- **F04 Zeitfenster:** JETZT — Welle 1 startet sofort nach Freigabe, Durchlauf heute
-- **F05 Eigent.app:** Browser-Auge für App-Tests (bewiesen aktiv auf :9222)
-- **F06 Erfolg:** ALLE-TOOLS-Dokument existiert + 15/15 Pläne vollständig + Top-3-Tools umgesetzt + je Tool Marktplatz+Taktik — 8/8 Checkliste
+### P0 — GHOST-AUDIT (dein Kernvorwurf, zuerst)
+`tools-v2.json` einlesen (Backup vorher): alle Tools mit ghost-artigem dev_status **maschinell auf Pfad-Existenz prüfen** (3 Suchorte: HUB-Basis, `~/`-direkt, iCloud-`" 2."`-Duplikat-Muster — bekanntes iCloud-Problem). Ergebnis je Tool:
+- Pfad **existiert** → Flag korrigieren auf echt (die „52 Ghosts" waren teilweise falsch)
+- Pfad **existiert woanders** → Pfad korrigieren
+- Pfad **wirklich weg** → belegt dokumentieren (mit Suchbeweis), NICHT blind glauben
+→ Neue ehrliche Zählung ins Cockpit.
 
-### Phase A — Freigabe (jetzt)
-Ich lege den Hub als Datei an (wie am 13.09.): Zielbogen mit den 6 Antworten, Anforderungsdokument (Scope: 67 Tools + zukünftige Funde; Lieferobjekte unten; Kriterien), Risiko-Rollback-Tabelle. Deine Freigabe = dieses Plan-GO.
+### P1 — MODELL-SPEKTRUM statt schwaches Einzelmodell (dein Punkt)
+`runner.py`-Kette 2.0 (Backup vorher, ENV überschreibbar):
+1. **Z.ai-Direkt (GLM-Qualität)** — Key wird per **Datei-Pfad** gelesen (`~/.zcode/cli/config.json`-Quelle, kein Key-Literal im Code)
+2. **Ollama lokal** qwen2.5-coder:7b (Fallback, 0 €)
+3. Ehrlich dokumentiert: cline-pass/Antigravity/Claude/Hermes haben keine offenen HTTP-Endpunkte für die Pipeline — die **schwere Ausbau-Arbeit** übernimmt stattdessen der **ZCode-Subagenten-Schwarm** (GLM-5.3, Welle 3)
 
-### Phase B — Produktion in 4 Wellen (11+ Agentenrollen, je Welle Verifikation)
+### P2 — AUTO-PILOT ÜBER ALLE 67 (nicht nur 15)
+`autopilot`-Scope auf alle 67 Tools (Rundencap 67, 2× Retry je Tool) — A12 Entwicklungsplan + A13 Artefakte + A14 Marketing je Tool. Fortschritt live unter `/api/jobs`, Ergebnis unter `pipeline/vorschlaege/<id>/`.
 
-**WELLE 1 · BASIS/MOTOR** (Modelle: Ollama lokal — killt das „high demand"-Risiko von Run 1)
-- Motor-Fix: runner.py LLM-Kette von OmniRoute(:20128, tot) auf Ollama :11434 umstellen (Backup vorher; beweis: grep = 0 OmniRoute, 1 erfolgreicher Agenten-Call)
-- **NEUER Agent A0 „Tool-Finder"**: periodische Platten-Suche (gleiche bewährte Marker-Logik) → Delta gegen tools-v2.json → Neuzugänge als Entwürfe (Erstlauf sofort; Erwartung 0 neue, Beweis im finder.log)
+### P3 — DESIGN-REFRESH hub-glass v2 nach deinem Website-Guide
+Hell, Inter, Pill-Tags, viel Weißraum, feine Linien (404media-Ästhetik aus dem PDF) + fluid/liquid Micro-Interactions + 3D-Tilt — Ghost/Fehlzählungen aus P0 sichtbar korrigiert.
 
-**WELLE 2 · BEWERTUNG/PLÄNE**
-- Auto-Pilot-Runde 2 bis **15/15** plan.json vollständig (A12 Entwicklungsplan + A13 Artefakte + A14 Marketing — nur defekte werden neu generiert)
-- Marktplatz-Shortlist je Tool (wo genau: Gumroad/eBay/eigene Seite) aus den vorhandenen Markt-Analysen (A1/A2-Nachlauf)
+### P4 — DOKU „ALLE TOOLS von Anfang bis jetzt"
+`ALLE_TOOLS_ABFANG_BIS_JETZT.md` + PDF auf Desktop: alle 67 mit Tier · Stand (korrigiert) · Preis · Kanal · Wert · Marktplatz-Shortlist · Verkaufsreife-Stempel + ehrliches Fazit „kann ich alle verkaufen?" (🟢 sofort / 🟡 braucht dich / 🔴 Ausbau lt. Plan / ⚫ eingestellt)
 
-**WELLE 3 · AUSBAUEN (Umsetzung, nicht nur Plan)**
-- Top-3 nach Verkaufsreihenfolge (Paraletts/Bar-Bulls → Legal Ops → LokiVoice): appagentteam-Schwarm setzt die offenen A12-Pläne + Verkaufsfertig-Rest-Tickets um (max 3 Subagenten parallel)
-- Verkaufsreife-Einstufung je Tool: 🟢 sofort / 🟡 braucht dich (Gumroad-Link, Zertifikat, Deploy-GO) / 🔴 braucht Ausbau / ⚫ Ghost/eingestellt (inkl. „omniroute" streichen)
+### P5 — OmniRoute-Rest
+LaunchAgent `com.omniroute.autostart` bootout (deaktiviert, Datei bleibt) — Grund dokumentiert.
 
-**WELLE 4 · SYNTHESE**
-- Das Gesamtdokument **„ALLE TOOLS von Anfang bis jetzt"** (MD im Repo + PDF auf Desktop): je Tool Tier · Stand · Preis · Kanal · Wert · Lücken · Reife-Stempel — plus die ehrliche Antwort auf „kann ich alle verkaufen?"
-- Hub-Refresh + Marktplatz/Taktik je Karte sichtbar
-
-### Phase C — Übergabe
-Start-Checkliste quergeprüft (8/8), alles lokal abgelegt, Bericht mit Beweis-Pfaden. **Kein Deploy, kein Gumroad-Upload, kein push — das bleibt dein GO.**
-
-### Risiko & Rollback (mit Abbruchkriterien, aus Run-1-Erfahrung gelernt)
-| Risiko | Abbruchkriterium | Rollback |
-|---|---|---|
-| Ollama-Modell zu langsam/fehlerhaft | 3 Fehlversuche je Agenten-Welle | Z.ai-Key-Datei-Fallback (Pfad-basiert, kein Key im Code) |
-| Quota 429 am ZCode-Schwarm (Welle 3) | 429 beim Spawn | Welle pausieren, inline weiter, Welle 3 später fortsetzen |
-| Ghost-Tools verstopfen die Runde | Auto-Pilot schreibt Ghost-Pläne | Ghost/eingestellt-Tools von Runde 2 ausgeschlossen |
-| Unvollständige Pläne (A13-Fehler wie gestern) | Runde endet < 15/15 | Nur defekte löschen + Einzel-Retry statt Komplett-Runde |
-
-### Dauer & Aufwand
-W1 ~15 Min · W2 ~30–60 Min (Auto-Pilot) · W3 ~60–90 Min · W4 ~20 Min. Alles lokal, kein externes Publish.
+### Beweise & Dauer
+P0-Audit-Tabelle (52 geprüft, X korrigiert) · 67/67 Pläne-Ziel mit Fortschritt in /api/jobs · Hub v2 Screenshot · Doku-Pfade · grep 0 OmniRoute. Dauer ~2–3 h (67×3 Agenten-Calls über Z.ai/Ollama-Mix, im Hintergrund). Kein Deploy/Gumroad/push ohne deine GOs.
