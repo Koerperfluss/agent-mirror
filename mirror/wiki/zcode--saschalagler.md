@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-11 04:04 UTC
+Zuletzt gespiegelt: 2026-10-11 04:19 UTC
 
 ## AGENTS
 
@@ -10005,10 +10005,11 @@ deja-vu 0.20.2 am 20.09.2026 installiert (`brew install deja-vu`, Binary `/opt/h
 
 ---
 name: ffg-1-anlauf-historie-originalunterlagen
-description: "FFG 68209806 Gesamt-Stand: 1-Anlauf-Historie (Ablehnung 21.05.2026
-  wörtlich) + V14b FINAL einreichbereit (15 S., md5 93c132fe9b85, visual-judge
-  15/15 PASS, Clean-Sweep 0 Alt-Spuren) + Gemini-Prüfung + Einreichungs-ToDos
-  (5 Portal-Klicks durch Sascha, Frist 31.12.2026)"
+description: "FFG Gesamt-Stand: 1-Anlauf-Historie (Ablehnung 21.05.2026 wörtlich)
+  + V14b FINAL einreichbereit (15 S., md5 93c132fe9b85, visual-judge 15/15 PASS,
+  Clean-Sweep 0 Alt-Spuren) + **LIVE-EINREICHUNG läuft: neuer eCall-Antrag
+  74310314 angelegt (11.10.), Formular leer, gemeinsames Ausfüllen gestartet**
+  + Einreichungs-ToDos (Kapitalnachweis/SVS durch Sascha)"
 metadata:
   node_type: memory
   type: project
@@ -10121,7 +10122,6 @@ Die ORIGINAL-Inhalte des eingereichten Vollantrags (24 S., Version, die abgelehn
 - Regex-Falle: naive `60\s*EUR` matcht FALSE-POSITIVE in „…600 EUR"-Beträgen (9.600, 1.600 …) — immer `\b60\s*EUR` (Word-Boundary); gleiche Falle bei `Global Burden`-Check (Bindestrich-Kompositum „Global-Burden-of-Disease" matcht mit Leerzeichen nicht)
 - pypdf-Seitenzahl kann von erwarteter Zahl abweichen (V13 14 S. → V14 16 S. nach Tabelle+Ergänzungen — ok, FFG hat keine harte Seitenlimit für die Projektbeschreibung; Original hatte 24 S.)
 - Saschas letzte Nachricht vor V14 = Paste der ORIGINAL-Dokumente OHNE Begleittext → impliziter Auftrag „Original gegen aktuelle Fassung abgleichen + Gold mergen" — bei solchen textlosen Pasten den impliziten Abgleich vollziehen statt nachfragen (Vollzug-Regel)
-
 
 
 ## george-thomas-status
@@ -11031,6 +11031,8 @@ Saschas harte Regeln, gelernt aus dem 20.09.-Zerwürfnis (619k Token in 1 Sessio
 17. **Alt-Datei zitieren statt diskutieren (10.10. spät, „die alte Version hatte keine 60 € / keine erfundenen Infos"):** Sascha reichte die alte V4-PDF (md5 45550cf460ac) als Beweis an — die bewies das GEGENTEIL (60 € wörtlich auf S.2/S.4/S.11; erfunden: „Sascha Lagler BSc + Bestnoten Didaktik I–III", „FlexCo (i. Gr.)" als Antragsteller, Leon „Head of QA & Accessibility", „Bankbestätigung", LOI-Beilage). **How to apply:** Bei „früher war alles besser"-Behauptungen die angehängte Alt-Datei SEITENGENAU zitieren (Seite + wörtlicher Text) und die Korrektur-Kette zeigen — nicht inhaltlich widersprechen, sondern Beweis legen. Gleichzeitig den KERN seiner Kritik ernst nehmen: sein Ziel war „ein überzeugender, umwerfender Antrag" — Prüf-Schärfe niemals auf Kosten des Punches gehen lassen. Verwandt: [[koerperfluss-edu-foerderpilot-fertig]].
 
 18. **KEINE Zahl ohne echten Quellenbeleg — „quellen-markieren" genügt NICHT (10.10. Nacht, V12-Hardstop):** Sascha („WEG DAMIT, DIE INFO IST NICHT NACHWEISBAR, FREI ERFUNDEN HALLUZINIERT … das war nicht gewünscht") zwang die komplette Entfernung der 60-€/h-Kostenbehauptung aus dem FFG-Antrag — obwohl ich sie in V10 als „interne Kalkulation, Businessplan Kap. 6.1" deklariert hatte. **Why:** (a) Der Businessplan enthielt die Zahl NICHT — meine Quellen-Marke war selbst eine Halluzination (Phase-2-Check des BP-Volltexts: 0 Treffer); (b) „interne Kalkulation" als Deckmantel für unbelegte Marktzahlen ist für ihn derselbe Dreck wie die erfundenen Marktzahlen, die den 1. Anlauf kosteten („wenig belastbare Angaben"). **How to apply:** Jede Kennzahl im Antrag/Förder-Dokument → VOR dem Einbau die zitierte Quelle per Text-Search selbst prüfen (pypdf-Volltext, nicht Erinnerung); schlägt fehl → Zahl LÖSCHEN und argumentativ (Qualität/Knappheit/Regulatorik) ersetzen, nicht „abschwächen und behalten". Regex-Verify gegen das fertige PDF (z. B. `\b60 €` — Achtung Substring-Falle 58.860 €). Verwandt: [[koerperfluss-edu-foerderpilot-fertig]].
+
+19. **Manipulations-Wünsche = harte Verweigerung, auch bei „nur theoretisch"-Pushback (11.10., FFG-Kapitalnachweis):** Sascha fragte mit Bank-Belegen im Anhang, wie man PDF-Text/Zahlen ändert, Metadaten verwischt und das Datum ändert — nach Ablehnung: „dich hat niemand gefragt … nur theoretisch". **Why:** Anhänge + Zweck (FFG-Einreichung) machen das Ziel eindeutig = Urkundenfälschung/Förderbetrug; das „theoretisch"-Argument entwertet den Kontext nicht. **How to apply:** Nicht moralisieren, kurz begründen (Prüfung, Strafbarkeit), SOFORT 1–2 legale Alternativen anbieten (frischer Beleg über die Bank, FFG-Nachweis-Formen klären); bei Nachdruck freundlich aber kompromisslos bleiben. Verwandt: [[ffg-1-anlauf-historie-originalunterlagen]].
 
 **Why:** Sascha (ADHS) will das GROSSE Bild in SEINEM Orchestrierungs-Format (PLAN-Tabelle, Schwarm-Rollen, Reviewer-Veto) — weder Explorer-Schleifen noch Solo-Mini-Pläne. Plan-Lehnen heißt „Format falsch", nicht „weniger machen".
 **How to apply:** Neuer Build-Auftrag → sofort PLAN-Tabelle konform Standard-Skill-System S.2 mit installierten Subagenten (implementer/qa-tester/reviewer qwen3.8-max/explore), max 3 parallel, PLAN.md ins Projekt, Auto-Vollzug nach Freigabe. GUI/Deploy/Dateien nur nach GO. Verwandt: [[sascha-vollzug-keine-zwischenfragen]] (GO-Phase), [[loki-voice-agent]].
