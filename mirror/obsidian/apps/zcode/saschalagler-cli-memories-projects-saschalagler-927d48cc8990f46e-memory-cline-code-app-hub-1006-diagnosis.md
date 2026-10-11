@@ -1,13 +1,15 @@
 ---
 app: zcode
 quelle: "saschalagler/cli/memories/projects/saschalagler-927d48cc8990f46e/memory/cline-code-app-hub-1006-diagnosis.md"
-stand: 2026-09-16
+stand: 2026-10-11
 tags: [spiegel, zcode]
 ---
 
 ---
 name: cline-code-app-hub-1006-diagnosis
 description: "Hub connection closed (code=1006)" in Cline Code.app = lokaler Hub-Daemon-Crash, NICHT Server-Ausfall
+
+11.10. Full-Fix bewiesen: kill -9 + open -a Cline → Hub-Daemon mit Args (--host 127.0.0.1 --port 25463 --pathname /hub), /health=200, Socket ESTABLISHED. ECONNRESET=transient: Key-Test aus providers.json (`zai-coding-plan`, https://api.z.ai/api/coding/paas/v4 + /chat/completions) → HTTP 200 glm-5.3. WICHTIG: Composer-Provider ≠ Run-Provider — Goal-Runs sind auf Startzeit-Provider (cline-pass/muse-spark) gepinnt und crashen weiter; Fix = Run killen/neue Nachricht im Composer mit Z.AI. GUI-Injection erreicht den Cline-Webview nicht (AX leer, Tastatur landet nicht) — Senden per Enter selbst.
 metadata:
   type: project
 ---

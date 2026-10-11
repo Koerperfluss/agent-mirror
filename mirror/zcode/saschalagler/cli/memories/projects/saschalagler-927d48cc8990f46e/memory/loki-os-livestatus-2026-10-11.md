@@ -1,10 +1,11 @@
 ---
 name: loki-os-livestatus-2026-10-11
 description: 11.10. Live-Status + Reparaturen — Kernel lebt (v15.3.0, bootstrap-Rezept),
-  GO 1+2 ausgeführt (v17 gestoppt, Brain.app archiviert), Taskmaster konsolidiert
-  (20 offen, #17 appagentteam-Live-Lauf P1), Archiv :8745, Agenten-Tafel D3,
-  Bedienungs-PDF, openclaw 2026.9.2 im PATH, mcporter v0.9.0 installiert,
-  Eigent = CDP :9222 (Browser-Backend), 3-Apps-Beratung (AutoClaw2 JA · Hermes JA-Pilot · Eigent JA als Browser-Auge)
+  GO 1+2 ausgeführt, Taskmaster konsolidiert (#28 ATLAS-Video-Bug offen), Archiv :8745,
+  Agenten-Tafel D3, Bedienungs-PDF, Stimme BEREIT (TCC-Phantom aufgelöst, #10/#1 done),
+  3-Apps DEEP-AUDIT (OpenClaw=Agent-OS · Hermes=Kanban-Schwarm+Proxy · Eigent
+  Arbeitskräfte-Modus aktiv, ATLAS-Testlauf bereit — Senden nur per GUI-Klick möglich),
+ mcporter v0.9.0 installiert, Eigent = CDP :9222 (Browser-Backend)
 metadata:
   node_type: memory
   type: project
