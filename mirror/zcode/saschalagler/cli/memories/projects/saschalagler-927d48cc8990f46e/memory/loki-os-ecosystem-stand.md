@@ -2,7 +2,8 @@
 name: loki-os-ecosystem-stand
 description: Agentic-OS-Gesamtinventur — 20.09. Vollanalyse (10 Harnesses, 1075
   Skills, 21 MCPs) + 05.10. Re-Count (466 Skills/3 Roots, 134 Duplikate, 22
-  MCPs); Workflow-Killer #1 = leerer Start-Plan, Fallback zai-api/GLM-5.3-Flash
+  MCPs) + 11.10. Anthropic-Plugin-Verdict (0 von 26 nötig, Dashboard-Pfad);
+  Workflow-Killer #1 = leerer Start-Plan, Fallback zai-api/GLM-5.3-Flash
 metadata:
   node_type: memory
   type: project
@@ -24,5 +25,7 @@ Systemanalyse von Saschas Agentic OS (20.09.2026, alle Fakten mit lsof/ps/ls/cur
 **Kanonische Architektur-Quelle (20.09. entdeckt):** `~/Desktop/Coworkspace_Ich/LOKI_OS_CODEX_PAKET/` — CODEX_AGENT_OS_HANDOUT.md (Gesamt-Architektur: Kernel :8010 mit 25 Endpunkten, 6 Domänen-Personas P-01…W-03, 8 Domain-Tools, Inferenz-Regel „Sensibles NUR lokal", 9 Arbeitsregeln inkl. „keine parallelen Agent-Sessions auf denselben Ordnern") · LOKI_MASTER_STATUS.md (16 Projekte-Portfolio) · WAYFINDER_MAP.md (v16-Destination: bootbarer Kernel + OmniRoute + MCP-Bridge) · AUDIT/STRIX/SYSTEM_HANDBUCH. Bei LOKI.OS-Architekturfragen ZUERST dieses Paket lesen. Hinweis: Kernel-Stand dort 01.–07.09. (lief damals); heute ist 8010 tot.
 
 **Re-Count 05.10.2026 (Bash-verifiziert, nach Workload-Woche):** 466 Skills in 3 Roots (zcode 201 / agents 144 / autoclaw 121) · **134 Duplikate** zwischen zcode- und agents-Root · 22 MCP-Server in ~/.mcp.json (MCP_DOCKER, chrome-devtools, claude-mem, context7, deja, desktop-commander, filesystem, firebase, firestore, github, gitlab, google-cloud-storage …) · 15 Hook-Regeln (~/.claude/settings.json). **Modell-Lage (Workflow-killer #1):** Session-Modell = zai-start-plan GLM-5.3-Flash mit LEERER Quota (code 1005, network_error) — Start-Plan-gebundene Workflows sterben; **`zai-api/GLM-5.3-Flash` = funktionsfähiger Fallback** (bewiesen in 2 großen Workflows); Individual-Plan-Modell tauchte zwischenzeitlich aus der Modell-Liste ab. **Fix-Muster:** bei jedem CreateWorkflow `subagent_model` EXPLIZIT setzen + Zeitbudget-Hinweis in jeden Agent-Ask (verhindert Web-Recherche-Hänger 20–90 min).
+
+**Anthropic-Plugin-Analyse 11.10.2026 (Claude-Anpassungen-Seite vs. LOKI-Skills):** Claude-Verzeichnis = 276 Skills (3 Sascha-eigene: sascha-precision-mode, tool-monetarisierung, technischer-erklarer-style [deaktiviert] + 273 von Anthropic/Partnern) · 32 Konnektoren (25 verbunden, judicario + MCP_DOCKER + memory = Kerne) · 26 Plugins. **Verdict: 0 von 26 Plugins nötig** — Legal (US-Recht) verliert gegen judicario/loki-legal-ops (AT/DE/CH), Engineering/Productivity/Search verliert gegen coderabbit/deja/loki-brain; einziger Testkandidat = Data-Plugin (nur Skills, kein MCP); Empfehlung: nur Supabase-Konnektor verbinden (falls Körperfluss/ATLAS Supabase nutzen — ungeklärt). Vergleichs-Dashboard: **~/Desktop/ANTHROPIC_VS_LOKI_SKILLS_2026-10-11.html**; Quell-Paste: ~/.zcode/tmp/paste-attachments/2026-10-11/pasted-text-20261011-121026-cb42efe4.txt (1631 Zeilen).
 
 Verwandt: [[loki-voice-agent]], [[sascha-local-infra-ports]], [[sascha-arbeitsregeln-hart]]
