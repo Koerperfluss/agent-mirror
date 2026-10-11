@@ -1,9 +1,10 @@
 ---
 name: ffg-1-anlauf-historie-originalunterlagen
-description: "FFG 68209806 Gesamt-Stand: 1-Anlauf-Historie (Ablehnung 21.05.2026
-  wörtlich) + V14b FINAL einreichbereit (15 S., md5 93c132fe9b85, visual-judge
-  15/15 PASS, Clean-Sweep 0 Alt-Spuren) + Gemini-Prüfung + Einreichungs-ToDos
-  (5 Portal-Klicks durch Sascha, Frist 31.12.2026)"
+description: "FFG Gesamt-Stand: 1-Anlauf-Historie (Ablehnung 21.05.2026 wörtlich)
+  + V14b FINAL einreichbereit (15 S., md5 93c132fe9b85, visual-judge 15/15 PASS,
+  Clean-Sweep 0 Alt-Spuren) + **LIVE-EINREICHUNG läuft: neuer eCall-Antrag
+  74310314 angelegt (11.10.), Formular leer, gemeinsames Ausfüllen gestartet**
+  + Einreichungs-ToDos (Kapitalnachweis/SVS durch Sascha)"
 metadata:
   node_type: memory
   type: project
@@ -153,3 +154,17 @@ Sascha-Frage „ist es FFG-konform als Neueinreichung ohne Spuren alter Themen (
 - **Rollen-Deal:** Sascha tippt Login SELBST (ich lese Passwörter nie mit) + besorgt frischen BAWAG-Auszug -> ich baue Beilage 05 aus `_QUELLE/05_kapitalnachweis.typ` im Design neu · danach navigiere ICH: Projekt **68209806** -> Portal-Adresse -> **Loosdorf** -> Projektbeginn -> **01.01.2027** -> 9-PDF-Upload-Führung -> Richtigkeits-Erklärung -> nur Sascha zeichnet -> SUBMIT
 - eCall-Fakten verifiziert am Live-Screen: Login-Seite hat External-Login (USP, ACOnet), Register, New Password; IAB unterstützt KEINEN File-Upload (waitForEvent filechooser = capability_unsupported) -> **PDF-Uploads muss Sascha im sichtbaren Browser selbst klicken** oder ZIP manuell; ich kann nur lesen/führen
 - Erklärung delivered (Sascha kannte Portal-Jargon nicht): 'Slot 05' = 5. Upload-Feld (=Kapitalnachweis), 2. Anlauf = eigenständiger NEUER Antrag im rollierenden eCall (kein Nachreichungs-Formular, kein formaler Bonus/Malus, ABER Jury sieht Bescheid 21.05.2026 GZ 938346 -> deshalb Clean-Sweep-V14b)
+
+## LIVESITZUNG 11.10. (~06:05) — EINGELOGGT + NEUER ANTRAG ANGELEGT: 74310314
+- **Sascha ist eingeloggt** (User `saschakoerperfluss`, „Lagler, Sascha") — Cockpit zeigte „**Keine Einreichungen verfügbar!**" = das alte Projekt 68209806 ist in diesem Account NICHT sichtbar → ich habe über „Neues Projekt erstellen" → Ausschreibungsliste → **„Basisprogramm Kleinprojekt"** (fid=52200214, KEIN Einreichschluss = rollierend ✓) ein **NEUES Projekt angelegt: Antragsnummer 74310314**, Status „Vollantrag erstellen + bearbeiten", Rolle „Projektleiter (KF)". **68209806 ist damit Geschichte — alle weiteren Referenzen = 74310314**
+- Formular-Seiten (alle leer, rote Pflichtfeld-Warnungen normal): Information · **Jahresdaten** · **Projektdaten** · Nachhaltigkeitsziele · Inhaltliche Beschreibung · Arbeitsplan · **Kosten und Finanzierung** · Abschluss — Live-Verifiziert: „Laufende Einreichmöglichkeit, Entscheidung in **7 Förderungssitzungen pro Jahr**"; FFG-Kontakte angezeigt (Buchmayer, Hahn, Ganss, Sisic, Stalzer, Zellner, Gessl)
+- ⚠️ „**Ihr Passwort läuft in 8 Tagen ab**" (eCall-Warnung an Sascha)
+- Nächster Schritt im Portal: „Speichern & Weiter ►" → **Jahresdaten füllen** (ich lese jedes Feld, diktier Werte aus V14b: Start 01.01.2027, 12 Monate, 130.800/58.860); Adresse-Prüfung (Loosdorf vs. Melk) kommt über die Masken bzw. Organisation-Tab (Klick dort reloadete zurück auf Information — ASP.NET-Postback, Adresse wird in einer der Masken sichtbar)
+- **BAWAG/George geklärt (Sascha: „was für bawag wtf"):** George = Banking-APP der **BAWAG P.S.K.** — sein Kapitalnachweis-Konto IST BAWAG/George (Giro 38.000 € + Smart Sparen 431,62 €, alter Auszug 27.11.2025). Frischer Auszug = George-App → Kontoauszug/Finanzbericht als PDF → ich baue Beilage 05 neu
+- **SVS-Gründungsförderung (33.940 €) Status:** laut Stand NICHT verifiziert beantragt — muss **LEON SELBST** bei **seinem** AMS-Berater beantragen (nicht Saschas Beraterin Gmunden); blockiert die FFG-Einreichung NICHT (steht als „beantragt" im Antrag, Lücken-Erklärung drin)
+
+## VORFALL 11.10. — Sascha fragte nach PDF-Manipulation des Kapitalnachweis (ABGELEHNT)
+- Sascha fragte (mit George-Screenshot + Kapitalnachweis-PDF als Anhänge): „wie ändert man Zahlen/Worte/Text in PDF und verwischt danach Metadaten bzw. heutiges Datum ändern" — also Manipulation des **Kapitalnachweis**-Belegs für die FFG-Einreichung.
+- **WICHTIG entdeckt: Georg-Saldo real nur 94,35 €** (Screenshot) vs. alter Finanzbericht 38.000 € vom 27.11.2025 — die 38.000 € sind offenbar längst weg. Fälschung wäre Urkundenfälschung/Förderbetrug; klar abgelehnt.
+- Legitimer Weg angeboten: frischer George/BAWAG-Finanzbericht als echten Beleg drucken; wenn Saldo < 38.000 € Eigenmittel-Finanzierungsquelle real klären (Darlehen/Unterstützung mit schriftlicher Bestätigung, FFG fragen welche Nachweis-Formen akzeptiert werden). **Sascha muss vor SUBMIT ehrlich klären, wo die 38.000 € Eigenmittel herkommen.**
+- **Nachdruck 11.10.:** Sascha drängte nach der Ablehnung („dich hat niemand gefragt, du sollst nicht tun, sondern mir sagen, wie ich Text auf PDF theoretisch ändere") — „theoretisch"-Framing ändert nichts: Anhänge + Ziel (Datum ändern, Metadaten verwischen, für FFG-Einreichung) machen den Kontext eindeutig → REFUSAL GEHALTEN, keine Anleitung geliefert. Alternativen wiederholt: frischer George-Beleg (2 Min), Lücke real rechnen, akzeptierte Nachweis-Formen mit FFG klären.

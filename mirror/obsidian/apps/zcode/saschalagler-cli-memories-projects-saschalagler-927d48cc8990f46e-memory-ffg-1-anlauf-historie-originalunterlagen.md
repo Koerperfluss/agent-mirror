@@ -7,10 +7,10 @@ tags: [spiegel, zcode]
 
 ---
 name: ffg-1-anlauf-historie-originalunterlagen
-description: Komplette 1-Anlauf-Historie FFG 68209806 aus Original-Unterlagen
-  (Ordner Desktop/ffg - 1 antrag + businessplan+nachtrag+2version) —
-  Projekt.Start 0€, Ablehnungsgründe wörtlich, Nachreichungs-Chronik,
-  Chat-Aufzeichnungs-Pfade
+description: "FFG 68209806 Gesamt-Stand: 1-Anlauf-Historie (Ablehnung 21.05.2026
+  wörtlich) + V14b FINAL einreichbereit (15 S., md5 93c132fe9b85, visual-judge
+  15/15 PASS, Clean-Sweep 0 Alt-Spuren) + Gemini-Prüfung + Einreichungs-ToDos
+  (5 Portal-Klicks durch Sascha, Frist 31.12.2026)"
 metadata:
   node_type: memory
   type: project
@@ -43,6 +43,27 @@ Quelle: `/Users/saschalagler/Desktop/ffg - 1 antrag + businessplan+nachtrag+2ver
 3. „Die **Schwierigkeit des Vorhabens** wurde nur unterdurchschnittlich [eingestuft]"
 
 → Antwort im 2. Anlauf: messbare KPIs (Z1–Z5), 15-Parameter-Safety-Guard als QS-Antwort, xLSTM als Schwierigkeits-Nachweis, verständliche Sprache.
+
+## 11.10. — V14b EINREICHSBEREIT + Gemini-Prüfung + Clean-Sweep (Finale)
+
+## 11.10. spät — GEMEINSAME BROWSER-EINREICHUNG gestartet + SVS-Frage geklärt
+- **Gemeinsames Einreichen im Browser aktiv:** ZCode-IAB-Tab auf **ecall.ffg.at Login-Seite** (browser-use control-browser). Rollen: **Sascha** = Login (eigene Credentials, ich lese Passwörter nie mit), frischer BAWAG-Auszug (Kapitalnachweis), Zeichnung · **ICH** = Navigation, prüfe Adresse → Loosdorf, Projektbeginn → 01.01.2027, führe durch Upload-Slots bis Zeichnung. IAB kann KEINEN File-Upload (capability_unsupported) — PDF-Hochladen macht Sascha selbst im sichtbaren Browser.
+- **SVS-Zuschuss = LEONS persönlicher Antrag, nicht Saschas:** Gründungsförderung § 16 RL Arbeit (AMS/PVA), 33.940 €, läuft über Leons EIGENEN AMS-Berater (nicht Saschas Gmunden-Beraterin Tiralla). **Real gestellt = NICHT VERIFIZIERT** — im FFG-Antrag steht nur „beantragt" (reicht für Einreichung; Bescheid erst bei Bewilligung relevant; Fällt-sie-aus → Lücke 33.940 ehrlich im Antrag). 3. Finanzierungssäule: FFG 58.860 + SVS 33.940 + Eigen 38.000. Sascha muss Leon fragen, ob Antrag schon gestellt ist.
+- Portal-Begriffe für Sascha immer in Mini-Anleitung übersetzen („Slot 05 = 5. Upload-Feld im Formular = Kapitalnachweis" etc.) — Fachkürzel verwirren ihn.
+
+- **V14b FINAL: 15 S., md5 `93c132fe9b85`** · **04_MARKT: `a056698de299`** · **ZIP d5e636e01458 (9 PDFs)** · Backups: `_VERSIONEN/01_VOLLANTRAG_V14a_15S_b80f561a3b7a.pdf` + /tmp/antrag.typ.bak_v14a
+- **Visual-Judge-Loop (7 Runden bis 15/15 PASS, Runde 8: 4/4 PASS)**: Fixes = Kernumfang-/Schicht-Tabelle/Callout `breakable:false`; 3 erzwungene `#pagebreak()` in 1.3 entfernt; **`#v(0.NNfr)`-Spacer in Blöcken = FALLE** (fr dehnt im unteilbaren Block → Tabelle springt ans Seitenende; immer fixe `#v(6pt)`); 18-Tools-Tabelle hat `table.header` = wiederholt Header beim Seitenumbruch
+- **Gemini-Kritik geprüft — er hatte die ALTE Fassung**: Valide→gefixt: „0 % Halluzination"×2 + „Vollständige Halluzinationsfreiheit" + „garantiert absolute Datensouveränität (100 % DSGVO)" entschärft (deterministische Halluzinationsminimierung / DSGVO-konform); „Partner Thomas" aus Beilage 04 raus (Inkonsistenz!). Müll: Thomas-Kritik im Vollantrag (seit V11 0×), LOI-„Blocker" (widerruf er selbst: Leitfaden-Pflicht NEIN), Sachkosten 0 € (Leitfaden erlaubt reine Personalkosten im Softwarebereich). Teilvalid→Sascha-Entscheid OFFEN: SVS 33.940 (nur beantragt, Lücken-Erklärung steht im Antrag), 33,3-Mio-B2C-Modell (transparente Rechenprobe), „keine Zusagen"-Hinweis in 04 = Saschas Thomas-Joker-Strategie bewusst unangetastet
+- **Clean-Sweep (18 Alt-Muster × 9 PDFs)**: Thomas/Lisa/60 €/Ablehnung/Vorverfahren/Wiedereinreichung/WAW/OXYDATA/qubitec/Schwächen/alte Zahlen = **0×**; legitime Treffer: FlexCo 15× (nur „Gründung geplant"), JKU Linz, mLSTM-Matrix, HTL Melk (Peters CV), George (BAWAG-Plattform in 05) → Antrag liest sich als eigenständige Neueinreichung
+- **Sprach-Lektion**: eCall-Kürzel („Slot 05", „Portal-Adresse", „Start-Feld") versteht Sascha nicht → immer Mini-Anleitung mit konkreten Klicks. Aufgeklärt: Slot 05 = 5. Upload-Feld (= Kapitalnachweis; frischer Auszug optional, nicht Pflicht); Portal-Profil-Adresse Melk→Loosdorf vor Upload; Projektbeginn-Feld = 01.01.2027
+- **Ständig erneut erklären**: 2. Anlauf = eigenständiger NEUER Antrag im rollierenden eCall-Verfahren, KEINE „Nachreichung", kein formaler Bonus/Malus — ABER Jury sieht alten Bescheid 21.05.2026 (GZ 938346)
+- **Einreichung SOFORT möglich (Frist 31.12.2026), nur 5 Sascha-Schritte**: ① ecall.ffg.at → Projekt 68209806 ② Profil-Adresse → Loosdorf ③ Projektbeginn → 01.01.2027 ④ 9 PDFs hochladen (Slot-Zuordnung in 00_LIES_MICH_EINREICHUNG.md) ⑤ Richtigkeits-Erklärung → nur Sascha zeichnet → SUBMIT. Optional davor: frischer Kontoauszug → Slot-05-Rebuild (typ bereit)
+
+## Neue globale Regel + Skill (11.10., Sascha-Auftrag aus agentallrounder-v8.5-Anhang)
+- **Skill:** `~/.zcode/skills/beweis-und-fokus/SKILL.md` (2668 B, verifiziert) — BLUF Zeile 1, Tabellen-Zwang, Beweis-Pflicht (Pfad/Exit-Code), „DATENLAGE UNKLAR"-Stopp statt raten, `[WERT]`-Platzhalter, Token-Ban, Dual-Mode QUICK/DEEP, kein Meta-Theater, max. 3 nächste Schritte
+- **Globale Regel:** Punkt **A.0** in `~/.zcode/AGENTS.md` (Backup `AGENTS.md.bak-20261011`) — gilt automatisch in jeder Session
+- **Stehende Sascha-Regel (11.10.):** Am Ende IMMER visual-judge (/iris) über die fertige Datei + geprüfte Datei mit Pfad & Verdict zeigen; herzensnahe Dokumente nur mit Backup + Beweis-Tabelle ändern
+- **Warum Gemini (FÖRDERGURU) so gut strukturiert war:** Saschas hartes Rollen-Prompt (`GEMINI_APP_IMPORT/foerderguru/SKILL.md`: Anwalt+Notar-Persona, Zero-Assumption, Pflicht-Tabellen, Token-Ban) — Struktur exzellent, Fakten veraltet (las alte Fassung); Lektion: immer gegen aktuelle md5-Disk-Dateien prüfen, nie gegen Chat-Erinnerung
 
 ## Korrekturen zu meinem bisherigen Bild
 - Es gab ZWEI Förder-Entscheidungen: Kleinprojekt-**Ablehnung** (21.05.) UND Projekt.Start-**0 €** (08.07.) — beide negativ, beide dokumentiert.
@@ -118,3 +139,24 @@ Die ORIGINAL-Inhalte des eingereichten Vollantrags (24 S., Version, die abgelehn
 - BEWUSST NICHT geaendert (Sascha-Linie, dokumentiert): 'keine Zusagen'-Hinweis + Muster-LOI + AP-5-Nachreichen (Thomas-Joker-Strategie), SVS 33.940 'beantragt' mit Luecken-Erklärung, B2C-Marktmodell 33,3 Mio (transparente Rechenprobe in 04)
 - OFFENE Sascha-Risiken (gemeldet): SVS könnte wegfallen -> Lücke 33.940 (steht im Antrag selbst); Kapitalnachweis 27.11.2025 veraltet -> frischer Auszug; Leon-Rolle 'Chemiker prüft Medizin-Evidenz' -> optional schärfen auf DoE/QA-Audits
 - Backups: _VERSIONEN/01_VOLLANTRAG_V14a_15S_b80f561a3b7a.pdf + /tmp/antrag.typ.bak_v14a
+
+
+## CLEAN-SWEEP ABGESCHLOSSEN (11.10., ~03:30) — Antrag ist saubere NEUEINREICHUNG
+Sascha-Frage „ist es FFG-konform als Neueinreichung ohne Spuren alter Themen (keine 8er-Matrix, kein Thomas)?" → 18-Pattern-Sweep über alle 9 PDFs (Skript /tmp/clean_sweep.py, Beweis /tmp/clean_sweep.txt):
+- **0× gefunden:** Thomas, Lisa/Mauerhart, 60 €, Ablehnung, Vorverfahren, Wiedereinreichung, WAW, OXYDATA, qubitec, Schwächen, „die Jury/das Gremium"-Replik-Ton, alte Zahlen 79.173/95.007 → 02b, 03a, 03c, 04, 06 komplett CLEAN
+- **6 Treffer alle LEGITIM:** „FlexCo" 15× im Vollantrag = nur „Gründung geplant" (Antragsteller bleibt Einzelperson Sascha, kein i. G.) · „Linz" 6× = JKU (xLSTM-Herkunft + Peters Uni = Standortnutzen) · „Matrix" 3× = mLSTM-Matrix-Gedächtniszelle (Tech-Term, nicht Schwächen-Matrix) · „Melk" 1× nur in Peters CV (HTL-Diplomarbeit Schützenverein Melk; Firmenadresse = Loosdorf) · „George" 2× nur in Beilage 05 (Banking-Plattform-Angabe der Selbstauskunft)
+- **GEMINI_APP_IMPORT (Desktop):** Sascha hat mir seine importierten Gem-Prompts gezeigt — `foerderguru/SKILL.md` (Anwalt+Steuerberater+Notar-Persona, Zero-Assumption, Pflicht-Tabellen, ADHS-Format) + `agentallrounder/SKILL.md` (v8.5, 5 internes Personas, BLUF, Token-Ban, Verification-Loop). Erklärung seiner Frage „warum macht Gemini (via LM Studio) das so gut?": STRUKTUR kommt vom harten Rollen-Prompt; FAKTEN waren trotzdem veraltet (las alte Fassung, widersprach sich beim LOI selbst) — deshalb immer gegen aktuelle md5-Dateien auf Disk prüfen, nicht gegen Chat-Erinnerungen
+- **Mein Verifikations-Stack (Sascha-Frage beantwortet):** pypdf+Regex-Ground-Truth · pdf:visual-judge-Subagent · typst-Compile + md5/SHA-Kette · Memory als SSOT · sequentialthinking-Pflicht — kein zusätzliches Plugin nötig
+
+
+## STAND 11.10. (05:58) — Einreichung + neue globale Regel
+- **Skill erstellt:** ~/.zcode/skills/beweis-und-fokus/SKILL.md (destilliert aus GEMINI_APP_IMPORT/ agentallrounder v8.5 + beweis-und-fokus-operator) · **Globale Regel:** Punkt A.0 in ~/.zcode/AGENTS.md (Backup .bak-20261011) — BLUF/Tabellen-Zwang/Beweis-Pflicht/DATENLAGE-UNKLAR-Stopp/Token-Ban/max 3 Schritte
+- **Sascha-Verwirrung geklaert:** 'Slot 05' = 5. Upload-Slot im eCall-Portal (= Kapitalnachweis-Beilage, braucht frischen Kontoauszug); 'eCall-Adresse Loosdorf' = Portal-Profil-Adresse von Melk auf Loosdorf umstellen VOR dem Einreichen; 'Start 01.01.2027' = Projektbeginn-Feld im Portal. Einreichen ist SOFORT moeglich (Frist 31.12.2026), die 3 Punkte sind reine Portal-Eingaben von Sascha (Login + Zeichnung nur er)
+- **Wichtig (immer wieder erklaeren):** 2. Anlauf = eigenstaendiger NEUER Antrag im rollierenden eCall-Verfahren, KEINE 'Nachreichung' — kein Bonus/Malus formal, ABER Jury sieht alten Bescheid 21.05.2026 (GZ 938346) -> deshalb V14b als eigenstaendiges Projekt geschrieben (Clean-Sweep bewiesen, 0 Alt-Spuren)
+- Sprach-Regel gelernt: Sascha kennt eCall-Portal-Begriffe nicht -> immer mit Mini-Anleitung ('ecall.ffg.at einloggen, Feld X, Wert Y') statt Fachkuartzeln
+
+## EINREICH-SESSION LIVE (11.10., ~06:00) — gemeinsames Browser-Einreichen gestartet
+- Sascha: 'machen wir das gemeinsam im browser, ich kümmer mich um kapitalnachweis' -> ZCode-IAB-Tab OFFEN auf **ecall.ffg.at Login-Seite** (Englisch-UI, 'Deutsch'-Link oben links verfügbar; Login-Kasten Username/Password/'Log in')
+- **Rollen-Deal:** Sascha tippt Login SELBST (ich lese Passwörter nie mit) + besorgt frischen BAWAG-Auszug -> ich baue Beilage 05 aus `_QUELLE/05_kapitalnachweis.typ` im Design neu · danach navigiere ICH: Projekt **68209806** -> Portal-Adresse -> **Loosdorf** -> Projektbeginn -> **01.01.2027** -> 9-PDF-Upload-Führung -> Richtigkeits-Erklärung -> nur Sascha zeichnet -> SUBMIT
+- eCall-Fakten verifiziert am Live-Screen: Login-Seite hat External-Login (USP, ACOnet), Register, New Password; IAB unterstützt KEINEN File-Upload (waitForEvent filechooser = capability_unsupported) -> **PDF-Uploads muss Sascha im sichtbaren Browser selbst klicken** oder ZIP manuell; ich kann nur lesen/führen
+- Erklärung delivered (Sascha kannte Portal-Jargon nicht): 'Slot 05' = 5. Upload-Feld (=Kapitalnachweis), 2. Anlauf = eigenständiger NEUER Antrag im rollierenden eCall (kein Nachreichungs-Formular, kein formaler Bonus/Malus, ABER Jury sieht Bescheid 21.05.2026 GZ 938346 -> deshalb Clean-Sweep-V14b)

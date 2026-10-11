@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-11 03:50 UTC
+Zuletzt gespiegelt: 2026-10-11 04:04 UTC
 
 ## AGENTS
 
@@ -12,6 +12,7 @@ When the user types `/graphify`, use the installed graphify skill or instruction
 ## STANDARD-SKILLS — gelten in JEDE Session, in JEDEM Harness
 
 ### A. Immer aktiv — Output-Stil (ohne Skill-Aufruf, direkt befolgt)
+0. **Beweis- & Fokus-Operator (11.10.2026, Nutzer-Pflicht):** (a) Ergebnis in Zeile 1, Daten/Pläne nur als Tabelle, Schritte nummeriert. (b) NIEMALS „fertig" behaupten ohne Beweis (Pfad/Exit-Code/Quelle); nicht prüfbar → „Nicht verifiziert: [Grund]"; Fakten fehlen → „DATENLAGE UNKLAR: [was fehlt]" statt raten, Platzhalter `[WERT]`. (c) Keine Floskeln (Token-Ban), kein Meta-Theater in Schritt-Tabellen. (d) Chirurgisch: exakt die Aufgabe, keine ungefragten Zusatz-Bauten. (e) Ende: max. 3 konkrete nächste Schritte. Volltext: `~/.zcode/skills/beweis-und-fokus/SKILL.md` (Trigger: `/beweis-und-fokus` oder automatisch).
 1. **caveman-Regeln:** Ultra-kompakt. Keine Floskeln, keine Begrüßung, keine Verabschiedung. Rohe Tabellen, kurze Bullets, Code-Snippets. Fakten, null Spekulation.
 2. **i-have-adhd-Regeln:** Wichtigstes Ergebnis in Zeile 1 (BLUF/Action first). Nummerierte Schritte (1-2-3). Kernbegriffe und Pfade **fett**. Kurze Tabellen statt Fließtext. Sofort nutzbare Kopiervorlagen. Keine Jargon-Nutzung ohne Erklärung.
 3. **Sequential Thinking:** MCP-Tool `sequentialthinking` bei JEDER Anfrage aufrufen — auch bei simplen Fragen (min. 1–3 Denkschritte); komplexe Aufgaben vollständig strukturiert (Schritt → Revision → Hypothese → Verifikation). Stehende Nutzer-Regel vom 30.08.2026.
@@ -10004,10 +10005,10 @@ deja-vu 0.20.2 am 20.09.2026 installiert (`brew install deja-vu`, Binary `/opt/h
 
 ---
 name: ffg-1-anlauf-historie-originalunterlagen
-description: Komplette 1-Anlauf-Historie FFG 68209806 aus Original-Unterlagen
-  (Ordner Desktop/ffg - 1 antrag + businessplan+nachtrag+2version) —
-  Projekt.Start 0€, Ablehnungsgründe wörtlich, Nachreichungs-Chronik,
-  Chat-Aufzeichnungs-Pfade
+description: "FFG 68209806 Gesamt-Stand: 1-Anlauf-Historie (Ablehnung 21.05.2026
+  wörtlich) + V14b FINAL einreichbereit (15 S., md5 93c132fe9b85, visual-judge
+  15/15 PASS, Clean-Sweep 0 Alt-Spuren) + Gemini-Prüfung + Einreichungs-ToDos
+  (5 Portal-Klicks durch Sascha, Frist 31.12.2026)"
 metadata:
   node_type: memory
   type: project
@@ -10040,6 +10041,27 @@ Quelle: `/Users/saschalagler/Desktop/ffg - 1 antrag + businessplan+nachtrag+2ver
 3. „Die **Schwierigkeit des Vorhabens** wurde nur unterdurchschnittlich [eingestuft]"
 
 → Antwort im 2. Anlauf: messbare KPIs (Z1–Z5), 15-Parameter-Safety-Guard als QS-Antwort, xLSTM als Schwierigkeits-Nachweis, verständliche Sprache.
+
+## 11.10. — V14b EINREICHSBEREIT + Gemini-Prüfung + Clean-Sweep (Finale)
+
+## 11.10. spät — GEMEINSAME BROWSER-EINREICHUNG gestartet + SVS-Frage geklärt
+- **Gemeinsames Einreichen im Browser aktiv:** ZCode-IAB-Tab auf **ecall.ffg.at Login-Seite** (browser-use control-browser). Rollen: **Sascha** = Login (eigene Credentials, ich lese Passwörter nie mit), frischer BAWAG-Auszug (Kapitalnachweis), Zeichnung · **ICH** = Navigation, prüfe Adresse → Loosdorf, Projektbeginn → 01.01.2027, führe durch Upload-Slots bis Zeichnung. IAB kann KEINEN File-Upload (capability_unsupported) — PDF-Hochladen macht Sascha selbst im sichtbaren Browser.
+- **SVS-Zuschuss = LEONS persönlicher Antrag, nicht Saschas:** Gründungsförderung § 16 RL Arbeit (AMS/PVA), 33.940 €, läuft über Leons EIGENEN AMS-Berater (nicht Saschas Gmunden-Beraterin Tiralla). **Real gestellt = NICHT VERIFIZIERT** — im FFG-Antrag steht nur „beantragt" (reicht für Einreichung; Bescheid erst bei Bewilligung relevant; Fällt-sie-aus → Lücke 33.940 ehrlich im Antrag). 3. Finanzierungssäule: FFG 58.860 + SVS 33.940 + Eigen 38.000. Sascha muss Leon fragen, ob Antrag schon gestellt ist.
+- Portal-Begriffe für Sascha immer in Mini-Anleitung übersetzen („Slot 05 = 5. Upload-Feld im Formular = Kapitalnachweis" etc.) — Fachkürzel verwirren ihn.
+
+- **V14b FINAL: 15 S., md5 `93c132fe9b85`** · **04_MARKT: `a056698de299`** · **ZIP d5e636e01458 (9 PDFs)** · Backups: `_VERSIONEN/01_VOLLANTRAG_V14a_15S_b80f561a3b7a.pdf` + /tmp/antrag.typ.bak_v14a
+- **Visual-Judge-Loop (7 Runden bis 15/15 PASS, Runde 8: 4/4 PASS)**: Fixes = Kernumfang-/Schicht-Tabelle/Callout `breakable:false`; 3 erzwungene `#pagebreak()` in 1.3 entfernt; **`#v(0.NNfr)`-Spacer in Blöcken = FALLE** (fr dehnt im unteilbaren Block → Tabelle springt ans Seitenende; immer fixe `#v(6pt)`); 18-Tools-Tabelle hat `table.header` = wiederholt Header beim Seitenumbruch
+- **Gemini-Kritik geprüft — er hatte die ALTE Fassung**: Valide→gefixt: „0 % Halluzination"×2 + „Vollständige Halluzinationsfreiheit" + „garantiert absolute Datensouveränität (100 % DSGVO)" entschärft (deterministische Halluzinationsminimierung / DSGVO-konform); „Partner Thomas" aus Beilage 04 raus (Inkonsistenz!). Müll: Thomas-Kritik im Vollantrag (seit V11 0×), LOI-„Blocker" (widerruf er selbst: Leitfaden-Pflicht NEIN), Sachkosten 0 € (Leitfaden erlaubt reine Personalkosten im Softwarebereich). Teilvalid→Sascha-Entscheid OFFEN: SVS 33.940 (nur beantragt, Lücken-Erklärung steht im Antrag), 33,3-Mio-B2C-Modell (transparente Rechenprobe), „keine Zusagen"-Hinweis in 04 = Saschas Thomas-Joker-Strategie bewusst unangetastet
+- **Clean-Sweep (18 Alt-Muster × 9 PDFs)**: Thomas/Lisa/60 €/Ablehnung/Vorverfahren/Wiedereinreichung/WAW/OXYDATA/qubitec/Schwächen/alte Zahlen = **0×**; legitime Treffer: FlexCo 15× (nur „Gründung geplant"), JKU Linz, mLSTM-Matrix, HTL Melk (Peters CV), George (BAWAG-Plattform in 05) → Antrag liest sich als eigenständige Neueinreichung
+- **Sprach-Lektion**: eCall-Kürzel („Slot 05", „Portal-Adresse", „Start-Feld") versteht Sascha nicht → immer Mini-Anleitung mit konkreten Klicks. Aufgeklärt: Slot 05 = 5. Upload-Feld (= Kapitalnachweis; frischer Auszug optional, nicht Pflicht); Portal-Profil-Adresse Melk→Loosdorf vor Upload; Projektbeginn-Feld = 01.01.2027
+- **Ständig erneut erklären**: 2. Anlauf = eigenständiger NEUER Antrag im rollierenden eCall-Verfahren, KEINE „Nachreichung", kein formaler Bonus/Malus — ABER Jury sieht alten Bescheid 21.05.2026 (GZ 938346)
+- **Einreichung SOFORT möglich (Frist 31.12.2026), nur 5 Sascha-Schritte**: ① ecall.ffg.at → Projekt 68209806 ② Profil-Adresse → Loosdorf ③ Projektbeginn → 01.01.2027 ④ 9 PDFs hochladen (Slot-Zuordnung in 00_LIES_MICH_EINREICHUNG.md) ⑤ Richtigkeits-Erklärung → nur Sascha zeichnet → SUBMIT. Optional davor: frischer Kontoauszug → Slot-05-Rebuild (typ bereit)
+
+## Neue globale Regel + Skill (11.10., Sascha-Auftrag aus agentallrounder-v8.5-Anhang)
+- **Skill:** `~/.zcode/skills/beweis-und-fokus/SKILL.md` (2668 B, verifiziert) — BLUF Zeile 1, Tabellen-Zwang, Beweis-Pflicht (Pfad/Exit-Code), „DATENLAGE UNKLAR"-Stopp statt raten, `[WERT]`-Platzhalter, Token-Ban, Dual-Mode QUICK/DEEP, kein Meta-Theater, max. 3 nächste Schritte
+- **Globale Regel:** Punkt **A.0** in `~/.zcode/AGENTS.md` (Backup `AGENTS.md.bak-20261011`) — gilt automatisch in jeder Session
+- **Stehende Sascha-Regel (11.10.):** Am Ende IMMER visual-judge (/iris) über die fertige Datei + geprüfte Datei mit Pfad & Verdict zeigen; herzensnahe Dokumente nur mit Backup + Beweis-Tabelle ändern
+- **Warum Gemini (FÖRDERGURU) so gut strukturiert war:** Saschas hartes Rollen-Prompt (`GEMINI_APP_IMPORT/foerderguru/SKILL.md`: Anwalt+Notar-Persona, Zero-Assumption, Pflicht-Tabellen, Token-Ban) — Struktur exzellent, Fakten veraltet (las alte Fassung); Lektion: immer gegen aktuelle md5-Disk-Dateien prüfen, nie gegen Chat-Erinnerung
 
 ## Korrekturen zu meinem bisherigen Bild
 - Es gab ZWEI Förder-Entscheidungen: Kleinprojekt-**Ablehnung** (21.05.) UND Projekt.Start-**0 €** (08.07.) — beide negativ, beide dokumentiert.
@@ -10101,20 +10123,6 @@ Die ORIGINAL-Inhalte des eingereichten Vollantrags (24 S., Version, die abgelehn
 - Saschas letzte Nachricht vor V14 = Paste der ORIGINAL-Dokumente OHNE Begleittext → impliziter Auftrag „Original gegen aktuelle Fassung abgleichen + Gold mergen" — bei solchen textlosen Pasten den impliziten Abgleich vollziehen statt nachfragen (Vollzug-Regel)
 
 
-## V14-FINALE (11.10., 02:30) — Visual-Judge-Loop komplett
-- **V14 FINAL: 15 S. (nicht 16!), md5 b80f561a3b7a** — Visual-Judge (pdf:visual-judge, 7 Runden): R1 14/16 → Fixes → **15/15 PASS** (keine verwaisten Überschriften/Split-Boxen; 18-Tools-Tabelle mit repeat-header)
-- Design-Fixes (in antrag.typ, alle bewiesen): Kernumfang-Tabelle + Schicht-Tabelle + Callout `breakable:false`; 3 erzwungene `#pagebreak()` in 1.3 entfernt (Plattform/LTI/Arbeitsplan fließen); `#v(0.NNfr)`-Spacer in Blöcken = FALLE (fr dehnt im Block aus → Tabellen springen ans Seitenende; immer fixe `#v(6pt)`); Hypothesen-Seite gefüllt mit Benchmark-Methodik-Tabelle (Methodik, keine neuen Zahlen)
-- ZIP V14-FINAL: md5 07086aa735e1 (9 PDFs) — ersetzt a95c33a10d07
-- **STEHENDE REGEL von Sascha (11.10.):** Am Ende IMMER visual-judge (/iris) über die fertige Datei laufen lassen und ihm die geprüfte Datei zeigen (Pfad + Verdict). Render-PNGs → pdf:visual-judge-Subagent → Verdicts abarbeiten → Repair-Loop bis PASS.
-
-
-## V14b FINAL (11.10.) — Gemini-Kritik geprueft, valide Teile gefixt
-- **01_VOLLANTRAG V14b: 15 S., md5 93c132fe9b85** · **04_MARKT: md5 a056698de299** · ZIP d5e636e01458 (9 PDFs) · visual-judge Runde 8: 4/4 PASS (S.1/5/6/7)
-- FIXIERT (Geminis valide Punkte): '0 % Halluzination' 2x + 'Vollständige Halluzinationsfreiheit' -> deterministische Halluzinationsminimierung; 'garantiert absolute Datensouveränität (100 % DSGVO)' -> datensouverän, DSGVO-konform; 'Partner Thomas' aus Beilage 04 raus (Antrag war schon generisch — Inkonsistenz!)
-- GEMINI-HALTUNG: er hatte eine AELTERE Fassung (zitierte Thomas im Vollantrag — dort seit V11 0x). Seine Formalia (150k/45 %/20 % GKZ/50-Punkte-Schwelle) decken sich mit unserem Stand. Sein LOI-Basisschluss war doppelboedig: erst 'Blocker', am Ende seines Chats selbst: 'LOI laut Leitfaden NICHT Pflicht, Einreichen ohne ist förderrechtlich gedeckt — dann Beilage 04 bereinigen'
-- BEWUSST NICHT geaendert (Sascha-Linie, dokumentiert): 'keine Zusagen'-Hinweis + Muster-LOI + AP-5-Nachreichen (Thomas-Joker-Strategie), SVS 33.940 'beantragt' mit Luecken-Erklärung, B2C-Marktmodell 33,3 Mio (transparente Rechenprobe in 04)
-- OFFENE Sascha-Risiken (gemeldet): SVS könnte wegfallen -> Lücke 33.940 (steht im Antrag selbst); Kapitalnachweis 27.11.2025 veraltet -> frischer Auszug; Leon-Rolle 'Chemiker prüft Medizin-Evidenz' -> optional schärfen auf DoE/QA-Audits
-- Backups: _VERSIONEN/01_VOLLANTRAG_V14a_15S_b80f561a3b7a.pdf + /tmp/antrag.typ.bak_v14a
 
 ## george-thomas-status
 
@@ -101873,6 +101881,44 @@ Die Signaturquelle **`unterschrift.png`** liegt im Fallakten-Ordner — die `.ty
 4. **THOMAS-ANGEBOT.md** — kurze Angebotsnachricht mit Fair-Preis-Begründung
 
 Quellen: [willhaben Gemini-Listings](https://www.willhaben.at/iad/kaufen-und-verkaufen/l/nespresso-gemini) · [ricardo.ch](https://www.ricardo.ch) · [ebay.at](https://www.ebay.at)
+## SKILL
+
+---
+name: beweis-und-fokus
+description: "Beweis- & Fokus-Operator v1.0 (destilliert aus agentallrounder v8.5 + beweis-und-fokus-operator). Erzwingt: Zeile 1 = Ergebnis, Tabellen statt Fließtext, Beweis für jede Behauptung (Pfad/Exit-Code/Quelle), Null Toleranz für Floskeln und Halluzination, Dual-Mode QUICK/DEEP, 'DATENLAGE UNKLAR'-Stopp statt Raten, max. 3 nächste Schritte. Für JEDEN Task aktivieren, der Ergebnisse liefert."
+---
+
+# BEWEIS- & FOKUS-OPERATOR (v1.0)
+
+## 1. DUAL-MODE (Anti-Überflutung)
+- **QUICK** (kurze Frage, Befehl, Fakten-Check): Zeile 1 Ergebnis → Tabelle oder Codeblock → max. 3 nummerierte Schritte. Kein schweres Protokoll.
+- **DEEP** (Recherche, Antrag, Code, Architektur, Schriftsatz): zusätzlich Prüfprotokoll + Masterplan-Tabelle.
+- Auto-Switch nach Aufwands-Schätzung; bei Unsicherheit: QUICK.
+
+## 2. FORMAT-PFLICHT (jede Antwort)
+1. **Zeile 1 = Ergebnis** (BLUF): der Kern in einem Satz — kein „Hier ist…", keine Begrüßung, keine Verabschiedung.
+2. **Tabellen-Zwang:** Daten, Vergleiche, Pläne AUSSCHLIESSLICH als Markdown-Tabelle (max. 4–7 Spalten).
+3. **Schritte nummeriert** (1-2-3), max. 3 am Ende mit konkreter Handlung.
+4. **Fließtext-Limit:** max. 10–12 Zeilen unterhalb der Tabellen.
+
+## 3. BEWEIS-PFLICHT (Anti-Halluzination, HART)
+- Behaupte NIEMALS „fertig/funktioniert/geändert" ohne **Beweis**: Dateipfad, Befehlsausgabe, Exit Code, Testergebnis oder Primärquelle.
+- Änderungs-Behauptungen zeigen **Pfad + Vorher/Nachher**.
+- Nicht prüfbar? Exakt schreiben: **„Nicht verifiziert: [Grund]"**.
+- Fehlende Fakten → NICHT raten: **„DATENLAGE UNKLAR: [was fehlt]"** und stoppen. Platzhalter nur als `[WERT]`.
+- Gegen Disk-Stand arbeiten (aktuelle Dateien lesen), nie gegen Chat-Erinnerung oder alte Fassungen.
+
+## 4. CHIRURGISCHE AUSFÜHRUNG
+- Exakt die gestellte Aufgabe lösen. Keine ungefragten Refactorings, keine spekulativen Zusatz-Features.
+- **Kein Meta-Theater:** In Schritt-Tabellen nur reale Sachschritte („RIS-Paragraf geprüft", „PDF kompiliert, Exit 0") — nie Pseudo-Arbeit („Agent 01 hat Intent dekonstruiert").
+- Vor annahmenbasierten Behauptungen: Quelle oder Disk-Beweis holen.
+
+## 5. TOKEN-BAN (Null-Toleranz)
+Verboten: gerne, hoffe, beachten Sie, zusammenfassend, viel Erfolg, Interessanterweise, natürlich, wie gewünscht, ich habe analysiert, hier ist das Ergebnis, eigentlich, quasi, sozusagen, im Grunde, in der Regel, Entschuldigung, als KI-Modell, verstanden, sicherlich, absolut, klar doch.
+
+## 6. ABSCHLUSS
+Jede DEEP-Antwort endet mit **🎯 NÄCHSTE SCHRITTE (max. 3)** — konkrete Handlungen mit Verantwortlichkeit (ICH/DU), keine Statusfloskeln.
+
 ## SKILL
 
 ---

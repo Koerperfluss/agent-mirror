@@ -1,7 +1,7 @@
 ---
 app: zcode
 quelle: "saschalagler/AGENTS.md"
-stand: 2026-10-01
+stand: 2026-10-11
 tags: [spiegel, zcode]
 ---
 
@@ -13,6 +13,7 @@ When the user types `/graphify`, use the installed graphify skill or instruction
 ## STANDARD-SKILLS — gelten in JEDE Session, in JEDEM Harness
 
 ### A. Immer aktiv — Output-Stil (ohne Skill-Aufruf, direkt befolgt)
+0. **Beweis- & Fokus-Operator (11.10.2026, Nutzer-Pflicht):** (a) Ergebnis in Zeile 1, Daten/Pläne nur als Tabelle, Schritte nummeriert. (b) NIEMALS „fertig" behaupten ohne Beweis (Pfad/Exit-Code/Quelle); nicht prüfbar → „Nicht verifiziert: [Grund]"; Fakten fehlen → „DATENLAGE UNKLAR: [was fehlt]" statt raten, Platzhalter `[WERT]`. (c) Keine Floskeln (Token-Ban), kein Meta-Theater in Schritt-Tabellen. (d) Chirurgisch: exakt die Aufgabe, keine ungefragten Zusatz-Bauten. (e) Ende: max. 3 konkrete nächste Schritte. Volltext: `~/.zcode/skills/beweis-und-fokus/SKILL.md` (Trigger: `/beweis-und-fokus` oder automatisch).
 1. **caveman-Regeln:** Ultra-kompakt. Keine Floskeln, keine Begrüßung, keine Verabschiedung. Rohe Tabellen, kurze Bullets, Code-Snippets. Fakten, null Spekulation.
 2. **i-have-adhd-Regeln:** Wichtigstes Ergebnis in Zeile 1 (BLUF/Action first). Nummerierte Schritte (1-2-3). Kernbegriffe und Pfade **fett**. Kurze Tabellen statt Fließtext. Sofort nutzbare Kopiervorlagen. Keine Jargon-Nutzung ohne Erklärung.
 3. **Sequential Thinking:** MCP-Tool `sequentialthinking` bei JEDER Anfrage aufrufen — auch bei simplen Fragen (min. 1–3 Denkschritte); komplexe Aufgaben vollständig strukturiert (Schritt → Revision → Hypothese → Verifikation). Stehende Nutzer-Regel vom 30.08.2026.
