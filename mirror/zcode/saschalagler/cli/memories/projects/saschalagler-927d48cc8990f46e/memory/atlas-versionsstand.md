@@ -18,3 +18,5 @@ ATLAS (Cali Coach) — IST-Stand 21.09.2026 (live verifizert):
 - Offene Pfad-Entscheidung (aus Alt-Session): A = v5 stabil halten vs. B = v8-Fusion — von Sascha nie entschieden.
 
 Verwandt: [[loki-os-ecosystem-stand]]
+
+**11.10.2026 Pipeline-Test (erster appagentteam-Live-Flug):** flutter-skill explore auf PROD atlas-v5.web.app → 20 Steps geplant, 3 genutzt, 1 Seite/10 Elemente; Buttons COACH, LOGBUCH, DATENBANK, ÜBERBLICK getippt ✓; **0 Bugs, 0 Accessibility-Issues**; Playwright: 0 Console-Errors, Titel „ATLAS — Calisthenics Coach". Beweise: `~/Desktop/TEST_ATLAS_11-10.png` + explore-report.html (cwd ~/). Muster: flutter-skill `screenshot` via serve+FS_PORT HING → Playwright-Screenshot als Fallback (explore/snap = flutter-skill, visuelle Beweise = Playwright). Die 810k-Cline-Session „VERKAUFS HUB - 11 Agent monster" (sess 1789109742185_p3730, 8,3 MB messages, inputTokens 304 M) = FAILED ATLAS-Xcode/Web-Abgleich-Session — schadlos schließbar.

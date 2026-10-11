@@ -61,3 +61,4 @@ tags: [spiegel, zcode]
 - [/appagentteam + flutter-skill live](appagentteam-flutter-skill-live.md) — 11.10. Skill einsatzbereit, Native-Binary-Symlink-Fix (ENOEXEC-Falle), MCP nur projektweise
 - [LOKI.OS Live-Status 11.10.](loki-os-livestatus-2026-10-11.md) — Kernel repariert (v15.3.0 lebt, bootstrap-Rezept) · GO 1+2: v17 gestoppt, Brain.app archiviert (/Applications = v18+LokiVoice) · Taskmaster konsolidiert (18 offen, #17 appagentteam-Live-Lauf P1) · Nachrichten-Archiv :8745 · Agenten-Tafel D3 · DEINE_BEDIENUNG-PDF · openclaw 2026.9.2 im PATH
 - [Berater+Umsetzer-Prinzip](berater-umsetzer-prinzip.md) — 11.10. HART: erst WAS+WARUM erklären (seine Sprache), dann bauen · Stopp-erklär = Erklär-GO · jedes Deliverable mit Userflow
+- [Pflicht-Ablauf: Plan sichtbar](pflicht-ablauf-plan-sichtbar.md) — 11.10. HART: Plan-Tabelle VOR jeder Arbeit (A2 in STANDARD-SKILLS.md, alle Harnesses) · Monster-Session-Token-Ban (keine 2. Session am selben Thema)
