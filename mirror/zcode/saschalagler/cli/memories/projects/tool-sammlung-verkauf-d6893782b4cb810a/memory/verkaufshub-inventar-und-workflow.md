@@ -1,6 +1,6 @@
 ---
 name: verkaufshub-inventar-und-workflow
-description: Verkaufshub-Finalstand (67/67 bewertet + 67/67 Listings + systemweite Platten-Suche abgeschlossen, GOAL.md im Repo; Team dwfrun-cc0608f8 Resume offen bis Quota-Reset 17:15) + hub.html Cockpit :3300 + Workflow-Erkenntnisse
+description: Verkaufshub FINAL (67/67 bewertet, 67 Listings, Auto-Pilot-Runde 13/13 Pläne, 15 vorschlaege, ANLEITUNG-VERKAUFSHUB.md + 📖-Button im Hub; Team dwfrun-cc0608f8 Resume + Mimosa-Commit-Whitelist offen) + Workflow-Erkenntnisse
 metadata:
   node_type: memory
   type: project

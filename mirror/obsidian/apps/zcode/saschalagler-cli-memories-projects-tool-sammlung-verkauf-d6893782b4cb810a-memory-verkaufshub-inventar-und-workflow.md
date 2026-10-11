@@ -1,7 +1,7 @@
 ---
 app: zcode
 quelle: "saschalagler/cli/memories/projects/tool-sammlung-verkauf-d6893782b4cb810a/memory/verkaufshub-inventar-und-workflow.md"
-stand: 2026-10-10
+stand: 2026-10-11
 tags: [spiegel, zcode]
 ---
 
@@ -41,3 +41,9 @@ Stand 2026-10-10, Abend (Ergänzung — AGENTIC SALES-HUB gebaut, Plan per ExitP
 - **git commit BLOCKIERT von Mimosa pre-commit**: 17 High = überwiegend Altbestand (`get_free_ai.py` SSRF/Traversal, `inventar_merge.py`/`inventar_voll.py` Traversal, `runner.py` URLOpen-SSRF, Next-Bundles) + False Positives auf Repo-weitem `Path(__file__).resolve().parent.parent`-Muster. Meine Härtungs-Edits an hub_api.py (argv-Liste statt zsh -ic) wurden EBENFALLS blockiert (Scanner meldete die Modul-Konstante Zeile 5) → laufende zsh-ic-Version bleibt (SAFE_ID-Regex macht Injection unmöglich). **Commit ausgesetzt — Nutzer muss Mimosa-Whitelist für lokale Pipeline-Skripte entscheiden.**
 - **Neuer Plan-Modus-Fallenkunde**: Nutzer startete /workflow + /init mit /plan → Plan-Modus-Hook blockt ALLE schreibenden Bash; ExitPlanMode-Freigabe kam per Nutzernachricht ("mit allen tools agent sub agents"), zweiter ExitPlanMode-Durchlauf dann genehmigt.
 - **Verkaufsfertig-Team-Rest-Status**: LokiVoice-Bereinigung lief DOCH noch vor dem zweiten Quota-Stopp (Reset verschob sich auf 19:41) — 28+7 Fundstellen neutralisiert, BEREINIGUNG-LOG.md (8.960 B) geschrieben, grep-Verifikation 0 Treffer; OmniRoute-Keys-Worker blieb unberührt. Resume weiterhin offen.
+
+Stand 2026-10-10, spät abends (Auto-Pilot gestartet + Plugin-Korrektur):
+
+- **AUTO-PILOT-RUNDE LÄUFT** (Nutzer-"LOS" über /goal): Backend :8055 war zwischenzeitlich 000 (Prozess gestorben) → Neustart via `nohup zsh -ic 'python3 backend/main.py'`; dann `POST /api/autopilot?aktiv=true` → `{"autopilot_aktiv":true}`. Log `pipeline/jobs/autopilot.log`: 13 Kandidaten (koerperfluss-3d-v2-upgrade, judicario-loki-voice, agent-mirror, omniroute, iris-ai, chipsi, loki-os-app-v18, auto-sync-save, loki-dashboard-app, koerperfluss-pilot-ai, agent-os-stack, mywhoop-go, vinyl-scanner — legal-ops/paraletts haben schon Pläne, korrekt ausgeschlossen). Warter grep't "RUNDE BEENDET" + zählt vorschlaege/.
+- **Plugin-Recommender-Korrektur (Nutzer-Wut: "wie kannst du dir sicher sein, kein investigativ Team")**: Die ❌-Tabelle (CRM-Sales-Team ❌, voice/Tribe ❌, Team-Brand-Guardrails→higgsfield-brandkit) war nie persistiert — rekonstruiert aus Daten: **Higgsfield 8 Skills ×3 Locations = 24 Kopien, 0 echte Ausführungen** (Session-Log-Treffer = nur Skill-Listenings) → Nutzer-Recht "noch nie benutzt"; **Tribe AI existiert NICHT auf dem System** (Phantom); CRM-❌ korrekt (keine HubSpot/Salesforce/ActiveCampaign-Config). Nutzer-Hinweis "viel mehr Plugins" stimmt: **300+ Skills installiert** — Komplett-Inventory angeboten (Stichwort "inventory"), noch nicht beauftragt.
+- **Session-Goal-Mechanik**: /goal erzeugt Goal-Objective mit Completion-Verifier — "hub.html öffnen + Auto-Pilot klicken" als Ziel wird vom System als aktives Goal getrackt (msg mit system-reminder "Continue working toward the active session goal").
