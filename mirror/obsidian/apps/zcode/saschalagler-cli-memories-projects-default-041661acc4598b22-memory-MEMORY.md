@@ -1,7 +1,7 @@
 ---
 app: zcode
 quelle: "saschalagler/cli/memories/projects/default-041661acc4598b22/memory/MEMORY.md"
-stand: 2026-10-10
+stand: 2026-10-11
 tags: [spiegel, zcode]
 ---
 
@@ -21,7 +21,7 @@ tags: [spiegel, zcode]
 
 - [eqMac-Deinstallation + Spotify-Fix](eqmac-deinstallation-spotify-fix.md) — 22.09. FERTIG (dwfrun-c55c4bc7): eqMac ursprünglich zu Unrecht deinstalliert (Doku war nur Kontext-Beilage!) → **v1.9.1 neu installiert, er BRAUCHT es**; **Spotify-Ursache = Intel-Build 1.3.0.277 via Rosetta + 982 MB korrupter Cache** → native ARM64 1.3.1.234, läuft stabil; Audio-Abbrüche danach = eqMac-Virtual-Device-Wege — 2 Parallel-Agents: Neustart → Test sauber (0 Dropouts), **KEIN Buffer-Setting existiert**; Fix-Leiter: 48 kHz (Audio-MIDI-Setup) → eqMac-Toggle → Analyzer aus → direkter Output; Fallback ältere Version (Issues #994/#224)
 
-- [ZCode ADHS-Automations](zcode-adhs-automationen.md) — 13.09.–10.10. LIVE: **EINE Automation mit ALLEN 6 Briefs** (cron `0 9,10,15,16,21`, Zweige per Uhrzeit+Wochentag; niemals 6 separate — Nutzer-Ziel!) + Engine 7/7 PASS; **34 Läufe, alle 6 Zweige bewiesen** (Abende PASS 610E2A57/88CCE1A6/C269B996/9299B443/2FF9A547/157032D8; 10.10. Sa Morgen pünktlich A0D0B91D mit Parallel-dwfruns: Förder-Recherche 6 BEANTRAGEN einreichreif, Bar-Bulls-Checkout, OmniRoute Security-P1, LokiVoice-Entpersonalisierung, agent-mirror 7d30be0; Doku-Sync 30.09.+07.10.: 2 Findings — assi-README brief/feierabend + lib/push.sh; Risiko-Scan 01.10.: P1 loki-voice-Pointer 7fdbf2d im PARENT nicht verankert → „GO pointer-fix"; 09.10. FRIST-Tag: Übergabe-an-Reinhard-PDF fertig, BH-Melk Einreich-Status unklar) · UHR-ANOMALIE (date = Wahrheit, Logbuch vor Append NEU lesen) · Lücken-Tage wenn Mac schläft · offen auf GO: Wecker · Deutsch-Patch-Recovery · doku-fix (3 Zeilen) · pointer-fix; 1 Task pro Chat-Limit
+- [ZCode ADHS-Automations](zcode-adhs-automationen.md) — 13.09.–11.10. LIVE: **EINE Automation mit ALLEN 6 Briefs** (cron `0 9,10,15,16,21`, Zweige per Uhrzeit+Wochentag; niemals 6 separate — Nutzer-Ziel!) + Engine 7/7 PASS; **37 Läufe, alle 6 Zweige bewiesen** (Abende PASS 610E2A57/88CCE1A6/C269B996/9299B443/2FF9A547/157032D8; 10.10. Sa Morgen A0D0B91D mit Parallel-dwfruns: Förder-PDF 36 Optionen + 6 BEANTRAGEN, Bar-Bulls-Checkout, OmniRoute Security-P1, LokiVoice-Entpersonalisierung, agent-mirror 7d30be0; 11.10. So Morgen pünktlich B5F28A09: Hermes-Loop/LegalOps-Duplikate; Doku-Sync 30.09.+07.10.: 2 Findings — assi-README brief/feierabend + lib/push.sh; Risiko-Scan 01.10.: P1 loki-voice-Pointer 7fdbf2d im PARENT nicht verankert → „GO pointer-fix"; 10.10.: LokiVoice DOPPELT dirty → „GO commit-wache"; 09.10. FRIST-Tag: Übergabe-an-Reinhard-PDF fertig, BH-Melk Einreich-Status unklar) · UHR-ANOMALIE (date = Wahrheit, Logbuch vor Append NEU lesen) · Lücken-Tage wenn Mac schläft · offen auf GO: Wecker · Deutsch-Patch-Recovery · doku-fix (3 Zeilen) · pointer-fix · commit-wache; 1 Task pro Chat-Limit
 
 - [OmniRoute-Rückbau + System-Fixes](omniroute-rueckbau-system-fixes-2026-09-20.md) — 20.09. Abend: Q1–Q7 ALLE ERLEDIGT („fix test"-GO): OmniRoute ABGEBAUT (Nutzer-Wunsch, Plist raus, Regeln auf Direkt-Provider gesynced, Comet läuft bis Reboot); Atlas-Ingest 67 Module (2 Code-Bugs gefixt); Task-Bridge 5 echte Tasks; loki-up.command am Desktop getestet; Mongo zu; 2 tote Agents disabled; 7b-Coder-Modell da; MASTER_STATUS+HANDBUCH aktualisiert (Backups ~/sicherungen/doku-backup-20260920); Endstand CHECKPOINT CONTINUE — offen nur: 4 Keys (Sascha) + Firewall sudo
 

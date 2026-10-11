@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-11 06:58 UTC
+Zuletzt gespiegelt: 2026-10-11 07:13 UTC
 
 ## AGENTS
 
@@ -12,11 +12,23 @@ When the user types `/graphify`, use the installed graphify skill or instruction
 ## STANDARD-SKILLS — gelten in JEDE Session, in JEDEM Harness
 
 ### A. Immer aktiv — Output-Stil (ohne Skill-Aufruf, direkt befolgt)
-0. **Beweis- & Fokus-Operator (11.10.2026, Nutzer-Pflicht):** (a) Ergebnis in Zeile 1, Daten/Pläne nur als Tabelle, Schritte nummeriert. (b) NIEMALS „fertig" behaupten ohne Beweis (Pfad/Exit-Code/Quelle); nicht prüfbar → „Nicht verifiziert: [Grund]"; Fakten fehlen → „DATENLAGE UNKLAR: [was fehlt]" statt raten, Platzhalter `[WERT]`. (c) Keine Floskeln (Token-Ban), kein Meta-Theater in Schritt-Tabellen. (d) Chirurgisch: exakt die Aufgabe, keine ungefragten Zusatz-Bauten. (e) Ende: max. 3 konkrete nächste Schritte. Volltext: `~/.zcode/skills/beweis-und-fokus/SKILL.md` (Trigger: `/beweis-und-fokus` oder automatisch).
 1. **caveman-Regeln:** Ultra-kompakt. Keine Floskeln, keine Begrüßung, keine Verabschiedung. Rohe Tabellen, kurze Bullets, Code-Snippets. Fakten, null Spekulation.
 2. **i-have-adhd-Regeln:** Wichtigstes Ergebnis in Zeile 1 (BLUF/Action first). Nummerierte Schritte (1-2-3). Kernbegriffe und Pfade **fett**. Kurze Tabellen statt Fließtext. Sofort nutzbare Kopiervorlagen. Keine Jargon-Nutzung ohne Erklärung.
 3. **Sequential Thinking:** MCP-Tool `sequentialthinking` bei JEDER Anfrage aufrufen — auch bei simplen Fragen (min. 1–3 Denkschritte); komplexe Aufgaben vollständig strukturiert (Schritt → Revision → Hypothese → Verifikation). Stehende Nutzer-Regel vom 30.08.2026.
 4. **Automatik + Ehrlichkeit (12.09.2026, Nutzer-Pflicht):** (a) Ergebnisse SELBST verifizieren — Befehl ausführen, Dateipfad als Beweis nennen; „erledigt" ohne Beweis-Pfad ist verboten. (b) Jedes Fachwort beim 1. Auftreten in 1 kurzen Satz erklären (Glossar: `~/.agents/UBIQUITOUS_LANGUAGE.md`). (c) Nie App-UI behaupten: Wayfinder-Maps, Todos, Memory = Dateien im Finder (`~/.agents/.wayfinder/`, `~/.zcode/cli/memories/`), die ZCode-App zeigt sie nicht an — so sagen, nicht anders. (d) Antwortformat: Zeile 1 = Ergebnis in einfachen Sätzen, dann max. 3 Schritte/Tabelle. (e) Reparaturen automatisch ausführen (mit Backup), den Nutzer nur bei Deploy/Löschen/Überschreiben fragen.
+
+### A2. PFLICHT-ABLAUF bei JEDER Anfrage (sichtbar im Chat — Nutzer-Regel 11.10.2026, hart)
+Der LOKI-Standard-Ablauf wird **vor der Arbeit sichtbar gezeigt** (Plan-Tabelle), nicht nur gedacht. Keine Ausführung ohne gezeigten Plan:
+| Schritt | Pflicht |
+|---|---|
+| 1. SEQUENTIAL THINKING | Denkschritte (intern oder MCP), Ziel + Annahmen |
+| 2. MEMORY-CHECK | „Hatten wir das schon?" — deja/claude-mem/skill-routing |
+| 3. **PLAN SICHTBAR** | Aufgaben-Tabelle im Chat: # · Was · Wer · Beweis-geplant — VOR den Tool-Aufrufen |
+| 4. ROUTING | Passenden Skill/Agent aus Tabelle B wählen (ohne Rückfrage) |
+| 5. UMSETZUNG | Max 3 Subagenten parallel, 2 GO-Gates (Plan-GO + Deploy-GO) |
+| 6. BEWEIS + AUDIT | Pfad/Exit-Code pro Punkt + „was bleibt offen" (max 3 Schritte) |
+Allrounder-Zusatz (DEEP-Mode): Dekonstruktion → Adaptive Planung → Live-Recherche → Chain-of-Verification (Kill-Switch: keine Annahme ohne Quelle, Fehlendes = „DATENLAGE UNKLAR").
+**Verbot:** „FERTIG"-Meldungen ohne vorher gezeigten Plan. Parallele Sessions zum selben Thema ohne Absprache (Doppelarbeit-Schutz: erst Taskmaster/deja prüfen).
 
 ### B. Routing — bei passendem Kontext IMMER den Skill nutzen (ohne Rückfrage)
 | Aufgabe | Skill |
@@ -4976,7 +4988,7 @@ Bei Fachfragen (z. B. Trainings-Übungen) fordert er explizit „clinical reason
 
 - [eqMac-Deinstallation + Spotify-Fix](eqmac-deinstallation-spotify-fix.md) — 22.09. FERTIG (dwfrun-c55c4bc7): eqMac ursprünglich zu Unrecht deinstalliert (Doku war nur Kontext-Beilage!) → **v1.9.1 neu installiert, er BRAUCHT es**; **Spotify-Ursache = Intel-Build 1.3.0.277 via Rosetta + 982 MB korrupter Cache** → native ARM64 1.3.1.234, läuft stabil; Audio-Abbrüche danach = eqMac-Virtual-Device-Wege — 2 Parallel-Agents: Neustart → Test sauber (0 Dropouts), **KEIN Buffer-Setting existiert**; Fix-Leiter: 48 kHz (Audio-MIDI-Setup) → eqMac-Toggle → Analyzer aus → direkter Output; Fallback ältere Version (Issues #994/#224)
 
-- [ZCode ADHS-Automations](zcode-adhs-automationen.md) — 13.09.–10.10. LIVE: **EINE Automation mit ALLEN 6 Briefs** (cron `0 9,10,15,16,21`, Zweige per Uhrzeit+Wochentag; niemals 6 separate — Nutzer-Ziel!) + Engine 7/7 PASS; **34 Läufe, alle 6 Zweige bewiesen** (Abende PASS 610E2A57/88CCE1A6/C269B996/9299B443/2FF9A547/157032D8; 10.10. Sa Morgen pünktlich A0D0B91D mit Parallel-dwfruns: Förder-Recherche 6 BEANTRAGEN einreichreif, Bar-Bulls-Checkout, OmniRoute Security-P1, LokiVoice-Entpersonalisierung, agent-mirror 7d30be0; Doku-Sync 30.09.+07.10.: 2 Findings — assi-README brief/feierabend + lib/push.sh; Risiko-Scan 01.10.: P1 loki-voice-Pointer 7fdbf2d im PARENT nicht verankert → „GO pointer-fix"; 09.10. FRIST-Tag: Übergabe-an-Reinhard-PDF fertig, BH-Melk Einreich-Status unklar) · UHR-ANOMALIE (date = Wahrheit, Logbuch vor Append NEU lesen) · Lücken-Tage wenn Mac schläft · offen auf GO: Wecker · Deutsch-Patch-Recovery · doku-fix (3 Zeilen) · pointer-fix; 1 Task pro Chat-Limit
+- [ZCode ADHS-Automations](zcode-adhs-automationen.md) — 13.09.–11.10. LIVE: **EINE Automation mit ALLEN 6 Briefs** (cron `0 9,10,15,16,21`, Zweige per Uhrzeit+Wochentag; niemals 6 separate — Nutzer-Ziel!) + Engine 7/7 PASS; **37 Läufe, alle 6 Zweige bewiesen** (Abende PASS 610E2A57/88CCE1A6/C269B996/9299B443/2FF9A547/157032D8; 10.10. Sa Morgen A0D0B91D mit Parallel-dwfruns: Förder-PDF 36 Optionen + 6 BEANTRAGEN, Bar-Bulls-Checkout, OmniRoute Security-P1, LokiVoice-Entpersonalisierung, agent-mirror 7d30be0; 11.10. So Morgen pünktlich B5F28A09: Hermes-Loop/LegalOps-Duplikate; Doku-Sync 30.09.+07.10.: 2 Findings — assi-README brief/feierabend + lib/push.sh; Risiko-Scan 01.10.: P1 loki-voice-Pointer 7fdbf2d im PARENT nicht verankert → „GO pointer-fix"; 10.10.: LokiVoice DOPPELT dirty → „GO commit-wache"; 09.10. FRIST-Tag: Übergabe-an-Reinhard-PDF fertig, BH-Melk Einreich-Status unklar) · UHR-ANOMALIE (date = Wahrheit, Logbuch vor Append NEU lesen) · Lücken-Tage wenn Mac schläft · offen auf GO: Wecker · Deutsch-Patch-Recovery · doku-fix (3 Zeilen) · pointer-fix · commit-wache; 1 Task pro Chat-Limit
 
 - [OmniRoute-Rückbau + System-Fixes](omniroute-rueckbau-system-fixes-2026-09-20.md) — 20.09. Abend: Q1–Q7 ALLE ERLEDIGT („fix test"-GO): OmniRoute ABGEBAUT (Nutzer-Wunsch, Plist raus, Regeln auf Direkt-Provider gesynced, Comet läuft bis Reboot); Atlas-Ingest 67 Module (2 Code-Bugs gefixt); Task-Bridge 5 echte Tasks; loki-up.command am Desktop getestet; Mongo zu; 2 tote Agents disabled; 7b-Coder-Modell da; MASTER_STATUS+HANDBUCH aktualisiert (Backups ~/sicherungen/doku-backup-20260920); Endstand CHECKPOINT CONTINUE — offen nur: 4 Keys (Sascha) + Firewall sudo
 
@@ -9841,6 +9853,8 @@ metadata:
 
 **11.10. Fortsetzung (08:50):** openclaw-CLI (Task #12) war BEREITS im PATH — OpenClaw v2026.9.2, installiert 08:20 von der Cline-mimo-Session (Subagent bewies `which openclaw` → ~/.local/bin/openclaw + `--version` Exit 0) → Task geschlossen, nichts geändert. **appagentteam Live-Lauf wartet als Task #17 (P1)** — erster echter Team-Flug, App-Wahl bei Sascha. Parallel-Subagenten-Muster bewiesen: implementer (schreibend) + explorer (nur lesend) gleichzeitig im Background, Ergebnis kommt als Task-Notification.
 
+**11.10. KORREKTUR + Browser-Backend-Fund (09:15):** Der CDP-Port **9222 gehört aktuell EIGENT** (curl /json/list = 9 Tabs, eigent-browser-toolkit + unser flutter-skill-Test-Tab „Example Domain") — nicht mehr der alte Agent-Chrome. **D. h.: flutter-skill/E2E-Tests laufen direkt über Eigent** (läuft dauerhaft) → Task #16 („Eigent :9222 als Browser-Backend") damit faktisch erledigt, kein Extra-Chrome nötig. Hermes-CLI bewiesen (`hermes --version` = v0.17.0, auth.json eingeloggt), AutoClaw-Bedingung: App offen, sonst mcporter-Server offline (mcporter v0.9.0 von mir nachinstalliert). Skills-Global: `skillshare sync --all` aktuell (8 Targets, 139–142 Skills), legal-ops-omni-Feinkorrektur: war Symlink in Quelle → echte Kopie → auch bei Cline (Task #27 done). Kern-Rest: **Task #17 erster Live-Flug.**
+
 ## apple-mail-db-abfrage
 
 ---
@@ -10051,6 +10065,8 @@ Stand 18.09.2026 — **AUSGEFÜHRT + VERIFIZIERT**: Agent-Chrome läuft auf `htt
 **Nachtrag 12 (20.09., eBay-RTE-iframe-Typen):** eBay-Listing-Beschreibung = iframe `se-rte-frame__summary` mit Editor-Div `.se-rte-editor__rich`. (1) `Input.insertText`, synthetische ClipboardEvents und execCommand-`insertText` landen ALLE NICHT im Editor — nur echte `Input.dispatchKeyEvent`-Paare (keyDown+keyUp, text=ch; Enter: code "Enter", text "\r"). (2) **Koordinaten-Falle:** Rects von Elementen INNERHALB des iframes sind iframe-lokal — Seiten-Koordinaten = iframe-Rect + Element-Rect, und nach scrollIntoView Koordinaten NEU messen. (3) Editor-DOM niemals per `innerHTML` anfassen (zerstört den Editor; eBay-Draft-Autosave + Reload rettet den Stand). (4) Formular-Flow mit Beweis: `/sl/prelist/suggest` (Keyword @keyword-Input + Enter) → identify → Zustand-Label → „Weiter zum Angebot" → Fotos `#fehelix-uploader` (setFileInputFiles) → Publish „Artikel kostenlos einstellen"; Versandservice über „Ersten Versandservice hinzufügen" + Label-Mausklick + „Fertig". Vollständiges Playbook: loki-verkaufstool-stand.md, Stand 20.09. VII.
 
 **Nachtrag 13 (01.10., Block auch in Chrome 154 bestätigt + Alternativen-Status):** Saschas Standard-Chrome 154.0.8037.58 mit `--remote-debugging-port=9223` gestartet (Prozess ps-Beweis) → Port bleibt komplett leer auf 127.0.0.1 UND localhost — der 136+-Debug-Block gilt unverändert, Profil-Kopie wäre der einzige CDP-Weg (siehe Nachtrag 10). Andere Gmail-Automatisierungswege am 01.10. ebenfalls beweisbar tot: Gmail-API-MCP „Permission denied" (Scopes), ZCode-IAB (control-browser-Skill: file chooser/upload explizit UNSUPPORTED — bei Browser-Upload-Aufgaben IMMER zuerst im Skill-Doku nachlesen), AutoClaw-mcporter-Binary existiert nicht (nur Config unter `~/.openclaw-autoclaw/workspace/config/mcporter.json`). Vorhandene Python-WS-Libs: `websocket-client` + `websockets` OK (für den Tag, an dem ein Agent-Profil mit Port läuft). → [[legal-ops-cockpit-reparatur]]
+
+**Nachtrag 14 (11.10., 9222-Port-Inhaber gewechselt + mcporter doch da):** (1) **Port 9222 wird aktuell von EIGENT gehalten** (Chrome/130, curl /json/list = 9 Tabs u. a. eigent-browser-toolkit) — nicht mehr der 18.09.-Agent-Chrome (153). Regel: bei 9222-Fragen IMMER zuerst `curl -s http://127.0.0.1:9222/json/version` wer hängt (Browser-String) und `/json/list` welche Tabs — der Port-Inhaber kann sich ändern (Eigent läuft dauerhaft und exponiert CDP). Für flutter-skill/E2E-Tests ideal: Tests laufen direkt über Eigent. (2) **mcporter existiert DOCH seit 11.10.** (korrigiert Nachtrag 13): `~/.local/bin/mcporter` v0.9.0, von mir nachinstalliert (npm -g). Bedingung: autoclaw-productivity/github-MCPs antworten nur, wenn AutoClaw2-App OFFEN ist (mcporter list beweist „offline unable to reach" bei zuer App); connector:cloudflare/vercel brauchen `mcporter auth`. → [[loki-os-livestatus-2026-10-11]]
 
 ## cline-code-app-hub-1006-diagnosis
 
@@ -10735,8 +10751,9 @@ Regel-Änderungen immer: 1× in STANDARD-SKILLS.md editieren + `bash ~/.agents/t
 name: loki-os-livestatus-2026-10-11
 description: 11.10. Live-Status + Reparaturen — Kernel lebt (v15.3.0, bootstrap-Rezept),
   GO 1+2 ausgeführt (v17 gestoppt, Brain.app archiviert), Taskmaster konsolidiert
-  (18 offen, #17 appagentteam-Live-Lauf P1), Archiv :8745, Agenten-Tafel D3,
-  Bedienungs-PDF, openclaw 2026.9.2 im PATH
+  (20 offen, #17 appagentteam-Live-Lauf P1), Archiv :8745, Agenten-Tafel D3,
+  Bedienungs-PDF, openclaw 2026.9.2 im PATH, mcporter v0.9.0 installiert,
+  Eigent = CDP :9222 (Browser-Backend), 3-Apps-Beratung (AutoClaw2 JA · Hermes JA-Pilot · Eigent JA als Browser-Auge)
 metadata:
   node_type: memory
   type: project
@@ -10770,6 +10787,15 @@ Interaktive Karte: `~/.zcode/v2/visualizations/c99caef…/loki-os-universum.html
 **LegalOps-Analyse-Resultat (#13, Subagent explorer):** „4×-Duplikat" = **FEHLALARM**. Realität: 2 legitime Registrierungen in 2 verschiedenen Clients (ZCode-CLI `~/.zcode/cli/config.json:174` + Cline via `~/.mcp.json`-Symlink Z.293), beide gleicher Launcher (`loki-ki/services/start_loki_legal_ops_mcp.command`), nie im selben Namespace → kein Crash-Risiko. **Nichts entfernen** (Cline braucht den Eintrag). 2 Server-Prozesse parallel (04:09 verwaist + 07:32 aktiv) — Beenden des verwaisten nur mit Sascha-GO (ausstehend). **Randfund:** Z.AI-API-Key im Klartext in `~/.zcode/cli/config.json` Z.190ff (Einzel-Mac ok, nur relevant beim Teilen). Task-#13-Abschluss per task.py noch NICHT ausgeführt (nur angekündigt).
 
 **Konsolidierungs-Reststand:** Weiterhin ausstehend (Sascha-GO): `LOKI_UNIVERSUM_2026-10-11.html` (Desktop, doppelt zur Cline-Universe) + `LOKI_AGENTEN_TAFEL_v1_tabellen.html.bak` löschen. Cline-mimo-Session-Verhalten dokumentiert: neue Nachricht → neues HTML statt bestehendes pflegen (Ursache der 7 Dokumente). **Rollout-Ordner ~/.zcode/cli/rollout ≈ 17,7 GB** (größte Datei 3,4 GB V14-Session) — Aufräum-Kandidat, Plan nur mit GO. Session-Übergabe-Vermerk: flutterskill/openclaw wurden teils PARALLEL von der Cline-mimo-Session installiert (08:20) — bei „wer hat was gebaut"-Fragen beide Sessions prüfen (chat-analysis 08:55: roter Faden des Tages = appagentteam + Verstehen; 6/7 Teilziele erledigt, einziger echter Offener = #17 Live-Lauf + Saschas 2 TCC-Klicks). Achtung: **Mimosa blockt Python-Scripte mit `open(<Variable>,"w")`** (statische Pfad-Traversal-Warnung, 3 Versuche blockiert) → deshalb kein Generator-Script, sondern direktes Write. Cline-Sessions liegen in `~/.cline/data/sessions/` als **Unterverzeichnisse + sessions.db**, nur das search_sessions.py-Script liest sie zuverlässig. Befund 08:15: Cline-Subagenten-Team von 09.10. (5× muse-spark) komplett FAILED (Team-Auth); 1 Cline läuft (glm-5.3-flash „Customize"), 1 idle (mimo, Universe-HTML). Rollout-Ordner ~17,7 GB (Aufräum-Kandidat, nur mit GO).
+
+**Skills-Global-Inventar (09:10, 85 genannte Skills gegen 4 Roots geprüft):** 23 VOLL (4/4: wayfinder, gsd-core, coderabbit, roo-code, ralph-loop, tdd, qa, briefmaker, ui-ux-tester, iris, skill-router …) · 38 teils (ARCHITEKTUR, kein Fehler: ZCode-Skills leben nur in ZCode, agents-Skills laufen via skillshare überall) · 23 „fehlend" = **Plugin-Skills, bereits in ZCode aktiv** (workflow-run, computer-use, superdesign, firecrawl-scrape, hf-mem, mermaid-visualizer, writing-plans, mcp-apps … kommen aus Plugins, keine Ordner nötig). `skillshare sync --all` Stand: alle 8 Targets 139–142 Skills, 0 pruned. skillshare 0.21.3→0.25.3 Update verfügbar.
+
+**Die 3 Apps LIVE analysiert (09:15, Sascha-Forderung „kein PDF, nur Müll" — Beratung nur im Chat):**
+- **AutoClaw2/OpenClaw:** CLI `openclaw 2026.9.2` ✓, `~/.openclaw` voll (agents/canvas/cron/hooks). **mcporter war NICHT installiert → von mir nachinstalliert** (`~/.local/bin/mcporter`, v0.9.0; korrigiert Nachtrag 13 in [[chrome-agent-browser-fix]]). **Bedingung:** AutoClaw2-App muss OFFEN sein, sonst sind autoclaw-productivity/github-MCPs „offline unable to reach" (mcporter list beweist). Connector cloudflare/vercel brauchen `mcporter auth`.
+- **Eigent:** LÄUFT und ist der **CDP-Browser auf :9222** (curl /json/list = 9 offene Tabs, u. a. „Example Domain" von unserem flutter-skill-Test + eigent-browser-toolkit-Tabs) → flutter-skill/ui-ux-Tests laufen DIREKT über Eigent, Task #16 damit quasi erledigt.
+- **Hermes:** CLI lebt (`~/.local/bin/hermes`, v0.17.0), `auth.json` = eingeloggt, config.yaml voll (max_turns 60, personalities). Pilot = Task #8.
+
+**Chat-Analyse (datenbasiert, 99 heutige Nachrichten aus dem Archiv):** 6 Aufgabengruppen (A Team ✓ · B Sehen ✓ · C Konsolidieren ✓ · D Reparieren ✓ · E Verstehen ✓ · F Apps teils) — Kern-Rest = **#17 Live-Lauf + Saschas 2 TCC-Klicks (#10) + #8/#9 App-Entscheidungen**. 2 verlorene Cline-Aufträge geborgen: **#26 claude-mem Chroma-Fehler** (prewarm exit 1, Ports 37777/21012/37778, P2 offen) · **#27 legal-ops-omni bei Cline** (war Symlink in Quelle `~/.agents/skills → ~/.gemini/config/skills` → echte Kopie + sync cline → **da, done**). Taskmaster: 20 offen (#1–27, #12/#27 done).
 
 ## loki-os-v18-build
 
@@ -11158,6 +11184,29 @@ Nachgang 11.10.: Saschas Gegenargument: „FFG prüft nicht gegen das Konto, 2×
 **Lösungs-Pivot 11.10. (Sascha selbst):** Er kam selbst auf die legitime Lösung — „das leichteste wäre einfach Opa fragen wegen Screenshot". Meine Antwort (akzeptiert als konstruktiver Endpunkt): **Variante A = Opa überweist das Geld** (Schenkung/Darlehen) → echter Saldo in Saschas BAWAG/George-Konto → echter Finanzbericht aus der George-App → einreichfertig, null Risiko ✅. **Variante B = nur Screenshot von Opas Konto** = nicht Saschas Eigenmittel, gleiche Falle wie die PDF-Bearbeitung ❌. Bei Teilsumme: FFG-Hotline fragen, ob eine schriftliche Drittmittel-Zusage als Eigenmittel-Nachweis zählt (DATENLAGE UNKLAR, was eCall dafür nimmt). Eskalation endete damit produktiv — Muster: nach der Wut-Phase den eigenständigen legitimen Lösungsvorschlag bestärken statt weiter zur Grenze zu stehen.
 
 **Verifikation 11.10. (Sascha bestellte Prüfung via legal/legal-ops-omni-Skill):** FFG-Eigenmittel-Regeln gegen echte Primärquellen geprüft (Details in [[ffg-1-anlauf-historie-originalunterlagen]] § FFG-EIGENMITTEL-REGELN): Ausschreibung 2026 verlangt nur „Nachweis der Finanzierung des Eigenanteils" (keine Form vorgeschrieben); IL v4.1 Kap. 6.1.12 wertet „Möglichkeiten der Kapitalzufuhr" als POSITIV-Kriterium → Opa-Darlehen/Schenkung passt sogar zum Bewertungsraster (Darlehen: Mini-Vertrag; Schenkung: in AT steuerfrei); Startrate kommt erst nach Auflagen (Restfinanzierung kann Auflage sein) → Geld bis Auszahlung stehen lassen; Drittmittel-Zusage ohne Geld ist in keinem Leitfaden geregelt → Variante A bleibt der sichere Weg. Ergebnis: der legitime Weg ist zugleich der einfachste — das Argument „Screenshot reicht eh" entfällt, weil echter Saldo trivial erreichbar ist, wenn das Geld ankommt.
+
+## pflicht-ablauf-plan-sichtbar
+
+---
+name: pflicht-ablauf-plan-sichtbar
+description: 11.10. HART — LOKI-Standard-Ablauf + Plan IMMER sichtbar im Chat
+  zeigen bevor Arbeit (A2 in STANDARD-SKILLS.md), Monster-Session-Token-Ban
+metadata:
+  node_type: memory
+  type: feedback
+  originSessionId: sess_9bb02160-ce23-4582-a594-371c1f798aa5
+---
+
+11.10.2026, Sascha: „du solltest den LOKI OS Standard Ablauf und den Allrounder-Agent-Ablauf zeigen — das sollte beides GLOBALE REGELN sein, egal wann wo wie. Machst du es nie? Wo ist der Aufgabenplan, die Listen mit Aufgaben, wo sind die Überlegungen? Es ist nichts da."
+
+**Why:** Ich lieferte „FERTIG"-Reports ohne je den Plan/den Standard-Ablauf sichtbar zu machen. Plus: 2 parallele Monster-Sessions fraßen 810k+250k Tokens mit Duplikat-Arbeit.
+
+**How to apply:**
+1. **JEDER Turn beginnt mit der Plan-Tabelle** (# · Was · Wer · Beweis-geplant) VOR Tool-Aufrufen — auch bei simplen Aufgaben (1-Zeilen-Plan reicht).
+2. Ablauf: Sequential Thinking → Memory-Check → **Plan sichtbar** → Routing → Umsetzung (max 3 Subagenten) → Beweis+Audit.
+3. Verankert in `~/.agents/STANDARD-SKILLS.md` Abschnitt **A2** (Backup .bak-20261011) — gilt für ALLE Harnesses (SSOT, SessionStart-geladen).
+4. **Token-Ban für Sessions:** Keine zweite parallele Session am selben Thema; Taskmaster zuerst prüfen; muse-spark/cline-free-Sessions nie wieder >100k Tokens laufen lassen (bei 50k: zwischenspeichern + Taskmaster statt weiterreden).
+5. Verwandt: [[berater-umsetzer-prinzip]] (WARUM erklären) + [[sascha-arbeitsregeln-hart]].
 
 ## sascha-arbeitsregeln-hart
 
