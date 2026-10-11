@@ -1,6 +1,6 @@
 ---
 name: verkaufshub-tool-sammlung
-description: VERKAUFS HUB = Projekt TOOL-SAMMLUNG-VERKAUF — 11.10. NACHMITTAG: GHOST-AUDIT (35/52 gerettet — „ES GIBT ALLE" war richtig!), Motor auf Z.ai-Coding GLM-4.6 umgestellt (OmniRoute raus, VERSUCHE-Kette), Auto-Pilot über ALLE 50 echten Tools läuft, hub-glass v2 hell nach 404media-Guide
+description: VERKAUFS HUB = Projekt TOOL-SAMMLUNG-VERKAUF — 11.10.: GHOST-AUDIT (35/52 gerettet — „ES GIBT ALLE" war richtig!), Motor Z.ai-Coding GLM-4.6 (OmniRoute raus), Auto-Pilot über alle 50 echten Tools (Cap 67, timeout 1200, 2/50 — Rest-Runde läuft), hub-glass v2 hell + Detail-Panel (Lücken/Stack/Pfad/Direkt-Sprünge) — Querdetails in loki-os-livestatus-2026-10-11
 metadata:
   node_type: memory
   type: project

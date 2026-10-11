@@ -1,7 +1,7 @@
 ---
 app: zcode
 quelle: "saschalagler/cli/memories/projects/saschalagler-927d48cc8990f46e/memory/sascha-local-infra-ports.md"
-stand: 2026-09-20
+stand: 2026-10-11
 tags: [spiegel, zcode]
 ---
 
@@ -36,3 +36,5 @@ Live-Stand vom 16.09.2026 (per lsof/ps verifiziert):
 **Why:** Port-/Prozess-Wissen ist bei jedem Health-Check und Fehler wie [[cline-code-app-hub-1006-diagnosis]] die erste Anlaufstelle.
 
 **How to apply:** Vor Diagnosen diese Checkliste nutzen; Stand bei Änderungen hier aktualisieren (PIDs/„läuft seit" sind flüchtig, Ports sind stabil).
+
+**Update 11.10.2026 (verifiziert):** OmniRoute **:20128 TOT** (kein Prozess, HTTP 000) — seit Saschas 20.09.-Beschluss „OmniRoute abgebaut"; Direkt-Provider-Setup läuft (ZCode/Claude-Code = z.ai builtin, Cline-CLI = OpenRouter, Cline-App = zai-coding-plan API-Key `api.z.ai/api/coding/paas/v4`, bewiesener 200er-Chat). AutoClaw-Gateway (openclaw, ws://127.0.0.1:18789) nach Reset-Connection wieder LISTEN. Cline-Hub-Daemon :25463 /health JSON 200 (coreVersion 0.0.92, protocol v1).Details siehe [[cline-code-app-hub-1006-diagnosis]].
