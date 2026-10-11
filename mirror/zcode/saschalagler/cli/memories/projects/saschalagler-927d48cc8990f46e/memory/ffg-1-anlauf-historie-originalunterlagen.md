@@ -1,13 +1,12 @@
 ---
 name: ffg-1-anlauf-historie-originalunterlagen
 description: "FFG Gesamt-Stand: 1-Anlauf-Historie (Ablehnung 21.05.2026 wörtlich)
-  + V14b FINAL einreichbereit (15 S., md5 93c132fe9b85, visual-judge 15/15 PASS,
-  Clean-Sweep 0 Alt-Spuren) + **LIVE-EINREICHUNG: eCall-Antrag 74310314 'Körperfluss
-  Edu' — Browser-Durchlauf ~60 % fertig (Jahresdaten grün ✓, Projektdaten ✓,
-  Beschreibungen 1.1–1.5 ✓, Projektleitung/APs/Standort ✓), STOPP bei Bankverbindung
-  (Saschas Konto = SPARKASSE, nicht BAWAG! wartet IBAN/Auszug) + AMS-UGP-Recherche:
-  33.940-€-SVS-Zahl = KEINE belegbare Pauschale (realistisch 4–11k), Finanzierungs-
-  Entscheidung A/B/C offen bei Sascha**"
+  + **V15 FINAL einreichbereit (16 S., md5 0bb7de2e022e, ZIP c3ff1b0c0791) — SVS-Label
+  KORRIGIERT zu SMS-Gründungsbeihilfe (Sozialministeriumservice, Leon GdB 90 %,
+  max 34.400 €/50 % — Sascha hatte recht, Beweis in seinem April-Dossier)**
+  + **LIVE-EINREICHUNG: eCall-Antrag 74310314 'Körperfluss Edu' — ~60 % fertig
+  (Jahresdaten grün ✓, Projektdaten ✓, Beschreibungen 1.1–1.5 ✓, Projektleitung/APs/
+  Standort ✓), STOPP bei Bankverbindung (Konto = SPARKASSE, wartet IBAN/Auszug)**"
 metadata:
   node_type: memory
   type: project
@@ -222,3 +221,12 @@ Altes ASP.NET/Kendo-Portal im ZCode-IAB (browser-use control-browser), frischer 
 - ASP.NET-eCall-Widgets: Kendo-Combos brauchen echten CUA-Klick (Bounds via getBoundingClientRect); Textfelder via evaluate value+input+change; „Speichern & Weiter" per evaluate click; ASP-Nav-Links (#-Anchors) feuern Postback beim 1. Klick — Inhalt danach frisch snapshotten
 - Offen: Finanzierungs-Entscheidung A (33.940 nur mit Beleg) / B (realistisch umbauen, ich rechne Kap.2+06+Antragstext neu) / C (Leon-Saeule raus, mehr Eigenmittel noetig) — 1 Wort von Sascha; Leon-UGP-Status unklar (arbeitslos vorgemerkt?); Kapitalnachweis-05-Rebuild wartet auf Sparkasse-Auszug
 - Neue stehende Regel A.0 in ~/.zcode/AGENTS.md + Skill ~/.zcode/skills/beweis-und-fokus/SKILL.md (11.10. angelegt, Backup AGENTS.md.bak-20261011)
+
+
+## V15 (11.10.) — SVS->SMS KORREKTUR ENDE: Sascha hatte RECHT
+- Sascha-Nachweis (eigene Files): 'Strategisches Update- Inklusions-Funding Koerperfluss Edu.pdf' + 'Welche Vorteile haette eine Integration…90% Behinderung….md' (Apr 2026) = **SMS-Gruendungsbeihilfe (Sozialministeriumservice) fuer Leon, 90 % GdB, max 34.400 EUR bei 50 % Quote** — die Schiene ist SMS, NICHT AMS-UGP (meine UGP-Recherche war am falschen Programm), NICHT 'SVS Par. 16 RL Arbeit' (falsches Label seit 02.10.)
+- FIXIERT (V15, 4 PDFs): antrag.typ (6 Stellen) + 06 + 03c + 05: 'Gruendungsbeihilfe SMS (Sozialministeriumservice, Foerderung fuer Menschen mit Behinderung), Leon Karner GdB 90 %, kalkuliert 33.940 EUR im 34.400-Hoechstrahmen'. Zahlen unveraendert, Summen heile. visual-judge 6/6 PASS.
+- **V15 FINAL: 16 S., md5 0bb7de2e022e** · 06=1db1734c2eb4 · 03c=19edfb52df5d · 05=98837b9a3924 · ZIP UPLOAD_eCall_SLOTS_V15_FINAL_2026-10-11.zip md5 c3ff1b0c0791 (9 PDFs)
+- ANTRAGSTEXT-1.1-1.5 IM eCALL (74310314): 1.1-1.5 gefuellt (vor SVS-Fix, enthalten noch KEINE SMS-SMS-Details in 1.x — 1.1-1.5 sind organisations-/teambezogen, SVS-Stellen waren nur in Kap.2/6a -> eCall-Texte bleiben gueltig; pruefen bei 'Inhaltliche Beschreibung')
+- LEKTION: Sascha-Inklusiv-Strategie war dokumentiert (Cap-Table Leon 26 %, SMS 2x34.400 fuer Leon+Lisa geplant Apr); Lisa ist raus, Leon drin = SMS-Saeule 1x. Meine 'UGP nur 2 Monate'-Analyse betraf das falsche Programm — SMS-Gruendungsbeihilfe fuer GdB>=50 ist eigenes Instrument (USP/Sozialministeriumservice), Betrag 34.400 real.
+- NAECHSTE Schritte: Bankverbindung (Sparkasse-IBAN von Sascha) -> Anreizwirkung -> Anhaenge (9 PDFs V15) -> Nachhaltigkeitsziele -> Inhaltliche Beschreibung (Vollantrag-PDF + Texte) -> Arbeitsplan -> Kosten -> Validierung -> Zeichnung

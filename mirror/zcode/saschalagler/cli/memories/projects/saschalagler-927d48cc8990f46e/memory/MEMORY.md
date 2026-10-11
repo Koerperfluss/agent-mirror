@@ -53,3 +53,4 @@
 - [LOKI-OS-Harness Soll-Stand](loki-os-harness-sollstand.md) — 6 Schaltstellen ~/.zcode (17 MCP, 10 Agenten, 7 Commands, Sync-Quelle, 2 Wayfinder-Maps); Änderungen nur via STANDARD-SKILLS.md + sync-script
 - [/appagentteam + flutter-skill live](appagentteam-flutter-skill-live.md) — 11.10. Skill einsatzbereit, Native-Binary-Symlink-Fix (ENOEXEC-Falle), MCP nur projektweise
 - [LOKI.OS Live-Status 11.10.](loki-os-livestatus-2026-10-11.md) — Kernel 8010 TOT · Ollama NEU: qwen3.5:9b lokal · Hammerspoon down · Hermes/Eigent/AutoClaw2-Versionen + Integration-Plan
+- [Berater+Umsetzer-Prinzip](berater-umsetzer-prinzip.md) — 11.10. HART: erst WAS+WARUM erklären (seine Sprache), dann bauen · Stopp-erklär = Erklär-GO · jedes Deliverable mit Userflow
