@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-12 14:55 UTC
+Zuletzt gespiegelt: 2026-10-12 15:10 UTC
 
 ## AGENTS
 
@@ -18171,6 +18171,16 @@ Stand 2026-10-12 spät (FINALE — Verkaufs-Company live, AKTUELLER ANKER):
 - **Alle deployed auf :3300** (hub-glass, ALLE_TOOLS_VERKAUFSSTATUS.md, VERKAUFSPAKETE/ — md-Dateien einfach nach out-firebase/ kopieren, hub_server serviert sie) — alle HTTP 200 verifiziert.
 - **AGENTEN_HANDOFF_2026-10-11.md** (liegt im ~ und Repo-Umfeld) = verbindliche Nutzer-Regeln + System-Stand der Parallel-Session: eiserne Regeln (Berater+Umsetzer · Plan-Pflicht je Turn · Beweispflicht live nicht aus Chat-Logs · 2 GO-Gates · ADHS-Ausgabe · Token-Disziplin · Deliverables brauchen Userflow) · System: LOKI-Kernel :8010 v15.3, Voice :8078, Ollama qwen3.5:9b, Eigent-API :5001, OmniRoute laut Handoff "bewusst abgebaut" (aber am 12.10. wieder 307 beobachtet) · Taskmaster ~17 offene Aufgaben (#28 ATLAS-Video-Bug, #29 AutoClaw-Gateway etc.).
 - **A12–A15-Pläne-Runde 2 offen**: nur 2 plan.json verbleiben; Parallel-Session-Kette = GLM-4.6 via Z.ai Coding-Key aus ~/.zcode/cli/config.json + Ollama-Fallback (NICHT OmniRoute). Rest-Aktionen NUR NOCH beim Nutzer: Gumroad-Links (Bar-Bulls zuerst) · Apple-Zertifikat (LokiVoice+LegalOps) · VERKAUFS-MAILs senden.
+
+Stand 2026-10-12abend (DESIGN-GUIDE + SESSION-KONSOLIDIERUNG, AKTUELLER ANKER):
+
+- **Sein Design-Referenz = 404media.at** (PDF-Attach: Agenturseite "Websites die verkaufen"): HELLER Hintergrund (#F7F6F3-artig), GROSSE dünne Typo, graue Chip-Pills, Klapp-/Accordion-Sektionen, mobil-first. Mein dunkles hub.html war in seinem Browser offen → wirkte für ihn wie "nichts aktuell". Bei jedem neuen Frontend: erst diesen Guide, dann bauen.
+- **Sein Kernvorwurf (berechtigt)**: 2 Sessions bauten parallel 4+ Oberflächen (hub.html, hub-glass.html, verkaufs-atlas, verkaufs-os, 3× UEBERSICHT), "nichts auf der Seite ist aktuell", Fachjargon (GHOST-PFAD, legal_dsgvo) unverständlich, keine Bilder, keine einheitliche Kachelstruktur. Er will: die 2 Unterhaltungen ZUSAMMENgetragen + eine ehrliche, AKTUELLE Bestandsaufnahme (Projekte + Chat-Unterhaltungen), dann im 404media-Design. NICHT wieder neu erfinden, bevor er abgestimmt hat.
+- **Frische 6-Ordner-Inventur (bewiesen, `/tmp/mein-system.json` → kopiert als `system-inventur.json` im Repo)**: **58 Projekt-Instanzen** in den 6 Ordnern (THOMAS 4 · BARBULLS 1 · atlas+pliability 4 · PRIVATE PORJEKTE 23 · Körperfluss EDU 25 · PRojekte 1) — viele Dubletten (LokiVoiceApp ×2, Körperfluss-PILOT.AI ×2, Website-Local ×3, Projekt-Task-Planer ×2, IRIS ×2, 3d-UPGRADE ×2); nur ~13 im Inventar gematcht, Rest Dubletten/Teilprojekte/ungeprüft. Größte: Projekt-Task-Planer 204k Dateien, OmniRoute 162k, Koerperfluss-3D-Upgrade 117k, cali-coach-atlas-final 24k.
+- **Session-Register**: **1.209 ZCode-Sessions** + **21 Claude-Sessions** (claude-mem:0 Treffer für higgsfield/tribe/activecampaign → Higgsfield 24× installiert aber nie ausgeführt, Tribe existiert nicht, kein HubSpot/Salesforce — Claude-Recommender-Tabelle war unbelegtes Session-Output; Nutzer-Recht).
+- **Workflow dwfrun-2c646d03 GESTARTET (läuft bei Extraktion)**: (1) Konsolidierer → UNTERHALTUNGEN-KONSOLIDIERT.md (Claude-baute vs ZCode-baute, welche EINE Oberfläche aktuell, alt-Liste) · (2) System-Seiten-Bauer → `mein-system.html` im 404media-Design (hell, Chips, Accordion, 6 Ordner-Sektionen mit Dubletten-Markierung "2. Kopie", Inventar-Status+Preis je Projekt, Session-Register 1209+21) · (3) Verifikator (+ Nachbesserer) · (4) Deploy via world.run cp → out-firebase → :3300/mein-system.html. **Nach Notification: öffnen + Bericht.** Script-File: .zcode/workflow-drafts/Zwei-Sessions-konsolidieren--System-Seite-im-404media-Design.dwf.ts.
+- **Session goal ist PAUSIERT** (runtime) — nicht weiterverfolgen, bis er resume sagt. Subagent-Fail "Model request failed" = Quota-Ripp → sofort inline weitermachen (bei KF3D/paraletts-Paketen so gelöst, beide inline fertig).
+- hub-glass.html v2 (mein letzter Stand vor diesem Abschnitt): Logo-Banner + EINMAL/ABO/KANAL-Split + Agenten-Lampen + Autopilot/A15/Refresh-Buttons, :3300 → 200; 5 VERKAUFSPAKETE (24 Dateien) + ALLE_TOOLS_VERKAUFSSTATUS.md (101 Zeilen) ebenfalls deployed. Offen beim Nutzer wie gehabt: Gumroad-Links · Apple-Zertifikat · MAILs senden · Mimosa-Whitelist für Commit.
 
 ## MEMORY
 
