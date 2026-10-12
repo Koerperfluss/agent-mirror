@@ -1,10 +1,10 @@
 ---
 app: zcode
 quelle: "saschalagler/cli/memories/projects/tool-sammlung-verkauf-d6893782b4cb810a/memory/MEMORY.md"
-stand: 2026-10-10
+stand: 2026-10-12
 tags: [spiegel, zcode]
 ---
 
 # Memory Index
 
-- [Verkaufshub Inventar & Workflow](verkaufshub-inventar-und-workflow.md) — 66 Einträge nach M0-Merge (Backup da), M1-Bewertungslauf + M3-Doku ausgeführt, OmniRoute-Start ohne --tray + runner.py-Fehltext-Patch, Mimosa-Hook blockt Bash-Source-Writes (Edit mit Anker unter urlopen nutzen), Repo-Pfad mit trailing space, GO-Punkte offen (Firebase/Gumroad/push/Zertifikat)
+- [Verkaufshub Inventar & Workflow](verkaufshub-inventar-und-workflow.md) — VERKAUFS-OS live (:3300/verkaufs-os.html, Liquid-Glass-Desktop, Agenten-Panel A1–A15, 50 Kacheln mit SVG-Logos) = die EINE Oberfläche nach Nutzer-Wunsch "Betriebssystem wie LOKI OS"; Inventur bewiesen (72 Projekte, 562 Skills, 61 Plugins, 67 Tools/50 real); PARALLEL-SESSION (Claude, hub-glass, GLM-4.6-Kette, Ghost-Audit 35 gerettet) nutzt dieselbe tools-v2.json — vor Weiterbau aktuellen Stand lesen; nur 5/15 Pläne vollständig (OmniRoute-401) → Pläne-Runde 2 offen; Mimosa blockt Commits (Nutzer-Whitelist nötig); GO-Punkte: Gumroad-Links, Apple-Zertifikat, Deploy, push
