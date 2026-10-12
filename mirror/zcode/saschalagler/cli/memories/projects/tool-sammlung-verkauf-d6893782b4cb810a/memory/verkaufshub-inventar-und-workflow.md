@@ -1,6 +1,6 @@
 ---
 name: verkaufshub-inventar-und-workflow
-description: Verkaufshub Stand 2026-10-12 (67/67 bewertet, 50 real nach Ghost-Audit-2.0 der Parallel-Session, hub-glass.html :3300, Auto-Pilot R1 13/13 aber nur 5 Pläne VOLL — Runde 2 mit GLM-4.6-Kette offen; GO-Punkte Gumroad/Zertifikat/Deploy/push beim Nutzer) + Workflow/Mimosa-Erkenntnisse
+description: Verkaufshub Stand 2026-10-12 (VERKAUFS-ATLAS = die EINE Übersicht, 50 Kacheln in Menschensprache nach Nutzer-Spezifikation; 67/67 bewertet, 50 real; Auto-Pilot R1 13/13 aber nur 5 Pläne VOLL — Runde 2 mit GLM-4.6-Kette der Parallel-Session offen; 3 Abstimmungsfragen offen: Design/Screenshots/Pläne; GO-Punkte Gumroad/Zertifikat/Deploy/push beim Nutzer)
 metadata:
   node_type: memory
   type: project
