@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-12 15:10 UTC
+Zuletzt gespiegelt: 2026-10-12 15:24 UTC
 
 ## AGENTS
 
@@ -11326,6 +11326,27 @@ Bei Fachfragen (z. B. Trainings-Übungen) fordert er explizit „clinical reason
 # Memory Index
 
 - [Session-Kontext-Isolation verwirrt Nutzer](session-context-isolation-confusion.md) — neue Sessions starten leer; AGENTS.md wird fälschlich als "übernommener Verlauf" gedeutet; Shell-ENOENT blockierte History-Recherche
+- [ATLAS-Workspace mit trailing space](atlas-workspace-trailing-space.md) — echter Pfad endet auf „pliability " (Leerzeichen!); App-Repo in ATLAS_MASTER/app; Verkaufshub „PRIVATE PORJEKTE " ebenfalls
+- [Shell-ENOENT in ATLAS-Sessions](shell-enoent-in-atlas-sessions.md) — Bash tot (spawn /bin/zsh ENOENT); Workaround: Dateien schreiben + Nutzer führt aus (npm run verify)
+
+## atlas-workspace-trailing-space
+
+---
+name: atlas-workspace-trailing-space
+description: Der echte Workspace-Ordner heißt „atlas + pliability " MIT
+  Leerzeichen am Ende — Pfad ohne Leerzeichen existiert nicht
+metadata:
+  node_type: memory
+  type: project
+  originSessionId: sess_a348175d-0af0-40df-bd42-9b7f174f5aa0
+---
+
+Der ATLAS-Workspace liegt unter `/Users/saschalagler/Desktop/Coworkspace_Ich/atlas + pliability ` — **mit trailing space** nach „pliability". Der Pfad OHNE das Leerzeichen existiert nicht. Die ZCode-Session selbst ist aber auf dem Phantom-Pfad (ohne Leerzeichen) verankert — darum schlagen ZCode-Workspace-Picker und Sandbox-`files.glob` fehl (EvalWorkflowSnippet findet 0 Dateien).
+
+**App-Repo:** `<workspace>/ATLAS_MASTER/app` (atlas-v5 v5.0.0, React 19 + Vite 7 + Capacitor 8, Firebase atlas-v5.web.app, Git-Branch master).
+**Verkaufshub:** `/Users/saschalagler/Desktop/Coworkspace_Ich/PRIVATE PORJEKTE /TOOL-SAMMLUNG-VERKAUF/` (auch mit trailing space nach „PORJEKTE").
+
+**How to apply:** Bei Datei-Zugriff IMMER den Pfad mit trailing space und in Anführungszeichen nutzen; Shell-`cd`/`git -C` mit quoted path. Rename auf `atlas-pliability` ist geplant, braucht aber User-GO (bricht laufende Sessions). Verwandt: [[shell-enoent-in-atlas-sessions]], [[session-context-isolation-confusion]].
 
 ## session-context-isolation-confusion
 
@@ -11347,6 +11368,21 @@ Am 12.10.2026 eröffnete der Nutzer (aufgebracht) eine neue Session im Projekt "
 **How to apply:** Wenn der Nutzer vermissten Kontext beklagt: sofort klarstellen, dass neue Sessions isoliert starten und AGENTS.md bei jeder Session lädt; ihn auf Sidebar/⌘K-Suche für alte Sessions verweisen; anbieten, den Stand aus der alten Session (deja/zcode CLI, LOKI_SESSION_CONTEXT.md) hierherzuholen. Nicht defensiv auf Beschimpfungen reagieren — Sachklärung in 3 Punkten, ADHS-Format.
 
 Bekanntes Problem aus derselben Session: die Bash-Shell scheiterte komplett mit `spawn /bin/zsh ENOENT` — CLI-Recherche (History-Auslesen) war dadurch blockiert; Nutzer muss ggf. App neu starten.
+
+## shell-enoent-in-atlas-sessions
+
+---
+name: shell-enoent-in-atlas-sessions
+description: Bash-Tool schlägt in ATLAS-Sessions mit „spawn /bin/zsh ENOENT" fehl — Workaround: Dateien schreiben, Nutzer/Subagent mit gesunder Shell ausführen lassen
+metadata:
+  type: project
+---
+
+In ATLAS-ZCode-Sessions kann das Bash-Tool komplett tot sein: jeder Aufruf (auch mit `dangerouslyDisableSandbox`) liefert `spawn /bin/zsh ENOENT`. Explore-Subagenten trifft es ebenso. Build/Tests/git-commits sind dann von der Session aus unmöglich.
+
+**Why:** Environment-Problem des Session-Hosts, kein Fehler des Nutzer-Macs (`/bin/zsh` existiert normal). Wiederholt aufgetreten (12.09. Memory-Notiz, 12.10.2026 wieder).
+
+**How to apply:** (1) Nicht wiederholt retryen — nach 2 Fehlern umstellen. (2) Lieferbare Artefakte als Dateien schreiben (Write/Edit/Read funktionieren), z. B. Test-Batterie `scripts/verify.mjs` + npm-Script, damit EIN Befehl (`npm run verify`) alles auf Nutzer-Seite fährt. (3) Im Abschluss ehrlich kennzeichnen: „geschrieben, nicht von mir ausgeführt". (4) Vollständige Befehls-Kopiervorlage mitge{ben}. Verwandt: [[atlas-workspace-trailing-space]].
 
 ## MEMORY
 
