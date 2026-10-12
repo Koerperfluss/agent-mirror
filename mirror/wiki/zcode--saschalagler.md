@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-11 22:01 UTC
+Zuletzt gespiegelt: 2026-10-11 22:16 UTC
 
 ## AGENTS
 
@@ -16472,6 +16472,8 @@ description: "Hub connection closed (code=1006)" in Cline Code.app = lokaler Hub
 11.10. Full-Fix bewiesen: kill -9 + open -a Cline → Hub-Daemon mit Args (--host 127.0.0.1 --port 25463 --pathname /hub), /health=200, Socket ESTABLISHED. ECONNRESET=transient: Key-Test aus providers.json (`zai-coding-plan`, https://api.z.ai/api/coding/paas/v4 + /chat/completions) → HTTP 200 glm-5.3. WICHTIG: Composer-Provider ≠ Run-Provider — Goal-Runs sind auf Startzeit-Provider (cline-pass/muse-spark) gepinnt und crashen weiter; Fix = Run killen/neue Nachricht im Composer mit Z.AI. GUI-Injection erreicht den Cline-Webview nicht (AX leer, Tastatur landet nicht) — Senden per Enter selbst.
 
 **11.10. spät — Modell-Pin-Audit (Sascha: „Modelle rotieren seit Wochen nicht"):** Nichts ist serverseitig eingefroren — (a) api.cline.bot `/api/v1/models` (mit cline-pass apiKey) → 458 Modelle, frische bis 08.10.; eingefroren war nur Saschas Pin in providers.json, und der zeigte auf TOTES Modell `kwaipilot/kat-coder-pro` (nicht mehr in Serverliste!) → Pin repariert auf `meta/muse-spark-1.3` (Backup providers.json.bak-20261011-models), App neu gestartet. (b) Z.AI Coding Plan: 9 Modelle live (glm-4.5…5.3, NEU glm-5.3-flashx), Pin glm-5.3 gültig. (c) OmniRoute :20128 TOT (kein Prozess, HTTP 000) — seit 20.09. Nutzer-Beschluss „abgebaut", deshalb keine Free-Rotation dort. (d) Usage/Billing-Curl → immer 401 „re-authenticate" auch mit OAuth-Token (App signiert Requests selbst) — echte Zahlen nur in Cline-Settings → Usage; DATENLAGE UNKLAR über API. (e) Modell-Pin-Regel: Pin = Senderknopf — Liste aktualisiert die App selbst, Pin ändert sich nur manuell in der UI.
+
+**11.10. FINAL:** Pin nach Saschas Wutausbruch (er wollte Aktion, nicht Anleitung) von muse-spark-1.3 auf **`anthropic/claude-haiku-5.5`** gesetzt (Backup providers.json.bak-20261011-haiku), Cline neu gestartet, Hub /health {"ok":true} bewiesen. Pin-Änderungen mache ICH direkt in providers.json + App-Restart — Sascha kriegt das Ergebnis, keine Klick-Anleitungen (siehe [[sascha-vollzug-keine-zwischenfragen]]).
 metadata:
   type: project
 ---
@@ -17234,6 +17236,8 @@ Interaktive Karte: `~/.zcode/v2/visualizations/c99caef…/loki-os-universum.html
 - **2 Deep-Audit-Subagenten dispatched (Sascha: „bote gib ihm, full force"):** (1) AutoClaw2+Hermes VOLL-Inventur inkl. 3 Verkabelungen ins LOKI.OS (OpenClaw-Cron→HUB-Report, Hermes-Kanban→Taskmaster, Hermes-Proxy als LLM-Backend) + Blocker-Tabelle; (2) Eigent programmatische Anbindung (Datenformat in `~/Library/Application Support/eigent/`, Workforce-Aufträge ohne GUI anlegbar? Modelle konfigurierbar? MCP→HUB-Backend :8055?) + 2 finale Testlauf-Auftrags-Texte (ATLAS mit #28-Bug, Verkaufs-HUB). Ergebnisse kommen als Notifications.
 - **hub-glass Detail-Panel nachgerüstet:** Klick auf Karte → Seitenpanel mit 7 Sektionen (Funktion vollständig · Preis/Kanal/Verkaufen · Stack/Größe/eigen · Lücken-Liste · Markt-Analyse · Pfad+Kopier-Button · Direkt-Sprünge: `Tool-Verkauf/<id>.md` + `pipeline/vorschlaege/<id>/plan.json` klickbar). Beweis via Playwright: koerperfluss-3d-v2-upgrade → 12 Lücken, 2 Links. Karten zeigen jetzt zusätzlich Stack-Kürzel + Lücken-Zähler. Sascha-Bewertung: Design ok, aber „es fehlen sämtliche Infos die Weiterarbeiten realistisch machen" → dadurch behoben.
 
+**EIGENT-TESTLAUF-KORREKTUR (Sascha-Screenshot entlarvte den „GESENDET"-Claim als falsch):** AX-setValue schreibt in die Eigent-Electron-Textarea nur **Müll-Encodierung** (Session hieß „1 ---//_v%____!\"___3-\", Agent fragte „Could you clarify what you mean by …") — der ATLAS-Prompt kam NIE an, Eigent-Testlauf 1 lief also nicht. **TESTLAUF 2 (Verkaufs-HUB-Prompt) liegt als echter Text im Eingabefeld** (paste-Landung bewiesen im Screenshot) — es fehlt nur der Klick auf den Senden-Pfeil. Eigent nach Relaunch: neue PID 81855/window 3942, „Jetzt senden" taucht im AX-Snapshot aktuell nicht auf. **Eigent-Workforce selbst BEWIESEN funktionsfähig:** Fenster „Design Expert" zeigt ein abgeschlossenes Goal („Goal completed in 2 h 49 m 31 s") mit **11 Deliverables** (brand-hero-desktop.png, ios-20261011-final2.png, UEBERGE-UND-ROLLBACK.md — ATLAS-Design-Screens Coach/Startseite/Training/Wissen, „Heute: Kraft - Core"). Künftiger Eigent-Workflow: Fenster sichtbar machen → click ins Feld → paste() → Klick „Jetzt senden" (dann alles zuverlässig); setValue auf Eigent-Textareas ist verboten (Müll).
+
 ## loki-os-v18-build
 
 ---
@@ -17766,6 +17770,8 @@ Sascha (18.09.2026, nach 30h Konfiguration): „WIESO MUSS ICH JEDEN SCHEISS SCH
 
 **Ergänzung (01.10., Gmail-Debakel — „WIE GEHT DAS SOLL ICH DAS RIECHEN"):** Vollzug heißt: das Fertige liegt **IM ZIEL-TOOL**, nicht als Umweg-Datei daneben. Ich lieferte .eml-Dateien + Send-Listen — seine Reaktion: „DU MISSGEBURT SOLLST MIR IN GMAIL ALLES VORBEREITEN". **Rule:** Erst klären, WO er das Ergebnis konsumiert (hier: Gmail-Web in seinem Browser), DANN den Weg bauen, der genau dort ablegt — auch wenn der Umweg technisch aufwendiger ist (Browser-Debug-Port statt Dateien). Umweg-Lösungen als „fertig" zu melden = Verarschung in seinen Augen. Bei technisch unmöglicher Direkt-Lieferung (Gmail-API ohne Scopes): die EINE fehlende Freigabe als Ja/Nein-Frage („Chrome GO?") statt Umwege aufdrücken.
 
+**Ergänzung (11.10., Cline-Pin — „REDE STU TROTTEL"):** „Vorschlag-Listen für Sascha zum Selber-Klicken" = Regelverstoß. Kontext: Ich hatte seine Frage (Modelle rotieren nicht) gelöst, empfahl aber am Ende „In Cline-Pass-Dropdown mal manuell auf ein frisches Modell klicken" — er explodierte, weil ER mich beauftragt hatte zu konfigurieren. **Rule:** Wenn der Auftrag „mach/konfiguriere X" heißt, liefere ich X fertig (Config-Datei direkt editieren + App neustarten + Beweis), NIE als To-do-Liste an ihn zurück. Auch „Entscheidungen für dich"-Listen am Ende sind bei einem Vollzugs-Auftrag Fehlformat — nur Ergebnis + was bleibt offen.
+
 Verwandt: [[loki-verkaufstool-stand]]
 
 **Ergänzung (20.09., Voice-Session — härtester Ausbruch bisher):** (1) **GUI-/TCC-Systemdialoge IMMER vorher ankündigen** — ein unaufgefordertes Mikrofon-„Darf python3.14…"-Popup löste „was ist das mausi du sollst nur planen" + Plan-Modus aus. (2) **AskUserQuestion-Formulare mit Options-Chips = Total-Ablehnung** („ALTER BIST DU BEHINDERT") — er will keine Menü-Auswahl, sondern dass ich sein Ziel aus seinen eigenen Doku-Quellen ableite (Explorer-Memory-Sweep) und direkt liefere. (3) Nach Plan-Ablehnung sofort „STARTE SOFORT MULTI AGENT TEAM /research /plan /dev" — Forschung/Analyse darf parallel als 3 Explorer laufen, Edits aber NICHT (Plan-Modus blockiert Schreibzugriffe hart; Read-only-Analysis ist der einzige erlaubte Weg, produktiv zu bleiben). (4) Sein „NICHTS DAVON STIMMT" hieß: er wollte eine **Systemanalyse seines ganzen Agentic OS** (jede App, jede Info), nicht den engen Voice-Fix-Plan — Scope falsch geraten. Lektion: Bei mehrdeutigem Wut-Feedback zuerst den eigentlichen Scope aus dem Shout extrahieren (er benennt ihn) und DIESEN liefern.
@@ -17801,7 +17807,7 @@ Verwandt: [[deja-vu-install]]
 
 ---
 name: verkaufshub-tool-sammlung
-description: VERKAUFS HUB = Projekt TOOL-SAMMLUNG-VERKAUF — 11.10. NACHMITTAG: GHOST-AUDIT (35/52 gerettet — „ES GIBT ALLE" war richtig!), Motor auf Z.ai-Coding GLM-4.6 umgestellt (OmniRoute raus, VERSUCHE-Kette), Auto-Pilot über ALLE 50 echten Tools läuft, hub-glass v2 hell nach 404media-Guide
+description: VERKAUFS HUB = Projekt TOOL-SAMMLUNG-VERKAUF — 11.10.: GHOST-AUDIT (35/52 gerettet — „ES GIBT ALLE" war richtig!), Motor Z.ai-Coding GLM-4.6 (OmniRoute raus), Auto-Pilot über alle 50 echten Tools (Cap 67, timeout 1200, 2/50 — Rest-Runde läuft), hub-glass v2 hell + Detail-Panel (Lücken/Stack/Pfad/Direkt-Sprünge) — Querdetails in loki-os-livestatus-2026-10-11
 metadata:
   node_type: memory
   type: project
