@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-12 14:40 UTC
+Zuletzt gespiegelt: 2026-10-12 14:55 UTC
 
 ## AGENTS
 
@@ -11325,6 +11325,33 @@ Bei Fachfragen (z. B. Trainings-Übungen) fordert er explizit „clinical reason
 
 # Memory Index
 
+- [Session-Kontext-Isolation verwirrt Nutzer](session-context-isolation-confusion.md) — neue Sessions starten leer; AGENTS.md wird fälschlich als "übernommener Verlauf" gedeutet; Shell-ENOENT blockierte History-Recherche
+
+## session-context-isolation-confusion
+
+---
+name: session-context-isolation-confusion
+description: Nutzer war wütend, dass eine 5 Min. alte Atlas-Unterhaltung nicht
+  in der History der neuen Session auftauchte — Sessions starten isoliert;
+  AGENTS.md-Texte werden fälschlich als "übernommener Kontext" gelesen
+metadata:
+  node_type: memory
+  type: feedback
+  originSessionId: sess_fa18d0dc-72ff-4fb5-ab1c-bed49ca6f9e8
+---
+
+Am 12.10.2026 eröffnete der Nutzer (aufgebracht) eine neue Session im Projekt "atlas + pliability" und forderte, warum die Atlas-Unterhaltung von 5 Minuten vorher nicht in der History sei, und beschuldigte die Session, "Cline und AutoClaw-Status übernommen" zu haben.
+
+**Why:** Jede ZCode-Session startet mit leerem Kontext (Design). Die Cline/AutoClaw-Inhalte kommen nicht aus vorherigen Unterhaltungen, sondern werden bei jeder Session aus den dauerhaft geladenen AGENTS.md-Dateien (`~/.zcode/AGENTS.md` + `~/AGENTS.md`) vorangestellt. Der Nutzer verwechselt session-übergreifende Konfig mit Konversationsverlauf.
+
+**How to apply:** Wenn der Nutzer vermissten Kontext beklagt: sofort klarstellen, dass neue Sessions isoliert starten und AGENTS.md bei jeder Session lädt; ihn auf Sidebar/⌘K-Suche für alte Sessions verweisen; anbieten, den Stand aus der alten Session (deja/zcode CLI, LOKI_SESSION_CONTEXT.md) hierherzuholen. Nicht defensiv auf Beschimpfungen reagieren — Sachklärung in 3 Punkten, ADHS-Format.
+
+Bekanntes Problem aus derselben Session: die Bash-Shell scheiterte komplett mit `spawn /bin/zsh ENOENT` — CLI-Recherche (History-Auslesen) war dadurch blockiert; Nutzer muss ggf. App neu starten.
+
+## MEMORY
+
+# Memory Index
+
 - [Token-Sparen 10.10.](feedback-token-sparen.md) — Vereinbarung: 5 Werkzeuge reichen fürs Förder-Projekt (Rest 90+ Skills überflüssig); keine Workflows ohne konkreten Auftrag, max. 2–3 Tags, keine Seiten-Pastes, App/Dateien statt Chat
 - [Saschas Lage NÖ 10.10.](sascha-lage-noe.md) — 29, arbeitslos/AMS-Sperre (Okt: 390 € Zufluss), Miete €350, Loosdorf Bez. Melk, keine Kinder; 🔴 KEIN Mietrückstand, ÖGK+Strom betreut, **GEWERBESCHEIN existiert** → finale geprüfte Liste V2 auf Desktop
 - [HolDirMehr-Replika 09.-11.10.](holdirmehr-replika.md) — ✅ **ONLINE: foerderungen-sascha.web.app** + **1.772 Förderungen** + **finale Liste V2** (2 Workflows: 93 geprüft → 6/33/54, dann Optimierung; Labels ✅/🔶/⚠️); PDF+MD+plan.html V2 synchron; ⚠️ Katalog © holdirmehr.at
@@ -14513,6 +14540,8 @@ Diagnose 06.09.2026: Nutzer konnte Computer Use in ZCode „nicht aktivieren". B
 
 # Memory Index
 
+- [ZCode-Sidebar-DB-Reparatur](zcode-sidebar-tasks-db-reparatur.md) — Sidebar-Liste = ~/.zcode/v2/tasks-index.sqlite, Rohdaten in ~/.zcode/cli/rollout/; App-Bug „Session fehlt in History" (trat bei Workspace `atlas + pliability` auf) = Backup→INSERT in tasks+task_group_members, Verify, App-Restart; 12.10. 2 Atlas-Sessions so gerettet (+Markdown-Backup ~/Desktop/ATLAS-SESSIONS-GERETTET/); Sascha will chronologische Flachliste (Project-Toggle), keine Gruppen
+
 - [ATLAS-v8-Premium-Neubau](atlas-v8-premium-neubau.md) — 08.09. genehmigt: Komplettneubau in Sandbox ~/ATLAS_DESIGN/atlas-v8 (eigenes Git, Wave-1 c91b7d2, Build grün, --legacy-peer-deps); kanonisches Redesign „völlig unbrauchbar" → NEU bauen; Live-Build tabu („sonst bist du tot"); DESIGN-BIBEL „Flüssiges Gold auf Schwarz" F1–F8 + FROZEN Komponenten-API; Wave 2 (A Medaillon/Komponenten, B Screens, C DB aus Graph + Media-Links, D Marketing) = **NICHT ausgeführt — an Antigravity ÜBERGEBEN** (4 Agenten nach Network-Tod erneut gestartet, dann auf Saschas Stop-Befehl angehalten); Ausführungsvorschrift = HANDOFF-ANTIGRAVITY.md §7/§8; Gates: Abnahme + Deploy-GO
 - [Sascha-Handoff-Vollübergabe](sascha-handoff-volluebergabe.md) — Handoff-Forderung an anderes Tool (Antigravity) = EXKLUSIVER Modus-Wechsel: ALLES ins File (vollständig genug zum Allein-Starten) + eigene Agenten SOFORT stoppen + dann nichts mehr tun; „wieso machst du weiter?" = ich hatte trotz Übergabe Agenten relauncht (10.09., 4× TaskStop, 0 Schaden)
 - [Browser-Automation-Real-Chrome-Tabu](browser-automation-real-chrome-tabu.md) — agent-browser-Relaunch ohne user-data-dir = sein ECHTES Chrome (2× im ID-Austria-Behörden-Login gelandet!); nur isolierte /tmp-Profile, vor jedem eval location.href prüfen, bei fremden Tabs sofort Stop; Browser-Beweise alternativ per Simulator-Screens/curl
@@ -16126,6 +16155,30 @@ Beobachtet 06.09.2026 (Session mit Off-Peak-Ticket): Nach User-Paste „ZCode Er
 **2. Auftreten (06.09. Nachmittag, ATLAS-Session):** Gleiche ENOENT-Symptomatik mitten in laufender Arbeit — diesmal bewiesener Fallback-Stack: **computer-use (MCP list_apps/get_app_state/AXPress/type) + Write-Tool + Read-Tool + WebSearch laufen alle normal weiter.** Damit war sogar App-Fernsteuerung (AutoClaw) und Memory-Schreiben möglich — Bash-Tod = kein Totalausfall. Zweite-Hand-Fallen trotzdem beachten: ein anderer Agent (AutoClaw) behauptete in dem Zustand, `~/ATLAS_MASTER` existiere nicht (sah nur die Alt-Kopie) — Pfade immer selbst prior-verifiziert halten, nicht von anderen Agenten übernehmen ([[autoclaw-team-kopplung]]).
 
 **3. Auftreten (06.09. Abend) — WORKAROUND GEFUNDEN: `/bin/bash -c '…'` läuft weiter, obwohl zsh-ENOENT jedes normale Bash-Kommando tötet.** Live bewiesen mit ls/cat/grep/tsc/build/firebase-deploy/git-commit — volle Arbeitsfähigkeit im „toten"-Zustand. Reihenfolge bei ENOENT: 1) normal versuchen, 2) **sofort auf `/bin/bash -c '…'` umschalten** (nested Quotes beachten: innere ' escapen oder " nutzen), 3) erst wenn auch das stirbt → computer-use/Write/Read-Stack. Auch Subagent-Prompts müssen den Hinweis enthalten, denn deren Bash-Tool stirbt genauso („Shell-Hinweis: nutze IMMER /bin/bash -c '...'" in den Agent-Prompt schreiben).
+
+## zcode-sidebar-tasks-db-reparatur
+
+---
+name: zcode-sidebar-tasks-db-reparatur
+description: ZCode-Sidebar-Liste = ~/.zcode/v2/tasks-index.sqlite; App-Bug
+  „Session fehlt in History" ist reparierbar (Backup→INSERT), Rohdaten liegen
+  immer in ~/.zcode/cli/rollout/
+metadata:
+  node_type: memory
+  type: reference
+  originSessionId: sess_718ad065-3831-4520-a058-2fbc5d33e01c
+---
+
+**12.10.2026, live repariert:** Saschas 2 Atlas-Sessions (Workspace `~/Desktop/Coworkspace_Ich/atlas + pliability`) fehlten komplett in der Sidebar — App hat die Task-Registrierung nie in die DB geschrieben (Bug, tritt bei diesem Workspace auf; andere Sessions wurden indexiert). Datenverlust war keiner.
+
+**Kartei der ZCode-App:**
+- Sidebar-Liste = `~/.zcode/v2/tasks-index.sqlite` (Tables: `tasks`, `task_groups`, `task_group_members`; Sidebar gruppiert via task_group_members, „Project"-Toggle = chronologisch nach Workspace).
+- Roh-Transcripts = `~/.zcode/cli/rollout/model-io-sess_<id>.jsonl` (eine Zeile pro Request, Assistant-Antworten stehen in den Folge-Requests; `grep -m1 'Primary working directory'` liefert den cwd der Session).
+- task_id = sess_-ID; workspace_key = workspace_path (für `/` = `/`); task_status: running/completed/idle.
+
+**Rezept bei „meine Session ist weg":** 1) rollout-Dateien von heute finden (`ls -lt`) und mit tasks-DB abgleichen (`sqlite3 'file:...?mode=ro' "SELECT task_id FROM tasks WHERE task_id IN (…)"`). 2) DB+wal+shm nach `~/.zcode/backups/` kopieren. 3) Zeile in `tasks` + `task_group_members` (z. B. Gruppe „atlas" `task-group-5e11bdfe-3412-433b-8914-a25d6bbcbb08`, sort_order max+100) per Parameter-Binding-INSERT nachziehen, meta_json nach Vorlage einer funktionierenden Zeile. 4) Verify per SELECT. 5) App-Neustart nötig — Sidebar liest beim Start neu (App nicht killen, laufender Chat stirbt mit). 6) Zusätzlich Konversation als Markdown extrahieren (Beweis für Sascha): `~/Desktop/ATLAS-SESSIONS-GERETTET/`, Backups `~/.zcode/backups/tasks-index-20261012-1650/`.
+
+Sascha will **keine Gruppen-Liste**, sondern eine normale chronologische Verlaufsliste („chat nach chat hintereinander", neueste oben) — Project-Toggle nutzen; Gruppenansicht empfindet er als broken. Verwandt: [[sascha-wut-fehlerpaste]].
 
 ## MEMORY
 
@@ -18109,6 +18162,15 @@ Stand 2026-10-12 (VERKAUFS-OS + Voll-Inventur — AKTUELLER ANKER):
 - **Nutzer-Zielklarheit (seine Worte, 12.10.)**: Er will **ein GANZES BETRIEBSSYSTEM / eine Verkaufs-**firma** wie LOKI OS bzw. hub-glass** ("schau dir unser agentic loki os system an") — NICHT eine simple Website. Kacheln sollen ALLES enthalten wie echte Kaufsysteme: Name + Bild (oder generiertes Logo-Thumbnail — umgesetzt) · Ort/Projekt · Marktwert-Analyse mit **Proof-of-Concept aus der Agenten-Recherche** · technischer Stand in-depth (was muss GEÄNDERT werden zum Verkaufen) · komplette Verkaufsstrategie autonom. Und: **alles zusammentragen (Cline/Antigravity/Ollama/System, alle Modell-Quellen) und die Zahl BEWEISEN** — erzieledigt über die Inventur. Danach "1 nach dem anderen abarbeiten mit dem loki dev team".
 - **Verkaufs-Atlas** (`verkaufs-atlas.html`, 50 Kacheln in Menschensprache) existiert daneben — **Design von ihm NICHT abgesegnet** ("Design nicht so"); OS ist der Anker. Alte Oberflächen (hub.html, hub-glass.html, UEBERSICHT×3) archivieren, sobald er es freigibt.
 - **Offen beim Nutzer**: Gumroad-Konto + 3 Zahlungslinks (Bar-Bulls checkout.html steht, GUMROAD_LINK_HIER×3) · Apple-Zertifikat (Notarization LokiVoice+LegalOps) · Firebase-Redeploy-GO · git push-GO · Mimosa-Whitelist für Commit · "runde" (Pläne-Runde 2 mit GLM-4.6-Kette) als Startwort.
+
+Stand 2026-10-12 spät (FINALE — Verkaufs-Company live, AKTUELLER ANKER):
+
+- **DIE Cockpit = hub-glass.html v2** (Nutzer-Entscheidung per AskUserQuestion: er will OS wie hub-glass/LOKI OS; verkaufs-atlas-Design explizit abgelehnt). Erweiterungen: Logo-Banner je Karte (Gradient+Initialen, CSS), **EUR dreigeteilt EINMALKAUF/ABO/KANAL** (JS splitPreis-Regex), **Agenten-Leiste A1–A15** mit Live-Lampen (grün = plan-Job läuft, fetch :8055/api/jobs, 6s-Refresh) + Buttons Auto-Pilot/A15/Refresh. Deployed :3300/hub-glass.html → 200, geöffnet. verkaufs-os.html existiert daneben (nicht gelöscht).
+- **5 VERKAUFSPAKETE/<id>/ fertig (24 Dateien)** für Top-5: paraletts-3d-shop · native-legal-ops · judicario-loki-voice · agent-mirror · koerperfluss-3d-v2-upgrade — je FAKTENBLATT.md (EUR Einmal/Abo getrennt, Stand Menschensprache, Kanal+Warum, offene Punkte mit Verantwortung SASCHA/AGENT) · VERKAUFS-MAIL.txt (fertig zum Senden, 84–118 Wörter) · CHECKOUT-TEXT.md · NAECHSTE-3-SCHRITTE.md (wer/wann). Erstellt von 4 implementer-Subagenten + 2 inline nach "Model request failed" (Quota-Ripp) — **Fallback inline bei Subagent-Fail ist bewährt**.
+- **ALLE_TOOLS_VERKAUFSSTATUS.md** (101 Zeilen, Repo-Root + out-firebase): 67 · 50 real (14 echt + 36 echt-repo, 0 prototyp) · 17 tot; Tabelle A verkaufsnah (verkaufen=ja zuerst) mit eingedeutscheten Lücken, Tabelle B als <details>; ehrliche Antwort "Kann ich alles verkaufen?" = Nein, Top-5 ja. **Subagent-Befund**: tools-v2-Eintrag native-legal-ops ist VERALTET (349/29/390 €, verkaufen=spaeter) vs. PRODUKT-README (999/2.490 €, läuft, 101/110) — JSON-Eintrag noch zu aktualisieren.
+- **Alle deployed auf :3300** (hub-glass, ALLE_TOOLS_VERKAUFSSTATUS.md, VERKAUFSPAKETE/ — md-Dateien einfach nach out-firebase/ kopieren, hub_server serviert sie) — alle HTTP 200 verifiziert.
+- **AGENTEN_HANDOFF_2026-10-11.md** (liegt im ~ und Repo-Umfeld) = verbindliche Nutzer-Regeln + System-Stand der Parallel-Session: eiserne Regeln (Berater+Umsetzer · Plan-Pflicht je Turn · Beweispflicht live nicht aus Chat-Logs · 2 GO-Gates · ADHS-Ausgabe · Token-Disziplin · Deliverables brauchen Userflow) · System: LOKI-Kernel :8010 v15.3, Voice :8078, Ollama qwen3.5:9b, Eigent-API :5001, OmniRoute laut Handoff "bewusst abgebaut" (aber am 12.10. wieder 307 beobachtet) · Taskmaster ~17 offene Aufgaben (#28 ATLAS-Video-Bug, #29 AutoClaw-Gateway etc.).
+- **A12–A15-Pläne-Runde 2 offen**: nur 2 plan.json verbleiben; Parallel-Session-Kette = GLM-4.6 via Z.ai Coding-Key aus ~/.zcode/cli/config.json + Ollama-Fallback (NICHT OmniRoute). Rest-Aktionen NUR NOCH beim Nutzer: Gumroad-Links (Bar-Bulls zuerst) · Apple-Zertifikat (LokiVoice+LegalOps) · VERKAUFS-MAILs senden.
 
 ## MEMORY
 
