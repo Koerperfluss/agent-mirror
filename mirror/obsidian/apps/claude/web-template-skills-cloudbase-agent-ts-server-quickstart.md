@@ -1,7 +1,7 @@
 ---
 app: claude
 quelle: "web-template/skills/cloudbase-agent-ts/server-quickstart.md"
-stand: 2026-10-11
+stand: 2026-10-12
 tags: [spiegel, claude]
 ---
 
