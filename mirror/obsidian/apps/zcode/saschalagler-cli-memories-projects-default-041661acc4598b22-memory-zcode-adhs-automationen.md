@@ -1,13 +1,13 @@
 ---
 app: zcode
 quelle: "saschalagler/cli/memories/projects/default-041661acc4598b22/memory/zcode-adhs-automationen.md"
-stand: 2026-10-11
+stand: 2026-10-12
 tags: [spiegel, zcode]
 ---
 
 ---
 name: zcode-adhs-automationen
-description: "13.09.–10.10. LIVE: EINE Automation mit ALLEN 6 Briefs (cron `0 9,10,15,16,21`, Zweige per Uhrzeit+Wochentag; niemals 6 separate — Nutzer-Ziel!) + Engine 7/7 PASS; **35 Läufe, alle 6 Zweige bewiesen · 10.10. Risiko-Scan: loki-voice DOPPELT dirty (Pointer-P1 seit 01.10 + neue Entpersonalisierungs-Änderungen uncommittet durch dwfrun-Lauf) → „GO commit-wache" vorgeschlagen (dwfrun-Läufe sollen selbst committen) · UHR-ANOMALIE: date = Wahrheit, Logbuch vor Append NEU lesen · offen auf GO: Wecker + Deutsch-Patch-Recovery + doku-fix (3 Zeilen) + pointer-fix + commit-wache; 1 Task pro Chat-Limit"
+description: "13.09.–12.10. LIVE: EINE Automation mit ALLEN 6 Briefs (cron `0 9,10,15,16,21`, Zweige per Uhrzeit+Wochentag; niemals 6 separate — Nutzer-Ziel!) + Engine 7/7 PASS; **38 Läufe, alle 6 Zweige bewiesen · 12.10. Catch-up: agent-mirror `befcfd6` (Workflows Morgenstart/Dev-Loop/Abend + 5-Port-Health + Watchdog, live verifiziert 11.10.) · P1×2 unverändert (LokiVoice dirty seit Sa + Parent-Pointer seit 01.10) · UHR-ANOMALIE: date = Wahrheit, Logbuch vor Append NEU lesen · offen auf GO: Wecker + Deutsch-Patch-Recovery + doku-fix (3 Zeilen) + pointer-fix + commit-wache; 1 Task pro Chat-Limit"
 metadata:
   node_type: memory
   type: project
