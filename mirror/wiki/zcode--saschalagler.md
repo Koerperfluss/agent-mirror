@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-12 13:26 UTC
+Zuletzt gespiegelt: 2026-10-12 13:41 UTC
 
 ## AGENTS
 
@@ -18074,7 +18074,7 @@ Am 22.09.2026 schlug jeder Subagent-Start (z. B. `cavecrew-investigator`) fehl m
 
 ---
 name: verkaufshub-inventar-und-workflow
-description: Verkaufshub FINAL (67/67 bewertet, 67 Listings, Auto-Pilot-Runde 13/13 Pläne, 15 vorschlaege, ANLEITUNG-VERKAUFSHUB.md + 📖-Button im Hub; Team dwfrun-cc0608f8 Resume + Mimosa-Commit-Whitelist offen) + Workflow-Erkenntnisse
+description: Verkaufshub Stand 2026-10-12 (67/67 bewertet, 50 real nach Ghost-Audit-2.0 der Parallel-Session, hub-glass.html :3300, Auto-Pilot R1 13/13 aber nur 5 Pläne VOLL — Runde 2 mit GLM-4.6-Kette offen; GO-Punkte Gumroad/Zertifikat/Deploy/push beim Nutzer) + Workflow/Mimosa-Erkenntnisse
 metadata:
   node_type: memory
   type: project
