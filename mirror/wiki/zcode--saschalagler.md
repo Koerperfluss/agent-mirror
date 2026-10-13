@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-13 08:08 UTC
+Zuletzt gespiegelt: 2026-10-13 08:23 UTC
 
 ## AGENTS
 
@@ -16637,12 +16637,19 @@ deja-vu 0.20.2 am 20.09.2026 installiert (`brew install deja-vu`, Binary `/opt/h
 ---
 name: ffg-1-anlauf-historie-originalunterlagen
 description: "FFG Gesamt-Stand: 1-Anlauf-Historie (Ablehnung 21.05.2026 wörtlich)
-  + **V15 FINAL einreichbereit (16 S., md5 0bb7de2e022e, ZIP c3ff1b0c0791) — SVS-Label
-  KORRIGIERT zu SMS-Gründungsbeihilfe (Sozialministeriumservice, Leon GdB 90 %,
-  max 34.400 €/50 % — Sascha hatte recht, Beweis in seinem April-Dossier)**
-  + **LIVE-EINREICHUNG: eCall-Antrag 74310314 'Körperfluss Edu' — ~60 % fertig
-  (Jahresdaten grün ✓, Projektdaten ✓, Beschreibungen 1.1–1.5 ✓, Projektleitung/APs/
-  Standort ✓), STOPP bei Bankverbindung (Konto = SPARKASSE, wartet IBAN/Auszug)**"
+  + **V16 FINAL einreichbereit (ZIP UPLOAD_eCall_SLOTS_V16_FINAL_2026-10-13.zip md5
+  21ee9b0d78cb; 01 md5 81aaed542dd0, 05=Bankbeleg c317fc53aa4e, 06=72f01be32ab7)
+  — Kapitalnachweis = ECHTER Bankbeleg (George-Finanzbericht 13.10.2026, Sparbüxe
+  AT61 2025 6010 0398 2194 = 38.000 € + KontoKonto 1,90 €; 'Selbstauskunft' überall
+  raus) + SVS-Label korrigiert zu SMS-Gründungsbeihilfe (Sozialministeriumservice,
+  Leon GdB 90 %, max 34.400 €/50 % — Sascha hatte recht, Beweis April-Dossier)**
+  + **LIVE-EINREICHUNG: eCall-Antrag 74310314 'Körperfluss Edu' — 7/9 Blöcke
+  gespeichert (Jahresdaten grün ✓, Projektdaten ✓, Einstufung ✓, Beschreibungen
+  1.1–1.5 ✓, Projektleitung/Ansprechpartner ✓, Standort Loosdorf/NÖ ✓,
+  Bankverbindung ✓ IBAN AT61 2025 6010 0398 2194/BAWAG/BAWAATWW, Anreizwirkung ✓
+  'nein'), OFFEN: SDG-Seite (SDG 4+3+10, Subziel-Widget per Maus), Inhaltliche
+  Beschreibung (V16-PDF-Upload), Arbeitsplan, Kosten, Abschluss/Zeichnung
+  (nur Sascha); Copy-Texte fertig in 07_eCall_AUSFUELLHILFE_74310314.md**"
 metadata:
   node_type: memory
   type: project
@@ -16650,6 +16657,21 @@ metadata:
 ---
 
 # FFG 1. ANLAUF — KOMPLETTE HISTORIE aus Original-Unterlagen (gelesen 05.10.2026)
+
+## NACHTRAG 13.10. — V16 + eCall-Live-Fortschritt
+
+### V16 (13.10.) — KAPITALNACHWEIS = ECHTER BANKBELEG
+- Sascha lieferte: George-Finanzbericht **ausgedruckt 13.10.2026 09:39** → PDF `Desktop/Kapitalsnachweis Neu Sascha LAgler /Kapitalsnachweis-Lagler-13.10.2026.pdf` (3 S., 451.658 B; Ordnername endet auf LEERZEICHEN vor '/', per rglob finden). Inhalt: Sparbüxe AT61 2025 6010 0398 2194 = **38.000,00 €** + KontoKonto AT35 2025 6010 0122 9317 = 1,90 € (Gesamt 38.001,90). Dasselbe Konto wie Nov-2025-Beleg („Smart Sparen" heißt jetzt „Sparbüxe"); Bank = George (BAWAG P.S.K., BLZ 2025) — Saschas „ist Sparkasse"-Aussage war falsch, der Beleg beweist BAWAG/BLZ 2025.
+- **05_KAPITALNACHWEIS NEU (4 S., md5 c317fc53aa4e)**: Erklärseite (05_kapitalnachweis.typ neu geschrieben, Backup .typ.bak_svsfix) + 3 S. Original-Auszug per pypdf-Merge eingebunden; umbenannt `05_KAPITALNACHWEIS_Eigenmittel_38000EUR_Bankbeleg.pdf` (alte _Selbstauskunft.pdf gelöscht). antrag.typ + 06: alle „Selbstauskunft"-Sätze → „bankseitiger Kontoauszug vom 13.10.2026" (0 Reste). visual-judge 4/4 PASS.
+- **ZIP V16: UPLOAD_eCall_SLOTS_V16_FINAL_2026-10-13.zip, md5 21ee9b0d78cb, 9 PDFs** (ersetzt V15-ZIP c3ff1b0c0791). MD5s: 01=81aaed542dd0 (16 S.) · 06=72f01be32ab7 · 03c=19edfb52df5d · 05=c317fc53aa4e.
+
+### eCall 74310314 — LIVE-Fortschritt (Session war ausgeloggt, Sascha neu eingeloggt)
+- **Gespeichert ✓:** Jahresdaten (grün) · Projektdaten (Einzelprojekt, Kurztitel „Körperfluss Edu", Start **01.01.2027**, 12 Monate, Kurzbeschreibung 3 Sätze) · Organisationseinstufung (Kleinunternehmen Ja) · Beschreibungen 1.1–1.5 (CKEditor-Dialoge, 524–1709 Zeichen) · Projektleitung (Sascha + Loosdorf-Adresse) · Techn./Kaufm. AP = identisch mit PL · Projektstandort Loosdorf/NÖ · **Bankverbindung (IBAN AT61 2025 6010 0398 2194, Sascha Lagler, BAWAATWW, BAWAG P.S.K.)** · Anreizwirkung („nein") · Datei-Anhänge übersprungen (nur KMU-Erklärung/LOIs optional; IAB kann keinen File-Upload).
+- **OFFEN (letzte Meile):** ① SDG-Seite — max 3 Ziele, Subziel-Auswahl („Details"-Aufklapper klappte nicht per DOM-Klick, braucht Screenshot+CUA); geplant SDG 4 + 3 + 10 ② Inhaltliche Beschreibung (V16-PDF + Texte) ③ Arbeitsplan (AP1–5-Zeilen) ④ Kosten (900/1120/160 h à 50 € + 20 % GKZ) ⑤ Abschluss-Validierung → Zeichnung NUR Sascha → SUBMIT.
+- Alle Copy-Texte fertig: `…/FFG Kleinprojekt Körperfluss Edu Anlauf 2/07_eCall_AUSFUELLHILFE_74310314.md`
+- **eCall-Widget-Rezepte (bewiesen):** Native `input[type=date]` will ISO-Wert per JS (`el.value="2027-01-01"` + input/change; deutsches „01.01.2027" wird verworfen!) · Kendo-Combobox öffnet nur per **CUA-Klick auf Bounds-Zentrum** (DOM-click reicht nicht), Option dann per CUA-Klick · CKEditor = `frameLocator("iframe").frameLocator("iframe").locator("body")` + innerHTML · FFG-Buttons/Checkboxen actionability-timeouten → **immer evaluate el.click()** statt Playwright-Klick · Nav-Links per Regex-Name matchen (accessible name enthält Warnungstexte) · eCall-Session läuft nach Inaktivität ab → Re-Login; URL-Anker `Cockpit.aspx?target=6078747&antrag=74310314`.
+- Ansprechpersonen FFG Kleinprojekt: Claudia Buchmayer, Sarah Ganss, Sabine Hahn, Natasa Sisic, Jasmin Stalzer, Marlene Zellner. Passwort-Warnung: läuft in 8 Tagen ab.
+- Organisation-Stammdaten im eCall: ID 66226934, Einzelperson „Unternehmen in Gründung", Jahr Aufnahme 2026, Kleinunternehmen; Änderungsdialog bietet nur „Projektübertrag auf neues Firmenkonto" (erst bei FlexCo-Gründung relevant, NICHT klicken).
 
 Quelle: `/Users/saschalagler/Desktop/ffg - 1 antrag + businessplan+nachtrag+2version/` (25 Dateien). Extrakte: `/tmp/ffg1_original_auszuege.json`.
 
@@ -16732,28 +16754,6 @@ Verwandt: [[koerperfluss-edu-foerderpilot-fertig]], [[ffg-1-anlauf-historie-orig
 
 ## ERGAENZUNG (10.10.): Original-24S-VOLLANTRAG + eCall-Formular ausgelesen (Quelle: ffg-notary/master '1b' + '1) BASIS FFG ANTRAG…' PDFs)
 Die ORIGINAL-Inhalte des eingereichten Vollantrags (24 S., Version, die abgelehnt wurde) — GOLD zum Wiederverwenden:
-- **Basisinformation (eCall-Formular):** Melk, Start 01.01.2026 (inzwischen vorbei -> 01.01.2027), KMU-Kleinunternehmen, Org.-Beschreibung: Sascha Clinical Lead **51 %**, Peter CTO **48 %**, **Lisa Mauerhart Design & UX 1 %** (Original-Team hatte LISA, Anlauf-2 hat LEON stattdessen)
-- **Original 1.1-Problemframing (stark, mit 7 Quellen [1]-[7]):** MSE (Muskel-Skelett-Erkrankungen) laut Global-Burden-of-Disease = fuehrende Ursache Years-Lived-with-Disability; EU-Fachkraeftemangel; IPE (interprofessionelle Ausbildung) wirkt belegt, aber heterogen implementiert; PT-Ausbildung hat konzeptionelle Luecken ohne skalierbare digitale Lehrwerkzeuge
-- **Original Z1-Z5 KPI-Tabelle (Format stark):** Z1 MVP-Stack 0 kritische Blocker · Z2 >=80 % fachl. Korrektheit (Review), Akzeptanz >=70 % Likert · Z3 100 % Compliance-Filter aktiv, 0 Vorkommnisse · Z4 TRL7-Pilot extern ODER interner Pilot (30-50 Personen), Uptime >=99 % · Z5 IPE +15 % (prae/post). Nicht-Ziele-Liste (Marketing, Medizinprodukt, Markteintritt). Frascati: experimentelle Entwicklung
-- **Original Wettbewerbstabelle 1.2.1 (direkte Antwort auf 'Neuheitsgehalt wenig belastbar'):** Ada Health (MDR IIa Triage) · Infermedica (Triage-API) · Symptoma (Symptomchecker) · Physitrack (Telehealth/UEbungen) — KEINE adressiert PT-Ausbildung mit dialogischer KI; Koerperfluss = neue Kategorie EdTech×Health-AI, MDR-frei. Eigene Foerderung/Lizenzen 1.500-3.000 EUR/Jahr (BP), Markt 300 DACH-Ausbildungsstaetten (World Physiotherapy 7,46/5Mio EU, DE 15,62/5Mio)
-- **Original 1.3:** 4 Entwicklungsstraenge (Architektur+Datenmodell / Dialoglogik+Slots / MDR-Compliance-Filter / Integration+Validierung), Technische Probleme 1-4 (Halluzination, Synchronisation, regulatorische Grenzbegriffe, didaktische Wirksamkeit), Herausforderungen 1-4; **xLSTM dort nur als OPTION zitiert [20] (Beck arXiv 2405.04517)** — Peters Idee kam also aus diesem Original-Antrag
-- **Original 1.5 SDG-Zahlen (mit Quellen [21]-[23]):** 250-300 kg Papier/Standort/Jahr erspart; Remote-Lehre -50 % verkehrs-CO2; Lernerfolg +15-20 %; IPE +15 %; >=40 % weibliche Lernende; 500k EUR/Jahr Umsatz mittelfristig; Exportquote >50 %
-- **Original ARBEITSPLAN (Monate konkret):** AP2 Architektur Jan-Feb (M2.1 Architekturprototyp 28.02.2026) · AP3 Dialoglogik Maerz-Apr (M3.1 Slot-Test >=80 % 30.04.) · AP4 Compliance Apr-Jun (M4.1 MDR-Filter 30.06.) · AP5 Integration Jul-Aug (M5.1 TRL7-Nachweis 31.08.2026)
-- **Original Finanzplanung V0.4 (eCall-Print):** Personalkosten-Tabelle Fischer 280 h je AP2-5 (1.120), Lagler 180 h je AP1-5 (900), MAUERHART Lisa 40 h je AP2-5 (160, 9.600 EUR), 2.180 h gesamt, 50 EUR/h +20 % GKZ — Stunden-Verteilung = heute identisch mit V13, nur Lisa->Leon getauscht
-- **Qubitec-Spreadsheet (97cd73):** aeltere Kalkulation mit Lisa, Restfinanzierungs-Zeilen; historisch
-- **Weitere Original-Pfade:** GoogleDrive Altbestand 'Projekt Koerperfluss/Altbestand bis 10.05.2026/2) FFG Kleinprojekt/' (KapitalnachweisLAglerSascha.pdf, Loi-kneipp.pdf, Finanzplanung .numbers/.gsheet, C1+Projektvorbereitung_Deutsch.pdf); Desktop/KICK OFF/pitch + CVs-1Seitig; ffg-notary/input (3a Vollantrag, 3b KMU-RL, DEFENSIV-MATRIX docx, WAW/Linz/OXYDATA)
-- **ACTIONABLE fuer V14 (falls Sascha will):** Wettbewerbs-Tabelle + MSE/IPE-Problemframing + SDG-Belegzahlen aus dem Original in V13 mergen (alle schon FFG-bekannt = legitim, staerken 'Neuheitsgehalt' und 'Nutzen' mit echten Quellen)
-
-
-## V14 (11.10., 00:39) — Original-Gold ist DRIN
-- **01_VOLLANTRAG V14: 16 S., md5 020cc905e548** — aus Original uebernommen: Wettbewerbstabelle Ada/Infermedica/Symptoma/Physitrack (1.4, nach USP), KPI-Haertung (Z1: 3 Fallsimulationen Fach-Review · Z4: 0 unbelegte Therapieempfehlungen · Z5: >=70 % Likert 4-5 + Verfuegbarkeit >=99 % — Originale Z2/Z3/Z4-Formalstil), MSE/GBD-Satz in 1.1 (qualitativ, keine Zahl)
-- V13 archiviert: _ANLAUF2_INTERNE/_VERSIONEN/01_VOLLANTRAG_V13_f458c5afd42b.pdf
-- ZIP: UPLOAD_eCall_SLOTS_V14_FINAL_2026-10-11.zip md5 a95c33a10d07 (9 PDFs) — V13-ZIP 92403651de3e abgeloest
-- SHA256SUMS (9 PDFs), 00_LIES_MICH + 08_GESAMT_AUDIT auf V14/md5 020cc905e548 aktualisiert; 06_KOSTEN unveraendert korrekt (zitiert keine Antrags-md5)
-- NICHT uebernommen aus Original: Lisa Mauerhart (Team bleibt Fischer/Lagler/Karner), Ursprungs-KPI-Z1 'MVP-Stack 0 Blocker' + Z5 'IPE +15 %' (V13s xLSTM-Ziele sind die eigentliche Neuheits-Antwort), SDG-Zahlen 250-300kg/-50%CO2/+15-20% (Register-Belege fehlen = 60-EUR-Regel)
-- Ursprungs-PDF liegt im Einreich-Ordner LIVE offen (Preview)
-- Regex-Falle: naive `60\s*EUR` matcht FALSE-POSITIVE in „…600 EUR"-Beträgen (9.600, 1.600 …) — immer `\b60\s*EUR` (Word-Boundary); gleiche Falle bei `Global Burden`-Check (Bindestrich-Kompositum „Global-Burden-of-Disease" matcht mit Leerzeichen nicht)
-- pypdf-Seitenzahl kann von erwarteter Zahl abweichen (V13 14 S. → V14 16 S. nach Tabelle+Ergänzungen — ok, FFG hat keine harte Seitenlimit für die Projektbeschreibung; Original hatte 24 S.)
 
 ## george-thomas-status
 
