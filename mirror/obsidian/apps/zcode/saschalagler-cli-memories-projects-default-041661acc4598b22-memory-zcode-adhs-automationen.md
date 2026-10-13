@@ -1,7 +1,7 @@
 ---
 app: zcode
 quelle: "saschalagler/cli/memories/projects/default-041661acc4598b22/memory/zcode-adhs-automationen.md"
-stand: 2026-10-12
+stand: 2026-10-13
 tags: [spiegel, zcode]
 ---
 
@@ -186,4 +186,14 @@ metadata:
 - Gestern sichtbar (Sa 10.10., deja+Platte): **`LM_STUDIO_SETTINGS_2026-10-10.pdf`** (257 KB, für Moritz — beide Rechner bedienbar) + **holdirmehr-Katalog-Merge 1772 Einträge** (1148+624, 2 Duplikate verworfen) — siehe [[holdirmehr-replika]] und [[lm-studio-mac-gemma4-2026-10-10]].
 - Auch heute im Sweep: PDF-Bearbeitungs-Session („Zahlen/Worte in PDF ändern + Metadaten") — nur Aktivität vermerkt, Inhalt nicht bewertet.
 - Bilanz: 37 Läufe; Dauer-GOs unverändert: Wecker · Deutsch-Patch-Recovery · doku-fix (3 Zeilen) · pointer-fix · commit-wache.
+
+## Achtunddreißigster Lauf (Mo 12.10. 16:0x — Catch-up PASS, Wochenend-Commits im Dev-Brief)
+- 09:00 verpasst → Catch-up: Logbuch `~/.agents/memory/logbuch/2026-10-12.md` (status: offen), Kalender-Event **„Tagesplan 12.10."** UID `16DC788F-31A0-4F3E-B2BB-F1EF222687E6`.
+- **DEV-BRIEF mit Wochenend-Commits:** `agent-mirror` 2 Commits — `7d30be0` Produktstand + `befcfd6` **Arbeitsabläufe + Sync-Skript** (5-Port-Health, Watchdog-Kopplung, 3 Workflows: Morgenstart/Dev-Loop/Abend — live verifiziert 11.10.). P1×2 unverändert (LokiVoice dirty seit Sa + Parent-Pointer seit 01.10).
+- Tagesplan: GO commit-wache + GO pointer-fix · FIX-Lauf Session `3710694b` (Saschas „MACH FERTIG") · Förder-Antrag Projektbeschreibung 2. Anlauf · 3 neue Workflows aus befcfd6 testen.
+
+## Neununddreißigster+ Lauf (Di 13.10. 10:07 — RISIKO-SCAN PASS + ANOMALIE-AUFLÖSUNG)
+- **Zukunftdatierte Datei wurde zum echten Tages-Logbuch:** `2026-10-13.md` existierte schon aus dem Anomalie-Lauf (status: abgeschlossen) mit falscher Kopf-Behauptung „Funkstille-Woche 07.–12.10." — faktisch überholt, denn diese Tage HATTEN Logbücher. Behandlung nach Bi-Temporal-Prinzip: **nichts gelöscht**, RISIKO-SCAN + explizite KORREKTUR-Sektion angehängt. Muster damit zweimal bewiesen (06.10. + 13.10.): Zukunftdateien werden beim echten Datum zu gültigen Tages-Logbüchern, alter Inhalt bleibt als Korrektur-vermerkter Verlauf.
+- **Scan-Befund:** P1×2 **unverändert** — LokiVoice 3 Dateien dirty (`app.py`, `konfiguration.py`, `tests/test_konfiguration.py`) + Parent-Pointer unverankert (` M loki-voice`, `7fdbf2d` hängt seit 01.10 im Submodul). P2: `.wayfinder/map.md`, `MASTER_TODO.md`, `data/atlas_knowledge.json` + scrape-Archiv uncommittet. 0 Commits 24 h, Engine unverändert.
+- Bilanz: 39+ Läufe; Dauer-GOs unverändert: **Wecker · Deutsch-Patch-Recovery · doku-fix (3 Zeilen) · pointer-fix · commit-wache**.
 

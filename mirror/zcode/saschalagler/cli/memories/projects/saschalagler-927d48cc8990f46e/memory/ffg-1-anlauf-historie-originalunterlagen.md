@@ -1,12 +1,19 @@
 ---
 name: ffg-1-anlauf-historie-originalunterlagen
 description: "FFG Gesamt-Stand: 1-Anlauf-Historie (Ablehnung 21.05.2026 wörtlich)
-  + **V15 FINAL einreichbereit (16 S., md5 0bb7de2e022e, ZIP c3ff1b0c0791) — SVS-Label
-  KORRIGIERT zu SMS-Gründungsbeihilfe (Sozialministeriumservice, Leon GdB 90 %,
-  max 34.400 €/50 % — Sascha hatte recht, Beweis in seinem April-Dossier)**
-  + **LIVE-EINREICHUNG: eCall-Antrag 74310314 'Körperfluss Edu' — ~60 % fertig
-  (Jahresdaten grün ✓, Projektdaten ✓, Beschreibungen 1.1–1.5 ✓, Projektleitung/APs/
-  Standort ✓), STOPP bei Bankverbindung (Konto = SPARKASSE, wartet IBAN/Auszug)**"
+  + **V16 FINAL einreichbereit (ZIP UPLOAD_eCall_SLOTS_V16_FINAL_2026-10-13.zip md5
+  21ee9b0d78cb; 01 md5 81aaed542dd0, 05=Bankbeleg c317fc53aa4e, 06=72f01be32ab7)
+  — Kapitalnachweis = ECHTER Bankbeleg (George-Finanzbericht 13.10.2026, Sparbüxe
+  AT61 2025 6010 0398 2194 = 38.000 € + KontoKonto 1,90 €; 'Selbstauskunft' überall
+  raus) + SVS-Label korrigiert zu SMS-Gründungsbeihilfe (Sozialministeriumservice,
+  Leon GdB 90 %, max 34.400 €/50 % — Sascha hatte recht, Beweis April-Dossier)**
+  + **LIVE-EINREICHUNG: eCall-Antrag 74310314 'Körperfluss Edu' — 7/9 Blöcke
+  gespeichert (Jahresdaten grün ✓, Projektdaten ✓, Einstufung ✓, Beschreibungen
+  1.1–1.5 ✓, Projektleitung/Ansprechpartner ✓, Standort Loosdorf/NÖ ✓,
+  Bankverbindung ✓ IBAN AT61 2025 6010 0398 2194/BAWAG/BAWAATWW, Anreizwirkung ✓
+  'nein'), OFFEN: SDG-Seite (SDG 4+3+10, Subziel-Widget per Maus), Inhaltliche
+  Beschreibung (V16-PDF-Upload), Arbeitsplan, Kosten, Abschluss/Zeichnung
+  (nur Sascha); Copy-Texte fertig in 07_eCall_AUSFUELLHILFE_74310314.md**"
 metadata:
   node_type: memory
   type: project
@@ -14,6 +21,21 @@ metadata:
 ---
 
 # FFG 1. ANLAUF — KOMPLETTE HISTORIE aus Original-Unterlagen (gelesen 05.10.2026)
+
+## NACHTRAG 13.10. — V16 + eCall-Live-Fortschritt
+
+### V16 (13.10.) — KAPITALNACHWEIS = ECHTER BANKBELEG
+- Sascha lieferte: George-Finanzbericht **ausgedruckt 13.10.2026 09:39** → PDF `Desktop/Kapitalsnachweis Neu Sascha LAgler /Kapitalsnachweis-Lagler-13.10.2026.pdf` (3 S., 451.658 B; Ordnername endet auf LEERZEICHEN vor '/', per rglob finden). Inhalt: Sparbüxe AT61 2025 6010 0398 2194 = **38.000,00 €** + KontoKonto AT35 2025 6010 0122 9317 = 1,90 € (Gesamt 38.001,90). Dasselbe Konto wie Nov-2025-Beleg („Smart Sparen" heißt jetzt „Sparbüxe"); Bank = George (BAWAG P.S.K., BLZ 2025) — Saschas „ist Sparkasse"-Aussage war falsch, der Beleg beweist BAWAG/BLZ 2025.
+- **05_KAPITALNACHWEIS NEU (4 S., md5 c317fc53aa4e)**: Erklärseite (05_kapitalnachweis.typ neu geschrieben, Backup .typ.bak_svsfix) + 3 S. Original-Auszug per pypdf-Merge eingebunden; umbenannt `05_KAPITALNACHWEIS_Eigenmittel_38000EUR_Bankbeleg.pdf` (alte _Selbstauskunft.pdf gelöscht). antrag.typ + 06: alle „Selbstauskunft"-Sätze → „bankseitiger Kontoauszug vom 13.10.2026" (0 Reste). visual-judge 4/4 PASS.
+- **ZIP V16: UPLOAD_eCall_SLOTS_V16_FINAL_2026-10-13.zip, md5 21ee9b0d78cb, 9 PDFs** (ersetzt V15-ZIP c3ff1b0c0791). MD5s: 01=81aaed542dd0 (16 S.) · 06=72f01be32ab7 · 03c=19edfb52df5d · 05=c317fc53aa4e.
+
+### eCall 74310314 — LIVE-Fortschritt (Session war ausgeloggt, Sascha neu eingeloggt)
+- **Gespeichert ✓:** Jahresdaten (grün) · Projektdaten (Einzelprojekt, Kurztitel „Körperfluss Edu", Start **01.01.2027**, 12 Monate, Kurzbeschreibung 3 Sätze) · Organisationseinstufung (Kleinunternehmen Ja) · Beschreibungen 1.1–1.5 (CKEditor-Dialoge, 524–1709 Zeichen) · Projektleitung (Sascha + Loosdorf-Adresse) · Techn./Kaufm. AP = identisch mit PL · Projektstandort Loosdorf/NÖ · **Bankverbindung (IBAN AT61 2025 6010 0398 2194, Sascha Lagler, BAWAATWW, BAWAG P.S.K.)** · Anreizwirkung („nein") · Datei-Anhänge übersprungen (nur KMU-Erklärung/LOIs optional; IAB kann keinen File-Upload).
+- **OFFEN (letzte Meile):** ① SDG-Seite — max 3 Ziele, Subziel-Auswahl („Details"-Aufklapper klappte nicht per DOM-Klick, braucht Screenshot+CUA); geplant SDG 4 + 3 + 10 ② Inhaltliche Beschreibung (V16-PDF + Texte) ③ Arbeitsplan (AP1–5-Zeilen) ④ Kosten (900/1120/160 h à 50 € + 20 % GKZ) ⑤ Abschluss-Validierung → Zeichnung NUR Sascha → SUBMIT.
+- Alle Copy-Texte fertig: `…/FFG Kleinprojekt Körperfluss Edu Anlauf 2/07_eCall_AUSFUELLHILFE_74310314.md`
+- **eCall-Widget-Rezepte (bewiesen):** Native `input[type=date]` will ISO-Wert per JS (`el.value="2027-01-01"` + input/change; deutsches „01.01.2027" wird verworfen!) · Kendo-Combobox öffnet nur per **CUA-Klick auf Bounds-Zentrum** (DOM-click reicht nicht), Option dann per CUA-Klick · CKEditor = `frameLocator("iframe").frameLocator("iframe").locator("body")` + innerHTML · FFG-Buttons/Checkboxen actionability-timeouten → **immer evaluate el.click()** statt Playwright-Klick · Nav-Links per Regex-Name matchen (accessible name enthält Warnungstexte) · eCall-Session läuft nach Inaktivität ab → Re-Login; URL-Anker `Cockpit.aspx?target=6078747&antrag=74310314`.
+- Ansprechpersonen FFG Kleinprojekt: Claudia Buchmayer, Sarah Ganss, Sabine Hahn, Natasa Sisic, Jasmin Stalzer, Marlene Zellner. Passwort-Warnung: läuft in 8 Tagen ab.
+- Organisation-Stammdaten im eCall: ID 66226934, Einzelperson „Unternehmen in Gründung", Jahr Aufnahme 2026, Kleinunternehmen; Änderungsdialog bietet nur „Projektübertrag auf neues Firmenkonto" (erst bei FlexCo-Gründung relevant, NICHT klicken).
 
 Quelle: `/Users/saschalagler/Desktop/ffg - 1 antrag + businessplan+nachtrag+2version/` (25 Dateien). Extrakte: `/tmp/ffg1_original_auszuege.json`.
 
