@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-13 08:23 UTC
+Zuletzt gespiegelt: 2026-10-13 08:38 UTC
 
 ## AGENTS
 
@@ -108604,32 +108604,32 @@ Kein neues UI · keine Cloud (Speicher 100 % lokal) · keine ATLAS-/Ökosystem-R
 ✅ brain_save per Stimme → Datei + Index-Treffer · ✅ brain_search antwortet gesprochen · ✅ Auto-Protokoll nach Gespräch · ✅ déja + Morgenbrief gekoppelt · ✅ qa E2E grün · ✅ reviewer PASS
 ## plan-sess_33b5868e-a2a4-49cf-823a-7563047524e1
 
-# FFG Anlauf 2 — Abschlussplan (Stand: V9 fertig, 2 Restschritte)
+# eCall 74310314 — Antrag komplett ausfüllen (bis Zeichnung) — FINAL mit deinen 3 Ergänzungen
 
-## Ist-Zustand (fertig, bewiesen)
-- Ordner `FÖDERUNG/FFG Kleinprojekt Körperfluss Edu Anlauf 2/` = 11 Dateien, kein Dreck
-- **01_VOLLANTRAG (V9): 14 S., md5 `77c414870bb2`** — Premium-Design, FFG-Zielformat (1.1–1.5, 2, 3, 4, 6a, 6b), Mathe-Fix (109.000 € + 21.800 € GKZ = 130.800 €), Adresse **Sebastianistraße 15, 3382 Loosdorf** (deine Angabe), kein „Thomas"-Name, MVP-Stufen, 37 Quellen
-- 03a CV Sascha: Loosdorf (md5 `781de11e2582`) · 06_KOSTEN: Zitate auf V9 abgeglichen (`762cde7a19dd`)
-- Finales ZIP: `UPLOAD_eCall_SLOTS_V9_FINAL_2026-10-10.zip` (md5 `198e56764cc0`)
+## 0. Antworten auf deine Fragen
+- **Excel/CSV-Rechnung: NICHT nötig** — die eCall-Seite „Datei-Anhänge" verbietet Kostenkalkulationen ausdrücklich („Nicht zulässig: … Kostenkalkulationen"). Kosten werden direkt ins eCall-Kostenformular getippt. Die Finanzplanung-V0.4-PDF ist Altstand (Lisa) und kommt nicht hinein.
+- **KMU-Erklärung: nicht nötig** — Stammdaten belegen bereits „Kleinunternehmen, in Gründung".
+- **LOI-Upload: erst SICHTUNG.** Ich zeige dir das LOI-Muster-File (Pfad + geöffnet), Upload nur auf dein Wort.
 
-## Schritt 1 (ICH, 2 Min): Slot 05 neu bauen — braucht dich zuerst
-Du schickst mir den **frischen Kontoauszug** (Bawag/George, aktueller Saldo ≥ 38.000 €). Ich baue `05_KAPITALNACHWEIS` mit `05_kapitalnachweis.typ` im gleichen Design neu, ehrlich datiert auf den neuen Stichtag (kein Rückdatieren).
-→ Ohne dich: bleibt die alte Selbstauskunft (Saldo 27.11.2025) — einreichbar, aber nachfrageanfällig.
+## 1. Sofort (parallel)
+- **Subagent** schreibt `/tmp/ecall_kapitel.md`: Kapitel 1.1–1.6 + Finanzierung als eCall-Textabschnitte (je ≤3000 Zeichen, nur Fakten aus antrag.typ V16) — Agent läuft schon, wartet nur auf Freigabe.
+- **ICH im Browser:** Projektleitung-Fix (fehlendes Pflichtfeld — vermutlich Geschlecht), speichern, Nav grün prüfen.
 
-## Schritt 2 (DU, ~10 Min): eCall-Einreichung
-1. ecall.ffg.at → Login → Projekt **68209806**
-2. **Adresse im Portal-Profil auf Sebastianistraße 15, 3382 Loosdorf setzen** (Portal zeigt noch Melk vom 1. Anlauf — sonst Formalprüf-Widerspruch)
-3. Projektstart in der Maske: **01.01.2027**
-4. 9 PDFs hochladen (Tabelle im `00_LIES_MICH_EINREICHUNG.md`) oder das V9-ZIP
-5. Richtigkeits-Erklärung in der Maske bestätigen → **nur Sascha digital zeichnen** → SUBMIT (Frist 31.12.2026)
+## 2. Rest-Pipeline (Reihenfolge)
+1. **Nachhaltigkeitsziele:** SDG 4 + SDG 3 + SDG 10 per Screenshot+Maus aufklappen, je „zentrales Ziel" setzen, speichern.
+2. **LOI-Sichtung:** dir Pfad + Vorschau zeigen → Upload nur mit deinem GO (sonst leer lassen, optional).
+3. **Inhaltliche Beschreibung:** alle Textabschnitte aus `/tmp/ecall_kapitel.md` in die Editoren; V16-PDF hochladen, falls Upload-Feld vorhanden.
+4. **Arbeitsplan:** AP 1–5 (Monate, Stunden, Meilensteine) aus der Ausfüllhilfe.
+5. **Kosten und Finanzierung:** Lagler 900 h / Fischer 1.120 h / Karner 160 h × 50 €, GKZ 20 %; Finanzierung FFG 58.860 / SMS 33.940 (beantragt) / Eigenmittel 38.000.
+6. **Erklärungen zu Kosten + Weitere Förderungen:** SMS-Beihilfe als beantragte weitere Förderung eintragen.
+7. **Uploads (Kapitalnachweis-Beleg 05, ggf. LOI):** interner Browser blockiert File-Dialoge → du bekommst je eine 30-Sekunden-Manualanleitung (Datei+Feld exakt benannt) ODER ich lasse den Slot leer wenn optional.
+8. **Abschluss-Validierung:** alle Prüfregeln grün fixen.
 
-## Schritt 3 (ICH, nach deinem Submit): Nacharbeit
-- Einreich-Bestätigung hierher speichern + im KANON-Protokoll verankern
-- FRISTEN.md: Wache auf Bescheid-Termine umstellen (Betreuer Jovanovic)
-- LOI-Akquise parallel anstoßen (Kneipp/Vodder, Vorlage liegt in 04) — Ziel M5.2
+## Regeln
+- Zeichnung + SUBMIT: nur Sascha. Jede Seite: Speichernachweis über Nav-Status. Fakten nur aus V16-Quellen (keine neuen Zahlen).
 
-## Abbruch-/Stopp-Regeln
-Nichts löschen ohne GO · Slot 05 nie rückdatieren · Portal-Aktionen nur durch dich.
+## Akzeptanz
+- Alle Karteireiter ✓ ohne „!", Abschluss ohne offene Pflichten — nur Zeichnung/SUBMIT bleibt bei dir.
 ## plan-sess_415f90b8-06e6-414b-8ea5-c4c65864b581
 
 # eBay.at: Debug-Modus + alle 7 Anzeigen LIVE (300/69/69/149/249/35/1190 €)
