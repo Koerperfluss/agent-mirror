@@ -1,6 +1,6 @@
 # saschalagler (cline-code)
 
-Zuletzt gespiegelt: 2026-10-13 10:05 UTC
+Zuletzt gespiegelt: 2026-10-13 10:20 UTC
 
 ## CLAUDE
 
@@ -5058,6 +5058,41 @@ LM Studio lud glm-4.6v-flash auf 16GB-M4 mit max. Kontext + 1h-TTL → Dauerhaft
 - Offen/ungeklärt: exakte Apple-Mindestgrößen (TM-Volume ~2×, bootbarer Installer ~16 GB) — Artikel-URLs 404; beim nächsten Lauf verifizieren
 - EXA_API_KEY fehlt im Plugin-Host → web_search offline; fetch_web_content als Fallback genutzt
 - Report: /Users/saschalagler/RESEARCH_REPORT-macbook-air-m1-tahoe.md
+## c82a147a-e10a-420c-84f5-15887edc192e-07_eCall_AUSFUELLHILFE_74310314
+
+# eCall-AUSFÜLLHILFE 74310314 (V15) — Stand 11.10.2026
+
+Alle Texte copy-paste-fertig. Nach Re-Login einfügen (oder Sascha sagt „weiter", ich fülle im Browser).
+
+## 1. ANREIZWIRKUNG (Additionalität)
+Ohne die begehrte Förderung würde das Vorhaben in der geplanten Form nicht stattfinden: Das Unternehmen befindet sich in Gründung und verfügt über keine Umsatzgeschichte; die 2.180 F&E-Stunden des dreiköpfigen Kernteams können ohne Förderung nicht finanziert werden. Eine Bankfinanzierung ist bei einem F&E-Vorhaben mit technischem Scheiternsrisiko (xLSTM-Benchmark H-1/H-2) ohne besicherbare Vermögenswerte nicht verfügbar. Die FFG-Förderung ist damit kausale Voraussetzung (Additionalität) für den Prototyp von TRL 3 auf TRL 7. Die Kofinanzierung (33.940 € SMS-Gründungsbeihilfe für Leon Karner, GdB 90 %, beantragt; 38.000 € Eigenmittel, Beilage 05) und der volle Einsatz des Kernteams belegen das Eigeninteresse; das Projekt wäre ohne Förderung weder in diesem Umfang noch in diesem Zeitraum realisierbar.
+
+## 2. NACHHALTIGKEITSZIELE (SDG — je 1 Kurzsatz, im Formular je Ziel einfügen)
+- SDG 3 (Gesundheit): Bessere Ausbildung von Physiotherapeut:innen erhöht direkt die Versorgungsqualität und Patientensicherheit.
+- SDG 4 (Bildung): Körperfluss Edu democratisiert hochwertige, evidenzbasierte Praxis-Ausbildung (24/7-Übung ohne Skill-Lab-Knappheit, barrierefrei nach BFSG/WCAG).
+- SDG 5 (Geschlechtergleichheit): PT-Ausbildung ist überwiegend weiblich — das Tool entlastet genau diese Berufsguppe und fördert weibliche Gründer-Netzwerke.
+- SDG 9 (Industrie/Innovation): Die lineare xLSTM-Inferenz (JKU Linz) hält Wertschöpfung und F&E-Kompetenz in Österreich; exportfähiges EdTech-Produkt.
+- SDG 10 (Ungleichheit reduzieren): Geschäftsführung mit 90 % GdB — gelebte Inklusion; barrierefreies Kernprodukt (Leichte Sprache, Screenreader).
+- SDG 12/13: Reines Softwareprodukt, keine Hardware, EU-Hosting, energieeffiziente lineare Architektur statt rechenintensiver Alternativen.
+
+## 3. ARBEITSPLAN (Formularzeilen)
+- AP 1 Projektmanagement & Qualitätssicherung | Monat 1–12 | 180 h | Lagler | Meilenstein M1.1 Berichtswesen etabliert (M1)
+- AP 2 Architektur & Datenmodell (xLSTM/RAG) | Monat 1–6 | 280 h × 4 (Fischer) | Meilenstein M2.1 Architekturprototyp (M2), M2.2 Benchmark-Report H-1/H-2 (M6)
+- AP 3 Dialoglogik & Wissensmodule | Monat 3–8 | 280 h × 4 (Fischer) + Lagler-Anteil | M3.1 Slot-Tests bestanden (M4), M3.2 Fallsimulationen Fach-Review ≥3 (M8)
+- AP 4 Safety-Guard & Compliance | Monat 4–9 | 40 h × 4 (Karner QA) | M4.1 15-Parameter-Guard getestet, 0 unbelegte Therapieempfehlungen (M6)
+- AP 5 Integration, LTI-1.3 & Feldvalidierung | Monat 7–12 | Lagler/Fischer/Karner | M5.1 LTI-1.3 in Moodle/Canvas (M9), M5.2 LOIs Pilotpartner (M7–M8), M5.3 Feldtest ≥70 % Likert, Verfügbarkeit ≥99 % (M12)
+
+## 4. KOSTEN UND FINANZIERUNG (Formularzeilen)
+- Personalkosten: Sascha Lagler 900 h × 50 € = 45.000 € | Peter Fischer 1.120 h × 50 € = 56.000 € | Leon Karner 160 h × 50 € = 8.000 € | Summe 109.000 €
+- Gemeinkosten: 20 % pauschal = 21.800 € | Sachkosten 0 € | Drittkosten 0 € | GESAMT 130.800 €
+- Finanzierung: FFG-Zuschuss 58.860 € (45 %) | Gründungsbeihilfe SMS (Sozialministeriumservice, Leon Karner GdB 90 %) 33.940 € (beantragt) | Eigenmittel Sascha Lagler 38.000 € (Selbstauskunft, Beilage 05)
+
+## 5. BANKVERBINDUNG (WARTET AUF DICH)
+IBAN: [SPARKASSE-IBAN vom Auszug] | Kontoinhaber: Sascha Lagler | BIC: [vom Auszug] | Bank: [Sparkasse …, vom Auszug]
+
+## 6. DATEI-ANHÄNGE (Upload-Reihenfolge, Ordner „FFG Kleinprojekt Körperfluss Edu Anlauf 2")
+01_VOLLANTRAG (V15, 16 S., md5 0bb7de2e022e) · 02_LITERATUR · 02b_QUELLENREGISTER · 03a_CV_Lagler · 03b_CV_Fischer · 03c_CV_Karner · 04_MARKT_DACH · 05_KAPITALNACHWEIS · 06_KOSTEN_UND_FINANZIERUNG — alternativ ZIP UPLOAD_eCall_SLOTS_V15_FINAL_2026-10-11.zip (md5 c3ff1b0c0791)
+
 ## glm-pro
 
 # GLM-Pro-Betrieb — gilt in jeder Cline-Session (automatisch)
