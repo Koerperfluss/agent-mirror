@@ -1,6 +1,6 @@
 # web-template (claude)
 
-Zuletzt gespiegelt: 2026-10-13 07:39 UTC
+Zuletzt gespiegelt: 2026-10-13 07:54 UTC
 
 ## no_spec
 
@@ -2140,11 +2140,23 @@ Priority rule: if `@cloudbase/manager-node` has a matching method, use it; drop 
 
 ### 3. Check credentials before the first call
 
+**Three identities produce the same error text.** Before reading anything into an `UnauthorizedOperation`, find out which one you are holding:
+
+| Identity | How it is reached | CAM / CloudAudit |
+| --- | --- | --- |
+| Account-level login (`federated-user/<id>`) | Device-code / web login, or account-level SecretId + Key | reachable, subject to that identity's CAM policies |
+| `TCB_QcsRole` service role | what CLI / MCP **become** after calling a CloudBase product API | refused (`resource (...) has no permission`) |
+| Environment API Key (`<uin>:TCB-CAPI-Configured-idaas-apikey`) | `--cloudbase-api-key -e <envId>` | refused — the API Key model has no channel to attach arbitrary CAM policies |
+
+Confirm the identity with `sts GetCallerIdentity` (`--api-version 2018-08-13`) before concluding anything: the refusal text is identical across all three rows, so it cannot tell you which row you are in.
+
+**Order matters.** Calling a CloudBase product API swaps the identity to `TCB_QcsRole` for the rest of the session, so a CAM / CloudAudit call issued *after* any product call is refused even though the login is account-level. Do the CAM / audit work **first**.
+
 - Read the current credential scope from `auth` tools: `credential_scope: account` = account-level, reaches control-plane APIs subject to that identity's CAM policies; `env` = API Key, scoped to one environment's data plane plus the fixed TCB policies.
 - Permission comes from a different place per credential identity: the account-level identity's own policies, the API Key model (no channel to attach arbitrary CAM policies), or the TCB service role that CLI / MCP assume. Which cross-product capabilities that role family already covers is not fixed — read the attached policies (`ListAttachedRolePolicies` + `GetPolicy`) instead of assuming, and treat `UnauthorizedOperation` as "this identity lacks this action", never as a broken setup.
 - On `UnauthorizedOperation` / `AuthFailure`, hand the user a **one-click CAM grant link** (role name + policy name + `principal`) instead of telling them to go find the policy in the console, then retry the original call. Role targets, the `principal` values, and which preset policy covers what: `./references/calling-methods.md` §3.
 
-**Done when**: the credential identity is known, and every permission error has been converted into a clickable authorization link carrying a concrete policy name before any retry.
+**Done when**: the credential identity has been confirmed with `sts GetCallerIdentity` (not inferred from the error text), and every permission error has been converted into a clickable authorization link carrying a concrete policy name before any retry.
 
 ### 4. Follow a proven recipe when one exists
 
@@ -2154,6 +2166,7 @@ Recipes encode the exact call sequence, required parameters, and empirically dis
 - **ICP filing readiness and wait-time checks**: `./references/recipes/icp-filing-readiness.md`
 - **PostgreSQL instance spec change and shared-to-dedicated upgrade**: `./references/recipes/pg-instance-spec.md`
 - **Custom domain onboarding for an env (HTTP access domain, certificate, DNS binding)**: `./references/recipes/custom-domain.md`
+- **Operation trace / 操作审计 — who did what, from which IP, with which key**: `./references/recipes/cloud-audit-operation-trace.md`
 
 **Done when**: every parameter value in the call sequence traces to a recipe value marked as verified (实测) or to official docs.
 
@@ -2263,9 +2276,9 @@ TCB 服务角色族挂的是 TCB 自己声明的策略集（`QcloudAccessForTCBR
 **角色挂载的策略会随产品迭代变化**，别照着文档里的旧结论判断。确认当前覆盖范围要现场读，但**读 cam 需要调用身份自己就有 cam 策略**：
 
 1. `ListAttachedRolePolicies`：看角色挂了哪些策略
-2. `GetPolicy(PolicyId=…)`：读该策略的 `PolicyDocument`，逐条看 `action` 数组里有没有你要的 Action
+2. `GetPolicy(PolicyId=…)`：直接回 `PolicyDocument` —— 一段**字符串**，二次解析后看 `statement[].action`；`GetPolicyVersion` 也能读，但 `VersionId` **必须是数字**（传字符串报 `InvalidParameter ... should be uint64`）
 
-实测边界（2026-09-24，账号级 device 登录）：`cam/GetRole`、`cam/ListAttachedRolePolicies`、`cam/ListPolicies` **三个都返回 `UnauthorizedOperation`**（`qcs::cam:::role/<roleId> has no permission`、`resource (*) has no permission`）。原因是调用者拿的正是 `TCB_QcsRole` 换来的临时密钥，而该角色自己没有 cam 读权限 —— 于是「想查清楚缺什么权限」这件事本身就要先有权限。所以**不要指望现场读出角色载体**，§3.2 的 `principal` 用固定值；真要读 cam，让用户换一个有 `QcloudCamReadOnlyAccess` 的身份。
+⚠️ **能不能读，取决于调用那一刻的身份，而不是「登录时是谁」**：账号级身份（`federated-user`）下 `GetRole` / `ListAttachedRolePolicies` / `ListPolicies` / `GetPolicy` 都**能调通**（2026-10-12 实测）；一旦调过云开发产品接口、身份被换成 `TCB_QcsRole`，同一批调用全被拒（`resource (*) has no permission`）。⇒ **要读 cam 就先读 cam**；真读不了再让用户换一个有 `QcloudCamReadOnlyAccess` 的身份。读不了不影响 §3.2 —— 那里的 `principal` 用固定值。
 
 **确认「我到底是谁」用 `sts/GetCallerIdentity`，不依赖 cam**：返回 `Type`（`CAMRole` / `Account`）、`Arn`、`UserId`；以 `TCB_QcsRole` 调用时 `UserId` 形如 `<ownerUin>:TCB_QcsRole-<uin>-<timestamp>`。哪一行身份由此判定，比 `credential_scope` 更准 —— `credential_scope: account` 只说明「不是环境级 API Key」，实际落地仍可能是角色扮演身份。
 
@@ -2311,11 +2324,135 @@ https://console.cloud.tencent.com/cam/role/grant?roleName=<角色名>&policyName
 | 2 | ICP 备案提交前自查与等待期查询 | [icp-filing-readiness.md](./icp-filing-readiness.md) | ✅ 生产实证（2026-09-21） |
 | 3 | PostgreSQL 实例变配与升级独享 | [pg-instance-spec.md](./pg-instance-spec.md) | 🟡 部分实证（2026-09-24）：`ModifyPGInstanceSpec` 升配 + 降配已跑通；**共享升独享未跑**（账号下的 PG 实例全是独享形态，该接口只接受共享实例，只拿到前置条件报错原文）；「费用与套餐」一节的资源点单价与「无需升级套餐」、以及「目标 = 现状回 `unchanged`」按文档与界面核对，**未实跑** |
 | 4 | 自定义域名接入云开发 | [custom-domain.md](./custom-domain.md) | 🟡 部分实证（2026-09-24）：现状查询、只读预检、证书读取、真实绑定与解绑（含收尾）已跑通；**未跑**——轮询到 `Status = SUCCESS`（测试域名一直停在 `PROCESSING`）、代改 DNS 解析、备案（`dnspod` / `ba` 未授权） |
+| 5 | 云开发环境的操作追溯（操作审计） | [cloud-audit-operation-trace.md](./cloud-audit-operation-trace.md) | 🟡 部分实证（2026-10-12）：账号级身份下的 `LookUpEvents` 只读查询、`cam AttachRolePolicy` 挂 `QcloudAuditReadOnlyAccess`（挂后 `ListAttachedRolePolicies` 复核条数 +1）已跑通；**未跑**——`DescribeEvents` 全序列、`GetAttributeKey`、以及**角色态（`TCB_QcsRole`）下 `cloudaudit` 是否可见**（要等一个走角色态的 MCP 会话才能验） |
 
 ## 没有独立 recipe 的场景
 
 - **MySQL / CVM 等依赖产品告警**：复用 Recipe 1 的框架，换 monitor namespace。
 - **MySQL 备份回档、SCF 函数触发器**：暂无 recipe，从 `api-reference` 的依赖产品段起查。
+
+## cloud-audit-operation-trace
+
+# Recipe 5 — 云开发环境的操作追溯（操作审计）
+
+## When to use
+
+需要回答**「谁、在什么时候、从哪个 IP，对我的云开发环境或它的资源做了什么操作」** —— 凭据被谁用过、某个环境/函数/数据库/域名是谁删的、配置被谁改的、某个操作到底发生过没有。
+
+典型症状：
+
+- 客户报「我的环境/配置莫名其妙变了或被删了」，要查操作来源。
+- 排查异常调用：想知道某个 AccessKey 在某个时间窗内都调了什么。
+- 合规/交付场景要导出一段时间内的管理面操作清单。
+
+**本篇不管什么**：
+
+- **数据面的业务请求**（用户访问你的云函数、数据库读写、HTTP 访问）→ 那是运行/网关日志，走日志服务查，本篇的接口查不到。
+- 环境自身的运行报错与性能问题 → 走日志与监控。
+- 本篇只解决**管理面云 API 调用**的追溯。
+
+## 前置权限
+
+| 项 | 值 |
+| --- | --- |
+| service / version | `cloudaudit` · `2019-03-19` |
+| 开通与计费 | **无需开通、免费** —— 账号创建时即自动启用，查看/检索事件历史不额外计费 |
+| 凭据身份 | **必须是账号级**，且**当前工作目录不能残留项目级凭据**。审计按**账号**记录，与环境无关：环境级凭据（环境 API Key / 托管授权 token）到不了；被换成服务角色 `TCB_QcsRole` 时也到不了。两者都要先认人再动手 |
+| 查询所需策略 | `QcloudAuditReadOnlyAccess`（`PolicyId` `4732274`），覆盖 `cloudaudit:List*` / `Describe*` / `Get*` / `Look*`（`LookUpEvents` 属 `Look*`），另带 `cam:DescribeRoleList`、`cls:DescribeLogsets`、`cos:GetService` 等只读。**只查事件用这条就够** |
+| 跟踪集管理所需策略 | `QcloudAuditFullAccess`（`PolicyId` `638468`），比只读版多出跟踪集管理。**仅在需要建/改跟踪集时才加**：`TCB_QcsRole` 是全平台共用的服务角色，能不给写权限就别给 |
+
+### 先认人：三类凭据，权限面完全不同
+
+被拒时**先 `pwd`，再 `sts/GetCallerIdentity`** —— 身份类型直接决定后面补什么：
+
+| 凭据形态 | 落地身份（`Type` / `UserId`） | `cloudaudit` | 要补什么 |
+| --- | --- | --- | --- |
+| **账号级登录**（控制台扫码 / 设备码 / `tcb login`），且当前目录无残留凭据 | `CAMUser` · `federated-user/<uid>` | **通** | 不用补 |
+| **账号级登录，但被换成服务角色** | `CAMRole` · `TCB_QcsRole-<uin>-<ts>` | 拒（`resource (*) has no permission`） | 给**角色**关联 `QcloudAuditReadOnlyAccess`（改信任策略没用） |
+| **环境级（单环境）凭据**：环境 API Key / 托管授权 token | `CAMUser` · `<uin>:TCB-CAPI-Configured-idaas-apikey` | 拒（报错与角色被拒**长得一样**，根因不同） | 补策略没用，**必须换账号级凭据** |
+
+两条机制各判一半：
+
+1. **凭据按「项目根」分级解析，项目槽里那份优先于全局登录态。** 三层顺序：① 项目槽 `~/.config/.cloudbase/projects/<项目根路径转义>/auth.json`（**只在存着真凭据时生效**）→ ② 全局槽 `~/.config/.cloudbase/auth.json` → ③ 环境变量（`CLOUDBASE_API_KEY` + `CLOUDBASE_ENV_ID`，其次 `TENCENTCLOUD_SECRETID` / `KEY` / `SESSIONTOKEN`）。
+   - **槽按「项目根」定位，不是按当前目录**：从 `cwd` 向上找 `cloudbaserc.json` / `cloudbaserc.js` / `.cloudbaserc` / `.git`，到 `$HOME` 为止，找不到就用 `cwd` 本身；目录名 = 该绝对路径里非字母数字全换成 `-`。⇒ **同一个仓库里换子目录没用**，仍是同一个槽；要拿到干净解析得换到**仓库外**没有 marker 的目录。
+   - **空槽不遮蔽**：首次运行留下的 `{}` 不影响解析，会正常落回全局槽（已实测）。真正抢先的是槽里那份**环境级 API Key** —— 命中它时全局登录态**根本不会被读取**。
+   - ⇒「我在别的目录登录过、这里却说是单环境」「登录了却只看得见一个环境」基本都是这条：先确认当前目录属于哪个项目根，再看那个项目的槽里存的是什么。
+2. **调云开发自己的产品接口会把身份换成服务角色。** 同一份账号级登录，**先查审计是通的**；调用过 `tcb` / `tcbr` 系接口之后，再回来查审计就可能已被换成 `TCB_QcsRole` 而被拒。
+   - ⇒ **要查审计就先查审计**；把顺序反过来是自己给自己制造「没权限」。
+
+⇒「换个客户端试试」可以划掉：MCP、SDK、命令行走的是同一套凭据解析，病根在凭据本身（目录槽 + 是否被换成角色），不在客户端。
+
+**三种错误形态，别混判**：
+
+| 错误 | 形态 | 含义 |
+| --- | --- | --- |
+| `AuthFailure.UnauthorizedOperation`（`resource (*) has no permission`） | 带 `RequestId` | **已经到服务了**，是 CAM 拒绝 —— 要补权限 |
+| `invalid token`（`RequestId: 0`） | 无有效 `RequestId` | **接入层就拦了**，凭据对不上这条链路 —— 换凭据，不是补策略 |
+| `InvalidAction` | 带 `RequestId` | action 名或 `version` 写错。反过来，拿到 `AuthFailure` 就说明这个 action 存在 |
+
+最小「认人 + 试查」，只给 `service / version / action / params` 四件套：
+
+| 步 | service / version | Action | params |
+| --- | --- | --- | --- |
+| 认人 | `sts` · `2018-08-13` | `GetCallerIdentity` | 无 |
+| 试查 | `cloudaudit` · `2019-03-19` | `LookUpEvents` | `{"StartTime":<整数秒>,"EndTime":<整数秒>,"MaxResults":3}` |
+
+> **本篇与通道无关**：所有调用只写到 `service / version / action / params`，不绑定客户端 —— MCP 用 `callCloudApi` 传这四项、SDK 用对应产品的同名方法与同一段参数、命令行用 `tcb api <service> <Action> --body '{…}'`，三者入参与结论一致，任选其一即可。仅在命令行下要注意 `version` 必须显式给，不给会落到错误默认版本（例如 `sts` 被当成 `2018-04-16`，报 `InvalidAction`）。
+
+### 给服务角色补权限（身份已是 `TCB_QcsRole` 时）
+
+**要授的是「调用方身份所属账号」**，不是「用户控制台当前登录的账号」，两者经常不是同一个。`sts/GetCallerIdentity` 一次返回两个账号，别只看一个：`AccountId` 是**角色宿主主账号**（资源与环境在它名下），`PrincipalId` 是**申请该角色密钥的账号**（真正的调用方）。控制台要切到 `AccountId` 那个账号，并**优先用角色名定位，别用 `roleId`** —— `roleId` 是账号内资源，跨账号必然报「未查询到相关角色」。若该账号用户本人拿不到（MCP 走平台侧托管账号时就会这样），这条路直接不通：要么请账号主人在其上挂策略，要么改用「用户自己账号 + 自建**账号级**（非环境级）API Key」。
+
+- ① **一键授权链接（首选）** —— 交给用户点一下，是这条路的**规范做法**（链接怎么拼、`principal` 取值表、两条边界都在 `../calling-methods.md` §3.2，不在这里重复）。本次要挂的就是把 `policyName` 换成审计只读：
+
+  ```
+  https://console.cloud.tencent.com/cam/role/grant?roleName=TCB_QcsRole&policyName=QcloudAuditReadOnlyAccess&principal=eyJzZXJ2aWNlIjpbInRjYi5jbG91ZC50ZW5jZW50LmNvbSJdfQ%3D%3D
+  ```
+
+- ② **调用 cam API 直接挂**（可重复执行，不用等人点；要求当前是**账号级身份**，否则自己也会被拒）：
+
+  | 步 | service / version | Action | params | 取什么 |
+  | --- | --- | --- | --- | --- |
+  | 1 | `cam` · `2019-01-16` | `ListPolicies` | `{"Scope":"QCS","Keyword":"Audit","Page":1,"Rp":50}` | 预设策略的 `PolicyId`（`QcloudAuditReadOnlyAccess` = `4732274`） |
+  | 2 | `cam` · `2019-01-16` | `AttachRolePolicy` | `{"AttachRoleName":"TCB_QcsRole","PolicyId":4732274}` | 只回 `RequestId`，**不代表已生效** |
+  | 3 | `cam` · `2019-01-16` | `ListAttachedRolePolicies` | `{"RoleName":"TCB_QcsRole","Page":1,"Rp":100}` | 条数 +1，且能列出刚挂的那条 |
+
+  三个 action 的入参就是上表，换通道只是换发送方式：MCP 走 `callCloudApi`（`service` / `action` / `version` / `params` 四项）、SDK 走 `cam` 客户端的同名方法与同一段参数、命令行走 `tcb api cam AttachRolePolicy --body '{…}'`。
+
+  ⚠️ `ListPolicies` 要带 `Scope: QCS`（不带搜不到预设策略）；**关联的参数名是 `AttachRoleName`，复核的参数名又叫 `RoleName`**。**挂完之后立刻复核**（理由见下）。
+
+- ③ **控制台手动关联**（需要**主账号**或**拥有访问管理读写权限**的账号）：
+
+  ```
+  https://console.cloud.tencent.com/cam/role?roleName=TCB_QcsRole
+  ```
+
+  页内两条路都行：**角色详情 → 关联策略**，或**策略页搜策略名 → 关联用户/组/角色**。
+
+**挂完怎么确认（有两个验证死角）**：
+
+- **没法在本地扮演该角色做端到端验证**：`sts:AssumeRole` 必被拒（该角色的信任策略 `principal` 只写了服务）；`cam:SimulatePrincipalPolicy` 报 `InvalidAction`（该 action 不存在）。
+- ⇒ 判据只能落在两件确定性事实上：**策略已挂**（`ListAttachedRolePolicies` 条数 +1）与 **action 被覆盖**（策略正文里能看到 `cloudaudit:Look*`）。
+- 读策略正文（都要求账号级身份）：`cam/GetPolicy`（`{"PolicyId":4732274}`）直接回 `PolicyDocument`，是一段**字符串**，二次解析后看 `statement[].action`；`cam/GetPolicyVersion` 多要一个 `VersionId`，且**必须是数字**（传字符串报 `InvalidParameter ... should be uint64`）。
+- 🔴 **挂完立刻复核**：任何客户端会话（MCP / SDK / CLI）都可能把内存里的旧凭据快照写回凭据槽，隔几分钟当前身份可能已经不是刚才那个了，跨窗口的复核结论不可信。
+
+边界与备注：
+
+- **给服务角色加策略 = 扩大该角色的权限面**，不只是「让这一次调用通过」—— 拿到该角色临时密钥的任何调用方都会带上这份新权限，能用只读就别上全读写。
+- **能不能用 `cam` 读接口「现场判断缺什么」，取决于当前身份**：账号级联邦身份（`federated-user`）可直接调通 `cam:GetRole` / `ListAttachedRolePolicies` / `ListPolicies` / `ListPolicyVersions`；换成 `TCB_QcsRole` 角色态后同样被拒。⇒ 「想查清缺什么权限」本身就要求先有账号级身份，**先 `pwd` + 认人**。
+- **初始状态参照**：某账号的 `TCB_QcsRole` 起步挂 6 条策略（MongoDB / PostgreSQL / TCR / Lighthouse / CloudBase Run 等云开发自身资源），**一条 cloudaudit 都没有** —— 所以「调云开发没问题、查审计却没权限」是这个角色的常态，不是配置出了问题。
+- **判断「现在挂在哪个账号」有两个入口**：① `sts/GetCallerIdentity` 的角色链（`Type` / `AccountId` / `PrincipalId` / `UserId`）；② `cam/GetUserAppId` 返回 `OwnerUin` 与 `AppId`，比读角色更直接。两者都不告诉你账号名，只能拿数字去核对。
+
+控制台入口（人工核对与浏览）：`https://console.cloud.tencent.com/cloudaudit` → 左侧**操作记录**。控制台的「操作记录」**默认就有数据**，不要求先建跟踪集；跟踪集（最多 5 个）用于把日志**投递**到 COS 或 CLS 做长期归档，需要更长留存时才要碰它。
+
+## 接口序列
+
+### 1. 选一个检索接口
+
+云审计有**两个**检索操作日志的接口，能力不同，按需求选：
+
+| 接口 | 单次时间跨度 | 可回溯 | `NextToken` 类型 | 检索维度 |
+| --- | --- | --- | --- | --- |
 
 ## custom-domain
 
@@ -7925,8 +8062,10 @@ tcb login --flow web           # Web authorization (same-machine only)
 tcb login --cloudbase-api-key <cloudbaseApiKey> -e <envId>  # Env API Key (no Tencent Cloud account)
 tcb login --apiKeyId <Id> --apiKey <Key>            # CI / Tencent Cloud SecretId+SecretKey
 tcb login --apiKeyId <Id> --apiKey <Key> --token <T> # Temp token (CI, more secure)
-tcb logout                     # Clear local credentials
+tcb logout                     # Clear account-level credentials (account-login mode only)
 ```
+
+> ⚠️ `tcb logout` clears **account-level** logins only. In **environment API Key** mode the CLI refuses it (`LOGOUT_NOT_ALLOWED`) — there is no account session to clear; remove the credential file instead (see *Where credentials are read from* below).
 
 ### Choosing a login method
 
@@ -8004,8 +8143,6 @@ tcb login --apiKeyId $TMP_SECRET_ID --apiKey $TMP_SECRET_KEY --token $SESSION_TO
 tcb login
 # If already logged in: prints "您已登录，无需再次登录！" and exits.
 ```
-
-> ⚠️ Do **not** use `tcb env list` to check login status — sub-accounts may lack list permissions, causing misleading errors.
 
 ## functions
 
@@ -15372,6 +15509,7 @@ If a referenced sibling skill file is missing from this environment, ask the use
 - CloudRun issues -> `../cloudrun-development/SKILL.md`
 - Database issues -> `../postgresql-development-cloudbase/SKILL.md` for CloudBase PG / PostgreSQL, `../relational-database-mcp-cloudbase/SKILL.md` for MySQL, or `../cloudbase-document-database-web-sdk/SKILL.md` for NoSQL
 - Auth readiness (token failures) -> `../auth-tool-cloudbase/SKILL.md`
+- Environment not visible, binding fails, or only one environment shows up -> `../cloudbase-cli/references/core.md` (*Where credentials are read from*)
 - Platform overview -> `../cloudbase-platform/SKILL.md`
 
 ### Do NOT use for
@@ -15383,7 +15521,7 @@ If a referenced sibling skill file is missing from this environment, ask the use
 
 ### Common mistakes / gotchas
 
-- Running a full inspection without first confirming the environment is bound (`auth` tool must show logged-in and env-bound state).
+- Running a full inspection without first confirming the environment is bound (`auth` tool must show logged-in and env-bound state). If binding fails or only one environment appears, credentials are being resolved **per directory** — see `../cloudbase-cli/references/core.md` (*Where credentials are read from*); it is usually neither a permissions nor a platform problem.
 - Ignoring CLS log service status — if CLS is not enabled, `queryLogs` will fail; always check first with `queryLogs(action="checkLogService")`.
 - Searching logs without a time range — this can return excessive or irrelevant results. Always scope searches to a relevant time window.
 - Treating a single error log as the root cause without correlating across resources. A function error may stem from a database or config issue.
@@ -15392,7 +15530,7 @@ If a referenced sibling skill file is missing from this environment, ask the use
 
 ### Minimal checklist
 
-- [ ] Environment is bound and accessible (`queryEnv(action="info")`)
+- [ ] Environment is bound and accessible (`queryEnv(action="info")`) — if it fails, or only one environment shows up, confirm the current identity and credential slot first (`../cloudbase-cli/references/core.md`)
 - [ ] Metrics pulled with `queryEnv(action="metrics")` when the question involves QPS / CPU / throttle / invocation volume
 - [ ] CLS log service is enabled (`queryLogs(action="checkLogService")`) when log diagnosis is needed
 - [ ] Matching fault playbook selected when symptoms match 429 / function 404 / ACCESS_TOKEN_INVALID / 调用量为 0
@@ -15453,7 +15591,6 @@ If CLS is not enabled, note this as a **warning** — log-based diagnosis will b
 
 ```
 queryFunctions(action="listFunctions")
-```
 
 ## alarm-interpretation
 
