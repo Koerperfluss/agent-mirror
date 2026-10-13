@@ -1,19 +1,18 @@
 ---
 name: ffg-1-anlauf-historie-originalunterlagen
-description: "FFG Gesamt-Stand: 1-Anlauf-Historie (Ablehnung 21.05.2026 wörtlich)
-  + **V16 FINAL einreichbereit (ZIP UPLOAD_eCall_SLOTS_V16_FINAL_2026-10-13.zip md5
-  21ee9b0d78cb; 01 md5 81aaed542dd0, 05=Bankbeleg c317fc53aa4e, 06=72f01be32ab7)
-  — Kapitalnachweis = ECHTER Bankbeleg (George-Finanzbericht 13.10.2026, Sparbüxe
-  AT61 2025 6010 0398 2194 = 38.000 € + KontoKonto 1,90 €; 'Selbstauskunft' überall
-  raus) + SVS-Label korrigiert zu SMS-Gründungsbeihilfe (Sozialministeriumservice,
-  Leon GdB 90 %, max 34.400 €/50 % — Sascha hatte recht, Beweis April-Dossier)**
-  + **LIVE-EINREICHUNG: eCall-Antrag 74310314 'Körperfluss Edu' — 7/9 Blöcke
-  gespeichert (Jahresdaten grün ✓, Projektdaten ✓, Einstufung ✓, Beschreibungen
-  1.1–1.5 ✓, Projektleitung/Ansprechpartner ✓, Standort Loosdorf/NÖ ✓,
-  Bankverbindung ✓ IBAN AT61 2025 6010 0398 2194/BAWAG/BAWAATWW, Anreizwirkung ✓
-  'nein'), OFFEN: SDG-Seite (SDG 4+3+10, Subziel-Widget per Maus), Inhaltliche
-  Beschreibung (V16-PDF-Upload), Arbeitsplan, Kosten, Abschluss/Zeichnung
-  (nur Sascha); Copy-Texte fertig in 07_eCall_AUSFUELLHILFE_74310314.md**"
+description: "FFG Gesamt-Stand: **V16 FINAL einreichbereit (ZIP 21ee9b0d78cb; 01=81aaed542dd0,
+  05=Bankbeleg c317fc53aa4e, 06=72f01be32ab7) + LIVE-EINREICHUNG eCall 74310314
+  'Körperfluss Edu' (neue Antragsnummer!): GRÜN = Jahresdaten, Projektdaten, Einstufung,
+  Beschreibungen 1.1–1.5, Projektleitung (Geschlecht gefixt), Ansprechpartner, Standort
+  Loosdorf/NÖ, Bankverbindung (IBAN AT61 2025 6010 0398 2194/BAWAG/BAWAATWW), Anreizwirkung,
+  Nachhaltigkeitsziele, Inhaltliche Beschreibung, ARBEITSPLAN GRÜN (Sascha hat Excel-Import
+  selbst gemacht!), Lagler-Kostenzeile 900h/54.000 € — OFFEN: Fischer+Karner-Kostenzeilen
+  (über 'Aus Pool auswählen', NICHT Neu anlegen — 'Name kommt bereits im Pool vor'!),
+  Finanzierung-Tab (58.860/33.940/38.000), Erläuterungen zu den Kosten, Weitere
+  Förderungen (SMS), Uploads (05_Bankbeleg-PDF, LOI optional — IAB blockiert File-Dialoge,
+  Sascha manuell), Abschluss-Validierung → Zeichnung nur Sascha; Texte in
+  07_eCall_AUSFUELLHILFE_74310314.md; Import-Datei FFG_Arbeitsplan_Import_74310314.xlsx
+  md5 9af2b3bffd5e war der Schlüssel (Sheet 'Vorgangstabelle', 10 Zeilen = 5 AP + 5 Task)"
 metadata:
   node_type: memory
   type: project
@@ -22,7 +21,18 @@ metadata:
 
 # FFG 1. ANLAUF — KOMPLETTE HISTORIE aus Original-Unterlagen (gelesen 05.10.2026)
 
-## NACHTRAG 13.10. — V16 + eCall-Live-Fortschritt
+## NACHTRAG 13.10. (spät) — ARBEITSPLAN GRÜN + LAGLER-KOSTENZEILE KOMPLETT + Browser-Timeouts
+
+### DURCHBRUCH: Arbeitsplan GRÜN durch Saschas Excel-Import
+- **Sascha hat die Import-Excel SELBST importiert** (`FFG_Arbeitsplan_Import_74310314.xlsx`, md5 9af2b3bffd5e) → **Arbeitsplan-Nav: „Alle Pflichtfelder erfüllt" ✓ KEIN „!" mehr**. Alle 5 APs mit korrekten Namen/Eckdaten im Kosten-Formular sichtbar (AP 1 PM, AP 2 Architektur M2.1, AP 3 Dialoglogik M3.1, AP 4 Safety Guard M4.1, AP 5 Integration/Pilotakquise M5.1/M5.2).
+- **Sascha füllte parallel selbst:** Geschlecht Männlich (Projektleitung → **Projektdaten jetzt GRÜN**), SDG-Nachhaltigkeitsziele GRÜN, Inhaltliche Beschreibung GRÜN — 3 Blöcke selbst geschafft, nur Arbeitsplan+Kosten „!" übrig als ich nachsah.
+- **Kosten-Formular: Personalkosten-Tab** — Sascha hatte bereits **Lagler-Zeile angelegt** (CV hochgeladen: CV_-_Sascha_Lagler…pdf vom 17.12.2025-System, Typ Person, Clinical Lead, 50 €/h, GKZ 20 %) aber Stunden 0/„Nicht fertig".
+- **Ich schloss die Lagler-Zeile:** Dialog „Kostenposition bearbeiten" (iframe) → Stunden AP 1–5 = je **180** (evaluate value+input+change; frameLocator ist KEIN first() fähig, aber `frameLocator("iframe").getByRole(...)` direkt) → „Speichern und Schließen" → **Zeile verifiziert: „180|180|180|180|180|900,00|50.00 €|20%|54.000,00"** ✓ (exakt Antrag: 900 h × 50 + 20 % GKZ).
+- **Fischer-Blocker (wichtig!):** „Neuen Eintrag erstellen" → Radio „Neu anlegen" (im iframe per evaluate) → Typ „Person" (exact:true — 'Person' matcht sonst auch 'Nicht namentlich genannte'!) → Vorname Peter/Nachname Fischer/Projektfunktion „CTO & Lead AI Architect"/Stunden AP2–5 je 280 → **Speichern BLOCKIERT: „Dieser Name kommt bereits im Pool vor"** → Peter Fischer existiert bereits im Mitarbeiter-Pool! → **LÖSUNG: „Aus Pool auswählen" statt Neu anlegen** (Dialog: Radio „Aus Pool auswählen" im iframe). Bei Ich-Versuch: Browser-Timeouts (32 s, 3×) — Turn beendet, Sascha macht die 2 Zeilen nach Anleitung (Fischer 280 h AP2–5; Karner 40 h AP2–5, falls nicht im Pool: Neu anlegen Typ Person, Funktionsgruppe „ForscherIn" per natives select value+change — Optionswerte F=ForscherIn/T=TechnikerIn/U=andere).
+- **Select2-Rezept neu (Funktionsgruppe/Geschlecht im Kosten-Dialog):** SPAN.select2-selection — nativen `<select>` im iframe-DOM per evaluate finden (sel.name/id matchen) und `sel.value=…` + change direkt setzen („ForscherIn"=v F) — CUA ging schief weil iframe-Offset (iframeRect.y war −232 bei Scroll!) — Frame-Offset im Top messen (`document.querySelectorAll('iframe')` Breite>400) + Frame-Rect addieren.
+- **Rest (nächste Session):** ① Fischer/Karner-Zeilen (Pool!) ② Finanzierung-Tab: FFG 58.860/SMS 33.940 (beantragt)/Eigenmittel 38.000 ③ Erläuterungen zu den Kosten ④ Weitere Förderungen (SMS beantragt eintragen) ⑤ Uploads — IAB blockiert File-Dialoge (download cancelled), Sascha manuell: `05_KAPITALNACHWEIS_Eigenmittel_38000EUR_Bankbeleg.pdf`; LOI optional (Muster in Beilage 04, Sascha will SICHTUNG vor Upload) ⑥ Abschluss-Validierung → alle grün → Zeichnung+SUBMIT nur Sascha.
+- Subagent-Quota 1308 (reset 19:09) tötete /tmp/ecall_kapitel.md-Task — Kapiteltexte stehen direkt in antrag.typ Kap. 1.1–1.6+2.
+- LOI-Sichtung: 04_MARKT-DACH enthält Muster-LOI (Kneipp, „LOI bis 10. Oktober 2025", AWS-Seedfinancing-Kontext = ALT, ununterschrieben) + Kneipp-Partnerschafts-Broschüre; Sascha sah die Beilage, Upload nur auf sein GO, optional.
 
 ### V16 (13.10.) — KAPITALNACHWEIS = ECHTER BANKBELEG
 - Sascha lieferte: George-Finanzbericht **ausgedruckt 13.10.2026 09:39** → PDF `Desktop/Kapitalsnachweis Neu Sascha LAgler /Kapitalsnachweis-Lagler-13.10.2026.pdf` (3 S., 451.658 B; Ordnername endet auf LEERZEICHEN vor '/', per rglob finden). Inhalt: Sparbüxe AT61 2025 6010 0398 2194 = **38.000,00 €** + KontoKonto AT35 2025 6010 0122 9317 = 1,90 € (Gesamt 38.001,90). Dasselbe Konto wie Nov-2025-Beleg („Smart Sparen" heißt jetzt „Sparbüxe"); Bank = George (BAWAG P.S.K., BLZ 2025) — Saschas „ist Sparkasse"-Aussage war falsch, der Beleg beweist BAWAG/BLZ 2025.
