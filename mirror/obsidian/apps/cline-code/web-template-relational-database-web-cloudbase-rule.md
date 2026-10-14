@@ -1,14 +1,14 @@
 ---
 app: cline-code
 quelle: "web-template/relational-database-web-cloudbase/rule.md"
-stand: 2026-10-10
+stand: 2026-10-14
 tags: [spiegel, cline-code]
 ---
 
 ---
 name: relational-database-web-cloudbase
 description: "[Deprecated] Use when building frontend Web apps that talk to CloudBase Relational Database via @cloudbase/js-sdk – provides the canonical init pattern so you can then use Supabase-style queries from the browser. New environments should use PostgreSQL with app.rdb() — see postgresql-development skill instead."
-version: 2.35.1
+version: 2.35.2
 license: MIT
 alwaysApply: false
 metadata:

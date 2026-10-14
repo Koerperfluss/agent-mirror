@@ -1,14 +1,14 @@
 ---
 app: claude
 quelle: "web-template/skills/ops-inspector/SKILL.md"
-stand: 2026-10-13
+stand: 2026-10-14
 tags: [spiegel, claude]
 ---
 
 ---
 name: ops-inspector
 description: AIOps-style CloudBase inspection skill (v3). Use when users need health checks, log diagnosis, alarm interpretation (CPU alert normal?, peak QPS), metrics via queryEnv(action=metrics), or fault playbooks for 429 / function 404 / ACCESS_TOKEN_INVALID / zero invocations. Triggers on 巡检, 诊断, 告警, 峰值 QPS, 限频, 调用量为 0, troubleshooting.
-version: 2.35.1
+version: 2.35.2
 license: MIT
 alwaysApply: false
 ---

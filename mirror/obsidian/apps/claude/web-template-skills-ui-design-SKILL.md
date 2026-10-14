@@ -1,14 +1,14 @@
 ---
 app: claude
 quelle: "web-template/skills/ui-design/SKILL.md"
-stand: 2026-10-10
+stand: 2026-10-14
 tags: [spiegel, claude]
 ---
 
 ---
 name: ui-design
 description: Use when users need visual direction, interface hierarchy, layout decisions, design specifications, or prototypes before implementing a Web or mini program UI.
-version: 2.35.1
+version: 2.35.2
 license: MIT
 alwaysApply: false
 ---

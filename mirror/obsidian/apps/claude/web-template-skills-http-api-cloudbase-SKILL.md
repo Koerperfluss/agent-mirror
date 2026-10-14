@@ -1,14 +1,14 @@
 ---
 app: claude
 quelle: "web-template/skills/http-api-cloudbase/SKILL.md"
-stand: 2026-10-10
+stand: 2026-10-14
 tags: [spiegel, claude]
 ---
 
 ---
 name: http-api-cloudbase
 description: CloudBase official HTTP API client guide. This skill should be used when backends, scripts, or non-SDK clients must call CloudBase platform APIs over raw HTTP instead of using a platform SDK or MCP management tool.
-version: 2.35.1
+version: 2.35.2
 license: MIT
 alwaysApply: false
 ---

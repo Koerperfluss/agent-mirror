@@ -1,14 +1,14 @@
 ---
 app: cline-code
 quelle: "web-template/cloudbase-wechat-integration/rule.md"
-stand: 2026-10-10
+stand: 2026-10-14
 tags: [spiegel, cline-code]
 ---
 
 ---
 name: cloudbase-wechat-integration
 description: CloudBase WeChat integration guide for Mini Program WeChat Pay, Mini Program virtual payment (虚拟支付, wx.requestVirtualPayment), Official Account JSAPI Pay, Native QR-code Pay, Official Account OAuth, openid handling, payment callbacks, and CloudBase Integration Center generated functions. This skill should be used when users ask to add, debug, or extend WeChat payment, virtual payment, or official-account flows on CloudBase.
-version: 2.35.1
+version: 2.35.2
 license: MIT
 alwaysApply: false
 ---

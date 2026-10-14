@@ -1,14 +1,14 @@
 ---
 app: cline-code
 quelle: "web-template/auth-nodejs-cloudbase/rule.md"
-stand: 2026-10-10
+stand: 2026-10-14
 tags: [spiegel, cline-code]
 ---
 
 ---
 name: auth-nodejs-cloudbase
 description: CloudBase Node SDK auth guide for server-side identity, user lookup, and custom login tickets. This skill should be used when Node.js code must read caller identity, inspect end users, or bridge an existing user system into CloudBase; not when configuring providers or building client login UI.
-version: 2.35.1
+version: 2.35.2
 license: MIT
 alwaysApply: false
 ---
