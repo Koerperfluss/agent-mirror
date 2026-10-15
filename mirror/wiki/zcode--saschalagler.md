@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-15 22:02 UTC
+Zuletzt gespiegelt: 2026-10-15 22:17 UTC
 
 ## AGENTS
 
@@ -11549,7 +11549,7 @@ In ATLAS-ZCode-Sessions kann das Bash-Tool komplett tot sein: jeder Aufruf (auch
 
 # Memory Index
 
-- [Workflow-Topologie 15.10.](dynamic-workflow-topologie-2026-10-15.md) — dwfrun-542bffb6 läuft (4-Subagenten-Kette, 7 Skills → HTML-Dashboard out/topologie-workflow.html); LESSONS: Skill-Tool nur `skill`+`args`, ZCode Free-Modell-Fallback (lfm-2.5/nemotron) = Müll → zurück auf GLM
+- [Workflow-Topologie 15.10.](dynamic-workflow-topologie-2026-10-15.md) — dwfrun-542bffb6 ✅ COMPLETED: Dashboard out/topologie-workflow.html (13.4 KB, ls-beweisen), 2 verified Findings (Slice-Verify trivial-sicher), GO für Ausführung offen; LESSONS: Skill-Tool nur `skill`+`args`, Free-Modell-Fallback = Müll → GLM
 - [Token-Sparen 10.10.](feedback-token-sparen.md) — Vereinbarung: 5 Werkzeuge reichen fürs Förder-Projekt (Rest 90+ Skills überflüssig); keine Workflows ohne konkreten Auftrag, max. 2–3 Tags, keine Seiten-Pastes, App/Dateien statt Chat
 - [Saschas Lage NÖ 10.10.](sascha-lage-noe.md) — 29, arbeitslos/AMS-Sperre (Okt: 390 € Zufluss), Miete €350, Loosdorf Bez. Melk, keine Kinder; 🔴 KEIN Mietrückstand, ÖGK+Strom betreut, **GEWERBESCHEIN existiert** → finale geprüfte Liste V2 auf Desktop
 - [HolDirMehr-Replika 09.-11.10.](holdirmehr-replika.md) — ✅ **ONLINE: foerderungen-sascha.web.app** + **1.772 Förderungen** + **finale Liste V2** (2 Workflows: 93 geprüft → 6/33/54, dann Optimierung; Labels ✅/🔶/⚠️); PDF+MD+plan.html V2 synchron; ⚠️ Katalog © holdirmehr.at
@@ -12089,8 +12089,9 @@ Regeln: nie Emulator + LLM gleichzeitig (~7 GB Puffer), RAM vorher freiräumen, 
 
 ---
 name: dynamic-workflow-topologie-2026-10-15
-description: 15.10. dynamischer Workflow dwfrun-542bffb6 gestartet
-  (Workflow-Topologie planen) — 4-Subagenten-Kette + Lessons zu
+description: 15.10. dynamischer Workflow dwfrun-542bffb6 COMPLETED
+  (Workflow-Topologie planen) — 4-Subagenten-Kette, Dashboard auf Platte,
+  2 verified Findings (Verify-Checks trivial-sicher) + Lessons zu
   Skill-Tool-Params und ZCode Free-Modell-Fallback-Garbage
 metadata:
   node_type: memory
@@ -12098,8 +12099,11 @@ metadata:
   originSessionId: sess_20f1e63e-080e-468a-8f20-86ccadee7966
 ---
 
-**15.10.2026 — Workflow „Workflow-Topologie planen" gestartet und kompiliert clean:**
-- Run-ID: `dwfrun-542bffb6-306d-4969-afba-128165b4a83b` (Status bei Speicherung: läuft, Ende via Notifikation)
+**15.10.2026 — Workflow „Workflow-Topologie planen" FERTIG (dwfrun-542bffb6 COMPLETED):**
+- Run-ID: `dwfrun-542bffb6-306d-4969-afba-128165b4a83b`, kompilierte clean, lief im Hintergrund durch
+- Beweis: `~/.zcode/workspace/default/out/topologie-workflow.html` (13.468 Bytes, per `ls` geprüft) + Inventar-Tabelle 7/7 Skills existieren
+- Ergebnis: Rollen-Landkarte, Plan mit 5 Slices, kalt geprüft = „verwendbar" mit 3 Verify-Fixes; **OFFEN auf GO: Slices wirklich ausführen** (Nutzer noch nicht gefragt/geantwortet)
+- 2 verified Findings (vom unabhängigen Kalt-Prüfer, der Checks selbst ausführte): (1) Slice-3 zirkulär — Verify verlangt 5 PASS-Zeilen in out/verify.jsonl, läuft aber VOR Slice 4/5, besteht trivialsicher; Fix = Vollständigkeits-Check NACH Slice 5. (2) Slice-2-Verify beweist nichts — leeres plan.json bestand den Check (exit 0); Fix = Mindestzahl-Slices-Pflicht.
 - Script: `.zcode/workflow-drafts/Workflow-Topologie-planen.dwf.ts` (Revision → Edit + AmendWorkflow mit `path`)
 - Auftrag: aus 7 Skill-Anweisungen (caveman, loki-os-standard, workflow-run, wayfinder, gsd-core, executing-plans, visualize) Topologie + Slice-Plan + HTML-Visualisierung bauen
 
@@ -16407,6 +16411,8 @@ Sascha will **keine Gruppen-Liste**, sondern eine normale chronologische Verlauf
 
 # Memory Index
 
+- [LOKI.OS Nachtkonsolidierung 16.10. FERTIG](loki-os-konsolidierung-2026-10-16.md) — SSOT = `~/loki-ki/docs/LOKI_OS_UNIFIED_2026-10-16.md` (gebündeltes Einheits-Doku: Abos, Apps, Ports, Skills, Team, Repo-Karte, GO-Liste §7) · D1–D4 ausgeführt (Worktree weg, Fossilien in _ARCHIV/2026-10, Backups ~/.zcode/backups/konsolidierung-20261016) · I1–I3 eingepflegt (359 Dumps + 37 Audits + 4 PDFs + rsync-Rückholung) · **ClinePass E2E 200 (task_0006 zu)** · Kernel :8010 UP, LegalOps-Duplikat = Mythos, Hub :1006 down, Sigma :10345 = App entfernt (Reinstall = GO) · 12/12 Workflow-Behauptungen bestätigt (dwfrun-af3116d0) · 8 GO-Reste
+
 - [LOKI-Konsolidierung Merge-Matrix](loki-konsolidierung-merge-matrix.md) — 16.10. ALLE Loki-Versionen inventarisiert (3 Read-only-Scouts, nichts angefasst): SSOT `~/loki-ki/docs/LOKI_KONSOLIDIERUNG_MERGE_MATRIX_2026-10-16.md` · Kanonisch: ~/loki-ki (368 dirty!), loki-brain, loki-voice, loki-voice-app, loki-verkaufstool, e2e/loki-e2e — v17/v18 = Versionen, KEINE Duplikate · D1 lv-wt-zcode=Worktree, D2 loki-ki/loki-voice=Alt-Repo, D3/D4 Fossilien, D5 Desktop-ARCHIV-Kopie, D6 Cline-Session-Zips · Don't-touch: THOMAS-Kunden-Paket, TOOL-SAMMLUNG-VERKAUF (aktiver Verkauf!), 0B-Platzhalter (autopilot.py), Pfad-Falle Leerzeichen-am-Ende · warten auf GO-Gate (D1–D4 / alles / Option C) · Lektion: explore-Subagent pinnt zai-start-plan-Provider (tot) → general-purpose nutzen
 
 - [ClinePass in ZCode+Cline](clinepass-zcode-config.md) — 15.10. Config bewiesen (12 cline-pass/-Modelle in ~/.zcode/v2/provider_config.json, Key sk_e399…, 429=Auth ok) · Roh-ID-Falle (nur cline-pass/-Präfix = Flatrate, Roh-IDs = Insufficient balance) · Quota: kein Upgrade, 5h-Hard-Cutoff, Flash-first spart · Sync-Verdict: ClinePass NUR in ZCode+Cline · Offen: Chat-Test nach Reset ~00:10, Kernel :8010, LegalOps :7070, AutoClaw-CLI, Hermes-GO · Fertigmach-Workflow dwfrun-af3116d0 läuft mit 8 parallel (kein Cap — „3-Sperre" war nie aktiv) → FERTIGMELDUNG_2026-10-16.md
@@ -17497,6 +17503,28 @@ LOKI-OS-Harness Soll-Stand (gebaut 13.09.2026 in sess_6ec2db7a/sess_ecb2e5e0/ses
 6. **Orchestrierung:** loki-dev = 1 Pipeline, 5 Modi (INIT/BUILD/TAKEOVER/FINISH/MAP); 2 Wayfinder-Maps: `~/.agents/.wayfinder/map.md` (Skill-Konsolidierung, Tickets 10+11 offen) und `~/loki-ki/.wayfinder/map.md` (LOKI.OS Körperfluss-Automation, T-01…T-04).
 
 Regel-Änderungen immer: 1× in STANDARD-SKILLS.md editieren + `bash ~/.agents/tools/sync-standard-skills.sh` — nie in die Kopien. **Skills-Mirror (23.09., Sascha-Wut über „6 geroutete Skills fehlen in Claude komplett"):** sync-standard-skills.sh um Mirror-Loop erweitert (Backup `.bak-20260923`) — linkt ab jetzt JEDE fehlende Skill-Mappe aus `~/.agents/skills` als Symlink nach `~/.claude/skills` (kanonisch+Symlink-Muster, sess_055615ab). 23.09. gelinkt: loki-os-health, deja-search, gsd-core, roo-code, ralph-loop, coderabbit + automatisch 3 weitere (frontend-design-hub, fc-nginx-website, skillshare-sync) — alle ✅ SKILL.md erreichbar verifiziert. Kontext: Sascha nutzt Claude Code faktisch nicht (letzte Session 15.09., deja-Install 20.09.) — ZCode ist sein System. Verwandt: [[deja-vu-install]].
+
+## loki-os-konsolidierung-2026-10-16
+
+---
+name: loki-os-konsolidierung-2026-10-16
+description: 16.10. Nachtkonsolidierung abgeschlossen — Ein System, Ein Repo,
+  Einheits-Doku; alle Beweise und GO-Reste
+metadata:
+  node_type: memory
+  type: project
+  originSessionId: sess_ec044ff8-4d82-412d-b9db-4db95e4da190
+---
+
+16.10.2026 (~00:15): **LOKI.OS NACHT-KONSOLIDIERUNG FERTIG.** SSOT = `~/loki-ki/docs/LOKI_OS_UNIFIED_2026-10-16.md` (Abos/Kette, 12 App-Verdicts, Ports, Skill-System, Team, Repo-Karte, GO-Liste §7).
+
+- **D1–D4 ausgeführt** (GO erteilt): `~/lv-wt-zcode`-Worktree entfernt (war sauber auf HEAD b73391e, dirty-Files nur `.mimosa/`-Artefakte), `loki-ki/loki-voice`+`ios`+`LOKI_Mind`+`loki_gemma_paper_studio` → `~/loki-ki/_ARCHIV/2026-10/`. Backups: `~/.zcode/backups/konsolidierung-20261016/` (tar + git-bundle).
+- **I1–I3 eingepflegt:** 359 Konsolidierungs-Dumps → `docs/_konsolidierung_2026-09-21/` (06_unklar_gesichert hängt beim Kopieren, ausgespart), 37 Judicario-Audit-MDs → `docs/judicario-audits/`, 4 PDFs → `docs/pdf/`, ARCHIV-Rückholung per `rsync --ignore-existing` (additiv).
+- **ClinePass E2E GRÜN:** 16.10. 00:05, HTTP 200 „FUNKTIONIERT" gegen cline-pass/glm-5.3-flash — task_0006 geschlossen. ZCode-Workflow dwfrun-af3116d0 bestätigte 12/12 Fertig-Behauptungen (0 unbestätigt): Kernel :8010 UP (PID 84753), LegalOps „4×-Duplikat" = MYTHOS (je Config genau 1×), Hub :1006 DOWN frisch gemessen, Sigma :10345 DOWN weil App komplett entfernt (Reinstall = GO), ZCode-Volume schon ausgeworfen.
+- **8 GO-Reste** in LOKI_OS_UNIFIED §7 (Hermes-Löschung, Legacy-Config-Eintrag, Docker-Push, Sigma-Reinstall, Hub-Restart, Mirror-Scope `MIRROR_SOURCES=$HOME` drosseln, 06_unklar-Inventur, Desktop-Redundanz).
+- Don't-touch: THOMAS-Kunden-Paket, TOOL-SAMMLUNG-VERKAUF (heute 23:18 neue APK!), 0B-Pipeline-Platzhalter; Ordner haben teils Leerzeichen am Ende.
+
+Verwandt: [[loki-os-livestatus-2026-10-11]], [[cline-code-app-hub-1006-diagnosis]], [[autoclaw-sprache-translocation-fix]]
 
 ## loki-os-livestatus-2026-10-11
 
