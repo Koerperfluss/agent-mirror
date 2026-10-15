@@ -1,6 +1,6 @@
 # saschalagler (claude)
 
-Zuletzt gespiegelt: 2026-10-15 20:29 UTC
+Zuletzt gespiegelt: 2026-10-15 20:43 UTC
 
 ## CLAUDE
 
@@ -1102,6 +1102,13 @@ python scraper_vwgh.py --dry-run            # kein Schreiben
 ## Obsidian Vault Sync
 - Quelle: /Users/saschalagler/Documents/Obsidian Vault/_CLAUDE.md
 - Letzter Sync: 2026-08-31
+
+## Abo- & Agenten-System (Stand 15.10.2026)
+- **ClinePass** ($9.99): nur `cline-pass/*`-IDs = Flatrate (12 Modelle, konfiguriert in `~/.zcode/v2/provider_config.json` + Cline providers.json). Roh-IDs (z-ai/…) = PayG-Falle. Kein Upgrade; Credits (4,91 $) = Fallback.
+- **z.ai GLM Pro** ($80/Mo, 12k Cr./5h): Hauptmodell glm-5.3-flash / glm-5.3 via `api.z.ai/api/coding/paas/v4` bzw. `/api/anthropic`. Fallback-Kette: z.ai Pro → ClinePass → Cline Free → OpenRouter Free (nur nemotron/north) → Ollama lokal. Flash-first, Batch ab 12 Uhr.
+- **ZCode/MCP**: Rules nur via AGENTS.md + SessionStart-Hook (Standard-Skills-Injektion, ~/.zcode/cli/config.json). Docker-MCP: `gateway run --profile ai_coding --config config.yaml`. AutoClaw: z.ai-Pass läuft nur in der App (Embedded-Runtime).
+- **Team**: hcom 0.7.25 (Antigravity=agy, ZCode=manual start, Claude=auto). Rollen: Cline=Director/Reviewer(Veto) · ZCode=Builder · Antigravity=Vision. Kanban :3484. Pipeline ①gsd-core→②roo-code→③ralph-loop→④code-audit→⑤e2e.
+- Kompasse: `~/Desktop/LOKI-OS-KOMPASS.pdf` · `~/Desktop/LOKI-ABO-DASHBOARD.html` · Details: `~/LOKI_SESSION_CONTEXT.md`
 
 ## agent-os
 
