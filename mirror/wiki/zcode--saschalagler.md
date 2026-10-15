@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-15 21:28 UTC
+Zuletzt gespiegelt: 2026-10-15 21:46 UTC
 
 ## AGENTS
 
@@ -11459,6 +11459,7 @@ In ATLAS-ZCode-Sessions kann das Bash-Tool komplett tot sein: jeder Aufruf (auch
 
 # Memory Index
 
+- [Workflow-Topologie 15.10.](dynamic-workflow-topologie-2026-10-15.md) — dwfrun-542bffb6 läuft (4-Subagenten-Kette, 7 Skills → HTML-Dashboard out/topologie-workflow.html); LESSONS: Skill-Tool nur `skill`+`args`, ZCode Free-Modell-Fallback (lfm-2.5/nemotron) = Müll → zurück auf GLM
 - [Token-Sparen 10.10.](feedback-token-sparen.md) — Vereinbarung: 5 Werkzeuge reichen fürs Förder-Projekt (Rest 90+ Skills überflüssig); keine Workflows ohne konkreten Auftrag, max. 2–3 Tags, keine Seiten-Pastes, App/Dateien statt Chat
 - [Saschas Lage NÖ 10.10.](sascha-lage-noe.md) — 29, arbeitslos/AMS-Sperre (Okt: 390 € Zufluss), Miete €350, Loosdorf Bez. Melk, keine Kinder; 🔴 KEIN Mietrückstand, ÖGK+Strom betreut, **GEWERBESCHEIN existiert** → finale geprüfte Liste V2 auf Desktop
 - [HolDirMehr-Replika 09.-11.10.](holdirmehr-replika.md) — ✅ **ONLINE: foerderungen-sascha.web.app** + **1.772 Förderungen** + **finale Liste V2** (2 Workflows: 93 geprüft → 6/33/54, dann Optimierung; Labels ✅/🔶/⚠️); PDF+MD+plan.html V2 synchron; ⚠️ Katalog © holdirmehr.at
@@ -11993,6 +11994,31 @@ Regeln: nie Emulator + LLM gleichzeitig (~7 GB Puffer), RAM vorher freiräumen, 
 **Diagnose „Modell extrem langsam und dumm" (13.09., letzter Stand, noch nicht gelöst):** Checkliste an Sascha/Moritz gegangen — LANGSAM: (1) Swap-Tod prüfen (Task-Manager: „Ausgelagert" >2–3 GB / Disk 100 % = häufigste Ursache → Programme schließen, Modell neu laden), (2) **GPU Offload muss Maximum** sein im Load-Panel (0 = CPU-only = 1–3 tok/s statt 8–15), (3) Runtime muss **CUDA** sein, nicht Vulkan/CPU (Zahnrad → Runtime). Referenz: 8–15 tok/s normal, 1–3 = Konfig-Fehler. DUMM = ehrlicher Preis von **UD-Q2_K_XL (2-Bit-Qualitätsfloor)**. Empfehlung: parallel **Qwen3.5-35B-A3B Q4 (~21 GB, 5 GB Luft, Q4>2-Bit schlauer, besseres Tool-Calling)** laden und vergleichen — realistischer Daily-Driver; Alternativ-Fix auf 80B: Wechsel auf IQ3_XXS (nur wenn Swap gelöst). Erst-Check-Ergebnis steht noch aus.
 
 **10.10. — Report-Datei GELEERT vorgefunden + rekonstruiert:** `~/Desktop/CODING_MODELL_RESEARCH_2026-09-13.md` war zwischenzeitlich von 113 auf 0 Zeilen reduziert (vermutlich manuell geleert); nach neuem Anhang nur 17 Zeilen → **komplett rekonstruiert als verdichtete 31-Zeilen-Fassung** (alle Kernfakten aus Session-Chronik: SOTA-Stand, MOOLAPTOP-Finale, Mac-Deep-Research). Lektion: Desktop-MD-Reports kann Sascha löschen — Session-Chronik ist die eigentliche Sicherung; bei wichtigen Reports Datei-Existenz+Zeilen vor jedem Append prüfen (`wc -l`), nicht blind `>>`. Mac-Deep-Research-Details (Gemma 4, Checkpoints-Leak, 10–15 tok/s) leben jetzt in [[lm-studio-mac-gemma4-2026-10-10]].
+
+## dynamic-workflow-topologie-2026-10-15
+
+---
+name: dynamic-workflow-topologie-2026-10-15
+description: 15.10. dynamischer Workflow dwfrun-542bffb6 gestartet
+  (Workflow-Topologie planen) — 4-Subagenten-Kette + Lessons zu
+  Skill-Tool-Params und ZCode Free-Modell-Fallback-Garbage
+metadata:
+  node_type: memory
+  type: project
+  originSessionId: sess_20f1e63e-080e-468a-8f20-86ccadee7966
+---
+
+**15.10.2026 — Workflow „Workflow-Topologie planen" gestartet und kompiliert clean:**
+- Run-ID: `dwfrun-542bffb6-306d-4969-afba-128165b4a83b` (Status bei Speicherung: läuft, Ende via Notifikation)
+- Script: `.zcode/workflow-drafts/Workflow-Topologie-planen.dwf.ts` (Revision → Edit + AmendWorkflow mit `path`)
+- Auftrag: aus 7 Skill-Anweisungen (caveman, loki-os-standard, workflow-run, wayfinder, gsd-core, executing-plans, visualize) Topologie + Slice-Plan + HTML-Visualisierung bauen
+
+**Topologie (4 Subagenten, lineare Kette):** deterministisches `world.run("test", ["-f", …])`-Inventar → Landkarten-Zeichner (wayfinder/gsd-core) → Slice-Planer → Unabhängiger Prüfer (fresh eyes, OHNE Vorgeschichte, 1 Revisions-Loop falls `usable=false`) → Dashboard-Bauer (`out/topologie-workflow.html`, primary artifact) + 1 Repair-Agent im catch. Deliverable-Report mit verified/notCovered; workflow-run entfällt bewusst (Workspace ist kein Git-Repo).
+
+**Lessons:**
+1. **Skill-Tool akzeptiert NUR `skill` + `args`** — zwei Fehlversuche mit `skillaction`/`plan` bzw. `question` → InputValidationError. Für dynamic-workflows: `Skill(skill:"dynamic-workflows")` lädt den kompletten Authoring-Contract (§16 Facade: agent/ask/phase/report/artifact/world.run/hole).
+2. **ZCode Free-Modell-Fallback produziert Müll:** Session fiel auf `liquid/lfm-2.5-2.6b:free` → `nemotron-3.5-lightning:free` und lieferte Nonsense-JSON („Dolce"-Payload statt Antwort). Nur Rückkehr auf GLM-5.3-Flash stellte die Arbeit wieder her — bei kaputter Session zuerst aktives Modell prüfen, nicht neu anfangen.
+3. dynamic-workflows-Fassade erlaubt Subagents keine Absolut-Pfade (bestätigt [[plugin-skill-inventar-dwfrun-2026-10-09]]), `world.run` schon → Datei-Existenzchecks außerhalb des Workspace laufen als `world.run("test",["-f",pfad])`.
 
 ## eqmac-deinstallation-spotify-fix
 
@@ -16291,6 +16317,8 @@ Sascha will **keine Gruppen-Liste**, sondern eine normale chronologische Verlauf
 
 # Memory Index
 
+- [ClinePass in ZCode+Cline](clinepass-zcode-config.md) — 15.10. Config bewiesen (12 cline-pass/-Modelle in ~/.zcode/v2/provider_config.json, Key sk_e399…, 429=Auth ok) · Roh-ID-Falle (nur cline-pass/-Präfix = Flatrate, Roh-IDs = Insufficient balance) · Quota: kein Upgrade, 5h-Hard-Cutoff, Flash-first spart · Sync-Verdict: ClinePass NUR in ZCode+Cline · Offen: Chat-Test nach Reset ~00:10, Kernel :8010, LegalOps :7070, AutoClaw-CLI, Hermes-GO · Fertigmach-Workflow dwfrun-af3116d0 läuft → FERTIGMELDUNG_2026-10-16.md
+
 - [VERKAUFS HUB = Tool-Sammlung-Verkauf](verkaufshub-tool-sammlung.md) — 11.10. NACHMITTAG VOLLZUG: **GHOST-AUDIT (Sascha recht gehabt — 35/52 gerettet, echte Kopie unter ~/Claude/Projects/TOOL SAMMLUNG VERKAUF/AI_STUDIO_EXPORTS/, 17 ehrlich export-ausstehend; Flags+Pfade korrigiert, JSON-Backup)** · **Motor Kette 2.0: OmniRoute raus (grep 0), Z.ai-Coding-Endpoint + Config-Key → GLM-4.6 „BEREIT", Ollama-Fallback; planer.py-Import-Fix (nach Umbau ALLE Importeure greppen!)** · **Auto-Pilot RUNDE ÜBER 50 echte Tools läuft (RUNDENCAP 67, timeout 600→1200, detached + Selbstbeendigung + hub_refresh); Stand 2/50** · hub-glass v2 hell (404media-Guide) + **v2.1 Detail-Panel** (Klick auf Karte = volle Funktion/Stack/Lücken/Markt/Pfad-Kopieren/klickbare Analyse+Plan-Links) · omniroute.autostart bootout · **Eigent-Schwarm: Arbeitskräfte-Modus aktiv, TESTLAUF 1 ATLAS gesendet (setValue+Senden nach open -a), Testlauf 2 hängt als Nachfrage im ATLAS-Chat** · P4 (ALLE-TOOLS-Doku) nach Runden-Ende
 
 - [FFG 1.-Anlauf-Historie (Original-Unterlagen)](ffg-1-anlauf-historie-originalunterlagen.md) — 05.10. alle 25 Original-PDFs gelesen: Projekt.Start 66244243 15.09.2025 6.000 € bedingt → **08.07.2026 0 €**; Ablehnung 21.05.2026 (wörtliche Gründe) · **13.10. FINAL: V16 einreichbereit (ZIP UPLOAD_eCall_SLOTS_V16_FINAL_2026-10-13.zip md5 21ee9b0d78cb; Kapitalnachweis 05_Bankbeleg.pdf = echter George-Auszug 13.10.2026, Sparbüxe 38.000 €; SMS-Label korrekt — Sascha hatte recht mit SMS/Sozialministeriumservice für Leon GdB 90 %, max 34.400 €)** · **LIVE eCall 74310314 (neue Antragsnummer): GRÜN = Jahresdaten/Projektdaten (Start 01.01.2027, Einzelprojekt)/Einstufung/Beschreibungen 1.1–1.5/Projektleitung/Ansprechpartner/Standort Loosdorf/Bankverbindung (IBAN AT61 2025 6010 0398 2194/BAWAG/BAWAATWW)/Anreizwirkung/Nachhaltigkeit/Inhaltliche Beschreibung/ARBEITSPLAN (Sascha importierte FFG_Arbeitsplan_Import_74310314.xlsx selbst — 5 APs + 5 Tasks)/Lagler-Kostenzeile 900 h/54.000 €** · OFFEN: Fischer+Karner-Kostenzeilen (**AUS POOL auswählen — 'Neu anlegen' blockiert „Name bereits im Pool"'!** Fischer 280 h AP2–5, Karner 40 h AP2–5), Finanzierung-Tab (58.860/33.940/38.000), Erläuterungen, Weitere Förderungen, Uploads (05_Bankbeleg-PDF + ggf. LOI — **IAB blockt File-Dialoge + Downloads grundsätzlich = Sascha manuell**), Validierung → Zeichnung+SUBMIT nur Sascha · Texte: 07_eCall_AUSFUELLHILFE_74310314.md · eCall-Widgets-Rezepte im File (natives date-input=ISO-Value, Kendo/Select2=CUA-Klick, CKEditor=iframe² body innerHTML, ASP-Buttons per evaluate el.click(), Session-Timeout→Re-Login)
@@ -16649,6 +16677,35 @@ Vertiefung 16.09.2026 ~03:20 Uhr (4× 1006, „es geht kein Anbieter", ein Chat 
 Ergänzung 16.09.2026 (nach ⌘Q-Restart durch Sascha, Daemon 4:44 min stabil, Z.AI HTTP 200): Sascha fragte frustriert „was heißt der Code?" — aufklären: **1006 ist die Standard-WebSocket-Close-Nummer für „Verbindung brutal getrennt" (Abriss ohne Close-Frame), keine geheime Fehlerdiagnose**. Wichtig: Die roten 1006-Boxen in alten Chats sind **historische Meldungen vom Crash-Zeitpunkt und verschwinden NICHT aus dem Verlauf** — selbst wenn die Verbindung längst wieder steht. Entscheidender Funktionstest ist daher nicht das Verschwinden der Boxen, sondern ob eine frische Test-Nachricht durchgeht. Vertrauensbildend wirken Live-Messungen (PID-Laufzeit via `ps -o etime`, curl-HTTP-Codes) als Beweis-Tabelle.
 
 Abschluss-Erkenntnis 16.09.2026 (Sascha: „wieso geht ein chat und der andere nicht?"): **Jeder Chat/Session in Cline hält seine EIGENE WebSocket-Verbindung zum Hub-Daemon** — Fenster teilen sich den Daemon, nicht die Leitungen. Beim Daemon-Crash rissen nur die Leitungen der zu dem Zeitpunkt offenen Chats → genau die zeigen 1006 und können nicht senden; nach dem Daemon-Neustart geöffnete Chats ziehen frische Leitungen und laufen. **Fix-Reihenfolge für betroffene Chats:** (1) Chat aus Sidebar schließen + neu öffnen (erzwingt Neuverbindung, meist ausreichend), (2) sonst ⌘Q-Neustart der App, (3) sonst pkill nur mit GO. Diese Chat-Isolation erklärt das Symptom „ein Chat geht, der andere nicht" ohne weitere Diagnose.
+
+## clinepass-zcode-config
+
+---
+name: clinepass-zcode-config
+description: ClinePass-Flatrate in ZCode+Cline (15.10.2026) — 12-Modelle-Config,
+  Roh-ID-Falle, Quota-Architektur, 9-App-Sync-Verdict, offene Punkte +
+  Fertigmach-Workflow dwfrun-af3116d0
+metadata:
+  node_type: memory
+  type: project
+  originSessionId: sess_ec044ff8-4d82-412d-b9db-4db95e4da190
+---
+
+**ClinePass in ZCode/Cline — Stand 15.10.2026 (Sascha: „mach alles fertig bis morgen, full gas")**
+
+**Config (bewiesen):** `~/.zcode/v2/provider_config.json` = die LIVE-Datei (UI-Edits schreiben nur sie, nicht die alte v2/config.json): Provider „ClinePass", Base `https://api.cline.bot/api/v1`, Format openai-chat-completions, **12 cline-pass/-Modelle** (kimi-k3, qwen3.8-max, glm-5.3, glm-5.3-flash, deepseek-v4-pro, deepseek-v4.1-flash, qwen3.7-max 262k, qwen3.7-plus, mimo-v2.5, mimo-v2.5-pro, minimax-m3, muse-spark-1.3-contributor), 12 Model-Regeln (Context 1M/262144, Max-Output 32000, Input-Types pro Handbuch, Structured output + Mid-conversation; Muse nur Structured). Saschas Key `sk_e399e2086e…` (curl → 429 = Auth gültig). Backup `AGENTS.md.bak-clinepass-20261015…`.
+
+**Roh-ID-Falle (wichtigster Befund):** Gateway-Katalog listet 463 Modelle — nur IDs MIT Präfix `cline-pass/` buchen die Flatrate; Roh-IDs (`z-ai/glm-5.3`, `moonshotai/…`, 417 in der alten v2/config.json) = Pay-as-you-go → „Insufficient balance −0,09 $". Legacy-Eintrag in alter v2/config.json ist inaktiv (ZCode 3.15 liest sie nicht), bewusst nicht angefasst.
+
+**Quota-Architektur:** 3 Schranken (5h-Rolling-Fenster, Woche, Monat), Hard-Cutoff ClinePassLimitError, KEIN Upgrade/Tier/Token-Add-on; Yearly 79,92 $ = nur −33 % Preis, KEINE mehr Tokens. Flash-Modelle (GLM-5.3-Flash, DeepSeek V4.1 Flash) brennen Quota am langsamsten.
+
+**9-App-Sync-Verdict:** ClinePass gehört NUR in ZCode + Cline; Claude.app braucht Anthropic-Endpoint (z.ai api/anthropic), Antigravity/AutoClaw = z.ai, Eigent = nur Browser-Backend, Docker = MCP-Gateway, LM Studio/Ollama getrennt halten. Cline-Desktop: cline-pass-Provider + lastUsed cline-pass, Default cline-free/mimo-v2.6-flash (spart Pass-Quota).
+
+**Offen (per Konversationstabelle 15.10.):** ClinePass echter Chat-Test (Limit-Reset ~00:10 nach 429) · LOKI-Kernel :8010 down · LegalOps-MCP :7070 4× dupliziert · Sigma :10345 down · AutoClaw-CLI fehlt im PATH · Atomic-Hermes-Entfernung wartet auf GO · AutoClaw-Cron Night-Shift + Hermes Learning-Loop „geplant" · Dauermutten: GO-Wecker, Deutsch-Patch, „GO doku-fix" (assi-README).
+
+**Fertigmach-Workflow:** dwfrun-af3116d0 „ClinePass + System fertig machen" (15.10. ~23:30 gestartet, Script `.zcode/workflow-drafts/ClinePass--System-fertig-machen.dwf.ts`): Unterhaltungs-Extrakt (Paste-File 2291 Zeilen) → 3 Prüfer (clinepass/infra/skills, nur-lesend) → Fixer mit tar-Backup nach `~/.zcode/backups/cleanup-20261016/` (nie löschen/deployen; Skill-Konsolidierung „managing-skills einpflegen" war 6× an Hub-1006 gescheitert, nie gelaufen) → Fertigmeldung `~/Desktop/FERTIGMELDUNG_2026-10-16.md` mit frischer Beweis-Gegenprüfung. GO-Liste/Blockiert nur gelistet, nie ausgeführt.
+
+Link: [[sascha-local-infra-ports]] · [[cline-code-app-hub-1006-diagnosis]] · [[autoclaw-sprache-translocation-fix]]
 
 ## deja-vu-install
 

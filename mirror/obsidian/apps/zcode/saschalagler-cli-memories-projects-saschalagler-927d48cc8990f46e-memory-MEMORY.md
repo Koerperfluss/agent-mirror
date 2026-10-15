@@ -1,11 +1,13 @@
 ---
 app: zcode
 quelle: "saschalagler/cli/memories/projects/saschalagler-927d48cc8990f46e/memory/MEMORY.md"
-stand: 2026-10-13
+stand: 2026-10-15
 tags: [spiegel, zcode]
 ---
 
 # Memory Index
+
+- [ClinePass in ZCode+Cline](clinepass-zcode-config.md) — 15.10. Config bewiesen (12 cline-pass/-Modelle in ~/.zcode/v2/provider_config.json, Key sk_e399…, 429=Auth ok) · Roh-ID-Falle (nur cline-pass/-Präfix = Flatrate, Roh-IDs = Insufficient balance) · Quota: kein Upgrade, 5h-Hard-Cutoff, Flash-first spart · Sync-Verdict: ClinePass NUR in ZCode+Cline · Offen: Chat-Test nach Reset ~00:10, Kernel :8010, LegalOps :7070, AutoClaw-CLI, Hermes-GO · Fertigmach-Workflow dwfrun-af3116d0 läuft → FERTIGMELDUNG_2026-10-16.md
 
 - [VERKAUFS HUB = Tool-Sammlung-Verkauf](verkaufshub-tool-sammlung.md) — 11.10. NACHMITTAG VOLLZUG: **GHOST-AUDIT (Sascha recht gehabt — 35/52 gerettet, echte Kopie unter ~/Claude/Projects/TOOL SAMMLUNG VERKAUF/AI_STUDIO_EXPORTS/, 17 ehrlich export-ausstehend; Flags+Pfade korrigiert, JSON-Backup)** · **Motor Kette 2.0: OmniRoute raus (grep 0), Z.ai-Coding-Endpoint + Config-Key → GLM-4.6 „BEREIT", Ollama-Fallback; planer.py-Import-Fix (nach Umbau ALLE Importeure greppen!)** · **Auto-Pilot RUNDE ÜBER 50 echte Tools läuft (RUNDENCAP 67, timeout 600→1200, detached + Selbstbeendigung + hub_refresh); Stand 2/50** · hub-glass v2 hell (404media-Guide) + **v2.1 Detail-Panel** (Klick auf Karte = volle Funktion/Stack/Lücken/Markt/Pfad-Kopieren/klickbare Analyse+Plan-Links) · omniroute.autostart bootout · **Eigent-Schwarm: Arbeitskräfte-Modus aktiv, TESTLAUF 1 ATLAS gesendet (setValue+Senden nach open -a), Testlauf 2 hängt als Nachfrage im ATLAS-Chat** · P4 (ALLE-TOOLS-Doku) nach Runden-Ende
 

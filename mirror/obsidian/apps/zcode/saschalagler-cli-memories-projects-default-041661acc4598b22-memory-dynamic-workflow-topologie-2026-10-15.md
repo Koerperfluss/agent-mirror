@@ -1,0 +1,29 @@
+---
+app: zcode
+quelle: "saschalagler/cli/memories/projects/default-041661acc4598b22/memory/dynamic-workflow-topologie-2026-10-15.md"
+stand: 2026-10-15
+tags: [spiegel, zcode]
+---
+
+---
+name: dynamic-workflow-topologie-2026-10-15
+description: 15.10. dynamischer Workflow dwfrun-542bffb6 gestartet
+  (Workflow-Topologie planen) — 4-Subagenten-Kette + Lessons zu
+  Skill-Tool-Params und ZCode Free-Modell-Fallback-Garbage
+metadata:
+  node_type: memory
+  type: project
+  originSessionId: sess_20f1e63e-080e-468a-8f20-86ccadee7966
+---
+
+**15.10.2026 — Workflow „Workflow-Topologie planen" gestartet und kompiliert clean:**
+- Run-ID: `dwfrun-542bffb6-306d-4969-afba-128165b4a83b` (Status bei Speicherung: läuft, Ende via Notifikation)
+- Script: `.zcode/workflow-drafts/Workflow-Topologie-planen.dwf.ts` (Revision → Edit + AmendWorkflow mit `path`)
+- Auftrag: aus 7 Skill-Anweisungen (caveman, loki-os-standard, workflow-run, wayfinder, gsd-core, executing-plans, visualize) Topologie + Slice-Plan + HTML-Visualisierung bauen
+
+**Topologie (4 Subagenten, lineare Kette):** deterministisches `world.run("test", ["-f", …])`-Inventar → Landkarten-Zeichner (wayfinder/gsd-core) → Slice-Planer → Unabhängiger Prüfer (fresh eyes, OHNE Vorgeschichte, 1 Revisions-Loop falls `usable=false`) → Dashboard-Bauer (`out/topologie-workflow.html`, primary artifact) + 1 Repair-Agent im catch. Deliverable-Report mit verified/notCovered; workflow-run entfällt bewusst (Workspace ist kein Git-Repo).
+
+**Lessons:**
+1. **Skill-Tool akzeptiert NUR `skill` + `args`** — zwei Fehlversuche mit `skillaction`/`plan` bzw. `question` → InputValidationError. Für dynamic-workflows: `Skill(skill:"dynamic-workflows")` lädt den kompletten Authoring-Contract (§16 Facade: agent/ask/phase/report/artifact/world.run/hole).
+2. **ZCode Free-Modell-Fallback produziert Müll:** Session fiel auf `liquid/lfm-2.5-2.6b:free` → `nemotron-3.5-lightning:free` und lieferte Nonsense-JSON („Dolce"-Payload statt Antwort). Nur Rückkehr auf GLM-5.3-Flash stellte die Arbeit wieder her — bei kaputter Session zuerst aktives Modell prüfen, nicht neu anfangen.
+3. dynamic-workflows-Fassade erlaubt Subagents keine Absolut-Pfade (bestätigt [[plugin-skill-inventar-dwfrun-2026-10-09]]), `world.run` schon → Datei-Existenzchecks außerhalb des Workspace laufen als `world.run("test",["-f",pfad])`.
