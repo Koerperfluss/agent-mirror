@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-15 22:17 UTC
+Zuletzt gespiegelt: 2026-10-15 22:31 UTC
 
 ## AGENTS
 
@@ -11660,6 +11660,7 @@ In ATLAS-ZCode-Sessions kann das Bash-Tool komplett tot sein: jeder Aufruf (auch
 - [Patrick Physiotherapie via SBP](patrick-physiotherapie-sbp.md) — 07.09.: Patrick (>20, KEINE einschlägige Ausbildung, Ziel-FH IMC Krems) braucht volle SBP + FH-Aufnahmeverfahren; ohne Beruf OK — „beruflich ODER sonstige Vorbildung" (§ 64a UG); geplantes DOCX (R4-Cover) noch offen; Plaintext-PDF abgelehnt
 - [Doc-Design zählt](feedback-doc-design-matters.md) — 07.09.: „simpel" = wenig Umfang, nie schlechtes Layout; 11.09.: **PDF = Lieferformat** („ERSTELLE EIN VERFICKTES PDF"); LibreOffice JETZT installiert (soffice→PDF + pdftoppm Pipeline); Quick-Look-DOCX-Thumbnails unzuverlässig; Übergabe-Docs immer Cover/Tabellen/Screenshots
 - [LOKI Projekt-Map](loki-project-map.md) — 06.09. 17:30: Legal-Ops gelöst, Atlas-Takeover läuft LIVE in AutoClaw, TODO-App fertig, Paraletts=Prototyp, Barbulls=Wix+Scaffold; Q1 entlastet, Q1b Home-Repo neu; Source of Truth = ~/LOKI_PROJECT_MAP.md
+- [Vetropack-Bewerbungen 15.10.](vetropack-bewerbungen-2026-10-15.md) — ✅ BEIDE raus (Qualitätskontrolle Req3740 + Initiativbewerbung, Status „Thank you for applying"); SF-Login koerperfluss@gmail.com / Vetro2026!La; SF-Automatik-Learnings
 
 ## active-projects-focus
 
@@ -13951,6 +13952,30 @@ Am 11.09.2026 gestellt und am selben Tag ABGESCHLOSSEN inkl. Paritäts-Build (2 
 - **Neue PRO-Keys von Reinhard** (Versand 02.09. kam nie an, alte ungültig): jud_Q9rZ8kR1KEGCZP0I0-hOWCmudz0S3WFI + jud_0UZGwFqnbqmsxayVXY9K800NMaUWK9LS (jeder = Lizenz, für 3 Interessenten).
 - **BH-Melk-Akutfall im selben Ordner:** Sozialhilfe/Wohnkosten-Rückstand 1.050 € (3× 350 €), Sachbearbeiter Thomas Schauer, Rechtslage via Judicario-MCP (VwGH 2020/10/0111, OGH RS0072870), Dringlichkeitsantrag-PDF + EMAIL_3 fertig, **Frist 09.10.2026**.
 - **Heutige ZCode-Fehler (ECONNREFUSED, Screenshot) = ZCode fiel auf OmniRoute-Fallback zurück** (20.09. abgebaut!) — Fix: Provider auf z.ai builtin stellen; Screenshot-Beweis in der WhatsApp-Serie.
+
+## vetropack-bewerbungen-2026-10-15
+
+---
+name: vetropack-bewerbungen-2026-10-15
+description: Vetropack Pöchlarn — BEIDE Bewerbungen (Qualitätskontrolle +
+  Initiativbewerbung) eingereicht & verifiziert; SF-Konto + Passwort
+metadata:
+  node_type: memory
+  type: project
+  originSessionId: sess_cd7cc018-f608-44de-97ba-319bd8bbdbce
+---
+
+Stand 16.10.2026 (Nacht): **Beide Vetropack-Bewerbungen bestätigt eingereicht** (SuccessFactors-Kandidatenkonto, Status „Thank you for applying!", 15.10.2026):
+1. Mitarbeiter Qualitätskontrolle und Qualitätssicherung (m/w/d) — Req 3740, Pöchlarn, 6/3-Schicht, KV-Mindest €2.555,25
+2. Initiativbewerbung (IT/Werks-Support-Richtung)
+
+**Konto:** career5.successfactors.eu (company=vetroconsu), Login koerperfluss@gmail.com, Passwort **Vetro2026!La** (16.10. von mir per Reset-Mail gesetzt — altes PW unbekannt). Profil zeigt „submitted (2)".
+
+**Dokumente:** Lebenslauf `~/Desktop/Desktop-Dokumente/Lebenslaeufe/Lebenslauf_Sascha_Lagler_Original_Classic.pdf`; Anschreiben `~/Desktop/TO DOS /bewerbungen vetropark&kurirer/Bewerbungvetropark.pdf` (IT-Initiativanschreiben, DIN 5008, vom Gemini-Leitfaden übernommen).
+
+**Technik-Lernen (SF-Automatisierung):** IAB kann keine setInputFiles → Upload via `evaluate` + DataTransfer (PDF als base64 in File, `input.files = dt.files`, change-Event). SF-Picklists: Button per JS klicken → `li` in sichtbarer `[id$="_listSelect"]` klicken (hidden input `tor__fcust_*` = Wahrheitsprüfung). SF-Formular rendert bei Widget-.fill() gelegentlich KOMPLETT neu (alle Werte+Uploads weg) → nativen Value-Setter nutzen, keine Playwright-.fill() auf SF-Widgets. „Account Already Exists" = Konto/ Bewerbung existierte schon → Login statt Neuregistrierung. **Login-Formular:** auch dort frisst Playwright-.fill() auf `#username` den Wert nicht → nativer Setter + input/change-Events.
+
+**16.10. Nachtrag (Upload-Frage „geht in keinem Browser"):** Sascha meldete, Upload scheitere in allen Browsern — Diagnose: **SF-Portal-Bug, kein Browser-Problem** (Formular rendert neu und wirft Uploads optisch weg; ich habe das 2× live beobachtet). Erneut verifiziert: erneut auf Qualitätskontrolle-Bewerbungsseite → Portal sagt **„You already applied for this position"**; Uploads sind serverseitig da (Pflichtfeld). Praktische Regeln für künftige SF-Bewerbungen: nach Dateiauswahl warten bis „File uploaded successfully", nur PDF ≤10 MB, Sicht-Check im Candidate Profile → „My Documents" vor Apply. Dateiname-Typo in seinem Anschreiben-File: „Bewerbungve**tropark**.pdf" (korrekt: Vetropack). **Gmail-MCP tools (gmail_list/gmail_search) = Permission denied (keine API-Scopes)** → Gmail stattdessen im Browser lesen (mail.google.com im claimed Tab, eingeloggt) — funktioniert.
 
 ## vorssaint-mac-tools-research
 
