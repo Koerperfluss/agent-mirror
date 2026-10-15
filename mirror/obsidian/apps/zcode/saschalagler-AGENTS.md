@@ -121,3 +121,19 @@ Der Test-Spinner („Testing ClinePass…") in den Einstellungen hängt, weil ZC
 Beispiel: „Implementiere in @src/services/user.ts updateUserProfile. Interfaces liegen in @src/types/user.ts. Keine bestehenden Exporte ändern. Danach npm test ausführen und Fehler selbst beheben."
 <!-- CLINEPASS-ZCODE:END -->
 
+
+<!-- TEAM-PROTOCOL:START -->
+## Team-Protokoll — Cline × ZCode × Antigravity (via hcom, Stand 15.10.2026)
+
+**Bus:** hcom v0.7.25 (installiert, Hooks aktiv: Claude/Gemini/Antigravity/Cursor/OpenCode/Kilo/Pi, 7 Agenten live). ZCode = Manual-Modus: im ZCode-Terminal `hcom start` ausführen, dann per `send a message to …` erreichbar.
+
+**Rollen (verbindlich):**
+| Agent | Rolle | Rechte |
+|---|---|---|
+| **Cline (Director + Reviewer)** | plant, verteilt Tasks, 4D-Review mit **Veto** ("wer baut, prüft nicht") | GO/NO-GO |
+| **ZCode (Builder)** | baut Slices (10 Subagent-Def.s in ~/.zcode/agents), Modelle: z.ai GLM-5.3-Flash / ClinePass | Edits ≤2 Dateien/Slice |
+| **Antigravity (Orchestration + Vision)** | `hcom agy`, Gemini-Agenten, UI-/Screenshot-Reviews | Browser-/Bild-Checks |
+
+**Regeln:** ① Kanban :3484 = einziges Task-Board (kein Doppelleben) ② max.3 Worker parallel ③ Botschaften mit `--thread <task>` (Isolation) ④ Ergebnisse → Mission-Log + STATUS.md, nie nur im Chat ⑤ bei Quota-429: Modell wechseln (Flash-first), nicht stoppen.
+<!-- TEAM-PROTOCOL:END -->
+

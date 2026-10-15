@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-15 19:59 UTC
+Zuletzt gespiegelt: 2026-10-15 20:14 UTC
 
 ## AGENTS
 
@@ -119,6 +119,10 @@ Der Test-Spinner („Testing ClinePass…") in den Einstellungen hängt, weil ZC
 `Ziel: … · Kontext: @dateien · Einschränkungen: was NICHT ändern · Verifikation: welcher Befehl beweist Erfolg (z. B. npm test)`
 Beispiel: „Implementiere in @src/services/user.ts updateUserProfile. Interfaces liegen in @src/types/user.ts. Keine bestehenden Exporte ändern. Danach npm test ausführen und Fehler selbst beheben."
 <!-- CLINEPASS-ZCODE:END -->
+
+
+<!-- TEAM-PROTOCOL:START -->
+## Team-Protokoll — Cline × ZCode × Antigravity (via hcom, Stand 15.10.2026)
 
 
 ## cavecrew-builder
