@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-15 18:44 UTC
+Zuletzt gespiegelt: 2026-10-15 18:59 UTC
 
 ## AGENTS
 
@@ -76,6 +76,50 @@ Allrounder-Zusatz (DEEP-Mode): Dekonstruktion → Adaptive Planung → Live-Rech
 6. **Aufwand vor Start:** Bei Tasks >30 Min geschätzte Dauer + Credit-Risiko in 1 Zeile nennen, dann los.
 
 <!-- STANDARD-SKILLS:END -->
+
+<!-- CLINEPASS-ZCODE:START -->
+## ClinePass in ZCode (Stand 15.10.2026)
+
+Provider **ClinePass** (`https://api.cline.bot/api/v1`, Chat-completions-Format) ist in `~/.zcode/v2/provider_config.json` konfiguriert. **Nur `cline-pass/`-IDs nutzen die Flatrate** — Roh-IDs (`z-ai/…`, `moonshotai/…`) buchen Pay-as-you-go ab und scheitern mit „Insufficient balance".
+
+### Modell-Routing (12 Modelle, Flatrate 9,99 USD/5h-Limit)
+| Aufgabe | Modell |
+|---|---|
+| Standard-Coding, schnelle Fixes | `cline-pass/glm-5.3-flash` |
+| Komplexe Long-Horizon-Reasoning | `cline-pass/glm-5.3` |
+| Frontend/UI/Visuell (Image+Video+PDF) | `cline-pass/kimi-k3`, `cline-pass/qwen3.8-max` |
+| Große Refactorings / Architektur | `cline-pass/deepseek-v4-pro` |
+| Viele wiederholte Tool-Calls (durchsatzstark) | `cline-pass/deepseek-v4.1-flash` |
+| Multimodal (Screenshots, Video) | `cline-pass/minimax-m3` |
+| Routine / ausgewogen | `cline-pass/qwen3.7-plus` |
+| Doku/Open-Source-Beiträge | `cline-pass/muse-spark-1.3-contributor` |
+
+### Setup-Falle: unendlicher Lade-Spinner
+Der Test-Spinner („Testing ClinePass…") in den Einstellungen hängt, weil ZCode dort ohne SSE testet (`stream: false`). **Ignorieren** — im echten Chat mit `stream: true` funktioniert es sofort. Terminal-Gegenprobe:
+`curl -N -X POST https://api.cline.bot/api/v1/chat/completions -H "Authorization: Bearer KEY" -H "Content-Type: application/json" -d '{"model":"cline-pass/glm-5.3-flash","messages":[{"role":"user","content":"hi"}],"stream":true}'`
+
+### 4 Kontext-Operatoren im Chat
+- `@` → Datei/Ordner referenzieren (`@src/index.ts`), verhindert Repo-weites Suchen
+- `#` → früheren Chat verknüpfen (`#123`), Kontext wiederverwenden
+- `/` → gespeicherte Custom-Workflows/Prompts ausführen
+- `$` → Skills/Sub-Routinen einbinden
+
+### Thought Level & Execution Mode
+| Parameter | Wert | Wann |
+|---|---|---|
+| Thought Level | Low | Syntax-Fixes, kurze Edits |
+| Thought Level | High | Standard-Coding (Default) |
+| Thought Level | Max | Architektur, hartnäckige Bugs |
+| Execution Mode | Plan Mode | Analysieren ohne Ändern |
+| Execution Mode | Confirm Before Changes | jede Änderung manuell freigeben |
+| Execution Mode | Auto Edits | Edits direkt, Terminalbefehle mit Freigabe |
+| Execution Mode | Goal Mode | langlaufende iterative Aufgaben |
+
+### 4-Pfeiler-Prompt-Vorlage
+`Ziel: … · Kontext: @dateien · Einschränkungen: was NICHT ändern · Verifikation: welcher Befehl beweist Erfolg (z. B. npm test)`
+Beispiel: „Implementiere in @src/services/user.ts updateUserProfile. Interfaces liegen in @src/types/user.ts. Keine bestehenden Exporte ändern. Danach npm test ausführen und Fehler selbst beheben."
+<!-- CLINEPASS-ZCODE:END -->
+
 
 ## cavecrew-builder
 
