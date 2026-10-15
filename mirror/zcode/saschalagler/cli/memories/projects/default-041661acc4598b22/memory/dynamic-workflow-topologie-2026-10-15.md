@@ -1,7 +1,8 @@
 ---
 name: dynamic-workflow-topologie-2026-10-15
-description: 15.10. dynamischer Workflow dwfrun-542bffb6 gestartet
-  (Workflow-Topologie planen) — 4-Subagenten-Kette + Lessons zu
+description: 15.10. dynamischer Workflow dwfrun-542bffb6 COMPLETED
+  (Workflow-Topologie planen) — 4-Subagenten-Kette, Dashboard auf Platte,
+  2 verified Findings (Verify-Checks trivial-sicher) + Lessons zu
   Skill-Tool-Params und ZCode Free-Modell-Fallback-Garbage
 metadata:
   node_type: memory
@@ -9,8 +10,11 @@ metadata:
   originSessionId: sess_20f1e63e-080e-468a-8f20-86ccadee7966
 ---
 
-**15.10.2026 — Workflow „Workflow-Topologie planen" gestartet und kompiliert clean:**
-- Run-ID: `dwfrun-542bffb6-306d-4969-afba-128165b4a83b` (Status bei Speicherung: läuft, Ende via Notifikation)
+**15.10.2026 — Workflow „Workflow-Topologie planen" FERTIG (dwfrun-542bffb6 COMPLETED):**
+- Run-ID: `dwfrun-542bffb6-306d-4969-afba-128165b4a83b`, kompilierte clean, lief im Hintergrund durch
+- Beweis: `~/.zcode/workspace/default/out/topologie-workflow.html` (13.468 Bytes, per `ls` geprüft) + Inventar-Tabelle 7/7 Skills existieren
+- Ergebnis: Rollen-Landkarte, Plan mit 5 Slices, kalt geprüft = „verwendbar" mit 3 Verify-Fixes; **OFFEN auf GO: Slices wirklich ausführen** (Nutzer noch nicht gefragt/geantwortet)
+- 2 verified Findings (vom unabhängigen Kalt-Prüfer, der Checks selbst ausführte): (1) Slice-3 zirkulär — Verify verlangt 5 PASS-Zeilen in out/verify.jsonl, läuft aber VOR Slice 4/5, besteht trivialsicher; Fix = Vollständigkeits-Check NACH Slice 5. (2) Slice-2-Verify beweist nichts — leeres plan.json bestand den Check (exit 0); Fix = Mindestzahl-Slices-Pflicht.
 - Script: `.zcode/workflow-drafts/Workflow-Topologie-planen.dwf.ts` (Revision → Edit + AmendWorkflow mit `path`)
 - Auftrag: aus 7 Skill-Anweisungen (caveman, loki-os-standard, workflow-run, wayfinder, gsd-core, executing-plans, visualize) Topologie + Slice-Plan + HTML-Visualisierung bauen
 

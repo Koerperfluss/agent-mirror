@@ -1,6 +1,6 @@
 # Memory Index
 
-- [Workflow-Topologie 15.10.](dynamic-workflow-topologie-2026-10-15.md) — dwfrun-542bffb6 läuft (4-Subagenten-Kette, 7 Skills → HTML-Dashboard out/topologie-workflow.html); LESSONS: Skill-Tool nur `skill`+`args`, ZCode Free-Modell-Fallback (lfm-2.5/nemotron) = Müll → zurück auf GLM
+- [Workflow-Topologie 15.10.](dynamic-workflow-topologie-2026-10-15.md) — dwfrun-542bffb6 ✅ COMPLETED: Dashboard out/topologie-workflow.html (13.4 KB, ls-beweisen), 2 verified Findings (Slice-Verify trivial-sicher), GO für Ausführung offen; LESSONS: Skill-Tool nur `skill`+`args`, Free-Modell-Fallback = Müll → GLM
 - [Token-Sparen 10.10.](feedback-token-sparen.md) — Vereinbarung: 5 Werkzeuge reichen fürs Förder-Projekt (Rest 90+ Skills überflüssig); keine Workflows ohne konkreten Auftrag, max. 2–3 Tags, keine Seiten-Pastes, App/Dateien statt Chat
 - [Saschas Lage NÖ 10.10.](sascha-lage-noe.md) — 29, arbeitslos/AMS-Sperre (Okt: 390 € Zufluss), Miete €350, Loosdorf Bez. Melk, keine Kinder; 🔴 KEIN Mietrückstand, ÖGK+Strom betreut, **GEWERBESCHEIN existiert** → finale geprüfte Liste V2 auf Desktop
 - [HolDirMehr-Replika 09.-11.10.](holdirmehr-replika.md) — ✅ **ONLINE: foerderungen-sascha.web.app** + **1.772 Förderungen** + **finale Liste V2** (2 Workflows: 93 geprüft → 6/33/54, dann Optimierung; Labels ✅/🔶/⚠️); PDF+MD+plan.html V2 synchron; ⚠️ Katalog © holdirmehr.at
