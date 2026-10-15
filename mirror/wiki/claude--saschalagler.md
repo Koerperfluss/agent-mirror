@@ -1,6 +1,6 @@
 # saschalagler (claude)
 
-Zuletzt gespiegelt: 2026-10-15 20:43 UTC
+Zuletzt gespiegelt: 2026-10-15 20:57 UTC
 
 ## CLAUDE
 
@@ -8845,6 +8845,1088 @@ This scores ranking, not answer quality. A low score is the signal to improve
 retrieval (skip `raw/` in search, weight canonical `type:` notes, add semantic
 matching) - and then re-run to confirm the change actually helped, on the same
 cases, instead of guessing.
+
+## SKILL
+
+---
+name: playwright-cli
+description: Automate browser interactions, test web pages and work with Playwright tests.
+allowed-tools: Bash(playwright-cli:*) Bash(npx playwright:*) Bash(npx --no-install playwright:*)
+---
+
+# Browser Automation with playwright-cli
+
+## Quick start
+
+```bash
+# open new browser
+playwright-cli open
+# navigate to a page
+playwright-cli goto https://playwright.dev
+# interact with the page using refs from the snapshot
+playwright-cli click e15
+playwright-cli type "page.click"
+playwright-cli press Enter
+# take a screenshot (rarely used, as snapshot is more common)
+playwright-cli screenshot
+# close the browser
+playwright-cli close
+```
+
+## Commands
+
+### Core
+
+```bash
+playwright-cli open
+# open and navigate right away
+playwright-cli open https://example.com/
+playwright-cli goto https://playwright.dev
+playwright-cli type "search query"
+playwright-cli click e3
+playwright-cli dblclick e7
+# --submit presses Enter after filling the element
+playwright-cli fill e5 "user@example.com"  --submit
+playwright-cli drag e2 e8
+# drop files or data onto an element (from outside the page)
+playwright-cli drop e4 --path=./image.png
+playwright-cli drop e4 --data="text/plain=hello world"
+playwright-cli hover e4
+playwright-cli select e9 "option-value"
+playwright-cli upload ./document.pdf
+playwright-cli check e12
+playwright-cli uncheck e12
+playwright-cli snapshot
+# search the snapshot for text or a regexp, returns matching nodes with surrounding context
+playwright-cli find "Sign in"
+playwright-cli find --regex "Sign (in|up)"
+# wrap the regexp in slashes to add flags, e.g. /i for case-insensitive
+playwright-cli find --regex "/sign (in|up)/i"
+# save results to a file when a query produces too many matches
+playwright-cli find "Add" --filename=results.md
+playwright-cli eval "document.title"
+playwright-cli eval "el => el.textContent" e5
+# get element id, class, or any attribute not visible in the snapshot
+playwright-cli eval "el => el.id" e5
+playwright-cli eval "el => el.getAttribute('data-testid')" e5
+playwright-cli dialog-accept
+playwright-cli dialog-accept "confirmation text"
+playwright-cli dialog-dismiss
+playwright-cli resize 1920 1080
+playwright-cli close
+```
+
+### Navigation
+
+```bash
+playwright-cli go-back
+playwright-cli go-forward
+playwright-cli reload
+```
+
+### Keyboard
+
+```bash
+playwright-cli press Enter
+playwright-cli press ArrowDown
+playwright-cli keydown Shift
+playwright-cli keyup Shift
+```
+
+### Mouse
+
+```bash
+playwright-cli mousemove 150 300
+playwright-cli mousedown
+playwright-cli mousedown right
+playwright-cli mouseup
+playwright-cli mouseup right
+playwright-cli mousewheel 0 100
+```
+
+### Save as
+
+```bash
+playwright-cli screenshot
+playwright-cli screenshot e5
+playwright-cli screenshot --filename=page.png
+playwright-cli screenshot --hires
+playwright-cli pdf --filename=page.pdf
+```
+
+### Tabs
+
+```bash
+playwright-cli tab-list
+playwright-cli tab-new
+playwright-cli tab-new https://example.com/page
+playwright-cli tab-close
+playwright-cli tab-close 2
+playwright-cli tab-select 0
+```
+
+### Storage
+
+```bash
+
+## element-attributes
+
+# Inspecting Element Attributes
+
+When the snapshot doesn't show an element's `id`, `class`, `data-*` attributes, or other DOM properties, use `eval` to inspect them.
+
+## Examples
+
+```bash
+playwright-cli snapshot
+# snapshot shows a button as e7 but doesn't reveal its id or data attributes
+
+# get the element's id
+playwright-cli eval "el => el.id" e7
+
+# get all CSS classes
+playwright-cli eval "el => el.className" e7
+
+# get a specific attribute
+playwright-cli eval "el => el.getAttribute('data-testid')" e7
+playwright-cli eval "el => el.getAttribute('aria-label')" e7
+
+# get a computed style property
+playwright-cli eval "el => getComputedStyle(el).display" e7
+```
+
+## playwright-tests
+
+# Running Playwright Tests
+
+To run Playwright tests, use the `npx playwright test` command, or a package manager script. To avoid opening the interactive html report, use `PLAYWRIGHT_HTML_OPEN=never` environment variable.
+
+```bash
+# Run all tests
+PLAYWRIGHT_HTML_OPEN=never npx playwright test
+
+# Run all tests through a custom npm script
+PLAYWRIGHT_HTML_OPEN=never npm run special-test-command
+```
+
+# Debugging Playwright Tests
+
+To debug a failing Playwright test, run it with `--debug=cli` option. This command will pause the test at the start and print the debugging instructions.
+
+**IMPORTANT**: run the command in the background and check the output until "Debugging Instructions" is printed. Make sure to stop the command after you have finished.
+
+Once instructions containing a session name are printed, use `playwright-cli` to attach the session and explore the page.
+
+```bash
+# Run the test
+PLAYWRIGHT_HTML_OPEN=never npx playwright test --debug=cli
+# ...
+# ... debugging instructions for "tw-abcdef" session ...
+# ...
+
+# Attach to the test
+playwright-cli attach tw-abcdef
+```
+
+Keep the test running in the background while you explore and look for a fix.
+The test is paused at the start, so you should step over or pause at a particular location
+where the problem is most likely to be.
+
+Every action you perform with `playwright-cli` generates corresponding Playwright TypeScript code.
+This code appears in the output and can be copied directly into the test. Most of the time, a specific locator or an expectation should be updated, but it could also be a bug in the app. Use your judgement.
+
+After fixing the test, stop the background test run. Rerun to check that test passes.
+
+## pr-attachments
+
+# Attaching Screenshots and Videos to Pull Requests
+
+`gh` 2.99+ uploads local images and videos with the repeatable `--attach` flag on `gh pr create`, `gh pr comment`, `gh pr edit`, `gh issue create`, `gh issue comment` and `gh issue edit`. PNG, JPEG, GIF, WebP, SVG, MP4, MOV and WebM are accepted, so `playwright-cli screenshot` and `video-start` output can be attached as is.
+
+## When to attach
+
+Attach visual evidence when it saves the reviewer a checkout: a screenshot of a UI fix, a before/after pair, a short video of a new user-facing flow, or the failure state when filing a bug. Skip it for refactors, backend-only changes and anything the diff already shows.
+
+## From a local session
+
+```bash
+# capture the evidence
+playwright-cli open http://localhost:3000/settings
+playwright-cli screenshot --filename=settings-after.png
+playwright-cli video-start settings-flow.webm
+playwright-cli click e5
+playwright-cli fill e7 "New name" --submit
+playwright-cli video-stop
+
+# attach when creating the PR; alt text goes after "#" (images only)
+gh pr create --title "fix(settings): keep name after save" --body-file body.md \
+  --attach './settings-after.png#Settings page after saving' --attach ./settings-flow.webm
+
+# or comment on an existing PR / issue
+gh pr comment 123 --body "Recorded the new flow end to end." --attach ./settings-flow.webm
+gh issue comment 456 --body "Failure state after submitting the form." --attach ./failure.png
+```
+
+Reference the file in the body as `![alt](./settings-after.png)` to place it inline and `gh` rewrites the path to the uploaded URL. Unreferenced attachments are appended at the end in flag order.
+
+## Limits
+
+- Images up to 10 MB, videos up to 10 MB on free plans and 100 MB on paid plans, so keep recordings short.
+- Alt text is not supported on videos.
+- Uploads need push access to the repository.
+- Available on GitHub.com and GitHub Enterprise Cloud only.
+
+## From CI
+
+Attach the screenshots and videos Playwright Test already saves under `test-results` (`screenshot: 'only-on-failure'`, `video: 'retain-on-failure'`) with the same command:
+
+```yaml
+permissions:
+  pull-requests: write
+steps:
+  - run: npx playwright test
+  - name: Attach failure screenshots and videos to the PR
+    if: failure() && github.event_name == 'pull_request'
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    run: |
+      files=$(find test-results -name '*.png' -o -name '*.webm' | head -20)
+      if [ -n "$files" ]; then
+        gh pr comment ${{ github.event.pull_request.number }} \
+          --body "Failure screenshots and videos from run ${{ github.run_id }}." \
+          $(printf -- '--attach %s ' $files)
+      fi
+```
+
+For a polished walkthrough of a new feature, record a hero script as described in [video-recording.md](video-recording.md) and attach the resulting WebM the same way.
+
+## request-mocking
+
+# Request Mocking
+
+Intercept, mock, modify, and block network requests.
+
+## CLI Route Commands
+
+```bash
+# Mock with custom status
+playwright-cli route "**/*.jpg" --status=404
+
+# Mock with JSON body
+playwright-cli route "**/api/users" --body='[{"id":1,"name":"Alice"}]' --content-type=application/json
+
+# Mock with custom headers
+playwright-cli route "**/api/data" --body='{"ok":true}' --header="X-Custom: value"
+
+# Remove headers from requests
+playwright-cli route "**/*" --remove-header=cookie,authorization
+
+# List active routes
+playwright-cli route-list
+
+# Remove a route or all routes
+playwright-cli unroute "**/*.jpg"
+playwright-cli unroute
+```
+
+## URL Patterns
+
+```
+**/api/users           - Exact path match
+**/api/*/details       - Wildcard in path
+**/*.{png,jpg,jpeg}    - Match file extensions
+**/search?q=*          - Match query parameters
+```
+
+## Advanced Mocking with run-code
+
+For conditional responses, request body inspection, response modification, or delays:
+
+### Conditional Response Based on Request
+
+```bash
+playwright-cli run-code "async page => {
+  await page.route('**/api/login', route => {
+    const body = route.request().postDataJSON();
+    if (body.username === 'admin') {
+      route.fulfill({ body: JSON.stringify({ token: 'mock-token' }) });
+    } else {
+      route.fulfill({ status: 401, body: JSON.stringify({ error: 'Invalid' }) });
+    }
+  });
+}"
+```
+
+### Modify Real Response
+
+```bash
+playwright-cli run-code "async page => {
+  await page.route('**/api/user', async route => {
+    const response = await route.fetch();
+    const json = await response.json();
+    json.isPremium = true;
+    await route.fulfill({ response, json });
+  });
+}"
+```
+
+### Simulate Network Failures
+
+```bash
+playwright-cli run-code "async page => {
+  await page.route('**/api/offline', route => route.abort('internetdisconnected'));
+}"
+# Options: connectionrefused, timedout, connectionreset, internetdisconnected
+```
+
+### Delayed Response
+
+```bash
+playwright-cli run-code "async page => {
+  await page.route('**/api/slow', async route => {
+    await new Promise(r => setTimeout(r, 3000));
+    route.fulfill({ body: JSON.stringify({ data: 'loaded' }) });
+  });
+}"
+```
+
+## running-code
+
+# Running Custom Playwright Code
+
+Use `run-code` to execute arbitrary Playwright code for advanced scenarios not covered by CLI commands.
+
+## Syntax
+
+```bash
+playwright-cli run-code "async page => {
+  // Your Playwright code here
+  // Access page.context() for browser context operations
+}"
+```
+
+You can also load the function from a file:
+
+```bash
+playwright-cli run-code --filename=./my-script.js
+```
+
+
+The code must be a single function expression, it is wrapped in `(...)` and evaluated.
+import/export/require syntax is not supported.
+
+The code runs in an isolated context, not in a full Node.js environment. `require`, `process` and Node modules are not
+available. Timers (`setTimeout`, `setInterval`), `fetch`, `URL`, `Buffer`, `crypto`, `AbortController`, `TextEncoder`
+and `TextDecoder` are available.
+
+## Geolocation
+
+```bash
+# Grant geolocation permission and set location
+playwright-cli run-code "async page => {
+  await page.context().grantPermissions(['geolocation']);
+  await page.context().setGeolocation({ latitude: 37.7749, longitude: -122.4194 });
+}"
+
+# Set location to London
+playwright-cli run-code "async page => {
+  await page.context().grantPermissions(['geolocation']);
+  await page.context().setGeolocation({ latitude: 51.5074, longitude: -0.1278 });
+}"
+
+# Clear geolocation override
+playwright-cli run-code "async page => {
+  await page.context().clearPermissions();
+}"
+```
+
+## Permissions
+
+```bash
+# Grant multiple permissions
+playwright-cli run-code "async page => {
+  await page.context().grantPermissions([
+    'geolocation',
+    'notifications',
+    'camera',
+    'microphone'
+  ]);
+}"
+
+# Grant permissions for specific origin
+playwright-cli run-code "async page => {
+  await page.context().grantPermissions(['clipboard-read'], {
+    origin: 'https://example.com'
+  });
+}"
+```
+
+## Media Emulation
+
+```bash
+# Emulate dark color scheme
+playwright-cli run-code "async page => {
+  await page.emulateMedia({ colorScheme: 'dark' });
+}"
+
+# Emulate light color scheme
+playwright-cli run-code "async page => {
+  await page.emulateMedia({ colorScheme: 'light' });
+}"
+
+# Emulate reduced motion
+playwright-cli run-code "async page => {
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+}"
+
+# Emulate print media
+playwright-cli run-code "async page => {
+  await page.emulateMedia({ media: 'print' });
+}"
+```
+
+## Wait Strategies
+
+```bash
+# Wait for network idle
+playwright-cli run-code "async page => {
+  await page.waitForLoadState('networkidle');
+}"
+
+# Wait for specific element
+playwright-cli run-code "async page => {
+  await page.locator('.loading').waitFor({ state: 'hidden' });
+}"
+
+# Wait for function to return true
+playwright-cli run-code "async page => {
+  await page.waitForFunction(() => window.appReady === true);
+}"
+
+# Wait with timeout
+playwright-cli run-code "async page => {
+  await page.locator('.result').waitFor({ timeout: 10000 });
+}"
+```
+
+## Frames and Iframes
+
+```bash
+
+## session-management
+
+# Browser Session Management
+
+Run multiple isolated browser sessions concurrently with state persistence.
+
+## Named Browser Sessions
+
+Use `-s` flag to isolate browser contexts:
+
+```bash
+# Browser 1: Authentication flow
+playwright-cli -s=auth open https://app.example.com/login
+
+# Browser 2: Public browsing (separate cookies, storage)
+playwright-cli -s=public open https://example.com
+
+# Commands are isolated by browser session
+playwright-cli -s=auth fill e1 "user@example.com"
+playwright-cli -s=public snapshot
+```
+
+## Browser Session Isolation Properties
+
+Each browser session has independent:
+- Cookies
+- LocalStorage / SessionStorage
+- IndexedDB
+- Cache
+- Browsing history
+- Open tabs
+
+## Browser Session Commands
+
+```bash
+# List all browser sessions
+playwright-cli list
+
+# Stop a browser session (close the browser)
+playwright-cli close                # stop the default browser
+playwright-cli -s=mysession close   # stop a named browser
+
+# Stop all browser sessions
+playwright-cli close-all
+
+# Forcefully kill all daemon processes (for stale/zombie processes)
+playwright-cli kill-all
+
+# Delete browser session user data (profile directory)
+playwright-cli delete-data                # delete default browser data
+playwright-cli -s=mysession delete-data   # delete named browser data
+```
+
+A headless session shuts down on its own after an hour without commands; the next command then reports that the browser is not open, so run `open` again. Headed browsers stay open. Use `open --idle-timeout=<ms>` to change the timeout, or `0` to disable it.
+
+## Environment Variable
+
+Set a default browser session name via environment variable:
+
+```bash
+export PLAYWRIGHT_CLI_SESSION="mysession"
+playwright-cli open example.com  # Uses "mysession" automatically
+```
+
+## Common Patterns
+
+### Concurrent Scraping
+
+```bash
+#!/bin/bash
+# Scrape multiple sites concurrently
+
+# Start all browsers
+playwright-cli -s=site1 open https://site1.com &
+playwright-cli -s=site2 open https://site2.com &
+playwright-cli -s=site3 open https://site3.com &
+wait
+
+# Take snapshots from each
+playwright-cli -s=site1 snapshot
+playwright-cli -s=site2 snapshot
+playwright-cli -s=site3 snapshot
+
+# Cleanup
+playwright-cli close-all
+```
+
+### A/B Testing Sessions
+
+```bash
+# Test different user experiences
+playwright-cli -s=variant-a open "https://app.com?variant=a"
+playwright-cli -s=variant-b open "https://app.com?variant=b"
+
+# Compare
+playwright-cli -s=variant-a screenshot
+playwright-cli -s=variant-b screenshot
+```
+
+### Persistent Profile
+
+By default, browser profile is kept in memory only. Use `--persistent` flag on `open` to persist the browser profile to disk:
+
+```bash
+# Use persistent profile (auto-generated location)
+playwright-cli open https://example.com --persistent
+
+# Use persistent profile with custom directory
+playwright-cli open https://example.com --profile=/path/to/profile
+```
+
+## Attaching to a Running Browser
+
+Use `attach` to connect to a browser that is already running, instead of launching a new one.
+
+### Attach by channel name
+
+Connect to a running Chrome or Edge instance by its channel name. The browser must have remote debugging enabled — navigate to `chrome://inspect/#remote-debugging` in the target browser and check "Allow remote debugging for this browser instance".
+
+```bash
+# Attach to Chrome
+playwright-cli attach --cdp=chrome
+
+## storage-state
+
+# Storage Management
+
+Manage cookies, localStorage, sessionStorage, and browser storage state.
+
+## Storage State
+
+Save and restore complete browser state including cookies and storage.
+
+### Save Storage State
+
+```bash
+# Save to auto-generated filename (storage-state-{timestamp}.json)
+playwright-cli state-save
+
+# Save to specific filename
+playwright-cli state-save my-auth-state.json
+```
+
+### Restore Storage State
+
+```bash
+# Load storage state from file
+playwright-cli state-load my-auth-state.json
+
+# Reload page to apply cookies
+playwright-cli open https://example.com
+```
+
+### Storage State File Format
+
+The saved file contains:
+
+```json
+{
+  "cookies": [
+    {
+      "name": "session_id",
+      "value": "abc123",
+      "domain": "example.com",
+      "path": "/",
+      "expires": 1893456000,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    }
+  ],
+  "origins": [
+    {
+      "origin": "https://example.com",
+      "localStorage": [
+        { "name": "theme", "value": "dark" },
+        { "name": "user_id", "value": "12345" }
+      ]
+    }
+  ]
+}
+```
+
+## Cookies
+
+### List All Cookies
+
+```bash
+playwright-cli cookie-list
+```
+
+### Filter Cookies by Domain
+
+```bash
+playwright-cli cookie-list --domain=example.com
+```
+
+### Filter Cookies by Path
+
+```bash
+playwright-cli cookie-list --path=/api
+```
+
+### Get Specific Cookie
+
+```bash
+playwright-cli cookie-get session_id
+```
+
+### Set a Cookie
+
+```bash
+# Basic cookie
+playwright-cli cookie-set session abc123
+
+# Cookie with options
+playwright-cli cookie-set session abc123 --domain=example.com --path=/ --httpOnly --secure --sameSite=Lax
+
+# Cookie with expiration (Unix timestamp)
+playwright-cli cookie-set remember_me token123 --expires=1893456000
+```
+
+### Delete a Cookie
+
+```bash
+playwright-cli cookie-delete session_id
+```
+
+### Clear All Cookies
+
+```bash
+playwright-cli cookie-clear
+```
+
+### Advanced: Multiple Cookies or Custom Options
+
+For complex scenarios like adding multiple cookies at once, use `run-code`:
+
+```bash
+playwright-cli run-code "async page => {
+  await page.context().addCookies([
+    { name: 'session_id', value: 'sess_abc123', domain: 'example.com', path: '/', httpOnly: true },
+    { name: 'preferences', value: JSON.stringify({ theme: 'dark' }), domain: 'example.com', path: '/' }
+  ]);
+}"
+
+## test-generation
+
+# Test generation (plan → generate → heal)
+
+End-to-end workflow for authoring and maintaining Playwright tests with `playwright-cli`. Every `playwright-cli` action emits the equivalent Playwright TypeScript, and that generated code is the raw material for every test. The sections below can be used independently:
+
+- **How generation works** — the core mechanic everything else relies on: actions become TypeScript, plus how to add assertions.
+- **Plan** — explore the app, produce a spec file describing what to test.
+- **Generate** — turn a spec into Playwright test files. Update the spec if it's vague or stale.
+- **Heal** — diagnose failing tests, fix the code, reconcile the spec with reality.
+
+Plan / generate / heal lean on the same mechanic: run `npx playwright test --debug=cli` in the background, then `playwright-cli attach tw-XXXX` to drive the paused page interactively. See [playwright-tests.md](playwright-tests.md) for the debug/attach mechanics.
+
+---
+
+## 0. How generation works
+
+Every action you perform with `playwright-cli` generates corresponding Playwright TypeScript code. This code appears in the output and can be copied directly into your test files.
+
+```bash
+# Start a session
+playwright-cli open https://example.com/login
+
+# Take a snapshot to see elements
+playwright-cli snapshot
+# Output shows: e1 [textbox "Email"], e2 [textbox "Password"], e3 [button "Sign In"]
+
+# Fill form fields - generates code automatically
+playwright-cli fill e1 "user@example.com"
+# Ran Playwright code:
+# await page.getByRole('textbox', { name: 'Email' }).fill('user@example.com');
+
+playwright-cli fill e2 "password123"
+# Ran Playwright code:
+# await page.getByRole('textbox', { name: 'Password' }).fill('password123');
+
+playwright-cli click e3
+# Ran Playwright code:
+# await page.getByRole('button', { name: 'Sign In' }).click();
+```
+
+### Building a test file
+
+Collect the generated code into a Playwright test:
+
+```typescript
+import { test, expect } from '@playwright/test';
+
+test('login flow', async ({ page }) => {
+  // Generated code from playwright-cli session:
+  await page.goto('https://example.com/login');
+  await page.getByRole('textbox', { name: 'Email' }).fill('user@example.com');
+  await page.getByRole('textbox', { name: 'Password' }).fill('password123');
+  await page.getByRole('button', { name: 'Sign In' }).click();
+
+  // Add assertions
+  await expect(page).toHaveURL(/.*dashboard/);
+});
+```
+
+### Use semantic locators
+
+The generated code uses role-based locators when possible, which are more resilient:
+
+```typescript
+// Generated (good - semantic)
+await page.getByRole('button', { name: 'Submit' }).click();
+
+// Avoid (fragile - CSS selectors)
+await page.locator('#submit-btn').click();
+```
+
+### Explore before recording
+
+Take snapshots to understand the page structure before recording actions:
+
+```bash
+playwright-cli open https://example.com
+playwright-cli snapshot
+# Review the element structure
+playwright-cli click e5
+```
+
+### Add assertions manually
+
+Generated code captures actions but not assertions. Add expectations in your test using one of the recommended matchers:
+
+- `toBeVisible()` — element is rendered and visible
+- `toHaveText(text)` — element text content matches
+- `toHaveValue(value) / toBeEmpty()` — input/select value matches
+- `toBeChecked() / toBeUnchecked()` — checkbox state matches
+- `toMatchAriaSnapshot(snapshot)` — page (or locator) matches a partial accessibility snapshot
+
+Use `playwright-cli generate-locator <target>` to produce the locator expression for the assertion, and the snapshot/eval commands to capture the expected value.
+
+When asserting text content, make sure that generated locator does not contain text from the element itself. `getByTestId()` or `getByLabel()` usually work well with asserting text. When locator is text-based, prefer `toBeVisible()` instead.
+
+Snapshot to be matched does not have to contain all the information - only capture what's necessary for the assertion. You can use regular expressions for unstable values.
+
+```bash
+# Get a stable locator for an element ref to use in the assertion
+playwright-cli --raw generate-locator e5
+# getByRole('button', { name: 'Submit' })
+
+# Capture expected text content for toHaveText
+playwright-cli --raw eval "el => el.textContent" e5
+
+# Capture expected input value for toHaveValue/toBeEmpty
+playwright-cli --raw eval "el => el.value" e5
+
+# Capture expected aria snapshot for toMatchAriaSnapshot/toBeChecked
+# (whole page, or use a ref to scope to a region)
+playwright-cli --raw snapshot
+playwright-cli --raw snapshot e5
+```
+
+```typescript
+// Generated action
+await page.getByRole('button', { name: 'Submit' }).click();
+
+// Manual assertions using the outputs above:
+await expect(page.getByRole('alert', { name: 'Success' })).toBeVisible();
+
+## tracing
+
+# Tracing
+
+Capture detailed execution traces for debugging and analysis. Traces include DOM snapshots, screenshots, network activity, and console logs.
+
+## Basic Usage
+
+```bash
+# Start trace recording
+playwright-cli tracing-start
+
+# Perform actions
+playwright-cli open https://example.com
+playwright-cli click e1
+playwright-cli fill e2 "test"
+
+# Stop trace recording
+playwright-cli tracing-stop
+```
+
+## Trace Output Files
+
+When you start tracing, Playwright creates a `.playwright-cli/traces/` directory with several files:
+
+### `trace-{timestamp}.trace`
+
+**Action log** - The main trace file containing:
+- Every action performed (clicks, fills, navigations)
+- DOM snapshots before and after each action
+- Screenshots at each step
+- Timing information
+- Console messages
+- Source locations
+
+### `trace-{timestamp}.network`
+
+**Network log** - Complete network activity:
+- All HTTP requests and responses
+- Request headers and bodies
+- Response headers and bodies
+- Timing (DNS, connect, TLS, TTFB, download)
+- Resource sizes
+- Failed requests and errors
+
+### `resources/`
+
+**Resources directory** - Cached resources:
+- Images, fonts, stylesheets, scripts
+- Response bodies for replay
+- Assets needed to reconstruct page state
+
+## What Traces Capture
+
+| Category | Details |
+|----------|---------|
+| **Actions** | Clicks, fills, hovers, keyboard input, navigations |
+| **DOM** | Full DOM snapshot before/after each action |
+| **Screenshots** | Visual state at each step |
+| **Network** | All requests, responses, headers, bodies, timing |
+| **Console** | All console.log, warn, error messages |
+| **Timing** | Precise timing for each operation |
+
+## Use Cases
+
+### Debugging Failed Actions
+
+```bash
+playwright-cli tracing-start
+playwright-cli open https://app.example.com
+
+# This click fails - why?
+playwright-cli click e5
+
+playwright-cli tracing-stop
+# Open trace to see DOM state when click was attempted
+```
+
+### Analyzing Performance
+
+```bash
+playwright-cli tracing-start
+playwright-cli open https://slow-site.com
+playwright-cli tracing-stop
+
+# View network waterfall to identify slow resources
+```
+
+### Capturing Evidence
+
+```bash
+# Record a complete user flow for documentation
+playwright-cli tracing-start
+
+playwright-cli open https://app.example.com/checkout
+playwright-cli fill e1 "4111111111111111"
+playwright-cli fill e2 "12/25"
+playwright-cli fill e3 "123"
+playwright-cli click e4
+
+playwright-cli tracing-stop
+# Trace shows exact sequence of events
+```
+
+## Trace vs Video vs Screenshot
+
+| Feature | Trace | Video | Screenshot |
+|---------|-------|-------|------------|
+| **Format** | .trace file | .webm video | .png/.jpeg image |
+| **DOM inspection** | Yes | No | No |
+| **Network details** | Yes | No | No |
+| **Step-by-step replay** | Yes | Continuous | Single frame |
+| **File size** | Medium | Large | Small |
+| **Best for** | Debugging | Demos | Quick capture |
+
+## Best Practices
+
+### 1. Start Tracing Before the Problem
+
+```bash
+# Trace the entire flow, not just the failing step
+playwright-cli tracing-start
+
+## video-recording
+
+# Video Recording
+
+Capture browser automation sessions as video for debugging, documentation, or verification. Produces WebM (VP8/VP9 codec).
+
+## Basic Recording
+
+```bash
+# Open browser first
+playwright-cli open
+
+# Start recording, --cursor renders an animated mouse cursor that travels to each action point
+# and paces actions by 800ms so that it has time to travel
+playwright-cli video-start demo.webm --cursor --fps=60
+
+# Add a chapter marker for section transitions
+playwright-cli video-chapter "Getting Started" --description="Opening the homepage" --duration=2000
+
+# Navigate and perform actions
+playwright-cli goto https://example.com
+playwright-cli snapshot
+playwright-cli click e1
+
+# Add another chapter
+playwright-cli video-chapter "Filling Form" --description="Entering test data" --duration=2000
+playwright-cli fill e2 "test input"
+
+# Stop and save
+playwright-cli video-stop
+```
+
+## Cursor, Target Highlight and Click Point
+
+Three decorations can be drawn for each action: the mouse **cursor**, a **highlight** box around the
+target element and a **point** marker at the click point. A **title** callout naming the action comes
+with `video-show-actions`. The cursor is the only one `video-start --cursor` turns on; the rest are
+opt-in and styled with plain CSS declarations, so they look exactly the way you want.
+
+```bash
+# Cursor only, nothing else on screen
+playwright-cli video-start demo.webm --cursor
+
+# Action callout, plus a red click point and a dark frame around the target
+playwright-cli video-show-actions --duration=800 --position=top-right \
+  --point-style="width: 20px; height: 20px; border-radius: 50%; background: rgba(255,0,0,.7)" \
+  --highlight-style="outline: 2px solid #333; background: rgba(0,128,255,.15)" \
+  --title-style="font-size: 16px"
+
+# Stop annotating actions
+playwright-cli video-hide-actions
+```
+
+The same options are available programmatically, which is the better choice for hero scripts:
+
+```js
+await page.screencast.showActions({
+  // 'pointer' (default) animates the cursor from the previous action point, 'none' hides it.
+  cursor: 'pointer',
+  // How long decorations stay on screen. Actions are paced by this delay, 500ms by default.
+  duration: 800,
+  // Where the action title goes: top-left, top, top-right, bottom-left, bottom, bottom-right.
+  position: 'top-right',
+  style: {
+    // Marker at the click point. The element is zero-sized and centered on the point,
+    // so give it a size, or draw around the point with box-shadow. Hidden when omitted.
+    point: 'width: 20px; height: 20px; border-radius: 50%; background: rgba(255, 0, 0, .7)',
+    // Box that covers the target element. Hidden when omitted.
+    // Prefer `outline` over `border`, it does not shrink the box.
+    highlight: 'outline: 2px solid #333; background: rgba(0, 128, 255, .15)',
+    // The action title. Use 'display: none' to keep the cursor but drop the callout.
+    title: 'font-size: 16px',
+  },
+});
+```
+
+Notes:
+- All decorations fade out over `duration`. Override `animation` in a style to do something else.
+- The cursor stays on screen at the last action point between actions and across navigations,
+  and travels along a slightly curved path, so it reads as a hand moving a mouse.
+- Call `page.screencast.hideActions()` to stop annotating and hide the cursor.
+
+## Best Practices
+
+### 1. Use Descriptive Filenames
+
+```bash
+# Include context in filename
+playwright-cli video-start recordings/login-flow-2024-01-15.webm
+playwright-cli video-start recordings/checkout-test-run-42.webm
+```
+
+### 2. Record entire hero scripts.
+
+When recording a video for the user or as a proof of work, it is best to create a code snippet and execute it with run-code.
+It allows inserting appropriate pauses between the actions and annotating the video. There are new Playwright APIs for that.
+
+1) Perform scenario using CLI and take note of all locators and actions. You'll need those locators to request their bounding boxes for highlight.
+2) Create a file with the intended script for video (below). Use pressSequentially w/ delay for nice typing, make reasonable pauses.
+3) Use playwright-cli run-code --filename your-script.js
+
+**Important**: Overlays are `pointer-events: none` — they do not interfere with page interactions. You can safely keep sticky overlays visible while clicking, filling, or performing any actions on the page.
+
+```js
+async page => {
+  await page.screencast.start({ path: 'video.webm', size: { width: 1280, height: 800 }, fps: 60 });
+  // Show the cursor and mark the click point, and pace actions by 800ms.
+  await page.screencast.showActions({
+    duration: 800,
+    style: {
+      point: 'width: 20px; height: 20px; border-radius: 50%; background: rgba(255, 0, 0, .7)',
+      title: 'display: none',
+    },
+  });
+  await page.goto('https://demo.playwright.dev/todomvc');
+
+  // Show a chapter card — blurs the page and shows a dialog.
+  // Blocks until duration expires, then auto-removes.
+  // Use this for simple use cases, but always feel free to hand-craft your own beautiful
+  // overlay via await page.screencast.showOverlay().
+  await page.screencast.showChapter('Adding Todo Items', {
+    description: 'We will add several items to the todo list.',
 
 ## SKILL
 
