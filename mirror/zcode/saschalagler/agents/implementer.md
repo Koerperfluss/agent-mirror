@@ -2,7 +2,7 @@
 name: "implementer"
 description: "Setzt spezifizierte Tickets direkt in Code um."
 color: yellow
-model: "account:zai-individual-coding-plan/GLM-5.3-Flash"
+model: "builtin:zai/GLM-5.3-Flash"
 thoughtLevel: max
 tools:
   - Read

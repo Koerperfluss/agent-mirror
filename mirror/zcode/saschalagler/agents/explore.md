@@ -2,7 +2,7 @@
 name: "explore"
 description: "Nur-Lese-Kundschafter: erfasst Struktur und Stand einer Codebasis."
 color: yellow
-model: "account:zai-start-plan/GLM-5.3-Flash"
+model: "builtin:zai/GLM-5.3-Flash"
 thoughtLevel: max
 tools:
   - Read
