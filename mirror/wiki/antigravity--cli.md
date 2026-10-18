@@ -1,6 +1,6 @@
 # cli (antigravity)
 
-Zuletzt gespiegelt: 2026-10-18 18:21 UTC
+Zuletzt gespiegelt: 2026-10-18 18:39 UTC
 
 ## dwfrun-cbe44067-32c7-4a38-800e-206b4b4823d4_artifact_1_1-tool-result-3f2bcea8-8bd5-4aa2-aa2e-2a34d6f279c2
 
@@ -2358,6 +2358,24 @@ _Nächster Schritt: Lanes + Audit 3 + Nachricht 09 zu einem PDF-Bündel für Mar
 ## Offen für Sascha
 - Optional: nach erstem Spotify-Start Audio-/Login-Einstellungen kurz prüfen (Cache wurde geleert, Präferenzen blieben erhalten)
 - Ggf. alte Intel-DMG-Quelle merken: künftig nur https://download.scdn.co/SpotifyARM64.dmg nutzen
+## dwfrun-dbf3cf13-0d55-4a08-883e-be90236287d7_artifact_2_1-tool-result-4303fee3-4408-4ccd-9122-fa200391a52e
+
+# Top-5 Audit-Bericht (Gate 1: Code & Security Cleanliness)
+
+Ergebnis: **2/5 bestehen Gate 1.** Scan = `20-audit-scan.sh` (license-checker + TruffleHog via Docker + Build-Check), Auswertung je Tool durch einen unabhängigen Auditor-Subagent.
+
+| Tool | Gate 1 | Build | Verified Secrets | 🔴 Copyleft | Nächste Schritte |
+|---|---|---|---|---|---|
+| Memorybase Ingest (Prio 9) | UNVOLLSTÄNDIG | SKIP | 0 | — | Audit-Rohdaten unvollständig: BUILD_STATUS.log und SECRETS_AUDIT.json sind leer (0 Bytes), SBOM sagt 'kein package.json'. Kürzester Weg zur Marktreife: Audit-Skript korrekt gegen das Tool-Verzeichnis laufen lassen (Build prüfen + Secret-Scan), danach Gate 1 erneut bewerten. Bei Node-/Python-Projektstruktur package.json/pyproject ergänzen, damit der Lizenz-Scan greift. |
+| Cali Logbook PWA (Prio 8) | PASS | OK | 0 | — | Kürzester Weg zur Marktreife: den im Git-Verlauf und in src/context/AppProvider.tsx hartcodierten Google Gemini API Key (AIzaSyDb...) umgehend deaktivieren/rotieren und aus dem Quellcode entfernen (Nur-Zoom-Hinweis: Gate 1 ist trotzdem PASS, da der Key nicht als aktiv verifiziert werden konnte). Danach App-UI-Finish (PWA-Meta, Offline-Fähigkeit final testen), Lizenz-/Preisstruktur festlegen und Vertriebspaket (Listing, Screenshots, Demo) aufsetzen. |
+| Bleicher Dispo-Tafel (Prio 7) | PASS | OK | 0 | — | Gate 1 ist PASS, aber ein Google-Gemini-API-Key liegt im Klartext in firebase-applet-config.json (Zeile 4) im Repo — sofort rotieren (Google Cloud Console → API-Schlüssel) und durch Umgebungsvariable ersetzen, sonst ist der Schlüssel beim Verkauf des Pakets kompromittiert. Danach Build-Budget-Warnung (688,9 kB statt 500 kB) optional beheben und Paket zum Verkauf vorbereiten. |
+| Projekt-Task-Planer (Prio 7) | UNVOLLSTÄNDIG | SKIP | 0 | — | BUILD_STATUS.log ist leer (0 Bytes) — Build verifizierbar machen: Projekt bauen und Status in die Log-Datei schreiben. Anschließend ein package.json mit Abhängigkeits-Lockfile anlegen, damit der SBOM-Lizenz-Scan überhaupt laufen kann. Danach Audit-Skript erneut ausführen; die 2 Secret-Funde sind harmlose Placeholder-Templates (Verified:false) und blockieren nicht. |
+| Andi Medical Cannabis (Prio 7) | UNVOLLSTÄNDIG | OK | 0 | — | Build läuft fehlerfrei, aber Secrets-Scanner (0-Byte-Ausgabe) und license-checker („No packages found in this path“) haben auf falschem Pfad gescannt. Audit-Skript auf das Projektverzeichnis mit package.json/node_modules zeigen lassen und erneut ausführen. Danach Gate 1 neu bewerten — bei 0 Secrets und 0 Copyleft ist das Tool verkaufsfähig. |
+
+## Was NICHT gelaufen ist
+- Stage 3 (Veredelung/ralph-loop) und Stage 5 (E2E) — kommen nach diesem Bericht.
+- Cline-Review-Gate (Stage 4): Kanban :3484 war während des Laufs nicht erreichbar.
+- Git-Historie der Tools wurde nicht gescannt (nur Arbeitskopie).
 ## dwfrun-fb29e93d-66a7-44f8-97ca-529354b2e34a_artifact_1_1-tool-result-da214bfb-cc10-4ddf-b92f-ce025ed56ae1
 
 # LOKI Skill-Ökosystem-Audit — Anthropic-Anpassungen vs. eigene Skills, 11.10.2026
