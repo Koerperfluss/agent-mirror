@@ -1,7 +1,7 @@
 ---
 app: zcode
 quelle: "saschalagler/agents/cavecrew-investigator.md"
-stand: 2026-10-05
+stand: 2026-10-18
 tags: [spiegel, zcode]
 ---
 
@@ -9,7 +9,7 @@ tags: [spiegel, zcode]
 name: "cavecrew-investigator"
 description: ">"
 color: yellow
-model: "account:zai-individual-coding-plan/GLM-5.3-Flash"
+model: "builtin:zai/GLM-5.3-Flash"
 thoughtLevel: low
 tools:
   - Read

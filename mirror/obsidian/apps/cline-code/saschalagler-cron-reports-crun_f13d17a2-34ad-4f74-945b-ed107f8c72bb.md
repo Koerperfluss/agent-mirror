@@ -1,0 +1,75 @@
+---
+app: cline-code
+quelle: "saschalagler/cron/reports/crun_f13d17a2-34ad-4f74-945b-ed107f8c72bb.md"
+stand: 2026-10-18
+tags: [spiegel, cline-code]
+---
+
+---
+runId: crun_f13d17a2-34ad-4f74-945b-ed107f8c72bb
+specId: cspec_7de79f48-84ff-419f-9ea5-3c51da24632a
+scheduleId: sched_8707937c-d2cb-4356-befa-9c5f4b30d42b
+title: Update docs
+triggerKind: schedule
+status: cancelled
+definitionSource: database
+workspaceRoot: /
+schedule: 0 10 * * *
+model: "ollama/qwen2.5-coder:7b"
+sessionId: 1792345077484_mtkxd
+startedAt: "2026-10-18T17:37:57.451Z"
+---
+
+# Update docs — cancelled
+
+Run of schedule **Update docs** (triggered by its schedule) at 2026-10-18T17:37:57.451Z, cancelled in 28m 47s.
+
+## Job
+
+- **Definition**: managed schedule `sched_8707937c-d2cb-4356-befa-9c5f4b30d42b` stored in cron.db (edit via the schedule tools/UI, not a file)
+- **Workspace**: /
+- **Schedule**: `0 10 * * *`
+- **Model**: ollama/qwen2.5-coder:7b
+- **Session**: 1792345077484_mtkxd
+
+### Prompt
+
+```
+You are a documentation maintainer that runs on a schedule. Keep this repository's docs accurate as the code evolves.
+
+## Task
+
+Compare recent code changes against the existing documentation and close the gaps.
+
+## Priorities
+
+- Docs that recent changes made stale or wrong. Fix these first.
+- Recently touched subsystems with thin or missing coverage.
+- Public interfaces, developer setup and troubleshooting guides, and operational runbooks.
+
+## Standards
+
+- Verify every statement against the source code; never document behavior you have not confirmed.
+- Prefer updating existing pages over creating redundant new ones.
+- Explain intent and usage with concrete examples and constraints, and keep pages structured for scanning.
+- Match the style, tone, and location conventions of the docs already in this repository.
+
+## Final report
+
+Open a focused, docs-only PR (or commit the updates to a branch if PRs are unavailable).
+
+Your last message is the report the user reads, so write it about the docs, not about your session: no environment assessment or command-by-command narration. Cover:
+- **Changed**: each doc you added or updated, with a link to the PR or branch
+- **Now covers**: the code paths or behaviors the updates document
+- **Gaps closed**: what was stale, wrong, or missing before
+
+If everything is already accurate, reply with a single line saying so, optionally noting the areas you verified.
+```
+
+## Error
+
+The run was cancelled while running the agent turn:
+
+```
+runner stopped before completion
+```

@@ -1,7 +1,7 @@
 ---
 app: zcode
 quelle: "saschalagler/agents/explore.md"
-stand: 2026-10-01
+stand: 2026-10-18
 tags: [spiegel, zcode]
 ---
 
@@ -9,7 +9,7 @@ tags: [spiegel, zcode]
 name: "explore"
 description: "Nur-Lese-Kundschafter: erfasst Struktur und Stand einer Codebasis."
 color: yellow
-model: "account:zai-start-plan/GLM-5.3-Flash"
+model: "builtin:zai/GLM-5.3-Flash"
 thoughtLevel: max
 tools:
   - Read

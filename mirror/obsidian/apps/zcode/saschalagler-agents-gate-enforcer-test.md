@@ -1,7 +1,7 @@
 ---
 app: zcode
 quelle: "saschalagler/agents/gate-enforcer-test.md"
-stand: 2026-09-21
+stand: 2026-10-18
 tags: [spiegel, zcode]
 ---
 
@@ -9,7 +9,7 @@ tags: [spiegel, zcode]
 name: "gate-enforcer-test"
 description: "Erzwingt Qualitäts-Gates (Tests/Lint/Build) vor jedem Abschluss und blockiert bei Verletzung."
 color: yellow
-model: "account:zai-individual-coding-plan/GLM-5.3-Flash"
+model: "builtin:zai/GLM-5.3-Flash"
 thoughtLevel: high
 tools:
   - Read

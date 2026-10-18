@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-18 18:06 UTC
+Zuletzt gespiegelt: 2026-10-18 18:21 UTC
 
 ## AGENTS
 
@@ -555,7 +555,7 @@ Reviewer-Rolle (Standard-Team LOKI.OS). Lesen + urteilen, nie ändern.
 name: "cavecrew-builder"
 description: ">"
 color: yellow
-model: "account:zai-individual-coding-plan/GLM-5.3-Flash"
+model: "builtin:zai/GLM-5.3-Flash"
 thoughtLevel: low
 tools:
   - Read
@@ -613,7 +613,7 @@ Security or destructive paths → write normal English warning, then resume cave
 name: "cavecrew-investigator"
 description: ">"
 color: yellow
-model: "account:zai-individual-coding-plan/GLM-5.3-Flash"
+model: "builtin:zai/GLM-5.3-Flash"
 thoughtLevel: low
 tools:
   - Read
@@ -681,7 +681,7 @@ Tests:
 name: "cavecrew-reviewer"
 description: ">"
 color: yellow
-model: "account:zai-individual-coding-plan/GLM-5.3-Flash"
+model: "builtin:zai/GLM-5.3-Flash"
 thoughtLevel: low
 tools:
   - Read
@@ -740,7 +740,7 @@ Security findings → state risk in plain English first sentence, then caveman f
 name: "code-architect"
 description: "Entwirft Architektur und Modulgrenzen, bevor implementiert wird."
 color: yellow
-model: "account:zai-individual-coding-plan/GLM-5.3-Flash"
+model: "builtin:zai/GLM-5.3-Flash"
 thoughtLevel: high
 tools:
   - Read
@@ -777,7 +777,7 @@ PLAN.md + Tabelle im Chat (ADHS-Format: Ergebnis zuerst, nummerierte Schritte).
 name: "config-auditor"
 description: "Prüft Config-Dateien auf Syntax-, Konsistenz- und Sicherheitsfehler."
 color: yellow
-model: "account:zai-individual-coding-plan/GLM-5.3-Flash"
+model: "builtin:zai/GLM-5.3-Flash"
 thoughtLevel: low
 tools:
   - Read
@@ -818,7 +818,7 @@ Eiserne Regel: "aktive Settings" ohne Log-/Funktionstest-Beweis zu behaupten = F
 name: "explore"
 description: "Nur-Lese-Kundschafter: erfasst Struktur und Stand einer Codebasis."
 color: yellow
-model: "account:zai-start-plan/GLM-5.3-Flash"
+model: "builtin:zai/GLM-5.3-Flash"
 thoughtLevel: max
 tools:
   - Read
@@ -885,7 +885,7 @@ VETO = der Turn ist NICHT abgeschlossen; Builder muss nachbessern. Kein Kompromi
 name: "gate-enforcer-test"
 description: "Erzwingt Qualitäts-Gates (Tests/Lint/Build) vor jedem Abschluss und blockiert bei Verletzung."
 color: yellow
-model: "account:zai-individual-coding-plan/GLM-5.3-Flash"
+model: "builtin:zai/GLM-5.3-Flash"
 thoughtLevel: high
 tools:
   - Read
@@ -927,7 +927,7 @@ VETO = der Turn ist NICHT abgeschlossen; Builder muss nachbessern. Kein Kompromi
 name: "implementer"
 description: "Setzt spezifizierte Tickets direkt in Code um."
 color: yellow
-model: "account:zai-individual-coding-plan/GLM-5.3-Flash"
+model: "builtin:zai/GLM-5.3-Flash"
 thoughtLevel: max
 tools:
   - Read
@@ -964,7 +964,7 @@ Ergebnis-Zeile 1 · geänderte Dateien als Tabelle (pfad:zeile — Änderung) ·
 name: "qa-tester"
 description: "Schreibt und führt Tests aus; verifiziert echtes Verhalten, nicht Annahmen."
 color: yellow
-model: "account:zai-individual-coding-plan/GLM-5.3-Flash"
+model: "builtin:zai/GLM-5.3-Flash"
 thoughtLevel: max
 tools:
   - Read
@@ -1003,7 +1003,7 @@ Bei FAIL: kleinster Repro-Pfad. Keine Architektur-Meinungen (dafür ist reviewer
 name: "reviewer"
 description: "Reviewt Diffs/PRs auf Logik, Sicherheit und Architektur."
 color: yellow
-model: 3a11f548-4734-459c-bc01-535ecf69a1a5/qwen/qwen3.8-max
+model: "builtin:zai/GLM-5.3-Flash"
 thoughtLevel: xhigh
 tools:
   - Read

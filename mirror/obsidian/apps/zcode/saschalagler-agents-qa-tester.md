@@ -1,7 +1,7 @@
 ---
 app: zcode
 quelle: "saschalagler/agents/qa-tester.md"
-stand: 2026-09-21
+stand: 2026-10-18
 tags: [spiegel, zcode]
 ---
 
@@ -9,7 +9,7 @@ tags: [spiegel, zcode]
 name: "qa-tester"
 description: "Schreibt und führt Tests aus; verifiziert echtes Verhalten, nicht Annahmen."
 color: yellow
-model: "account:zai-individual-coding-plan/GLM-5.3-Flash"
+model: "builtin:zai/GLM-5.3-Flash"
 thoughtLevel: max
 tools:
   - Read
