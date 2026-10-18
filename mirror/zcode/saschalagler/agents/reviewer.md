@@ -2,7 +2,7 @@
 name: "reviewer"
 description: "Reviewt Diffs/PRs auf Logik, Sicherheit und Architektur."
 color: yellow
-model: "builtin:zai/GLM-5.3-Flash"
+model: "zai-api/GLM-5.3-Flash"
 thoughtLevel: xhigh
 tools:
   - Read

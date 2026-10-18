@@ -2,7 +2,7 @@
 name: "code-architect"
 description: "Entwirft Architektur und Modulgrenzen, bevor implementiert wird."
 color: yellow
-model: "builtin:zai/GLM-5.3-Flash"
+model: "zai-api/GLM-5.3-Flash"
 thoughtLevel: high
 tools:
   - Read
