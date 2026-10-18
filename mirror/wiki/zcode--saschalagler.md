@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-18 18:55 UTC
+Zuletzt gespiegelt: 2026-10-18 19:10 UTC
 
 ## AGENTS
 
@@ -555,7 +555,7 @@ Reviewer-Rolle (Standard-Team LOKI.OS). Lesen + urteilen, nie ändern.
 name: "cavecrew-builder"
 description: ">"
 color: yellow
-model: "builtin:zai/GLM-5.3-Flash"
+model: "zai-api/GLM-5.3-Flash"
 thoughtLevel: low
 tools:
   - Read
@@ -613,7 +613,7 @@ Security or destructive paths → write normal English warning, then resume cave
 name: "cavecrew-investigator"
 description: ">"
 color: yellow
-model: "builtin:zai/GLM-5.3-Flash"
+model: "zai-api/GLM-5.3-Flash"
 thoughtLevel: low
 tools:
   - Read
@@ -681,7 +681,7 @@ Tests:
 name: "cavecrew-reviewer"
 description: ">"
 color: yellow
-model: "builtin:zai/GLM-5.3-Flash"
+model: "zai-api/GLM-5.3-Flash"
 thoughtLevel: low
 tools:
   - Read
@@ -740,7 +740,7 @@ Security findings → state risk in plain English first sentence, then caveman f
 name: "code-architect"
 description: "Entwirft Architektur und Modulgrenzen, bevor implementiert wird."
 color: yellow
-model: "builtin:zai/GLM-5.3-Flash"
+model: "zai-api/GLM-5.3-Flash"
 thoughtLevel: high
 tools:
   - Read
@@ -777,7 +777,7 @@ PLAN.md + Tabelle im Chat (ADHS-Format: Ergebnis zuerst, nummerierte Schritte).
 name: "config-auditor"
 description: "Prüft Config-Dateien auf Syntax-, Konsistenz- und Sicherheitsfehler."
 color: yellow
-model: "builtin:zai/GLM-5.3-Flash"
+model: "zai-api/GLM-5.3-Flash"
 thoughtLevel: low
 tools:
   - Read
@@ -818,7 +818,7 @@ Eiserne Regel: "aktive Settings" ohne Log-/Funktionstest-Beweis zu behaupten = F
 name: "explore"
 description: "Nur-Lese-Kundschafter: erfasst Struktur und Stand einer Codebasis."
 color: yellow
-model: "builtin:zai/GLM-5.3-Flash"
+model: "zai-api/GLM-5.3-Flash"
 thoughtLevel: max
 tools:
   - Read
@@ -885,7 +885,7 @@ VETO = der Turn ist NICHT abgeschlossen; Builder muss nachbessern. Kein Kompromi
 name: "gate-enforcer-test"
 description: "Erzwingt Qualitäts-Gates (Tests/Lint/Build) vor jedem Abschluss und blockiert bei Verletzung."
 color: yellow
-model: "builtin:zai/GLM-5.3-Flash"
+model: "zai-api/GLM-5.3-Flash"
 thoughtLevel: high
 tools:
   - Read
@@ -927,7 +927,7 @@ VETO = der Turn ist NICHT abgeschlossen; Builder muss nachbessern. Kein Kompromi
 name: "implementer"
 description: "Setzt spezifizierte Tickets direkt in Code um."
 color: yellow
-model: "builtin:zai/GLM-5.3-Flash"
+model: "zai-api/GLM-5.3-Flash"
 thoughtLevel: max
 tools:
   - Read
@@ -964,7 +964,7 @@ Ergebnis-Zeile 1 · geänderte Dateien als Tabelle (pfad:zeile — Änderung) ·
 name: "qa-tester"
 description: "Schreibt und führt Tests aus; verifiziert echtes Verhalten, nicht Annahmen."
 color: yellow
-model: "builtin:zai/GLM-5.3-Flash"
+model: "zai-api/GLM-5.3-Flash"
 thoughtLevel: max
 tools:
   - Read
@@ -1003,7 +1003,7 @@ Bei FAIL: kleinster Repro-Pfad. Keine Architektur-Meinungen (dafür ist reviewer
 name: "reviewer"
 description: "Reviewt Diffs/PRs auf Logik, Sicherheit und Architektur."
 color: yellow
-model: "builtin:zai/GLM-5.3-Flash"
+model: "zai-api/GLM-5.3-Flash"
 thoughtLevel: xhigh
 tools:
   - Read
@@ -11640,7 +11640,7 @@ In ATLAS-ZCode-Sessions kann das Bash-Tool komplett tot sein: jeder Aufruf (auch
 
 - [eqMac-Deinstallation + Spotify-Fix](eqmac-deinstallation-spotify-fix.md) — 22.09. FERTIG (dwfrun-c55c4bc7): eqMac ursprünglich zu Unrecht deinstalliert (Doku war nur Kontext-Beilage!) → **v1.9.1 neu installiert, er BRAUCHT es**; **Spotify-Ursache = Intel-Build 1.3.0.277 via Rosetta + 982 MB korrupter Cache** → native ARM64 1.3.1.234, läuft stabil; Audio-Abbrüche danach = eqMac-Virtual-Device-Wege — 2 Parallel-Agents: Neustart → Test sauber (0 Dropouts), **KEIN Buffer-Setting existiert**; Fix-Leiter: 48 kHz (Audio-MIDI-Setup) → eqMac-Toggle → Analyzer aus → direkter Output; Fallback ältere Version (Issues #994/#224)
 
-- [ZCode ADHS-Automations](zcode-adhs-automationen.md) — 13.09.–12.10. LIVE: **EINE Automation mit ALLEN 6 Briefs** (cron `0 9,10,15,16,21`, Zweige per Uhrzeit+Wochentag; niemals 6 separate — Nutzer-Ziel!) + Engine 7/7 PASS; **38 Läufe, alle 6 Zweige bewiesen** (Abende PASS 610E2A57/88CCE1A6/C269B996/9299B443/2FF9A547/157032D8/22442356; Morgen 21.09. erstmals pünktlich C1BFC6A3; 10.10. Sa A0D0B91D mit Parallel-dwfruns: Förder-PDF, Bar-Bulls-Checkout, OmniRoute Security-P1, LokiVoice-Entpersonalisierung, agent-mirror 7d30be0; 11.10. So B5F28A09: Hermes-Loop/LegalOps-Duplikate; 12.10. Mo Catch-up 16DC788F: agent-mirror `befcfd6` Workflows Morgenstart/Dev-Loop/Abend + 5-Port-Health + Watchdog; Doku-Sync 30.09.+07.10.: 2 Findings — assi-README brief/feierabend + lib/push.sh; Risiko-Scan 01.10.: P1 loki-voice-Pointer 7fdbf2d im PARENT nicht verankert → „GO pointer-fix"; 10.10.: LokiVoice DOPPELT dirty → „GO commit-wache"; 09.10. FRIST-Tag: Übergabe-an-Reinhard-PDF fertig, BH-Melk Einreich-Status unklar) · UHR-ANOMALIE (date = Wahrheit, Logbuch vor Append NEU lesen) · Lücken-Tage wenn Mac schläft · offen auf GO: Wecker · Deutsch-Patch-Recovery · doku-fix (3 Zeilen) · pointer-fix · commit-wache; 1 Task pro Chat-Limit
+- [ZCode ADHS-Automations](zcode-adhs-automationen.md) — 13.09.–18.10. LIVE: **EINE Automation mit ALLEN 6 Briefs** (cron `0 9,10,15,16,21`, Zweige per Uhrzeit+Wochentag; niemals 6 separate — Nutzer-Ziel!) + Engine 7/7 PASS; **40+ Läufe, alle 6 Zweige bewiesen** (Abende PASS 610E2A57/88CCE1A6/C269B996/9299B443/2FF9A547/157032D8/22442356/A8552CD2; Morgen 21.09. erstmals pünktlich C1BFC6A3; 10.10. Sa A0D0B91D Parallel-dwfruns: Förder-PDF, Bar-Bulls-Checkout, OmniRoute Security-P1, agent-mirror 7d30be0; 12.10. Mo Catch-up 16DC788F: agent-mirror `befcfd6` Workflows+5-Port-Health+Watchdog) · **18.10. STRUKTUR-FUND: loki-ki/loki-voice aus Working-Tree ENTFERNT (ohne Commit) — beide P1 obsolet, neuer LokiVoice-Speicherort UNKLAR, vor Arbeit klären** · Doku-Sync 30.09.+07.10.: 2 Findings offen (assi-README brief/feierabend + lib/push.sh) · UHR-ANOMALIE (date = Wahrheit, Logbuch vor Append NEU lesen, Zukunftdateien werden beim echten Datum gültig) · Lücken-Tage wenn Mac schläft · offen auf GO: Wecker · Deutsch-Patch-Recovery · doku-fix (3 Zeilen); 1 Task pro Chat-Limit
 
 - [OmniRoute-Rückbau + System-Fixes](omniroute-rueckbau-system-fixes-2026-09-20.md) — 20.09. Abend: Q1–Q7 ALLE ERLEDIGT („fix test"-GO): OmniRoute ABGEBAUT (Nutzer-Wunsch, Plist raus, Regeln auf Direkt-Provider gesynced, Comet läuft bis Reboot); Atlas-Ingest 67 Module (2 Code-Bugs gefixt); Task-Bridge 5 echte Tasks; loki-up.command am Desktop getestet; Mongo zu; 2 tote Agents disabled; 7b-Coder-Modell da; MASTER_STATUS+HANDBUCH aktualisiert (Backups ~/sicherungen/doku-backup-20260920); Endstand CHECKPOINT CONTINUE — offen nur: 4 Keys (Sascha) + Firewall sudo
 
@@ -18537,7 +18537,7 @@ Am 22.09.2026 schlug jeder Subagent-Start (z. B. `cavecrew-investigator`) fehl m
 
 - [Agent-Defs Provider-Fix](agent-defs-provider-fix.md) — Subagents pinnten toten Provider; 10 Defs in ~/.zcode/agents/ laufen jetzt auf account:zai-individual-coding-plan/GLM-5.3-Flash (18.10., Test-Start bewiesen)
 - [LOKI-OS Audit-Pipeline](loki-os-audit-pipeline.md) — **KOMPLETT-AUDIT 45 Real-Tools fertig: 12 PASS / 5 FAIL / 28 unvollständig (Scanner-Lücke Non-Node + 5 Falschpfade + 3 Timeouts)**; 🔴 AKTIVER Gemini-Key in antigravity-cloud (3 Fundstellen, rotieren!) + Keys in bleicher/cali-logbook/vintagescan; **IP-Lock --go ausgeführt** (5 Ordner in _FIRMEN_SPERRE_LOCKED, chmod 700); **Ghosts geklärt: atlas-cali-commercial-v2 = ATLAS_MASTER/app (atlas-v5), foerder-cockpit = FörderVektor-Austria** (tools-v2 fixiert, Backup ghostfix-2026-10-18); Nutzer-GO „alles ohne limit" für Rotation/Redaction; Wissensbank im Obsidian-Vault (9 Notizen) + LOKI-OS-PIPELINE/ im Repo; tools-v2.json = 74 Tools (50 real/17 ghost/7 kandidat); Skills synchron 243³; Subagent-Defs gefixt (account:zai-individual-coding-plan/GLM-5.3-Flash); Repo ausgemistet 57→33 (_ARCHIV/2026-10-18, 16 MB); Mimosa blockt Bash-mv auf .py → MCP filesystem move_file; offen: Key-Rotation+Redaction, 5 Falschpfade fixen, Non-Node-Scanner, Stage-3-Loops (5 FAIL), Cline-Kanban :3484 (App läuft, Board nicht), JULES_API_KEY, Git-Historie-Scrub, Gumroad/Deploy
-- [Verkaufshub Inventar & Workflow](verkaufshub-inventar-und-workflow.md) — VERKAUFS-OS live (:3300/verkaufs-os.html, Liquid-Glass-Desktop, Agenten-Panel A1–A15, 50 Kacheln mit SVG-Logos) = die EINE Oberfläche nach Nutzer-Wunsch "Betriebssystem wie LOKI OS"; Inventur bewiesen (72 Projekte, 562 Skills, 61 Plugins, 67 Tools/50 real); PARALLEL-SESSION (Claude, hub-glass, GLM-4.6-Kette, Ghost-Audit 35 gerettet) nutzt dieselbe tools-v2.json — vor Weiterbau aktuellen Stand lesen; nur 5/15 Pläne vollständig (OmniRoute-401) → Pläne-Runde 2 offen; Mimosa blockt Commits (Nutzer-Whitelist nötig); GO-Punkte: Gumroad-Links, Apple-Zertifikat, Deploy, push
+- [Verkaufshub Inventar & Workflow](verkaufshub-inventar-und-workflow.md) — VERKAUFS-OS live (:3300/verkaufs-os.html, Liquid-Glass-Desktop, Agenten-Panel A1–A15, 50 Kacheln mit SVG-Logos) = die EINE Oberfläche nach Nutzer-Wunsch "Betriebssystem wie LOKI OS"; 18.10. spät: verkaufs-os.html + hub-glass.html waren fälschlich ins _ARCHIV gewandert → zurückgeholt, hub_server :3300 neu gestartet (beide HTTP 200), [object Object]-Gap-Bug im OS gefixt (Z.60 rendert jetzt typ·beschreibung·BLOCKER); Inventur bewiesen (72 Projekte, 562 Skills, 61 Plugins, 67→74 Tools); PARALLEL-SESSION nutzt dieselbe tools-v2.json — vor Weiterbau aktuellen Stand lesen; nur 5/15 Pläne vollständig → Pläne-Runde 2 offen; Mimosa blockt Commits (Whitelist nötig) + Bash-mv auf .py (→ MCP filesystem move_file); GO-Punkte: Gumroad-Links, Apple-Zertifikat, Deploy, push, Backend :8055 für Autopilot-Buttons
 
 ## agent-defs-provider-fix
 
@@ -18594,7 +18594,15 @@ metadata:
 **Top-5-Audit-Workflow GESTARTET (18.10. spät, dwfrun-dbf3cf13) → KOMPLETT ERGEBNIS:** **2 PASS** = bleicher + cali-logbook-pwa — beide mit **je 1 Klartext-Gemini-Key** (bleicher: `firebase-applet-config.json:4`; cali-logbook-pwa: `src/context/AppProvider.tsx` + im Git-Verlauf) → **Rotation beim Nutzer nötig, sonst beim Verkauf kompromittiert**. **3 UNVOLLSTÄNDIG** = memorybase-ingest + projekt-task-planer (kein package.json → Build/SBOM leer) und andi-cannabis (Build OK, aber Scanner/license-checker liefen auf falschen Pfad) — Strukturprobleme, KEINE Security-Funde. Nach Nutzer-Wut („ES GIBT 67 TOOLS, DU HAST NICHTS ANALYSIERT — WO IST FÖRDEROPS? WO IST ATLAS?"): Klärung via tools-v2.json — **Förder-Cockpit (Tier A) + atlas-cali-commercial-v2 (Tier A) = ghost ohne lokalen Code** (Förder-Eintrag-Pfad ist Datenfehler → zeigt auf körperfluss-pilot.ai; FörderOps-Bot-Ticket in _ARCHIV); Atlas: 6 Varianten, 5 real. **→ AmendWorkflow auf ALLE 45 Real-Tools** erweitert (TOOLS-Array 5→45, +Scan-Fail-try/catch-Skip-Pfad, Bericht/Board umbenannt): läuft als **dwfrun-e7e95f58** (5 fertige aus Cache). Vault-Notiz 07 um Ghost-Klärung + Top-5-Ergebnis erweitert. Struktur-Lektion fürs Audit: Tools ohne package.json/pyproject liefern leere _AUDIT-Dateien → Gate-1 „UNVOLLSTÄNDIG" korrekt, aber Ursache ist Projektstruktur, nicht Security.
 
 **Why:** Nutzer wollte vollautomatisierten Multi-Agent-Audit-&-Vermarktungs-Workflow mit verknüpften Apps (Cline/Eigent/Hermes/AutoClaw/Antigravity); bestehende Bewertungs-Pipeline (pipeline/runner.py, 67/67) bleibt — neue Pipeline komplementär.
-**How to apply:** Bei Audit-/Vermarktungs-Tasks zuerst LOKI-OS-PIPELINE/00-ANLEITUNG.md + PLAN-ENTWICKLUNG.md + Vault-Notizen 08/09 nutzen; KEINE automatische Ausführung von 10-ip-lock.sh --go (destructiv); Dienste nicht selbst starten/stoppen (Kanban/Kernel nur melden); `/workflow` vom Nutzer = CreateWorkflow + dynamic-workflows-Skill VORHER laden, Scans als `world.run` deterministisch, Subagents nur für Interpretation; Workflow-Läufe nicht pollen (Notification kommt). **Nutzer will VOLLSTÄNDIGKEIT: „Top-5-Fokus" nie als Ersatz fürs Gesamtaufkommen verkaufen — bei 74 Inventar-Einträgen alle Real-Tools auditen (AmendWorkflow mit erweitertem TOOLS-Array = Cache-Reuse der fertigen).** Offene Rotation: AKTIVER Gemini-Key antigravity-cloud (3 Fundstellen) + bleicher/cali-logbook/vintagescan (Nutzer-GO erteilt, Redaction noch ausstehend). Verwandt: [[verkaufshub-inventar-und-workflow]] [[agent-defs-provider-fix]]
+**How to apply:** Bei Audit-/Vermarktungs-Tasks zuerst LOKI-OS-PIPELINE/00-ANLEITUNG.md + PLAN-ENTWICKLUNG.md + Vault-Notizen 08/09 nutzen; `/workflow` vom Nutzer = CreateWorkflow + dynamic-workflows-Skill VORHER laden, Scans als `world.run` deterministisch, Subagents nur für Interpretation; Workflow-Läufe nicht pollen (Notification kommt). **Nutzer will VOLLSTÄNDIGKEIT: „Top-5-Fokus" nie als Ersatz fürs Gesamtaufkommen verkaufen — bei Inventar-Einträgen alle Real-Tools auditen (AmendWorkflow mit erweitertem TOOLS-Array = Cache-Reuse der fertigen).** Verwandt: [[verkaufshub-inventar-und-workflow]] [[agent-defs-provider-fix]]
+
+**18.10. spät — ABGESCHLOSSEN (User-GO „du darfst alles go ohne limit"):**
+- **IP-Lock --go AUSGEFÜHRT:** 5 Container-Ordner in `~/Desktop/_FIRMEN_SPERRE_LOCKED/` (chmod 700 + IS_COMPANY_IP.lock): Koerperfluss_OS_Export, Koerperfluss-3D-Upgrade (inkl. 4 Unterordner via Eltern-Move), 01_koerperfluss-3d-upgrade-VOLLFUNKTION, narben-reha-app, VERKAUFSPAKETE/koerperfluss-3d-v2-upgrade. Existenz-Check „verschoben via Eltern-Ordner" funktionierte.
+- **Beide Ghosts AUFGEKLÄRT (Nutzer hatte recht — lokal + in Antigravity):** ① `atlas-cali-commercial-v2` → echte Quelle = **`atlas + pliability /ATLAS_MASTER/app`** (package.json, android/ios/Capacitor = atlas-v5-App) → tools-v2 auf `echt-repo` korrigiert (Backup `tools-v2.backup-ghostfix-2026-10-18.json`). Achtung: der `.gemini/antigravity/worktrees/…/Atlas_Cali_Commercial_V2`-Ordner war eine **leere Hülse (0 Dateien)** — Worktrees-Nachbarn prüfen statt blind vertrauen. ② `foerder-cockpit` → echte Quelle = **`AI_STUDIO_EXPORTS/FörderVektor-Austria:Förderungsberater-ersteller-Assistent`** (23 Dateien, React+Firebase). Beide per `20-audit-scan.sh` gescannt (FörderVektor: `vite: command not found` → npm install nötig).
+- **KOMPLETT-AUDIT 45 Real-Tools FERTIG (dwfrun-e7e95f58, Haupt-Artefakt „Komplett-Audit-Bericht" + Board „45-Tools Gate-1-Status"):** **12 PASS** (bleicher, andi-cannabis, agent-mirror, atlas-v2, cali-logbook, cannamarkt, prompt-alchemist, tax-advisor, dtc, 16-helper, papa-vhs, loki-dashboard-app — Rest = Verpackung: LICENSE statt UNLICENSED, README, Bundle-Splitting) · **5 FAIL** (cali-coach-atlas React-19-Peer, ai-3d-druck react-dom 19→18, ffg-sim korruptes Lockfile, vintagescan npm-Bug-4828-rollup-darwin-arm64, andi-local ERR_INVALID_ARG_TYPE) · **28 UNVOLLSTÄNDIG** mit 3 Mustern: (a) Scanner kennt nur Node → Non-Node (Swift/Python/statisch) liefert 0-Byte-Logs → **20-audit-scan.sh auf pyproject/Package.swift/Cargo erweitern**, (b) 5 falsche Pfade in tools-v2 (omniroute+iris-ai real in `Skill Lsite agentic os/…`, legal-architect+physio-cockpit = Einzeldateien statt Ordner, atlas-vision-rework nur Bild/Video), (c) 3 Timeouts à 600 s (cali-atlas-final, judicario-loki-voice, vinyl-scanner → einzeln nachziehen).
+- **Neuer Security-Alert:** 1 AKTIVER Gemini-Key (TruffleHog `active_google_key:true`) in **antigravity-cloud**, 3 Fundstellen (`public/assets/index-DO9OWpin.js`, `public/cali-logbook_files/index-j5140jvY.js`, `functions/.env.gen-lang-client-0285074833`) → Nutzer rotieren lassen, dann Bundles neu bauen.
+- **Kritischer Selbstfehler + Fix:** Beim Ausmisten wurden **verkaufs-os.html (165 KB) + hub-glass.html (19 KB) fälschlich ins _ARCHIV verschoben** → :3300 tot, Nutzer meldete es über file://-Link. Beide zurückgeholt; Regel: aktive UIs nie in Batch-Moves ohne BEHALTEN-Whitelist. Zusätzlich **[object Object]-Bug im OS gefixt** (verkaufs-os.html Z.60: `String(g)` auf Gap-Objekten → rendert jetzt `typ · beschreibung · BLOCKER`), **hub_server.py :3300 gestartet → beide UIs HTTP 200 verifiziert**.
+- **Rest offen:** Gemini-Key-Redaction bleicher/cali-logbook (GO erteilt, noch nicht ausgeführt) + antigravity-cloud-Rotation (Nutzer) · 28 UNVOLLSTÄNDIG-Re-Scan nach Scanner-Fix · 5 FAIL-Veredelungen (Stage 3) · Cline-4D-Review (Kanban :3484 noch immer HTTP 000 trotz „Cline läuft") · Backend :8055 für OS-Autopilot-Buttons · Git-Historie-Scrub · Mimosa-Whitelist für Commit.
 
 ## verkaufshub-inventar-und-workflow
 

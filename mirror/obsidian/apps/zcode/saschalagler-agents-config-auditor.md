@@ -9,7 +9,7 @@ tags: [spiegel, zcode]
 name: "config-auditor"
 description: "Prüft Config-Dateien auf Syntax-, Konsistenz- und Sicherheitsfehler."
 color: yellow
-model: "builtin:zai/GLM-5.3-Flash"
+model: "zai-api/GLM-5.3-Flash"
 thoughtLevel: low
 tools:
   - Read

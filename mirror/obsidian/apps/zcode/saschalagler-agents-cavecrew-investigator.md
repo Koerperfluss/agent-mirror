@@ -9,7 +9,7 @@ tags: [spiegel, zcode]
 name: "cavecrew-investigator"
 description: ">"
 color: yellow
-model: "builtin:zai/GLM-5.3-Flash"
+model: "zai-api/GLM-5.3-Flash"
 thoughtLevel: low
 tools:
   - Read

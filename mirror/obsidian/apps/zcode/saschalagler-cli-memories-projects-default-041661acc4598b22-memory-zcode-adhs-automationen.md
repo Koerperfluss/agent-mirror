@@ -1,7 +1,7 @@
 ---
 app: zcode
 quelle: "saschalagler/cli/memories/projects/default-041661acc4598b22/memory/zcode-adhs-automationen.md"
-stand: 2026-10-13
+stand: 2026-10-18
 tags: [spiegel, zcode]
 ---
 
@@ -196,4 +196,11 @@ metadata:
 - **Zukunftdatierte Datei wurde zum echten Tages-Logbuch:** `2026-10-13.md` existierte schon aus dem Anomalie-Lauf (status: abgeschlossen) mit falscher Kopf-Behauptung „Funkstille-Woche 07.–12.10." — faktisch überholt, denn diese Tage HATTEN Logbücher. Behandlung nach Bi-Temporal-Prinzip: **nichts gelöscht**, RISIKO-SCAN + explizite KORREKTUR-Sektion angehängt. Muster damit zweimal bewiesen (06.10. + 13.10.): Zukunftdateien werden beim echten Datum zu gültigen Tages-Logbüchern, alter Inhalt bleibt als Korrektur-vermerkter Verlauf.
 - **Scan-Befund:** P1×2 **unverändert** — LokiVoice 3 Dateien dirty (`app.py`, `konfiguration.py`, `tests/test_konfiguration.py`) + Parent-Pointer unverankert (` M loki-voice`, `7fdbf2d` hängt seit 01.10 im Submodul). P2: `.wayfinder/map.md`, `MASTER_TODO.md`, `data/atlas_knowledge.json` + scrape-Archiv uncommittet. 0 Commits 24 h, Engine unverändert.
 - Bilanz: 39+ Läufe; Dauer-GOs unverändert: **Wecker · Deutsch-Patch-Recovery · doku-fix (3 Zeilen) · pointer-fix · commit-wache**.
+
+## Vierzigster Lauf (So 18.10. 21:0x — Abend PASS mit STRUKTUR-FUND)
+- Kalender-Event **„Logbuch 18.10.2026"** UID `A8552CD2-43FD-4C08-B8FD-EF7D72CB6A1A` (Ganztages, Kalender „Kalender"), Logbuch `~/.agents/memory/logbuch/2026-10-18.md` (status: abgeschlossen).
+- **⚠️ STRUKTUR-FUND:** `~/loki-ki/loki-voice` wurde aus dem Working-Tree **ENTFERNT** (Ordner weg; `ls`-Beweis; git log unverändert: befcfd6/2bad878/eaf7bc4 → Entfernung NICHT committed). Beide alten P1 (dirty Dateien + Parent-Pointer) damit **obsolet/transformiert** — neuer kanonischer LokiVoice-Speicherort: **DATENLAGE UNKLAR** (nicht im Sweep sichtbar). Vor weiterer LokiVoice-Arbeit neuen Standort klären; Entfernung weder gebilligt noch rückgängig gemacht (nur dokumentiert).
+- 🔨 Verkaufs-HUB (Projekt 8): Session-Handoff auf **verkaufshub** aktiv (Session `d16e9574`, Ziel `sess_ae843b4f`).
+- ℹ️ Doku-Findings weiterhin offen (grep 18.10: brief/feierabend 0, push 0 Treffer) · 14.–17.10.: keine Läufe in diesem Chat sichtbar (Lücken, Muster = Mac aus).
+- Bilanz: 40+ Läufe; offene GOs: **Wecker · Deutsch-Patch-Recovery · doku-fix (3 Zeilen)** · pointer-fix/commit-wache entfallen (Submodul-Adresse weg) → ersetzt durch LokiVoice-Standort-Klärung.
 
