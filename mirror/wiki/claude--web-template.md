@@ -1,6 +1,6 @@
 # web-template (claude)
 
-Zuletzt gespiegelt: 2026-10-18 16:37 UTC
+Zuletzt gespiegelt: 2026-10-18 16:52 UTC
 
 ## no_spec
 
@@ -106,7 +106,7 @@ ULIMPORTANT: **只生成 HTML 原型**，其他技术栈由后续开发实现。
 请注意！必须遵守以下的规则，每个环节完成后都需要由我进行确认后才可进行下一个环节；
 
 ### 1. 需求澄清
-如果你判断我的输入提出的是一个新需求，可以按照下面的标准软件工程的方式独立开展工作，需要时才向我询问，可以采用 interactiveDialog 工具来收集
+如果你判断我的输入提出的是一个新需求，可以按照下面的标准软件工程的方式独立开展工作，需要时才向我询问，直接在对话里提问收集即可
 
 ### 2. 需求分析
 每当我输入新的需求的时候，为了规范需求质量和验收标准，必须首先会搞清楚问题和需求，然后再进入下一阶段
@@ -1218,6 +1218,15 @@ Preferred execution order for this skill:
 3. Do not route app-side provider configuration back to the MCP `auth` tool.
 4. In existing projects with active login and register handlers, stop revisiting provider setup after the required login method and publishable key are confirmed. Move back to the active frontend handler and finish the actual user flow.
 
+### Credential scope — what each login can actually reach
+
+Read this before telling a user to "re-authorize" after a permission-shaped failure. Re-authorizing does not widen a key's scope; it just issues the same scope again.
+
+- **Account-level** (`auth(status)` → `credential_scope: account`): reaches control-plane APIs, subject to that identity's own CAM policies.
+- **Environment API Key** (`credential_scope: single_env`): scoped to **one environment's data plane** plus the fixed TCB policies. It is not an account-level credential, so control-plane calls outside that scope fail, and there is **no channel to attach additional CAM policies to a single key** — issuing the key again changes nothing. When a task needs a capability the current credential cannot have, switch to an account-level login or follow the role route rather than retrying the same key.
+
+Full identity table and how to grant what is missing: `../../cloud-api-operations/references/calling-methods.md`.
+
 ---
 
 ## Extended guide
@@ -2167,6 +2176,10 @@ Recipes encode the exact call sequence, required parameters, and empirically dis
 - **PostgreSQL instance spec change and shared-to-dedicated upgrade**: `./references/recipes/pg-instance-spec.md`
 - **Custom domain onboarding for an env (HTTP access domain, certificate, DNS binding)**: `./references/recipes/custom-domain.md`
 - **Operation trace / 操作审计 — who did what, from which IP, with which key**: `./references/recipes/cloud-audit-operation-trace.md`
+- **Platform edition onboarding — create env and issue the environment API key**: `./references/recipes/platform-onboarding.md`
+- **Wiring that credential into a user's agent, one env per project**: `./references/recipes/platform-agent-connect.md`
+- **Closing down the agent's tool surface — plugin trimming, gateway wrap for audit, expert-enforced constraints**: `./references/recipes/platform-agent-guardrails.md`
+- **Platform edition usage, billing cycle, and environment recycling**: `./references/recipes/platform-usage-and-recycle.md`
 
 **Done when**: every parameter value in the call sequence traces to a recipe value marked as verified (实测) or to official docs.
 
@@ -2302,7 +2315,7 @@ https://console.cloud.tencent.com/cam/role/grant?roleName=<角色名>&policyName
 
 # Recipes — 实证工作流索引
 
-**一个场景一篇文档**，新增 recipe 时在本目录新建 `<场景名>.md`，并登记到下方目录表。
+**一个场景一篇文档**，新增 recipe 时在本目录新建 `<场景名>.md`，并登记到下方目录表。**编号取目录表里当前未被占用的下一个**，并让它同时出现在三处：文件名（信息性）、文件首行的 `# Recipe N — 标题`、目录表首列。三处不一致或编号与别人撞车会直接让 `tests/skill-recipes-numbering.test.js` 变红（多人并行加 recipe 时最容易撞的就是这个）。
 
 每个 recipe 固定结构：**When to use → 前置权限 → 接口序列 → 踩坑清单 → 验证步骤**（入口特殊的可加「入口」一节）。`When to use` 写可判定的触发条件（出现什么症状就该翻这篇），并用一句划出本篇不管什么、该转哪去。
 
@@ -2322,14 +2335,82 @@ https://console.cloud.tencent.com/cam/role/grant?roleName=<角色名>&policyName
 | --- | --- | --- | --- |
 | 1 | PostgreSQL 存储空间使用率告警 | [pg-storage-alarm.md](./pg-storage-alarm.md) | ✅ 生产实证（2026-09-08） |
 | 2 | ICP 备案提交前自查与等待期查询 | [icp-filing-readiness.md](./icp-filing-readiness.md) | ✅ 生产实证（2026-09-21） |
-| 3 | PostgreSQL 实例变配与升级独享 | [pg-instance-spec.md](./pg-instance-spec.md) | 🟡 部分实证（2026-09-24）：`ModifyPGInstanceSpec` 升配 + 降配已跑通；**共享升独享未跑**（账号下的 PG 实例全是独享形态，该接口只接受共享实例，只拿到前置条件报错原文）；「费用与套餐」一节的资源点单价与「无需升级套餐」、以及「目标 = 现状回 `unchanged`」按文档与界面核对，**未实跑** |
+| 3 | PostgreSQL 实例变配与升级独享 | [pg-instance-spec.md](./pg-instance-spec.md) | 🟡 部分实证（2026-10-16）：`ModifyPGInstanceSpec` 升配 + 降配已跑通；**共享升独享已跑通**（标准版环境 → `1 核 2 GiB` + 10 GB，`SwitchTag: 0`，约 2 分 49 秒到 `Succeed`，规格与 `TenantType` 均已复核；个人版环境的套餐拒绝报错原文已取得）；**未跑**——套餐准入在「标准版以上」各档逐个验证（现有结论来自内部口径）、`SwitchTag: 1` 指定时间切换、独享 → 共享（文档明确不支持）；「费用与套餐」一节的资源点单价、以及「目标 = 现状回 `unchanged`」按文档与界面核对，**未实跑** |
 | 4 | 自定义域名接入云开发 | [custom-domain.md](./custom-domain.md) | 🟡 部分实证（2026-09-24）：现状查询、只读预检、证书读取、真实绑定与解绑（含收尾）已跑通；**未跑**——轮询到 `Status = SUCCESS`（测试域名一直停在 `PROCESSING`）、代改 DNS 解析、备案（`dnspod` / `ba` 未授权） |
 | 5 | 云开发环境的操作追溯（操作审计） | [cloud-audit-operation-trace.md](./cloud-audit-operation-trace.md) | 🟡 部分实证（2026-10-12）：账号级身份下的 `LookUpEvents` 只读查询、`cam AttachRolePolicy` 挂 `QcloudAuditReadOnlyAccess`（挂后 `ListAttachedRolePolicies` 复核条数 +1）已跑通；**未跑**——`DescribeEvents` 全序列、`GetAttributeKey`、以及**角色态（`TCB_QcsRole`）下 `cloudaudit` 是否可见**（要等一个走角色态的 MCP 会话才能验） |
+| 6 | 资源点耗尽与停服报错的判别 | [credits-exhaustion.md](./credits-exhaustion.md) | 🟡 文档核对，未实跑（2026-10-15）：判别序列与恢复路径按官方计费文档与套餐规则整理，**未在资源点耗尽的环境上实跑**；`InsufficientBalance` 的触发条件、以及无 `billing` 权限时账户余额查询的报错形态，先按「验证步骤」只读自检再用 |
+| 7 | 平台版接入：建环境、发凭证 | [platform-onboarding.md](./platform-onboarding.md) | 🟡 文档核对，未实跑 |
+| 8 | 把环境接到用户的 Agent | [platform-agent-connect.md](./platform-agent-connect.md) | 🟡 文档核对，未实跑 |
+| 9 | 收口 Agent：工具裁剪、封装审计、专家约束 | [platform-agent-guardrails.md](./platform-agent-guardrails.md) | 🟡 文档核对，未实跑 |
+| 10 | 平台版用量、账期与环境回收 | [platform-usage-and-recycle.md](./platform-usage-and-recycle.md) | 🟡 文档核对，未实跑 |
+| 11 | 计费口径自查：为什么这笔费用会出现 | [billing-charges-explained.md](./billing-charges-explained.md) | 🟡 文档核对，未实跑（2026-10-15）：三套计费体系的口径（云托管免费额度为 3 个月总量、实例数不为 0 即计费、次日扣费；云开发资源点抵扣顺序；成长计划 Token 的来源限制）逐条取自官方文档；**未对真实账单逐项复算**，先按「验证步骤」只读自检再用 |
 
 ## 没有独立 recipe 的场景
 
 - **MySQL / CVM 等依赖产品告警**：复用 Recipe 1 的框架，换 monitor namespace。
 - **MySQL 备份回档、SCF 函数触发器**：暂无 recipe，从 `api-reference` 的依赖产品段起查。
+
+## billing-charges-explained
+
+# Recipe 11 — 计费口径自查：为什么这笔费用会出现
+
+## When to use
+
+用户对账单有疑问时：
+
+- 「没经过我确认就扣费」/「找不到退订入口」
+- 「免费额度明明没用完，怎么提示欠费」
+- 「Token 包没抵扣，反而扣了资源点」
+- 「我只买了月付，怎么续成一年」
+
+管到「说清这笔用量由哪套计费体系产生、去哪查明细」为止。
+
+- 环境**停服 / 资源点耗尽**的判别与恢复不在本篇，转 [Recipe 6](./credits-exhaustion.md)
+- 退款、发票、订单争议走控制台与费用中心，**本篇不代下单、不代退款**（见「边界」）
+
+## 三套计费体系，先分清是哪一套
+
+同一个账号下可能同时存在三套计量，混在一起讲就是"算不清"的来源。
+
+| 体系 | 谁产生用量 | 什么条件下计费 | 额度 / 免费 | 明细去哪看 |
+| --- | --- | --- | --- | --- |
+| **云开发资源点（套餐）** | 云开发环境的数据库读写、云函数调用与资源、存储与 CDN、网关/认证调用、日志、内置 AI 模型 Token | 每次调用与流量，**实时计量**（用量统计有更新周期，不超过 2 天） | 免费体验版 **3,000 点/月**（**不支持**资源包与按量）；个人版 40,000 点/月起，支持资源包加购与超限按量；**余额低于 10% 时发送告警** | 控制台「套餐用量」页；接口侧 `manageEnv(action="usage")` |
+| **微信云托管按量** | 微信云托管环境的容器、构建、MySQL、对象存储、CDN | 容器：**环境中任意服务下任意版本，实例数量不为 0 就按 CPU/内存 × 时长计费**；另有构建时长与流量 | 首个环境赠送免费额度，**有效期 3 个月（是总量，不是每月额度）** | 微信云托管控制台 → 费用中心 → 充值与账单 |
+| **AI Token 额度** | 小程序 AI 调用（`wx.cloud.extend.AI`） | 按 Token 消耗结算 | 小程序成长计划赠送的 Token **仅限「小程序端调用」与「管理员身份调用」**（含控制台体验、云函数内调用） | 云开发控制台 → AI 模块 → 各模型 Token 消耗 |
+
+换算与顺序（云开发侧）：**1,000 资源点 ≈ 1 元**；抵扣顺序 **套餐资源点 → 资源包 → 按量计费**，互不替代——买了资源包不会补回已耗尽的套餐额度，也不会冲掉已产生的欠费。
+
+结算节奏：云托管是**每日结算、次日扣费**（特殊情况可能延迟几天，但不超过当月最后一天）；云开发资源点在用量统计完成后抵扣。
+
+## 四条最常被误读的口径
+
+1. **「额度没用完却欠费」——多数是两套额度被当成一套**。微信云托管的免费额度是**有效期 3 个月的总量**，不是每月刷新；把"三个月总量"当"每月额度"看，就会觉得"才用了一点怎么就超了"。
+2. **「我什么都没跑，怎么一直计费」**——云托管容器**实例数不为 0 就计费**，与有没有人访问无关。要停就停实例（缩容到 0）。
+3. **「充了钱怎么还是不行」**——充进的是**腾讯云账户余额**，它与环境资源点/套餐额度是**两个独立维度**；余额为正不代表环境有可用资源点。恢复环境要按 [Recipe 6](./credits-exhaustion.md) 的三条路径走。
+4. **「Token 包没抵扣」**——先确认**调用来源**是否在赠送 Token 的适用范围内（仅小程序端调用与管理员身份调用）。来源不符时请求会落到资源点池，看起来像"没抵扣"。
+
+## 自查顺序（只读）
+
+| 步 | 查什么 | 用什么 |
+| --- | --- | --- |
+| 1 | 环境当期资源点用量与计费周期 | `manageEnv(action="usage")`（透传计费周期 + 分模块用量） |
+| 2 | 环境计费信息（到期时间、套餐） | `queryEnv(action="info")`；或 `DescribeBillingInfo` |
+| 3 | 账户侧余额（排除欠费，不是找充值理由） | `callCloudApi`（`billing` / `DescribeAccountBalance`） |
+| 4 | AI 侧 Token 消耗与来源 | 控制台 AI 模块；`DescribeAIModels` 看已启用的模型与分组 |
+
+拿到 1-4 后，把结论落成三句话：**是哪套计费体系的用量、口径是什么、去哪个控制台页看明细**。
+
+## 边界
+
+- **不代下单、不代退款、不提供充值通道**：退款与发票在控制台 / 费用中心，订单争议走工单
+- 子账号或托管授信用户可能**没有计费权限**——给链接并说明「转主账号管理员处理」，不要反复重试
+- 用量数字有更新周期，**不要拿刚发生的几分钟去对账**；对不上时先看统计窗口
+
+## 验证步骤
+
+1. 跑 `manageEnv(action="usage")`，确认能拿到当前计费周期与分模块用量。
+2. 按「三套计费体系」表判断用户描述的用量属于哪一套——判错体系，后面全错。
+3. 把对应控制台入口给用户，让其自行核对账单明细（机器人/客服侧同样适用这套口径）。
 
 ## cloud-audit-operation-trace
 
@@ -2453,6 +2534,97 @@ https://console.cloud.tencent.com/cam/role/grant?roleName=<角色名>&policyName
 
 | 接口 | 单次时间跨度 | 可回溯 | `NextToken` 类型 | 检索维度 |
 | --- | --- | --- | --- | --- |
+
+## credits-exhaustion
+
+# Recipe 6 — 资源点耗尽与停服报错的判别
+
+## When to use
+
+业务请求开始失败，怀疑是环境的计费状态问题时：
+
+- 云函数调用返回 `InsufficientBalance`（HTTP 410），或数据库写入返回 `EXCEED_REQUEST_LIMIT`
+- 用户说「我充值了，还是不行」「是不是账号欠费了」
+- 静态托管 / 网关 / 认证 / 内置模型调用大面积失败，看起来像「整个环境停了」
+
+管到「判定是哪一种停服原因、把恢复路径讲清楚」为止。
+
+- 本篇**不代下单、不代变配、不提供充值通道**：购买与充值由用户在控制台完成（原因见「权限分支」）
+- 报错码的通用排障协议（先查官方错误码含义再行动）见 `../../../cloudbase-platform/SKILL.md` 的错误码排障一节
+- 云函数自身的运行时报错（`430` 用户代码异常、`433` 超时等）不看本篇，去函数日志
+
+## 判别序列（全只读）
+
+先取证，再下结论。两条证据必须都拿到，只看一条就会误判。
+
+| 步 | 查什么 | 用什么 | 看什么 |
+| --- | --- | --- | --- |
+| A | 环境当期资源点用量 | `manageEnv(action="usage")` | 当周期（计费周期）分模块的 `CreditsValue`；明细里 `DeductValue`（已抵扣）/ `PackageDeductValue`（资源包抵扣）。看**当期合计是否已达到套餐额度** |
+| B | 套餐与有效期 | `queryEnv` 的环境信息 | 当前套餐名与到期时间。**免费体验版 = 3000 点/月**，与付费套餐的额度不是一个量级 |
+| C | 账户侧 | `callCloudApi`（`billing` / `DescribeAccountBalance`，只读） | 账户余额是否为正。这一步是为**排除**欠费，不是找充值理由 |
+
+拿到 A/B/C 后按下表落结论，不要停在前两步就猜。
+
+## 四分支决策表
+
+| 分支 | 判别特征 | 一句话结论 | 恢复动作 |
+| --- | --- | --- | --- |
+| **免费体验版资源点耗尽** | A 显示当期用量已达 3000 点量级；B 显示免费体验版；C 余额为正 | 资源点用完了，**不是欠费** | **升级为付费套餐**（唯一途径） |
+| **付费套餐资源点耗尽**（超限停服） | A 显示用量耗尽；B 显示付费套餐且在有效期内 | 套餐内资源点用尽，环境已超限停服 | 升配套餐 / 购买资源包 / 开启按量计费，**三选一**（见下表建议） |
+| **套餐到期** | B 显示已过期 | 套餐过期进入停服隔离期 | 隔离期内续费找回；逾期环境被销毁、数据不可恢复 |
+| **账户欠费** | C 余额为负 | 账户欠费 | 费用中心充值冲正。**注意**：套餐仍有效且环境还有资源点时，业务不受影响，只是无法续费/变配 |
+
+### 付费套餐耗尽时怎么选
+
+| 用量形态 | 建议 |
+| --- | --- |
+| 短促尖峰（活动、大促） | 购买资源包，按量冲高那几天靠它抵 |
+| 持续高位、长期增长 | 升配套餐，单位成本更低 |
+| 波动大、说不准 | 开启超限按量，用多少扣多少（次日结算） |
+
+## 超限按量开关（`EnableOverrun`）
+
+**默认是关的**。关着的时候，套餐内资源用量耗尽即**直接停服** —— 数据库、云函数、云存储等所有服务不可用，不是"降级"也不是"只读"。官方的原话是「**强烈建议所有生产环境开启此功能**」。
+
+- 开启后：超出套餐额度的部分自动转为按量计费，业务不中断
+- 两种开法：购买时（`CreateEnv` 传 `EnableOverrun: "TRUE"`，一步到位）；购买后（改环境附加信息的接口，传 `EnvId` + `EnableOverrun: TRUE/FALSE`）
+- 所以**付费套餐耗尽那一支，最省事的止血动作是先把开关打开**，再谈升配还是买资源包
+- 口径出处：https://docs.cloudbase.net/solutions/cloudbase-for-platforms/quota
+
+⚠️ 免费体验版**不能**开按量、也不能买资源包（见「踩坑清单」），别对体验版用户提这个开关。
+
+## 恢复入口
+
+- **套餐 / 资源包 / 超限按量**：云开发控制台 `https://tcb.cloud.tencent.com/dev?envId=<envId>` 的**套餐用量页**——升级套餐、购买资源包、开启超限按量都在这一页
+- **价格与规则**：https://buy.cloud.tencent.com/price/tcb/overview
+- **账户充值**：腾讯云费用中心 https://console.cloud.tencent.com/expense
+
+## 权限分支
+
+使用者可能是**子账号**或经托管授信登录的用户，未必有计费权限。这时：
+
+- 正常做法是**给出上面三个入口链接**，并说明「没有计费权限时请转给主账号管理员处理」
+- 不要因为调用失败就反复重试，也不要尝试代为下单或支付——计费类写操作（下单、支付）不该由工具代执行
+- 子账号自己确认权限范围看 CAM：https://console.cloud.tencent.com/cam
+
+## 踩坑清单
+
+- **`InsufficientBalance` 不一定指账户欠费**。云函数状态码表把它解释为「账号余额不足，请充值后重试」，照做往往无效：可用量由**环境资源点**决定，账户余额是另一个独立维度。
+- **不只是云函数**。资源点覆盖数据库读写、云存储/CDN 流量、网关与认证调用、日志、以及 CloudBase 内置模型的 Token——任一模块耗尽都会表现为「业务请求失败」。看到大面积失败时按资源点查，不要逐个模块归因。
+- **抵扣顺序是套餐资源点 → 资源包 → 按量计费**，互不替代。买了资源包不会自动补上已耗尽的套餐额度、也不会冲掉已产生的欠费。
+- **换算**：1000 资源点 ≈ 1 元。
+- **免费体验版不支持加购资源包，也不支持开启按量计费**。给体验版用户推荐「买资源包」是无效建议，唯一途径是升级付费套餐。
+- **套餐名固定这几个**：免费体验版 / 个人版 / 标准版 / 企业版 / 企业高级版。没有「专业版」这类叫法。
+- **用量统计有更新周期**（不超过 2 天）。刚耗尽的那几个小时里，用量页看到的数字可能还没反映到最新，别据滞后数字下「还有余量」的结论。
+- **套餐到期与账户欠费是两件事**：套餐到期会进停服隔离期（15 天后销毁）；账户欠费在套餐有效且有资源点时不中断业务。
+- 环境进入停服状态后，控制台部分页面也会不可用，此时以「到期时间 + 资源点用量」两条证据判断，不要等控制台恢复。
+
+## 验证步骤
+
+1. 先跑 A：`manageEnv(action="usage")`，确认能拿到当前计费周期与分模块 `CreditsValue`。
+2. 再跑 C：账户余额查询返回数值（无 `billing` 权限会报权限错，按「权限分支」处理）。
+3. 两条证据对照四分支决策表，落到唯一结论；结论里要能回答「是不是欠费」——**答错的代价就是用户去充值**。
+4. 恢复动作交给用户在控制台执行；执行后重跑 A + C 复核用量与余额状态。
 
 ## custom-domain
 
@@ -2865,9 +3037,24 @@ https://console.cloud.tencent.com/cam/role/grant?roleName=<角色名>&policyName
 
 官方接口文档：云开发 API 概览 https://cloud.tencent.com/document/api/876/34809 （请求域名 `tcb.tencentcloudapi.com`）；云数据库 PostgreSQL API 概览 https://cloud.tencent.com/document/api/409/16761 （请求域名 `postgres.tencentcloudapi.com`）。
 
-## 费用与套餐：变配不需要先升级套餐
+## 费用与套餐：调规格无套餐门槛，升独享有套餐门槛
 
-**改规格、升独享都没有套餐门槛。** 调用条件只有两类：实例状态可操作、目标规格合法。没有「套餐档位」「计费模式」这类前置 —— 个人版环境照样能调。
+**B1 调规格（独享实例）没有套餐门槛。** 调用条件只有两类：实例状态可操作、目标规格合法。没有「套餐档位」「计费模式」这类前置。
+
+🔴 **B2 升独享有套餐门槛，而且是硬门槛**（实测 2026-10-16）。个人版（`baas_personal`）环境调用被直接拒：
+
+```
+current package does not support upgrading to dedicated instance
+```
+
+同样的参数换到标准版（`baas_pf_standard`）环境就成功升到独享并跑到 `Succeed`。准入范围（内部口径 + 实测一致）：**标准版及以上（标准版 / 企业版 / 企业高级版）+ 集成版 / 平台版**。
+
+门槛的几个反直觉点，别用别处的经验套：
+
+- ⚠️ **不要试图从套餐字段预判**：`ResourceLimit` 里没有 `PostgreSQL.DedicatedInstance` 键并不等于不能升 —— 标准版就没有这个键，照样能升；有这个键的只有企业版 / 企业高级版。`PackageType` 也不可靠：`tcb/DescribeEnvPlans` 与 `manageEnv listPackages` 对同一档位给出的值并不一致。直接调用接口，以返回为准。
+- ⚠️ **没有可读的资格字段，也没有 DryRun**：判断某个环境能不能升，只能真调一次；调完没报套餐错就是能升。
+- ⚠️ **先复查实例再查套餐**：目标环境如果压根没开 PG，接口先报 `PG instance not found.`，压根走不到套餐那道校验。所以「报错说没实例」和「报错说套餐不行」要分开读，别把没开 PG 讲成套餐问题。
+- ⚠️ 选环境时另有坑：`manageEnv listPackages` 按新购页口径只返回 `default` 族，标准版 / 企业版（`basic` 族）不在列表里，但它们合法可建。详见 `cloudbase-platform` skill 的 `manageEnv` 一节。
 
 别把边缘加速那道门槛套到这里。边缘加速确实要求「标准版及以上套餐 + 环境处于资源点计费模式」（见 [Recipe 4](./custom-domain.md)），那是**加速能力**的准入要求；PG 变配是**实例自身**的规格调整，两件事。
 
@@ -2880,7 +3067,7 @@ https://console.cloud.tencent.com/cam/role/grant?roleName=<角色名>&policyName
 
 按这个口径，2 核 4 GiB + 50 GB 的独享实例是 **709 资源点/小时**（约 1.7 万/天）；从 1 核 2 GiB + 10 GB 升到它，每小时多 362 资源点。控制台提交页的「用量推算」就按这个口径给，细则可以引其中的「PostgreSQL 数据库计量说明」链接给用户。
 
-所以「要不要升套餐」只有一条判据：**资源点够不够扣**。升配后消耗变快，扣到不足时才需要升套餐或加购资源包 —— 那是**额度**问题，不是变配的前置条件。回答用户时把这两件事分开说，别让「先升套餐」变成一次白忙。
+「要不要升套餐」的判据要分开说：**B1 只看资源点够不够扣**；**B2 先过套餐准入，再看资源点**。B1 升配后消耗变快，扣到不足时才需要升套餐或加购资源包 —— 那是**额度**问题，不是 B1 的前置条件。回答用户时把这两件事分开说，别让「先升套餐」变成一次白忙。
 
 这一节的口径只适用于**独享**实例：共享实例的计费规则不同，升独享提交时的提示就是「升级后按独享实例的计费规则计量计费」。
 
@@ -2929,21 +3116,6 @@ https://console.cloud.tencent.com/cam/role/grant?roleName=<角色名>&policyName
 | 7 | UpgradePGInstanceToDedicated | `tcb` / `2018-06-08` | `{ "EnvId": …, "SwitchTag": 0\|1, "SpecCode": "<步骤 6 的 SpecCode>", "Storage": <GB> }` | `TaskId` |
 
 `SwitchTag` 是**必填**（`0` 立即切换、`1` 指定时间切换）。用 `1` 时 `SwitchStartTime` / `SwitchEndTime` 的格式是 **`HH:MM:SS`** —— 和 B1 的 `ModifyPGInstanceSpec` **不是同一套格式**。
-
-```json
-{
-  "EnvId": "<envId>",
-  "SwitchTag": 0,
-  "SpecCode": "pg.it.small2",
-  "Storage": 10
-}
-```
-
-**前置条件是硬门槛，不满足会被直接拒掉**（实测 2026-09-24）：这个接口只接受 **`shared`（多租户共享）** 形态的实例，其它形态报错且不产生任何任务：
-
-```
-only shared (multi-tenant) instance can be upgraded to dedicated, current form: small_tenant
-```
 
 
 ## pg-storage-alarm
@@ -3050,6 +3222,390 @@ CreateAlarmPolicy 实测可用的请求体：
 1. `DescribeAlarmPolicies` 按 PolicyName 回查：确认 Enable=1、Condition 规则、NoticeIds。
 2. `DescribeBindingPolicyObjectList`（Module + GroupId）：确认 Total=1 且 Dimensions 双字段非 null。
 3. 若出现 null 维度残留记录，用 UnBindingPolicyObject 清理。
+
+## platform-agent-connect
+
+# Recipe 8 — 把环境接到用户的 Agent
+
+## When to use
+
+环境 ID 与 API Key 已经发到用户手上（见 [Recipe 7](./platform-onboarding.md)），现在要把这份凭证真正接进 Agent：
+
+- 用户在同一台机器上开发多个项目，每个项目一个环境，要求互不串
+- 想做到「用户不用手填任何东西」，甚至完全不看到密钥
+- 换过 key 或换过环境之后，Agent 还在操作旧的那个
+
+不管什么：环境还没建、凭证还没发，先做 [Recipe 7](./platform-onboarding.md)。要限制 Agent 能调哪些工具、要审计与审批，见 [Recipe 9](./platform-agent-guardrails.md)。
+
+## 前置权限
+
+- 客户端能跑 Node.js（MCP 与 CLI 都依赖它）
+- 已经拿到成对的两个值：环境 ID 与环境 API Key
+- 凭证的身份边界见 [calling-methods.md §3](../calling-methods.md)：环境级 API Key 只能看到它绑定的那个环境，看不到别的环境不是环境不存在
+
+## 接口序列
+
+三条路径选一条。选择的判据只有一条：**用户能不能看到密钥明文**。
+
+### A. 写进 MCP 配置的 `env`（主流做法，一个项目一套）
+
+```json
+{
+  "mcpServers": {
+    "cloudbase": {
+      "command": "npx",
+      "args": ["@cloudbase/cloudbase-mcp@latest"],
+      "env": {
+        "CLOUDBASE_ENV_ID": "<本项目的环境 ID>",
+        "CLOUDBASE_API_KEY": "<本项目的环境 API Key>"
+      }
+    }
+  }
+}
+```
+
+MCP 进程启动时读这两个变量，读到就已是登录态，用户不需要再走任何登录步骤。
+
+**一个项目一份配置 = 一个项目一个环境。** 隔离靠的是配置的**位置**：把这段 `mcpServers` 放在**项目目录**而不是全局用户目录，换项目就换一份配置，`env` 里那对值跟着换。
+
+变量名与别名：
+
+| 变量 | 说明 |
+| --- | --- |
+| `CLOUDBASE_API_KEY` | 环境 API Key，主用名 |
+| `CLOUDBASE_APIKEY` | 兼容别名，语义相同；新配置写主用名 |
+| `CLOUDBASE_ENV_ID` | 环境 ID。单独设置它时不代替登录，只是指定"操作哪个环境" |
+
+同一个环境只设 `CLOUDBASE_ENV_ID`、让用户自己登录也是一种用法（无浏览器环境下的兜底）：它决定用哪个环境，但不提供凭证。
+
+### B. CLI 非交互登录（机器上已有 CloudBase CLI）
+
+```bash
+tcb login --cloudbase-api-key <API Key> -e <envId>
+```
+
+`--cloudbase-api-key` 必须同时给 `-e`。注意区分两组长得像的参数：
+
+| 参数 | 含义 |
+| --- | --- |
+| `--cloudbase-api-key` | 云开发**环境** API Key（本 Recipe 用的这个） |
+| `--apiKeyId` / `--apiKey` | 腾讯云**账号**级凭据，CI 用，不是同一回事 |
+
+### C. 平台内嵌本地授权回调（用户完全不碰密钥）
+
+1. 平台在客户端侧起一个只监听 `127.0.0.1` 的本地服务，端口随机
+2. 打开云开发授权页（`/login?cliAuth=1`，带上 `_redirect_uri` 与 `authCallbackUrl`）
+3. 用户完成一次网页授权，回调带回 `authSource=api_key`、`envId`、`apiKey`
+4. 本地进程用 `@cloudbase/toolbox` 的 `loginByApiKey()` 换临时密钥，写进本机凭证文件
+5. 关掉本地服务，提示用户在客户端里启用连接器并**新开一个会话**
+
+换证地址可用环境变量 `CLOUDBASE_API_ENDPOINT` 覆盖 —— 客户要求走自己内网网关时用它。
+
+### 凭证从哪读、什么时候读
+
+MCP 的登录态只有两个来源，这决定了"为什么换 key 之后老会话不管用"：
+
+| 来源 | 读取时机 | 影响范围 |
+| --- | --- | --- |
+| `CLOUDBASE_API_KEY` / `CLOUDBASE_ENV_ID` 环境变量 | MCP **进程启动**时 | 这个 MCP 进程，也就是这个会话 |
+| 本机凭证文件（toolbox / CLI 写入） | 登录或换证时 | 该机器上之后启动的会话 |
+
+两个来源都不会在会话中途重读 ⇒ **凭证一变就必须新开会话**，改配置后继续用老会话是没用的。
+
+## 踩坑清单
+
+| 坑 | 现象 | 正确做法 |
+| --- | --- | --- |
+| 改完配置继续用老会话 | 还是旧环境、旧 key | 关掉会话重开；环境变量只在进程启动时读一次 |
+| 配置放全局而不是项目目录 | 所有项目共用一份凭证，互相串环境 | 每个项目一份 MCP 配置，放在项目目录内 |
+| 以为环境级 key 能看所有环境 | 查别的环境查不到，像"环境不存在" | 这是权限边界（`credential_scope: single_env`），不是环境丢了 |
+| 只设 `CLOUDBASE_ENV_ID` 就交付 | 用户没登录，工具报未登录 | 环境 ID 决定用哪个环境，不代替凭证 |
+| 环境开在国际站却按国内站登录 | 登录成功但看不到环境 | 国际站环境登录要显式传 `site=intl`（`auth` 工具的 `site` 参数），否则走国内站链路 |
+| `--cloudbase-api-key` 不带 `-e` | CLI 报错 | 两者必须同时给 |
+| 把账号级 `--apiKey` 当成环境 key | 权限范围与预期不符 | 环境级用 `--cloudbase-api-key`，账号级用 `--apiKeyId`/`--apiKey` |
+| 密钥写进会被提交的文件 | 泄漏且不可撤 | MCP 配置加进 `.gitignore`；要更高安全就走路径 C |
+
+## 验证步骤
+
+1. `auth(action="status")`：登录态正常，`envId` 与给用户的那个一致，`credential_scope` 说明这是环境级还是账号级身份。
+2. `queryEnv(action="info", envId="<envId>")`：返回的环境就是本项目该用的那个。
+3. 跑一次只读资源查询（列集合或列云函数），确认能取到该环境的资源。
+4. **反向验证**：在同一台机器上换成另一个项目的配置（另一个环境），确认看不到上一个项目的资源。
+5. 换 key 后按第 1 步复查：新会话里 `envId` 不变、凭证已更新，老会话仍是旧凭证 —— 用来确认"必须新开会话"这件事在你这边也成立。
+
+## platform-agent-guardrails
+
+# Recipe 9 — 收口 Agent：工具裁剪、封装审计、专家约束
+
+## When to use
+
+企业侧对「Agent 能做什么」有硬要求时：
+
+- 要按角色裁剪工具表面：给终端用户的会话不该能调通用云 API，也不该能碰本地文件
+- 要能审计：谁、在哪个会话、调了哪个工具、传了什么参数，事后查得到
+- 要让 Agent 遵守公司规范：新建云函数必须挂内网 VPC、对外服务必须绑自定义域名
+
+不管什么：凭证怎么进到 Agent 见 [Recipe 8](./platform-agent-connect.md)；自定义域名的具体接口序列见 [custom-domain.md](./custom-domain.md)。
+
+## 前置权限
+
+- 能改客户端侧的 MCP 配置（本地 stdio），或能改远端 MCP 的连接 URL
+- 网关/代理与审计存储由企业自己提供；云开发侧只提供工具与插件开关
+
+## 接口序列
+
+### A. 裁剪工具表面
+
+MCP 的工具按**插件**分组，用一个变量就能整组关掉：本地 stdio 用 `CLOUDBASE_MCP_PLUGINS_DISABLED`，远端 URL 用 `disable_plugins`（逗号分隔多值）。
+
+| 目的 | 配置 |
+| --- | --- |
+| 去掉通用云 API 工具（`callCloudApi`） | `"CLOUDBASE_MCP_PLUGINS_DISABLED": "capi"` |
+| 只保留白名单（比逐项禁用更严） | `CLOUDBASE_MCP_PLUGINS_ENABLED=env,functions,hosting` |
+| 去掉本地文件与进程类工具（自托管调用方） | `CLOUDBASE_MCP_CLOUD_MODE=true` |
+
+插件名取自 `mcp/src/server.ts` 的 `DEFAULT_PLUGINS`，共 20 个：
+
+```
+env  database  pg_database  pg_storage  mysql_database  functions  hosting
+storage  setup  rag  cloudrun  deploy  gateway  app-auth  apps  permissions
+logs  agents  capi  feedback
+```
+
+`capi` 这个插件注册的工具就是 `callCloudApi`（通用云 API 通道）。**禁它是有代价的：平台版那套管控面接口（`CreatePlatformEnv` / `DescribePlatforms` / `CreateApiKey` …）在这个会话里也一起调不了了。**
+
+所以常见做法是**两套配置**：
+
+| 配置 | 谁用 | `capi` |
+| --- | --- | --- |
+| 运维侧 | 平台自己的运营/发放流程 | 保留 |
+| 终端用户侧 | 发给用户的 MCP 配置 | 禁用 |
+
+### B. 封装 MCP 做审计与审批
+
+把 MCP 调用收敛到自己的一个进程/端点后面，是「可观测 + 可拦截」的前提。两种形态：
+
+| 形态 | 做法 | 能拦到什么 |
+| --- | --- | --- |
+| 本地 stdio 代理 | 客户端连你的代理进程，代理起真正的 MCP 子进程，转发 `initialize` / `tools/list` / `tools/call` | 单机上的全部工具调用；可对破坏性调用挂起等审批 |
+| 远端网关 | 客户端连公司网关的 MCP 端点，网关解析 `tools/call` 后决定放行或阻断，再转发给云开发的远端 MCP | 所有接入该网关的调用；可做限流、配额、集中审计 |
+
+审计要能回答「是谁做的」，就有两点必须遵守：
+
+1. **身份在你的这一层取**（员工登录态 / 网关的鉴权结果），不要取工具参数里的自报字段。
+2. **连 `params` 一起记**。只记工具名查不出"改了什么" —— 写操作的入参里才有 `EnvId`、`Alias`、上游资源名这些定位信息。
+
+### C. 用自定义专家固化企业约束
+
+系统提示词与专家提示词适合放**软约束**：命名规范、必须带哪个参数、先做什么后做什么。写法上只有一条要求 —— **落到具体的参数名**，"注意安全""遵循规范"这类句子没法执行也没法验收。
+
+两个可以照抄的例子：
+
+**新建云函数必须挂内网 VPC。** 要求调 `manageFunctions(action="createFunction")` 时 `func.vpc` 必须传 `{ vpcId, subnetId }`。这句话是可判定的：`func.vpc` 没有就是违规。不要写成同一入口顶层的 `vpc` —— 建函数只读 `func`，顶层那个只在改配置（`updateFunctionConfig`）时生效。
+
+```json
+{
+  "action": "createFunction",
+  "func": {
+    "name": "order-hook",
+    "vpc": { "vpcId": "<企业 VPC ID>", "subnetId": "<子网 ID>" }
+  }
+}
+```
+
+**对外服务必须先绑自定义域名。** 要求站点/服务对外前先用 `manageGateway` 完成域名接入；平台版场景下域名池是按 `PlatformId` 维度管理的，两套同形接口别混用，见 [custom-domain.md](./custom-domain.md)。
+
+### 软约束不是防线
+
+提示词会被改写、也可能被注入绕过。真正的收口放在另外两层：
+
+| 层 | 手段 | 拦什么 |
+| --- | --- | --- |
+| 提示词 | 专家里的规范 | 让 Agent 默认做对（不保证） |
+| 网关 / 代理 | 工具裁剪、破坏性调用审批 | 让违规调用发不出去 |
+| 数据层 | 数据库安全规则 / 行级安全 | 即使调用发出去了，越权请求在物理层被拒 |
+
+## 踩坑清单
+
+| 坑 | 现象 | 正确做法 |
+| --- | --- | --- |
+| 以为裁剪工具就等于收口 | 参数换个写法又能调通 | 裁剪只缩小工具表面；硬约束要放网关与数据层 |
+| 禁 `capi` 之后平台运维也用同一套配置 | 管控面接口调不了 | 运维侧一套配置、终端用户侧一套配置 |
+| 专家提示词里写死内网域名、子网 ID | 换环境即失效，且内部信息进了会被分发的产物 | 参数从环境变量或自家配置读取；提示词里只写规则、不写值 |
+| 审计只记工具名 | 事后查不出改了什么 | 记 `tools/call` 的 `params` 原文 |
+| 报名身份的字段做审计 | 身份可伪造 | 身份在自己的网关/代理层取，不取工具参数 |
+| 把 `MCP_CLOUD_MODE` 当安全开关 | 以为它也挡住了云资源操作 | 它只关本地文件与进程类工具，不限制云资源调用 |
+| 用 `enable_plugins` 写在本地 stdio 配置里 | 不生效 | 本地用 `CLOUDBASE_MCP_PLUGINS_ENABLED`，`enable_plugins` 是远端 URL 的参数 |
+
+## 验证步骤
+
+1. 连接后看工具清单：被禁插件对应的工具**确实不在列表里**（不是"应该不在"）。
+2. 直接调一次被禁的工具名：应报未知工具，而不是执行成功。
+3. 走一次写操作（例如建一个函数），在代理或网关日志里能查到三样东西：工具名、`params` 原文、发起者身份。
+4. 反向测试专家规范：故意让 Agent 不提 `vpc` 就建函数，确认它被规范挡住，或你在网关侧收到了违规记录。
+
+## platform-onboarding
+
+# Recipe 7 — 平台版接入：建环境、发凭证
+
+## When to use
+
+平台型客户要把云开发环境开给**没有腾讯云账号**的下游用户或员工：
+
+- 用户不该各自注册腾讯云、也不该各自买套餐，环境由平台统一开、账号统一计费
+- 需要一次拿到「环境 ID + 环境 API Key」这一对东西，再交给用户侧
+- 要按用户/租户批量建环境，既可能随用随建，也可能提前预创建
+
+不管什么：单个开发者自己开通自己用，走 getting-started。拿到凭证之后怎么让 Agent 用上，见 [Recipe 8](./platform-agent-connect.md)；用量、账期与环境回收见 [Recipe 10](./platform-usage-and-recycle.md)。
+
+## 前置权限
+
+两条硬前提，缺一条第一步就失败：
+
+- **账号已购平台版套餐。** 未购时 `DescribePlatforms` 返回空列表，后面无以为继。
+- **用账号级凭据调。** `CreatePlatformEnv` / `CreateApiKey` / `DestroyPlatformEnv` 这些管控面接口不接受环境级 API Key。`auth(action="status")` 返回 `credential_scope: single_env` 就是环境级身份，需换成账号级密钥或登录态。
+
+权限不足的判据、身份分类与一键授权链接见 [calling-methods.md §3](../calling-methods.md)。
+
+## 接口序列
+
+| 步 | Action | service / version | 关键参数 |
+| --- | --- | --- | --- |
+| 1 | `DescribePlatforms` | tcb / 2018-06-08 | `{ "Limit": 10 }`，`Limit` 取值 [10, 100]；从 `PlatformList[]` 取 `PlatformId`（**套餐池标识**，第 2 步必传） |
+| 2 | `CreatePlatformEnv` | tcb / 2018-06-08 | `{ "Alias": "<环境别名>", "PlatformId": "<第 1 步的值>", "ReqKey": "<幂等键>" }`，返回 `EnvId` |
+| 3 | `DescribeEnvs` | tcb / 2018-06-08 | 无参数，返回 `EnvList[]`；按 `EnvId` 找到目标环境，等 `Status` 变为 `NORMAL` |
+| 4 | `CreateApiKey` | tcb / 2018-06-08 | `{ "EnvId": "<第 2 步的值>", "KeyType": "api_key", "KeyName": "<能认出用户的别名>" }`，返回 `ApiKey`（明文**只返回一次**） |
+| 5 | 记映射 | — | 落到自己的库里：`用户 ↔ EnvId ↔ ApiKey`。轮换、回收、审计都靠这张表 |
+
+前两步的完整请求体：
+
+```json
+{ "service": "tcb", "action": "DescribePlatforms", "params": { "Limit": 10 } }
+```
+
+```json
+{
+  "service": "tcb",
+  "action": "CreatePlatformEnv",
+  "params": { "Alias": "user-10086", "PlatformId": "pf-t960szfwv1cs", "ReqKey": "user-10086-20261014" }
+}
+```
+
+`Alias` 只用于区分与展示，**用户和环境的对应关系云开发不记录**，必须由第 5 步自己维护。
+
+### 按需创建与预创建
+
+| 方式 | 适用 | 流程 |
+| --- | --- | --- |
+| 按需创建 | 用户量小或建环境频率不高 | 用户请求时调第 2 步 → 记映射 → 第 3 步确认就绪 → 分配 |
+| 预创建 | 对开通体验有要求，希望用户无感 | 循环调第 2 步批量建（不同 `Alias`）→ 第 3 步确认就绪后进池 → 用户请求时从池里挑一个绑定 |
+
+预创建的环境**建出来就开始消耗资源点**，数量按预期用户量估。
+
+### 环境生命周期（运营动作见 Recipe 10）
+
+| 操作 | Action | 关键参数 |
+| --- | --- | --- |
+| 暂停 / 恢复 | `ModifyPlatformEnv` | `{ "EnvId": "...", "Status": "DISABLE" }` 暂停，`"ENABLE"` 恢复 |
+| 销毁 | `DestroyPlatformEnv` | `{ "EnvId": "..." }`，环境内数据一并清除、**不可逆** |
+
+## 踩坑清单
+
+| 坑 | 现象 | 正确做法 |
+| --- | --- | --- |
+| 拿 `CreateEnv` 当平台版建环境用 | 报缺少 `PackageId`；语义上也走偏了 —— 那是给**单个环境**买套餐 | 平台版用 `CreatePlatformEnv`，只传 `PlatformId`（套餐在账号维度） |
+| 没先取 `PlatformId` | `CreatePlatformEnv` 缺参数直接失败 | 先调 `DescribePlatforms`；返回空列表说明账号下没有已购平台版资源 |
+| 重试时换了 `ReqKey` | 一次重试多出一个环境，用户手里两个环境 | `ReqKey` 是幂等键，重试**复用同一个值** |
+| 建完立刻发凭证 | 用户拿到 key 却操作不了 | 用 `DescribeEnvs` 等到 `Status = NORMAL` 再发 |
+| 一把 key 跨环境复用 | 用户 A 的操作落到用户 B 的环境 | 一把 key 只绑一个环境，换环境必须换 key |
+| 用环境级 API Key 建环境 | 返回无权限 | 管控面接口只接受账号级凭据 |
+| key 明文散落 | 写进对话、日志、工单后收不回来 | `ApiKey` 只返回一次，只走平台自己的下发通道交给用户；不要贴进对话 |
+| 单环境建超过 5 把 key | 创建失败 | 单环境最多 5 个 API Key；轮换时先淘汰旧的 |
+
+## 验证步骤
+
+1. `DescribePlatforms` 回查 `PlatformList[]`：`PlatformId` 与预期一致，计费状态正常。
+2. `DescribeEnvs` 按 `EnvId` 找到目标环境，`Status` = `NORMAL`。
+3. 用第 4 步发出的 key 在用户侧走一次只读查询，见 [Recipe 8](./platform-agent-connect.md) 的验证步骤。
+4. **反向验证**：换另一个环境的 key 调同一个查询，应看不到本环境的资源 —— 这一步验证的是隔离真的生效，而不只是接口能通。
+
+## platform-usage-and-recycle
+
+# Recipe 10 — 平台版用量、账期与环境回收
+
+## When to use
+
+平台版已经在给用户发环境，接下来要在自己的业务里回答「用完额度怎么办」：
+
+- 按账期结算：某个用户这个周期用了多少资源点
+- 找出高消耗环境，或按环境、按资源类型看用量明细
+- 试用到期或欠费，要暂停环境，必要时销毁
+
+不管什么：怎么建环境、怎么发凭证见 [Recipe 7](./platform-onboarding.md)。本篇只讲"看用量 + 处置"，不管支付、发票与退款。
+
+## 前置权限
+
+账号级凭据，且账号已购平台版套餐。环境级 API Key 调不了这批接口 —— 身份判定与补齐见 [calling-methods.md §3](../calling-methods.md)。
+
+## 接口序列
+
+| 步 | Action | service / version | 关键参数 |
+| --- | --- | --- | --- |
+| 1 | `DescribePlatforms` | tcb / 2018-06-08 | `{ "Limit": 10 }`，取 `PlatformList[].PlatformId` —— 后面几乎每个接口都要它 |
+| 2 | `DescribePlatformAccountCircle` | tcb / 2018-06-08 | `{ "PlatformId": "...", "WithHistoryCircle": true }`，返回当前周期 `StartTime` / `EndTime`，`true` 时附带最近两个历史周期与 `Expired` |
+| 3 | `DescribePlatformCreditsUsage` | tcb / 2018-06-08 | `{ "PlatformId": "...", "StartDate": "YYYY-MM-DD", "EndDate": "YYYY-MM-DD" }`，返回四类总量 + 每日明细 |
+| 4 | `DescribePlatformCreditsUsageDetail` | tcb / 2018-06-08 | `{ "PlatformId": "...", "Modules": ["FLEXDB", "SCF"], "StartDate": "...", "EndDate": "...", "NeedUsageDetails": true }`，按模块 → 指标 → 每日拆开 |
+| 5 | `DescribePlatformEnvUsage` | tcb / 2018-06-08 | `{ "EnvId": "...", "StartDate": "...", "EndDate": "...", "ResourceTypes": ["Storage", "Function"] }`，单个环境的按资源类型用量 |
+| 6 | `DescribePlatformEnvCreditsRanking` | tcb / 2018-06-08 | `{ "PlatformId": "...", "TimeRange": "Recent7Days", "PageSize": 50 }`，各环境用量排行 |
+| 7 | `ModifyPlatformEnv` | tcb / 2018-06-08 | `{ "EnvId": "...", "Status": "DISABLE" }` 暂停；`"ENABLE"` 恢复 |
+| 8 | `DestroyPlatformEnv` | tcb / 2018-06-08 | `{ "EnvId": "..." }`，删环境并清除数据，**不可逆** |
+
+### 两套时间参数别混
+
+| 接口 | 时间参数 | 取值 |
+| --- | --- | --- |
+| `DescribePlatformCreditsUsage` / `...Detail` / `DescribePlatformEnvUsage` | `StartDate` / `EndDate` | 任意区间，格式 `YYYY-MM-DD` |
+| `DescribePlatformAccountCircle` / `DescribePlatformEnvCreditsRanking` | `TimeRange` | 只能填枚举值：`Today`（近 1 天，默认）/ `Recent7Days` / `CurrentCycle` / `PreviousCycle` / `Previous2Cycle` |
+
+账期**自购买日起算、按月滚**，不是自然月。要对账就用第 2 步返回的 `StartTime` / `EndTime` 当区间，不要自己按自然月推。
+
+### 四类用量的口径
+
+第 3 步的返回把用量分四类，用途不同：
+
+| 字段 | 口径 | 用来判断 |
+| --- | --- | --- |
+| 套餐内抵扣 | 套餐额度里扣掉的 | 额度还剩多少 |
+| 资源包抵扣 | 资源包里扣掉的 | 同上（有买资源包时） |
+| 按量上报 | 超出套餐后按量计费的 | 超出多少钱 |
+| 原价消耗 | 不折扣的原价口径 | 成本分析 |
+
+判断"额度用完没有"看前两类；算"超了多少"看后两类。
+
+### 用量感知只有轮询
+
+判断"哪些环境该处置"目前只有一种方式：定时任务遍历环境列表，按各自账期查用量、比对额度、再下发处置。
+
+用量变化的事件回调**暂未开放**，别去文档里找开关。环境数量多时，全量轮询的调用量是「环境数 × 轮询频率」，要控制频率或只轮询有风险的那批。
+
+## 踩坑清单
+
+| 坑 | 现象 | 正确做法 |
+| --- | --- | --- |
+| 给 `TimeRange` 传具体日期 | 报参数不合法 | 任意区间用 `StartDate` / `EndDate`；`TimeRange` 只吃那五个枚举值 |
+| 按自然月算账期 | 对账对不上 | 账期自购买日起算；用 `DescribePlatformAccountCircle` 的返回值当区间 |
+| 拿排行数据做实时判定 | 数字比实际少，像漏报 | 排行由后台定时计算，**有小时级延迟**；实时判定用 `DescribePlatformEnvUsage` |
+| 把暂停当省钱手段 | 暂停后资源点照旧消耗 | 暂停只停服务不停计费；要停止消耗只能销毁 |
+| 在停服状态下调暂停 / 恢复 | 调用失败 | 账号处于超限停服或到期隔离时这两个动作不可用；先恢复套餐 |
+| 销毁前没确认依赖 | 用户数据一起没了 | 销毁不可逆；先暂停观察一段时间，或先导出需要的数据 |
+| 只查账号总量就下发处置 | 不知道该停哪个环境 | 先按环境查（第 5 步）或看排行（第 6 步），再决定处置对象 |
+
+## 验证步骤
+
+1. `DescribePlatformAccountCircle`：当前周期起止时间与套餐购买日推得出的一致，`Expired` 与套餐实际状态相符。
+2. `DescribePlatformCreditsUsage`（区间取当前周期）：四类总量与每日明细都在；**每日之和应等于对应总量**，不等说明区间没对齐。
+3. `DescribePlatformEnvCreditsRanking`：排行靠前的环境与你已知的高消耗环境吻合。
+4. 处置后回查：`DescribeEnvs` 里目标环境状态已变；再调一次 `ModifyPlatformEnv` 传 `"ENABLE"` 把它恢复，确认启停双向可用。
 
 ## service-versions
 
@@ -3263,11 +3819,16 @@ If a referenced sibling skill file is missing from this environment, ask the use
 - Mixing Event Function code shape (`exports.main(event, context)`) with HTTP Function code shape (`req` / `res` on port `9000`).
 - Treating HTTP Access as the implementation model for HTTP Functions. HTTP Access is a gateway configuration for Event Functions, not the HTTP Function runtime model.
 - Assuming `db.collection("name").add(...)` will create a missing document-database collection automatically. Collection creation is a separate management step.
+- **Baking static content into the deployment package — media files, user uploads, or assets that change on their own cadence.** The package is uploaded on every deploy and a function package has a hard size ceiling, so large or independently-changing content makes every deploy slower and can push the package over the limit.
+  - **Media files** (`*.mp4`, large images, fonts) — go to cloud storage, referenced by URL, not into the package.
+  - **User uploads written to the function's local filesystem** — the function is ephemeral and `/tmp` is small and not shared. Uploads go to cloud storage.
+  - **Frequently-updated static resources bundled in** — every change forces a full function redeploy. Serve them from cloud storage so the function only redeploys when the *code* changes.
 - Forgetting that runtime cannot be changed after creation.
 - Using cloud functions as the first answer for Web login.
 - Forgetting that HTTP Functions must ship `scf_bootstrap`, listen on port `9000`, and include dependencies.
 - Assuming an HTTP Function can use CloudBase SDKs without explicit credentials. The default temporary credential path is not reliable for HTTP Functions and credential rotation can break a running service. Use a CloudBase server API Key or Tencent Cloud key pair for `@cloudbase/node-sdk`; use a Tencent Cloud key pair for `@cloudbase/manager-node`. See `references/http-function-credentials.md`.
-- Forgetting to configure function security rules after creating an HTTP Function. Default rules reject anonymous callers with `EXCEED_AUTHORITY`. Note: anonymous login is disabled by default for new environments — if the function needs public access without authentication, configure the security rule to allow all callers rather than relying on anonymous login.
+- Forgetting how an HTTP Function is meant to be reached. A call with no credential fails `401 MISSING_CREDENTIALS`; a call that carries one but is not allowed fails `403 EXCEED_AUTHORITY`. For browser, game or app clients, add a gateway route (`manageGateway(action="createRoute", auth: false)`) instead of widening the function security rule — in PostgreSQL environments that rule lives in an environment-wide `authz.user.rego` document, so editing it overwrites the policy for the whole environment. See `references/http-functions.md`.
+- **Reading an `InsufficientBalance` invoke failure as an account problem.** A cloud function answers HTTP 410 with this code and the code reads as a short account balance, but what runs out is the environment's resource points — drawn down before any account balance and not restored by a top-up. The four causes (trial points exhausted / plan points exhausted / plan expired / account in arrears) need four different answers, only the last of which involves topping up, so diagnose with `manageEnv(action="usage")` plus the account balance before advising. See `../cloud-api-operations/references/recipes/credits-exhaustion.md`.
 - Mismatching the `scf_bootstrap` Node.js binary path with the function runtime (e.g. using `/var/lang/node18/bin/node` but setting `runtime: "Nodejs16.13"`).
 - For Custom Image HTTP Functions: forgetting that TCR, the CloudApp build, and SCF must be in the same region; using `:latest` instead of a unique tag; or confusing the request-driven port-`9000` image model with a long-lived CloudRun container that listens on the injected `PORT`.
 - Assuming MCP covers the whole image pipeline. `manageFunctions` covers SCF image deploy (Stage B) via `runtime: "CustomImage"` + `imageConfig`, but the CloudApp custom build → TCR push (Stage A) is a raw Tencent Cloud API path — confirm action names and parameters from official docs before any `callCloudApi` fallback.
@@ -3281,6 +3842,7 @@ If a referenced sibling skill file is missing from this environment, ask the use
 
 - Read [Cloud Functions Execution Checklist](checklist.md) before deployment or runtime changes.
 - Decide whether the task is Event Function, HTTP Function, or actually CloudRun.
+- **Separate static from dynamic**: media, user uploads and frequently-updated assets live in cloud storage, not in the function package.
 - Pick the detailed reference file in [references.md](references.md) before writing implementation code.
 
 ## MCP image deployment with polling
@@ -3313,12 +3875,6 @@ Personal-tier image builds (`imageConfig.imageType="personal"` with `local` / `c
 - Leave `func.imageConfig.build.registryCredential` **out of the request** when `TCB_TCR_USERNAME` and `TCB_TCR_PASSWORD` are set in the MCP server `env` block — the MCP fills them in automatically, the same way `TENCENTCLOUD_SECRETID` works.
 - **Never ask the user to paste the password into chat, and never write it into tool arguments.** Anything placed in arguments enters the model context and the tool-call history.
 - If deployment fails with `CLOUD_REGISTRY_CREDENTIAL_MISSING` or `CLOUD_REGISTRY_CREDENTIAL_INVALID`, instruct the user to add these two variables to the `env` block of their MCP configuration and restart the MCP server. Do not work around it by passing the credential inline.
-- The username is the Tencent Cloud account UIN and is not itself a secret; it may be passed explicitly if needed. Explicit arguments take precedence per field, so username-in-argument plus password-from-environment is a valid combination.
-
-**Know when that environment channel does not exist.** It works only for a local stdio MCP server whose client configuration exposes a custom `env` block. Some GUI clients do not inherit shell exports, and IDE-embedded MCP servers usually inject credentials from a hard-coded allowlist (often only `TENCENTCLOUD_*`), leaving the user no way to set arbitrary variables. Telling those users to "set it in the MCP `env` block" is an instruction they cannot act on. Route them to an enterprise registry (`imageType="enterprise"`, which mints a short-lived TCR token instead of using a fixed password) or to `buildStrategy="image"` with an already-pushed image.
-
-### Enterprise-tier builds require a login state with CAM permission
-
 
 ## checklist
 
@@ -3884,12 +4440,12 @@ If the user specifies "Node.js 18", use runtime `Nodejs18.15` and the path `/var
 const http = require("http");
 const { URL } = require("url");
 
-// CORS headers — default to * for simple cross-origin APIs
-const CORS_HEADERS = {
-  "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
-  "Access-Control-Allow-Headers": "Content-Type",
-};
+// CORS: leave this empty when the function is reached through the HTTP gateway.
+// The gateway already fills Access-Control-Allow-Origin from the environment
+// security-domain allowlist; adding a second value makes the header illegal
+// ('<origin>,*') and browsers block every request. Only set CORS headers here
+// when the function is called directly, outside the gateway.
+const CORS_HEADERS = {};
 
 function sendJson(res, statusCode, data) {
   res.writeHead(statusCode, {
@@ -7533,7 +8089,7 @@ SOFTWARE.
 
 ---
 name: cloudbase-cli
-description: CloudBase CLI (tcb, 云开发CLI, Tencent CloudBase命令行) resource management skill. Use when deploying cloud functions, CloudRun, storage, NoSQL/MySQL, static hosting, permissions, CORS/domains via tcb; for CI/CD and batch ops; when the user prefers CLI; or as the first-session fallback when CloudBase MCP tools are not loaded yet (after install/config, before IDE restart). Covers tcb login (device code for Tencent Cloud accounts; --cloudbase-api-key -e for environment API Key without an account; --apiKeyId/--apiKey for CI) and domain commands (fn/hosting/cloudrun/…) as MCP auth/manage parity — do not default to tcb deploy.
+description: CloudBase CLI (tcb, 云开发CLI, Tencent CloudBase命令行) resource management skill. Use when deploying cloud functions, CloudRun, storage, NoSQL/MySQL, static hosting, permissions, CORS/domains via tcb; for CI/CD and batch ops; when the user prefers CLI; or as the first-session fallback when CloudBase MCP tools are not loaded yet (after install/config, before IDE restart). Also covers tcb login and site switching (国内站/国际站 via --intl or config isIntl), environment lifecycle (env create/modify/renew/delete/apikey/login/domain), tcb config and cloudbaserc.json sync, log search (logs search, CLS), metric monitoring (monitor), data model and PostgreSQL migrations (db model, db pg migration), sandbox/agent/integration management — do not default to tcb deploy.
 version: 2.35.2
 license: MIT
 alwaysApply: false
@@ -7555,39 +8111,58 @@ If a referenced sibling skill file is missing from this environment, ask the use
 - Deployment Gate: `../cloudbase-platform/references/protocols/deployment-gate.md`
 - MCP vs CLI fallback: `../cloudbase/references/tooling-fallback.md` (packaged beside this skill as the `cloudbase` entry guideline)
 
+**Route, do not improvise** — when a task belongs to another skill, hand over instead of guessing flags here:
+- PostgreSQL schema / RLS / `pgstore` → `../postgresql-development-cloudbase/SKILL.md`
+- Data-model design (ER / Mermaid) → `../data-model-creation/SKILL.md`
+- In-app SDK code (web / miniprogram / node) → the matching SDK skill
+
 ## Core Principles
 
-1. **`--help` first — never guess commands.**
-   tcb CLI changes between versions. Before using any command for the first time,
-   run `tcb <command> --help` to check parameters and discover official doc links.
+1. **`--help` first — but its failure does NOT mean the command is missing.**
+   Run `tcb <command> --help` to check parameters and find official doc links. On current CLI versions many
+   **second-level** commands reject `--help` (`error: unknown option '--help'`), while some accept `-h`, and
+   `tcb help <cmd>` only works one level deep. Try `-h`, then `tcb help <cmd>`, then
+   `tcb docs search "<keyword>"` — never conclude a command does not exist from a help error.
+   `tcb --help` itself is a **hand-maintained static list**, so absence from it says nothing about
+   lifecycle: `init`, `pull`, `new`, `open`, `rollback`, `self-update`, `monitor`, `integration`,
+   `service`, `cloudfunction`, `cloudrunfunction` and `run:deprecated` are all registered yet unlisted.
+   **Absence from help ≠ deprecated**, and **"no marker" ≠ endorsed** — the statuses differ:
+   `tcb monitor` / `tcb integration` are **officially supported** (recommend normally), while
+   `tcb service` and `tcb cloudfunction` / `tcb cloudrunfunction` are **not recommended**
+   (product decision, no code marker). Full status table: `references/core.md`.
 
-2. **Deployment Gate.**
+2. **Confirm the site (国内站 / 国际站) as well as the envId.**
+   A credential from one site does not work on the other, and the failure looks like an auth error.
+   One-off: `tcb login --intl true|false`; persistent: `tcb config set isIntl true|false`.
+   Pick one mechanism and keep it consistent — see `references/core.md` / `references/config.md`.
+
+3. **Deployment Gate.**
    Before any deployment, publish, custom domain, or CloudRun operation, you must first complete the checks in `cloudbase-platform/references/protocols/deployment-gate.md`.
 
-3. **Verify your work.**
+4. **Verify your work.**
    After deploying or modifying any resource, run the corresponding list/detail
    command to confirm the change took effect.
 
-3. **Dry-run before destructive actions.**
+5. **Dry-run before destructive actions.**
    Use `--dry-run` for delete/overwrite operations. Show the preview to the user
    and wait for explicit confirmation before executing.
 
-4. **Confirm environment first.**
+6. **Confirm environment first.**
    Always verify envId with the user before operations. Run `tcb env use <envId>`
    to avoid accidentally modifying production.
 
-5. **Recover from errors, don't loop.**
+7. **Recover from errors, don't loop.**
    If a command fails after 2-3 attempts, check the exit code (`$?`), read the
    error message, consult `tcb docs search`, and try a different approach.
 
-6. **First-session fallback, not MCP replacement.**
+8. **First-session fallback, not MCP replacement.**
    If CloudBase MCP tools are missing in this session, use this skill to unblock
    login/manage. Still configure MCP (plugin / mcp.json) so the **next** session
    can prefer MCP. When MCP tools are already available, prefer MCP unless the
    user asked for CLI/CI. Route deploy work through the domain reference table
    below — **do not** recommend `tcb deploy`.
 
-7. **No npm/npx.**
+9. **No npm/npx.**
    If Node/npm/npx are missing, tell the user to install Node.js LTS (or use the
    IDE marketplace MCP path) before retrying CLI/plugin install. See guideline
    `tooling-fallback.md`.
@@ -7597,8 +8172,11 @@ If a referenced sibling skill file is missing from this environment, ask the use
 Use when the user wants to manage CloudBase resources via command line, **or** when MCP is not usable yet:
 - **First session / post-install:** MCP not in the tool list, or just configured and needs restart → `tcb login` + the matching domain command now; leave MCP ready for next session
 - Deploy/debug cloud functions, static hosting, CloudRun services (via domain refs — not `tcb deploy`)
-- Manage storage, hosting, databases (NoSQL/MySQL)
-- Configure permissions, CORS, domains, routing
+- Manage storage, hosting, databases (NoSQL / MySQL / PostgreSQL), data models and migrations
+- Manage environments (create / package / renew / destroy, API Keys, login policy, safe domains, usage)
+- Configure resource authorization (`tcb policy`), roles, users, CORS, domains, routing
+- Search logs and read monitoring metrics
+- Manage sandbox, agent and integration instances
 - CI/CD scripting, batch operations, terminal-based resource management
 - User explicitly prefers CLI over MCP
 
@@ -7606,81 +8184,83 @@ Use when the user wants to manage CloudBase resources via command line, **or** w
 
 - SDK-based in-app integration (web/miniprogram/node) → use `cloud-functions`,
   `cloudbase-document-database-web-sdk`, `auth-web-cloudbase`, etc.
+- PostgreSQL schema design, RLS and migration workflow → `postgresql-development-cloudbase`
 - When CloudBase MCP tools are already available in this session and the user did not ask for CLI → prefer MCP
 - Console UI operations
 - CloudBase Agent SDK development → use `cloudbase-agent-ts`
 
 ## How to use this skill (for a coding agent)
 
-1. **Always load `references/core.md` first** — it covers authentication,
+1. **Always load `references/core.md` first** — it covers authentication, site selection,
    environment switching, `tcb docs` queries, and error diagnosis.
-2. **Route to the correct domain reference** using the Routing table below.
-3. **Load only the one reference file** that matches the user's task.
-   Do not preload all references.
-4. **Stop loading more context** once you have the workflow and command
-   syntax for the current task.
-5. **If the task shifts to SDK/in-app code**, switch to the appropriate
-   SDK skill (e.g., `cloud-functions`, `cloudbase-document-database-web-sdk`) instead.
+2. **Route to the correct reference** using the Routing table below.
+3. **Load only the reference files** that match the user's task. Do not preload all of them.
+4. **Stop loading more context** once you have the workflow and command syntax for the current task.
+5. **If the task shifts to SDK/in-app code or PostgreSQL design**, switch to the appropriate
+   sibling skill instead.
 
 ## Routing
 
 | User Task | Read |
 |-----------|------|
-| Login, env switching, tcb docs, error diagnosis | `references/core.md` |
-| Deploy/debug cloud functions | `references/functions.md` |
-| Deploy static site / SPA (preferred CLI web path) | `references/hosting.md` |
-| Deploy CloudRun service | `references/cloudrun.md` |
-| Experimental all-in-one web shorthand (`tcb deploy`) — avoid unless user explicitly asks | `references/app.md` |
-| Upload/download files, ACL rules | `references/storage.md` |
-| NoSQL (MongoDB) database operations | `references/nosql.md` |
-| MySQL database operations | `references/mysql.md` |
-| Roles, policies, access control | `references/permission.md` |
-| CORS, custom domains, routing rules | `references/access.md` |
-
-## Quick workflow
-
-1. `tcb login` → confirm envId with user → `tcb env use <envId>`
-2. `tcb <command> --help` to verify syntax
-3. Execute the command (with `--dry-run` for destructive ops)
-4. Verify the result with the corresponding `list` / `detail` command
-5. Report the outcome to the user
-
-## Minimum self-check
-
-- [ ] Loaded `references/core.md` before any domain module?
-- [ ] Confirmed target envId with the user?
-- [ ] Used `--help` for unfamiliar commands?
-- [ ] Used `--dry-run` before destructive operations?
+| Login, site (国际站/国内站), env switching, `tcb docs`, error diagnosis | `references/core.md` |
+| Create / modify / renew / destroy an environment, API Keys, login policy, safe domains, usage | `references/env.md` |
+| `tcb config` (CLI settings, `cloudbaserc.json` sync), `tcb init` / `new` / `pull` / `open` / `validate` / `self-update` / `rollback` | `references/config.md` |
+| Configure an AI tool + MCP + Skills (`tcb ai`) | `references/config.md` |
 
 ## access
 
 # Access — CloudBase CLI
 
-Three independent modules for configuring external access to CloudBase environments:
+Four modules for configuring external access to CloudBase environments:
 
 | Module | Commands | Purpose |
 |--------|----------|---------|
-| **CORS** | `tcb cors list/add/rm` | Security domains for cross-origin access |
-| **Domains** | `tcb domains ls/add/rm` | Bind/unbind custom domains with TLS |
-| **Routes** | `tcb routes list/add/edit/delete` | Map request paths to backend services |
+| **CORS / safe domains** | `tcb cors list/add/rm` — or `tcb env domain list/create/delete` | Security domains for cross-origin access |
+| **Domains** | `tcb domains ls/add/edit/rm` + `tcb domains cache purge/task` | Bind/unbind custom domains with TLS, purge CDN cache |
+| **Routes** | `tcb routes list/add/edit/delete` | Map request paths to backend services (**environment level only**) |
+| **Platform pool** | the `--platform-id` flag on `env` / `domains` only | Target a platform resource pool instead of one environment |
 
 > ⚠️ Routes require the domain to exist first — use the system default domain or bind one via `tcb domains add` before creating routes.
+
+> ⚠️ `tcb cors` and `tcb env domain` are the **same capability** (both manage 环境安全域名) but split
+> multiple values differently: `tcb cors add "a.com,b.com"` uses a **comma**, while
+> `tcb env domain create "a.com/b.com"` uses a **slash**. Pick one pair and stay consistent.
+
+> ⚠️ **Platform-pool mode: `tcb routes` does NOT support it.** Only `tcb env …` and `tcb domains …`
+> accept `--platform-id <platformId>`.
+>
+> `tcb routes list --platform-id pf-xxx` fails with `error: unknown option '--platform-id'`. This is a
+> **deliberate CLI contract** (pinned by a test in the CLI repo that asserts routes commands contain no
+> `--platform-id`), not an oversight.
+>
+> Platform-level domains **and their routes** are managed through `tcb domains * --platform-id`, which
+> covers the route APIs too — e.g. `tcb domains ls --platform-id pf-xxx`. `tcb routes` stays
+> environment-scoped: `tcb routes delete <domain> -p <path>` even points you to `tcb domains rm` when
+> you need domain-level operations.
+>
+> In platform mode pass `--platform-id` **instead of** `-e/--env-id` — the two are mutually exclusive
+> (`-e <envId> 与 --platform-id <platformId> 不能同时使用`). Confirm with the user which one they mean.
 
 ---
 
 ## When to Use
 
 - Configuring CORS security domains for cross-origin access
-- Binding or unbinding custom domains to a CloudBase environment
+- Binding, editing, or unbinding custom domains (incl. TLS) to a CloudBase environment
+- Purging the CDN cache of a bound domain
 - Creating, editing, or deleting routing rules (path -> service mapping)
 - Setting up a complete domain + routing + CORS workflow
+- Doing the **domain** part against a platform resource pool (`tcb domains … --platform-id`) — for
+  platform routes, use the same `tcb domains` commands, never `tcb routes`
 
 ## Do NOT use for
 
-- Storage ACL permissions (use `tcb-storage`)
-- Role-based access control / user permissions (use `tcb-permission`)
-- Static file hosting deployment (use `tcb-hosting`)
-- Web app deployment (use `tcb-app`)
+- Storage ACL permissions (use `references/storage.md`)
+- Resource authorization policies / roles / users (use `references/permission.md`)
+- Static file hosting deployment (use `references/hosting.md`)
+- Web app deployment (use `references/app.md`)
+- Environment API keys / login policy / env lifecycle (use `references/env.md`)
 
 ---
 
@@ -7716,7 +8296,10 @@ tcb cors rm old.example.com -e <envId> --yes
 tcb cors list -e <envId> --json
 ```
 
-**Parameters:** `<domain>` (no `https://` prefix, comma-separated for multiple), `-e/--envId`, `--yes`, `--json`, `--dry-run`
+**Parameters:** `<domain>` (no `https://` prefix, comma-separated for multiple), `-e/--env-id`, `--yes`, `--json`, `--dry-run`
+
+> ⚠️ Use the kebab-case `--env-id`. `--envId` still resolves as a hidden deprecated alias but prints a
+> deprecation warning on every call.
 
 ---
 
@@ -7747,33 +8330,119 @@ tcb domains add custom.example.com --certid <certId> --access-type CUSTOM --cust
 
 After binding, set a CNAME record pointing your domain to the CloudBase endpoint returned in the response.
 
-### Step 4 — Verify binding
 
-```bash
-tcb domains ls -e <envId> --filter "Domain=api.example.com" --json
-```
+## agent
 
-### Step 5 — Unbind domain
+# Agent — CloudBase CLI
 
-> ⚠️ If the domain has routes bound, you MUST delete all routes first, then unbind the domain.
+`tcb agent` manages CloudBase **Agents** — function-based (SCF) agents that are created, updated and
+deleted together with their underlying cloud resources.
 
-```bash
-# Check for routes on this domain
-tcb routes list -e <envId> --filter "Domain=api.example.com" --json
+## When to Use
 
-# Delete routes first (if any)
-tcb routes delete api.example.com -e <envId> -p /api/users --yes
+- Creating an Agent from a local code directory (pack + upload in one step)
+- Listing / inspecting existing Agents and their underlying resource readiness
+- Updating an Agent's code, runtime, timeout, memory or environment variables
+- Deleting an Agent (and its underlying function / CloudRun resources)
 
-# Then unbind domain
-tcb domains rm api.example.com -e <envId> --yes
-```
+## Do NOT use for
 
-**Parameters:** `<domain>`, `--certid` (required for add), `--access-type`, `--custom-cname`, `--disable`, `--filter`, `--offset/--limit`
+- Plain cloud functions → `functions.md`
+- CloudRun container services → `cloudrun.md`
+- Web app hosting → `app.md` / `hosting.md`
+- The `cloudbase-agent` SDK (writing agent code) → `../cloudbase-agent/SKILL.md`
 
 ---
 
-## Workflow 3: Routing Rules
+## Commands
 
+```bash
+tcb agent list --env-id <envId>
+tcb agent list --limit 20 --offset 0 --env-id <envId>
+
+tcb agent detail <agentId> --env-id <envId>
+tcb agent detail <agentId> --env-id <envId> --json   # underlying resource readiness + config
+
+tcb agent create --env-id <envId> \
+  --name my-agent \
+  --code ./my-agent \
+  --runtime Nodejs20.19 \
+  --timeout 7200 \
+  --memory-size 512 \
+  --install-dep \
+  --ignore ".git,node_modules,.DS_Store" \
+  --env "KEY1=VALUE1,KEY2=VALUE2"
+
+tcb agent update <agentId> --env-id <envId> --code ./my-agent --timeout 3600
+
+tcb agent delete <agentId> --env-id <envId> --dry-run   # preview
+tcb agent delete <agentId> --env-id <envId> --yes
+```
+
+### `agent create` flags
+
+| Flag | Meaning | Default |
+|------|---------|---------|
+| `--name <name>` | Agent name (**required**) | — |
+| `--agent-id <agentId>` | Explicit id | auto-generated |
+| `--code [path]` | Local code directory, packed and uploaded | current directory |
+| `--runtime <runtime>` | e.g. `Nodejs20.19` | — |
+| `--timeout <seconds>` | Execution timeout | `7200` (agents need long-lived connections) |
+| `--memory-size <MB>` | `64`, or `128`-`3072` | `128` |
+| `--install-dep` | Install dependencies in the cloud (needed when the upload excludes them) | off |
+| `--ignore <patterns>` | Comma-separated excludes | `.git,node_modules,.DS_Store` |
+| `--env <envVars>` | Environment variables, `KEY1=VALUE1,KEY2=VALUE2` | — |
+
+### `agent update` flags
+
+Same as create **except** `--name` and `--agent-id` (the id is positional): `--code`, `--runtime`,
+`--timeout`, `--memory-size`, `--install-dep`, `--ignore`, `--env`.
+
+> ⚠️ `agent delete` **also removes the underlying function / CloudRun resources** and is not
+> recoverable. Always run `--dry-run` first, show the preview, and wait for explicit confirmation.
+
+> ⚠️ `--env` is a comma-separated `KEY=VALUE` list on one line. Values containing commas need
+> different handling — verify the parsed result with `tcb agent detail <agentId>` afterwards.
+
+> ⚠️ Prefer injecting secrets through the environment/CI secret store rather than typing them into the
+> command line (shell history + process list). Never commit them.
+
+---
+
+## Command Quick Reference
+
+```bash
+tcb agent list [--limit N] [--offset N]   # List agents
+tcb agent detail <agentId>                # Detail + underlying resource status
+tcb agent create --name <n> [...]         # Create (packs --code and uploads)
+tcb agent update <agentId> [...]          # Update code / config
+tcb agent delete <agentId> [--dry-run]    # Delete agent + underlying resources
+```
+
+**Global flags:** `-e/--env-id <envId>`, `--json`, `--yes`.
+
+---
+
+## Common Errors
+
+| Error | Cause | Fix |
+|-------|-------|-----|
+| `--name is required` | `agent create` without `--name` | `agent update` takes the id positionally; `create` needs `--name` |
+| Agent created but code missing | `--code` pointed at the wrong directory | Re-run `agent update <agentId> --code <dir>` |
+| `MODULE_NOT_FOUND` at runtime | Dependencies not uploaded and not installed | Add `--install-dep` (or bundle `node_modules`) |
+| Timeout too short | Agents hold long connections | Raise `--timeout` (default is already 7200 s) |
+| Delete removed more than expected | `agent delete` also cleans the underlying function | Confirm with the user; use `--dry-run` first |
+
+---
+
+## Self-Check
+
+- [ ] Confirmed the envId with the user?
+- [ ] For `create`: passed `--name` and the correct `--code` directory?
+- [ ] `--ignore` excludes `.git` / `node_modules` unless intentionally uploadable?
+- [ ] Timeout large enough for the agent's connection pattern?
+- [ ] For `delete`: ran `--dry-run` and got explicit approval?
+- [ ] Secrets injected via env vars, not hardcoded in the command?
 
 ## app
 
@@ -7832,6 +8501,31 @@ CLI auto-completes: detect framework -> infer build command + output dir -> uplo
 
 ---
 
+## Workflow 1b: Local build for declarative hosting (`tcb app build`)
+
+For **declarative hosting** projects (a `hosting[]` array in `cloudbaserc.json`), the CLI no longer
+builds locally during deploy. The two steps are now separate:
+
+```bash
+tcb app build        # 1. Run the configured build commands (local only)
+tcb deploy           # 2. Upload the built artifacts
+```
+
+`tcb app build`:
+- reads `cloudbaserc.json` and runs each hosting item's `buildCommand`
+- **does NOT install dependencies** — run your package manager first
+- **does NOT deploy** anything
+- is a **pure local command**: no envId, no auth required
+
+> ⚠️ If you run `tcb deploy` while the build output directory is missing or empty, it fails and tells you
+> to run `tcb app build` first.
+>
+> ⚠️ If the output directory exists but is **stale**, `tcb deploy` uploads it as-is and only warns. It
+> cannot tell whether the sources changed — always `tcb app build` before `tcb deploy` after editing
+> code, or you will ship the previous build.
+
+---
+
 ## Workflow 2: Redeployment
 
 ```bash
@@ -7872,31 +8566,6 @@ tcb app versions detail my-app --version-name my-app-001 --env-id <envId>
 
 # Extract fail reason (JSON mode)
 tcb app versions detail my-app --env-id <envId> --json | jq '.data.failReason'
-```
-
-Build status values: `PENDING` (waiting) | `BUILDING` (in progress) | `SUCCESS` | `FAILED` (check `failReason`).
-
----
-
-## Workflow 4: Deletion
-
-```bash
-# Preview deletion (always do this first)
-tcb app delete my-app --env-id <envId> --dry-run
-
-# Interactive confirmation
-tcb app delete my-app --env-id <envId>
-
-# Skip confirmation (CI/CD)
-tcb app delete my-app --env-id <envId> --yes
-```
-
-> ⚠️ Deletion is irreversible — removes the app and all its versions.
-
----
-
-## cloudbaserc.json App Config
-
 
 ## cloudrun
 
@@ -7931,7 +8600,7 @@ CloudRun = persistent containers; for event-triggered serverless, use `functions
 tcb cloudrun init --service-name <serviceName> --template <templateName>
 
 # Initialize in a specific directory
-tcb cloudrun init --service-name <serviceName> --template <templateName> --target <path>
+tcb cloudrun init --service-name <serviceName> --template <templateName> --target-path <path>
 ```
 
 ### Step 2: Deploy
@@ -7965,9 +8634,9 @@ tcb cloudrun deploy --service-name <serviceName> --force --env-id <envId>
 # List all services
 tcb cloudrun list --env-id <envId>
 
-# Filter by name or type
+# Filter by name or type (the flag is --server-type, values: function | container)
 tcb cloudrun list --service-name <serviceName> --env-id <envId>
-tcb cloudrun list --service-type container --env-id <envId>
+tcb cloudrun list --server-type container --env-id <envId>
 ```
 
 ### Container-based Deploy Example (Node.js API)
@@ -7987,15 +8656,18 @@ CMD ["node", "server.js"]
 docker build -t ccr.ccs.tencentyun.com/my-repo/api:v1.0.0 .
 docker push ccr.ccs.tencentyun.com/my-repo/api:v1.0.0
 
-# Deploy
-tcb app deploy \
+# Deploy the container image (created on first run, updated afterwards)
+tcb cloudrun deploy \
   --service-name api \
-  --image ccr.ccs.tencentyun.com/my-repo/api:v1.0.0 \
-  --env-id <envId> \
-  --remark "v1.0.0 initial"
+  --image-url ccr.ccs.tencentyun.com/my-repo/api:v1.0.0 \
+  --port 80 \
+  --env-id <envId>
 ```
 
-> ⚠️ Use `--remark` for meaningful version tracking (e.g. `"v1.2.3 feat: add auth"`). Avoid vague remarks like `"update"`.
+> ⚠️ Container deploys go through **`tcb cloudrun deploy --image-url`** — that is the only
+> image-deploy flag in this CLI. `tcb app deploy` is the **web-app** path (cloud build +
+> hosting): it takes a *positional* service name and has no `--service-name` / `--image` /
+> `--remark`. `--image` and `--remark` exist only on the deprecated `tcb run service:deploy`.
 
 ---
 
@@ -8003,36 +8675,158 @@ tcb app deploy \
 
 Traffic shifting enables canary releases, blue/green deployments, and instant rollbacks.
 
+> ⚠️ The only command is **`tcb cloudrun traffic [action]`**, with options `-s/--service-name`,
+> `--stable <0-100>` and `--canary <0-100>`. There is **no `traffic get`**, **no `traffic set`**
+> subcommand, and **no `--version-weights`** flag.
+> - no action + `--stable` / `--canary` → set the gray ratio
+> - `traffic promote` → complete the gray release
+> - `traffic rollback` → revert to the previous stable version
+
 ### View current traffic
 
 ```bash
-tcb cloudrun traffic get --service-name <serviceName> --env-id <envId>
-```
+# Per-version status (shows each version and its current traffic weight)
+tcb cloudrun version detail --service-name <serviceName> --env-id <envId>
 
-### Canary release (recommended pattern)
+# Full service detail (traffic config is in the JSON payload)
+
+## config
+
+# Config & Project — CloudBase CLI
+
+`tcb config` is **two different things** — know which half you are in:
+
+| Half | Subcommands | Operates on |
+|------|-------------|-------------|
+| **CLI local settings** | `config get / set / list / delete` | The CLI's own local store (site, language) |
+| **Project config sync** | `config init / pull / diff / update` | `cloudbaserc.json` ↔ the cloud |
+
+Plus the project / tooling bootstrap commands: `init`, `new`, `pull`, `open`, `validate`,
+`self-update`, `rollback`, and the **`tcb ai` setup wizard**.
+
+## When to Use
+
+- Switching the CLI between the **domestic site and the international site** persistently
+- Changing the CLI language
+- Generating / pulling / pushing `cloudbaserc.json` instead of hand-writing it
+- Diffing local config against what is actually deployed
+- Bootstrapping a new project from a template
+- Validating that a project matches CloudBase application standards
+- Upgrading the CLI itself
+
+## Do NOT use for
+
+- `cloudbaserc.json` field-by-field reference → `core.md`
+- Function config fields (timeout / memory / runtime) → `functions.md`
+- Data model definitions and DB migrations → `schema.md`
+- Integration instance lifecycle → `integration.md`
+
+---
+
+## Workflow 1: CLI local settings (`config get/set/list/delete`)
+
+This half touches the CLI's **local store only** — no envId, no auth needed.
 
 ```bash
-# 1. Deploy new version at 0% traffic
-tcb app deploy \
-  --service-name my-service \
-  --image ccr.ccs.tencentyun.com/my-repo/app:v2.0.0 \
-  --env-id <envId> \
-  --remark "v2.0.0 canary"
+tcb config list
+tcb config list --json
 
-# 2. Get new version name
+tcb config get isIntl
+tcb config set isIntl true          # switch to the international site
+tcb config set lang en
+tcb config delete isIntl            # fall back to env var / default
+```
+
+Only two keys exist:
+
+| Key | Type | Meaning | Env var override |
+|-----|------|---------|------------------|
+| `isIntl` | boolean | Whether to use the international site | `TCB_IS_INTL` |
+| `lang` | string | Language: `zh` (中文) / `en` (English) | `TCB_LANG` |
+
+Resolution order for `get`: local store → env var → default.
+
+> ⚠️ **Site confusion is the #1 cause of "invalid token" / "env not found".** `isIntl` decides which
+> site the CLI talks to. A credential issued on one site does not work on the other.
+> - One-off: `tcb login --intl true` / `--intl false` (takes effect immediately for that process)
+> - Persistent: `tcb config set isIntl <true|false>`
+>
+> Pick one method, and make sure it matches the site the target envId actually lives on.
+
+---
+
+## Workflow 2: `cloudbaserc.json` sync (`config init/pull/diff/update`)
+
+Supported modules: **`fn`** (云函数) and **`integration`** (集成)。
+
+### Initialize a template
+
+```bash
+tcb config init                              # common all-in-one template + directory skeleton
+tcb config init --no-directory               # config file only, no skeleton
+tcb config init fn myFunc                    # function module config
+tcb config init integration key-xxx
+tcb config init integration key-xxx --type weixinpaydc
+tcb config init -o ./config/cloudbaserc.json # custom output path
+```
+
+### Pull cloud state into the config file
+
+```bash
+tcb config pull fn                           # pull function config
+tcb config pull fn myFunc workFn             # only the listed functions (comma-separated also works)
+tcb config pull fn --all
+tcb config pull integration key-xxx
+tcb config pull fn --stdout                  # print instead of writing the file
+tcb config pull fn -o cloudbaserc.json
+tcb config pull fn --dir ./functions         # infer config when the function does not exist in the cloud
+tcb config pull fn --code-secret <secret>    # for code-encrypted functions
+```
+
+### Diff local vs cloud
+
+```bash
+tcb config diff fn                           # only the `fn` module is supported
+tcb config diff fn myFunc
+tcb config diff fn --all
+```
+
+> ⚠️ `config diff` currently supports **only `fn`**. `pull` / `update` / `init` also accept
+> `integration`. Do not assume `diff integration` works.
+
+### Push the config file to the cloud
+
+```bash
+tcb config update fn myFunc                  # push one function's config (no code upload)
+tcb config update fn myFunc --timeout 30 --memory 512
+tcb config update fn --all
+tcb config update integration key-xxx
+```
+
+`config update fn` per-field overrides: `--timeout <seconds>`, `--memory <MB>`, `--runtime <runtime>`,
+`--handler <handler>`, `--vpc <vpcId/subnetId>`.
+
+> ⚠️ `tcb fn config update <name>` is deprecated — this is its replacement. See `functions.md`.
+
+> ⚠️ **Verify before pushing.** `config update` overwrites the cloud-side config. Run
+> `tcb config diff fn` first and show the user what will change.
+
+---
 
 ## core
 
 # Core — CloudBase CLI
 
 > Core foundation for all CloudBase CLI operations (云开发 CLI 核心基础).
-> This reference covers authentication, environment setup, documentation queries, config, and error handling.
+> Covers authentication (incl. site selection), picking the working environment, documentation
+> queries, `cloudbaserc.json`, and error diagnosis.
 
 ## When to Use
 
 - **Any** CloudBase CLI operation (always start here)
 - Authenticating with `tcb login` or switching environments with `tcb env use`
-- Querying CLI docs with `tcb docs` or checking command help with `--help`
+- Choosing between the domestic site and the international site
+- Querying CLI docs with `tcb docs` or checking command help
 - Diagnosing CLI errors via exit codes
 - **First-session fallback:** CloudBase MCP tools are not in this conversation yet (not installed, or installed but session not restarted) — use `tcb login` + the matching domain command now while MCP is configured for next time (do **not** use `tcb deploy`; see guideline `tooling-fallback.md` if npm/npx is missing)
 
@@ -8041,6 +8835,17 @@ tcb app deploy \
 - CloudBase SDK development (use matching SDK skills)
 - CloudBase MCP server operations when MCP tools are already available (prefer MCP unless the user asked for CLI)
 - Tencent Cloud console-only operations (this reference is CLI-only)
+
+## Route elsewhere
+
+| Task | Read |
+|------|------|
+| Create / modify / renew / destroy an environment, API Keys, login policy, safe domains | `env.md` |
+| `tcb config` (CLI settings, `cloudbaserc.json` sync), `tcb init` / `pull` / `validate` / `self-update` | `config.md` |
+| Log search | `logs.md` |
+| Metric monitoring | `monitor.md` |
+| Data model / PostgreSQL migrations | `schema.md` |
+| Sandbox / Agent / Integration instances | `sandbox.md` / `agent.md` / `integration.md` |
 
 ## First-session + MCP coexistence
 
@@ -8062,8 +8867,29 @@ tcb login --flow web           # Web authorization (same-machine only)
 tcb login --cloudbase-api-key <cloudbaseApiKey> -e <envId>  # Env API Key (no Tencent Cloud account)
 tcb login --apiKeyId <Id> --apiKey <Key>            # CI / Tencent Cloud SecretId+SecretKey
 tcb login --apiKeyId <Id> --apiKey <Key> --token <T> # Temp token (CI, more secure)
+tcb login --intl true          # Use the INTERNATIONAL site for this process only
+tcb login --intl false         # Use the DOMESTIC site for this process only
+tcb login -k                   # Interactive secret-key input mode (permanent key)
+tcb login --endpoint <url>     # Custom device-authorization endpoint
 tcb logout                     # Clear account-level credentials (account-login mode only)
 ```
+
+### Site selection (国内站 / 国际站) — read this before debugging "invalid token"
+
+`tcb` talks to **one** site at a time. A credential issued on one site does not work on the other, and
+the failure looks like an auth problem rather than a site problem.
+
+| Scope | How |
+|-------|-----|
+| This process only | `tcb login --intl true` / `tcb login --intl false` (persisted for the login, effective immediately) |
+| Persistent | `tcb config set isIntl true` / `false` (see `config.md`) |
+| CI / one-off | `TCB_IS_INTL=true` environment variable |
+
+> ⚠️ Pick **one** mechanism per session and keep it consistent. Mixing a persistent `isIntl false` with
+> a one-off `--intl true` produces credentials the other half of the session cannot use.
+
+> ⚠️ `--cloudbase-api-key` is a CloudBase **environment** API Key; `--apiKeyId` / `--apiKey` are Tencent
+> Cloud **account** credentials. Do not confuse them (see the table above).
 
 > ⚠️ `tcb logout` clears **account-level** logins only. In **environment API Key** mode the CLI refuses it (`LOGOUT_NOT_ALLOWED`) — there is no account session to clear; remove the credential file instead (see *Where credentials are read from* below).
 
@@ -8109,40 +8935,129 @@ Use when the user **does not** have a Tencent Cloud account and only holds an en
 # Install CLI if needed
 npm i -g @cloudbase/cli
 
-# Environment API Key login (envId is required)
-tcb login --cloudbase-api-key <cloudbaseApiKey> -e <cloudbaseEnvId>
-# Equivalent long flag:
-# tcb login --cloudbase-api-key <cloudbaseApiKey> --env-id <cloudbaseEnvId>
-```
 
-> 💡 API Keys can be created in the [CloudBase console](https://tcb.cloud.tencent.com/dev) environment settings (when you have admin access).
->
-> ⚠️ Environment API Keys grant env-scoped privileges. Never commit them to git or paste into screenshots.
-> ⚠️ **Never hardcode credentials.** Prefer env vars / secrets injection when scripting.
->
-> If the user already has a Tencent Cloud account, prefer Device login instead — do **not** ask them to use `--cloudbase-api-key`.
+## env
 
-**4. CI / Non-Interactive Login (Tencent Cloud SecretId / SecretKey)**
+# Environment — CloudBase CLI
+
+Full lifecycle for CloudBase environments (环境): create, inspect, change package, renew, destroy —
+plus the per-environment sub-resources the CLI exposes under `tcb env`.
+
+> The login → `tcb env use` → confirm envId basics live in `core.md`. That is the flow you run
+> **before every task**. This reference is for everything that **changes** an environment.
+
+## When to Use
+
+- Creating a new environment (including PG-mode and platform-pool environments)
+- Changing an environment's package (套餐变更) or renewing it
+- Inspecting environment detail / resource configuration / usage
+- Managing environment API Keys (`tcb env apikey`)
+- Configuring login methods and MFA (`tcb env login`)
+- Managing environment safe domains (`tcb env domain`) — this is the **same capability** as `tcb cors`
+
+## Do NOT use for
+
+- Picking / switching the working environment → `core.md`
+- Resource-level operations inside an env (functions, storage, database) → their own references
+- Custom domain binding, routing rules, CDN cache → `access.md`
+- Migrating data out of a database → `mysql.md` / `nosql.md`
+
+---
+
+## `--platform-id`: environment vs platform pool
+
+Several `tcb env` subcommands switch behaviour when `--platform-id <platformId>` is passed:
+they then target the **platform resource pool** instead of a single environment.
+
+| Command | Without `--platform-id` | With `--platform-id` |
+|---------|------------------------|----------------------|
+| `env create` | Create an environment (needs `--package` etc.) | Create an environment under the pool — **mutually exclusive** with `--package/--region/--duration/--auto-renew/--postgresql` |
+| `env modify` | Change the environment package | Change **platform environment status** (`--status` / `--storage-status` / `--flexdb-status`) — mutually exclusive with `--package` |
+| `env delete` | Destroy the environment | Destroy a platform-pool environment (the pool and its other environments are untouched) |
+| `env usage` | Environment usage details | Pool usage by resource type, incl. credit consumption |
+
+> ⚠️ Never mix the two modes: passing `--platform-id` together with `--package` is rejected.
+
+---
+
+## Workflow 1: Inspect
 
 ```bash
-# Permanent credentials
-tcb login --apiKeyId $SECRET_ID --apiKey $SECRET_KEY
+tcb env list --env-id <envId>            # env list supports pagination
+tcb env list --limit 20 --offset 0
+tcb env detail --env-id <envId>          # resource configuration detail
+tcb env detail --env-id <envId> --json
 
-# Temporary token (shorter TTL, more secure for CI)
-tcb login --apiKeyId $TMP_SECRET_ID --apiKey $TMP_SECRET_KEY --token $SESSION_TOKEN
+# Resource metric usage (module-filtered)
+tcb env info --env-id <envId>
+tcb env info --env-id <envId> --type FLEXDB,SCF,COS
+tcb env info --env-id <envId> --type SCF --start 2026-10-01 --end 2026-10-16
 ```
 
-> ⚠️ **Never hardcode credentials.** Always inject via environment variables.
-> 不要把密钥硬编码在命令里，通过环境变量注入。
->
-> This is **not** the same as `--cloudbase-api-key`. Use SecretId/SecretKey for CI with a Tencent Cloud account/sub-account.
+`env info --type` modules: `FLEXDB` (文档型数据库), `TDSQL` (MySQL), `SCF` (云函数), `EKS` (云托管),
+`COS` (云存储), `AI`, `HOSTING` (静态托管), `Auth` (身份认证), `APIInvocation`, `HTTPInvocation`,
+`VM` (云主机), `Workflow`, `Other`.
 
-### Checking Login Status
+> ⚠️ `tcb env list` may return incomplete results under sub-account permissions. Prefer asking the
+> user for the envId instead of auto-discovering it (see `core.md`).
+
+### Usage / billing
 
 ```bash
-tcb login
-# If already logged in: prints "您已登录，无需再次登录！" and exits.
+# Environment mode — resource usage / billing summary
+tcb env usage --env-id <envId>
+
+# Platform pool mode — usage by resource type, with resource-point consumption
+tcb env usage --platform-id <platformId> \
+  --start-date 2026-10-01 --end-date 2026-10-16 \
+  --resource-types Database,Function,Storage --need-details
 ```
+
+`env usage` flags: `-e/--env-id`, `--platform-id`, `--start-date <YYYY-MM-DD>`, `--end-date <YYYY-MM-DD>`,
+`--resource-types <types>`, `--need-details`. The last four are **platform-mode only**.
+
+`--resource-types` values: `Database | Function | Storage | HOSTING | Log | Gateway | Cloudrun | Token | EO` (comma-separated, default = all).
+
+> ⚠️ `--type <modules>` is **NOT** a flag of `env usage` — it belongs to `tcb env info` (per-module metric
+> detail, using module ids like `FLEXDB,SCF,COS`). Passing `--type` to `env usage` fails as an unknown option.
+> The two commands answer different questions: `env info` = resource metrics per module, `env usage` = billing / consumption.
+
+---
+
+## Workflow 2: Create
+
+```bash
+# Interactive: omit --package to pick from the printed package list
+tcb env create
+
+# Non-interactive / CI
+tcb env create --alias staging --package baas_pf_standard --region ap-shanghai --yes
+```
+
+`--package` values: `baas_personal` (个人版) | `baas_pf_standard` (标准版) | `baas_pf_enterprise` (企业版)
+
+Other flags:
+
+| Flag | Meaning |
+|------|---------|
+| `--alias <alias>` | Environment alias |
+| `-r, --region <region>` | Region, default `ap-shanghai` |
+| `--duration <duration>` | Purchase duration in months: `1-12`, `24` (default `1`) |
+| `--auto-renew` | Enable auto-renewal (default off) |
+| `--postgresql` | Create the environment in **PG (PostgreSQL) mode** |
+| `--platform-id <platformId>` | Create under a platform resource pool |
+
+### PG mode
+
+```bash
+tcb env create --alias pg-demo --package baas_personal --postgresql --yes
+```
+
+> ⚠️ PG mode is a different data plane, not "one more database". Auth, storage, permissions and
+> migrations all change (RLS, `pgstore`, `cloudbase/migrations/`). After creating a PG environment,
+> switch to the `postgresql-development-cloudbase` skill — do not drive a PG environment through the
+> NoSQL / MySQL references in this skill. See also `../postgresql-development-cloudbase/SKILL.md`.
+
 
 ## functions
 
@@ -8178,20 +9093,42 @@ Covers both Event Functions (普通云函数) and HTTP Functions (HTTP 云函数
 | Deploy HTTP + WebSocket | `tcb fn deploy <name> --httpFn --ws` |
 | Deploy multiple | `tcb fn deploy fn1 fn2` |
 | Update code only (仅更新代码) | `tcb fn code update <name>` |
-| Update config only (仅更新配置) | `tcb fn config update <name>` |
+| Download deployed code | `tcb fn code download <name> [dest]` |
+| Update config only (仅更新配置) | `tcb config update fn [name]` |
 | Invoke remotely (调用函数) | `tcb fn invoke <name>` |
 | Invoke with params | `tcb fn invoke <name> --params '{"key":"val"}'` |
 | Run locally (本地调试) | `tcb fn run <name>` |
-| View logs (查看日志) | `tcb fn log <name>` |
-| View log by RequestId | `tcb fn log <name> --reqId <id>` |
-| Create trigger (创建触发器) | `tcb fn trigger create <name>` |
-| Delete trigger | `tcb fn trigger delete <name> --name <trigger>` |
+| View logs (查看日志) | `tcb logs search --query 'function_name:"<name>"'` |
+| View log by RequestId | `tcb logs search --query 'request_id:("<requestId>")'` |
+| Create trigger (创建触发器) | `tcb fn trigger create <functionName> --trigger-name <t> --cron <cron>` |
+| List triggers | `tcb fn detail <name>` (triggers are shown in the detail output) |
+| Delete trigger | `tcb fn trigger delete <functionName> <triggerName>` |
 | List layers (层) | `tcb fn layer list` |
 | Publish version (发布版本) | `tcb fn publish-version <name>` |
-| Copy to another env | `tcb fn copy <name> --envId <target>` |
+| List versions (版本列表) | `tcb fn list-function-versions <name>` |
+| Copy to another env | `tcb fn copy <name> --env-id <target>` |
 | Delete function | `tcb fn delete <name>` |
 
 > Always run `tcb fn <subcommand> --help` first to check current syntax.
+
+> ⚠️ **Renamed / deprecated (命令已改名或废弃，别再用旧写法):**
+> - `tcb fn list-version` → **`tcb fn list-function-versions <name>`**
+> - `tcb fn config update` → **`tcb config update fn [name]`** (deprecated; the new command additionally supports `--all`, `--timeout`, `--memory`, `--runtime`, `--handler`, `--vpc`)
+> - `tcb fn log <name>` → **`tcb logs search`** (deprecated since v3.0.0; CLS query syntax, see Workflow 3)
+
+> 🚫 **Two separate function command families still register and are NOT `tcb fn`.** They are
+> **not recommended for use** — always answer with `tcb fn`:
+> - **`tcb cloudfunction <deploy|download|run>`** — 云函数服务 (older service API; uses
+>   `-s/--serviceName` + `--source`, not `fn`'s `--path` / `--dir` / `[name]` shape)
+> - **`tcb cloudrunfunction <deploy|download|run>`** — 云函数 2.0 服务 (函数型云托管 lineage)
+>
+> Status: **not recommended** (product decision). They carry **no `[已废弃]` marker** and are absent from
+> `tcb --help`, so this status is not discoverable from code — but do not propose them for new work, and
+> do not offer them as an alternative to `tcb fn`. If the user already has working tooling on them, they
+> still run; if they ask which to use, say `tcb fn`.
+>
+> ⚠️ Do not describe them as "deprecated" either — the CLI marks deprecation explicitly
+> (`[已废弃]`, e.g. `tcb framework`, `tcb run`), and these are not marked.
 
 ---
 
@@ -8228,44 +9165,22 @@ tcb fn deploy func-a func-b func-c
 ### Config-Only Update (仅更新配置，不上传代码)
 
 ```bash
-tcb fn config update my-function
+# Push cloudbaserc.json function config to the cloud (no code upload)
+tcb config update fn my-function
+
+# Override individual fields from the CLI
+tcb config update fn my-function --timeout 30 --memory 512
+
+# Batch: push every function listed in cloudbaserc.json
+tcb config update fn --all
 ```
+
+> ⚠️ `tcb fn config update <name>` is **deprecated** — use `tcb config update fn`. The old form does not support `--all` / `--timeout` / `--memory` / `--runtime` / `--handler` / `--vpc`.
 
 > ⚠️ **Function type is locked after creation (函数类型创建后不可更改).**
 > Cannot change Event → HTTP or vice versa. To switch: delete → recreate.
 
 > ⚠️ **Runtime is locked after creation.** To change (e.g., Nodejs16 → Nodejs18):
-> delete the function and create a new one.
-
-### Deploy Modes
-
-| Mode | Flag / Config | Use Case |
-|------|--------------|----------|
-| COS upload (default) | — | Code < 50 MB, standard deploy |
-| ZIP package | `deployMode: "zip"` | Bundled dependencies |
-| Image (镜像) | `deployMode: "image"` | Custom runtime, large dependencies |
-
-> ⚠️ **Code encryption (代码加密)**: Once enabled, code cannot be downloaded in console.
-> Enable only when you have source control in place.
-
-> ⚠️ **`installDependency` conflict (依赖安装冲突):**
-> If `installDependency: true`, the platform installs deps from `package.json` on deploy.
-> Do NOT also upload `node_modules/` — they will conflict. Choose one approach.
-> For HTTP Functions, `installDependency` is NOT supported; bundle `node_modules` yourself.
-
----
-
-## Workflow 2: Incremental Update
-
-When only code changed (no config changes):
-
-```bash
-tcb fn code update my-function
-```
-
-When only config changed (timeout, memory, env vars):
-
-```bash
 
 ## hosting
 
@@ -8371,24 +9286,508 @@ tcb hosting deploy ./dist --env-id <envId>
 
 ## Workflow 3: List and Download
 
-### List files (with pagination)
+### List files
 
 ```bash
 # List all files
 tcb hosting list --env-id <envId>
 
-# Paginated listing
-tcb hosting list --env-id <envId> --limit 10 --offset 20
+# List a path prefix
+tcb hosting list images/ --env-id <envId>
 
 # JSON output
 tcb hosting list --env-id <envId> --json
 ```
 
-> ⚠️ `meta.total` in list output excludes directories (Size=0 entries) — count may seem inaccurate.
+`tcb hosting list` flags are only `-e/--env-id`, a positional `[cloudPath]` and `--json`.
 
-### Download files
+> ⚠️ **There is no `--limit` / `--offset` on `hosting list`** — passing them fails as unknown options.
+> The command returns the whole listing. (Pagination exists on `fn list` / `app list` with `-l/--limit`
+> and `-o/--offset`, and on `cloudrun list` with `--page-size` / `--page-num` — not here.)
+
+## integration
+
+# Integration — CloudBase CLI
+
+`tcb integration` manages **integration instances** (集成) — the environment's connections to external
+services (payments, messaging, data sources…). Instance configuration comes from `cloudbaserc.json`,
+so creating one is normally a **config + CLI** pair of steps.
+
+> ✅ **`tcb integration` is officially supported — recommend it normally.** It is simply **not listed in
+> `tcb --help`** (that list is hand-maintained), which must not be read as "internal" or "experimental".
+
+## When to Use
+
+- Listing the integration types available for an environment
+- Listing / inspecting existing integration instances
+- Creating integration instances from `cloudbaserc.json`
+- Binding an integration instance to a cloud function
+- Deleting an integration instance
+
+## Do NOT use for
+
+- Function configuration itself → `functions.md` / `config.md`
+- Environment API keys → `env.md` (`tcb env apikey`)
+- Storage / database credentials → `storage.md` / `mysql.md`
+- Reading the masked secret values → the CLI deliberately does not return them (see below)
+
+---
+
+## Commands
 
 ```bash
+# 1. Discover what integrations exist
+tcb integration types --env-id <envId>
+tcb integration types --auth-type-code <code> --env-id <envId>
+
+# 2. Inspect what is already configured
+tcb integration list --env-id <envId>
+tcb integration list --name <fuzzyName> --env-id <envId>
+tcb integration list --auth-type-code <code> --limit 20 --offset 0 --env-id <envId>
+
+tcb integration get <keyId> --env-id <envId>
+tcb integration get <keyId> --env-id <envId> --json
+
+# 3. Create from cloudbaserc.json (see below)
+tcb integration create --env-id <envId>
+tcb integration create <keyId> --env-id <envId>
+
+# 4. Bind to a resource (cloud functions only today)
+tcb integration bind-resource <keyId> --function <functionName> --env-id <envId>
+
+# 5. Delete
+tcb integration delete <keyId> --env-id <envId>
+```
+
+| Flag | Applies to | Meaning |
+|------|-----------|---------|
+| `--auth-type-code <code>` | `types`, `list` | Exact-match filter on the authorization type code |
+| `--name <name>` | `list` | Fuzzy name filter |
+| `--limit <n>` / `--offset <n>` | `list` | Pagination |
+| `--function <functionName>` | `bind-resource` | Cloud function to bind (the only supported resource type) |
+
+> ⚠️ `tcb integration get` **masks sensitive fields on purpose**. It is the intended way to inspect an
+> instance — do not try to read raw secrets through `tcb api` just to "see the value". If the user
+> truly needs the secret, they should read it in the console.
+
+---
+
+## The `cloudbaserc.json` step
+
+`integration create` **reads the instance definition from `cloudbaserc.json`** — it has no flags for
+service name, credentials or endpoints.
+
+```bash
+# 1. Generate / refresh the integration section of the config
+tcb config init integration <keyId>
+tcb config init integration <keyId> --type <authTypeCode>
+
+# 2. Fill in the parameters in cloudbaserc.json
+
+# 3. Push the config and create the instance
+tcb config update integration <keyId> --env-id <envId>
+tcb integration create --env-id <envId>
+
+# 4. Verify (sensitive fields will be masked)
+tcb integration get <keyId> --env-id <envId>
+```
+
+See `config.md` for `tcb config init` / `tcb config update` semantics, and `integration`
+in the routing table when the task is really about the config file.
+
+> ⚠️ Do not put real credentials in `cloudbaserc.json` if that file is committed. Check the project's
+> `.gitignore` and the user's convention first; the config supports placeholders that resolve at
+> deploy time.
+
+---
+
+## Command Quick Reference
+
+```bash
+tcb integration types [--auth-type-code <code>]     # Available integration type templates
+tcb integration list [--name <n>] [--auth-type-code <c>] [--limit N] [--offset N]
+tcb integration get <keyId>                         # Detail (secrets masked)
+tcb integration create [keyId]                      # Create from cloudbaserc.json
+tcb integration bind-resource <keyId> --function <fn>
+tcb integration delete <keyId>
+```
+
+**Global flags:** `-e/--env-id <envId>`, `--json`, `--yes`.
+
+---
+
+## Common Errors
+
+| Error | Cause | Fix |
+|-------|-------|-----|
+| `create` does nothing / errors immediately | No matching integration entry in `cloudbaserc.json` | Run `tcb config init integration <keyId>` and fill it in first |
+| Secret shows as `***` | Intentional masking | Read it in the console; do not work around it |
+| `bind-resource` fails | Resource type is not a cloud function | Only `--function` is supported today |
+| Wrong instance targeted | Several share a name prefix | Filter with `--name` first, then act on the exact keyId |
+| `delete` on a bound instance | Instance still bound to a function | Unbind / redeploy the function first |
+
+---
+
+## logs
+
+# Logs — CloudBase CLI
+
+`tcb logs search` is the **single** log-search entry point across CloudBase: cloud functions,
+CloudRun, database, auth, model, workflow, LLM and gateway access logs — all through CLS query syntax.
+
+## When to Use
+
+- Debugging a cloud function from its runtime logs
+- Finding a specific invocation by RequestId
+- Reading CloudRun build / runtime logs (see also `cloudrun.md` for `logs build|process`)
+- Checking rate-limit / freeze / slow-query events of a database
+- Auditing gateway access logs
+
+## Do NOT use for
+
+- CloudRun build / runtime logs by service → `tcb cloudrun logs build|process` (`cloudrun.md`)
+- Metrics (QPS, latency, memory curves) → `monitor.md`
+- Local function logs → run the function locally (`functions.md`)
+
+---
+
+## Core command
+
+```bash
+tcb logs search --env-id <envId>
+tcb logs search --env-id <envId> --query 'function_name:"my-func"' --timeRange 6h
+tcb logs search --env-id <envId> --json
+```
+
+| Flag | Meaning | Default |
+|------|---------|---------|
+| `-e, --env-id <envId>` | Target environment | interactive pick if omitted |
+| `-q, --query <queryString>` | CLS query string | `*` |
+| `-t, --timeRange <timeRange>` | `30m` / `1h` / `6h` / `1d`, or absolute `"2026-10-16 14:00:00,2026-10-16 15:00:00"` | `1h` |
+| `-l, --limit <limit>` | Result count (max 100) | `20` |
+| `--sort <sort>` | `desc` (newest first) / `asc` (oldest first) | `desc` |
+| `--context <context>` | Pagination cursor from the previous result | — |
+| `--service <service>` | `tcb` (functions / database / LLM …) or `tcbr` (CloudRun) | `tcb` |
+
+> ⚠️ **`--service` is a log *service*, not a service name.** For CloudRun use `--service tcbr` and put
+> the service name into the query. `--service my-service` silently queries the wrong backend.
+
+Pagination: pass the returned `Context` back via `--context` to get the next page (the CLI prints the
+exact next command).
+
+---
+
+## Cloud function queries
+
+Fields: `function_name`, `request_id`, `status_code`, `src` (`system` = platform logs,
+`app` = user-code logs), `log` (message body), `namespace` (envId), `qualifier` (version, `$LATEST`),
+`retry_num`.
+
+`status_code`: `200` = success; **`202` = the START/END middle state and must be excluded** when you
+are counting real failures.
+
+```bash
+# Recent logs of one function
+tcb logs search --query 'function_name:"my-func"'
+
+# Full-text AND
+tcb logs search --query 'function_name:"my-func" AND "timeout"'
+
+# Only user-code logs
+tcb logs search --query 'function_name:"my-func" AND src:"app"'
+
+# Failures only, aggregated per request (note 202 exclusion and retry_num=0)
+tcb logs search --query 'function_name:"my-func" | select request_id, max(status_code) as status_code, max(ret_msg) as ret_msg where status_code>200 AND status_code!=202 AND retry_num=0 group by request_id limit 10'
+
+# One invocation by RequestId (sort asc to read it in order)
+tcb logs search --query 'request_id:("abc-123-def-456")' --sort asc
+
+# Absolute time window
+tcb logs search --timeRange "2026-10-16 14:00:00,2026-10-16 15:00:00"
+```
+
+> ℹ️ This replaces the deprecated `tcb fn log` (removed since v3.0.0). See `functions.md`.
+
+---
+
+## CloudRun queries
+
+```bash
+tcb logs search --service tcbr --query '"error"' --timeRange 1h
+tcb logs search --service tcbr --query '"error" AND "timeout"' --limit 50
+tcb logs search --service tcbr --query '__TAG__.container_name:/my-service-[0-9]+/'
+```
+
+Full-text matching uses `__CONTENT__` for CloudRun. Fields: `__TAG__.container_name`
+(service + instance, regex supported), `__TAG__.pod_name`.
+
+---
+
+## Platform-log queries (database / auth / model / workflow / LLM / gateway)
+
+Filter by `module:` (and optionally `eventType:` / `logType:`):
+
+```bash
+# Document database slow queries
+tcb logs search --query 'module:database AND eventType:MongoSlowQuery'
+
+# Relational DB events
+tcb logs search --query 'module:rdb'
+tcb logs search --query 'module:rdb AND eventType:MysqlFreeze'
+tcb logs search --query 'module:rdb AND eventType:MysqlSlowQuery'
+
+# Data model / workflow / auth
+tcb logs search --query 'module:model'
+tcb logs search --query 'module:workflow'
+tcb logs search --query 'module:auth'
+
+# LLM trace logs
+tcb logs search --query 'module:llm AND logType:llm-tracelog'
+
+# App publish / delete
+tcb logs search --query 'module:app AND eventType:AppProdPub'
+
+# Gateway access logs
+tcb logs search --query 'logType:accesslog'
+```
+
+## lowcode
+
+# Low-code / WeDa (`tcb lowcode`)
+
+`tcb lowcode` drives the **WeDa 低代码 (微搭)** toolchain: low-code **apps** and **components**
+(自定义组件) — build, local preview, debug in WeChat DevTools, publish, version.
+
+## When to Use
+
+- The user explicitly works with **微搭 / WeDa low-code** projects
+- Building or previewing a low-code **app** locally
+- Creating / building / publishing a low-code **component**
+- Managing low-code dependencies
+
+## Do NOT use for
+
+- CloudBase-native web apps (framework build + CDN) → `app.md` / `hosting.md`
+- Cloud functions → `functions.md`
+- Containerised services → `cloudrun.md`
+- Anything that is not a WeDa low-code project — **most CloudBase tasks do not need this module**
+
+> ⚠️ This is a **different product surface** from the rest of the CLI. Do not reach for `tcb lowcode`
+> just because the task mentions "app" — confirm with the user that the project really is a 微搭
+> low-code project first. Several commands also expect a Windows/macOS WeChat DevTools installation
+> (`--wx-devtool-path`), which CI does not have.
+
+---
+
+## App commands
+
+```bash
+tcb lowcode watch                     # build in watch mode (local dev loop)
+tcb lowcode watch -p ./src --force-install
+tcb lowcode watch --wx-devtool-path <path>
+
+tcb lowcode build:app                 # build the low-code app
+tcb lowcode build:app --clean --out ./dist
+
+tcb lowcode preview:app               # preview in WeChat DevTools
+tcb lowcode preview:app --platform <platform> --wx-devtool-path <path>
+
+tcb lowcode build:app-config          # generate the app config bundle
+tcb lowcode build:app-config --out ./out --build-type-list <list> --domain <domain>
+
+tcb lowcode publish:app               # publish the app
+tcb lowcode publish:app --src ./dist --sync-cloud
+
+tcb lowcode sync                      # sync low-code sources
+```
+
+## Component commands
+
+```bash
+tcb lowcode create my-component       # scaffold a component
+tcb lowcode create my-component --skip-validate
+
+tcb lowcode build                     # build the component
+tcb lowcode debug                     # debug the component
+tcb lowcode debug --debug-port 9229 --wx-devtool-path <path>
+
+tcb lowcode publish                   # publish the component
+tcb lowcode publish --admin
+
+tcb lowcode publishVersion            # publish a new component version
+tcb lowcode publishVersion --comment "fix" --tag latest --admin
+```
+
+## Dependencies
+
+```bash
+tcb lowcode deps                      # install low-code dependencies
+tcb lowcode deps --force --registry https://registry.npmjs.org
+```
+
+---
+
+## Command Quick Reference
+
+```bash
+tcb lowcode watch                      # App: local watch/build
+tcb lowcode build:app [--clean --out <dir>]
+tcb lowcode preview:app [--platform <p>]
+tcb lowcode build:app-config [--out <dir>]
+tcb lowcode publish:app [--src <dir> --sync-cloud]
+tcb lowcode sync
+
+tcb lowcode create <name>              # Component: scaffold
+tcb lowcode build | debug | publish
+tcb lowcode publishVersion [--comment <c>] [--tag <t>] [--admin]
+
+tcb lowcode deps [--force] [--registry <url>]
+```
+
+> ℹ️ `tcb lowcode` **is** listed in `tcb --help`, but the `build:app` / `preview:app` /
+> `build:app-config` / `publish:app` names use a colon — some shells and docs render them oddly.
+> Copy them exactly.
+
+---
+
+## Common Errors
+
+| Error | Cause | Fix |
+|-------|-------|-----|
+| Cannot find WeChat DevTools | `preview:app` / `debug` need it installed | Install DevTools and pass `--wx-devtool-path <path>`; not available in CI |
+| `publish` asks for admin | The account lacks publishing rights | Use `--admin` only with an admin account, or ask the owner |
+| Component build fails after editing | Stale deps | Re-run `tcb lowcode deps --force` |
+| Wrong project targeted | Project is not a 微搭 project | Confirm with the user; use `app.md` / `hosting.md` for CloudBase-native web apps |
+
+---
+
+## Self-Check
+
+- [ ] Confirmed the project really is a **WeDa low-code** project (not a CloudBase web app)?
+- [ ] For `preview:app` / `debug`: is WeChat DevTools available (not a headless CI box)?
+- [ ] For `publish:app` / `publishVersion`: does the user have publish rights, and did they approve?
+- [ ] Used `--out` / `--src` explicitly rather than relying on defaults?
+
+## monitor
+
+# Monitor — CloudBase CLI
+
+`tcb monitor` queries **metric** data (call counts, latency, resource usage, error rates) for the
+resources in an environment. Logs are a different command — see `logs.md`.
+
+## When to Use
+
+- Checking a function's invocation count / error rate / resource usage over a window
+- Checking CloudRun CPU / memory / instance curves
+- Checking database metrics, hosting traffic, auth and LLM usage
+- Checking gateway call metrics (API dimension or resource dimension)
+- Building a quick "is it healthy?" report before or after a deploy
+
+## Do NOT use for
+
+- Log lines / error messages → `logs.md`
+- Billing and credit consumption → `tcb env usage` (`env.md`)
+- Resource configuration / quotas → `tcb env detail` (`env.md`)
+
+---
+
+## Command map
+
+| Subcommand | Target |
+|------------|--------|
+| `tcb monitor function [function-name]` | Cloud function metrics |
+| `tcb monitor database [collection-name]` | Document database metrics |
+| `tcb monitor mysql` | MySQL metrics |
+| `tcb monitor cloudrun <service-name>` | CloudRun service metrics |
+| `tcb monitor hosting` | Static hosting metrics |
+| `tcb monitor auth` | Authentication metrics |
+| `tcb monitor ai` | Foundation-model metrics |
+| `tcb monitor knowledgebase` | Knowledge-base metrics |
+| `tcb monitor userlogin` | User login metrics |
+| `tcb monitor gateway <dimension>` | Gateway calls — `dimension` = `api` or `resource` |
+| `tcb monitor dbconnector <connector-id>` | Database connector metrics |
+| `tcb monitor env` | Environment-level metrics |
+| `tcb monitor schema [resource]` | Available metric names (all resource types when omitted) |
+
+> ✅ **`tcb monitor` is officially supported — recommend it normally.** It is simply **not listed in
+> `tcb --help`** (that list is hand-maintained), which must not be read as "internal" or "experimental".
+> Use it whenever the user asks for metrics / health / usage curves.
+
+---
+
+## Shared flags
+
+Almost every subcommand accepts the same four:
+
+| Flag | Meaning | Default |
+|------|---------|---------|
+| `--since <since>` | Start time; relative (`1h`, `30m`, `2d`) or absolute | `1h` |
+| `--until <until>` | End time; relative (`now`, `5m`) or absolute | `now` |
+| `--metric-name <name...>` | Metric(s) to query; comma-separated single value (`A,B`) or repeat the flag. Omitted = all metrics for that resource | all |
+| `--period <period>` | Aggregation period **in seconds**: `300` (5 min) / `3600` (1 h) / `86400` (1 d) | auto by range |
+
+Two subcommands add their own:
+
+| Subcommand | Extra flag |
+|------------|-----------|
+| `monitor cloudrun` | `--service-version <version>` — restrict to one version |
+| `monitor gateway` | `--api-type wx\|http_openapi` (only `dimension=api`); `--resource-id <id>` (only `dimension=resource`, value contains `\|` so quote it) |
+
+---
+
+## Examples
+
+```bash
+# Last hour of a function's metrics (default window and period)
+tcb monitor function my-func --env-id <envId>
+
+# Last 6 hours, 5-minute buckets, only two metrics
+tcb monitor function my-func --since 6h --period 300 \
+  --metric-name Invocation,MemoryUse --env-id <envId>
+
+# Absolute window
+tcb monitor function my-func \
+  --since "2026-10-16 00:00:00" --until "2026-10-16 12:00:00" --env-id <envId>
+
+# CloudRun service, single version
+tcb monitor cloudrun my-service --service-version my-service-001 --since 2h --env-id <envId>
+
+# Gateway API-dimension calls from mini-program APIs
+tcb monitor gateway api --api-type wx --since 1h --env-id <envId>
+
+# Gateway resource dimension (quote the id — it contains |)
+tcb monitor gateway resource --resource-id "<domain>|<path>|<resource>" --env-id <envId>
+
+# JSON for programmatic use
+tcb monitor function my-func --env-id <envId> --json
+```
+
+> ⚠️ `monitor gateway` takes a **positional** `dimension` (`api` | `resource`). Unlike `--api-type`,
+> it cannot be omitted.
+
+> ⚠️ `--period` is in **seconds**, not a string like `5m`. `--period 300`, not `--period 5m`.
+
+---
+
+## Common Errors
+
+| Symptom | Cause | Fix |
+|---------|-------|-----|
+| Empty metrics | Window too short, or the resource had no traffic | Widen `--since`; confirm the resource name |
+| "unknown metric" | `--metric-name` value not valid for that resource type | Run `tcb monitor schema <resource>` to list valid names |
+| `monitor cloudrun` complains about the target | Service name missing | CloudRun monitor takes the service name **positionally** |
+| `--period` rejected | Passed `5m` instead of seconds | Use `300` / `3600` / `86400` |
+| `monitor gateway` errors on dimension | Dimension omitted | Pass `api` or `resource` positionally |
+
+---
+
+## Self-Check
+
+- [ ] Confirmed the envId with the user?
+- [ ] Chose metrics (`monitor`) vs log lines (`logs search`) correctly?
+- [ ] `--period` expressed in seconds?
+- [ ] For CloudRun: passed the service name positionally and optionally a version?
+- [ ] For gateway: passed the dimension positionally and the type/resource flag that goes with it?
 
 ## mysql
 
@@ -8408,9 +9807,15 @@ Execute SQL, manage instances, backups, and slow queries for CloudBase MySQL via
 ## Do NOT use for
 
 - NoSQL/MongoDB operations → use `references/nosql.md` (commands are `tcb db nosql ...`)
+- **PostgreSQL** (a different data plane, not "MySQL v2") → `../postgresql-development-cloudbase/SKILL.md`
+- Data model definitions / `database-schemas/` sync → `references/schema.md` (`tcb db model`)
 - In-app MySQL queries via server SDK → use `cloud-functions` skill
 - Storage file management → use `references/storage.md`
 - Complex stored procedures or multi-statement transactions → use a MySQL client directly
+
+> ⚠️ Environment-level `db backup` targets the **MySQL** instance. NoSQL backups are the separate
+> `tcb db nosql backup ...` family (`references/nosql.md`). The two share a word, not an API.
+> `tcb db model *` is a third, unrelated thing (low-code data definitions, `references/schema.md`).
 
 ## Command Quick Reference
 
@@ -8429,9 +9834,12 @@ tcb db monitor slow-query   Analyze slow queries
 
 ### Global options
 
-- `-e, --envId <envId>` — target environment
+- `-e, --env-id <envId>` — target environment
 - `--json` — structured output (use for automation)
 - `--yes` — skip confirmation for destructive/confirmation-gated operations
+
+> ⚠️ Use the kebab-case `--env-id`. The old camelCase `--envId` still resolves as a hidden deprecated
+> alias, but it prints `⚠️ --envId 已废弃，请使用 --env-id` on every call — do not generate it.
 
 ⚠️ In `--json` mode, interactive prompts are suppressed — commands that need `--instance-id` or `--yes` will **fail silently** without them.
 
@@ -8503,15 +9911,6 @@ tcb db instance config set -e <envId> --instance-id <instanceId> --cpu 2 --memor
 
 ### Restart instance
 
-```bash
-tcb db instance restart -e <envId> --instance-id <instanceId>
-```
-
-⚠️ Restart causes **service interruption**. Only use when:
-- Instance is unresponsive
-- Configuration changes require restart
-- User explicitly confirms after understanding impact
-
 
 ## nosql
 
@@ -8540,19 +9939,38 @@ Execute MongoDB-style commands against CloudBase document database — CRUD, agg
 
 ```
 tcb db nosql execute              Run Mongo-style commands
+tcb db nosql dump <collection>    Export a collection's data
 tcb db nosql backup time          Discover restoreable timestamps
 tcb db nosql backup collection    List restoreable collections at a given time
 tcb db nosql backup restore       Submit a restore task
 tcb db nosql backup task          Track restore task status
 ```
 
-⚠️ Don't confuse `tcb db nosql ...` (NoSQL) with `tcb db ...` (MySQL) — they are different command families.
+⚠️ Three similarly-named families — keep them apart:
+
+| Command | What it is |
+|---------|-----------|
+| `tcb db nosql <...>` | **NoSQL** document DB (this file) |
+| `tcb db <instance\|backup\|execute\|monitor>` | **MySQL** (see `mysql.md`) — note `db backup` is the MySQL backup |
+| `tcb db model <list\|pull\|push>` | Low-code **data model** definitions (see `schema.md`) |
 
 ### Global options
 
-- `-e, --envId <envId>` — target environment
+- `-e, --env-id <envId>` — target environment
 - `--json` — structured output (use for automation)
 - `--tag <tag>` — select instance when multiple document DBs exist in the environment
+
+> ⚠️ Use the kebab-case `--env-id`. The old camelCase `--envId` still resolves as a hidden deprecated
+> alias, but it prints `⚠️ --envId 已废弃，请使用 --env-id` on every call — do not generate it.
+
+### Export a collection
+
+```bash
+tcb db nosql dump orders -e <envId>
+tcb db nosql dump orders --fields "_id,status,createdAt" -e <envId>   # CSV requires --fields
+```
+
+`--fields` is a comma-separated field list and is **required for CSV output**.
 
 ---
 
@@ -8617,47 +10035,35 @@ tcb db nosql execute -e <envId> --command \
 
 ---
 
-## Workflow 3: Update Documents
-
-```bash
-tcb db nosql execute -e <envId> --command \
-  '[{"TableName":"users","CommandType":"UPDATE","Command":"{\"update\":\"users\",\"updates\":[{\"q\":{\"name\":\"alice\",\"status\":\"pending\"},\"u\":{\"$set\":{\"status\":\"active\",\"age\":26}}}]}"}]'
-```
-
-Inner `Command` (after unescaping) for reference:
-
-```json
-{
-  "update": "users",
-  "updates": [{
-    "q": { "name": "alice", "status": "pending" },
-    "u": { "$set": { "status": "active", "age": 26 } }
-  }]
-}
-```
-
 ## permission
 
 # Permission — CloudBase CLI
 
-CloudBase access control has **three independent layers** — know which one to use before running any command:
+CloudBase access control has **four independent layers** — know which one to use before running any command:
 
 | Layer | Command | Controls |
 |-------|---------|----------|
-| **Resource Permission** | `tcb permission get/set` | Access level on a specific resource (table, collection, function, storage) |
+| **Resource Authorization (OPA Rego)** | `tcb policy list / get / set` | Environment-level Rego policy that the gateway evaluates for resource access |
+| **Resource Permission (legacy)** | `tcb permission get/set` — ⚠️ **offline** | Prints a migration notice and performs nothing. Do not use. |
 | **Role** | `tcb role ...` | Policy bundles + member assignments (identity dimension) |
 | **User** | `tcb user ...` | Account attributes only (name, email, status) — NOT role binding |
 
-> ⚠️ Role policies and resource permissions are **two parallel systems with NO automatic sync**. Changing a role policy does NOT affect `permission get` results, and vice versa. Audit both separately.
+> ⚠️ **`tcb permission get/set` has been taken offline.** These commands now only print
+> "请使用 tcb policy …" and execute no operation — they are not deprecated aliases, they do nothing.
+> Any task that used to be done with `tcb permission` must go through `tcb policy`.
+
+> ⚠️ Saving a Rego policy with `tcb policy set` **immediately disables legacy gateway authorization** —
+> after that, the role/gateway policies no longer decide access. Role policies and the Rego policy are
+> **two parallel systems with NO automatic sync**: audit both separately.
 
 ---
 
 ## When to Use
 
-- Managing resource-level access (table/collection/function/storage access levels)
+- Managing resource-level authorization (now: environment OPA Rego policy via `tcb policy`)
 - Creating, updating, or deleting roles with policies and user assignments
 - Managing user accounts (create, update status, delete)
-- Auditing permission state across resources and roles
+- Auditing authorization state across policies and roles
 
 ## Do NOT use for
 
@@ -8667,44 +10073,62 @@ CloudBase access control has **three independent layers** — know which one to 
 
 ---
 
-## Workflow 1: Manage Resource Permissions (`tcb permission`)
+## Workflow 1: Manage Resource Authorization (`tcb policy`)
 
-### Step 1 — Query current state
-
-```bash
-tcb permission get --env-id <envId>                        # all resource types
-tcb permission get table --env-id <envId>                  # all tables
-tcb permission get table:users,orders --env-id <envId>     # specific resources (max 100)
-tcb permission get function --env-id <envId>               # functions
-```
-
-> ⚠️ Do NOT use `function:` (colon with empty resource) — returns empty results. Use `function` instead.
-
-### Step 2 — Set permissions
+### Step 1 — Inspect the current policy
 
 ```bash
-# Fixed level
-tcb permission set table:users --level readonly --env-id <envId>
-tcb permission set storage:assets --level private --env-id <envId>
-
-# Function (custom only, --rule required)
-tcb permission set function --level custom \
-  --rule '{"*":{"invoke":"auth != null && auth.loginType != '\''ANONYMOUS'\''"}}' \
-  --env-id <envId>
-
-# Rule without level => defaults to custom
-tcb permission set collection:posts --rule '{"read": true, "write": false}' --env-id <envId>
+tcb policy list --env-id <envId>                    # legacy gateway authorization policy list
+tcb policy list --resource-type policy --env-id <envId>
+tcb policy get --env-id <envId>                     # the user-configured policy
+tcb policy get --extension --env-id <envId>          # the policy configured specifically for this environment
 ```
 
-**Combination rules:**
-- Must provide at least `--level` or `--rule`
-- `--rule` without `--level` => auto `custom`; `custom` level requires `--rule`
-- `function` only supports `custom`
-- ⚠️ `set` requires `type:resource` for table/collection/storage — only `function` can omit resource name
+> ⚠️ `tcb policy list` returns an **empty list for PG environments and OPA-engine environments** — that
+> is expected, not an error. Use `tcb policy get` to read the effective policy in those environments.
 
-### Allowed levels by resource type
+### Step 2 — Set the Rego policy
 
-| Resource | Levels |
+```bash
+# Inline Rego (quoted)
+tcb policy set 'package authz.user
+
+default allow := false
+
+# 放通匿名用户访问云函数
+allow if {
+  input.cloudbase.resource_type == "functions"
+  input.subject.auth_type == "anonymous"
+}' --env-id <envId>
+
+# From a file
+tcb policy set "$(cat policy.rego)" --env-id <envId>
+```
+
+> ⚠️ `tcb policy set` asks for confirmation — saving **immediately disables legacy gateway authorization**.
+> In CI/scripts add `--yes`. Show the policy to the user and get explicit approval before writing it.
+
+**Rego entry points seen in the CLI's own examples:**
+- `package authz.user` + `default allow := false` — the rule set is the user policy
+- `input.cloudbase.resource_type` — e.g. `"functions"` (resource type being accessed)
+- `input.subject.auth_type` — e.g. `"anonymous"` (caller identity type)
+
+> ⚠️ Verify field names against `tcb policy get` output and the official docs before authoring a
+> non-trivial policy — an incorrect Rego policy takes effect immediately.
+
+### Step 3 — Verify
+
+```bash
+tcb policy get --env-id <envId>          # read back the policy you just wrote
+tcb policy list --env-id <envId>         # confirm legacy list state
+```
+
+### Legacy level model (historical reference only — NOT settable via CLI)
+
+The old `tcb permission set --level <level>` model used these levels. **`tcb permission` is offline**,
+so these values can no longer be applied through the CLI — express the equivalent intent as Rego.
+
+| Resource | Old levels |
 |----------|--------|
 | `table` | `readonly`, `private`, `adminwrite`, `adminonly` |
 | `collection` | `readonly`, `private`, `adminwrite`, `adminonly`, `custom` |
@@ -8734,36 +10158,264 @@ tcb role get --id <roleId> --detail --env-id <envId>
 
 > ⚠️ Do NOT use `--add-policies` with `create`, or `--policies` with `update` — they will fail.
 
+## sandbox
+
+# Sandbox — CloudBase CLI
+
+CloudBase **Sandbox** (沙箱) runs isolated tool environments (browser automation, code interpreter,
+custom images) as short-lived instances. `tcb sandbox` manages the tool *definitions*, the running
+*instances*, and the *API keys* used to reach them.
+
+## When to Use
+
+- Creating / updating a reusable sandbox **tool** (image, network mode, resources, mounts)
+- Starting, pausing, resuming, stopping sandbox **instances**
+- Fetching an instance's access token
+- Managing sandbox **API keys** for programmatic access
+
+## Do NOT use for
+
+- Deploying application code → `functions.md` / `cloudrun.md` / `app.md`
+- Environment-level resources → `env.md`
+- Generic cloud API escape hatch → `tcb api` (`core.md`)
+
+---
+
+## Tool definitions (`tcb sandbox tool`)
+
 ```bash
-# Create with preset policy codes
-tcb role create --name "developer" --identity dev_role \
-  --policies '["FunctionsAccess","StoragesAccess"]' \
-  --users "u1001,u1002" --env-id <envId>
+tcb sandbox tool list --env-id <envId>
+tcb sandbox tool list --limit 50 --offset 0 --filter "Name=my-tool" --env-id <envId>
 
-# Update: add policies + members
-tcb role update --id <roleId> \
-  --add-policies '["CloudrunAccess"]' \
-  --add-users "u1003" --yes --env-id <envId>
+tcb sandbox tool create my-tool --env-id <envId> \
+  -t browser \
+  --network-mode PUBLIC \
+  -d "headless browser sandbox" \
+  --timeout 30m
 
-# Update: remove
-tcb role update --id <roleId> \
-  --remove-policies '["StoragesDeny"]' \
-  --remove-users "u1002" --yes --env-id <envId>
+tcb sandbox tool update <toolId> --env-id <envId> -d "new description"
+tcb sandbox tool delete <toolId> --env-id <envId>
 ```
 
-**Preset policy codes:** `AdministratorAccess`, `FunctionsAccess`, `StoragesAccess`, `CloudrunAccess`, `FunctionsDeny`, `StoragesDeny`, `CloudrunDeny`
+`tool create` flags:
 
-### Step 3 — Custom policy objects
+| Flag | Meaning |
+|------|---------|
+| `-t, --tool-type <type>` | `browser` \| `code-interpreter` \| `custom` |
+| `--network-mode <mode>` | `PUBLIC` \| `VPC` \| `SANDBOX` |
+| `-d, --description <desc>` | Description (max 200 chars) |
+| `--timeout <timeout>` | Default timeout, `5m` / `300s` / `1h` style, max 24h |
+| `--tags <key=value>` | Extra tags, repeatable |
+| `--client-token <token>` | Idempotency token (max 64 chars) |
+| `--role-arn <arn>` | Role ARN |
+| `--storage-mounts <json>` | `StorageMount[]` JSON (each needs `Name` / `StorageSource`) |
+| `--custom-configuration <json>` | `CustomConfiguration` JSON (`Image` / `ImageRegistryType` / `Command` / `Args` / `Env` / `Ports` / `Resource…`) |
+| `--log-configuration <json>` | `LogConfiguration` JSON |
+| `--subnet-ids <id>` | VPC subnet id — **only** when `--network-mode VPC`, exactly one |
+| `--security-group-ids <ids...>` | Security groups — only with `--network-mode VPC`, duplicates de-duplicated |
 
-Policies array can mix preset codes (strings) and custom objects:
+`tool update` accepts a subset: `-d/--description`, `--tags`, `--network-mode`, `--subnet-ids`,
+`--security-group-ids`, `--custom-configuration`.
+
+> ⚠️ `--timeout` accepts human forms (`5m`, `300s`, `1h`) — unlike `tcb monitor --period`, which takes
+> seconds. Do not mix the two conventions up.
+
+---
+
+## Instances (`tcb sandbox instance`)
 
 ```bash
+# Start — pick the tool by id or by name (exactly one)
+tcb sandbox instance start --tool-name my-tool --env-id <envId>
+tcb sandbox instance start --tool-id <toolId> --timeout 1h \
+  --auth-mode TOKEN --metadata purpose=test --env-id <envId>
+
+tcb sandbox instance list --env-id <envId>
+tcb sandbox instance list --tool-id <toolId> --limit 20 --offset 0 --env-id <envId>
+tcb sandbox instance list --instance-ids <id1>,<id2> --env-id <envId>
+
+tcb sandbox instance update <instanceId> --timeout 2h --metadata stage=warm
+tcb sandbox instance pause  <instanceId> --env-id <envId>
+tcb sandbox instance resume <instanceId> --env-id <envId>
+tcb sandbox instance token  <instanceId> --env-id <envId>   # access token for the instance
+tcb sandbox instance stop   <instanceId> --env-id <envId>
+```
+
+`instance start` flags: `--tool-id` **or** `--tool-name` (mutually exclusive, one required),
+`--timeout <t>`, `--auth-mode DEFAULT|TOKEN|NONE`, `--client-token <token>`,
+`--mount-options <json>` (`MountOption[]`, each needs `Name`), `--custom-configuration <json>`,
+`--metadata key=value` (repeatable).
+
+`instance list` flags: `--instance-ids <ids...>` (max 100), `--tool-id <id>`, `--filter Name=Values`
+(repeatable; multiple conditions AND, multiple values in one condition OR), `--offset`, `--limit`
+(default 20, max 100).
+
+> ⚠️ `instance update --timeout` **restarts the timeout clock** from the moment you set it — it is not
+> "extend by N". Minimum 30s, maximum 24h.
+>
+> ⚠️ `instance token` returns a live access credential. Do not print it into logs, commits, or the
+> conversation transcript; hand it to the user, not into a file under version control.
+
+---
+
+## API keys (`tcb sandbox apikey`)
+
+```bash
+tcb sandbox apikey list --env-id <envId>
+tcb sandbox apikey create my-key --env-id <envId>
+tcb sandbox apikey delete <keyId> --env-id <envId>
+```
+
+> ⚠️ `sandbox apikey delete` is **irreversible**. Confirm the keyId with the user and check
+> `sandbox apikey list` first.
+>
+> ⚠️ A sandbox API key grants programmatic access. Treat it like any other credential: env vars only,
+> never in the repo.
+
+---
+
+## Command Quick Reference
+
+```bash
+tcb sandbox tool list                    # List tool definitions
+tcb sandbox tool create <toolName>       # Create a tool (-t browser|code-interpreter|custom)
+tcb sandbox tool update <toolId>
+
+## schema
+
+# Schema & Migrations — CloudBase CLI
+
+Schema-definition tooling exposed by the CLI: the low-code **data model** sync (`tcb db model`),
+the generated TypeScript types (`tcb sync-model-dts`), and **PostgreSQL migrations**
+(`tcb db pg migration`).
+
+## When to Use
+
+- Syncing data-model definitions between local files and the cloud
+- Generating TypeScript type definitions from the data model
+- Creating / listing / applying / repairing PostgreSQL migrations from the terminal or CI
+
+## Do NOT use for
+
+- **Designing** a data model (ER diagrams, multi-entity modelling) → `../data-model-creation/SKILL.md`
+  (deprecated; for new work prefer PostgreSQL DDL)
+- **PostgreSQL schema design, RLS, queries** → `../postgresql-development-cloudbase/SKILL.md`
+- MySQL instance / backup operations → `mysql.md`
+- NoSQL collection data operations → `nosql.md`
+- Function config in `cloudbaserc.json` → `config.md` / `functions.md`
+
+---
+
+## Data model (`tcb db model`)
+
+Local definitions live in `database-schemas/` by default.
+
+```bash
+tcb db model list                        # list all cloud-side data models
+tcb db model list --json
+
+tcb db model pull                        # cloud -> local (all models)
+tcb db model pull -n user,order          # only the named models (comma-separated)
+tcb db model pull -d ./database-schemas  # custom local directory
+
+tcb db model push                        # local -> cloud (all models in the dir)
+tcb db model push -n user,order
+tcb db model push -d ./database-schemas
+```
+
+| Flag | Meaning |
+|------|---------|
+| `-d, --dir <dir>` | Local directory holding model definitions, default `database-schemas` |
+| `-n, --name <name>` | Model identifiers, comma-separated; omitted = all |
+
+> ⚠️ `tcb db list` / `tcb db pull` / `tcb db push` are **deprecated aliases** of
+> `tcb db model list` / `pull` / `push`. They still run but print a migration warning — use the
+> `db model` form so the user is not told about a soon-to-be-removed command.
+
+> ⚠️ `db model push` writes model definitions to the cloud. Run `db model list` and show the diff
+> intent to the user first; a wrong push changes the live model.
+
+### Generate TypeScript types
+
+```bash
+tcb sync-model-dts --env-id <envId>
+```
+
+Writes type-definition files for the cloud data model so application code can import them.
+It needs a real envId (`requiredEnvId: true`).
+
+---
+
+## PostgreSQL migrations (`tcb db pg migration`)
+
+> ⚠️ **PostgreSQL is a different data plane.** Do not drive a PG environment through `mysql.md` /
+> `nosql.md`. This section only covers the CLI surface; for the migration *workflow*, conflict
+> handling and RLS, read `../postgresql-development-cloudbase/SKILL.md`.
+
+Migration files live in **`cloudbase/migrations/<YYYYMMDDHHMMSS>_<name>.sql`**. That path must match
+what the MCP `managePgDatabase` tools use — if an older workspace keeps `migrations/` at the repo
+root, move the files into `cloudbase/migrations/` before mixing CLI and MCP.
+
+```bash
+tcb db pg migration new add_user_table        # scaffold a new migration file
+tcb db pg migration list                      # local + remote status
+tcb db pg migration list --remote-only        # remote-applied only
+tcb db pg migration list --remote-only --limit 100 --offset 0
+
+tcb db pg migration fetch                     # remote history -> local files
+tcb db pg migration fetch 20261016120000      # one version
+tcb db pg migration fetch --force             # overwrite existing local files
+tcb db pg migration fetch --dry-run           # preview only
+
+tcb db pg migration up                        # apply pending migrations
+tcb db pg migration up --dry-run              # preview pending migrations
+tcb db pg migration up --include-all          # allow out-of-order (backfill) versions
+
+tcb db pg migration repair <version> --status applied  --reason "manual fix"
+tcb db pg migration repair <version> --status reverted --reason "manual fix" --dry-run
+```
+
+| Command | Flags |
+|---------|-------|
+| `new <name>` | — (creates `cloudbase/migrations/<version>_<name>.sql`) |
+| `list` | `--remote-only`, `--limit <n>` (1-500, default 100), `--offset <n>` — `--limit/--offset` are **only** valid together with `--remote-only` |
+| `fetch [version]` | `-f/--force` (overwrite local), `--dry-run` |
+| `up` | `--dry-run`, `--include-all` |
+| `repair <version>` | `--status applied\|reverted` (**required**), `--reason <text>` (**required**), `--dry-run` |
+
+> ⚠️ `--include-all` applies versions **older** than the latest applied one. Use it only for branch
+> merges / backfills the user explicitly asked for — never for routine work.
+
+> ⚠️ `repair` rewrites recorded migration state, not the database. It does **not** run SQL. Always
+> `--dry-run` first and get the user's approval, because it can desynchronise history from reality.
+
+---
+
+## Command Quick Reference
+
+```bash
+tcb db model list                         # List cloud data models
+tcb db model pull [-n a,b] [-d <dir>]     # Model definitions: cloud -> local
+tcb db model push [-n a,b] [-d <dir>]     # Model definitions: local -> cloud
+tcb sync-model-dts --env-id <id>          # Generate TS type definitions
+
+tcb db pg migration new <name>            # Scaffold a migration
+tcb db pg migration list [--remote-only]  # Status
+tcb db pg migration fetch [version]       # Remote history -> local
+tcb db pg migration up [--dry-run]        # Apply
 
 ## storage
 
 # Cloud Storage Management (`tcb storage`)
 
-Manage CloudBase cloud storage — upload, download, delete, copy/move files, generate temp URLs, and configure ACL rules.
+Manage CloudBase cloud storage — upload, download, delete, copy/move files, generate temp URLs, search
+files, and configure ACL rules.
+
+> ⚠️ **Two storage generations share one command.** Check the environment first:
+> - **COS storage** (default / NoSQL / MySQL environments) → the commands below plus `storage rules`
+> - **PG storage** (`pgstore`, PostgreSQL environments) → `storage buckets` / `storage policies` /
+>   `storage objects`
+> See *COS vs PG storage* at the end of this file.
 
 ## When to Use
 
@@ -8771,13 +10423,16 @@ Manage CloudBase cloud storage — upload, download, delete, copy/move files, ge
 - Delete files (single, batch, or wildcard-based)
 - Generate temporary access URLs for stored files
 - Copy or move files within cloud storage
+- Search for files by name pattern
 - Manage storage ACL permission rules
+- (PG envs) manage buckets, objects and RLS policies
 
 ## Do NOT use for
 
 - Static website hosting with CDN → use `references/hosting.md`
 - Web app deployment → use `references/app.md`
 - Database operations → use `references/mysql.md` or `references/nosql.md`
+- PostgreSQL RLS **design** and `pgstore` semantics → `../postgresql-development-cloudbase/SKILL.md`
 - In-app file operations via Web/Mini-Program SDK → use `cloud-storage-web` skill
 - Large-scale data migration (>10 GB) → use the console bulk-import tool
 
@@ -8791,6 +10446,7 @@ tcb storage list          List files in storage
 tcb storage url           Get temporary access URL
 tcb storage detail        Get file metadata
 tcb storage cp            Copy or move files in cloud
+tcb storage search        Find files by name pattern
 tcb storage rules get     Get storage ACL rules
 tcb storage rules update  Update storage ACL rules
 ```
@@ -8870,17 +10526,6 @@ tcb storage rm "*.tmp" --force -e <envId>
 ### Deletion patterns
 
 ```bash
-tcb storage rm file.txt -e <envId>                    # Single file
-tcb storage rm file1.txt file2.txt -e <envId>          # Multiple files
-tcb storage rm "*.log" -e <envId>                      # Wildcard — current dir only
-tcb storage rm "temp/**" -e <envId>                    # Recursive wildcard
-tcb storage rm folder/ --dir -e <envId>                # Directory
-```
-
-⚠️ Wildcard patterns **must be quoted** — use `"*.log"`, not `*.log`. Unquoted globs expand against your local filesystem, not cloud storage.
-
-⚠️ Deleting 2+ files triggers a confirmation prompt. Use `--force` to skip (required in CI/scripts).
-
 
 ## LICENSE
 
@@ -11409,7 +13054,7 @@ If a referenced sibling skill file is missing from this environment, ask the use
 - Deployment Gate: `references/protocols/deployment-gate.md`
 - Sensitive Runtime Data Protection: `references/protocols/sensitive-runtime-data-protection.md`
 
-**Post-deployment (optional, non-intrusive)**: after a deployment is verified successful, you may offer at most once to generate anonymized shareables and, in that same offer, optionally submit the work to the case wall (Deployment Share) — see `references/protocols/deployment-share.md`. Never follow up if declined; never publish or submit on the user's behalf.
+**Post-deployment (optional, non-intrusive)**: after a deployment is verified successful, you may offer at most once to generate anonymized shareables (Deployment Share) — see `references/protocols/deployment-share.md`. Deliver the card, the copy and the case-wall entry in one reply; shareables only if that is all the user asked for. Never follow up if declined; never publish or submit on the user's behalf.
 
 ## Activation Contract
 
@@ -11665,11 +13310,19 @@ A soft, non-intrusive flow for turning a verified deployment milestone into anon
 
 ## Trigger & Boundaries
 
-- Only after a deployment is **verified successful** (public URL reachable, or mini program upload/publish completed), offer **at most once**. The offer is one sequence: generate shareables, then optionally submit the work to the case wall. Do not ask these as two prompts.
-- If the user declines or ignores, stop immediately — never follow up, and do not ask about the case wall later in the same session.
-- Generate shareables only after the user explicitly agrees. Publishing is always a manual user action — **never post on the user's behalf**.
-- The case-wall step stays inside that same agreement. Show the full draft and wait for an explicit confirmation before giving a submission link or asking the user to paste. Never submit on the user's behalf. If the user only wants the shareables, stop after delivering them.
+- Only after a deployment is **verified successful** (public URL reachable, or mini program upload/publish completed), offer **at most once**. Do not ask the same thing twice in one session.
+- If the user declines or ignores, stop immediately — never follow up.
+- Generate shareables only after the user asks for them (or clicks the share action on the deployment card). **Never post on the user's behalf**, and never fill the form for them: submission is theirs to do.
 - Never delay, bloat, or overshadow the deployment report itself. This is a closing pleasantry, not a step of the deployment workflow.
+
+## Two Modes
+
+Pick the mode the user's request implies; do not make them ask twice.
+
+- **One round (default)** — deliver the visual card, the paste-ready copy **and** the case-wall submission entry (`prepareFeedback` with `channel="case"`) together in a single reply. The user reads it, decides, and submits by hand if they want. Asking a second time just to hand over a link the user can ignore costs a whole turn and reads as nagging.
+- **Shareables only (on demand)** — if the user asked for the card/copy alone, or said they do not want to submit anywhere, stop after the deliverables and do not bring up the case wall again in this session.
+
+In both modes the draft is shown in full before anything else, and the entry is a link the user opens while signed in — we never submit, never prefill, never post.
 
 ## Required Information (both deliverables must cover all items)
 
@@ -12576,6 +14229,7 @@ If a referenced sibling skill file is missing from this environment, ask the use
 - Existing app + TCP database networking -> `references/vpc-and-database.md`
 - Container image deploy failure / probe / `deploy_failed` -> `references/image-deploy-troubleshooting.md`
 - Service calls CloudBase resources through an SDK (credential source / injection / revocation) -> `../cloud-functions/references/http-function-credentials.md`
+- Billing questions about a CloudRun charge ("why was I charged when nothing was deployed", "the free quota wasn't used up") -> `../cloud-api-operations/references/recipes/billing-charges-explained.md` (the gifted quota is a **3-month total**, and a container bills while **instance count is not 0**)
 
 ### Do NOT use for
 
@@ -12589,6 +14243,10 @@ If a referenced sibling skill file is missing from this environment, ask the use
 - **Forgetting to listen on the platform-provided `PORT` in Container mode** — and its mirror image in Function mode: calling `app.listen()` there, where the framework already owns the port and the second bind dies with `EADDRINUSE`.
 - **Guessing the credential environment variable name.** `@cloudbase/node-sdk` reads `CLOUDBASE_APIKEY`; an invented name (for example `TCB_API_KEY`) is silently ignored and only shows up later as "no credentials at runtime".
 - **Copying a server credential out of the local client login state** (`auth.json`, `.cloudbase/`) and injecting it into a deployed service. Issue the key with `manageAppAuth(action="createApiKey", keyType="api_key")` instead, so it has an owner, a rotation path, and a `keyId` you can revoke. See `../cloud-functions/references/http-function-credentials.md`.
+- **Baking static content into the image — media files, user uploads, or assets that change on their own cadence.** Three cases, one root cause: the image is rebuilt, re-pushed and re-pulled on every deploy *and* on every scale-up, so anything large or independently-changing makes every deploy slower for no reason.
+  - **Media files** (`*.mp4`, large images, fonts) pulled in by a `COPY . .` — one demo video can turn a 30-second deploy into a multi-minute one. Media belongs in cloud storage, referenced by URL. Add a `.dockerignore` covering `*.mp4`, `*.mov`, `*.zip`, `*.psd`, and media directories such as `public/videos/`.
+  - **User uploads written to the container filesystem** — the service is stateless; anything on local disk is gone on the next deploy, restart, or scale-out. Uploads go to cloud storage.
+  - **Frequently-updated static resources served from the image** — if an asset changes on its own schedule, every change forces a full service redeploy. Serve it from cloud storage so the service only redeploys when the *code* changes.
 - Treating CloudRun as stateful app hosting and storing important state on local disk.
 - Assuming local run is available for Container mode.
 - Opening public access by default when the scenario only needs private or mini-program internal access.
@@ -12610,6 +14268,7 @@ If a referenced sibling skill file is missing from this environment, ask the use
 - Confirm whether the service should be public, VPC-only, or mini-program internal (**ingress**).
 - If the app uses TCP databases/caches, resolve and set `VpcConf` (**egress / private network**) before deploy — see `references/vpc-and-database.md`.
 - Keep the service stateless and externalize durable data.
+- **Separate static from dynamic**: media files, user uploads, and frequently-updated assets live in cloud storage, not in the image. Check what the Dockerfile copies in.
 - **Settle the credential path for every CloudBase SDK call before writing code** — a server API Key issued through `manageAppAuth(action="createApiKey")` and injected via `EnvParams`, never a key copied out of the local client login state.
 - Use absolute paths for every local project path.
 - Confirm handlers never echo `x-cloudbase-context`, full headers, or credential env vars; do not deploy httpbin-style reflectors.
@@ -12627,28 +14286,22 @@ Use CloudBase Run when the task needs a deployed backend service rather than a s
 
 - 无状态 HTTP 服务，监听 `PORT`/`9000`，只做「请求进来 → 处理 → 响应」的响应式逻辑
 - 短生命周期请求，无长连接需求（SSE/WebSocket 之外的普通 API、CRUD、转发）
-- 不需要自定义系统依赖 / 多语言运行时，标准 runtime 足够
+- 标准 runtime 够用（不需要自定义系统依赖、不需要非标准语言）——需要时也能用镜像函数（Custom Image HTTP Function）跑，仍然在函数这条线上
 - 部署更快、费用更低（按请求计费，可缩容到 0）、**无需初始化云托管环境**
 - 有 `Dockerfile` 但服务本质是无状态 HTTP → 优先 HTTP 云函数（HTTP Function / Custom Image HTTP Function），不必上云托管
 
 **云托管才需要（只有以下之一才选云托管）：**
 
 - 长连接：WebSocket、SSE 长连接、服务端推送
-- 自定义系统依赖 / 任意语言运行时 / 需要稳定独立进程
+- 需要常驻的独立进程：后台任务循环、常驻缓存 / 连接池、自管端口的服务
 - VPC 内数据库 / Redis 访问（`VpcConf` 私有网络连通）
 - Agent 服务（Function mode CloudRun）
-- 迁移已有 / GitHub / 第三方应用，或需要常驻进程
+- 迁移已有 / GitHub / 第三方应用
 
-**决策示例：** 一个带 `Dockerfile` 的 Go/Python HTTP API，无长连接、无自定义运行时、不碰 VPC 数据库 → 选 HTTP 云函数而不是云托管；同一份代码若有 WebSocket 长连接 → 才选云托管。
+**语言不是上云托管的条件**：非标准语言（Java / Rust / C++ / PHP / .NET 等）或需要自定义系统依赖时，只要服务仍是「请求进来 → 响应」且无长连接，打成镜像用 Custom Image HTTP Function，就还是函数；只有再叠加常驻 / 长连接 / VPC 才上云托管。
 
-### 数据库访问方式决策门（部署前必答：SDK 优先，TCP 直连兜底）
+**决策示例：** 一个带 `Dockerfile` 的 Go/Python HTTP API，无长连接、无自定义系统依赖、不碰 VPC 数据库 → 选 HTTP 云函数而不是云托管；同一份代码若有 WebSocket 长连接 → 才选云托管。
 
-> 核心原则：**能用 CloudBase SDK/网关访问的数据，一律优先 SDK 路径。** TCP 直连会引入 VPC、安全组、数据库账号密码三件套，全是部署后才暴露的问题（`ETIMEDOUT`、安全组拦截、密码注入），能不碰就不碰。
-
-**优先：SDK / 网关路径（无需 `VpcConf`、无需数据库账号密码）**
-
-- CloudBase PG → `app.rdb()`（js-sdk v3 / node-sdk，走 PG HTTP 网关；详见 `../postgresql-development-cloudbase/SKILL.md`）
-- NoSQL → `app.database()`；对象存储 → `app.storage`
 
 ## image-deploy-troubleshooting
 
@@ -12800,6 +14453,11 @@ SDK 路径的具体形态：
 
 仅当应用是经典 TCP 客户端（mysql2 / pg / Prisma / SQLAlchemy / WordPress / Ghost 等迁移场景）且改造为 SDK 的方案被否决时，才继续往下走 VPC 流程。
 
+🔴 **前提：数据库端必须真的有 TCP 可达端点。** CloudBase PG 分**共享（shared）**与**独享（dedicated）**实例——**只有独享实例提供私网 host / TCP 直连**，共享实例只能走 SDK / 网关访问。所以在决定走这条路之前，**先确认实例类型**（`queryEnv(action="info")` 返回的 `EnvInfo.PostgreSQL[].TenantType`）：如果实例是共享的，`VpcConf` 怎么配都连不上（表现为 `ECONNREFUSED`、连接超时，网络类查询还会被平台以「资源检查失败」拒绝），需要先把实例**升级到独享**，或者改走 SDK。
+**不要向用户索要 VPC ID / 子网 ID，也不要让用户去找网络部** —— VPC 与子网从数据库实例自身的详情里读，让用户去别的部门要网络信息是一条走不通的路。
+
+**共享实例要升到独享，走现成的 recipe**：`../../cloud-api-operations/references/recipes/pg-instance-spec.md`（Recipe 3）。先看 `TenantType` 分流——`SHARED` 走「共享升独享」（`UpgradePGInstanceToDedicated`），`DEDICATED` 走调规格；提交后用返回的 `TaskId` 轮询进度，不要凭感觉估计要多久。⚠️ 该 recipe 的「共享升独享」分支**已跑通**（标准版环境 → `1 核 2 GiB` + 10 GB，约 2 分 49 秒到 `Succeed`）；recipe 整体仍标「部分实证」，因为其余分支（套餐准入逐档验证、`SwitchTag: 1` 指定时间、独享→共享）未跑，执行前先核对里面的前置条件。
+
 > ⚠️ **「无需数据库账号密码」≠「无需凭证」。** SDK / 网关路径省掉的是数据库账号密码与 `VpcConf`，但服务实例调用 CloudBase 资源（PG `app.rdb()` / NoSQL / storage）仍要带 CloudBase 资源访问凭证：由 `manageAppAuth(action="createApiKey", keyType="api_key")` 签发，经 `serverConfig.EnvParams` 注入 `CLOUDBASE_APIKEY`，不要从本地客户端登录态里取。完整步骤见 `../../cloud-functions/references/http-function-credentials.md`。
 
 ## Critical distinction
@@ -12890,11 +14548,6 @@ If the user says "PostgreSQL" but the app is a classic TCP client (for example n
 
 ```json
 {
-  "serverConfig": {
-    "OpenAccessTypes": ["PUBLIC"],
-    "EnvParams": "{\"DATABASE_URL\":\"postgres://...private-host...\"}"
-  }
-}
 
 ## LICENSE
 
@@ -15473,7 +17126,7 @@ SOFTWARE.
 
 ---
 name: ops-inspector
-description: AIOps-style CloudBase inspection skill (v3). Use when users need health checks, log diagnosis, alarm interpretation (CPU alert normal?, peak QPS), metrics via queryEnv(action=metrics), or fault playbooks for 429 / function 404 / ACCESS_TOKEN_INVALID / zero invocations. Triggers on 巡检, 诊断, 告警, 峰值 QPS, 限频, 调用量为 0, troubleshooting.
+description: AIOps-style CloudBase inspection skill (v3). Use when users need health checks, log diagnosis, alarm interpretation (CPU alert normal?, peak QPS), metrics via queryEnv(action=metrics), or fault playbooks for 429 / AI model 429 / function timeout / function 404 / ACCESS_TOKEN_INVALID / zero invocations. Triggers on 巡检, 诊断, 告警, 峰值 QPS, 限频, 调用量为 0, troubleshooting.
 version: 2.35.2
 license: MIT
 alwaysApply: false
@@ -15494,7 +17147,7 @@ If a referenced sibling skill file is missing from this environment, ask the use
 - The user asks for an "inspection", "health check", "巡检", "诊断", or "troubleshooting" of their CloudBase environment.
 - The user wants to review recent error logs across services.
 - The user asks **告警解读** questions: whether a **CPU 告警** is normal, what **峰值 QPS** was, or whether throttle/error metrics look healthy.
-- The symptom matches a v3 fault playbook: **429 / 限频**, **云函数 404**, **ACCESS_TOKEN_INVALID**, or **调用量为 0**.
+- The symptom matches a v3 fault playbook: **429 / 限频**, **AI 模型 429 / Token 额度**, **云函数超时或轮询超时（`-404005`/433）**, **云函数 404**, **ACCESS_TOKEN_INVALID**, or **调用量为 0**.
 
 ### Read before writing code if
 
@@ -15504,7 +17157,7 @@ If a referenced sibling skill file is missing from this environment, ask the use
 ### Then also read
 
 - Alarm interpretation baselines -> `references/alarm-interpretation.md`
-- Fault playbooks (429 / 404 / token / zero calls) -> `references/fault-playbooks.md`
+- Fault playbooks (429 / AI model 429 / function timeout / 404 / token / zero calls) -> `references/fault-playbooks.md`
 - Cloud function issues -> `../cloud-functions/SKILL.md`
 - CloudRun issues -> `../cloudrun-development/SKILL.md`
 - Database issues -> `../postgresql-development-cloudbase/SKILL.md` for CloudBase PG / PostgreSQL, `../relational-database-mcp-cloudbase/SKILL.md` for MySQL, or `../cloudbase-document-database-web-sdk/SKILL.md` for NoSQL
@@ -15533,7 +17186,7 @@ If a referenced sibling skill file is missing from this environment, ask the use
 - [ ] Environment is bound and accessible (`queryEnv(action="info")`) — if it fails, or only one environment shows up, confirm the current identity and credential slot first (`../cloudbase-cli/references/core.md`)
 - [ ] Metrics pulled with `queryEnv(action="metrics")` when the question involves QPS / CPU / throttle / invocation volume
 - [ ] CLS log service is enabled (`queryLogs(action="checkLogService")`) when log diagnosis is needed
-- [ ] Matching fault playbook selected when symptoms match 429 / function 404 / ACCESS_TOKEN_INVALID / 调用量为 0
+- [ ] Matching fault playbook selected when symptoms match 429 / AI model 429 / function timeout / function 404 / ACCESS_TOKEN_INVALID / 调用量为 0
 - [ ] Time range is specified for any log or metrics searches
 - [ ] Findings are summarized with severity levels, **告警解读**, and actionable recommendations
 
@@ -15555,7 +17208,7 @@ v3 adds two mandatory capabilities on top of log/resource inspection:
 | **Full inspection** | User asks for a general health check / 巡检 / 全面检查 | All resource types + core metrics |
 | **Targeted inspection** | User reports a specific error or asks about a specific resource | One resource type or playbook |
 | **Alarm interpretation** | User asks CPU 告警是否正常 / 峰值 QPS / 是否限流 | Metrics-first, then logs |
-| **Fault playbook** | 429 / function 404 / ACCESS_TOKEN_INVALID / 调用量为 0 | Playbook steps only |
+| **Fault playbook** | 429 / AI model 429 / function timeout / function 404 / ACCESS_TOKEN_INVALID / 调用量为 0 | Playbook steps only |
 
 ### Full Inspection Workflow
 
@@ -15675,7 +17328,7 @@ If the environment package QPS is known and **not** 500, recompute 70%/90% again
 
 # Fault Playbooks (故障剧本)
 
-Four high-frequency KA / ops triage playbooks. Use the matching playbook when the symptom matches; always prefer MCP tools listed here — **never** invent Monitor/TCB Actions via `callCloudApi`.
+Six high-frequency KA / ops triage playbooks. Use the matching playbook when the symptom matches; always prefer MCP tools listed here — **never** invent Monitor/TCB Actions via `callCloudApi`.
 
 Shared prerequisites for every playbook:
 
@@ -17214,9 +18867,9 @@ Cause: classic TCP clients need the CloudRun instances to join the database VPC.
 
 Fix:
 
+0. **First check the PG instance tier — this decides whether the TCP path is even available.** Read `queryEnv(action="info")` → `EnvInfo.PostgreSQL[].TenantType`. CloudBase PG ships as **shared (共享)** and **dedicated (独享)** instances, and only **dedicated** instances expose a TCP-reachable endpoint (the private host). A shared instance is reachable through the SDK / gateway only, so **no `VpcConf` configuration will ever make a TCP client connect to it** — the connection fails with `ECONNREFUSED` / timeout and the platform reports 资源检查失败 on network queries. If the app is a TCP client and the instance is shared, say so plainly: the instance must be **upgraded to dedicated** first — the upgrade path is a ready recipe: `../../cloud-api-operations/references/recipes/pg-instance-spec.md` (Recipe 3); use `TenantType` to pick the branch (`SHARED` → upgrade-to-dedicated via `UpgradePGInstanceToDedicated`, `DEDICATED` → spec change) and poll the returned `TaskId`. The recipe's upgrade-to-dedicated branch has been run end to end (standard-tier environment → `1 core 2 GiB` + 10 GB, ~2m49s to `Succeed`); the recipe as a whole is still marked partially verified because its other branches are untested — check its prerequisites before running. Alternatively the app can be reworked onto the SDK path (`app.rdb()`). Do **not** ask the user (or their networking team) for VPC ID / subnet ID — the VPC and subnet come from the database instance's own detail, and hunting for them sends the user down a path that cannot work.
 1. Confirm whether the app is a **TCP client** (ORM / `DATABASE_URL`) or a **CloudBase PG SDK** client (`app.rdb()`).
-2. For TCP clients: redeploy with `serverConfig.VpcConf` pointing at the same region/VPC as the database, and use the **private** DB host. See `../cloudrun-development/references/vpc-and-database.md`.
-3. Ensure the DB security group / allowlist accepts the CloudRun subnet CIDR on port 5432.
+2. For TCP clients **on a dedicated instance**: redeploy with `serverConfig.VpcConf` pointing at the same region/VPC as the database, and use the **private** DB host. See `../cloudrun-development/references/vpc-and-database.md`.
 
 ## SKILL
 

@@ -1,7 +1,7 @@
 ---
 app: cline-code
 quelle: "web-template/cloud-storage-web/rule.md"
-stand: 2026-10-14
+stand: 2026-10-18
 tags: [spiegel, cline-code]
 ---
 
@@ -125,7 +125,7 @@ Use instead:
 | `createSignedUrl(path, expiresIn)` | `await` → `{ data: { signedUrl } }` | `await` → `{ data: { fullSignedURL } }` |
 | `getPublicUrl(path)` | `await` → `{ data: { publicUrl } }` | **同步调用（不 await）** → `{ data: { publicUrl } }` |
 
-Source: [webv3/storage.md](https://docs.cloudbase.net/api-reference/webv3/storage.md) · [webv3-pg/storage.md](https://docs.cloudbase.net/api-reference/webv3-pg/storage.md)（raw markdown）。
+Source: [webv3/classic/storage.md](https://docs.cloudbase.net/api-reference/webv3/classic/storage.md) · [webv3/storage.md](https://docs.cloudbase.net/api-reference/webv3/storage.md)（raw markdown）。
 
 ### PG mode URL resolution: 公开桶直链 vs 签名 URL
 

@@ -1,7 +1,7 @@
 ---
 app: claude
 quelle: "web-template/skills/cloudbase-cli/references/hosting.md"
-stand: 2026-09-19
+stand: 2026-10-18
 tags: [spiegel, claude]
 ---
 
@@ -107,18 +107,24 @@ tcb hosting deploy ./dist --env-id <envId>
 
 ## Workflow 3: List and Download
 
-### List files (with pagination)
+### List files
 
 ```bash
 # List all files
 tcb hosting list --env-id <envId>
 
-# Paginated listing
-tcb hosting list --env-id <envId> --limit 10 --offset 20
+# List a path prefix
+tcb hosting list images/ --env-id <envId>
 
 # JSON output
 tcb hosting list --env-id <envId> --json
 ```
+
+`tcb hosting list` flags are only `-e/--env-id`, a positional `[cloudPath]` and `--json`.
+
+> ⚠️ **There is no `--limit` / `--offset` on `hosting list`** — passing them fails as unknown options.
+> The command returns the whole listing. (Pagination exists on `fn list` / `app list` with `-l/--limit`
+> and `-o/--offset`, and on `cloudrun list` with `--page-size` / `--page-num` — not here.)
 
 > ⚠️ `meta.total` in list output excludes directories (Size=0 entries) — count may seem inaccurate.
 
