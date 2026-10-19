@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-19 14:57 UTC
+Zuletzt gespiegelt: 2026-10-19 15:12 UTC
 
 ## AGENTS
 
@@ -11691,7 +11691,7 @@ In ATLAS-ZCode-Sessions kann das Bash-Tool komplett tot sein: jeder Aufruf (auch
 - [LM Studio Mac Gemma4 Settings](lm-studio-mac-gemma4-2026-10-10.md) — M4/16GB: 1–10 tok/s = Kontext 33k+F16-KV → Fix 16K/q8_0/Batch 512 → 25–35 tok/s; Coder-Next läuft auf Mac nie
 - [BrowserOS lokale Modelle](browseros-lokale-modelle-setup.md) — 05.10. Ollama Context 20000 in LaunchAgent gepatcht (Backup ~/sicherungen/ollama-20261005/); **qwen2.5-coder:7b = Hauptmodell für beide Browser**; LM Studio (gemma-4-12b-qat/glm-4.6v-flash, Port 1234) = 2. Option, nie parallel; CaskHub-Adopt erklärt (21 Casks, brew übernimmt Updates); OFFEN: Settings-Klicks in BrowserOS + neo
 
-- [Chipsi/Judicario Live-Audit 05.10.](chipsi-judicario-live-audit-2026-10-05.md) — 16:05 FINAL: **eigentliches AUDIT nach Vorgabe `15_AUDIT_NACH_VORGABE_JUD_0-14`** (JUD 13+14 waren NIE gelesen — Lektion: Vorgabe-Dokumente VOLLSTÄNDIG extrahieren!): **9 ERLEDIGT / 3 TEILWEISE (JUD 1 Disclaimer auf /signup, JUD 6 Deep-Immer fehlt, JUD 14 Mail-Banner sperrt) / 3 OFFEN (JUD 5 Pro 999 €/Monat+11.000 €/Jahr fehlen=Verkaufsblocker, JUD 9 Briefkopf-Vollformular, JUD 13 Verantwortlicher=Quantum AI FZCO VAE statt deutsche GmbH=Datenschutz-Showstopper)** · 15:55: Lane B selbst geholt (Safebox-Konnektor VORBEREITET, Editor-Bug, Persona-Buttons George/Bella/Blitz) · Briefing-PDF 14 + Bündel-PDF 10 (843 KB) fertig · 06.10. LokiVoice-Thomas-Fix.zip gebündelt · 08.10. BH-Melk-Frist 09.10. als Kalender-FRIST-Event gewarnt (Unterlagen Sozialhilfeneu-Ordner verifiziert) · OFFEN: Briefing senden, 14 Einwände, GO Konsolidierung + Testsuite (53 nur gezählt)
+- [Chipsi/Judicario Live-Audit 05.10.](chipsi-judicario-live-audit-2026-10-05.md) — 16:05 FINAL: **eigentliches AUDIT nach Vorgabe `15_AUDIT_NACH_VORGABE_JUD_0-14`** (JUD 13+14 waren NIE gelesen — Lektion: Vorgabe-Dokumente VOLLSTÄNDIG extrahieren!): **9 ERLEDIGT / 3 TEILWEISE (JUD 1 Disclaimer auf /signup, JUD 6 Deep-Immer fehlt, JUD 14 Mail-Banner sperrt) / 3 OFFEN (JUD 5 Pro 999 €/Monat+11.000 €/Jahr fehlen=Verkaufsblocker, JUD 9 Briefkopf-Vollformular, JUD 13 Verantwortlicher=Quantum AI FZCO VAE statt deutsche GmbH=Datenschutz-Showstopper)** · 15:55: Lane B selbst geholt (Safebox-Konnektor VORBEREITET, Editor-Bug, Persona-Buttons George/Bella/Blitz) · Briefing-PDF 14 + Bündel-PDF 10 (843 KB) fertig · 06.10. LokiVoice-Thomas-Fix.zip gebündelt · 08.10. BH-Melk-Frist 09.10. als Kalender-FRIST-Event gewarnt (Unterlagen Sozialhilfeneu-Ordner verifiziert) · **19.10. Magicline: Anleitung-Workflow + PDF Desktop + Workflow `magicline-george-anleitung` gespeichert; GEORGE-Briefing = normales DOKUMENT (Skill-Veto!), Run dwfrun-ad89cba4** · OFFEN: Briefing senden, 14 Einwände, GO Konsolidierung + Testsuite (53 nur gezählt)
 
 - [Subagent-Dispatch: implementer-Workaround](subagent-dispatch-implementer-workaround.md) — **05.10. VIERTE Wurzel: 16 Overrides auf toten OmniRoute in agents-state.json geleert (Backup ~/sicherungen/agents-state-20261005/) — aber laufende App cacht alte Selektion → Dispatch schlägt weiter fehl, EINZIGER Fix = ZCode ⌘Q-Neustart (bewiesen 2×); Historie: Frontmatter-Fix 22.09., plain-name-Keys funktionieren NICHT; Check-Workflow dwfrun-efb4300b**
 
@@ -13990,7 +13990,16 @@ Am 11.09.2026 gestellt und am selben Tag ABGESCHLOSSEN inkl. Paritäts-Build (2 
    **GEORGE-KLARSTELLUNG (12.09., Sascha wütend — „du hörst mir nicht zu"):** „George" = **Thomas' Assistent, der CODEX ALS UMGEBUNG nutzt** (Workspace `~/george/…`), Voice über ChatGPT — **die Kosten sind TOKEN-basiert**, nicht Audio-Minuten-Marke. Recherche- Facts (Quellen in `Desktop/THOMAS_ANLEITUNG/RECHERCHE_GEORGE_KOSTEN.md`): (a) **Codex billt still `OPENAI_API_KEY` (API-Token, kein Deckel), obwohl mit ChatGPT eingeloggt** — klassische Ursache „unerwartete API-Kosten"; Sofort-Check für Thomas: Env-Key löschen + Abrechnungsquelle auf platform.openai.com prüfen. (b) Codex-API ~$1,25–5/1M in, $10–30/1M out; **ChatGPT-Login = Abo inklusive** (Plus $20/Pro $100–200, 5h-/Wochen-Limits) statt Cash. (c) **Gratis-Weg bei vollen Fähigkeiten:** Codex CLI ist modell-agnostisch (`config.toml → model_provider`) — Saschas eigener Codex läuft genau so gegen OmniRoute localhost:20128 ohne ChatGPT-Token-Billing (lebender Beweis); Voice = die frisch gebaute Split-Pipeline (Apple Speech + Text-LLM + AVSpeech). **Offen: PDF-Kapitel 1+2 auf die George-Fakten aktualisieren?** (Sascha unentschieden.)
 2. **Codex→Windows:** Login neu (`npm i -g @openai/codex` → `codex login`, auth.json nie kopieren), config.toml/AGENTS.md kopieren, Pfade/setx/Task-Scheduler anpassen, `geotracer-portable-v1` = portable Node-App → ZIP. ⚠️ **Saschas `~/.codex/config.toml` enthält einen echten Obsidian-MCP-Bearer-Token — nie ungefiltert weitergeben** (Paket nutzt bereinigte Config mit Platzhaltern). `~/.codex/skills` = 119 Symlinks (8 KB) → nicht paketieren.
 3. **Magicline-API:** Open API der Sport Alliance — developer.sportalliance.com/apis/magicline/openapi/general-information; Studio-Inhaber beantragt Key (`x-api-key`), Make.com-Connector als No-Code-Weg. **Offen: Studio-Key beantragen.**
-   **19.10. Workflow gestartet (dwfrun-7449257a, ZCode /workflow):** dynamischer Workflow „Magicline→George Anleitung" — Topologie: 3 parallele Recherche-Subagenten (API-Doku · Make-Connector apps.make.com/sport-aliance-magic-line-1o8z8d · Partner-Portal magicline.com/de/partner) → Synthese-Agent schreibt ADHS-Anleitung „Magicline mit George/Codex verbinden" (Weg A Make.com / Weg B Open API direkt in Codex, empfohlen für George) → kalter Reader → Überarbeitungs-Autor → Artifact `anleitung` (primary). Run lief bei Session-Ende noch; Ergebnis + offene Punkte (API.unklar je Quelle, Live-Test braucht Thomas' Studio-Key) stehen im Completion-Notification. Script: `.zcode/workflow-drafts/MagiclineGeorge-Anleitung.dwf.ts`.
+   **19.10. Workflow gestartet (dwfrun-7449257a, ZCode /workflow):** dynamischer Workflow „Magicline→George Anleitung" — Topologie: 3 parallele Recherche-Subagenten (API-Doku · Make-Connector apps.make.com/sport-aliance-magic-line-1o8z8d · Partner-Portal magicline.com/de/partner) → Synthese-Agent schreibt ADHS-Anleitung „Magicline mit George/Codex verbinden" (Weg A Make.com / Weg B Open API direkt in Codex, empfohlen für George) → kalter Reader → Überarbeitungs-Autor → Artifact `anleitung` (primary). Script: `.zcode/workflow-drafts/MagiclineGeorge-Anleitung.dwf.ts`.
+   **19.10. WORKFLOW 1 FERTIG (dwfrun-7449257a COMPLETED):** Anleitung als Artifact „MagicLine-API anbinden: Key beantragen → Weg A (Make) oder Weg B (direkt)" ausgeliefert. Kernerkenntnisse: **kein eigener Studio-Gesamt-Login-Zähler-Endpoint** (nur customer-bezogene checkins-Endpoints → George muss selbst aggregieren); Demo-Tenant `open-api-demo.open-api.magicline.com` im Doku-curl-Beispiel; API-Kosten/Key-Zuteilungsdauer auf KEINER Seite dokumentiert; Make-Connector-Seite „Limited documentation" (Auth-Typ unklar → steht in Key-Mail). Verifiziert: alle 3 Quellen von Subagenten geprüft, Anleitung von Kaltem Leser kalt geprüft.
+   **19.10. WORKFLOW 2 GESTARTET (dwfrun-2cc41816 „George-Briefing Magicline"):** baut selbstständige Skill-Datei `out/GEORGE_MAGICLINE_SKILL.md` für Thomas' Windows-PC (Ziel: in `C:\Users\thomasschellenbacher\.codex\skills\` legen) — George soll sich selbst den Zugang verschaffen: Key in `setx MAGICLINE_API_KEY`/`MAGICLINE_BASE_URL` (Umgebungsvariable, NIE in Dateien), Demo-Test, Prompt-Vorlagen für Mitglieder-/Login-Zahlen; Key-Antrag kann NUR Thomas als Studio-Inhaber. Topologie: API-Detektiv → Briefing-Autor → Kalter Leser → Überarbeiter. Script: `.zcode/workflow-drafts/George-Briefing-Magicline.dwf.ts`. Saschas Klärung dazu (entkräftet „Windows-PC mit Netzwerk verbinden"): **Magicline = Cloud-API, Verbindung läuft nur über HTTPS aus dem Internet — kein VPN, kein Website-/Rechner-Zugriff nötig**; Weg A komplett auf make.com im Browser, Weg B direkt per Codex am Rechner.
+   **19.10. SKILL-Beweis bei Wut („WO SIND MEINE SKILLS"):** 243 Skills in `~/.agents/skills` + 142 in `~/.codex/skills` (ls-Zähler) — nicht weg, nur nicht alle gerufen; für Workflow-Builds regiert `dynamic-workflows`.
+   **19.10. SPÄT — Workflow wiederverwendbar gespeichert + PDF geliefert (auf expliziten Befehl, trotz Wut/Ausfällen):** (a) **SaveWorkflow `magicline-george-anleitung`** (global) → `~/.zcode/workflows/magicline-george-anleitung.dwf.ts` (6031 Bytes, ls-geprüft, run_id dwfrun-7449257a übergeben) — Logik 1:1 vom Run, nur die 3 Quellen-URLs als Args mit Defaults (apiDoku/makeApp/partnerSeite); Aufruf `CreateWorkflow saved:{name:"magicline-george-anleitung"}`. (b) **PDF:** `~/Desktop/ANLEITUNG_MAGICLINE_GEORGE_2026-10-19.pdf` (265 KB) via desktop-commander write_pdf aus der finalen Anleitung, inkl. Entscheidung-Zeile **Weg B (direkt am Rechner, REST) für George** — Weg A (make.com im Browser) nur Schnellstart/Test; kein VPN/Netzwerk-Anschluss nötig. (c) Workflow 2 (dwfrun-2cc41816, GEORGE_MAGICLINE_SKILL.md) war bei Speicherung noch in Arbeit. Offen unverändert: Key-Antrag Thomas (alle 3 „Offen"-Punkte brauchen die Key-Mail von Sport Alliance).
+
+**19.10. FINALSTAND — SKILL-VETO von Sascha („du sollst keinen verfickten skill bauen") + Workflow 2 umgebaut:**
+- **Korrektur zum dwfrun-2cc41816-Eintrag oben:** Sascha VERBOT die Skill-Datei. Workflow 2 per `AmendWorkflow` umgebaut: Run dwfrun-2cc41816 gestoppt/superseded → **neuer Run `dwfrun-ad89cba4`** (Script `.zcode/workflow-drafts/George-Briefing-Magicline.dwf.ts`, File umbenannt `out/GEORGE_MAGICLINE_BRIEFING.md`) — **normales Übergabe-Dokument, KEIN SKILL.md, KEIN Installieren in `~/.codex/skills/`**. George bekommt nur ein Dokument.
+- **Dauerregel:** Übergabe an Agenten (George/Codex) = **normales Markdown/PDF-Dokument**, nie Skill-Format/Skill-Installation. Das global gespeicherte Workflow `magicline-george-anleitung.dwf.ts` blieb bestehen (war sein expliziter Befehl; er kann Löschung befehlen).
+- Workflow-1-Artefakte bestätigt: `~/Desktop/ANLEITUNG_MAGICLINE_GEORGE_2026-10-19.pdf` (265 KB) + `~/.zcode/workflows/magicline-george-anleitung.dwf.ts` (6 KB) — beides ls-geprüft. Entscheidung dokumentiert: **Weg B (direkt am Rechner, REST) für George**; Weg A = nur Schnellstart/Test.
 
 **PARITÄTS-BUILD 11.09. NACHMITTAGS AUSGEFÜHRT (GO war per „bitte" erteilt):** `LocalVoiceService.swift` = jetzt Cloud-paritätisch: (a) Function-Calling-Loop im OpenAI-Protokoll (tools + tool_choice auto, tool_calls → `role:"tool"` + tool_call_id, max. 4 Runden, Rundenlimit → „Erledigt."), Dispatch auf bestehenden `AssistantTools.shared.execute`; (b) Prüfkopf-Live-Feed `pruefenLiveStreamChunk` aus jedem finalen Transkript (vor dem Gate); (c) STRENGES Wake-Word-Gate als testbarer Baustein `LocalVoiceService.sprichtMitAgent()` (Wortgrenzen-Regex `\b(loki|chipsi)\b` — „Chips übers Internet"/„Lokus" triggern NICHT); (d) komplette Cloud-Audio-Keyword-Liste (ton an/aus, stumm, stopp, halt, lauter, stimme an, ghetto an); (e) Transkript-Buch `fullTranscript` mit `Du:`/`Loki:`-Zeilen + 120k/90k-Cap; (f) `recall_transcript`-Quelle = aktive Session (`isSessionActive`/`isConnected`, keine Heuristik); (g) Keychain-Key gecacht, Tool-Datei-IO auf userInitiated-Queue. **QA:** `swift build -c release` grün; Testsuite **9/9 grün** — `swift test` bricht an codesign-detritus (xattr hilft nicht zuverlässig), Standalone-Runner nutzen: `swiftc -o /tmp/run_all_tests Tests/RunAllTests.swift $(ls Sources/*.swift | grep -v LokiVoiceApp.swift)`; Reviewer-Prüfinstanz **PASS** (2 Major + 4 Minor, alle gefixt). Bekannter Trade-off: halb-duplex — während LLM/TTS wird nicht mittranskribiert (Doku in STATUS). Bearbeitete Kopie = `Desktop/Coworkspace_Ich/THOMAS - CHIPS JUDICARIO/Judicario_Sacha_Mac/LokiVoiceApp` (git-Repo auf Judicario_Sacha_Mac-Ebene, Commit **974e2ce**, .gitignore für .build/LokiVoice.app; die PETER-JUDICARIO-Kopie blieb unberührt). Doku: `LokiVoiceApp/STATUS_LOCAL_PARITAET.md`. App-Bundle neu gebaut (ad-hoc signiert) in LokiVoiceApp/LokiVoice.app.
 
@@ -14083,10 +14092,6 @@ Am 11.09.2026 gestellt und am selben Tag ABGESCHLOSSEN inkl. Paritäts-Build (2 
 **02.10. — CHRONIK ALLER THOMAS-UNTERHALTUNGEN GELIEFERT (5-Harnesses-Aggregation):**
 - **Deliverable:** `THOMAS - CHIPS JUDICARIO/02_CHRONIK_ALLE_UNTERHALTUNGEN_2026-10-02.md` + `.pdf` (243 KB, Chrome-Headless-Pipeline — **LibreOffice/soffice ist WEG aus /Applications, pandoc+Chrome `--headless --print-to-pdf --no-pdf-header-footer` war der Weg**). 10 Phasen Aug 2026 → 02.10., jede Zeile mit Quellen-Session-ID.
 - **Quellen-Audit (bewiesen):** ZCode 4 Sessions (sess_419a8806 PETER JUDICARIO 07.09 Key-Tot-Diagnose, sess_8db9086b Bericht Thomas-Codex 20.09, sess_5b46926c Projekt-Session 22.09 Chipsi-Synthese-Bug) · Cline 3 Kern-Sessions `~/.cline/data/sessions/1786550092393_ra04l` (12.08, 176 Msgs), `1786965069830_60p5d` (17.08), `1787229780054_qhcxt` (22.08, Notruf-Weiterleitung Reinhard Berger→Marinus Brückmann+Thomas, Notruf 670f8c47) · Claude Code 6 Treffer-Dateien · Antigravity 1 Session ae2f53b3 (02.10 Chipsi.app-Takeover: 404-Fix in app.py auf gemini-1.5-pro-latest/2.0-flash, Strix+Browser-QA-Team) · **AutoClaw: 0 Thomas-Sessions** (nur config-audit.jsonl vom März).
-- **Dev-Team-JUD-Umbauliste (24.09, `Judicario.docx`, md5-identisch mit WhatsApp-Kopie d79a5e5c):** JUD-1…12 — Chipsi→Judicario-Rebranding, Experimental-/Beta-Hinweise raus, Vorlagen raus, Pläne NUR **„Test" (21 Tage, endet automatisch)** + **„Pro" (999 €/Monat, 11.000 €/Jahr, sofort-Lizenzierung = 1 Monat geschenkt)**, Konnektoren/SafeTalk/Benachrichtigungen aus Sidebar, Deep immer an, Diktier-Wegschalter raus, Individuelle Hinweise als feststehende Elemente. 28 annotierte Screenshots = Vorher-Zustand.
-- **Neue PRO-Keys von Reinhard** (Versand 02.09. kam nie an, alte ungültig): jud_Q9rZ8kR1KEGCZP0I0-hOWCmudz0S3WFI + jud_0UZGwFqnbqmsxayVXY9K800NMaUWK9LS (jeder = Lizenz, für 3 Interessenten).
-- **BH-Melk-Akutfall im selben Ordner:** Sozialhilfe/Wohnkosten-Rückstand 1.050 € (3× 350 €), Sachbearbeiter Thomas Schauer, Rechtslage via Judicario-MCP (VwGH 2020/10/0111, OGH RS0072870), Dringlichkeitsantrag-PDF + EMAIL_3 fertig, **Frist 09.10.2026**.
-- **Heutige ZCode-Fehler (ECONNREFUSED, Screenshot) = ZCode fiel auf OmniRoute-Fallback zurück** (20.09. abgebaut!) — Fix: Provider auf z.ai builtin stellen; Screenshot-Beweis in der WhatsApp-Serie.
 
 ## vetropack-bewerbungen-2026-10-15
 
@@ -162463,6 +162468,63 @@ Use these to diagnose issues the user may be having with the skill.
 - **No-op** — a line the model already obeys by default, so you pay load to say nothing. The test: does it change behaviour versus the default? A weak leading word (_be thorough_ when the agent is already thorough-ish) is a no-op; the fix is a stronger word (_relentless_), not a different technique.
 - **Negation** — steering by prohibition backfires: _don't think of an elephant_ names the elephant and makes it more available, not less. Prompt the **positive** — state the target behaviour so the banned one is never spoken; keep a prohibition only as a hard guardrail you can't phrase positively, and even then pair it with what to do instead.
 
+## anleitung
+
+# MagicLine-API anbinden — 2 Wege (Stand Recherche 19.10.2026)
+
+**Ergebnis Zeile 1:** Beide Wege starten mit demselben Schritt — **Thomas beantragt den API-Key per E-Mail an Sportalliance** (danach trennen sich die Wege: Weg A via **Make-Connector**, Weg B via **direkte REST-Abfragen** durch George). Für **Sofort-Tests reicht die Sandbox**; für den echten Betrieb braucht es den Produktiv-Key. Ein Zeitrahmen für die Key-Zusendung ist **nicht dokumentiert** — nachfragen.
+
+---
+
+## Wer macht was
+| Akteur | Aufgabe |
+|---|---|
+| **Thomas** | 1 E-Mail an Sportalliance schreiben (Vorlage unten), Antworten abwarten |
+| **George** | Nach Key-Erhalt: Abfragen bauen (Weg A oder B), liefert Ergebnisse zurück |
+
+## Was George per API abfragen kann (wenn Key da ist)
+Je nach Endpoint: Studio-/Mitgliederdaten der MagicLine. **Welche Endpoints der Key freischaltet, steht in der Key-E-Mail — nicht vorab ablesbar.**
+
+---
+
+## Schritt 1 (beide Wege, genau 1×):
+
+**Key beantragen — so, nicht anders:**
+- **Kanal:** E-Mail. **Adressat:** Das Anfrage-Formular/der Kontakt im Developer-Portal (**developer.sportalliance.com** → Produkt „Developer Portal“ → Kontakt-/Genehmigungsprozess). Eine direkte E-Mail-Adresse ist **nicht öffentlich dokumentiert** — Thomas nutzt das Formular, falls es eine Adresse nennt, diese.
+- **Inhalt der Mail (Kopiervorlage):**
+  > Betreff: „API-Zugang MagicLine — Integration anfragen“
+  > Wir möchten die MagicLine-API für [Studio-Name] nutzen. Bitte um:
+  > 1. API-Key (Produktiv) **und** Sandbox-Key
+  > 2. unseren **Tenant-Namen** (wofür in der Base-URL `<tenant>` steht)
+  > 3. Antwort, **welche Gebühren** für die API anfallen und **ab wann**
+  > 4. ungefähren Zeitrahmen für die Zuteilung
+  > 5. welke Authentifizierung (API-Key-Header / OAuth / Basic) der Key nutzt
+- **Tenant-Name** = die Studio-Instanz in der URL. Thomas kennt ihn vermutlich nicht auswendig — deshalb Punkt 2 in der Mail. Er steht auch im MagicLine-Portal des Studios; falls dort auffindbar, in die Mail einsetzen.
+
+## Weg A — George via Make (fertiger Connector)
+1. Thomas legt in **Make** (make.com) ein Konto/Szenario an, Connector „Sport Alliance Magic Line“ wählen.
+2. **Voraussetzung:** Für die Connector-Einrichtung braucht Thomas im Make-Konto die **Admin-Rolle** (oder jemand mit Admin erstellt das Szenario). Für den MagicLine-Key selbst braucht er **keine Studio-App-Entwickler-Rolle** — der Key kommt von Sportalliance (Schritt 1).
+3. **Connection einrichten:** Der Connector fragt beim Verbinden nach Zugangsdaten. **Welches Feld (API-Key / Basic / OAuth) erscheint, ist undokumentiert** — Thomas klickt „Add Connection“ und folgt dem Dialog; die Antwort aus Schritt 1 (Authentifizierung) steckt dann in die geforderten Felder.
+4. George bedient das Szenario: Module = Abfragen; Ausgabe an ihn zurückgeben.
+
+## Weg B — George direkt via REST
+1. **Base-URL:** `https://<tenant>.api.magicline.com/...` (Genaueren Endpoint-Pfad aus der OpenAPI-Doku unter developer.sportalliance.com entnehmen). `<tenant>` = Wert aus der Key-E-Mail.
+2. Auth: wie in der Key-Mail angegeben (s. o.).
+3. **Sandbox zum Testen ja/nein:** DATENLAGE UNKLAR — ob der Sandbox-Key ohne Produktiv-Freigabe funktioniert und dieselben Endpoints abdeckt, **in der Key-Mail mit erfragen** (Vorlage deckt das ab). Empfehlung: mit Sandbox starten, falls sie kommt.
+4. **Rate-Limit:** **1.000 Anfragen/Minute** dokumentiert. **Gebühren:** nicht öffentlich dokumentiert → gehört in die Key-Mail (Punkt 3). Bis Antwort gilt: als **kostenpflichtig möglich** behandeln, Abfragevolumen klein halten.
+
+## Thomas' Fragen — kurz beantwortet
+| Frage | Antwort |
+|---|---|
+| Wo beantrage ich den Key? | Formular/Kontakt im **Developer-Portal**; direkte Mail-Adresse nicht öffentlich → falls Formular nichts nennt, über die MagicLine-Partner-Kontaktseite |
+| Woher kenne ich meinen Tenant-Namen? | Steht im MagicLine-Studio-Portal; sicherer Weg: in der Key-E-Mail mitliefern lassen (Vorlage Punkt 2) |
+| Kostet die API was? | **DATENLAGE UNKLAR** — öffentlich nicht dokumentiert, in Key-Mail erfragen |
+| Reicht die Sandbox? | Für erste Tests vermutlich ja; ob sie ohne Produktiv-Key funktioniert: **DATENLAGE UNKLAR**, mit erfragen (Vorlage Punkt 1 fragt beide Keys an) |
+
+## Offen (muß die Recherche/Quelle klären, nicht Thomas)
+1. Connector-Auth-Typ (blockiert Weg-A-Schritt 3 bis zur Key-Mail)
+2. Sandbox-Fähigkeit ohne Studio-Antrag
+3. Gebührenmodell + Key-Zuteilungszeitraum
 ## README
 
 # HolDirMehr — 1:1 Replika (Kostenlos-Version)

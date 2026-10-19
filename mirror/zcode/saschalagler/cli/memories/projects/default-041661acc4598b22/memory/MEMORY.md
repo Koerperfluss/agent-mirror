@@ -1,5 +1,6 @@
 # Memory Index
 
+- [Magicline→George 19.10.](magicline-george-2026-10-19.md) — Paket fertig (Anleitung-PDF Desktop + Briefing out/GEORGE_MAGICLINE_BRIEFING.md + Workflow `magicline-george-anleitung` global); Weg B (REST direkt, kein VPN); blockiert auf Key-Mail von Thomas; KEIN Studiowert-Zähl-Endpoint; LEHRE: Übergabe = normales DOKUMENT, kein Skill
 - [Workflow-Topologie 15.10.](dynamic-workflow-topologie-2026-10-15.md) — dwfrun-542bffb6 ✅ COMPLETED: Dashboard out/topologie-workflow.html (13.4 KB, ls-beweisen), 2 verified Findings (Slice-Verify trivial-sicher), GO für Ausführung offen; LESSONS: Skill-Tool nur `skill`+`args`, Free-Modell-Fallback = Müll → GLM
 - [Token-Sparen 10.10.](feedback-token-sparen.md) — Vereinbarung: 5 Werkzeuge reichen fürs Förder-Projekt (Rest 90+ Skills überflüssig); keine Workflows ohne konkreten Auftrag, max. 2–3 Tags, keine Seiten-Pastes, App/Dateien statt Chat
 - [Saschas Lage NÖ 10.10.](sascha-lage-noe.md) — 29, arbeitslos/AMS-Sperre (Okt: 390 € Zufluss), Miete €350, Loosdorf Bez. Melk, keine Kinder; 🔴 KEIN Mietrückstand, ÖGK+Strom betreut, **GEWERBESCHEIN existiert** → finale geprüfte Liste V2 auf Desktop

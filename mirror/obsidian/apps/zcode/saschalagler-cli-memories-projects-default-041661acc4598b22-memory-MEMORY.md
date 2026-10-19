@@ -1,7 +1,7 @@
 ---
 app: zcode
 quelle: "saschalagler/cli/memories/projects/default-041661acc4598b22/memory/MEMORY.md"
-stand: 2026-10-18
+stand: 2026-10-19
 tags: [spiegel, zcode]
 ---
 
@@ -16,7 +16,7 @@ tags: [spiegel, zcode]
 - [LM Studio Mac Gemma4 Settings](lm-studio-mac-gemma4-2026-10-10.md) — M4/16GB: 1–10 tok/s = Kontext 33k+F16-KV → Fix 16K/q8_0/Batch 512 → 25–35 tok/s; Coder-Next läuft auf Mac nie
 - [BrowserOS lokale Modelle](browseros-lokale-modelle-setup.md) — 05.10. Ollama Context 20000 in LaunchAgent gepatcht (Backup ~/sicherungen/ollama-20261005/); **qwen2.5-coder:7b = Hauptmodell für beide Browser**; LM Studio (gemma-4-12b-qat/glm-4.6v-flash, Port 1234) = 2. Option, nie parallel; CaskHub-Adopt erklärt (21 Casks, brew übernimmt Updates); OFFEN: Settings-Klicks in BrowserOS + neo
 
-- [Chipsi/Judicario Live-Audit 05.10.](chipsi-judicario-live-audit-2026-10-05.md) — 16:05 FINAL: **eigentliches AUDIT nach Vorgabe `15_AUDIT_NACH_VORGABE_JUD_0-14`** (JUD 13+14 waren NIE gelesen — Lektion: Vorgabe-Dokumente VOLLSTÄNDIG extrahieren!): **9 ERLEDIGT / 3 TEILWEISE (JUD 1 Disclaimer auf /signup, JUD 6 Deep-Immer fehlt, JUD 14 Mail-Banner sperrt) / 3 OFFEN (JUD 5 Pro 999 €/Monat+11.000 €/Jahr fehlen=Verkaufsblocker, JUD 9 Briefkopf-Vollformular, JUD 13 Verantwortlicher=Quantum AI FZCO VAE statt deutsche GmbH=Datenschutz-Showstopper)** · 15:55: Lane B selbst geholt (Safebox-Konnektor VORBEREITET, Editor-Bug, Persona-Buttons George/Bella/Blitz) · Briefing-PDF 14 + Bündel-PDF 10 (843 KB) fertig · 06.10. LokiVoice-Thomas-Fix.zip gebündelt · 08.10. BH-Melk-Frist 09.10. als Kalender-FRIST-Event gewarnt (Unterlagen Sozialhilfeneu-Ordner verifiziert) · OFFEN: Briefing senden, 14 Einwände, GO Konsolidierung + Testsuite (53 nur gezählt)
+- [Chipsi/Judicario Live-Audit 05.10.](chipsi-judicario-live-audit-2026-10-05.md) — 16:05 FINAL: **eigentliches AUDIT nach Vorgabe `15_AUDIT_NACH_VORGABE_JUD_0-14`** (JUD 13+14 waren NIE gelesen — Lektion: Vorgabe-Dokumente VOLLSTÄNDIG extrahieren!): **9 ERLEDIGT / 3 TEILWEISE (JUD 1 Disclaimer auf /signup, JUD 6 Deep-Immer fehlt, JUD 14 Mail-Banner sperrt) / 3 OFFEN (JUD 5 Pro 999 €/Monat+11.000 €/Jahr fehlen=Verkaufsblocker, JUD 9 Briefkopf-Vollformular, JUD 13 Verantwortlicher=Quantum AI FZCO VAE statt deutsche GmbH=Datenschutz-Showstopper)** · 15:55: Lane B selbst geholt (Safebox-Konnektor VORBEREITET, Editor-Bug, Persona-Buttons George/Bella/Blitz) · Briefing-PDF 14 + Bündel-PDF 10 (843 KB) fertig · 06.10. LokiVoice-Thomas-Fix.zip gebündelt · 08.10. BH-Melk-Frist 09.10. als Kalender-FRIST-Event gewarnt (Unterlagen Sozialhilfeneu-Ordner verifiziert) · **19.10. Magicline: Anleitung-Workflow + PDF Desktop + Workflow `magicline-george-anleitung` gespeichert; GEORGE-Briefing = normales DOKUMENT (Skill-Veto!), Run dwfrun-ad89cba4** · OFFEN: Briefing senden, 14 Einwände, GO Konsolidierung + Testsuite (53 nur gezählt)
 
 - [Subagent-Dispatch: implementer-Workaround](subagent-dispatch-implementer-workaround.md) — **05.10. VIERTE Wurzel: 16 Overrides auf toten OmniRoute in agents-state.json geleert (Backup ~/sicherungen/agents-state-20261005/) — aber laufende App cacht alte Selektion → Dispatch schlägt weiter fehl, EINZIGER Fix = ZCode ⌘Q-Neustart (bewiesen 2×); Historie: Frontmatter-Fix 22.09., plain-name-Keys funktionieren NICHT; Check-Workflow dwfrun-efb4300b**
 
