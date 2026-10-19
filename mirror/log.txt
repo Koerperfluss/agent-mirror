@@ -74,26 +74,26 @@ head: Tide: No such file or directory
 head: retention: No such file or directory
 head: rebuild.md: No such file or directory
 Wiki aktualisiert: /Users/saschalagler/Mirror/agent-mirror/mirror/wiki
-2026-10-19 07:17:18 UTC [INFO] Cognee übersprungen (kein Zugang hinterlegt)
-2026-10-19 07:17:18 UTC [INFO] Cognee übersprungen (kein Zugang hinterlegt)
+2026-10-19 07:32:06 UTC [INFO] Cognee übersprungen (kein Zugang hinterlegt)
+2026-10-19 07:32:06 UTC [INFO] Cognee übersprungen (kein Zugang hinterlegt)
 /Users/saschalagler/Projects/agent-mirror/scripts/archive-to-gcs.sh: line 23: gsutil: command not found
-2026-10-19 07:17:22 UTC [WARN] GCS nicht erreichbar — /Users/saschalagler/.cache/agent-mirror-gcs/mirror-20261019-0618.tar.gz bleibt in Warteschlange
-2026-10-19 07:17:22 UTC [INFO] Lauf beendet: state=deferred files=19 (Remote nicht erreichbar, 55 Commit(s) warten)
-2026-10-19 07:27:22 UTC [INFO] Starte Spiegelung: /Users/saschalagler → /Users/saschalagler/Mirror/agent-mirror
-2026-10-19 07:28:01 UTC [INFO] antigravity: 0 Datei(en) aktualisiert
-2026-10-19 07:28:36 UTC [INFO] antigravity: 0 Datei(en) aktualisiert
-2026-10-19 07:29:10 UTC [INFO] cline-code: 0 Datei(en) aktualisiert
-2026-10-19 07:29:44 UTC [INFO] cline-code: 0 Datei(en) aktualisiert
-2026-10-19 07:30:18 UTC [INFO] cline-cli: 0 Datei(en) aktualisiert
-2026-10-19 07:30:53 UTC [INFO] claude: 0 Datei(en) aktualisiert
-2026-10-19 07:31:36 UTC [INFO] zcode: 0 Datei(en) aktualisiert
-2026-10-19 07:31:36 UTC [INFO] Commit erstellt: Auto-sync: 2026-10-19 07:31 UTC (19 files)
+2026-10-19 07:32:10 UTC [WARN] GCS nicht erreichbar — /Users/saschalagler/.cache/agent-mirror-gcs/mirror-20261019-0632.tar.gz bleibt in Warteschlange
+2026-10-19 07:32:10 UTC [INFO] Lauf beendet: state=deferred files=19 (Remote nicht erreichbar, 57 Commit(s) warten)
+2026-10-19 07:42:10 UTC [INFO] Starte Spiegelung: /Users/saschalagler → /Users/saschalagler/Mirror/agent-mirror
+2026-10-19 07:42:47 UTC [INFO] antigravity: 0 Datei(en) aktualisiert
+2026-10-19 07:43:21 UTC [INFO] antigravity: 0 Datei(en) aktualisiert
+2026-10-19 07:43:55 UTC [INFO] cline-code: 0 Datei(en) aktualisiert
+2026-10-19 07:44:29 UTC [INFO] cline-code: 0 Datei(en) aktualisiert
+2026-10-19 07:45:03 UTC [INFO] cline-cli: 0 Datei(en) aktualisiert
+2026-10-19 07:45:37 UTC [INFO] claude: 0 Datei(en) aktualisiert
+2026-10-19 07:46:21 UTC [INFO] zcode: 0 Datei(en) aktualisiert
+2026-10-19 07:46:21 UTC [INFO] Commit erstellt: Auto-sync: 2026-10-19 07:46 UTC (19 files)
 ssh: Could not resolve hostname github.com: nodename nor servname provided, or not known
 fatal: Could not read from remote repository.
 
 Please make sure you have the correct access rights
 and the repository exists.
-2026-10-19 07:31:37 UTC [WARN] Remote nicht erreichbar — 57 Commit(s) bleiben lokal und gehen beim nächsten Lauf mit
+2026-10-19 07:46:22 UTC [WARN] Remote nicht erreichbar — 59 Commit(s) bleiben lokal und gehen beim nächsten Lauf mit
 Obsidian-Notizbuch aktualisiert: /Users/saschalagler/Mirror/agent-mirror/mirror/obsidian (18 geänderte Notizen)
 head: /Users/saschalagler/Mirror/agent-mirror/mirror/claude/saschalagler/skills/obsidian-second-brain/examples/sample-vault/Ideas/2026-04-27: No such file or directory
 head: —: No such file or directory
@@ -194,7 +194,7 @@ head: Tide: No such file or directory
 head: retention: No such file or directory
 head: rebuild.md: No such file or directory
 Wiki aktualisiert: /Users/saschalagler/Mirror/agent-mirror/mirror/wiki
-2026-10-19 07:32:06 UTC [INFO] Cognee übersprungen (kein Zugang hinterlegt)
-2026-10-19 07:32:06 UTC [INFO] Cognee übersprungen (kein Zugang hinterlegt)
+2026-10-19 07:46:51 UTC [INFO] Cognee übersprungen (kein Zugang hinterlegt)
+2026-10-19 07:46:51 UTC [INFO] Cognee übersprungen (kein Zugang hinterlegt)
 /Users/saschalagler/Projects/agent-mirror/scripts/archive-to-gcs.sh: line 23: gsutil: command not found
-2026-10-19 07:32:10 UTC [WARN] GCS nicht erreichbar — /Users/saschalagler/.cache/agent-mirror-gcs/mirror-20261019-0632.tar.gz bleibt in Warteschlange
+2026-10-19 07:46:55 UTC [WARN] GCS nicht erreichbar — /Users/saschalagler/.cache/agent-mirror-gcs/mirror-20261019-0647.tar.gz bleibt in Warteschlange
