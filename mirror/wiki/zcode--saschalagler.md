@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-19 16:11 UTC
+Zuletzt gespiegelt: 2026-10-19 16:27 UTC
 
 ## AGENTS
 
@@ -18835,7 +18835,7 @@ metadata:
 
 18.10.2026: Subagent-Starts starben mit `provider-not-found: account:zai-start-plan/GLM-5.3-Flash` (alter Plan) bzw. `qwen/qwen3.8-max` (gelöschter Provider 3a11f548…). **GELÖST (gleicher Tag):** alle 10 Defs in `~/.zcode/agents/*.md` (cavecrew-*, code-architect, config-auditor, explore, gate-enforcer-test, implementer, qa-tester, reviewer) von `builtin:zai/GLM-5.3-Flash` auf **`account:zai-individual-coding-plan/GLM-5.3-Flash`** gestellt (= aktiver Plan, via ListModels verifiziert). **Beweis:** cavecrew-investigator Test-Start „AGENT GESTARTET OK" (22 s) — alle 10 Custom-Subagents seither voll nutzbar, kein Built-in-Workaround mehr nötig.
 
-**Why:** Agent-Defs pinnen absolute Provider-IDs — bei Planwechsel/Aufräumen in provider_config.json brechen alle Subagents lautlos.
+**Why:** Agent-Defs pinnen absolute Provider-IDs — bei Planwechsel/Aufräumen in provider_config.json brechen alle Subagents lautlos. **⚠️ DRIFT WIEDERHOLT SICH:** Am selben Tag (18.10. spät) war `cavecrew-builder.md` erneut auf fremdem Provider (`zai-api/GLM-5.3-Flash`) — etwas überschreibt die Defs (Parallelsession/Skill-Sync verdächtigt). Repariert + `.bak`. **Vor JEDEM Agent-Dispatch `model:`-Zeile checken** (`grep -H '^model:' ~/.zcode/agents/*.md`), notfalls built-in (general-purpose/Explore).
 **How to apply:** Wenn Subagents `provider-not-found` werfen: zuerst `ListModels` (gültige IDs), dann `model:`-Feld in `~/.zcode/agents/*.md` auf aktuellen Plan setzen — NICHT `builtin:zai/…` (API-Key) pinnen, wenn Flatrate-Plan laufen soll. Verwandt: [[loki-os-audit-pipeline]]
 
 ## loki-os-audit-pipeline
@@ -18895,6 +18895,15 @@ metadata:
 ④ **Workspace-Analyser** — 20–50 k heute → 150–400 k mit Traktion (AI-Infra-Exit-Narrativ), real, nur Nicht-Node-Scanner-Lücke.
 ⑤ **Legal-Ops Advisor** — 59 €/Monat je Kanzlei B2B-Repeat, real, gleiche Scanner-Lücke.
 Ersatz-/Bonus-Kandidat: agent-mirror = einziger kompletter Gate-1-PASS mit fertigem Verkaufspaket. Ausgeschlossen: Körperfluss (Sperre), alles ohne lokalen Code, Bar-Bulls/LokiVoice (kein 45er-Audit).
+
+**18.10. NACHT II — TOP-5-PIPELINE AUSGEFÜHRT (Nutzer-Paste der 5-Stage-Doku = GO-Interpretation):**
+- **Förder-Cockpit BUILD GRÜN** (ralph-It.2): It.1 schlug still fehl, weil `npm install >/dev/null` den Fehler versteckte und `npx vite build` ohne node_modules lief → It.2 mit **sichtbarem npm-Output + `./node_modules/.bin/vite build`** = OK. Lektion: Installer-Fehler nie nach /dev/null.
+- **Atlas-App tsc OOM offen:** `tsc -b` → `Killed: 9`; `NODE_OPTIONS=--max-old-space-size=6144 npm run build` erreichte immer noch nicht das Ende (Log endet bei "transforming...") → It. 3 mit noch mehr Heap oder tsc-Optionen nötig.
+- **Cali-Atlas-Final ASSET-DOSSIER fertig:** `VERKAUFSPAKETE/CALI-ATLAS-FINAL_ASSET-DOSSIER.md` — Inventar: React 19/TS/Vite, 81 TS-Dateien/13.100 LOC, 12/12 Tests grün, iOS-SwiftUI-Subpaket; **größter Blocker: Gemini-Key in Git-Historie des ÖFFENTLICHEN Repos `Koerperfluss/atlas-cali-coach` (104 Funde, 8× Gemini) → Rotation + git filter-repo vor jedem Listing; 12–18 h bis upload-ready.**
+- **GAP-REPORT.md + README-VERKAUF.md erstellt für workspace-analyser (Pure-Python-Stdlib-CLI; Blocker: kein Lizenz-Mechanismus, Feature-Kauf-ready 4–8 h) und legal-ops (FastAPI+SQLite-RAG+Swift; Blocker: kein Multi-Tenant/Billing 20–40 h; hardcoded Key in `judicario_connector.py` — klein, rotieren).** Beide Reports enthalten ehrlich: Gate-1 = teilverifiziert (Nicht-Node-Scanner-Lücke).
+- **PDF-Gesamtliste:** `ALLE_PROJEKTE_GLOBAL_2026-10-18.pdf` (3 Seiten, 285 KB, via desktop-commander write_pdf aus gleichnamigem .md; im PDF-Panel geöffnet) — 74 Projekte in 7 Gruppen (Top-5-Fokus/12 PASS/5 FAIL/28 UNVOLLST./7 Kandidaten/6 gesperrt). Nachfrage-Muster: Nutzer will "alles-umfassende globale Liste" → direkt aus tools-v2.json + Audit-Fakten als PDF, nicht als Chat-Tabelle.
+- **Subagent-Def-Drift wiederholt sich:** cavecrew-builder stand erneut auf `zai-api/GLM-5.3-Flash` (nach meiner Reparatur am selben Tag!) → etwas überschreibt die Defs (Parallelsession/Skill-Sync). Fix: `sed` auf `account:zai-individual-coding-plan/GLM-5.3-Flash` + `.bak`; **vor jedem Agent-Dispatch `model:`-Zeile checken**, notfalls general-purpose/built-in.
+- **Server-Überlebens-Trick:** `nohup … &` in normalem Bash stirbt am Turn-Ende (:3300 war wieder 000). **Bash mit run_in_background (`cmd & cmd & wait`) überlebt** → hub_server :3300 + backend :8055 laufen beide (3× HTTP 200 verifiziert). Anleitung-Gegenprobe: UEBERSICHT fehlt (regenerierbar via `bash pipeline/hub_refresh.sh`), Vorschläge 20/50, OmniRoute 401.
 
 **18.10. NACHT — GELD-MODE: 5 VERKAUFSPAKETE FERTIG (Nutzer: „liefer mir top 5 tools ausgewertet entwickelt verkaufsfertig, ich will geld verdienen" + Blanko-GO):** 5 implementer-Subagents (2 Wellen: 3+2) bauten je Tool `LICENSE.txt` (proprietäre EULA © Sascha Lagler) + `README-VERKAUF.md` im Tool-Repo + `VERKAUFSPAKETE/<id>/` mit FAKTENBLATT · CHECKOUT-TEXT · VERKAUFS-MAIL · NÄCHSTE-3-SCHRITTE (Format = bestehende VERKAUFSPAKETE-Konvention). Verifiziert: 5×4 Paket-Dateien + LICENSE/README in allen 5 Repos ✓. Tools/Preise: **Bleicher** 49 €/Monat B2B (Key-Fix ✅: firebase-applet-config.json → .env.local, chmod 600, grep-0-Treffer) · **Cali-Logbook-PWA** 39 € (Key-Fix ✅: AppProvider.tsx → `import.meta.env.VITE_GEMINI_API_KEY ?? ""`, Re-Build 1,72 s grün, dist 0 Key-Treffer) · **Andi-Cannabis** 450→890 €/Monat B2B-Pilot (EULA mit Art.9-DSGVO-Verbot + RDG-Disclaimer + AVV-Pflicht eingebaut; **Blocker: AVV mit Google vor Pilot-Kunden**) · **Agent-Mirror** 79 €/Monat (Cloudflare-ready; **Blocker: DSGVO/AVV-Doku**) · **Prompt-Alchemist** 39 € (**Blocker: Sascha-Key im dist-Bundle gebacken → MUSS key-frei neu gebaut werden** vor ZIP-Verkauf; + 559-kB-Chunk splitten, license-Feld setzen). Subagent-Commits lokal ok (agent-mirror caad3d0, Hub 7fa0f92 u. a.), kein Push. **Schnellster Euro:** Andi/Bleicher via fertige VERKAUFS-MAIL.txt (kein Plattform-Konto nötig); Prompt-Alchemist zuerst Re-Build. **Nur-Nutzer-Reste:** Gumroad-Konto+Upload, Key-Rotation Google Console (bleicher/cali-logbook/vintagescan/antigravity-cloud), Andi-AVV, Deploy-GOs.
 
@@ -18956,6 +18965,15 @@ Stand 2026-10-12abend (DESIGN-GUIDE + SESSION-KONSOLIDIERUNG, AKTUELLER ANKER):
 - **Workflow dwfrun-2c646d03 GESTARTET (läuft bei Extraktion)**: (1) Konsolidierer → UNTERHALTUNGEN-KONSOLIDIERT.md (Claude-baute vs ZCode-baute, welche EINE Oberfläche aktuell, alt-Liste) · (2) System-Seiten-Bauer → `mein-system.html` im 404media-Design (hell, Chips, Accordion, 6 Ordner-Sektionen mit Dubletten-Markierung "2. Kopie", Inventar-Status+Preis je Projekt, Session-Register 1209+21) · (3) Verifikator (+ Nachbesserer) · (4) Deploy via world.run cp → out-firebase → :3300/mein-system.html. **Nach Notification: öffnen + Bericht.** Script-File: .zcode/workflow-drafts/Zwei-Sessions-konsolidieren--System-Seite-im-404media-Design.dwf.ts.
 - **Session goal ist PAUSIERT** (runtime) — nicht weiterverfolgen, bis er resume sagt. Subagent-Fail "Model request failed" = Quota-Ripp → sofort inline weitermachen (bei KF3D/paraletts-Paketen so gelöst, beide inline fertig).
 - hub-glass.html v2 (mein letzter Stand vor diesem Abschnitt): Logo-Banner + EINMAL/ABO/KANAL-Split + Agenten-Lampen + Autopilot/A15/Refresh-Buttons, :3300 → 200; 5 VERKAUFSPAKETE (24 Dateien) + ALLE_TOOLS_VERKAUFSSTATUS.md (101 Zeilen) ebenfalls deployed. Offen beim Nutzer wie gehabt: Gumroad-Links · Apple-Zertifikat · MAILs senden · Mimosa-Whitelist für Commit.
+
+Stand 2026-10-18 spät (AKTUELLER ANKER — ZCode-Session hat Hub instand gesetzt):
+
+- **Server-Setup LÄUFT:** hub_server :3300 (hub-glass.html + verkaufs-os.html = 200) und **backend :8055** (api/jobs = 200) via Bash-run_in_background gestartet (überlebt Turn-Ende; normales nohup stirbt). **verkaufs-os.html + hub-glass.html waren versehentlich ins _ARCHIV gewandert → zurückgeholt**; [object Object]-Gap-Bug im OS gefixt (Z.60 rendert jetzt typ·beschreibung·BLOCKER statt String(g)).
+- **UEBERSICHT fehlt am Root** (nur regenerierbar via `bash pipeline/hub_refresh.sh`) — Verkaufs-OS-Doku verweist auf :3300/uebersicht.html.
+- **tools-v2.json = 74 Einträge** (45 real / 17 ghost / 7 kandidat; Backups *.backup-ghostfix-2026-10-18.json) · **45er-Komplett-Audit fertig: 12 Gate-1-PASS** (Bleicher, Andi-Cannabis, Agent-Mirror, Atlas-v2, Cali-Logbook, CannaMarkt, Prompt-Alchemist, Tax-Advisor, DTC, 16-Helper, Papa-VHS, Loki-Dashboard) · 5 FAIL (alles Reparierbares: Peer-Dep-Konflikte/Lockfiles) · 28 UNVOLLSTÄNDIG (Nicht-Node-Scanner-Lücke + 5 falsche Pfade + 3 Timeouts) · **5 neue VERKAUFSPAKETE** (bleicher, cali-logbook-pwa, andi-cannabis, agent-mirror, prompt-alchemist) · **PDF-Gesamtliste:** ALLE_PROJEKTE_GLOBAL_2026-10-18.pdf (3 Seiten).
+- **Ghost-Fixes:** foerder-cockpit = FörderVektor-Austria (Build nach npm install ✅) · atlas-cali-commercial-v2 = ATLAS_MASTER/app (Capacitor, tsc OOM offen; fertige ATLAS-v5-signed.apk im ATLAS_REWORK-Ordner) · cali-atlas-final: Asset-Dossier fertig (45–80 k-Deal; Blocker: Gemini-Key in öffentl. Repo-Historie).
+- **Subagent-Defs driften** (zweimal am Tag fremde Provider) — vor Dispatch `model:`-Zeile prüfen; Reparatur = `account:zai-individual-coding-plan/GLM-5.3-Flash` ([agent-defs-provider-fix]).
+- **Nutzer-GO-Punkte unverändert:** Gumroad-Konto+Upload · Gemini-Keys rotieren (Google Console: bleicher/cali-logbook/vintagescan/antigravity-cloud + Cali-Atlas-Historie) · Andi-AVV · Deploy/Push-GO · UEBERSICHT-Refresh.
 
 ## MEMORY
 

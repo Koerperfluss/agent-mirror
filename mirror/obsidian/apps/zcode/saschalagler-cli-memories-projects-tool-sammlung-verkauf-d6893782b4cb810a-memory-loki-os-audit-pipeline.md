@@ -1,7 +1,7 @@
 ---
 app: zcode
 quelle: "saschalagler/cli/memories/projects/tool-sammlung-verkauf-d6893782b4cb810a/memory/loki-os-audit-pipeline.md"
-stand: 2026-10-18
+stand: 2026-10-19
 tags: [spiegel, zcode]
 ---
 
@@ -60,5 +60,14 @@ metadata:
 ④ **Workspace-Analyser** — 20–50 k heute → 150–400 k mit Traktion (AI-Infra-Exit-Narrativ), real, nur Nicht-Node-Scanner-Lücke.
 ⑤ **Legal-Ops Advisor** — 59 €/Monat je Kanzlei B2B-Repeat, real, gleiche Scanner-Lücke.
 Ersatz-/Bonus-Kandidat: agent-mirror = einziger kompletter Gate-1-PASS mit fertigem Verkaufspaket. Ausgeschlossen: Körperfluss (Sperre), alles ohne lokalen Code, Bar-Bulls/LokiVoice (kein 45er-Audit).
+
+**18.10. NACHT II — TOP-5-PIPELINE AUSGEFÜHRT (Nutzer-Paste der 5-Stage-Doku = GO-Interpretation):**
+- **Förder-Cockpit BUILD GRÜN** (ralph-It.2): It.1 schlug still fehl, weil `npm install >/dev/null` den Fehler versteckte und `npx vite build` ohne node_modules lief → It.2 mit **sichtbarem npm-Output + `./node_modules/.bin/vite build`** = OK. Lektion: Installer-Fehler nie nach /dev/null.
+- **Atlas-App tsc OOM offen:** `tsc -b` → `Killed: 9`; `NODE_OPTIONS=--max-old-space-size=6144 npm run build` erreichte immer noch nicht das Ende (Log endet bei "transforming...") → It. 3 mit noch mehr Heap oder tsc-Optionen nötig.
+- **Cali-Atlas-Final ASSET-DOSSIER fertig:** `VERKAUFSPAKETE/CALI-ATLAS-FINAL_ASSET-DOSSIER.md` — Inventar: React 19/TS/Vite, 81 TS-Dateien/13.100 LOC, 12/12 Tests grün, iOS-SwiftUI-Subpaket; **größter Blocker: Gemini-Key in Git-Historie des ÖFFENTLICHEN Repos `Koerperfluss/atlas-cali-coach` (104 Funde, 8× Gemini) → Rotation + git filter-repo vor jedem Listing; 12–18 h bis upload-ready.**
+- **GAP-REPORT.md + README-VERKAUF.md erstellt für workspace-analyser (Pure-Python-Stdlib-CLI; Blocker: kein Lizenz-Mechanismus, Feature-Kauf-ready 4–8 h) und legal-ops (FastAPI+SQLite-RAG+Swift; Blocker: kein Multi-Tenant/Billing 20–40 h; hardcoded Key in `judicario_connector.py` — klein, rotieren).** Beide Reports enthalten ehrlich: Gate-1 = teilverifiziert (Nicht-Node-Scanner-Lücke).
+- **PDF-Gesamtliste:** `ALLE_PROJEKTE_GLOBAL_2026-10-18.pdf` (3 Seiten, 285 KB, via desktop-commander write_pdf aus gleichnamigem .md; im PDF-Panel geöffnet) — 74 Projekte in 7 Gruppen (Top-5-Fokus/12 PASS/5 FAIL/28 UNVOLLST./7 Kandidaten/6 gesperrt). Nachfrage-Muster: Nutzer will "alles-umfassende globale Liste" → direkt aus tools-v2.json + Audit-Fakten als PDF, nicht als Chat-Tabelle.
+- **Subagent-Def-Drift wiederholt sich:** cavecrew-builder stand erneut auf `zai-api/GLM-5.3-Flash` (nach meiner Reparatur am selben Tag!) → etwas überschreibt die Defs (Parallelsession/Skill-Sync). Fix: `sed` auf `account:zai-individual-coding-plan/GLM-5.3-Flash` + `.bak`; **vor jedem Agent-Dispatch `model:`-Zeile checken**, notfalls general-purpose/built-in.
+- **Server-Überlebens-Trick:** `nohup … &` in normalem Bash stirbt am Turn-Ende (:3300 war wieder 000). **Bash mit run_in_background (`cmd & cmd & wait`) überlebt** → hub_server :3300 + backend :8055 laufen beide (3× HTTP 200 verifiziert). Anleitung-Gegenprobe: UEBERSICHT fehlt (regenerierbar via `bash pipeline/hub_refresh.sh`), Vorschläge 20/50, OmniRoute 401.
 
 **18.10. NACHT — GELD-MODE: 5 VERKAUFSPAKETE FERTIG (Nutzer: „liefer mir top 5 tools ausgewertet entwickelt verkaufsfertig, ich will geld verdienen" + Blanko-GO):** 5 implementer-Subagents (2 Wellen: 3+2) bauten je Tool `LICENSE.txt` (proprietäre EULA © Sascha Lagler) + `README-VERKAUF.md` im Tool-Repo + `VERKAUFSPAKETE/<id>/` mit FAKTENBLATT · CHECKOUT-TEXT · VERKAUFS-MAIL · NÄCHSTE-3-SCHRITTE (Format = bestehende VERKAUFSPAKETE-Konvention). Verifiziert: 5×4 Paket-Dateien + LICENSE/README in allen 5 Repos ✓. Tools/Preise: **Bleicher** 49 €/Monat B2B (Key-Fix ✅: firebase-applet-config.json → .env.local, chmod 600, grep-0-Treffer) · **Cali-Logbook-PWA** 39 € (Key-Fix ✅: AppProvider.tsx → `import.meta.env.VITE_GEMINI_API_KEY ?? ""`, Re-Build 1,72 s grün, dist 0 Key-Treffer) · **Andi-Cannabis** 450→890 €/Monat B2B-Pilot (EULA mit Art.9-DSGVO-Verbot + RDG-Disclaimer + AVV-Pflicht eingebaut; **Blocker: AVV mit Google vor Pilot-Kunden**) · **Agent-Mirror** 79 €/Monat (Cloudflare-ready; **Blocker: DSGVO/AVV-Doku**) · **Prompt-Alchemist** 39 € (**Blocker: Sascha-Key im dist-Bundle gebacken → MUSS key-frei neu gebaut werden** vor ZIP-Verkauf; + 559-kB-Chunk splitten, license-Feld setzen). Subagent-Commits lokal ok (agent-mirror caad3d0, Hub 7fa0f92 u. a.), kein Push. **Schnellster Euro:** Andi/Bleicher via fertige VERKAUFS-MAIL.txt (kein Plattform-Konto nötig); Prompt-Alchemist zuerst Re-Build. **Nur-Nutzer-Reste:** Gumroad-Konto+Upload, Key-Rotation Google Console (bleicher/cali-logbook/vintagescan/antigravity-cloud), Andi-AVV, Deploy-GOs.

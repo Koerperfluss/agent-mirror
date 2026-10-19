@@ -1,7 +1,7 @@
 ---
 app: zcode
 quelle: "saschalagler/cli/memories/projects/tool-sammlung-verkauf-d6893782b4cb810a/memory/agent-defs-provider-fix.md"
-stand: 2026-10-18
+stand: 2026-10-19
 tags: [spiegel, zcode]
 ---
 
@@ -17,5 +17,5 @@ metadata:
 
 18.10.2026: Subagent-Starts starben mit `provider-not-found: account:zai-start-plan/GLM-5.3-Flash` (alter Plan) bzw. `qwen/qwen3.8-max` (gelöschter Provider 3a11f548…). **GELÖST (gleicher Tag):** alle 10 Defs in `~/.zcode/agents/*.md` (cavecrew-*, code-architect, config-auditor, explore, gate-enforcer-test, implementer, qa-tester, reviewer) von `builtin:zai/GLM-5.3-Flash` auf **`account:zai-individual-coding-plan/GLM-5.3-Flash`** gestellt (= aktiver Plan, via ListModels verifiziert). **Beweis:** cavecrew-investigator Test-Start „AGENT GESTARTET OK" (22 s) — alle 10 Custom-Subagents seither voll nutzbar, kein Built-in-Workaround mehr nötig.
 
-**Why:** Agent-Defs pinnen absolute Provider-IDs — bei Planwechsel/Aufräumen in provider_config.json brechen alle Subagents lautlos.
+**Why:** Agent-Defs pinnen absolute Provider-IDs — bei Planwechsel/Aufräumen in provider_config.json brechen alle Subagents lautlos. **⚠️ DRIFT WIEDERHOLT SICH:** Am selben Tag (18.10. spät) war `cavecrew-builder.md` erneut auf fremdem Provider (`zai-api/GLM-5.3-Flash`) — etwas überschreibt die Defs (Parallelsession/Skill-Sync verdächtigt). Repariert + `.bak`. **Vor JEDEM Agent-Dispatch `model:`-Zeile checken** (`grep -H '^model:' ~/.zcode/agents/*.md`), notfalls built-in (general-purpose/Explore).
 **How to apply:** Wenn Subagents `provider-not-found` werfen: zuerst `ListModels` (gültige IDs), dann `model:`-Feld in `~/.zcode/agents/*.md` auf aktuellen Plan setzen — NICHT `builtin:zai/…` (API-Key) pinnen, wenn Flatrate-Plan laufen soll. Verwandt: [[loki-os-audit-pipeline]]
