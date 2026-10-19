@@ -2,7 +2,7 @@
 name: "cavecrew-builder"
 description: ">"
 color: yellow
-model: "zai-api/GLM-5.3-Flash"
+model: "account:zai-individual-coding-plan/GLM-5.3-Flash"
 thoughtLevel: low
 tools:
   - Read
