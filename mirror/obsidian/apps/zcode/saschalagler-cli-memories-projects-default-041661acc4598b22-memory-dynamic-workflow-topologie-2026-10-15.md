@@ -1,7 +1,7 @@
 ---
 app: zcode
 quelle: "saschalagler/cli/memories/projects/default-041661acc4598b22/memory/dynamic-workflow-topologie-2026-10-15.md"
-stand: 2026-10-15
+stand: 2026-10-19
 tags: [spiegel, zcode]
 ---
 
@@ -31,3 +31,4 @@ metadata:
 1. **Skill-Tool akzeptiert NUR `skill` + `args`** — zwei Fehlversuche mit `skillaction`/`plan` bzw. `question` → InputValidationError. Für dynamic-workflows: `Skill(skill:"dynamic-workflows")` lädt den kompletten Authoring-Contract (§16 Facade: agent/ask/phase/report/artifact/world.run/hole).
 2. **ZCode Free-Modell-Fallback produziert Müll:** Session fiel auf `liquid/lfm-2.5-2.6b:free` → `nemotron-3.5-lightning:free` und lieferte Nonsense-JSON („Dolce"-Payload statt Antwort). Nur Rückkehr auf GLM-5.3-Flash stellte die Arbeit wieder her — bei kaputter Session zuerst aktives Modell prüfen, nicht neu anfangen.
 3. dynamic-workflows-Fassade erlaubt Subagents keine Absolut-Pfade (bestätigt [[plugin-skill-inventar-dwfrun-2026-10-09]]), `world.run` schon → Datei-Existenzchecks außerhalb des Workspace laufen als `world.run("test",["-f",pfad])`.
+4. **19.10. (dwfrun-7449257a „Magicline→George Anleitung"): Doppelte Subagent-Namen = Compile-Fehler** („two actors are named …") — Ablauf: CreateWorkflow inline → Compile-Fehler → Draft-Datei per Edit fixen → Resubmit mit `path` (nicht Script neu pasten), lief 2. Versuch clean. Draft-Pfad: `.zcode/workflow-drafts/MagiclineGeorge-Anleitung.dwf.ts`.
