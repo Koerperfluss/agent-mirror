@@ -1,0 +1,198 @@
+---
+app: zcode
+quelle: "saschalagler/cli/artifacts/sess_83697431-c946-417e-b8f1-22a2e256eba6/dwfrun-ad89cba4-6fd8-4481-b379-46112392a690_artifact_1_1-tool-result-b873e962-f4f9-4493-882e-da3184b64c20.md"
+stand: 2026-10-19
+tags: [spiegel, zcode]
+---
+
+# Magicline Open API — Briefing für George (Codex, Windows)
+
+**Ergebnis:** George kann nach Erhalt eines API-Keys Kunden, Mitgliedschaften, Verträge und Checkins des Studios über die **Magicline Open API** (Sport Alliance) abfragen. **Voraussetzung:** Nur der Studio-Inhaber (Thomas) kann den Key beantragen — George wartet darauf, legt ihn dann als Windows-Umgebungsvariablen ab und testet mit PowerShell.
+
+**⚠️ Solange die Aktivierungs-E-Mail nicht da ist, ist Schritte 2–4 NICHT ausführbar** (Key + Tenant-Name/Studio-URL stehen nur in dieser Mail). George kann jetzt nur: Schritt 1 anstoßen + PowerShell-Vorbereitung (Abschnitt 4a) erledigen.
+
+---
+
+## 1. Worum geht es
+
+- **Magicline** = Studio-Verwaltungssoftware (Mitgliederverwaltung, Checkin, Verträge) der **Sport Alliance**.
+- Die **Open API** liefert standardisiert: **Kunden**, **Mitgliedschaften**, **Verträge**, **Checkins**.
+- **Basis-URL:** `https://<tenant_name>.open-api.magicline.com/v1` — der **Tenant-Name** steht in der **Aktivierungs-E-Mail** und **muss immer zum `x-api-key` passen**.
+- Dokumentation: `developer.sportalliance.com` (Titel: „Magicline Open API 1.27.1", Postman-Collection vorhanden).
+
+**Auth (belegt, wichtig!):**
+- Key geht in den Header **`x-api-key`** — **NICHT** `Authorization`, **KEIN** „Bearer".
+- Doku wörtlich: „you have to send the OpenAPI key in x-api-key header", „persistent key authentication, separate for every studio".
+- 401-Ursache laut Troubleshooting-Seite: „Wrong header name — Using a non-standard header name (e.g. Authorization) instead of x-api-key".
+- **Key-Validierung:** HEAD-Request auf die Basis-URL → **200 = Key gültig**, **401 = Key ungültig/fehlend**.
+- Wurde die Aktivierung **MIT Webhooks** gemacht, gibt es **zwei Keys** (eingehend/ausgehend) — den richtigen (eingehenden) verwenden.
+
+**Scopes** (Muster `RESSOURCE_READ`/`RESSOURCE_WRITE`): `CUSTOMER_READ`, `CUSTOMER_WRITE`, `CHECKIN_READ`, `CHECKIN_WRITE`, `MEMBERSHIP_READ`, `CUSTOMER_CONTRACT_READ` (exakte Scopes der Contract-Endpoints: DATENLAGE UNKLAR — vermutlich `CUSTOMER_CONTRACT_READ`).
+
+---
+
+## 2. Voraussetzungen (auf Georges Windows-PC)
+
+| # | Was | Befehl/Check |
+|---|---|---|
+| 1 | **Codex-CLI** installiert | `npm install -g @openai/codex` |
+| 2 | Eingeloggt | `codex login` (einmalig erledigt) |
+| 3 | PowerShell verfügbar | Standard bei Windows |
+
+---
+
+## 3. Schritt 1 — API-Key beantragen
+
+**⚠️ George kann das NICHT selbst machen. Sag dem Nutzer (Thomas):**
+
+1. **Nur der Studio-Owner** (bzw. Integrationspartner) kann die Integration anfordern.
+2. Weg A (Studio-Kunde): Integration im **Magicline Marketplace** mit „Activate Integration" aktivieren. Offiziell: „Upon activation, you will receive an email with OpenAPI studio keys and the base URL" — **Key + Basis-URL kommen per Aktivierungs-E-Mail** (auch direkt an den Partner: „the API keys for your studio … are sent directly to our partner").
+3. Weg B (Partner ohne Studio-Kunde): **SPA Developer Portal** (`developer.sportalliance.com/portal`): Register → Partner-Account + T&C → Sandbox einrichten → Developer Application definieren → in Sandbox aktivieren → für Production finalisieren.
+4. Kontakte: **apisupport@sportalliance.com** (technisch), **partnership@sportalliance.com** (Partnerschaft).
+
+**Test-System vorhanden (belegt):** Demo-Tenant `https://open-api-demo.open-api.magicline.com/v1` (aus Curl-Beispiel der Doku). **Aber:** Ob der Demo-Tenant ohne eigenen Key nutzbar ist / welcher Demo-Key nötig wäre — **DATENLAGE UNKLAR** (Postman-Seite verweist nur auf „your OpenAPI key from the activation email"). Der Demo-Test läuft also erst, wenn ein (Demo- oder Studio-)Key da ist. **Konsequenz für George: „OHNE echten Key testen" ist aktuell nicht belegt — erst nach Klärung (Kontakt: apisupport@sportalliance.com).**
+
+**Dauer/Kosten der Marketplace-Aktivierung:** nicht in der Doku dokumentiert — **DATENLAGE UNKLAR** (bei Thomas/apisupport@sportalliance.com nachfragen).
+
+---
+
+## 4a. Vorbereitung JETZT (ohne Key möglich)
+
+| # | Was | Befehl (Windows **PowerShell**) |
+|---|---|---|
+| 1 | Ordner für späteren Key-Workflow | nicht nötig — Key kommt NUR als Umgebungsvariable, nie als Datei |
+| 2 | PowerShell prüfen | `$PSVersionTable.PSVersion` — alles Folgende gilt für **PowerShell** (NICHT CMD/Git-Bash kopieren!) |
+| 3 | TLS 1.2 sicherstellen (nur Windows PowerShell 5.1, einmal pro Fenster vor den Requests) | `[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12` |
+
+---
+
+## 4. Schritt 2 — Key sicher ablegen (SOFORT NACH Erhalt der Aktivierungs-E-Mail)
+
+**Aus der E-Mail werden 2 Werte gebraucht: der API-Key und die Studio-Basis-URL (Tenant-Name).** Beide stehen dort exakt drin — wenn nicht: Aktivierung prüfen / apisupport@sportalliance.com fragen.
+
+```powershell
+# In der Aktivierungs-E-Mail: Key suchen, dann:
+setx MAGICLINE_API_KEY "<KEY_AUS_DER_EMAIL_IN_DOPPELTE_ANFUEHRUNGSZEICHEN>"
+# Besispiel-MUSTER (nicht ausführen!):  setx MAGICLINE_API_KEY "abc123XYZ..."
+setx MAGICLINE_BASE_URL "<BASIS-URL_AUS_DER_EMAIL>"
+# MUSTER: https://<studio-name>.open-api.magicline.com/v1  → <studio-name> = Tenant-Name aus derselben E-Mail
+```
+
+- **Key-Wert IMMER in doppelte Anführungszeichen** — `%`/`!` im Key können sonst bei CMD-Expansion kaputtgehen.
+- Platzhalter `<studio-name>` **NIEMALS wörtlich einfügen** — sonst ist die URL ungültig (→ 404, s. Fehlerbehebung).
+- **DANACH PowerShell-Fenster NEU öffnen** — `setx` wirkt erst in neuen Fenstern.
+- **NIE** den Key in Dateien, Code, Screenshots, Chats oder Git schreiben. Nur über die Umgebungsvariablen (`$env:MAGICLINE_API_KEY`) verwenden.
+- Check nach Neustart (PowerShell!): `echo $env:MAGICLINE_BASE_URL` muss die URL zeigen; der Key selbst NICHT ausgeben. In **CMD** wäre der Befehl `echo %MAGICLINE_BASE_URL%` — unten gilt durchgehend PowerShell.
+
+---
+
+## 5. Schritt 3 — Testen
+
+**Einmal pro PowerShell-Fenster (Windows PowerShell 5.1):** `[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12` (sonst TLS-Handshake-Fehler bei manchen Hosts; PowerShell 7+ unnötig, schadet aber nicht).
+
+**Key-Validierung (HEAD, try/catch — bei 401 wirft PS sonst nur eine Exception statt den Statuscode):**
+```powershell
+try {
+  Invoke-WebRequest -Method Head -Uri $env:MAGICLINE_BASE_URL -Headers @{ "x-api-key" = $env:MAGICLINE_API_KEY } | Out-Null
+  "KEY GÜLTIG (200)"
+} catch {
+  "HTTP-Fehler: " + $_.Exception.Response.StatusCode.value__ + " (" + $_.Exception.Response.StatusCode + ")"
+}
+```
+**200 = Key gültig** · **401 = Key fehlt/ungültig.** Einzeiler-Variante ohne try/catch (zeigt bei 401 nur rote Fehler, aber mit Statuscode im Text):
+```powershell
+(Invoke-WebRequest -Method Head -Uri $env:MAGICLINE_BASE_URL -Headers @{ "x-api-key" = $env:MAGICLINE_API_KEY }).StatusCode
+```
+
+**Erster echter Abruf (Kunden, Slice 1) — als EINZELZEILE (die 2-Zeilen-Version mit Backtick `` ` `` ist PS-only; in CMD/Git-Bash kopiert → Syntaxfehler):**
+```powershell
+Invoke-RestMethod -Uri "$env:MAGICLINE_BASE_URL/customers?customerStatus=MEMBER&sliceSize=100" -Headers @{ "x-api-key" = $env:MAGICLINE_API_KEY }
+```
+
+**Alternativ gegen Demo-Tenant** (sofern ein gültiger Demo-Key vorliegt — s. o. „DATENLAGE UNKLAR"):
+```powershell
+Invoke-RestMethod -Uri "https://open-api-demo.open-api.magicline.com/v1/customers?sliceSize=100" -Headers @{ "x-api-key" = $env:MAGICLINE_API_KEY }
+```
+
+**Wenn 401 kommt, obwohl der Key stimmt:** 1) Neues PowerShell-Fenster? (`setx` wirkt nicht im laufenden Fenster) 2) Header exakt `x-api-key`? 3) URL aus derselben E-Mail wie der Key (Tenant muss zum Key passen)? 4) Bei zwei Keys (Webhooks): den **eingehenden** verwenden.
+
+---
+
+## 6. Schritt 4 — Was George abfragen kann
+
+### Belegte Endpoints (nur diese verwenden — keine erfundenen!)
+
+| Endpoint | Zweck | Wichtige Parameter | Scope |
+|---|---|---|---|
+| `GET /v1/customers` | Alle Kunden (gesamtes Studio, in Slices) | `offset`, `sliceSize` (50–500, Default 100), `customerStatus` = `MEMBER`/`PROSPECT`/`FORMER_MEMBER` (Default MEMBER), `cardNumberFormat` | `CUSTOMER_READ` |
+| `GET /v1/customers/{customerId}` | Einzelner Kunde (int64 ID) | — | `CUSTOMER_READ` |
+| `POST /v1/customers/search` / `GET /v1/customers/by` | Kundensuche | — | `CUSTOMER_READ` |
+| `POST /v1/customers` | Kunde anlegen | 422 `DUPLICATE_CUSTOMER` bei Trial-Angeboten mit vorhandener E-Mail | `CUSTOMER_WRITE` |
+| `GET /v1/customers/{customerId}/activities/checkins` | Checkin-Historie **pro Kunde** | `fromDate`/`toDate` (**max 365 Tage**), `sliceSize` 1–50 (Default 10), `offset` | `CHECKIN_READ` |
+| `POST /v1/customers/checkin` / `POST /v1/customers/checkout` | Manuelles Ein-/Auschecken pro Kunde | Request-Body-Felder: **DATENLAGE UNKLAR** (Detailseiten nicht ausgeklappt) — Body vor Erstnutzung in der Postman-Collection/Doku-Detailseite nachschlagen |
+| `GET /v1/customers/{customerId}/contracts` | Verträge des Kunden | — | Scope vermutlich `CUSTOMER_CONTRACT_READ`, **exakt: DATENLAGE UNKLAR** |
+| `GET /v1/customers/{customerId}/contracts/{contractId}` | Einzelvertrag | — | dito |
+| Membership-Schreib-Endpoints | `signupmembership`, `postsignuppreview`, `postmembershippreview`, `addmembership`, `switchmembership` (+ Preview) — **exakte Pfade/Body-Formate: DATENLAGE UNKLAR** (Namen belegt, Pfade unvollständig; Postman-Collection prüfen) | — | Membership-Schreib-Scopes |
+| `GET /v1/memberships/{membershipId}/self-service/idle-periods` (+ Verwandte) | Freeze-/Pausen-Perioden per Self-Service | — | `MEMBERSHIP_READ` |
+| `GET /v1/cross-studio/customers/{customerId}/activities/checkins`, `GET /v1/cross-studio/customers/by`, `POST /v1/cross-studio/customers/search` | Studioübergreifend — **nur mit expliziter Cross-Studio-Integration** („Contact your Sport Alliance account manager") | — | — |
+| `GET /v1/studios/getutilization` | Studioweite Auslastung (Aggregatwerte) | — | — |
+
+**⚠️ Kein Endpoint für Logins:** Login/Zutritt läuft über `getcustomeraccesscode`, access-mediums-Endpoints und DeviceAPI (`cardreaderidentification`); die Aggregator-API bietet Check-in-Validation-**Webhooks** als Event-Stream für Member-Checkins.
+
+### Prompt-Vorlagen für Codex (George)
+
+**„Wie viele aktive Mitglieder haben wir?"**
+> Rufe per PowerShell `GET $env:MAGICLINE_BASE_URL/customers?customerStatus=MEMBER&sliceSize=500` mit Header `x-api-key: $env:MAGICLINE_API_KEY` auf. Es gibt KEINEN Gesamtzähl-Endpoint: Paginiere über `offset`/`hasNext` weiter und **zähle die Kunden clientseitig** über alle Slices. Gib die Gesamtzahl aus.
+
+**„Checkins der letzten 7 Tage"**
+> Für jeden aktiven Kunden (`GET /customers?customerStatus=MEMBER`) rufe `GET /customers/{customerId}/activities/checkins?fromDate=<heute-7>&toDate=<heute>&sliceSize=50` auf und summiere. Hinweis: Es gibt **keinen studioweiten Checkin-Feed** — nur pro Kunde. Zeitraum max 365 Tage.
+
+**„Liste laufender Verträge"**
+> Hole alle MEMBER-Kunden (`GET /customers`), dann pro Kunde `GET /customers/{customerId}/contracts`, und gib die Vertragsliste mit Kundenname aus.
+
+**Paginierung-Muster (für alle Listen-Endpoints):** Response = `result`-Array + `hasNext` + `offset`. Solange `hasNext` true ist: nächsten Request mit dem zurückgegebenen `offset` (letzter ID-Offset) wiederholen.
+
+---
+
+## 7. Fehlerbehebung
+
+| Fehler | Ursache | Fix |
+|---|---|---|
+| **401** | Key falsch, fehlend oder **falscher Header-Name** (z. B. `Authorization` statt `x-api-key`) | Header exakt `x-api-key` verwenden; Key neu einlesen (neues PowerShell-Fenster nach `setx`); Key-Check per HEAD (s. Schritt 3) |
+| **404** | **Studio-URL falsch** — Tenant-Name in `MAGICLINE_BASE_URL` passt nicht zur URL aus der Aktivierungs-E-Mail | URL exakt aus der Key-Mail übernehmen; Tenant muss **zum Key passen** („must always match the corresponding x-api-key") |
+| **429** „Access denied - rate limit is exceeded" | **Rate-Limit** erreicht | Abstand zwischen Requests einhalten, später erneut versuchen |
+| **422** `DUPLICATE_CUSTOMER` | Kunde mit gleicher E-Mail existiert (Trial-Angebote) | Bestandskunden über Suche (`POST /customers/search`) finden statt neu anlegen |
+| 403 bei `cross-studio` | Cross-Studio-Integration fehlt | Nur über Sport Alliance Account Manager freischaltbar |
+
+---
+
+## 8. Grenzen — was George NICHT kann
+
+1. **Key beantragen** — geht nur über den Studio-Owner (Thomas), s. Schritt 1.
+2. **Verträge ändern** — in der belegten API gibt es nur Vertrags-**Abrufe** (`GET …/contracts`); keine Vertrags-Änder-Endpoints gefunden.
+3. **Studioweite Direkt-Zahlen abrufen** — kein „Anzahl-Mitglieder"-Endpoint; George muss über `GET /customers` paginieren und **selbst zählen** (einziger Studiowert: `GET /v1/studios/getutilization` = Auslastung).
+4. **Studioweite Checkins abrufen** — Checkin-Historie nur **pro Kunde**; Cross-Studio nur mit expliziter Freischaltung.
+5. **Demo-System ohne eigenen Key testen** — ob/wie das geht: **DATENLAGE UNKLAR**.
+
+---
+
+## Offene Punkte (DATENLAGE UNKLAR)
+
+- Portal-Antrag im Detail (Formularfelder, Genehmigungsfristen, automatische Sandbox-Key-Ausgabe) — Portal zeigt nur die 6 Schritte; komplette `openapi.json`/`openapi.yaml` war nicht verlinkt (404).
+- Was der Demo-Tenant `open-api-demo.open-api.magicline.com` konkret braucht (eigener Demo-Key? Portal-Registrierung?).
+- Exakte Scopes von `GET /v1/customers/{customerId}/contracts`; Request-Body-Felder von `POST /v1/customers/checkin|checkout`; exakte Pfade/Body-Formate der Membership-Endpoints (Postman-Collection/Doku-Detailseiten ausklappen, sobald Zugang da ist).
+- Dauer/Kosten der Marketplace-Aktivierung — nicht dokumentiert; bei Thomas bzw. apisupport@sportalliance.com erfragen.
+- Studioweite Aggregat-/Zähl-Endpoints außerhalb der Paginierung: keine gefunden (komplette Sitemap + Postman-Collection geprüft).
+
+---
+
+## Erwartete Fragen (mit bereiter Antwort)
+
+| Frage | Antwort-Kurzform |
+|---|---|
+| „Der Key ist da — jetzt Schritt für Schritt?" | Abschnitt 4 (Key+URL **aus der E-Mail** eintragen, Quoting beachten) → 4a-Punkt 3 (TLS) → Abschnitt 5 (try/catch-Check → Kunden-Abruf). Alles copy-paste-fertig. |
+| „Können wir vorher OHNE den echten Studio-Key testen?" | **DATENLAGE UNKLAR** — Demo-Tenant existiert, aber ob er ohne eigenen Aktivierungs-Key funktioniert, ist nicht belegt (Abschnitt 3). Klärungsweg: apisupport@sportalliance.com. |
+| „Wie lange/kostet die Aktivierung?" | Nicht dokumentiert (Abschnitt 3 / Offene Punkte) — Thomas fragen oder Support-Mail. |
+| „Ich sehe 401, obwohl der Key stimmt" | Checkliste am Ende von Abschnitt 5: neues Fenster, Header-Name, URL/Key-Paarung, eingehender Key bei Webhooks. |
+
+**Alle Fakten stammen aus der offiziellen Doku:** `developer.sportalliance.com` (general-information, Troubleshooting, Postman-Collection, Endpoints-Referenz), `magicline.com/de/partner`. Keine echten Keys in dieser Datei — nur Platzhalter.
