@@ -1,7 +1,7 @@
 ---
 app: zcode
 quelle: "saschalagler/agents/cavecrew-builder.md"
-stand: 2026-10-18
+stand: 2026-10-19
 tags: [spiegel, zcode]
 ---
 
@@ -9,7 +9,7 @@ tags: [spiegel, zcode]
 name: "cavecrew-builder"
 description: ">"
 color: yellow
-model: "zai-api/GLM-5.3-Flash"
+model: "account:zai-individual-coding-plan/GLM-5.3-Flash"
 thoughtLevel: low
 tools:
   - Read
