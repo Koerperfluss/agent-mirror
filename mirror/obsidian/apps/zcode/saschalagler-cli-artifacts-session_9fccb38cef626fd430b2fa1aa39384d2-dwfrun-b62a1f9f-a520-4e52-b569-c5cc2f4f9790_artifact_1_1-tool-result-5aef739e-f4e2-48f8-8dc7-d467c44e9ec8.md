@@ -1,0 +1,29 @@
+---
+app: zcode
+quelle: "saschalagler/cli/artifacts/session_9fccb38cef626fd430b2fa1aa39384d2/dwfrun-b62a1f9f-a520-4e52-b569-c5cc2f4f9790_artifact_1_1-tool-result-5aef739e-f4e2-48f8-8dc7-d467c44e9ec8.md"
+stand: 2026-10-21
+tags: [spiegel, zcode]
+---
+
+# Rassel-Isolation bei 56 s — Ergebnis
+
+**Gewinner (objektiv gemessen):** `/Users/saschalagler/Desktop/Acid_People_Samples/kandidaten/kandidat_A_rassel_1x.wav`
+
+**Urteil:** Mess-Sieger ist kandidat_A_rassel_1x.wav (höchste Diff-Masken-Korrelation, 79 % Energie in der Maske, gefolgt von B, dann klar C abgeschlagen) — aber der Nutzer muss alle drei Kandidaten anhören, denn das endgültige Ohr-Urteil liegt bei ihm.
+
+## Rangliste
+- 1. /Users/saschalagler/Desktop/Acid_People_Samples/kandidaten/kandidat_A_rassel_1x.wav — Score 0.604: höchste Spektrogramm-Korrelation mit der Diff-Maske (voll 0.447, Band 2500–5000 Hz 0.438) und 79 % seiner Energie liegt in der Maske; Bandanteil 0.243 trifft exakt das Zielprofil.
+- 2. /Users/saschalagler/Desktop/Acid_People_Samples/kandidaten/kandidat_B_rassel_1x.wav — Score 0.253: nur schwache Maske-Korrelation (Band 0.053), Bandanteil 0.148; Datei war beim ersten soundfile-Lesen transient nicht lesbar (iCloud), beim Rerun verifiziert lesbar (44100 Hz, PCM_16, mono, 1.379 s).
+- 3. /Users/saschalagler/Desktop/Acid_People_Samples/kandidaten/kandidat_C_rassel_1x.wav — Score −0.005: praktisch unkorreliert mit der Maske (Band −0.198), Bandanteil nur 0.025 — das AudioSep-Output enthält kaum Energie im Rassel-Band und bildet das Zielelement spektral am schlechtesten ab.
+
+## Kandidaten im Detail
+- **Strategie A** (hoch): `/Users/saschalagler/Desktop/Acid_People_Samples/kandidaten/kandidat_A_rassel_1x.wav` — Der Kandidat enthält nur den bei 56 s neu einsetzenden, perkussiven, hellen Rassel-Anteil: Differenz-Maske (S_56-64s − S_48-56s, Wiener-artig) auf dem Rohmix, iSTFT, HPSS-Perkussion (kernel 41, margin 4), Bandpass 300–8000 Hz, ein 2.76-s-Loop (2 Takte, Naht-Korrelation 0.774), normalisiert, 44.1 kHz PCM_16, 5-ms-Fades. Methode: STFT n_fft 4096 / hop 1024, mask = max(0,|S_nach|−|S_vor|)/(|S_nach|+1e-9), multipliziert mit dem komplexen Nach-Spektrogramm, iSTFT (Maske: mean 0.368, max 1.0). HPSS perkussiver Energieanteil im Differenzsignal: 0.116. Autokorrelation (FFT-basiert) → Periode 2.759 s (≈ 2 Takte à 1.392 s). Start-Rastersuche in 10-ms-Schritten: Start bei 0.01 s, Segment↔Segment+Periode-Korrelation 0.774. Gemessene Werte (Skript /Users/saschalagler/Desktop/Acid_People_Samples/st_A_diff_mask.py, Venv-Python 3.14): Band 2500–5000 Hz absolut cand=4.2081e7 vs. Rohmix gleiches Fenster (56–58.76 s)=4.4212e8 → Verhältnis 0.095; relativer Bandanteil cand=0.243 vs. Rohmix=0.038 — der Kandidat ist im Zielband ~6.4× konzentrierter als der Mix, trennt den Rassel-Anteil im 2500–5000-Hz-Band also klar heraus. Verifikation ffprobe: pcm_s16le, 44100 Hz, 2 Kanäle, 2.7586 s (< 15 s).
+- **Strategie B** (niedrig): `/Users/saschalagler/Desktop/Acid_People_Samples/kandidaten/kandidat_B_rassel_1x.wav` — 1 Takt (1.379 s) der perkussiven Rassel-Perkussion: HPSS-perkussiver Anteil (kernel 41, margin 4), Bandpass 300–8000 Hz, aus dem gewählten Stem, Loop nahtlos via Autokorrelations-Periode (Naht-Korrelation 0.88), 5 ms Fades, normalisiert. Methode: Fenster 56–64 s aus drums.wav und other.wav → 44.1 kHz mono → HPSS (kernel 41, margin 4) perkussiv → Bandpass 300–8000 Hz. Gemessene Band-Energie 2500–5000 Hz (STFT-Power, gesamte Fensterlänge): drums=623208.1 (rel. Anteil 0.138), other=51667.6 (rel. Anteil 0.150) → drums ~12× stärker im Rassel-Band, Wahl = drums.wav. Loop-Schnitt: Autokorrelations-Periode 1.3793 s (60828 Samples, nahe 1 Takt = 1.392 s); Rastersuche (Schritt 64 Samples) maximiert Korrelation Segment vs. Segment+Periode → beste Naht r=0.8804 bei Start 3.336 s im 56–64 s-Fenster. Output: 44.1 kHz, mono, PCM_16, 1.379 s, 5 ms Fades, auf 0.95 normiert (via soundfile verifiziert). | WARNUNG: Datei konnte nicht per ffprobe verifiziert werden.
+- **Strategie C** (mittel): `/Users/saschalagler/Desktop/Acid_People_Samples/kandidaten/kandidat_C_rassel_1x.wav` — Per Textprompt 'a bright metallic rattle shaker percussion loop' aus dem 16-s-Exzerpt 52-68 s getrenntes Rassel-Perkussionselement, als ein-Takt-Loop (1.390 s) mit 5-ms-Fades geschnitten, auf 0 dBFS normalisiert. AudioSep (github.com/audio-agi/audiosep) lokal in /Users/saschalagler/.venvs/demucs (Python 3.14, torch 2.14.1) installiert; Checkpoints audiosep_base_4M_steps.ckpt (1.26 GB) + CLAP music_speech_audioset_epoch_15_esc_89.98.pt (2.35 GB) vom offiziellen HF-Space geladen. Fixes: torch.load weights_only=False + load_state_dict strict=False (Position_ids-Key, alte Checkpoint-Struktur). Blocker gelöst: iCloud-Eviction (dataless, blocks=0) von FLAC/Exzerpt -> fileproviderctl materialize; danach Read-Verifikation (rms 0.571). Trennung CPU 25 s. Messwerte: Autokorrelations-Periode 1.3904 s (Takt bei 172.3 BPM = 1.3929 s, Delta 2.5 ms); Naht-Start per Rastersuche (8-Sample grob + ±64 fein) bei 0.0059 s, Naht-Korrelation 0.537 (moderat - Residuen anderer Elemente im Separat möglich); Band-Sanity 2500-5000 Hz: +2.58 dB nach Rassel-Einstieg, konsistent mit Mix-Messung (+1.5 dB). Ausgabeformat verifiziert: 44100 Hz, PCM_16, 1.390 s, Peak 0.99997, 122680 Byte. Alle Originaldateien unangetastet; nur <15 s-Dateien in kandidaten/.
+
+## Prüfung
+- Strategie A: /Users/saschalagler/Desktop/Acid_People_Samples/kandidaten/kandidat_A_rassel_1x.wav — Duration: 00:00:02.76, bitrate: 1411 kb/s (exit 0)
+- Strategie B: /Users/saschalagler/Desktop/Acid_People_Samples/kandidaten/kandidat_B_rassel_1x.wav — keine Duration-Zeile (exit 1)
+- Strategie C: /Users/saschalagler/Desktop/Acid_People_Samples/kandidaten/kandidat_C_rassel_1x.wav — Duration: 00:00:01.39, bitrate: 705 kb/s (exit 0)
+
+Alle Kandidaten liegen in `/Users/saschalagler/Desktop/Acid_People_Samples/kandidaten/`. Anhören und sagen, welcher trifft.
