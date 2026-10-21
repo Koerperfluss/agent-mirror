@@ -1,13 +1,13 @@
 ---
 app: claude
 quelle: "saschalagler/skills/loki-memory-sync/SKILL.md"
-stand: 2026-10-18
+stand: 2026-10-21
 tags: [spiegel, claude]
 ---
 
 ---
-name: loki-memory-sync
-description: Zentraler Memory-Layer: erfasst alle Skills, Tools, Agents, MCP-Server, Plugins, Workflows aus allen Harnesses (ZCode, Cline, Antigravity, Hermes, Gemini, Claude) in eine einheitliche, durchsuchbare Memory-Struktur. Läuft automatisch via skillshare sync + Hooks.
+name: "loki-memory-sync"
+description: "Zentraler Memory-Layer: erfasst alle Skills, Tools, Agents, MCP-Server, Plugins, Workflows aus allen Harnesses (ZCode, Cline, Antigravity, Hermes, Gemini, Claude) in eine einheitliche, durchsuchbare Memory-Struktur. Läuft automatisch via skillshare sync + Hooks."
 ---
 # LOKI Memory Sync — Master-Skill
 

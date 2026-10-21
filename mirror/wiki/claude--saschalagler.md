@@ -1,6 +1,6 @@
 # saschalagler (claude)
 
-Zuletzt gespiegelt: 2026-10-21 18:16 UTC
+Zuletzt gespiegelt: 2026-10-21 18:30 UTC
 
 ## CLAUDE
 
@@ -3134,8 +3134,8 @@ such as `od browser snapshot`, `daemon-cli.mjs browser snapshot`, or
 ## SKILL
 
 ---
-name: agent-cluster
-description: 11 KI-Agenten (A1–A11) bewerten alles Mögliche — Tools, Projekte, Ideen, Geschäftsmodelle: Markt, Wettbewerb, Kunden, Trends, Pricing, Lizenz, Finanzen, Positionierung, GTM, Risiko → finale Verkaufsbewertung. Global installiert, jedes Projekt nutzbar.
+name: "agent-cluster"
+description: "11 KI-Agenten (A1–A11) bewerten alles Mögliche — Tools, Projekte, Ideen, Geschäftsmodelle: Markt, Wettbewerb, Kunden, Trends, Pricing, Lizenz, Finanzen, Positionierung, GTM, Risiko → finale Verkaufsbewertung. Global installiert, jedes Projekt nutzbar."
 ---
 
 # Agent-Cluster — 11 Agenten systemweit
@@ -16051,8 +16051,8 @@ Add `--global` to any flag to install in your home directory instead of the curr
 ## SKILL
 
 ---
-name: frontend-design-hub
-description: Frontend-Design-Kompass — Ästhetik (frontend-design-Kern, Anti-AI-Slop-Verbote), Motion-Physik nach Apple (apple-design), Minimalismus-System (minimalist-ui), Daten-Reports (data-report). Routing: Ästhetik → Kern · App-Motion/Animationen → Motion · Editorial-Minimalismus → Minimalismus · CSV/Excel→HTML-Report → Daten-Reports.
+name: "frontend-design-hub"
+description: "Frontend-Design-Kompass — Ästhetik (frontend-design-Kern, Anti-AI-Slop-Verbote), Motion-Physik nach Apple (apple-design), Minimalismus-System (minimalist-ui), Daten-Reports (data-report). Routing: Ästhetik → Kern · App-Motion/Animationen → Motion · Editorial-Minimalismus → Minimalismus · CSV/Excel→HTML-Report → Daten-Reports."
 ---
 
 # Frontend Design Hub
@@ -19364,8 +19364,8 @@ print(f'[graphify update] Merged: {G.number_of_nodes()} nodes, {G.number_of_edge
 ## SKILL
 
 ---
-name: grilling
-description: Grill the user relentlessly about a plan, decision, or idea. Use when the user wants to stress-test their thinking, or uses any 'grill' trigger phrases. Includes a BATCH mode (triggers 'batch grill', 'batch-grill-me': ask every frontier question at once, round by round) and a LOOP mode (triggers 'workflow loop', 'loop-me': grill workflow specs, loops and vocabulary).
+name: "grilling"
+description: "Grill the user relentlessly about a plan, decision, or idea. Use when the user wants to stress-test their thinking, or uses any 'grill' trigger phrases. Includes a BATCH mode (triggers 'batch grill', 'batch-grill-me': ask every frontier question at once, round by round) and a LOOP mode (triggers 'workflow loop', 'loop-me': grill workflow specs, loops and vocabulary)."
 ---
 
 Interview me relentlessly about every aspect of this until we reach a shared understanding. Walk down each branch of the decision tree, resolving dependencies between decisions one-by-one. For each question, provide your recommended answer.
@@ -29894,8 +29894,8 @@ Groß/unklar → wayfinder-Map · Klein/klar → BUILD-Schritt 5 (todo-sync.py).
 ## SKILL
 
 ---
-name: loki-memory-sync
-description: Zentraler Memory-Layer: erfasst alle Skills, Tools, Agents, MCP-Server, Plugins, Workflows aus allen Harnesses (ZCode, Cline, Antigravity, Hermes, Gemini, Claude) in eine einheitliche, durchsuchbare Memory-Struktur. Läuft automatisch via skillshare sync + Hooks.
+name: "loki-memory-sync"
+description: "Zentraler Memory-Layer: erfasst alle Skills, Tools, Agents, MCP-Server, Plugins, Workflows aus allen Harnesses (ZCode, Cline, Antigravity, Hermes, Gemini, Claude) in eine einheitliche, durchsuchbare Memory-Struktur. Läuft automatisch via skillshare sync + Hooks."
 ---
 # LOKI Memory Sync — Master-Skill
 
@@ -40430,8 +40430,8 @@ nachvollziehbar bleibt, warum welche Skills geladen wurden.
 ## SKILL
 
 ---
-name: skillshare-sync
-description: Sync Skills über alle AI-CLI-Tools (Claude Code, Codex, Cursor, OpenCode, OpenClaw u. v. m.) mit einem Befehl — zentrale Bibliothek + Symlinks, MCP-Sync, Security-Audit, Web-Dashboard. Quelle github.com/runkids/skillshare (CLI installiert: brew).
+name: "skillshare-sync"
+description: "Sync Skills über alle AI-CLI-Tools (Claude Code, Codex, Cursor, OpenCode, OpenClaw u. v. m.) mit einem Befehl — zentrale Bibliothek + Symlinks, MCP-Sync, Security-Audit, Web-Dashboard. Quelle github.com/runkids/skillshare (CLI installiert: brew)."
 ---
 
 # Skillshare Sync

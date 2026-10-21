@@ -1,13 +1,13 @@
 ---
 app: claude
 quelle: "saschalagler/skills/agent-cluster/SKILL.md"
-stand: 2026-10-18
+stand: 2026-10-21
 tags: [spiegel, claude]
 ---
 
 ---
-name: agent-cluster
-description: 11 KI-Agenten (A1–A11) bewerten alles Mögliche — Tools, Projekte, Ideen, Geschäftsmodelle: Markt, Wettbewerb, Kunden, Trends, Pricing, Lizenz, Finanzen, Positionierung, GTM, Risiko → finale Verkaufsbewertung. Global installiert, jedes Projekt nutzbar.
+name: "agent-cluster"
+description: "11 KI-Agenten (A1–A11) bewerten alles Mögliche — Tools, Projekte, Ideen, Geschäftsmodelle: Markt, Wettbewerb, Kunden, Trends, Pricing, Lizenz, Finanzen, Positionierung, GTM, Risiko → finale Verkaufsbewertung. Global installiert, jedes Projekt nutzbar."
 ---
 
 # Agent-Cluster — 11 Agenten systemweit

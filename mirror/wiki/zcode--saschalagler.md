@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-21 18:16 UTC
+Zuletzt gespiegelt: 2026-10-21 18:30 UTC
 
 ## AGENTS
 
@@ -11467,6 +11467,31 @@ StF: [BGBl. I Nr. 120/2002](/Dokumente/BgblPdf/2002_120_1/2002_120_1.pdf) (NR: G
 [BGBl. I Nr. 93/2021](/eli/bgbl/I/2021/93) (NR: GP XXVII [RV 662](https://www.parlament.gv.at/gegenstand/XXVII/I/662) [AB 705](https://www.parlament.gv.at/gegenstand/XXVII/I/705) [S. 89.](https://www.parlament.gv.at/gegenstand/XXVII/NRSITZ/89) BR: [AB 10600](https://www.parlament.gv.at/gegenstand/BR/I-BR/10600) [S. 924.](https://www.parlament.gv.at/gegenstand/BR/BRSITZ/924))
 [BGBl. I Nr. 177/2021](/eli/bgbl/I/2021/177) (NR: GP XXVII [RV 945](https://www.parlament.gv.at/gegenstand/XXVII/I/945) [AB 990](https://www.parlament.gv.at/gegenstand/XXVII/I/990) [S. 117.](https://www.parlament.gv.at/gegenstand/XXVII/NRSITZ/117) BR: [AB 10721](https://www.parlament.gv.at/gegenstand/BR/I-BR/10721) [S. 928.](https://www.parlament.gv.at/gegenstand/BR/BRSITZ/928))
 [BGBl. I Nr. 52/2023](/eli/bgbl/I/2023/52) (NR: GP XXVII [RV 1927](https://www.parlament.gv.at/gegenstand/XXVII/I/1927) [AB 1997](https://www.parlament.gv.at/gegenstand/XXVII/I/1997) [S. 209.](https://www.parlament.gv.at/gegenstand/XXVII/NRSITZ/209) BR: [AB 11226](https://www.parlament.gv.at/gegenstand/BR/I-BR/11226) [S. 953.](https://www.parlament.gv.at/gegenstand/BR/BRSITZ/953))
+
+## MEMORY
+
+# MEMORY.md
+
+- [Audio stem separation setup](audio-stem-separation-setup.md) — demucs venv at ~/.venvs/demucs; Py3.14 needs manual numpy install; 24 s per track
+
+## audio-stem-separation-setup
+
+---
+name: audio-stem-separation-setup
+description: Working demucs stem-separation venv on this Mac; Python 3.14 pip
+  quirk (numpy not auto-installed)
+metadata:
+  node_type: memory
+  type: project
+  originSessionId: session_9fccb38cef626fd430b2fa1aa39384d2
+---
+
+Music stem separation is set up and verified working on this machine (2026-10-21):
+- Venv: `~/.venvs/demucs` (homebrew Python 3.14) with `demucs htdemucs` + numpy/soundfile.
+- Quirk: `pip install demucs` on Python 3.14 does NOT pull numpy — first run fails with `ModuleNotFoundError: No module named 'numpy'`; fix with `pip install numpy soundfile` into the venv, then rerun.
+- Speed: full 4:30 track → 4 stems (bass/drums/other/vocals, ~48 MB WAV each) in 24 s on the M-chip CPU. Output lands at `-o <dir>/<model>/<trackname>/`.
+- First proof run: `~/Desktop/htdemucs/Levela, Kasra - Acid People/` (4 stems).
+- User's quality hierarchy for audio separation: MVSEP (BS-Roformer 124 bands) / UVR5 with Roformer models (e.g. HF repo AEmotionStudio/roformer-models) > demucs; reverse sample identification via Splice "Similar Sounds" and Loopcloud AI Search.
 
 ## MEMORY
 

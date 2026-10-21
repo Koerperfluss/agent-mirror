@@ -1,13 +1,13 @@
 ---
 app: claude
 quelle: "saschalagler/skills/skillshare-sync/SKILL.md"
-stand: 2026-10-18
+stand: 2026-10-21
 tags: [spiegel, claude]
 ---
 
 ---
-name: skillshare-sync
-description: Sync Skills über alle AI-CLI-Tools (Claude Code, Codex, Cursor, OpenCode, OpenClaw u. v. m.) mit einem Befehl — zentrale Bibliothek + Symlinks, MCP-Sync, Security-Audit, Web-Dashboard. Quelle github.com/runkids/skillshare (CLI installiert: brew).
+name: "skillshare-sync"
+description: "Sync Skills über alle AI-CLI-Tools (Claude Code, Codex, Cursor, OpenCode, OpenClaw u. v. m.) mit einem Befehl — zentrale Bibliothek + Symlinks, MCP-Sync, Security-Audit, Web-Dashboard. Quelle github.com/runkids/skillshare (CLI installiert: brew)."
 ---
 
 # Skillshare Sync

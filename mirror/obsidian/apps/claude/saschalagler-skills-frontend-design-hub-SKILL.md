@@ -1,13 +1,13 @@
 ---
 app: claude
 quelle: "saschalagler/skills/frontend-design-hub/SKILL.md"
-stand: 2026-10-18
+stand: 2026-10-21
 tags: [spiegel, claude]
 ---
 
 ---
-name: frontend-design-hub
-description: Frontend-Design-Kompass — Ästhetik (frontend-design-Kern, Anti-AI-Slop-Verbote), Motion-Physik nach Apple (apple-design), Minimalismus-System (minimalist-ui), Daten-Reports (data-report). Routing: Ästhetik → Kern · App-Motion/Animationen → Motion · Editorial-Minimalismus → Minimalismus · CSV/Excel→HTML-Report → Daten-Reports.
+name: "frontend-design-hub"
+description: "Frontend-Design-Kompass — Ästhetik (frontend-design-Kern, Anti-AI-Slop-Verbote), Motion-Physik nach Apple (apple-design), Minimalismus-System (minimalist-ui), Daten-Reports (data-report). Routing: Ästhetik → Kern · App-Motion/Animationen → Motion · Editorial-Minimalismus → Minimalismus · CSV/Excel→HTML-Report → Daten-Reports."
 ---
 
 # Frontend Design Hub
