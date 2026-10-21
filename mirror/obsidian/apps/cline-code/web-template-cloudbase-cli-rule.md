@@ -1,14 +1,14 @@
 ---
 app: cline-code
 quelle: "web-template/cloudbase-cli/rule.md"
-stand: 2026-10-18
+stand: 2026-10-21
 tags: [spiegel, cline-code]
 ---
 
 ---
 name: cloudbase-cli
 description: CloudBase CLI (tcb, 云开发CLI, Tencent CloudBase命令行) resource management skill. Use when deploying cloud functions, CloudRun, storage, NoSQL/MySQL, static hosting, permissions, CORS/domains via tcb; for CI/CD and batch ops; when the user prefers CLI; or as the first-session fallback when CloudBase MCP tools are not loaded yet (after install/config, before IDE restart). Also covers tcb login and site switching (国内站/国际站 via --intl or config isIntl), environment lifecycle (env create/modify/renew/delete/apikey/login/domain), tcb config and cloudbaserc.json sync, log search (logs search, CLS), metric monitoring (monitor), data model and PostgreSQL migrations (db model, db pg migration), sandbox/agent/integration management — do not default to tcb deploy.
-version: 2.35.2
+version: 2.36.0
 license: MIT
 alwaysApply: false
 ---

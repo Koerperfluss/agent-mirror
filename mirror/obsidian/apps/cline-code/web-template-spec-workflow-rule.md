@@ -1,14 +1,14 @@
 ---
 app: cline-code
 quelle: "web-template/spec-workflow/rule.md"
-stand: 2026-10-14
+stand: 2026-10-21
 tags: [spiegel, cline-code]
 ---
 
 ---
 name: spec-workflow
 description: Use when medium-to-large changes need explicit requirements, technical design, and task planning before implementation, especially for multi-module work, unclear acceptance criteria, or architecture-heavy requests.
-version: 2.35.2
+version: 2.36.0
 license: MIT
 alwaysApply: false
 ---

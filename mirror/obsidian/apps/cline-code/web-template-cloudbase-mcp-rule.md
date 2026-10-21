@@ -1,14 +1,14 @@
 ---
 app: cline-code
 quelle: "web-template/cloudbase-mcp/rule.md"
-stand: 2026-10-14
+stand: 2026-10-21
 tags: [spiegel, cline-code]
 ---
 
 ---
 name: cloudbase-mcp
 description: CloudBase MCP reference. Use when connecting local or remote MCP, calling tools from the shell with mcporter, reading tool schemas, choosing the domestic or international endpoint, setting site, region, cloud mode, or plugin flags, or contributing a fix to the open-source MCP server, skills, or CLI.
-version: 2.35.2
+version: 2.36.0
 license: MIT
 alwaysApply: false
 ---

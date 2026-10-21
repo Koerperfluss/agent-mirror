@@ -1,14 +1,14 @@
 ---
 app: claude
 quelle: "web-template/skills/cloud-functions/SKILL.md"
-stand: 2026-10-18
+stand: 2026-10-21
 tags: [spiegel, claude]
 ---
 
 ---
 name: cloud-functions
 description: CloudBase function runtime guide for building, deploying, and debugging your own Event Functions or HTTP Functions. This skill should be used when users need application runtime code on CloudBase, not when they are merely calling CloudBase official platform APIs.
-version: 2.35.2
+version: 2.36.0
 license: MIT
 alwaysApply: false
 ---

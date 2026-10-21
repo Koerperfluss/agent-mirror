@@ -1,6 +1,6 @@
 ---
-name: agent-cluster
-description: 11 KI-Agenten (A1–A11) bewerten alles Mögliche — Tools, Projekte, Ideen, Geschäftsmodelle: Markt, Wettbewerb, Kunden, Trends, Pricing, Lizenz, Finanzen, Positionierung, GTM, Risiko → finale Verkaufsbewertung. Global installiert, jedes Projekt nutzbar.
+name: "agent-cluster"
+description: "11 KI-Agenten (A1–A11) bewerten alles Mögliche — Tools, Projekte, Ideen, Geschäftsmodelle: Markt, Wettbewerb, Kunden, Trends, Pricing, Lizenz, Finanzen, Positionierung, GTM, Risiko → finale Verkaufsbewertung. Global installiert, jedes Projekt nutzbar."
 ---
 
 # Agent-Cluster — 11 Agenten systemweit

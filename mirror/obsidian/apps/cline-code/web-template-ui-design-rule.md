@@ -1,14 +1,14 @@
 ---
 app: cline-code
 quelle: "web-template/ui-design/rule.md"
-stand: 2026-10-14
+stand: 2026-10-21
 tags: [spiegel, cline-code]
 ---
 
 ---
 name: ui-design
 description: Use when users need visual direction, interface hierarchy, layout decisions, design specifications, or prototypes before implementing a Web or mini program UI.
-version: 2.35.2
+version: 2.36.0
 license: MIT
 alwaysApply: false
 ---

@@ -1,14 +1,14 @@
 ---
 app: cline-code
 quelle: "web-template/cloud-storage-web/rule.md"
-stand: 2026-10-18
+stand: 2026-10-21
 tags: [spiegel, cline-code]
 ---
 
 ---
 name: cloud-storage-web
 description: Complete guide for CloudBase cloud storage using Web SDK (@cloudbase/js-sdk) - upload, download, temporary URLs, file management, and best practices.
-version: 2.35.2
+version: 2.36.0
 license: MIT
 alwaysApply: false
 ---

@@ -1,6 +1,6 @@
 ---
-name: grilling
-description: Grill the user relentlessly about a plan, decision, or idea. Use when the user wants to stress-test their thinking, or uses any 'grill' trigger phrases. Includes a BATCH mode (triggers 'batch grill', 'batch-grill-me': ask every frontier question at once, round by round) and a LOOP mode (triggers 'workflow loop', 'loop-me': grill workflow specs, loops and vocabulary).
+name: "grilling"
+description: "Grill the user relentlessly about a plan, decision, or idea. Use when the user wants to stress-test their thinking, or uses any 'grill' trigger phrases. Includes a BATCH mode (triggers 'batch grill', 'batch-grill-me': ask every frontier question at once, round by round) and a LOOP mode (triggers 'workflow loop', 'loop-me': grill workflow specs, loops and vocabulary)."
 ---
 
 Interview me relentlessly about every aspect of this until we reach a shared understanding. Walk down each branch of the decision tree, resolving dependencies between decisions one-by-one. For each question, provide your recommended answer.

@@ -1,14 +1,14 @@
 ---
 app: claude
 quelle: "web-template/skills/auth-nodejs-cloudbase/SKILL.md"
-stand: 2026-10-14
+stand: 2026-10-21
 tags: [spiegel, claude]
 ---
 
 ---
 name: auth-nodejs-cloudbase
 description: CloudBase Node SDK auth guide for server-side identity, user lookup, and custom login tickets. This skill should be used when Node.js code must read caller identity, inspect end users, or bridge an existing user system into CloudBase; not when configuring providers or building client login UI.
-version: 2.35.2
+version: 2.36.0
 license: MIT
 alwaysApply: false
 ---

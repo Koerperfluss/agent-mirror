@@ -1,6 +1,6 @@
 ---
-name: loki-memory-sync
-description: Zentraler Memory-Layer: erfasst alle Skills, Tools, Agents, MCP-Server, Plugins, Workflows aus allen Harnesses (ZCode, Cline, Antigravity, Hermes, Gemini, Claude) in eine einheitliche, durchsuchbare Memory-Struktur. Läuft automatisch via skillshare sync + Hooks.
+name: "loki-memory-sync"
+description: "Zentraler Memory-Layer: erfasst alle Skills, Tools, Agents, MCP-Server, Plugins, Workflows aus allen Harnesses (ZCode, Cline, Antigravity, Hermes, Gemini, Claude) in eine einheitliche, durchsuchbare Memory-Struktur. Läuft automatisch via skillshare sync + Hooks."
 ---
 # LOKI Memory Sync — Master-Skill
 

@@ -1,14 +1,14 @@
 ---
 app: claude
 quelle: "web-template/skills/cloudbase-code-review/SKILL.md"
-stand: 2026-10-14
+stand: 2026-10-21
 tags: [spiegel, claude]
 ---
 
 ---
 name: cloudbase-code-review
 description: "Code review and validation for CloudBase projects. After writing code for Web / miniprogram / CloudRun / cloud-function projects, call this skill to check for known pitfalls — auth guard misuse, missing database tables, RLS misconfiguration, storage domain setup, and SDK API misuse. Supports automated lint scripts (regex-based) + LLM semantic review."
-version: 2.35.2
+version: 2.36.0
 license: MIT
 alwaysApply: false
 ---

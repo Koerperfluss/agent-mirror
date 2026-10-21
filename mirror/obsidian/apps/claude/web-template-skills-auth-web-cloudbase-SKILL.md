@@ -1,14 +1,14 @@
 ---
 app: claude
 quelle: "web-template/skills/auth-web-cloudbase/SKILL.md"
-stand: 2026-10-14
+stand: 2026-10-21
 tags: [spiegel, claude]
 ---
 
 ---
 name: auth-web-cloudbase
 description: CloudBase Web Authentication Quick Guide for frontend integration after auth-tool has already been checked. Provides concise and practical Web authentication solutions with multiple login methods and complete user management.
-version: 2.35.2
+version: 2.36.0
 license: MIT
 alwaysApply: false
 ---

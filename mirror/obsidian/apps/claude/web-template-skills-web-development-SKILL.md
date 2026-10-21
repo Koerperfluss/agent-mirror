@@ -1,14 +1,14 @@
 ---
 app: claude
 quelle: "web-template/skills/web-development/SKILL.md"
-stand: 2026-10-18
+stand: 2026-10-21
 tags: [spiegel, claude]
 ---
 
 ---
 name: web-development
 description: Use when users need to implement, integrate, debug, build, deploy, or validate a Web frontend after the product direction is already clear, especially for React, Vue, Vite, browser flows, or CloudBase Web integration.
-version: 2.35.2
+version: 2.36.0
 license: MIT
 alwaysApply: false
 ---
