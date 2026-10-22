@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-22 00:05 UTC
+Zuletzt gespiegelt: 2026-10-22 00:20 UTC
 
 ## AGENTS
 
@@ -11520,6 +11520,8 @@ Neues Projekt (21.10.2026, Nutzer-Wunsch „neues Projekt"): **Acid-People-Rever
 - Mimosa-Hook: blockt `open(<Variable>, "w")` in Python-Dateien („path traversal" Fehlalarm) und .py-Pfade in Bash — Dateien per Write-Tool mit Literalpfaden anlegen, Auswerte-Skripte drucken JSON nach stdout.
 - Stand 21.10. spät: Reverse-Engineering-Kernlieferung komplett — STRUKTUR.md (Bauplan: 175,2 BPM effektiv / 87,6 Halbzeit-Feel, D#-Moll, 13 8-Takt-Blöcke, 7 Sections mit Breakdown 131,1–154,3 s, Bass-RMS-Steigerung 0,25→0,43 über die Drops = Filter-Sweep), timeline.csv (RMS je Stem pro Block), Rassel isoliert (RASSEL_isoliert_ab_56s.wav, Periode 2,76 s = 2 Takte, liegt im drums-Stem). Nutzer-Kommunikation: keine Erklärungen, ein Ergebnis-Pfad + ein Beweis pro Antwort; bei Frustration präzise nach dem einen fehlenden Stück fragen statt breit zu antworten.
 - Offener nächster Schritt (21.10./22.10., wartet auf Nutzer-„weiter" oder Fehlermeldung): Acid-Line → MIDI (Audio-zu-MIDI) + alle Elemente als DAW-fertige One-Shots exportieren. Nutzer hat den Ohr-Check der Lieferungen noch nicht gemacht.
+- Tool-Frage 22.10. beantwortet: 2026 haben fast alle Programme eingebaute Stem-Separation — DJ: VirtualDJ (Echtzeit, lokal), Serato „Stems", Traktor Pro 4, djay Pro (NeuralMix, stärkste DJ-Umsetzung); DAW: Logic Pro 11 „Stem Splitter" (laut EditorsKeys-Test 6/2026 beste Qualität), Ableton Live 12.3 (kreativste Umsetzung), Studio One 7, FL Studio 2025, Cubase Pro 15. Wichtige Grenze gegenübergestellt: alle trennen nur Standard-Kategorien (Vocals/Drums/Bass/Other), kein Tool isoliert EINEN individuellen Sound (wie die 56-s-Rassel) — dafür nur text-/beispiel-geführte Modelle (AudioSep, SAM Audio von Meta). Falls der Nutzer Logic/Live etc. besitzt, können dessen Stems die demucs-Stems im Projekt ersetzen (Qualitätsupgrade, Struktur-Map bleibt gleich).
+- 22.10. erledigt — 6-Stem-Trennung wie Logic Stem Splitter: `demucs -n htdemucs_6s` → `htdemucs_6s/…/{vocals,drums,bass,guitar,piano,other}.wav` (~40 s CPU). Gitarre/Piano im Track praktisch leer (RMS 0,0002/0,0005 — Acid-DnB ohne Guitar/Piano). 56-s-Ton eindeutig zugeordnet: **drums-Stem** (Δ 2,5–5 kHz bei 56 s: drums +1,98 dB, other −8,83 dB — das 4-Stem-Modell hatte die Rassel in „other", das 6-Stem-Modell schiebt sie korrekt in drums). Extrakt: `kandidaten/ton56_aus_drums-stem.wav` (56–58,76 s, HPSS-perkussiv, Bandpass 300–8000 Hz, 2,76 s = 2 Takte; Skript `ton56_6stem.py`). Offen: Nutzer-Ohr-Check dieses Extrakts; falls er trifft, Rassel über die ganze Track-Länge aus dem 6-Stem-drums ziehen (gleiche Methode).
 
 ## audio-stem-separation-setup
 
