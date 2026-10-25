@@ -3,9 +3,9 @@
 Stand: 2026-10-25
 
 ## Apps
-- [[apps/antigravity]] (390 Notizen)
+- [[apps/antigravity]] (392 Notizen)
 - [[apps/cline-code]] (704 Notizen)
 - [[apps/claude]] (941 Notizen)
-- [[apps/zcode]] (2076 Notizen)
+- [[apps/zcode]] (2078 Notizen)
 
 ## Tage

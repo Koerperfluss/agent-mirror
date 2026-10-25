@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-25 23:00 UTC
+Zuletzt gespiegelt: 2026-10-25 23:15 UTC
 
 ## AGENTS
 
@@ -11098,6 +11098,252 @@ print(processor.decode(outputs[0][inputs["input_ids"].shape[-1]:]))
 - [ vLLM ](/Qwen/Qwen3.5-9B?local-app=vllm) How to use Qwen/Qwen3.5-9B with vLLM:
 
 ##### Install from pip and serve model
+
+## call_97a5a54266ff46a28070d7e6-tool-result-e7637b6e-979a-4e81-85aa-810099b97ae8
+
+Performance of llama.cpp on NVIDIA DGX Spark · ggml-org llama.cpp · Discussion #16578 · GitHub
+
+[Skip to content](#start-of-content)
+
+## Navigation Menu
+
+[](/)[Sign in](/login?return_to=https%3A%2F%2Fgithub.com%2Fggml-org%2Fllama.cpp%2Fdiscussions%2F16578)Appearance settings
+
+- PlatformAI CODE CREATION[GitHub CopilotWrite better code with AI](https://github.com/features/copilot)
+- [GitHub Copilot appDirect agents from issue to merge](https://github.com/features/ai/github-app)
+- [MCP RegistryIntegrate external tools](https://github.com/mcp)
+
+- DEVELOPER WORKFLOWS[ActionsAutomate any workflow](https://github.com/features/actions)
+- [CodespacesInstant dev environments](https://github.com/features/codespaces)
+- [IssuesPlan and track work](https://github.com/features/issues)
+- [Code ReviewManage code changes](https://github.com/features/code-review)
+- [Code QualityEnforce quality at merge](https://github.com/features/code-quality)
+
+- APPLICATION SECURITY[GitHub Advanced SecurityFind and fix vulnerabilities](https://github.com/security/advanced-security)
+- [Code securitySecure your code as you build](https://github.com/security/advanced-security/code-security)
+- [Secret protectionStop leaks before they start](https://github.com/security/advanced-security/secret-protection)
+
+- EXPLORE[Why GitHub](https://github.com/why-github)
+- [Documentation](https://docs.github.com)
+- [Blog](https://github.blog)
+- [Changelog](https://github.blog/changelog)
+- [Marketplace](https://github.com/marketplace)
+
+[View all features](https://github.com/features)
+
+- SolutionsBY COMPANY SIZE[Enterprises](https://github.com/enterprise)
+- [Small and medium teams](https://github.com/team)
+- [Startups](https://github.com/enterprise/startups)
+- [Nonprofits](https://github.com/solutions/industry/nonprofits)
+
+- BY USE CASE[App Modernization](https://github.com/solutions/use-case/app-modernization)
+- [DevSecOps](https://github.com/solutions/use-case/devsecops)
+- [DevOps](https://github.com/solutions/use-case/devops)
+- [CI/CD](https://github.com/solutions/use-case/ci-cd)
+- [View all use cases](https://github.com/solutions/use-case)
+
+- BY INDUSTRY[Healthcare](https://github.com/solutions/industry/healthcare)
+- [Financial services](https://github.com/solutions/industry/financial-services)
+- [Manufacturing](https://github.com/solutions/industry/manufacturing)
+- [Government](https://github.com/solutions/industry/government)
+- [See all industries](https://github.com/solutions/industry)
+
+[View all solutions](https://github.com/solutions)
+
+- ResourcesEXPLORE BY TOPIC[AI](https://github.com/resources/articles?topic=ai)
+- [Software Development](https://github.com/resources/articles?topic=software-development)
+- [DevOps](https://github.com/resources/articles?topic=devops)
+- [Security](https://github.com/resources/articles?topic=security)
+- [View all topics](https://github.com/resources/articles)
+
+- EXPLORE BY TYPE[Customer stories](https://github.com/customer-stories)
+- [Events & webinars](https://github.com/resources/events)
+- [Ebooks & reports](https://github.com/resources/whitepapers)
+- [Business insights](https://github.com/solutions/executive-insights)
+- [GitHub Skills](https://skills.github.com)
+
+- SUPPORT & SERVICES[Documentation](https://docs.github.com)
+- [Customer support](https://support.github.com)
+- [Community forum](https://github.com/orgs/community/discussions)
+- [Trust center](https://github.com/trust-center)
+- [Partners](https://github.com/partners)
+
+[View all resources](https://github.com/resources)
+
+- Open SourceCOMMUNITY[GitHub SponsorsFund open source developers](https://github.com/open-source/sponsors)
+
+- PROGRAMS[Security Lab](https://securitylab.github.com)
+- [Maintainer Community](https://maintainers.github.com)
+- [GitHub Stars](https://stars.github.com)
+- [Archive Program](https://archiveprogram.github.com)
+
+- REPOSITORIES[Topics](https://github.com/topics)
+- [Trending](https://github.com/trending)
+- [Collections](https://github.com/collections)
+
+- EnterpriseENTERPRISE SOLUTIONS[Enterprise platformAI-powered developer platform](https://github.com/enterprise)
+
+- AVAILABLE ADD-ONS[GitHub Advanced SecurityEnterprise-grade security features](https://github.com/security/advanced-security)
+- [Copilot for BusinessEnterprise-grade AI features](https://github.com/features/copilot/copilot-business)
+- [Premium SupportEnterprise-grade 24/7 support](https://github.com/enterprise/premium-support)
+
+- [Pricing](https://github.com/pricing)
+Search/
+
+[Sign in](/login?return_to=https%3A%2F%2Fgithub.com%2Fggml-org%2Fllama.cpp%2Fdiscussions%2F16578)
+[Sign up](/signup?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F%3Cuser-name%3E%2F%3Crepo-name%3E%2Fvoltron%2Fdiscussions_fragments%2Fdiscussion_layout&source=header-repo&source_repo=ggml-org%2Fllama.cpp)Appearance settings
+
+You signed in with another tab or window. Reload to refresh your session.
+You signed out in another tab or window. Reload to refresh your session.
+You switched accounts on another tab or window. Reload to refresh your session.
+
+Dismiss alert
+
+{{ message }}
+
+- [ggml-org](/ggml-org)
+- [llama.cpp](/ggml-org/llama.cpp)
+
+## Repository navigation
+
+-
+- [Code](/ggml-org/llama.cpp)
+- [Issues793 (793)](/ggml-org/llama.cpp/issues)
+- [Pull requests1.8k (1.8k)](/ggml-org/llama.cpp/pulls)
+- [Discussions](/ggml-org/llama.cpp/discussions)
+- [Actions](/ggml-org/llama.cpp/actions)
+- [Projects](/ggml-org/llama.cpp/projects)
+- [Wiki](/ggml-org/llama.cpp/wiki)
+- [Security and quality13 (13)](/ggml-org/llama.cpp/security)
+- [Insights](/ggml-org/llama.cpp/pulse)
+
+More items
+
+#
+
+
+## call_c4ad0367f88242b1a8984a8c-tool-result-8e53626f-f861-4ca2-ac47-b16596aa42e8
+
+Qwen/Qwen3.8-Flash-Next · Hugging Face
+
+[ Hugging Face](/)
+
+- [ Models ](/models)
+- [ Datasets ](/datasets)
+- [ Spaces ](/spaces)
+- [ Buckets new](/storage)
+- [ Docs ](/docs)
+- [ Enterprise ](/enterprise)
+- [Pricing](/pricing)
+- Website
+[ Tasks](/tasks)
+- [ HuggingChat](/chat)
+- [ Collections](/collections)
+- [ Languages](/languages)
+- [ Organizations](/organizations)
+
+- Community
+[ Blog](/blog)
+- [ Posts](/posts)
+- [ Daily Papers](/papers)
+- [ Hardware](/hardware)
+- [ Learn](/learn)
+- [ Discord](/join/discord)
+- [ Forum](https://discuss.huggingface.co/)
+- [ GitHub](https://github.com/huggingface)
+
+- Solutions
+[ Team & Enterprise](/enterprise)
+- [ Hugging Face PRO](/pro)
+- [ Enterprise Support](/support)
+- [ Inference Providers](/inference/models)
+- [ Inference Endpoints](/inference-endpoints)
+- [ Storage Buckets](/storage)
+
+-
+- [Log In](/login)
+- [Sign Up](/join)
+
+<|image_pad|><|vision_end|>' }}\n {%- elif 'video' in item or item.type == 'video' %}\n {%- if is_system_content %}\n {{- raise_exception('System message cannot contain videos.') }}\n {%- endif %}\n {%- if do_vision_count %}\n {%- set video_count.value = video_count.value + 1 %}\n {%- endif %}\n {%- if add_vision_id %}\n {{- 'Video ' ~ video_count.value ~ ': ' }}\n {%- endif %}\n {{- '<|vision_start|><|video_pad|><|vision_end|>' }}\n {%- elif 'text' in item %}\n {{- item.text }}\n {%- else %}\n {{- raise_exception('Unexpected item type in content.') }}\n {%- endif %}\n {%- endfor %}\n {%- elif content is none or content is undefined %}\n {{- '' }}\n {%- else %}\n {{- raise_exception('Unexpected content type.') }}\n {%- endif %}\n{%- endmacro %}\n{%- if not messages %}\n {{- raise_exception('No messages provided.') }}\n{%- endif %}\n{%- set reasoning_instructions = '' %}\n{%- if enable_thinking is undefined or enable_thinking is true %}\n {%- set resolved_reasoning_effort = reasoning_effort|default('xhigh') %}\n {%- if resolved_reasoning_effort not in ('xhigh', 'medium', 'low') %}\n {{- raise_exception('Unexpected reasoning effort ' ~ reasoning_effort ~ '. Supported types are xhigh (default), medium, and low.') }}\n {%- endif %}\n {%- if resolved_reasoning_effort == 'xhigh' %}\n {%- set reasoning_instructions = 'Reasoning effort is set to xhigh. Please think carefully through the task, validate key assumptions, consider plausible alternatives, and prioritize correctness, consistency, and clarity in the final answer.' %}\n {%- elif resolved_reasoning_effort == 'low' %}\n {%- set reasoning_instructions = 'Reasoning effort is set to low. Keep your thinking brief and focused, moving directly to the conclusion without unnecessary elaboration.' %}\n {%- endif %}\n{%- endif %}\n{%- if tools and tools is iterable and tools is not mapping %}\n {{- '<|im_start|>system\\n' }}\n {%- if reasoning_instructions %}\n {{- reasoning_instructions + '\\n\\n' }}\n {%- endif %}\n {{- \"# Tools\\n\\nYou have access to the following functions:\\n\\n<tools>\" }}\n {%- for tool in tools %}\n {{- \"\\n\" }}\n {{- tool | tojson }}\n {%- endfor %}\n {{- \"\\n</tools>\" }}\n {{- '\\n\\nIf you choose to call a function ONLY reply in the following format with NO suffix:\\n\\n<tool_call>\\n<function=example_function_name>\\n<parameter=example_parameter_1>\\nvalue_1\\n</parameter>\\n<parameter=example_parameter_2>\\nThis is the value for the second parameter\\nthat can span\\nmultiple lines\\n</parameter>\\n</function>\\n</tool_call>\\n\\n<IMPORTANT>\\nReminder:\\n- Function calls MUST follow the specified format: an inner <function=...></function> block must be nested within <tool_call></tool_call> XML tags\\n- Required parameters MUST be specified\\n- You may provide optional reasoning for your function call in natural language BEFORE the function call, but NOT after\\n- If there is no function call available, answer the question like normal with your current knowledge and do not tell the user about function calls\\n</IMPORTANT>' }}\n {%- if messages[0].role == 'system' %}\n {%- set content = render_content(messages[0].content, false, true)|trim %}\n {%- if content %}\n {{- '\\n\\n' + content }}\n {%- endif %}\n {%- endif %}\n {{- '<|im_end|>\\n' }}\n{%- else %}\n {%- if messages[0].role == 'system' %}\n {%- set content = render_content(messages[0].content, false, true)|trim %}\n {%- if content %}\n {{- '<|im_start|>system\\n' + (reasoning_instructions + '\\n\\n' if reasoning_instructions else '') + content + '<|im_end|>\\n' }}\n {%- elif reasoning_instructions %}\n {{- '<|im_start|>system\\n' + reasoning_instructions + '<|im_end|>\\n' }}\n {%- endif %}\n {%- elif reasoning_instructions %}\n {{- '<|im_start|>system\\n' + reasoning_instructions + '<|im_end|>\\n' }}\n {%- endif %}\n{%- endif %}\n{%- set ns = namespace(multi_step_tool=true, last_query_index=messages|length - 1) %}\n{%- for message in messages[::-1] %}\n {%- set index = (messages|length - 1) - loop.index0 %}\n {%- if ns.multi_step_tool and message.role == \"user\" %}\n {%- set content = render_content(message.content, false)|trim %}\n {%- if not(content.startswith('<tool_response>') and content.endswith('</tool_response>')) %}\n {%- set ns.multi_step_tool = false %}\n {%- set ns.last_query_index = index %}\n {%- endif %}\n {%- endif %}\n{%- endfor %}\n{%- if ns.multi_step_tool %}\n {{- raise_exception('No user query found in messages.') }}\n{%- endif %}\n{%- for message in messages %}\n {%- set content = render_content(message.content, true)|trim %}\n {%- if message.role == \"system\" %}\n {%- if not loop.first %}\n {{- raise_exception('System message must be at the beginning.') }}\n {%- endif %}\n {%- elif message.role == \"user\" %}\n {{- '<|im_start|>' + message.role + '\\n' + content + '<|im_end|>' + '\\n' }}\n {%- elif message.role == \"assistant\" %}\n {%- set reasoning_content = '' %}\n {%- if message.reasoning_content is string %}\n {%- set reasoning_content = message.reasoning_content %}\n {%- endif %}\n {%- set reasoning_content = reasoning_content|trim %}\n {%- if preserve_thinking is undefined or preserve_thinking is true or loop.index0 > ns.last_query_index %}\n {{- '<|im_start|>' + message.role + '\\n<think>\\n' + reasoning_content + '\\n</think>\\n\\n' + content }}\n {%- else %}\n {{- '<|im_start|>' + message.role + '\\n' + content }}\n {%- endif %}\n {%- if message.tool_calls and message.tool_calls is iterable and message.tool_calls is not mapping %}\n {%- for tool_call in message.tool_calls %}\n {%- if tool_call.function is defined %}\n {%- set tool_call = tool_call.function %}\n {%- endif %}\n {%- if loop.first %}\n {%- if content|trim %}\n {{- '\\n\\n<tool_call>\\n<function=' + tool_call.name + '>\\n' }}\n {%- else %}\n {{- '<tool_call>\\n<function=' + tool_call.name + '>\\n' }}\n {%- endif %}\n {%- else %}\n {{- '\\n<tool_call>\\n<function=' + tool_call.name + '>\\n' }}\n {%- endif %}\n {%- if tool_call.arguments is defined and tool_call.arguments != '' %}\n {%- for args_name, args_value in tool_call.arguments|items %}\n {{- '<parameter=' + args_name + '>\\n' }}\n {%- set args_value = args_value | string if args_value is string else args_value | tojson | safe %}\n {{- args_value }}\n {{- '\\n</parameter>\\n' }}\n {%- endfor %}\n {%- endif %}\n {{- '</function>\\n</tool_call>' }}\n {%- endfor %}\n {%- endif %}\n {{- '<|im_end|>\\n' }}\n {%- elif message.role == \"tool\" %}\n {%- if loop.previtem and loop.previtem.role != \"tool\" %}\n {{- '<|im_start|>user' }}\n {%- endif %}\n {{- '\\n<tool_response>\\n' }}\n {{- content }}\n {{- '\\n</tool_response>' }}\n {%- if not loop.last and loop.nextitem.role != \"tool\" %}\n {{- '<|im_end|>\\n' }}\n {%- elif loop.last %}\n {{- '<|im_end|>\\n' }}\n {%- endif %}\n {%- else %}\n {{- raise_exception('Unexpected message role.') }}\n {%- endif %}\n{%- endfor %}\n{%- if add_generation_prompt %}\n {{- '<|im_start|>assistant\\n' }}\n {%- if enable_thinking is defined and enable_thinking is false %}\n {{- '<think>\\n\\n</think>\\n\\n' }}\n {%- else %}\n {{- '<think>\\n' }}\n {%- endif %}\n{%- endif %}","eos_token":"<|im_end|>","pad_token":"<|endoftext|>","unk_token":null},"chat_template_jinja":"{%- set image_count = namespace(value=0) %}\n{%- set video_count = namespace(value=0) %}\n{%- macro render_content(content, do_vision_count, is_system_content=false) %}\n {%- if content is string %}\n {{- content }}\n {%- elif content is iterable and content is not mapping %}\n {%- for item in content %}\n {%- if 'image' in item or 'image_url' in item or item.type == 'image' %}\n {%- if is_system_content %}\n {{- raise_exception('System message cannot contain images.') }}\n {%- endif %}\n {%- if do_vision_count %}\n {%- set image_count.value = image_count.value + 1 %}\n {%- endif %}\n {%- if add_vision_id %}\n {{- 'Picture ' ~ image_count.value ~ ': ' }}\n {%- endif %}\n {{- '<|vision_start|><|image_pad|><|vision_end|>' }}\n {%- elif 'video' in item or item.type == 'video' %}\n {%- if is_system_content %}\n {{- raise_exception('System message cannot contain videos.') }}\n {%- endif %}\n {%- if do_vision_count %}\n {%- set video_count.value = video_count.value + 1 %}\n {%- endif %}\n {%- if add_vision_id %}\n {{- 'Video ' ~ video_count.value ~ ': ' }}\n {%- endif %}\n {{- '<|vision_start|><|video_pad|><|vision_end|>' }}\n {%- elif 'text' in item %}\n {{- item.text }}\n {%- else %}\n {{- raise_exception('Unexpected item type in content.') }}\n {%- endif %}\n {%- endfor %}\n {%- elif content is none or content is undefined %}\n {{- '' }}\n {%- else %}\n {{- raise_exception('Unexpected content type.') }}\n {%- endif %}\n{%- endmacro %}\n{%- if not messages %}\n {{- raise_exception('No messages provided.') }}\n{%- endif %}\n{%- set reasoning_instructions = '' %}\n{%- if enable_thinking is undefined or enable_thinking is true %}\n {%- set resolved_reasoning_effort = reasoning_effort|default('xhigh') %}\n {%- if resolved_reasoning_effort not in ('xhigh', 'medium', 'low') %}\n {{- raise_exception('Unexpected reasoning effort ' ~ reasoning_effort ~ '. Supported types are xhigh (default), medium, and low.') }}\n {%- endif %}\n {%- if resolved_reasoning_effort == 'xhigh' %}\n {%- set reasoning_instructions = 'Reasoning effort is set to xhigh. Please think carefully through the task, validate key assumptions, consider plausible alternatives, and prioritize correctness, consistency, and clarity in the final answer.' %}\n {%- elif resolved_reasoning_effort == 'low' %}\n {%- set reasoning_instructions = 'Reasoning effort is set to low. Keep your thinking brief and focused, moving directly to the conclusion without unnecessary elaboration.' %}\n {%- endif %}\n{%- endif %}\n{%- if tools and tools is iterable and tools is not mapping %}\n {{- '<|im_start|>system\\n' }}\n {%- if reasoning_instructions %}\n {{- reasoning_instructions + '\\n\\n' }}\n {%- endif %}\n {{- \"# Tools\\n\\nYou have access to the following functions:\\n\\n<tools>\" }}\n {%- for tool in tools %}\n {{- \"\\n\" }}\n {{- tool | tojson }}\n {%- endfor %}\n {{- \"\\n</tools>\" }}\n {{- '\\n\\nIf you choose to call a function ONLY reply in the following format with NO suffix:\\n\\n<tool_call>\\n<function=example_function_name>\\n<parameter=example_parameter_1>\\nvalue_1\\n</parameter>\\n<parameter=example_parameter_2>\\nThis is the value for the second parameter\\nthat can span\\nmultiple lines\\n</parameter>\\n</function>\\n</tool_call>\\n\\n<IMPORTANT>\\nReminder:\\n- Function calls MUST follow the specified format: an inner <function=...></function> block must be nested within <tool_call></tool_call> XML tags\\n- Required parameters MUST be specified\\n- You may provide optional reasoning for your function call in natural language BEFORE the function call, but NOT after\\n- If there is no function call available, answer the question like normal with your current knowledge and do not tell the user about function calls\\n</IMPORTANT>' }}\n {%- if messages[0].role == 'system' %}\n {%- set content = render_content(messages[0].content, false, true)|trim %}\n {%- if content %}\n {{- '\\n\\n' + content }}\n {%- endif %}\n {%- endif %}\n {{- '<|im_end|>\\n' }}\n{%- else %}\n {%- if messages[0].role == 'system' %}\n {%- set content = render_content(messages[0].content, false, true)|trim %}\n {%- if content %}\n {{- '<|im_start|>system\\n' + (reasoning_instructions + '\\n\\n' if reasoning_instructions else '') + content + '<|im_end|>\\n' }}\n {%- elif reasoning_instructions %}\n {{- '<|im_start|>system\\n' + reasoning_instructions + '<|im_end|>\\n' }}\n {%- endif %}\n {%- elif reasoning_instructions %}\n {{- '<|im_start|>system\\n' + reasoning_instructions + '<|im_end|>\\n' }}\n {%- endif %}\n{%- endif %}\n{%- set ns = namespace(multi_step_tool=true, last_query_index=messages|length - 1) %}\n{%- for message in messages[::-1] %}\n {%- set index = (messages|length - 1) - loop.index0 %}\n {%- if ns.multi_step_tool and message.role == \"user\" %}\n {%- set content = render_content(message.content, false)|trim %}\n {%- if not(content.startswith('<tool_response>') and content.endswith('</tool_response>')) %}\n {%- set ns.multi_step_tool = false %}\n {%- set ns.last_query_index = index %}\n {%- endif %}\n {%- endif %}\n{%- endfor %}\n{%- if ns.multi_step_tool %}\n {{- raise_exception('No user query found in messages.') }}\n{%- endif %}\n{%- for message in messages %}\n {%- set content = render_content(message.content, true)|trim %}\n {%- if message.role == \"system\" %}\n {%- if not loop.first %}\n {{- raise_exception('System message must be at the beginning.') }}\n {%- endif %}\n {%- elif message.role == \"user\" %}\n {{- '<|im_start|>' + message.role + '\\n' + content + '<|im_end|>' + '\\n' }}\n {%- elif message.role == \"assistant\" %}\n {%- set reasoning_content = '' %}\n {%- if message.reasoning_content is string %}\n {%- set reasoning_content = message.reasoning_content %}\n {%- endif %}\n {%- set reasoning_content = reasoning_content|trim %}\n {%- if preserve_thinking is undefined or preserve_thinking is true or loop.index0 > ns.last_query_index %}\n {{- '<|im_start|>' + message.role + '\\n<think>\\n' + reasoning_content + '\\n</think>\\n\\n' + content }}\n {%- else %}\n {{- '<|im_start|>' + message.role + '\\n' + content }}\n {%- endif %}\n {%- if message.tool_calls and message.tool_calls is iterable and message.tool_calls is not mapping %}\n {%- for tool_call in message.tool_calls %}\n {%- if tool_call.function is defined %}\n {%- set tool_call = tool_call.function %}\n {%- endif %}\n {%- if loop.first %}\n {%- if content|trim %}\n {{- '\\n\\n<tool_call>\\n<function=' + tool_call.name + '>\\n' }}\n {%- else %}\n {{- '<tool_call>\\n<function=' + tool_call.name + '>\\n' }}\n {%- endif %}\n {%- else %}\n {{- '\\n<tool_call>\\n<function=' + tool_call.name + '>\\n' }}\n {%- endif %}\n {%- if tool_call.arguments is defined and tool_call.arguments != '' %}\n {%- for args_name, args_value in tool_call.arguments|items %}\n {{- '<parameter=' + args_name + '>\\n' }}\n {%- set args_value = args_value | string if args_value is string else args_value | tojson | safe %}\n {{- args_value }}\n {{- '\\n</parameter>\\n' }}\n {%- endfor %}\n {%- endif %}\n {{- '</function>\\n</tool_call>' }}\n {%- endfor %}\n {%- endif %}\n {{- '<|im_end|>\\n' }}\n {%- elif message.role == \"tool\" %}\n {%- if loop.previtem and loop.previtem.role != \"tool\" %}\n {{- '<|im_start|>user' }}\n {%- endif %}\n {{- '\\n<tool_response>\\n' }}\n {{- content }}\n {{- '\\n</tool_response>' }}\n {%- if not loop.last and loop.nextitem.role != \"tool\" %}\n {{- '<|im_end|>\\n' }}\n {%- elif loop.last %}\n {{- '<|im_end|>\\n' }}\n {%- endif %}\n {%- else %}\n {{- raise_exception('Unexpected message role.') }}\n {%- endif %}\n{%- endfor %}\n{%- if add_generation_prompt %}\n {{- '<|im_start|>assistant\\n' }}\n {%- if enable_thinking is defined and enable_thinking is false %}\n {{- '<think>\\n\\n</think>\\n\\n' }}\n {%- else %}\n {{- '<think>\\n' }}\n {%- endif %}\n{%- endif %}"},"createdAt":"2026-08-24T08:24:59.000Z","discussionsDisabled":false,"discussionsSorting":"recently-created","downloads":3093369,"downloadsAllTime":4182498,"id":"Qwen/Qwen3.8-Flash-Next","isLikedByUser":false,"availableInferenceProviders":[{"provider":"featherless-ai","modelStatus":"live","providerStatus":"live","providerId":"Qwen/Qwen3.8-Flash-Next","task":"conversational","adapterWeightsPath":"model-00001-of-00131.safetensors","isCheapestPricingOutput":false,"isFastestThroughput":false,"isModelAuthor":false}],"showHuggingChatEntry":false,"inference":"warm","lastModified":"2026-08-27T05:03:36.000Z","likes":6479,"pipeline_tag":"image-text-to-text","library_name":"transformers","librariesOther":[],"trackDownloads":true,"model-index":null,"evalResults":[{"dataset":{"id":"Idavidrein/gpqa","isBenchmark":true,"task_id":"diamond"},"value":91.7,"source":{"url":"https://huggingface.co/Qwen/Qwen3.8-Flash-Next","name":"Qwen3.8-Flash-Next model card","isExternal":false},"filename":".eval_results/Qwen3.8-Flash-Next.yaml","verified":false,"pullRequest":12,"rank":7,"label":"Diamond"},{"dataset":{"id":"ScaleAI/SWE-bench_Pro","isBenchmark":true,"task_id":"SWE_Bench_Pro"},"value":62.5,"source":{"url":"https://huggingface.co/Qwen/Qwen3.8-Flash-Next","name":"Qwen3.8-Flash-Next model card","isExternal":false},"filename":".eval_results/Qwen3.8-Flash-Next.yaml","verified":false,"pullRequest":12,"rank":6,"sizeRank":{"rank":2,"value":500000000000,"id":"500B","label":"< 500B"},"label":"SWE Bench Pro","notes":"harness: Claude Code. 256K context; evaluated on the card's own refined version of the benchmark (problematic tasks corrected)."},{"dataset":{"id":"agents-last-exam/agents-last-exam","isBenchmark":true,"task_id":"overall-pass-rate"},"value":24.3,"source":{"url":"https://huggingface.co/Qwen/Qwen3.8-Flash-Next","name":"Qwen3.8-Flash-Next model card","isExternal":false},"filename":".eval_results/Qwen3.8-Flash-Next.yaml","verified":false,"pullRequest":12,"rank":6,"sizeRank":{"rank":3,"value":500000000000,"id":"500B","label":"< 500B"},"label":"Overall Pass Rate","notes":"Harness not specified."},{"dataset":{"id":"agents-last-exam/agents-last-exam","isBenchmark":true,"task_id":"overall-score"},"value":51.2,"source":{"url":"https://huggingface.co/Qwen/Qwen3.8-Flash-Next","name":"Qwen3.8-Flash-Next model card","isExternal":false},"filename":".eval_results/Qwen3.8-Flash-Next.yaml","verified":false,"pullRequest":12,"rank":2,"sizeRank":{"rank":1,"value":500000000000,"id":"500B","label":"< 500B"},"label":"Overall Score","notes":"Harness not specified."},{"dataset":{"id":"datacurve/deep-swe","isBenchmark":true,"task_id":"deep_swe"},"value":58.7,"source":{"url":"https://huggingface.co/Qwen/Qwen3.8-Flash-Next","name":"Qwen3.8-Flash-Next model card","isExternal":false},"filename":".eval_results/Qwen3.8-Flash-Next.yaml","verified":false,"pullRequest":12,"rank":15,"label":"Deep Swe","notes":"harness: Claude Code / mini-SWE-agent (best of two). Reported as 'DeepSWE 1.1' on the card; 256K context."},{"dataset":{"id":"SWE-bench/SWE-bench_Multilingual","isBenchmark":true,"task_id":"swe_bench_multilingual_%_resolved"},"value":81,"source":{"url":"https://huggingface.co/Qwen/Qwen3.8-Flash-Next","name":"Qwen3.8-Flash-Next model card","isExternal":false},"filename":".eval_results/Qwen3.8-Flash-Next.yaml","verified":false,"pullRequest":12,"rank":3,"sizeRank":{"rank":1,"value":500000000000,"id":"500B","label":"< 500B"},"label":"Swe Bench Multilingual Resolved","notes":"harness: mini-SWE-agent. 256K context."},{"dataset":{"id":"llamaindex/ExtractBench","isBenchmark":true,"task_id":"mean"},"value":89.88,"source":{"url":"https://huggingface.co/datasets/llamaindex/ExtractBench","name":"ExtractBench","isExternal":true,"author":{"_id":"6980fe7cc9e5d7013d527b3a","avatarUrl":"https://cdn-avatars.huggingface.co/v1/production/uploads/6980fe7cc9e5d7013d527b3a/F5Z_0zjcdl0cIKIq-MvTR.jpeg","fullname":"Boyang Zhang","name":"boyang-runllama","type":"user","isPro":false,"isHf":false,"isHfAdmin":false,"isMod":false,"followerCount":2,"isUserFollowing":false}},"filename":".eval_results/extractbench.yaml","verified":false,"pullRequest":38,"rank":2,"sizeRank":{"rank":2,"value":500000000000,"id":"500B","label":"< 500B"},"label":"Mean","notes":"Pipeline name: qwen3_8_flash_next_fp8_vllm_extract_oneshot_structured_output_file; served checkpoint: Qwen/Qwen3.8-Flash-Next-FP8"},{"dataset":{"id":"llamaindex/ExtractBench","isBenchmark":true,"task_id":"short"},"value":94.82,"source":{"url":"https://huggingface.co/datasets/llamaindex/ExtractBench","name":"ExtractBench","isExternal":true,"author":{"_id":"6980fe7cc9e5d7013d527b3a","avatarUrl":"https://cdn-avatars.huggingface.co/v1/production/uploads/6980fe7cc9e5d7013d527b3a/F5Z_0zjcdl0cIKIq-MvTR.jpeg","fullname":"Boyang Zhang","name":"boyang-runllama","type":"user","isPro":false,"isHf":false,"isHfAdmin":false,"isMod":false,"followerCount":2,"isUserFollowing":false}},"filename":".eval_results/extractbench.yaml","verified":false,"pullRequest":38,"rank":3,"sizeRank":{"rank":3,"value":500000000000,"id":"500B","label":"< 500B"},"label":"Short","notes":"Pipeline name: qwen3_8_flash_next_fp8_vllm_extract_oneshot_structured_output_file; served checkpoint: Qwen/Qwen3.8-Flash-Next-FP8"},{"dataset":{"id":"llamaindex/ExtractBench","isBenchmark":true,"task_id":"medium"},"value":87.81,"source":{"url":"https://huggingface.co/datasets/llamaindex/ExtractBench","name":"ExtractBench","isExternal":true,"author":{"_id":"6980fe7cc9e5d7013d527b3a","avatarUrl":"https://cdn-avatars.huggingface.co/v1/production/uploads/6980fe7cc9e5d7013d527b3a/F5Z_0zjcdl0cIKIq-MvTR.jpeg","fullname":"Boyang Zhang","name":"boyang-runllama","type":"user","isPro":false,"isHf":false,"isHfAdmin":false,"isMod":false,"followerCount":2,"isUserFollowing":false}},"filename":".eval_results/extractbench.yaml","verified":false,"pullRequest":38,"rank":2,"sizeRank":{"rank":2,"value":500000000000,"id":"500B","label":"< 500B"},"label":"Medium","notes":"Pipeline name: qwen3_8_flash_next_fp8_vllm_extract_oneshot_structured_output_file; served checkpoint: Qwen/Qwen3.8-Flash-Next-FP8"},{"dataset":{"id":"llamaindex/ExtractBench","isBenchmark":true,"task_id":"long"},"value":37.74,"source":{"url":"https://huggingface.co/datasets/llamaindex/ExtractBench","name":"ExtractBench","isExternal":true,"author":{"_id":"6980fe7cc9e5d7013d527b3a","avatarUrl":"https://cdn-avatars.huggingface.co/v1/production/uploads/6980fe7cc9e5d7013d527b3a/F5Z_0zjcdl0cIKIq-MvTR.jpeg","fullname":"Boyang Zhang","name":"boyang-runllama","type":"user","isPro":false,"isHf":false,"isHfAdmin":false,"isMod":false,"followerCount":2,"isUserFollowing":false}},"filename":".eval_results/extractbench.yaml","verified":false,"pullRequest":38,"rank":3,"sizeRank":{"rank":3,"value":500000000000,"id":"500B","label":"< 500B"},"label":"Long","notes":"Pipeline name: qwen3_8_flash_next_fp8_vllm_extract_oneshot_structured_output_file; served checkpoint: Qwen/Qwen3.8-Flash-Next-FP8"},{"dataset":{"id":"cais/hle","isBenchmark":false,"task_id":"hle"},"value":35.9,"source":{"url":"https://huggingface.co/Qwen/Qwen3.8-Flash-Next","name":"Qwen3.8-Flash-Next model card","isExternal":false},"filename":".eval_results/Qwen3.8-Flash-Next.yaml","verified":false,"pullRequest":12,"rank":34,"label":"Hle","notes":"Judged by GPT-4o per the card, not the task's default o3-mini grader."},{"dataset":{"id":"claw-eval/Claw-Eval","isBenchmark":true,"task_id":"multimodal"},"value":64.4,"source":{"url":"https://huggingface.co/Qwen/Qwen3.8-Flash-Next","name":"Qwen3.8-Flash-Next model card","isExternal":false},"filename":".eval_results/Qwen3.8-Flash-Next.yaml","verified":false,"pullRequest":12,"rank":1,"sizeRank":{"rank":1,"value":500000000000,"id":"500B","label":"< 500B"},"label":"Multimodal","notes":"Reported as 'ClawEval-MM' on the card; Pass@3 metric (average-score alternative was 60.4)."},{"dataset":{"id":"hkust-nlp/Toolathlon","isBenchmark":false,"task_id":"toolathlon_verified"},"value":73.5,"source":{"url":"https://huggingface.co/Qwen/Qwen3.8-Flash-Next","name":"Qwen/Qwen3.8-Flash-Next model card","isExternal":false},"filename":".eval_results/Qwen__Qwen3.8-Flash-Next.yaml","verified":false,"pullRequest":41,"rank":8,"sizeRank":{"rank":3,"value":500000000000,"id":"500B","label":"< 500B"},"label":"Toolathlon Verified"}],"private":false,"repoType":"model","gated":false,"tags":["transformers","safetensors","qwen4_exp","image-text-to-text","conversational","license:other","eval-results","endpoints_compatible","region:us"],"tag_objs":[{"id":"image-text-to-text","label":"Image-Text-to-Text","type":"pipeline_tag","subType":"multimodal"},{"id":"transformers","label":"Transformers","type":"library"},{"id":"safetensors","label":"Safetensors","type":"library"},{"id":"qwen4_exp","label":"qwen4_exp","type":"other","clickable":true},{"id":"conversational","label":"conversational","type":"other","clickable":true},{"id":"eval-results","label":"Eval Results","type":"other","clickable":true},{"id":"endpoints_compatible","label":"Inference Endpoints","type":"other","clickable":true},{"id":"license:other","label":"other","type":"license"},{"type":"region","label":"🇺🇸 Region: US","id":"region:us"}],"transformersInfo":{"auto_model":"AutoModelForMultimodalLM","pipeline_tag":"image-text-to-text","processor":"AutoProcessor"},"widgetData":[{"text":"Hi, what can you help me with?"},{"text":"What is 84 * 3 / 2?"},{"text":"Tell me an interesting fact about the universe!"},{"text":"Explain quantum computing in simple terms."}],"safetensors":{"parameters":{"BF16":179999981424,"I64":35},"total":179999981459,"sharded":true,"totalFileSize":360000363614},"hasBlockedOids":false,"region":"us","isQuantized":false,"licenseFilePath":"LICENSE"},"discussionsStats":{"closed":10,"open":68,"total":78},"query":{},"inferenceContextData":{"billableEntities":[],"entityName2Providers":{},"defaultProviders":[{"isOriginalProvider":false,"name":"featherless-ai","enabled":true,"position":7,"isReleased":true,"accuratePricing":true}]},"hasQuantizations":true,"copyToBucketNamespaces":[]}">
+# [
+](/Qwen)
+[Qwen](/Qwen) /
+
+[Qwen3.8-Flash-Next](/Qwen/Qwen3.8-Flash-Next)
+Like 6.48k
+
+Follow
+Qwen 112k
+
+[
+Image-Text-to-Text
+](/models?pipeline_tag=image-text-to-text)[ Transformers
+](/models?library=transformers)[ Safetensors
+](/models?library=safetensors)[ qwen4_exp
+](/models?other=qwen4_exp)[ conversational
+](/models?other=conversational)[ Eval Results
+](/models?other=eval-results) License: qwen-community-1.0
+
+[ Model card ](/Qwen/Qwen3.8-Flash-Next)[ Files Files and versions xet
+](/Qwen/Qwen3.8-Flash-Next/tree/main)[ Community 78
+](/Qwen/Qwen3.8-Flash-Next/discussions)
+
+Deploy
+
+Copy to bucket new
+Use this model
+### Instructions to use Qwen/Qwen3.8-Flash-Next with libraries, inference providers, notebooks, and local apps. Follow these links to get started.
+
+- Libraries
+- [ Transformers](/Qwen/Qwen3.8-Flash-Next?library=transformers) How to use Qwen/Qwen3.8-Flash-Next with Transformers:
+# Use a pipeline as a high-level helper
+from transformers import pipeline
+
+pipe = pipeline("image-text-to-text", model="Qwen/Qwen3.8-Flash-Next")
+messages = [
+{
+"role": "user",
+"content": [
+{"type": "image", "url": "https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/p-blog/candy.JPG"},
+{"type": "text", "text": "What animal is on the candy?"}
+]
+},
+]
+pipe(text=messages) # pip install -U transformers accelerate
+# Load model directly
+from transformers import AutoProcessor, AutoModelForMultimodalLM
+
+processor = AutoProcessor.from_pretrained("Qwen/Qwen3.8-Flash-Next")
+model = AutoModelForMultimodalLM.from_pretrained("Qwen/Qwen3.8-Flash-Next", device_map="auto")
+messages = [
+{
+"role": "user",
+"content": [
+{"type": "image", "url": "https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/p-blog/candy.JPG"},
+{"type": "text", "text": "What animal is on the candy?"}
+]
+},
+]
+inputs = processor.apply_chat_template(
+messages,
+add_generation_prompt=True,
+tokenize=True,
+return_dict=True,
+return_tensors="pt",
+).to(model.device)
+
+outputs = model.generate(**inputs, max_new_tokens=256)
+print(processor.decode(outputs[0][inputs["input_ids"].shape[-1]:]))
+- Inference
+- Inference Providers
+- Notebooks
+- [ Google Colab](/Qwen/Qwen3.8-Flash-Next/colab)
+- [ Kaggle](/Qwen/Qwen3.8-Flash-Next/kaggle)
+- Local Apps [Settings](/settings/local-apps)
+- [ vLLM ](/Qwen/Qwen3.8-Flash-Next?local-app=vllm) How to use Qwen/Qwen3.8-Flash-Next with vLLM:
+
+##### Install from pip and serve model
+# Install vLLM from pip:
 
 ## call_c83011230e76471fb0da0d0d-tool-result-5d7c7fbd-9555-4381-b95a-d2de68282453
 
