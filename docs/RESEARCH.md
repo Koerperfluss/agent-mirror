@@ -75,3 +75,35 @@
 - **Quantisierung:** `Q4_K_M` (für maximale Stabilität) oder `IQ4_XS`.
 - **Serving-Stack:** `llama.cpp` mit aktivierter MTP (Multi-Token Prediction) für 1.7x Speedup.
 - **Performance:** Erwarte flüssige Inferenz mit >50 tok/s, was für menschliches Lesen weit mehr als ausreichend ist.
+
+---
+
+## 6. VERIFIZIERTE FAKTEN (Live-Recherche 2026-10-25/26, Quellen geprüft)
+
+### llama.cpp-Support für die Hybrid-Architektur
+- **Qwen3-Next-Support:** PR #16095, Issue #15940 (28.11.2025 geschlossen) — DeltaNet-Teile zunächst CPU-seitig, Vulkan hatte volle GPU-Unterstützung. Quelle: github.com/ggml-org/llama.cpp/issues/15940
+- **CUDA-Fähigkeit für DeltaNet-Kernels (CUMSUM/TRI):** PR #17584, gemerged 04.12.2025 (Commit 96fe9ba). Quelle: github.com/ggml-org/llama.cpp/pull/17584
+- **DATENLAGE UNKLAR:** ob die DeltaNet-Pfade selbst mit Flash-Attention laufen; KV-Cache-Quantisierung für QSA (2 KV-Heads, Block-Budget 2048) nicht dokumentiert → deshalb `FLASH_ATTN=0`-Toggle in spark_start.sh.
+
+### MTP / Speculative Decoding
+- **Flag:** `--spec-type draft-mtp` (nutzt MTP-Heads des Hauptmodells, kein separates Draft-Modell). Quelle: llama.cpp/docs/speculative.md
+- Community: NextN-MTP ≈ 2,9× Decode-Speedup, bitidentische Ausgabe (reddit.com/r/LocalLLaMA/comments/1t65vl8)
+- Unsloth liefert separate `mtp-*.gguf`-Dateien — Flag-Syntax dafür unklar.
+
+### GGUF-Download (verifiziert 2026-10-25)
+- **Repo:** `unsloth/Qwen3.8-Flash-Next-GGUF` (Quants: UD-IQ1_S … Q8_0, BF16 + mmproj + mtp-Dateien)
+- **Korrektur unserer früheren Schätzung:** UD-Q4_K_XL = **111 GB** (nicht ~78 GB!) — passt in 128 GB Unified, UD-Q5_K_XL (158 GB) passt NICHT.
+- **Empfehlung Spark:** UD-Q4_K_XL (beste Qualität, die passt) oder UD-IQ4_XS (mehr Headroom).
+
+### llama-server Flags für GB10 (verifiziert, Discussion #16578)
+- Build: `cmake -B build -DGGML_CUDA=ON` (GB10 = compute capability 12.1 / sm_121, voller Consumer-Blackwell-Satz)
+- Runtime: `-ub 2048 -b 2048 -ngl 99 --no-mmap --jinja` — **`--no-mmap` ist Pflicht** ("mmap performance is still mediocre")
+- Referenz-Benchmark Spark: gpt-oss-120b MXFP4 → pp2048 ≈ 1956 t/s, tg32 ≈ 60,6 t/s (als Realitätsanker für unsere Schätzung 45–65 tok/s)
+- `GGML_CUDA_ENABLE_UNIFIED_MEMORY=1`: schnelleres Laden, ~10 % langsamerer Decode (tg32 40,6 vs 45,9 t/s)
+
+### Modell-Fakten (Model Card, verifiziert)
+- 125B (6B aktiv) + 51B N-Gram-Embedding + 4B MTP; 48 Layer, Hidden 2560
+- 12 × (3×(Gated DeltaNet→MoE) → 1×(QSA→MoE)) — **kein Full-Attention-Layer**
+- QSA: 24 Q-Heads / 2 KV-Heads / Budget 512 Blöcke à 2048 Tokens
+- MoE: 512 Experten, 10 geroutet + 1 shared; ChatML-Jinja (`--jinja` Pflicht), `reasoning_effort` steuerbar
+- Sampling (offiziell): Thinking: temp 1.0 / top_p 0.95 / top_k 20 · Instruct: temp 0.7 / top_p 0.80 / presence_penalty 1.5
