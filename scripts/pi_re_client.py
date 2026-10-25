@@ -48,7 +48,7 @@ def validate_host(host, allow_lan=False):
 def get_args():
     parser = argparse.ArgumentParser(description="Qwen RE Client für Traktor Reverse Engineering")
     parser.add_argument("--host", default="http://localhost:8080", help="API Host URL")
-    parser.add_argument("--task", choices=["hid", "mapping", "capture", "format", "codegen"], default="mapping", help="Task Profil")
+    parser.add_argument("--task", choices=["hid", "mapping", "capture", "format", "codegen", "rebuild"], default="mapping", help="Task Profil")
     parser.add_argument("--input", default="-", help="Eingabedatei (Hexdump/Capture) oder '-' für stdin")
     parser.add_argument("--question", help="Spezifische Frage zum Input")
     parser.add_argument("--output", help="Optionaler JSON-Output Pfad")
@@ -62,7 +62,8 @@ PROFILES = {
     "mapping": "Extrahiere Controller-Mappings aus diesem XML/Text. Erstelle eine Tabelle mit Control-ID zu MIDI/HID Event.",
     "capture": "Analysiere diesen USB/MIDI-Capture Stream. Suche nach Mustern (Delta-Analyse) bei Parameter-Änderungen.",
     "format": "Identifiziere das binäre Datenformat in diesem Hexdump. Achte auf Header, Checksummen und Feldlängen.",
-    "codegen": "Generiere aus der folgenden Spezifikation/Daten vollständigen, lauffähigen Code (Swift/CoreAudio/CoreMIDI für macOS oder Python). Nenne Sprache und Framework explizit."
+    "codegen": "Generiere aus der folgenden Spezifikation/Daten vollständigen, lauffähigen Code (Swift/CoreAudio/CoreMIDI für macOS oder Python). Nenne Sprache und Framework explizit.",
+    "rebuild": "Du arbeitest nach der RE-Methodik (docs/RE_METHODOLOGY.md): Analysiere das folgende Funktions-Prüfblatt oder FEATURES.json-Segment. Trenne strikt BEOBACHTUNG (belegt durch Capture/Diff) / HYPOTHESE / UNBEKANNT. Ergänze fehlende Felder (edge_cases, state_transitions, test_refs) als Vorschläge mit [VORSCHLAG]-Markierung, nie als Fakt. Formatiere Ausgabe als valides JSON im FEATURES.json-Schema."
 }
 
 SYSTEM_PROMPT = """Du bist ein spezialisierter Entwicklungs-Assistent für einen Traktor-Clone unter macOS (Swift, CoreAudio, CoreMIDI, Xcode).

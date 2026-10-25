@@ -60,9 +60,16 @@ class TestPiTools(unittest.TestCase):
 
     def test_re_client_profiles_complete(self):
         """Alle argparse-Task-Choices haben ein PROFILES-Element (kein KeyError)."""
-        for task in ["hid", "mapping", "capture", "format", "codegen"]:
+        for task in ["hid", "mapping", "capture", "format", "codegen", "rebuild"]:
             self.assertIn(task, pi_re_client.PROFILES)
         self.assertTrue(len(pi_re_client.SYSTEM_PROMPT) > 0)
+
+    def test_rebuild_profile_demands_json_schema(self):
+        """rebuild-Profil fordert FEATURES.json-Schema und BEOBACHTUNG/HYPOTHESE-Trennung."""
+        profile = pi_re_client.PROFILES["rebuild"]
+        self.assertIn("FEATURES.json", profile)
+        self.assertIn("BEOBACHTUNG", profile)
+        self.assertIn("[VORSCHLAG]", profile)
 
     def test_arg_parsing(self):
         """Testet das Argument-Parsing (einfacher Check)."""

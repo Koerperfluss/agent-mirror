@@ -73,7 +73,15 @@ python3 scripts/pi_re_client.py --host http://<spark-ip>:8080 \
   --output analyse.json
 ```
 
-Tasks: `hid` (USB-Reports) · `mapping` (.tsi/.nml-XML) · `capture` (USB-Mitschnitt) · `format` (Hexdumps) · `codegen` (Swift/Python-Code generieren)
+Tasks: `hid` (USB-Reports) · `mapping` (.tsi/.nml-XML) · `capture` (USB-Mitschnitt) · `format` (Hexdumps) · `codegen` (Swift/Python-Code generieren) · `rebuild` (Prüfblatt-/FEATURES.json-Analyse nach der RE-Methodik)
+
+## Traktor-Clone entwickeln (die eigentliche Mission)
+
+Das Repo folgt einem **Arbeitsvertrag** (`AGENTS.md` im Root) + der **RE-Methodik** (`docs/RE_METHODOLOGY.md`, aus Saschas PDFs destilliert). Claude so starten:
+
+> Lies `AGENTS.md` und `docs/RE_METHODOLOGY.md`. Beginne mit Phase 1: Erstelle `rebuild/FEATURES.json` mit dem vollständigen Funktionsinventar von Traktor Pro 4.5 (Decks, Mixer, Effekte, Browser, Recording). Nutze `scripts/pi_re_client.py --task rebuild` für Analysen gegen den Qwen-Server auf der Spark.
+
+Regeln, die gelten: keine Mocks als „fertig", Fortschritt in `rebuild/STATE.md`, Abschluss erst wenn das Gate in `AGENTS.md` erfüllt ist.
 
 ## Troubleshooting (kurz)
 
