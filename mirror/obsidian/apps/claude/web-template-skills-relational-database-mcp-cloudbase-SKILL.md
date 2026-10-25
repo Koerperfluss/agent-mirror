@@ -1,14 +1,14 @@
 ---
 app: claude
 quelle: "web-template/skills/relational-database-mcp-cloudbase/SKILL.md"
-stand: 2026-10-21
+stand: 2026-10-25
 tags: [spiegel, claude]
 ---
 
 ---
 name: relational-database-mcp-cloudbase
 description: "[Deprecated] This is the required documentation for agents operating on the CloudBase Relational Database through MCP. It defines the canonical SQL management flow with `queryMysqlDatabase`, `manageMysqlDatabase`, `queryPermissions`, and `managePermissions`, including destroy flow, async status checks, safe query execution, schema initialization, and permission updates. MySQL provisioning is no longer available through MCP; new environments should use PostgreSQL — see postgresql-development skill instead."
-version: 2.36.0
+version: 2.36.1
 license: MIT
 alwaysApply: false
 metadata:

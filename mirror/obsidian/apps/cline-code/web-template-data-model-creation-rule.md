@@ -1,14 +1,14 @@
 ---
 app: cline-code
 quelle: "web-template/data-model-creation/rule.md"
-stand: 2026-10-21
+stand: 2026-10-25
 tags: [spiegel, cline-code]
 ---
 
 ---
 name: data-model-creation
 description: "[Deprecated] Optional advanced tool for complex data modeling. For simple MySQL table creation, use relational-database-tool directly; for PostgreSQL / CloudBase PG schema work, use postgresql-development. New environments should use PostgreSQL DDL via queryPgDatabase/managePgDatabase — see postgresql-development skill instead."
-version: 2.36.0
+version: 2.36.1
 license: MIT
 alwaysApply: false
 metadata:
