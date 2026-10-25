@@ -1,6 +1,6 @@
 # Entwicklungsplan: Traktor-Clone für macOS
 
-> Ziel: Eigene DJ-App unter macOS (Swift, CoreAudio, CoreMIDI), die die Kern-Features von Traktor Pro 4.5.0 nachbaut. Qwen3.8-Flash-Next auf dem DGX Spark ist der Entwicklungspartner (Code-Generierung, Architektur, RE).
+> Ziel: Eigene DJ-App unter macOS (Swift, CoreAudio, CoreMIDI), die die Kern-Features von Traktor Pro 4.5.0 nachbaut. Qwen3.8-Flash-Next auf dem DGX Spark ist der **autonome Entwicklungsagent** (Code, Tests, Iteration); der Spark baut die macOS-App nicht selbst. Details: `docs/SPARK_AGENT.md`.
 
 ## Phase 1 — Reverse Engineering & Spezifikation (jetzt)
 
@@ -51,9 +51,10 @@ Original Traktor Pro 4 vs. eigener Clone:
 
 | Rolle | Aufgabe | Tool |
 |-------|---------|------|
-| DGX Spark | Qwen-Dev-Backend, Code-Generierung, Architektur-Beratung | `llama-server`, Port 8080 |
-| Mac / Pi | Client, Dateien schicken, Code zurückholen, in Xcode bauen | `pi_dev_client.py`, Xcode |
-| GitHub | Wissensbasis, alle Prompts, Antworten, Code-Skelette | `Koerperfluss/agent-mirror`, Branch `cline/s4sx83cs` |
+| DGX Spark | Qwen + autonomer DevAgent: schreibt Dateien, führt Tests aus, iteriert; kein Xcode/CoreAudio | `scripts/spark_dev_agent.py`, `llama-server` |
+| Mac | Xcode-Build, CoreAudio/CoreMIDI-Gerätetests, Swift-Review | Xcode, `scripts/pi_re_client.py` |
+| Pi | optional: `.tsi`/`.nml`-Logs und Linux-Hardwaretests | `scripts/pi_re_client.py` |
+| GitHub | Wissensbasis, Prompts, Code-Skelette, Agentenprotokolle | `Koerperfluss/agent-mirror`, Branch `cline/s4sx83cs` |
 
 ---
 

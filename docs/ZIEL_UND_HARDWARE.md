@@ -10,15 +10,15 @@
 |---|---|
 | Traktor Pro 4.5.0 auf deinem Mac installiert | Du hast echte .tsi- und .nml-Dateien als Analyse-Material |
 | Kein Linux, kein ALSA | Nachbau nutzt **CoreAudio**, **CoreMIDI**, **Swift/Xcode** |
-| DGX Spark mit Qwen3.8-Flash-Next | Analyse-Backend über OpenAI-kompatible API (Port 8080) |
-| Pi/Mac als Client | Liefert Rohdaten (.tsi, nml, Messwerte) an den Spark |
+| DGX Spark mit Qwen3.8-Flash-Next | Analyse-Backend über OpenAI-kompatible API **und** autonomer DevAgent für Code/Tests; kein Xcode/CoreAudio |
+| Mac / Pi als Client | Liefert Rohdaten (.tsi, nml, Messwerte) und baut/testet die macOS-App |
 
 ## 2. Deine Hardware (verifiziert)
 
 | Gerät | Typ | Relevanz |
 |---|---|---|
 | **Allen & Heath Xone:32** | Analoger 3-Kanal-Mixer, kein USB/MIDI | Treiberlos, RE-irrelevant |
-| **Omnitronic BD-1380 USB** | Plattenspieler mit USB-Audio-Interface, 44,1/48 kHz 16-bit, class-compliant | Läuft unter macOS/CoreAudio ohne Treiber |
+| **Omnitronic BD-1380 USB** | Plattenspieler mit USB-Audio-Interface, 44,1/48 kHz 16-bit | USB-Audio-Erkennung unter macOS/CoreAudio prüfen; Hersteller nennt keinen Linux-Support. |
 
 **Wichtig:** Aktuell kein MIDI-Controller vorhanden. MIDI-Mapping ist daher erst ein
 **Software-Ziel** (.tsi-Schema verstehen), später testbar sobald ein MIDI-Controller
@@ -35,6 +35,8 @@ Ziel (macOS):   BD-1380 -> CoreAudio -> eigene DJ-App -> CoreAudio-Ausgabe
 
 ## 4. Rechtlicher Rahmen
 
-Reverse Engineering zur Interoperabilität ist erlaubt (§ 40e UrhG AT / Art. 6 RL 2009/24/EG).
-Erlaubt: Dateiformate lesen, Verhalten beobachten, eigene kompatible Software schreiben.
-Nicht erlaubt: NI-Code kopieren, geschützte DSP/Samples extrahieren, Lizenz/Kopierschutz umgehen.
+Reverse Engineering zur Interoperabilität kann je nach Jurisdiktion unter engen
+Voraussetzungen privilegiert sein; das ist **keine pauschale Erlaubnis** und keine
+Rechtsberatung. Erlaubt erscheint: öffentliche Dateiformate lesen, beobachtetes
+Verhalten dokumentieren, eigene kompatible Software schreiben. Nicht erlaubt:
+NI-Code kopieren, geschützte DSP/Samples extrahieren, Lizenz/Kopierschutz umgehen.

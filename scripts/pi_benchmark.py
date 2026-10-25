@@ -50,14 +50,14 @@ def run_benchmark(host, prompt, max_tokens):
             for line in response:
                 if not line.strip(): continue
                 line_str = line.decode('utf-8')
-                if line_str.startswith("data: "):
-                    content = line_str[6:].strip()
+                if line_str.startswith("data:"):
+                    content = line_str[5:].strip()
                     if content == "[DONE]": break
                     
                     try:
                         chunk = json.loads(content)
                         if ttft == 0 and chunk.get("choices") and chunk["choices"][0].get("delta", {}).get("content"):
-                            ttft = time.time() - start_time
+                            ttft = max(time.time() - start_time, 1e-9)
                         
                         if chunk.get("usage"):
                             usage = chunk["usage"]
@@ -83,7 +83,8 @@ def run_benchmark(host, prompt, max_tokens):
         "completion_tokens": comp_tokens,
         "prompt_tokens": prompt_tokens,
         "tps": comp_tokens / (total_time - ttft) if (total_time - ttft) > 0 else 0,
-        "pp_rate": prompt_tokens / ttft if ttft > 0 else 0
+        "pp_rate": prompt_tokens / ttft if ttft > 0 else 0,
+        "usage_missing": usage is None
     }
 
 def print_table(results):

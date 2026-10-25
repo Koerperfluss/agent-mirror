@@ -67,6 +67,10 @@ class TestPiTools(unittest.TestCase):
                 self.assertIn("hid", pi_re_client.PROFILES)
                 self.assertTrue(len(pi_re_client.SYSTEM_PROMPT) > 0)
 
+    def test_codegen_profile_present(self):
+        """Der in README/DEVELOPMENT_PLAN verwendete codegen-Task muss existieren."""
+        self.assertIn("codegen", pi_re_client.PROFILES)
+
     def test_arg_parsing(self):
         """Testet das Argument-Parsing (einfacher Check)."""
         with patch('sys.argv', ['script.py', '--host', 'http://spark:9090', '--suite', 'traktor']):

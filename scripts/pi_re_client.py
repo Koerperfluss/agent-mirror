@@ -20,7 +20,8 @@ PROFILES = {
     "hid": "Analysiere den folgenden HID-Report Deskriptor oder Report-Daten. Identifiziere Achsen, Buttons und Steuerungs-Events.",
     "mapping": "Extrahiere Controller-Mappings aus diesem XML/Text. Erstelle eine Tabelle mit Control-ID zu MIDI/HID Event.",
     "capture": "Analysiere diesen USB/MIDI-Capture Stream. Suche nach Mustern (Delta-Analyse) bei Parameter-Änderungen.",
-    "format": "Identifiziere das binäre Datenformat in diesem Hexdump. Achte auf Header, Checksummen und Feldlängen."
+    "format": "Identifiziere das binäre Datenformat in diesem Hexdump. Achte auf Header, Checksummen und Feldlängen.",
+    "codegen": "Entwickle vollständigen, kompilierbaren Swift-Code für einen unabhängigen Traktor-Clone unter macOS mit CoreAudio und CoreMIDI. Nenne Annahmen, APIs und Testschritte; kopiere keinen NI-Code."
 }
 
 SYSTEM_PROMPT = """Du bist ein spezialisierter Entwicklungs-Assistent für einen Traktor-Clone unter macOS (Swift, CoreAudio, CoreMIDI, Xcode).
@@ -72,7 +73,7 @@ def main():
 
     # Input lesen
     if args.input == "-":
-        input_data = sys.stdin.read()
+        input_data = "" if sys.stdin.isatty() else sys.stdin.read()
     else:
         with open(args.input, 'r') as f:
             input_data = f.read()
