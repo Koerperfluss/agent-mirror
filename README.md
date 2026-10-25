@@ -1,129 +1,148 @@
-# qwen-flash-spark — Client-Anleitung für Lorenz (Mac / Pi → Spark)
+# qwen-flash-spark — Traktor-Clone Entwicklung (Lorenz, Mac → Spark → Qwen)
 
-**Zustand:** Qwen3.8-Flash-Next läuft bereits auf deinem DGX Spark als `llama-server` (Port 8080, OpenAI-kompatibel).  
-Dieses Repo enthält nur die **Client-Seite** für deinen Mac / Pi. Alles, was du brauchst, steht hier.
+**Ziel:** Eigene DJ-App für macOS, die Traktor Pro 4 nachbaut (CoreAudio, CoreMIDI, Swift).
+Das Qwen3.8-Flash-Next-Modell läuft bereits auf deinem DGX Spark (Port 8080, OpenAI-kompatibel) und ist dein Entwicklungspartner. Der Mac / Pi ist der Client, der Dateien schickt und Code zurückbekommt.
 
----
-
-## Architektur (kurz)
-
-```
-Dein Mac / Pi (Client)  --HTTP-->  DGX Spark (llama-server, Port 8080)  -->  Qwen3.8-Flash-Next (bereits installiert)
-         pi_re_client.py / pi_benchmark.py                      SSE-Streaming
-```
-
-Wofür: Analyse deiner vorhandenen Traktor Pro 4.5.0-Dateien (`.tsi`-Mappings, `collection.nml`) und Nachbau der App unter macOS (CoreAudio / CoreMIDI / Swift).
+Alles hier ist für **dich** zum direkten Kopieren und Ausführen.
 
 ---
 
-## 1. Spark erreichbar machen
+## Architektur (3 Rollen)
 
-Auf dem Spark ist `llama-server` bereits laufend (oder wird mit `spark_start.sh` gestartet).  
-Du brauchst nur die **LAN-IP des Spark** (z. B. `192.168.1.50`).
+```
+┌─────────────┐      HTTP :8080       ┌─────────────────────────┐
+│  Dein Mac   │ ─────────────────────►│   DGX Spark (GB10)      │
+│  (Client)   │   pi_dev_client.py    │  llama-server           │
+│             │  .tsi / nml / Fragen  │  Qwen3.8-Flash-Next     │
+│  Xcode      │◄──────────────────────│  Code + Architektur     │
+│  Swift      │      Swift-Code       │  (Reasoning, Dev-Helfer)│
+└─────────────┘                       └─────────────────────────┘
+         ▲
+         │ scp / Netzwerk
+         ▼
+~/Documents/Native Instruments/Traktor 4.5.0/
+├── Settings/Default Settings/Layout/Traktor Pro 4/*.tsi
+├── Settings/Default Settings/Controller
+├── Settings/Default Settings/Audio
+├── collection.nml
+└── Traktor Settings.tsi
+```
 
-Schnelltest vom Mac / Pi:
+---
+
+## 1. Spark prüfen (ein Befehl)
 
 ```bash
 curl http://<spark-ip>:8080/v1/models
 ```
 
-Muss eine JSON-Liste zurückgeben (enthält dein Qwen-Modell). Wenn nein: Spark nicht erreichbar oder Server nicht gestartet.
+Muss dein Qwen-Modell zurückgeben. Nicht da? Spark-Server starten:
+
+```bash
+export MODEL_PATH=/pfad/zu/deinem/qwen-flash-next-q4_k_m.gguf
+export CTX=32768
+export PORT=8080
+export LLAMA_SERVER_BIN=~/llama.cpp/build/bin/llama-server
+./scripts/spark_start.sh
+```
 
 ---
 
-## 2. Benchmark fahren (nur um zu wissen, wie schnell der Spark antwortet)
+## 2. Entwicklungsschritte (in dieser Reihenfolge)
+
+### Schritt A — .tsi-Mappings analysieren (Schema herausfinden)
+
+Deine 9 `.tsi`-Layouts liegen hier:
+
+```
+/Users/saschalagler/Documents/Native Instruments/Traktor 4.5.0/Settings/Default Settings/Layout/Traktor Pro 4/
+```
+
+```bash
+python3 scripts/pi_dev_client.py \
+  --host http://<spark-ip>:8080 \
+  --task mapping \
+  --input "/Users/saschalagler/Documents/Native Instruments/Traktor 4.5.0/Settings/Default Settings/Layout/Traktor Pro 4/01 - Layout - Traktor Pro 4 - 2 Track Decks.tsi" \
+  --question "Extrahiere das vollständige Mapping-Schema: Welche MIDI-CC/Notes steuern welche Deck-Funktion (Play, Cue, Jog, Pitch, FX)? Erstelle ein offenes JSON-Schema als Gegenstück zum .tsi-Format." \
+  --output tsi-mapping-schema.json
+```
+
+### Schritt B — collection.nml parsen (Library, Cues, Beatgrids)
+
+```bash
+python3 scripts/pi_dev_client.py \
+  --host http://<spark-ip>:8080 \
+  --task format \
+  --input "/Users/saschalagler/Documents/Native Instruments/Traktor 4.5.0/collection.nml" \
+  --question "Analysiere das .nml-XML-Schema: Welche Elemente speichern Titel, Pfade, BPM, Key, Cue-Punkte, Beatgrid? Schreibe einen Python-Parser, der alles in JSON exportiert." \
+  --output nml-parser-plan.md
+```
+
+### Schritt C — Swift-Code für den Clone generieren (CoreAudio / CoreMIDI)
+
+```bash
+python3 scripts/pi_dev_client.py \
+  --host http://<spark-ip>:8080 \
+  --task codegen \
+  --question "Ich baue einen Traktor-Clone für macOS in Swift (Xcode). CoreAudio für 2 USB-Audio-Eingänge (Omnitronic BD-1380, class-compliant, 44.1kHz/16-bit), CoreMIDI für Controller-Input. Schreibe ein minimales, lauffähiges DJ-Deck: Audio-Capture, playback, Xrun-Logging, MIDI-CC → Lautstärke/Crossfader via JSON-Mapping. Erkläre jede API-Entscheidung." \
+  --output swift-deck-skeleton.swift
+```
+
+### Schritt D — Benchmark (wie schnell antwortet der Spark?)
 
 ```bash
 python3 scripts/pi_benchmark.py \
   --host http://<spark-ip>:8080 \
   --suite traktor \
   --runs 3 \
-  --json-out bench_traktor.json
+  --json-out bench.json
 ```
-
-Was gemessen wird: TTFT (Time to first token), Dekodier-Geschwindigkeit (tok/s), Prompt-Verarbeitungsrate.
 
 ---
 
-## 3. Traktor-RE-Analyse starten (das ist der Hauptzweck)
-
-Deine Traktor-Dateien liegen hier:
-
-```
-/Users/saschalagler/Documents/Native Instruments/Traktor 4.5.0/
-├── Settings/Default Settings/Layout/Traktor Pro 4/*.tsi   ← MIDI/Controller-Mappings
-├── Settings/Default Settings/Controller                   ← Controller-Definitionen
-├── Settings/Default Settings/Audio                        ← Audio-Device-Konfig
-├── collection.nml                                         ← Library, Cues, Beatgrids
-└── Traktor Settings.tsi                                   ← Globale Einstellungen
-```
-
-### Beispiel 1: `.tsi`-Mapping analysieren (Schema herausfinden)
-
-```bash
-python3 scripts/pi_re_client.py \
-  --host http://<spark-ip>:8080 \
-  --task mapping \
-  --input "/Users/saschalagler/Documents/Native Instruments/Traktor 4.5.0/Settings/Default Settings/Layout/Traktor Pro 4/01 - Layout - Traktor Pro 4 - 2 Track Decks.tsi" \
-  --question "Extrahiere das Mapping-Schema: Welche MIDI-CC/Notes steuern welche Deck-Funktion? Erstelle ein offenes JSON-Gegenstück." \
-  --output tsi-analyse.json
-```
-
-### Beispiel 2: `collection.nml` analysieren (Library-Format)
-
-```bash
-python3 scripts/pi_re_client.py \
-  --host http://<spark-ip>:8080 \
-  --task format \
-  --input "/Users/saschalagler/Documents/Native Instruments/Traktor 4.5.0/collection.nml" \
-  --question "Welche XML-Elemente speichern Titel, Pfade, BPM, Key, Cue-Punkte und Beatgrid? Schreibe einen Python-Parser, der alles in JSON exportiert." \
-  --output nml-analyse.json
-```
-
-### Beispiel 3: Eigene Textfrage / Hypothese
-
-```bash
-python3 scripts/pi_re_client.py \
-  --host http://<spark-ip>:8080 \
-  --task generic \
-  --question "Ich will Traktor Pro 4 unter macOS nachbauen (CoreAudio, CoreMIDI, Swift). Welche Kern-Features muss ich als erstes reimplementieren, und in welcher Reihenfolge?" \
-  --output architektur.json
-```
-
-Die Antwort kommt als Stream auf stdout und optional als JSON in `--output` (inkl. Reasoning-Falls vom Modell geliefert).
-
----
-
-## 4. Dateien in diesem Repo
+## 3. Dateien in diesem Repo
 
 | Pfad | Zweck |
 |------|-------|
-| `scripts/pi_re_client.py` | Client: schickt `.tsi`, `nml`, Hexdumps oder Fragen an den Spark |
-| `scripts/pi_benchmark.py` | Benchmark: TTFT, tok/s, Prompt-Rate gegen den Spark |
-| `scripts/spark_start.sh` | Falls du den Spark-Server neu starten musst (Modellpfad anpassen!) |
-| `scripts/run_bench_suite.sh` | Kombinierter Lauf: Health → Benchmark → RE-Smoke |
-| `tests/test_pi_tools.py` | Unit-Tests (läuft ohne Spark, nur Stdlib) |
-| `docs/PROMPT_GUIDELINES.md` | Prompt-Baukasten für die RE-Tasks (tsi, nml, CoreAudio-Code) |
-| `docs/ZIEL_UND_HARDWARE.md` | Korrigiertes Ziel: macOS-Nachbau, vorhandene Traktor-Dateien |
-| `docs/RESEARCH.md` | Modell- & Hardware-Fakten |
-| `docs/TRAKTOR_RE_RESEARCH.md` | Traktor-Ökosystem, .tsi/.nml, rechtlicher Rahmen (§ 40e UrhG) |
+| `scripts/pi_dev_client.py` | Client: schickt `.tsi`, `nml`, Fragen an den Spark, erhält Code + Antwort |
+| `scripts/pi_benchmark.py` | Benchmark: TTFT, tok/s gegen den Spark |
+| `scripts/spark_start.sh` | Spark-Server starten (nur falls nötig) |
+| `scripts/run_dev_suite.sh` | Kombinierter Lauf: Health → Benchmark → Dev-Smoke |
+| `docs/PROMPT_GUIDELINES.md` | Prompt-Baukasten für die Entwicklung (tsi, nml, CoreAudio, Swift) |
+| `docs/DEVELOPMENT_PLAN.md` | Phasenplan: RE → Spezifikation → Implementierung → Test |
+| `docs/ZIEL_UND_HARDWARE.md` | Ziel: Traktor-Clone macOS, CoreAudio/CoreMIDI, Hardware |
+| `docs/ARCHITECTURE.md` | Mermaid-Diagramme: Deployment, Dev-Flow |
+| `tests/test_pi_tools.py` | Unit-Tests (ohne Spark, nur Stdlib) |
 
 ---
 
-## 5. Wichtige Hinweise
+## 4. Nächste Schritte für dich
 
-- **Modell ist bereits installiert** auf dem Spark — nichts herunterladen, kein `llama.cpp`-Bauen nötig.
-- Ersetze `<spark-ip>` durch die tatsächliche IP deines Spark im LAN.
-- Der Client nutzt nur Python 3-Stdlib (kein `pip`, kein `venv`).
-- Antworten können lange dauern (Reasoning). Timeout im Client ist bereits hoch (1800 s).
-- Rechtlicher Rahmen: Reverse Engineering zur Interoperabilität ist erlaubt (§ 40e UrhG AT / Art. 6 EU Software-Richtlinie). NI-Code kopieren oder Kopierschutz umgehen ist nicht erlaubt.
+```bash
+# 1. Repo holen
+git clone https://github.com/Koerperfluss/agent-mirror.git
+cd agent-mirror && git checkout cline/s4sx83cs
+cd qwen-flash-spark
 
----
+# 2. Health-Check
+curl http://<spark-ip>:8080/v1/models
 
-## 6. Nächste Schritte für dich
+# 3. Erstes .tsi analysieren (Pfad stimmt mit deinem Mac)
+python3 scripts/pi_dev_client.py \
+  --host http://<spark-ip>:8080 \
+  --task mapping \
+  --input "/Users/saschalagler/Documents/Native Instruments/Traktor 4.5.0/Settings/Default Settings/Layout/Traktor Pro 4/01 - Layout - Traktor Pro 4 - 2 Track Decks.tsi" \
+  --question "Schema extrahieren, offenes JSON-Gegenstück entwerfen." \
+  --output tsi-analyse.json
 
-1. `git clone https://github.com/Koerperfluss/agent-mirror.git && cd agent-mirror && git checkout cline/s4sx83cs`
-2. `cd qwen-flash-spark`
-3. `curl http://<spark-ip>:8080/v1/models` (Health-Check)
-4. Erstes `.tsi` mit `pi_re_client.py` analysieren (siehe Beispiel 1)
-5. Basierend auf der Analyse den macOS-Nachbau (Swift/CoreAudio) planen
+# 4. Swift-Skelett generieren
+python3 scripts/pi_dev_client.py \
+  --host http://<spark-ip>:8080 \
+  --task codegen \
+  --question "Minimales DJ-Deck in Swift mit CoreAudio + CoreMIDI." \
+  --output swift-deck.swift
+```
+
+Dann in Xcode öffnen, compilieren, testen.
+
+**Rechtlicher Rahmen:** Reverse Engineering zur Interoperabilität ist erlaubt (§ 40e UrhG AT / Art. 6 EU Software-Richtlinie). NI-Code kopieren oder Kopierschutz umgehen ist nicht erlaubt.

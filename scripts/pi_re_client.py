@@ -10,7 +10,7 @@ REQUEST_TIMEOUT = 1800  # Sekunden; RE-Antworten mit Reasoning können lang daue
 def get_args():
     parser = argparse.ArgumentParser(description="Qwen RE Client für Traktor Reverse Engineering")
     parser.add_argument("--host", default="http://localhost:8080", help="API Host URL")
-    parser.add_argument("--task", choices=["hid", "mapping", "capture", "format"], default="hid", help="RE Task Profil")
+    parser.add_argument("--task", choices=["hid", "mapping", "capture", "format", "codegen"], default="mapping", help="Task Profil")
     parser.add_argument("--input", default="-", help="Eingabedatei (Hexdump/Capture) oder '-' für stdin")
     parser.add_argument("--question", help="Spezifische Frage zum Input")
     parser.add_argument("--output", help="Optionaler JSON-Output Pfad")
@@ -23,8 +23,8 @@ PROFILES = {
     "format": "Identifiziere das binäre Datenformat in diesem Hexdump. Achte auf Header, Checksummen und Feldlängen."
 }
 
-SYSTEM_PROMPT = """Du bist ein spezialisierter Reverse Engineering Assistent für DJ-Hardware (Traktor/Native Instruments).
-Deine Aufgabe ist die Analyse von Protokollen, Hexdumps und USB-Captures.
+SYSTEM_PROMPT = """Du bist ein spezialisierter Entwicklungs-Assistent für einen Traktor-Clone unter macOS (Swift, CoreAudio, CoreMIDI, Xcode).
+Deine Aufgabe ist die Analyse von Traktor-Dateien (.tsi, collection.nml), Hardwaredaten und die Generierung von Code für den eigenen DJ-Clone.
 
 STRUKTUR DEINER ANTWORT:
 1. BEOBACHTUNG: Neutrale Zusammenfassung der Daten.
