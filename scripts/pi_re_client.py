@@ -5,6 +5,8 @@ import sys
 
 # LOKI.OS - Pi Reverse Engineering Client (Standard Lib Only)
 
+REQUEST_TIMEOUT = 1800  # Sekunden; RE-Antworten mit Reasoning können lang dauern
+
 def get_args():
     parser = argparse.ArgumentParser(description="Qwen RE Client für Traktor Reverse Engineering")
     parser.add_argument("--host", default="http://localhost:8080", help="API Host URL")
@@ -34,6 +36,36 @@ Regeln:
 - Wenn Reasoning-Content verfügbar ist, nutze ihn für die interne Logikfindung.
 - Antworte präzise und technisch.
 """
+
+def parse_re_stream(lines):
+    """Parst einen OpenAI-SSE-Stream und gibt (content, reasoning) zurück.
+
+    Robust gegen: 'data:' mit/ohne Leerzeichen, Final-Chunks mit leerer
+    choices-Liste (llama.cpp sendet dort usage mit), fehlende Delta-Felder.
+    """
+    full_response = ""
+    reasoning = ""
+    for line in lines:
+        if not line.strip():
+            continue
+        line_str = line.decode('utf-8')
+        if not line_str.startswith("data:"):
+            continue
+        content = line_str[5:].strip()
+        if content == "[DONE]":
+            break
+        try:
+            chunk = json.loads(content)
+        except json.JSONDecodeError:
+            continue
+        choices = chunk.get("choices") or [{}]
+        delta = choices[0].get("delta", {}) if choices else {}
+        if delta.get("reasoning_content"):
+            reasoning += delta["reasoning_content"]
+        if delta.get("content"):
+            full_response += delta["content"]
+            print(delta["content"], end="", flush=True)
+    return full_response, reasoning
 
 def main():
     args = get_args()

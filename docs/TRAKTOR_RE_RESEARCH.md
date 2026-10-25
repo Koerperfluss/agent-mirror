@@ -60,3 +60,9 @@ Das lokale LLM agiert als "Differential-Analyst".
 - **IvanZ GitHub:** TSI-Dokumentation.
 - **Mixxx GitHub:** Referenz-Mappings für fast alle NI-Geräte.
 - **Linux Kernel Docs:** `hidintro.html` & `usbmon.txt`.
+
+
+---
+
+## Zielkorrektur 26.10.2026
+RE-Ziel ist die Software Traktor Pro 4 (4.5.0 auf dem Mac), nicht NI-Controller-Hardware. Nachbau unter macOS mit CoreAudio/CoreMIDI/Swift. Siehe ZIEL_UND_HARDWARE.md. Vorhandene Analyse-Dateien: *.tsi in ~/Documents/Native Instruments/Traktor 4.5.0/..., collection.nml.

@@ -4,8 +4,10 @@ import json
 import sys
 import os
 
-# Pfade für Imports anpassen
-sys.path.append(os.path.join(os.path.dirname(__file__), '../scripts'))
+# Import-Pfad: Tests werden aus dem Repo-Root gestartet
+# (python3 -m unittest discover -s tests); alternativ via QFS_SCRIPTS_DIR.
+SCRIPTS_DIR = os.environ.get("QFS_SCRIPTS_DIR", "scripts")
+sys.path.append(SCRIPTS_DIR)
 
 import pi_benchmark
 import pi_re_client
@@ -19,11 +21,11 @@ class TestPiTools(unittest.TestCase):
             b'data: {"choices": [], "usage": {"prompt_tokens": 10, "completion_tokens": 5}}\n',
             b'data: [DONE]\n'
         ]
-        
+
         with patch('urllib.request.urlopen') as mock_url:
             mock_url.return_value.__enter__.return_value = mock_response
             res = pi_benchmark.run_benchmark("http://test:8080", "Test", 10)
-            
+
             self.assertIsNotNone(res)
             self.assertEqual(res["prompt_tokens"], 10)
             self.assertEqual(res["completion_tokens"], 5)
@@ -61,10 +63,7 @@ class TestPiTools(unittest.TestCase):
             mock_args.return_value = MagicMock(
                 task="hid", input="-", question="Was ist das?", host="http://localhost:8080", output=None
             )
-            # Hier testen wir indirekt die Logik im main()
-            # Da main() direkt sys.stdin liest, mocken wir das
             with patch('sys.stdin.read', return_value="01 02 03"):
-                # Wir prüfen hier nur, ob die PROFILES und SYSTEM_PROMPT vorhanden sind
                 self.assertIn("hid", pi_re_client.PROFILES)
                 self.assertTrue(len(pi_re_client.SYSTEM_PROMPT) > 0)
 
@@ -74,6 +73,55 @@ class TestPiTools(unittest.TestCase):
             args = pi_benchmark.get_args()
             self.assertEqual(args.host, 'http://spark:9090')
             self.assertEqual(args.suite, 'traktor')
+
+
+class TestStreamParsingFixes(unittest.TestCase):
+    """Regression-Tests für Code-Review-Findings (Stand 2026-10-25)."""
+
+    def test_re_stream_empty_choices_no_crash(self):
+        """Finding 1: Final-Chunk mit leerer choices-Liste darf den Stream nicht crashen."""
+        lines = [
+            b'data: {"choices": [{"delta": {"content": "Analyse:"}}]}\n',
+            b'data: {"choices": [], "usage": {"prompt_tokens": 5, "completion_tokens": 3}}\n',
+            b'data: [DONE]\n',
+        ]
+        content, reasoning = pi_re_client.parse_re_stream(lines)
+        self.assertEqual(content, "Analyse:")
+        self.assertEqual(reasoning, "")
+
+    def test_re_stream_reasoning_capture(self):
+        """Reasoning-Content wird gesammelt, ohne in content zu landen."""
+        lines = [
+            b'data: {"choices": [{"delta": {"reasoning_content": "denke..."}}]}\n',
+            b'data: {"choices": [{"delta": {"content": "Antwort"}}]}\n',
+            b'data: [DONE]\n',
+        ]
+        content, reasoning = pi_re_client.parse_re_stream(lines)
+        self.assertEqual(content, "Antwort")
+        self.assertEqual(reasoning, "denke...")
+
+    def test_benchmark_data_prefix_without_space(self):
+        """Finding 4: 'data:' ohne Leerzeichen wird trotzdem geparst."""
+        mock_response = [
+            b'data:{"choices": [{"delta": {"content": "Hi"}}]}\n',
+            b'data: [DONE]\n',
+        ]
+        with patch('urllib.request.urlopen') as mock_url:
+            mock_url.return_value.__enter__.return_value = mock_response
+            res = pi_benchmark.run_benchmark("http://test:8080", "T", 5)
+            self.assertIsNotNone(res)
+            self.assertGreater(res["ttft"], 0)
+
+    def test_benchmark_flags_missing_usage(self):
+        """Finding 5: Läufe ohne usage werden als usage_missing gekennzeichnet."""
+        mock_response = [
+            b'data: {"choices": [{"delta": {"content": "Hallo"}}]}\n',
+            b'data: [DONE]\n',
+        ]
+        with patch('urllib.request.urlopen') as mock_url:
+            mock_url.return_value.__enter__.return_value = mock_response
+            res = pi_benchmark.run_benchmark("http://test:8080", "T", 5)
+            self.assertTrue(res["usage_missing"])
 
 if __name__ == '__main__':
     unittest.main()
