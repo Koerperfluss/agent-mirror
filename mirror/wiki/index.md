@@ -1,6 +1,6 @@
 # Arbeits-Wiki
 
-Stand: 2026-10-25 22:45 UTC. Jede Seite fasst ein Projekt über alle Apps hinweg zusammen.
+Stand: 2026-10-25 23:00 UTC. Jede Seite fasst ein Projekt über alle Apps hinweg zusammen.
 
 - [antigravity / 1cf5e412-ad9c-4f02-9f3e-93788dc7476d](antigravity--1cf5e412-ad9c-4f02-9f3e-93788dc7476d.md)
 - [antigravity / Projekt-Task-Planer](antigravity--Projekt-Task-Planer.md)
@@ -18,4 +18,5 @@ Stand: 2026-10-25 22:45 UTC. Jede Seite fasst ein Projekt über alle Apps hinweg
 - [cline-code / saschalagler](cline-code--saschalagler.md)
 - [cline-code / sdk](cline-code--sdk.md)
 - [cline-code / web-template](cline-code--web-template.md)
+- [zcode / agent-os](zcode--agent-os.md)
 - [zcode / saschalagler](zcode--saschalagler.md)
