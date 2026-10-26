@@ -2,8 +2,8 @@
 name: "reviewer"
 description: "Reviewt Diffs/PRs auf Logik, Sicherheit und Architektur."
 color: yellow
-model: "omniroute/glm-first"
-thoughtLevel: xhigh
+model: "account:zai-individual-coding-plan/GLM-5.3-Flash"
+thoughtLevel: low
 tools:
   - Read
   - Grep

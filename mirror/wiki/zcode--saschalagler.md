@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-26 02:31 UTC
+Zuletzt gespiegelt: 2026-10-26 02:47 UTC
 
 ## AGENTS
 
@@ -613,7 +613,7 @@ Security or destructive paths → write normal English warning, then resume cave
 name: "cavecrew-investigator"
 description: ">"
 color: yellow
-model: "zai-api/GLM-5.3-Flash"
+model: "omniroute/glm-first"
 thoughtLevel: low
 tools:
   - Read
@@ -681,7 +681,7 @@ Tests:
 name: "cavecrew-reviewer"
 description: ">"
 color: yellow
-model: "zai-api/GLM-5.3-Flash"
+model: "omniroute/glm-first"
 thoughtLevel: low
 tools:
   - Read
@@ -740,7 +740,7 @@ Security findings → state risk in plain English first sentence, then caveman f
 name: "code-architect"
 description: "Entwirft Architektur und Modulgrenzen, bevor implementiert wird."
 color: yellow
-model: "zai-api/GLM-5.3-Flash"
+model: "omniroute/glm-first"
 thoughtLevel: high
 tools:
   - Read
@@ -777,7 +777,7 @@ PLAN.md + Tabelle im Chat (ADHS-Format: Ergebnis zuerst, nummerierte Schritte).
 name: "config-auditor"
 description: "Prüft Config-Dateien auf Syntax-, Konsistenz- und Sicherheitsfehler."
 color: yellow
-model: "zai-api/GLM-5.3-Flash"
+model: "omniroute/glm-first"
 thoughtLevel: low
 tools:
   - Read
@@ -818,7 +818,7 @@ Eiserne Regel: "aktive Settings" ohne Log-/Funktionstest-Beweis zu behaupten = F
 name: "explore"
 description: "Nur-Lese-Kundschafter: erfasst Struktur und Stand einer Codebasis."
 color: yellow
-model: "zai-api/GLM-5.3-Flash"
+model: "omniroute/glm-first"
 thoughtLevel: max
 tools:
   - Read
@@ -927,7 +927,7 @@ VETO = der Turn ist NICHT abgeschlossen; Builder muss nachbessern. Kein Kompromi
 name: "implementer"
 description: "Setzt spezifizierte Tickets direkt in Code um."
 color: yellow
-model: "zai-api/GLM-5.3-Flash"
+model: "omniroute/glm-first"
 thoughtLevel: max
 tools:
   - Read
@@ -964,7 +964,7 @@ Ergebnis-Zeile 1 · geänderte Dateien als Tabelle (pfad:zeile — Änderung) ·
 name: "qa-tester"
 description: "Schreibt und führt Tests aus; verifiziert echtes Verhalten, nicht Annahmen."
 color: yellow
-model: "zai-api/GLM-5.3-Flash"
+model: "omniroute/glm-first"
 thoughtLevel: max
 tools:
   - Read
@@ -1003,7 +1003,7 @@ Bei FAIL: kleinster Repro-Pfad. Keine Architektur-Meinungen (dafür ist reviewer
 name: "reviewer"
 description: "Reviewt Diffs/PRs auf Logik, Sicherheit und Architektur."
 color: yellow
-model: "zai-api/GLM-5.3-Flash"
+model: "omniroute/glm-first"
 thoughtLevel: xhigh
 tools:
   - Read
@@ -11849,7 +11849,7 @@ Mimosa-Security-Hook intercepted in diesem Setup Edit/Write UND `git push`.
 
 **Why:** Er markiert dynamische URLs ohne Guard (SSRF), `../`/os.pardir/Path(__file__) in Tests (Pfad-Traversal) und Subprocess+Tempfile-Muster in Testdateien; Pre-Push scannt den gesamten Workspace und blockt auch bei Fundstellen in fremden Projekten (z.B. ~/agent-os/agentos).
 
-**How to apply:** (1) Bei Skripten mit urlopen: vor dem Request `validate_host()` definieren (nur http/https, private/Loopback-IPs via ipaddress blocken, opt-in `--allow-lan`/Env für LAN-Nutzung) + `NoRedirectHandler` + `build_opener` statt `urlopen` — solche Edits passieren. (2) Unit-Tests: keine Subprocess-/Tempdir-/`..`-Muster; Shell-Checks stattdessen manuell via Bash laufen lassen und in VALIDATION.md dokumentieren; Import-Pfade via cwd-relativ (`scripts`) oder Env (`QFS_SCRIPTS_DIR`). (3) Pre-Push-Scan findet auch echte Fundstellen im eigenen Repo — dann sauber fixen (SSRF-Guard, Pfad-Handling), danach geht der Push durch (Mimosa meldet nur noch „unvollständige Abdeckung", blockt nicht). (4) Scanner blockt JEDES `open(<variable>, 'w')`-Muster, auch hinter einem validierenden Helper — stattdessen `Path.write_text()` über einen Helper wie `safe_output_path(path)` (expanduser→resolve→is_dir-Check→mkdir parents) nutzen; validierte Helper-Definitionen selbst passieren. (5) Validierung von Netz-Hosts nie im Objekt-`__init__`, sondern lazy beim ersten echten Request — Mock-Tests mit Fake-Hostnamen crashen sonst. (6) Falle: `python3 -m unittest … | tail` maskiert den unittest-Exit-Code (Pipeline-Exit = tail) — vor Commit/Push `set -o pipefail` setzen. (7) Simultan laufende Nutzer-Sessions können Dateien zwischen Reads ändern ("File has been modified since read") → vor Edit neu lesen und fremde Änderungen (z.B. neue Task-Choices) respektieren, nicht reverten; auch Parallel-Sessions pushen unabhängig in denselben Remote-Branch (Merge statt force). Kontext: [[qwen-flash-spark-project]].
+**How to apply:** (1) Bei Skripten mit urlopen: vor dem Request `validate_host()` definieren (nur http/https, private/Loopback-IPs via ipaddress blocken, opt-in `--allow-lan`/Env für LAN-Nutzung) + `NoRedirectHandler` + `build_opener` statt `urlopen` — solche Edits passieren. (2) Unit-Tests: keine Subprocess-/Tempdir-/`..`-Muster; Shell-Checks stattdessen manuell via Bash laufen lassen und in VALIDATION.md dokumentieren; Import-Pfade via cwd-relativ (`scripts`) oder Env (`QFS_SCRIPTS_DIR`). (3) Pre-Push-Scan findet auch echte Fundstellen im eigenen Repo — dann sauber fixen (SSRF-Guard, Pfad-Handling), danach geht der Push durch (Mimosa meldet nur noch „unvollständige Abdeckung", blockt nicht). (4) Scanner blockt JEDES `open(<variable>, 'w')`-Muster, auch hinter einem validierenden Helper — stattdessen `Path.write_text()` über einen Helper wie `safe_output_path(path)` (expanduser→resolve→is_dir-Check→mkdir parents) nutzen; validierte Helper-Definitionen selbst passieren. (5) Validierung von Netz-Hosts nie im Objekt-`__init__`, sondern lazy beim ersten echten Request — Mock-Tests mit Fake-Hostnamen crashen sonst. (6) Falle: `python3 -m unittest … | tail` maskiert den unittest-Exit-Code (Pipeline-Exit = tail) — vor Commit/Push `set -o pipefail` setzen. (7) Simultan laufende Nutzer-Sessions können Dateien zwischen Reads ändern ("File has been modified since read") → vor Edit neu lesen und fremde Änderungen (z.B. neue Task-Choices) respektieren, nicht reverten; auch Parallel-Sessions pushen unabhängig in denselben Remote-Branch (Merge statt force). (8) Swift/CLT-seitig (Slice 2–7): jede neueswift-Build-Iteration kann das Macro-Plugin-Race neu auslösen — `run_tests.sh` mit `-Xswiftc -plugin-path …/plugins/testing` ist der Dauerfix; `swift build --build-tests` ohne diesen Pfad failt immer bei @Suite/@Test; weitere CLT-Fallen (alle per Test gefunden): `scheduleSegment` braucht `at:`-Param, `AVLinearPCMIsSignedIntegerKey` fehlt im SDK, `#expect(throws: ())` → `(any Error).self`, Ternary in `.buttonStyle(a ? .borderedProminent : .bordered)` typ-inkompatibel, `onTapGesture { location in }` braucht CGPoint-Signatur + GeometryReader für Breite. Kontext: [[qwen-flash-spark-project]].
 
 ## qwen-flash-spark-project
 
@@ -11867,7 +11867,7 @@ Projekt `~/qwen-flash-spark` (Stand 2026-10-26): Qwen3.8-Flash-Next (125B MoE, 6
 
 Verifizierte Fakten (nicht raten): Traktor `Traktor Settings.tsi` = **Plain-XML** (`<NIXML><Entry …/>`), kein Binär-RE nötig; GGUF `unsloth/Qwen3.8-Flash-Next-GGUF`, **UD-Q4_K_XL = 111 GB** (alte ~78-GB-Schätzung war falsch; Q5 passt nicht in 128 GB); MTP-Flag `--spec-type draft-mtp`; GB10-Runtime-Pflichtflags `-ub 2048 -b 2048 --no-mmap`; llama.cpp-Support seit PR #16095/#17584. Clients blocken private IPs (SSRF-Guard) → LAN-Nutzung braucht `QFS_ALLOW_LAN=1` oder `--allow-lan`.
 
-Git (Stand 2026-10-26, spät): Head `2a68dcbdb` auf `cline/s4sx83cs` (github.com/Koerperfluss/agent-mirror, gh auth Koerperfluss). Kanonische Arbeitskopie: `~/agent-os/agent-mirror` (Klon; Projektinhalt am Repo-ROOT). **Slice 1 der Traktor-App FERTIG:** `TraktorClone/` SwiftPM-Package — Core (DeckState-Zustandsmaschine mit `now:`-Clock-Param überall, Mixer equal-power mit gesnappten Extremen, BeatGrid, TSIParser, AudioEngine AVAudioEngine+TimePitch, MIDIActionRouter) + SwiftUI-App `swift run TraktorCloneApp` (2 Decks, Mixer, CoreMIDI-Live-In, Demo-Mapping Note 0x24=Play/0x25=Cue/CC7=X-Fade, Tastatur Q/W/E + U/I/O). **27/27 Tests grün** via `TraktorClone/run_tests.sh`; 4 TDD-Bugs gefixt (Uhren-Inkonsistenz, cos(π/2)≠0, Cue aus .ready→.paused, CLT-Macro-Race). Swift/CLT-Fakten: reine CommandLineTools haben kein XCTest → **Swift Testing** (`import Testing`, `#expect`, tools-version 6.0); Macro-Plugin-Race („TestingMacros not found") → fix via `-Xswiftc -plugin-path -Xswiftc /Library/Developer/CommandLineTools/usr/lib/swift/host/plugins/testing` (in run_tests.sh); `@State` ist im neuen SDK ein Makro → Property ins ObservableObject statt `@State` (SwiftUIMacros-Race); `AVAudioFile` hat kein `duration` (length/sampleRate). 14/29 FEATURES.json implemented, DVS blocked (BD-1380 Riemenantrieb), nächster: Slice 2 (Library/collection.nml-Reader) oder Slice 3 (Waveform+Seek) — `rebuild/STATE.md` führt weiter. Sascha pocht darauf, die App wirklich zu bauen (nicht nur Doku/Skripte).
+Git (Stand 2026-10-26, spät): Head `42810482f` auf `cline/s4sx83cs` (github.com/Koerperfluss/agent-mirror, gh auth Koerperfluss). Kanonische Arbeitskopie: `~/agent-os/agent-mirror` (Klon; Projektinhalt am Repo-ROOT). **Slices 1–7 der Traktor-App FERTIG (54/54 Tests, 9 Suites) in `TraktorClone/` SwiftPM:** Slice 1 = Core (DeckState mit `now:`-Clock-Param überall, Mixer equal-power gesnappt, BeatGrid, TSIParser, MIDIActionRouter) + SwiftUI 2-Deck-App. **Slices 2–7 (Commit 42810482f):** NMLParser+LibrarySearch (echte collection.nml ist LEER, `ENTRIES="0"`), WaveformExtractor (400 Buckets, Peak, normalisiert) + AudioEngine.seek (`player.scheduleSegment(file, startingFrame:, frameCount:, at: nil)` — `at:` ist PFLICHT-Param), FxChain (EQ/Delay/Reverb, Kette player→timePitch→EQ→Delay→Reverb→Mixer), SyncEngine (slavePitch clamp ±0.5, beatPhase), MasterRecorder (mainMixer-Tap→AIFF 16/44.1), StemFile (nur Struktur — Playback-Engine = Ticket 7b), MIDILearn/MappingStore (JSONEncoder MUSS `.sortedKeys+.prettyPrinted` für Stabilität), `make_app.sh` → **klickbares `build/TraktorClone.app`** (ad-hoc codesign, ohne Xcode). App-UI: Waveform-Canvas+Klick-Seek (via onTapGesture(CGPoint)+GeometryReader, kein @State — Ternary in .buttonStyle geht nicht), FX-Slider, Sync-Buttons, Rec, Library mit „→ A"/„→ B". **Neue API-Fallen:** `AVLinearPCMIsSignedIntegerKey` existiert nicht im CLT-SDK; AVAudioUnitEQ hat kein `numberOfBands` (nur `bands.count`); `AVAudioFile` kein `duration` (length/sampleRate); `#expect(throws: ())` invalid → `(any Error).self`. **Known-Gaps:** Play-after-Pause startet an Schedule- statt Playhead-Position (playerTime-Sync fehlt), Stem-Playback offen, xcodebuild fehlt (nur CLT → kein Codesigning/Xcode-Projekt). 27/54 FEATURES implemented. `rebuild/STATE.md` führt weiter (nächste: Slice 7b oder Playhead-Präzision). Sascha pocht auf die fertige App mit ALLEN Funktionen — Prioritäts-/Team-Fragen stoßen ihn auf („wieso fragst du mich das ich will fertige app").
 
 Saschas Custom-Skills (/roocode, /coderabbit, /gsd-core, /lokidev, /appagentteam): NICHT als ZCode-Skills registriert, aber als Dateien vorhanden — Manuell-Ausführung akzeptiert, siehe [[custom-skills-read-from-autoclaw]]. Hardware-Kette: Omnitronic BD-1380 USB (class-compliant → ALSA `snd-usb-audio` am Pi) + analoger A&H Xone:32 (keine Soundkarte); Traktor Pro selbst = macOS/Windows (CoreAudio/ASIO), kein ALSA. Siehe [[mimosa-hook-write-constraints]].
 

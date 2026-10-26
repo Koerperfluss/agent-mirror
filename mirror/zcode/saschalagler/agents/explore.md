@@ -2,8 +2,8 @@
 name: "explore"
 description: "Nur-Lese-Kundschafter: erfasst Struktur und Stand einer Codebasis."
 color: yellow
-model: "omniroute/glm-first"
-thoughtLevel: max
+model: "account:zai-individual-coding-plan/GLM-5.3-Flash"
+thoughtLevel: low
 tools:
   - Read
   - Grep

@@ -1,7 +1,7 @@
 ---
 app: zcode
 quelle: "saschalagler/agents/config-auditor.md"
-stand: 2026-10-18
+stand: 2026-10-26
 tags: [spiegel, zcode]
 ---
 
@@ -9,7 +9,7 @@ tags: [spiegel, zcode]
 name: "config-auditor"
 description: "Prüft Config-Dateien auf Syntax-, Konsistenz- und Sicherheitsfehler."
 color: yellow
-model: "zai-api/GLM-5.3-Flash"
+model: "omniroute/glm-first"
 thoughtLevel: low
 tools:
   - Read

@@ -2,7 +2,7 @@
 name: "cavecrew-reviewer"
 description: ">"
 color: yellow
-model: "omniroute/glm-first"
+model: "account:zai-individual-coding-plan/GLM-5.3-Flash"
 thoughtLevel: low
 tools:
   - Read

@@ -1,7 +1,7 @@
 ---
 app: zcode
 quelle: "saschalagler/agents/code-architect.md"
-stand: 2026-10-18
+stand: 2026-10-26
 tags: [spiegel, zcode]
 ---
 
@@ -9,7 +9,7 @@ tags: [spiegel, zcode]
 name: "code-architect"
 description: "Entwirft Architektur und Modulgrenzen, bevor implementiert wird."
 color: yellow
-model: "zai-api/GLM-5.3-Flash"
+model: "omniroute/glm-first"
 thoughtLevel: high
 tools:
   - Read

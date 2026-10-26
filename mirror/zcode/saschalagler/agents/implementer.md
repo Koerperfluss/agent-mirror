@@ -2,8 +2,8 @@
 name: "implementer"
 description: "Setzt spezifizierte Tickets direkt in Code um."
 color: yellow
-model: "omniroute/glm-first"
-thoughtLevel: max
+model: "account:zai-individual-coding-plan/GLM-5.3-Flash"
+thoughtLevel: low
 tools:
   - Read
   - Edit
