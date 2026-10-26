@@ -16,3 +16,5 @@ Stand 20.09.2026 Abend — Fix-Lauf nach System-Selbstprüfung (Workflow „LOKI
 7. Doku-Konsolidierung: `LOKI_MASTER_STATUS.md` (war 74 Tage alt) + `SYSTEM_HANDBUCH.md` neu geschrieben/gezielt gefixt; Backups in `~/sicherungen/doku-backup-20260920/`.
 
 Verwandt: [[loki-kernel-v17-start-8010-fix]], [[zai-coding-plan-limits]]
+
+**⚠️ UPDATE 26.10.: OmniRoute LÄUFT WIEDER** — lsof-Beweis: Port **:20128 LISTEN** (node PID 871). Widerspricht dem Abbau vom 20.09.; laut Kompass-Doku 15.10. gab es einen LaunchAgent-Fix 11.10. (`--tray` entfernt, Backup `.bak-20261011`) → offenbar reaktiviert. Offen: Richtungs-Entscheidung Sascha (wieder an vs. endgültig zu) + Security-P1 „API-Keys-Logik vor White-Label-Verkauf" (dwfrun-Lauf 10.10., Status unbestätigt). Details: [[zcode-adhs-automationen]] / LOKI_TASKBOARD.md.

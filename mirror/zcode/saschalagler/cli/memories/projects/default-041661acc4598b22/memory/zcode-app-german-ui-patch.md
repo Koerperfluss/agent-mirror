@@ -26,3 +26,5 @@ metadata:
 2. m-Dict-Region (252479–583376) durch DE-Dict ersetzen (Backtick-Escapes beachten), asar repacken. Achtung: andere Sessions haben seit 13.09. config.json verändert (17 MCP-Server, 4 SessionStart-Hooks) — betrifft asar nicht, aber Neustart beendet laufende dwf-Workflows → nur in einer Sascha-Session ohne aktive Workflows.
 3. **Backup `app.asar.orig`** + `codesign --force --deep -s -` (macOS-27-Beta-AMFI, siehe [[macos-27-beta-status]]) + Re-Patch-Skript gegen App-Updates.
 4. ZCode-Neustart + Textbeleg als Beweis. Lücke: 9 Keys mit Double-Quote-Werten (u. a. `bots.setup.guide.*`) beim Patchen nachliefern oder unberührt lassen.
+
+**Verifiziert 26.10.:** `/Applications/ZCode.app/Contents/Resources/app.asar` weiterhin vorhanden → Re-Extraktion jederzeit möglich (~10 Min, Offsets stehen oben). Taskboard-Zuordnung: ZCode + 2 implementer-Subagenten; GO-Wort bleibt „weiter übersetzen".
