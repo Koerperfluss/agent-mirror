@@ -2,7 +2,7 @@
 name: "code-architect"
 description: "Entwirft Architektur und Modulgrenzen, bevor implementiert wird."
 color: yellow
-model: "zai-api/GLM-5.3-Flash"
+model: "omniroute/glm-first"
 thoughtLevel: high
 tools:
   - Read

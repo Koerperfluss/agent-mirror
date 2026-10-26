@@ -2,7 +2,7 @@
 name: "cavecrew-investigator"
 description: ">"
 color: yellow
-model: "zai-api/GLM-5.3-Flash"
+model: "omniroute/glm-first"
 thoughtLevel: low
 tools:
   - Read
