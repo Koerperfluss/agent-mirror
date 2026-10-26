@@ -81,6 +81,56 @@ public final class AudioEngine {
         players[deck]?.stop()
     }
 
+    /// Pause mit Präzision: aktuelle playerTime-Position wird in
+    /// `file.framePosition` zurückgeschrieben, damit `play(deck:)` exakt dort
+    /// weiterscheduled (statt am Dateiende/gestörten Offset).
+    public func pause(deck: Int) {
+        guard let file = files[deck], let player = players[deck] else { return }
+        var pos = Double(file.framePosition)
+        if let nodeTime = player.lastRenderTime,
+           let playerTime = player.playerTime(forNodeTime: nodeTime) {
+            pos += Double(playerTime.sampleTime)
+        }
+        player.pause()
+        file.framePosition = AVAudioFramePosition(max(0, min(pos, Double(file.length))))
+    }
+
+    // MARK: - Loop (Slice 7c)
+
+    /// Loop pro Deck. MECHANISMUS: `AVAudioPlayerNode.scheduleSegment` hat einen
+    /// Completion-Handler, aber Retrigger darüber ist an `completionCallbackType`
+    /// gebunden und beim Seek/Stop fragil — deshalb bewusst SIMPLEST: ein
+    /// repeating Timer alle (Loop-Dauer / Rate) Sekunden macht `seek(deck:to:)`
+    /// zurück zum Loop-Start. Kompiliert, nachvollziehbar, `disableLoop` stoppt ihn.
+    private struct LoopState {
+        let startSec: Double
+        let endSec: Double
+        var timer: Timer?
+    }
+    private var loops: [Int: LoopState] = [:]
+
+    public func enableLoop(deck: Int, startSec: Double, endSec: Double) {
+        guard (0...1).contains(deck), endSec > startSec else { return }
+        disableLoop(deck: deck)
+        let duration = endSec - startSec
+        // Swift-6-Concurrency: Timer-Closure ist @Sendable; Engine ist nicht
+        // Sendable, deshalb bewusst unsafe entkoppelt (Nutzung nur im UI-Kontext).
+        nonisolated(unsafe) let engine = self
+        let timer = Timer.scheduledTimer(withTimeInterval: duration, repeats: true) { _ in
+            engine.seek(deck: deck, to: startSec)
+        }
+        loops[deck] = LoopState(startSec: startSec, endSec: endSec, timer: timer)
+    }
+
+    public func disableLoop(deck: Int) {
+        loops[deck]?.timer?.invalidate()
+        loops[deck] = nil
+    }
+
+    public func loopActive(deck: Int) -> Bool {
+        loops[deck] != nil
+    }
+
     public func setPitchFactor(deck: Int, factor: Double) {
         timePitch[deck]?.rate = Float(min(max(factor, 0.25), 4.0))
     }

@@ -27,8 +27,11 @@ import AVFoundation
         #expect(result.urls.isEmpty)
         #expect(result.roles.isEmpty)
 
-        #expect(StemFile.roleLabel(of: AVAssetTrack(), index: 0) == "Mix")
-        #expect(StemFile.roleLabel(of: AVAssetTrack(), index: 4) == "Vocals")
-        #expect(StemFile.roleLabel(of: AVAssetTrack(), index: 9) == "Track 9")
+        // SDK 27: AVAssetTrack.init() ist unavailable — roleLabel liest den Track
+        // nicht aus, ein typsicherer Dummy genügt.
+        let dummy = unsafeBitCast(NSObject(), to: AVAssetTrack.self)
+        #expect(StemFile.roleLabel(of: dummy, index: 0) == "Mix")
+        #expect(StemFile.roleLabel(of: dummy, index: 4) == "Vocals")
+        #expect(StemFile.roleLabel(of: dummy, index: 9) == "Track 9")
     }
 }

@@ -58,7 +58,7 @@ final class DeckViewModel: ObservableObject {
 
     func togglePlay() {
         if state.isPlaying {
-            state.pause(now: clock); engine.stop(deck: index)
+            state.pause(now: clock); engine.pause(deck: index)
         } else {
             state.play(now: clock)
             engine.setPitchFactor(deck: index, factor: state.rate)

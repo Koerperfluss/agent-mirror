@@ -22,3 +22,10 @@ cd agent-mirror/TraktorClone
 - Play-after-Pause: playerTime-basierter Resume
 - Slice 9: Auto-DJ · Waveform-Zoom · MIDI-Learn-UI (Persistenz-Kern steht)
 - README-Schritte A–D (Spark): irrelevant laut Nutzer, Tickets bleiben stehen
+
+## Slice 7c (26.10., Team-Bau) — FERTIG
+- StemPlayer (5 Nodes, Gain-Balance; Grenze: AVAudioFile liest nur Track 0 → Mix-Spur 5×, dokumentiert)
+- AudioEngine: pause(deck:) mit playerTime-Rück sync, enableLoop/disableLoop (Timer-Retrigger, dokumentiert)
+- DeckViewModel: Pause nutzt engine.pause → Play-after-Pause exakt am Playhead
+- 62/62 Tests (11 Suiten), verified 26.10.
+- Offen S8+: Auto-DJ, MIDI-Learn-UI, Waveform-Zoom
