@@ -1,7 +1,6 @@
 ---
 name: simple-language-responses
-description: Sascha versteht fachliche Antworten oft nicht — Antworten radikal
-  vereinfachen, max. 3 Punkte, Fachwörter erklären oder weglassen
+description: Sascha versteht fachliche Antworten oft nicht und wird wütend bei Rückfragen/Optionen — radikal vereinfachen, keine Entscheidungstabellen, Standards selbst wählen
 metadata:
   node_type: memory
   type: feedback
