@@ -52,9 +52,10 @@ public final class AudioEngine {
     /// Seek: Player neu schedulen ab Frame-Offset; Playing-Zustand wird erhalten.
     public func seek(deck: Int, to seconds: TimeInterval) {
         guard let file = files[deck], let player = players[deck] else { return }
-        let wasPlaying = player.isPlaying
         let sampleRate = file.processingFormat.sampleRate
         let target = AVAudioFramePosition(max(0, min(seconds * sampleRate, Double(file.length) - 1)))
+        guard file.length - target > 0 else { return }      // kein 0-Frame-Schedule am Dateiende
+        let wasPlaying = player.isPlaying
         player.stop()
         file.framePosition = target
         if wasPlaying {

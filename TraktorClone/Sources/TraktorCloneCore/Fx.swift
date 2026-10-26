@@ -37,9 +37,14 @@ public final class FxChain {
         delay.wetDryMix = Float(Self.clamp(wetPct, 0, 100))
     }
 
-    /// Reverb: Wet % + Raum-Größe.
+    private var reverbIsSmall = true
+
+    /// Reverb: Wet % + Raum-Größe (Preset nur bei Wechsel laden — kein Audio-Glitch).
     public func setReverb(wetPct: Double, preset small: Bool) {
-        reverb.loadFactoryPreset(small ? .smallRoom : .largeHall)
+        if small != reverbIsSmall {
+            reverb.loadFactoryPreset(small ? .smallRoom : .largeHall)
+            reverbIsSmall = small
+        }
         reverb.wetDryMix = Float(Self.clamp(wetPct, 0, 100))
     }
 

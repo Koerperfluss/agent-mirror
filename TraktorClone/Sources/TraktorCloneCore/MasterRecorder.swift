@@ -22,13 +22,14 @@ public final class MasterRecorder {
         guard !isRecording else { return }
         let f = try AVAudioFile(forWriting: url, settings: MasterRecorder.pcmSettings())
         file = f
+        isRecording = true                                  // VOR installTap: Tap darf nichts droppen
+        startedAt = Date()
         let format = engine.mainMixerNode.outputFormat(forBus: 0)
         engine.mainMixerNode.installTap(onBus: 0, bufferSize: 4096, format: format) { [weak self] buffer, _ in
-            guard let self, self.isRecording else { return }
-            try? self.file?.write(from: buffer)
+            guard let self, self.isRecording, let f = self.file else { return }
+            do { try f.write(from: buffer) }
+            catch { NSLog("TraktorClone Recorder: Schreibfehler \(error)") }   // nicht still schlucken
         }
-        isRecording = true
-        startedAt = Date()
     }
 
     public func stop(engine: AVAudioEngine) {

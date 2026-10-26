@@ -18,7 +18,6 @@ public final class NMLParser: NSObject, XMLParserDelegate {
 
     private var inCollection = false
     private var current: NMLTrack?
-    private var currentElement: String?
 
     public static func parse(data: Data) -> [NMLTrack] {
         let p = NMLParser()
@@ -36,7 +35,6 @@ public final class NMLParser: NSObject, XMLParserDelegate {
     public func parser(_ parser: XMLParser, didStartElement name: String,
                        namespaceURI: String?, qualifiedName: String?,
                        attributes: [String: String]) {
-        currentElement = name
         switch name {
         case "COLLECTION":
             inCollection = true
@@ -66,7 +64,6 @@ public final class NMLParser: NSObject, XMLParserDelegate {
             current = nil
         }
         if name == "COLLECTION" { inCollection = false }
-        currentElement = nil
     }
 }
 

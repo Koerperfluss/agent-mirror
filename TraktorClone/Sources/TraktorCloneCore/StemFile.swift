@@ -1,17 +1,23 @@
 import AVFoundation
 
 /// NI-Stem-Datei (.stem.mp4): MP4 mit 5 Audio-Tracks (1× Mix + 4× Stem).
-/// Slice-7-Umfang: Struktur-Erkennung + Track-Titel; 4-Spur-Playback folgt
-/// über 4 PlayerNodes (Ticket im STATE.md — AVAssetReader-Pump).
+/// Tracks werden LAZY geladen (async-I/O blockiert nicht den Main-Thread).
 public final class StemFile {
     public let url: URL
-    public private(set) var audioTracks: [AVAssetTrack] = []
+    private let asset: AVURLAsset
+    private var cachedTracks: [AVAssetTrack]?
 
     public init(url: URL) {
         self.url = url
-        let asset = AVURLAsset(url: url)
+        self.asset = AVURLAsset(url: url)
+    }
+
+    /// Sync-Zugriff mit Cache; erster Aufruf kann I/O kosten (Call im Hintergrund halten).
+    public var audioTracks: [AVAssetTrack] {
+        if let cached = cachedTracks { return cached }
         // Sync-API (deprecated-Warnung ok, mac13-kompatibel); Fehler → leere Liste
-        audioTracks = asset.tracks(withMediaType: .audio)
+        cachedTracks = asset.tracks(withMediaType: .audio)
+        return cachedTracks ?? []
     }
 
     /// Track 0 = Mixdown, Tracks 1...4 = Drums/Bass/Other/Vocal (NI-Konvention).
