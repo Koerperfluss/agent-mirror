@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-26 15:14 UTC
+Zuletzt gespiegelt: 2026-10-26 15:31 UTC
 
 ## AGENTS
 
@@ -11810,6 +11810,81 @@ Music stem separation is set up and verified working on this machine (2026-10-21
 
 # Memory Index
 
+- [Mimosa-Hook: Code-Dateien nur via Write-Tool](mimosa-hook-skills-write-tool.md) — Bash-Kopie von .py/.yaml nach ~/.claude/skills wird blockiert
+- [UI/UX-Skills Reparatur 26.10.2026](uiux-skills-repair-2026-10-26.md) — Skills komplettiert + verdrahtet; offene Restpunkte (Backup-Watcher, Manifest, HUB-Fixes)
+- [Einfache Sprache](simple-language-responses.md) — Sascha versteht fachliche Antworten oft nicht: radikal vereinfachen, max 3 Punkte, 1 Entscheidung pro Antwort
+
+## mimosa-hook-skills-write-tool
+
+---
+name: mimosa-hook-skills-write-tool
+description: Mimosa-Sicherheits-Hook blockiert Bash-Kopie von .py/.yaml in
+  ~/.claude/skills — Code-Dateien müssen über das Write-Tool einzeln übertragen
+  werden
+metadata:
+  node_type: memory
+  type: feedback
+  originSessionId: session_3a1cc25ff2c2e82e01c329cebdb4fa22
+---
+
+Der Mimosa PreToolUse-Hook lehnt Bash-Befehle ab, die Python-/Config-Dateien direkt nach `~/.claude/skills/` schreiben (rsync/cp), mit der Anweisung, Write/Edit zu nutzen. Getestet 26.10.2026 beim Skill-Update.
+
+**Why:** Der Hook will Quellcode/Security-Config durch den Write/Edit-Scan laufen lassen; Shell-Kopien umgehen ihn.
+
+**How to apply:** Bei Skill-/Code-Installationen: Nicht-Code (md/csv/json) per Bash-rsync mit `--exclude='*.py' --exclude='*.yaml'`, dann jede .py/.yaml einzeln Read(Quelle)→Write(Ziel). Danach `cmp` gegen die Quelle als Byte-Beweis. Verwandt: [[uiux-skills-repair-2026-10-26]].
+
+## simple-language-responses
+
+---
+name: simple-language-responses
+description: Sascha versteht fachliche Antworten oft nicht — Antworten radikal
+  vereinfachen, max. 3 Punkte, Fachwörter erklären oder weglassen
+metadata:
+  node_type: memory
+  type: feedback
+  originSessionId: session_3a1cc25ff2c2e82e01c329cebdb4fa22
+---
+
+Am 26.10.2026 sagte Sascha: "Alter, ich verstehe nicht, was du machst oder redest." — obwohl die Arbeit erfolgreich war. Meine Antworten enthielten zu viele unerklärte Fachbegriffe (WCAG, byte-identisch, Backoff, Manifest, Watcher) und zu viele Optionen auf einmal.
+
+**Why:** Die ADHD-Regeln (BLUF, kurze Tabellen, Fachwort-Erklärungen) reichten nicht — ich habe sie verletzt, indem ich technisch korrekt statt verständlich schrieb. Verständnis > Vollständigkeit.
+
+**How to apply:**
+1. Zeile 1 = das Wichtigste in einem einfachen Satz.
+2. Max. 3 Punkte oder 1 Mini-Tabelle pro Antwort.
+3. Jedes Fachwort entweder in 1 Satz erklären oder durch ein Alltagswort ersetzen.
+4. Nur EINE Entscheidung/Option pro Antwort — nicht 3 Stufen + Empfehlung + Skill-Diskussion.
+5. Wenn Sascha "verstehe ich nicht" sagt: anders erklären (Beispiel/Bild statt mehr Text), nie länger werden.
+6. Rolle von angefassten Projekten klären: Als ich zum Beweis der reparierten Skills seinen Verkaufs-HUB als Test-Objekt nutzte, fragte er "seit wann geht es um den Verkaufs-HUB?" — beim Antippen seiner echten Projekte immer sofort sagen, ob das Projekt das THEMA oder nur der PRÜFSTAND ist.
+
+## uiux-skills-repair-2026-10-26
+
+---
+name: uiux-skills-repair-2026-10-26
+description: UI/UX-Test-Skills am 26.10.2026 repariert/komplettiert (nicht neu installiert); offene Restpunkte: Skillshare-Manifest, externer Backup-Watcher, ausstehende HUB-Fixes
+metadata:
+  type: project
+---
+
+Am 26.10.2026 festgestellt: Alle beworbenen UI/UX-Skills waren bereits in `~/.claude/skills/` installiert, aber `ui-ux-pro-max` war nur eine nackte SKILL.md (ohne data/, references/, scripts/) und `better-*` fehlten 5 Sub-Skills. Erledigt: ui-ux-pro-max aus nextlevelbuilder/ui-ux-pro-max-skill vervollständigt (4 Laufzeit-`.py` byte-identisch; `validate_data.py` + Tests bewusst übersprungen), better-colors/-layout/-typography/-writing + interface-review aus jakubkrehel/skills installiert, 4 Routing-Zeilen in `~/.agents/skill-routing.md` (Zeilen 32–35) eingetragen. `ui-ux-tester` ist Saschas eigenes deutsches Custom-Skill — es gibt KEIN GitHub-Repo dieses Namens.
+
+Offen (Stand 26.10.2026):
+1. `_backup-uiux-2026-10-26.tar.gz` wurde ~16:10 extern neu geschrieben (vermutlich Skillshare-Watcher) und enthält jetzt den NEUEN Stand — Original-Altstand-Backup wurde ersetzt.
+2. `.skillshare-manifest.json` kennt die 5 neuen better-*-Skills noch nicht (Schema unklar, nicht angefasst).
+3. HUB-Bugfixes (WCAG-Kontrast 4×FAIL: Badges grün 3,00/amber 2,86/rot 3,95 + Muted-Text 3,16 statt ≥4,5:1; Kleintext 9–12,5px; nur 1× :focus bei 7 klickbaren Elementen; :8055-API-Polling ohne Backoff, Backend down) sind nur dokumentiert in `~/Desktop/Coworkspace_Ich/PRIVATE PORJEKTE /TOOL-SAMMLUNG-VERKAUF/UI_AUDIT_2026-10-26.md`, noch nicht umgesetzt. Klick-Tests selbst: 5/5 PASS (Suche, Filter, Detail öffnen/schließen).
+
+Vereinbarte Weitergehens-Staffel (26.10., Nutzerfrage „ist doch viel mehr?" — Entscheidung steht noch aus, Stichworte „Fix HUB" / „Audit alles"):
+- **Stufe A — Fix-Paket HUB** (~25–45 Min, 1 Datei, 1 Agent reicht, kein Subagenten-Team): `hub-glass.html` ist Saschas LIVE-Cockpit-Datei → vorher Backup + Diff zeigen, Überschreiben nur mit GO.
+- **Stufe B — Kleinkram** (~25 Min): Skillshare-Manifest nachziehen + Watcher identifizieren (Punkt 1/2 oben).
+- **Stufe C — Großer Ausbau** (2–4 Std): ui-ux-Skills produktiv auf alle Projekte (ATLAS-Web, storefront, Vinyl-Scanner …) — erst grilling (Scope-Verhör), dann 3 parallele Agents (dispatching-parallel-agents / subagent-driven-development passt hier).
+- Nebenbefund: agentforce-generate (Salesforce) ist für dieses Setup irrelevant; `/workflow` existiert in ZCode nicht (28.10.-Kontext wiederholt referenziert — nicht einladen).
+
+**Why:** Diese Restpunkte sind aus dem Routing/den Dateien selbst nicht ablesbar und müssen bei der nächsten Session weiterbearbeitet werden; Code-Übertragung dabei [[mimosa-hook-skills-write-tool]]-bedingt via Write-Tool.
+
+## MEMORY
+
+# Memory Index
+
 - [qwen-flash-spark Projekt](qwen-flash-spark-project.md) — Qwen3.8 auf DGX Spark + macOS-Traktor-Clone Slices 1–7 FERTIG (TraktorClone/ SwiftPM, 54 Tests, .app-Bundle, Head a30349657); Kanonik: ~/agent-os/agent-mirror; Swift-CLT-Gotchas (Swift Testing, plugin-path)
 - [Mimosa-Hook-Schreibconstraints](mimosa-hook-write-constraints.md) — warum Edits/Pushes blockiert werden und welche Gegenmuster funktionieren (validate_host, write_text, lazy, pipefail)
 - [Custom-Skills manuell ausführen](custom-skills-read-from-autoclaw.md) — roo-code/gsd-core/coderabbit/loki-dev/ponytail liegen in ~/.openclaw-autoclaw/skills/, ZCode registriert sie nicht → SKILL.md lesen + Methodik manuell anwenden
@@ -19127,8 +19202,10 @@ BrowserOS (`chrome://browseros/settings` → AI & Agents), 7 Provider (Stand 26.
 - OmniRoute (localhost:20128) 401 ohne Key · z.ai GLM · Hermes ACP · pi ACP — vorhanden.
 - Gemini: aistudio.google.com/apikey → Google-Anmelden im AgentOS-Fenster. Login durch Sascha ODER API-Key. Google AI Pro-Abo ≠ API-Key.
 
+**ACP-Dialog-Info (26.10., Sascha gefragt „was ist das"):** „Add a custom ACP agent" in den BrowserOS-Settings = Formular für Coding-Agenten über Agent Client Protocol (stdio) — Agent bekommt volle Shell-/Dateirechte ohne Approval. Hermes + pi in der Provider-Liste sind bereits solche ACP-Agenten. Dialog nur mit Cancel/Escape schließen, nichts eintragen — für Browser-Chat nicht nötig.
+
 **Why:** Sascha-Kritik 26.10.: „key ist neu, du hast ollama nicht für browser konfiguriert, clinepass dumm wegen token limit" — alles berechtigt; Default-Kette jetzt: Ollama (lokal) → ClinePass (Flats) → OpenRouter (nach Key-Fix, dann Wunsch-Default).
-**How to apply:** Erst curl-Direktests, dann UI. GET /api/v1/key unterscheidet Management- vs. Inference-Key. Master-Doku: `/Users/saschalagler/LOKI_OS_SETUP.md`.
+**How to apply:** Erst curl-Direktests, dann UI. GET /api/v1/key unterscheidet Management- vs. Inference-Key. ACP-Dialog = nur informieren/schließen, kein Setup ohne Auftrag. Master-Doku: `/Users/saschalagler/LOKI_OS_SETUP.md`.
 
 Verwandt: [[umgebungs-blocker-zcode]] · [[loki-os-system-setup-2026-10-26]]
 

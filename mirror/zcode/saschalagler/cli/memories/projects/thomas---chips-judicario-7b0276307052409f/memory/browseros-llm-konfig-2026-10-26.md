@@ -1,27 +1,27 @@
 ---
 name: browseros-llm-konfig-2026-10-26
-description: BrowserOS „Bring Your Own LLM" Stand 26.10.2026 (FINAL) — Ollama
-  = Default (kein Token-Limit); OpenRouter-Key ist GÜLTIG aber MANAGEMENT-KEY
-  (kann keine Chat-Completions, kein Secret-Minting via API) → normaler
-  Inference-Key muss via openrouter.ai/keys UI erstellt werden; ClinePass
-  funktioniert, aber bewusst NICHT Default (5h-Token-Limit)
+description: BrowserOS „Bring Your Own LLM" FINAL 26.10.2026 — OpenRouter
+  `openrouter/free` ist DEFAULT (gratis Auto-Modellwahl, live getestet
+  cost:0); Inference-Key in ~/.openrouter_browseros_key (chmod 600);
+  Management-Key darf keine Chat-Completions, Secret der Sub-Keys steht auf
+  TOP-Level des POST-Responses; Ollama qwen3.5:9b + qwen3-vl:8b als Backup;
+  ClinePass funktioniert, aber für Coding geschont
 metadata:
   node_type: memory
   type: project
   originSessionId: session_browseros-llm-2610
 ---
 
-BrowserOS (`chrome://browseros/settings` → AI & Agents), 7 Provider (Stand 26.10.2026 final):
+BrowserOS (`chrome://browseros/settings` → AI & Agents), FINAL-Stand 26.10.2026:
 
-- **Ollama = DEFAULT** (26.10. abends umgestellt) — `qwen3.5:9b` · localhost:11434/v1. Grund: kein Token-Limit, ClinePass-Flatrate soll für Coding geschont werden (Sascha-Kritik). Vision-Modell `qwen3-vl:8b` wurde per `ollama pull` nachgezogen (Browser-Automation braucht Vision) — nach Pull Ollama-Eintrag im BrowserOS auf VL-Modell umstellen.
-- **ClinePass (OpenAI Compatible)** — `cline-pass/glm-5.3-flash` · api.cline.bot. Funktioniert (curl stream:true ✅), aber BEWUSST nicht Default wegen 5h-Token-Limit (Sascha: „clinepass setting völlig dumm wegen dem token limit").
-- **OpenRouter**: Der von Sascha gepostete Key `sk-or-v1-b01a…f5f` ist **GÜLTIG** (GET /api/v1/key 200) aber `is_management_key:true` → Management-Keys dürfen KEINE Chat-Completions („401 User not found" an /chat/completions ist NORMAL dafür, der Key ist NICHT tot!). Sub-Key-Erzeugung via POST /api/v1/keys klappt, aber das Secret wird NICHT im Response mitgeliefert (nur masked label) → 3 erzeugte Orphans wurden wieder gelöscht (deleted:true). **Fix nur via UI:** openrouter.ai/keys → normalen Key ohne Management-Häkchen erzeugen → an ZCode → in BrowserOS OpenRouter-Eintrag eintragen → „Set as default" (Sascha will openrouter/auto als Auto-Modellwahl).
-- OmniRoute (localhost:20128) 401 ohne Key · z.ai GLM · Hermes ACP · pi ACP — vorhanden.
-- Gemini: aistudio.google.com/apikey → Google-Anmelden im AgentOS-Fenster. Login durch Sascha ODER API-Key. Google AI Pro-Abo ≠ API-Key.
+- **OpenRouter · `openrouter/free` = DEFAULT** ✅ — Gratis-Router: wählt automatisch freie Modelle, cost:0 (curl-Livetest: HTTP 200 → poolside/laguna-s-2.1:free, Antwort „Ok!"). **Inference-Key** (73 Zeichen, erzeugt via Management-API) liegt lokal in `~/.openrouter_browseros_key` (chmod 600) — nicht in Chats/Docs kopieren.
+- **Management-Key-Falle (wichtig!):** Saschas Key `sk-or-v1-b01a…f5f` ist GÜLTIG, aber `is_management_key:true` → 401 „User not found" an /chat/completions ist NORMAL, der Key ist nicht tot. Sub-Key-Erzeugung per `POST /api/v1/keys` (Authorization = Management-Key): das **Secret steht auf TOP-Level des Responses (`d['key']`), NICHT in `d['data']`** — und nur dort, einmalig. Erst-löschen-dann-Secret-suchen = Secret weg (3 Orphans costeten einen Anlauf). Trailing-Slash `/keys/` → 404.
+- **Ollama = Backup** — `qwen3.5:9b` + gepullt `qwen3-vl:8b` & `qwen3-vl:4b` (Vision für Browser-Screenshots). Offen: BrowserOS-Ollama-Eintrag zeigt noch qwen3.5:9b; bei Bedarf Actions → Edit → Modell qwen3-vl:8b.
+- **ClinePass** — funktioniert (curl stream:true; non-stream → 500 „empty response content", BrowserOS-„Test connection" scheitert daran fälschlich). Bewusst NICHT Default (5h-Token-Limit, Sascha-Kritik) — reserviert für ZCode/Coding.
+- Gemini: blockiert bis Google-Login im BrowserOS-Fenster ODER AI-Studio-API-Key. Google AI Pro-Abo ≠ API-Key.
+- OmniRoute/z.ai/Hermes/pi vorhanden; „Add custom ACP agent"-Dialog = nur Info, Cancel, kein Setup ohne Auftrag.
 
-**ACP-Dialog-Info (26.10., Sascha gefragt „was ist das"):** „Add a custom ACP agent" in den BrowserOS-Settings = Formular für Coding-Agenten über Agent Client Protocol (stdio) — Agent bekommt volle Shell-/Dateirechte ohne Approval. Hermes + pi in der Provider-Liste sind bereits solche ACP-Agenten. Dialog nur mit Cancel/Escape schließen, nichts eintragen — für Browser-Chat nicht nötig.
-
-**Why:** Sascha-Kritik 26.10.: „key ist neu, du hast ollama nicht für browser konfiguriert, clinepass dumm wegen token limit" — alles berechtigt; Default-Kette jetzt: Ollama (lokal) → ClinePass (Flats) → OpenRouter (nach Key-Fix, dann Wunsch-Default).
-**How to apply:** Erst curl-Direktests, dann UI. GET /api/v1/key unterscheidet Management- vs. Inference-Key. ACP-Dialog = nur informieren/schließen, kein Setup ohne Auftrag. Master-Doku: `/Users/saschalagler/LOKI_OS_SETUP.md`.
+**Why:** Sascha lieferte selbst die OpenRouter-Free-Router-Doku — Gratis-Auto-Modellwahl + ClinePass-Schonung sind jetzt beide erfüllt.
+**How to apply:** Browser-Chat läuft über openrouter/free (0 €). Bei Ausfall: Ollama als Default setzen. curl-Direktests vor UI-Arbeit. Master-Doku: `/Users/saschalagler/LOKI_OS_SETUP.md`.
 
 Verwandt: [[umgebungs-blocker-zcode]] · [[loki-os-system-setup-2026-10-26]]
