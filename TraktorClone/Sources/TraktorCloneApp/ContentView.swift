@@ -2,44 +2,69 @@ import SwiftUI
 import TraktorCloneCore
 import CoreMIDI
 
-/// Root-UI: 2 Decks + Mixer + MIDI-Status. Tastatur: A-Deck Q(load)/W(play)/E(cue)/1-4(hotcues),
-/// B-Deck U/I/O + 7-0? — bewusst simpel (Slice 1): Space = Deck A Play.
+/// Root-UI: 2 Decks (Waveform+FX) + Mixer + Sync + Recording + Library.
 struct ContentView: View {
     @EnvironmentObject var midi: MIDIController
     @StateObject private var engineHost = EngineHost()
 
     var body: some View {
         VStack(spacing: 12) {
-            midiBar
-            HStack(spacing: 16) {
+            topBar
+            HStack(alignment: .top, spacing: 16) {
                 deckView(vm: engineHost.deckA, label: "A", keys: ("q", "w", "e"))
                 mixerView
                 deckView(vm: engineHost.deckB, label: "B", keys: ("u", "i", "o"))
             }
+            libraryView
         }
         .padding(16)
         .background(Color(nsColor: .windowBackgroundColor))
         .onAppear { engineHost.wire(midi: midi) }
     }
 
-    private var midiBar: some View {
+    // MARK: Top-Bar (MIDI-Status + Sync + Rec)
+    private var topBar: some View {
         HStack {
             Image(systemName: "pianokeys")
             Text(midi.status).font(.caption).foregroundStyle(.secondary)
             Spacer()
-            Text("TraktorClone 0.1 · Slice 1").font(.caption2).foregroundStyle(.tertiary)
+            Button(engineHost.syncMaster == 1 ? "Master: B" : "Master: A") {
+                engineHost.toggleSyncMaster()
+            }
+            .buttonStyle(.bordered)
+            Button("Sync B→A") { engineHost.syncDeck(1) }.buttonStyle(.borderedProminent)
+            Button(engineHost.isRecording ? "⏺ Stop" : "⏺ Rec") { toggleRecording() }
+                .buttonStyle(.borderedProminent)
+                .tint(engineHost.isRecording ? .red : .accentColor)
         }
     }
 
+    private func toggleRecording() {
+        if engineHost.isRecording {
+            engineHost.stopRecording()
+        } else {
+            let panel = NSSavePanel()
+            panel.allowedContentTypes = [.aiff]
+            panel.nameFieldStringValue = "TraktorMix.aiff"
+            guard panel.runModal() == .OK, let url = panel.url else { return }
+            try? engineHost.startRecording(to: url)
+        }
+    }
+
+    // MARK: Deck (Waveform + Transport + FX)
     private func deckView(vm: DeckViewModel, label: String, keys: (load: String, play: String, cue: String)) -> some View {
-        VStack(alignment: .leading, spacing: 10) {
+        VStack(alignment: .leading, spacing: 8) {
             HStack {
                 Text("Deck \(label)").font(.headline)
                 Spacer()
                 Text(vm.title).font(.caption).lineLimit(1).truncationMode(.middle)
             }
-            Text(timeString(vm.playhead) + " / " + timeString(vm.state.duration))
-                .font(.system(.body, design: .monospaced))
+            waveformView(vm: vm)
+            HStack {
+                Text(timeString(vm.playhead)).font(.system(.caption, design: .monospaced))
+                Spacer()
+                Text(timeString(vm.state.duration)).font(.system(.caption, design: .monospaced))
+            }
             HStack {
                 Button("Load") { vm.load() }.keyboardShortcut(KeyEquivalent(Character(keys.load)), modifiers: [])
                 Button(vm.state.isPlaying ? "Pause" : "Play") { vm.togglePlay() }
@@ -48,32 +73,100 @@ struct ContentView: View {
             }
             HStack(spacing: 6) {
                 ForEach(1...4, id: \.self) { i in
-                    Button("\(i)") { vm.hotcue(i) }
-                        .frame(width: 34)
+                    Button("\(i)") { vm.hotcue(i) }.frame(width: 34)
                 }
+                Spacer()
+                Button(vm.state.keylock ? "Key ✓" : "Key") { vm.state.toggleKeylock() }
+                    .buttonStyle(.bordered)
             }
-            HStack {
-                Text("Pitch").font(.caption)
-                Slider(value: Binding(
-                    get: { vm.pitch },
-                    set: { vm.setPitch($0) }
-                ), in: -vm.state.pitchRange...vm.state.pitchRange)
-                Text(String(format: "%+.1f%%", vm.pitch * 100))
-                    .font(.system(.caption, design: .monospaced)).frame(width: 56)
-            }
-            Button(vm.state.keylock ? "Keylock ✓" : "Keylock") { vm.state.toggleKeylock() }
-                .buttonStyle(.bordered)
+            pitchRow(vm: vm)
+            fxRow(vm: vm)
         }
-        .padding(14)
+        .padding(12)
         .frame(maxWidth: .infinity, alignment: .leading)
         .background(RoundedRectangle(cornerRadius: 10).fill(Color(nsColor: .controlBackgroundColor)))
     }
 
+    /// Slice 3: Waveform-Canvas mit Playhead; Klick = Seek.
+    private func waveformView(vm: DeckViewModel) -> some View {
+        Canvas { ctx, size in
+            let w = size.width, h = size.height
+            let buckets = vm.waveform
+            if buckets.isEmpty {
+                ctx.fill(Path(CGRect(x: 0, y: h / 2 - 1, width: w, height: 2)),
+                         with: .color(.secondary.opacity(0.25)))
+            } else {
+                let bw = w / CGFloat(buckets.count)
+                for (i, peak) in buckets.enumerated() {
+                    let barH = max(1, CGFloat(peak) * h)
+                    ctx.fill(Path(CGRect(x: CGFloat(i) * bw, y: (h - barH) / 2,
+                                         width: max(bw - 0.5, 0.5), height: barH)),
+                             with: .color(.accentColor.opacity(0.7)))
+                }
+            }
+            if vm.state.duration > 0 {
+                let x = w * CGFloat(vm.playhead / vm.state.duration)
+                ctx.fill(Path(CGRect(x: x, y: 0, width: 2, height: h)),
+                         with: .color(.red))
+            }
+        }
+        .frame(height: 64)
+        .background(RoundedRectangle(cornerRadius: 6).fill(Color(nsColor: .underPageBackgroundColor)))
+        .overlay(
+            GeometryReader { geo in
+                Color.clear
+                    .contentShape(Rectangle())
+                    .onTapGesture { location in
+                        vm.seekFraction(location.x / geo.size.width)
+                    }
+            }
+        )
+    }
+
+    private func pitchRow(vm: DeckViewModel) -> some View {
+        HStack {
+            Text("Pitch").font(.caption)
+            Slider(value: Binding(get: { vm.pitch }, set: { vm.setPitch($0) }),
+                   in: -vm.state.pitchRange...vm.state.pitchRange)
+            Text(String(format: "%+.1f%%", vm.pitch * 100))
+                .font(.system(.caption, design: .monospaced)).frame(width: 56)
+        }
+    }
+
+    /// Slice 4: Delay/Reverb-Wet + Filter-Toggle.
+    private func fxRow(vm: DeckViewModel) -> some View {
+        VStack(spacing: 4) {
+            HStack {
+                Text("FX").font(.caption).frame(width: 30, alignment: .leading)
+                Button(vm.filterOn ? (vm.filterHighPass ? "HP ✓" : "LP ✓") : "Filter") {
+                    if vm.filterOn {
+                        vm.applyFilter(on: false, highPass: vm.filterHighPass)
+                    } else {
+                        vm.applyFilter(on: true, highPass: !vm.filterHighPass)
+                    }
+                }
+                .buttonStyle(.bordered).frame(width: 64)
+                Spacer()
+            }
+            HStack {
+                Text("Delay").font(.caption).frame(width: 40, alignment: .leading)
+                Slider(value: Binding(get: { vm.delayWet }, set: { vm.applyDelay($0) }), in: 0...100)
+                Text("\(Int(vm.delayWet))").font(.caption).frame(width: 26)
+            }
+            HStack {
+                Text("Reverb").font(.caption).frame(width: 40, alignment: .leading)
+                Slider(value: Binding(get: { vm.reverbWet }, set: { vm.applyReverb($0) }), in: 0...100)
+                Text("\(Int(vm.reverbWet))").font(.caption).frame(width: 26)
+            }
+        }
+    }
+
+    // MARK: Mixer
     private var mixerView: some View {
         VStack(spacing: 14) {
             Text("Mixer").font(.headline)
             HStack(alignment: .bottom, spacing: 18) {
-                VStack { fader(vm: engineHost.deckA) ; Text("A").font(.caption) }
+                VStack { fader(vm: engineHost.deckA); Text("A").font(.caption) }
                 VStack {
                     Slider(value: Binding(
                         get: { engineHost.crossfader },
@@ -83,7 +176,7 @@ struct ContentView: View {
                     .frame(width: 120, height: 24)
                     Text("X-Fade").font(.caption)
                 }
-                VStack { fader(vm: engineHost.deckB) ; Text("B").font(.caption) }
+                VStack { fader(vm: engineHost.deckB); Text("B").font(.caption) }
             }
         }
         .padding(14)
@@ -100,25 +193,73 @@ struct ContentView: View {
         .frame(width: 120, height: 40)
     }
 
+    // MARK: Library (Slice 2)
+    private var libraryView: some View {
+        VStack(alignment: .leading, spacing: 6) {
+            HStack {
+                Text("Library").font(.headline)
+                Text("(\(engineHost.library.count) Tracks aus collection.nml)")
+                    .font(.caption).foregroundStyle(.secondary)
+                Spacer()
+                TextField("Suche Titel/Artist/Pfad…", text: Binding(
+                    get: { engineHost.searchText },
+                    set: { engineHost.searchText = $0 }
+                ))
+                .textFieldStyle(.roundedBorder).frame(maxWidth: 320)
+            }
+            let results = LibrarySearch.filter(engineHost.library, query: engineHost.searchText)
+            List(results.prefix(100), id: \.path) { track in
+                HStack {
+                    VStack(alignment: .leading) {
+                        Text(track.title.isEmpty ? track.path.components(separatedBy: "/").last ?? "?" : track.title)
+                            .font(.callout).lineLimit(1)
+                        Text(track.artist + (track.bpm.map { "  ·  \(Int($0)) BPM" } ?? ""))
+                            .font(.caption).foregroundStyle(.secondary)
+                    }
+                    Spacer()
+                    Button("→ A") { engineHost.load(track: track, deck: 0) }.buttonStyle(.bordered)
+                    Button("→ B") { engineHost.load(track: track, deck: 1) }.buttonStyle(.bordered)
+                }
+            }
+            .frame(minHeight: 140, maxHeight: 200)
+            .listStyle(.inset)
+            if engineHost.library.isEmpty {
+                Text("Keine Tracks: In Traktor Tracks importieren, dann neu starten. (Deine collection.nml ist aktuell leer: COLLECTION ENTRIES=\"0\")")
+                    .font(.caption).foregroundStyle(.tertiary)
+            }
+        }
+        .padding(12)
+        .background(RoundedRectangle(cornerRadius: 10).fill(Color(nsColor: .controlBackgroundColor)))
+    }
+
     private func timeString(_ t: TimeInterval) -> String {
-        guard t.isFinite, t >= 0 else { return "0:00" }
-        return String(format: "%d:%05.2f", Int(t) / 60, t.truncatingRemainder(dividingBy: 60))
+        guard t.isFinite, t >= 0 else { return "0:00.00" }
+        let m = Int(t) / 60
+        let s = t.truncatingRemainder(dividingBy: 60)
+        return String(format: "%d:%05.2f", m, s)
     }
 }
 
-/// Hält AudioEngine + Decks + Mixer-Verkabelung.
+/// Hält AudioEngine + Decks + Mixer + Sync + Recorder + Library.
 @MainActor
 final class EngineHost: ObservableObject {
     let audio = AudioEngine()
     let deckA: DeckViewModel
     let deckB: DeckViewModel
     private var mixer = Mixer()
+    var sync = SyncEngine()
+    let recorder = MasterRecorder()
     @Published var crossfader: Double = 0.5
+    @Published var syncMaster = 0
+    @Published var isRecording = false
+    @Published var library: [NMLTrack] = []
+    @Published var searchText = ""
 
     init() {
         deckA = DeckViewModel(index: 0, engine: audio)
         deckB = DeckViewModel(index: 1, engine: audio)
-        _ = mixer
+        loadLibrary()
+        loadLearnedMappings()
     }
 
     func setCrossfader(_ x: Double) {
@@ -128,14 +269,66 @@ final class EngineHost: ObservableObject {
 
     func applyCrossfader(_ x: Double) {
         mixer.crossfader = x
-        // ×2 gleicht die −3 dB in Crossfader-Mitte aus (equal-power: Mitte = 0.5 je Kanal),
-        // damit volle Fader-Stellung bei Mittelstellung noch Full Scale liefert.
+        // ×2 gleicht die −3 dB in Mitte aus (equal-power: Mitte = 0.5 je Kanal).
         deckA.applyMixerVolume(deckA.fader * mixer.outputGain(channel: 0) * 2)
         deckB.applyMixerVolume(deckB.fader * mixer.outputGain(channel: 1) * 2)
     }
 
-    /// MIDI-Aktionen auf Decks mappen (Router aus MIDIController).
+    /// Slice 6: Deck-Regler auf Master-BPM setzen.
+    func toggleSyncMaster() { sync.toggleMaster(syncMaster == 0 ? 1 : 0) }
+
+    func syncDeck(_ slave: Int) {
+        let masterVM = sync.masterDeck == 0 ? deckA : deckB
+        let slaveVM = slave == 0 ? deckA : deckB
+        guard let mb = masterBPM(of: masterVM), let sb = slaveBPM(of: slaveVM) else { return }
+        let pitch = sync.slavePitch(master: BeatGrid(bpm: mb), slave: BeatGrid(bpm: sb))
+        slaveVM.setPitch(pitch)
+    }
+
+    private func masterBPM(of vm: DeckViewModel) -> Double? { vm.bpm }
+    private func slaveBPM(of vm: DeckViewModel) -> Double? { vm.bpm }
+
+    // MARK: Recording (Slice 5)
+    func startRecording(to url: URL) throws {
+        try recorder.start(engine: audio.engine, url: url)
+        isRecording = true
+    }
+
+    func stopRecording() {
+        recorder.stop(engine: audio.engine)
+        isRecording = false
+    }
+
+    // MARK: Library (Slice 2)
+    private func loadLibrary() {
+        let url = URL(fileURLWithPath: NSString(string: "~/Documents/Native Instruments/Traktor 4.5.0/collection.nml").expandingTildeInPath)
+        library = NMLParser.parse(url: url)
+    }
+
+    func load(track: NMLTrack, deck: Int) {
+        guard !track.path.isEmpty else { return }
+        var path = track.path
+        if path.hasPrefix("/") == false && !path.contains(":") { path = "/" + path }
+        let url = URL(fileURLWithPath: path)
+        guard FileManager.default.fileExists(atPath: url.path) else { return }
+        let vm = deck == 0 ? deckA : deckB
+        vm.load(url: url)
+        vm.bpm = track.bpm
+    }
+
+    // MARK: MIDI-Learn-Persistenz
+    private func loadLearnedMappings() {
+        for l in MappingStore.loadOrDefault(from: MappingStore.defaultURL()) {
+            if let a = l.assignment { midiRouter?.assign(a) }
+        }
+    }
+    weak var midiRouter: MIDIActionRouter?
+    func saveMappings(_ mappings: [LearnedMapping]) {
+        try? MappingStore.save(mappings, to: MappingStore.defaultURL())
+    }
+
     func wire(midi: MIDIController) {
+        midiRouter = midi.router
         midi.router.onAction = { [weak self] action, value in
             Task { @MainActor in
                 guard let self else { return }
@@ -146,7 +339,7 @@ final class EngineHost: ObservableObject {
                 case .hotcue2: self.deckA.hotcue(2)
                 case .hotcue3: self.deckA.hotcue(3)
                 case .hotcue4: self.deckA.hotcue(4)
-                case .crossfader: self.applyCrossfader(Double(value) / 127)
+                case .crossfader: self.setCrossfader(Double(value) / 127)
                 case .channelFaderA: self.deckA.fader = Double(value) / 127; self.deckA.applyMixerVolume(self.deckA.fader)
                 case .channelFaderB: self.deckB.fader = Double(value) / 127; self.deckB.applyMixerVolume(self.deckB.fader)
                 case .pitchA: self.deckA.setPitch(Double(value - 64) / 64 * self.deckA.state.pitchRange)
@@ -159,14 +352,17 @@ final class EngineHost: ObservableObject {
                 }
             }
         }
-        // Demo-Mapping: generische Standardzuweisung (MIDI-Learn folgt Slice 2)
+        // Demo-Mapping + gelernte Mappings (Persistenz)
         midi.router.assign(.init(channel: 0, isCC: false, control: 0x24, action: .playPause))
         midi.router.assign(.init(channel: 0, isCC: false, control: 0x25, action: .cue))
         midi.router.assign(.init(channel: 0, isCC: true, control: 7, action: .crossfader))
+        for l in MappingStore.loadOrDefault(from: MappingStore.defaultURL()) {
+            if let a = l.assignment { midi.router.assign(a) }
+        }
     }
 }
 
-/// CoreMIDI-Input: listet Sources, verbindet die erste gefundene, reicht Events an den Router.
+/// CoreMIDI-Input: listet Sources, verbindet alle, reicht Events an den Router.
 @MainActor
 final class MIDIController: ObservableObject {
     @Published var status = "MIDI: suche Geräte…"
@@ -190,7 +386,6 @@ final class MIDIController: ObservableObject {
 
     private var numberOfSources: Int { MIDIGetNumberOfSources() }
 
-    /// C-Callback → Router (thread-safe über MainActor-Hop).
     nonisolated fileprivate static let readProc: MIDIReadProc = { pktList, _, refCon in
         guard let refCon else { return }
         let controller = Unmanaged<MIDIController>.fromOpaque(refCon).takeUnretainedValue()

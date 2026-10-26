@@ -9,17 +9,27 @@ public final class AudioEngine {
     private var players: [Int: AVAudioPlayerNode] = [:]
     private var timePitch: [Int: AVAudioUnitTimePitch] = [:]
     private var files: [Int: AVAudioFile] = [:]
+    /// Effekt-Kette pro Deck (Filter/Delay/Reverb) — in init verkabelt.
+    public private(set) var fx: [Int: FxChain] = [:]
 
     public init() {
         for d in 0...1 {
             let player = AVAudioPlayerNode()
             let tp = AVAudioUnitTimePitch()
+            let chain = FxChain()
             engine.attach(player)
             engine.attach(tp)
+            engine.attach(chain.eq)
+            engine.attach(chain.delay)
+            engine.attach(chain.reverb)
             engine.connect(player, to: tp, format: nil)
-            engine.connect(tp, to: engine.mainMixerNode, format: nil)
+            engine.connect(tp, to: chain.eq, format: nil)
+            engine.connect(chain.eq, to: chain.delay, format: nil)
+            engine.connect(chain.delay, to: chain.reverb, format: nil)
+            engine.connect(chain.reverb, to: engine.mainMixerNode, format: nil)
             players[d] = player
             timePitch[d] = tp
+            fx[d] = chain
         }
     }
 
@@ -39,11 +49,30 @@ public final class AudioEngine {
         return Double(file.length) / sampleRate
     }
 
+    /// Seek: Player neu schedulen ab Frame-Offset; Playing-Zustand wird erhalten.
+    public func seek(deck: Int, to seconds: TimeInterval) {
+        guard let file = files[deck], let player = players[deck] else { return }
+        let wasPlaying = player.isPlaying
+        let sampleRate = file.processingFormat.sampleRate
+        let target = AVAudioFramePosition(max(0, min(seconds * sampleRate, Double(file.length) - 1)))
+        player.stop()
+        file.framePosition = target
+        if wasPlaying {
+            player.scheduleSegment(file, startingFrame: target,
+                                   frameCount: AVAudioFrameCount(file.length - target), at: nil)
+            player.play()
+        } else {
+            file.framePosition = target
+        }
+    }
+
     public func play(deck: Int) {
         guard let file = files[deck], let player = players[deck] else { return }
         try? startIfNeeded()
-        file.framePosition = 0                       // Slice-1: immer von vorn; Seek kommt mit Waveform
-        player.scheduleFile(file, at: nil)
+        if player.isPlaying { return }
+        let start = file.framePosition
+        player.scheduleSegment(file, startingFrame: start,
+                               frameCount: AVAudioFrameCount(max(0, file.length - start)), at: nil)
         player.play()
     }
 

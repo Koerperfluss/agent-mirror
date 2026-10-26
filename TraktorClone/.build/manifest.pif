@@ -5,11 +5,11 @@
       "name" : "TraktorClone",
       "path" : "/Users/saschalagler/agent-os/agent-mirror/TraktorClone",
       "projects" : [
-        "49fcce41ef628c34c0818f0f4dab885731b65fd06f973c6039bc79e39b1f8b1c",
+        "28fc6d1a77a42b4dd17df34a5682b421c6cf52cfbcda9ed038b025368d23a16f",
         "55aa9de97e611c5b542ef91b6c367880ffe87a2b0b8f345222e178274eed0fca"
       ]
     },
-    "signature" : "37ad2cf4f20f00b1ea75250478dca17f1978765adf2cbf221e0357a4b34d4ec5",
+    "signature" : "94df010ccbeece33e4688e894c5dd27dc0787fa148cde6ddf2c3ae0e91c41d9a",
     "type" : "workspace"
   },
   {
@@ -209,6 +209,22 @@
               {
                 "fileType" : "sourcecode.swift",
                 "guid" : "PACKAGE:traktorclone::MAINGROUP::REF_2::REF_1",
+                "name" : "FxSyncTests.swift",
+                "path" : "FxSyncTests.swift",
+                "sourceTree" : "<group>",
+                "type" : "file"
+              },
+              {
+                "fileType" : "sourcecode.swift",
+                "guid" : "PACKAGE:traktorclone::MAINGROUP::REF_2::REF_2",
+                "name" : "MIDILearnTests.swift",
+                "path" : "MIDILearnTests.swift",
+                "sourceTree" : "<group>",
+                "type" : "file"
+              },
+              {
+                "fileType" : "sourcecode.swift",
+                "guid" : "PACKAGE:traktorclone::MAINGROUP::REF_2::REF_3",
                 "name" : "MixerBeatGridTests.swift",
                 "path" : "MixerBeatGridTests.swift",
                 "sourceTree" : "<group>",
@@ -216,7 +232,15 @@
               },
               {
                 "fileType" : "sourcecode.swift",
-                "guid" : "PACKAGE:traktorclone::MAINGROUP::REF_2::REF_2",
+                "guid" : "PACKAGE:traktorclone::MAINGROUP::REF_2::REF_4",
+                "name" : "NMLWaveformTests.swift",
+                "path" : "NMLWaveformTests.swift",
+                "sourceTree" : "<group>",
+                "type" : "file"
+              },
+              {
+                "fileType" : "sourcecode.swift",
+                "guid" : "PACKAGE:traktorclone::MAINGROUP::REF_2::REF_5",
                 "name" : "TSIParserTests.swift",
                 "path" : "TSIParserTests.swift",
                 "sourceTree" : "<group>",
@@ -324,6 +348,30 @@
               {
                 "fileType" : "sourcecode.swift",
                 "guid" : "PACKAGE:traktorclone::MAINGROUP::REF_5::REF_3",
+                "name" : "Fx.swift",
+                "path" : "Fx.swift",
+                "sourceTree" : "<group>",
+                "type" : "file"
+              },
+              {
+                "fileType" : "sourcecode.swift",
+                "guid" : "PACKAGE:traktorclone::MAINGROUP::REF_5::REF_4",
+                "name" : "MIDILearn.swift",
+                "path" : "MIDILearn.swift",
+                "sourceTree" : "<group>",
+                "type" : "file"
+              },
+              {
+                "fileType" : "sourcecode.swift",
+                "guid" : "PACKAGE:traktorclone::MAINGROUP::REF_5::REF_5",
+                "name" : "MasterRecorder.swift",
+                "path" : "MasterRecorder.swift",
+                "sourceTree" : "<group>",
+                "type" : "file"
+              },
+              {
+                "fileType" : "sourcecode.swift",
+                "guid" : "PACKAGE:traktorclone::MAINGROUP::REF_5::REF_6",
                 "name" : "Mixer.swift",
                 "path" : "Mixer.swift",
                 "sourceTree" : "<group>",
@@ -331,9 +379,41 @@
               },
               {
                 "fileType" : "sourcecode.swift",
-                "guid" : "PACKAGE:traktorclone::MAINGROUP::REF_5::REF_4",
+                "guid" : "PACKAGE:traktorclone::MAINGROUP::REF_5::REF_7",
+                "name" : "NMLParser.swift",
+                "path" : "NMLParser.swift",
+                "sourceTree" : "<group>",
+                "type" : "file"
+              },
+              {
+                "fileType" : "sourcecode.swift",
+                "guid" : "PACKAGE:traktorclone::MAINGROUP::REF_5::REF_8",
+                "name" : "StemFile.swift",
+                "path" : "StemFile.swift",
+                "sourceTree" : "<group>",
+                "type" : "file"
+              },
+              {
+                "fileType" : "sourcecode.swift",
+                "guid" : "PACKAGE:traktorclone::MAINGROUP::REF_5::REF_9",
+                "name" : "Sync.swift",
+                "path" : "Sync.swift",
+                "sourceTree" : "<group>",
+                "type" : "file"
+              },
+              {
+                "fileType" : "sourcecode.swift",
+                "guid" : "PACKAGE:traktorclone::MAINGROUP::REF_5::REF_10",
                 "name" : "TSIParser.swift",
                 "path" : "TSIParser.swift",
+                "sourceTree" : "<group>",
+                "type" : "file"
+              },
+              {
+                "fileType" : "sourcecode.swift",
+                "guid" : "PACKAGE:traktorclone::MAINGROUP::REF_5::REF_11",
+                "name" : "WaveformExtractor.swift",
+                "path" : "WaveformExtractor.swift",
                 "sourceTree" : "<group>",
                 "type" : "file"
               }
@@ -373,6 +453,30 @@
               {
                 "fileType" : "sourcecode.swift",
                 "guid" : "PACKAGE:traktorclone::MAINGROUP::REF_6::REF_3",
+                "name" : "Fx.swift",
+                "path" : "Fx.swift",
+                "sourceTree" : "<group>",
+                "type" : "file"
+              },
+              {
+                "fileType" : "sourcecode.swift",
+                "guid" : "PACKAGE:traktorclone::MAINGROUP::REF_6::REF_4",
+                "name" : "MIDILearn.swift",
+                "path" : "MIDILearn.swift",
+                "sourceTree" : "<group>",
+                "type" : "file"
+              },
+              {
+                "fileType" : "sourcecode.swift",
+                "guid" : "PACKAGE:traktorclone::MAINGROUP::REF_6::REF_5",
+                "name" : "MasterRecorder.swift",
+                "path" : "MasterRecorder.swift",
+                "sourceTree" : "<group>",
+                "type" : "file"
+              },
+              {
+                "fileType" : "sourcecode.swift",
+                "guid" : "PACKAGE:traktorclone::MAINGROUP::REF_6::REF_6",
                 "name" : "Mixer.swift",
                 "path" : "Mixer.swift",
                 "sourceTree" : "<group>",
@@ -380,9 +484,41 @@
               },
               {
                 "fileType" : "sourcecode.swift",
-                "guid" : "PACKAGE:traktorclone::MAINGROUP::REF_6::REF_4",
+                "guid" : "PACKAGE:traktorclone::MAINGROUP::REF_6::REF_7",
+                "name" : "NMLParser.swift",
+                "path" : "NMLParser.swift",
+                "sourceTree" : "<group>",
+                "type" : "file"
+              },
+              {
+                "fileType" : "sourcecode.swift",
+                "guid" : "PACKAGE:traktorclone::MAINGROUP::REF_6::REF_8",
+                "name" : "StemFile.swift",
+                "path" : "StemFile.swift",
+                "sourceTree" : "<group>",
+                "type" : "file"
+              },
+              {
+                "fileType" : "sourcecode.swift",
+                "guid" : "PACKAGE:traktorclone::MAINGROUP::REF_6::REF_9",
+                "name" : "Sync.swift",
+                "path" : "Sync.swift",
+                "sourceTree" : "<group>",
+                "type" : "file"
+              },
+              {
+                "fileType" : "sourcecode.swift",
+                "guid" : "PACKAGE:traktorclone::MAINGROUP::REF_6::REF_10",
                 "name" : "TSIParser.swift",
                 "path" : "TSIParser.swift",
+                "sourceTree" : "<group>",
+                "type" : "file"
+              },
+              {
+                "fileType" : "sourcecode.swift",
+                "guid" : "PACKAGE:traktorclone::MAINGROUP::REF_6::REF_11",
+                "name" : "WaveformExtractor.swift",
+                "path" : "WaveformExtractor.swift",
                 "sourceTree" : "<group>",
                 "type" : "file"
               }
@@ -406,16 +542,16 @@
       "projectIsPackage" : "true",
       "projectName" : "TraktorClone",
       "targets" : [
-        "d25fe33243c2f39abf8534b196110906e727e344c7c25600668cc8553925ce10",
+        "b0addf0d70f37559acf07c9d908fe10b48b8bfce463cd5b8f226a4c1291a53ae",
         "9164ba79ae51ab11c4f38408ebb86f2f3c0593a61c37f36e63dab88231e194b5",
         "dbd3186e86576018252829095a13ea1f5147a8aa80608f326e8400af4f9a1c6c",
         "718624caf04838392ac7190e319e51ae75e9005a6622f9c1445b276b482c8af5",
-        "1792606ec85a88f6e4bfe7b3132100b82a635128af8b1e5b98e47bc5708bdc6d",
-        "44a83a11c8cbdcd662fe54b15d121121744183f3d3c89d5774a5f20de018f79a",
+        "a4295636e1ef773c37d93d2970ff4a6d9d2e35da1687a74fa344dbc33233cc98",
+        "e6d17608c03b8c3d804a9f45a28e667a29aa7a41bf8e43d50a964fcdcbe0980d",
         "51e9bed5b1e3626c92e5c18633749bc689f12ac65305a68662b3ea45b25a94f8"
       ]
     },
-    "signature" : "49fcce41ef628c34c0818f0f4dab885731b65fd06f973c6039bc79e39b1f8b1c",
+    "signature" : "28fc6d1a77a42b4dd17df34a5682b421c6cf52cfbcda9ed038b025368d23a16f",
     "type" : "project"
   },
   {
@@ -616,6 +752,33 @@
 
               ],
               "removeHeadersOnCopy" : "false"
+            },
+            {
+              "codeSignOnCopy" : "false",
+              "fileReference" : "PACKAGE:traktorclone::MAINGROUP::REF_2::REF_3",
+              "guid" : "PACKAGE-PRODUCT:traktorclone_TraktorCloneCoreTests.TraktorCloneCoreTests::BUILDPHASE_0::3",
+              "platformFilters" : [
+
+              ],
+              "removeHeadersOnCopy" : "false"
+            },
+            {
+              "codeSignOnCopy" : "false",
+              "fileReference" : "PACKAGE:traktorclone::MAINGROUP::REF_2::REF_4",
+              "guid" : "PACKAGE-PRODUCT:traktorclone_TraktorCloneCoreTests.TraktorCloneCoreTests::BUILDPHASE_0::4",
+              "platformFilters" : [
+
+              ],
+              "removeHeadersOnCopy" : "false"
+            },
+            {
+              "codeSignOnCopy" : "false",
+              "fileReference" : "PACKAGE:traktorclone::MAINGROUP::REF_2::REF_5",
+              "guid" : "PACKAGE-PRODUCT:traktorclone_TraktorCloneCoreTests.TraktorCloneCoreTests::BUILDPHASE_0::5",
+              "platformFilters" : [
+
+              ],
+              "removeHeadersOnCopy" : "false"
             }
           ],
           "guid" : "PACKAGE-PRODUCT:traktorclone_TraktorCloneCoreTests.TraktorCloneCoreTests::BUILDPHASE_0",
@@ -659,7 +822,7 @@
       "productTypeIdentifier" : "com.apple.product-type.bundle.unit-test",
       "type" : "standard"
     },
-    "signature" : "d25fe33243c2f39abf8534b196110906e727e344c7c25600668cc8553925ce10",
+    "signature" : "b0addf0d70f37559acf07c9d908fe10b48b8bfce463cd5b8f226a4c1291a53ae",
     "type" : "target"
   },
   {
@@ -1303,6 +1466,69 @@
 
               ],
               "removeHeadersOnCopy" : "false"
+            },
+            {
+              "codeSignOnCopy" : "false",
+              "fileReference" : "PACKAGE:traktorclone::MAINGROUP::REF_5::REF_5",
+              "guid" : "PACKAGE-TARGET:TraktorCloneCore::BUILDPHASE_0::5",
+              "platformFilters" : [
+
+              ],
+              "removeHeadersOnCopy" : "false"
+            },
+            {
+              "codeSignOnCopy" : "false",
+              "fileReference" : "PACKAGE:traktorclone::MAINGROUP::REF_5::REF_6",
+              "guid" : "PACKAGE-TARGET:TraktorCloneCore::BUILDPHASE_0::6",
+              "platformFilters" : [
+
+              ],
+              "removeHeadersOnCopy" : "false"
+            },
+            {
+              "codeSignOnCopy" : "false",
+              "fileReference" : "PACKAGE:traktorclone::MAINGROUP::REF_5::REF_7",
+              "guid" : "PACKAGE-TARGET:TraktorCloneCore::BUILDPHASE_0::7",
+              "platformFilters" : [
+
+              ],
+              "removeHeadersOnCopy" : "false"
+            },
+            {
+              "codeSignOnCopy" : "false",
+              "fileReference" : "PACKAGE:traktorclone::MAINGROUP::REF_5::REF_8",
+              "guid" : "PACKAGE-TARGET:TraktorCloneCore::BUILDPHASE_0::8",
+              "platformFilters" : [
+
+              ],
+              "removeHeadersOnCopy" : "false"
+            },
+            {
+              "codeSignOnCopy" : "false",
+              "fileReference" : "PACKAGE:traktorclone::MAINGROUP::REF_5::REF_9",
+              "guid" : "PACKAGE-TARGET:TraktorCloneCore::BUILDPHASE_0::9",
+              "platformFilters" : [
+
+              ],
+              "removeHeadersOnCopy" : "false"
+            },
+            {
+              "codeSignOnCopy" : "false",
+              "fileReference" : "PACKAGE:traktorclone::MAINGROUP::REF_5::REF_10",
+              "guid" : "PACKAGE-TARGET:TraktorCloneCore::BUILDPHASE_0::10",
+              "platformFilters" : [
+
+              ],
+              "removeHeadersOnCopy" : "false"
+            },
+            {
+              "codeSignOnCopy" : "false",
+              "fileReference" : "PACKAGE:traktorclone::MAINGROUP::REF_5::REF_11",
+              "guid" : "PACKAGE-TARGET:TraktorCloneCore::BUILDPHASE_0::11",
+              "platformFilters" : [
+
+              ],
+              "removeHeadersOnCopy" : "false"
             }
           ],
           "guid" : "PACKAGE-TARGET:TraktorCloneCore::BUILDPHASE_0",
@@ -1329,7 +1555,7 @@
       "productTypeIdentifier" : "org.swift.product-type.library.static",
       "type" : "standard"
     },
-    "signature" : "1792606ec85a88f6e4bfe7b3132100b82a635128af8b1e5b98e47bc5708bdc6d",
+    "signature" : "a4295636e1ef773c37d93d2970ff4a6d9d2e35da1687a74fa344dbc33233cc98",
     "type" : "target"
   },
   {
@@ -1545,6 +1771,69 @@
 
               ],
               "removeHeadersOnCopy" : "false"
+            },
+            {
+              "codeSignOnCopy" : "false",
+              "fileReference" : "PACKAGE:traktorclone::MAINGROUP::REF_6::REF_5",
+              "guid" : "PACKAGE-TARGET:TraktorCloneCore-1A7ADD02F849EC71-dynamic::BUILDPHASE_0::5",
+              "platformFilters" : [
+
+              ],
+              "removeHeadersOnCopy" : "false"
+            },
+            {
+              "codeSignOnCopy" : "false",
+              "fileReference" : "PACKAGE:traktorclone::MAINGROUP::REF_6::REF_6",
+              "guid" : "PACKAGE-TARGET:TraktorCloneCore-1A7ADD02F849EC71-dynamic::BUILDPHASE_0::6",
+              "platformFilters" : [
+
+              ],
+              "removeHeadersOnCopy" : "false"
+            },
+            {
+              "codeSignOnCopy" : "false",
+              "fileReference" : "PACKAGE:traktorclone::MAINGROUP::REF_6::REF_7",
+              "guid" : "PACKAGE-TARGET:TraktorCloneCore-1A7ADD02F849EC71-dynamic::BUILDPHASE_0::7",
+              "platformFilters" : [
+
+              ],
+              "removeHeadersOnCopy" : "false"
+            },
+            {
+              "codeSignOnCopy" : "false",
+              "fileReference" : "PACKAGE:traktorclone::MAINGROUP::REF_6::REF_8",
+              "guid" : "PACKAGE-TARGET:TraktorCloneCore-1A7ADD02F849EC71-dynamic::BUILDPHASE_0::8",
+              "platformFilters" : [
+
+              ],
+              "removeHeadersOnCopy" : "false"
+            },
+            {
+              "codeSignOnCopy" : "false",
+              "fileReference" : "PACKAGE:traktorclone::MAINGROUP::REF_6::REF_9",
+              "guid" : "PACKAGE-TARGET:TraktorCloneCore-1A7ADD02F849EC71-dynamic::BUILDPHASE_0::9",
+              "platformFilters" : [
+
+              ],
+              "removeHeadersOnCopy" : "false"
+            },
+            {
+              "codeSignOnCopy" : "false",
+              "fileReference" : "PACKAGE:traktorclone::MAINGROUP::REF_6::REF_10",
+              "guid" : "PACKAGE-TARGET:TraktorCloneCore-1A7ADD02F849EC71-dynamic::BUILDPHASE_0::10",
+              "platformFilters" : [
+
+              ],
+              "removeHeadersOnCopy" : "false"
+            },
+            {
+              "codeSignOnCopy" : "false",
+              "fileReference" : "PACKAGE:traktorclone::MAINGROUP::REF_6::REF_11",
+              "guid" : "PACKAGE-TARGET:TraktorCloneCore-1A7ADD02F849EC71-dynamic::BUILDPHASE_0::11",
+              "platformFilters" : [
+
+              ],
+              "removeHeadersOnCopy" : "false"
             }
           ],
           "guid" : "PACKAGE-TARGET:TraktorCloneCore-1A7ADD02F849EC71-dynamic::BUILDPHASE_0",
@@ -1570,7 +1859,7 @@
       "productTypeIdentifier" : "com.apple.product-type.library.dynamic",
       "type" : "standard"
     },
-    "signature" : "44a83a11c8cbdcd662fe54b15d121121744183f3d3c89d5774a5f20de018f79a",
+    "signature" : "e6d17608c03b8c3d804a9f45a28e667a29aa7a41bf8e43d50a964fcdcbe0980d",
     "type" : "target"
   },
   {
