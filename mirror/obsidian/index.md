@@ -4,7 +4,7 @@ Stand: 2026-10-26
 
 ## Apps
 - [[apps/antigravity]] (392 Notizen)
-- [[apps/cline-code]] (704 Notizen)
+- [[apps/cline-code]] (705 Notizen)
 - [[apps/claude]] (941 Notizen)
 - [[apps/zcode]] (2083 Notizen)
 
