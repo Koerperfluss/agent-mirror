@@ -1,19 +1,60 @@
 import json
 import urllib.request
+import urllib.error
 import argparse
+import ipaddress
+import os
+import socket
 import sys
 
 # LOKI.OS - Pi Reverse Engineering Client (Standard Lib Only)
 
 REQUEST_TIMEOUT = 1800  # Sekunden; RE-Antworten mit Reasoning können lang dauern
 
+class NoRedirectHandler(urllib.request.HTTPRedirectHandler):
+    """Blockt HTTP-Redirects: Ziel-URL bleibt die geprüfte Host-URL (SSRF-Schutz)."""
+    def redirect_request(self, req, fp, code, msg, headers, newurl):
+        raise urllib.error.URLError(f"Redirect blockiert ({code} -> {newurl})")
+
+def validate_host(host, allow_lan=False):
+    """SSRF-Schutz für die Host-URL.
+
+    - Nur http/https (kein file://, ftp:// ...).
+    - Hostname wird aufgelöst; private-, Loopback- und Link-Local-Adressen
+      werden blockiert, AUSSER allow_lan=True (für den Betrieb im eigenen
+      LAN: DGX Spark / SSH-Tunnel — Standard-Anwendungsfall dieses Tools,
+      per --allow-lan oder QFS_ALLOW_LAN=1 bewusst aktiviert).
+    """
+    from urllib.parse import urlparse
+    parsed = urlparse(host)
+    if parsed.scheme not in ("http", "https"):
+        raise ValueError(f"Ungültiges URL-Schema '{parsed.scheme}' — nur http/https erlaubt.")
+    if not parsed.hostname:
+        raise ValueError("Host-URL enthält keinen Hostnamen.")
+    if not allow_lan:
+        try:
+            infos = socket.getaddrinfo(parsed.hostname, parsed.port or 80)
+        except socket.gaierror as e:
+            raise ValueError(f"Hostname nicht auflösbar: {e}")
+        for info in infos:
+            ip = ipaddress.ip_address(info[4][0])
+            if ip.is_private or ip.is_loopback or ip.is_link_local or ip.is_reserved:
+                raise ValueError(
+                    f"Ziel {ip} ist eine private/lokale Adresse. "
+                    "Für eigenen LAN-Server (DGX Spark): --allow-lan oder QFS_ALLOW_LAN=1 setzen.")
+    stripped = host.rstrip("/")
+    return stripped[:-3] if stripped.endswith("/v1") else stripped
+
 def get_args():
     parser = argparse.ArgumentParser(description="Qwen RE Client für Traktor Reverse Engineering")
     parser.add_argument("--host", default="http://localhost:8080", help="API Host URL")
-    parser.add_argument("--task", choices=["hid", "mapping", "capture", "format", "codegen"], default="mapping", help="Task Profil")
+    parser.add_argument("--task", choices=["hid", "mapping", "capture", "format", "codegen", "rebuild"], default="mapping", help="Task Profil")
     parser.add_argument("--input", default="-", help="Eingabedatei (Hexdump/Capture) oder '-' für stdin")
     parser.add_argument("--question", help="Spezifische Frage zum Input")
     parser.add_argument("--output", help="Optionaler JSON-Output Pfad")
+    parser.add_argument("--allow-lan", action="store_true",
+                        default=os.environ.get("QFS_ALLOW_LAN", "") == "1",
+                        help="Erlaubt private/LAN-Ziele (DGX Spark im eigenen Netz)")
     return parser.parse_args()
 
 PROFILES = {
@@ -21,7 +62,8 @@ PROFILES = {
     "mapping": "Extrahiere Controller-Mappings aus diesem XML/Text. Erstelle eine Tabelle mit Control-ID zu MIDI/HID Event.",
     "capture": "Analysiere diesen USB/MIDI-Capture Stream. Suche nach Mustern (Delta-Analyse) bei Parameter-Änderungen.",
     "format": "Identifiziere das binäre Datenformat in diesem Hexdump. Achte auf Header, Checksummen und Feldlängen.",
-    "codegen": "Entwickle vollständigen, kompilierbaren Swift-Code für einen unabhängigen Traktor-Clone unter macOS mit CoreAudio und CoreMIDI. Nenne Annahmen, APIs und Testschritte; kopiere keinen NI-Code."
+    "codegen": "Entwickle vollständigen, kompilierbaren Swift-Code für einen unabhängigen Traktor-Clone unter macOS mit CoreAudio und CoreMIDI. Nenne Annahmen, APIs und Testschritte; kopiere keinen NI-Code.",
+    "rebuild": "Du arbeitest nach der RE-Methodik (docs/RE_METHODOLOGY.md): Analysiere das folgende Funktions-Prüfblatt oder FEATURES.json-Segment. Trenne strikt BEOBACHTUNG (belegt durch Capture/Diff) / HYPOTHESE / UNBEKANNT. Ergänze fehlende Felder (edge_cases, state_transitions, test_refs) als Vorschläge mit [VORSCHLAG]-Markierung, nie als Fakt. Formatiere Ausgabe als valides JSON im FEATURES.json-Schema."
 }
 
 SYSTEM_PROMPT = """Du bist ein spezialisierter Entwicklungs-Assistent für einen Traktor-Clone unter macOS (Swift, CoreAudio, CoreMIDI, Xcode).
@@ -71,6 +113,12 @@ def parse_re_stream(lines):
 def main():
     args = get_args()
 
+    try:
+        base_url = validate_host(args.host, allow_lan=args.allow_lan)
+    except ValueError as e:
+        print(f"❌ {e}")
+        sys.exit(2)
+
     # Input lesen
     if args.input == "-":
         input_data = "" if sys.stdin.isatty() else sys.stdin.read()
@@ -83,7 +131,8 @@ def main():
     if args.question:
         user_content += f"\n\nSPEZIFISCHE FRAGE:\n{args.question}"
 
-    url = f"{args.host.rstrip('/')}/v1/chat/completions"
+    # URL aus der validierten Basis (Schema+IP-Grenze geprüft, Redirects blockiert)
+    url = f"{base_url}/v1/chat/completions"
     data = {
         "model": "qwen",
         "messages": [
@@ -96,38 +145,12 @@ def main():
     headers = {"Content-Type": "application/json"}
     req = urllib.request.Request(url, data=json.dumps(data).encode(), headers=headers)
 
-    full_response = ""
-    reasoning = ""
-
     print(f"📡 Sende Task '{args.task}' an Spark...\n")
 
     try:
-        with urllib.request.urlopen(req) as response:
-            for line in response:
-                if not line.strip(): continue
-                line_str = line.decode('utf-8')
-                if line_str.startswith("data: "):
-                    content = line_str[6:].strip()
-                    if content == "[DONE]": break
-                    
-                    try:
-                        chunk = json.loads(content)
-                        delta = chunk["choices"][0].get("delta", {})
-                        
-                        # Streaming Reasoning (falls vom Modell/Server unterstützt)
-                        if "reasoning_content" in delta:
-                            r_text = delta["reasoning_content"]
-                            reasoning += r_text
-                            # Optional: Reasoning anzeigen (z.B. in grau)
-                            # print(f"\033[90m{r_text}\033[0m", end="", flush=True)
-                        
-                        if "content" in delta:
-                            c_text = delta["content"]
-                            full_response += c_text
-                            print(c_text, end="", flush=True)
-                            
-                    except json.JSONDecodeError:
-                        continue
+        opener = urllib.request.build_opener(NoRedirectHandler)
+        with opener.open(req, timeout=REQUEST_TIMEOUT) as response:
+            full_response, reasoning = parse_re_stream(response)
         print("\n")
     except Exception as e:
         print(f"\n❌ Fehler: {e}")

@@ -66,3 +66,28 @@ Das lokale LLM agiert als "Differential-Analyst".
 
 ## Zielkorrektur 26.10.2026
 RE-Ziel ist die Software Traktor Pro 4 (4.5.0 auf dem Mac), nicht NI-Controller-Hardware. Nachbau unter macOS mit CoreAudio/CoreMIDI/Swift. Siehe ZIEL_UND_HARDWARE.md. Vorhandene Analyse-Dateien: *.tsi in ~/Documents/Native Instruments/Traktor 4.5.0/..., collection.nml.
+---
+
+## 7. KONKRETES SETUP SASCHA (verifiziert an echten Dateien, 2026-10-26)
+
+### Hardware-Kette
+| Komponente | Rolle | Audio-Schnittstelle |
+| :--- | :--- | :--- |
+| **Traktor Pro 4.5.0** (macOS) | DJ-Software | nutzt macOS CoreAudio (NI-Treiber optional) |
+| **Allen & Heath Xone:32** | analoger DJ-Mixer (2-Kanal) | **KEINE** — rein analog, kein USB |
+| **Omnitronic BD-1380 USB** | USB-Plattenspieler (Riemenantrieb) | USB-Audio-Class-Compliant → erscheint als Standard-Gerät |
+
+### VERIFIZIERT an `/Users/saschalagler/Documents/Native Instruments/Traktor 4.5.0/Traktor Settings.tsi`:
+- **Format: Plain-XML, kein Binary!** Header: `<?xml version="1.0"?><NIXML><TraktorSettings>`
+- Struktur: flache `<Entry Name="Audio.ChannelFX.1.Type" Type="1" Value="0"/>`-Paare (~64 KB)
+- Default-Settings/Layout-.tsi-Dateien sind 0-Byte-Platzhalter
+- `collection.nml` ebenfalls XML (Bibliothek/Playlists)
+- **Konsequenz:** .tsi ist KEIN Reverse-Engineering-Ziel im Binär-Sinn — lesbar mit `xmllint`/Python `xml.etree`. RE-Aufwand verlagert sich auf: (a) Bedeutungsanalyse der Entry-Namen (Semantik), (b) HID/MIDI-Protokolle echter Controller, (c) Strokes/Transients-Binärdaten.
+
+### Audio-Treiber-Ziel (Nutzer-Anforderung: "ALSA-Standardtreiber, der alle Soundkarten kann")
+- **ALSA gilt nur unter Linux** (Pi/Spark). Traktor Pro selbst läuft auf macOS/Windows → dort CoreAudio bzw. ASIO.
+- Linux-Seite (Pi als Audio-Hub oder eigener DJ-Clone): BD-1380 ist USB-Audio-Class-Compliant → läuft am Pi mit Standard-`snd-usb-audio` **ohne Spezialtreiber**. Xone:32 hängt analog am Ausgang — keine Treiber nötig.
+- MIDI-Controller-Mapping: Traktor-.tsi-Mappings sind XML (siehe oben) → per `--task mapping` analysierbar und in eigene CoreMIDI/ALSA-Sequencer-Mappings übersetzbar (`--task codegen`).
+
+### macOS-Clone-Ziel (aus pi_re_client.py SYSTEM_PROMPT)
+Ziel ist ein eigener DJ-Clone unter macOS (Swift, CoreAudio, CoreMIDI): Traktor-Settings/.nml als Referenz-Schemata, Qwen generiert Swift-Code via `--task codegen`.

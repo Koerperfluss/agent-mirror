@@ -1,8 +1,8 @@
 import unittest
 from unittest.mock import patch, MagicMock
 import json
-import sys
 import os
+import sys
 
 # Import-Pfad: Tests werden aus dem Repo-Root gestartet
 # (python3 -m unittest discover -s tests); alternativ via QFS_SCRIPTS_DIR.
@@ -11,6 +11,12 @@ sys.path.append(SCRIPTS_DIR)
 
 import pi_benchmark
 import pi_re_client
+
+def mock_opener_factory(mock_response):
+    """Baut einen build_opener-Mock, dessen open() den Stream liefert."""
+    opener = MagicMock()
+    opener.open.return_value.__enter__.return_value = mock_response
+    return opener
 
 class TestPiTools(unittest.TestCase):
 
@@ -21,51 +27,49 @@ class TestPiTools(unittest.TestCase):
             b'data: {"choices": [], "usage": {"prompt_tokens": 10, "completion_tokens": 5}}\n',
             b'data: [DONE]\n'
         ]
-
-        with patch('urllib.request.urlopen') as mock_url:
-            mock_url.return_value.__enter__.return_value = mock_response
-            res = pi_benchmark.run_benchmark("http://test:8080", "Test", 10)
-
+        with patch('urllib.request.build_opener',
+                   return_value=mock_opener_factory(mock_response)):
+            res = pi_benchmark.run_benchmark("http://test:8080", "Test", 10, allow_lan=True)
             self.assertIsNotNone(res)
             self.assertEqual(res["prompt_tokens"], 10)
             self.assertEqual(res["completion_tokens"], 5)
             self.assertGreater(res["ttft"], 0)
 
     def test_tokenrate_calculation(self):
-        """Testet die Berechnung der Tokens pro Sekunde."""
-        # comp_tokens / (total_time - ttft)
-        # 100 tokens / (2.0s - 1.0s) = 100 tps
+        """Testet die Berechnung der Tokens pro Sekunde (Formel-Check)."""
         res = {
             "ttft": 1.0,
             "total_time": 2.0,
             "completion_tokens": 100,
             "prompt_tokens": 50,
-            "tps": 100.0,
-            "pp_rate": 50.0
         }
-        self.assertEqual(res["tps"], 100.0)
+        self.assertEqual(res["completion_tokens"] / (res["total_time"] - res["ttft"]), 100.0)
 
     def test_missing_usage_data(self):
-        """Testet das Verhalten bei fehlenden Usage-Daten."""
+        """Fehlende Usage-Daten: Werte 0 und usage_missing=True."""
         mock_response = [
             b'data: {"choices": [{"delta": {"content": "Hallo"}}] }\n',
             b'data: [DONE]\n'
         ]
-        with patch('urllib.request.urlopen') as mock_url:
-            mock_url.return_value.__enter__.return_value = mock_response
-            res = pi_benchmark.run_benchmark("http://test:8080", "Test", 10)
+        with patch('urllib.request.build_opener',
+                   return_value=mock_opener_factory(mock_response)):
+            res = pi_benchmark.run_benchmark("http://test:8080", "Test", 10, allow_lan=True)
             self.assertEqual(res["prompt_tokens"], 0)
             self.assertEqual(res["completion_tokens"], 0)
+            self.assertTrue(res["usage_missing"])
 
-    def test_re_client_prompt_building(self):
-        """Testet ob der RE-Client den Prompt korrekt zusammensetzt."""
-        with patch('argparse.ArgumentParser.parse_args') as mock_args:
-            mock_args.return_value = MagicMock(
-                task="hid", input="-", question="Was ist das?", host="http://localhost:8080", output=None
-            )
-            with patch('sys.stdin.read', return_value="01 02 03"):
-                self.assertIn("hid", pi_re_client.PROFILES)
-                self.assertTrue(len(pi_re_client.SYSTEM_PROMPT) > 0)
+    def test_re_client_profiles_complete(self):
+        """Alle argparse-Task-Choices haben ein PROFILES-Element (kein KeyError)."""
+        for task in ["hid", "mapping", "capture", "format", "codegen", "rebuild"]:
+            self.assertIn(task, pi_re_client.PROFILES)
+        self.assertTrue(len(pi_re_client.SYSTEM_PROMPT) > 0)
+
+    def test_rebuild_profile_demands_json_schema(self):
+        """rebuild-Profil fordert FEATURES.json-Schema und BEOBACHTUNG/HYPOTHESE-Trennung."""
+        profile = pi_re_client.PROFILES["rebuild"]
+        self.assertIn("FEATURES.json", profile)
+        self.assertIn("BEOBACHTUNG", profile)
+        self.assertIn("[VORSCHLAG]", profile)
 
     def test_codegen_profile_present(self):
         """Der in README/DEVELOPMENT_PLAN verwendete codegen-Task muss existieren."""
@@ -79,11 +83,35 @@ class TestPiTools(unittest.TestCase):
             self.assertEqual(args.suite, 'traktor')
 
 
+class TestHostValidation(unittest.TestCase):
+    """SSRF-Guard: Schema-Prüfung, /v1-Normalisierung, LAN-Freigabe."""
+
+    def test_rejects_non_http_scheme(self):
+        for bad in ["ftp://spark:8080", "file:///etc/passwd", "gopher://x"]:
+            with self.assertRaises(ValueError, msg=bad):
+                pi_re_client.validate_host(bad, allow_lan=True)
+
+    def test_rejects_host_without_hostname(self):
+        with self.assertRaises(ValueError):
+            pi_re_client.validate_host("http://", allow_lan=True)
+
+    def test_strips_trailing_v1(self):
+        self.assertEqual(pi_re_client.validate_host("http://192.168.1.5:8080/v1/", allow_lan=True),
+                         "http://192.168.1.5:8080")
+
+    def test_private_ip_blocked_without_allow_lan(self):
+        # 192.0.2.1 ist TEST-NET (reserved) -> wird auch ohne DNS blockiert? Nein:
+        # getaddrinfo löst es zu sich selbst auf; is_reserved greift.
+        with self.assertRaises(ValueError):
+            pi_re_client.validate_host("http://192.0.2.1:8080", allow_lan=False)
+
+
 class TestStreamParsingFixes(unittest.TestCase):
-    """Regression-Tests für Code-Review-Findings (Stand 2026-10-25)."""
+    """Regression-Tests für Code-Review-Findings (Stand 2026-10-26)."""
 
     def test_re_stream_empty_choices_no_crash(self):
-        """Finding 1: Final-Chunk mit leerer choices-Liste darf den Stream nicht crashen."""
+        """Final-Chunk mit leerer choices-Liste darf den Stream nicht crashen."""
+        import io
         lines = [
             b'data: {"choices": [{"delta": {"content": "Analyse:"}}]}\n',
             b'data: {"choices": [], "usage": {"prompt_tokens": 5, "completion_tokens": 3}}\n',
@@ -105,27 +133,16 @@ class TestStreamParsingFixes(unittest.TestCase):
         self.assertEqual(reasoning, "denke...")
 
     def test_benchmark_data_prefix_without_space(self):
-        """Finding 4: 'data:' ohne Leerzeichen wird trotzdem geparst."""
+        """'data:' ohne Leerzeichen wird trotzdem geparst."""
         mock_response = [
             b'data:{"choices": [{"delta": {"content": "Hi"}}]}\n',
             b'data: [DONE]\n',
         ]
-        with patch('urllib.request.urlopen') as mock_url:
-            mock_url.return_value.__enter__.return_value = mock_response
-            res = pi_benchmark.run_benchmark("http://test:8080", "T", 5)
+        with patch('urllib.request.build_opener',
+                   return_value=mock_opener_factory(mock_response)):
+            res = pi_benchmark.run_benchmark("http://test:8080", "T", 5, allow_lan=True)
             self.assertIsNotNone(res)
             self.assertGreater(res["ttft"], 0)
-
-    def test_benchmark_flags_missing_usage(self):
-        """Finding 5: Läufe ohne usage werden als usage_missing gekennzeichnet."""
-        mock_response = [
-            b'data: {"choices": [{"delta": {"content": "Hallo"}}]}\n',
-            b'data: [DONE]\n',
-        ]
-        with patch('urllib.request.urlopen') as mock_url:
-            mock_url.return_value.__enter__.return_value = mock_response
-            res = pi_benchmark.run_benchmark("http://test:8080", "T", 5)
-            self.assertTrue(res["usage_missing"])
 
 if __name__ == '__main__':
     unittest.main()

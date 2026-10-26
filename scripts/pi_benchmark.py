@@ -6,6 +6,9 @@ import argparse
 import statistics
 import sys
 
+# SSRF-Guard gemeinsam mit dem RE-Client (gleiches Verzeichnis)
+from pi_re_client import NoRedirectHandler, validate_host
+
 # LOKI.OS - Pi Benchmark Tool (Standard Lib Only)
 
 def get_args():
@@ -26,8 +29,10 @@ SUITES = {
     ]
 }
 
-def run_benchmark(host, prompt, max_tokens):
-    url = f"{host.rstrip('/')}/v1/chat/completions"
+def run_benchmark(host, prompt, max_tokens, allow_lan=True):
+    # Host-Validierung: nur http/https; private/lokale Ziele nur bei allow_lan
+    base_url = validate_host(host, allow_lan=allow_lan)
+    url = f"{base_url}/v1/chat/completions"
     data = {
         "model": "qwen",
         "messages": [{"role": "user", "content": prompt}],
@@ -46,35 +51,36 @@ def run_benchmark(host, prompt, max_tokens):
     usage = None
     
     try:
-        with urllib.request.urlopen(req) as response:
+        opener = urllib.request.build_opener(NoRedirectHandler)
+        with opener.open(req, timeout=600) as response:
             for line in response:
                 if not line.strip(): continue
                 line_str = line.decode('utf-8')
                 if line_str.startswith("data:"):
                     content = line_str[5:].strip()
                     if content == "[DONE]": break
-                    
+
                     try:
                         chunk = json.loads(content)
                         if ttft == 0 and chunk.get("choices") and chunk["choices"][0].get("delta", {}).get("content"):
                             ttft = max(time.time() - start_time, 1e-9)
-                        
+
                         if chunk.get("usage"):
                             usage = chunk["usage"]
                     except json.JSONDecodeError:
                         continue
-                        
+
         total_time = time.time() - start_time
     except Exception as e:
         print(f"❌ Fehler bei Benchmark-Lauf: {e}")
         return None
 
+    usage_missing = usage is None
     if usage:
         comp_tokens = usage.get("completion_tokens", 0)
         prompt_tokens = usage.get("prompt_tokens", 0)
     else:
-        # Fallback falls usage fehlt (grobe Schätzung)
-        comp_tokens = 0 # Wir wissen es nicht genau ohne usage
+        comp_tokens = 0
         prompt_tokens = 0
 
     return {
@@ -84,7 +90,7 @@ def run_benchmark(host, prompt, max_tokens):
         "prompt_tokens": prompt_tokens,
         "tps": comp_tokens / (total_time - ttft) if (total_time - ttft) > 0 else 0,
         "pp_rate": prompt_tokens / ttft if ttft > 0 else 0,
-        "usage_missing": usage is None
+        "usage_missing": usage_missing
     }
 
 def print_table(results):
