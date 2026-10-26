@@ -45,6 +45,17 @@ def validate_host(host, allow_lan=False):
     stripped = host.rstrip("/")
     return stripped[:-3] if stripped.endswith("/v1") else stripped
 
+def safe_output_path(path):
+    """Validiert einen CLI-Ausgabepfad (erkennbarer Fehler statt stillem Überschreiben)."""
+    from pathlib import Path
+    if not path or not str(path).strip():
+        raise ValueError("Leerer Ausgabepfad.")
+    p = Path(str(path)).expanduser().resolve()
+    if p.is_dir():
+        raise ValueError(f"Ausgabepfad ist ein Verzeichnis: {p}")
+    p.parent.mkdir(parents=True, exist_ok=True)
+    return p
+
 def get_args():
     parser = argparse.ArgumentParser(description="Qwen RE Client für Traktor Reverse Engineering")
     parser.add_argument("--host", default="http://localhost:8080", help="API Host URL")
@@ -62,7 +73,7 @@ PROFILES = {
     "mapping": "Extrahiere Controller-Mappings aus diesem XML/Text. Erstelle eine Tabelle mit Control-ID zu MIDI/HID Event.",
     "capture": "Analysiere diesen USB/MIDI-Capture Stream. Suche nach Mustern (Delta-Analyse) bei Parameter-Änderungen.",
     "format": "Identifiziere das binäre Datenformat in diesem Hexdump. Achte auf Header, Checksummen und Feldlängen.",
-    "codegen": "Generiere aus der folgenden Spezifikation/Daten vollständigen, lauffähigen Code (Swift/CoreAudio/CoreMIDI für macOS oder Python). Nenne Sprache und Framework explizit.",
+    "codegen": "Entwickle vollständigen, kompilierbaren Swift-Code für einen unabhängigen Traktor-Clone unter macOS mit CoreAudio und CoreMIDI. Nenne Annahmen, APIs und Testschritte; kopiere keinen NI-Code.",
     "rebuild": "Du arbeitest nach der RE-Methodik (docs/RE_METHODOLOGY.md): Analysiere das folgende Funktions-Prüfblatt oder FEATURES.json-Segment. Trenne strikt BEOBACHTUNG (belegt durch Capture/Diff) / HYPOTHESE / UNBEKANNT. Ergänze fehlende Felder (edge_cases, state_transitions, test_refs) als Vorschläge mit [VORSCHLAG]-Markierung, nie als Fakt. Formatiere Ausgabe als valides JSON im FEATURES.json-Schema."
 }
 
@@ -121,7 +132,7 @@ def main():
 
     # Input lesen
     if args.input == "-":
-        input_data = sys.stdin.read()
+        input_data = "" if sys.stdin.isatty() else sys.stdin.read()
     else:
         with open(args.input, 'r') as f:
             input_data = f.read()
@@ -157,13 +168,14 @@ def main():
         sys.exit(1)
 
     if args.output:
-        with open(args.output, 'w') as f:
-            json.dump({
-                "task": args.task,
-                "input_preview": input_data[:100],
-                "response": full_response,
-                "reasoning": reasoning
-            }, f, indent=2)
+        result_doc = {
+            "task": args.task,
+            "input_preview": input_data[:100],
+            "response": full_response,
+            "reasoning": reasoning
+        }
+        safe_output_path(args.output).write_text(
+            json.dumps(result_doc, indent=2), encoding="utf-8")
         print(f"💾 Protokoll in {args.output} gespeichert.")
 
 if __name__ == "__main__":
