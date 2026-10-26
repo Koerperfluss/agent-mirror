@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-26 15:47 UTC
+Zuletzt gespiegelt: 2026-10-26 16:02 UTC
 
 ## AGENTS
 
@@ -11837,8 +11837,7 @@ Der Mimosa PreToolUse-Hook lehnt Bash-Befehle ab, die Python-/Config-Dateien dir
 
 ---
 name: simple-language-responses
-description: Sascha versteht fachliche Antworten oft nicht — Antworten radikal
-  vereinfachen, max. 3 Punkte, Fachwörter erklären oder weglassen
+description: Sascha versteht fachliche Antworten oft nicht und wird wütend bei Rückfragen/Optionen — radikal vereinfachen, keine Entscheidungstabellen, Standards selbst wählen
 metadata:
   node_type: memory
   type: feedback
@@ -11889,6 +11888,8 @@ Vereinbarte Weitergehens-Staffel (26.10., Nutzerfrage „ist doch viel mehr?" �
 - [Mimosa-Hook-Schreibconstraints](mimosa-hook-write-constraints.md) — warum Edits/Pushes blockiert werden und welche Gegenmuster funktionieren (validate_host, write_text, lazy, pipefail)
 - [Custom-Skills manuell ausführen](custom-skills-read-from-autoclaw.md) — roo-code/gsd-core/coderabbit/loki-dev/ponytail liegen in ~/.openclaw-autoclaw/skills/, ZCode registriert sie nicht → SKILL.md lesen + Methodik manuell anwenden
 - [Subagent-Provider-Fix](subagent-provider-fix-zai-api.md) — finale Lösung: ALLE 10 Defs `account:zai-individual-coding-plan/GLM-5.3-Flash` + thoughtLevel low (omniroute/glm-first = Irrweg, reasoning-level-not-supported); Def-Fixes greifen erst nach Session-Neustart, Live-Route = beim Start korrekt geladene Typen (cavecrew-builder)
+- [UI/UX-Skills + HUB-Audit](uiux-skills-hub-audit.md) — ~/.claude/skills UI/UX-Set komplett+aktuell (0 Diffs, Parallel-Session), Routing Zeilen 32–35; hub-glass.html-Audit (Top-3: Keyboard/Dialog/Kontrast) offen, Klick-Test 5/5, :3300 nohup; chrome-devtools-Screenshots nur via artifacts-Pfad kopierbar
+- [LOKI-Workflow-Harness](loki-workflow-harness.md) — Workflows dual (~/.openclaw-autoclaw + ~/.claude/skills), ZCode = manuell nach SKILL.md; TraktorClone 62 Tests/HEAD f0dad8a3c, agentos M2 (orchestrator+maker, 17 Tests) fertig, kein Git in agent-os
 
 
 ## custom-skills-read-from-autoclaw
@@ -11908,6 +11909,24 @@ Sascha erwartet, dass seine Custom-Skills (/roocode, /coderabbit, /gsd-core, /lo
 **Why:** Die Skills existieren real als Dateien unter `~/.openclaw-autoclaw/skills/<name>/SKILL.md`, werden aber von ZCode nicht als aufrufbare Skills registriert (nur AutoClaw/Cline-Discovery). ZCode listet nur Plugin-Skills (superpowers, mattpocock-skills, video2code etc.).
 
 **How to apply:** (1) SKILL.md-Dateien direkt lesen (`head -50 ~/.openclaw-autoclaw/skills/<name>/SKILL.md`) und die Methodik **manuell** ausführen — bewährt an TraktorClone Slice 1: loki-dev BUILD-Gate (Sequential Thinking → TodoWrite → PLAN-Tabelle → PLAN.md), gsd-core (Spec vor Code, vertikale Slices), roo-code-Modi, ralph-loop (Build-Loop max 5 Iterationen), coderabbit (4 Dimensionen Security/Logic/Perf/Arch + Findings-Tabelle + APPROVE-Verdict als Eigenreview dokumentieren), ponytail (YAGNI, keine Dependencies, native APIs zuerst). (2) Kurz und faktenbasiert kommunizieren: „Dateien existieren in ~/.openclaw-autoclaw/skills/, ZCode registriert sie nicht → Methodik manuell angewendet" — das hat ihn beruhigt. (3) Kern-Kurzformeln der Skills: loki-dev 4 Stopp-Regeln (Deploy/Löschen/Push/>5000 Credits nachfragen), gsd-core DONE-WHEN pro Slice, coderabbit-Verdict APPROVE/REQUEST_CHANGES. Kontext: [[qwen-flash-spark-project]].
+
+## loki-workflow-harness
+
+---
+name: loki-workflow-harness
+description: Wo die LOKI-Workflows
+  (roo-code/gsd-core/coderabbit/loki-dev/ponytail/appagentteam) leben und wie
+  sie in ZCode genutzt werden
+metadata:
+  node_type: memory
+  type: project
+  originSessionId: session_58f3f4bfcb9a88671e0595593de28702
+---
+
+LOKI-Workflows sind in **zwei Orten** identisch vorhanden (Stand 26.10.2026): `~/.openclaw-autoclaw/skills/` (AutoClaw-Original) und `~/.claude/skills/` (zentraler Spiegel, von Claude-Code automatisch geladen). ZCode lädt sie NICHT als Slash-Commands — Nutzung in ZCode: SKILL.md lesen + Methodik manuell anwenden (bewiesen: TraktorClone-Bau lief komplett nach loki-dev/gsd-core/coderabbit).
+
+**Warum:** ZCode lädt Skills nur aus `~/.zcode/cli/plugins/cache/`; die LOKI-Ordner sind fremde Harness-Verzeichnisse.
+**How to apply:** Bei Bau-Aufträgen: loki-dev BUILD-Gate (SequentialThinking→TodoWrite→PLAN-Tabelle→PLAN.md), Slices à max 2 Dateien (gsd-core), ralph-loop bis grün (max 5 Iter.), coderabbit-4D-Review mit Veto. Subagenten: cavecrew-builder/implementer-Defs laufen auf `account:zai-individual-coding-plan/GLM-5.3-Flash` (Fix 26.10., Backups `.bak-20261026`). Routing-Tabelle: `~/.agents/skill-routing.md`. Siehe [[subagent-provider-fix-zai-api]].
 
 ## mimosa-hook-write-constraints
 
@@ -11974,6 +11993,29 @@ Saschas ZCode-Subagenten (~/.zcode/agents/*.md: cavecrew-*, implementer, qa-test
 3. **Live-Beweis:** cavecrew-builder (account:-Format) lieferte 2 echte Tasks (73k + 262k Tokens): STATE-Check + vollständigen StemExporter (AVAssetReader→WAV, Build complete, committed 42641ef05). Builder als Ersatz-Reviewer mit Vetorecht funktioniert („hast nichts gebaut") — lieferte REQUEST_CHANGES mit 7 echten Findings, alle gefixt.
 4. **Fehler-Diagnose-Kette:** `provider-not-found` = Provider-Name falsch · `reasoning-level-not-supported` = Provider ok aber thoughtLevel nicht unterstützt. UI-Anzeige „GLM-5.3-Flash" im Subagents-Panel ist nur der Modell-Anzeigename — sagt nichts über den Provider.
 5. hcom-Bus: `hcom start` macht ZCode als Agent sichtbar (Name „neko"); Antigravity.app in /Applications vorhanden ✅; aber Cline/Antigravity/AutoClaw-Peers standen 16 Tage stale — externes Team nicht verlässlich, dokumentieren statt blocken. Kontext: [[qwen-flash-spark-project]], [[custom-skills-read-from-autoclaw]].
+
+## uiux-skills-hub-audit
+
+---
+name: uiux-skills-hub-audit
+description: UI/UX-Skills (~/.claude/skills) komplett+aktuell (Parallel-Session),
+  Routing verdrahtet; Verkaufs-HUB hub-glass.html auditiert (Top-3-Fixes offen)
+  + Klick-Test 5/5 PASS; :3300-Server läuft nohup
+metadata:
+  node_type: memory
+  type: project
+  originSessionId: session_58f3f4bfcb9a88671e0595593de28702
+---
+
+**UI/UX-Skill-Set (Stand 26.10.2026, abends):** `~/.claude/skills/` enthält ui-ux-pro-max, better-interface/-ui/-accessibility/-layout/-typography/-colors/-writing, interface-review, ui-ux-tester, design-an-interface — ALLE bereits von einer Parallel-Session installiert/aktualisiert (Timestamps 15:44, `diff -rq` gegen beide Upstreams = 0 Diffs: github.com/nextlevelbuilder/ui-ux-pro-max-skill — Skill liegt IM Repo unter `.claude/skills/ui-ux-pro-max/`, Repo-Root ist nur das Projekt — und github.com/jakubkrehel/skills — Skills unter `skills/`-Unterordner). Routing-Zeilen 32–35 stehen in `~/.agents/skill-routing.md`. Backup: `~/.claude/skills/_backup-uiux-2026-10-26.tar.gz` (702K). Wenn Sascha „aktualisieren/vervollständigen" fordert: ERST diff gegen Upstream, dann ehrlich „bereits erledigt" melden statt neu installieren.
+
+**Verkaufs-HUB hub-glass.html** (`~/Desktop/Coworkspace_Ich/PRIVATE PORJEKTE /TOOL-SAMMLUNG-VERKAUF/` — Ordnername mit Leerzeichen vor Slash!): 222-Zeilen Single-File-App, 74 Tools via tools-v2.json, Backend :8055 (fetch localhost hardcoded). **Audit-Report:** `…/TOOL-SAMMLUNG-VERKAUF/UI_AUDIT_hub-glass_2026-10-26.md`, Score 7,2/10 — **offene Top-3-Fixes:** (1) Karten `<div onclick>` ohne tabindex/role/Enter → nicht tastaturbedienbar (WCAG 2.1.1), (2) Detail-Panel ohne role="dialog"/aria-modal/Focus-Management, (3) `--muted:#8A8A82` auf `#FAFAF9` ≈3,4:1 + 9–11,5px Micro-Text. Stark: prefers-reduced-motion korrekt, esc()-XSS-Schutz überall, responsive Grid.
+
+**Klick-Test 5/5 PASS** (chrome-devtools-MCP, Server `nohup python3 -m http.server 3300 --bind 127.0.0.1` aus dem Projektordner, Log /tmp/hub3300.log — läuft noch): Laden 74 Karten · Suche „ableton"→1 · Karten-Klick→Panel (h2=Titel) · Escape schließt · Filter Tier A=6 / Verkaufen-ja=20 / Reset=74. Report+Screenshot: `agent-os/out/hub-klicktest/REPORT.md` + `01_hub_final.png`.
+
+**Harness-Falle chrome-devtools-Screenshots:** `take_screenshot(filePath=…)` verweigert ALLE absoluten Pfade („not within configured workspace roots", auch cwd/out/ und ~/.zcode/v2/visualizations). Workaround: Screenshot ohne filePath → Artefakt landet in `~/.zcode/cli/artifacts/<session>/<call-…>.png` → per Bash dorthin kopieren, wo man es braucht. Zustandsprüfungen im Browser effizienter per `evaluate_script` (Live-DOM-Reads statt Screenshots vergleichen); eigene Test-Reihenfolge erst denken — „0 Ergebnisse" war Filterkombination aus vorherigem Testschritt, nicht App-Bug.
+
+Kontext: [[qwen-flash-spark-project]] (TraktorClone-App), [[custom-skills-read-from-autoclaw]].
 
 ## MEMORY
 
@@ -19169,14 +19211,14 @@ Verwandt: [[zcode-workflow-bedienung]], [[session-quellen-wo-finden]], [[koerper
 
 # MEMORY
 
-- [System-Setup & Standard-Abläufe 26.10.2026](loki-os-system-setup-2026-10-26.md) — Master-Doku `/Users/saschalagler/LOKI_OS_SETUP.md` (Provider-Status, Standard-Ablauf, Todo-Baum, Pfade) — IMMER zuerst dort
+- [System-Setup & Standard-Abläufe FINAL 26.10.2026](loki-os-system-setup-2026-10-26.md) — Master-Doku `/Users/saschalagler/LOKI_OS_SETUP.md` (Disk-Stand zählt, Chat-Kopien veralten!); Provider-Kette: openrouter/free → Ollama → ClinePass
 - [Chipsi/Judicario Stand 22.09.2026](chipsi-judicario-stand-2026-09-22.md) — GELÖST: verwalteter Konnektor war Störer (Rotation 04:21), im Chat AUS → Chipsi läuft; 3 Keys aktiv; Chipsi-Paket neu gebaut
 - [ZCode-Umgebungsblocker](umgebungs-blocker-zcode.md) — Agent-Start ohne Reasoning-Level fehlschlagend, Gmail-MCP denied, mcporter fehlt
 - [Subagent-Reasoning-Level-Fehler](zcode-subagent-reasoning-level-error.md) — Agent-Tool startet nicht (GLM-5.3-Flash ohne Denkstufe) → direkt selbst untersuchen
 - [Chipsi-Synthese-Fehler-Diagnose](chipsi-synthesis-error-diagnosis.md) — Vollständige Fehlerkette + Fix (Konnektor-Schalter), Computer-Use/WhatsApp/Session-Know-how
 - [Feedback: echte App, keine Ersatzbauten](user-feedback-real-app-only.md) — Sascha will die reale App; Passwort-Nachfragen nie wiederholen; Key-Rotation als Fehlerquelle prüfen
 - [Maxenergy/EVN/Caritas Umzug 26.10.2026](maxenergy-evn-caritas-umzug-2026-10-26.md) — Melk→Loosdorf belegt (S618255, EVN-ABS-Nr.), Endabrechnungs-Mail NICHT gesendet (Kdnr-Konflikt), bahldorfa-Speicher voll ab 14.11.2026
-- [BrowserOS-LLM-Konfig 26.10.2026](browseros-llm-konfig-2026-10-26.md) — KORRIGIERT: **ClinePass = DEFAULT (läuft, curl-getestet)**; OpenRouter-Key TOT (401) → erst neuer Key; Gemini blockiert (Login); BrowserOS-Steuerung via Computer-Use
+- [BrowserOS-LLM-Konfig FINAL 26.10.2026](browseros-llm-konfig-2026-10-26.md) — **OpenRouter `openrouter/free` = DEFAULT (0 €, curl getestet)**; Inference-Key in ~/.openrouter_browseros_key (600); Management-Key-Falle (Secret = TOP-Level d['key']); Ollama + Vision-Modelle als Backup; ClinePass nur Coding
 - [Judicario-ZCode-Plugin 26.10.2026](judicario-zcode-plugin-2026-10-26.md) — plugins/judicario im Workspace gebaut (Client live getestet MRG § 30), 3 Legal-Agenten mit Veto; UI-Installation noch offen
 
 ## browseros-llm-konfig-2026-10-26
@@ -19325,30 +19367,28 @@ ZCode-Plugin `judicario` v1.0.0, gebaut 26.10.2026 im Workspace:
 
 ---
 name: loki-os-system-setup-2026-10-26
-description: System-Setup-Stand 26.10.2026 — BrowserOS-Provider
-  (ClinePass=Default läuft, OpenRouter-Key 401 tot, Ollama ok, Gemini blockiert
-  auf Login), Master-Doku ~/LOKI_OS_SETUP.md, Judicario-Plugin Quelle im
-  Workspace
+description: System-Setup FINAL 26.10.2026 — Master-Doku
+  /Users/saschalagler/LOKI_OS_SETUP.md (immer Disk-Stand, nie Chat-Kopien);
+  BrowserOS-Default = OpenRouter openrouter/free (0 €); Judicario-Plugin im
+  Workspace; Provider-Kette free→Ollama→ClinePass
 metadata:
   node_type: memory
   type: project
   originSessionId: session_a9d83d5f6d436ee601e9cc6431e574fc
 ---
 
-System-Setup-Stand per 26.10.2026 (vollständige Doku: `/Users/saschalagler/LOKI_OS_SETUP.md` — IMMER zuerst dort nachsehen).
+System-Setup FINAL per 26.10.2026 — **Master-Doku: `/Users/saschalagler/LOKI_OS_SETUP.md`** (6 Sektionen: System-Karte, Provider, Standard-Ablauf 6 Schritte, Todo-Baum, aktuelle Todos, Pfade-Cheat-Sheet). Details der Provider siehe [[browseros-llm-konfig-2026-10-26]].
 
-**BrowserOS-LLM-Provider (Settings chrome://browseros/settings):**
-- **ClinePass (OpenAI Compatible) = DEFAULT** — `cline-pass/glm-5.3-flash` @ api.cline.bot, live getestet. Falle: BrowserOS-"Test connection" scheitert (kein streaming) — echter Chat funktioniert trotzdem ([[chipsi-judicario-stand-2026-09-22]]).
-- OpenRouter `openrouter/auto`: **Key tot (401 User not found)** — Provider nicht als Default wählen, bis Sascha neuen Key von openrouter.ai/keys liefert.
-- Ollama localhost:11434 läuft (nur qwen3.5:9b). OmniRoute :20128 braucht Key (401).
-- Gemini blockiert: aistudio API-Key-Seite verlangt Google-Login im BrowserOS-Fenster; Google AI Pro-Abo ≠ API-Key.
+**Provider-Kette (final):** 1. OpenRouter `openrouter/free` = BrowserOS-DEFAULT (0 €, gratis Auto-Modellwahl) · 2. Ollama lokal Backup (qwen3.5:9b + Vision qwen3-vl:8b/4b) · 3. ClinePass nur für ZCode-Coding (5h-Token-Limit-Schonung, Sascha ausdrücklich).
 
-**Judicario-Plugin:** Quelle `~/Desktop/Coworkspace_Ich/THOMAS - CHIPS JUDICARIO/plugins/judicario/` (Skill + 3 Agenten legal-scout/analyst/reviewer + Client), Marketplace-Ordner = dessen `plugins/`-Parent. Client-Live-Test grün (MRG §30, Exit 0). Installation in ZCode-UI ausstehend. Alter Connector `legal_research` ist tot — Client nutzt `<module>_search`.
+**Wichtig (Sascha-Interaktion 26.10.):** Er pastete eine VERALTETE Kopie der Setup-Doku (aus einem früheren Chat) — die Datei auf Disk war bereits aktuell. Lektion: **Chat-Kopien können alt sein; nur der Disk-Stand von `/Users/saschalagler/LOKI_OS_SETUP.md` zählt.** Bei Unklarheit `grep`/mtime gegen die Datei prüfen, nicht der Kopie vertrauen.
 
-**Browser-Regel:** Automatisierung immer über BrowserOS (User-Anweisung, nicht Chrome-devtools-Instanz — dort kein Google-Login). Tabs können crashen → reload reicht.
+**Judicario-Plugin:** Quelle `~/Desktop/Coworkspace_Ich/THOMAS - CHIPS JUDICARIO/plugins/judicario/` (Skill + 3 Agenten Scout/Analyst/Reviewer mit Veto + Client, Live-Test MRG § 30 grün); Marketplace-Ordner = dessen `plugins/`-Parent; UI-Installation ausstehend.
 
-**Why:**避免 wiederholte Fehldiagnose „keiner funktioniert" — Ursache war der tote OpenRouter-Key, nicht die Konfiguration.
-**How to apply:** Bei LLM-Problemen zuerst curl-Direktest der Provider, dann Browser-UI. Default= ClinePass nutzen.
+**Offen:** (1) Gemini blockiert bis Google-Login im BrowserOS-Fenster oder AI-Studio-API-Key. (2) Ollama-Eintrag im BrowserOS zeigt noch qwen3.5:9b, VL-Umstellung optional. (3) bahldorfa-Gmail-Speicher voll (Sperrung 14.11.2026).
+
+**Why:** Vermeidet erneute Fehldiagnosen („Key tot", „keiner funktioniert") und doppelte Konfiguration in künftigen Sessions.
+**How to apply:** Session-Start: LOKI_OS_SETUP.md lesen (mtime checken). LLM-Probleme: immer curl-Direktests vor UI. Verwandt: [[umgebungs-blocker-zcode]] · [[maxenergy-evn-caritas-umzug-2026-10-26]]
 
 ## maxenergy-evn-caritas-umzug-2026-10-26
 
