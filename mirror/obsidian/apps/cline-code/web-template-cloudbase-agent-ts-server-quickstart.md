@@ -1,7 +1,7 @@
 ---
 app: cline-code
 quelle: "web-template/cloudbase-agent-ts/server-quickstart.md"
-stand: 2026-10-25
+stand: 2026-10-26
 tags: [spiegel, cline-code]
 ---
 

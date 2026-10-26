@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-25 23:45 UTC
+Zuletzt gespiegelt: 2026-10-26 00:00 UTC
 
 ## AGENTS
 
@@ -11805,6 +11805,51 @@ Music stem separation is set up and verified working on this machine (2026-10-21
 - Workflow `dwfrun-b62a1f9f-a520-4e52-b569-c5cc2f4f9790` COMPLETED (2026-10-21/22): 3 candidate loops in `Acid_People_Samples/kandidaten/` — A diff-mask (2.76 s, judge-winner, band 2.5–5 kHz 6.4× concentrated), B drums-stem HPSS (1.38 s, ffprobe verification FAILED — treat B as suspect), C AudioSep text-query (1.39 s, exact bar period, weak seam 0.54). None accepted by user; superseded by the raw cut above. AudioSep install knowledge kept: works on Py 3.14 in `~/.venvs/demucs` with checkpoints `audiosep_base_4M_steps.ckpt` (1.26 GB) + CLAP `music_speech_audioset_epoch_15_esc_89.98.pt` (2.35 GB) from the official HF Space; needs `torch.load(weights_only=False)` + `load_state_dict(strict=False)` (position_ids key); separation ~25 s CPU for 16 s audio. iCloud blocker hit and solved: Desktop files can be evicted/dataless ("blocks=0") — materialize with `fileproviderctl materialize <path>` before reading.
 - Dynamic workflow launched 2026-10-21 for the 56 s rattle (he invoked /workflow, "mach was nötig ist"): run `dwfrun-b62a1f9f-a520-4e52-b569-c5cc2f4f9790`, script `.zcode/workflow-drafts/Rassel-bei-56s-isolieren.dwf.ts` (workspace-relative to the zcode workspace dir, NOT the Desktop). Topology: 3 parallel isolation subagents — A spectral-difference mask (STFT before/after subtraction), B stem-focused HPSS+bandpass on drums vs other, C AudioSep local install with a 10-minute abort rule — then ffprobe gate per candidate, then an independent judge subagent ranking by correlation with the diff mask → 3 candidate loops in `Acid_People_Samples/kandidaten/` + ranked markdown artifact for his ear-check. Facade gotchas hit: strings in double quotes cannot contain `""` (use plain wording), and `artifact.markdown` takes ONE string, not an array — wrap with `.join("\n")`.
 - Right tool class for isolating ONE sound (stem tools CANNOT do this — they only know vocals/drums/bass/other), researched 2026-10-21 per his request: **AudioSep** (open source, text-queried separation, `github.com/audio-agi/audiosep`, arXiv 2308.05037 — proposed local install into `~/.venvs/demucs`, prompt e.g. "a bright metallic rattle / shaker percussion loop"), **SAM Audio** (Meta, text OR audio-example query, ai.meta.com/blog/sam-audio/), **OpenVocabularySELD** (Sony, text prompt → onset/offset timestamps, github.com/SonyResearch/OpenVocabularySELD), Few-Shot SED (Salamon, query-by-example localization).
+
+## MEMORY
+
+# Memory Index
+
+- [qwen-flash-spark Projekt](qwen-flash-spark-project.md) — Qwen3.8 auf DGX Spark für macOS-Traktor-Clone; TSI=XML, 111-GB-Quant, Branch/Git-Fakten
+- [Mimosa-Hook-Schreibconstraints](mimosa-hook-write-constraints.md) — warum Edits/Pushes blockiert werden und welche Gegenmuster funktionieren
+
+## mimosa-hook-write-constraints
+
+---
+name: mimosa-hook-write-constraints
+description: Mimosa-Hook blockt Writes/Pushes — funktionierende Gegenmuster
+  (SSRF-Guard-Inline, keine Subprocess-Tests, manuelle Push-Zeile)
+metadata:
+  node_type: memory
+  type: feedback
+  originSessionId: session_58f3f4bfcb9a88671e0595593de28702
+---
+
+Mimosa-Security-Hook intercepted in diesem Setup Edit/Write UND `git push`.
+
+**Why:** Er markiert dynamische URLs ohne Guard (SSRF), `../`/os.pardir/Path(__file__) in Tests (Pfad-Traversal) und Subprocess+Tempfile-Muster in Testdateien; Pre-Push scannt den gesamten Workspace und blockt auch bei Fundstellen in fremden Projekten (z.B. ~/agent-os/agentos).
+
+**How to apply:** (1) Bei Skripten mit urlopen: vor dem Request `validate_host()` definieren (nur http/https, private/Loopback-IPs via ipaddress blocken, opt-in `--allow-lan`/Env für LAN-Nutzung) + `NoRedirectHandler` + `build_opener` statt `urlopen` — solche Edits passieren. (2) Unit-Tests: keine Subprocess-/Tempdir-/`..`-Muster; Shell-Checks stattdessen manuell via Bash laufen lassen und in VALIDATION.md dokumentieren; Import-Pfade via cwd-relativ (`scripts`) oder Env (`QFS_SCRIPTS_DIR`). (3) Wenn Push durch fremde Workspace-Findings blockt: Security-Gate nicht umgehen, stattdessen fertige Push-Zeile an Nutzer übergeben. (4) Simultan laufende Nutzer-Sessions können Dateien zwischen Reads ändern ("File has been modified since read") → vor Edit neu lesen und fremde Änderungen (z.B. neue Task-Choices) respektieren, nicht reverten. Kontext: [[qwen-flash-spark-project]].
+
+## qwen-flash-spark-project
+
+---
+name: qwen-flash-spark-project
+description: qwen-flash-spark — Qwen3.8-Flash-Next auf DGX Spark für
+  Traktor-Clone; Pfade, Git, verifizierte Fakten
+metadata:
+  node_type: memory
+  type: project
+  originSessionId: session_58f3f4bfcb9a88671e0595593de28702
+---
+
+Projekt `~/qwen-flash-spark` (Stand 2026-10-26): Qwen3.8-Flash-Next (125B MoE, 6B aktiv, Gated-DeltaNet/QSA-Hybrid) läuft als llama-server auf Saschas DGX Spark (GB10, 128 GB, :8080); Mac/Pi = Client (pi_benchmark.py, pi_re_client.py mit Tasks hid/mapping/capture/format/codegen). **Endziel: eigener Traktor-Pro-4-Clone auf macOS (Swift/CoreAudio/CoreMIDI)** — Repo ist zugleich Anleitung für Lorenz (docs/LORENZ_GUIDE.md).
+
+Verifizierte Fakten (nicht raten): Traktor `Traktor Settings.tsi` = **Plain-XML** (`<NIXML><Entry …/>`), kein Binär-RE nötig; GGUF `unsloth/Qwen3.8-Flash-Next-GGUF`, **UD-Q4_K_XL = 111 GB** (alte ~78-GB-Schätzung war falsch; Q5 passt nicht in 128 GB); MTP-Flag `--spec-type draft-mtp`; GB10-Runtime-Pflichtflags `-ub 2048 -b 2048 --no-mmap`; llama.cpp-Support seit PR #16095/#17584. Clients blocken private IPs (SSRF-Guard) → LAN-Nutzung braucht `QFS_ALLOW_LAN=1` oder `--allow-lan`.
+
+Git: lokal `main` mit Remote `origin → github.com/Koerperfluss/agent-mirror` (gh auth als Koerperfluss aktiv). Kanonischer Remote-Branch: `cline/s4sx83cs` (enthält Ordner qwen-flash-spark/). Push passiert manuell: `git push --force-with-lease origin main:cline/s4sx83cs` (Stand 2026-10-26 noch offen — Pre-Push-Hook blockt wegen Fremd-Findings in ~/agent-os). Hardware-Kette: Omnitronic BD-1380 USB (class-compliant → ALSA `snd-usb-audio` am Pi) + analoger A&H Xone:32 (keine Soundkarte); Traktor Pro selbst = macOS/Windows (CoreAudio/ASIO), kein ALSA. Siehe [[mimosa-hook-write-constraints]].
+
+Methodik (2026-10-26, aus Saschas PDFs `~/Desktop/Reverse Engeniering /`): `docs/RE_METHODOLOGY.md` (12-Schritte-Funktionsgleichheit auf Traktor 4.5 gemappt) + `AGENTS.md` im Root = verbindlicher app-rebuild-Arbeitsvertrag für Agenten (FEATURES.json-Schema, rebuild/STATE.md-Checkpoints, Abschlussgate, keine Mocks als fertig). pi_re_client hat Task `rebuild` (Prüfblatt-Analyse, BEOBACHTUNG/HYPOTHESE/[VORSCHLAG]-Trennung); 13 Unit-Tests grün, letzter Commit `7b2c68e`. PDF-Dateiname-Falle: „reverse engineering .pdf" hat ein Leerzeichen vor der Endung. Wichtig: BD-1380 hat Riemenantrieb → kein echter DVS/Timecode-Turntable für Scratch.
 
 ## MEMORY
 
