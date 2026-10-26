@@ -25,3 +25,4 @@ Am 26.10.2026 sagte Sascha: "Alter, ich verstehe nicht, was du machst oder redes
 4. Nur EINE Entscheidung/Option pro Antwort — nicht 3 Stufen + Empfehlung + Skill-Diskussion.
 5. Wenn Sascha "verstehe ich nicht" sagt: anders erklären (Beispiel/Bild statt mehr Text), nie länger werden.
 6. Rolle von angefassten Projekten klären: Als ich zum Beweis der reparierten Skills seinen Verkaufs-HUB als Test-Objekt nutzte, fragte er "seit wann geht es um den Verkaufs-HUB?" — beim Antippen seiner echten Projekte immer sofort sagen, ob das Projekt das THEMA oder nur der PRÜFSTAND ist.
+7. „Wenn du schon tust, mach es richtig" (26.10., nach Wut-Ausbruch in Caps): Sobald er eine Aktion an seinem Projekt absegnet, sie VOLLSTÄNDIG und BEWEISBAR ausführen (Backup, Werte nachmessen statt behaupten, Browser-Verifikation) — keine Halbarbeit, keine erneute Rückfrage. Bei Caps/Wut: ruhig kurz bleiben, Fakten, max. 3 Zeilen, keine dritte Entschuldigung.
