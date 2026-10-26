@@ -1,8 +1,8 @@
 ---
 name: subagent-provider-fix-zai-api
-description: Subagenten schlugen mit "provider-not-found" fehl — 8 Defs zeigten
-  auf toten Provider zai-api; Fix + funktionierende Modell-Formate +
-  Session-Cache-Falle
+description: Subagenten schlugen mit "provider-not-found"/"reasoning-level" fehl —
+  toter Provider zai-api + thoughtLevel max; finale Lösung = account:-Format
+  überall (10 Defs), Live-Ausweichroute cavecrew-builder, hcom-Status
 metadata:
   node_type: memory
   type: feedback
@@ -14,8 +14,8 @@ Saschas ZCode-Subagenten (~/.zcode/agents/*.md: cavecrew-*, implementer, qa-test
 **Why:** Die Defs hatten `model: "zai-api/GLM-5.3-Flash"` — aber `zai-api` existiert NICHT in `~/.zcode/v2/provider_config.json` (providerOrder: `builtin:zai`, `omniroute`, `ollama`, `new-provider`). Der Name war schlicht falsch, nicht das System.
 
 **How to apply:**
-1. **Zwei funktionierende Modell-Formate:** `account:zai-individual-coding-plan/GLM-5.3-Flash` (Session-Konto — funktioniert SOFORT, bewiesen mit cavecrew-builder, 73k Tokens sauber) und `omniroute/glm-first` (OmniRoute localhost:20128, LaunchAgent aktiv). Vermeide erfundene Provider-Namen wie `zai-api`.
-2. **Session-Cache-Falle:** Agent-Defs werden beim Session-Start geladen — Datei-Fixes am laufenden Prozess wirken erst nach NEUSTART. Sofort-Nutzung: Agent-Typen mit `account:`-Format dispatchen.
-3. **Fix-Ablauf** (2026-10-26 ausgeführt): Backups `*.md.bak-20261026`, dann `sed -i '' 's|zai-api/GLM-5.3-Flash|omniroute/glm-first|g'` über alle Defs; OmniRoute-Health vorher mit `curl -sf http://localhost:20128/` prüfen. 8 Defs gefixt; cavecrew-builder + gate-enforcer-test hatten bereits das account:-Format.
-4. **Reviewer-Veto ohne Reviewer-Def:** cavecrew-builder mit Review-Briefing („du agierst JETZT als Reviewer mit Vetorecht, hast nichts gebaut") funktioniert als Ersatz — lieferte REQUEST_CHANGES mit 7 echten Findings (Recorder-Race, StemFile-Main-Thread-Block, .build-Artefakte im Git, Dead Code, seek-0-Frame-Guard, Reverb-Preset-Reload). Alle gefixt, 54/54 Tests, Push a30349657.
-5. hcom-Bus: `hcom start` macht ZCode als Agent sichtbar (Name „neko"); Antigravity.app in /Applications vorhanden; aber Cline/Antigravity/AutoClaw-Peers standen 16 Tage stale — externes Team nicht verlässlich, Solo-Bau + Ersatz-Reviewer dokumentieren. Kontext: [[qwen-flash-spark-project]], [[custom-skills-read-from-autoclaw]].
+1. **FINALE Lösung (2026-10-26, mehrstufig getestet):** ALLE 10 Defs einheitlich auf `model: "account:zai-individual-coding-plan/GLM-5.3-Flash"` + `thoughtLevel: low` — das ist das EINZIGE live bewiesene Format. Irrwege dokumentiert: `omniroute/glm-first` wird zwar als Provider erkannt (Progress!), scheitert aber an `reasoning-level-not-supported` (thoughtLevel high/max/xhigh; auch low ungetestet scheiterte) — OmniRoute übernimmt keine Agent-Reasoning-Levels. Backups: `*.md.bak-20261026` (vor dem omniroute-Versuch).
+2. **Session-Cache:** Agent-Defs werden beim Session-Start geladen und GECACHT — ein Dispatch nach Datei-Fix zeigte weiterhin die alte Selection. Datei-Fixes greifen erst nach NEUSTART; sofortige Nutzung nur über Agent-Typen, die beim Start schon korrekt waren.
+3. **Live-Beweis:** cavecrew-builder (account:-Format) lieferte 2 echte Tasks (73k + 262k Tokens): STATE-Check + vollständigen StemExporter (AVAssetReader→WAV, Build complete, committed 42641ef05). Builder als Ersatz-Reviewer mit Vetorecht funktioniert („hast nichts gebaut") — lieferte REQUEST_CHANGES mit 7 echten Findings, alle gefixt.
+4. **Fehler-Diagnose-Kette:** `provider-not-found` = Provider-Name falsch · `reasoning-level-not-supported` = Provider ok aber thoughtLevel nicht unterstützt. UI-Anzeige „GLM-5.3-Flash" im Subagents-Panel ist nur der Modell-Anzeigename — sagt nichts über den Provider.
+5. hcom-Bus: `hcom start` macht ZCode als Agent sichtbar (Name „neko"); Antigravity.app in /Applications vorhanden ✅; aber Cline/Antigravity/AutoClaw-Peers standen 16 Tage stale — externes Team nicht verlässlich, dokumentieren statt blocken. Kontext: [[qwen-flash-spark-project]], [[custom-skills-read-from-autoclaw]].
