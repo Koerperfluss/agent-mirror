@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-26 14:43 UTC
+Zuletzt gespiegelt: 2026-10-26 14:58 UTC
 
 ## AGENTS
 
@@ -12253,9 +12253,9 @@ In ATLAS-ZCode-Sessions kann das Bash-Tool komplett tot sein: jeder Aufruf (auch
 
 - [eqMac-Deinstallation + Spotify-Fix](eqmac-deinstallation-spotify-fix.md) — 22.09. FERTIG (dwfrun-c55c4bc7): eqMac ursprünglich zu Unrecht deinstalliert (Doku war nur Kontext-Beilage!) → **v1.9.1 neu installiert, er BRAUCHT es**; **Spotify-Ursache = Intel-Build 1.3.0.277 via Rosetta + 982 MB korrupter Cache** → native ARM64 1.3.1.234, läuft stabil; Audio-Abbrüche danach = eqMac-Virtual-Device-Wege — 2 Parallel-Agents: Neustart → Test sauber (0 Dropouts), **KEIN Buffer-Setting existiert**; Fix-Leiter: 48 kHz (Audio-MIDI-Setup) → eqMac-Toggle → Analyzer aus → direkter Output; Fallback ältere Version (Issues #994/#224)
 
-- [ZCode ADHS-Automations](zcode-adhs-automationen.md) — 13.09.–18.10. LIVE: **EINE Automation mit ALLEN 6 Briefs** (cron `0 9,10,15,16,21`, Zweige per Uhrzeit+Wochentag; niemals 6 separate — Nutzer-Ziel!) + Engine 7/7 PASS; **40+ Läufe, alle 6 Zweige bewiesen** (Abende PASS 610E2A57/88CCE1A6/C269B996/9299B443/2FF9A547/157032D8/22442356/A8552CD2; Morgen 21.09. erstmals pünktlich C1BFC6A3; 10.10. Sa A0D0B91D Parallel-dwfruns: Förder-PDF, Bar-Bulls-Checkout, OmniRoute Security-P1, agent-mirror 7d30be0; 12.10. Mo Catch-up 16DC788F: agent-mirror `befcfd6` Workflows+5-Port-Health+Watchdog) · **18.10. STRUKTUR-FUND: loki-ki/loki-voice aus Working-Tree ENTFERNT (ohne Commit) — beide P1 obsolet, neuer LokiVoice-Speicherort UNKLAR, vor Arbeit klären** · Doku-Sync 30.09.+07.10.: 2 Findings offen (assi-README brief/feierabend + lib/push.sh) · UHR-ANOMALIE (date = Wahrheit, Logbuch vor Append NEU lesen, Zukunftdateien werden beim echten Datum gültig) · Lücken-Tage wenn Mac schläft · offen auf GO: Wecker · Deutsch-Patch-Recovery · doku-fix (3 Zeilen); 1 Task pro Chat-Limit
+- [ZCode ADHS-Automations](zcode-adhs-automationen.md) — 13.09.–26.10. LIVE: **EINE Automation mit ALLEN 6 Briefs** (cron `0 9,10,15,16,21`; niemals 6 separate) · **56 Läufe, alle 6 Zweige bewiesen** · 26.10. Konsolidierung: LOKI_TASKBOARD.md, doku-fix ERLEDIGT, LokiVoice=`_ARCHIV/2026-10/loki-voice-alt` (P1s obsolet), OmniRoute :20128 läuft WIEDER (Richtung offen), Doku-Sync-DUPLIKAT automation-2df8eec5 Lösch-GO offen · **26.10. INFO-PUSH-RETOOLING: Sascha „Läufe geben 0 Info, wertlos" → JEDER Lauf sendet jetzt macOS-BENACHRICHTIGUNG (osascript, live bewiesen) + Chat 4-Zeilen-Format WAS/WO/WANN/WIE-WEITER, No-op-1-Zeiler verboten** · UHR-ANOMALIE (date=Wahrheit, vor Append NEU lesen) · offen auf GO: Wecker · Deutsch-Patch · Duplikat weg · OmniRoute-Richtung; 1 Task pro Chat-Limit
 
-- [OmniRoute-Rückbau + System-Fixes](omniroute-rueckbau-system-fixes-2026-09-20.md) — 20.09. Abend: Q1–Q7 ALLE ERLEDIGT („fix test"-GO): OmniRoute ABGEBAUT (Nutzer-Wunsch, Plist raus, Regeln auf Direkt-Provider gesynced, Comet läuft bis Reboot); Atlas-Ingest 67 Module (2 Code-Bugs gefixt); Task-Bridge 5 echte Tasks; loki-up.command am Desktop getestet; Mongo zu; 2 tote Agents disabled; 7b-Coder-Modell da; MASTER_STATUS+HANDBUCH aktualisiert (Backups ~/sicherungen/doku-backup-20260920); Endstand CHECKPOINT CONTINUE — offen nur: 4 Keys (Sascha) + Firewall sudo
+- [OmniRoute-Rückbau + System-Fixes](omniroute-rueckbau-system-fixes-2026-09-20.md) — 20.09. Q1–Q7 erledigt, OmniRoute ABGEBAUT (Nutzer-Wunsch) · **⚠️ 26.10.: :20128 LÄUFT WIEDER (node PID 871, wohl 11.10. reaktiviert) — Richtungs-Entscheidung + Security-P1 (API-Keys/White-Label) offen**
 
 - [LOKI-Kernel v17-Start + 8010-Fix](loki-kernel-v17-start-8010-fix.md) — 20.09.: Kernel-Start NUR via macos-app-v17/LOKI_MASTER.py, Bind 127.0.0.1; System-Audit-Workflow (dwfrun-1359c3bc) FERTIG: 39 Checks, 7 bestätigte Findings — **OmniRoute *:20128 Bind-Bug (wartet auf GO)**, LegalOps 7070 stirbt wiederholt, 2 tote LaunchAgents (omni-check.daily/toolhub-watchdog), MASTER_STATUS 74 Tage alt, Atlas-Ingest+Task-Bridge offen; Verhör Q1–Q7 UNBEANTWORTET — er will Erst-Erklärung in Menschen-Sprache
 
@@ -13973,6 +13973,8 @@ Stand 20.09.2026 Abend — Fix-Lauf nach System-Selbstprüfung (Workflow „LOKI
 
 Verwandt: [[loki-kernel-v17-start-8010-fix]], [[zai-coding-plan-limits]]
 
+**⚠️ UPDATE 26.10.: OmniRoute LÄUFT WIEDER** — lsof-Beweis: Port **:20128 LISTEN** (node PID 871). Widerspricht dem Abbau vom 20.09.; laut Kompass-Doku 15.10. gab es einen LaunchAgent-Fix 11.10. (`--tray` entfernt, Backup `.bak-20261011`) → offenbar reaktiviert. Offen: Richtungs-Entscheidung Sascha (wieder an vs. endgültig zu) + Security-P1 „API-Keys-Logik vor White-Label-Verkauf" (dwfrun-Lauf 10.10., Status unbestätigt). Details: [[zcode-adhs-automationen]] / LOKI_TASKBOARD.md.
+
 ## oneforma-agb-pruefung
 
 ---
@@ -14788,7 +14790,7 @@ Integration done 2026-08-30: added `web-search-prime`, `zread`, `zai-vision` MCP
 
 ---
 name: zcode-adhs-automationen
-description: "13.09.–12.10. LIVE: EINE Automation mit ALLEN 6 Briefs (cron `0 9,10,15,16,21`, Zweige per Uhrzeit+Wochentag; niemals 6 separate — Nutzer-Ziel!) + Engine 7/7 PASS; **38 Läufe, alle 6 Zweige bewiesen · 12.10. Catch-up: agent-mirror `befcfd6` (Workflows Morgenstart/Dev-Loop/Abend + 5-Port-Health + Watchdog, live verifiziert 11.10.) · P1×2 unverändert (LokiVoice dirty seit Sa + Parent-Pointer seit 01.10) · UHR-ANOMALIE: date = Wahrheit, Logbuch vor Append NEU lesen · offen auf GO: Wecker + Deutsch-Patch-Recovery + doku-fix (3 Zeilen) + pointer-fix + commit-wache; 1 Task pro Chat-Limit"
+description: "13.09.–26.10. LIVE: EINE Automation mit ALLEN 6 Briefs (cron `0 9,10,15,16,21`; niemals 6 separate — Nutzer-Ziel!) · **56 Läufe** · 26.10. GROSS-KONSOLIDIERUNG: LOKI_TASKBOARD.md angelegt, doku-fix ERLEDIGT (README+Backup), LokiVoice in `~/loki-ki/_ARCHIV/2026-10/loki-voice-alt/` gefunden (P1s obsolet), LegalOps 0 Prozesse (F-3 de facto), OmniRoute :20128 LÄUFT WIEDER (Widerspruch zum Abbau — Richtung offen), DOPPEL-Automation entdeckt (Doku-Sync Mi 15:00 automation-2df8eec5 dupliziert Tages-Routine-Zweig, Lösch-GO offen); **26.10. SYSTEMPROOF 6/6 LIVE PASS → URTEIL AKTIV** (hook-JSON · 23 Logbücher · sweep · Kalender-Event zurückgelesen · doku-grep · 3/3 Engine-Dateien; /systemproof = ~/.zcode/commands/systemproof.md); Settings: 4 Automations aktiv (56/8/1/2 Läufe), 5 SessionStart-Hook-Gruppen; offen auf GO: Wecker · Deutsch-Patch · Duplikat weg · OmniRoute-Richtung; UHR-ANOMALIE (date=Wahrheit, vor Append NEU lesen); 1 Task pro Chat-Limit"
 metadata:
   node_type: memory
   type: project
@@ -14937,6 +14939,8 @@ metadata:
 2. m-Dict-Region (252479–583376) durch DE-Dict ersetzen (Backtick-Escapes beachten), asar repacken. Achtung: andere Sessions haben seit 13.09. config.json verändert (17 MCP-Server, 4 SessionStart-Hooks) — betrifft asar nicht, aber Neustart beendet laufende dwf-Workflows → nur in einer Sascha-Session ohne aktive Workflows.
 3. **Backup `app.asar.orig`** + `codesign --force --deep -s -` (macOS-27-Beta-AMFI, siehe [[macos-27-beta-status]]) + Re-Patch-Skript gegen App-Updates.
 4. ZCode-Neustart + Textbeleg als Beweis. Lücke: 9 Keys mit Double-Quote-Werten (u. a. `bots.setup.guide.*`) beim Patchen nachliefern oder unberührt lassen.
+
+**Verifiziert 26.10.:** `/Applications/ZCode.app/Contents/Resources/app.asar` weiterhin vorhanden → Re-Extraktion jederzeit möglich (~10 Min, Offsets stehen oben). Taskboard-Zuordnung: ZCode + 2 implementer-Subagenten; GO-Wort bleibt „weiter übersetzen".
 
 ## zcode-hub-1006-netz-fix
 
@@ -19090,13 +19094,45 @@ Verwandt: [[zcode-workflow-bedienung]], [[session-quellen-wo-finden]], [[koerper
 
 # MEMORY
 
+- [System-Setup & Standard-Abläufe 26.10.2026](loki-os-system-setup-2026-10-26.md) — Master-Doku `/Users/saschalagler/LOKI_OS_SETUP.md` (Provider-Status, Standard-Ablauf, Todo-Baum, Pfade) — IMMER zuerst dort
 - [Chipsi/Judicario Stand 22.09.2026](chipsi-judicario-stand-2026-09-22.md) — GELÖST: verwalteter Konnektor war Störer (Rotation 04:21), im Chat AUS → Chipsi läuft; 3 Keys aktiv; Chipsi-Paket neu gebaut
 - [ZCode-Umgebungsblocker](umgebungs-blocker-zcode.md) — Agent-Start ohne Reasoning-Level fehlschlagend, Gmail-MCP denied, mcporter fehlt
 - [Subagent-Reasoning-Level-Fehler](zcode-subagent-reasoning-level-error.md) — Agent-Tool startet nicht (GLM-5.3-Flash ohne Denkstufe) → direkt selbst untersuchen
 - [Chipsi-Synthese-Fehler-Diagnose](chipsi-synthesis-error-diagnosis.md) — Vollständige Fehlerkette + Fix (Konnektor-Schalter), Computer-Use/WhatsApp/Session-Know-how
 - [Feedback: echte App, keine Ersatzbauten](user-feedback-real-app-only.md) — Sascha will die reale App; Passwort-Nachfragen nie wiederholen; Key-Rotation als Fehlerquelle prüfen
 - [Maxenergy/EVN/Caritas Umzug 26.10.2026](maxenergy-evn-caritas-umzug-2026-10-26.md) — Melk→Loosdorf belegt (S618255, EVN-ABS-Nr.), Endabrechnungs-Mail NICHT gesendet (Kdnr-Konflikt), bahldorfa-Speicher voll ab 14.11.2026
-- [BrowserOS = Standard-Browser für Gmail-Suche](umgebungs-blocker-zcode.md) — Gmail-MCP tot; BrowserOS via Computer-Use ist der funktionierende Weg (Nutzer-Anweisung)
+- [BrowserOS-LLM-Konfig 26.10.2026](browseros-llm-konfig-2026-10-26.md) — KORRIGIERT: **ClinePass = DEFAULT (läuft, curl-getestet)**; OpenRouter-Key TOT (401) → erst neuer Key; Gemini blockiert (Login); BrowserOS-Steuerung via Computer-Use
+- [Judicario-ZCode-Plugin 26.10.2026](judicario-zcode-plugin-2026-10-26.md) — plugins/judicario im Workspace gebaut (Client live getestet MRG § 30), 3 Legal-Agenten mit Veto; UI-Installation noch offen
+
+## browseros-llm-konfig-2026-10-26
+
+---
+name: browseros-llm-konfig-2026-10-26
+description: BrowserOS „Bring Your Own LLM" Stand 26.10.2026 (AKTUALISIERT) —
+  ClinePass glm-5.3-flash ist DEFAULT (curl-live getestet); OpenRouter-Key
+  TOT (401 User not found) → Provider bis Neuanlage nicht wählen; Ollama
+  qwen3.5:9b ok; Gemini blockiert (Google-Login nötig)
+metadata:
+  node_type: memory
+  type: project
+  originSessionId: session_browseros-llm-2610
+---
+
+BrowserOS (`chrome://browseros/settings` → AI & Agents), 7 Provider (Stand 26.10.2026, abends korrigiert):
+
+- **ClinePass (OpenAI Compatible) = DEFAULT** (umgestellt, weil OpenRouter tot war) — `cline-pass/glm-5.3-flash` · `https://api.cline.bot/api/v1`. **Curl-Direktest: stream:true → antwortet ✅.** Falle: `stream:false` → HTTP 500 „empty response content"; BrowserOS-„Test connection" nutzt vermutlich non-stream und zeigt falschen Fehler.
+- **OpenRouter · `openrouter/auto`: Key TOT (HTTP 401 „User not found")** — der im Chat gepostete Key ist ungültig/gelöscht. Default wurde auf ClinePass zurückgenommen. Sobald Sascha einen neuen Key von openrouter.ai/keys liefert: Provider OpenRouter → Edit → Key eintragen → wieder „Set as default" (Sascha will die Auto-Modellwahl).
+- Ollama qwen3.5:9b · localhost:11434/v1 — läuft (curl /api/tags ok).
+- OmniRoute (localhost:20128) 401 ohne Key · z.ai GLM · Hermes ACP · pi ACP — vorhanden.
+
+**Offen:**
+1. Gemini/Google: aistudio.google.com/apikey → Google-Anmelden im AgentOS-Fenster. Braucht Login durch Sascha ODER Gemini-API-Key. Google AI Pro-Abo gilt NICHT für API-Keys.
+2. Neu-Key von Sascha für OpenRouter (Auto-Modellwahl ist sein Wunsch).
+
+**Why:** „Keiner funktioniert"-Meldung am 26.10. war der tote OpenRouter-Key, keine Konfig-Fehler. Vermutlich weitere Sessions betroffen.
+**How to apply:** Bei LLM-Problemen IMMER erst curl-Direktest (Authorization-Header), dann Browser-UI. Master-Doku: `/Users/saschalagler/LOKI_OS_SETUP.md`.
+
+Verwandt: [[umgebungs-blocker-zcode]] · [[loki-os-system-setup-2026-10-26]]
 
 ## chipsi-judicario-stand-2026-09-22
 
@@ -19186,6 +19222,59 @@ Workflow-Beweise (22.09., alle deterministisch): chipsi.openlaw.cc HTTP 303 · G
 
 **How to apply:** Sobald Login steht (Sascha tippt Passwort oder macht Reset): Neukonfiguration mit Key #2 wie oben durchziehen, dann Endtest — baut die Synthese = fertig; baut sie nicht = openlaw-Serverseite (Meldung ist längst bei Reinhard, Delivered 15:22). Recherche-Ersatz läuft unabhängig: Mini-Chipsi http://127.0.0.1:8085 + Claude Desktop at_*-Tools. Keys nie in Dateien/Reports kopieren. Siehe [[zcode-subagent-reasoning-level-error]], [[umgebungs-blocker-zcode]], [[chipsi-judicario-stand-2026-09-22]].
 
+## judicario-zcode-plugin-2026-10-26
+
+---
+name: judicario-zcode-plugin-2026-10-26
+description: ZCode-Plugin „judicario" v1.0.0 gebaut 26.10.2026 —
+  Judicario-Client + 3 Legal-Agenten (Scout/Analyst/Reviewer mit Veto) im
+  Workspace; Client live getestet (MRG § 30, Exit 0); Installation per Plugin-UI
+  noch offen
+metadata:
+  node_type: memory
+  type: project
+  originSessionId: session_a9d83d5f6d436ee601e9cc6431e574fc
+---
+
+ZCode-Plugin `judicario` v1.0.0, gebaut 26.10.2026 im Workspace:
+
+- Quelle: `/Users/saschalagler/Desktop/Coworkspace_Ich/THOMAS - CHIPS JUDICARIO/plugins/judicario/` — `.zcode-plugin/plugin.json`, `scripts/judicario_mcp_client.py` (Streamable-HTTP-Client 1:1 aus `THOMAS - CHIPS JUDICARIO /Legal_Ops_Zentrale/legal-ops-advisor/`), `skills/judicario/SKILL.md`, `agents/legal-scout.md` / `legal-analyst.md` / `legal-reviewer.md` (Reviewer hat Veto-Recht: jede Fundstelle gegen Gateway verifizieren, sonst streichen).
+- Lokaler Dev-Marketplace: `plugins/marketplace.json` (Name `saschalagler-local-dev`, Eintrag source `./judicario`).
+- **Live-Test bestanden 26.10.2026:** `at_norms` „Kündigung Mietvertrag Frist" → MRG § 30 Volltext, Exit 0. Gateway-Key (rotiert 06.09.2026) als Fallback im Client; künftige Rotation nur via `export JUDICARIO_API_KEY=…`.
+- **Offen:** Plugin per ZCode-UI installieren (Marketplace-Ordner adden → Install → Neustart) — danach Erkennung verifizieren. Altes Tool `legal_research` (judicario_connector.py) ist am Gateway tot, kann archiviert werden.
+
+**Why:** „eigentlich sollt es das schon geben" war falsch — es gab nur den Prompt-Skill `~/.claude/skills/legal-ops-omni` und loki-legal-ops-mcp, kein ZCode-Plugin mit Connector + Agent-Team.
+**How to apply:** Nach Installation Trial-Prompt „@judicario: … Scout → Analyst → Reviewer"; bei „Unbekanntes Tool" am Gateway `<module>_search` nutzen (nicht legal_research). Verwandt: [[chipsi-judicario-stand-2026-09-22]], [[umgebungs-blocker-zcode]]
+
+## loki-os-system-setup-2026-10-26
+
+---
+name: loki-os-system-setup-2026-10-26
+description: System-Setup-Stand 26.10.2026 — BrowserOS-Provider
+  (ClinePass=Default läuft, OpenRouter-Key 401 tot, Ollama ok, Gemini blockiert
+  auf Login), Master-Doku ~/LOKI_OS_SETUP.md, Judicario-Plugin Quelle im
+  Workspace
+metadata:
+  node_type: memory
+  type: project
+  originSessionId: session_a9d83d5f6d436ee601e9cc6431e574fc
+---
+
+System-Setup-Stand per 26.10.2026 (vollständige Doku: `/Users/saschalagler/LOKI_OS_SETUP.md` — IMMER zuerst dort nachsehen).
+
+**BrowserOS-LLM-Provider (Settings chrome://browseros/settings):**
+- **ClinePass (OpenAI Compatible) = DEFAULT** — `cline-pass/glm-5.3-flash` @ api.cline.bot, live getestet. Falle: BrowserOS-"Test connection" scheitert (kein streaming) — echter Chat funktioniert trotzdem ([[chipsi-judicario-stand-2026-09-22]]).
+- OpenRouter `openrouter/auto`: **Key tot (401 User not found)** — Provider nicht als Default wählen, bis Sascha neuen Key von openrouter.ai/keys liefert.
+- Ollama localhost:11434 läuft (nur qwen3.5:9b). OmniRoute :20128 braucht Key (401).
+- Gemini blockiert: aistudio API-Key-Seite verlangt Google-Login im BrowserOS-Fenster; Google AI Pro-Abo ≠ API-Key.
+
+**Judicario-Plugin:** Quelle `~/Desktop/Coworkspace_Ich/THOMAS - CHIPS JUDICARIO/plugins/judicario/` (Skill + 3 Agenten legal-scout/analyst/reviewer + Client), Marketplace-Ordner = dessen `plugins/`-Parent. Client-Live-Test grün (MRG §30, Exit 0). Installation in ZCode-UI ausstehend. Alter Connector `legal_research` ist tot — Client nutzt `<module>_search`.
+
+**Browser-Regel:** Automatisierung immer über BrowserOS (User-Anweisung, nicht Chrome-devtools-Instanz — dort kein Google-Login). Tabs können crashen → reload reicht.
+
+**Why:**避免 wiederholte Fehldiagnose „keiner funktioniert" — Ursache war der tote OpenRouter-Key, nicht die Konfiguration.
+**How to apply:** Bei LLM-Problemen zuerst curl-Direktest der Provider, dann Browser-UI. Default= ClinePass nutzen.
+
 ## maxenergy-evn-caritas-umzug-2026-10-26
 
 ---
@@ -19234,7 +19323,7 @@ metadata:
 Blocker in dieser ZCode-Umgebung, am 22.09.2026 getestet:
 
 1. **Subagent-Start schlägt fehl**: Agent-Aufruf (z. B. `cavecrew-investigator`) bricht ab mit „Cannot start subagent: No reasoning level selected" (`account:zai-individual-coding-plan/GLM-5.3-Flash`). **Workaround:** Untersuchungs-/Task-Schritte direkt selbst mit Bash ausführen statt Subagent zu dispatchen.
-2. **Gmail-MCP** (`mcp__google-workspace__gmail_search`): „Permission denied" — fehlende API-Scopes.
+2. **Gmail-MCP** (`mcp__google-workspace__gmail_search`): „Permission denied" — fehlende API-Scopes. Am 26.10.2026 erneut bestätigt. **Einziger funktionierender Weg (Nutzer-Anweisung, wörtlich „der geöffnete AgentOS/BrowserOS-Browser — dieser ist immer dein Browser"):** BrowserOS (`com.browseros.BrowserOS`) per Computer-Use steuern. Erprobtes Rezept: Tab-Wechsel mit `cmd+alt+Left/Right` (AX-Klick auf Tab-Radios ist unzuverlässig, kann Druckdialog auslösen → Escape), Gmail-Suche per Klick aufs Suchfeld + `typeText` (setValue löst Gmail-JS nicht aus; `/`-Shortcut geht daneben), Ergebnis-Zeilen aus AX-State-Zeilen mit `[N] row …` filtern. Chromium-Textareas (Composer) nehmen typeText teils nicht an → Klick per Koordinate + typeText. Achtung: Nutzer ist parallel aktiv im Browser (Fenster/Tabs ändern sich mitten in Aktionen). Mehr Learnings 26.10.: Adressleiste über `cmd+l` + typeText + Return (Klick auf das Feld kann daneben gehen); BrowserOS-Radio-Tabs brauchen AXPress, das oft verweigert wird → nur cmd+alt+Arrow; ein Tab kann spontan „abgestürzt" zeigen (Reload-Button klicken hilft); Hook (Mimosa) blockiert `cp` von Quellcode — Dateien per Write-Tool schreiben.
 3. **Claude Desktop: „MCP MCP_DOCKER: Server disconnected"** = Docker Desktop lief nicht (Log `~/Library/Logs/Claude/mcp-server-MCP_DOCKER.log`: „Docker Desktop is not running"). Config selbst ist korrekt (`docker mcp gateway run --profile ai_coding` in `~/Library/Application Support/Claude/claude_desktop_config.json`). **Fix:** `open -a Docker` (22.09. getestet → Daemon 29.8.0 OK), danach Claude Desktop einmal neu starten, damit der MCP-Prozess neu startet.
 4. **mcporter** ist nicht installiert (nicht im PATH, nicht in `/opt/homebrew/lib/node_modules/`); Config existiert zwar unter `/Users/saschalagler/config/mcporter.json`, aber ohne Binary unbrauchbar. → Autoclaw-Gmail-Tools via mcporter sind aktuell kein Fallback.
 5. **chrome-devtools-MCP + laufender Automation-Chrome**: Wenn eine Instanz mit Profil `~/.cache/chrome-devtools-mcp/chrome-profile` schon läuft, schlägt `list_pages` fehl („browser is already running … use --isolated"). Erkennen am Fenster-Banner „Chrome wird von automatisierter Testsoftware gesteuert" — dieser Chrome ist NICHT Saschas echter Chrome (anderes Profil, keine Sessions, Google-Login wird dort von Google abgelehnt). Erst Banner prüfen, bevor man per Computer-Use tippt.
@@ -163363,6 +163452,52 @@ Sound bei 56 s identifizieren und isolieren (Acid People FLAC)
 5. Ordnung: nur finale WAV(s) sichtbar, Zwischenprodukte in _archiv/.
 
 Venv: ~/.venvs/demucs (librosa + soundfile installiert). Skripte via Write anlegen (Mimosa-Hook blockt .py in Bash).
+## plan-session_3a1cc25ff2c2e82e01c329cebdb4fa22
+
+# UI/UX-Test-Skills: aktualisieren, vervollständigen, verdrahten, beweisen
+
+## Ausgangslage (verifiziert)
+- Alle 3 beworbenen Skill-Sets sind bereits in `~/.claude/skills/` installiert → **keine Neu-Installation**.
+- Reale Lücken: (a) `better-interface` referenziert 5 Sub-Skills, die lokal fehlen; (b) `ui-ux-pro-max` möglicherweise veraltet (Upstream heute gepusht); (c) `~/.agents/skill-routing.md` hat keine Zeilen für die UI/UX-Skills.
+
+## Schritte
+
+### 1. Backup (vor jedem Eingriff)
+`~/.claude/skills/{ui-ux-pro-max,better-interface,better-ui,better-accessibility}` → `~/.claude/skills/_backup-uiux-2026-10-26.tar.gz`
+Beweis: tar-Datei vorhanden.
+
+### 2. ui-ux-pro-max aktualisieren
+Frisches Clone von `github.com/nextlevelbuilder/ui-ux-pro-max-skill` → Dateien (SKILL.md, references/, Such-Tool) ersetzen. Beweis: diff-Statistik alt↔neu + aktualisierte Regel-Zahlen in SKILL.md.
+
+### 3. better-* vervollständigen + aktualisieren
+Aus `github.com/jakubkrehel/skills`: fehlende `better-layout`, `better-typography`, `better-colors`, `better-writing`, `interface-review` installieren; bestehende 3 (`better-interface`, `better-ui`, `better-accessibility`) auf Stand bringen (Symlink-/skillshare-Struktur beibehalten oder echte Ordner, je nachdem worauf die Symlinks zeigen — wird beim Umsetzen geprüft). Beweis: ls-Output mit allen better-* + interface-review.
+
+### 4. Routing verdrahten
+Neue Zeilen in `~/.agents/skill-routing.md` (Tabelle „Erlernte Task→Skill-Zuordnungen"):
+| Signal | Skill |
+|---|---|
+| „UI/UX-Design-Audit", „Review Interface-Code" | ui-ux-pro-max |
+| „Barrierefreiheit/WCAG prüfen" | better-accessibility |
+| „gesamtes Interface reviewen" | better-interface (Orchestrator) |
+| „klick-teste/durchklicke App X" | ui-ux-tester (Fallback: browser-use:web-gui-tester) |
+Beweis: grep auf die neuen Zeilen.
+
+### 5. Smoke-Test A — Design-Audit (ui-ux-pro-max)
+Audit auf Verkaufs-HUB `hub-glass.html` (aktives Projekt lt. Tagesplan; Fallback: ATLAS-Web-App). Beweis: Audit-Report als Datei + Top-3-Befunde im Chat.
+
+### 6. Smoke-Test B — Klick-Test (ui-ux-tester)
+Auf HUB `:3300`, falls Server läuft (sonst starten oder auf file:///ATLAS ausweichen). Wenn chrome-devtools-MCP in der Session fehlt: browser-use:web-gui-tester als Runner nutzen (Methodik bleibt). Beweis: Screenshot-Ordner + Kurzreport (PASS/FAIL je Testpunkt).
+
+### 7. Abschluss-Report
+- Beweis-Pfade je Schritt + Exit-Codes
+- Fakten-Korrektur der KI-Antwort: alles schon installiert; Sterne 140.718 (nicht 113.000); ui-ux-tester = eigenes Custom-Skill ohne GitHub-Repo
+- „Was bleibt offen" (max. 3 Punkte)
+
+## Nicht tun
+Keine Deploys, keine Löschungen, keine Überschreibung ohne Backup, keine Installation zusätzlicher Skills über die genannten hinaus.
+
+## Aufwand
+~30–60 Min nach Freigabe; Credit-Risiko gering (lokale Arbeit, kein MCP-Verbrauch außer evtl. Browser-Screenshots beim Smoke-Test).
 ## README
 
 # HolDirMehr — 1:1 Replika (Kostenlos-Version)

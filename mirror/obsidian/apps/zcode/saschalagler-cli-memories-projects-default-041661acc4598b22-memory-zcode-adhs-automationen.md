@@ -7,7 +7,7 @@ tags: [spiegel, zcode]
 
 ---
 name: zcode-adhs-automationen
-description: "13.09.–12.10. LIVE: EINE Automation mit ALLEN 6 Briefs (cron `0 9,10,15,16,21`, Zweige per Uhrzeit+Wochentag; niemals 6 separate — Nutzer-Ziel!) + Engine 7/7 PASS; **38 Läufe, alle 6 Zweige bewiesen · 12.10. Catch-up: agent-mirror `befcfd6` (Workflows Morgenstart/Dev-Loop/Abend + 5-Port-Health + Watchdog, live verifiziert 11.10.) · P1×2 unverändert (LokiVoice dirty seit Sa + Parent-Pointer seit 01.10) · UHR-ANOMALIE: date = Wahrheit, Logbuch vor Append NEU lesen · offen auf GO: Wecker + Deutsch-Patch-Recovery + doku-fix (3 Zeilen) + pointer-fix + commit-wache; 1 Task pro Chat-Limit"
+description: "13.09.–26.10. LIVE: EINE Automation mit ALLEN 6 Briefs (cron `0 9,10,15,16,21`; niemals 6 separate — Nutzer-Ziel!) · **56 Läufe** · 26.10. GROSS-KONSOLIDIERUNG: LOKI_TASKBOARD.md angelegt, doku-fix ERLEDIGT (README+Backup), LokiVoice in `~/loki-ki/_ARCHIV/2026-10/loki-voice-alt/` gefunden (P1s obsolet), LegalOps 0 Prozesse (F-3 de facto), OmniRoute :20128 LÄUFT WIEDER (Widerspruch zum Abbau — Richtung offen), DOPPEL-Automation entdeckt (Doku-Sync Mi 15:00 automation-2df8eec5 dupliziert Tages-Routine-Zweig, Lösch-GO offen); **26.10. SYSTEMPROOF 6/6 LIVE PASS → URTEIL AKTIV** (hook-JSON · 23 Logbücher · sweep · Kalender-Event zurückgelesen · doku-grep · 3/3 Engine-Dateien; /systemproof = ~/.zcode/commands/systemproof.md); Settings: 4 Automations aktiv (56/8/1/2 Läufe), 5 SessionStart-Hook-Gruppen; offen auf GO: Wecker · Deutsch-Patch · Duplikat weg · OmniRoute-Richtung; UHR-ANOMALIE (date=Wahrheit, vor Append NEU lesen); 1 Task pro Chat-Limit"
 metadata:
   node_type: memory
   type: project
@@ -212,4 +212,22 @@ metadata:
 
 ## Zweiundvierzigster Lauf (Mo 26.10. 15:0x — No-op PASS)
 - 15:00-Montag-Slot korrekt 1-Zeilen-No-op (Doku-Sync nur mittwochs); Logbuch 26.10. blieb offen für 21:00-Abend-Lauf. Bilanz: 42 Läufe; GOs unverändert.
+
+## 26.10. GROSS-KONSOLIDIERUNG + SYSTEMPROOF (Nutzer-Auftrag „liste analysiere und aktualisiere alle Aufgaben, verteile an /allrou")
+- **Taskboard gebaut:** `~/.agents/memory/LOKI_TASKBOARD.md` (3,9 KB) — alle 16 Alt-Aufgaben aus 6 Wochen Tagesplänen, Realitäts-geprüft mit Befehls-Beweisen, 3 Spalten-Status (ERLEDIGT/OBSOLET · OFFEN mit Besitzer · SETTINGS-SNAPSHOT). Verteilung: ZCode=Wecker-Patch+Deutsch-Patch-Re-Extraktion+Duplikat-Löschung · Cline=OmniRoute-Konflikt+Judicario-Einwände+Hermes-Rollout · AutoClaw(ab 12h)=3 Workflows aus agent-mirror `befcfd6` testen · Sascha=GOs+Mails.
+- **Verifizierte Auflösungen:** LokiVoice-Ort **GEFUNDEN** = `~/loki-ki/_ARCHIV/2026-10/loki-voice-alt/` (mdfind; P1s pointer-fix/commit-wache endgültig obsolet) · LegalOps F-3 de facto erledigt (pgrep = 0 Prozesse) · **Doku-Fix ERLEDIGT** in derselben Session (Reparatur-Automatik-Regel): assi-README +2 Befehlszeilen (brief/feierabend) + push.sh-Abschnitt, Backup `README.md.bak-20261026`, grep-Beweis 4 Treffer (vorher 0) — das Doku-Sync-Finding von 4 Läufen ist tot.
+- **Offene Konflikte/Funde:** OmniRoute :20128 **LÄUFT WIEDER** (node PID 871, lsof-Beweis) — Widerspruch zum Abbau-Beschluss 20.09. ([[omniroute-rueckbau-system-fixes-2026-09-20]]), Richtung nur von Sascha entscheidbar · **Doppel-Automation** entdeckt: `automation-2df8eec5` „Documentation sync check" (Mi 15:00, englisch, 2 Läufe) dupliziert den Mi-Zweig der Tages-Routine → Lösch-GO offen.
+- **SYSTEMPROOF 26.10. — 6/6 LIVE PASS, URTEIL AKTIV** (Sascha: „was ist los?" + `/systemproof`; Command-Datei existiert `~/.zcode/commands/systemproof.md`): 1) `assi brief --hook` lieferte echtes Tagesplan-JSON · 2) 23 Logbuch-Dateien · 3) daily_sweep.py läuft · 4) Kalender-Event „Tagesplan 26.10." zurückgelesen · 5) doku-fix grep = 1 · 6) 3/3 Engine-Dateien. TodoWrite-Liste auf 5/5 completed gesetzt.
+- **Settings-Snapshot (CronList):** 4 Automations aktiv — Tages-Routine (**56 Läufe**, runCount bewiesen) · SSD-Clean 12:00 (8) · Wochenreport Fr 17:00 (1) · Doku-Sync-Duplikat (2) · Hooks: enabled, **5 SessionStart-Gruppen** · assi.daily-LaunchAgent weiterhin nur `assi status` 08:00 (Wecker-GO offen).
+- Nutzer-Kommunikations-Muster: nach dichter Konsolidierungs-Antwort kam „was ist los?" → richtige Reaktion = 3-Sätze-Alltagssprache + Live-Beweis statt neuer Wall ([[feedback-einfache-antworten]] bestätigt).
+
+## 26.10. ABEND — INFO-PUSH-RETOOLING (Sascha: „die Läufe geben mir KEINE Info … 0 Info völlig wertlos")
+- **Root Cause des Ärgers:** Die Läufe schrieben nur in Logbuch-Dateien + Kalender — Sascha wurde NIEMAND aktiv informiert (Suchpflicht beim Nutzer; er hatte Markdown schon 13.09. abgelehnt: „WAS SOLL ICH MIT DEM MARKDOWN?"). No-op-1-Zeiler wirkten zusätzlich wertlos.
+- **Fix per CronUpdate (Automation d3f486f6, Titel jetzt „LOKI Tages-Routine: alle 6 Briefs + Info-Push je Lauf"):**
+  1. **ABSCHLUSS-Schritt PFLICHT bei JEDEM Lauf (auch No-ops):** macOS-Benachrichtigung via `osascript -e 'display notification "<Kurzfassung max 200 Z>" with title "LOKI <Zweig> <Uhrzeit>" subtitle "Details: Kalender + Logbuch-Pfad"'`
+  2. **Chat-Output 4-Zeilen-Format:** WAS PASSIERT IST · WO ZU FINDEN (Kalender-Event-Name + Logbuch-Pfad) · WANN nächster Lauf (Zweig) · WIE WEITER (GO-Wort falls nötig).
+  3. **No-op-1-Zeiler VERBOTEN:** auch sie müssen Benachrichtigung senden mit Grund + nächstem vollen Lauf.
+- **Live-Beweis geführt:** Test-Benachrichtigung „LOKI Tages-Routine — Info-Push aktiv" sofort auf dem Mac erschienen (exit 0) — Sascha hat sie gesehen.
+- **3 Info-Kanäle ab jetzt:** ① macOS-Benachrichtigung zum Laufzeitpunkt (bleibt im Mitteilungszentrum) · ② Kalender.app „Kalender" (Tagesplan/Logbuch/⚠️Risiko/Release-Events mit Bullets) · ③ Chat im 4-Zeilen-Format.
+- Erster echter Push-Test: **26.10. 21:00 Abend-Zweig**. Lernte: Info-Systeme, die den Nutzer nicht aktiv erreichen, sind für Sascha wertlos egal wie korrekt sie schreiben ([[feedback-agent-drives-ui]] verwandt: Agenten müssen liefern/paren, nicht Nutzer suchen lassen).
 

@@ -1,6 +1,6 @@
 # saschalagler (claude)
 
-Zuletzt gespiegelt: 2026-10-26 14:43 UTC
+Zuletzt gespiegelt: 2026-10-26 14:58 UTC
 
 ## CLAUDE
 
@@ -3636,70 +3636,92 @@ async function authenticate(req: Request, res: Response, next: Next) {
 
 ---
 name: better-accessibility
-description: Helps your project comply with accessibility standards and best practices.
+description: Reviews and fixes keyboard and focus behavior, ARIA, accessible names, forms, screen-reader announcements, motion and zoom against WCAG 2.2.
 ---
 
 # Accessibility
 
-Most accessibility is free if you use the platform. Native elements ship with keyboard support, real labels announce themselves and a visible focus ring is one CSS rule.
-
-Write every fix in the project's styling system, and use the exact values below rather than familiar-looking substitutes.
+This skill reviews and fixes semantics, keyboard and focus behavior, accessible names, forms, announcements, motion and zoom. It reports each failure against the WCAG criterion it breaks and writes the fix in the project's styling system.
 
 Reviewing means two walks. Keyboard-only, where every flow completes without a mouse. Then screen-reader, where every control announces a name, a role and its state. When unsure, take the platform default over a custom rebuild, and remove ARIA rather than add it.
 
-Contrast measurement and color fixes belong to `better-colors`. Text sizing and iOS input zoom belong to `better-typography`. Spatial RTL layout belongs to `better-layout`.
+Contrast measurement and color fixes belong to `better-colors`. Text sizing, iOS input zoom and language metadata belong to `better-typography`. Spacing between targets and spatial RTL belong to `better-layout`. Label, error and alt-text wording belong to `better-writing`. Animation recipes, hover styling and scroll containment belong to `better-ui`.
+
+## Criteria, not conventions
+
+A finding cites a WCAG 2.2 Level A or AA criterion by number, or a concrete task an assistive-technology user cannot complete. Everything else is a recommendation and never `HIGH`. That covers AAA criteria, APG conventions, the one-`<h1>` and no-skipped-levels outline and the 44px and 40px targets. The criterion thresholds below are exact. The larger targets are heuristics, so keep an established, usable density.
 
 ## Native elements first
 
-The first rule of ARIA: don't use ARIA when a native element exists. `<button>` for actions, `<a href>` for navigation, never `<div onClick>`. A real link must support Cmd/Ctrl/middle-click. No ARIA is better than bad ARIA. See [semantics-and-aria.md](semantics-and-aria.md) for landmarks, button-vs-link and disabled states.
+The first rule of ARIA: don't use ARIA when a native element exists. `<button>` for actions, `<a href>` for navigation, never `<div onClick>`. A real link must support Cmd/Ctrl/middle-click. See [semantics-and-aria.md](semantics-and-aria.md) for landmarks and button-vs-link.
+
+## Disabled means unavailable
+
+Use native `disabled` when a control is genuinely unavailable. Reach for `aria-disabled="true"` only when it should stay focusable, then block pointer, keyboard and form behavior in code and style the state explicitly. The rules are in [semantics-and-aria.md](semantics-and-aria.md).
 
 ## Visible focus rings
 
 Style `:focus-visible`, not bare `:focus`. Keyboard users get a ring and mouse users usually don't. Prefer the browser's unmodified indicator.
 
-A custom ring needs a project focus token or another explicit color. Verify the whole indicator against every adjacent color it crosses, `currentColor` included. Use at least a `2px` solid perimeter or an equivalent visible area. Never use `outline: none` without a verified replacement, and preserve system colors in forced-colors mode. Recipes are in [focus-and-keyboard.md](focus-and-keyboard.md).
+A custom ring needs a project focus token or another explicit color. It must reach 3:1 against every adjacent color it crosses, `currentColor` included, under 1.4.11. A `2px` solid perimeter with a 3:1 change of contrast is the 2.4.13 AAA target. Never use `outline: none` without a verified replacement, and preserve system colors in forced-colors mode.
+
+A focused element must never sit fully hidden behind a sticky header, footer or banner (2.4.11). Pad the scroller by the sticky chrome's height, a fix `better-layout` owns. Recipes are in [focus-and-keyboard.md](focus-and-keyboard.md).
 
 ## Full keyboard support
 
-Every pointer interaction needs a keyboard path. Follow the ARIA APG patterns: Escape closes overlays, arrow keys move within composite widgets, Tab moves between widgets, Enter and Space activate.
+Every pointer interaction needs a keyboard path. Follow the ARIA APG patterns: Escape closes overlays, arrow keys move within composite widgets, Tab moves between widgets, Enter and Space activate buttons.
 
-Use only `tabindex="0"` to join the natural tab order and `tabindex="-1"` for programmatic focus. Positive values break that order. Composite widgets use roving tabindex, where the active item is `0` and every other is `-1`.
+Use only `tabindex="0"` to join the natural tab order and `tabindex="-1"` for programmatic focus. Positive values break that order. Composite widgets use roving tabindex, where the active item is `0` and every other is `-1`. Where focus must stay in an input, as in a combobox, use `aria-activedescendant` instead. Key maps per widget are in [focus-and-keyboard.md](focus-and-keyboard.md).
 
 ## Trap and restore focus
 
-Modals set `inert` on the background content, move focus inside on open and return focus to the trigger on close. Add `overscroll-behavior: contain` so background content doesn't scroll.
+Prefer `<dialog>` opened with `showModal()`, which makes the background inert and handles Escape. A custom overlay sets `inert` on the background, `role="dialog"` and `aria-modal="true"` on itself. Either way, move focus inside on open and return it to the trigger on close.
+
+Client-side route changes reset nothing. Update `document.title` and move focus to the new view's `<h1>` or `<main>`. Both recipes are in [focus-and-keyboard.md](focus-and-keyboard.md).
 
 ## Minimum hit area
 
-WCAG 2.5.8's Level AA baseline is a 24×24 CSS-pixel target, or one of its spacing, equivalent-control, inline, user-agent and essential exceptions. Aim for 44×44px on touch and 40×40px on desktop where density permits. Extend with a pseudo-element when the visible element should stay smaller.
+WCAG 2.5.8's Level AA baseline is a 24×24 CSS-pixel target, or one of its exceptions. Aim for 44×44px on touch and 40×40px on desktop where density permits. Extend with a pseudo-element when the visible element should stay smaller.
 
-Never let extended hit areas overlap. Give decorative layers `pointer-events: none`, so a glow never swallows the clicks meant for the control beneath it. Sizes and collision rules are in [hit-areas.md](hit-areas.md).
+Never let extended hit areas overlap. Give decorative layers `pointer-events: none`, so a glow never swallows the clicks meant for the control beneath it.
+
+Every drag interaction needs a single-pointer alternative, such as buttons or a menu that reorder or move the same item (2.5.7). Sizes, exceptions and collision rules are in [hit-areas.md](hit-areas.md).
 
 ## Label and type every control
 
 Every input gets a `<label for>` or a wrapping `<label>`. A placeholder is never a label. Label and control share one hit target, with no dead zone between a checkbox and its text.
 
-Add `autocomplete` with a meaningful `name`, plus the `type` and `inputmode` that summon the right keyboard. Never block paste; users paste passwords and one-time codes. See [forms.md](forms.md).
+Add a valid `autocomplete` token and a descriptive `name` attribute, plus the `type` and `inputmode` that summon the right keyboard. Never block paste; users paste passwords and one-time codes. See [forms.md](forms.md).
 
 ## Errors that announce
 
-Keep submit enabled until the request starts, then disable with a spinner and the original label. Validate on submit. Mark failing fields `aria-invalid="true"`, point `aria-describedby` at the inline error text and focus the first invalid field.
-
-Use native `disabled` when a control is genuinely unavailable. Reach for `aria-disabled="true"` only when it should stay focusable, then block pointer, keyboard and form behavior in code and style the state explicitly.
+Validate on submit, never by disabling submit until the form is valid. Mark failing fields `aria-invalid="true"`, point `aria-describedby` at the inline error text and focus the first invalid field. Submit behavior while the request runs is in [forms.md](forms.md).
 
 ## Accessible names everywhere
 
 Icon-only buttons need a descriptive `aria-label`. Visible label text must appear in the accessible name. Decorative elements get `aria-hidden="true"`, never on a focusable element.
 
-## Don't rely on color alone
+## Pair color with a second cue
 
-Status needs a redundant cue: an icon, text, or an underline alongside the color. Work out which WCAG contrast requirement applies, then use `better-colors` to measure the rendered pair. When it fails, report the pair and the requirement it misses, and leave the colors alone unless asked.
+Status needs a redundant cue: an icon, text or an underline alongside the color (1.4.1).
+
+This skill decides which contrast requirement applies:
+
+| Criterion | Applies to | Minimum |
+| --- | --- | --- |
+| 1.4.3 AA | Text | 4.5:1 |
+| 1.4.3 AA | Large text, at least `24px` or `18.67px` bold | 3:1 |
+| 1.4.11 AA | UI component boundaries, states and meaningful graphics | 3:1 |
+
+Inactive controls and logos are exempt. Use `better-colors` to measure the rendered pair. When it fails, report the pair and the criterion it misses, and leave the colors alone unless asked.
 
 ## Honor prefers-reduced-motion
 
-Wrap motion in `@media (prefers-reduced-motion: no-preference)` so it is opt-in. Under reduced motion, replace slides and scales with opacity crossfades, and kill parallax and autoplay entirely.
+Wrap motion in `@media (prefers-reduced-motion: no-preference)` so it is opt-in. Under reduced motion, replace slides and scales with opacity cross-fades, and kill parallax and autoplay entirely. See [motion-and-zoom.md](motion-and-zoom.md).
 
-Two rules hold regardless of the preference. Autoplaying media needs a visible pause control, and toasts carrying an action or an error stay until dismissed. See [motion-and-zoom.md](motion-and-zoom.md).
+## Nothing the user needs runs on a timer
+
+Anything moving, blinking or updating on its own for more than 5 seconds needs a visible pause control (2.2.2). Toasts carrying an action or an error stay until dismissed. The rules are in [motion-and-zoom.md](motion-and-zoom.md).
 
 ## Announce dynamic content
 
@@ -3709,42 +3731,29 @@ Repeated polite announcements need a stable empty region rendered before its tex
 
 ## Alt text by purpose
 
-Decorative images get `alt=""`. Informative images describe the meaning. Functional images describe the action: a search icon button is `alt="Search"`, not `alt="magnifying glass"`.
+Decorative images get `alt=""`. Informative images describe the meaning. Functional images describe the action, never the picture. The full table is in [screen-readers.md](screen-readers.md).
 
 ## Structure is navigation
 
-Use headings that describe their sections and form a coherent outline. Give the page one `<h1>` and nest the levels below it without skipping. Expose one visible primary `<main>` landmark. When repeated navigation or chrome precedes it, make a "Skip to content" link the first focusable element. Anchored headings get `scroll-margin-top`.
+Use headings that describe their sections and form a coherent outline. Expose one visible primary `<main>` landmark. When repeated navigation or chrome precedes it, make a "Skip to content" link the first focusable element. Anchored headings get `scroll-margin-block-start`.
 
 ## Survive zoom and text resize
 
-The page must work at 200% zoom and reflow at 320px width without horizontal scrolling. Use `min-height` rather than fixed `height` on text containers. Prefer `rem` breakpoints where they fit the codebase, and never let the viewport meta cap how far the reader can zoom.
+Text must survive 200% resize (1.4.4), and the page must reflow at 320px width without horizontal scrolling (1.4.10). Text containers take `min-height`, not `height`, and `better-layout` owns the rest of that fix. Never set `maximum-scale=1` or `user-scalable=no` in the viewport meta. iOS input zoom is fixed with `better-typography`'s `16px` rule instead.
 
 ## Before you finish
 
-| Mistake | Fix |
+| Pattern | Fix |
 | --- | --- |
-| Custom focus color assumed to work everywhere | Verify it against every adjacent color and in forced-colors mode |
-| Repeated polite update inconsistently announced | Keep a stable empty status region and update its text |
-| `assertive` live region for a routine toast | Use `polite`; reserve `assertive` for errors |
-| `aria-hidden="true"` on a focusable element | Remove it or make the element non-focusable |
-| Submit disabled until the form is valid | Keep it enabled; validate on submit and focus the first error |
-| Hover treatment stuck after a tap on touch | Gate hover styling with `@media (hover: hover)` |
-| Tooltip on a natively `disabled` control | Text beside it, or `aria-disabled` so it stays focusable |
-
-## Reporting
-
-**Severity.** `HIGH` prevents a task, hides content from assistive technology, or creates a systemic failure. `MEDIUM` makes an interaction meaningfully harder. `LOW` is isolated polish.
-
-**Verification.** Without a browser: accessible names on every interactive element, keyboard handlers on non-native controls, focus styles, `prefers-reduced-motion` guards and form labels bound to their inputs. With one: tab the flow in order, read computed names and roles from the accessibility tree, confirm a visible focus indicator at every stop and run an automated audit. Report every check you could not run as `Not verified`.
-
-**Format.** Group findings under the principle each violates, ordered by severity, one row per root cause listing every location it appears in:
-
-| Severity | Location | Before | After | Why |
-| --- | --- | --- | --- | --- |
-
-`Location` is `path/to/file:line`. `Why` names the principle and the user impact.
-
-End with `Block` when any `HIGH` remains, `Approve` otherwise, leaving the rest in the table as work to do. Never `Approve` coverage you did not inspect. With nothing to report, state "No actionable accessibility findings" and report verification.
+| `outline: none` or `outline-none` with no `focus-visible` replacement nearby | Restore the browser ring or add a verified custom one |
+| `<div onClick` or `<span onClick` | Use `<button>`, or `<a href>` when it navigates |
+| `role="button"` or `role="tab"` with no `onKeyDown` | Use the native element, or implement the APG key map |
+| `tabIndex={1}` or any positive `tabindex` | Fix the DOM order and use `0` |
+| `disabled={!isValid}` on a submit button | Keep it enabled and validate on submit |
+| `{msg && <div role="status">`, region mounted with its text | Render the empty region first and update its text |
+| `aria-live="assertive"` on a success toast | `role="status"` |
+| `<img` with no `alt` attribute | `alt=""` if decorative, otherwise describe the purpose |
+| `aria-label` whose text omits the visible label | Start the name with the visible text |
 
 ## focus-and-keyboard
 
@@ -3754,9 +3763,9 @@ Focus rings, skip links, tabindex, focus trapping and the APG keyboard patterns.
 
 ## Focus rings
 
-Style `:focus-visible`, not bare `:focus`. The browser shows it for keyboard and assistive-tech focus and suppresses it for mouse clicks, where focus is already obvious. Never write `outline: none` or `focus:outline-none` without a visible replacement, which removes keyboard navigation for sighted keyboard users.
+The browser shows `:focus-visible` for keyboard and assistive-tech focus. It suppresses it for mouse clicks on buttons and links but still shows it in text inputs. An `outline: none` or `focus:outline-none` with no visible replacement leaves sighted keyboard users with no way to see where they are.
 
-Prefer the browser's unmodified focus indicator, which adapts to platform and forced-color settings without the author predicting every background. Adding only `outline-offset` preserves it. A custom `outline: 2px solid` with no color renders `currentColor`, which is not automatically accessible, because the outline may cross colors unlike the text's own background. The preference order:
+The browser's unmodified indicator adapts to platform and forced-color settings without the author predicting every background. Adding only `outline-offset` preserves it. A custom `outline: 2px solid` with no color renders `currentColor`, which may fail against the colors the outline crosses. The preference order:
 
 ```css
 /* Best: keep the browser ring, just give it breathing room */
@@ -3778,11 +3787,15 @@ Prefer the browser's unmodified focus indicator, which adapts to platform and fo
 </button>
 ```
 
-A custom focus indicator must meet the applicable project or WCAG target for visible area and change of contrast. Inspect the whole perimeter against every adjacent color it crosses: component fills, page surfaces, images, gradients, hover and selected states. A token, brand color, or `currentColor` passes only when that rendered check does.
+Check the whole perimeter of a custom indicator against every adjacent color it crosses. That means component fills, page surfaces, images, gradients and hover and selected states. A token, brand color or `currentColor` passes only when that rendered check does.
 
 In `forced-colors: active` (Windows High Contrast), keep the default color adjustment or name a system color such as `Highlight`. `forced-color-adjust: none` freezes the authored color, so use it only where you have checked the control stays perceivable.
 
-Group focus styles with `:focus-within` when a wrapper should light up while an inner input has focus (e.g. a search box with an icon inside the border).
+Group focus styles with `:focus-within` when a wrapper should light up while an inner input has focus, such as a search box with an icon inside the border.
+
+## Focus not obscured
+
+Sticky chrome hides whatever scrolls under it, including the element that just received focus. Pad the scroll container by the sticky element's height with `scroll-padding-block-start`, and by a sticky footer or cookie banner's height with `scroll-padding-block-end`. The recipe is `better-layout`'s.
 
 ## Skip link
 
@@ -3795,7 +3808,7 @@ Target `<main id="main">` and visually hide the link until focused:
 }
 .skip-link:focus {
   inset-inline-start: 16px;
-  top: 16px;
+  inset-block-start: 16px;
 }
 ```
 
@@ -3807,7 +3820,7 @@ Target `<main id="main">` and visually hide the link until focused:
 </body>
 ```
 
-Give in-page anchor targets `scroll-margin-top`, such as `80px` under a sticky header, so the target isn't hidden when jumped to.
+Give in-page anchor targets `scroll-margin-block-start`, such as `80px` under a sticky header, so the target isn't hidden when jumped to.
 
 ## tabindex rules
 
@@ -3834,9 +3847,19 @@ Composite widgets, meaning tabs, menus, toolbars and radio groups, occupy one Ta
 </div>
 ```
 
+A combobox keeps DOM focus in its input instead. Point `aria-activedescendant` on the input at the `id` of the highlighted option and update it on arrow keys.
+
 ## Focus trapping and restoration
 
-Modals must trap focus. Put `inert` on everything behind the dialog, which removes background content from the tab order and from assistive tech in one move:
+Native `<dialog>` with `showModal()` makes everything behind it inert and closes on Escape:
+
+```tsx
+dialogRef.current.showModal(); // on open
+dialogRef.current.close(); // on close
+triggerRef.current?.focus(); // return focus to the element that opened it
+```
+
+A custom overlay that can't use `<dialog>` needs `role="dialog"`, `aria-modal="true"` and an accessible name via `aria-labelledby`. Put `inert` on everything behind it, which removes background content from the tab order and from assistive tech in one move:
 
 ```tsx
 // On open
@@ -3847,27 +3870,13 @@ const dialog = dialogRef.current;
 
 // On close
 document.getElementById("app-content").inert = false;
-triggerRef.current?.focus(); // always return focus to the element that opened it
+triggerRef.current?.focus();
 ```
 
-Prefer native `<dialog>` with `showModal()`, which gives you the trap, the `inert` background and Escape handling for free. A custom overlay that can't use it needs `role="dialog"`, `aria-modal="true"` and an accessible name via `aria-labelledby`. Either way:
+Either way:
 
 - On open, focus the first focusable element. For destructive confirmations, focus the least destructive action instead.
 - On close, return focus to the trigger, or to the nearest logical container if the trigger is gone.
-- Add `overscroll-behavior: contain` on the dialog so scrolling inside never scrolls the page behind it.
-
-## Keyboard patterns (ARIA APG)
-
-Native elements come with these behaviors; custom widgets must implement them. A role is a promise. Give something `role="tab"` and users expect the full tab keyboard model.
-
-| Widget | Keys |
-| --- | --- |
-| Dialog | Tab/Shift+Tab cycle inside (wrap at ends); Escape closes |
-| Tabs | Arrow keys move between tabs (wrapping); Tab exits to the panel; Home/End jump to first/last |
-| Menu button | Enter/Space/ArrowDown opens and focuses first item; ArrowUp opens and focuses last; arrows navigate; Escape closes and refocuses the button |
-| Disclosure / accordion | Header is a `<button aria-expanded>`; Enter and Space toggle |
-| Combobox | ArrowDown opens/moves into the list; Enter accepts; Escape closes and returns to the input; typing filters |
-| Listbox / radio group | Arrow keys move selection; one Tab stop for the whole group |
 
 ## forms
 
@@ -3877,7 +3886,7 @@ Labels, autocomplete, error messaging, input types and submit behavior.
 
 ## Labels
 
-Every control needs a programmatic label: `<label for>` pointing at the input's `id`, or a wrapping `<label>`. A placeholder is never a label. It disappears the moment the user types and usually fails contrast.
+Every control needs a programmatic label: `<label for>` pointing at the input's `id`, or a wrapping `<label>`. A placeholder disappears the moment the user types and usually fails contrast, so it never stands in for a label.
 
 ```html
 <!-- Good: explicit association -->
@@ -3890,9 +3899,7 @@ Every control needs a programmatic label: `<label for>` pointing at the input's 
 </label>
 ```
 
-Label and control share one hit target, so clicking "Send me updates" toggles the checkbox with no dead zone between them. Mark required fields with native `required` plus a visible indicator explained once per form ("* required").
-
-A placeholder used *in addition to* a label shows an example of the expected format: `placeholder="name@company.com"`.
+Clicking "Send me updates" toggles the checkbox, with no dead zone between them. Mark required fields with native `required` plus a visible indicator explained once per form ("* required").
 
 ## Error messaging
 
@@ -3914,12 +3921,11 @@ The complete pattern:
 - `aria-describedby` links the field to its inline error so screen readers announce it with the field.
 - Errors render inline beside their fields, with an icon or text. Never a red border alone, which is a color-only cue.
 - On submit, focus the first invalid field.
-- Allow incomplete submission so validation can surface. Never disable submit until valid (see below).
 - Accept free text and validate after. Never block typing or filter characters as the user types. Trim values before validating, because autocomplete and text expansion add trailing spaces.
 
 ## Autocomplete and input types
 
-`autocomplete` with a meaningful `name` fills forms in one tap and is a WCAG requirement (1.3.5) for fields about the user. The common tokens:
+A valid `autocomplete` token on fields about the user is a WCAG requirement (1.3.5). Pair it with a descriptive `name` attribute, a real `<form>` and no fake inputs, so password managers and 2FA autofill work. The common tokens:
 
 | Field | `autocomplete` |
 | --- | --- |
@@ -3929,7 +3935,7 @@ The complete pattern:
 | Address | `street-address`, `address-line1`, `postal-code`, `country` |
 | Card | `cc-number`, `cc-exp`, `cc-csc`, `cc-name` |
 | Login | `username`, `current-password` |
-| Signup / reset | `new-password` |
+| Signup / reset | `username`, `new-password` |
 | 2FA code | `one-time-code` |
 
 Prefix with a section where relevant: `autocomplete="shipping street-address"`.
@@ -3945,55 +3951,49 @@ Correct `type` and `inputmode` pick the right mobile keyboard:
 
 Disable spellcheck on emails, codes and usernames: `spellcheck="false"`.
 
-## Never fight the user's tools
-
-- Stay compatible with password managers and 2FA autofill: real `<form>`, correct `autocomplete`, no fake inputs.
-
 ## Submit behavior
 
-- Keep submit enabled until the request starts, then disable it and show a spinner *beside the original label*. "Save" with a spinner, not a bare spinner. The label is what tells assistive tech which button is busy.
+- Keep submit enabled until the request starts. While it runs, show a spinner *beside the original label*: "Save" with a spinner, not a bare spinner. The label is what tells assistive tech which button is busy.
+- Mark the pending button `aria-disabled="true"` and ignore repeat clicks in the handler. Native `disabled` on the focused button drops focus to `<body>`.
 - Announce results. Success goes through a polite live region. On failure, focus the first invalid field, which is itself the announcement. Reserve `role="alert"` for form-level errors not tied to a field ([screen-readers.md](screen-readers.md)).
-- Warn on unsaved changes before navigation, and never lose typed input to a re-render. Hydration must preserve focus and value.
-- Enter submits from any focused input; in `<textarea>`, ⌘/Ctrl+Enter submits.
+- Warn on unsaved changes before navigation. A re-render or hydration must never reset a field's typed value or move focus out of it.
 
 ## hit-areas
 
 # Hit areas
 
-Target sizes, expanding hit areas without changing visual size and collision rules.
+Target sizes, expanding hit areas without changing visual size, collision rules and drag alternatives.
 
 ## Target sizes
 
-Separate the conformance baseline from larger usability targets:
-
 | Standard | Minimum |
 | --- | --- |
-| WCAG 2.5.8 (AA) | 24×24px, the hard floor |
+| WCAG 2.5.8 (AA) | 24×24px, with exceptions |
 | WCAG 2.5.5 (AAA) | 44×44px |
 | Apple HIG | 44×44pt |
 | Material Design | 48×48dp |
 
-WCAG 2.5.8 Level AA requires a 24×24 CSS-pixel target or one of its exceptions. Treat 44px as the recommended touch target for primary controls and 40px as a useful desktop target where density permits. Smaller controls are not automatic failures. Check the spacing, equivalent-control, inline, user-agent and essential exceptions before reporting one.
+Before reporting an undersized target, check the spacing, equivalent-control, inline, user-agent and essential exceptions.
 
 Under the spacing exception, an undersized target passes when a 24px circle centered on its bounding box intersects no other target and no other undersized target's circle. In the simple case, 20px targets need a 4px gap.
 
-The visible element can stay small; the hit area is what must be big. Anything that looks clickable must be clickable across its whole visual extent, with no dead zones. A checkbox and its label share one hit target.
+The visible element can stay small; the hit area is what must be big. Anything that looks clickable must be clickable across its whole visual extent.
 
 ## Expanding the hit area
 
-Where the visible element is smaller, say a 20×20 checkbox, extend the hit area with a pseudo-element. Put it on the wrapping `<label>` or `<button>`, never on the `<input>`, because replaced elements don't render `::before`/`::after` reliably.
+Where the visible element is smaller, say a 20×20 checkbox, extend the hit area with a pseudo-element. Put it on a wrapping element or the `<button>`, never on the `<input>`, because form controls don't render `::before`/`::after` reliably.
 
 ### CSS example
 
 ```css
-/* Small checkbox with expanded 44px hit area, on the wrapping label */
-.checkbox-label {
+/* 20px checkbox with a 44px hit area, on the wrapper around the input */
+.checkbox-control {
   position: relative;
   width: 20px;
   height: 20px;
 }
 
-.checkbox-label::after {
+.checkbox-control::after {
   content: "";
   position: absolute;
   top: 50%;
@@ -4007,14 +4007,17 @@ Where the visible element is smaller, say a 20×20 checkbox, extend the hit area
 ### Tailwind example
 
 ```tsx
-<button className="relative size-5 after:absolute after:top-1/2 after:left-1/2 after:size-11 after:-translate-1/2">
-  <CheckIcon />
+<button
+  aria-label="Mark done"
+  className="relative size-5 after:absolute after:top-1/2 after:left-1/2 after:size-11 after:-translate-1/2"
+>
+  <CheckIcon aria-hidden="true" />
 </button>
 ```
 
 ### Layout alternative
 
-Where the element can afford real box size, skip the pseudo-element and let the box be the target. That hands the browser real geometry for scrolling and gestures:
+Where the element can afford real box size, skip the pseudo-element and let the box be the target:
 
 ```css
 .icon-button {
@@ -4027,13 +4030,13 @@ Where the element can afford real box size, skip the pseudo-element and let the 
 
 ## Collision rule
 
-Where the extended hit area overlaps another interactive element, shrink the pseudo-element to the largest size that does not collide. Two interactive elements never have overlapping hit areas.
+Where the extended hit area overlaps another interactive element, shrink the pseudo-element to the largest size that does not collide.
 
 ## Decorative layers
 
 A decorative layer painted over interactive content absorbs every pointer event its box covers: a gradient scrim, a glow, a blurred sheen, a full-bleed `::after`. The control underneath looks live and does nothing, and no hit-area sizing fixes it.
 
-Give each one `pointer-events: none` (Tailwind `pointer-events-none`) so events reach the control below, plus `aria-hidden="true"` to keep it out of the accessibility tree:
+Give each one `pointer-events: none` (Tailwind `pointer-events-none`) so events reach the control below. A layer that is an element rather than a pseudo-element also gets `aria-hidden="true"`:
 
 ```css
 .card-glow {
@@ -4045,23 +4048,21 @@ Give each one `pointer-events: none` (Tailwind `pointer-events-none`) so events 
 
 Keep pointer events on any layer the user is meant to hit: a modal scrim that dismisses on click is a control, not decoration.
 
-## Touch behavior
+## Gestures and dragging
 
-- Add `touch-action: manipulation` to interactive elements to remove the double-tap-to-zoom delay on mobile.
-- Set `touch-action: none` on a surface implementing its own pan, zoom, or drag gestures, so the browser stops claiming them for scrolling and pinch-zoom. Scope it to that surface; at page level it removes scrolling.
-- Set `-webkit-tap-highlight-color` to match the design instead of the default gray flash.
-- Put hover-only styling behind `@media (hover: hover)`. On touch, `:hover` latches after a tap and holds until the user taps elsewhere, so it reads as a stuck selected state. Tailwind 4's `hover:` variant already compiles under this query.
-- Prefer generous targets and clear affordances over finicky interactions such as tiny drag handles and precise hover zones.
+- Every drag needs a single-pointer alternative under 2.5.7, such as move-up and move-down buttons on a sortable row, or a menu on a kanban card.
+- Every multipoint or path-based gesture, such as a pinch or a swipe, needs a single-pointer alternative under 2.5.1.
+- Set `touch-action: none` on a surface implementing its own pan, zoom or drag gestures, so the browser stops claiming them for scrolling and pinch-zoom. Scope it to that surface; at page level it removes scrolling.
 
 ## motion-and-zoom
 
 # Motion and zoom
 
-`prefers-reduced-motion`, zoom and reflow, and unit choices that respect user settings.
+`prefers-reduced-motion`, timed UI, zoom and reflow.
 
 ## prefers-reduced-motion
 
-Make motion opt-in. Wrap animations in `@media (prefers-reduced-motion: no-preference)` so users who asked for reduced motion get the static version by default, rather than you chasing every animation with an override.
+Wrap animations in `@media (prefers-reduced-motion: no-preference)`, so users who asked for reduced motion get the static version without an override per animation.
 
 ```css
 /* Good: motion is opt-in */
@@ -4080,60 +4081,29 @@ Make motion opt-in. Wrap animations in `@media (prefers-reduced-motion: no-prefe
 <div className="motion-safe:transition-transform motion-safe:hover:-translate-y-1" />
 ```
 
-For an existing codebase where opt-in isn't feasible, the global kill switch is the fallback:
-
-```css
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-}
-```
-
-`0.01ms` rather than `none`, so `animationend` and `transitionend` still fire and JS waiting on them doesn't hang.
-
 ### What to disable vs reduce
 
-Reduced motion means reduced, not eliminated. It targets vestibular triggers, not feedback.
+Reduced motion targets vestibular triggers, not feedback.
 
 | Disable entirely | Replace | Keep |
 | --- | --- | --- |
-| Parallax scrolling | Slide/scale/zoom transitions → opacity crossfade | Loading spinners and progress |
+| Parallax scrolling | Slide/scale/zoom transitions → opacity cross-fade | Loading spinners and progress |
 | Autoplaying video, GIFs, looping decoration | Smooth scrolling → instant jump | Instant state changes (hover color, focus ring) |
 | Spinning, large-scale movement across the screen | Auto-rotating carousels → start paused | Brief functional feedback (button press) |
 
-Animations are interruptible and driven by user input. Nothing autoplays or refuses to stop, and under reduced motion carousels start paused.
-
 ## Autoplay and timed UI
 
-Motion the user didn't ask for and UI acting on its own schedule:
-
-- **No autoplaying media without visible controls** (WCAG 2.2.2). Anything moving, blinking, or updating on its own for more than 5 seconds needs a visible pause or stop control, muted looping hero videos included.
-- **Prefer explicit dismissal over timers.** Auto-dismissal suits low-stakes confirmations and nothing else. A toast carrying an action, an error, or information the user may need stays until dismissed. Where one must time out, 5 seconds is the floor, and hovering or focusing it pauses the timer.
+- **Visible controls on anything that moves on its own** (2.2.2). Anything moving, blinking or updating on its own for more than 5 seconds needs a visible pause or stop control, muted looping hero videos included.
+- **Explicit dismissal over timers.** Auto-dismissal suits low-stakes confirmations and nothing else. A toast carrying an action, an error or information the user may need stays until dismissed.
+- **Pause on attention.** Where a toast must time out, give it at least 5 seconds, and pause the timer while it is hovered or focused.
 - **Never put critical information only in a timed element.** A vanished toast with the only link to an undo action is data loss on a schedule.
 
 ## Zoom and reflow
 
-- **200% zoom** (WCAG 1.4.4). All content and functionality survives text scaled to 200%, and the viewport leaves the reader able to zoom.
-- **Reflow at 320px** (WCAG 1.4.10). At 400% zoom on a 1280px viewport, equivalent to a 320px one, the page must work with vertical scrolling alone. Genuinely 2D content is the exception: tables, maps and code blocks scroll inside their own container.
+- **200% text resize** (1.4.4). All content and functionality survives text scaled to 200%.
+- **Reflow at 320px** (1.4.10). At 400% zoom on a 1280px viewport, equivalent to a 320px one, the page must work with vertical scrolling alone. Genuinely 2D content is the exception: tables, maps and code blocks scroll inside their own container.
 
-Fixed heights are what break under zoom. Use `min-height` on anything containing text and let containers grow.
-
-### rem vs px
-
-Respect how the codebase is set up. Where the project sizes in `px`, or on an established Tailwind scale, stay consistent and never introduce mixed units into someone else's system. Where you do have the choice, in new code or a codebase already on `rem`, `rem` respects the user's base font size and `px` ignores it:
-
-| Use `rem` | Use `px` |
-| --- | --- |
-| `font-size` | Borders and hairlines |
-| `max-width` of text containers | Focus outline width and offset |
-| Media-query breakpoints (`@media (min-width: 48rem)`) | `box-shadow` details |
-| Spacing that should scale with text | Fixed-size decorations |
-
-Breakpoints are where the choice matters most. At a larger base font size an `em` or `rem` query switches to the mobile layout when the text needs it, and a `px` query does not.
+Write media queries in `rem` or `em` where the codebase allows. At a larger browser font size such a query switches to the narrow layout when the text needs it, and a `px` query does not. Breakpoint placement belongs to `better-layout`.
 
 ## screen-readers
 
@@ -4162,9 +4132,9 @@ The canonical `.sr-only` pattern hides content visually while keeping it in the 
 
 Use `1px` boxes, not `0`, because some screen readers skip zero-sized elements. `white-space: nowrap` stops words being read as one run-together string. Never `display: none` or `visibility: hidden`, which remove the content from assistive tech entirely.
 
-Tailwind ships this as `sr-only`. Skip links add a focus variant that un-hides it, `focus:not-sr-only` or an override on `:focus`.
+Tailwind ships this as `sr-only`. The skip-link recipe is in [focus-and-keyboard.md](focus-and-keyboard.md).
 
-Use it for context sighted users get visually: `<span class="sr-only">Opens in new tab</span>`, table captions, or an icon-only control's label where `aria-label` isn't an option.
+Use it for context sighted users get visually: `<span class="sr-only">Opens in new tab</span>`, table captions or an icon-only control's label where `aria-label` isn't an option.
 
 ## Choosing how to announce a change
 
@@ -4172,12 +4142,10 @@ Work down this list and stop at the first match:
 
 1. **Focus moves there anyway**, as with an opened modal or the first invalid field. Nothing extra needed; the focus move is the announcement.
 2. **Tied to a specific control**, such as a field error or character count: `aria-describedby` on the control, announced with the field.
-3. **Non-urgent, not tied to a control**, such as a toast, "Saved", a result count, or a loading state: a polite live region, `role="status"`.
+3. **Non-urgent, not tied to a control**, such as a toast, "Saved", a result count or a loading state: a polite live region, `role="status"`.
 4. **Urgent and not tied to a control**, such as a form-level failure or session expiry: `role="alert"`.
 
 ## Live regions
-
-Live regions announce content that changes without a page load: toasts, validation, search-result counts, loading states.
 
 | Mechanism | Politeness | Use for |
 | --- | --- | --- |
@@ -4187,10 +4155,10 @@ Live regions announce content that changes without a page load: toasts, validati
 Rules for reliable announcements:
 
 - For repeated polite updates, keep a stable empty region in the DOM before changing its text. Inserting a new polite region with its content is announced inconsistently.
-- Dynamically inserted `role="alert"` content is usually announced, but behavior varies. Use it only for urgent errors not tied to a control, and test the target browser and screen-reader combinations.
-- Default to polite. Overusing `assertive` is the most common live-region mistake, because it interrupts whatever the user was reading.
+- Dynamically inserted `role="alert"` content is usually announced, but behavior varies. Test the target browser and screen-reader combinations.
+- Default to polite. `assertive` interrupts whatever the user was reading.
 - Keep messages short and self-contained. `aria-atomic="true"` re-reads the whole region on change.
-- Never move focus to a toast. Announce it and leave focus where the user is working. Give toasts a generous timeout or a dismiss button, and never put the only path to an action inside an auto-dismissing one.
+- Never move focus to a toast. Announce it and leave focus where the user is working.
 
 ```tsx
 // Region rendered from the start, message injected later
@@ -4221,14 +4189,14 @@ A missing `alt` is worse than an empty one, because screen readers fall back to 
 
 ## SVG
 
-- Decorative SVG: `aria-hidden="true"` and `focusable="false"`, the latter for legacy Edge and IE tabbing. No title needed.
+- Decorative SVG: `aria-hidden="true"`. No title needed.
 - Meaningful inline SVG: `role="img"` plus `aria-label="…"`, or a `<title>` as the first child referenced by `aria-labelledby`.
 - Simple cases: `<img src="icon.svg" alt="…">` is the most reliable delivery.
 
 ```tsx
 // Decorative icon inside a labeled button
 <button aria-label="Close">
-  <svg aria-hidden="true" focusable="false">…</svg>
+  <svg aria-hidden="true">…</svg>
 </button>
 
 // Standalone meaningful icon
@@ -4237,7 +4205,7 @@ A missing `alt` is worse than an empty one, because screen readers fall back to 
 
 ## Video and audio
 
-Prerecorded video needs captions; provide transcripts for audio. Never autoplay with sound, and always render controls.
+Prerecorded video needs captions (1.2.2), and prerecorded audio needs a transcript (1.2.1). Never autoplay with sound (1.4.2), and always render controls.
 
 ## semantics-and-aria
 
@@ -4250,8 +4218,7 @@ Native elements first, landmarks, accessible names and the ARIA rules that keep 
 1. If a native HTML element with the semantics and behavior you need exists, use it instead of repurposing another element with ARIA.
 2. Don't change native semantics unless you really have to.
 3. Every interactive ARIA control must be keyboard-operable; a role is a promise of the full keyboard model, states and behavior.
-4. Never put `role="presentation"` or `aria-hidden="true"` on a focusable element.
-5. All interactive elements must have an accessible name.
+4. All interactive elements must have an accessible name.
 
 No ARIA is better than bad ARIA. A screen reader trusts your roles, so a wrong one is worse than none.
 
@@ -4271,16 +4238,16 @@ No ARIA is better than bad ARIA. A screen reader trusts your roles, so a wrong o
 <button onClick={openSettings}>Settings</button>
 ```
 
-If it looks clickable it must be clickable, and if it's clickable it must be a real interactive element. Rebuilding a link as a button, or the reverse, breaks user expectations. A "button" that navigates is a styled `<a>`.
+A "button" that navigates is a styled `<a>`, and a "link" that performs an action is a styled `<button>`.
 
 Where a native element is truly impossible, the full polyfill is `role="button"` plus `tabindex="0"` plus Enter and Space handlers, which is why the native element is always less code.
 
 ## Landmarks and headings
 
-- Expose one visible primary `<main>` landmark. `<header>`, `<nav>`, `<aside>`, `<footer>` map to landmarks screen-reader users jump between.
+- `<header>`, `<nav>`, `<aside>` and `<footer>` map to landmarks screen-reader users jump between.
 - Multiple landmarks of the same type need distinguishing labels: `<nav aria-label="Primary">`, `<nav aria-label="Breadcrumbs">`.
-- Do not report the one-`<h1>` or the no-skipped-levels convention as a standalone WCAG failure without a concrete navigation or comprehension impact. Headings are structure, not styling; style a heading level with CSS instead of picking the tag by size.
-- `<title>` matches the current context, most specific first: `Billing · Settings · Acme`.
+- Headings are structure, not styling. Style a heading level with CSS instead of picking the tag by size.
+- `<title>` matches the current context, most specific first: `Billing · Settings · Acme` (2.4.2).
 
 ## Accessible names
 
@@ -4289,7 +4256,6 @@ Name precedence: `aria-labelledby` > `aria-label` > native label (`<label>`, tex
 - Prefer visible text or `aria-labelledby` over `aria-label`, which is invisible, drifts out of sync with the UI and is handled inconsistently by translation tools.
 - Icon-only buttons always need a name: `<button aria-label="Close">` with the icon `aria-hidden="true"`.
 - WCAG 2.5.3 Label in Name: a button showing "Send" with `aria-label="Submit message"` breaks voice control users who say "click Send".
-- Accessible names must exist even when the design omits visible labels.
 
 ```tsx
 // Good: name from visible text, icon hidden
@@ -4303,81 +4269,738 @@ Name precedence: `aria-labelledby` > `aria-label` > native label (`<label>`, tex
 </button>
 ```
 
-Add `translate="no"` to brand names, code tokens and identifiers so auto-translation doesn't garble them.
+Keeping brand names and code tokens out of auto-translation with `translate="no"` belongs to `better-typography`.
 
 ## Common ARIA mistakes
 
 | Mistake | Why it fails |
 | --- | --- |
-| `aria-label` on a plain `<div>` or `<span>` | Most screen readers ignore names on non-interactive, role-less elements |
+| `aria-label` on a plain `<div>` or `<span>` | ARIA 1.2 prohibits naming the `generic` role, and most screen readers ignore it |
 | `<button role="button">` | Redundant role; adds noise, no benefit |
-| `aria-hidden="true"` on or above a focusable element | Creates elements you can Tab to but that don't exist for screen readers |
 | `aria-labelledby`/`aria-describedby` pointing at a missing ID | Silently produces no name or description |
 | `role="menu"` on a nav list | `menu` promises app-style arrow-key behavior; site navigation is `<nav>` with a list |
 
 ## Disabled states
 
-Native `disabled` supplies the platform's complete disabled behavior. It removes the control from the tab order, suppresses activation, applies `:disabled` and excludes form controls from submission. Use it when a native control is genuinely unavailable. `aria-disabled="true"` only announces the state, changing neither focusability, nor behavior, nor styling.
+Native `disabled` supplies the platform's complete disabled behavior. It removes the control from the tab order, suppresses activation, applies `:disabled` and excludes form controls from submission. `aria-disabled="true"` only announces the state, changing neither focusability, nor behavior, nor styling.
 
-- Never disable submit buttons. Keep them enabled, validate on submit and focus the first error ([forms.md](forms.md)).
-- A natively `disabled` control suppresses pointer events and leaves the tab order, so a tooltip on it never opens for keyboard or touch users and is unreliable for mouse users. Put the reason in visible text beside the control, or switch to `aria-disabled="true"`, which keeps it focusable and hoverable and can carry a tooltip.
+- Never disable submit to gate validation. Validate on submit instead ([forms.md](forms.md)).
+- A natively `disabled` control suppresses pointer events and leaves the tab order, so a tooltip on it never opens for keyboard or touch users. Put the reason in visible text beside the control, or switch to `aria-disabled="true"`, which keeps it focusable and hoverable.
 - Use `aria-disabled="true"` where keeping a control discoverable in the tab order is intentional, or where a custom control cannot use native `disabled`.
-- With `aria-disabled="true"`, block pointer and keyboard activation in the handler, prevent form submission where applicable, add explicit styling including forced-colors support and explain nearby why the action is unavailable.
+- With `aria-disabled="true"`, block pointer and keyboard activation in the handler and prevent form submission where applicable. Add explicit styling, including forced-colors support, and explain nearby why the action is unavailable.
 - Never set both `disabled` and `aria-disabled` on the same element.
-- Disabled controls are exempt from contrast minimums. Keep them legible anyway.
+- Disabled controls are exempt from contrast minimums.
+
+## SKILL
+
+---
+name: better-colors
+description: Builds and checks color systems by generating palettes, naming semantic tokens, converting between formats and measuring contrast.
+---
+
+# Colors
+
+This skill builds and audits color systems. It generates ramps, maps their steps to roles and token names, converts notation and measures rendered contrast pairs.
+
+Never report a contrast value you did not measure, and never estimate a color you could compute. Notation, a tinted neutral and a gradient's interpolation space are project choices, not findings. A broken role mapping, a failing pair and an out-of-gamut step are findings. Perceived lightness throughout means OKLCH `L`, from `0` to `1`.
+
+Whether a pair is required to pass belongs to `better-accessibility`. Surfaces, shadows and icon color belong to `better-ui`.
+
+## Match the project's color system
+
+Reuse the project's tokens and notation. A consistent hex system beats hex with `oklch()` scattered through it.
+
+For a new system, `oklch()` is the best default, because its numbers behave the way the ramp rules below describe. Everywhere else, a color library produces the same ramp in the project's own notation ([color-formats.md](color-formats.md)).
+
+## A system is ramps, not colors
+
+One neutral ramp, one accent ramp and only the status ramps the product actually renders. A `warning` ramp nothing imports is maintenance for zero pixels. A second accent hue earns its place only when two things must be distinguishable at a glance. Otherwise use more steps of the one accent ramp.
+
+## Every step has a job
+
+A ramp is not a gradient to pick from by eye. Each step exists because a role needs it: page background, component hover, border, solid fill, body text. Do not generate a step no role consumes. Both the Tailwind `50`–`950` and Radix `1`–`12` conventions map to those roles ([palette-structure.md](palette-structure.md)).
+
+## Name primitives by hue, semantics by role
+
+Primitives name a value (`--blue-600`) and are never applied in a component. Semantic tokens name a job (`--color-text-secondary`), point at a primitive and are the only tier components reference. That seam is what lets a theme repoint colors without touching components ([token-naming.md](token-naming.md)).
+
+## Use a token only in its role
+
+Never borrow a token because its value is right today. A separator used as a text color works until borders get lighter, and then the text goes with them. If a role has no token, add the token.
+
+## Hold the hue across the ramp
+
+A ramp holds one hue end to end, peaks in vividness mid-ramp and steps more finely at the light end. Build it with a color library, never by eye ([palette-generation.md](palette-generation.md)).
+
+## One color, one meaning
+
+Use a color for one purpose across the whole interface, treating anything within `15°` of OKLCH hue as the same color ([color-usage.md](color-usage.md)). Never let color be the only carrier of meaning. Pair it with an icon or a label, a requirement `better-accessibility` owns.
+
+## Fill exactly one action per view
+
+When filled color encodes primary emphasis, one primary action gets it and peers stay neutral. Put the color on the background, not the label. A filled button reads as primary across the room; accent-colored text on a neutral button reads as a link.
+
+Keep an established hierarchy that already signals emphasis another way. Several colored backgrounds are fine when they encode distinct states or categories rather than competing as peers.
+
+## Measure the rendered pair, then report
+
+Measure a foreground against the background it actually renders on, not the page background. When a pair fails, report the pair, its measured value and the threshold it misses, then leave the colors alone. They are a design decision. Change them only when asked, and remeasure after ([contrast.md](contrast.md)).
+
+## Pick a gradient's interpolation space
+
+The space is a look, not a correctness setting. Default to `in oklab`, and reach for `in oklch` when a two-hue gradient goes gray in the middle ([color-usage.md](color-usage.md)).
+
+## Before you finish
+
+| Pattern | Fix |
+| --- | --- |
+| A hex, `rgb(` or `oklch(` literal in a component file where a token exists | Reuse or add the role token, in the project's notation |
+| One `oklch(` value in a codebase otherwise written in hex | Write it in the established notation unless a migration is in scope |
+| `var(--blue-600)` or `bg-blue-600` in a component file | Point a semantic token at the primitive and use that |
+| A semantic name containing a hue or a component, as in `--color-blue-button` or `--color-sidebar-gray` | Rename it for its role: `--color-accent-solid`, `--color-bg-surface` |
+| `--color-primary` and `--color-text-primary` both defined | Rename the brand token `accent` |
+| A `border` or `separator` token inside `color:`, or a `text` token inside `background:` | Add a token for the missing role |
+| `hsl(` ramp values that differ only in lightness | Rebuild with a constant perceived hue, in the project's notation |
+| `50`–`200` stepping as far apart in OKLCH `L` as mid-ramp steps do | Tighten the light end to about `0.04`–`0.05` per step |
+| One chroma or saturation number copied across every hue's ramp | Use the same proportion of each hue's own maximum |
+| A status hue within `15°` of the accent hue | Move it at least `15°` away, or give the destructive action a distinct treatment |
+| Dark tokens equal to the light ramp in reverse step order | Lower the accent's chroma, widen the dark end and remeasure every pair |
+| Color tokens set under both `prefers-color-scheme` and a `.dark` class | Pick one switching mechanism and use it throughout |
+| A contrast fix that changes hue and leaves lightness | Change lightness, the channel contrast responds to |
+| `prefers-contrast: more` overriding a color for both appearances in one block | Give each appearance its own increased-contrast value |
+| Text on a color with alpha, such as `/50`, `rgba(` or `color-mix(` with `transparent` | Measure the rendered result, or use a solid token |
+| `text-white` on a Tailwind `500` fill | Measure it; white on most `500` hues fails 4.5:1, so move the fill to `600` |
+| `oklch()` chroma beyond sRGB with no sRGB value declared before it | Declare the sRGB value first, then the vivid one inside `@media (color-gamut: p3)` |
+
+## Reporting
+
+**Severity.** `HIGH` makes content unreadable or assigns a misleading semantic color. `MEDIUM` is a noticeable theme, token or gamut failure. `LOW` is isolated polish.
+
+Three symptoms are `HIGH` on sight whatever the surface, matching `better-interface`'s escalation triggers. They are body or control text whose rendered pair fails its required ratio, state or meaning carried by color alone and a semantic color used against its meaning.
+
+**Verification.** Without a browser: token values, the gamut of every declared color, both theme blocks present and contrast computed from the declared token pair. With one: the background actually rendered behind the text, including opacity and any image beneath it, measured in both light and dark. Report every check you could not run as `Not verified`.
+
+**Format.** Group findings under the principle each violates, ordered by severity, one row per root cause listing every location it appears in:
+
+| Severity | Location | Before | After | Why |
+| --- | --- | --- | --- | --- |
+
+`Location` is `path/to/file:line`. `Why` names the principle and the user impact.
+
+End with `Block` when any `HIGH` remains, `Approve` otherwise, leaving the rest in the table as work to do. Never `Approve` coverage you did not inspect. With nothing to report, state "No actionable color findings" and report verification.
+
+## color-formats
+
+# Color formats
+
+Which notation to write colors in, how to convert between them and what happens at the edges of a display's gamut. Every other rule in this skill is stated perceptually and holds whatever notation you write.
+
+## Choosing a notation
+
+| Notation | Good for | Weakness |
+| --- | --- | --- |
+| Hex | Universal support, compact, what design tools hand you | Opaque. No channel is readable or editable by hand |
+| `rgb()` | Same reach as hex, readable alpha | Channels do not correspond to anything a designer thinks about |
+| `hsl()` | Channels look like design controls | Its lightness is not perceptual and its hue drifts; a ramp built by varying lightness bunches at one end and shifts hue |
+| `oklch()` | Perceptually uniform lightness, stable hue, predictable ramps | Baseline 2023, so very old browser matrices need a fallback |
+
+**Match whatever the project already uses.** Notation is not a defect: a project on hex is not doing it wrong.
+
+**For a genuinely new color system, `oklch()` is the best default.** Even lightness steps stay even, and a fixed hue stays fixed. See [palette-generation.md](palette-generation.md).
+
+```css
+oklch(L C H)          /* lightness 0–1, chroma 0–~0.4, hue 0–360 */
+oklch(L C H / alpha)  /* alpha uses a slash, never a comma */
+```
+
+## Converting
+
+Convert when the user asks, when an agreed migration is in scope or when the project is standardizing on a notation and this value is the straggler. Never convert an isolated value in a project that deliberately uses something else and never because this skill happened to load.
+
+When conversion is in scope, change the values and nothing else:
+
+- Leave CSS keywords alone: `currentColor`, `inherit`, `transparent`, `initial`, `unset`.
+- Leave gradient functions alone. Convert the color stops inside them; do not touch the interpolation method.
+- Leave colors in third-party configs that expect a specific format.
+- Preserve comments and formatting.
+
+```css
+/* Before */
+color: #3b82f6;
+border: 1px solid rgba(0, 0, 0, 0.1);
+
+/* After */
+color: oklch(0.623 0.188 259.815);
+border: 1px solid oklch(0 0 0 / 0.1);
+```
+
+Bulk conversion is a migration, not cleanup. It shifts every rendered color by a rounding margin and touches files nobody asked about, so it has to be the task rather than a side effect.
+
+## Gamut
+
+Every sRGB color exists in Display P3, but not the reverse. The extra room is only at high chroma and varies by hue. At OKLCH `L` `0.65`, green gains about `0.07` of chroma while blue gains about `0.015`.
+
+A color more vivid than its display can render gets gamut-mapped, which in current browsers mostly means clipped. It flattens neighbouring steps into one rendered color, so the top of a ramp can lose its distinctions on an sRGB screen. Maximum vividness varies by hue and lightness. Cyans top out far lower than reds and purples, so a clipping ramp clips at some steps and not others.
+
+The fix is to reduce vividness while holding hue and lightness. Generate ramps against sRGB unless the product is display-restricted, and add P3 as an enhancement:
+
+```css
+.success {
+  background: #11ad32; /* oklch(0.65 0.2 145), inside sRGB */
+}
+
+@media (color-gamut: p3) {
+  .success {
+    background: oklch(0.65 0.27 145);
+  }
+}
+```
+
+Order matters. The sRGB value comes first, so an sRGB screen shows a color you chose rather than one the browser clipped. The P3 rule overrides only where it will render.
+
+For browser matrices predating `oklch()` support, the same layering works with `@supports`:
+
+```css
+.accent {
+  background: #3b82f6;
+}
+
+@supports (color: oklch(0 0 0)) {
+  .accent {
+    background: oklch(0.62 0.19 259);
+  }
+}
+```
+
+Check the project's actual browser matrix before adding this. On a modern baseline it is dead weight.
+
+## Modern CSS worth knowing
+
+- **`color-mix()`** derives one color from another, as in `color-mix(in oklab, var(--color-accent-solid) 15%, white)` for a tinted background. Useful for states, but keep generated values out of the token layer, since a mixed color cannot be inspected in a design tool.
+- **Relative color syntax** adjusts one channel of an existing color. `oklch(from var(--color-accent-solid) calc(l - 0.1) c h)` darkens the accent by hand. Powerful and easy to overuse, since a token defined by three chained derivations is unreadable.
+- **`light-dark()`** puts both appearances in one declaration. See [palette-generation.md](palette-generation.md).
+
+All three resolve at render time. Compute the resolved value with a color library, or measure the rendered result, before reporting contrast.
+
+## color-usage
+
+# Color usage
+
+Deploying color once the system exists: meaning, emphasis, gradients and appearance variants. For picking values see [palette-generation.md](palette-generation.md), for naming them [token-naming.md](token-naming.md), for checking pairs [contrast.md](contrast.md).
+
+## One color, one meaning
+
+Users read a near-miss in hue as a slightly different shade, not as a different color.
+
+```css
+/* Bad: the accent means both "link" and "decorative heading" */
+a { color: #3b82f6; }
+.section-title { color: #4f8ef7; }
+
+/* Good: interactive elements own the accent; headings stay neutral */
+a { color: var(--color-accent-text); }
+.section-title { color: var(--color-text-primary); }
+```
+
+The rule runs both ways. A color must not be *absent* where its meaning occurs. If the accent means interactive, an interactive element rendered neutral is just as misleading.
+
+## Use tokens in their role
+
+A value that happens to work in two roles stops working in both at the next theme change.
+
+```css
+/* Bad: separator token repurposed as a text color because it looked right */
+.caption { color: var(--color-border); }
+
+/* Bad: text token repurposed as a background */
+.tag { background: var(--color-text-secondary); }
+```
+
+The role inventory in [token-naming.md](token-naming.md) is the list of roles a system needs.
+
+## One colored action per view
+
+```html
+<!-- Good: one filled primary action, neutral secondaries -->
+<button class="bg-accent-solid text-text-on-accent">Save</button>
+<button class="text-text-secondary">Cancel</button>
+
+<!-- Bad: every action colored, so nothing is primary -->
+<button class="bg-accent-solid text-text-on-accent">Save</button>
+<button class="bg-accent-solid text-text-on-accent">Duplicate</button>
+<button class="bg-accent-solid text-text-on-accent">Export</button>
+```
+
+Selected states may use the accent on the glyph and label. An active tab or a checked segment is state, not emphasis.
+
+## Gradients
+
+**The interpolation space is a look, not a correctness setting.** Three are worth knowing, and the difference between them is most visible in the middle of the gradient:
+
+```css
+/* sRGB: the default and the classic. Midpoint darkens and mutes. */
+background: linear-gradient(#3b82f6, #ec4899);
+
+/* oklab: even brightness across the transition. The best default. */
+background: linear-gradient(in oklab, #3b82f6, #ec4899);
+
+/* oklch: travels around the hue wheel, staying vivid throughout. */
+background: linear-gradient(in oklch, #3b82f6, #ec4899);
+```
+
+`oklab` and sRGB are **rectangular**, interpolating in a straight line through the color space. `oklch` is **polar**, interpolating the hue angle, so it arcs around the wheel through every hue between the stops. That is why it stays saturated and why it can produce hues nobody asked for. A blue-to-pink gradient routes through purple, which is either the look or a surprise.
+
+**The gray dead zone is a rectangular-space problem.** Two hues on opposite sides of the wheel sit either side of the neutral axis. A straight line between them passes near gray, and the middle goes lifeless. Either switch to a polar space, which routes around the axis, or add a third stop between the two and keep the space you have.
+
+With a polar space you also control which way it goes around:
+
+```css
+/* The short way round, usually what you want */
+background: linear-gradient(in oklch shorter hue, #3b82f6, #ec4899);
+
+/* The long way, sweeps most of the spectrum */
+background: linear-gradient(in oklch longer hue, #3b82f6, #ec4899);
+```
+
+**Banding shows up on large areas.** A gradient spanning a hero with little contrast between its stops steps visibly on 8-bit displays. Widen the contrast, shrink the area or overlay a subtle noise texture.
+
+**Keep text off gradients where you can.** Contrast varies continuously across one, so a single measurement does not describe it. Where text must sit on a gradient, measure the worst region rather than the average, or put a scrim behind it.
+
+## Color across cultures
+
+Where a color carries meaning in finance, status or alerts, verify the meaning holds in every locale you ship to. Chinese financial UIs show gains in red and losses in green, the reverse of English ones. Where the product ships to such markets, make gain and loss per-locale tokens rather than hardcoded values.
+
+## Light, dark and increased contrast
+
+When the product ships a dark appearance, every custom color needs a dark variant, derived per [palette-generation.md](palette-generation.md). Users who enable increased contrast expect visibly stronger differentiation in each appearance:
+
+```css
+:root {
+  --color-accent-solid: var(--blue-600);
+}
+
+@media (prefers-contrast: more) {
+  :root { --color-accent-solid: var(--blue-900); }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root { --color-accent-solid: var(--blue-400); }
+}
+
+@media (prefers-color-scheme: dark) and (prefers-contrast: more) {
+  :root { --color-accent-solid: var(--blue-200); }
+}
+```
+
+A single `prefers-contrast` block shared by both appearances darkens the color on a dark background too, lowering contrast there. The increased-contrast variant widens the gap to its background by at least `0.15` of OKLCH `L` over the default. Remeasure it, aiming for Lc 90 on body text. Widening the gap without remeasuring is not fixing it.
+
+## contrast
+
+# Contrast
+
+Contrast is measured between a **foreground color**, meaning text, an icon or a UI element, and the **background color** it actually renders against, usually the nearest ancestor that paints one. Identify that background first. Measuring against the page background when the element sits on a card gives the wrong answer.
+
+`better-accessibility` decides which requirement applies to a pair. The thresholds below are what a measured pair is reported against. Where neither that skill nor the project names a standard, report the WCAG 2 result and add the APCA value.
+
+## WCAG 2 thresholds
+
+WCAG 2 is the standard formal conformance claims are made against.
+
+| Content type | AA | AAA |
+| --- | --- | --- |
+| Text | 4.5:1 | 7:1 |
+| Large text, at least `24px` or `18.67px` bold | 3:1 | 4.5:1 |
+| UI components and graphical objects | 3:1 | n/a |
+
+Disabled or inactive controls and logos are exempt.
+
+## APCA thresholds
+
+Lc, Lightness Contrast, is APCA's measure of perceived contrast. These levels simplify APCA's full font-size and weight lookup table:
+
+| Content type | Minimum |
+| --- | --- |
+| Body text, columns or blocks of text | Lc 75, preferred Lc 90 |
+| Non-body text such as labels and headlines | Lc 60 |
+| Large text, at least `36px` regular or `24px` bold | Lc 45 |
+| Fine-detail or outline icons | Lc 45 |
+| Solid icons and UI components | Lc 30 |
+| Non-text that only has to be discernible, such as dividers | Lc 15 |
+
+Disabled and placeholder text are not covered by a requirement. Aim for Lc 30 so they stay legible.
+
+Lc is signed. Positive means dark text on a light background, negative means light text on a dark background. Compare the absolute value against the threshold.
+
+## Fix a failing pair only on request
+
+**Change lightness first.** It is the channel contrast responds to. Hue and saturation move the measured value far less.
+
+Move the foreground away from the background in perceived lightness, holding hue and saturation, then remeasure. Keeping hue fixed is what stops a contrast fix becoming a palette change.
+
+```css
+/* Failing: text too close to its background in lightness (Lc ≈ 50) */
+color: #7d93b0;
+background: #eef2f7;
+
+/* Fixed: darker text, same hue (Lc ≈ 88) */
+color: #2b3a4f;
+background: #eef2f7;
+```
+
+Two constraints on the fix:
+
+- **Mid-lightness backgrounds cap what is achievable.** On a background near OKLCH `L` `0.75`, even pure black text reaches only about Lc 60. Body text needs a background near one extreme, so a mid-range background is the thing that has to change.
+- **Pushing lightness can push the color out of gamut.** Reduce saturation as needed to keep it renderable. See [color-formats.md](color-formats.md).
+
+Always remeasure after changing a value. Do not assume a fix landed.
+
+## Pick text polarity from the background
+
+Compare black and white using the project's required contrast metric. APCA and WCAG 2 can favor different text colors on the same background. A higher score does not by itself mean the pair passes.
+
+WCAG 2's neutral crossover is near 56% OKLCH lightness. At `oklch(65% 0 0)`, black measures about `6.49:1` and white `3.23:1`. Only black passes AA for normal text. For colored backgrounds or other foregrounds, measure the actual pair rather than applying a crossover.
+
+## What to check
+
+- **Every pair, in every appearance.** APCA scores mirrored pairs differently, so a pair passing in light mode can fail in dark.
+- **Translucent surfaces.** A color on a `backdrop-filter` header or an overlay shifts with whatever scrolls behind it. Test against the lightest and darkest content it can sit over, or make the surface opaque enough that the shift cannot break the pair.
+- **Computed colors.** `color-mix()`, relative color syntax and opacity modifiers resolve at render time; measure the rendered result, not the declaration.
+- **Text over images.** There is no single background color. Measure the worst region, or guarantee one with a scrim.
+
+## palette-generation
+
+# Palette generation
+
+Producing the values once the structure is decided. For which ramps to build and what each step is for, see [palette-structure.md](palette-structure.md).
+
+## Start from the brand color
+
+A brand color arrives as one value, usually a hex. Two decisions come before any ramp exists:
+
+**Which step does it occupy?** A brand color meant for buttons and links belongs on the solid-fill step, `600` in Tailwind and `9` in Radix. Then the primary button renders the actual brand color, not an approximation.
+
+**Is it pinned or snapped?** Pin a contractually fixed brand color. It stays exact, the ramp builds outward from it and that one step spaces slightly unevenly. Otherwise snap it onto the ramp so the spacing stays regular, which almost always looks better.
+
+A brand color that fails contrast behind white text is still the brand color, just not the solid-fill step. Put it where it lands and use a darker step for interactive fills. Never quietly darken the brand. In the example below, `#3b82f6` lands on `500` and fills use `600`, because white on `#3b82f6` measures 3.68:1.
+
+## What a correct ramp looks like
+
+Properties of the finished ramp, checkable against any output in any notation:
+
+- **Lightness changes steadily, measured in OKLCH `L`.** HSL lightness is not perceptual, and evenly spaced HSL values bunch at one end.
+- **Hue is constant end to end.** Every step is recognisably the same color. A wandering hue reads as two colors blended and will not sit correctly against a neutral built on a different hue.
+- **Vividness peaks in the middle and falls off at both ends.** The lightest and darkest steps are nearly neutral; the middle carries the color. Holding full vividness into the extremes gives a `50` that glows and a `950` like ink spilled on the brand.
+- **Steps are finer at the light end.** Light backgrounds need finer distinctions than dark ones. Keep `50`–`200` about `0.04`–`0.05` apart in OKLCH `L` and mid-ramp steps about `0.07`–`0.10`. Even spacing across the whole range leaves too few pale steps, so `100` is already too dark for a subtle surface.
+- **No two adjacent steps are indistinguishable.** Adjacent steps less than `0.03` apart in OKLCH `L` mean the ramp has more steps than decisions. Drop one.
+- **Both ends stop short of pure black and white.** A ramp that reaches them loses its identity exactly where the page background lives.
+
+## Use a color library
+
+Never compute these by hand or by eye. `culori`, `colorjs.io` and `chroma.js` all convert between notations, measure perceived lightness and interpolate perceptually. Read the brand color in whatever format it arrives, do the math in a perceptual space and emit the project's notation:
+
+```js
+import { formatHex, interpolate, samples } from 'culori'
+
+// Perceptual interpolation, hex in and hex out.
+const ramp = interpolate(['#eff6ff', '#3b82f6', '#172554'], 'oklab')
+const steps = samples(11).map((t) => formatHex(ramp(t)))
+```
+
+This is a starting point. Linear sampling spaces lightness evenly within each segment, so check the output against the properties above and tighten `50`–`200` by hand.
+
+The output format is the project's choice. For a ramp the interpolation space is not, because sRGB interpolation produces muddy mid-steps. Decorative gradients are the opposite case, where the space is a deliberate look ([color-usage.md](color-usage.md)).
+
+For comparison, Tailwind's blue ramp has the finer light end the generated one lacks:
+
+```css
+:root {
+  --blue-50: #eff6ff;
+  --blue-100: #dbeafe;
+  --blue-200: #bfdbfe;
+  --blue-300: #93c5fd;
+  --blue-400: #60a5fa;
+  --blue-500: #3b82f6;
+  --blue-600: #2563eb;
+  --blue-700: #1d4ed8;
+  --blue-800: #1e40af;
+  --blue-900: #1e3a8a;
+  --blue-950: #172554;
+}
+```
+
+## Several hues at once
+
+With an accent plus status ramps, the ramps must agree step for step. `red-500` and `blue-500` should read as equally bright and vivid, or a red button looks heavier than a blue one at the same step.
+
+- **Match perceived lightness exactly.** Same step, same brightness, across every hue.
+- **Match vividness relatively, not absolutely.** Hues do not share a maximum vividness. A saturated yellow and a saturated blue are not equally far from gray, and no format makes them so. Set each ramp to the same *proportion* of what its own hue reaches.
+
+Yellows and cyans are the usual casualties, peaking much lower than reds and blues. Copy the numbers across and the warning color looks weak beside the danger one.
+
+## Dark mode
+
+A dark palette is not the light one reversed. Reversal is the starting point, not the output.
+
+Swap the semantic roles first, then tune the values:
+
+```css
+:root {
+  --color-bg-page: var(--neutral-50);
+  --color-text-primary: var(--neutral-950);
+}
+
+.dark {
+  --color-bg-page: var(--neutral-950);
+  --color-text-primary: var(--neutral-50);
+}
+```
+
+Three things almost always need hand-tuning after the swap:
+
+- **Vividness comes down.** A color that reads as confident on white reads as neon on near-black. Dark appearances need the accent a step or two less vivid.
+- **The dark end needs more separation.** Steps distinguishable as pale backgrounds collapse into each other as dark surfaces.
+- **Contrast does not survive the mirror.** APCA scores mirrored pairs differently, so recheck every pair in both appearances ([contrast.md](contrast.md)).
+
+### Choosing the switching mechanism
+
+Use one mechanism throughout:
+
+- **`prefers-color-scheme` alone** is correct with no theme toggle. Nothing to persist, nothing to hydrate.
+- **A `.dark` class** is required as soon as users can override the system setting. The media query then sets only the initial value.
+- **`light-dark()`** collapses both values into one declaration. It needs `color-scheme: light dark` and reads that property rather than a class, so a class-based toggle must set `color-scheme` too.
+
+```css
+:root {
+  color-scheme: light dark;
+  --color-bg: light-dark(#ffffff, #172554);
+}
+```
+
+A media query setting some tokens and a class setting others gives a half-themed interface the moment a user overrides their system preference.
+
+## palette-structure
+
+# Palette structure
+
+What a color system is made of, before any values exist. For computing the values see [palette-generation.md](palette-generation.md); for what to call them see [token-naming.md](token-naming.md).
+
+## What a system needs
+
+Most products need three kinds of ramp and nothing else:
+
+| Ramp | How many | Notes |
+| --- | --- | --- |
+| Neutral | 1 | Carries 80–90% of the interface: backgrounds, borders, body text |
+| Accent | 1 | The brand hue. Interactive and selected states |
+| Status | 0–4 | `danger`, `warning`, `success`, `info`. Add one only when the product shows that state |
+
+## Every step has a job
+
+Each step maps to a role. Generate the steps the roles below call for and skip the rest.
+
+| Role | Tailwind | Radix |
+| --- | --- | --- |
+| Page background | `50` | `1` |
+| Subtle background | `50` | `2` |
+| Component background | `100` | `3` |
+| Component hover | `200` | `4` |
+| Component active / selected | `200` | `5` |
+| Subtle border, separator | `200` | `6` |
+| Border, focus ring | `300` | `7` |
+| Hovered border | `400` | `8` |
+| Solid fill | `600` | `9` |
+| Solid fill hover | `700` | `10` |
+| Low-contrast text | `700` | `11` |
+| High-contrast text | `900` | `12` |
+
+The two conventions differ in kind, not only in numbering:
+
+- **Radix defines its 12 steps by role.** Step 9 is "the solid fill" in every ramp and appearance. The dark scale is a separate ramp reusing the same numbers, so `--accent-9` is the fill in both and component CSS never changes.
+- **Tailwind defines its 11 steps by lightness.** `50` is light, `950` is dark. The mapping above therefore holds in light mode and inverts in dark, with the page background at `950` and high-contrast text at `50`. Components either swap step numbers per appearance or read a semantic token that swaps once.
+
+Match whichever the project uses. For a new system prefer Radix's model, because a role-defined step survives a theme change that a lightness-defined step does not. On Tailwind, keep `50`–`950` and put the role mapping in the semantic tier.
+
+Solid fill sits on `600` because white text on most Tailwind `500` hues fails 4.5:1. Where the table repeats a step, those roles render identically. A design that needs, say, component hover and subtle border to differ needs a 12-step ramp.
+
+## Neutrals
+
+A pure gray ramp is a perfectly good default. It sits under any accent hue without competing and never needs revisiting when the brand color changes.
+
+Tinting the neutral toward the accent hue is a stylistic option, not a correction. OKLCH chroma `0.005`–`0.02` at the accent's hue puts the grays in the accent's family. Enough to measure, not enough to name.
+
+Warm neutrals, hue toward orange, read approachable and editorial; cool ones, toward blue, read technical and precise. Whichever you pick, including none, hold it across the whole ramp. A warm gray border on a cool gray background is visible even when neither color is nameable alone.
+
+Neutrals carry the most roles, so they need the most steps. Never generate fewer neutral steps than accent steps.
+
+## Status colors
+
+Convention constrains status hues before taste does. Red reads as danger, amber as warning, green as success. See the cultural exceptions in [color-usage.md](color-usage.md).
+
+Two rules govern them:
+
+- **Keep every status hue at least `15°` of OKLCH hue from the accent.** If the brand is red, danger cannot also be red. Where convention leaves nowhere to move, give the destructive action a distinct treatment, such as an outlined button with an icon, or it reads as the primary action.
+- **Status ramps need fewer steps than the accent.** Most render four roles: a background, a border, a solid fill and text. Generate the full ramp only where the product styles status components across the whole range.
+
+## Auditing an existing palette
+
+Before restructuring a system, inventory it. Most codebases hold several times more colors than the design has decisions.
+
+1. **Collect every literal.** Grep for hex, `rgb(`, `hsl(`, `oklch(` and the project's utility-class prefixes. Include SVG `fill` and `stroke`, chart configs and email templates.
+2. **Sort by perceived lightness within each hue family.** Duplicates surface immediately as near-identical neighbors.
+3. **Collapse near-duplicates.** Two colors within `0.02` of each other in OKLab ΔE are one color that drifted. Keep the one used most and retire the others. Never average them.
+4. **Assign each survivor a role** from the table above. A color matching no role is a missing token or a mistake. Decide which, and say so in the finding.
+5. **Count what is left.** More ramps than **What a system needs** lists means the palette outgrew its structure, not that the product needs more color.
+
+Report the inventory before changing anything. Consolidating a palette changes rendered output on screens nobody asked you to touch, so it stays a proposal until the user accepts it.
+
+## token-naming
+
+# Token naming
+
+Naming is what makes a palette usable by anyone who did not build it. For which ramps exist and what each step does, see [palette-structure.md](palette-structure.md).
+
+## Two tiers
+
+**Primitives** name a value. They are the ramp, named by hue and step, as in `--blue-600` or `--neutral-200`. A primitive describes what the color *is*, so it never changes meaning between themes and is never applied directly in a component.
+
+**Semantics** name a job. They point at a primitive and take the name of the role they fill, as in `--color-text-secondary` or `--color-border-subtle`. Components only ever reference this tier.
+
+```css
+:root {
+  /* Tier 1: primitives, named by hue and step. Never used directly. */
+  --blue-600: #2563eb;
+  --neutral-200: #e5e7eb;
+  --neutral-700: #374151;
+
+  /* Tier 2: semantics, named by role. This is what components use. */
+  --color-accent-solid: var(--blue-600);
+  --color-border: var(--neutral-200);
+  --color-text-secondary: var(--neutral-700);
+}
+```
+
+The tiering is what makes theming possible. Dark mode, a white-label theme and an increased-contrast variant all repoint the semantic tier, leaving the primitives and every component untouched. A codebase applying `--blue-600` directly in components has no theming seam. Adding one later means auditing every usage to work out which meant "the accent" and which just wanted blue.
+
+Add a third, component-level tier (`--color-button-danger-bg`) only where a component genuinely and intentionally diverges from the system. One component token is a documented exception; twenty mean the semantic tier is missing roles.
+
+## The role inventory
+
+A system is complete when every role below has a token. Build against this list rather than adding tokens as components demand them, or the palette ends up shaped like whichever screen came first.
+
+| Group | Roles |
+| --- | --- |
+| Surfaces | page background, surface, raised (menus, popovers), sunken (inputs, wells), overlay scrim |
+| Text | primary, secondary, disabled, inverse, on-accent |
+| Borders | subtle, default, strong, focus ring, separator |
+| Accent | subtle background, border, solid, solid hover, text |
+| Status | per status shipped: subtle background, border, solid, text |
+
+Separator and border are separate roles even when they share a value today. A separator divides content; a border encloses a control. They diverge the first time someone restyles inputs, and a system that conflated them gets untangled at that moment.
+
+## Naming grammar
+
+Use one shape and never deviate. Neutral roles lead with the property, as `--color-{bg|text|border}-{variant}-{state}`. Accent and status roles lead with the role, as `--color-{accent|danger|…}-{subtle|border|solid|text}-{state}`.
+
+```css
+--color-bg-surface
+--color-text-secondary
+--color-border-strong
+--color-accent-solid-hover
+--color-danger-subtle
+--color-accent-text
+```
+
+Pick one word per concept and use only that word. Consistency matters more than the vocabulary. A reader who has seen `--color-text-primary` must be able to guess `--color-text-disabled` without looking:
+
+| Concept | Pick one | Never mix in |
+| --- | --- | --- |
+| Foreground | `text` | `fg`, `foreground`, `content`, `ink` |
+| Background | `bg` | `background`, `surface` as a synonym, `fill` |
+| Edge | `border` | `stroke`, `outline`, `line` |
+| Brand color | `accent` | `primary`, `brand`, `theme` used interchangeably |
+
+Reserve `primary` for exactly one meaning. `--color-text-primary` for body text beside `--color-primary` for the brand is the most common naming collision there is, and it makes every `primary` token ambiguous until you open its definition. Use `accent` for the brand and let `primary` mean "the most prominent of its group".
+
+## Anti-patterns
+
+| Name | Problem | Instead |
+| --- | --- | --- |
+| `--color-blue-button` | Appearance at the semantic tier; lies the moment the brand changes | `--color-accent-solid` |
+| `--color-sidebar-gray` | Named for where it was used first; the second usage makes it nonsense | `--color-bg-surface` |
+| `--color-light-gray` | Lies in dark mode, where it is the dark one | `--neutral-200` as a primitive |
+| `--color-text-2` | Numbered semantics carry no meaning; nobody can guess what `3` would be | `--color-text-secondary` |
+| `--color-gray-hover` | Mixes a hue with a state and belongs to no tier | `--color-bg-surface-hover` |
+| `--blue-600` used in a component | Skips the semantic tier and removes the theming seam | Point a semantic token at it |
+
+## In Tailwind projects
+
+Tailwind v4 generates utilities from `@theme`, so names declared there become the API. Declare primitives and semantics in the same block; the `--color-*` namespace is what produces `bg-*`, `text-*` and `border-*`:
+
+```css
+@theme {
+  /* Primitives */
+  --color-blue-50: #eff6ff;
+  --color-blue-600: #2563eb;
+  --color-blue-900: #1e3a8a;
+
+  /* Semantics: what templates should use */
+  --color-accent-solid: var(--color-blue-600);
+  --color-text-secondary: var(--color-neutral-700);
+}
+```
+
+That yields `bg-accent-solid` and `text-text-secondary` alongside `bg-blue-600`. Tailwind prefixes every `--color-*` name with the utility, so a `text-` token doubles. Accept the doubling, or follow the convention the project already uses. Both tiers are reachable, so the discipline is a convention rather than a constraint. Templates use the semantic utilities, and a raw `bg-blue-600` in a component is the thing to flag.
+
+Repoint semantics for dark mode in a `.dark` block outside `@theme`. Leave the block without `inline`, so utilities read the semantic variable at render time.
+
+Opacity modifiers work on either tier, as in `bg-accent-solid/50`. But a color carrying alpha cannot be contrast-checked against a static background, because what it renders depends on what sits behind it. Use solid tokens for anything with text on it.
 
 ## SKILL
 
 ---
 name: better-interface
-description: Combines all of the `better-*` skills into a single review across accessibility, layout, writing, typography, color and UI polish.
+description: Reviews a screen, flow or whole interface across accessibility, layout, writing, typography, color and UI polish, and returns one ranked report.
 ---
 
-# Interface review
+# Interface
 
 This skill runs a cross-discipline review. It routes the interface to each `better-*` skill, collects their evidence and consolidates one ranked verdict.
 
-Orchestration is all it owns. Accessibility rules belong to `better-accessibility`, structure to `better-layout`, copy to `better-writing`, type to `better-typography`, color to `better-colors`, visual polish and motion to `better-ui`. Never duplicate or override their rules here.
+Orchestration is all it owns. Accessibility rules belong to `better-accessibility`, structure to `better-layout`, copy to `better-writing`, type to `better-typography`, color to `better-colors`, visual polish and motion to `better-ui`.
 
-Change-scoped review of uncommitted work, branches and pull requests belongs to `interface-review`, which resolves the scope and classifies findings before handing the review back.
+Change-scoped review of uncommitted work, branches and pull requests belongs to `interface-review`.
 
 ## Evidence, not taste
 
-Press hard on the escalation triggers and leave deliberate project choices alone. Those pull the same way. A trigger is a failure whatever the style guide says; a density, radius, or voice you merely disagree with is not a finding.
+Press hard on the escalation triggers and leave deliberate project choices alone. A trigger is a failure whatever the style guide says. A density, radius or voice you merely disagree with is not a finding.
 
-So the bar for reporting is evidence, not taste. The bar for `Approve` is that you inspected what you claim to have inspected. A short report from a real inspection beats a long one padded to look thorough.
+The bar for reporting is evidence. The bar for `Approve` is that you inspected what you claim to have inspected.
 
-## Core principles
+## 1. Resolve the scope first
 
-### 1. Resolve the scope first
+Infer the screen, flow, feature or repository scope from the request and current workspace. State the resolved scope in the output.
 
-Infer the screen, flow, feature, or repository scope from the request and current workspace. State the resolved scope in the output.
+Cover all of it in every domain, including the empty, loading, error and narrow-width states where they exist.
 
-Cover all of it across every domain skill listed under **Use domain skills as the sources of truth**, including the empty, loading, error and narrow-width states where they exist. Report at most 15 findings.
+When the scope is too large to inspect credibly, narrow it to one complete flow. Take the one the request centers on, or failing that the entry path every user must pass through. State the boundary and what it excluded. Never imply uninspected surfaces were reviewed.
 
-When the scope is too large to inspect credibly, narrow it to one complete flow: the one the request centers on, or failing that the entry path every user must pass through. State the boundary and what it excluded. Never imply uninspected surfaces were reviewed.
+## 2. Send a change to `interface-review`
 
-### 2. Send a change to `interface-review`
+A request naming a branch, pull request, commit range or uncommitted changes is a change review. Say so and ask the user to run `interface-review`, which is user-invoked and cannot be started from here. Never resolve a change scope yourself, because a guessed diff gives the report a scope nobody can check.
 
-A request naming a branch, pull request, commit range, or uncommitted changes is a change review, not a screen review. Say so and ask the user to run `interface-review`, which is user-invoked and cannot be started from here.
+When `interface-review` hands a review back, apply everything below to it. The cap and the verdict cover `Introduced` and `Regression` findings only, so a change whose only findings are `Pre-existing` is an `Approve`.
 
-Never resolve a change scope here. Reading a diff, classifying findings and expanding changed files to affected surfaces belong to `interface-review`. Guess at them and the report has a scope nobody can check.
+## 3. Recon before judgment
 
-When `interface-review` hands a review back, it supplies the change scope, a status per finding and the change-scoped report format. Severity, ranking, the cap and the verdict stay here, and all three cover `Introduced` and `Regression` only.
+Identify the framework, styling system, component library, design tokens, supported viewports and any preview or test command. Write every fix in the project's own idiom, never as a request to adopt a different stack.
 
-### 3. Recon before judgment
+Then read what the project has written about its own interface: `CONTRIBUTING.md`, `CODING_STANDARDS.md`, `AGENTS.md`, `CLAUDE.md`, a design-system doc, Storybook docs and interface ADRs. Name which you found, or that there are none.
 
-Identify the framework, styling system, component library, design tokens, supported viewports and any preview or test command. Write every fix in the project's own idiom, so no finding arrives as a request to adopt a different stack. That governs the form of the fix, not whether the code is good enough.
+A documented convention settles matters of taste but never excuses a trigger or a domain rule violation. What it changes is **where** you report. When a guideline or shared token is the cause, report it once against that source, with the components as its locations.
 
-Then read what the project has written about its own interface: `CONTRIBUTING.md`, `CODING_STANDARDS.md`, `AGENTS.md`, `CLAUDE.md`, a design-system doc, Storybook docs, interface ADRs. Name which you found, or that there are none.
+## 4. Use domain skills as the sources of truth
 
-Read them to find where a finding belongs, not for permission to drop it. A documented convention is no evidence the convention is good, and "it's in the style guide" does not retire a finding. What they change is **where** you report. When a guideline or shared token is the cause, report it once against that source, with the components as its locations.
-
-### 4. Use domain skills as the sources of truth
-
-Before reviewing, confirm that every owning skill below is available. Load and apply every available owner, and complete each domain review before consolidation.
-
-Review in this order so foundational failures are not hidden by polish:
+Load every owning skill below and complete each domain review before consolidation. Review in this order so foundational failures are not hidden by polish:
 
 1. `better-accessibility`
 2. `better-layout`
@@ -4386,22 +5009,26 @@ Review in this order so foundational failures are not hidden by polish:
 5. `better-colors`
 6. `better-ui`
 
-From a domain skill loaded here, take its principles, its references and its verification checks. Its severity ladder and its format are for standalone use; the consolidated format, shared severity and finding cap in this file replace them.
+From each, take its principles, its references and its verification checks. Its severity ladder and its format are for standalone use; the ones in this file replace them.
 
-If an owning skill is unavailable, mark that domain `Not reviewed`, name it and continue with the rest. Do not recreate its rules from memory, substitute a neighbour, or claim holistic coverage.
+If an owning skill is unavailable, mark that domain `Not reviewed`, name it and continue with the rest. Do not recreate its rules from memory, substitute a neighbour or claim holistic coverage.
 
-When two skills appear to cover one issue, assign it to the owner of the underlying rule and note secondary effects in the **Why** cell. Report it once.
+When two skills appear to cover one issue, assign it to the owner of the underlying rule and note secondary effects in the **Why** cell.
 
-### 5. Require evidence
+## 5. Verify what can be verified
 
-Every finding cites `path/to/file:line` and shows the current implementation. Do not report a code-level finding from visual appearance alone or a visual finding from source code alone when runtime behavior determines the result.
+Run the safe, relevant checks the project offers. Inspect the rendered interface when runtime behavior or visual judgment matters, and report the exact command or interaction and its result. A check you cannot run is **Not verified**, never a finding.
 
-### 6. Rank by user impact
+## Require evidence
+
+Every finding cites `path/to/file:line` and shows the current implementation. When runtime behavior determines the result, source alone cannot support a visual finding and a screenshot alone cannot support a code finding.
+
+## Rank by user impact
 
 Use one shared severity scale:
 
-- `HIGH`: blocks a task, misleads the user, hides content or controls, causes data-loss risk, or creates a repeated systemic failure.
-- `MEDIUM`: meaningfully harms comprehension, efficiency, adaptability, or consistency.
+- `HIGH`: blocks a task, misleads the user, hides content or controls, causes data-loss risk or creates a repeated systemic failure.
+- `MEDIUM`: meaningfully harms comprehension, efficiency, adaptability or consistency.
 - `LOW`: isolated polish with limited task impact.
 
 Within a severity, rank by how many places the finding reaches and how much one fix buys. A token or shared-component fix outranks the same symptom in one leaf.
@@ -4412,48 +5039,50 @@ Within a severity, rank by how many places the finding reaches and how much one 
 - A keyboard-reachable control with no visible focus indicator.
 - A control or path reachable by pointer but not by keyboard.
 - Motion or auto-playing content that ignores `prefers-reduced-motion`.
-- Content or a control clipped, overlapped, or unreachable at 320px width or 200% zoom.
+- Content or a control clipped, overlapped or unreachable at 320px width or 200% zoom.
 - Body or control text whose rendered contrast pair fails its required ratio.
 - State or meaning carried by color alone.
-- A destructive action with no confirmation, undo, or distinct treatment.
+- A destructive action with no confirmation, undo or distinct treatment.
 - Truncated content with no way to reach the full value.
 - Content or a control reachable only past a scroll edge or behind a disclosure that has no visible cue.
 - An error that names no way to recover from it.
 - A semantic color used against its meaning, such as the danger hue on a non-destructive action.
-- A state change carried by motion alone, with no color, icon, or label left behind when the animation does not run.
+- A state change carried by motion alone, with no color, icon or label left behind when the animation does not run.
 
 Triggers rank above every other finding. When more fire than the cap allows, list them first and say how many the cap excluded. A cap may shorten a report; it may never be why a blocker went unreported.
 
-These set severity, not new rules. The owning skill decides whether the symptom is present; this list decides what it costs. In a change review, a confirmed `Regression` against a trigger is `HIGH` even where the same symptom would be `MEDIUM` as pre-existing.
+These set severity, not new rules. The owning skill decides whether the symptom is present; this list decides what it costs.
 
-### 7. Prefer the cheaper fix
+## Prefer the cheaper fix
 
 Severity says how bad a finding is; this says which fix to propose. When more than one would work, take the earliest that does:
 
 1. **Delete.** A separator that space would carry, an animation on a high-frequency interaction, an ARIA attribute a native element makes redundant, a ramp nothing imports.
-2. **Use the platform.** The native element, the native control, the browser's own focus ring, in place of a custom rebuild.
-3. **Reuse what the project has.** An existing token, spacing step, or motion curve, before any new value.
-4. **Correct the value.** The wrong easing, radius, gap, or contrast pair, using the exact value the owning skill gives.
+2. **Use the platform.** The native element, the native control or the browser's own focus ring, in place of a custom rebuild.
+3. **Reuse what the project has.** An existing token, spacing step or motion curve, before any new value.
+4. **Correct the value.** The wrong easing, radius, gap or contrast pair, using the exact value the owning skill gives.
 5. **Add.** A new token, a wrapper, a media query, an ARIA attribute the platform cannot supply.
 
-A fix written at step 5 where step 1 was available is its own finding. Report the deletion instead.
+When the code under review adds what **Delete** would fix, that is a finding, and its **After** is the deletion.
 
-### 8. Consolidate systemic findings
+## Consolidate systemic findings
 
-One root cause is one finding. List every confirmed location in the same row rather than one row per occurrence. Never pad to reach the cap; a short review or no findings is a valid result.
+One root cause is one finding, with every confirmed location in the same row. Report at most 15 findings. Never pad toward the cap; a short review or no findings is a valid result.
 
-### 9. Verify what can be verified
+## Review without mutating by default
 
-Run the safe, relevant checks the project offers. Inspect the rendered interface when runtime behavior or visual judgment matters, and report the exact command or interaction and its result. A check you cannot run is **Not verified**, never a finding.
+Treat a review request as read-only. Do not edit source unless the user also asks you to implement the findings. When they do, keep the consolidated report as the change scope and re-run the relevant verification afterward.
 
-### 10. Review without mutating by default
+## Before you finish
 
+| Mistake | Fix |
+| --- | --- |
 
 ## review-format
 
 # Review output format
 
-This is the format for a review `better-interface` orchestrates. A domain skill reporting on its own carries its own smaller format, in its `## Reporting` section.
+This is the format for a review `better-interface` orchestrates.
 
 ## Scope and coverage
 
@@ -4461,9 +5090,9 @@ State the exact scope, stack and styling conventions, the project convention doc
 
 | Domain | Evidence inspected | Result |
 | --- | --- | --- |
-| Accessibility | Files, components, states, or checks | Findings count or `Clear` |
+| Accessibility | Files, components, states or checks | Findings count or `Clear` |
 
-Include every domain listed under `better-interface`'s **Use domain skills as the sources of truth**. `Clear` means inspected with no actionable finding; `Not reviewed` must explain why.
+Include every domain listed under **Use domain skills as the sources of truth**. `Clear` means inspected with no actionable finding; `Not reviewed` must explain why.
 
 ## Findings
 
@@ -4473,13 +5102,13 @@ One table, ordered by severity, then by reach:
 | --- | --- | --- | --- | --- | --- |
 | HIGH | Accessibility | `src/Dialog.tsx:42` | `<button><XIcon /></button>` | Add `aria-label="Close"` and hide the icon from the accessibility tree | The icon-only control has no accessible name |
 
-- **Severity** comes from `better-interface`'s **Rank by user impact**.
-- **Location** cites `path/to/file:line`. Cite the exact screen and component when the artifact has no source files.
-- **Before / After** show the current implementation and an actionable replacement. Never split them into separate "Before:" and "After:" lines.
-- **Why** names the violated principle and its user impact.
+- **Severity** comes from **Rank by user impact**.
 - **Domain** is the owning skill without the `better-` prefix.
+- **Location** is `path/to/file:line`, or the exact screen and component when the artifact has no source files.
+- **Before** and **After** show the current implementation and an actionable replacement, each in its own cell.
+- **Why** names the violated principle and its user impact.
 
-Each row is one root cause. Consolidate a repeated systemic issue into one row and list every affected location. Respect the finding cap. With no findings, omit the table and state "No actionable interface findings."
+With no findings, omit the table and state "No actionable interface findings."
 
 ## Verification
 
@@ -4492,117 +5121,102 @@ End with one of two:
 - `Block`: one or more `HIGH` findings remain. Do not ship until they are fixed.
 - `Approve`: no `HIGH` findings remain. Any `MEDIUM` and `LOW` findings stay in the table as work to do.
 
-`Approve` claims the coverage you reported, so never issue it for a domain you did not inspect.
+`Approve` covers only the domains the coverage table shows as inspected. Name every `Not reviewed` domain in the verdict line.
 
 ## Change-scoped reviews
 
-When `interface-review` resolved the scope from version control, it supplies the scope block, a status on every finding and the change-scoped format, which its `## Review output format` holds. Severity, ranking, the cap and the verdict are the ones above, and all four cover `Introduced` and `Regression` only.
+When `interface-review` hands the review back, use its `## Review output format`. It adds the scope block, a `Status` column and the pre-existing section to the sections above.
 
 ## SKILL
 
 ---
-name: better-ui
-description: Polishes and improves the UI in your project. Covers concentric border radius, optical alignment, surface depth, contextual icons, hit areas and more.
+name: better-layout
+description: Sets grouping, alignment, reading order, responsive structure and room for translated text, so a layout holds up when it is resized, translated or mirrored.
 ---
 
-# UI polish
+# Layout
 
-Polish comes from a pile of small details that compound. This skill is the reference for which are worth having and what values they take.
+This skill sets grouping, alignment, spacing and responsive structure. It then stress-tests that structure by resizing it, translating it and mirroring it for RTL.
 
-When reviewing, slow the interface down. What feels off at 10% speed is what is subtly wrong at full speed.
+Write every fix in the project's styling system. The numbers below apply only where the project has no spacing scale or density system; otherwise use its tokens. A finding needs a failure you can show, such as a clip, an overlap, a broken mirror or a misread group. A value that differs from these starting points is not one.
 
-Keep the project's component library, tokens and density, and match its motion language except where a rule below prescribes an exact interaction.
+Hit areas and focus behavior belong to `better-accessibility`. Radius, shadows and animation belong to `better-ui`. Line length, text spacing and truncation mechanics belong to `better-typography`. The words themselves belong to `better-writing`.
 
-Every duration, curve, scale and blur below is a specific value, not a range to approximate. `cubic-bezier(0.2, 0, 0, 1)` is not `cubic-bezier(0.4, 0, 0.2, 1)`, and `0.96` is not `0.95`. Use what is written.
+## Group with space, not lines
 
-Text wrapping, font rendering, tabular numbers and text spacing belong to `better-typography`. Hit areas, focus, keyboard support, ARIA and reduced motion belong to `better-accessibility`. Grouping, section spacing, breakpoints and spatial RTL belong to `better-layout`.
+Space groups first, background shapes second, separator lines last and only where space alone can't carry the structure. The gap between groups is at least 2× the gap within one, so `8px` inside a group means `16px` or more between groups. Recipes are in [grouping-and-alignment.md](grouping-and-alignment.md#group-with-space-not-lines).
 
-## Concentric border radius
+## Keep controls distinct from content
 
-Outer radius = inner radius + padding. Mismatched radii on nested elements is the most common thing that makes an interface feel off. Radius, shadow and outline recipes are in [surfaces.md](surfaces.md).
+Give every interactive element a background shape, a border, an underline or a consistent placement zone such as a toolbar. A control styled like the static text beside it does not read as a control. See [grouping-and-alignment.md](grouping-and-alignment.md#keep-controls-distinct-from-content).
 
-## Optical over geometric alignment
+## Align to shared edges
 
-When geometric centering looks off, align optically. Buttons with icons, play triangles and asymmetric icons all need a manual nudge.
+Pick a small set of alignment edges and put everything on them. Use one project spacing step per level of nesting, where `16px` is a useful default. See [grouping-and-alignment.md](grouping-and-alignment.md#align-to-shared-edges).
 
-## Shadows for elevation, borders for structure
+## Logical properties for anything that mirrors
 
-Where a border exists only to create depth, prefer layered transparent `box-shadow` values. Keep borders that communicate structure or state: dividers, separators and selected or focus states.
+Write direction-dependent layout as leading and trailing: `margin-inline-start`, `padding-inline-end`, `inset-inline-start`, `text-align: start`. Reserve physical left and right for physical geometry such as safe-area insets. The mapping table and the RTL progression rules are in [grouping-and-alignment.md](grouping-and-alignment.md#logical-properties-for-anything-that-mirrors).
 
-## Interruptible animations
+## Order by importance
 
-Use CSS transitions for interactive state changes, because they can be interrupted mid-animation. Reserve keyframes for staged sequences that run once.
+The most important content sits near the top and the leading edge. Within a row, identifying content leads and metadata and actions trail. Visual order matches DOM order, so never move content out of source sequence with `order`, `row-reverse` or grid placement. See [grouping-and-alignment.md](grouping-and-alignment.md#order-by-importance).
 
-## Split and stagger enter animations
+## One primary action per view
 
-For an infrequent staged entrance where sequence communicates hierarchy, break the content into semantic chunks and stagger them by ~100ms. Animating one container gets you less for the same cost. Leave high-frequency interactions unstaggered. See [enter-exit.md](enter-exit.md).
+Give each view one primary action. Put secondary actions behind a menu once there are more than 3. Prefer a short view that links deeper over one long view that shows everything at the top level. `better-colors` owns how color marks the primary action.
 
-## Subtle exit animations
+## Hint at hidden content
 
-Use a small fixed `translateY` rather than full height. Exits should be softer than enters. Use `ease-out` for both directions.
+Every piece of off-screen or collapsed content needs a visible cue. Use the project's established cue, let the next item peek `16–32px` past the scroll edge or show a disclosure control.
 
-## Contextual icon animations
+A truncated value the user needs has a way to the full text: an expand control, a detail view or a tooltip that is also keyboard-reachable. Truncation mechanics are `better-typography`'s. Recipes are in [spacing-and-adaptivity.md](spacing-and-adaptivity.md#hint-at-hidden-content).
 
-Animate icons with `opacity`, `scale` and `blur` rather than toggling visibility. Use exactly these values: scale `0.25` to `1`, opacity `0` to `1`, blur `4px` to `0px`.
+## Borderless controls need more clearance
 
-With a motion library (`motion` or `framer-motion` in `package.json`), match that package's import path, or nearby imports where both exist. Use `transition: { type: "spring", duration: 0.3, bounce: 0 }`. Bounce is always `0`.
+Without an established density system, start with `12px` between adjacent bordered or filled controls. Leave `24px` between the visible glyphs of borderless text and icon controls, counting each button's own padding. Compact layouts may use less, as long as hit areas never overlap and the controls stay distinct. See [spacing-and-adaptivity.md](spacing-and-adaptivity.md#borderless-controls-need-more-clearance).
 
-Without one, keep both icons in the DOM with one absolutely positioned, and cross-fade with `cubic-bezier(0.2, 0, 0, 1)`. That gives you enter and exit with no dependency. Both recipes are in [icon-transitions.md](icon-transitions.md).
+## Inset buttons from the edges
 
-## Image outlines
+In content layouts, keep full-width buttons inside the layout margins, starting near `16px` inline on mobile. Edge-to-edge actions work when they follow established platform chrome, account for safe areas and stay distinguishable from system UI. See [spacing-and-adaptivity.md](spacing-and-adaptivity.md#inset-buttons-from-the-edges).
 
-Give images a `1px` outline at low opacity for consistent depth. Pure black in light mode (`oklch(0 0 0 / 0.1)`), pure white in dark (`oklch(1 0 0 / 0.1)`). Never a near-black like slate or zinc and never a tinted neutral. A tinted outline picks up the surface underneath and reads as dirt on the image edge.
+## Content bleeds, controls float
 
-## Scale on press
+Backgrounds and media extend to the viewport edges. Controls and text stay inside the layout margins and safe areas. `env(safe-area-inset-*)` is non-zero only when the viewport meta includes `viewport-fit=cover`.
 
-A `scale(0.96)` on click gives a button tactile feedback. Always `0.96`; anything below `0.95` feels exaggerated. Add a `static` prop to switch it off where motion would distract. See [recipes for CSS, Tailwind and Motion](animations.md#scale-on-press).
+Content scrolls beneath sticky chrome. Set `scroll-padding-block-start` to the sticky header's height, so anchored targets and focused elements never land under it. See [spacing-and-adaptivity.md](spacing-and-adaptivity.md#content-bleeds-controls-float).
 
-## Skip animation on page load
+## Hold structure until it breaks
 
-Use `initial={false}` on `AnimatePresence` to keep enter animations off the first render. Check that it leaves intentional page entrances intact.
+Breakpoints come from the content, not device presets. Keep the expanded layout until it stops fitting, then collapse. Prefer container queries for component-level adaptation, and test the smallest and largest supported sizes first. See [spacing-and-adaptivity.md](spacing-and-adaptivity.md#hold-structure-until-it-breaks).
 
-## Suppress transitions on theme switch
+## Plan for growth and clipping
 
-A theme flip changes color, background, border and shadow on nearly every element at once. Every transition on those properties fires together and the switch smears instead of snapping. Inject `*,*::before,*::after{transition:none !important}`, force a reflow, then remove it on the next frame. See the [recipe](animations.md#suppress-transitions-on-theme-switch).
+Translated strings grow, and short ones grow proportionally more, so a one-word button label is the riskiest thing on the screen. Size text containers with `max-width` and `min-height`, never a fixed width or height, and let rows wrap. Test with pseudo-localization and one long-string locale such as German.
 
-## Transition only what changes
-
-Always name the exact properties: `transition-property: scale, opacity`. Tailwind's `transition-transform` covers `transform, translate, scale, rotate`.
-
-## Use `will-change` sparingly
-
-Only for `transform`, `opacity` and `filter`, which the GPU can composite. Never `will-change: all`. Add it when you see first-frame stutter, not before. See [performance.md](performance.md).
-
-## Match icon stroke to text weight
-
-An icon next to text carries the text's optical weight: `1.5px` stroke beside regular (400) text, `2px` beside semibold (600). One stroke weight per icon set and one icon library per surface. Sizing and RTL flipping are in [icons.md](icons.md).
-
-## One SVG, recolored per state
-
-Icons use `currentColor` and take hover, selected and disabled states from CSS color and opacity, never from separate assets. Outline is the default variant; fill marks the active state.
-
-## Motion restraint
-
-Give high-frequency interactions instant feedback, or a transition of `150ms` or less on opacity and color. A custom animation there charges its attention cost on every trigger.
-
-Every animated state change also needs a static cue: color, an icon, or a label. Motion is never the only feedback channel.
+Never park a critical action where resizing, zoom or scrolling clips it. Keep it in the normal flow or in stable chrome. See [spacing-and-adaptivity.md](spacing-and-adaptivity.md#plan-for-growth-and-clipping).
 
 ## Before you finish
 
-| Mistake | Fix |
+| Detection pattern | Fix |
 | --- | --- |
-| Icons look off-center | Nudge optically with padding, or fix the SVG |
-| Jarring staged entrance or exit | Stagger infrequent entrances; keep exits subtle |
-| Theme toggle crossfades the whole page | Disable transitions for the swap, force a reflow, restore on the next frame |
-| `transition: all` on elements | Specify exact properties |
-| First-frame animation stutter | Add `will-change: transform` (sparingly) |
-| Hairline icon beside bold text | Match the stroke width to the text weight |
+| `grid-template-columns: … 1fr` or a flex child holding long text or a wide table, overflowing its track | `minmax(0, 1fr)` on the track, `min-width: 0` on the flex child |
+| `width: 100vw` | `width: 100%`; `100vw` includes the scrollbar and scrolls horizontally on desktop |
+| `height: 100vh` on a full-height mobile pane | `100dvh`, so the browser toolbar and keyboard never cover the bottom |
+| `height:` with a fixed length on a box holding text | `min-height`, or `max-height` with `overflow-y: auto` |
+| `@media (max-width: …)` inside a reusable component | `@container` on the component's parent |
+| `container-type: inline-size` on a flex item, inline-block or absolute element with no width | Give it a definite width; size containment collapses a shrink-to-fit box to zero |
+| `env(safe-area-inset-*)` with no `viewport-fit=cover` in the viewport meta | Add it, or the insets resolve to `0` |
+| `inset-inline-*` or `*-inline-*` combined with `safe-area-inset-left` or `-right` | Physical `left` or `right` with the matching inset, plus a `[dir="rtl"]` override |
+| `float: left` on mirrored UI | `float: inline-start` |
+| `translateX` or `background-position: left` on mirrored UI | A `[dir="rtl"]` override; neither has a logical form |
+| Sticky header with no `scroll-padding-block-start` | Set it to the header height |
 
 ## Reporting
 
-**Severity.** `HIGH` breaks an interaction, makes motion unusable, or leaves a state change visible only while the animation runs. `MEDIUM` is a visible inconsistency in surfaces, icons, or motion. `LOW` is isolated polish.
+**Severity.** `HIGH` blocks content or an action at a supported viewport. Clipping or overlap at 320px width or 200% zoom is always `HIGH`, as is truncated content with no way to the full value. So is content past a scroll edge or behind a disclosure with no visible cue. `MEDIUM` harms hierarchy, reading order or adaptability. `LOW` is isolated alignment or spacing polish.
 
-**Verification.** Without a browser: every state the component defines, meaning hover, focus, active, loading and empty, plus motion durations and easings read from the code. With one: walk each state, and replay motion at 10% speed in the browser's Animations panel. Report every check you could not run as `Not verified`.
+**Verification.** Without a browser, check logical properties in place of physical ones, container and media queries against the supported viewport list and DOM order against visual order. With one, check every supported width, 320px, 200% zoom and the RTL mirror. Report every check you could not run as `Not verified`.
 
 **Format.** Group findings under the principle each violates, ordered by severity, one row per root cause listing every location it appears in:
 
@@ -4611,29 +5225,931 @@ Every animated state change also needs a static cue: color, an icon, or a label.
 
 `Location` is `path/to/file:line`. `Why` names the principle and the user impact.
 
-End with `Block` when any `HIGH` remains, `Approve` otherwise, leaving the rest in the table as work to do. Never `Approve` coverage you did not inspect. With nothing to report, state "No actionable UI-polish findings" and report verification.
+End with `Block` when any `HIGH` remains, `Approve` otherwise, leaving the rest in the table as work to do. Never `Approve` coverage you did not inspect. With nothing to report, state "No actionable layout findings" and report verification.
+
+## grouping-and-alignment
+
+# Grouping and alignment
+
+Recipes for grouping, control distinction, shared edges, logical properties and ordering.
+
+## Group with space, not lines
+
+Reach for each tool only where the one before it can't carry the structure:
+
+1. **Negative space**, the default.
+2. **Background shapes**, a card or filled container, where a group must read as one unit such as a selectable row or a draggable card.
+3. **Separator lines**, for dense data where space costs too much, such as tables and long settings lists.
+
+```css
+/* Good: spacing alone communicates the grouping */
+.field-group { display: flex; flex-direction: column; gap: 8px; }
+.form { display: flex; flex-direction: column; gap: 24px; }
+
+/* Bad: uniform spacing plus lines to compensate */
+.form > * { margin-bottom: 12px; border-bottom: 1px solid var(--separator); }
+```
+
+```html
+<!-- Good: Tailwind -->
+<div class="space-y-6">
+  <div class="space-y-2">…field group…</div>
+  <div class="space-y-2">…field group…</div>
+</div>
+```
+
+Where a separator is genuinely needed, keep it a low-contrast hairline. Never pair it with a large gap that already did the job.
+
+## Keep controls distinct from content
+
+```html
+<!-- Bad: action looks exactly like the description text next to it -->
+<p class="text-zinc-600">Your trial ends soon. Upgrade now</p>
+
+<!-- Good: the underline marks the action -->
+<p class="text-zinc-600">Your trial ends soon.</p>
+<button class="font-medium underline underline-offset-2">Upgrade now</button>
+```
+
+The inverse holds too. A non-clickable badge shaped exactly like the buttons beside it collects dead clicks.
+
+## Align to shared edges
+
+- Typical stray edges are an icon 2px off the text edge and a card padded unlike its neighbor.
+- Deeper nesting repeats the same spacing step rather than inventing a new one.
+- Numbers in tables take `text-align: end`, text takes `text-align: start`. Tabular figures are `better-typography`'s.
+
+```css
+/* Good: one shared leading edge, one indent step */
+.section { padding-inline: 24px; }
+.section .child { margin-inline-start: 16px; }
+
+/* Bad: three unrelated leading edges in one column */
+.header { padding-inline-start: 20px; }
+.list-item { padding-inline-start: 14px; }
+.footer { padding-inline-start: 24px; }
+```
+
+## Logical properties for anything that mirrors
+
+| Physical | Logical |
+| --- | --- |
+| `margin-left` | `margin-inline-start` |
+| `padding-right` | `padding-inline-end` |
+| `left: 0` | `inset-inline-start: 0` |
+| `text-align: left` | `text-align: start` |
+| `border-right` | `border-inline-end` |
+| `float: left` | `float: inline-start` |
+| `border-top-left-radius` | `border-start-start-radius` |
+
+```html
+<!-- Good: Tailwind logical utilities -->
+<div class="ms-4 pe-6 text-start">…</div>
+
+<!-- Bad: breaks in RTL -->
+<div class="ml-4 pr-6 text-left">…</div>
+```
+
+Flex rows and grid columns follow the inline direction, so they mirror under `dir="rtl"` on their own. Physical values inside them do not mirror, and neither do `translateX`, `background-position` or anything hand-positioned with `left` and `right`.
+
+Where arrangement encodes progression, as in star ratings, step indicators and progress bars, the sequence mirrors in RTL. Stars fill from the leading edge, which is the right in RTL. Digit order inside numbers never reverses; that and other bidi rules belong to `better-typography`.
+
+## Order by importance
+
+Never bury the one number the user came for under rows of secondary detail. Move secondary detail into collapsed sections, tabs or detail views.
+
+```html
+<!-- Good: primary fact first, detail demoted -->
+<div>
+  <p class="text-2xl font-semibold">$4,320.00</p>
+  <p class="text-sm text-zinc-500">Available balance</p>
+</div>
+
+<!-- Bad: the key fact sits last, below the metadata -->
+<div>
+  <p class="text-sm">Account 4402 · Opened 2019 · Standard tier</p>
+  <p class="text-sm">Last statement: June 30</p>
+  <p class="text-sm">Balance: $4,320.00</p>
+</div>
+```
+
+## spacing-and-adaptivity
+
+# Spacing and adaptivity
+
+Recipes for control clearance, edge insets, disclosure cues, edge behavior, breakpoints and growth.
+
+## Borderless controls need more clearance
+
+| Between | Starting point |
+| --- | --- |
+| Adjacent bordered or filled controls, such as buttons and inputs | `12px` |
+| Visible glyphs of borderless controls, such as text and icon buttons | `24px` |
+| Unrelated control groups | `24px` or more |
+
+Nothing marks where one borderless target ends and the next begins, so the space is the boundary. Preserve an established, usable density rather than expanding controls to match these values.
+
+```html
+<!-- Good: bordered buttons at 12px -->
+<div class="flex gap-3">
+  <button class="rounded-lg border px-4 py-2">Cancel</button>
+  <button class="rounded-lg bg-blue-600 px-4 py-2 text-white">Save</button>
+</div>
+
+<!-- Bad: three borderless icon buttons packed at 4px -->
+<div class="flex gap-1">
+  <button><TrashIcon /></button>
+  <button><ArchiveIcon /></button>
+  <button><ShareIcon /></button>
+</div>
+```
+
+Target sizes and hit-area expansion belong to `better-accessibility`. Space controls so their expanded hit areas never overlap.
+
+## Inset buttons from the edges
+
+A button pressed against the viewport looks like system chrome and clips against curved corners and gesture zones.
+
+```css
+/* Good: inset action bar */
+.action-bar {
+  padding-inline: 16px;
+  padding-bottom: calc(16px + env(safe-area-inset-bottom));
+}
+.action-bar button { width: 100%; }
+
+/* Bad: button glued to three edges, and 100vw adds the scrollbar width */
+.action-bar button {
+  width: 100vw;
+  position: fixed;
+  bottom: 0;
+}
+```
+
+The button can still span the full content width inside the margins.
+
+## Hint at hidden content
+
+- **Peeking items.** A row of cards that ends exactly at the container edge looks complete, and nobody scrolls it.
+- **Disclosure controls.** A collapsed section gets a chevron or a "Show more" control naming what is hidden: "Show 12 more results", not "More".
+- **Truncated values.** Pair the clamp with an expand control, a link to a detail view or a tooltip that also opens on keyboard focus. A hover-only `title` attribute does not count, because keyboard and touch users never see it.
+
+The item width sets the peek: width = `100%` + gap − peek, since `100%` is the container's content box. Scroll padding keeps snapped items on the content edge.
+
+```css
+.scroller {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding-inline: 24px;
+  scroll-padding-inline: 24px;
+  scroll-snap-type: x mandatory;
+}
+.scroller > * {
+  flex: 0 0 calc(100% - 12px); /* content box + 12px gap - 24px peek */
+  scroll-snap-align: start;
+}
+```
+
+```html
+<!-- Tailwind: the same 24px peek -->
+<div class="flex gap-3 overflow-x-auto px-6 scroll-px-6 snap-x snap-mandatory">
+  <div class="w-[calc(100%-12px)] shrink-0 snap-start">…</div>
+  <div class="w-[calc(100%-12px)] shrink-0 snap-start">…</div>
+</div>
+```
+
+## Content bleeds, controls float
+
+```css
+/* Good: full-bleed media inside a constrained article */
+.article {
+  display: grid;
+  grid-template-columns: 1fr min(65ch, calc(100% - 48px)) 1fr;
+}
+.article > * { grid-column: 2; }
+.article > .full-bleed { grid-column: 1 / -1; }
+```
+
+Safe-area insets are physical, so a floating button pairs each physical side with its own inset and overrides it in RTL:
+
+```html
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+```
+
+```css
+.fab {
+  position: fixed;
+  right: calc(16px + env(safe-area-inset-right));
+  bottom: calc(16px + env(safe-area-inset-bottom));
+}
+[dir="rtl"] .fab {
+  right: auto;
+  left: calc(16px + env(safe-area-inset-left));
+}
+
+/* Sticky header never covers an anchor target or a focused element */
+html { scroll-padding-block-start: var(--header-height); }
+```
+
+## Hold structure until it breaks
+
+Break where the layout stops fitting, not at `768px` because a preset says so. That is where the sidebar squeezes content below its minimum measure, or a card grid drops below a usable column width.
+
+## SKILL
+
+---
+name: better-typography
+description: Sets and reviews how text renders, from the type scale and spacing to font features, wrapping, truncation and punctuation.
+---
+
+# Typography
+
+This skill sets and reviews how text renders, from the type scale and spacing to font loading, wrapping and punctuation. It writes every fix in the project's styling system, and the [cheat sheet](css-cheat-sheet.md) maps each declaration to its Tailwind utility.
+
+The words belong to `better-writing`, semantic heading structure to `better-accessibility` and spatial RTL layout to `better-layout`. Measure contrast with `better-colors`; whether it passes is `better-accessibility`'s.
+
+## Measured, not preferred
+
+Some values here are exact. Unitless line-height, weight `400` or heavier below `18px`, a 60–75 character measure, `16px` inputs on iOS and `tabular-nums` on changing values are findings when missed.
+
+Letter-spacing, pairing and scale ratios are heuristics. Report them only where they break the project's own scale. Never propose a new typeface, paid or free, unless the task asks for a type change.
+
+## Fewer fonts, sizes and weights
+
+Rarely use more than three fonts; marketing pages can carry more than apps. Weight and size carry hierarchy, so each extra one dilutes it. Pair for contrast. A serif headline over a sans body reads as deliberate, two near-identical sans-serifs read as a mistake.
+
+Below `18px`, use weight `400` or heavier. Weights `100`–`300` belong at `28px` and up, checked against the background even there. Categories, `Display` and `Text` cuts, formats and fallback stacks are in [choosing-fonts.md](choosing-fonts.md).
+
+## Load the faces the design uses
+
+Browsers synthesize a weight or style the family doesn't ship, distorting the face. Load every face the design uses. Disable synthesis only after verifying the fallback stack, and only the unwanted mode. The [synthesis longhands](variable-fonts-and-opentype.md#disable-synthesis-narrowly) show how.
+
+## Properties over raw tags
+
+When a CSS property exists, use it. `font-weight: 650`, not `font-variation-settings: "wght" 650`. `font-variant-numeric: tabular-nums`, not `font-feature-settings: "tnum" 1`. Properties keep working when a non-variable fallback renders.
+
+Leave `font-optical-sizing` at its default `auto`. Hard-code `"opsz"` only when the design deliberately decouples optical size from font size. Reserve raw tags for custom axes like `"GRAD" 80` and features with no property, like `"ss01" 1`. Axes, features and variable versus static files are in [variable-fonts-and-opentype.md](variable-fonts-and-opentype.md).
+
+## Use a type scale with semantic names
+
+Define a small set of sizes and deviate from it as little as possible. Pair each size with its line-height and weight, so a role is one decision instead of three.
+
+Solo, default names like `text-sm` are fine when the usage rules are clear. On a team, name sizes by use (`text-body-sm`) so the rules survive other people. A [role-based starting scale](spacing-and-sizing.md#type-scale) is in the reference.
+
+## Heading sizes descend with level
+
+Map heading levels to descending steps of the scale, so a subordinate heading never overpowers its parent. Deep levels may share a size where the scale runs out of steps, as long as weight or letter-spacing keeps them distinct. A heading is never smaller than body text unless it is a deliberate overline. See the [level mapping](spacing-and-sizing.md#heading-hierarchy).
+
+## Line-height by role
+
+Display text `1.1`, headings `1.2`–`1.3`, body copy `1.5`–`1.6`. Use unitless values so line-height scales with the font size; a fixed `24px` does not.
+
+Tight line-height is for short text. Anything that wraps to three or more lines needs at least `1.4`, even in a height-constrained row. See the [card description example](spacing-and-sizing.md#line-height-for-wrapping-text).
+
+## Letter-spacing by size
+
+Headings at `24px` and up take `-0.01em` to `-0.02em`. Uppercase labels at `14px` or smaller take `0.05em`. Body copy stays at `0`. Use `em` so tracking scales with the size.
+
+Kerning is built into the font and on by default. `font-kerning: none` is never a fix.
+
+## Cap the measure
+
+Cap long-form text at 60–75 characters per line. Any unit works, as long as a cap exists and the line length lands in range. See [unit choices and the pixel equivalents](wrapping-and-punctuation.md#measure-line-length).
+
+## Wrap deliberately
+
+- `text-wrap: balance` evens out headings and short descriptions. Never on paragraphs, and Chromium ignores it past six lines.
+- `text-wrap: pretty` keeps a lone word off the last line. Safe on any paragraph, long-form included.
+- `overflow-wrap: break-word` where a long word, link or ID could escape the container.
+- `white-space: nowrap` on labels and badges where a line break looks broken.
+
+Keep interface text at `text-align: start`. `justify` belongs only in specific editorial layouts.
+
+## Tabular numbers on changing values
+
+Apply `font-variant-numeric: tabular-nums` to timers, counters, prices and numeric table columns, so every digit keeps one width and nothing shifts. Leave figures in prose proportional.
+
+## Truncate with a way back
+
+For one line, `overflow: hidden`, `text-overflow: ellipsis` and `white-space: nowrap`, which Tailwind's `truncate` sets together. For several, `display: -webkit-box`, `-webkit-box-orient: vertical`, `-webkit-line-clamp: 3` and `overflow: hidden`, which Tailwind's `line-clamp-3` emits.
+
+A truncated value needs a way back to the full text, which `better-layout` owns.
+
+## Natural case, typographic punctuation
+
+Store text in natural case and set case with `text-transform`, so a redesign never means rewriting copy.
+
+Rendered text uses typographic characters, never their keyboard stand-ins. Curly quotes, en dashes, the ellipsis character and non-breaking spaces are in the [substitution table](wrapping-and-punctuation.md#smart-punctuation). Code keeps straight quotes.
+
+## Underlines from the font
+
+Set `text-underline-position: from-font` and `text-decoration-thickness: from-font`, or tune `text-underline-offset` and thickness by hand. A dotted `text-decoration-style` hints that a word carries extra information, such as an abbreviation or a defined term. See the [underline recipes](details-and-accessibility.md#underlines).
+
+Color is the only part of a real underline that animates reliably. Any other underline animation needs a separate element, and its motion is `better-ui`'s.
+
+## Inputs at 16px on mobile
+
+iOS Safari zooms the whole page when an input's text is smaller than `16px`. Two fixes hold `16px` and look different, so ask which one the design wants:
+
+- Size the input up on mobile (`text-base sm:text-sm`). Changes how it looks on small screens.
+- Keep `font-size: 16px` and render the intended size with `transform: scale()`. Identical at every viewport, more code to maintain.
+
+Both recipes, plus placeholder and caret styling, are in [details-and-accessibility.md](details-and-accessibility.md#forms-and-editable-text).
+
+## Size floors
+
+Start long-form body text at `16px`, the browser default. Move off it only for a reason you can name, such as a typeface that runs small, a narrow measure or a dense professional tool.
+
+UI text can go smaller. Start inputs and menus at `14px` and captions at `13px`, and rarely go below `12px`. Set `font-size` in [`rem`](spacing-and-sizing.md#units) so the reader's browser font size still applies.
+
+## Font smoothing on the root
+
+Apply `-webkit-font-smoothing: antialiased` and `-moz-osx-font-smoothing: grayscale` once on the root, never per component. Tailwind's `antialiased` sets both.
+
+## Language and bidi behavior
+
+Set `lang` so browsers and assistive technology pick the right quotes, hyphenation and pronunciation. Set `dir` on the document and wherever direction changes. Wrap a mixed-direction value in `<bdi>` and never reorder digits by hand. How long paragraphs and numbers behave is in [wrapping-and-punctuation.md](wrapping-and-punctuation.md#internationalization).
+
+## Trim text boxes in tight containers
+
+In buttons and badges, the space a font reserves above and below its letters makes text sit low. `text-box: trim-both cap alphabetic` trims it as a progressive enhancement. See the [edges, keywords and support](spacing-and-sizing.md#text-trimming-with-text-box).
+
+## Decorative text in CSS, not images
+
+Build drop caps, gradient text, outlines and text shadows in CSS so the text stays selectable and searchable. The [properties and their support](details-and-accessibility.md#decorative-text) are in the reference.
+
+## choosing-fonts
+
+# Choosing fonts
+
+Font categories, fallback stacks for a type change, file formats and why fonts look the way they do.
+
+## Choosing a typeface
+
+| Category | Traits | Use for |
+| --- | --- | --- |
+| Serif | Small strokes at the ends of letters guide the eye along a line | Long passages, editorial reading |
+| Sans-serif | Clean, even shapes that stay crisp at small sizes | Default for most interfaces (Helvetica, Inter, Geist) |
+| Monospace | Every glyph the same width | Code and fixed-width identifiers; numeric columns use `tabular-nums` instead |
+| Display | Drawn for large headlines | Marketing headlines, hero text |
+| Script | Mimics handwriting | Rare, decorative moments |
+
+"Display" in a font's name does not make it a display font. SF Pro and Heldane ship a `Display` variant for large sizes and a `Text` variant for small ones. Use the variant matching the size you are setting.
+
+## Fallback stacks for a type change
+
+When a type change is asked for, two routes. `system-ui` gives each operating system's own interface face. A commercial face such as Helvetica Now is a brand decision and still needs a fallback stack.
+
+```css
+/* The platform's native interface face */
+html {
+  font-family: system-ui, sans-serif;
+}
+
+/* Commercial brand face with safe fallbacks */
+html {
+  font-family: "Helvetica Now", "Helvetica Neue", Arial, sans-serif;
+}
+```
+
+## Formats
+
+| Format | Notes |
+| --- | --- |
+| `.woff2` | Brotli compression, broadly supported. Use this on the web. |
+| `.woff` | Older compression. Fallback only for very old browsers. |
+| `.ttf` / `.otf` | Desktop formats with no built-in compression, so larger files. Only when there is no other option. |
+
+How the files load is the project's concern.
+
+## Anatomy of a typeface
+
+| Term | Meaning |
+| --- | --- |
+| x-height | Height of a lowercase `x` |
+| Cap height | Height of uppercase letters |
+| Baseline | The invisible line letters sit on |
+| Ascender | Part of a letter rising above the x-height |
+| Descender | Part dropping below the baseline |
+
+These measurements are why two fonts at the same `font-size` look like different sizes. A large x-height looks bigger.
+
+## css-cheat-sheet
+
+# CSS cheat sheet
+
+One-line lookup for every typography CSS declaration covered by this skill, with the Tailwind 4 equivalent. Where no utility exists, the arbitrary-value form is shown. Pick the column that matches the project: the declaration in plain CSS, CSS Modules, styled-components or StyleX codebases, the utility in Tailwind codebases.
+
+## Font
+
+| Declaration | What it does | Tailwind |
+| --- | --- | --- |
+| `font-family: sans-serif` | The sans family | `font-sans` |
+| `font-family: serif` | The serif family | `font-serif` |
+| `font-family: monospace` | The monospace family | `font-mono` |
+| `font-size` | Size from the type scale | `text-*` |
+| `font-weight` | Any value from 1 to 1000 | `font-*` |
+| `font-style: italic` | Switch to italic style | `italic` |
+| `-webkit-font-smoothing` + `-moz-osx-font-smoothing` | Smooth macOS font rendering; apply once at the root | `antialiased` |
+| `font-synthesis: none` | Disable all synthesized forms after verifying fallbacks and emphasis | `[font-synthesis:none]` |
+| `font-feature-settings` | Toggle OpenType features | `[font-feature-settings:"ss01"]` |
+| `font-variation-settings` | Tune variable font axes | `[font-variation-settings:"GRAD"_80]` |
+| `font-optical-sizing: auto` | Optical size follows font size; the default, so leave it | none needed |
+| `font-variant-caps` | Real small capitals | `[font-variant-caps:small-caps]` |
+| `font-variant-position` | Real super and subscripts | `[font-variant-position:super]` |
+| `font-variant-numeric: tabular-nums` | Equal-width digits | `tabular-nums` |
+| `font-variant-numeric: slashed-zero` | Tell 0 from O | `slashed-zero` |
+
+## Spacing and layout
+
+| Declaration | What it does | Tailwind |
+| --- | --- | --- |
+| `letter-spacing` | Space between letters | `tracking-*` |
+| `line-height` | Space between lines | `leading-*` |
+| `font-kerning` | Kerning on or off | `[font-kerning:none]` |
+| `text-box: trim-both` | Trim space above and below | `[text-box:trim-both_cap_alphabetic]` |
+| `max-width` on text columns | Cap at ~60–75 characters per line | `max-w-xl` / `max-w-2xl` / `max-w-prose` |
+| `text-align` | Where lines start and end | `text-start` / `text-center` |
+
+## Wrapping and overflow
+
+| Declaration | What it does | Tailwind |
+| --- | --- | --- |
+| `text-wrap: balance` | Even out heading lines | `text-balance` |
+| `text-wrap: pretty` | Keep a lone word off the last line | `text-pretty` |
+| `text-overflow: ellipsis` | Ellipsis for clipped text | `text-ellipsis` |
+| `overflow: hidden` + `text-overflow: ellipsis` + `white-space: nowrap` | Single-line truncation | `truncate` |
+| `-webkit-line-clamp` + `display: -webkit-box` + `-webkit-box-orient: vertical` + `overflow: hidden` | Cut off after N lines | `line-clamp-*` |
+| `overflow-wrap: break-word` | Break long strings | `break-words` |
+| `white-space: nowrap` | Stop wrapping | `whitespace-nowrap` |
+| `text-transform` | Change the casing | `uppercase` / `capitalize` |
+| `hyphens: auto` | Hyphenate by the element's `lang` | `hyphens-auto` |
+
+## Decoration and interaction
+
+| Declaration | What it does | Tailwind |
+| --- | --- | --- |
+| `text-decoration-line: underline` | Draw an underline | `underline` |
+| `text-decoration-color` | Underline color | `decoration-*` |
+| `text-decoration-thickness` | Underline thickness | `decoration-1` / `decoration-2` |
+| `text-underline-offset` | Push the line down | `underline-offset-*` |
+| `text-underline-position: from-font` | Underline position from the font | `[text-underline-position:from-font]` |
+| `text-decoration-style` | Dotted, dashed or wavy | `decoration-dotted` / `decoration-wavy` |
+| `text-decoration-thickness: from-font` | Underline set by the font | `decoration-from-font` |
+| `text-decoration-skip-ink` | Gaps around descenders; `auto` is the default | `[text-decoration-skip-ink:auto]` |
+| `caret-color` | Tint the text cursor | `caret-*` |
+| `user-select: none` | Suppress selection on a verified drag/gesture conflict only | `select-none` |
+| `text-shadow` | Shadow behind the letters | `text-shadow-*` |
+| `-webkit-text-stroke` | Outline the letters | `[-webkit-text-stroke:1px_black]` |
+| `background-clip: text` | Clip a background to the letters | `bg-clip-text` |
+| `initial-letter` | Size a drop cap | `[initial-letter:3]` |
+
+## details-and-accessibility
+
+# Details and accessibility
+
+Underlines, selection, form text and decorative text.
+
+## Underlines
+
+From the font's own metrics:
+
+```css
+a {
+  text-underline-position: from-font;
+  text-decoration-thickness: from-font;
+}
+```
+
+A dotted underline on an abbreviation:
+
+```css
+abbr {
+  text-decoration: underline dotted;
+}
+```
+
+Or tune manually:
+
+```css
+a {
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  text-decoration-color: var(--color-gray-1000);
+  transition: text-decoration-color 200ms ease-out;
+}
+
+a:hover {
+  text-decoration-color: var(--color-gray-1200);
+}
+```
+
+## Selection
+
+- `::target-text` styles the phrase a shared link scrolls to.
+- The Custom Highlight API styles ranges you pick yourself, like search matches, without extra markup.
+
+## Forms and editable text
+
+- `::placeholder` styles the hint in an empty field.
+- `caret-color` colors the blinking insertion bar. A fully custom caret is hard to build and rarely worth it.
+
+### iOS input zoom
+
+**Size up on mobile.** The input renders at `16px` on small screens and drops to the design size from the `sm` breakpoint up. Nothing to compensate, but the mobile input no longer matches the desktop one.
+
+```tsx
+<input className="text-base sm:text-sm" type="email" />
+```
+
+**Scale the text down.** Keep `font-size` at `16px` so Safari never zooms, then render at the intended size with a transform. Widen the element by the inverse of the scale so it still fills its container once shrunk. Divide `line-height` by the same factor so the intended leading survives. `origin-left` pins the text to the start edge, `origin-right` under RTL. Above the breakpoint, drop the transform and set the real size.
+
+```tsx
+// 13px rendered from a 16px font-size: 13 / 16 = 0.8125
+<div className="flex h-10 items-center overflow-hidden rounded-[10px] bg-gray-300 px-2.5 focus-within:outline focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-blue-500">
+  <input
+    className="h-full w-[calc(100%/0.8125)] shrink-0 origin-left rtl:origin-right scale-[0.8125] bg-transparent text-base leading-[calc(1.125/0.8125)] outline-none sm:w-full sm:scale-100 sm:text-[13px]"
+    type="email"
+  />
+</div>
+```
+
+`shrink-0` preserves the compensated width inside the flex wrapper. The wrapper clips the oversized layout box and draws an unscaled focus outline. Use the project's focus color and verify its contrast against the surrounding surface.
+
+The transform shrinks the whole box, not only the glyphs, so let a wrapper draw the field's surface and keep the input transparent. A background, border or ring on the scaled element shrinks with the text and misses the intended hit area.
+
+## Decorative text
+
+| Property | Effect |
+| --- | --- |
+| `::first-letter` | Drop cap, widely supported |
+| `::first-line` | Styles only the first line |
+| `initial-letter` | Sizes the drop cap; Safari needs `-webkit-initial-letter`, no Firefox yet |
+| `background-clip: text` | Clips a background or gradient to the letter shapes |
+| `-webkit-text-stroke` | Outlines the letters; works across modern browsers despite the prefix |
+| `text-shadow` | Like `box-shadow` but follows the character shapes |
+
+If `-webkit-text-stroke` draws lines inside the letters, the font has overlapping contours. Variable fonts often keep them unmerged, so use the static cut for stroked text.
+
+## spacing-and-sizing
+
+# Spacing and sizing
+
+Units, a starting type scale, the heading mapping, line-height for wrapping text and text trimming.
+
+## Units
+
+| Unit | Behavior |
+| --- | --- |
+| `px` | Fixed |
+| `em` | Scales with the current font size |
+| `rem` | Scales with the root font size |
+| `%` on `font-size` | Relative to the parent's font size, behaves like `em` |
+
+## Type scale
+
+Pick an existing scale or define one. Tailwind's `text-xs` through `text-9xl`, each pairing a size with a line height, is a solid ready-made choice.
+
+A starting point for a product interface, named by role:
+
+```css
+:root {
+  --text-caption: 0.8125rem;
+  --text-body: 1rem;
+  --text-heading: 1.125rem;
+  --text-title: 1.5rem;
+  --text-display: 2.25rem;
+}
+```
+
+| Role | Size | Line-height | Weight |
+| --- | --- | --- | --- |
+| Display | `2.25rem` (36px) | `1.1` | `600` |
+| Title | `1.5rem` (24px) | `1.2` | `600` |
+| Heading | `1.125rem` (18px) | `1.3` | `600` |
+| Body | `1rem` (16px) | `1.5` | `400` |
+| Caption | `0.8125rem` (13px) | `1.4` | `400` |
+
+Emphasis within a role is one weight step up (`400` → `500`), not a size change.
+
+## Heading hierarchy
+
+```css
+h1 { font-size: var(--text-display); }
+h2 { font-size: var(--text-title); }
+h3 { font-size: var(--text-heading); }
+```
+
+In Tailwind, centralize the per-level classes in a component or `@layer base` rather than repeating them inline.
+
+## Line-height for wrapping text
+
+```css
+/* Bad: card description at heading leading */
+.card-description { line-height: 1.1; }
+
+/* Good: it wraps to 3 lines, so it reads as body text */
+.card-description { line-height: 1.4; }
+```
+
+## Text trimming with text-box
+
+`text-box` takes which edges to trim (`trim-both`, `trim-start`, `trim-end`) and where:
+
+| Keyword | Trims at |
+| --- | --- |
+| `cap` | The cap height (top) |
+| `alphabetic` | The baseline (bottom) |
+| `text` | The font's own text edge, keeping room for descenders |
+
+```css
+/* trim top and bottom */
+.badge {
+  text-box: trim-both cap alphabetic;
+}
+
+/* trim only the top */
+.heading {
+  text-box: trim-start cap;
+}
+
+/* trim only the bottom */
+.label {
+  text-box: trim-end alphabetic;
+}
+```
+
+Supported in Chromium 133+ and Safari 18.2+, not yet Firefox. Unsupported browsers keep the default leading.
+
+## variable-fonts-and-opentype
+
+# Variable fonts and OpenType
+
+What a font file can do beyond drawing letters and how to reach those abilities from CSS.
+
+## Static vs variable
+
+- **Static font:** one weight and one style per file. Regular, medium and bold is three files.
+- **Variable font:** a whole range in one file. Any value in it works, such as `font-weight: 589`.
+
+A variable font is not automatically better. At one or two weights, static files can be smaller. At several weights, optical sizes or custom axes, a variable font usually wins.
+
+## Disable synthesis narrowly
+
+`font-synthesis: none` disables weight, style, small-cap and position synthesis together. Scope it to an isolated treatment you have verified across the fallback stack:
+
+```css
+.brand-wordmark {
+  font-synthesis: none;
+}
+```
+
+To disable one mode, use its longhand: `font-synthesis-weight`, `font-synthesis-style`, `font-synthesis-small-caps` or `font-synthesis-position`.
+
+## Axes
+
+Variable-font controls, each with a four-letter tag. A font supports only the axes its designer included.
+
+| Axis | Tag | Controls |
+| --- | --- | --- |
+| Weight | `wght` | Stroke thickness (like `font-weight`) |
+| Optical size | `opsz` | Details and spacing tuned for the display size |
+| Width | `wdth` | Glyph width |
+| Slant | `slnt` | Slant angle |
+| Custom | e.g. `GRAD` (Roboto Flex) | Whatever the designer built |
+
+Inter's variable file exposes only `wght` and `opsz`.
+
+Optical sizes predate variable fonts. Many families still ship them as separate `Text` and `Display` files instead of an `opsz` axis.
+
+## Raw tags only for custom axes
+
+`font-variation-settings` silently does nothing on a non-variable fallback, where `font-weight` still picks the nearest face:
+
+```css
+/* Good: common axes use the properties */
+.heading {
+  font-weight: 650;
+}
+
+/* Good: custom axis with no property of its own */
+.heading-grade {
+  font-variation-settings: "GRAD" 80;
+}
+
+/* Bad: weight via raw tag breaks on fallback fonts */
+.heading {
+  font-variation-settings: "wght" 650;
+}
+```
+
+## OpenType features
+
+Unlike axes, features work the same on static and variable fonts. A font ships only the features its designer included.
+
+| Tag | Feature |
+| --- | --- |
+| `tnum` | Tabular numbers: every digit the same width |
+| `zero` | Slashed zero: `0` distinct from `O` |
+| `liga` | Ligatures: joins pairs like "fi" into one shape |
+| `ss01`–`ss20` | Stylistic sets (numbered slots) |
+| `cv01`–`cv99` | Character variants (numbered slots) |
+
+Common features have a `font-variant-*` property, and `font-feature-settings` is for the rest:
+
+```css
+/* Good: common features use the properties */
+.price {
+  font-variant-numeric: tabular-nums;
+}
+
+.id {
+  font-variant-numeric: slashed-zero;
+}
+
+/* Good: niche feature with no property of its own */
+.logo {
+  font-feature-settings: "ss01" 1;
+}
+```
+
+## Small caps, superscripts, subscripts
+
+- **Small capitals:** uppercase letters drawn at a smaller size. Enable real ones with `font-variant-caps`.
+- **Superscripts** sit above the normal line, the 2 in x², and **subscripts** below it, as in H₂O. Enable proper glyphs with `font-variant-position`.
+
+Both require the font to include the glyphs.
+
+## Stylistic sets and character variants
+
+`ss01` = stylistic set, slot 01. `cv11` = character variant, slot 11. What each slot does differs font to font, which is why they are numbered, not named. Check the font's docs. In Inter, `ss01` switches to open digits and `cv11` swaps in a single-story `a`.
+
+## wrapping-and-punctuation
+
+# Wrapping and punctuation
+
+Line length, typographic characters and mixed-direction text.
+
+## Measure (line length)
+
+Any unit works. `65ch` measures characters directly, one `ch` being the width of the `0` in the current font, and a pixel or rem cap is just as good. At a `16px` body size the 60–75 character range lands roughly between `560px` and `680px` depending on the font. Tailwind's `max-w-xl` (`576px`), `max-w-2xl` (`672px`) and `max-w-prose` (`65ch`) all fit. Recheck the cap if the body font size changes.
+
+## Smart punctuation
+
+| Instead of | Use |
+| --- | --- |
+| Straight quotes `"..."` | Curly quotes that curve around the text (keep straight quotes in code) |
+| Hyphen in ranges | En dash: `2010–2020` |
+| Two hyphens for an aside | Em dash character |
+| Three periods `...` | The single ellipsis character `…` |
+| Regular space in `10 km` | `&nbsp;` so the value never breaks apart |
+| Uncontrolled word breaks | `&shy;` to mark where a word may break, or `hyphens: auto` with the correct `lang` |
+
+## Internationalization
+
+- **Long paragraphs align by their own language.** A one- or two-line snippet follows the surrounding UI's direction. A paragraph of three or more lines aligns to its own script instead, so an English paragraph stays start-aligned LTR even inside an RTL interface. `text-align: start` with the correct `lang` and `dir` on the paragraph element handles this.
+- **Digits keep their order.** A phone number or "541" reads identically in RTL, because the Unicode bidi algorithm keeps digit runs left to right. `<bdi>` repairs a value whose order adjacent RTL text disturbs.
+
+## SKILL
+
+---
+name: better-ui
+description: Polishes surfaces, icons and motion with exact values for border radius, optical alignment, shadows, icon states and animation.
+---
+
+# UI polish
+
+This skill holds the visual polish for surfaces, icons and motion, with the exact value each detail takes. It applies once the underlying interaction is sound, and a polish finding never outranks a broken interaction.
+
+## Exact values, optional polish
+
+The values below are exact, not ranges to approximate. `cubic-bezier(0.2, 0, 0, 1)` is not `cubic-bezier(0.4, 0, 0.2, 1)`, and `0.96` is not `0.95`. The optical nudges and the concentric padding cutoff are the exceptions. They are starting points, judged by eye.
+
+Keep the project's component library, tokens and density, and match its motion language wherever no rule here gives a value. A deliberate and consistent project convention, such as a style with no shadows, is a preference and not a finding. The same detail done two ways within the project is a finding.
+
+Text wrapping, font rendering, tabular numbers and text spacing belong to `better-typography`. Hit areas, keyboard support, ARIA and the reduced-motion requirement belong to `better-accessibility`. Grouping, section spacing, breakpoints and spatial RTL belong to `better-layout`, except directional icon mirroring. Color tokens and contrast measurement belong to `better-colors`.
+
+## Outer radius equals inner radius plus padding
+
+Where nested surfaces share a visible, even inset, the outer radius is the inner radius plus the padding plus any border width. Past `24px` of padding, or where the padding is deliberately asymmetric, treat the layers as separate surfaces and keep each one's radius token. Recipes are in [surfaces.md](surfaces.md).
+
+## Align optically where geometry looks off
+
+Where geometric centering looks off, nudge by eye. Give a button `2px` less padding on its icon side, shift a play triangle toward its point and fix asymmetric glyphs in the SVG itself. Recipes are in [surfaces.md](surfaces.md#optical-alignment).
+
+## Shadows for elevation, borders for structure
+
+Where a border exists only to create depth, replace it with layered transparent `box-shadow` values. Keep borders on dividers, separators, table cells and selected states. Keep them on form inputs too, whose boundary needs 3:1 non-text contrast under `better-accessibility`. Focus rings belong to `better-accessibility` as well.
+
+Forced-colors mode removes every `box-shadow`. Keep `border: 1px solid transparent` under a shadow ring so that mode still draws an edge. Recipes are in [surfaces.md](surfaces.md#shadow-recipes).
+
+## Outline images in pure black or white
+
+Give content images a `1px` outline inset by `1px`. Use `oklch(0 0 0 / 0.1)` in light mode and `oklch(1 0 0 / 0.1)` in dark. Never use a palette near-black, a tinted neutral or the accent color, because the tint shows as a colored fringe on the image edge. Skip transparent artwork such as logos and illustrations. The recipe is in [surfaces.md](surfaces.md#image-outlines).
+
+## Transitions, not keyframes, for interactive state
+
+Drive interactive state changes with CSS transitions or a motion library's springs, which retarget when the user reverses mid-flight. Keyframes run a fixed timeline and cannot reverse, so reserve them for sequences that run once. See [animations.md](animations.md).
+
+## Press scales to 0.96
+
+A pressed button scales to `0.96` over `150ms` with `ease-out`, and a disabled one never scales. Give the button an opt-out where the motion would distract, through the component's existing variant API or a `static` prop. See [recipes for CSS, Tailwind and Motion](animations.md#scale-on-press).
+
+## High-frequency interactions respond instantly
+
+Keystrokes, row hovers and tab switches get instant feedback, or a transition of `150ms` or less on `opacity` or `background-color`. Reserve expressive motion for infrequent moments such as a view's first load, a success state or an empty state.
+
+Every animated state change also leaves a static cue in the form of a color, icon or label. Motion is never the only feedback channel.
+
+## Gate motion behind the reduced-motion preference
+
+`better-accessibility` owns the requirement, and no recipe here ships without it. Run movement, scale and blur only under `prefers-reduced-motion: no-preference`. Under reduced motion, replace them with an opacity cross-fade rather than removing the element instantly. Recipes for CSS, Tailwind and Motion are in [animations.md](animations.md#reduced-motion-fallback).
+
+## Stagger infrequent entrances by 100ms
+
+Where sequence communicates hierarchy in a staged entrance, split the content into semantic chunks such as title, description and actions. Stagger them `100ms` apart, each entering with opacity, `4px` of blur and `12px` of `translateY` over `300ms` with `ease-out`. Never stagger routine interactions. See [enter-exit.md](enter-exit.md).
+
+## Exits are shorter and smaller than enters
+
+Exit with opacity, `4px` of blur and a fixed `-12px` `translateY` over `150ms` with `ease-out`, never the full container height. Slide fully out only where the destination carries meaning, such as a drawer closing. Remove the element instantly where motion adds no information. See [enter-exit.md](enter-exit.md#exit-animations).
+
+## Skip state animations on first render
+
+Set `initial={false}` on an `AnimatePresence` that wraps a state swap, so the default state does not animate in on mount. Never set it around an intentional entrance such as a staggered hero. See [animations.md](animations.md#skip-animation-on-page-load).
+
+## Cross-fade contextual icons with exact values
+
+Where an icon swaps on an infrequent state change, such as play to pause or copy to copied, cross-fade it. Scale runs `0.25` to `1`, opacity `0` to `1` and blur `4px` to `0px`. With a motion library, use `{ type: "spring", duration: 0.3, bounce: 0 }`, and bounce is always `0`. Without one, keep both icons in the DOM and cross-fade over `300ms` with `cubic-bezier(0.2, 0, 0, 1)`.
+
+A tab's icon swap and the actions a row reveals on hover fall under **High-frequency interactions respond instantly**. Both recipes are in [icon-transitions.md](icon-transitions.md).
+
+## Suppress transitions on theme switch
+
+Disable every transition for the theme swap, force a style flush and restore transitions after the next frame. Otherwise every color transition fires at once and the switch smears. See the [recipe](animations.md#suppress-transitions-on-theme-switch).
+
+## Transition only what changes
+
+Name the exact properties, as in `transition-property: scale, opacity`, and never `all`. See [performance.md](performance.md).
+
+## Name the animated property in will-change
+
+Add `will-change` only after you see first-frame stutter, and name the property you animate: `scale` for `scale`, `transform` for `transform`. Limit it to transform properties, `opacity` and `filter`, and never use `all`. See [performance.md](performance.md#use-will-change-sparingly).
+
+## Hover effects only on hover-capable pointers
+
+Put hover-only styling behind `@media (hover: hover)`. On touch, `:hover` latches after a tap and reads as a stuck selected state. Tailwind 4's `hover:` variant already compiles under that query, and Tailwind 3's does not. Where a control draws its own pressed state, set `-webkit-tap-highlight-color: transparent` so the default gray flash does not double it.
+
+## Contain scroll inside overlays
+
+Give scrollable dialogs, drawers, menus and side panels `overscroll-behavior: contain`, so scrolling past their end never scrolls the page behind.
+
+## Match icon stroke to text weight
+
+An icon's rendered stroke tracks the weight of the text beside it, from `1.5px` at 400 to `2.5px` at 700. Use one icon library per surface. The table, sizing and grid rules are in [icons.md](icons.md).
+
+## One SVG, recolored per state
+
+Icons use `currentColor` and take hover, selected and disabled states from CSS color and opacity, never from separate assets. Outline is the default variant, and fill marks the active state. Under `dir="rtl"`, mirror only icons whose meaning follows reading direction. See [icons.md](icons.md#icons-in-rtl).
+
+## Before you finish
+
+| Detection | Fix |
+| --- | --- |
+| Padded parent and child with the same `rounded-*` or `border-radius` | Add the padding to the outer radius |
+| `box-shadow: 0 0 0 1px` ring with no `border` beside it | `border: 1px solid transparent` |
+| `outline-slate-*`, `outline-zinc-*` or a hex outline color on `img` | `outline-black/10` and `dark:outline-white/10` |
+| `transition-all` or `transition: all` | Name the changing properties |
+| `animation:` set on `:hover`, `.open` or another toggled class | A transition on the same properties |
+| `active:scale-95`, `scale-90` or `whileTap` below `0.96` | `0.96` |
+| `:active` scale with no `:disabled` exclusion | `enabled:active:` or `:not(:disabled):active` |
+| `bounce:` set to anything but `0` | `bounce: 0` |
+| `opacity: 0` in a base rule that only an `animation` reveals | Hidden state in the `from` keyframe, `animation-fill-mode: both` |
+| `translate`, `scale`, `filter` or `motion.*` animation with no `prefers-reduced-motion`, `motion-safe:` or `MotionConfig` guard | Gate it and cross-fade opacity under reduced motion |
+| Color transitions plus a theme toggle with no `disableTransitionOnChange` or override | The theme-switch suppression recipe |
+| `will-change: all`, or `will-change` on an element that never animates | Name the animated property or delete it |
+| `fill="#..."` or `stroke="#..."` inside an icon SVG | `currentColor` |
+| Plain-CSS `:hover` or Tailwind 3 `hover:` outside `@media (hover: hover)` | Wrap it in the query |
+| `overflow: auto` or `overflow-y-auto` on a dialog, drawer or menu with no `overscroll-behavior` | `overscroll-behavior: contain` |
+
+## Reporting
 
 ## animations
 
 # Animations
 
-Interruptible transitions, press feedback and the restraint that decides whether to animate at all. Staged entrances and exits live in [enter-exit.md](enter-exit.md); icon swaps in [icon-transitions.md](icon-transitions.md).
+Recipes for interruptible transitions, press feedback, first-render behavior, theme switches and the reduced-motion fallback. Staged entrances and exits live in [enter-exit.md](enter-exit.md), and icon swaps in [icon-transitions.md](icon-transitions.md).
 
 ## Interruptible animations
 
-Users change intent mid-interaction. Animations that cannot be interrupted make the interface feel broken.
-
-### CSS transitions vs. keyframes
-
-| | CSS Transitions | CSS Keyframe Animations |
+| | CSS transitions | CSS keyframe animations |
 | --- | --- | --- |
-| **Behavior** | Interpolate toward latest state | Run on a fixed timeline |
-| **Interruptible** | Yes, retargets mid-animation | No, restarts from beginning |
-| **Use for** | Interactive state changes (hover, toggle, open/close) | Staged sequences that run once (enter animations, loading) |
-| **Duration** | Fixed; retargets the value mid-flight, not the timeline | Fixed timeline, restarts from the beginning |
+| **Behavior** | Interpolate toward the latest state | Run on a fixed timeline |
+| **Interrupted** | Retarget mid-flight and reverse | Snap or restart from the beginning |
+| **Use for** | Hover, toggle, open and close | Sequences that run once, such as enters and loading |
 
 ```css
-/* Good: interruptible transition for a toggle */
+/* Good: clicking again mid-animation reverses smoothly */
 .drawer {
   transform: translateX(-100%);
   transition: transform 200ms ease-out;
@@ -4642,27 +6158,13 @@ Users change intent mid-interaction. Animations that cannot be interrupted make 
   transform: translateX(0);
 }
 
-/* Clicking again mid-animation smoothly reverses, no jank */
-```
-
-```css
-/* Bad: keyframe animation for interactive element */
+/* Bad: closing mid-animation snaps */
 .drawer.open {
   animation: slideIn 200ms ease-out forwards;
 }
-
-/* Closing mid-animation snaps or restarts, feels broken */
 ```
 
-Prefer CSS transitions for interactive elements. Reserve keyframes for one-shot sequences.
-
 ## Scale on press
-
-A subtle scale-down on click gives buttons tactile feedback. Always `scale(0.96)`, never below `0.95`, which feels exaggerated. Use CSS transitions so a release mid-press returns smoothly.
-
-Not every button needs it. Add a `static` prop that disables the scale where the motion would distract.
-
-### CSS example
 
 ```css
 .button {
@@ -4671,33 +6173,29 @@ Not every button needs it. Add a `static` prop that disables the scale where the
   transition-timing-function: ease-out;
 }
 
-.button:active {
+.button:not(:disabled):active {
   scale: 0.96;
 }
 ```
 
-### Tailwind example
-
 ```tsx
-<button className="transition-transform duration-150 ease-out active:scale-[0.96]">
+// Tailwind
+<button className="transition-transform duration-150 ease-out enabled:active:scale-[0.96]">
   Click me
 </button>
-```
 
-### Motion example
-
-```tsx
-<motion.button whileTap={{ scale: 0.96 }}>
+// Motion
+<motion.button whileTap={disabled ? undefined : { scale: 0.96 }} disabled={disabled}>
   Click me
 </motion.button>
 ```
 
 ### Static prop pattern
 
-Extract the scale class into a variable and apply it conditionally on a `static` prop:
+Where the button has no variant API to carry the opt-out, apply the scale class conditionally on a `static` prop:
 
 ```tsx
-const tapScale = "active:not-disabled:scale-[0.96]";
+const tapScale = "enabled:active:scale-[0.96]";
 
 function Button({ static: isStatic, className, children, ...props }) {
   return (
@@ -4721,75 +6219,80 @@ function Button({ static: isStatic, className, children, ...props }) {
 
 ## Skip animation on page load
 
-Use `initial={false}` on `AnimatePresence` to stop enter animations firing on first render. An element already in its default state animates on later state changes, not on page load.
+The icon recipe in [icon-transitions.md](icon-transitions.md#motion) shows `initial={false}` used correctly. It suits icon swaps, toggles, tabs and segmented controls, anything with a default state on page load.
 
-### When it works
+Setting it around a first-time entrance skips that entrance entirely. Check the component on a full page refresh before adding it.
 
 ```tsx
-// Good: icon doesn't animate in on mount, only on state change
-<AnimatePresence initial={false} mode="popLayout">
-  <motion.span
-    key={isActive ? "active" : "inactive"}
-    initial={{ opacity: 0, scale: 0.25, filter: "blur(4px)" }}
-    animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-    exit={{ opacity: 0, scale: 0.25, filter: "blur(4px)" }}
-  >
-    <Icon />
+// Bad: initial={false} skips the staggered page enter
+<AnimatePresence initial={false}>
+  <motion.div initial="hidden" animate="visible" variants={...}>
+    ...
+  </motion.div>
+</AnimatePresence>
+```
+
+## Suppress transitions on theme switch
+
+Inject a stylesheet that turns off every transition, force a style flush so the new colors commit while it applies, then remove it after the next frame:
+
+```tsx
+"use client";
+
+import { useEffect } from "react";
+
+export function DisableThemeTransitions() {
+  useEffect(() => {
+    const mql = window.matchMedia("(prefers-color-scheme: dark)");
+
+    const handleChange = () => {
+      const style = document.createElement("style");
+      style.append(
+        document.createTextNode(
+          "*,*::before,*::after{transition:none !important}"
+        )
+      );
+      document.head.append(style);
+
+      void document.body.offsetHeight; // forces a synchronous style flush
+
 
 ## enter-exit
 
 # Enter and exit animations
 
-Staged entrances and the exits that follow them. For interactive state feedback see [animations.md](animations.md); for icon swaps see [icon-transitions.md](icon-transitions.md).
+Recipes for staged entrances and the exits that follow them. For interactive state feedback see [animations.md](animations.md), and for icon swaps see [icon-transitions.md](icon-transitions.md).
 
-## Enter animations: split and stagger
+## Enter animations
 
-Use this for infrequent staged entrances where sequence communicates hierarchy: the first load of a page hero, a success state, an empty state. Break a large container into semantic chunks and animate each one. Never stagger routine interactions such as row hovers, keystrokes, or repeated tab changes.
+1. **Split** into semantic groups such as title, description and actions.
+2. **Stagger** the groups `100ms` apart.
+3. **Split a short display headline** into words, staggered `80ms` apart, where it should read word by word.
+4. **Combine** `opacity`, `blur` and `translateY` for each group's enter.
 
-### Step by step
-
-1. **Split** into logical groups (title, description, buttons)
-2. **Stagger** with ~100ms delay between groups
-3. **For titles**, consider splitting into individual words with ~80ms stagger
-4. **Combine** `opacity`, `blur` and `translateY` for the enter effect
-
-### Code example
+### Motion
 
 ```tsx
-// Motion (Framer Motion): staggered enter
+const item = {
+  hidden: { opacity: 0, y: 12, filter: "blur(4px)" },
+  visible: {
+    opacity: 1,
+    y: 0,
+    filter: "blur(0px)",
+    transition: { duration: 0.3, ease: "easeOut" },
+  },
+};
+
 function PageHeader() {
   return (
     <motion.div
       initial="hidden"
       animate="visible"
-      variants={{
-        visible: { transition: { staggerChildren: 0.1 } },
-      }}
+      variants={{ visible: { transition: { staggerChildren: 0.1 } } }}
     >
-      <motion.h1
-        variants={{
-          hidden: { opacity: 0, y: 12, filter: "blur(4px)" },
-          visible: { opacity: 1, y: 0, filter: "blur(0px)" },
-        }}
-      >
-        Welcome
-      </motion.h1>
-
-      <motion.p
-        variants={{
-          hidden: { opacity: 0, y: 12, filter: "blur(4px)" },
-          visible: { opacity: 1, y: 0, filter: "blur(0px)" },
-        }}
-      >
-        A description of the page.
-      </motion.p>
-
-      <motion.div
-        variants={{
-          hidden: { opacity: 0, y: 12, filter: "blur(4px)" },
-          visible: { opacity: 1, y: 0, filter: "blur(0px)" },
-        }}
-      >
+      <motion.h1 variants={item}>Welcome</motion.h1>
+      <motion.p variants={item}>A description of the page.</motion.p>
+      <motion.div variants={item}>
         <Button>Get started</Button>
       </motion.div>
     </motion.div>
@@ -4797,37 +6300,72 @@ function PageHeader() {
 }
 ```
 
-### CSS-only stagger
+### CSS
+
+The hidden state lives in the `from` keyframe, so an item whose animation never runs stays visible. Reduced motion keeps only the opacity keyframe.
 
 ```css
 .stagger-item {
-  opacity: 0;
-  transform: translateY(12px);
-  filter: blur(4px);
-  animation: fadeInUp 400ms ease-out forwards;
+  animation: fade-in 300ms ease-out both;
 }
 
-.stagger-item:nth-child(1) { animation-delay: 0ms; }
+@media (prefers-reduced-motion: no-preference) {
+  .stagger-item {
+    animation-name: fade-in-up;
+  }
+}
+
 .stagger-item:nth-child(2) { animation-delay: 100ms; }
 .stagger-item:nth-child(3) { animation-delay: 200ms; }
 
-@keyframes fadeInUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-    filter: blur(0);
+@keyframes fade-in {
+  from { opacity: 0; }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+    filter: blur(4px);
   }
 }
 ```
 
+### Entering from display: none
+
+A popover, dialog or element toggled from `display: none` has no previous style to transition from. `@starting-style` supplies one, and `transition-behavior: allow-discrete` keeps it rendered through the exit. The open state's duration applies on enter and the closed state's on exit.
+
+```css
+[popover] {
+  opacity: 0;
+  translate: 0 12px;
+  transition-property: opacity, translate, display, overlay;
+  transition-duration: 150ms;
+  transition-timing-function: ease-out;
+  transition-behavior: allow-discrete;
+}
+
+[popover]:popover-open {
+  opacity: 1;
+  translate: 0 0;
+  transition-duration: 300ms;
+}
+
+@starting-style {
+  [popover]:popover-open {
+    opacity: 0;
+    translate: 0 12px;
+  }
+}
+```
+
+`@starting-style` and discrete `display` transitions are Baseline 2024. `overlay` is Chromium only, and browsers without support show and hide instantly.
+
 ## Exit animations
 
-Exits are softer and less attention-grabbing than enters. The user's focus is moving to the next thing, so do not fight for it.
-
-### Subtle exit (recommended)
+### Subtle exit
 
 ```tsx
-// Small fixed translateY: indicates direction without drama
 <motion.div
   exit={{
     opacity: 0,
@@ -4840,38 +6378,19 @@ Exits are softer and less attention-grabbing than enters. The user's focus is mo
 </motion.div>
 ```
 
-### Full exit (when context matters)
-
-```tsx
-// Slide fully out: use when spatial context is important
-// (e.g., a card returning to a list, a drawer closing)
-<motion.div
-  exit={{
-    opacity: 0,
-    x: "-100%",
-    transition: { duration: 0.2, ease: "easeOut" },
-  }}
->
-  {content}
-</motion.div>
-```
-
-### Good vs. bad
-
+### Full exit
 
 ## icon-transitions
 
 # Icon transitions
 
-Cross-fading an icon when it changes contextually or by state, with and without a motion library. Icon weight, color and direction live in [icons.md](icons.md).
+Cross-fade recipes for an icon that swaps on a state change, with and without a motion library. Icon weight, color and direction live in [icons.md](icons.md).
 
-## Contextual icon animations
+## Which library
 
-When icons appear or disappear contextually, on hover or a state change, animate them with `opacity`, `scale` and `blur` rather than toggling visibility.
+Check the project's `package.json`. Import from `"motion/react"` when `motion` is installed, or `"framer-motion"` when that is. Where both exist, follow the imports the component or its nearest peers already use. Where neither is present, use the CSS cross-fade and never add a dependency just for icon transitions.
 
-### Motion example
-
-This uses the `motion` package. Where the project has `framer-motion`, import the same APIs from `"framer-motion"`. Never mix an installed package with the other's import path.
+## Motion
 
 ```tsx
 import { AnimatePresence, motion } from "motion/react";
@@ -4879,7 +6398,7 @@ import { AnimatePresence, motion } from "motion/react";
 function IconButton({ isActive, icon: Icon }) {
   return (
     <button>
-      <AnimatePresence mode="popLayout">
+      <AnimatePresence initial={false} mode="popLayout">
         <motion.span
           key={isActive ? "active" : "inactive"}
           initial={{ opacity: 0, scale: 0.25, filter: "blur(4px)" }}
@@ -4895,134 +6414,102 @@ function IconButton({ isActive, icon: Icon }) {
 }
 ```
 
-### CSS transition approach (no Motion)
+`initial={false}` keeps the default icon from animating in on mount.
 
-Without Motion or Framer Motion, keep both icons in the DOM and cross-fade with CSS transitions. Neither unmounts, so enter and exit both animate smoothly.
+## CSS, both icons in the DOM
 
-One icon is absolutely positioned on top of the other. Toggling state cross-fades them, the entering icon scaling up from `0.25` while the exiting one scales down to `0.25`, both with opacity and blur.
+Both icons stay mounted in one grid cell, so enter and exit both animate and the larger icon sets the size. The `motion-reduce:` classes leave only the opacity fade under reduced motion.
 
 ```tsx
+const layer = cn(
+  "[grid-area:1/1] transition-[opacity,filter,scale] duration-300",
+  "ease-[cubic-bezier(0.2,0,0,1)]",
+  "motion-reduce:scale-100 motion-reduce:blur-[0px]"
+);
+const shown = "scale-100 opacity-100 blur-[0px]";
+const hidden = "scale-[0.25] opacity-0 blur-[4px]";
+
 function IconButton({ isActive, ActiveIcon, InactiveIcon }) {
   return (
     <button>
-      <div className="relative">
-        <div
-          className={cn(
-            "absolute inset-0 flex items-center justify-center",
-            "transition-[opacity,filter,scale] duration-300",
-            "ease-[cubic-bezier(0.2,0,0,1)]",
-            isActive
-              ? "scale-100 opacity-100 blur-0"
-              : "scale-[0.25] opacity-0 blur-[4px]"
-          )}
-        >
+      <span className="grid place-items-center">
+        <span className={cn(layer, isActive ? shown : hidden)}>
           <ActiveIcon />
-        </div>
-        <div
-          className={cn(
-            "transition-[opacity,filter,scale] duration-300",
-            "ease-[cubic-bezier(0.2,0,0,1)]",
-            isActive
-              ? "scale-[0.25] opacity-0 blur-[4px]"
-              : "scale-100 opacity-100 blur-0"
-          )}
-        >
+        </span>
+        <span className={cn(layer, isActive ? hidden : shown)}>
           <InactiveIcon />
-        </div>
-      </div>
+        </span>
+      </span>
     </button>
   );
 }
 ```
 
-The non-absolute icon, `InactiveIcon`, defines the layout size. The absolute one, `ActiveIcon`, overlays it without affecting flow.
+Tailwind 4's `scale-*` utilities write the `scale` property, so `transition-[...scale]` animates them. Tailwind 3's write `transform`, so name `transform` in the transition instead.
 
-### Choosing between Motion and CSS
-
-| | Motion (Framer Motion) | CSS transitions (both icons in DOM) |
-| --- | --- | --- |
-| **Enter animation** | Yes | Yes |
-| **Exit animation** | Yes (via `AnimatePresence`) | Yes (cross-fade, icon never unmounts) |
-| **Spring physics** | Yes | No, use `cubic-bezier(0.2, 0, 0, 1)` as approximation |
-| **When to use** | Project already uses `motion` or `framer-motion` | No motion dependency, or keeping bundle small |
-
-Check the project's `package.json`. Import from `"motion/react"` when `motion` is installed, or `"framer-motion"` when that is. Where both exist, follow the imports the component or its nearest peers already use. Where neither is present, use the CSS cross-fade and never add a dependency just for icon transitions.
-
-### When to animate icons
+## Which icons animate
 
 | Animate | Don't animate |
 | --- | --- |
-| Icons that appear on hover (action buttons) | Static navigation icons |
-| State change icons (play → pause, like → liked) | Decorative icons |
-| Icons in contextual toolbars | Icons that are always visible |
-| Loading/success state indicators | Icon labels (text next to icon) |
-
-Use exactly these values for contextual icon animations. Do not deviate:
-- `scale`: `0.25` → `1` (never use `0.5` or `0.6`)
-- `opacity`: `0` → `1`
-- `filter`: `"blur(4px)"` → `"blur(0px)"`
-- `transition`: `{ type: "spring", duration: 0.3, bounce: 0 }`; **bounce must always be `0`**, never `0.1` or any other value
-
+| Infrequent state swaps such as play to pause, like to liked or copy to copied | Hover-revealed actions in list rows |
+| Icons in a toolbar that appears on selection | Tab and navigation icon swaps |
+| Loading and success indicators | Decorative or always-visible icons |
 
 ## icons
 
 # Icons
 
-Icon weight, states, sizing and direction, the details that make icons sit naturally in an interface.
+Icon stroke weight, sizing, state colors, variants and RTL mirroring.
 
 ## Match icon stroke to text weight
 
-A hairline icon beside semibold text reads as broken; a heavy icon beside regular text shouts.
-
-| Adjacent text | Icon stroke width (24px grid) |
+| Adjacent text | Rendered stroke width |
 | --- | --- |
 | Regular (400), 14–16px | `1.5px` |
-| Medium/Semibold (500–600) | `2px` |
-| Bold (700), or emphasized standalone | `2.5px` |
+| Medium or semibold (500–600) | `2px` |
+| Bold (700), or an emphasized standalone icon | `2.5px` |
 
-```html
-<!-- Good: stroke tuned to the label weight -->
-<button class="flex items-center gap-2 font-semibold">
-  <PlusIcon stroke-width="2" class="size-4" />
+The widths are rendered pixels. A 24px-grid icon drawn at 16px scales its stroke by 16/24, so `stroke-width="2"` paints about `1.33px`. Use the library's absolute-stroke option, such as Lucide's `absoluteStrokeWidth`, or set `vector-effect: non-scaling-stroke` on the SVG's shapes.
+
+```tsx
+// Good: stroke tuned to the semibold label
+<button className="flex items-center gap-2 font-semibold">
+  <Plus size={16} strokeWidth={2} absoluteStrokeWidth />
   New project
 </button>
 
-<!-- Bad: default 1.5px stroke against a bold label -->
-<button class="flex items-center gap-2 font-bold">
-  <PlusIcon stroke-width="1.5" class="size-4" />
+// Bad: 1.5px stroke against a bold label
+<button className="flex items-center gap-2 font-bold">
+  <Plus size={16} strokeWidth={1.5} absoluteStrokeWidth />
   New project
 </button>
 ```
 
-Two related consistency rules:
-
-- **One optical strategy per surface.** Never mix icon libraries with incompatible stroke conventions on one toolbar. Where the library supports stroke variants, match them to adjacent text as above; otherwise keep the set's native stroke and use size or color for emphasis.
-- **Size icons relative to the text's cap height**, typically `1em`–`1.25em` when inline with text, so the pair scales together.
+- **One library per surface.** Never mix icon libraries on one toolbar. Where the library has no stroke variants, keep its native stroke and use size or color for emphasis.
+- **Size inline icons at `1em`–`1.25em`** of the adjacent font size, so the pair scales together.
 
 ## One SVG, recolored per state
 
-Never ship separate assets for default, hover, selected and disabled states. Use one SVG drawn with `currentColor` and let CSS state drive the color:
+Draw every icon with `currentColor` and let CSS state drive the color. Strip hardcoded fills such as `fill="#666"` to `currentColor` when importing icons.
 
 ```html
-<!-- Good: one asset, states are CSS -->
 <svg fill="none" stroke="currentColor" stroke-width="2">…</svg>
 ```
 
 ```css
-.icon-button { color: oklch(0.552 0.016 285.938); }
-.icon-button:hover { color: oklch(0.21 0.006 285.885); }
-.icon-button[aria-pressed="true"] { color: oklch(0.623 0.188 259.815); }
+/* Use the project's color tokens */
+.icon-button { color: var(--icon-muted); }
+.icon-button:hover { color: var(--icon-strong); }
+.icon-button[aria-pressed="true"] { color: var(--icon-active); }
 .icon-button:disabled { opacity: 0.4; }
 ```
 
 ```html
-<!-- Tailwind -->
-<button class="text-zinc-500 hover:text-zinc-900 aria-pressed:text-blue-600 disabled:opacity-40">
+<!-- Tailwind, with the project's token names -->
+<button class="text-icon-muted hover:text-icon-strong aria-pressed:text-icon-active disabled:opacity-40">
   <BookmarkIcon />
 </button>
 ```
-
-Hardcoded fills inside the SVG, such as `fill="#666"`, break this. Strip them to `currentColor` when importing icons.
 
 ## Outline default, fill active
 
@@ -5030,27 +6517,25 @@ Where an icon set offers outline and filled variants, use them as a state pair, 
 
 | Variant | Use for |
 | --- | --- |
-| Outline | Default state: toolbars, list rows, inline with text |
-| Fill | Selected/active state: the active tab, a toggled bookmark, a liked heart |
+| Outline | Default state in toolbars, list rows and inline text |
+| Fill | Selected or active state, such as the active tab, a toggled bookmark or a liked heart |
 
 ```tsx
 // Good: variant communicates state
 <TabIcon variant={isActive ? "solid" : "outline"} />
 
-// Bad: filled icons everywhere, so the active tab has no state signal
+// Bad: filled everywhere, so the active tab has no state signal
 <TabIcon variant="solid" />
 ```
 
-The swap between variants is a contextual icon animation. Use the exact cross-fade values in [icon-transitions.md](icon-transitions.md).
+Cross-fade the swap with the values in [icon-transitions.md](icon-transitions.md) only where the change is infrequent, such as a bookmark or a like. An active tab swaps instantly.
 
 ## Design at render size
 
-An icon that looks great at 48px collapses into mush at 16px. Thin interior lines, tight counters and fine texture all blur or alias when small.
-
-- Test every icon at the smallest size it will render, often `16px`. It must stay recognizable there.
-- Prefer simplified glyphs for small contexts over scaling down detailed artwork.
-- Keep icons on the pixel grid at their render size. A 16px icon drawn on a 24px grid with fractional scaling renders soft, so use the set's native grid sizes (`16`, `20`, `24`) rather than arbitrary scales.
-- Always SVG, never raster, so the same asset stays crisp at every density.
+- Test every icon at the smallest size it renders, often `16px`. It must stay recognizable there.
+- Prefer a simplified glyph for small contexts over scaling down detailed artwork.
+- Where the set ships per-size grids such as `16`, `20` and `24`, use the grid that matches the render size. A 24px drawing scaled to 16px lands off the pixel grid and renders soft.
+- Always SVG, never raster.
 
 ## Icons in RTL
 
@@ -5058,58 +6543,49 @@ Under `dir="rtl"`, flip icons whose meaning is tied to reading direction, and le
 
 | Flip | Don't flip |
 | --- | --- |
-| Back/forward arrows, chevrons in navigation | Logos and brand marks |
-| Text-block glyphs (alignment, lists, indent) | Checkmarks |
-| Speaker/volume waves (emanate in reading direction) | Physical objects: clocks, cups, pencils |
-| "Send" style directional glyphs | Media playback (play/rewind refer to tape direction, convention keeps them LTR) |
+| Back and forward arrows, navigation chevrons | Logos and brand marks |
+| Text-block glyphs for alignment, lists and indent | Checkmarks |
+| Speaker and volume waves | Physical objects such as clocks, cups and pencils |
+| Directional glyphs such as "send" | Media playback, which stays LTR by convention |
+
+Use one mechanism per element. Two flips on one icon can compound back to unflipped.
 
 ```css
-/* Good: mirror only direction-dependent icons */
 [dir="rtl"] .icon-directional {
   scale: -1 1;
 }
 ```
 
-```html
-<!-- Tailwind -->
-<ChevronRightIcon class="icon-directional rtl:-scale-x-100" />
+```tsx
+// Tailwind
+<ChevronRightIcon className="rtl:-scale-x-100" />
 ```
 
-Analyze composite icons part by part. A badge or slash overlay may keep its position even when the base glyph flips. Accessible names for icon-only buttons belong to `better-accessibility`.
+Analyze composite icons part by part. A badge or slash overlay may keep its position while the base glyph flips. Accessible names for icon-only buttons belong to `better-accessibility`.
 
 ## performance
 
 # Performance
 
-Transition specificity and GPU compositing hints.
+Recipes for transition specificity and compositing hints.
 
 ## Transition only what changes
 
-Never use `transition: all` or Tailwind's `transition-all`. Always name the exact properties that change. Tailwind's bare `transition` maps to a curated list of colors, opacity, shadow and transforms rather than `all`, and naming what changes is still better.
-
-### Why
-
-- `transition: all` forces the browser to watch every property for changes
-- Causes unexpected transitions on properties you didn't intend to animate (colors, padding, shadows)
-- Prevents browser optimizations
-
-### CSS example
+`transition: all` animates properties nobody meant to animate, such as colors on a theme flip. On layout properties such as `width` and `padding` it re-runs layout on every frame. Tailwind's bare `transition` is a curated list rather than `all`, and still covers more than most elements change.
 
 ```css
-/* Good: only transition what changes */
+/* Good: only what changes */
 .button {
   transition-property: scale, background-color;
   transition-duration: 150ms;
   transition-timing-function: ease-out;
 }
 
-/* Bad: transition everything */
+/* Bad: everything */
 .button {
   transition: all 150ms ease-out;
 }
 ```
-
-### Tailwind
 
 ```tsx
 // Good: explicit properties
@@ -5119,72 +6595,51 @@ Never use `transition: all` or Tailwind's `transition-all`. Always name the exac
 <button className="transition-all duration-150 ease-out">
 ```
 
-### Tailwind `transition-transform` note
+In Tailwind 4, `transition-transform` covers `transform, translate, scale, rotate`, and in Tailwind 3 only `transform`. Use it when animating transforms alone. Mixing transform and other properties takes the bracket syntax, as in `transition-[scale,opacity,filter]`.
 
-`transition-transform` in Tailwind maps to `transition-property: transform, translate, scale, rotate`, covering every transform-related property rather than only `transform`. Use it when animating transforms alone. For several non-transform properties, use the bracket syntax `transition-[scale,opacity,filter]`.
+## Use will-change sparingly
 
-## Use `will-change` sparingly
-
-`will-change` hints the browser to pre-promote an element to its own GPU compositing layer. Without it the browser promotes only when the animation starts, and that one-time promotion can cause a micro-stutter on the first frame.
-
-It helps most for `scale`, `rotation` and movement through `transform`. For other properties it does little, because the browser cannot composite them on the GPU anyway.
-
-### Rules
+`will-change` promotes an element to its own compositing layer ahead of time. Without it the browser promotes when the animation starts, and that one-time promotion can stutter on the first frame. Each extra layer costs memory, so never add it preemptively.
 
 ```css
-/* Good: specific property that benefits from GPU compositing */
+/* Good: names the property that animates */
 .animated-card {
-  will-change: transform;
+  will-change: scale, opacity;
 }
 
-/* Good: multiple compositor-friendly properties */
-.animated-card {
-  will-change: transform, opacity;
-}
-
-/* Bad: never use will-change: all */
+/* Bad: never all */
 .animated-card {
   will-change: all;
 }
 
-/* Bad: properties that can't be GPU-composited anyway */
+/* Bad: these never composite */
 .animated-card {
   will-change: background-color, padding;
 }
 ```
 
-### Useful properties
+| Property | Worth `will-change` |
+| --- | --- |
+| `transform`, `translate`, `scale`, `rotate` | Yes |
+| `opacity` | Yes |
+| `filter` | Yes |
+| `clip-path` | Rarely, since compositing it is not reliable across browsers |
+| `top`, `left`, `width`, `height` | No |
+| `background`, `border`, `color` | No |
 
-| Property | GPU-compositable | Worth using `will-change` |
-| --- | --- | --- |
-| `transform` | Yes | Yes |
-| `opacity` | Yes | Yes |
-| `filter` (blur, brightness) | Yes | Yes |
-| `clip-path` | Newer Chromium only | Rarely; not reliable cross-browser |
-| `top`, `left`, `width`, `height` | No | No |
-| `background`, `border`, `color` | No | No |
-
-### When to skip
-
-Modern browsers optimize well on their own. Add `will-change` only when you see first-frame stutter, which Safari benefits from most. Never add it preemptively to every animated element, since each extra compositing layer costs memory.
+`will-change` on a transform property or `filter` makes the element the containing block for its `position: fixed` descendants, so a fixed modal or tooltip inside it stops tracking the viewport. Any of these values also creates a stacking context, which can reorder `z-index` against siblings.
 
 ## surfaces
 
 # Surfaces
 
-Border radius, optical alignment, shadows and image outlines.
+Recipes for concentric radius, optical alignment, shadow rings and image outlines.
 
 ## Concentric border radius
 
-When nesting rounded elements, the outer radius must equal the inner radius plus the padding between them:
-
 ```
-outerRadius = innerRadius + padding
+outerRadius = innerRadius + padding + borderWidth
 ```
-
-The rule matters most when nested surfaces sit close together. Past `24px` of padding, treat the layers as separate surfaces and choose each radius independently rather than forcing concentric math.
-
-### Example
 
 ```css
 /* Good: concentric radii */
@@ -5206,43 +6661,36 @@ The rule matters most when nested surfaces sit close together. Past `24px` of pa
 }
 ```
 
-### Tailwind example
-
 ```tsx
 // Good: outer radius accounts for padding
 <div className="rounded-2xl p-2">       {/* 16px radius, 8px padding */}
-  <div className="rounded-lg">          {/* 8px radius = 16 - 8 ✓ */}
+  <div className="rounded-lg">          {/* 8px radius = 16 - 8 */}
     ...
   </div>
 </div>
 
 // Bad: same radius on both
 <div className="rounded-xl p-2">
-  <div className="rounded-xl">          {/* same radius, looks off */}
+  <div className="rounded-xl">
     ...
   </div>
 </div>
 ```
 
-Mismatched radii on closely nested surfaces are a common source of visual tension. Calculate concentrically where the layers share a visible, even inset. Keep an established component token where they are independent or the padding is deliberately asymmetric.
-
 ## Optical alignment
 
-When geometric centering looks off, align optically instead.
+### Buttons with text and an icon
 
-### Buttons with text + icon
-
-Where an icon makes symmetric padding look unbalanced, use slightly less on the icon side. A starting point:
-`icon-side padding = text-side padding - 2px`.
+Start the icon side at `2px` less padding than the text side, then judge by eye.
 
 ```css
-/* Good: less padding on icon side */
+/* Good: less padding on the trailing icon side */
 .button-with-icon {
   padding-inline-start: 16px;
-  padding-inline-end: 14px; /* trailing icon side = text side - 2px */
+  padding-inline-end: 14px;
 }
 
-/* Bad: equal padding looks like icon is pushed too far right */
+/* Bad: equal padding pushes the icon visually outward */
 .button-with-icon {
   padding-inline: 16px;
 }
@@ -5258,38 +6706,233 @@ Where an icon makes symmetric padding look unbalanced, use slightly less on the 
 
 ### Play button triangles
 
-Play icons are triangular and their geometric center is not their visual center. Shift slightly right:
+A triangle's geometric center sits left of its visual center, so shift it toward its point:
 
 ```css
-/* Good: optically centered */
 .play-button svg {
-  transform: translateX(2px); /* physical correction to the glyph itself */
-}
-
-/* Bad: geometrically centered but looks off */
-.play-button svg {
-  /* no adjustment */
+  transform: translateX(2px); /* physical on purpose: playback icons never mirror */
 }
 ```
 
-### Asymmetric icons (stars, arrows, carets)
+### Asymmetric icons
 
-Some icons carry uneven visual weight. The best fix is adjusting the SVG directly, so the component needs no extra margin or padding.
+Stars, arrows and carets carry uneven visual weight. Fix the `viewBox` or path in the SVG, so the component needs no extra offset. Where the asset cannot change, nudge its wrapper:
 
 ```tsx
-// Best: fix in the SVG itself
-// Adjust the viewBox or path to visually center the icon
-
-// Fallback: adjust with margin
 <span className="translate-x-px">
   <StarIcon />
 </span>
 ```
 
-## Shadows instead of borders
+## Shadow recipes
 
-Where **buttons, cards and containers** use a border for depth or elevation, replace it with a subtle `box-shadow`. Shadows use transparency, so they adapt to any background where solid borders do not. That matters most over images or multiple background colors, which a fixed border color was never designed for.
+### Light mode
 
+Three layers. The first acts as a 1px ring, the second adds lift and the third ambient depth:
+
+```css
+:root {
+  --shadow-border:
+    0px 0px 0px 1px oklch(0 0 0 / 0.06),
+    0px 1px 2px -1px oklch(0 0 0 / 0.06),
+    0px 2px 4px 0px oklch(0 0 0 / 0.04);
+  --shadow-border-hover:
+    0px 0px 0px 1px oklch(0 0 0 / 0.08),
+    0px 1px 2px -1px oklch(0 0 0 / 0.08),
+    0px 2px 4px 0px oklch(0 0 0 / 0.06);
+}
+```
+
+### Dark mode
+
+Depth shadows vanish on dark backgrounds, so dark mode keeps one white ring:
+
+```css
+/* Redefine under the project's dark selector */
+--shadow-border: 0 0 0 1px oklch(1 0 0 / 0.08);
+--shadow-border-hover: 0 0 0 1px oklch(1 0 0 / 0.13);
+
+## SKILL
+
+---
+name: better-writing
+description: Writes and reviews interface copy, from labels and errors to empty states and confirmations, so it matches the product's voice and tells people what to do next.
+---
+
+# Writing
+
+This skill writes and reviews interface copy such as labels, errors, empty states and confirmations, along with the terms that run through them. It matches the product's existing voice and flags copy that misleads people or leaves them without a way forward.
+
+A deliberate brand voice is not a defect. Raise a departure from plain language only when it creates inconsistency, ambiguity, translation risk or a tone the stakes don't support. Rewording that merely suits your taste is not a finding.
+
+How copy renders, including `text-transform`, truncation and smart punctuation, belongs to `better-typography`. Error markup, announcements and the attributes that carry accessible names belong to `better-accessibility`. Room for translated strings belongs to `better-layout`.
+
+## Inventory the existing strings first
+
+Before writing or reviewing, find where the copy lives and read the copy around the change:
+
+1. Search for the translation call (`t(`, `i18n.`, `<FormattedMessage`, `$t(`) and the locale files it reads, such as `locales/**/*.json`, `messages/*.json`, `*.po` and `*.strings`. Copy may also come from a CMS or the API.
+2. List the noun used for each object and the verb used for each action, as in "project" or "workspace" and "Delete" or "Remove".
+3. Note the case used per element type and any voice or content style guide.
+
+New copy uses the terms on that list. A synonym is a finding only where the same thing is named two ways.
+
+## One voice, one vocabulary
+
+The product has one voice and its existing copy establishes it. A local edit does not get to invent a new one. If it's "Archive" in the menu, it isn't "Move to storage" in the toast.
+
+A multi-step flow uses one vocabulary throughout: "Get started" to enter, either "Continue" or "Next" to advance, "Done" to finish. Tone flexes with the stakes:
+
+| Context | Tone |
+| --- | --- |
+| Success, onboarding, empty states | Warm, can be light |
+| Routine actions, settings | Neutral, minimal |
+| Errors, destructive confirmations | Calm, plain, zero playfulness |
+| Data loss, security | Serious, explicit |
+
+## Address the reader directly
+
+In instructional copy, write "you", not "the user". In errors, "we" reads as deflection, so prefer "Unable to load content. Check your connection and try again." An established first-person voice can stay in low-stakes copy where it still reads clearly.
+
+Use possessives sparingly: "Favorites" beats "Your favorites". Never mix perspectives in one flow, such as "My account" beside "Your settings".
+
+## Plain words over clever ones
+
+Choose words a tired reader gets on the first pass, and delete every word that does no work. No idioms, no colloquialisms and no humor that won't translate.
+
+Skip unnecessary gender: "Subscribers can post recipes", not "each subscriber can post his or her recipes". Match the input device: "tap" on touch, "click" with a pointer, "select" when both are possible.
+
+## Build strings whole
+
+Never assemble a sentence from fragments around a variable (`"You have " + n + " new messages"`), because word order changes per language. Write one message with placeholders, and use the locale's plural rules rather than `n === 1 ? "" : "s"`. Many languages have more than two plural forms. Format numbers, dates and lists through `Intl`. Recipes are in [patterns.md](patterns.md#plurals-and-placeholders).
+
+## Verb-first buttons
+
+A button label starts with a verb naming the action: "Send", "Save draft", "Delete project". Never "OK!" or "Let's go!".
+
+An icon-only button's accessible name follows the same rule. It names the action, "Delete project", never the glyph, "Trash icon". The attribute that carries it is `better-accessibility`'s.
+
+## Links describe their destination
+
+Link text makes sense out of context, because screen-reader users navigate by a list of the page's links. Write "Read the billing docs", never "Click here".
+
+A bare "Learn more" breaks down as soon as two appear on one page. Suffix each one: "Learn more about exports".
+
+## One capitalization policy
+
+Pick title case or sentence case per element type, then apply it to every instance of that type. Sentence case is the default where the project has no policy. "Save Changes" beside "Discard changes" reads as sloppiness.
+
+## Settings describe the ON state
+
+Label a toggle for what happens when it is on. "Send read receipts" lets users infer the off state; "Don't send read receipts" turns the toggle into a double negative.
+
+Link straight to a referenced setting rather than describing the path to it: a "Notification settings" link, not "Go to Settings > Notifications > Email".
+
+## Errors say how to fix, next to where it broke
+
+An error is an instruction, and it belongs beside the field that failed:
+
+| Bad | Good |
+| --- | --- |
+| That password is too short | Choose a password with at least 8 characters |
+| Invalid date | Enter a date as DD/MM/YYYY |
+| Oops! Something went wrong. | Unable to save. Check your connection and try again. |
+
+No blame, no "oops" and no exclamation marks. Phrase hints positively, as in "Use at least 8 characters" rather than "Don't use fewer than 8". Show a known requirement as helper text before input, not only in the error. When the same error keeps firing, redesign the interaction so it cannot happen.
+
+## Undo beats confirmation
+
+Prefer undo when the action can be reversed and people perform it often, such as archiving, moving or deleting into a trash. Act at once and offer undo in the result: "Project archived. Undo".
+
+Confirm before acting when the action cannot be reversed, affects other people or destroys many items at once. The confirmation repeats the consequence, so the dialog is answerable without reading the body:
+
+- The title names the action and the object, "Delete 'Q3 report'?", never "Are you sure?".
+- The body says what is lost and what cannot be recovered, with counts where they apply.
+- The buttons are verb plus object, `Delete project` and `Cancel`, never `Yes` and `No`.
+- For an account, a workspace or a repository, ask the person to type the object's name.
+
+Templates are in [patterns.md](patterns.md#destructive-flows). The destructive button's distinct color is `better-colors`'.
+
+## Empty states point forward
+
+An empty state says what this place is and how to fill it, and offers one clear next action:
+
+```html
+<!-- Bad: a shrug -->
+<p>No results.</p>
+
+<!-- Good: orientation plus a next step -->
+<p class="font-medium">No projects yet</p>
+<p class="text-sm text-zinc-500">Projects keep your tasks and files together.</p>
+<button class="mt-4">Create a project</button>
+```
+
+A filtered empty state names the query and offers an exit: "No results for 'quarterly'. Clear filters". Never park persistent information in an empty state. It disappears the moment content exists.
+
+Loading, saving and success copy is in [patterns.md](patterns.md#status-copy).
+
+## Placeholders show an example
+
+A placeholder shows a realistic example in the format the field accepts, `name@example.com` or `DD/MM/YYYY`, never an instruction. Whether the field also needs a visible label is `better-accessibility`'s.
+
+## patterns
+
+# Copy patterns
+
+Templates for destructive flows and status copy, and recipes for plurals and locale formatting.
+
+## Destructive flows
+
+| Situation | Copy |
+| --- | --- |
+| Reversible, frequent action | Toast: "Project archived" with an `Undo` action |
+| Irreversible, one item | Title: "Delete 'Q3 report'?" Body: "This permanently deletes the report and its 4 comments." Buttons: `Delete report`, `Cancel` |
+| Irreversible, many items | Title: "Delete 12 files?" Body: "You can't undo this." Buttons: `Delete 12 files`, `Cancel` |
+| Affects other people | Body names who: "The 8 members of Design lose access." |
+| Account, workspace or repository | Field label: "Type 'acme-web' to confirm". The button stays disabled until it matches |
+
+An undo toast carries an action, so how long it stays on screen is `better-accessibility`'s.
+
+## Status copy
+
+| State | Pattern | Example |
+| --- | --- | --- |
+| In progress | Verb in `-ing` plus the object | "Saving changes…", "Loading invoices…" |
+| Done | Object plus past-tense verb, no "successfully" | "Changes saved", "Invite sent to sam@example.com" |
+| Failed | What didn't happen, then the next step | "Changes not saved. Check your connection and try again." |
+| Unavailable | Why, and what unlocks it, beside the control | "Add a payment method to publish" |
+| Partial | Counts for both outcomes | "9 of 12 files uploaded. Retry 3 failed files" |
+
+Keep the in-progress and done strings parallel, so "Saving changes…" resolves to "Changes saved".
+
+## Plurals and placeholders
+
+Write one message per sentence in ICU MessageFormat, which most i18n libraries read. The variable sits inside the sentence and the translator moves it:
+
+```text
+inbox.count = {count, plural,
+  =0 {No new messages}
+  one {# new message}
+  other {# new messages}
+}
+invite.sent = {name} invited you to {project}
+```
+
+`=0` matches the number zero exactly. `one` and `other` are plural categories, and a translator adds `few` or `many` where the language needs them. Without a library, pick the category with `new Intl.PluralRules(locale).select(count)`.
+
+## Locale formatting
+
+Never hand-build a number, date or list. Pass the user's locale to `Intl`:
+
+| Value | Call | `en-US` output |
+| --- | --- | --- |
+| Currency | `new Intl.NumberFormat(locale, { style: "currency", currency: "EUR" })` | `€4,320.00` |
+| Unit | `new Intl.NumberFormat(locale, { style: "unit", unit: "megabyte" })` | `12 MB` |
+| Date | `new Intl.DateTimeFormat(locale, { dateStyle: "medium" })` | `Jun 30, 2026` |
+| Relative time | `new Intl.RelativeTimeFormat(locale, { numeric: "auto" }).format(-1, "day")` | `yesterday` |
+| List | `new Intl.ListFormat(locale, { type: "conjunction" })` | `Ana, Ben, and Cy` |
+
+`Intl.ListFormat` follows each locale's own comma and conjunction rules, so never join names with `", "` and `" and "` by hand.
 
 ## SKILL
 
@@ -28949,6 +30592,270 @@ To prevent the design from appearing purely digital, simulated analog degradatio
 ## SKILL
 
 ---
+name: interface-review
+disable-model-invocation: true
+description: Reviews a branch, pull request or uncommitted change for the interface problems it introduced or regressed, across accessibility, layout, writing, typography, color and UI.
+---
+
+# Interface review
+
+This skill reviews a change rather than a screen. It resolves the scope, expands the changed files to the surfaces they affect, reads both sides of the diff and classifies every finding.
+
+It owns the scope, the classification and the change-scoped report. Domain rules belong to the `better-*` skills. Severity, consolidation, coverage, the cap and the verdict belong to `better-interface`, which this skill hands the review to.
+
+Correctness, tests, security and performance belong to the project's general code review. Name such a concern once, point at that review and drop it.
+
+## The change, not the codebase
+
+The author is asking "did I make this worse?". Report what the change caused and stay mostly quiet about what it merely touched. Three pre-existing findings is a courtesy; thirty is a different review and one nobody asked for.
+
+Read the whole diff before forming an opinion of it. A skimmed diff produces findings about code the next hunk already fixed.
+
+## 1. Resolve the change scope first
+
+The whole invocation is the target, so `/interface-review pr 482` reviews pull request 482. [Scope resolution](scope-resolution.md) holds the accepted targets and how each resolves.
+
+With no target supplied, resolve in this order and stop at the first match:
+
+1. `HEAD` is ahead of `git merge-base origin/<default-branch> HEAD`. Review that range **plus** any uncommitted changes, stating the commit count and the uncommitted file count separately.
+2. The working tree is dirty. Review the uncommitted changes.
+3. Neither. There is no change to review, so follow **With no change, ask rather than invent one**.
+
+Record the base commit of the resolved range as `$BASE` and name it in the scope block. Every command in this skill and its references uses it.
+
+Exclude lockfiles, snapshots, generated output, vendored code and binaries per [Excluded paths](scope-resolution.md#excluded-paths), and name what you excluded. If nothing survives the exclusions, treat it as no change.
+
+## 2. With no change, ask rather than invent one
+
+A clean tree with nothing ahead of the merge base means there is no change to review. Never fall back to `HEAD~1..HEAD` on your own. The last commit is whatever happened to land, often a merge or someone else's work.
+
+Gather the facts in [Nothing to review](scope-resolution.md#nothing-to-review), state them, then offer these routes and wait:
+
+- **The open pull request** on the current branch, first when there is one. A branch whose commits already landed resolves to no change, while its pull request is still exactly what the user meant.
+- **The last commit**, `HEAD~1..HEAD`, named by short SHA and subject so the user sees what they would get.
+- **A target they name**, such as `pr <n>`, a branch, a ref or a range.
+- **A whole-repository interface audit**, which is not a change review. Hand it to `better-interface` as a repository-scope review, without this skill's scope block, statuses or pre-existing section.
+
+Where exclusions emptied the scope, name the excluded files in the offer. Never report a review of nothing as `Approve`.
+
+## 3. A diff is not a surface
+
+A changed file is evidence, not the review subject. Its **blast radius** is the set of surfaces it renders in; review those.
+
+Expand one hop by default, to the direct importers and callers. Expand a second hop only for design tokens, theme values and shared primitives, where one line reaches the whole product.
+
+Review at most five consumers in total across both hops, ordered by [the rule in Scope resolution](scope-resolution.md#expanding-to-consumers). State how many you did not expand, since an unstated cutoff reads as completeness.
+
+## 4. Read the removed lines
+
+Regressions are invisible in the post-change state. Read the `-` side of every hunk against [Removed signals](removed-signals.md).
+
+A signal is a lead, not a finding. A removal is a regression only when nothing in the change replaces it, and the domain skill owns that judgement. Route each unmatched removal to its owner, report only what that skill confirms and status it `Regression`.
+
+## 5. Classify every finding
+
+Give every finding one status:
+
+- `Introduced`: the change created it.
+- `Regression`: the change weakened something previously correct.
+- `Pre-existing`: present before the change and not made worse by it.
+
+Status by cause, not by location. A finding a changed line causes is `Introduced` or `Regression` wherever it surfaces, including an untouched consumer of a changed token. A finding the change neither created nor worsened is `Pre-existing`, even three lines from a hunk.
+
+To check whether a line predates the change, blame the reviewed range. A `^` prefix marks a line unchanged since the base:
+
+```bash
+git blame -L <line>,<line> "$BASE"..<head-ref> -- path/to/file
+```
+
+For uncommitted work, drop the range. A line marked `Not Committed Yet` or blamed on a commit inside `$BASE..HEAD` belongs to the change.
+
+## 6. Hold the change to its stated intent
+
+Read the pull request title and body, the linked issue and the commit messages, then review whether the interface delivers what they claim.
+
+This is how you find the **incomplete** change, which a surface review misses because it inspects only the states that exist. Look for the absent ones:
+
+- A new variant, size or theme applied to some states but not all of hover, focus, active, disabled, loading and selected.
+- A new user-facing string with no entry in the translation catalogue the project maintains.
+- A new component with no empty, loading, error, disabled or narrow-width state.
+- A control added to one surface but not to the siblings that already carry its peers.
+
+Do not report scope creep. Whether a change does too much is a process question, not an interface one.
+
+## 7. Hand the review to `better-interface`
+
+Hand `better-interface` the scope block, the affected surfaces and a status on every finding, and report in the format below.
+
+If `better-interface` is unavailable, report the resolved scope and the file inventory, name it as the missing skill and stop. Do not invent a severity scale, a cap or a verdict.
+
+## Never mutate the working tree
+
+A change review is read-only, including the checkout. `git fetch` writes only to `.git` and is permitted. `gh pr checkout`, `git checkout`, `git switch` and `git stash` rewrite the files the author has open, so they are never permitted. Fetch pull request refs and read them in place.
+
+Rendered verification is opt-in here, in place of `better-interface`'s **Verify what can be verified**. Mark visual and runtime claims **Not verified** unless the project exposes a cheap preview or the user asks for a rendered review. For `working` and `branch`, the checkout already is the head, so render it in place. For any other target, render an isolated worktree such as `git worktree add /tmp/review-<n> refs/remotes/pr/<n>` and remove it when done.
+
+## Before you finish
+
+| Mistake | Fix |
+| --- | --- |
+| The scope block counts only uncommitted files while `HEAD` is ahead of the merge base | Review the branch range plus the uncommitted changes, with both counts |
+| A report on `HEAD~1..HEAD` the user never chose | State the facts and offer the routes in **With no change, ask rather than invent one** |
+| A changed shared component with no consumer under `Surfaces expanded` | Expand to its consumers and name the ones you skipped |
+| A deleted `aria-label`, `outline` or `prefers-reduced-motion` with no finding and no note | Route it to its owner through [Removed signals](removed-signals.md) |
+| A `Regression` whose removed attribute reappears elsewhere in the diff | Check the [equivalent replacements](removed-signals.md#equivalent-replacements) first |
+| A finding on an untouched consumer of a changed token statused `Pre-existing` | The change caused it, so it is `Introduced` or `Regression` |
+| A line outside every hunk statused `Introduced` with no causing change named | Blame it against the reviewed range |
+| `gh pr checkout` or `git switch` in the command log | Fetch the ref and read files with `git show` |
+| A cited line that does not match `git show <head-ref>:path` | Cite against the head ref named in the scope block |
+
+## Review output format
+
+
+## removed-signals
+
+# Removed signals
+
+What to look for on the `-` side of a hunk and which skill owns the judgement.
+
+| Removed from the `-` side | Owner | What to check |
+| --- | --- | --- |
+| `aria-label`, `aria-labelledby`, `aria-describedby`, `aria-live`, `role=` | `better-accessibility` | The control or region lost its accessible name, description or announcement |
+| `alt=`, `<label`, `for=`, `htmlFor`, `scope=` | `better-accessibility` | Image, field or table cell lost its programmatic association |
+| `<button>`, `<a>`, `<nav>`, `<main>`, `<ul>` replaced by `div` or `span` | `better-accessibility` | Keyboard and assistive-technology behavior was traded for styling |
+| `:focus-visible`, `:focus`, `outline`, `tabindex` | `better-accessibility` | Keyboard users lost the focus indicator or the element left the tab order |
+| `prefers-reduced-motion` | `better-accessibility` | Motion now ignores the user's system preference |
+| `prefers-contrast` | `better-colors` | Colors now ignore the user's contrast preference |
+| Logical properties swapped for `left` / `right` | `better-layout` | Direction-aware layout was dropped |
+| `lang=`, `dir=` | `better-typography` | Language metadata or text direction was dropped |
+| `text-wrap`, `line-clamp`, `overflow-wrap`, `tabular-nums`, `font-feature-settings` | `better-typography` | Text rendering, wrapping or numeral alignment silently changed |
+| A color token swapped for a literal, or a token swapped for a lighter one | `better-colors` | The rendered contrast pair may now fail; measure it |
+| A user-facing string deleted or shortened | `better-writing` | A label, error or empty state lost the information it carried |
+
+## Equivalent replacements
+
+These clear the signal. Drop a removal one of them explains before routing anything:
+
+- `aria-label` giving way to `aria-labelledby` pointing at visible text.
+- An explicit `role` dropped because the element became the native equivalent, such as `role="button"` going when a `div` becomes a `<button>`.
+- `outline` replaced by a `box-shadow` ring on the same `:focus-visible` selector.
+- `tabindex="0"` dropped from an element that is now natively focusable.
+- A color literal replaced by a token with the same value.
+- A physical property replaced by its logical counterpart, which is the fix rather than the regression.
+- A string moved into the translation catalogue rather than deleted.
+
+## Searching the removed side
+
+Restrict the search to deleted lines so additions do not mask a removal. Pass the exclusion pathspecs from [Excluded paths](scope-resolution.md#excluded-paths) after `--`:
+
+```bash
+git diff -U0 "$BASE" <head-ref> -- . <exclusions> \
+  | grep -E '^-' | grep -vE '^--- (a/|/dev/null)' \
+  | grep -E 'aria-|role=|alt=|htmlFor|for=|scope=|focus|outline|tabindex|prefers-|lang=|dir=|text-wrap|line-clamp|overflow-wrap|tabular-nums|font-feature|inset-|-inline|-block'
+```
+
+Leave `<head-ref>` off for a target that includes uncommitted work, so the diff runs against the working tree. Removed strings and swapped color tokens have no pattern; read those hunks.
+
+Read the surrounding hunk before deciding. A removed attribute is meaningless without the element it came from, and `-U0` deliberately hides that context.
+
+## scope-resolution
+
+# Scope resolution
+
+How a review target becomes a file list, and the traps that fail quietly and leave the scope block claiming a count it never delivered.
+
+## Default branch
+
+Try `refs/remotes/origin/HEAD`, then `gh repo view --json defaultBranchRef`. If the ref is missing, ask the remote with `git remote set-head origin --auto` rather than guessing. It needs the network and writes only a ref under `.git`, so it is permitted; note it in Verification. With no remote at all, fall back to a local `main` or `master` and state which base you assumed.
+
+## Targets
+
+Accepted targets are `working`, `staged`, `branch`, `pr <n>`, a bare `<ref>` and an explicit `<a>..<b>` or `<a>...<b>` range. Anything else in the invocation is a `<ref>`.
+
+Diff a branch against the **merge base**, with three dots. Two dots reports every upstream commit that landed on the base branch as part of the change.
+
+But use the dots the user wrote when they wrote a range. `<a>..<b>` compares the endpoints; `<a>...<b>` compares `merge-base(<a>, <b>)` with `<b>`. Rewriting `release..feature` to three dots drops everything between `release` and the merge base, which is often exactly what was asked for. State the resolved range in the scope block.
+
+`git diff HEAD` reports tracked changes only. Any target including uncommitted work must pair it with `git ls-files --others --exclude-standard`. Otherwise a newly added component is silently dropped from a scope the report claims to cover in full.
+
+## Pull requests
+
+Fetch the head into a remote-tracking ref, `git fetch origin "pull/<n>/head:refs/remotes/pr/<n>"`, and review it in place. This works for forks, which `origin/<branch>` does not.
+
+Diff against the pull request's own base, never the default branch by assumption. Read it from `gh pr view <n> --json baseRefName,baseRefOid` and fetch it if it is not local. A pull request into `release/2.0` diffed against `main` picks up every commit between the two.
+
+Read files at the head ref with `git show refs/remotes/pr/<n>:path/to/file`. Never open the working-tree copy, which is a different revision.
+
+`gh pr diff <n>` is a fine shortcut for the patch text. It gives no way to read unchanged context or expand to consumers, so fetch the ref as well.
+
+**Citations.** Line numbers from a fetched ref need not match the working tree. Cite against the head ref and declare that ref and its SHA in the scope block so the numbers resolve.
+
+**Intent.** The `title` and `body` from `gh pr view` are the stated intent for **Hold the change to its stated intent**. Add the commit subjects when the body is empty.
+
+## Awkward repository states
+
+Three worth handling. Everything else fails loudly at `merge-base`: unrelated histories, a repo with no commits, a moved submodule pointer. Say the base is unresolvable and stop. Never review a range you cannot name.
+
+**Detached HEAD.** Use the merge base against the default branch and name the SHA, not a branch, in the scope block.
+
+**Shallow clone**, the CI default, where `merge-base` returns nothing. Fetch `--deepen=50`, retry, then `--deepen=200`, then report the scope as unresolvable. Deepening writes to `.git` and not to the working tree, so it is permitted; note it in Verification.
+
+**Mid-rebase or mid-merge**, the one that does not fail loudly. `git diff` succeeds and returns something that is not the change, so the review looks fine and is wrong. Detect it with `git rev-parse --git-path` against `rebase-merge`, `rebase-apply`, `MERGE_HEAD` and `CHERRY_PICK_HEAD`. Do not test `.git/` paths directly, because they are not directories inside a linked worktree. Stop and say the tree is mid-operation.
+
+## Nothing to review
+
+The tree is clean and `HEAD` is not ahead of the merge base. Gather the facts before asking, so the offer is accurate rather than a guess. They are the current branch, the count ahead of the base, the last commit's SHA and subject and any open pull request from `gh pr status`.
+
+`gh pr status` succeeds when no pull request is open. It omits `currentBranch`, so an empty result is an answer, not an error. It fails outright without `gh`, without authentication and on a repository with no GitHub remote. Treat any failure as "no pull request found", say so and offer the remaining routes rather than stopping.
+
+## Renames
+
+Rename detection is on by default in `git diff`, and `--name-status` reports `R100 old/path new/path`. Lower the similarity threshold with `--find-renames=40%` when a file was moved and edited in the same change.
+
+Review a rename as a move, not a delete plus an add. Everything that survived the move is unchanged code, and only the genuine edits are in scope.
+
+## Excluded paths
+
+Exclude these and name what you excluded in the scope block. They are machine-authored and carry no interface rules.
+
+| Category | Patterns |
+| --- | --- |
+| Lockfiles | `package-lock.json`, `pnpm-lock.yaml`, `yarn.lock`, `bun.lock`, `bun.lockb`, `Cargo.lock`, `composer.lock`, `Gemfile.lock`, `poetry.lock`, `uv.lock` |
+| Snapshots and fixtures | `__snapshots__/`, `*.snap`, `*.approved.*`, `test-results/`, `playwright-report/` |
+| Generated output | `dist/`, `build/`, `out/`, `.next/`, `.turbo/`, `.svelte-kit/`, `coverage/`, `storybook-static/`, `*.min.js`, `*.min.css`, `*.map` |
+| Generated sources | `*.gen.ts`, `*.generated.*`, `*.d.ts` emitted by a build, GraphQL and Prisma client output |
+| Vendored code | `vendor/`, `third_party/`, `node_modules/` |
+| Binaries and media | `*.png`, `*.jpg`, `*.webp`, `*.avif`, `*.woff2`, `*.mp4`, `*.pdf` |
+
+Two exceptions stay in scope. A **font file** added or swapped is a `better-typography` change. An **image** added to a component is a `better-ui` and `better-accessibility` change, through its outline and its `alt` text. Review the code that references them, not the bytes.
+
+Apply the exclusions as pathspecs so the file count in the scope block is the reviewed count:
+
+```bash
+git diff --name-only "$BASE" <head-ref> -- . ':(exclude)pnpm-lock.yaml' ':(glob,exclude)**/dist/**'
+```
+
+Two traps under-exclude silently. `*.lock` catches `yarn.lock` and `Cargo.lock` but not `package-lock.json` or `pnpm-lock.yaml`, so cover every suffix in the table. And without `glob` magic, `**/dist/**` needs a literal `/` before `dist`, so it misses a root-level `dist/`. Run the diff with and without the pathspecs and confirm the count dropped by exactly the files you named.
+
+## Expanding to consumers
+
+Use the project's own resolver where one exists, otherwise import paths.
+
+`git grep` searches the working tree by default. Pass the reviewed ref after the pattern, or on a pull request you search a different revision and miss importers the change itself added. Results come back as `<rev>:path/to/file`; read them with `git show`, never the working-tree copy. Pass `-e` when the pattern starts with a dash, such as a `--color-*` token, or git parses it as an option.
+
+For a changed token or theme value, search the token name rather than the file, since consumers reference the name and never import it.
+
+Order the consumers by a rule you can evaluate, so the cutoff is reproducible instead of a guess:
+
+1. **Route and layout entry points first**, whatever the framework treats as a rendered surface: `app/**/page.*`, `app/**/layout.*`, `pages/**`, `routes/**`, `src/views/**`, `*.astro` pages. Everything else only appears inside one.
+2. **Then by importer count**, since a component pulled in by twenty files carries more of the change than one pulled in by two.
+3. **Break ties by proximity**, same package or feature directory first.
+
+Say plainly if the ordering was arbitrary past a point.
+
+## SKILL
+
+---
 name: investigate-first
 description: Diagnose ambiguous failures before editing. Use for unknown causes, intermittent behavior, performance regressions, or investigations needing evidence-ranked hypotheses.
 ---
@@ -42115,6 +44022,249 @@ python "${CLAUDE_PLUGIN_ROOT}/.claude/skills/ui-ux-pro-max/scripts/search.py" "<
 
 | Dial | Low (1-3) | Mid (4-7) | High (8-10) |
 |------|-----------|-----------|-------------|
+
+## pro-rules
+
+# Common Rules for Professional UI + Pre-Delivery Checklist
+
+Load this file before final delivery of native/mobile app UI (iOS/Android/React Native/Flutter), or when the user reports the UI "doesn't look professional" and the cause isn't obvious from the priority table in SKILL.md.
+
+**Scope notice:** everything below targets native/mobile app UI. For web/desktop interaction patterns, use `references/quick-reference.md` (stack-agnostic) instead — these tables assume touch targets, safe areas, and platform gesture conventions that don't apply 1:1 to desktop web.
+
+These are frequently overlooked issues that make UI look unprofessional.
+
+## Icons & Visual Elements
+
+| Rule | Standard | Avoid | Why It Matters |
+|------|----------|--------|----------------|
+| **No Emoji as Structural Icons** | Use vector-based icons (e.g., Lucide, react-native-vector-icons, @expo/vector-icons). | Using emojis (🎨 🚀 ⚙️) for navigation, settings, or system controls. | Emojis are font-dependent, inconsistent across platforms, and cannot be controlled via design tokens. |
+| **Vector-Only Assets** | Use SVG or platform vector icons that scale cleanly and support theming. | Raster PNG icons that blur or pixelate. | Ensures scalability, crisp rendering, and dark/light mode adaptability. |
+| **Contextual Semantics** | Choose semantics from use, not glyph: hide decorative icons beside visible text from the accessibility tree; give meaningful standalone icons a text alternative; give icon controls an accessible name and expose selected/pressed/expanded state when applicable. | Treating one icon name as permanently decorative, meaningful, or interactive. | The same glyph can serve different purposes in different components. |
+| **Stable Interaction States** | Use color, opacity, or elevation transitions for press states without changing layout bounds. | Layout-shifting transforms that move surrounding content or trigger visual jitter. | Prevents unstable interactions and preserves smooth motion/perceived quality on mobile. |
+| **Correct Brand Logos** | Use official brand assets and follow their usage guidelines (spacing, color, clear space). | Guessing logo paths, recoloring unofficially, or modifying proportions. | Prevents brand misuse and ensures legal/platform compliance. |
+| **Consistent Icon Sizing** | Define icon sizes as design tokens (e.g., icon-sm, icon-md = 24pt, icon-lg). | Mixing arbitrary values like 20pt / 24pt / 28pt randomly. | Maintains rhythm and visual hierarchy across the interface. |
+| **Stroke Consistency** | Use a consistent stroke width within the same visual layer (e.g., 1.5px or 2px). | Mixing thick and thin stroke styles arbitrarily. | Inconsistent strokes reduce perceived polish and cohesion. |
+| **Filled vs Outline Discipline** | Use one icon style per hierarchy level. | Mixing filled and outline icons at the same hierarchy level. | Maintains semantic clarity and stylistic coherence. |
+| **Touch Target Minimum** | Use at least 44pt on iOS and 48dp on Android; expand the hit area when the visual icon is smaller. | Small icons without expanded tap area, or one unit reused across platforms. | Matches platform-specific target guidance. |
+| **Icon Alignment** | Align icons to text baseline and maintain consistent padding. | Misaligned icons or inconsistent spacing around them. | Prevents subtle visual imbalance that reduces perceived quality. |
+| **Icon Contrast** | Meaningful icons and control boundaries need at least 3:1 against adjacent colors; decorative icons must not carry information. | Low-contrast icons that carry meaning or state. | Applies the non-text contrast role instead of a text-size rule. |
+
+## Interaction (App)
+
+| Rule | Do | Don't |
+|------|----|----- |
+| **Tap feedback** | Provide clear pressed feedback (ripple/opacity/elevation) within 80-150ms | No visual response on tap |
+| **Animation timing** | Use shared tokens chosen for distance, complexity, platform, and user context | One duration/easing copied to every transition |
+| **Accessibility focus** | Ensure screen reader focus order matches visual order and labels are descriptive | Unlabeled controls or confusing focus traversal |
+| **Disabled state clarity** | Use disabled semantics (`disabled`/native disabled props), reduced emphasis, and no tap action | Controls that look tappable but do nothing |
+| **Touch target minimum** | Keep tap areas >=44x44pt (iOS) or >=48x48dp (Android), expand hit area when icon is smaller | Tiny tap targets or icon-only hit areas without padding |
+| **Gesture conflict prevention** | Keep one primary gesture per region and avoid nested tap/drag conflicts | Overlapping gestures causing accidental actions |
+| **Semantic native controls** | Prefer native interactive primitives (`Button`, `Pressable`, platform equivalents) with proper accessibility roles | Generic containers used as primary controls without semantics |
+
+## Light/Dark Mode Contrast
+
+| Rule | Do | Don't |
+|------|----|----- |
+| **Surface readability (light)** | Keep cards/surfaces clearly separated from background with sufficient opacity/elevation | Overly transparent surfaces that blur hierarchy |
+| **Text contrast (light)** | Maintain body text contrast >=4.5:1 against light surfaces | Low-contrast gray body text |
+| **Text contrast (dark)** | Maintain normal text contrast >=4.5:1 on dark surfaces; 3:1 is only for large text or non-text UI | Muted normal text that falls below the text threshold |
+| **Border and divider visibility** | Ensure separators are visible in both themes (not just light mode) | Theme-specific borders disappearing in one mode |
+| **State contrast parity** | Keep pressed/focused/disabled states equally distinguishable in light and dark themes | Defining interaction states for one theme only |
+| **Token-driven theming** | Use semantic color tokens mapped per theme across app surfaces/text/icons | Hardcoded per-screen hex values |
+| **Scrim and modal legibility** | Measure the composed result and use a scrim strong enough to isolate foreground content | Reusing one opacity without checking the actual background |
+
+## Layout & Spacing
+
+| Rule | Do | Don't |
+|------|----|----- |
+| **Safe-area compliance** | Respect top/bottom safe areas for all fixed headers, tab bars, and CTA bars | Placing fixed UI under notch, status bar, or gesture area |
+| **System bar clearance** | Add spacing for status/navigation bars and gesture home indicator | Let tappable content collide with OS chrome |
+| **Consistent content width** | Keep predictable content width per device class (phone/tablet) | Mixing arbitrary widths between screens |
+| **8dp spacing rhythm** | Use a consistent 4/8dp spacing system for padding/gaps/section spacing | Random spacing increments with no rhythm |
+| **Readable text measure** | Keep long-form text readable on large devices (avoid edge-to-edge paragraphs on tablets) | Full-width long text that hurts readability |
+| **Section spacing hierarchy** | Define clear vertical rhythm tiers (e.g., 16/24/32/48) by hierarchy | Similar UI levels with inconsistent spacing |
+| **Adaptive gutters by breakpoint** | Increase horizontal insets on larger widths and in landscape | Same narrow gutter on all device sizes/orientations |
+| **Scroll and fixed element coexistence** | Add bottom/top content insets so lists are not hidden behind fixed bars | Scroll content obscured by sticky headers/footers |
+
+---
+
+## Pre-Delivery Checklist (canonical — the only one)
+
+Before delivering app UI code, verify every item below. Start with the process steps, then the per-area checkboxes.
+
+### Process
+- [ ] Ran only searches relevant to the interface, such as `"keyboard focus modal" --domain ux` for modal keyboard behavior
+- [ ] Reviewed `quick-reference.md` §1–§3 (CRITICAL + HIGH) as a final pass
+- [ ] Tested on 375px (small phone) and in landscape orientation
+- [ ] Verified behavior with **reduced-motion** enabled and **Dynamic Type**/largest system text size
+- [ ] Checked dark mode contrast independently (never assume light-mode values carry over)
+- [ ] Confirmed all touch targets ≥44pt and no content hidden behind safe areas
+
+### Visual Quality
+- [ ] No emojis used as icons (use SVG instead)
+- [ ] All icons come from a consistent icon family and style
+- [ ] Official brand assets are used with correct proportions and clear space
+- [ ] Pressed-state visuals do not shift layout bounds or cause jitter
+- [ ] Semantic theme tokens are used consistently (no ad-hoc per-screen hardcoded colors)
+
+### Interaction
+- [ ] All tappable elements provide clear pressed feedback (ripple/opacity/elevation)
+- [ ] Touch targets meet minimum size (>=44x44pt iOS, >=48x48dp Android)
+- [ ] Micro-interaction timing uses shared, platform-appropriate tokens and remains responsive in context
+- [ ] Disabled states are visually clear and non-interactive
+- [ ] Screen reader focus order matches visual order, and interactive labels are descriptive
+- [ ] Gesture regions avoid nested/conflicting interactions (tap/drag/back-swipe conflicts)
+
+### Light/Dark Mode
+- [ ] Primary text contrast >=4.5:1 in both light and dark mode
+- [ ] Normal primary and secondary text contrast >=4.5:1 in both light and dark mode
+- [ ] Dividers/borders and interaction states are distinguishable in both modes
+- [ ] Modal/drawer scrim is measured against the real background and preserves foreground legibility
+- [ ] Both themes are tested before delivery (not inferred from a single theme)
+
+### Layout
+- [ ] Safe areas are respected for headers, tab bars, and bottom CTA bars
+- [ ] Scroll content is not hidden behind fixed/sticky bars
+- [ ] Verified on small phone, large phone, and tablet (portrait + landscape)
+- [ ] Horizontal insets/gutters adapt correctly by device size and orientation
+- [ ] 4/8dp spacing rhythm is maintained across component, section, and page levels
+- [ ] Long-form text measure remains readable on larger devices (no edge-to-edge paragraphs)
+
+### Accessibility
+- [ ] Decorative icons beside visible text are hidden from the accessibility tree (`aria-hidden="true"` on web or the native equivalent)
+- [ ] Meaningful images/icons without equivalent visible text have a text alternative
+- [ ] Icon controls have an accessible name and announce applicable selected/pressed/expanded state
+- [ ] Form fields have labels, hints, and clear error messages
+- [ ] Color is not the only indicator
+- [ ] Reduced motion and dynamic text size are supported without layout breakage
+- [ ] Sticky UI and overlays do not obscure keyboard focus
+- [ ] Dragging and swipe-only interactions have button/keyboard alternatives
+- [ ] Authentication allows password managers and paste, with a non-cognitive alternative
+- [ ] Auto-rotating content has pause/stop controls and stops on focus or reduced motion
+- [ ] Failed forms retain inline field errors; multi-error forms also focus a linked error summary after submit
+
+## quick-reference
+
+# Quick Reference — Full Rule Set (all 10 categories)
+
+Load this file when doing a UI review/audit pass, or when you need the full checklist for a category beyond the priority table in SKILL.md. Each rule is also present verbatim in `data/ux-guidelines.csv` / `data/app-interface.csv` and is reachable via `--domain ux` / `--domain web` search — this file is a static index for quick scanning without a search round-trip.
+
+## Quick Reference
+
+### 1. Accessibility (CRITICAL)
+
+- `color-contrast` - Minimum 4.5:1 ratio for normal text (large text 3:1); Material Design
+- `focus-states` - Visible focus rings on interactive elements (2–4px; Apple HIG, MD)
+- `alt-text` - Descriptive alt text for meaningful images
+- `aria-labels` - aria-label for icon-only buttons; accessibilityLabel in native (Apple HIG)
+- `icon-context` - Semantics depend on use: decorative icons beside visible text are hidden from the accessibility tree; meaningful icons need a text alternative; icon controls need an accessible name and applicable state
+- `keyboard-nav` - Tab order matches visual order; full keyboard support (Apple HIG)
+- `form-labels` - Use label with for attribute
+- `skip-links` - Skip to main content for keyboard users
+- `heading-hierarchy` - Sequential h1→h6, no level skip
+- `color-not-only` - Don't convey info by color alone (add icon/text)
+- `dynamic-type` - Support system text scaling; avoid truncation as text grows (Apple Dynamic Type, MD)
+- `reduced-motion` - Respect prefers-reduced-motion; reduce/disable animations when requested (Apple Reduced Motion API, MD)
+- `voiceover-sr` - Meaningful accessibilityLabel/accessibilityHint; logical reading order for VoiceOver/screen readers (Apple HIG, MD)
+- `escape-routes` - Provide cancel/back in modals and multi-step flows (Apple HIG)
+- `keyboard-shortcuts` - Preserve system and a11y shortcuts; offer keyboard alternatives for drag-and-drop (Apple HIG)
+- `focus-not-obscured` - Sticky UI, overlays, and banners must not hide the keyboard-focused control (WCAG 2.2 AA)
+- `focus-not-obscured-enhanced` - Keep the entire focused component visible (WCAG 2.2 AAA)
+- `focus-appearance` - Verify focus indicator area and 3:1 state contrast; visible focus alone is not enough (WCAG 2.2 AAA)
+- `dragging-alternative` - Every author-controlled drag action needs a single-pointer and keyboard alternative (WCAG 2.2 AA)
+- `web-target-size` - Web pointer targets need 24×24 CSS px or a documented exception; do not substitute native units (WCAG 2.2 AA)
+- `consistent-help` - Repeated help mechanisms stay in the same relative order across a page set (WCAG 2.2 A)
+- `redundant-entry` - Reuse information already supplied in the same process unless re-entry is essential (WCAG 2.2 A)
+- `accessible-authentication` - Allow password managers and paste; provide a non-cognitive authentication path (WCAG 2.2 Minimum, AA). The Enhanced AAA criterion is not represented in the dataset
+- `auto-rotation-controls` - Carousels and moving content need pause/stop controls and must stop on focus or reduced motion (WAI)
+- `contextual-live-badge-updates` - Announce a changed count/status as a complete contextual phrase without moving focus; use one appropriate live/status region and atomic updates only when needed
+
+### 2. Touch & Interaction (CRITICAL)
+
+- `touch-target-size` - Min 44×44pt (Apple) / 48×48dp (Material); extend hit area beyond visual bounds if needed
+- `touch-spacing` - Minimum 8px/8dp gap between touch targets (Apple HIG, MD)
+- `hover-vs-tap` - Use click/tap for primary interactions; don't rely on hover alone
+- `loading-buttons` - Disable button during async operations; show spinner or progress
+- `error-feedback` - Clear error messages near problem
+- `cursor-pointer` - Add cursor-pointer to clickable elements (Web)
+- `gesture-conflicts` - Avoid horizontal swipe on main content; prefer vertical scroll
+- `tap-delay` - Use touch-action: manipulation to reduce 300ms delay (Web)
+- `standard-gestures` - Use platform standard gestures consistently; don't redefine (e.g. swipe-back, pinch-zoom) (Apple HIG)
+- `system-gestures` - Don't block system gestures (Control Center, back swipe, etc.) (Apple HIG)
+- `press-feedback` - Visual feedback on press (ripple/highlight; MD state layers)
+- `haptic-feedback` - Use haptic for confirmations and important actions; avoid overuse (Apple HIG)
+- `gesture-alternative` - Don't rely on gesture-only interactions; always provide visible controls for critical actions
+- `safe-area-awareness` - Keep primary touch targets away from notch, Dynamic Island, gesture bar and screen edges
+- `no-precision-required` - Avoid requiring pixel-perfect taps on small icons or thin edges
+- `swipe-clarity` - Swipe actions must show clear affordance or hint (chevron, label, tutorial)
+- `drag-threshold` - Use a movement threshold before starting drag to avoid accidental drags
+
+### 3. Performance (HIGH)
+
+- `image-optimization` - Use WebP/AVIF, responsive images (srcset/sizes), lazy load non-critical assets
+- `image-dimension` - Declare width/height or use aspect-ratio to prevent layout shift (Core Web Vitals: CLS)
+- `font-loading` - Use font-display: swap/optional to avoid invisible text (FOIT); reserve space to reduce layout shift (MD)
+- `font-preload` - Preload only critical fonts; avoid overusing preload on every variant
+- `critical-css` - Prioritize above-the-fold CSS (inline critical CSS or early-loaded stylesheet)
+- `lazy-loading` - Lazy load non-hero components via dynamic import / route-level splitting
+- `bundle-splitting` - Split code by route/feature (React Suspense / Next.js dynamic) to reduce initial load and TTI
+- `third-party-scripts` - Load third-party scripts async/defer; audit and remove unnecessary ones (MD)
+- `reduce-reflows` - Avoid frequent layout reads/writes; batch DOM reads then writes
+- `content-jumping` - Reserve space for async content to avoid layout jumps (Core Web Vitals: CLS)
+- `lazy-load-below-fold` - Use loading="lazy" for below-the-fold images and heavy media
+- `virtualize-lists` - Virtualize lists with 50+ items to improve memory efficiency and scroll performance
+- `main-thread-budget` - Keep per-frame work under ~16ms for 60fps; move heavy tasks off main thread (HIG, MD)
+- `progressive-loading` - Use skeleton screens / shimmer instead of long blocking spinners for >1s operations (Apple HIG)
+- `input-latency` - Keep input latency under ~100ms for taps/scrolls (Material responsiveness standard)
+- `tap-feedback-speed` - Provide visual feedback within 100ms of tap (Apple HIG)
+- `debounce-throttle` - Use debounce/throttle for high-frequency events (scroll, resize, input)
+- `offline-support` - Provide offline state messaging and basic fallback (PWA / mobile)
+- `network-fallback` - Offer degraded modes for slow networks (lower-res images, fewer animations)
+
+### 4. Style Selection (HIGH)
+
+- `style-match` - Match style to product type (use `--design-system` for recommendations)
+- `consistency` - Use same style across all pages
+- `no-emoji-icons` - Use SVG icons (Heroicons, Lucide), not emojis
+- `color-palette-from-product` - Choose palette from product/industry (search `--domain color`)
+- `effects-match-style` - Shadows, blur, radius aligned with chosen style (glass / flat / clay etc.)
+- `platform-adaptive` - Respect platform idioms (iOS HIG vs Material): navigation, controls, typography, motion
+- `state-clarity` - Make hover/pressed/disabled states visually distinct while staying on-style (Material state layers)
+- `elevation-consistent` - Use a consistent elevation/shadow scale for cards, sheets, modals; avoid random shadow values
+- `dark-mode-pairing` - Design light/dark variants together to keep brand, contrast, and style consistent
+- `icon-style-consistent` - Use one icon set/visual language (stroke width, corner radius) across the product
+- `system-controls` - Prefer native/system controls over fully custom ones; only customize when branding requires it (Apple HIG)
+- `blur-purpose` - Use blur to indicate background dismissal (modals, sheets), not as decoration (Apple HIG)
+- `primary-action` - Each screen should have only one primary CTA; secondary actions visually subordinate (Apple HIG)
+
+### 5. Layout & Responsive (HIGH)
+
+- `viewport-meta` - width=device-width initial-scale=1 (never disable zoom)
+- `mobile-first` - Design mobile-first, then scale up to tablet and desktop
+- `breakpoint-consistency` - Use systematic breakpoints (e.g. 375 / 768 / 1024 / 1440)
+- `readable-font-size` - Minimum 16px body text on mobile (avoids iOS auto-zoom)
+- `line-length-control` - Mobile 35–60 chars per line; desktop 60–75 chars
+- `horizontal-scroll` - No horizontal scroll on mobile; ensure content fits viewport width
+- `spacing-scale` - Use 4pt/8dp incremental spacing system (Material Design)
+- `touch-density` - Keep component spacing comfortable for touch: not cramped, not causing mis-taps
+- `container-width` - Consistent max-width on desktop (max-w-6xl / 7xl)
+- `z-index-management` - Define layered z-index scale (e.g. 0 / 10 / 20 / 40 / 100 / 1000)
+- `fixed-element-offset` - Fixed navbar/bottom bar must reserve safe padding for underlying content
+- `scroll-behavior` - Avoid nested scroll regions that interfere with the main scroll experience
+- `viewport-units` - Prefer min-h-dvh over 100vh on mobile
+- `orientation-support` - Keep layout readable and operable in landscape mode
+- `content-priority` - Show core content first on mobile; fold or hide secondary content
+- `visual-hierarchy` - Establish hierarchy via size, spacing, contrast — not color alone
+- `compact-label-overflow` - Choose badge, status tag, filter chip, or removable value from its semantics; keep essential labels available and disclose unavoidable truncation to pointer and keyboard users
+- `chip-collection-reflow` - Wrap the collection before shrinking labels; make a `+n` overflow summary an operable disclosure instead of hiding values
+
+### 6. Typography & Color (MEDIUM)
+
+- `line-height` - Use 1.5-1.75 for body text
+- `line-length` - Limit to 65-75 characters per line
+- `font-pairing` - Match heading/body font personalities
+- `font-scale` - Consistent type scale (e.g. 12 14 16 18 24 32)
+- `contrast-readability` - Darker text on light backgrounds (e.g. slate-900 on white)
 
 ## SKILL
 
