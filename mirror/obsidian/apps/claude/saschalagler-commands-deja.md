@@ -1,27 +1,25 @@
 ---
 app: claude
 quelle: "saschalagler/commands/deja.md"
-stand: 2026-10-01
+stand: 2026-10-26
 tags: [spiegel, claude]
 ---
 
 ---
-name: deja
 description: Search this machine's past AI coding sessions (deja-vu)
 ---
 
 Search the user's own past sessions across every AI coding tool on this
 machine, then answer from what you find.
 
-Call the deja tool in `recall` mode with the user's words as the query — the
-most specific tokens win (an exact error string, a function name, a file path,
-a flag). If a result looks right but is too short to act on, follow up with
-`context` mode using a term from it.
+Use the deja recall tool with the user's words as the query — the most specific
+tokens win: an exact error string, a function name, a file path, a flag. If a
+result looks right but is too short to act on, follow up with recall_context.
 
-If the deja MCP tool is unavailable, fall back to the CLI:
+If the deja MCP tools are unavailable, run the CLI instead:
 
 ```bash
-/opt/homebrew/Cellar/deja-vu/0.21.4/bin/deja search -- "$ARGUMENTS"
+/opt/homebrew/bin/deja --framed search -- "$ARGUMENTS"
 ```
 
 Answer with what actually happened in those sessions — when it was, which

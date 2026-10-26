@@ -5,3 +5,5 @@
 - [Subagent-Reasoning-Level-Fehler](zcode-subagent-reasoning-level-error.md) — Agent-Tool startet nicht (GLM-5.3-Flash ohne Denkstufe) → direkt selbst untersuchen
 - [Chipsi-Synthese-Fehler-Diagnose](chipsi-synthesis-error-diagnosis.md) — Vollständige Fehlerkette + Fix (Konnektor-Schalter), Computer-Use/WhatsApp/Session-Know-how
 - [Feedback: echte App, keine Ersatzbauten](user-feedback-real-app-only.md) — Sascha will die reale App; Passwort-Nachfragen nie wiederholen; Key-Rotation als Fehlerquelle prüfen
+- [Maxenergy/EVN/Caritas Umzug 26.10.2026](maxenergy-evn-caritas-umzug-2026-10-26.md) — Melk→Loosdorf belegt (S618255, EVN-ABS-Nr.), Endabrechnungs-Mail NICHT gesendet (Kdnr-Konflikt), bahldorfa-Speicher voll ab 14.11.2026
+- [BrowserOS = Standard-Browser für Gmail-Suche](umgebungs-blocker-zcode.md) — Gmail-MCP tot; BrowserOS via Computer-Use ist der funktionierende Weg (Nutzer-Anweisung)
