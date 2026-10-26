@@ -333,9 +333,9 @@ class DevAgent:
         if not self.workspace.is_dir():
             raise AgentError(f"Workspace fehlt: {self.workspace}")
         self.test_command = test_command
-        if allow_lan is None:
-            allow_lan = os.environ.get("QFS_ALLOW_LAN", "") == "1"
-        self.host = validate_host(normalize_host(host), allow_lan=allow_lan)
+        self.host = normalize_host(host)
+        self._allow_lan = (os.environ.get("QFS_ALLOW_LAN", "") == "1") if allow_lan is None else allow_lan
+        self._host_validated = False
         self.model = model
         self.mode = mode
         self.max_steps = max_steps
@@ -366,6 +366,9 @@ class DevAgent:
     def _post(self, messages, use_tools):
         if self.chat_fn is not None:
             return self.chat_fn(messages, TOOL_SPECS if use_tools else [])
+        if not self._host_validated:
+            self.host = validate_host(self.host, allow_lan=self._allow_lan)
+            self._host_validated = True
         payload = self._payload(messages, use_tools)
         headers = {"Content-Type": "application/json"}
         if self.api_key:
