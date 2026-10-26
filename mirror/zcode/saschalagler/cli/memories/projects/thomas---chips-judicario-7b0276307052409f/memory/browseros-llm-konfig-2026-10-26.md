@@ -19,7 +19,9 @@ BrowserOS (`chrome://browseros/settings` → AI & Agents), 7 Provider (Stand 26.
 - OmniRoute (localhost:20128) 401 ohne Key · z.ai GLM · Hermes ACP · pi ACP — vorhanden.
 - Gemini: aistudio.google.com/apikey → Google-Anmelden im AgentOS-Fenster. Login durch Sascha ODER API-Key. Google AI Pro-Abo ≠ API-Key.
 
+**ACP-Dialog-Info (26.10., Sascha gefragt „was ist das"):** „Add a custom ACP agent" in den BrowserOS-Settings = Formular für Coding-Agenten über Agent Client Protocol (stdio) — Agent bekommt volle Shell-/Dateirechte ohne Approval. Hermes + pi in der Provider-Liste sind bereits solche ACP-Agenten. Dialog nur mit Cancel/Escape schließen, nichts eintragen — für Browser-Chat nicht nötig.
+
 **Why:** Sascha-Kritik 26.10.: „key ist neu, du hast ollama nicht für browser konfiguriert, clinepass dumm wegen token limit" — alles berechtigt; Default-Kette jetzt: Ollama (lokal) → ClinePass (Flats) → OpenRouter (nach Key-Fix, dann Wunsch-Default).
-**How to apply:** Erst curl-Direktests, dann UI. GET /api/v1/key unterscheidet Management- vs. Inference-Key. Master-Doku: `/Users/saschalagler/LOKI_OS_SETUP.md`.
+**How to apply:** Erst curl-Direktests, dann UI. GET /api/v1/key unterscheidet Management- vs. Inference-Key. ACP-Dialog = nur informieren/schließen, kein Setup ohne Auftrag. Master-Doku: `/Users/saschalagler/LOKI_OS_SETUP.md`.
 
 Verwandt: [[umgebungs-blocker-zcode]] · [[loki-os-system-setup-2026-10-26]]

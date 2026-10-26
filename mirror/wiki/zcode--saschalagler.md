@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-26 14:58 UTC
+Zuletzt gespiegelt: 2026-10-26 15:14 UTC
 
 ## AGENTS
 
@@ -11813,7 +11813,7 @@ Music stem separation is set up and verified working on this machine (2026-10-21
 - [qwen-flash-spark Projekt](qwen-flash-spark-project.md) — Qwen3.8 auf DGX Spark + macOS-Traktor-Clone Slices 1–7 FERTIG (TraktorClone/ SwiftPM, 54 Tests, .app-Bundle, Head a30349657); Kanonik: ~/agent-os/agent-mirror; Swift-CLT-Gotchas (Swift Testing, plugin-path)
 - [Mimosa-Hook-Schreibconstraints](mimosa-hook-write-constraints.md) — warum Edits/Pushes blockiert werden und welche Gegenmuster funktionieren (validate_host, write_text, lazy, pipefail)
 - [Custom-Skills manuell ausführen](custom-skills-read-from-autoclaw.md) — roo-code/gsd-core/coderabbit/loki-dev/ponytail liegen in ~/.openclaw-autoclaw/skills/, ZCode registriert sie nicht → SKILL.md lesen + Methodik manuell anwenden
-- [Subagent-Provider-Fix](subagent-provider-fix-zai-api.md) — "provider-not-found": 8 Defs hatten toten Provider zai-api (→ omniroute/glm-first gefixt, ab Neustart aktiv); account:-Format funktioniert sofort; hcom-Peers stale
+- [Subagent-Provider-Fix](subagent-provider-fix-zai-api.md) — finale Lösung: ALLE 10 Defs `account:zai-individual-coding-plan/GLM-5.3-Flash` + thoughtLevel low (omniroute/glm-first = Irrweg, reasoning-level-not-supported); Def-Fixes greifen erst nach Session-Neustart, Live-Route = beim Start korrekt geladene Typen (cavecrew-builder)
 
 
 ## custom-skills-read-from-autoclaw
@@ -12253,7 +12253,7 @@ In ATLAS-ZCode-Sessions kann das Bash-Tool komplett tot sein: jeder Aufruf (auch
 
 - [eqMac-Deinstallation + Spotify-Fix](eqmac-deinstallation-spotify-fix.md) — 22.09. FERTIG (dwfrun-c55c4bc7): eqMac ursprünglich zu Unrecht deinstalliert (Doku war nur Kontext-Beilage!) → **v1.9.1 neu installiert, er BRAUCHT es**; **Spotify-Ursache = Intel-Build 1.3.0.277 via Rosetta + 982 MB korrupter Cache** → native ARM64 1.3.1.234, läuft stabil; Audio-Abbrüche danach = eqMac-Virtual-Device-Wege — 2 Parallel-Agents: Neustart → Test sauber (0 Dropouts), **KEIN Buffer-Setting existiert**; Fix-Leiter: 48 kHz (Audio-MIDI-Setup) → eqMac-Toggle → Analyzer aus → direkter Output; Fallback ältere Version (Issues #994/#224)
 
-- [ZCode ADHS-Automations](zcode-adhs-automationen.md) — 13.09.–26.10. LIVE: **EINE Automation mit ALLEN 6 Briefs** (cron `0 9,10,15,16,21`; niemals 6 separate) · **56 Läufe, alle 6 Zweige bewiesen** · 26.10. Konsolidierung: LOKI_TASKBOARD.md, doku-fix ERLEDIGT, LokiVoice=`_ARCHIV/2026-10/loki-voice-alt` (P1s obsolet), OmniRoute :20128 läuft WIEDER (Richtung offen), Doku-Sync-DUPLIKAT automation-2df8eec5 Lösch-GO offen · **26.10. INFO-PUSH-RETOOLING: Sascha „Läufe geben 0 Info, wertlos" → JEDER Lauf sendet jetzt macOS-BENACHRICHTIGUNG (osascript, live bewiesen) + Chat 4-Zeilen-Format WAS/WO/WANN/WIE-WEITER, No-op-1-Zeiler verboten** · UHR-ANOMALIE (date=Wahrheit, vor Append NEU lesen) · offen auf GO: Wecker · Deutsch-Patch · Duplikat weg · OmniRoute-Richtung; 1 Task pro Chat-Limit
+- [ZCode ADHS-Automations](zcode-adhs-automationen.md) — 13.09.–26.10. LIVE: **EINE Automation mit ALLEN 6 Briefs** (cron `0 9,10,15,16,21`; niemals 6 separate) · **57 Läufe, alle 6 Zweige bewiesen** · 26.10. INFO-PUSH-RETOOLING („Läufe geben 0 Info, wertlos" → JEDER Lauf sendet macOS-BENACHRICHTIGUNG + Chat 4-Zeilen WAS/WO/WANN/WIE-WEITER, No-op-1-Zeiler verboten) · **erster echter Automatik-Push 26.10. 16:0x No-op PASS (runCount 57)** · 26.10. Konsolidierung: LOKI_TASKBOARD.md, doku-fix ERLEDIGT, LokiVoice=`_ARCHIV/2026-10/loki-voice-alt` (P1s obsolet), OmniRoute :20128 läuft WIEDER (Richtung offen), Doku-Sync-DUPLIKAT automation-2df8eec5 Lösch-GO offen · UHR-ANOMALIE (date=Wahrheit, vor Append NEU lesen) · offen auf GO: Wecker · Deutsch-Patch · Duplikat weg · OmniRoute-Richtung; 1 Task pro Chat-Limit
 
 - [OmniRoute-Rückbau + System-Fixes](omniroute-rueckbau-system-fixes-2026-09-20.md) — 20.09. Q1–Q7 erledigt, OmniRoute ABGEBAUT (Nutzer-Wunsch) · **⚠️ 26.10.: :20128 LÄUFT WIEDER (node PID 871, wohl 11.10. reaktiviert) — Richtungs-Entscheidung + Security-P1 (API-Keys/White-Label) offen**
 
@@ -14790,7 +14790,7 @@ Integration done 2026-08-30: added `web-search-prime`, `zread`, `zai-vision` MCP
 
 ---
 name: zcode-adhs-automationen
-description: "13.09.–26.10. LIVE: EINE Automation mit ALLEN 6 Briefs (cron `0 9,10,15,16,21`; niemals 6 separate — Nutzer-Ziel!) · **56 Läufe** · 26.10. GROSS-KONSOLIDIERUNG: LOKI_TASKBOARD.md angelegt, doku-fix ERLEDIGT (README+Backup), LokiVoice in `~/loki-ki/_ARCHIV/2026-10/loki-voice-alt/` gefunden (P1s obsolet), LegalOps 0 Prozesse (F-3 de facto), OmniRoute :20128 LÄUFT WIEDER (Widerspruch zum Abbau — Richtung offen), DOPPEL-Automation entdeckt (Doku-Sync Mi 15:00 automation-2df8eec5 dupliziert Tages-Routine-Zweig, Lösch-GO offen); **26.10. SYSTEMPROOF 6/6 LIVE PASS → URTEIL AKTIV** (hook-JSON · 23 Logbücher · sweep · Kalender-Event zurückgelesen · doku-grep · 3/3 Engine-Dateien; /systemproof = ~/.zcode/commands/systemproof.md); Settings: 4 Automations aktiv (56/8/1/2 Läufe), 5 SessionStart-Hook-Gruppen; offen auf GO: Wecker · Deutsch-Patch · Duplikat weg · OmniRoute-Richtung; UHR-ANOMALIE (date=Wahrheit, vor Append NEU lesen); 1 Task pro Chat-Limit"
+description: "13.09.–26.10. LIVE: EINE Automation mit ALLEN 6 Briefs (cron `0 9,10,15,16,21`; niemals 6 separate — Nutzer-Ziel!) · **57 Läufe** · 26.10. INFO-PUSH-RETOOLING live bewiesen („Läufe geben 0 Info, wertlos" → CronUpdate: JEDER Lauf sendet macOS-Benachrichtigung + Chat 4-Zeilen WAS/WO/WANN/WIE-WEITER, No-op-1-Zeiler verboten; erster echter Automatik-Push 16:0x No-op PASS, runCount 57) · 26.10. GROSS-KONSOLIDIERUNG: LOKI_TASKBOARD.md angelegt, doku-fix ERLEDIGT (README+Backup), LokiVoice in `~/loki-ki/_ARCHIV/2026-10/loki-voice-alt/` gefunden (P1s obsolet), LegalOps 0 Prozesse (F-3 de facto), OmniRoute :20128 LÄUFT WIEDER (Widerspruch zum Abbau — Richtung offen), DOPPEL-Automation entdeckt (Doku-Sync Mi 15:00 automation-2df8eec5 dupliziert Tages-Routine-Zweig, Lösch-GO offen); **26.10. SYSTEMPROOF 6/6 LIVE PASS → URTEIL AKTIV**; Settings: 4 Automations aktiv, 5 SessionStart-Hook-Gruppen; offen auf GO: Wecker · Deutsch-Patch · Duplikat weg · OmniRoute-Richtung; UHR-ANOMALIE (date=Wahrheit, vor Append NEU lesen); 1 Task pro Chat-Limit"
 metadata:
   node_type: memory
   type: project
@@ -19108,29 +19108,27 @@ Verwandt: [[zcode-workflow-bedienung]], [[session-quellen-wo-finden]], [[koerper
 
 ---
 name: browseros-llm-konfig-2026-10-26
-description: BrowserOS „Bring Your Own LLM" Stand 26.10.2026 (AKTUALISIERT) —
-  ClinePass glm-5.3-flash ist DEFAULT (curl-live getestet); OpenRouter-Key
-  TOT (401 User not found) → Provider bis Neuanlage nicht wählen; Ollama
-  qwen3.5:9b ok; Gemini blockiert (Google-Login nötig)
+description: BrowserOS „Bring Your Own LLM" Stand 26.10.2026 (FINAL) — Ollama
+  = Default (kein Token-Limit); OpenRouter-Key ist GÜLTIG aber MANAGEMENT-KEY
+  (kann keine Chat-Completions, kein Secret-Minting via API) → normaler
+  Inference-Key muss via openrouter.ai/keys UI erstellt werden; ClinePass
+  funktioniert, aber bewusst NICHT Default (5h-Token-Limit)
 metadata:
   node_type: memory
   type: project
   originSessionId: session_browseros-llm-2610
 ---
 
-BrowserOS (`chrome://browseros/settings` → AI & Agents), 7 Provider (Stand 26.10.2026, abends korrigiert):
+BrowserOS (`chrome://browseros/settings` → AI & Agents), 7 Provider (Stand 26.10.2026 final):
 
-- **ClinePass (OpenAI Compatible) = DEFAULT** (umgestellt, weil OpenRouter tot war) — `cline-pass/glm-5.3-flash` · `https://api.cline.bot/api/v1`. **Curl-Direktest: stream:true → antwortet ✅.** Falle: `stream:false` → HTTP 500 „empty response content"; BrowserOS-„Test connection" nutzt vermutlich non-stream und zeigt falschen Fehler.
-- **OpenRouter · `openrouter/auto`: Key TOT (HTTP 401 „User not found")** — der im Chat gepostete Key ist ungültig/gelöscht. Default wurde auf ClinePass zurückgenommen. Sobald Sascha einen neuen Key von openrouter.ai/keys liefert: Provider OpenRouter → Edit → Key eintragen → wieder „Set as default" (Sascha will die Auto-Modellwahl).
-- Ollama qwen3.5:9b · localhost:11434/v1 — läuft (curl /api/tags ok).
+- **Ollama = DEFAULT** (26.10. abends umgestellt) — `qwen3.5:9b` · localhost:11434/v1. Grund: kein Token-Limit, ClinePass-Flatrate soll für Coding geschont werden (Sascha-Kritik). Vision-Modell `qwen3-vl:8b` wurde per `ollama pull` nachgezogen (Browser-Automation braucht Vision) — nach Pull Ollama-Eintrag im BrowserOS auf VL-Modell umstellen.
+- **ClinePass (OpenAI Compatible)** — `cline-pass/glm-5.3-flash` · api.cline.bot. Funktioniert (curl stream:true ✅), aber BEWUSST nicht Default wegen 5h-Token-Limit (Sascha: „clinepass setting völlig dumm wegen dem token limit").
+- **OpenRouter**: Der von Sascha gepostete Key `sk-or-v1-b01a…f5f` ist **GÜLTIG** (GET /api/v1/key 200) aber `is_management_key:true` → Management-Keys dürfen KEINE Chat-Completions („401 User not found" an /chat/completions ist NORMAL dafür, der Key ist NICHT tot!). Sub-Key-Erzeugung via POST /api/v1/keys klappt, aber das Secret wird NICHT im Response mitgeliefert (nur masked label) → 3 erzeugte Orphans wurden wieder gelöscht (deleted:true). **Fix nur via UI:** openrouter.ai/keys → normalen Key ohne Management-Häkchen erzeugen → an ZCode → in BrowserOS OpenRouter-Eintrag eintragen → „Set as default" (Sascha will openrouter/auto als Auto-Modellwahl).
 - OmniRoute (localhost:20128) 401 ohne Key · z.ai GLM · Hermes ACP · pi ACP — vorhanden.
+- Gemini: aistudio.google.com/apikey → Google-Anmelden im AgentOS-Fenster. Login durch Sascha ODER API-Key. Google AI Pro-Abo ≠ API-Key.
 
-**Offen:**
-1. Gemini/Google: aistudio.google.com/apikey → Google-Anmelden im AgentOS-Fenster. Braucht Login durch Sascha ODER Gemini-API-Key. Google AI Pro-Abo gilt NICHT für API-Keys.
-2. Neu-Key von Sascha für OpenRouter (Auto-Modellwahl ist sein Wunsch).
-
-**Why:** „Keiner funktioniert"-Meldung am 26.10. war der tote OpenRouter-Key, keine Konfig-Fehler. Vermutlich weitere Sessions betroffen.
-**How to apply:** Bei LLM-Problemen IMMER erst curl-Direktest (Authorization-Header), dann Browser-UI. Master-Doku: `/Users/saschalagler/LOKI_OS_SETUP.md`.
+**Why:** Sascha-Kritik 26.10.: „key ist neu, du hast ollama nicht für browser konfiguriert, clinepass dumm wegen token limit" — alles berechtigt; Default-Kette jetzt: Ollama (lokal) → ClinePass (Flats) → OpenRouter (nach Key-Fix, dann Wunsch-Default).
+**How to apply:** Erst curl-Direktests, dann UI. GET /api/v1/key unterscheidet Management- vs. Inference-Key. Master-Doku: `/Users/saschalagler/LOKI_OS_SETUP.md`.
 
 Verwandt: [[umgebungs-blocker-zcode]] · [[loki-os-system-setup-2026-10-26]]
 
