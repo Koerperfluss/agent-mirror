@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-26 01:46 UTC
+Zuletzt gespiegelt: 2026-10-26 02:01 UTC
 
 ## AGENTS
 
@@ -11810,8 +11810,28 @@ Music stem separation is set up and verified working on this machine (2026-10-21
 
 # Memory Index
 
-- [qwen-flash-spark Projekt](qwen-flash-spark-project.md) — Qwen3.8 auf DGX Spark für macOS-Traktor-Clone; gepusht (68df55355), 22 Tests grün, Kanonik: ~/agent-os/agent-mirror
+- [qwen-flash-spark Projekt](qwen-flash-spark-project.md) — Qwen3.8 auf DGX Spark + macOS-Traktor-Clone Slice 1 FERTIG (TraktorClone/ SwiftPM, 27 Tests, Head 2a68dcbdb); Kanonik: ~/agent-os/agent-mirror; Swift-CLT-Gotchas (Swift Testing, plugin-path)
 - [Mimosa-Hook-Schreibconstraints](mimosa-hook-write-constraints.md) — warum Edits/Pushes blockiert werden und welche Gegenmuster funktionieren (validate_host, write_text, lazy, pipefail)
+- [Custom-Skills manuell ausführen](custom-skills-read-from-autoclaw.md) — roo-code/gsd-core/coderabbit/loki-dev/ponytail liegen in ~/.openclaw-autoclaw/skills/, ZCode registriert sie nicht → SKILL.md lesen + Methodik manuell anwenden
+
+
+## custom-skills-read-from-autoclaw
+
+---
+name: custom-skills-read-from-autoclaw
+description: Saschas Custom-Skills (roo-code/gsd-core/coderabbit/loki-dev/ponytail) sind
+  keine ZCode-Skills — aber SKILL.md direkt lesen und Methodik manuell ausführen akzeptiert er
+metadata:
+  node_type: memory
+  type: feedback
+  originSessionId: session_58f3f4bfcb9a88671e0595593de28702
+---
+
+Sascha erwartet, dass seine Custom-Skills (/roocode, /coderabbit, /gsd-core, /lokidev, /appagentteam) nutzbar sind — er reagiert gereizt („wo sind meine skills?"), wenn man sie nur als „nicht verfügbar" abtut.
+
+**Why:** Die Skills existieren real als Dateien unter `~/.openclaw-autoclaw/skills/<name>/SKILL.md`, werden aber von ZCode nicht als aufrufbare Skills registriert (nur AutoClaw/Cline-Discovery). ZCode listet nur Plugin-Skills (superpowers, mattpocock-skills, video2code etc.).
+
+**How to apply:** (1) SKILL.md-Dateien direkt lesen (`head -50 ~/.openclaw-autoclaw/skills/<name>/SKILL.md`) und die Methodik **manuell** ausführen — bewährt an TraktorClone Slice 1: loki-dev BUILD-Gate (Sequential Thinking → TodoWrite → PLAN-Tabelle → PLAN.md), gsd-core (Spec vor Code, vertikale Slices), roo-code-Modi, ralph-loop (Build-Loop max 5 Iterationen), coderabbit (4 Dimensionen Security/Logic/Perf/Arch + Findings-Tabelle + APPROVE-Verdict als Eigenreview dokumentieren), ponytail (YAGNI, keine Dependencies, native APIs zuerst). (2) Kurz und faktenbasiert kommunizieren: „Dateien existieren in ~/.openclaw-autoclaw/skills/, ZCode registriert sie nicht → Methodik manuell angewendet" — das hat ihn beruhigt. (3) Kern-Kurzformeln der Skills: loki-dev 4 Stopp-Regeln (Deploy/Löschen/Push/>5000 Credits nachfragen), gsd-core DONE-WHEN pro Slice, coderabbit-Verdict APPROVE/REQUEST_CHANGES. Kontext: [[qwen-flash-spark-project]].
 
 ## mimosa-hook-write-constraints
 
@@ -11847,7 +11867,9 @@ Projekt `~/qwen-flash-spark` (Stand 2026-10-26): Qwen3.8-Flash-Next (125B MoE, 6
 
 Verifizierte Fakten (nicht raten): Traktor `Traktor Settings.tsi` = **Plain-XML** (`<NIXML><Entry …/>`), kein Binär-RE nötig; GGUF `unsloth/Qwen3.8-Flash-Next-GGUF`, **UD-Q4_K_XL = 111 GB** (alte ~78-GB-Schätzung war falsch; Q5 passt nicht in 128 GB); MTP-Flag `--spec-type draft-mtp`; GB10-Runtime-Pflichtflags `-ub 2048 -b 2048 --no-mmap`; llama.cpp-Support seit PR #16095/#17584. Clients blocken private IPs (SSRF-Guard) → LAN-Nutzung braucht `QFS_ALLOW_LAN=1` oder `--allow-lan`.
 
-Git (Stand 2026-10-26, abends): **Push erfolgreich** — Head `68df55355` auf `cline/s4sx83cs` (github.com/Koerperfluss/agent-mirror, gh auth Koerperfluss). Kanonische Arbeitskopie jetzt `~/agent-os/agent-mirror` (Klon; dort lebt der Projektinhalt am Repo-ROOT — docs/, scripts/, tests/ — nicht in einem qwen-flash-spark/-Unterordner). Lokales `~/qwen-flash-spark` (main) ist mit dem Remote gemerged; 22 Unit-Tests grün (13 unsere + 9 vom `scripts/spark_dev_agent.py` Dev-Agent der Parallel-Session — DevAgent-Klasse, chat_fn-Mock-Muster, QFS_ALLOW_LAN-Opt-in). Host-Validierung im Dev-Agent bewusst **lazy** (erst in `_post`, nicht im `__init__`), sonst crashen Mock-Tests mit Fake-Hostnamen. Saschas Custom-Skills (/roocode, /coderabbit, /gsd-core, /lokidev, /appagentteam) existieren NICHT in ZCode-Sessions — nur im Cline/AutoClaw-Harness; Pendants hier: superpowers:writing-plans (≈gsd-core), mattpocock-skills:code-review (≈coderabbit). Hardware-Kette: Omnitronic BD-1380 USB (class-compliant → ALSA `snd-usb-audio` am Pi) + analoger A&H Xone:32 (keine Soundkarte); Traktor Pro selbst = macOS/Windows (CoreAudio/ASIO), kein ALSA. Siehe [[mimosa-hook-write-constraints]].
+Git (Stand 2026-10-26, spät): Head `2a68dcbdb` auf `cline/s4sx83cs` (github.com/Koerperfluss/agent-mirror, gh auth Koerperfluss). Kanonische Arbeitskopie: `~/agent-os/agent-mirror` (Klon; Projektinhalt am Repo-ROOT). **Slice 1 der Traktor-App FERTIG:** `TraktorClone/` SwiftPM-Package — Core (DeckState-Zustandsmaschine mit `now:`-Clock-Param überall, Mixer equal-power mit gesnappten Extremen, BeatGrid, TSIParser, AudioEngine AVAudioEngine+TimePitch, MIDIActionRouter) + SwiftUI-App `swift run TraktorCloneApp` (2 Decks, Mixer, CoreMIDI-Live-In, Demo-Mapping Note 0x24=Play/0x25=Cue/CC7=X-Fade, Tastatur Q/W/E + U/I/O). **27/27 Tests grün** via `TraktorClone/run_tests.sh`; 4 TDD-Bugs gefixt (Uhren-Inkonsistenz, cos(π/2)≠0, Cue aus .ready→.paused, CLT-Macro-Race). Swift/CLT-Fakten: reine CommandLineTools haben kein XCTest → **Swift Testing** (`import Testing`, `#expect`, tools-version 6.0); Macro-Plugin-Race („TestingMacros not found") → fix via `-Xswiftc -plugin-path -Xswiftc /Library/Developer/CommandLineTools/usr/lib/swift/host/plugins/testing` (in run_tests.sh); `@State` ist im neuen SDK ein Makro → Property ins ObservableObject statt `@State` (SwiftUIMacros-Race); `AVAudioFile` hat kein `duration` (length/sampleRate). 14/29 FEATURES.json implemented, DVS blocked (BD-1380 Riemenantrieb), nächster: Slice 2 (Library/collection.nml-Reader) oder Slice 3 (Waveform+Seek) — `rebuild/STATE.md` führt weiter. Sascha pocht darauf, die App wirklich zu bauen (nicht nur Doku/Skripte).
+
+Saschas Custom-Skills (/roocode, /coderabbit, /gsd-core, /lokidev, /appagentteam): NICHT als ZCode-Skills registriert, aber als Dateien vorhanden — Manuell-Ausführung akzeptiert, siehe [[custom-skills-read-from-autoclaw]]. Hardware-Kette: Omnitronic BD-1380 USB (class-compliant → ALSA `snd-usb-audio` am Pi) + analoger A&H Xone:32 (keine Soundkarte); Traktor Pro selbst = macOS/Windows (CoreAudio/ASIO), kein ALSA. Siehe [[mimosa-hook-write-constraints]].
 
 Methodik (2026-10-26, aus Saschas PDFs `~/Desktop/Reverse Engeniering /`): `docs/RE_METHODOLOGY.md` (12-Schritte-Funktionsgleichheit auf Traktor 4.5 gemappt) + `AGENTS.md` im Root = verbindlicher app-rebuild-Arbeitsvertrag für Agenten (FEATURES.json-Schema, rebuild/STATE.md-Checkpoints, Abschlussgate, keine Mocks als fertig). pi_re_client hat Task `rebuild` (Prüfblatt-Analyse, BEOBACHTUNG/HYPOTHESE/[VORSCHLAG]-Trennung); 13 Unit-Tests grün, letzter Commit `7b2c68e`. PDF-Dateiname-Falle: „reverse engineering .pdf" hat ein Leerzeichen vor der Endung. Wichtig: BD-1380 hat Riemenantrieb → kein echter DVS/Timecode-Turntable für Scratch.
 
