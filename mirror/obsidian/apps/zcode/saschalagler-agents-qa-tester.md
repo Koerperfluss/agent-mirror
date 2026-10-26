@@ -9,8 +9,8 @@ tags: [spiegel, zcode]
 name: "qa-tester"
 description: "Schreibt und führt Tests aus; verifiziert echtes Verhalten, nicht Annahmen."
 color: yellow
-model: "omniroute/glm-first"
-thoughtLevel: max
+model: "account:zai-individual-coding-plan/GLM-5.3-Flash"
+thoughtLevel: low
 tools:
   - Read
   - Grep

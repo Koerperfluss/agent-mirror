@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-26 02:47 UTC
+Zuletzt gespiegelt: 2026-10-26 03:02 UTC
 
 ## AGENTS
 
@@ -613,7 +613,7 @@ Security or destructive paths → write normal English warning, then resume cave
 name: "cavecrew-investigator"
 description: ">"
 color: yellow
-model: "omniroute/glm-first"
+model: "account:zai-individual-coding-plan/GLM-5.3-Flash"
 thoughtLevel: low
 tools:
   - Read
@@ -681,7 +681,7 @@ Tests:
 name: "cavecrew-reviewer"
 description: ">"
 color: yellow
-model: "omniroute/glm-first"
+model: "account:zai-individual-coding-plan/GLM-5.3-Flash"
 thoughtLevel: low
 tools:
   - Read
@@ -740,8 +740,8 @@ Security findings → state risk in plain English first sentence, then caveman f
 name: "code-architect"
 description: "Entwirft Architektur und Modulgrenzen, bevor implementiert wird."
 color: yellow
-model: "omniroute/glm-first"
-thoughtLevel: high
+model: "account:zai-individual-coding-plan/GLM-5.3-Flash"
+thoughtLevel: low
 tools:
   - Read
   - Grep
@@ -777,7 +777,7 @@ PLAN.md + Tabelle im Chat (ADHS-Format: Ergebnis zuerst, nummerierte Schritte).
 name: "config-auditor"
 description: "Prüft Config-Dateien auf Syntax-, Konsistenz- und Sicherheitsfehler."
 color: yellow
-model: "omniroute/glm-first"
+model: "account:zai-individual-coding-plan/GLM-5.3-Flash"
 thoughtLevel: low
 tools:
   - Read
@@ -818,8 +818,8 @@ Eiserne Regel: "aktive Settings" ohne Log-/Funktionstest-Beweis zu behaupten = F
 name: "explore"
 description: "Nur-Lese-Kundschafter: erfasst Struktur und Stand einer Codebasis."
 color: yellow
-model: "omniroute/glm-first"
-thoughtLevel: max
+model: "account:zai-individual-coding-plan/GLM-5.3-Flash"
+thoughtLevel: low
 tools:
   - Read
   - Grep
@@ -927,8 +927,8 @@ VETO = der Turn ist NICHT abgeschlossen; Builder muss nachbessern. Kein Kompromi
 name: "implementer"
 description: "Setzt spezifizierte Tickets direkt in Code um."
 color: yellow
-model: "omniroute/glm-first"
-thoughtLevel: max
+model: "account:zai-individual-coding-plan/GLM-5.3-Flash"
+thoughtLevel: low
 tools:
   - Read
   - Edit
@@ -964,8 +964,8 @@ Ergebnis-Zeile 1 · geänderte Dateien als Tabelle (pfad:zeile — Änderung) ·
 name: "qa-tester"
 description: "Schreibt und führt Tests aus; verifiziert echtes Verhalten, nicht Annahmen."
 color: yellow
-model: "omniroute/glm-first"
-thoughtLevel: max
+model: "account:zai-individual-coding-plan/GLM-5.3-Flash"
+thoughtLevel: low
 tools:
   - Read
   - Grep
@@ -1003,8 +1003,8 @@ Bei FAIL: kleinster Repro-Pfad. Keine Architektur-Meinungen (dafür ist reviewer
 name: "reviewer"
 description: "Reviewt Diffs/PRs auf Logik, Sicherheit und Architektur."
 color: yellow
-model: "omniroute/glm-first"
-thoughtLevel: xhigh
+model: "account:zai-individual-coding-plan/GLM-5.3-Flash"
+thoughtLevel: low
 tools:
   - Read
   - Grep
@@ -11810,9 +11810,10 @@ Music stem separation is set up and verified working on this machine (2026-10-21
 
 # Memory Index
 
-- [qwen-flash-spark Projekt](qwen-flash-spark-project.md) — Qwen3.8 auf DGX Spark + macOS-Traktor-Clone Slice 1 FERTIG (TraktorClone/ SwiftPM, 27 Tests, Head 2a68dcbdb); Kanonik: ~/agent-os/agent-mirror; Swift-CLT-Gotchas (Swift Testing, plugin-path)
+- [qwen-flash-spark Projekt](qwen-flash-spark-project.md) — Qwen3.8 auf DGX Spark + macOS-Traktor-Clone Slices 1–7 FERTIG (TraktorClone/ SwiftPM, 54 Tests, .app-Bundle, Head a30349657); Kanonik: ~/agent-os/agent-mirror; Swift-CLT-Gotchas (Swift Testing, plugin-path)
 - [Mimosa-Hook-Schreibconstraints](mimosa-hook-write-constraints.md) — warum Edits/Pushes blockiert werden und welche Gegenmuster funktionieren (validate_host, write_text, lazy, pipefail)
 - [Custom-Skills manuell ausführen](custom-skills-read-from-autoclaw.md) — roo-code/gsd-core/coderabbit/loki-dev/ponytail liegen in ~/.openclaw-autoclaw/skills/, ZCode registriert sie nicht → SKILL.md lesen + Methodik manuell anwenden
+- [Subagent-Provider-Fix](subagent-provider-fix-zai-api.md) — "provider-not-found": 8 Defs hatten toten Provider zai-api (→ omniroute/glm-first gefixt, ab Neustart aktiv); account:-Format funktioniert sofort; hcom-Peers stale
 
 
 ## custom-skills-read-from-autoclaw
@@ -11867,11 +11868,35 @@ Projekt `~/qwen-flash-spark` (Stand 2026-10-26): Qwen3.8-Flash-Next (125B MoE, 6
 
 Verifizierte Fakten (nicht raten): Traktor `Traktor Settings.tsi` = **Plain-XML** (`<NIXML><Entry …/>`), kein Binär-RE nötig; GGUF `unsloth/Qwen3.8-Flash-Next-GGUF`, **UD-Q4_K_XL = 111 GB** (alte ~78-GB-Schätzung war falsch; Q5 passt nicht in 128 GB); MTP-Flag `--spec-type draft-mtp`; GB10-Runtime-Pflichtflags `-ub 2048 -b 2048 --no-mmap`; llama.cpp-Support seit PR #16095/#17584. Clients blocken private IPs (SSRF-Guard) → LAN-Nutzung braucht `QFS_ALLOW_LAN=1` oder `--allow-lan`.
 
-Git (Stand 2026-10-26, spät): Head `42810482f` auf `cline/s4sx83cs` (github.com/Koerperfluss/agent-mirror, gh auth Koerperfluss). Kanonische Arbeitskopie: `~/agent-os/agent-mirror` (Klon; Projektinhalt am Repo-ROOT). **Slices 1–7 der Traktor-App FERTIG (54/54 Tests, 9 Suites) in `TraktorClone/` SwiftPM:** Slice 1 = Core (DeckState mit `now:`-Clock-Param überall, Mixer equal-power gesnappt, BeatGrid, TSIParser, MIDIActionRouter) + SwiftUI 2-Deck-App. **Slices 2–7 (Commit 42810482f):** NMLParser+LibrarySearch (echte collection.nml ist LEER, `ENTRIES="0"`), WaveformExtractor (400 Buckets, Peak, normalisiert) + AudioEngine.seek (`player.scheduleSegment(file, startingFrame:, frameCount:, at: nil)` — `at:` ist PFLICHT-Param), FxChain (EQ/Delay/Reverb, Kette player→timePitch→EQ→Delay→Reverb→Mixer), SyncEngine (slavePitch clamp ±0.5, beatPhase), MasterRecorder (mainMixer-Tap→AIFF 16/44.1), StemFile (nur Struktur — Playback-Engine = Ticket 7b), MIDILearn/MappingStore (JSONEncoder MUSS `.sortedKeys+.prettyPrinted` für Stabilität), `make_app.sh` → **klickbares `build/TraktorClone.app`** (ad-hoc codesign, ohne Xcode). App-UI: Waveform-Canvas+Klick-Seek (via onTapGesture(CGPoint)+GeometryReader, kein @State — Ternary in .buttonStyle geht nicht), FX-Slider, Sync-Buttons, Rec, Library mit „→ A"/„→ B". **Neue API-Fallen:** `AVLinearPCMIsSignedIntegerKey` existiert nicht im CLT-SDK; AVAudioUnitEQ hat kein `numberOfBands` (nur `bands.count`); `AVAudioFile` kein `duration` (length/sampleRate); `#expect(throws: ())` invalid → `(any Error).self`. **Known-Gaps:** Play-after-Pause startet an Schedule- statt Playhead-Position (playerTime-Sync fehlt), Stem-Playback offen, xcodebuild fehlt (nur CLT → kein Codesigning/Xcode-Projekt). 27/54 FEATURES implemented. `rebuild/STATE.md` führt weiter (nächste: Slice 7b oder Playhead-Präzision). Sascha pocht auf die fertige App mit ALLEN Funktionen — Prioritäts-/Team-Fragen stoßen ihn auf („wieso fragst du mich das ich will fertige app").
+Git (Stand 2026-10-26, spät): Head `a30349657` auf `cline/s4sx83cs` (github.com/Koerperfluss/agent-mirror, gh auth Koerperfluss). Kanonische Arbeitskopie: `~/agent-os/agent-mirror` (Klon; Projektinhalt am Repo-ROOT). **Slices 1–7 der Traktor-App FERTIG (54/54 Tests, 9 Suites) in `TraktorClone/` SwiftPM:** Slice 1 = Core (DeckState mit `now:`-Clock-Param überall, Mixer equal-power gesnappt, BeatGrid, TSIParser, MIDIActionRouter) + SwiftUI 2-Deck-App. **Slices 2–7 (Commit 42810482f) + Review-Fixes (a30349657):** NMLParser+LibrarySearch (echte collection.nml ist LEER, `ENTRIES="0"`), WaveformExtractor (400 Buckets, Peak, normalisiert) + AudioEngine.seek (`player.scheduleSegment(file, startingFrame:, frameCount:, at: nil)` — `at:` ist PFLICHT-Param, plus `file.length - target > 0`-Guard), FxChain (EQ/Delay/Reverb, Kette player→timePitch→EQ→Delay→Reverb→Mixer; Reverb-Preset nur bei Wechsel laden), SyncEngine (slavePitch clamp ±0.5, beatPhase), MasterRecorder (`isRecording = true` VOR installTap; Write-Fehler NSLog statt still), StemFile (lazy Tracks — kein Sync-I/O im init; Playback-Engine = Ticket 7b), MIDILearn/MappingStore (JSONEncoder MUSS `.sortedKeys+.prettyPrinted` für Stabilität), `make_app.sh` → **klickbares `build/TraktorClone.app`** (ad-hoc codesign, ohne Xcode). `.build/`+`build/` sind gegitignored (Artefakte waren committet). App-UI: Waveform-Canvas+Klick-Seek (via onTapGesture(CGPoint)+GeometryReader, kein @State — Ternary in .buttonStyle geht nicht), FX-Slider, Sync-Buttons, Rec, Library mit „→ A"/„→ B". **Reviewer-Veto durchlief das Team** (cavecrew-builder als Ersatz-Reviewer): REQUEST_CHANGES → 7 Findings alle gefixt. **Neue API-Fallen:** `AVLinearPCMIsSignedIntegerKey` existiert nicht im CLT-SDK; AVAudioUnitEQ hat kein `numberOfBands` (nur `bands.count`); `AVAudioFile` kein `duration` (length/sampleRate); `#expect(throws: ())` invalid → `(any Error).self`. **Known-Gaps:** Play-after-Pause startet an Schedule- statt Playhead-Position (playerTime-Sync fehlt), Stem-Playback offen, xcodebuild fehlt (nur CLT → kein Codesigning/Xcode-Projekt). 27/54 FEATURES implemented. `rebuild/STATE.md` führt weiter (nächste: Slice 7b oder Playhead-Präzision). Sascha pocht auf die fertige App mit ALLEN Funktionen — Prioritäts-/Team-Fragen stoßen ihn auf („wieso fragst du mich das ich will fertige app"); Spark-Aufgaben (README-Schritte A–D) sind für ihn irrelevant.
 
 Saschas Custom-Skills (/roocode, /coderabbit, /gsd-core, /lokidev, /appagentteam): NICHT als ZCode-Skills registriert, aber als Dateien vorhanden — Manuell-Ausführung akzeptiert, siehe [[custom-skills-read-from-autoclaw]]. Hardware-Kette: Omnitronic BD-1380 USB (class-compliant → ALSA `snd-usb-audio` am Pi) + analoger A&H Xone:32 (keine Soundkarte); Traktor Pro selbst = macOS/Windows (CoreAudio/ASIO), kein ALSA. Siehe [[mimosa-hook-write-constraints]].
 
 Methodik (2026-10-26, aus Saschas PDFs `~/Desktop/Reverse Engeniering /`): `docs/RE_METHODOLOGY.md` (12-Schritte-Funktionsgleichheit auf Traktor 4.5 gemappt) + `AGENTS.md` im Root = verbindlicher app-rebuild-Arbeitsvertrag für Agenten (FEATURES.json-Schema, rebuild/STATE.md-Checkpoints, Abschlussgate, keine Mocks als fertig). pi_re_client hat Task `rebuild` (Prüfblatt-Analyse, BEOBACHTUNG/HYPOTHESE/[VORSCHLAG]-Trennung); 13 Unit-Tests grün, letzter Commit `7b2c68e`. PDF-Dateiname-Falle: „reverse engineering .pdf" hat ein Leerzeichen vor der Endung. Wichtig: BD-1380 hat Riemenantrieb → kein echter DVS/Timecode-Turntable für Scratch.
+
+## subagent-provider-fix-zai-api
+
+---
+name: subagent-provider-fix-zai-api
+description: Subagenten schlugen mit "provider-not-found" fehl — 8 Defs zeigten
+  auf toten Provider zai-api; Fix + funktionierende Modell-Formate +
+  Session-Cache-Falle
+metadata:
+  node_type: memory
+  type: feedback
+  originSessionId: session_58f3f4bfcb9a88671e0595593de28702
+---
+
+Saschas ZCode-Subagenten (~/.zcode/agents/*.md: cavecrew-*, implementer, qa-tester, reviewer, code-architect, config-auditor, explore) schlugen beim Dispatch mit `Cannot start subagent: Provider unavailable [provider-not-found; selection=zai-api/GLM-5.3-Flash]` fehl — obwohl die Subagents-UI sie alle anzeigt.
+
+**Why:** Die Defs hatten `model: "zai-api/GLM-5.3-Flash"` — aber `zai-api` existiert NICHT in `~/.zcode/v2/provider_config.json` (providerOrder: `builtin:zai`, `omniroute`, `ollama`, `new-provider`). Der Name war schlicht falsch, nicht das System.
+
+**How to apply:**
+1. **Zwei funktionierende Modell-Formate:** `account:zai-individual-coding-plan/GLM-5.3-Flash` (Session-Konto — funktioniert SOFORT, bewiesen mit cavecrew-builder, 73k Tokens sauber) und `omniroute/glm-first` (OmniRoute localhost:20128, LaunchAgent aktiv). Vermeide erfundene Provider-Namen wie `zai-api`.
+2. **Session-Cache-Falle:** Agent-Defs werden beim Session-Start geladen — Datei-Fixes am laufenden Prozess wirken erst nach NEUSTART. Sofort-Nutzung: Agent-Typen mit `account:`-Format dispatchen.
+3. **Fix-Ablauf** (2026-10-26 ausgeführt): Backups `*.md.bak-20261026`, dann `sed -i '' 's|zai-api/GLM-5.3-Flash|omniroute/glm-first|g'` über alle Defs; OmniRoute-Health vorher mit `curl -sf http://localhost:20128/` prüfen. 8 Defs gefixt; cavecrew-builder + gate-enforcer-test hatten bereits das account:-Format.
+4. **Reviewer-Veto ohne Reviewer-Def:** cavecrew-builder mit Review-Briefing („du agierst JETZT als Reviewer mit Vetorecht, hast nichts gebaut") funktioniert als Ersatz — lieferte REQUEST_CHANGES mit 7 echten Findings (Recorder-Race, StemFile-Main-Thread-Block, .build-Artefakte im Git, Dead Code, seek-0-Frame-Guard, Reverb-Preset-Reload). Alle gefixt, 54/54 Tests, Push a30349657.
+5. hcom-Bus: `hcom start` macht ZCode als Agent sichtbar (Name „neko"); Antigravity.app in /Applications vorhanden; aber Cline/Antigravity/AutoClaw-Peers standen 16 Tage stale — externes Team nicht verlässlich, Solo-Bau + Ersatz-Reviewer dokumentieren. Kontext: [[qwen-flash-spark-project]], [[custom-skills-read-from-autoclaw]].
 
 ## MEMORY
 

@@ -9,8 +9,8 @@ tags: [spiegel, zcode]
 name: "code-architect"
 description: "Entwirft Architektur und Modulgrenzen, bevor implementiert wird."
 color: yellow
-model: "omniroute/glm-first"
-thoughtLevel: high
+model: "account:zai-individual-coding-plan/GLM-5.3-Flash"
+thoughtLevel: low
 tools:
   - Read
   - Grep

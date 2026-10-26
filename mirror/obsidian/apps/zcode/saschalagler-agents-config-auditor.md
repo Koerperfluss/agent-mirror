@@ -9,7 +9,7 @@ tags: [spiegel, zcode]
 name: "config-auditor"
 description: "Prüft Config-Dateien auf Syntax-, Konsistenz- und Sicherheitsfehler."
 color: yellow
-model: "omniroute/glm-first"
+model: "account:zai-individual-coding-plan/GLM-5.3-Flash"
 thoughtLevel: low
 tools:
   - Read
