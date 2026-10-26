@@ -7,7 +7,7 @@ import statistics
 import sys
 
 # SSRF-Guard gemeinsam mit dem RE-Client (gleiches Verzeichnis)
-from pi_re_client import NoRedirectHandler, validate_host
+from pi_re_client import NoRedirectHandler, validate_host, safe_output_path
 
 # LOKI.OS - Pi Benchmark Tool (Standard Lib Only)
 
@@ -122,8 +122,8 @@ def main():
     if all_results:
         print_table(all_results)
         if args.json_out:
-            with open(args.json_out, 'w') as f:
-                json.dump(all_results, f, indent=2)
+            safe_output_path(args.json_out).write_text(
+                json.dumps(all_results, indent=2), encoding="utf-8")
             print(f"\n💾 Ergebnisse in {args.json_out} gespeichert.")
 
 if __name__ == "__main__":

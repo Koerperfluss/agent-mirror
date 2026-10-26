@@ -22,6 +22,8 @@ import urllib.error
 import urllib.request
 from pathlib import Path
 
+from pi_re_client import NoRedirectHandler, validate_host
+
 SAMPLING = {
     "thinking": {"temperature": 1.0, "top_p": 0.95, "top_k": 20, "min_p": 0.0},
     "instruct": {"temperature": 0.7, "top_p": 0.80, "top_k": 20,
@@ -326,12 +328,14 @@ class DevAgent:
     def __init__(self, workspace, task, test_command, host, model,
                  mode="thinking", max_steps=8, max_tokens=4096, timeout=600,
                  test_timeout=300, api_key=None, protocol="auto", read_only=False,
-                 final_tests=True, chat_fn=None, retries=1):
+                 final_tests=True, chat_fn=None, retries=1, allow_lan=None):
         self.workspace = Path(workspace).resolve()
         if not self.workspace.is_dir():
             raise AgentError(f"Workspace fehlt: {self.workspace}")
         self.test_command = test_command
-        self.host = normalize_host(host)
+        if allow_lan is None:
+            allow_lan = os.environ.get("QFS_ALLOW_LAN", "") == "1"
+        self.host = validate_host(normalize_host(host), allow_lan=allow_lan)
         self.model = model
         self.mode = mode
         self.max_steps = max_steps
@@ -371,7 +375,8 @@ class DevAgent:
             data=json.dumps(payload, ensure_ascii=False).encode("utf-8"),
             headers=headers)
         try:
-            with urllib.request.urlopen(req, timeout=self.timeout) as resp:
+            opener = urllib.request.build_opener(NoRedirectHandler)
+            with opener.open(req, timeout=self.timeout) as resp:
                 data = json.load(resp)
         except urllib.error.HTTPError as exc:
             detail = exc.read().decode("utf-8", "replace")[:1000]

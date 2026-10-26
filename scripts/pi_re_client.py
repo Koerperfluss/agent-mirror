@@ -45,6 +45,17 @@ def validate_host(host, allow_lan=False):
     stripped = host.rstrip("/")
     return stripped[:-3] if stripped.endswith("/v1") else stripped
 
+def safe_output_path(path):
+    """Validiert einen CLI-Ausgabepfad (erkennbarer Fehler statt stillem Überschreiben)."""
+    from pathlib import Path
+    if not path or not str(path).strip():
+        raise ValueError("Leerer Ausgabepfad.")
+    p = Path(str(path)).expanduser().resolve()
+    if p.is_dir():
+        raise ValueError(f"Ausgabepfad ist ein Verzeichnis: {p}")
+    p.parent.mkdir(parents=True, exist_ok=True)
+    return p
+
 def get_args():
     parser = argparse.ArgumentParser(description="Qwen RE Client für Traktor Reverse Engineering")
     parser.add_argument("--host", default="http://localhost:8080", help="API Host URL")
@@ -157,13 +168,14 @@ def main():
         sys.exit(1)
 
     if args.output:
-        with open(args.output, 'w') as f:
-            json.dump({
-                "task": args.task,
-                "input_preview": input_data[:100],
-                "response": full_response,
-                "reasoning": reasoning
-            }, f, indent=2)
+        result_doc = {
+            "task": args.task,
+            "input_preview": input_data[:100],
+            "response": full_response,
+            "reasoning": reasoning
+        }
+        safe_output_path(args.output).write_text(
+            json.dumps(result_doc, indent=2), encoding="utf-8")
         print(f"💾 Protokoll in {args.output} gespeichert.")
 
 if __name__ == "__main__":

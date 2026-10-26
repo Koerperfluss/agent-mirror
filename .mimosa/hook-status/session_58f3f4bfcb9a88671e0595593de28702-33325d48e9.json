@@ -1,14 +1,14 @@
 {
   "schemaVersion": "mimosa-hook-status/v1",
-  "recordedAt": "2026-10-26T00:12:03.554Z",
+  "recordedAt": "2026-10-26T00:22:52.316Z",
   "sessionId": "session_58f3f4bfcb9a88671e0595593de28702",
   "event": "PostToolUse",
   "toolName": "Edit",
-  "file": "scripts/pi_re_client.py",
-  "outcome": "clear",
+  "file": "scripts/pi_benchmark.py",
+  "outcome": "static_verified",
   "coverage": "complete",
-  "findingCount": 0,
-  "durationMs": 3,
+  "findingCount": 1,
+  "durationMs": 483,
   "hostState": "hook_complete",
   "reportHint": ".mimosa/reports/"
 }
