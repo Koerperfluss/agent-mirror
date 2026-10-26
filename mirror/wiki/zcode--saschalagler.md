@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-26 14:12 UTC
+Zuletzt gespiegelt: 2026-10-26 14:27 UTC
 
 ## AGENTS
 
@@ -19095,6 +19095,8 @@ Verwandt: [[zcode-workflow-bedienung]], [[session-quellen-wo-finden]], [[koerper
 - [Subagent-Reasoning-Level-Fehler](zcode-subagent-reasoning-level-error.md) — Agent-Tool startet nicht (GLM-5.3-Flash ohne Denkstufe) → direkt selbst untersuchen
 - [Chipsi-Synthese-Fehler-Diagnose](chipsi-synthesis-error-diagnosis.md) — Vollständige Fehlerkette + Fix (Konnektor-Schalter), Computer-Use/WhatsApp/Session-Know-how
 - [Feedback: echte App, keine Ersatzbauten](user-feedback-real-app-only.md) — Sascha will die reale App; Passwort-Nachfragen nie wiederholen; Key-Rotation als Fehlerquelle prüfen
+- [Maxenergy/EVN/Caritas Umzug 26.10.2026](maxenergy-evn-caritas-umzug-2026-10-26.md) — Melk→Loosdorf belegt (S618255, EVN-ABS-Nr.), Endabrechnungs-Mail NICHT gesendet (Kdnr-Konflikt), bahldorfa-Speicher voll ab 14.11.2026
+- [BrowserOS = Standard-Browser für Gmail-Suche](umgebungs-blocker-zcode.md) — Gmail-MCP tot; BrowserOS via Computer-Use ist der funktionierende Weg (Nutzer-Anweisung)
 
 ## chipsi-judicario-stand-2026-09-22
 
@@ -19184,6 +19186,38 @@ Workflow-Beweise (22.09., alle deterministisch): chipsi.openlaw.cc HTTP 303 · G
 
 **How to apply:** Sobald Login steht (Sascha tippt Passwort oder macht Reset): Neukonfiguration mit Key #2 wie oben durchziehen, dann Endtest — baut die Synthese = fertig; baut sie nicht = openlaw-Serverseite (Meldung ist längst bei Reinhard, Delivered 15:22). Recherche-Ersatz läuft unabhängig: Mini-Chipsi http://127.0.0.1:8085 + Claude Desktop at_*-Tools. Keys nie in Dateien/Reports kopieren. Siehe [[zcode-subagent-reasoning-level-error]], [[umgebungs-blocker-zcode]], [[chipsi-judicario-stand-2026-09-22]].
 
+## maxenergy-evn-caritas-umzug-2026-10-26
+
+---
+name: maxenergy-evn-caritas-umzug-2026-10-26
+description: Umzug Melk→Loosdorf 2026 —
+  MAXENERGY-Kündigung/EVN-Außerbetriebnahme belegt, Stundung via Caritas lief,
+  Endabrechnungs-Mail vorbereitet aber NICHT gesendet (Kdnr-Konflikt
+  200021979501 vs S618255); bahldorfa-Gmail-Speicher voll
+metadata:
+  node_type: memory
+  type: project
+  originSessionId: session_a9d83d5f6d436ee601e9cc6431e574fc
+---
+
+Sascha ist aus der Wohnung in **Melk** ausgezogen, neue Adresse: **Sebastianistraße 15, 3382 Loosdorf**.
+
+Beleglage (Gmail-Suche 26.10.2026, alles in **koerperfluss@gmail.com** — dort liegt der gesamte EVN/MAXENERGY/Caritas-Schriftverkehr; bahldorfa hat nur Altbestand 2024/25):
+- **12.07.2026**: MAXENERGY bestätigt Eingang Kündigungsformular (Kunde **S618255**)
+- **03.07.2026**: EVN Netz NÖ — Antrag Strom-Außerbetriebnahme, Bearbeitungs-Nr. **S-MO-26-658520112-ABS**
+- **15.06.2026**: MAXENERGY Stundung ID S618255 mit Bestätigung der Caritas-Überweisung (Caritas Wohnschirm zahlte)
+- PDF-Anhänge vorhanden: Auszugsmitteilung Netzbetreiber + Auszug Kunde S618255 (14./15.07.), Vertragsunterlagen (23.06.), WhatsApp-Kündigungs-Nachweis (16.07.), Sozialhilfeantrag (24.06., nennt Wohnschirm Energie bei Caritas)
+- bahldorfa: EVN-Netz-Vertragskonto 30818311 (Anschluss „abgedreht" 03/2025, 148,06 € an Netz NÖ bezahlt), Grawe Ratenzahlungsansuchen Polizze 6.380.923, Grover-Kündigungsdrohungen
+
+**Offen:**
+1. Maxenergy-Endabrechnungs-Mail (Text steht fertig, an service@maxenergy.at, mit Ratenzahlungsansuchen § 82 Abs. 2a ElWOG 2010) — NICHT gesendet, weil **Kundennummer-Konflikt**: Draft nennt 200021979501 / Mandats-ID 133-MSO-3235943-01 (40,00 €-Abbuchung), Mails zeigen aber S618255. Vor Versand klären, welche Nr. gilt.
+2. **bahldorfa@gmail.com: Speicher 73,99/15 GB voll — ab 14.11.2026 keine E-Mails mehr.** Aufräumen/exportieren.
+
+**Why:** Rechts-/Zahlungsverlauf (Kündigung, Stundung, Fristen) ist über Sessions hinweg Beleggrundlage.
+**How to apply:** Bei Folgeanfragen zu Strom/Endabrechnung/Caritas zuerst koerperfluss@gmail.com durchsuchen; Maxenergy-Mail erst nach Kdnr-Klärung senden; Frist 14.11.2026 (Speicher) beachten.
+
+Verwandt: [[umgebungs-blocker-zcode]]
+
 ## umgebungs-blocker-zcode
 
 ---
@@ -19206,7 +19240,7 @@ Blocker in dieser ZCode-Umgebung, am 22.09.2026 getestet:
 5. **chrome-devtools-MCP + laufender Automation-Chrome**: Wenn eine Instanz mit Profil `~/.cache/chrome-devtools-mcp/chrome-profile` schon läuft, schlägt `list_pages` fehl („browser is already running … use --isolated"). Erkennen am Fenster-Banner „Chrome wird von automatisierter Testsoftware gesteuert" — dieser Chrome ist NICHT Saschas echter Chrome (anderes Profil, keine Sessions, Google-Login wird dort von Google abgelehnt). Erst Banner prüfen, bevor man per Computer-Use tippt.
 
 **Why:** Spart wiederholte Fehlversuche in künftigen Sessions.
-**How to apply:** Keine Subagenten planen, solange Reasoning-Level ungesetzt; E-Mail-Lesen nur, wenn Gmail-MCP-Scopes gefixt sind.
+**How to apply:** Keine Subagenten planen, solange Reasoning-Level ungesetzt; E-Mail-Suche über BrowserOS-Workaround (oben), Gmail-MCP nicht mehr versuchen.
 
 Verwandt: [[chipsi-judicario-stand-2026-09-22]]
 

@@ -1,7 +1,7 @@
 ---
 app: zcode
 quelle: "saschalagler/cli/memories/projects/thomas---chips-judicario-7b0276307052409f/memory/umgebungs-blocker-zcode.md"
-stand: 2026-09-22
+stand: 2026-10-26
 tags: [spiegel, zcode]
 ---
 
@@ -25,6 +25,6 @@ Blocker in dieser ZCode-Umgebung, am 22.09.2026 getestet:
 5. **chrome-devtools-MCP + laufender Automation-Chrome**: Wenn eine Instanz mit Profil `~/.cache/chrome-devtools-mcp/chrome-profile` schon läuft, schlägt `list_pages` fehl („browser is already running … use --isolated"). Erkennen am Fenster-Banner „Chrome wird von automatisierter Testsoftware gesteuert" — dieser Chrome ist NICHT Saschas echter Chrome (anderes Profil, keine Sessions, Google-Login wird dort von Google abgelehnt). Erst Banner prüfen, bevor man per Computer-Use tippt.
 
 **Why:** Spart wiederholte Fehlversuche in künftigen Sessions.
-**How to apply:** Keine Subagenten planen, solange Reasoning-Level ungesetzt; E-Mail-Lesen nur, wenn Gmail-MCP-Scopes gefixt sind.
+**How to apply:** Keine Subagenten planen, solange Reasoning-Level ungesetzt; E-Mail-Suche über BrowserOS-Workaround (oben), Gmail-MCP nicht mehr versuchen.
 
 Verwandt: [[chipsi-judicario-stand-2026-09-22]]
