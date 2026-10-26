@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-26 02:01 UTC
+Zuletzt gespiegelt: 2026-10-26 02:16 UTC
 
 ## AGENTS
 
@@ -885,7 +885,7 @@ VETO = der Turn ist NICHT abgeschlossen; Builder muss nachbessern. Kein Kompromi
 name: "gate-enforcer-test"
 description: "Erzwingt Qualitäts-Gates (Tests/Lint/Build) vor jedem Abschluss und blockiert bei Verletzung."
 color: yellow
-model: "zai-api/GLM-5.3-Flash"
+model: "account:zai-individual-coding-plan/GLM-5.3-Flash"
 thoughtLevel: high
 tools:
   - Read
