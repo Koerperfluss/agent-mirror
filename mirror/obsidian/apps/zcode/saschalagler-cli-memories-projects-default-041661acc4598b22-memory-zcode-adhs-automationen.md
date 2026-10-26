@@ -1,7 +1,7 @@
 ---
 app: zcode
 quelle: "saschalagler/cli/memories/projects/default-041661acc4598b22/memory/zcode-adhs-automationen.md"
-stand: 2026-10-18
+stand: 2026-10-26
 tags: [spiegel, zcode]
 ---
 
@@ -203,4 +203,10 @@ metadata:
 - 🔨 Verkaufs-HUB (Projekt 8): Session-Handoff auf **verkaufshub** aktiv (Session `d16e9574`, Ziel `sess_ae843b4f`).
 - ℹ️ Doku-Findings weiterhin offen (grep 18.10: brief/feierabend 0, push 0 Treffer) · 14.–17.10.: keine Läufe in diesem Chat sichtbar (Lücken, Muster = Mac aus).
 - Bilanz: 40+ Läufe; offene GOs: **Wecker · Deutsch-Patch-Recovery · doku-fix (3 Zeilen)** · pointer-fix/commit-wache entfallen (Submodul-Adresse weg) → ersetzt durch LokiVoice-Standort-Klärung.
+
+## Einundvierzigster+ Lauf (Mo 26.10. 09:05 — Morgen-Brief pünktlich PASS nach Lücken-Woche)
+- **Lücken-Woche 19.–25.10.** (kein Logbuch — Mac aus, Muster unverändert). Logbuch `~/.agents/memory/logbuch/2026-10-26.md` (status: offen), Kalender-Event **„Tagesplan 26.10."** UID `28FAECFB-5B75-4BA9-AC6C-FBFC1DD6BB91`. DEV-BRIEF: 0 Commits seit Freitag, keine CI.
+- **Magicline-PDF verschwunden (DATENLAGE UNKLAR):** `ls ~/Desktop/*MAGICLINE*` = leer (am 19.10. war `MAGICLINE_GEORGE_ALLES_IN_EINEM_2026-10-19.pdf` laut deja geliefert) — verschoben/Ort unbekannt. Der Workflow `~/.zcode/workflows/magicline-george-anleitung.dwf.ts` ist noch da (ls ✓). Siehe [[magicline-george-2026-10-19]].
+- 🔨 Cline Agent-Team heute gestartet (`session_1792968195310`, Ziel nicht im Sweep sichtbar). Tagesplan: Key-Mail Thomas nachfassen · LokiVoice-Ort klären · Agent-Team abnehmen · GO doku-fix/Wecker · Judicario Briefing+14 Einwände.
+- Bilanz: 41+ Läufe; offene GOs: **Wecker · Deutsch-Patch-Recovery · doku-fix (3 Zeilen)** + Sascha-Aktionen: Key-Mail Thomas · LokiVoice-Ort klären · BH-Melk-Einreichung bestätigen (Frist war 09.10., Status nie bestätigt).
 
