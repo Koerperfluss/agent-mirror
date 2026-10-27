@@ -109,6 +109,17 @@ struct ContentView: View {
         .padding(12)
         .frame(maxWidth: .infinity, alignment: .leading)
         .background(RoundedRectangle(cornerRadius: 10).fill(Color(nsColor: .controlBackgroundColor)))
+        // Slice 8: Datei direkt aufs Deck ziehen (Upload ohne Dialog)
+        .onDrop(of: [.fileURL], isTargeted: nil) { providers in
+            guard let p = providers.first else { return false }
+            _ = p.loadObject(ofClass: URL.self) { url, _ in
+                guard let url else { return }
+                Task { @MainActor in
+                    vm.load(url: url.standardizedFileURL)
+                }
+            }
+            return true
+        }
     }
 
     /// Slice 3: Waveform-Canvas mit Playhead; Klick = Seek.
