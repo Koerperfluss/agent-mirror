@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-27 01:01 UTC
+Zuletzt gespiegelt: 2026-10-27 01:17 UTC
 
 ## AGENTS
 
@@ -12104,6 +12104,8 @@ Verifizierte Fakten (nicht raten): Traktor `Traktor Settings.tsi` = **Plain-XML*
 Git (Stand 2026-10-26, spät): Head `ca2b35b30` auf `cline/s4sx83cs` (github.com/Koerperfluss/agent-mirror, gh auth Koerperfluss). Kanonische Arbeitskopie: `~/agent-os/agent-mirror` (Klon; Projektinhalt am Repo-ROOT). **Slices 1–8 FERTIG (62/62 Tests, 11 Suiten) in `TraktorClone/` SwiftPM:** Slice 1 = Core (DeckState mit `now:`-Clock-Param überall, Mixer equal-power gesnappt, BeatGrid, TSIParser, MIDIActionRouter) + SwiftUI 2-Deck-App. **Slices 2–7 (Commit 42810482f) + Review-Fixes (a30349657) + StemExporter (42641ef05):** NMLParser+LibrarySearch (echte collection.nml ist LEER, `ENTRIES="0"`), WaveformExtractor (400 Buckets, Peak, normalisiert) + AudioEngine.seek (`player.scheduleSegment(file, startingFrame:, frameCount:, at: nil)` — `at:` ist PFLICHT-Param, plus `file.length - target > 0`-Guard), FxChain (EQ/Delay/Reverb, Kette player→timePitch→EQ→Delay→Reverb→Mixer; Reverb-Preset nur bei Wechsel laden), SyncEngine (slavePitch clamp ±0.5, beatPhase), MasterRecorder (`isRecording = true` VOR installTap; Write-Fehler NSLog statt still), StemFile (lazy Tracks) + **StemExporter** (AVAssetReader→WAV pro Track, von cavecrew-builder-Subagent gebaut), MIDILearn/MappingStore (JSONEncoder MUSS `.sortedKeys+.prettyPrinted` für Stabilität), `make_app.sh` → **klickbares `build/TraktorClone.app`** (ad-hoc codesign, ohne Xcode; App live gestartet, PID bestätigt). `.build/`+`build/` sind gegitignored (Artefakte waren committet). App-UI: Waveform-Canvas+Klick-Seek (via onTapGesture(CGPoint)+GeometryReader, kein @State — Ternary in .buttonStyle geht nicht), FX-Slider, Sync-Buttons, Rec, Library mit „→ A"/„→ B". **Slice 7c (f0dad8a3c, Team-Bau cavecrew-builder):** StemPlayer, AudioEngine-Loop (Timer-Retrigger), `pause(deck:)` playerTime-Rücksync → Play-after-Pause exakt (altes Known-Gap GEFIXT); Test-Hack: `unsafeBitCast(NSObject(), to: AVAssetTrack.self)` für roleLabel — akzeptiert. **Reviewer-Veto lief über das Team:** REQUEST_CHANGES → 7 Findings alle gefixt. **Slice 8 (a9ddc64a4, „SELBER MACHEN"-Direktive, 26.10. nacht):** (a) **echter 4-Stem-Playback** — StemPlayer.load konvertiert via getesteten StemExporter (AVAssetReader-Pump) alle 5 Tracks in Temp-WAVs (`~/tmp/stems-<UUID>/`), öffnet 5 eigene AVAudioFiles, cleanupTemp bei jedem load + deinit; alte „5× Mix-Spur"-Grenze BEHOBEN; Solo/Mute über setStemGain. (b) **Beat-Phase-LED** je Deck — `DeckViewModel.beatPhase` (0…1) im 30fps-Timer via SyncEngine.beatPhase (Standard 120 BPM ohne BPM-Tag), grüner Circle im ContentView mit opacity 1−phase. (c) **MIDI-Learn-UI** — `LearnTarget`-Enum (Play/Cue/HC1–4/X-Fade) + Learn-Leiste im ContentView; `EngineHost.startLearn/cancelLearn` (learning/learnAction @Published); `MIDIController.lastRaw` (channel/isCC/control) wird im readProc-Task vor route() gesetzt; onAction intercepted im Lern-Modus: assign + saveMappings + learning=false. Achtung: in der Closure ist es `midi.router` (EnvironmentObject), NICHT `self.router` — EngineHost hat kein router-Member (nur `midiRouter` weak). **API-Fallen:** `AVLinearPCMIsSignedIntegerKey` existiert nicht im CLT-SDK; AVAudioUnitEQ kein `numberOfBands` (nur `bands.count`); `AVAudioFile` kein `duration` (length/sampleRate); `#expect(throws: ())` invalid → `(any Error).self`; Swift-6-Timer-Closure → `nonisolated(unsafe) let`. **Status „sind wir fertig?":** Kern-Plan vollständig erfüllt; nur DVS blocked (BD-1380 Riemenantrieb), S9-Rest = Auto-DJ + Waveform-Zoom. 27+ FEATURES implemented (F-023/F-028 jetzt implemented). `rebuild/STATE.md` führt weiter. Sascha pocht auf fertige App mit ALLEN Funktionen — Restfragen stoßen ihn auf („wieso fragst du mich"); Spark-Aufgaben (README-Schritte A–D) sind für ihn irrelevant. **Auf-Zuruf-Backlog:** „Audit-Fixes + Lorenz" (HUB-A11y-Fixes + GitHub-Einladung, s. [[uiux-skills-hub-audit]]), „agent-os git init". Wichtig: direkte Aufforderung „mach es selbst" = sofort selbst bauen, keine Angebot-Rückfragen. **Slice 8+ (fc5297b70):** Drag&Drop auf beide Deck-Karten (`.onDrop(of: [.fileURL])` → `vm.load(url:)`) — „kein file upload"-Beschwerde. **Old-App-Instance-Falle:** Nach Rebuild läuft der ALTE App-Prozess weiter (altes Binary, alte UI) — Sascha sieht neue Features nicht und meldet „fehlt". Fix: `pkill -f TraktorCloneApp` → frisches `open build/TraktorClone.app` → PID neu prüfen. 3 Lade-Wege: Drag&Drop aufs Deck, Load-Button (Tasten Q/U), Library (collection.nml noch leer). **Dark-DJ-Theme (ca2b35b30):** Aus Saschas Downloads-`Traktor Settings (1).tsi` (505 Entries, 4.3+4.5 Layouts Essential/Extended/Browser/Mixer/Parallel/Preparation, LED-Brightness; KEINE Color-Tokens drin) + Liquid-A11y abgeleitet: zentrales `enum Theme` in ContentView (bg #101216, surface #1A1E24, ink #E8EAED, muted #8B929C = 4,6:1 auf surface, Cyan acc #22D3EE, gr/yl/rd), ALLE System-Farbaufrufe ersetzt (auch `.foregroundStyle(.secondary/.tertiary)` → Theme.soft/muted — sonst Light-Mode-Text auf dunklem Custom-BG!) + Root `.foregroundStyle(Theme.ink).tint(Theme.acc)`. 62/62 Tests, App neu gestartet (PID 88445).
 
 Saschas Custom-Skills (/roocode, /coderabbit, /gsd-core, /lokidev, /appagentteam): NICHT als ZCode-Skills registriert, aber als Dateien vorhanden — Manuell-Ausführung akzeptiert, siehe [[custom-skills-read-from-autoclaw]]. Hardware-Kette: Omnitronic BD-1380 USB (class-compliant → ALSA `snd-usb-audio` am Pi) + analoger A&H Xone:32 (keine Soundkarte); Traktor Pro selbst = macOS/Windows (CoreAudio/ASIO), kein ALSA. Siehe [[mimosa-hook-write-constraints]].
+
+**Antigravity-Skill-Universum (26.10. verifiziert, von Parallel-Session installiert, ich nur geprüft):** `~/.gemini/config/skills/` = **183 Skills**, darunter 13 neue Workflow-/Design-Skills mit korrekten `name:`-Headern: feature-dev, bug-fix, quick-ship, code-audit, plan-flow, e2e-test, taste-skill (Anti-Slop: 3 Locks — 1 Akzentfarbe, einheitliches Radius-System, Ban-Liste gegen 3-Karten-Reihen/KI-Gradients), playwright-cli, figma-use + Design-Varianten (minimalist-ui, industrial-brutalist-ui, high-end-visual-design, stitch-design-taste, redesign-existing-projects, image-to-code, design-taste-frontend). **Playwright-E2E-Hub:** `~/e2e/loki-e2e/` mit Playwright 1.64.1, 3 Suiten (dashboard.smoke/atlas.live/atlas.vision.v8 = 7 Tests) + 3 KI-Agenten in `.github/agents/` (planner/generator/healer). Nutzung: Slash-Commands nur in **Antigravity** (scannt ~/.gemini/config/skills beim Start); in ZCode = SKILL.md lesen + manuell ausführen. Offen: Antigravity 20k-Token-Customization-Limit bei 183 Skills → projektbasiertes Plugin-Laden steht auf Nutzer-GO in Antigravity aus. „WO IST DAS ALLES"-Fragen = Pfad-Verifikation per ls liefern, nicht diskutieren.
 
 Methodik (2026-10-26, aus Saschas PDFs `~/Desktop/Reverse Engeniering /`): `docs/RE_METHODOLOGY.md` (12-Schritte-Funktionsgleichheit auf Traktor 4.5 gemappt) + `AGENTS.md` im Root = verbindlicher app-rebuild-Arbeitsvertrag für Agenten (FEATURES.json-Schema, rebuild/STATE.md-Checkpoints, Abschlussgate, keine Mocks als fertig). pi_re_client hat Task `rebuild` (Prüfblatt-Analyse, BEOBACHTUNG/HYPOTHESE/[VORSCHLAG]-Trennung); 13 Unit-Tests grün, letzter Commit `7b2c68e`. PDF-Dateiname-Falle: „reverse engineering .pdf" hat ein Leerzeichen vor der Endung. Wichtig: BD-1380 hat Riemenantrieb → kein echter DVS/Timecode-Turntable für Scratch.
 
@@ -163767,6 +163769,58 @@ Keine Deploys, keine Löschungen, keine Überschreibung ohne Backup, keine Insta
 
 ## Aufwand
 ~30–60 Min nach Freigabe; Credit-Risiko gering (lokale Arbeit, kein MCP-Verbrauch außer evtl. Browser-Screenshots beim Smoke-Test).
+## skills-bericht-2026-10-27
+
+# Skills sind DA — 249 Ordner, 218 gesund
+
+**Ergebnis in einem Satz:** Deine Skills existieren und funktionieren — sie starten über das **AGENTS.md-Routing** (Routing = eine Tabelle in `~/.zcode/AGENTS.md`, die sagt: bei dieser Aufgabe → dieser Skill), **nicht** über ZCodes Slash-Menü. Deshalb siehst du sie dort nicht. **Skill** = ein Ordner mit einer `SKILL.md`, die dem Agenten Anweisungen gibt.
+
+**Beleg:** laut vorgelagertem Skill-Scan wurden **249 Skill-Ordner** gefunden, **218** haben eine gültige `SKILL.md` und sind gesund. Die restlichen 31 sind Ordner ohne diese Datei oder Duplikate.
+
+## 1. Kaputte Skills (11 Stück, Klasse „kaputt“)
+
+**Kaputt** = der Ordner existiert, aber die Datei `SKILL.md` fehlt — der Agent kann ihn deshalb nicht laden.
+
+| # | Skill | Klasse |
+|---|---|---|
+| 1 | anatomie | kaputt |
+| 2 | beta | kaputt |
+| 3 | gstack | kaputt |
+| 4 | gstack-openclaw-ceo-review | kaputt |
+| 5 | gstack-openclaw-investigate | kaputt |
+| 6 | gstack-openclaw-office-hours | kaputt |
+| 7 | gstack-openclaw-retro | kaputt |
+| 8 | hackernews-frontpage | kaputt |
+| 9 | legal | kaputt |
+| 10 | research-ops-studienchecker | kaputt |
+| 11 | sequential-thinking | kaputt |
+
+## 2. Wie ZCode Befehle lädt
+
+- **Befehl** = Markdown-Datei, Dateiname = Befehlsname (Muster `^[a-z0-9][a-z0-9_:-]{0,63}$`), mit Frontmatter-Schlüsseln `description`, `argument-hint`, `allowed-tools`, `model`, `skills`, `disable-noninteractive`; mindestens `description` oder nicht-leerer Body nötig. `$ARGUMENTS` und `$1` werden durch deine Eingabe ersetzt.
+- **Orte:** User: `~/.zcode/commands/` + `~/.agents/commands/` · Workspace: `<repo>/.zcode/commands/` + `<repo>/.agents/commands/` — **first-match-wins** (= der erste Fund gewinnt, spätere gleichnamige werden ignoriert). Unterordner werden mit `:` verkettet (`review/code.md` → `/review:code`). Deaktivieren geht in `~/.zcode/cli/config.json` per absolutem Dateipfad.
+- **Skills:** Ordner mit `SKILL.md`, gesucht unter `~/.zcode/skills/` + `~/.agents/skills/` (User) bzw. `<repo>/.zcode/skills/` + `<repo>/.agents/skills/` (Workspace). Plugin-Ordner stehen in der Such-Order **zuletzt** (Stufe 6) — ein gleichnamiger eigener Skill überschattet (= verdeckt) den Plugin-Skill.
+- **Doku-Lücken (DATENLAGE UNKLAR):** die „explicitly configured roots“ (Stufe 1) werden genannt, aber kein Ort, wo man sie konfiguriert; die innere Struktur eines Skill-Ordners bleibt auf „Ordner + SKILL.md“ beschränkt.
+- **Beleg-Pfade (existieren, geprüft per `ls -la`):** `~/.zcode/cli/plugins/cache/zcode-plugins-official/zcode-guide/0.3.0/skills/zcode-configuration-guide/SKILL.md` und `…/zcode-guide/0.3.0/skills/diagnosing-commands/SKILL.md`
+
+## 3. Neu angelegte Befehle (5 gemeldet → 1 angelegt, 4 übersprungen)
+
+| Befehl | Ergebnis | Grund |
+|---|---|---|
+| obsidian-init | ✅ **angelegt** | 1:1 adaptiert nach Muster `migrate-workflows.md`; optionale Frontmatter-Felder (category, triggers) aus `~/.claude/commands/obsidian-init.md` übernommen |
+| init | ⏭️ übersprungen | `~/.zcode/commands/init.md` existiert bereits (`ls`-Beweis, 935 B) |
+| boost | ⏭️ übersprungen | existiert bereits (391 B) |
+| standardskill | ⏭️ übersprungen | existiert bereits (651 B) |
+| goal | ⏭️ nichts angelegt | keine Quelldatei auf der Maschine (DATENLAGE UNKLAR) — ohne Quelle wäre der Inhalt erfunden |
+
+Neue Datei: **`~/.zcode/commands/obsidian-init.md`** — erstellt + Format geprüft via `ls -la` und `head -12`; der Body weist den Agenten an, die Anleitung aus `~/.claude/skills/obsidian-second-brain/` zu lesen und auszuführen.
+
+## 4. Nächste Schritte
+
+- **Skills einfach nutzen statt suchen:** Schreib die Aufgabe normal hin — das AGENTS.md-Routing startet automatisch den passenden Skill. Kein Slash-Befehl nötig.
+- **11 kaputte Ordner aufräumen:** Jeder braucht eine neue `SKILL.md` — oder lösche den Ordner. Sag mir, welche du wirklich brauchst, dann baue ich sie.
+- **Obsidian-Befehl testen:** Tippe im Chat einfach „obsidian-init“ bzw. `/obsidian-init` — der Agent liest dann automatisch die Obsidian-Anleitung.
+
 ## README
 
 # HolDirMehr — 1:1 Replika (Kostenlos-Version)
