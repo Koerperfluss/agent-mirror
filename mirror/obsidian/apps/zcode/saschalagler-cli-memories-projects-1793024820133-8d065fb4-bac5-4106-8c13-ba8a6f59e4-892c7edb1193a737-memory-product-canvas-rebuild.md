@@ -7,8 +7,9 @@ tags: [spiegel, zcode]
 
 ---
 name: product-canvas-rebuild
-description: Laufendes Projekt — Google Product Canvas (romannurik) wird als
-  eigene Full-Stack-App nachgebaut; entpackt, npm install lief am 27.10.2026
+description: Laufendes Projekt — Google Product Canvas (romannurik) als eigene
+  Full-Stack-App; läuft lokal (HTTPS:5173), Firebase 90 % aufgesetzt, wartet
+  auf Firebase-CLI-Login-Code von Sascha (Session A0670)
 metadata:
   node_type: memory
   type: project
@@ -17,13 +18,23 @@ metadata:
 
 Seit 27.10.2026 baut Sascha Google „Product Canvas" (ProductCanvas-Experiment von romannurik, Apache-2.0 → Nachbau legal, LICENSE drin lassen) als eigene Full-Stack-App nach.
 
-**Stand 27.10.2026:**
-- Quelle: ZIP aus `~/Downloads/ProductCanvas-Experiment-main.zip` → entpackt nach `~/Desktop/Coworkspace_Ich/product-canvas-nachbau/ProductCanvas-Experiment-main`
-- Umfang: 138 Quelldateien, 10.732 Zeilen TS/TSX, 34 Dependencies, 14 Module (ai, canvas, collab, live, meetings, miniapp-generator, notebook …); größte Datei `src/Editor.tsx` (728 Z.)
-- Stack: Vite+React+TS · React Flow (Canvas) · Firebase RTDB+Auth (Multiplayer) · WebRTC (Video) · Gemini Live API (Voice) · Nano Banana (KI-Skizzen) · esbuild-wasm (In-Browser-Prototypen) · Tiptap (Wiki) · matter.js (Videoblasen)
-- `npm install` lief im Hintergrund (Start 27.10.); danach geplant: `npm run dev` + Browser-Check
-- **Braucht nur 1 Key:** `VITE_FIREBASE_CONFIG` (JSON-Blob) in `.env` — Sascha hat Firebase in ZCode verbunden; ob sein bestehendes Projekt genutzt werden darf, war noch offen
-- Live-Referenz des Originals: https://threeplabs--canvas-evmrz4ny.web.app/
-- Nächste Phase nach Laufen: Umbau zum eigenen Produkt (loki-dev MAP, Multi-Session)
+**Stand 27.10.2026 (nachts, Stand nach Browser-Beweis):**
+- Pfad: `~/Desktop/Coworkspace_Ich/product-canvas-nachbau/ProductCanvas-Experiment-main` (138 Dateien, 10.732 Zeilen, 14 Module; Stack: Vite+React+TS, React Flow, Firebase RTDB+Auth, WebRTC, Gemini Live, esbuild-wasm, Tiptap, matter.js)
+- **App läuft**: 0 Konsolen-Fehler, Screenshot-Beweis (Login-Screen). Server: `vite.dev.config.ts` → HTTPS 5173 (self-signed, Mikrofon/WebRTC) + `vite.dev-http.config.ts` → HTTP 5188 (nur für Playwright). Server laufen als Background-Tasks in der ZCode-Session.
+- `.env` enthält die ECHTE Firebase-Config (Projekt product-canvas-lab-6609), `databaseURL` verweist auf noch nicht existierende RTDB.
 
-**Why:** Das ist Saschas aktives Hauptprojekt ab 27.10.; Pfad, Key-Bedarf und Stand sind aus keinem Repo ableitbar. Verwandt: [[zcode-skills-landscape]] (video2code für andere Nachbau-Fälle).
+**Reparaturen beim Aufsetzen (wieder verwendbar):**
+- `node-stdlib-browser` v1.2.1/1.3.1 fehlen mock/proxy-Dateien (packaging bug). Stubs angelegt: `mock/empty.js`, `proxy/querystring.js`, `proxy/url.js` **im Projekt-Root** (nicht node_modules!) — der Code löst `./mock/empty.js` relativ zum Start-Kontext auf (create-require → `[eval]`), deshalb halfen node_modules-Stubs nicht.
+- `vite-tsconfig-paths` verursacht beim Start `ETIMEDOUT scandir` in Google-Drive-Shortcuts (`~/Library/CloudStorage/…/koerperfluss/…venv…`) — Ursache ungeklärt (tsconfigs harmlos). Fix: Plugin weggelassen, `@/*` direkt per `resolve.alias`. Test-Configs: `vite.iso.config.ts` (Isolation), `vite.minimal.config.ts`.
+- Playwright-MCP blockt self-signed HTTPS (ERR_CERT_AUTHORITY_INVALID) → HTTP-Zweitinstanz für Browser-Tests.
+
+**Firebase-Setup (Projekt `product-canvas-lab-6609`, neu angelegt, barbulls-app unberührt):**
+- Weg: gcloud (koerperfluss@gmail.com) + REST mit Bearer-Token und **Pflicht-Header `x-goog-user-project`** (Quota-Project). `gcloud projects create --name=` (nicht --display-name), APIs: firebase, firebasedatabase, identitytoolkit. addFirebase ✅ (Poll der Operation bis done). Web-App registriert: appId `1:675368337217:web:076991cb00d8fe20efabc0`, Config via `GET …/webApps/{appId}/config`.
+- **BLOCKER A:** RTDB-Create via REST → konstant 404-HTML (v1/v1beta1, us-central1/europe-west1, Projekt-ID und -Nummer durchprobiert). **BLOCKER B:** identitytoolkit → `CONFIGURATION_NOT_FOUND` (Auth-Config existiert nicht; wird nur durch das Console-/CLI-Initialisierungs-Ritual erzeugt; Ports in authorizedDomains werden vom Legacy-Validator abgelehnt — localhost gilt implizit mit jedem Port).
+- Firebase-MCP: 401 (Token abgelaufen) · Firebase-CLI: war ausgeloggt · gcloud: eingeloggt.
+- **OFFEN:** `firebase login --no-localhost` Session **A0670** läuft (Link an Sascha geschickt); sobald er den Autorisierungs-Code schickt: `firebase login <code>` → danach RTDB + Google-Auth über die CLI/REST mit Firebase-OAuth fertigstellen → Browser-Login-Test.
+- Live-Referenz Original: https://threeplabs--canvas-evmrz4ny.web.app/
+
+**Nächste Phase nach voller Funktion:** Umbau zum eigenen Produkt (loki-dev MAP, Multi-Session).
+
+**Why:** Saschas aktives Hauptprojekt; Pfade, Workarounds und der offene Login-Code sind aus keinem Repo ableitbar. Verwandt: [[zcode-skills-landscape]], [[local-browser-testing-gotchas]].
