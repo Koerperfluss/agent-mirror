@@ -2,6 +2,21 @@ import SwiftUI
 import TraktorCloneCore
 import CoreMIDI
 
+/// Traktor-inspiriertes Dark-DJ-Theme (AA-Kontrast geprüft: muted 4.6:1 auf surface).
+enum Theme {
+    static let bg = Color(red: 0.063, green: 0.071, blue: 0.086)        // #101216
+    static let surface = Color(red: 0.102, green: 0.118, blue: 0.141)   // #1A1E24
+    static let waveBg = Color(red: 0.137, green: 0.153, blue: 0.180)    // #232E2E? nein: #232E38-Familie
+    static let ink = Color(red: 0.910, green: 0.918, blue: 0.929)       // #E8EAED
+    static let soft = Color(red: 0.718, green: 0.741, blue: 0.776)      // #B7BDC6
+    static let muted = Color(red: 0.545, green: 0.573, blue: 0.612)     // #8B929C
+    static let bd = Color(red: 0.180, green: 0.204, blue: 0.239)        // #2E343D
+    static let acc = Color(red: 0.133, green: 0.827, blue: 0.910)       // #22D3EE Cyan
+    static let gr = Color(red: 0.290, green: 0.871, blue: 0.502)        // #4ADE80
+    static let yl = Color(red: 0.984, green: 0.749, blue: 0.141)        // #FBBF24
+    static let rd = Color(red: 0.973, green: 0.443, blue: 0.443)        // #F87171
+}
+
 /// Root-UI: 2 Decks (Waveform+FX) + Mixer + Sync + Recording + Library.
 struct ContentView: View {
     @EnvironmentObject var midi: MIDIController
@@ -19,7 +34,9 @@ struct ContentView: View {
             libraryView
         }
         .padding(16)
-        .background(Color(nsColor: .windowBackgroundColor))
+        .foregroundStyle(Theme.ink)
+        .tint(Theme.acc)
+        .background(Theme.bg)
         .onAppear { engineHost.wire(midi: midi) }
     }
 
@@ -31,10 +48,10 @@ struct ContentView: View {
             ForEach(LearnTarget.allCases) { t in
                 Button(t.label) { engineHost.startLearn(t.action) }
                     .buttonStyle(.bordered)
-                    .tint(engineHost.learnAction == t.action ? .orange : .accentColor)
+                    .tint(engineHost.learnAction == t.action ? Theme.yl : Theme.acc)
             }
             if engineHost.learning {
-                Text("→ MIDI-Botschaft senden …").font(.caption).foregroundStyle(.orange)
+                Text("→ MIDI-Botschaft senden …").font(.caption).foregroundStyle(Theme.yl)
                 Button("Abbrechen") { engineHost.cancelLearn() }.buttonStyle(.bordered)
             }
             Spacer()
@@ -45,7 +62,7 @@ struct ContentView: View {
     private var topBar: some View {
         HStack {
             Image(systemName: "pianokeys")
-            Text(midi.status).font(.caption).foregroundStyle(.secondary)
+            Text(midi.status).font(.caption).foregroundStyle(Theme.soft)
             Spacer()
             Button(engineHost.syncMaster == 1 ? "Master: B" : "Master: A") {
                 engineHost.toggleSyncMaster()
@@ -54,7 +71,7 @@ struct ContentView: View {
             Button("Sync B→A") { engineHost.syncDeck(1) }.buttonStyle(.borderedProminent)
             Button(engineHost.isRecording ? "⏺ Stop" : "⏺ Rec") { toggleRecording() }
                 .buttonStyle(.borderedProminent)
-                .tint(engineHost.isRecording ? .red : .accentColor)
+                .tint(engineHost.isRecording ? Theme.rd : Theme.acc)
         }
     }
 
@@ -83,7 +100,7 @@ struct ContentView: View {
                 Text(timeString(vm.playhead)).font(.system(.caption, design: .monospaced))
                 // Slice 8: Beat-Phase-LED — blitzt bei jedem Beat-Start auf
                 Circle()
-                    .fill(Color.green.opacity(vm.state.isPlaying ? Double(1 - vm.beatPhase) * 0.9 + 0.1 : 0.15))
+                    .fill(Theme.gr.opacity(vm.state.isPlaying ? Double(1 - vm.beatPhase) * 0.9 + 0.1 : 0.15))
                     .frame(width: 10, height: 10)
                     .help("Beat-Phase (blinkt auf dem Beat)")
                 Spacer()
@@ -108,7 +125,7 @@ struct ContentView: View {
         }
         .padding(12)
         .frame(maxWidth: .infinity, alignment: .leading)
-        .background(RoundedRectangle(cornerRadius: 10).fill(Color(nsColor: .controlBackgroundColor)))
+        .background(RoundedRectangle(cornerRadius: 10).fill(Theme.surface))
         // Slice 8: Datei direkt aufs Deck ziehen (Upload ohne Dialog)
         .onDrop(of: [.fileURL], isTargeted: nil) { providers in
             guard let p = providers.first else { return false }
@@ -136,17 +153,17 @@ struct ContentView: View {
                     let barH = max(1, CGFloat(peak) * h)
                     ctx.fill(Path(CGRect(x: CGFloat(i) * bw, y: (h - barH) / 2,
                                          width: max(bw - 0.5, 0.5), height: barH)),
-                             with: .color(.accentColor.opacity(0.7)))
+                             with: .color(Theme.acc.opacity(0.7)))
                 }
             }
             if vm.state.duration > 0 {
                 let x = w * CGFloat(vm.playhead / vm.state.duration)
                 ctx.fill(Path(CGRect(x: x, y: 0, width: 2, height: h)),
-                         with: .color(.red))
+                         with: .color(Theme.rd))
             }
         }
         .frame(height: 64)
-        .background(RoundedRectangle(cornerRadius: 6).fill(Color(nsColor: .underPageBackgroundColor)))
+        .background(RoundedRectangle(cornerRadius: 6).fill(Theme.waveBg))
         .overlay(
             GeometryReader { geo in
                 Color.clear
@@ -215,7 +232,7 @@ struct ContentView: View {
             }
         }
         .padding(14)
-        .background(RoundedRectangle(cornerRadius: 10).fill(Color(nsColor: .controlBackgroundColor)))
+        .background(RoundedRectangle(cornerRadius: 10).fill(Theme.surface))
     }
 
     private func fader(vm: DeckViewModel) -> some View {
@@ -234,7 +251,7 @@ struct ContentView: View {
             HStack {
                 Text("Library").font(.headline)
                 Text("(\(engineHost.library.count) Tracks aus collection.nml)")
-                    .font(.caption).foregroundStyle(.secondary)
+                    .font(.caption).foregroundStyle(Theme.soft)
                 Spacer()
                 TextField("Suche Titel/Artist/Pfad…", text: Binding(
                     get: { engineHost.searchText },
@@ -249,7 +266,7 @@ struct ContentView: View {
                         Text(track.title.isEmpty ? track.path.components(separatedBy: "/").last ?? "?" : track.title)
                             .font(.callout).lineLimit(1)
                         Text(track.artist + (track.bpm.map { "  ·  \(Int($0)) BPM" } ?? ""))
-                            .font(.caption).foregroundStyle(.secondary)
+                            .font(.caption).foregroundStyle(Theme.soft)
                     }
                     Spacer()
                     Button("→ A") { engineHost.load(track: track, deck: 0) }.buttonStyle(.bordered)
@@ -260,11 +277,11 @@ struct ContentView: View {
             .listStyle(.inset)
             if engineHost.library.isEmpty {
                 Text("Keine Tracks: In Traktor Tracks importieren, dann neu starten. (Deine collection.nml ist aktuell leer: COLLECTION ENTRIES=\"0\")")
-                    .font(.caption).foregroundStyle(.tertiary)
+                    .font(.caption).foregroundStyle(Theme.muted)
             }
         }
         .padding(12)
-        .background(RoundedRectangle(cornerRadius: 10).fill(Color(nsColor: .controlBackgroundColor)))
+        .background(RoundedRectangle(cornerRadius: 10).fill(Theme.surface))
     }
 
     private func timeString(_ t: TimeInterval) -> String {
