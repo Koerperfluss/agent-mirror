@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-27 13:22 UTC
+Zuletzt gespiegelt: 2026-10-27 13:38 UTC
 
 ## AGENTS
 
@@ -18578,11 +18578,10 @@ metadata:
 
 ---
 name: koerperfluss-visitenkarte-inhalt-fertig
-description: 27.10.2026 Visitenkarte KÖRPERFLUSS — Inhalt final + **10 Designs A–J fertig
-  gerendert** (A/B/C design.com-Nachbauten, D Website-Edition mit LeePerrySmith.glb-Glas-Torso,
-  E–J neu: Nachtgold/Goldrahmen/Körperfluss-Linien/Foto-Vollfläche/Creme/Diagonal-Split); KEIN
-  Diplom („Ganzheitlicher Therapeut"), kein Website-Link; Druck-PDF wartet auf Saschas Wahl
-  von 2–3 Favoriten
+description: 27.10.2026 Visitenkarte KÖRPERFLUSS — Inhalt final, 10 Designs A–J gerendert,
+  **4 Druck-PDFs FERTIG (A/F/H/I, 85×55 mm, 300 dpi, beidseitig)** via PNG-Screenshot-Pipeline
+  (Chrome-Direct-Print überlagert Layout!); Saschas Wahl = A·F·H·I; offen: Beschnitt-Zugabe
+  (3 mm) auf GO + altes „Split & Logo" auf Nachfrage
 metadata:
   node_type: memory
   type: project
@@ -18637,6 +18636,13 @@ metadata:
 - Psychologie-Begründung (für Wiederverwendung): Schmerzpatient 60 kauft „jemand, der mich ganzheitlich wieder beweglich macht", nicht ein Papier; Differenzierungs-Hooks = Faszien + Migräne-Spezialzeile; Zielgruppen-Säulen: Massage=40–70-Schmerz, PT „alle Levels"=Sportler 18–40, Migräne=25–55, Hausbesuche=50+.
 
 **GESAMT-FINALSTAND KARTENINHALT:** Vorderseite „SASCHA LAGLER — GANZHEITLICHER THERAPEUT — SCHMERZFREI BEWEGEN — STARK BLEIBEN" (Foto oben rechts bei A/C); Rückseite 3 Säulen (Massage inkl. Sport-/Heilmassage+Faszien · PT alle Levels · Beratung & Reha + Migräne-Spezial) + Ort/Telefon/Email. KEIN Physio-Claim, KEIN Diplom, KEIN Website-Link.
+
+**27.10. ABSCHLUSS — SASCHAS WAHL: A · F · H · I → 4 DRUCK-PDFs FERTIG & VERIFIZIERT** (Files im Design-Ordner): `VISITENKARTE_A/F/H/I_85x55mm_300dpi.pdf` — je 2 Seiten (Vorder+Rückseite), randlos, PDF-Header + Seitenzahl per Python geprüft.
+- **KRITISCHE PRINT-PIPELINE-LEKTION:** Chromes `--print-to-pdf` direkt auf HTML-Karten ist UNBRAUCHBAR — Seiten überlagerten sich (page-break + zoom versagten) + Font-Fallback zu Serif. **Beweisener Weg:** ① je Seite eigene side-HTML (500×318 px, radius 0, kein Shadow) ② Screenshot mit `--force-device-scale-factor=2.008 --window-size=500,318` → 1004×639 px = 300 dpi ③ HTML nur mit 2 Vollflächen-`<img>` + `@page { size:85mm 55mm; margin:0 }` → `--print-to-pdf --no-pdf-header-footer`. Bildbasiertes PDF = druckidentisch.
+- Verifikations-Rezept: `python3` PDF-Bytes (`/Type /Page`-Zählung, `%PDF-`-Header) — mdls liefert `(null)` bei frischen Dateien (Spotlight-Index-Lag); qlmanage-Thumbnail für Sichtprüfung.
+- Alte kaputte `DRUCK_*.pdf/html` + `side_*.html` gelöscht.
+- **Offen:** ① Beschnitt-Zugabe 3 mm nur auf Saschas GO (Druckerei-Frage) ② sein 5. Screenshot zeigte das ALTE „Split & Logo" (1. Runde) — nicht in den 4 PDFs; als 5. PDF nur auf Ansage.
+- Sascha-Nachricht war nur „die 4 bitte" + 5 Screenshots (A/I/F/H + altes Design 3) — Interpretation: 4 Designs gewählt, 5. Bild vermutlich Rest; nicht nachgefragt, sondern A/F/H/I geliefert und Punkt 2 als Hinweis benannt.
 
 ## legal-ops-cockpit-reparatur
 
