@@ -1,33 +1,16 @@
 ---
 app: zcode
 quelle: "saschalagler/plans/plan-sess_33b5868e-a2a4-49cf-823a-7563047524e1.md"
-stand: 2026-10-13
+stand: 2026-10-27
 tags: [spiegel, zcode]
 ---
 
-# eCall 74310314 — Antrag komplett ausfüllen (bis Zeichnung) — FINAL mit deinen 3 Ergänzungen
+# FörderOps-INIT (/goal /init /wayfinder /workflow /boost)
 
-## 0. Antworten auf deine Fragen
-- **Excel/CSV-Rechnung: NICHT nötig** — die eCall-Seite „Datei-Anhänge" verbietet Kostenkalkulationen ausdrücklich („Nicht zulässig: … Kostenkalkulationen"). Kosten werden direkt ins eCall-Kostenformular getippt. Die Finanzplanung-V0.4-PDF ist Altstand (Lisa) und kommt nicht hinein.
-- **KMU-Erklärung: nicht nötig** — Stammdaten belegen bereits „Kleinunternehmen, in Gründung".
-- **LOI-Upload: erst SICHTUNG.** Ich zeige dir das LOI-Muster-File (Pfad + geöffnet), Upload nur auf dein Wort.
+**Ziel: Der FörderOps-Stand wird projektinitialisiert — eine SSOT-Datei, eine Wayfinder-Map, ein gespeicherter Workflow. Jede künftige Session weiß sofort Bescheid, du sagst nur ja/nein.**
 
-## 1. Sofort (parallel)
-- **Subagent** schreibt `/tmp/ecall_kapitel.md`: Kapitel 1.1–1.6 + Finanzierung als eCall-Textabschnitte (je ≤3000 Zeichen, nur Fakten aus antrag.typ V16) — Agent läuft schon, wartet nur auf Freigabe.
-- **ICH im Browser:** Projektleitung-Fix (fehlendes Pflichtfeld — vermutlich Geschlecht), speichern, Nav grün prüfen.
-
-## 2. Rest-Pipeline (Reihenfolge)
-1. **Nachhaltigkeitsziele:** SDG 4 + SDG 3 + SDG 10 per Screenshot+Maus aufklappen, je „zentrales Ziel" setzen, speichern.
-2. **LOI-Sichtung:** dir Pfad + Vorschau zeigen → Upload nur mit deinem GO (sonst leer lassen, optional).
-3. **Inhaltliche Beschreibung:** alle Textabschnitte aus `/tmp/ecall_kapitel.md` in die Editoren; V16-PDF hochladen, falls Upload-Feld vorhanden.
-4. **Arbeitsplan:** AP 1–5 (Monate, Stunden, Meilensteine) aus der Ausfüllhilfe.
-5. **Kosten und Finanzierung:** Lagler 900 h / Fischer 1.120 h / Karner 160 h × 50 €, GKZ 20 %; Finanzierung FFG 58.860 / SMS 33.940 (beantragt) / Eigenmittel 38.000.
-6. **Erklärungen zu Kosten + Weitere Förderungen:** SMS-Beihilfe als beantragte weitere Förderung eintragen.
-7. **Uploads (Kapitalnachweis-Beleg 05, ggf. LOI):** interner Browser blockiert File-Dialoge → du bekommst je eine 30-Sekunden-Manualanleitung (Datei+Feld exakt benannt) ODER ich lasse den Slot leer wenn optional.
-8. **Abschluss-Validierung:** alle Prüfregeln grün fixen.
-
-## Regeln
-- Zeichnung + SUBMIT: nur Sascha. Jede Seite: Speichernachweis über Nav-Status. Fakten nur aus V16-Quellen (keine neuen Zahlen).
-
-## Akzeptanz
-- Alle Karteireiter ✓ ohne „!", Abschluss ohne offene Pflichten — nur Zeichnung/SUBMIT bleibt bei dir.
+1. **INIT_FOERDEROPS.md** (FÖRDERANTRAEGE_2026-10/) — die eine SSOT: Ziel, Stand (FFG 74310314 eingereicht), die 5 JA/NEIN-Karten, Gate-Regeln (Zusage → FlexCo), alle Pfade, „was nur du kannst".
+2. **WAYFINDER_FOERDEROPS.md** — Map mit Nodes P1 SMS · P2 Patent.Scheck · P3 TIP · P5 LOIs · P6 inno4KMU + Gates (Jury-Entscheid, Bescheid-Verarbeitung); JA/NEIN aktualisiert den Node-Status.
+3. **SaveWorkflow `foerderops-refresh`** (Projekt-Scope) — der bewährte 6-Builder-Run (Quellen-injiziert → Prüfer → Fixer → Morgenbericht) als benannter, wiederverwendbarer Workflow für künftige Aktualisierungen.
+4. **Verifikation:** ls/wc beider Dateien + öffnen; sonst nichts angefasst.
+5. Keine Agenten-Runs (z.ai-Quota bis 17:38 erschöpft) — 3 Dateien = direkte Text-Arbeit. Danach Goal-Modus: autonom bis fertig, keine Rückfragen; dein einziger Schritt bleibt ja/nein auf den 5 Karten.

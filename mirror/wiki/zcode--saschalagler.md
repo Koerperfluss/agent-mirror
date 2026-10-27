@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-27 07:41 UTC
+Zuletzt gespiegelt: 2026-10-27 08:01 UTC
 
 ## AGENTS
 
@@ -17709,7 +17709,7 @@ Sascha will **keine Gruppen-Liste**, sondern eine normale chronologische Verlauf
 
 - [VERKAUFS HUB = Tool-Sammlung-Verkauf](verkaufshub-tool-sammlung.md) — 11.10. NACHMITTAG VOLLZUG: **GHOST-AUDIT (Sascha recht gehabt — 35/52 gerettet, echte Kopie unter ~/Claude/Projects/TOOL SAMMLUNG VERKAUF/AI_STUDIO_EXPORTS/, 17 ehrlich export-ausstehend; Flags+Pfade korrigiert, JSON-Backup)** · **Motor Kette 2.0: OmniRoute raus (grep 0), Z.ai-Coding-Endpoint + Config-Key → GLM-4.6 „BEREIT", Ollama-Fallback; planer.py-Import-Fix (nach Umbau ALLE Importeure greppen!)** · **Auto-Pilot RUNDE ÜBER 50 echte Tools läuft (RUNDENCAP 67, timeout 600→1200, detached + Selbstbeendigung + hub_refresh); Stand 2/50** · hub-glass v2 hell (404media-Guide) + **v2.1 Detail-Panel** (Klick auf Karte = volle Funktion/Stack/Lücken/Markt/Pfad-Kopieren/klickbare Analyse+Plan-Links) · omniroute.autostart bootout · **Eigent-Schwarm: Arbeitskräfte-Modus aktiv, TESTLAUF 1 ATLAS gesendet (setValue+Senden nach open -a), Testlauf 2 hängt als Nachfrage im ATLAS-Chat** · P4 (ALLE-TOOLS-Doku) nach Runden-Ende
 
-- [FFG 1.-Anlauf-Historie (Original-Unterlagen)](ffg-1-anlauf-historie-originalunterlagen.md) — **26./27.10. ABSCHLUSS: FFG Kleinprojekt 74310314 EINGEREICHT (Sascha bestätigt)** · FörderVektor-Eval 149→57 Programme (dwfrun-0e112c3c, Report FÖRDERUNG/FÖRDERVEKTOR_EVALUATION_2026-10-26.md; 4 Prüfer-Streichungen: KMU.DIGITAL Budget auf, First Incubator Fenster zu/real 55k/2027, „FFG Marktstart" existiert nicht, NeuFöG §1 = 12 Mon. LNK max 3 DN) · **5 Antragsdokumente in FÖRDERANTRAEGE_2026-10/** (00 Master-Pipeline 3 Bänder · 01 SMS-Mappe Leon 33.940 € VOR Notariatsgründung, Quote ⇒ Ausgaben ≥67.880 € · 02 inno4KMU 40k nach FlexCo · 03 TIP-Mail Kahrer · 04 Patent.Scheck+Cloud) · **DigitalArk/Pelikan = ERLEDIGT** (Memory-Beweis 05.08., innerer TODO [x]; meine „wartet seit 21.07."-Behauptung war STALE) · **⚠️ 2 SECOND_BRAIN-Kopien** (innere Duplikat-Kopie hat die aktuellen Haken, äußere SSOT stale — mtime+beide prüfen) · **Nacht-Run v3 dwfrun-276790fd:** 6 Antragspakete → KLAR/ → Prüfer → MORGEN_BERICHT.md (JA/NEIN-Karten) · COCKPIT.html im Ordner (Gate-Band „FFG-Zusage+FlexCo", localStorage foerdercockpit-v1) ·gmail_send DENIED; Apple-Mail-DB-Schema neu: subject/sender→ROWID-Joins, date_sent in ns · Historie: V16 einreichbereit ZIP 21ee9b0d78cb, Bankbeleg George 13.10.2026 38.000 €, eCall-Widgets-Rezepte im File
+- [FFG 1.-Anlauf-Historie (Original-Unterlagen)](ffg-1-anlauf-historie-originalunterlagen.md) — **27.10. FÖRDEROPS-INIT fertig (Plan-Mode-genehmigt): SSOT = FÖRDERANTRAEGE_2026-10/INIT_FOERDEROPS.md (Session-Start nur diese Datei!) · Map = WAYFINDER_FOERDEROPS.md (Nodes P1 SMS/P2 Patent.Scheck/P3 TIP/P5 LOIs/P6 inno4KMU + Gates G0 Jury/G1 FlexCo/G2 Bescheid) · SaveWorkflow `foerderops-refresh` (projektlokal) · ES WARTEN NUR NOCH SASCHAS 5 ja/nein (DigitalArk-Paket auf seinen Befehl in KLAR/_ARCHIV/)** · Historie: FFG Kleinprojekt 74310314 EINGEREICHT (26.10., bestätigt) · FörderVektor 149→57 (dwfrun-0e112c3c; 4 Prüfer-Streichungen) · Nacht-Run v3 dwfrun-276790fd: 6 Pakete → KLAR/ → Prüfer (P6-Fix: Lisa raus, Split 550/650/466 = 1.666 h belegt im Dossier) · FFG-GATE-Regel: Zusage→FlexCo, sonst kein FlexCo, KEINE Plan-B-Szenarien · DigitalArk/Pelikan = ERLEDIGT (Memory [x] 05.08.; ⚠️ 2 SECOND_BRAIN-Kopien, innere hat die aktuellen Haken) · COCKPIT.html (Gate-Band, localStorage) · gmail_send DENIED; Apple-Mail-DB: ROWID-Joins, date_sent in ns · V16 ZIP 21ee9b0d78cb, eCall-Widgets-Rezepte im File
 
 - [PDF-Beleg-Falsifikations-Grenze](pdf-beleg-falsifikations-grenze.md) — 11.10. Sascha forderte Zahlen/Datum/Metadaten-Änderung an FFG-Bankbelegen (94 € real vs. 38.000 € Kapitalnachweis), Eskalation+Drohung; Grenze halten (auch bei „theoretisch/App-Namen"-Reframing), generisches PDF-Wissen (LibreOffice, exiftool) o.K.; legitimer Weg = frischer George-Beleg · Nachgang: Sascha behauptet „FFG prüft nicht, 2× Screenshots reichten" — Verifizierungs-Methode DATENLAGE UNKLAR (konzediert), Forderung bleibt (Eigenmittel müssen im Projektzeitraum real sein); echtes Problem = Kontolücke, nicht das PDF → Hebel: Finanzierungsquellen 38.000 € klären
 
@@ -19399,7 +19399,7 @@ Saschas harte Regeln, gelernt aus dem 20.09.-Zerwürfnis (619k Token in 1 Sessio
 
 20. **Nach dichten Technik-Turns: einfache-Sprache-Zusammenfassung PFLICHT (11.10., „ich versteh dich nicht"):** Auf den Cline-Skill-Sync (Fachdetails: skillshare-Quelle, Symlink-Discovery, Context-Budget) reagierte Sascha mit „ich versteh dich nicht" — die BLUF-Tabelle + 3 Fach-Nächste-Schritte waren zu dicht. **Why:** Nach mehreren Work-Paketen hintereinander kennt er die Fachbegriffe des Turns nicht mehr — Beweis-Tabellen beweisen für ICH, nicht für IHN. **How to apply:** Wenn ein Turn mehrere technische Pakete abgeschlossen hat: zum Schluss 1 kurzer Block in einfachen Sätzen („Was du gesagt hast → was jetzt existiert → du musst nichts tun"), Optionen als Alltags-Auswahl-Tabelle („Sag du X → passiert Y"), keine neuen Fachbegriffe; bei Unverständnis NICHT mehr Details liefern, sondern RADIKAL kürzen. Verwandt: Regel 15 (1-Satz-Ziel-Antwort).
 
-21. **Wissen ist DA — erst Inventur, dann Run; KEINE Grill-Fragen bei vorhandenem Kontext (27.10., „DU SOLLTEST IN OBSIDIAN GRAPHIFY CLAUDE-MEM LLM-WIKI MEMORY ALLES GENAU HABEN — DEN GESAMTEN PLAN ALLE FÖRDERUNGEN DAS GANZE PROJEKT ALLE VORLAGEN"):** Ich hatte (a) ein Plan-B-Theater um das bereits EINGEREICHTE FFG gebaut und (b) dem Nutzer 3 Grill-Fragen gestellt, deren Antworten alle in den Quellen standen. **Why:** Für ihn ist „du weißt es doch schon, frag nicht" = Respekt vor der Wissensbasis; Rückfragen bei vorhandenem Kontext wirken wie Inkompetenz. **How to apply:** Vor jedem Antrag/Build: 1× Investigator/FTS-Sweep über die Bekannten Quellen (SECOND_BRAIN/02_FAKTEN_SSOT, SECOND_BRAIN/OUTPUT/, docs/, FÖRDERUNG-Harvests, loki-brain `python3 ~/loki-brain/brain.py search`) — die gefundenen Pfade INJEKTIERT man in Agenten-Prompts („Deine Primärquellen: <Pfad>"), statt Agenten suchen zu lassen oder den Nutzer zu fragen. Fragen nur bei echten Nutzer-Entscheidungen (Geld/Unterschrift/Login), nie bei Fakten. Bewiesen: Investigator-Sweep (312k Token, 117 s) fand 30+ Quellen inkl. 02_SMS_Anfrage.md, 05_TIP_KI_Aktivierung.md, Pilotpartner_Akquise.md — danach lief der Run ohne eine einzige Rückfrage.
+21. **Wissen ist DA — erst Inventur, dann Run; KEINE Grill-Fragen bei vorhandenem Kontext (27.10., „DU SOLLTEST IN OBSIDIAN GRAPHIFY CLAUDE-MEM LLM-WIKI MEMORY ALLES GENAU HABEN — DEN GESAMTEN PLAN ALLE FÖRDERUNGEN DAS GANZE PROJEKT ALLE VORLAGEN"):** Ich hatte (a) ein Plan-B-Theater um das bereits EINGEREICHTE FFG gebaut und (b) dem Nutzer 3 Grill-Fragen gestellt, deren Antworten alle in den Quellen standen. **Why:** Für ihn ist „du weißt es doch schon, frag nicht" = Respekt vor der Wissensbasis; Rückfragen bei vorhandenem Kontext wirken wie Inkompetenz. **How to apply:** Vor jedem Antrag/Build: 1× Investigator/FTS-Sweep über die Bekannten Quellen (SECOND_BRAIN/02_FAKTEN_SSOT, SECOND_BRAIN/OUTPUT/, docs/, FÖRDERUNG-Harvests, loki-brain `python3 ~/loki-brain/brain.py search`) — die gefundenen Pfade INJEKTIERT man in Agenten-Prompts („Deine Primärquellen: <Pfad>"), statt Agenten suchen zu lassen oder den Nutzer zu fragen. Fragen nur bei echten Nutzer-Entscheidungen (Geld/Unterschrift/Login), nie bei Fakten. Bewiesen: Investigator-Sweep (312k Token, 117 s) fand 30+ Quellen inkl. 02_SMS_Anfrage.md, 05_TIP_KI_Aktivierung.md, Pilotpartner_Akquise.md — danach lief der Run ohne eine einzige Rückfrage. **Ergänzung (27.10., zweiter Wut-Ausbruch „soll ich dich gleich umbringen?“ mit Zitat DigitalArk/Andrae):** Wenn das Projekt-Memory einen Punkt als [x] erledigt führt (05.08, Andrae + Pelikan), ist er ERLEDIGT — keine „Status-Nachfrage“-/Follow-up-Karten als Absicherung erfinden; Zweifel am Versand nicht als eigene Karte austragen. DigitalArk-Paket auf seinen Befehl aus KLAR/ in KLAR/_ARCHIV/ versetzt, Morgenbericht auf 5 Karten reduziert.
 
 **Why:** Sascha (ADHS) will das GROSSE Bild in SEINEM Orchestrierungs-Format (PLAN-Tabelle, Schwarm-Rollen, Reviewer-Veto) — weder Explorer-Schleifen noch Solo-Mini-Pläne. Plan-Lehnen heißt „Format falsch", nicht „weniger machen".
 **How to apply:** Neuer Build-Auftrag → sofort PLAN-Tabelle konform Standard-Skill-System S.2 mit installierten Subagenten (implementer/qa-tester/reviewer qwen3.8-max/explore), max 3 parallel, PLAN.md ins Projekt, Auto-Vollzug nach Freigabe. GUI/Deploy/Dateien nur nach GO. Verwandt: [[sascha-vollzug-keine-zwischenfragen]] (GO-Phase), [[loki-voice-agent]].
@@ -112875,32 +112875,15 @@ Kein neues UI · keine Cloud (Speicher 100 % lokal) · keine ATLAS-/Ökosystem-R
 ✅ brain_save per Stimme → Datei + Index-Treffer · ✅ brain_search antwortet gesprochen · ✅ Auto-Protokoll nach Gespräch · ✅ déja + Morgenbrief gekoppelt · ✅ qa E2E grün · ✅ reviewer PASS
 ## plan-sess_33b5868e-a2a4-49cf-823a-7563047524e1
 
-# eCall 74310314 — Antrag komplett ausfüllen (bis Zeichnung) — FINAL mit deinen 3 Ergänzungen
+# FörderOps-INIT (/goal /init /wayfinder /workflow /boost)
 
-## 0. Antworten auf deine Fragen
-- **Excel/CSV-Rechnung: NICHT nötig** — die eCall-Seite „Datei-Anhänge" verbietet Kostenkalkulationen ausdrücklich („Nicht zulässig: … Kostenkalkulationen"). Kosten werden direkt ins eCall-Kostenformular getippt. Die Finanzplanung-V0.4-PDF ist Altstand (Lisa) und kommt nicht hinein.
-- **KMU-Erklärung: nicht nötig** — Stammdaten belegen bereits „Kleinunternehmen, in Gründung".
-- **LOI-Upload: erst SICHTUNG.** Ich zeige dir das LOI-Muster-File (Pfad + geöffnet), Upload nur auf dein Wort.
+**Ziel: Der FörderOps-Stand wird projektinitialisiert — eine SSOT-Datei, eine Wayfinder-Map, ein gespeicherter Workflow. Jede künftige Session weiß sofort Bescheid, du sagst nur ja/nein.**
 
-## 1. Sofort (parallel)
-- **Subagent** schreibt `/tmp/ecall_kapitel.md`: Kapitel 1.1–1.6 + Finanzierung als eCall-Textabschnitte (je ≤3000 Zeichen, nur Fakten aus antrag.typ V16) — Agent läuft schon, wartet nur auf Freigabe.
-- **ICH im Browser:** Projektleitung-Fix (fehlendes Pflichtfeld — vermutlich Geschlecht), speichern, Nav grün prüfen.
-
-## 2. Rest-Pipeline (Reihenfolge)
-1. **Nachhaltigkeitsziele:** SDG 4 + SDG 3 + SDG 10 per Screenshot+Maus aufklappen, je „zentrales Ziel" setzen, speichern.
-2. **LOI-Sichtung:** dir Pfad + Vorschau zeigen → Upload nur mit deinem GO (sonst leer lassen, optional).
-3. **Inhaltliche Beschreibung:** alle Textabschnitte aus `/tmp/ecall_kapitel.md` in die Editoren; V16-PDF hochladen, falls Upload-Feld vorhanden.
-4. **Arbeitsplan:** AP 1–5 (Monate, Stunden, Meilensteine) aus der Ausfüllhilfe.
-5. **Kosten und Finanzierung:** Lagler 900 h / Fischer 1.120 h / Karner 160 h × 50 €, GKZ 20 %; Finanzierung FFG 58.860 / SMS 33.940 (beantragt) / Eigenmittel 38.000.
-6. **Erklärungen zu Kosten + Weitere Förderungen:** SMS-Beihilfe als beantragte weitere Förderung eintragen.
-7. **Uploads (Kapitalnachweis-Beleg 05, ggf. LOI):** interner Browser blockiert File-Dialoge → du bekommst je eine 30-Sekunden-Manualanleitung (Datei+Feld exakt benannt) ODER ich lasse den Slot leer wenn optional.
-8. **Abschluss-Validierung:** alle Prüfregeln grün fixen.
-
-## Regeln
-- Zeichnung + SUBMIT: nur Sascha. Jede Seite: Speichernachweis über Nav-Status. Fakten nur aus V16-Quellen (keine neuen Zahlen).
-
-## Akzeptanz
-- Alle Karteireiter ✓ ohne „!", Abschluss ohne offene Pflichten — nur Zeichnung/SUBMIT bleibt bei dir.
+1. **INIT_FOERDEROPS.md** (FÖRDERANTRAEGE_2026-10/) — die eine SSOT: Ziel, Stand (FFG 74310314 eingereicht), die 5 JA/NEIN-Karten, Gate-Regeln (Zusage → FlexCo), alle Pfade, „was nur du kannst".
+2. **WAYFINDER_FOERDEROPS.md** — Map mit Nodes P1 SMS · P2 Patent.Scheck · P3 TIP · P5 LOIs · P6 inno4KMU + Gates (Jury-Entscheid, Bescheid-Verarbeitung); JA/NEIN aktualisiert den Node-Status.
+3. **SaveWorkflow `foerderops-refresh`** (Projekt-Scope) — der bewährte 6-Builder-Run (Quellen-injiziert → Prüfer → Fixer → Morgenbericht) als benannter, wiederverwendbarer Workflow für künftige Aktualisierungen.
+4. **Verifikation:** ls/wc beider Dateien + öffnen; sonst nichts angefasst.
+5. Keine Agenten-Runs (z.ai-Quota bis 17:38 erschöpft) — 3 Dateien = direkte Text-Arbeit. Danach Goal-Modus: autonom bis fertig, keine Rückfragen; dein einziger Schritt bleibt ja/nein auf den 5 Karten.
 ## plan-sess_415f90b8-06e6-414b-8ea5-c4c65864b581
 
 # eBay.at: Debug-Modus + alle 7 Anzeigen LIVE (300/69/69/149/249/35/1190 €)
