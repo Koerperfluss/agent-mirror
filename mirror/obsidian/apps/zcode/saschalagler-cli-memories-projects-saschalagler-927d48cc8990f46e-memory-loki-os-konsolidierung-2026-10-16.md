@@ -1,7 +1,7 @@
 ---
 app: zcode
 quelle: "saschalagler/cli/memories/projects/saschalagler-927d48cc8990f46e/memory/loki-os-konsolidierung-2026-10-16.md"
-stand: 2026-10-15
+stand: 2026-10-27
 tags: [spiegel, zcode]
 ---
 
@@ -22,5 +22,7 @@ metadata:
 - **ClinePass E2E GRÜN:** 16.10. 00:05, HTTP 200 „FUNKTIONIERT" gegen cline-pass/glm-5.3-flash — task_0006 geschlossen. ZCode-Workflow dwfrun-af3116d0 bestätigte 12/12 Fertig-Behauptungen (0 unbestätigt): Kernel :8010 UP (PID 84753), LegalOps „4×-Duplikat" = MYTHOS (je Config genau 1×), Hub :1006 DOWN frisch gemessen, Sigma :10345 DOWN weil App komplett entfernt (Reinstall = GO), ZCode-Volume schon ausgeworfen.
 - **8 GO-Reste** in LOKI_OS_UNIFIED §7 (Hermes-Löschung, Legacy-Config-Eintrag, Docker-Push, Sigma-Reinstall, Hub-Restart, Mirror-Scope `MIRROR_SOURCES=$HOME` drosseln, 06_unklar-Inventur, Desktop-Redundanz).
 - Don't-touch: THOMAS-Kunden-Paket, TOOL-SAMMLUNG-VERKAUF (heute 23:18 neue APK!), 0B-Pipeline-Platzhalter; Ordner haben teils Leerzeichen am Ende.
+
+**Eigent-Verdict (27.10., Sascha-Frage „was ist Eigent, brauche ich es? LOKI.OS sollte DIE Plattform werden"):** Eigent = lokales Open-Source-Agenten-Cockpit (Space→Session→Task→Approval-UI, BYOK-Modelle, Apache 2.0, 0 €, CDP-Browser) — **NICHT als Plattform adoptieren** (würde die 12-App-Zoo zur 13. App machen und zersplittern). Seine einzige echte Rolle bei Sascha: CDP :9222 Browser-Backend für Stage-⑤-E2E. **Die tatsächlich fehlende Schicht:** Task-/Agenten-Panel als Tab direkt in `:8010/dashboard/` (Kanban :3484-API + hcom-Status + Workflow-Läufe live) — dann ist LOKI.OS die EINE Plattform. **Angebot an Sascha gestellt, wartet auf sein „JA"** (Empfehlung Eigent: lassen, nicht löschen). Für seine Links-Datenbank-Frage: Obsidian Graph (Vault existiert schon) statt Heptabase; Raindrop.io nur für reine Link-Sammlung.
 
 Verwandt: [[loki-os-livestatus-2026-10-11]], [[cline-code-app-hub-1006-diagnosis]], [[autoclaw-sprache-translocation-fix]]

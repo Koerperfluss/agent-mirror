@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-27 03:08 UTC
+Zuletzt gespiegelt: 2026-10-27 03:23 UTC
 
 ## AGENTS
 
@@ -17531,7 +17531,7 @@ Sascha will **keine Gruppen-Liste**, sondern eine normale chronologische Verlauf
 
 # Memory Index
 
-- [LOKI.OS Nachtkonsolidierung 16.10. FERTIG](loki-os-konsolidierung-2026-10-16.md) — SSOT = `~/loki-ki/docs/LOKI_OS_UNIFIED_2026-10-16.md` (gebündeltes Einheits-Doku: Abos, Apps, Ports, Skills, Team, Repo-Karte, GO-Liste §7) · D1–D4 ausgeführt (Worktree weg, Fossilien in _ARCHIV/2026-10, Backups ~/.zcode/backups/konsolidierung-20261016) · I1–I3 eingepflegt (359 Dumps + 37 Audits + 4 PDFs + rsync-Rückholung) · **ClinePass E2E 200 (task_0006 zu)** · Kernel :8010 UP, LegalOps-Duplikat = Mythos, Hub :1006 down, Sigma :10345 = App entfernt (Reinstall = GO) · 12/12 Workflow-Behauptungen bestätigt (dwfrun-af3116d0) · 8 GO-Reste
+- [LOKI.OS Nachtkonsolidierung 16.10. FERTIG](loki-os-konsolidierung-2026-10-16.md) — SSOT = `~/loki-ki/docs/LOKI_OS_UNIFIED_2026-10-16.md` (gebündeltes Einheits-Doku: Abos, Apps, Ports, Skills, Team, Repo-Karte, GO-Liste §7) · D1–D4 ausgeführt (Worktree weg, Fossilien in _ARCHIV/2026-10, Backups ~/.zcode/backups/konsolidierung-20261016) · I1–I3 eingepflegt (359 Dumps + 37 Audits + 4 PDFs + rsync-Rückholung) · **ClinePass E2E 200 (task_0006 zu)** · Kernel :8010 UP, LegalOps-Duplikat = Mythos, Hub :1006 down, Sigma :10345 = App entfernt (Reinstall = GO) · 12/12 Workflow-Behauptungen bestätigt (dwfrun-af3116d0) · 8 GO-Reste · **27.10. Eigent-Verdict: NICHT als Plattform (nur CDP-Backend lassen); fehlende Schicht = Task/Agent-Panel-Tab in :8010/dashboard/ — Angebot wartet auf Sascha-JA**
 
 - [LOKI-Konsolidierung Merge-Matrix](loki-konsolidierung-merge-matrix.md) — 16.10. ALLE Loki-Versionen inventarisiert (3 Read-only-Scouts, nichts angefasst): SSOT `~/loki-ki/docs/LOKI_KONSOLIDIERUNG_MERGE_MATRIX_2026-10-16.md` · Kanonisch: ~/loki-ki (368 dirty!), loki-brain, loki-voice, loki-voice-app, loki-verkaufstool, e2e/loki-e2e — v17/v18 = Versionen, KEINE Duplikate · D1 lv-wt-zcode=Worktree, D2 loki-ki/loki-voice=Alt-Repo, D3/D4 Fossilien, D5 Desktop-ARCHIV-Kopie, D6 Cline-Session-Zips · Don't-touch: THOMAS-Kunden-Paket, TOOL-SAMMLUNG-VERKAUF (aktiver Verkauf!), 0B-Platzhalter (autopilot.py), Pfad-Falle Leerzeichen-am-Ende · warten auf GO-Gate (D1–D4 / alles / Option C) · Lektion: explore-Subagent pinnt zai-start-plan-Provider (tot) → general-purpose nutzen
 
@@ -17922,6 +17922,8 @@ metadata:
 **Offen (per Konversationstabelle 15.10.):** ClinePass echter Chat-Test (Limit-Reset ~00:10 nach 429) · LOKI-Kernel :8010 down · LegalOps-MCP :7070 4× dupliziert · Sigma :10345 down · AutoClaw-CLI fehlt im PATH · Atomic-Hermes-Entfernung wartet auf GO · AutoClaw-Cron Night-Shift + Hermes Learning-Loop „geplant" · Dauermutten: GO-Wecker, Deutsch-Patch, „GO doku-fix" (assi-README).
 
 **Fertigmach-Workflow:** dwfrun-af3116d0 „ClinePass + System fertig machen" (15.10. ~23:30 gestartet, Script `.zcode/workflow-drafts/ClinePass--System-fertig-machen.dwf.ts`): Unterhaltungs-Extrakt (Paste-File 2291 Zeilen) → 3 Prüfer (clinepass/infra/skills, nur-lesend) → Fixer mit tar-Backup nach `~/.zcode/backups/cleanup-20261016/` (nie löschen/deployen; Skill-Konsolidierung „managing-skills einpflegen" war 6× an Hub-1006 gescheitert, nie gelaufen) → Fertigmeldung `~/Desktop/FERTIGMELDUNG_2026-10-16.md` mit frischer Beweis-Gegenprüfung. GO-Liste/Blockiert nur gelistet, nie ausgeführt. **Workflow-Fakten:** läuft mit Default **8 parallel** — Saschas „keine 3-Sperre, du Trottel" war gegen das nie aktive max_concurrency=3 im Create-Call gerichtet; AmendWorkflow-Retune meldete „already runs at default (8)". Compile-Falle: typografische öffnende Anführungszeichen `„` + ASCII-`"` als Schluss reißen TS-Strings.
+
+**27.10. NACHVERIFIZIERT — z.ai Coding Plan + Claude Code + Cline (Sascha-Frage „kann ich mit meinem Abo Claude Code bzw. Cline nutzen?"):** JA zu beiden, offiziell unterstützt, und BEIDE schon fertig konfiguriert (live verifiziert): **Claude Code** `~/.claude/settings.json` → `ANTHROPIC_BASE_URL=https://api.z.ai/api/anthropic` + Token `cb194f…` (Terminal `claude` = läuft aufs Coding-Abo). **Cline** `~/.cline/data/settings/providers.json` → Provider `zai` (glm-5.3-flash) UND `zai-coding-plan` (Base `api.z.ai/api/coding/paas/v4`, Modell glm-5.3), gleicher Key cb194f…; lastUsed bleibt cline-pass. **Fallen:** (1) Key-Trennung Individual-Plan-Key ≠ Team-Key ≠ Standard-API-Key — cb194f… ist der Coding-Plan-Key (bewiesen: antwortet auf beiden Coding-Endpoints), nicht als Modell-API-Key zweitverwenden. (2) Claude Code + Cline + ZCode teilen sich denselben 12k-Credits/5h-Topf. (3) Policy: nur offiziell unterstützte Tools — beide stehen auf der Liste. Vision/Web-Search/Web-Reader-MCP-Server sind Coding-Plan-exklusiv und zählen in denselben Topf.
 
 Link: [[sascha-local-infra-ports]] · [[cline-code-app-hub-1006-diagnosis]] · [[autoclaw-sprache-translocation-fix]] · [[loki-konsolidierung-merge-matrix]]
 
@@ -18643,6 +18645,8 @@ metadata:
 - **ClinePass E2E GRÜN:** 16.10. 00:05, HTTP 200 „FUNKTIONIERT" gegen cline-pass/glm-5.3-flash — task_0006 geschlossen. ZCode-Workflow dwfrun-af3116d0 bestätigte 12/12 Fertig-Behauptungen (0 unbestätigt): Kernel :8010 UP (PID 84753), LegalOps „4×-Duplikat" = MYTHOS (je Config genau 1×), Hub :1006 DOWN frisch gemessen, Sigma :10345 DOWN weil App komplett entfernt (Reinstall = GO), ZCode-Volume schon ausgeworfen.
 - **8 GO-Reste** in LOKI_OS_UNIFIED §7 (Hermes-Löschung, Legacy-Config-Eintrag, Docker-Push, Sigma-Reinstall, Hub-Restart, Mirror-Scope `MIRROR_SOURCES=$HOME` drosseln, 06_unklar-Inventur, Desktop-Redundanz).
 - Don't-touch: THOMAS-Kunden-Paket, TOOL-SAMMLUNG-VERKAUF (heute 23:18 neue APK!), 0B-Pipeline-Platzhalter; Ordner haben teils Leerzeichen am Ende.
+
+**Eigent-Verdict (27.10., Sascha-Frage „was ist Eigent, brauche ich es? LOKI.OS sollte DIE Plattform werden"):** Eigent = lokales Open-Source-Agenten-Cockpit (Space→Session→Task→Approval-UI, BYOK-Modelle, Apache 2.0, 0 €, CDP-Browser) — **NICHT als Plattform adoptieren** (würde die 12-App-Zoo zur 13. App machen und zersplittern). Seine einzige echte Rolle bei Sascha: CDP :9222 Browser-Backend für Stage-⑤-E2E. **Die tatsächlich fehlende Schicht:** Task-/Agenten-Panel als Tab direkt in `:8010/dashboard/` (Kanban :3484-API + hcom-Status + Workflow-Läufe live) — dann ist LOKI.OS die EINE Plattform. **Angebot an Sascha gestellt, wartet auf sein „JA"** (Empfehlung Eigent: lassen, nicht löschen). Für seine Links-Datenbank-Frage: Obsidian Graph (Vault existiert schon) statt Heptabase; Raindrop.io nur für reine Link-Sammlung.
 
 Verwandt: [[loki-os-livestatus-2026-10-11]], [[cline-code-app-hub-1006-diagnosis]], [[autoclaw-sprache-translocation-fix]]
 
@@ -19730,6 +19734,11 @@ metadata:
 - **Mimosa-Fallen (wichtig für künftige Läufe):** ① Bash-`mv` auf Quellcode (.py) wird von Mimosa **komplett abgelehnt** (nichts läuft) → Umweg über MCP `filesystem move_file` (funktioniert). ② Mimosa-L2 meldete „Pfad穿越" in den ARCHIVIERTEN patch_dashboards = dokumentiertes False-Positive/Totcode (`_ARCHIV/2026-10-18/HINWEIS.md`: 0 Referenzen, gitignored, „Nicht ausführen") — Vorschlag: ganzen `_ARCHIV/`-Ordner mit GO löschen.
 
 **Top-5-Audit-Workflow GESTARTET (18.10. spät, dwfrun-dbf3cf13) → KOMPLETT ERGEBNIS:** **2 PASS** = bleicher + cali-logbook-pwa — beide mit **je 1 Klartext-Gemini-Key** (bleicher: `firebase-applet-config.json:4`; cali-logbook-pwa: `src/context/AppProvider.tsx` + im Git-Verlauf) → **Rotation beim Nutzer nötig, sonst beim Verkauf kompromittiert**. **3 UNVOLLSTÄNDIG** = memorybase-ingest + projekt-task-planer (kein package.json → Build/SBOM leer) und andi-cannabis (Build OK, aber Scanner/license-checker liefen auf falschen Pfad) — Strukturprobleme, KEINE Security-Funde. Nach Nutzer-Wut („ES GIBT 67 TOOLS, DU HAST NICHTS ANALYSIERT — WO IST FÖRDEROPS? WO IST ATLAS?"): Klärung via tools-v2.json — **Förder-Cockpit (Tier A) + atlas-cali-commercial-v2 (Tier A) = ghost ohne lokalen Code** (Förder-Eintrag-Pfad ist Datenfehler → zeigt auf körperfluss-pilot.ai; FörderOps-Bot-Ticket in _ARCHIV); Atlas: 6 Varianten, 5 real. **→ AmendWorkflow auf ALLE 45 Real-Tools** erweitert (TOOLS-Array 5→45, +Scan-Fail-try/catch-Skip-Pfad, Bericht/Board umbenannt): läuft als **dwfrun-e7e95f58** (5 fertige aus Cache). Vault-Notiz 07 um Ghost-Klärung + Top-5-Ergebnis erweitert. Struktur-Lektion fürs Audit: Tools ohne package.json/pyproject liefern leere _AUDIT-Dateien → Gate-1 „UNVOLLSTÄNDIG" korrekt, aber Ursache ist Projektstruktur, nicht Security.
+
+**18.10./19.10. NACHT III — 74er-TECHNISCH-PDF GERETTET + Komplett-Server-Stand:**
+- **Das erste 74er-PDF war LEER (Platzhalter-Fehler):** page.pdf lief mit `__HTML_PLACEHOLDER__`-Literal statt Inhalt. Playwright-Fallen: `file://` geblockt, hub_server serviert nur Whitelist (404), `require` existiert in run_code_unsafe NICHT. **Bewährter Weg:** HTML via bash-python generieren → `python3 -m http.server 3399 --bind 127.0.0.1` (run_in_background) → browser_navigate http://127.0.0.1:3399/… → run_code page.pdf. Ergebnis: **ALLE_74_PROJEKTE_TECHNISCH_2026-10-18.pdf = 11 Seiten, 149.946 Bytes, 77 Tabellenzeilen** (74 Tools + 3 Header; Quelle ALLE_74_PROJEKTE_TECHNISCH_2026-10-18.{md,html}; im PDF-Panel geöffnet). Tabelle je Tool: Name·Tier·Gate-1·Stack·Funktion(300)·Preis(140)·Markt(240, aus markt_analyse-JSON geparst)·Notiz(90).
+- **Nach jedem Session-Neustart sterben ALLE Server** (:3300/:8055/:3399 = 000) → neu starten, run_in_background-Muster. **Backend :8055 Ursache: `No module named fastapi`** (auch via `zsh -ic`) → Fix: `pip3 install --user --break-system-packages fastapi "uvicorn[standard]"` (PEP 668!) → **8055 = 200**. Mimosa blockte den Kombi-Befehl (Log-Redirect `> backend/backend8055.log` = Repo-Write-Verdacht) → **Logs nach /tmp**, dann läuft der Start-Bash.
+- **Plan dem Nutzer erklärt (ruhige Erklär-Frage „was hast du vor?"):** Reihenfolge Atlas-App It. 3 (tsc 6-GB-Heap, offen) → Scanner-Fix Non-Node → Re-Scans der 28 → Stage-3 der 5 FAIL → Dossiers; Nutzer-Aufgaben: Key-Rotation Google Console (4 Tools), Gumroad, GO je Schritt.
 
 **Why:** Nutzer wollte vollautomatisierten Multi-Agent-Audit-&-Vermarktungs-Workflow mit verknüpften Apps (Cline/Eigent/Hermes/AutoClaw/Antigravity); bestehende Bewertungs-Pipeline (pipeline/runner.py, 67/67) bleibt — neue Pipeline komplementär.
 **How to apply:** Bei Audit-/Vermarktungs-Tasks zuerst LOKI-OS-PIPELINE/00-ANLEITUNG.md + PLAN-ENTWICKLUNG.md + Vault-Notizen 08/09 nutzen; `/workflow` vom Nutzer = CreateWorkflow + dynamic-workflows-Skill VORHER laden, Scans als `world.run` deterministisch, Subagents nur für Interpretation; Workflow-Läufe nicht pollen (Notification kommt). **Nutzer will VOLLSTÄNDIGKEIT: „Top-5-Fokus" nie als Ersatz fürs Gesamtaufkommen verkaufen — bei Inventar-Einträgen alle Real-Tools auditen (AmendWorkflow mit erweitertem TOOLS-Array = Cache-Reuse der fertigen).** Verwandt: [[verkaufshub-inventar-und-workflow]] [[agent-defs-provider-fix]]
@@ -110024,6 +110033,246 @@ yarn global add typescript-language-server typescript
 - [typescript-language-server on npm](https://www.npmjs.com/package/typescript-language-server)
 - [GitHub Repository](https://github.com/typescript-language-server/typescript-language-server)
 
+## _gstack-command
+
+---
+description: Router for the gstack skill suite. (gstack)
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/_gstack-command/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## agent-browser
+
+---
+description: |
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/agent-browser/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## agent-cluster
+
+---
+description: 11 KI-Agenten (A1–A11) bewerten alles Mögliche — Tools, Projekte, Ideen, Geschäftsmodelle: Markt, Wettbewerb, Kunden, Tr
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/agent-cluster/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## agent-hcom
+
+---
+description: >
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/agent-hcom/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## agentallrounder
+
+---
+description: UNIVERSAL-OPS-OMNI-ARCHITECT v8.5 (VOLLTEXT, Cross-Harness). Agnostischer Allrounder mit 5 internen Sub-Agenten, Dual-Mo
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/agentallrounder/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## ai-os-voice-layer
+
+---
+description: Bauplan für ein persönliches KI-Betriebssystem mit Sprachschicht — Claude Code als Engine, Obsidian-Vault als Memory, lo
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/ai-os-voice-layer/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## allrounder
+
+---
+description: UNIVERSAL-OPS-OMNI-ARCHITECT v8.5 (VOLLTEXT, Cross-Harness). Agnostischer Allrounder mit 5 internen Sub-Agenten, Dual-Mo
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/allrounder/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## anatomie-visualisierer
+
+---
+description: Bild- und Video-Prompt-Architekt für funktionelle Anatomie — myofasziale Ketten, Faszienverläufe, Muskelschlingen und bi
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/anatomie-visualisierer/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## antigravity-dev-operator
+
+---
+description: Technical Architect für Antigravity AI Studio, Vertex AI, GEMINI.md-Rules, Slash-Workflows, Context Caching und das Goog
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/antigravity-dev-operator/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## appagentteam
+
+---
+description: Startet ein App-Dev-Agent-Team (Architekt, iOS, Android, Web/Flutter, QA-E2E, Code-Reviewer, Workflow-Optimierer) das Fe
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/appagentteam/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## ask-matt
+
+---
+description: Ask which skill or flow fits your situation. A router over the skills in this repo.
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/ask-matt/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## autoplan
+
+---
+description: Auto-review pipeline — reads the full CEO, design, eng, and DX review skills from disk and runs them sequentially with a
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/autoplan/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## backend-development
+
+---
+description: Backend API design, database architecture, microservices patterns, and test-driven development. Use for designing APIs, 
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/backend-development/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## benchmark-models
+
+---
+description: Cross-model benchmark for gstack skills. (gstack)
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/benchmark-models/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## benchmark
+
+---
+description: Performance regression detection using the browse daemon. (gstack)
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/benchmark/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## beta
+
+---
+description: Clean fixture tool skill with no forced reads and no mode table.
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/beta/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## better-accessibility
+
+---
+description: Reviews and fixes keyboard and focus behavior, ARIA, accessible names, forms, screen-reader announcements, motion and zo
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/better-accessibility/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## better-colors
+
+---
+description: Builds and checks color systems by generating palettes, naming semantic tokens, converting between formats and measuring
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/better-colors/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## better-interface
+
+---
+description: Reviews a screen, flow or whole interface across accessibility, layout, writing, typography, color and UI polish, and re
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/better-interface/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## better-layout
+
+---
+description: Sets grouping, alignment, reading order, responsive structure and room for translated text, so a layout holds up when it
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/better-layout/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## better-typography
+
+---
+description: Sets and reviews how text renders, from the type scale and spacing to font features, wrapping, truncation and punctuatio
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/better-typography/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## better-ui
+
+---
+description: Polishes surfaces, icons and motion with exact values for border radius, optical alignment, shadows, icon states and ani
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/better-ui/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## better-writing
+
+---
+description: Writes and reviews interface copy, from labels and errors to empty states and confirmations, so it matches the product's
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/better-writing/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## beweis-und-fokus
+
+---
+description: Beweis- & Fokus-Operator v1.0 (destilliert aus agentallrounder v8.5 + beweis-und-fokus-operator). Erzwingt: Zeile 1 = Er
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/beweis-und-fokus/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
 ## boost
 
 ---
@@ -110033,6 +110282,606 @@ description: Startet den Boost Multi-Agent Orchestrator für parallele Bearbeitu
 1. Analysiere das aktuelle Ziel und teile es in 2-4 parallele Arbeitsstränge auf.
 2. Weise jedem Strang den spezialisierten Agenten und die passenden Tools zu.
 3. Führe die Aufgaben parallel aus, konsolidiere die Ergebnisse und präsentiere eine zusammenfassende Status-Matrix.
+
+## brainstorming
+
+---
+description: Sharpen a raw, fuzzy idea into a concept precise enough to grill. Use when the user has a germ of an idea — a feeling, a
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/brainstorming/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## brandkit
+
+---
+description: Premium brand-kit image generation skill for creating high-end brand-guidelines boards, logo systems, identity decks, an
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/brandkit/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## briefmaker
+
+---
+description: Aus Analyse-/Erklär-Inhalt eine druckfähige Datei (PDF, optional PPTX) machen — NIEMALS Markdown. Kern = Saschas Vorgabe
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/briefmaker/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## browse
+
+---
+description: Fast headless browser for QA testing and site dogfooding. (gstack)
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/browse/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## browseros-neo
+
+---
+description: The user's dedicated browser for agents — a real browser signed into their accounts, with live logins and a persistent p
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/browseros-neo/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## canary
+
+---
+description: Post-deploy canary monitoring. (gstack)
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/canary/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## careful
+
+---
+description: Safety guardrails for destructive commands. (gstack)
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/careful/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## cavecrew
+
+---
+description: >
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/cavecrew/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## caveman-commit
+
+---
+description: >
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/caveman-commit/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## caveman-compress
+
+---
+description: >
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/caveman-compress/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## caveman-discover
+
+---
+description: >
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/caveman-discover/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## caveman-evidence-review
+
+---
+description: >
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/caveman-evidence-review/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## caveman-explore
+
+---
+description: Read-only repository explorer for cold-start orientation, broad cross-file localization, or when a direct search failed.
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/caveman-explore/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## caveman-help
+
+---
+description: >
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/caveman-help/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## caveman-learn
+
+---
+description: Act on a Caveman learn report - review the ranked token sinks, apply cost-lowering fixes with per-edit consent, and repo
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/caveman-learn/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## caveman-manage
+
+---
+description: >
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/caveman-manage/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## caveman-optimize
+
+---
+description: >
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/caveman-optimize/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## caveman-review
+
+---
+description: >
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/caveman-review/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## caveman-setup
+
+---
+description: >
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/caveman-setup/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## caveman-stats
+
+---
+description: >
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/caveman-stats/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## caveman
+
+---
+description: >
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/caveman/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## cdp
+
+---
+description: Drive Chrome via the DevTools Protocol from JavaScript. Run JS snippets through the `browser-harness-js` CLI — it auto-s
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/cdp/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## claude-automation-recommender
+
+---
+description: Analyze a codebase and recommend Claude Code automations (hooks, subagents, skills, plugins, MCP servers). Use when user
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/claude-automation-recommender/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## claude-handoff
+
+---
+description: Hand the current conversation off to a fresh background agent that picks up the work immediately.
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/claude-handoff/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## cli-serve
+
+---
+description: Start, stop, and restart the OmniRoute server from the CLI. Manage daemon mode, port configuration, auto-recovery, syste
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/cli-serve/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## cline-sdk
+
+---
+description: Comprehensive Cline SDK skill for building AI agents. Covers the direct Agent runtime, ClineCore sessions, custom tools,
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/cline-sdk/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## cline-session-history
+
+---
+description: Search and browse Cline session history. Use when the user asks to find, list, inspect, or export Cline sessions by time
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/cline-session-history/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## code-review
+
+---
+description: Review the changes since a fixed point (commit, branch, tag, or merge-base) along two axes — Standards (does the code fo
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/code-review/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## codebase-design
+
+---
+description: Shared vocabulary for designing deep modules. Use when the user wants to design or improve a module's interface, find de
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/codebase-design/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## coderabbit
+
+---
+description: AI-powered automated code reviewer. Analyzes git diffs and PRs for security vulnerabilities, performance anti-patterns, 
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/coderabbit/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## codex
+
+---
+description: OpenAI Codex CLI wrapper — three modes. (gstack)
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/codex/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## cognee-memory
+
+---
+description: Persistent graph and vector memory for AI agents that survives past the end of the chat session. Langzeitgedächtnis via 
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/cognee-memory/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## connect-chrome
+
+---
+description: Launch GStack Browser — AI-controlled Chromium with the sidebar extension baked in.
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/connect-chrome/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## context-restore
+
+---
+description: Restore working context saved earlier by /context-save. (gstack)
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/context-restore/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## context-save
+
+---
+description: Save working context. (gstack)
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/context-save/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## cso
+
+---
+description: Chief Security Officer mode. (gstack)
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/cso/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## d3-visualization
+
+---
+description: |
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/d3-visualization/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## deja-history
+
+---
+description: Search the user's past AI coding sessions. Use when they say things like 'didn't we fix this before', 'what did we decid
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/deja-history/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## deja-search
+
+---
+description: deja-vu memory — search the user's past AI coding sessions with the deja CLI. Use when they say things like 'didn't we f
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/deja-search/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## deploy-to-vercel
+
+---
+description: Deploy applications and websites to Vercel. Use when the user requests deployment actions like deploy my app, deploy and
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/deploy-to-vercel/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## design-an-interface
+
+---
+description: Generate multiple radically different interface designs for a module using parallel sub-agents. Use when user wants to d
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/design-an-interface/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## design-consultation
+
+---
+description: Design consultation: understands your product, researches the landscape, proposes a complete design system (aesthetic, t
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/design-consultation/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## design-html
+
+---
+description: Design finalization: generates production-quality Pretext-native HTML/CSS. (gstack)
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/design-html/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## design-review
+
+---
+description: Designer's eye QA: finds visual inconsistency, spacing issues, hierarchy problems, AI slop patterns, and slow interactio
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/design-review/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## design-shotgun
+
+---
+description: Design shotgun: generate multiple AI design variants, open a comparison board, collect structured feedback, and iterate.
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/design-shotgun/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## design-taste-frontend-v1
+
+---
+description: The original v1 taste-skill, preserved for projects depending on its exact behavior. The current default is `design-tast
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/design-taste-frontend-v1/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## design-taste-frontend-v2-experimental
+
+---
+description: Old v2 (experimental) of taste-skill, the single-file dial-driven version, preserved for projects depending on its exact
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/design-taste-frontend-v2-experimental/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## design-taste-frontend
+
+---
+description: tasteskill v2, the anti-slop frontend skill. Art direction for websites, distilled from a study of 247 curated gallery s
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/design-taste-frontend/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## design-ux-ui
+
+---
+description: Palette-Rolle — findet und implementiert EINE Mikro-UX-Verbesserung pro Lauf (A11y, Interaktion, visuelle Politur). Nutz
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/design-ux-ui/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## desktop-commander-overview
+
+---
+description: Use for Desktop Commander MCP capabilities — persistent shells and REPLs, long-running processes, filesystem beyond the 
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/desktop-commander-overview/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## detection-engineering-coverage-evaluation
+
+---
+description: >-
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/detection-engineering-coverage-evaluation/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## developing-ios-apps
+
+---
+description: Develops iOS/macOS apps with XcodeGen, SwiftUI, and SPM, including Apple Developer signing, notarization, and CI/CD pipe
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/developing-ios-apps/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## devex-review
+
+---
+description: Live developer experience audit. (gstack)
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/devex-review/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## diagnosing-bugs
+
+---
+description: Diagnosis loop for hard bugs and performance regressions. Use when the user says diagnose/debug this, or reports somethi
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/diagnosing-bugs/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## diagram
+
+---
+description: Turn an English description (or mermaid source) into a diagram triplet: the source, an editable .excalidraw file you can
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/diagram/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## document-generate
+
+---
+description: Generate missing documentation from scratch for a feature, module, or entire project. (gstack)
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/document-generate/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## document-release
+
+---
+description: Post-ship documentation update. (gstack)
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/document-release/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## domain-modeling
+
+---
+description: Build and sharpen a project's domain model. Use when the user wants to pin down domain terminology or a ubiquitous langu
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/domain-modeling/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## e2e-testing
+
+---
+description: AI-powered E2E-Testing fuer jede App (Flutter, React Native, iOS Swift, Android Kotlin, Electron, Tauri, Web) ueber flut
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/e2e-testing/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## fc-nginx-website
+
+---
+description: >-
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/fc-nginx-website/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
 
 ## feierabend
 
@@ -110053,6 +110902,478 @@ Führe die folgenden Schritte in dieser Reihenfolge aus:
    ```
    Falls ein Gmail-Kalender in der Liste enthalten ist, das Event dort anlegen, sonst im Default-Kalender.
 5. **Beweis nennen**: Am Ende explizit den Logbuch-Dateipfad und den bestätigten Kalender-Event-Namen mit Datum nennen.
+
+## figma-use
+
+---
+description: **MANDATORY prerequisite** — you MUST invoke this skill BEFORE every `use_figma` tool call. NEVER call `use_figma` direc
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/figma-use/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## find-docs
+
+---
+description: >-
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/find-docs/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## foerderguru
+
+---
+description: Strategic-Ops & Senior Förderberater für Österreich/EU (Rechtsanwalt + Steuerberater + Notar-Niveau). FFG, AWS, WAW, ÖHT
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/foerderguru/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## freeze
+
+---
+description: Restrict file edits to a specific directory for the session. (gstack)
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/freeze/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## frontend-design-hub
+
+---
+description: Frontend-Design-Kompass — Ästhetik (frontend-design-Kern, Anti-AI-Slop-Verbote), Motion-Physik nach Apple (apple-design)
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/frontend-design-hub/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## frontend-design
+
+---
+description: Create distinctive, production-grade frontend interfaces with high design quality. Use this skill when the user asks to 
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/frontend-design/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## full-output-enforcement
+
+---
+description: Overrides default LLM truncation behavior. Enforces complete code generation, bans placeholder patterns, and handles tok
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/full-output-enforcement/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## gcloud
+
+---
+description: >-
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/gcloud/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## gemini-api-dev
+
+---
+description: Use this skill when building applications with Gemini API hosted models, including Gemini and Gemma 4, working with mult
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/gemini-api-dev/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## gemini-api
+
+---
+description: Use when the user asks about using Gemini in an enterprise environment or explicitly mentions Vertex AI, Google Cloud, o
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/gemini-api/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## gemini-interactions-api
+
+---
+description: Guides the usage of Gemini Interactions API on Gemini Enterprise Agent Platform. Use when the user wants to use the stat
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/gemini-interactions-api/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## gemini-live-api-dev
+
+---
+description: Use this skill when building real-time, bidirectional streaming applications with the Gemini Live API. Covers WebSocket-
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/gemini-live-api-dev/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## gemini-live-api
+
+---
+description: >-
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/gemini-live-api/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## gemini-omni-flash-api
+
+---
+description: Use this skill for generative video editing, text-to-video, image-referenced video generation, and first-frame-to-video 
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/gemini-omni-flash-api/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## git-guardrails-claude-code
+
+---
+description: Set up Claude Code hooks to block dangerous git commands (push, reset --hard, clean, branch -D, etc.) before they execut
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/git-guardrails-claude-code/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## github-auth
+
+---
+description: GitHub auth setup: HTTPS tokens, SSH keys, gh CLI login.
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/github-auth/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## goal
+
+---
+description: Ziel-Modus — arbeite automatisch in Schleifen, bis das Ziel erreicht und bewiesen ist (basierend auf ralph-loop)
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/ralph-loop/SKILL.md` und befolge sie für diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+Zusatzregel: Wiederhole den Zyklus (arbeiten → testen → korrigieren), bis das Ziel objektiv PASS ist. Nenne in jeder Runde den Beweis (Befehl + Exit-Code oder Pfad). Bei 3 fehlgeschlagenen Versuchen am selben Punkt: stoppen und dem Nutzer ehrlich den Stand melden.
+
+## google-antigravity-sdk
+
+---
+description: Design, implement, and debug autonomous AI agents and multi-agent systems using the Google Antigravity (AGY) SDK. ACTIVA
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/google-antigravity-sdk/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## gpt-taste
+
+---
+description: Elite UX/UI & Advanced GSAP Motion Engineer. Enforces Python-driven true randomization for layout variance, strict AIDA 
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/gpt-taste/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## graphify
+
+---
+description: Use for any question about a codebase, its architecture, file relationships, or project content — especially when graphi
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/graphify/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## grilling
+
+---
+description: Grill the user relentlessly about a plan, decision, or idea. Use when the user wants to stress-test their thinking, or u
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/grilling/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## gsd-core
+
+---
+description: Spec-driven development framework (Git. Ship. Done.). Enforces multi-phase workflows (Research -> Spec -> Plan -> Vertic
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/gsd-core/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## gstack-openclaw-ceo-review
+
+---
+description: Use when asked to review a plan, challenge a proposal, run a CEO review, poke holes in an approach, think bigger about s
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/gstack-openclaw-ceo-review/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## gstack-openclaw-investigate
+
+---
+description: Use when asked to debug, fix a bug, investigate an error, or do root cause analysis, and when users report errors, stack
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/gstack-openclaw-investigate/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## gstack-openclaw-office-hours
+
+---
+description: Use when asked to brainstorm, evaluate whether an idea is worth building, run office hours, or think through a new produ
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/gstack-openclaw-office-hours/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## gstack-openclaw-retro
+
+---
+description: Weekly engineering retrospective. Analyzes commit history, work patterns, and code quality metrics with persistent histo
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/gstack-openclaw-retro/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## gstack-upgrade
+
+---
+description: Upgrade gstack to the latest version.
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/gstack-upgrade/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## gstack
+
+---
+description: Router for the gstack skill suite. (gstack)
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/gstack/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## guard
+
+---
+description: Full safety mode: destructive command warnings + directory-scoped edits. (gstack)
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/guard/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## hackernews-frontpage
+
+---
+description: Scrape the Hacker News front page (titles, points, comment counts).
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/hackernews-frontpage/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## handoff
+
+---
+description: Compact the current conversation into a handoff document for another agent to pick up.
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/handoff/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## health
+
+---
+description: Code quality dashboard. (gstack)
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/health/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## higgsfield-brandkit
+
+---
+description: |
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/higgsfield-brandkit/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## higgsfield-generate
+
+---
+description: |
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/higgsfield-generate/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## higgsfield-marketplace-cards
+
+---
+description: |
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/higgsfield-marketplace-cards/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## higgsfield-product-photoshoot
+
+---
+description: |
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/higgsfield-product-photoshoot/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## higgsfield-soul-id
+
+---
+description: |
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/higgsfield-soul-id/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## higgsfield-video-explainer
+
+---
+description: |
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/higgsfield-video-explainer/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## higgsfield-websites
+
+---
+description: |
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/higgsfield-websites/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## higgsfield-youtube-thumbnail
+
+---
+description: |
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/higgsfield-youtube-thumbnail/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## high-end-visual-design
+
+---
+description: Teaches the AI to design like a high-end agency. Defines the exact fonts, spacing, shadows, card structures, and animati
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/high-end-visual-design/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## i-have-adhd
+
+---
+description: ADHD-friendly outputs. Keeps coding agents from burying useful answers. Action first, steps numbered, no conversational 
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/i-have-adhd/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## image-to-code
+
+---
+description: Elite website image-to-code skill for Codex. For visually important web tasks, it must first generate the design image(s
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/image-to-code/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## imagegen-frontend-mobile
+
+---
+description: Elite mobile app image-generation skill for creating premium, app-native screen concepts and flows. Designed for iOS, An
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/imagegen-frontend-mobile/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## imagegen-frontend-web
+
+---
+description: Elite frontend image-direction skill for generating premium, conversion-aware website design references. CRITICAL OUTPUT
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/imagegen-frontend-web/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## improve-codebase-architecture
+
+---
+description: Scan a codebase for deepening opportunities, present them as a visual HTML report, then grill through whichever one you 
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/improve-codebase-architecture/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## industrial-brutalist-ui
+
+---
+description: Raw mechanical interfaces fusing Swiss typographic print with military terminal aesthetics. Rigid grids, extreme type sc
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/industrial-brutalist-ui/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
 
 ## init
 
@@ -110075,6 +111396,116 @@ ponytail (Minimalismus), i-have-adhd (BLUF). Schliesse mit: Quota-Rest
 (providers-Screenshot bzw. letzte bekannte Werte) und 1 Empfehlung für
 schnellste Ausführung (Flash vs. Pro).
 
+## interface-review
+
+---
+description: Reviews a branch, pull request or uncommitted change for the interface problems it introduced or regressed, across acces
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/interface-review/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## investigate-first
+
+---
+description: Diagnose ambiguous failures before editing. Use for unknown causes, intermittent behavior, performance regressions, or i
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/investigate-first/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## investigate
+
+---
+description: Systematic debugging with root cause investigation. (gstack)
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/investigate/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## ios-clean
+
+---
+description: Remove the DebugBridge SPM package and all #if DEBUG wiring from an iOS app. (gstack)
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/ios-clean/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## ios-design-review
+
+---
+description: Visual design audit for iOS apps on real hardware. (gstack)
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/ios-design-review/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## ios-fix
+
+---
+description: Autonomous iOS bug fixer. (gstack)
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/ios-fix/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## ios-qa
+
+---
+description: Live-device iOS QA for SwiftUI apps. (gstack)
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/ios-qa/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## ios-swift-development
+
+---
+description: >
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/ios-swift-development/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## ios-sync
+
+---
+description: Regenerate the iOS debug bridge against the latest upstream gstack templates. (gstack)
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/ios-sync/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## iris
+
+---
+description: Screenshot live websites and web UIs with Chrome-family browsers. Gives AI coding agents eyes via MCP camera or CLI.
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/iris/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## jules-meta-agent
+
+---
+description: Jules Meta-Agent Skill. Nutze diesen Skill ZWINGEND, wenn der User Jules erwähnt. Dieser Skill macht den Meta-Agenten al
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/jules-meta-agent/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
 ## kanban
 
 ---
@@ -110086,6 +111517,156 @@ description: Öffnet das Kanban-Board (Task-Management, Port 3484)
 3. Warte 2 s, öffne `http://localhost:3484` im Browser (`open http://localhost:3484`).
 4. Zeige die aktuellen Tasks als Tabelle (Titel | Status | Agent).
 
+## karpathy-guidelines
+
+---
+description: Behavioral guidelines to reduce common LLM coding mistakes. Use when writing, reviewing, or refactoring code to avoid ov
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/karpathy-guidelines/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## land-and-deploy
+
+---
+description: Land and deploy workflow. (gstack)
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/land-and-deploy/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## landing-report
+
+---
+description: Read-only queue dashboard for workspace-aware ship. (gstack)
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/landing-report/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## lean-build
+
+---
+description: Build feature work with high overbuilding risk. Use for new behavior, product slices, or integrations where repository r
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/lean-build/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## learn
+
+---
+description: Manage project learnings.
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/learn/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## legal-ops-omni
+
+---
+description: LEGAL-OPS-OMNI-ARCHITECT v6.0 M4-Native. Autonome juristische Einheit für Österreich (RIS, OGH, VwGH, svsGO, FinanzOnlin
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/legal-ops-omni/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## lisa-therapeut
+
+---
+description: Persönlicher Therapeut-Agent für Sascha — komplettes Fallwissen Lisa (Diagnosen, Beziehungsmuster, aktuelle Lage) plus e
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/lisa-therapeut/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## loki-dev
+
+---
+description: EINE Fullstack-Pipeline mit 5 Modi — INIT (neues Projekt einrichten), BUILD („baue/erstelle/mach mir X, Director Zero-Qu
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/loki-dev/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## loki-memory-sync
+
+---
+description: Zentraler Memory-Layer: erfasst alle Skills, Tools, Agents, MCP-Server, Plugins, Workflows aus allen Harnesses (ZCode, C
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/loki-memory-sync/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## loki-os-health
+
+---
+description: Health-Check des LOKI.Ökosystems („ist alles gesund/online?, Ports, MCP) mit Green/Yellow/Red-Brief und Checkpoint-Decis
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/loki-os-health/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## loki-os-standard
+
+---
+description: Verbindlicher LOKI.OS-Ablauf bei JEDER Anfrage — Output-Stil, Denk-Pflicht, Plan-Gate, Agenten-Team, Stop-Regeln, Kosten
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/loki-os-standard/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## make-pdf
+
+---
+description: Turn any markdown file into a publication-quality PDF. (gstack)
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/make-pdf/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## managing-skills
+
+---
+description: Install, find, update, and manage agent skills. Use when the user wants to add a new skill, search for skills that do so
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/managing-skills/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## memory-enhanced-decision-making
+
+---
+description: Trifft begründete Entscheidungs-Empfehlungen auf Basis von Session-Kontext, Audit-Findings und Memory. Aktivieren bei en
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/memory-enhanced-decision-making/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## migrate-to-shoehorn
+
+---
+description: Migrate test files from `as` type assertions to @total-typescript/shoehorn. Use when user mentions shoehorn, wants to re
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/migrate-to-shoehorn/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
 ## migrate-workflows
 
 ---
@@ -110095,6 +111676,26 @@ description: Migriert und synchronisiert alle Workflow-Drafts aus ~/.zcode/workf
 1. Kopiere alle `.dwf.ts`-Dateien aus `~/.zcode/workflow-drafts/` nach `~/.zcode/workflows/`.
 2. Liste alle registrierten Workflows tabellarisch auf (`Name | Dateiname | Status`).
 3. Zeige an, welche Workflows nun via `/dwf` oder im ZCode UI ausführbar sind.
+
+## migration
+
+---
+description: Implement reversible compatibility-safe transitions. Use for schema, data, API, protocol, configuration, or dependency m
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/migration/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## minimalist-ui
+
+---
+description: Clean editorial-style interfaces. Warm monochrome palette, typographic contrast, flat bento grids, muted pastels. No gra
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/minimalist-ui/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
 
 ## obsidian-init
 
@@ -110110,6 +111711,536 @@ triggers_zh: ["初始化知识库", "为这个知识库生成初始配置", "扫
 1. Lese exakt die Quelldatei `/Users/saschalagler/.claude/commands/obsidian-init.md` (Symlink auf `~/.claude/skills/obsidian-second-brain/commands/obsidian-init.md`) und folge ihren Anweisungen 1:1 — kein Umschreiben, keine ergänzten Schritte.
 2. Setze dabei `SKILL_ROOT` überall auf `/Users/saschalagler/.claude/skills/obsidian-second-brain`.
 3. Nutze den obsidian-second-brain-Skill (`/Users/saschalagler/.claude/skills/obsidian-second-brain/SKILL.md`) für die eigentliche Ausführung.
+
+## obsidian-second-brain
+
+---
+description: >
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/obsidian-second-brain/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## office-hours
+
+---
+description: YC Office Hours — two modes. (gstack)
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/office-hours/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## omni-auth
+
+---
+description: Manage API key authentication and session tokens. Start here to authenticate requests via Bearer token, obtain session c
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/omni-auth/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## omni-combos-routing
+
+---
+description: Create and manage routing combos with 19 strategies (priority, weighted, round-robin, Auto-combo, and more). Configure f
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/omni-combos-routing/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## omni-inference
+
+---
+description: The core OpenAI-compatible inference endpoints: chat completions, embeddings, images, audio (TTS/STT), moderations, rera
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/omni-inference/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## omni-mcp
+
+---
+description: Connect to the OmniRoute MCP server (107 tools, 3 transports: SSE/stdio/HTTP). Covers routing, cache, compression, memor
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/omni-mcp/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## omni-models
+
+---
+description: Query available AI models across all configured providers. List models, resolve model aliases, and browse the full model
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/omni-models/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## omni-resilience
+
+---
+description: Monitor provider health, circuit-breaker states, p50/p95/p99 latency metrics, and budget guard alerts. Inspect connectio
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/omni-resilience/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## open-gstack-browser
+
+---
+description: Launch GStack Browser — AI-controlled Chromium with the sidebar extension baked in.
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/open-gstack-browser/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## pair-agent
+
+---
+description: Pair a remote AI agent with your browser. (gstack)
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/pair-agent/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## parallel-feature-development
+
+---
+description: Coordinate parallel feature development with file ownership strategies, conflict avoidance rules, and integration patter
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/parallel-feature-development/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## paseo-orchestrate
+
+---
+description: Paseo — Open-Source-Orchestrator für Coding-Agenten (Claude Code, Codex, OpenCode) von Desktop und Mobile. Nutzen, wenn 
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/paseo-orchestrate/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## physio-3d-ops
+
+---
+description: 3D-Physio-Ops M4-Core. Bambu Lab P1S, Scan-to-Print, CAD-Adapter und Fehleranalyse nach 188-Parameter-Katalog fullListBa
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/physio-3d-ops/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## physio-assistent
+
+---
+description: Senior Clinical Physio-Expert & Movement Scientist. Vollständige EBM-Logik, ThoT, Deep Research Filter, CoN, CoVe, Kontr
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/physio-assistent/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## physio
+
+---
+description: Senior Clinical Physio-Expert & Movement Scientist. Vollständige EBM-Logik, ThoT, Deep Research Filter, CoN, CoVe, Kontr
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/physio/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## plan-ceo-review
+
+---
+description: CEO/founder-mode plan review. (gstack)
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/plan-ceo-review/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## plan-design-review
+
+---
+description: Designer's eye plan review — interactive, like CEO and Eng review. (gstack)
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/plan-design-review/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## plan-devex-review
+
+---
+description: Interactive developer experience plan review. (gstack)
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/plan-devex-review/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## plan-eng-review
+
+---
+description: Eng manager-mode plan review. (gstack)
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/plan-eng-review/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## plan-tune
+
+---
+description: Self-tuning question sensitivity + developer psychographic for gstack (v1: observational). (gstack)
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/plan-tune/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## playwright-cli
+
+---
+description: Automate browser interactions, test web pages and work with Playwright tests.
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/playwright-cli/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## ponytail
+
+---
+description: >
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/ponytail/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## prototype
+
+---
+description: Build a throwaway prototype to answer a design question. Use when the user wants to sanity-check whether a state model o
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/prototype/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## pruef-team
+
+---
+description: >
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/pruef-team/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## pva-bankverbindung-advisor
+
+---
+description: Experten-Leitfaden für Anträge und Bankbestätigungen zur bargeldlosen Auszahlung von PVA-Leistungen (Pensionsversicherun
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/pva-bankverbindung-advisor/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## qa-only
+
+---
+description: Report-only QA testing. (gstack)
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/qa-only/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## qa
+
+---
+description: Systematically QA test a web application and fix bugs found. (gstack)
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/qa/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## ralph-loop
+
+---
+description: Autonomous iterative execution engine. Continuously runs, evaluates, self-heals, and re-tests code in fresh sub-cycles u
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/ralph-loop/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## redesign-existing-projects
+
+---
+description: Upgrades existing websites and apps to premium quality. Audits current design, identifies generic AI patterns, and appli
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/redesign-existing-projects/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## request-refactor-plan
+
+---
+description: Create a detailed refactor plan with tiny commits via user interview, then file it as a GitHub issue. Use when user want
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/request-refactor-plan/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## research
+
+---
+description: Investigate a question against high-trust primary sources and capture the findings as a Markdown file in the repo. Use w
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/research/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## resolving-merge-conflicts
+
+---
+description: Use when you need to resolve an in-progress git merge/rebase conflict.
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/resolving-merge-conflicts/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## retrieving-developer-knowledge
+
+---
+description: >-
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/retrieving-developer-knowledge/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## retro
+
+---
+description: Weekly engineering retrospective. (gstack)
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/retro/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## review
+
+---
+description: Pre-landing PR review. (gstack)
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/review/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## roo-code
+
+---
+description: Agent-based coding workflow with specialized execution modes (Code, Architect, Ask, Debug). Connects Antigravity with Cl
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/roo-code/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## safe-refactor
+
+---
+description: Restructure code while preserving behavior. Use for extraction, consolidation, ownership moves, or cleanup where verific
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/safe-refactor/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## scaffold-exercises
+
+---
+description: Create exercise directory structures with sections, problems, solutions, and explainers that pass linting. Use when user
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/scaffold-exercises/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## scrape
+
+---
+description: Pull data from a web page. (gstack)
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/scrape/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## setup-browser-cookies
+
+---
+description: Import cookies from your real Chromium browser into the headless browse session. (gstack)
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/setup-browser-cookies/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## setup-deploy
+
+---
+description: Configure deployment settings for /land-and-deploy.
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/setup-deploy/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## setup-gbrain
+
+---
+description: Set up gbrain for this coding agent: install the CLI, initialize a local PGLite or Supabase brain, register MCP, capture
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/setup-gbrain/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## setup-matt-pocock-skills
+
+---
+description: Configure this repo for the engineering skills — set up its issue tracker, triage label vocabulary, and domain doc layou
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/setup-matt-pocock-skills/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## setup-pre-commit
+
+---
+description: Set up Husky pre-commit hooks with lint-staged (Prettier), type checking, and tests in the current repo. Use when user w
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/setup-pre-commit/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## setup-ts-deep-modules
+
+---
+description: Wire dependency-cruiser into a TypeScript repo so each package is a deep module — implementation hidden in subfolders, r
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/setup-ts-deep-modules/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## shadcn-ui
+
+---
+description: >
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/shadcn-ui/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## ship
+
+---
+description: Ship workflow: detect + merge base branch, run tests, review diff, bump VERSION, update CHANGELOG, commit, push, create 
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/ship/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## skill-aware-task-distribution
+
+---
+description: Verteilt Aufgaben an den optimalen Agenten (direkt vs. Subagent vs. Kanban-Task) basierend auf Aufgabentyp. Aktivieren b
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/skill-aware-task-distribution/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## skill-repair
+
+---
+description: |
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/skill-repair/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## skill-router
+
+---
+description: >
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/skill-router/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## skillify
+
+---
+description: Codify the most recent successful /scrape flow into a permanent browser-skill on disk. (gstack)
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/skillify/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## skillshare-sync
+
+---
+description: Sync Skills über alle AI-CLI-Tools (Claude Code, Codex, Cursor, OpenCode, OpenClaw u. v. m.) mit einem Befehl — zentrale
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/skillshare-sync/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## spec
+
+---
+description: Turn vague intent into a precise, executable spec in five phases. (gstack)
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/spec/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
 
 ## standardskill
 
@@ -110127,6 +112258,56 @@ Lade und bestätige verbindlich:
    sequentialthinking bei jeder Anfrage · kein Löschen/Deploy ohne GO.
 4. Ab jetzt MUSS jede Antwort diesen Regeln folgen. Ein Regelverstoß = sofort
    benennen und korrigieren, ohne neue Frage an den Nutzer.
+
+## stitch-design-taste
+
+---
+description: Semantic Design System Skill for Google Stitch. Generates agent-friendly DESIGN.md files that enforce premium, anti-gene
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/stitch-design-taste/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## strix-pentesting
+
+---
+description: Autonomous AI agents for penetration testing and app vulnerability detection with proof-of-concept verification.
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/strix-pentesting/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## studienchecker
+
+---
+description: Methodical, Multidisciplinary, Medical Master-Persona (M4-Persona). Vollständige systematische Evidenzsynthese, Cochrane
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/studienchecker/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## surgical-patch
+
+---
+description: Fix bugs and small behavior changes at the narrowest responsible layer. Use when regression proof, preserved surrounding
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/surgical-patch/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## sync-gbrain
+
+---
+description: Keep gbrain current with this repo's code and refresh agent search guidance in CLAUDE.md. (gstack)
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/sync-gbrain/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
 
 ## systemproof
 
@@ -110150,6 +112331,26 @@ Führe SOFORT alle 6 Checks aus und antworte NUR mit der Tabelle + URTEIL:
 |---|---|---|
 URTEIL: **SYSTEM AKTIV** (6/6) | **TEILWEISE** (n/6, nenne die toten) | **TOT** (<3/6 → sag „gate tot" im Haupt-Chat, dort wird das Prozess-Log gelesen)
 
+## tdd
+
+---
+description: Test-driven development. Use when the user wants to build features or fix bugs test-first, mentions red-green-refactor, 
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/tdd/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## teach
+
+---
+description: Teach the user a new skill or concept, within this workspace.
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/teach/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
 ## teamwork-preview
 
 ---
@@ -110160,6 +112361,36 @@ description: Startet ein Agenten-Team zur autonomen Bearbeitung großer Projekte
 2. Starte die Team-Koordination über die registrierten Spezial-Agenten.
 3. Zeige eine Live-Vorschau des Fortschritts und der erzeugten Artefakte an.
 
+## to-questionnaire
+
+---
+description: Turn a decision you can't fully answer into a questionnaire for someone else to fill in.
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/to-questionnaire/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## to-spec
+
+---
+description: Turn the current conversation into a spec and publish it to the project issue tracker — no interview, just synthesis of 
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/to-spec/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## to-tickets
+
+---
+description: Break a plan, spec, or the current conversation into a set of tracer-bullet tickets, each declaring its blocking edges, 
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/to-tickets/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
 ## todo
 
 ---
@@ -110169,6 +112400,176 @@ description: Todo-Liste synchronisieren und anzeigen (todo-sync)
 1. Führe `python3 ~/.agents/tools/todo-sync.py` aus.
 2. Zeige das Ergebnis als kompakte Tabelle (Task | Status | Projekt).
 3. Schlage den nächsten konkreten Schritt vor (1 Zeile).
+
+## triage
+
+---
+description: Move issues and external PRs through a state machine of triage roles — categorise, verify, grill if needed, and write ag
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/triage/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## ubiquitous-language
+
+---
+description: Extract a DDD-style ubiquitous language glossary from the current conversation, flagging ambiguities and proposing canon
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/ubiquitous-language/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## ui-ux-pro-max
+
+---
+description: UI/UX design intelligence for web, mobile, and desktop. This skill should be used when designing, building, reviewing, o
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/ui-ux-pro-max/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## ui-ux-tester
+
+---
+description: VOLLPROTOKOLL Senior-QA/UX-Agent — erschöpfende UI-/UX-Funktionstests nach dokumentierten Abläufen mit Chrome-Devtools-M
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/ui-ux-tester/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## unfreeze
+
+---
+description: Clear the freeze boundary set by /freeze, allowing edits to all directories again. (gstack)
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/unfreeze/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## vercel-cli-with-tokens
+
+---
+description: Deploy and manage projects on Vercel using token-based authentication. Use when working with Vercel CLI using access tok
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/vercel-cli-with-tokens/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## vercel-composition-patterns
+
+---
+description: Skill vercel-composition-patterns ausfuehren
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/vercel-composition-patterns/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## vercel-optimize
+
+---
+description: Use for Vercel cost and performance optimization on deployed projects, especially Next.js, SvelteKit, Nuxt, and limited 
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/vercel-optimize/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## vercel-react-best-practices
+
+---
+description: React and Next.js performance optimization guidelines from Vercel Engineering. This skill should be used when writing, r
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/vercel-react-best-practices/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## vercel-react-native-skills
+
+---
+description: Skill vercel-react-native-skills ausfuehren
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/vercel-react-native-skills/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## vercel-react-view-transitions
+
+---
+description: Guide for implementing smooth, native-feeling animations using React's View Transition API (`<ViewTransition>` component
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/vercel-react-view-transitions/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## verify-and-stop
+
+---
+description: Prove existing work meets acceptance conditions without expanding scope. Use for validation-only tasks, completion check
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/verify-and-stop/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## wayfinder
+
+---
+description: Plan a huge chunk of work — more than one agent session can hold — as a shared map of decision tickets on your issue tra
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/wayfinder/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## web-design-guidelines
+
+---
+description: Review UI code for Web Interface Guidelines compliance. Use when asked to review my UI, check accessibility, audit desig
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/web-design-guidelines/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## web-research-team
+
+---
+description: Orchestrates a multi-agent web research team for grounded, evidence-cited research reports. Three depth modes (quick/sta
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/web-research-team/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## wizard
+
+---
+description: Generate an interactive bash wizard that walks a human through a manual procedure — third-party setup, a one-off migrati
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/wizard/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
+
+## writing-great-skills
+
+---
+description: Reference for writing and editing skills well — the vocabulary and principles that make a skill predictable.
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/writing-great-skills/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS
 
 ## flaky-bugfix-spec-2026-10-15
 
