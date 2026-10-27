@@ -1,0 +1,7 @@
+---
+description: The user's dedicated browser for agents — a real browser signed into their accounts, with live logins and a persistent p
+---
+
+Lies die Skill-Datei `/Users/saschalagler/.claude/skills/browseros-neo/SKILL.md` vollständig und befolge ihre Anweisungen exakt fuer diese Nutzer-Anfrage:
+
+$ARGUMENTS

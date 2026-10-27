@@ -16,4 +16,6 @@ metadata:
 - **8 GO-Reste** in LOKI_OS_UNIFIED §7 (Hermes-Löschung, Legacy-Config-Eintrag, Docker-Push, Sigma-Reinstall, Hub-Restart, Mirror-Scope `MIRROR_SOURCES=$HOME` drosseln, 06_unklar-Inventur, Desktop-Redundanz).
 - Don't-touch: THOMAS-Kunden-Paket, TOOL-SAMMLUNG-VERKAUF (heute 23:18 neue APK!), 0B-Pipeline-Platzhalter; Ordner haben teils Leerzeichen am Ende.
 
+**Eigent-Verdict (27.10., Sascha-Frage „was ist Eigent, brauche ich es? LOKI.OS sollte DIE Plattform werden"):** Eigent = lokales Open-Source-Agenten-Cockpit (Space→Session→Task→Approval-UI, BYOK-Modelle, Apache 2.0, 0 €, CDP-Browser) — **NICHT als Plattform adoptieren** (würde die 12-App-Zoo zur 13. App machen und zersplittern). Seine einzige echte Rolle bei Sascha: CDP :9222 Browser-Backend für Stage-⑤-E2E. **Die tatsächlich fehlende Schicht:** Task-/Agenten-Panel als Tab direkt in `:8010/dashboard/` (Kanban :3484-API + hcom-Status + Workflow-Läufe live) — dann ist LOKI.OS die EINE Plattform. **Angebot an Sascha gestellt, wartet auf sein „JA"** (Empfehlung Eigent: lassen, nicht löschen). Für seine Links-Datenbank-Frage: Obsidian Graph (Vault existiert schon) statt Heptabase; Raindrop.io nur für reine Link-Sammlung.
+
 Verwandt: [[loki-os-livestatus-2026-10-11]], [[cline-code-app-hub-1006-diagnosis]], [[autoclaw-sprache-translocation-fix]]
