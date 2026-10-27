@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-27 12:34 UTC
+Zuletzt gespiegelt: 2026-10-27 12:50 UTC
 
 ## AGENTS
 
@@ -18579,8 +18579,9 @@ metadata:
 ---
 name: koerperfluss-visitenkarte-inhalt-fertig
 description: 27.10.2026 Visitenkarte KÖRPERFLUSS — Inhalt final + 3 Vorlagen-Nachbauten
-  A/B/C (design.com Gold/Braun-Stil), Diplom-Titel zuerst, Website-Link raus, Foto+Logo-Assets
-  gecroppt, Logo-/Farb-/Lesbarkeits-Fixes gerendert; Druck-PDF wartet auf Design-Wahl A/B/C
+  A/B/C (design.com Gold/Braun-Stil), KEIN Diplom mehr (psychologische Ansprache: „Ganzheitlicher
+  Therapeut"), Website-Link raus, Foto+Logo-Assets gecroppt, alle Fix-Runden gerendert; Druck-PDF
+  wartet auf Design-Wahl A/B/C
 metadata:
   node_type: memory
   type: project
@@ -18592,11 +18593,11 @@ metadata:
 **Feste Kontaktdaten:** Tel **+43 660 425 3366** · **koerperfluss@gmail.com** · Arbeitsort **LIFESTYLE St. Leonhard** + Hausbesuche Bezirk Melk (bleibt). Website korrekt = **https://koerperfluss.web.app/** (Sascha korrigierte kürzere Schreibweise als „völlig falsch").
 
 **27.10. SPÄTESTE WENDE (Stand nach letztem Render):**
-1. **DIPLOM ZUERST:** Sascha eskaliert („ICH BIN FUCKING SPORT UND HEILMASSEUR MIT DIPLOM DU BIMBO") → Leit-Titel Vorderseiten = **„DIPLOMIERTER SPORT- & HEILMASSEUR"** (A+B unter Name, C im Footer unterm Namen), NICHT mehr „Ganzheitlicher Therapeut". Quali-Zeilen: „Dipl. Sport- & Heilmasseur · Personal Trainer · Cali Master Coach (WSWCF)" (A-Rückseite) / „DIPLOM. …" (C-Rückseite).
+1. **DIPLOM-EPISODE (2× überholt,Endstand = GANZHEITLICHER THERAPEUT):** Sascha eskalierte erst „ICH BIN FUCKING SPORT UND HEILMASSEUR MIT DIPLOM DU BIMBO" → Titel auf Diplom umgestellt → DANN „kein diplom erwähnen .. du sollst psychologisch vorgehen" → Diplom KOMPLETT raus (Details unten). Lektion: Zertifikats-/Titel-Sprache lehnt er ab, Nutzen-Identität gewinnt — erst fragen, ob Titel oder Nutzen gewollt ist, statt zwischen Titeln zu pendeln.
 2. **WEBSITE-LINK VON DER KARTE ENTFERNT** (Sascha: „gib … nen Link weg") — Python-Check beweist 0× `koerperfluss.web.app/karte` im HTML. Kontakt NUR Telefon + Email. Der /karte-Subpage-Beschluss bleibt als Idealerklärung, ABER die URL steht nicht mehr auf der Karte.
-3. **SSOT-MOVE:** Die alte Desktop-Datei `VISITENKARTE_KOERPERFLUSS_INHALT_2026-10-27.md` VERSCHWAND vom Desktop (Ursache unklar, evtl. Sascha verschoben) → neue Inhalts-SSOT = `~/Desktop/VISITENKARTE_DESIGNS_2026-10-27/INHALT_FINAL.md` (mit allen Regeln: kein Physio-Claim, kein Website-Link, Foto vorne / Logo hinten).
+3. **SSOT-MOVE:** Die alte Desktop-Datei `VISITENKARTE_KOERPERFLUSS_INHALT_2026-10-27.md` VERSCHWAND vom Desktop (Ursache unklar, evtl. Sascha verschoben) → neue Inhalts-SSOT = `~/Desktop/VISITENKARTE_DESIGNS_2026-10-27/INHALT_FINAL.md` (mit allen Regeln: kein Physio-Claim, kein Diplom, kein Website-Link, Foto vorne / Logo hinten).
 
-**Inhalt (final):** Vorderseite „SASCHA LAGLER — DIPLOMIERTER SPORT- & HEILMASSEUR" + Tagline „SCHMERZFREI BEWEGEN — STARK BLEIBEN"; Rückseite 3 Säulen: Klassische Massage (Ganz-/Teilkörper, Sport- & Heilmassage, Faszien) · Personal Training (alle Levels) · Beratung & Reha (Rehab/Prävention + Spezial: Wirkungsmechanik Migräne).
+**Inhalt (final, ÜBERHOLT durch Diplom-Entfernung unten):** Vorderseite „SASCHA LAGLER — GANZHEITLICHER THERAPEUT" + Tagline „SCHMERZFREI BEWEGEN — STARK BLEIBEN"; Rückseite 3 Säulen: Klassische Massage (Ganz-/Teilkörper, Sport- & Heilmassage, Faszien) · Personal Training (alle Levels) · Beratung & Reha (Rehab/Prävention + Spezial: Wirkungsmechanik Migräne).
 
 **Harte Regeln:** KEIN „Physiotherapeut"-Claim (Studium unterbrochen, 62 ECTS); Fachjargon raus (→ „Faszien").
 
@@ -18613,6 +18614,15 @@ metadata:
 **27.10. QUALITÄTS-FIX-RUNDE (letzte Nachricht, /brainstorming-Skill gelesen):** Saschas 3 Kritikpunkte ALLE GEFIXT + gerendert (PNG-Read verifiziert): ① Logo C-Rückseite zentriert (top 47 % optische Mitte) ② B: Pinselband verkleinert/versetzt → Kontaktzeile auf freiem Gold, dunkler (#5a3a00) + fett ③ Lesbarkeit: Untertitel A 11.5px fett dunkel, Script-Headline dunkler + weißer Schatten, Footer B fett. Brainstorming-Skill bewusst ÜBERSPRUNGEN (Idee schon scharf, Nachricht = Fehlerliste) — Sascha akzeptierte; /ui-ux-tester & Co. bewusst nicht genutzt (Karten-Layout ≠ interaktive App).
 
 **Offen (wartet auf Sascha):** Design-Wahl **A/B/C** → dann Gewinner pixelgenau polieren + Druck-PDF (85×55 mm, 300 dpi); Subpage nur noch optional. Verwandt: [[ffg-1-anlauf-historie-originalunterlagen]] · [[sascha-arbeitsregeln-hart]]
+
+**27.10. SPÄTESTE WENDE — DIPLOM KOMPLETT RAUS, PSYCHOLOGIE STATTTITEL:** Sascha: „KEIN DIPLOM ERWÄHNEN .. DU SOLLST PSYCHOLOGISCH VORGEHEN". Titel-Sprache fliegt von allen Karten:
+- Untertitel Vorderseiten A+B+C = **„GANZHEITLICHER THERAPEUT"** (Saschas eigene Identität, warm, kein Zertifikat)
+- C-Rückseiten-Zeile = Trust-Closer **„MASSAGE · TRAINING · BERATUNG — ALLES AUS EINER HAND"**
+- A-Rückseite = „Sport- & Heilmasseur · Personal Trainer · Calisthenics Master Coach (WSWCF)" (Fachwörter bleiben, „Dipl."-Präfix weg)
+- Python-Check beweist: 0× „Diplom/Dipl." im HTML. INHALT_FINAL.md Regeln ergänzt (keine Zertifikats-Sprache, Nutzen & Identität statt Titel — Papier-Zeug gehört ins Erstgespräch, nicht auf 9×5 cm).
+- Psychologie-Begründung (für Wiederverwendung): Schmerzpatient 60 kauft „jemand, der mich ganzheitlich wieder beweglich macht", nicht ein Papier; Differenzierungs-Hooks = Faszien + Migräne-Spezialzeile; Zielgruppen-Säulen: Massage=40–70-Schmerz, PT „alle Levels"=Sportler 18–40, Migräne=25–55, Hausbesuche=50+.
+
+**GESAMT-FINALSTAND KARTENINHALT:** Vorderseite „SASCHA LAGLER — GANZHEITLICHER THERAPEUT — SCHMERZFREI BEWEGEN — STARK BLEIBEN" (Foto oben rechts bei A/C); Rückseite 3 Säulen (Massage inkl. Sport-/Heilmassage+Faszien · PT alle Levels · Beratung & Reha + Migräne-Spezial) + Ort/Telefon/Email. KEIN Physio-Claim, KEIN Diplom, KEIN Website-Link.
 
 ## legal-ops-cockpit-reparatur
 
