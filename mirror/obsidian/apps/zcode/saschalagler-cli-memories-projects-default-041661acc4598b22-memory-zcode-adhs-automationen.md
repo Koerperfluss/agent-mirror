@@ -250,3 +250,6 @@ metadata:
 - 15:00-Dienstag-Slot korrekt No-op (Doku-Sync nur mittwochs) — **erster No-op mit Info-Push**: macOS-Benachrichtigung gesendet („Heute nichts zu tun … Doku-Sync nur mittwochs … Nächster voller Lauf: 21:00", exit 0) + kurzer 4-Zeilen-Chat-Output. Info-Push-Vertrag damit in beiden Varianten (voller Lauf + No-op) automatisiert bewiesen.
 - Parallel-Arbeit tagsüber sichtbar: Förder-Antrag dwfrun (FÖDERUNG-Dateien) + Verkaufs-HUB-Handoff laufen weiter. Bilanz: 59 Läufe; Dauer-GOs unverändert.
 
+## Vierundvierzigster Lauf (Di 27.10. 16:0x — No-op PASS, zweiter Push am selben Tag)
+- 16:00-Dienstag-Slot korrekt No-op (Release-Brief nur freitags) mit Benachrichtigung (exit 0) + 4-Zeilen-Output. **Info-Push an 3 Läufen eines Tages bewiesen** (09:05 · 15:0x · 16:0x). Bilanz: 60 Läufe; Dauer-GOs unverändert: GO Wecker · Deutsch-Patch · Duplikat weg · OmniRoute-Richtung.
+
