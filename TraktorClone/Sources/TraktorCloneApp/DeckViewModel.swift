@@ -12,6 +12,8 @@ final class DeckViewModel: ObservableObject {
     @Published var fader: Double = 1
     @Published var title: String = "— kein Track —"
     @Published var playhead: TimeInterval = 0
+    @Published var beatPhase: Double = 0              // Slice 8: 0...1 im Beat (LED)
+    private var syncEngine = SyncEngine()
     @Published var waveform: [Float] = []             // Slice 3: Peak-Buckets
     @Published var bpm: Double?                       // aus Library oder Setzung
     @Published var delayWet: Double = 0
@@ -126,6 +128,9 @@ final class DeckViewModel: ObservableObject {
                 } else {
                     self.playhead = self.state.position
                 }
+                // Beat-Phase für LED (Standard 120 BPM, solange kein BPM bekannt)
+                let grid = BeatGrid(bpm: self.bpm ?? 120)
+                self.beatPhase = self.syncEngine.beatPhase(time: self.playhead, grid: grid)
             }
         }
     }

@@ -1,0 +1,52 @@
+{
+  "schemaVersion": "mimosa-finding-ledger-batch/v1",
+  "batchId": "stop-20261026T160300907Z-61904-1768a57febef",
+  "runId": "20261026T160300907Z-61904-1768a57febef",
+  "runStatus": "inconclusive",
+  "coverage": {
+    "status": "partial",
+    "reasons": [
+      {
+        "code": "bash_discovery_incomplete",
+        "stage": "bash-discovery",
+        "target": ".",
+        "detail": "task baseline unavailable",
+        "affectsCompletion": true
+      },
+      {
+        "code": "baseline_missing",
+        "stage": "baseline",
+        "target": ".",
+        "detail": "task baseline is unavailable",
+        "affectsCompletion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "bash-discovery",
+        "target": ".",
+        "detail": "bash_discovery_incomplete: task baseline unavailable",
+        "affectsCompletion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "baseline",
+        "target": ".",
+        "detail": "baseline_missing: task baseline is unavailable",
+        "affectsCompletion": true
+      }
+    ]
+  },
+  "source": {
+    "component": "zcode-hook",
+    "operationId": "Stop"
+  },
+  "revision": "f0dad8a3c119d836022c1ea9646da374dc66336d",
+  "diffHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "rulesVersion": "unavailable",
+  "sessionHash": "33325d48e9b17ddda415e3d6cccb2711b9f76d79eef4629803fda368ad328cd4",
+  "reportRef": ".mimosa/reports/task-review-session_58f3f4bfcb9a88671e0595593de28702-20261026T160300907Z-61904-1768a57febef.json",
+  "events": [],
+  "observedFindingIds": [],
+  "verifiedFiles": [],
+  "recordedAt": "2026-10-26T16:03:01.130Z"
+}

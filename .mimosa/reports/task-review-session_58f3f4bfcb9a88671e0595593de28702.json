@@ -1,39 +1,50 @@
 {
   "schema_version": "mimosa-task-review/v2",
-  "run_id": "20261026T023321016Z-98144-54fda0f034d9",
-  "run_status": "completed",
-  "errors": [],
+  "run_id": "20261026T160300907Z-61904-1768a57febef",
+  "run_status": "inconclusive",
+  "errors": [
+    {
+      "stage": "bash-discovery",
+      "target": ".",
+      "reason": "bash_discovery_incomplete: task baseline unavailable"
+    },
+    {
+      "stage": "baseline",
+      "target": ".",
+      "reason": "baseline_missing: task baseline is unavailable"
+    }
+  ],
   "coverage": {
     "schema_version": "mimosa-hook-coverage/v1",
-    "status": "complete",
+    "status": "partial",
     "scope": "hook_observed_diff",
     "baseline": {
-      "complete": true,
-      "captured_files": 11,
-      "candidate_limit": 5000,
+      "complete": false,
+      "captured_files": 0,
+      "candidate_limit": 20,
       "truncated": false,
       "enumeration_error_count": 0,
       "snapshot_error_count": 0,
-      "compensated_target_count": 1
+      "compensated_target_count": 0
     },
     "change_tracking": {
-      "touched_observed": 1,
-      "touched_retained": 1,
+      "touched_observed": 0,
+      "touched_retained": 0,
       "truncated": false,
-      "bash_mutation": false,
+      "bash_mutation": true,
       "bash_discovered": 0,
       "bash_discovery_limit": 80,
       "bash_discovery_truncated": false
     },
     "candidates": {
-      "eligible_files": 1,
-      "selected_files": 1,
+      "eligible_files": 0,
+      "selected_files": 0,
       "limit": 20,
       "truncated": false
     },
     "scanning": {
-      "required_files": 1,
-      "scanned_files": 1,
+      "required_files": 0,
+      "scanned_files": 0,
       "skipped_files": 0,
       "failed_files": 0,
       "project_checks_required": 0,
@@ -45,37 +56,58 @@
       "detail_limit": 3,
       "truncated": false
     },
-    "reason_counts": {},
-    "reasons": [],
+    "reason_counts": {
+      "bash_discovery_incomplete": 1,
+      "baseline_missing": 1,
+      "project_check_failed": 2
+    },
+    "reasons": [
+      {
+        "code": "bash_discovery_incomplete",
+        "stage": "bash-discovery",
+        "target": ".",
+        "detail": "task baseline unavailable",
+        "affects_completion": true
+      },
+      {
+        "code": "baseline_missing",
+        "stage": "baseline",
+        "target": ".",
+        "detail": "task baseline is unavailable",
+        "affects_completion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "bash-discovery",
+        "target": ".",
+        "detail": "bash_discovery_incomplete: task baseline unavailable",
+        "affects_completion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "baseline",
+        "target": ".",
+        "detail": "baseline_missing: task baseline is unavailable",
+        "affects_completion": true
+      }
+    ],
     "reasons_truncated": false
   },
-  "generated_at": "2026-10-26T02:33:21.016Z",
+  "generated_at": "2026-10-26T16:03:00.907Z",
   "session_id": "session_58f3f4bfcb9a88671e0595593de28702",
   "target": ".",
-  "revision": "42810482f2c5fb2902c001300e74ea1d226fb21c",
+  "revision": "f0dad8a3c119d836022c1ea9646da374dc66336d",
   "rules_version": "unavailable",
-  "diff_hash": "c1adbf381a4a25124f9014caf810bd22fb8c82a560349af249d00c59d9d2bb1f",
+  "diff_hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "diff": {
     "algorithm": "sha256",
-    "changed_file_count": 1,
-    "changed_files": [
-      {
-        "file": "TraktorClone/make_app.sh",
-        "ranges": [
-          {
-            "start": 1,
-            "end": 33
-          }
-        ],
-        "before_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-        "after_hash": "3faa36ebae4e38d07d5e787813de1caa14f1738eb8e58b1f4930ea9297b00c3f"
-      }
-    ]
+    "changed_file_count": 0,
+    "changed_files": []
   },
   "timing": {
-    "started_at": "2026-10-26T02:33:20.608Z",
-    "completed_at": "2026-10-26T02:33:21.016Z",
-    "duration_ms": 408,
+    "started_at": "2026-10-26T16:03:00.650Z",
+    "completed_at": "2026-10-26T16:03:00.907Z",
+    "duration_ms": 257,
     "measurement": "hook_wall_clock"
   },
   "tokens": {
@@ -89,11 +121,11 @@
     "schemaVersion": "mimosa-gate-telemetry/v1",
     "profile": "gate",
     "operation": "Stop",
-    "outcome": "complete",
-    "latencyMs": 408,
-    "peakMemoryBytes": 182697984,
+    "outcome": "partial/INCONCLUSIVE",
+    "latencyMs": 257,
+    "peakMemoryBytes": 106741760,
     "memoryMeasurement": "max-observed-process-rss",
-    "scannedFiles": 1,
+    "scannedFiles": 0,
     "cache": {
       "hits": 0,
       "misses": 0,
@@ -118,8 +150,8 @@
   "finding_events": [],
   "findings": [],
   "artifacts": {
-    "immutable_report": ".mimosa/reports/task-review-session_58f3f4bfcb9a88671e0595593de28702-20261026T023321016Z-98144-54fda0f034d9.json",
+    "immutable_report": ".mimosa/reports/task-review-session_58f3f4bfcb9a88671e0595593de28702-20261026T160300907Z-61904-1768a57febef.json",
     "latest_report": ".mimosa/reports/task-review-session_58f3f4bfcb9a88671e0595593de28702.json",
-    "history_summary": ".mimosa/history/run-20261026T023321016Z-98144-54fda0f034d9.json"
+    "history_summary": ".mimosa/history/run-20261026T160300907Z-61904-1768a57febef.json"
   }
 }

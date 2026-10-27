@@ -10,6 +10,7 @@ struct ContentView: View {
     var body: some View {
         VStack(spacing: 12) {
             topBar
+            learnBar
             HStack(alignment: .top, spacing: 16) {
                 deckView(vm: engineHost.deckA, label: "A", keys: ("q", "w", "e"))
                 mixerView
@@ -20,6 +21,24 @@ struct ContentView: View {
         .padding(16)
         .background(Color(nsColor: .windowBackgroundColor))
         .onAppear { engineHost.wire(midi: midi) }
+    }
+
+    /// Slice 8: MIDI-Learn — Funktion anklicken, nächste MIDI-Botschaft zuweist sie.
+    @ViewBuilder
+    private var learnBar: some View {
+        HStack(spacing: 8) {
+            Text("MIDI-Learn:").font(.caption)
+            ForEach(LearnTarget.allCases) { t in
+                Button(t.label) { engineHost.startLearn(t.action) }
+                    .buttonStyle(.bordered)
+                    .tint(engineHost.learnAction == t.action ? .orange : .accentColor)
+            }
+            if engineHost.learning {
+                Text("→ MIDI-Botschaft senden …").font(.caption).foregroundStyle(.orange)
+                Button("Abbrechen") { engineHost.cancelLearn() }.buttonStyle(.bordered)
+            }
+            Spacer()
+        }
     }
 
     // MARK: Top-Bar (MIDI-Status + Sync + Rec)
@@ -62,6 +81,11 @@ struct ContentView: View {
             waveformView(vm: vm)
             HStack {
                 Text(timeString(vm.playhead)).font(.system(.caption, design: .monospaced))
+                // Slice 8: Beat-Phase-LED — blitzt bei jedem Beat-Start auf
+                Circle()
+                    .fill(Color.green.opacity(vm.state.isPlaying ? Double(1 - vm.beatPhase) * 0.9 + 0.1 : 0.15))
+                    .frame(width: 10, height: 10)
+                    .help("Beat-Phase (blinkt auf dem Beat)")
                 Spacer()
                 Text(timeString(vm.state.duration)).font(.system(.caption, design: .monospaced))
             }
@@ -240,6 +264,26 @@ struct ContentView: View {
     }
 }
 
+/// Slice 8: Lernbare Funktionen für MIDI-Learn (Label + DeckAction).
+enum LearnTarget: String, CaseIterable, Identifiable {
+    case play = "Play", cue = "Cue", hc1 = "Hotcue 1", hc2 = "Hotcue 2"
+    case hc3 = "Hotcue 3", hc4 = "Hotcue 4", xf = "X-Fade"
+
+    var id: String { rawValue }
+    var label: String { rawValue }
+    var action: DeckAction {
+        switch self {
+        case .play: return .playPause
+        case .cue: return .cue
+        case .hc1: return .hotcue1
+        case .hc2: return .hotcue2
+        case .hc3: return .hotcue3
+        case .hc4: return .hotcue4
+        case .xf: return .crossfader
+        }
+    }
+}
+
 /// Hält AudioEngine + Decks + Mixer + Sync + Recorder + Library.
 @MainActor
 final class EngineHost: ObservableObject {
@@ -252,6 +296,20 @@ final class EngineHost: ObservableObject {
     @Published var crossfader: Double = 0.5
     @Published var syncMaster = 0
     @Published var isRecording = false
+    // Slice 8: MIDI-Learn-Zustand
+    @Published var learning = false
+    @Published var learnAction: DeckAction?
+
+    /// Lern-Modus starten: nächste MIDI-Botschaft wird auf `action` gemappt.
+    func startLearn(_ action: DeckAction) {
+        learnAction = action
+        learning = true
+    }
+
+    func cancelLearn() {
+        learning = false
+        learnAction = nil
+    }
     @Published var library: [NMLTrack] = []
     @Published var searchText = ""
 
@@ -332,6 +390,16 @@ final class EngineHost: ObservableObject {
         midi.router.onAction = { [weak self] action, value in
             Task { @MainActor in
                 guard let self else { return }
+                // MIDI-Learn: im Lern-Modus wird die erste Botschaft zugewiesen statt ausgeführt
+                if self.learning, let target = self.learnAction,
+                   let raw = midi.lastRaw {
+                    midi.router.assign(MIDIAssignment(channel: raw.channel, isCC: raw.isCC,
+                                                     control: raw.control, action: target))
+                    self.saveMappings(midi.router.assignments.map(\.learned))
+                    self.learning = false
+                    self.learnAction = nil
+                    return
+                }
                 switch action {
                 case .playPause: self.deckA.togglePlay()
                 case .cue: self.deckA.cue()
@@ -367,6 +435,8 @@ final class EngineHost: ObservableObject {
 final class MIDIController: ObservableObject {
     @Published var status = "MIDI: suche Geräte…"
     let router = MIDIActionRouter()
+    /// Letzter eingegangener Event (Channel, isCC, Control) — für MIDI-Learn.
+    @Published var lastRaw: (channel: UInt8, isCC: Bool, control: UInt8)?
     private var client: MIDIClientRef = 0
     private var port: MIDIPortRef = 0
 
@@ -397,7 +467,16 @@ final class MIDIController: ObservableObject {
                     Array(UnsafeBufferPointer(start: $0, count: n))
                 }
             }
-            Task { @MainActor in controller.router.route(event: bytes) }
+            Task { @MainActor in
+                // Slice 8: Rohevent für MIDI-Learn mitschreiben (Note-On/CC, 3 Bytes)
+                if bytes.count >= 3 {
+                    let type = bytes[0] & 0xF0
+                    if type == 0x90 || type == 0xB0 {
+                        controller.lastRaw = (bytes[0] & 0x0F, type == 0xB0, bytes[1])
+                    }
+                }
+                controller.router.route(event: bytes)
+            }
             packet = MIDIPacketNext(&packet).pointee
         }
     }
