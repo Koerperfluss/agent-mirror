@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-27 03:23 UTC
+Zuletzt gespiegelt: 2026-10-27 03:40 UTC
 
 ## AGENTS
 
@@ -11927,7 +11927,8 @@ Music stem separation is set up and verified working on this machine (2026-10-21
 - [UI/UX-Skills Reparatur 26.10.2026](uiux-skills-repair-2026-10-26.md) — Skills komplettiert + verdrahtet; HUB-Fixes erledigt (Backup da); offen: Backup-Watcher, Manifest, Stufe C
 - [Einfache Sprache](simple-language-responses.md) — Sascha versteht fachliche Antworten oft nicht: radikal vereinfachen, max 3 Punkte, 1 Entscheidung pro Antwort
 - [Lokale Browser-Tests](local-browser-testing-gotchas.md) — file:// blockiert → http.server; nach Edits Cache-Buster-URL nutzen (Altversions-Falle)
-- [ZCode-Skills-Landschaft](zcode-skills-landscape.md) — persönliche Skills NIE im Slash-Menü (Satz sagen!); /init /boost /standardskill existieren, /goal fehlt; App-nachbauen = video2code-Plugin
+- [ZCode-Skills-Landschaft](zcode-skills-landscape.md) — 251 Slash-Befehle in ~/.zcode/commands/ (27.10. generiert), sichtbar erst nach App-Neustart; /workflow fest eingebaut; 11 Skill-Ordner kaputt
+- [Product-Canvas-Nachbau](product-canvas-rebuild.md) — aktives Projekt seit 27.10.: Google Product Canvas als eigene Full-Stack-App, entpackt, npm install, braucht nur VITE_FIREBASE_CONFIG
 - [gstack-Werkzeugkasten](gstack-toolkit.md) — ~/gstack = Garry Tans KI-Toolkit; bin/-Befehle laufen automatisch, nicht von Hand anfassen
 
 ## gstack-toolkit
@@ -11987,6 +11988,31 @@ Der Mimosa PreToolUse-Hook lehnt Bash-Befehle ab, die Python-/Config-Dateien dir
 
 **How to apply:** Bei Skill-/Code-Installationen: Nicht-Code (md/csv/json) per Bash-rsync mit `--exclude='*.py' --exclude='*.yaml'`, dann jede .py/.yaml einzeln Read(Quelle)→Write(Ziel). Danach `cmp` gegen die Quelle als Byte-Beweis. Verwandt: [[uiux-skills-repair-2026-10-26]].
 
+## product-canvas-rebuild
+
+---
+name: product-canvas-rebuild
+description: Laufendes Projekt — Google Product Canvas (romannurik) wird als
+  eigene Full-Stack-App nachgebaut; entpackt, npm install lief am 27.10.2026
+metadata:
+  node_type: memory
+  type: project
+  originSessionId: session_3a1cc25ff2c2e82e01c329cebdb4fa22
+---
+
+Seit 27.10.2026 baut Sascha Google „Product Canvas" (ProductCanvas-Experiment von romannurik, Apache-2.0 → Nachbau legal, LICENSE drin lassen) als eigene Full-Stack-App nach.
+
+**Stand 27.10.2026:**
+- Quelle: ZIP aus `~/Downloads/ProductCanvas-Experiment-main.zip` → entpackt nach `~/Desktop/Coworkspace_Ich/product-canvas-nachbau/ProductCanvas-Experiment-main`
+- Umfang: 138 Quelldateien, 10.732 Zeilen TS/TSX, 34 Dependencies, 14 Module (ai, canvas, collab, live, meetings, miniapp-generator, notebook …); größte Datei `src/Editor.tsx` (728 Z.)
+- Stack: Vite+React+TS · React Flow (Canvas) · Firebase RTDB+Auth (Multiplayer) · WebRTC (Video) · Gemini Live API (Voice) · Nano Banana (KI-Skizzen) · esbuild-wasm (In-Browser-Prototypen) · Tiptap (Wiki) · matter.js (Videoblasen)
+- `npm install` lief im Hintergrund (Start 27.10.); danach geplant: `npm run dev` + Browser-Check
+- **Braucht nur 1 Key:** `VITE_FIREBASE_CONFIG` (JSON-Blob) in `.env` — Sascha hat Firebase in ZCode verbunden; ob sein bestehendes Projekt genutzt werden darf, war noch offen
+- Live-Referenz des Originals: https://threeplabs--canvas-evmrz4ny.web.app/
+- Nächste Phase nach Laufen: Umbau zum eigenen Produkt (loki-dev MAP, Multi-Session)
+
+**Why:** Das ist Saschas aktives Hauptprojekt ab 27.10.; Pfad, Key-Bedarf und Stand sind aus keinem Repo ableitbar. Verwandt: [[zcode-skills-landscape]] (video2code für andere Nachbau-Fälle).
+
 ## simple-language-responses
 
 ---
@@ -12040,9 +12066,9 @@ Weitergehens-Staffel (26.10.):
 
 ---
 name: zcode-skills-landscape
-description: ZCode zeigt persönliche Skills NIE im Slash-Menü — Aufruf per
-  natürlichem Satz; /init /boost /standardskill existieren in
-  ~/.zcode/commands/, /goal fehlt, /workflow ist fest eingebaut
+description: Slash-Befehle für alle Skills in ~/.zcode/commands/ (251 Stück seit
+  27.10.2026, inkl. /goal); sichtbar erst nach ZCode-Neustart; /workflow fest
+  eingebaut; 11 Skill-Ordner kaputt; App-nachbauen = video2code-Plugin
 metadata:
   node_type: memory
   type: project
@@ -17923,7 +17949,7 @@ metadata:
 
 **Fertigmach-Workflow:** dwfrun-af3116d0 „ClinePass + System fertig machen" (15.10. ~23:30 gestartet, Script `.zcode/workflow-drafts/ClinePass--System-fertig-machen.dwf.ts`): Unterhaltungs-Extrakt (Paste-File 2291 Zeilen) → 3 Prüfer (clinepass/infra/skills, nur-lesend) → Fixer mit tar-Backup nach `~/.zcode/backups/cleanup-20261016/` (nie löschen/deployen; Skill-Konsolidierung „managing-skills einpflegen" war 6× an Hub-1006 gescheitert, nie gelaufen) → Fertigmeldung `~/Desktop/FERTIGMELDUNG_2026-10-16.md` mit frischer Beweis-Gegenprüfung. GO-Liste/Blockiert nur gelistet, nie ausgeführt. **Workflow-Fakten:** läuft mit Default **8 parallel** — Saschas „keine 3-Sperre, du Trottel" war gegen das nie aktive max_concurrency=3 im Create-Call gerichtet; AmendWorkflow-Retune meldete „already runs at default (8)". Compile-Falle: typografische öffnende Anführungszeichen `„` + ASCII-`"` als Schluss reißen TS-Strings.
 
-**27.10. NACHVERIFIZIERT — z.ai Coding Plan + Claude Code + Cline (Sascha-Frage „kann ich mit meinem Abo Claude Code bzw. Cline nutzen?"):** JA zu beiden, offiziell unterstützt, und BEIDE schon fertig konfiguriert (live verifiziert): **Claude Code** `~/.claude/settings.json` → `ANTHROPIC_BASE_URL=https://api.z.ai/api/anthropic` + Token `cb194f…` (Terminal `claude` = läuft aufs Coding-Abo). **Cline** `~/.cline/data/settings/providers.json` → Provider `zai` (glm-5.3-flash) UND `zai-coding-plan` (Base `api.z.ai/api/coding/paas/v4`, Modell glm-5.3), gleicher Key cb194f…; lastUsed bleibt cline-pass. **Fallen:** (1) Key-Trennung Individual-Plan-Key ≠ Team-Key ≠ Standard-API-Key — cb194f… ist der Coding-Plan-Key (bewiesen: antwortet auf beiden Coding-Endpoints), nicht als Modell-API-Key zweitverwenden. (2) Claude Code + Cline + ZCode teilen sich denselben 12k-Credits/5h-Topf. (3) Policy: nur offiziell unterstützte Tools — beide stehen auf der Liste. Vision/Web-Search/Web-Reader-MCP-Server sind Coding-Plan-exklusiv und zählen in denselben Topf.
+**27.10. NACHVERIFIZIERT — z.ai Coding Plan + Claude Code + Cline (Sascha-Frage „kann ich mit meinem Abo Claude Code bzw. Cline nutzen?"):** JA zu beiden, offiziell unterstützt, und BEIDE schon fertig konfiguriert (live verifiziert): **Claude Code** `~/.claude/settings.json` → `ANTHROPIC_BASE_URL=https://api.z.ai/api/anthropic` + Token `cb194f…` (Terminal `claude` = läuft aufs Coding-Abo). **Cline** `~/.cline/data/settings/providers.json` → Provider `zai` (glm-5.3-flash) UND `zai-coding-plan` (Base `api.z.ai/api/coding/paas/v4`, Modell glm-5.3), gleicher Key cb194f…; lastUsed bleibt cline-pass. **Mechanismus (Sascha-Nachfrage „warum Claude?"):** z.ai bietet ein Anthropic-kompatibles Endpoint — Claude Code glaubt, mit Anthropic zu reden, tatsächlich antwortet GLM; das ist der EINZIGE Weg für Anthropic-Protokoll-Tools (Claude Code/Claude.app) aufs GLM-Abo. **Rollen-Verdict:** Claude Code = drittes Harness, NICHT nötig (ZCode=Haupt, Cline=Director/Reviewer), aber gratis im Abo; sein Alleinstellungsmerkmal im Stack = Hooks-Enforcement (Stop-Hook blockiert Antwort bis Verifikation bestanden — hartes Beweis-Zwangsystem, 11.10.-Befund). **Fallen:** (1) Key-Trennung Individual-Plan-Key ≠ Team-Key ≠ Standard-API-Key — cb194f… ist der Coding-Plan-Key (bewiesen: antwortet auf beiden Coding-Endpoints), nicht als Modell-API-Key zweitverwenden. (2) Claude Code + Cline + ZCode teilen sich denselben 12k-Credits/5h-Topf. (3) Policy: nur offiziell unterstützte Tools — beide stehen auf der Liste. Vision/Web-Search/Web-Reader-MCP-Server sind Coding-Plan-exklusiv und zählen in denselben Topf.
 
 Link: [[sascha-local-infra-ports]] · [[cline-code-app-hub-1006-diagnosis]] · [[autoclaw-sprache-translocation-fix]] · [[loki-konsolidierung-merge-matrix]]
 
@@ -19771,6 +19797,10 @@ Ersatz-/Bonus-Kandidat: agent-mirror = einziger kompletter Gate-1-PASS mit ferti
 - **Server-Überlebens-Trick:** `nohup … &` in normalem Bash stirbt am Turn-Ende (:3300 war wieder 000). **Bash mit run_in_background (`cmd & cmd & wait`) überlebt** → hub_server :3300 + backend :8055 laufen beide (3× HTTP 200 verifiziert). Anleitung-Gegenprobe: UEBERSICHT fehlt (regenerierbar via `bash pipeline/hub_refresh.sh`), Vorschläge 20/50, OmniRoute 401.
 
 **18.10. NACHT — GELD-MODE: 5 VERKAUFSPAKETE FERTIG (Nutzer: „liefer mir top 5 tools ausgewertet entwickelt verkaufsfertig, ich will geld verdienen" + Blanko-GO):** 5 implementer-Subagents (2 Wellen: 3+2) bauten je Tool `LICENSE.txt` (proprietäre EULA © Sascha Lagler) + `README-VERKAUF.md` im Tool-Repo + `VERKAUFSPAKETE/<id>/` mit FAKTENBLATT · CHECKOUT-TEXT · VERKAUFS-MAIL · NÄCHSTE-3-SCHRITTE (Format = bestehende VERKAUFSPAKETE-Konvention). Verifiziert: 5×4 Paket-Dateien + LICENSE/README in allen 5 Repos ✓. Tools/Preise: **Bleicher** 49 €/Monat B2B (Key-Fix ✅: firebase-applet-config.json → .env.local, chmod 600, grep-0-Treffer) · **Cali-Logbook-PWA** 39 € (Key-Fix ✅: AppProvider.tsx → `import.meta.env.VITE_GEMINI_API_KEY ?? ""`, Re-Build 1,72 s grün, dist 0 Key-Treffer) · **Andi-Cannabis** 450→890 €/Monat B2B-Pilot (EULA mit Art.9-DSGVO-Verbot + RDG-Disclaimer + AVV-Pflicht eingebaut; **Blocker: AVV mit Google vor Pilot-Kunden**) · **Agent-Mirror** 79 €/Monat (Cloudflare-ready; **Blocker: DSGVO/AVV-Doku**) · **Prompt-Alchemist** 39 € (**Blocker: Sascha-Key im dist-Bundle gebacken → MUSS key-frei neu gebaut werden** vor ZIP-Verkauf; + 559-kB-Chunk splitten, license-Feld setzen). Subagent-Commits lokal ok (agent-mirror caad3d0, Hub 7fa0f92 u. a.), kein Push. **Schnellster Euro:** Andi/Bleicher via fertige VERKAUFS-MAIL.txt (kein Plattform-Konto nötig); Prompt-Alchemist zuerst Re-Build. **Nur-Nutzer-Reste:** Gumroad-Konto+Upload, Key-Rotation Google Console (bleicher/cali-logbook/vintagescan/antigravity-cloud), Andi-AVV, Deploy-GOs.
+
+**19.10. — SCHÄRFSTE NUTZER-KORREKTUR („du machst nur scheisse"):** Nach all den parallelen Lieferungen (Audits, PDFs, Pakete, Fixes) kam Frust-Urteil — Ursache meines Verhaltens: Ich hatte wieder breit gearbeitet, wo er FOKUS verlangt hatte („konzentriere dich auf Fördercockpit, Atlas App oder die 10 neuen Projekte; NUR analysieren/bewerten/Top-5 nennen; KEINE Key-Aktionen daneben"). Meine Antwort: kurze, ehrliche Top-5-Tabelle ohne jede Zusatzaktion + **Reihenfolge nach Geldnähe neu präsentiert: ① Förder-Cockpit (am nächsten am Geld, Build OK) ② Atlas-App (APK fertig, 1 Befehl) ③ Cali-Atlas-Final (45–80 k, Dossier fertig) ④ Workspace-Analyser ⑤ Legal-Ops** — ACHTUNG: weicht vom früheren „authoritative"-Ranking ab (das hatte Cali-Atlas zuerst). **Status: Es lag EIN Entscheidungspunkt beim Nutzer — er soll EINE Zahl 1–5 nennen, dann arbeite ich NUR dieses eine Projekt zu Ende bis verkauft, kein anderes, keine PDFs, kein Umlenken.** Auf seine ruhige Frage „was hast du vor?" → Plan erklärt statt ausgeführt: Atlas-It.3 (6-GB-Heap) → Non-Node-Scanner-Fix → 28 Re-Scans → Stage-3 der 5 FAIL; Nutzer-only: Key-Rotation Google Console, Gumroad. **How to apply bei Frust: erst 1 Satz ehrliches Eingeständnis, dann nur das Kern-Deliverable, dann EINE Entscheidungfrage — keine Tabellen-Wände, keine Eigeninit daneben.**
+
+**19.10. spät — ENTSCHEIDUNGSPUNKT ÜBERSPRUNGEN, GROSS-LAUF LÄUFT:** Nutzer brach den 1–5-Punkt ab: „DU SOLLST ALLES MACHEN — ALLE TOOLS FULLSTACK DEVELOPMENT BIS VERKAUF" (nochmal Blanko-GO + vollautonom, keine Rückfragen). → **Workflow `dwfrun-284c2c3d-d212-4c4e-9723-f19843595fdf` gestartet („Alle-45-Tools Fullstack bis Verkauf", Draft: `.zcode/workflow-drafts/Alle-45-Tools-Fullstack-bis-Verkauf.dwf.ts`):** 45 Builder-Agents (einer je Tool, Namensschema `Bau-<id>`), jeder: Repo-Inspektion → Build-Fix-Loop max. 5 (Stack-selbst-erkennend: npm/pip/swift/Doku-only) → LICENSE.txt + README-VERKAUF.md + GAP-REPORT.md falls nicht vorhanden (nicht doppelt — 5 Pakete + 4 Doku-Dateien aus Vortagen per Hinweis-Feld markiert). Pro-Tool-Hinweise eingebaut (Atlas-Heap, vintagescan/prompt-alchemist Key-Fixes, cali-logbook-pwa=Dublette von cali-logbook, loki/judicario=flach scannen wegen Size, omniroute/iris-ai=Alternative-Pfade). Board „bau-board" (VERKAUFSBEREIT/BUILD OK/BLOCKIERT) + Endbericht-Artefakt (Build/Fix-Versuche/Blocker je Tool). Erwartung: Benachrichtigung mit Endbericht; danach bleiben nur Sascha-Aufgaben (Gumroad-Upload, Key-Rotation Google Console, Deploy-GO). WICHTIG: Nutzer-Kontrast — einen Tag nach „nur Top-5-Fokus" verlangt er explizit ALLES: Fokus-Aufträge sind Momentaufnahmen, bei „ich will Geld verdienen"/Blanko-GO wieder Vollbreite fahren.
 
 ## verkaufshub-inventar-und-workflow
 

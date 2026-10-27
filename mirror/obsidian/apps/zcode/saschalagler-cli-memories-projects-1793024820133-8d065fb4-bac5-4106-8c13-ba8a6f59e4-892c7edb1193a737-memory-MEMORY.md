@@ -11,5 +11,6 @@ tags: [spiegel, zcode]
 - [UI/UX-Skills Reparatur 26.10.2026](uiux-skills-repair-2026-10-26.md) — Skills komplettiert + verdrahtet; HUB-Fixes erledigt (Backup da); offen: Backup-Watcher, Manifest, Stufe C
 - [Einfache Sprache](simple-language-responses.md) — Sascha versteht fachliche Antworten oft nicht: radikal vereinfachen, max 3 Punkte, 1 Entscheidung pro Antwort
 - [Lokale Browser-Tests](local-browser-testing-gotchas.md) — file:// blockiert → http.server; nach Edits Cache-Buster-URL nutzen (Altversions-Falle)
-- [ZCode-Skills-Landschaft](zcode-skills-landscape.md) — persönliche Skills NIE im Slash-Menü (Satz sagen!); /init /boost /standardskill existieren, /goal fehlt; App-nachbauen = video2code-Plugin
+- [ZCode-Skills-Landschaft](zcode-skills-landscape.md) — 251 Slash-Befehle in ~/.zcode/commands/ (27.10. generiert), sichtbar erst nach App-Neustart; /workflow fest eingebaut; 11 Skill-Ordner kaputt
+- [Product-Canvas-Nachbau](product-canvas-rebuild.md) — aktives Projekt seit 27.10.: Google Product Canvas als eigene Full-Stack-App, entpackt, npm install, braucht nur VITE_FIREBASE_CONFIG
 - [gstack-Werkzeugkasten](gstack-toolkit.md) — ~/gstack = Garry Tans KI-Toolkit; bin/-Befehle laufen automatisch, nicht von Hand anfassen

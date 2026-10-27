@@ -7,9 +7,9 @@ tags: [spiegel, zcode]
 
 ---
 name: zcode-skills-landscape
-description: ZCode zeigt persönliche Skills NIE im Slash-Menü — Aufruf per
-  natürlichem Satz; /init /boost /standardskill existieren in
-  ~/.zcode/commands/, /goal fehlt, /workflow ist fest eingebaut
+description: Slash-Befehle für alle Skills in ~/.zcode/commands/ (251 Stück seit
+  27.10.2026, inkl. /goal); sichtbar erst nach ZCode-Neustart; /workflow fest
+  eingebaut; 11 Skill-Ordner kaputt; App-nachbauen = video2code-Plugin
 metadata:
   node_type: memory
   type: project
