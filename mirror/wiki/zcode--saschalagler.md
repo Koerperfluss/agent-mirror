@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-27 07:22 UTC
+Zuletzt gespiegelt: 2026-10-27 07:41 UTC
 
 ## AGENTS
 
@@ -12051,7 +12051,7 @@ Music stem separation is set up and verified working on this machine (2026-10-21
 - [Einfache Sprache](simple-language-responses.md) — Sascha versteht fachliche Antworten oft nicht: radikal vereinfachen, max 3 Punkte, 1 Entscheidung pro Antwort
 - [Lokale Browser-Tests](local-browser-testing-gotchas.md) — file:// blockiert → http.server; nach Edits Cache-Buster-URL nutzen (Altversions-Falle)
 - [ZCode-Skills-Landschaft](zcode-skills-landscape.md) — 251 Slash-Befehle in ~/.zcode/commands/ (27.10. generiert), sichtbar erst nach App-Neustart; /workflow fest eingebaut; 11 Skill-Ordner kaputt
-- [Product-Canvas-Nachbau](product-canvas-rebuild.md) — aktives Projekt seit 27.10.: Google Product Canvas als eigene Full-Stack-App, entpackt, npm install, braucht nur VITE_FIREBASE_CONFIG
+- [Product-Canvas-Nachbau](product-canvas-rebuild.md) — aktives Projekt: Google Product Canvas VOLL LAUFFÄHIG lokal (Emulator-Login+DB, ?mock=1), wartet nur auf echten Gemini-Key; echtes Firebase optional
 - [gstack-Werkzeugkasten](gstack-toolkit.md) — ~/gstack = Garry Tans KI-Toolkit; bin/-Befehle laufen automatisch, nicht von Hand anfassen
 
 ## gstack-toolkit
@@ -12116,37 +12116,43 @@ Der Mimosa PreToolUse-Hook lehnt Bash-Befehle ab, die Python-/Config-Dateien dir
 
 ---
 name: product-canvas-rebuild
-description: Laufendes Projekt — Google Product Canvas (romannurik) als eigene
-  Full-Stack-App; läuft lokal (HTTPS:5173), Firebase 90 % aufgesetzt, wartet
-  auf Firebase-CLI-Login-Code von Sascha (Session A0670)
+description: Aktives Projekt — Google Product Canvas (romannurik) als eigene Full-Stack-App; seit 27.10. VOLL LAUFFÄHIG lokal via Firebase-Emulatoren (Login/Mock/Canvas bewiesen); KI wartet nur auf echten Gemini-Key; echtes Firebase optional
 metadata:
   node_type: memory
   type: project
   originSessionId: session_3a1cc25ff2c2e82e01c329cebdb4fa22
 ---
 
-Seit 27.10.2026 baut Sascha Google „Product Canvas" (ProductCanvas-Experiment von romannurik, Apache-2.0 → Nachbau legal, LICENSE drin lassen) als eigene Full-Stack-App nach.
+Seit 27.10.2026 baut Sascha Google „Product Canvas" (ProductCanvas-Experiment von romannurik, Apache-2.0 → Nachbau legal) als eigene Full-Stack-App.
 
-**Stand 27.10.2026 (nachts, Stand nach Browser-Beweis):**
-- Pfad: `~/Desktop/Coworkspace_Ich/product-canvas-nachbau/ProductCanvas-Experiment-main` (138 Dateien, 10.732 Zeilen, 14 Module; Stack: Vite+React+TS, React Flow, Firebase RTDB+Auth, WebRTC, Gemini Live, esbuild-wasm, Tiptap, matter.js)
-- **App läuft**: 0 Konsolen-Fehler, Screenshot-Beweis (Login-Screen). Server: `vite.dev.config.ts` → HTTPS 5173 (self-signed, Mikrofon/WebRTC) + `vite.dev-http.config.ts` → HTTP 5188 (nur für Playwright). Server laufen als Background-Tasks in der ZCode-Session.
-- `.env` enthält die ECHTE Firebase-Config (Projekt product-canvas-lab-6609), `databaseURL` verweist auf noch nicht existierende RTDB.
+**Stand 27.10.2026 (nachts): VOLL LAUFFÄHIG END-TO-END BEWIESEN.**
+- Pfad: `~/Desktop/Coworkspace_Ich/product-canvas-nachbau/ProductCanvas-Experiment-main` (138 Dateien, 10.732 Zeilen; Stack: Vite+React+TS, React Flow, Firebase RTDB+Auth, WebRTC, Gemini Live, esbuild-wasm, Tiptap, matter.js)
+- **Klickpfad komplett bestanden** (Playwright): ?mock=1 → „Sign in with Google" → anonym (Emulator) → Privacy „Got it" → Setup (Gemini-Key-Feld) → **Canvas-Session `/vcqM8oQytB`** → Leinwand rendert (React Flow, Toolbar, „What do you want to build?"), 0 echte Fehler.
+- Server: `vite.dev.config.ts` → HTTPS 5173 (self-signed) + `vite.dev-http.config.ts` → HTTP 5188 (für Playwright). Nutzung: `https://localhost:5173/?mock=1` (Zertifikatswarnung durchklicken).
+- `.env` = echte Config von Projekt `product-canvas-lab-6609` (barbulls-app unberührt).
+
+**Chirurgische Patches (je Backup `*.bak-2026-10-27` daneben):**
+1. `src/firebase.ts`: in DEV `connectAuthEmulator(9099)` + `connectDatabaseEmulator(9100)`.
+2. `src/onboarding/Onboarding.tsx`: DEV + `?mock` überspringt den Invite-Claim (`hasAccess`-Gate).
+3. `src/auth/AuthProvider.tsx`: signIn → wenn DEV+`?mock` → `signInAnonymously` statt Google-Popup.
+- Erkenntnis: Der eingebaute `?mock=N`-Modus ersetzt nur einen BEREITS eingeloggten User (Anzeige-Trick) — kein Gate-Bypass; deshalb Patch 3.
+
+**Emulator-Setup (umgeht beide Google-Sperren komplett):**
+- `firebase.emulator.json` (auth :9099, database :9100, ui :4000) + `database.rules.json` (offen). Start: `JAVA_HOME=/opt/homebrew/opt/openjdk@21 firebase emulators:start -c firebase.emulator.json --project demo-canvas` (demo-Präfix = kein Login nötig). Java 21 war schon via brew da (Java 8 zu alt für Emulator).
+- **Port 9000 ist von BrowserOS belegt** → Datenbank-Emulator auf 9100.
 
 **Reparaturen beim Aufsetzen (wieder verwendbar):**
-- `node-stdlib-browser` v1.2.1/1.3.1 fehlen mock/proxy-Dateien (packaging bug). Stubs angelegt: `mock/empty.js`, `proxy/querystring.js`, `proxy/url.js` **im Projekt-Root** (nicht node_modules!) — der Code löst `./mock/empty.js` relativ zum Start-Kontext auf (create-require → `[eval]`), deshalb halfen node_modules-Stubs nicht.
-- `vite-tsconfig-paths` verursacht beim Start `ETIMEDOUT scandir` in Google-Drive-Shortcuts (`~/Library/CloudStorage/…/koerperfluss/…venv…`) — Ursache ungeklärt (tsconfigs harmlos). Fix: Plugin weggelassen, `@/*` direkt per `resolve.alias`. Test-Configs: `vite.iso.config.ts` (Isolation), `vite.minimal.config.ts`.
-- Playwright-MCP blockt self-signed HTTPS (ERR_CERT_AUTHORITY_INVALID) → HTTP-Zweitinstanz für Browser-Tests.
+- `node-stdlib-browser` v1.2.1/1.3.1 packaging bug: Stubs `mock/empty.js`, `proxy/querystring.js`, `proxy/url.js` **im Projekt-Root** (nicht node_modules — create-require löst relativ zum Start-Kontext auf).
+- `vite-tsconfig-paths` → ETIMEDOUT-scandir in Google-Drive-Shortcuts (Ursache offen) → Plugin weggelassen, `@/*` per resolve.alias.
+- Playwright-MCP blockt self-signed HTTPS → HTTP-Zweitinstanz. `firebase login` (alle Varianten) endet sofort by design; Links im ZCode-In-App-Browser scheitern mit „Unable to verify client" (Cookies/Flow).
 
-**Firebase-Setup (Projekt `product-canvas-lab-6609`, neu angelegt, barbulls-app unberührt):**
-- Weg: gcloud (koerperfluss@gmail.com) + REST mit Bearer-Token und **Pflicht-Header `x-goog-user-project`** (Quota-Project). `gcloud projects create --name=` (nicht --display-name), APIs: firebase, firebasedatabase, identitytoolkit. addFirebase ✅ (Poll der Operation bis done). Web-App registriert: appId `1:675368337217:web:076991cb00d8fe20efabc0`, Config via `GET …/webApps/{appId}/config`.
-- **BLOCKER A:** RTDB-Create via REST → konstant 404-HTML (v1/v1beta1, us-central1/europe-west1, Projekt-ID und -Nummer durchprobiert). **BLOCKER B:** identitytoolkit → `CONFIGURATION_NOT_FOUND` (Auth-Config existiert nicht; wird nur durch das Console-/CLI-Initialisierungs-Ritual erzeugt; Ports in authorizedDomains werden vom Legacy-Validator abgelehnt — localhost gilt implizit mit jedem Port).
-- Firebase-MCP: 401 (Token abgelaufen) · Firebase-CLI: war ausgeloggt · gcloud: eingeloggt.
-- **OFFEN:** `firebase login --no-localhost` Session **A0670** läuft (Link an Sascha geschickt); sobald er den Autorisierungs-Code schickt: `firebase login <code>` → danach RTDB + Google-Auth über die CLI/REST mit Firebase-OAuth fertigstellen → Browser-Login-Test.
-- Live-Referenz Original: https://threeplabs--canvas-evmrz4ny.web.app/
+**Die 4 restlichen Konsolen-Fehler (erklärt):** 2× html-to-image Google-Fonts-CORS (harmlos, auch im Original) + 2× Gemini 400 API_KEY_INVALID = **KI-Kette lebt, wartet nur auf echten Gemini-Key** (aistudio.google.com/api-keys → in App-Settings eintragen).
 
-**Nächste Phase nach voller Funktion:** Umbau zum eigenen Produkt (loki-dev MAP, Multi-Session).
+**Echtes Firebase (optional, Projektparts fertig):** Projekt `product-canvas-lab-6609` per gcloud+REST angelegt (Pflicht-Header `x-goog-user-project`; `gcloud projects create --name=`), Web-App appId `1:675368337217:web:076991cb00d8fe20efabc0`. **Blocker bleiben:** RTDB-Create REST→404-HTML, identitytoolkit→CONFIGURATION_NOT_FOUND (nur Console-/CLI-Ritual). firebase login via Saschas Code wäre der Hebel — Sessions verfallen aber sofort und der Link-Chaos frustrierte ihn; nur noch anbieten wenn er fragt.
 
-**Why:** Saschas aktives Hauptprojekt; Pfade, Workarounds und der offene Login-Code sind aus keinem Repo ableitbar. Verwandt: [[zcode-skills-landscape]], [[local-browser-testing-gotchas]].
+**Nächste Phase:** Umbau zum eigenen Produkt (loki-dev MAP, Multi-Session).
+
+**Why:** Saschas aktives Hauptprojekt; Pfade, Patches, Emulator-Ports und Restarbeiten sind aus keinem Repo ableitbar. Verwandt: [[zcode-skills-landscape]], [[local-browser-testing-gotchas]], [[simple-language-responses]].
 
 ## simple-language-responses
 
@@ -12172,6 +12178,7 @@ Am 26.10.2026 sagte Sascha: "Alter, ich verstehe nicht, was du machst oder redes
 6. Rolle von angefassten Projekten klären: Als ich zum Beweis der reparierten Skills seinen Verkaufs-HUB als Test-Objekt nutzte, fragte er "seit wann geht es um den Verkaufs-HUB?" — beim Antippen seiner echten Projekte immer sofort sagen, ob das Projekt das THEMA oder nur der PRÜFSTAND ist.
 7. „Wenn du schon tust, mach es richtig" (26.10., nach Wut-Ausbruch in Caps): Sobald er eine Aktion an seinem Projekt absegnet, sie VOLLSTÄNDIG und BEWEISBAR ausführen (Backup, Werte nachmessen statt behaupten, Browser-Verifikation) — keine Halbarbeit, keine erneute Rückfrage. Bei Caps/Wut: ruhig kurz bleiben, Fakten, max. 3 Zeilen, keine dritte Entschuldigung.
 8. Er wiederholt gern alte Plan-Texte/AI-Artikel zurück in den Chat (auch wütend, „das ist Mist"). Check ERST, ob der eingefügte Plan längst erledigt ist, und das mit 1 frischen Beweis-Befehl zeigen (Status-Tabelle Plan-Schritt→Status), statt neu zu arbeiten oder zu erklären. Seine persönlichen Skills (~/.claude/skills, 249 Stück) erscheinen NICHT im ZCode-Slash-Menü (nur Plugin-Skills) — er muss sie nicht als /Befehl tippen; Nutzung über Triggersätze wie „Prüfe die UI von X". Bei kaputtem Skill: erst Anzahl/SKILL.md-Gesundheit zählen (ls/find) und mit Zahlen antworten, nicht behaupten.
+9. Harte Eskalation 27.10.2026 („mach dir vorher Gedanken, einen Plan, orchestriert durchführen, am Ende erklären was du wie wo gemacht hast, dass ein Mensch es versteht"): Bei mehrstufigen Aufgaben EINEN kompletten Plan VORAB zeigen (was/wie/welches Tool), dann KOMPLETT autonom durchziehen — ohne Links, Codes oder Bittschreiben an ihn („Terminals bitte mach selber"); Fallbacks selbst wählen und erst wieder melden, wenn fertig oder wirklich blockiert. Abschluss = EINE menschliche Gesamt-Erklärung mit Beweisen, nicht Schritt-Nachrichten.
 
 ## uiux-skills-repair-2026-10-26
 
