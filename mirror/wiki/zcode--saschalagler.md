@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-27 01:47 UTC
+Zuletzt gespiegelt: 2026-10-27 02:03 UTC
 
 ## AGENTS
 
@@ -11927,6 +11927,26 @@ Music stem separation is set up and verified working on this machine (2026-10-21
 - [UI/UX-Skills Reparatur 26.10.2026](uiux-skills-repair-2026-10-26.md) — Skills komplettiert + verdrahtet; HUB-Fixes erledigt (Backup da); offen: Backup-Watcher, Manifest, Stufe C
 - [Einfache Sprache](simple-language-responses.md) — Sascha versteht fachliche Antworten oft nicht: radikal vereinfachen, max 3 Punkte, 1 Entscheidung pro Antwort
 - [Lokale Browser-Tests](local-browser-testing-gotchas.md) — file:// blockiert → http.server; nach Edits Cache-Buster-URL nutzen (Altversions-Falle)
+- [ZCode-Skills-Landschaft](zcode-skills-landscape.md) — persönliche Skills NIE im Slash-Menü (Satz sagen!); /init /boost /standardskill existieren, /goal fehlt; App-nachbauen = video2code-Plugin
+- [gstack-Werkzeugkasten](gstack-toolkit.md) — ~/gstack = Garry Tans KI-Toolkit; bin/-Befehle laufen automatisch, nicht von Hand anfassen
+
+## gstack-toolkit
+
+---
+name: gstack-toolkit
+description: ~/gstack = Garry Tans Open-Source-KI-Werkzeugkasten (v1.68.3) —
+  bin/-Befehle laufen automatisch über Skills, nicht von Hand anfassen
+metadata:
+  node_type: memory
+  type: reference
+  originSessionId: session_3a1cc25ff2c2e82e01c329cebdb4fa22
+---
+
+`/Users/saschalagler/gstack` ist **„Garry's Stack"** (Garry Tan, YC) — Open-Source-KI-Engineering-Werkzeugkasten („Claude Code skills + headless browser", MIT, v1.68.3 lt. package.json). Sascha fragte 27.10.2026 irritiert über die ~80 Dateien in `bin/`.
+
+Gruppen: `gstack-brain-*` (Agenten-Gedächtnis, Git-Sync), `gstack-gbrain-*` (Supabase-Wissensdatenbank), `gstack-timeline-/decision-/learnings-*` (Protokolle), `gstack-telemetry-/analytics/benchmark-*` (Statistik/Modellvergleich), `gstack-ios-qa-*` (iOS-App-Tests), `gstack-redact/egress/security-dashboard` (Geheimnisse/ausgehender Verkehr), `browse`/`make-pdf`/`dev-setup`/`dev-teardown`.
+
+**Regeln:** Diese Befehle werden von Skills/Hooks automatisch aufgerufen — die gstack-/gstack-openclaw-* Einträge in `~/.claude/skills/` stammen daher; nichts manuell ausführen; sauberes Entfernen nur über `gstack-uninstall` (mit Backup). Kein Reverse-Engineering-Werkzeug — dafür siehe [[zcode-skills-landscape]] (video2code).
 
 ## local-browser-testing-gotchas
 
@@ -12015,6 +12035,29 @@ Weitergehens-Staffel (26.10.):
 - Nebenbefund: agentforce-generate (Salesforce) ist für dieses Setup irrelevant; `/workflow` existiert in ZCode nicht (wiederholt referenziert — nicht einladen).
 
 **Why:** Diese Restpunkte sind aus dem Routing/den Dateien selbst nicht ablesbar und müssen bei der nächsten Session weiterbearbeitet werden; Code-Übertragung dabei [[mimosa-hook-skills-write-tool]]-bedingt via Write-Tool.
+
+## zcode-skills-landscape
+
+---
+name: zcode-skills-landscape
+description: ZCode zeigt persönliche Skills NIE im Slash-Menü — Aufruf per
+  natürlichem Satz; /init /boost /standardskill existieren in
+  ~/.zcode/commands/, /goal fehlt, /workflow ist fest eingebaut
+metadata:
+  node_type: memory
+  type: project
+  originSessionId: session_3a1cc25ff2c2e82e01c329cebdb4fa22
+---
+
+Sascha fragte wiederholt wütend „WO SIND MEINE SKILLS?" — dauerhafte Fakten (Workflow-Run 27.10.2026, maschinell gezählt):
+
+1. **Persönliche Skills (`~/.claude/skills/`, 249 Ordner, 218 gesund) erscheinen NIE im ZCode-Slash-Menü** — ZCode listet dort nur Plugin-/Bundled-Skills. Sie laufen über AGENTS.md-Routing: Sascha sagt einen Satz („prüfe die UI von X"), der Agent lädt den Skill selbst. Das bei jeder solchen Frage SO erklären.
+2. **Befehle:** `init.md`, `boost.md`, `standardskill.md` existieren bereits in `~/.zcode/commands/` (Format: Markdown mit `description:`-Frontmatter); `obsidian-init.md` wurde 27.10. neu angelegt; für `/goal` gab es keine Vorlage (nicht geraten). Ob neue Befehle ohne **App-Neustart** erscheinen, war ungetestet.
+3. **`/workflow` und `/dwf` sind fest in ZCode eingebaut** (Registrierung in `/Applications/ZCode.app/Contents/Resources/glm/zcode.cjs`), keine Datei in commands/. 16 gespeicherte Workflow-Vorlagen in `~/.zcode/workflows/`.
+4. **11 Skill-Ordner ohne SKILL.md** (kaputt): anatomie, beta, gstack + 4 gstack-openclaw-*, hackernews-frontpage, legal, research-ops-studienchecker, sequential-thinking.
+5. **App-nachbauen-Pipeline** (Sascha nannte es „reverse engineering"): kein eigener Skill dieses Namens — das ist das Plugin **video2code** (`web-replicate`, `video2fullstack`, `url2video`, `video2code-3d`) plus `~/.claude/skills/image-to-code`. Voll-Umsetzung laut Routing: loki-dev BUILD → ralph-loop.
+
+**Why:** Diese Fragen kommen wieder; die Antworten sind aus den Dateien nicht ohne Suche ableitbar. Verwandt: [[uiux-skills-repair-2026-10-26]], [[simple-language-responses]].
 
 ## MEMORY
 
