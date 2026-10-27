@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-27 08:01 UTC
+Zuletzt gespiegelt: 2026-10-27 08:17 UTC
 
 ## AGENTS
 
@@ -12704,7 +12704,7 @@ In ATLAS-ZCode-Sessions kann das Bash-Tool komplett tot sein: jeder Aufruf (auch
 
 # Memory Index
 
-- [Magicline→George 19.10.](magicline-george-2026-10-19.md) — Paket fertig (Anleitung-PDF Desktop + Briefing out/GEORGE_MAGICLINE_BRIEFING.md + Workflow `magicline-george-anleitung` global); Weg B (REST direkt, kein VPN); blockiert auf Key-Mail von Thomas; KEIN Studiowert-Zähl-Endpoint; LEHRE: Übergabe = normales DOKUMENT, kein Skill
+- [Magicline→George 19.10.](magicline-george-2026-10-19.md) — Paket fertig (Anleitung-PDF Desktop + Briefing out/GEORGE_MAGICLINE_BRIEFING.md + Workflow `magicline-george-anleitung` global); Weg B (REST direkt, kein VPN); blockiert auf Key-Mail von Thomas; KEIN Studiowert-Zähl-Endpoint; LEHRE: Übergabe = normales DOKUMENT, kein Skill · 27.10. PDF bewiesen DA (426 KB, déjà löste „Ort unklar" — vor DATENLAGE UNKLAR immer deja+exakter ls)
 - [Workflow-Topologie 15.10.](dynamic-workflow-topologie-2026-10-15.md) — dwfrun-542bffb6 ✅ COMPLETED: Dashboard out/topologie-workflow.html (13.4 KB, ls-beweisen), 2 verified Findings (Slice-Verify trivial-sicher), GO für Ausführung offen; LESSONS: Skill-Tool nur `skill`+`args`, Free-Modell-Fallback = Müll → GLM
 - [Token-Sparen 10.10.](feedback-token-sparen.md) — Vereinbarung: 5 Werkzeuge reichen fürs Förder-Projekt (Rest 90+ Skills überflüssig); keine Workflows ohne konkreten Auftrag, max. 2–3 Tags, keine Seiten-Pastes, App/Dateien statt Chat
 - [Saschas Lage NÖ 10.10.](sascha-lage-noe.md) — 29, arbeitslos/AMS-Sperre (Okt: 390 € Zufluss), Miete €350, Loosdorf Bez. Melk, keine Kinder; 🔴 KEIN Mietrückstand, ÖGK+Strom betreut, **GEWERBESCHEIN existiert** → finale geprüfte Liste V2 auf Desktop
@@ -14398,6 +14398,8 @@ metadata:
 **Feedback (scharf, 2× im Chat):** „DU SOLLST KEINEN VERFICKTEN SKILL BAUEN" — Übergaben für Fremd-Agenten (George) sind **normale Dokumente**, KEINE Skill-Dateien, kein Installieren in ~/.codex/skills/. Erstes Briefing-Run wurde deshalb per AmendWorkflow von GEORGE_MAGICLINE_SKILL.md → GEORGE_MAGICLINE_BRIEFING.md umgebaut. Siehe [[thomas-tasks-drei-recherchen]], [[feedback-entscheidungshoheit]].
 
 **Update 26.10. (Tages-Routine-Morgen-Lauf):** Blocker unverändert (Key-Mail Thomas, noch nicht angefasst). ⚠️ **Das Master-PDF ist vom Desktop WEG:** `ls ~/Desktop/*MAGICLINE*` = leer (am 19.10. noch geliefert) — verschoben/Ort DATENLAGE UNKLAR, im Tagesplan 26.10. als Punkt 1 hinterlegt. Verifiziert noch da: Workflow `~/.zcode/workflows/magicline-george-anleitung.dwf.ts` (ls ✓) + Briefing `out/GEORGE_MAGICLINE_BRIEFING.md` (191 Zeilen, überarbeitet). Nächster Schritt nach Key-Eingang: Key auf Windows (setx) → George Briefing als Kontext → Test-Fragen.
+
+**Update 27.10. (Tages-Routine-Morgen-Lauf, déjà-recall löste das Rätsel):** ✅ **PDF NICHT weg — bewiesen vorhanden:** `~/Desktop/MAGICLINE_GEORGE_ALLES_IN_EINEM_2026-10-19.pdf` (deja-Beweis: 6 Seiten, 426 KB — Memorie 363 KB vom 19.10. war wohl Zwischenstand, finales PDF größer). Der gestrige „ls = leer"-Befund war ein Suchmuster-Fehlschlag (Glob `*MAGICLINE*` vs. tatsächlichem Namen — vermutlich Umlaut-/Casing-Echo im Shell-Glob). **Lektion: bevor „DATENLAGE UNKLAR" geschrieben wird, zuerst deja-recall + präzisen Pfad testen (ls auf den EXAKTEN Dateinamen), nicht nur Glob-Muster.** Blocker unverändert: Key-Mail Thomas.
 
 ## omniroute-gateway-keys
 

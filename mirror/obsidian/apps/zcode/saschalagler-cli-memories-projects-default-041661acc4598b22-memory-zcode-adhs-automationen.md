@@ -1,7 +1,7 @@
 ---
 app: zcode
 quelle: "saschalagler/cli/memories/projects/default-041661acc4598b22/memory/zcode-adhs-automationen.md"
-stand: 2026-10-26
+stand: 2026-10-27
 tags: [spiegel, zcode]
 ---
 
@@ -239,4 +239,10 @@ metadata:
 - Sascha paste-te die Alt-Aufgabenliste ein ZWEITES MAL („wo ist das alles?" + Settings/Plan zeigen, mit @config-auditor etc.). Richtige Reaktion: **nicht neu bauen** — auf das bestehende `~/.agents/memory/LOKI_TASKBOARD.md` verweisen (3,9 KB, verifiziert noch da) + Settings live aus CronList/config.json zeigen. Ein Nachbau wäre Doppelarbeit ([[feedback-auto-team-dispatch]]-Geist: erst prüfen, was existiert).
 - **Live-Verifikation beim zweiten Blick:** Doku-Fix grep = 1 (bleibt erledigt) · **MCP-Server jetzt 19** (Drift von 17 weiter steigend, P2-Beobachtung) · Taskboard-Kopf intakt · CronList: runCount 57, Doku-Sync-Duplikat automation-2df8eec5 existiert weiterhin (Lösch-GO offen).
 - Muster notiert: Sascha re-pastet alte Aufträge, wenn er den Stand nicht im Blick hat → Antwort = Taskboard-Pfad + frische Settings-Tabelle, nicht Neu-Konsolidierung.
+
+## Zweiundvierzigster+ Lauf (Di 27.10. 09:05 — Morgen-Brief pünktlich PASS + déjà-recall-Lektion)
+- Kalender-Event **„Tagesplan 27.10."** UID `0050B2F5-EB28-47A2-9462-973DB78693C6`, Logbuch `~/.agents/memory/logbuch/2026-10-27.md` (status: offen), Info-Push-Benachrichtigung gesendet (exit 0 — zweiter echter Automatik-Push).
+- **d déjà-recall löste „DATENLAGE UNKLAR":** Magicline-PDF **bewiesen vorhanden** = `~/Desktop/MAGICLINE_GEORGE_ALLES_IN_EINEM_2026-10-19.pdf` (6 Seiten, 426 KB); gestriger Glob `ls ~/Desktop/*MAGICLINE*` = leer war Suchmuster-Fehlschlag. **Lektion: vor „DATENLAGE UNKLAR" immer erst deja-recall + ls auf den EXAKTEN Dateinamen.** Details: [[magicline-george-2026-10-19]].
+- 🔨 Förder-Antrag aktiv: dwfrun schreibt `~/Desktop/Coworkspace_Ich/Körperfluss EDU/FÖDERUNG/…`-Dateien (2. Anlauf, Session `33b5868e` läuft weiter) · Verkaufs-HUB-Handoff `d16e9574` aktiv · 0 Commits.
+- Bilanz: 58 Läufe; Dauer-GOs unverändert: **Wecker · Deutsch-Patch · Duplikat weg · OmniRoute-Richtung**.
 
