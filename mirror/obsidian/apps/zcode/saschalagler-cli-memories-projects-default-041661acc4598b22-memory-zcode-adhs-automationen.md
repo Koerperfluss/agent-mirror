@@ -7,7 +7,7 @@ tags: [spiegel, zcode]
 
 ---
 name: zcode-adhs-automationen
-description: "13.09.–26.10. LIVE: EINE Automation mit ALLEN 6 Briefs (cron `0 9,10,15,16,21`; niemals 6 separate — Nutzer-Ziel!) · **57 Läufe** · 26.10. INFO-PUSH-RETOOLING live bewiesen („Läufe geben 0 Info, wertlos" → CronUpdate: JEDER Lauf sendet macOS-Benachrichtigung + Chat 4-Zeilen WAS/WO/WANN/WIE-WEITER, No-op-1-Zeiler verboten; erster echter Automatik-Push 16:0x No-op PASS, runCount 57) · 26.10. GROSS-KONSOLIDIERUNG: LOKI_TASKBOARD.md angelegt, doku-fix ERLEDIGT (README+Backup), LokiVoice in `~/loki-ki/_ARCHIV/2026-10/loki-voice-alt/` gefunden (P1s obsolet), LegalOps 0 Prozesse (F-3 de facto), OmniRoute :20128 LÄUFT WIEDER (Widerspruch zum Abbau — Richtung offen), DOPPEL-Automation entdeckt (Doku-Sync Mi 15:00 automation-2df8eec5 dupliziert Tages-Routine-Zweig, Lösch-GO offen); **26.10. SYSTEMPROOF 6/6 LIVE PASS → URTEIL AKTIV**; Settings: 4 Automations aktiv, 5 SessionStart-Hook-Gruppen; offen auf GO: Wecker · Deutsch-Patch · Duplikat weg · OmniRoute-Richtung; UHR-ANOMALIE (date=Wahrheit, vor Append NEU lesen); 1 Task pro Chat-Limit"
+description: "13.09.–27.10. LIVE: EINE Automation mit ALLEN 6 Briefs (cron `0 9,10,15,16,21`; niemals 6 separate — Nutzer-Ziel!) · **58+ Läufe** · INFO-PUSH lebt (macOS-Benachrichtigung + 4-Zeilen-Format bei JEDEM Lauf inkl. No-ops, zweimal Automatik-PASS) · GROSS-KONSOLIDIERUNG 26.10.: LOKI_TASKBOARD.md (~/.agents/memory/, 3,9 KB) + SYSTEMPROOF 6/6 AKTIV + Doku-Fix ERLEDIGT (README+Backup) · LokiVoice = `~/loki-ki/_ARCHIV/2026-10/loki-voice-alt/` (P1s obsolet) · Magicline-PDF bewiesen = `~/Desktop/MAGICLINE_GEORGE_ALLES_IN_EINEM_2026-10-19.pdf` (426 KB, déjà-Lektion: vor DATENLAGE UNKLAR deja+exaktes ls) · OmniRoute :20128 LÄUFT WIEDER (Richtung offen) · Doku-Sync-DUPLIKAT automation-2df8eec5 Lösch-GO offen · offen auf GO: Wecker · Deutsch-Patch · Duplikat weg · OmniRoute-Richtung · 1 Task pro Chat-Limit"
 metadata:
   node_type: memory
   type: project
@@ -245,4 +245,8 @@ metadata:
 - **d déjà-recall löste „DATENLAGE UNKLAR":** Magicline-PDF **bewiesen vorhanden** = `~/Desktop/MAGICLINE_GEORGE_ALLES_IN_EINEM_2026-10-19.pdf` (6 Seiten, 426 KB); gestriger Glob `ls ~/Desktop/*MAGICLINE*` = leer war Suchmuster-Fehlschlag. **Lektion: vor „DATENLAGE UNKLAR" immer erst deja-recall + ls auf den EXAKTEN Dateinamen.** Details: [[magicline-george-2026-10-19]].
 - 🔨 Förder-Antrag aktiv: dwfrun schreibt `~/Desktop/Coworkspace_Ich/Körperfluss EDU/FÖDERUNG/…`-Dateien (2. Anlauf, Session `33b5868e` läuft weiter) · Verkaufs-HUB-Handoff `d16e9574` aktiv · 0 Commits.
 - Bilanz: 58 Läufe; Dauer-GOs unverändert: **Wecker · Deutsch-Patch · Duplikat weg · OmniRoute-Richtung**.
+
+## Dreiundvierzigster Lauf (Di 27.10. 15:0x — No-op PASS mit Benachrichtigung)
+- 15:00-Dienstag-Slot korrekt No-op (Doku-Sync nur mittwochs) — **erster No-op mit Info-Push**: macOS-Benachrichtigung gesendet („Heute nichts zu tun … Doku-Sync nur mittwochs … Nächster voller Lauf: 21:00", exit 0) + kurzer 4-Zeilen-Chat-Output. Info-Push-Vertrag damit in beiden Varianten (voller Lauf + No-op) automatisiert bewiesen.
+- Parallel-Arbeit tagsüber sichtbar: Förder-Antrag dwfrun (FÖDERUNG-Dateien) + Verkaufs-HUB-Handoff laufen weiter. Bilanz: 59 Läufe; Dauer-GOs unverändert.
 

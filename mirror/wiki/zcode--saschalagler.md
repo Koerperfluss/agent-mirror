@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-27 13:55 UTC
+Zuletzt gespiegelt: 2026-10-27 14:11 UTC
 
 ## AGENTS
 
@@ -12704,6 +12704,7 @@ In ATLAS-ZCode-Sessions kann das Bash-Tool komplett tot sein: jeder Aufruf (auch
 
 # Memory Index
 
+- [ZCode ADHS-Automations](zcode-adhs-automationen.md) — 13.09.–27.10. LIVE: **EINE Automation mit ALLEN 6 Briefs** (cron `0 9,10,15,16,21`; niemals 6 separate) · **59 Läufe** · INFO-PUSH je Lauf (macOS-Benachrichtigung + 4-Zeilen-Format, auch No-ops) · Taskboard `~/.agents/memory/LOKI_TASKBOARD.md` · SYSTEMPROOF 6/6 AKTIV · Doku-Fix erledigt · LokiVoice=`_ARCHIV/2026-10/loki-voice-alt` · offen: GO Wecker · Deutsch-Patch · Doku-Sync-Duplikat weg · OmniRoute-Richtung · 1 Task pro Chat-Limit
 - [Magicline→George 19.10.](magicline-george-2026-10-19.md) — Paket fertig (Anleitung-PDF Desktop + Briefing out/GEORGE_MAGICLINE_BRIEFING.md + Workflow `magicline-george-anleitung` global); Weg B (REST direkt, kein VPN); blockiert auf Key-Mail von Thomas; KEIN Studiowert-Zähl-Endpoint; LEHRE: Übergabe = normales DOKUMENT, kein Skill · 27.10. PDF bewiesen DA (426 KB, déjà löste „Ort unklar" — vor DATENLAGE UNKLAR immer deja+exakter ls)
 - [Workflow-Topologie 15.10.](dynamic-workflow-topologie-2026-10-15.md) — dwfrun-542bffb6 ✅ COMPLETED: Dashboard out/topologie-workflow.html (13.4 KB, ls-beweisen), 2 verified Findings (Slice-Verify trivial-sicher), GO für Ausführung offen; LESSONS: Skill-Tool nur `skill`+`args`, Free-Modell-Fallback = Müll → GLM
 - [Token-Sparen 10.10.](feedback-token-sparen.md) — Vereinbarung: 5 Werkzeuge reichen fürs Förder-Projekt (Rest 90+ Skills überflüssig); keine Workflows ohne konkreten Auftrag, max. 2–3 Tags, keine Seiten-Pastes, App/Dateien statt Chat
@@ -15259,7 +15260,7 @@ Integration done 2026-08-30: added `web-search-prime`, `zread`, `zai-vision` MCP
 
 ---
 name: zcode-adhs-automationen
-description: "13.09.–26.10. LIVE: EINE Automation mit ALLEN 6 Briefs (cron `0 9,10,15,16,21`; niemals 6 separate — Nutzer-Ziel!) · **57 Läufe** · 26.10. INFO-PUSH-RETOOLING live bewiesen („Läufe geben 0 Info, wertlos" → CronUpdate: JEDER Lauf sendet macOS-Benachrichtigung + Chat 4-Zeilen WAS/WO/WANN/WIE-WEITER, No-op-1-Zeiler verboten; erster echter Automatik-Push 16:0x No-op PASS, runCount 57) · 26.10. GROSS-KONSOLIDIERUNG: LOKI_TASKBOARD.md angelegt, doku-fix ERLEDIGT (README+Backup), LokiVoice in `~/loki-ki/_ARCHIV/2026-10/loki-voice-alt/` gefunden (P1s obsolet), LegalOps 0 Prozesse (F-3 de facto), OmniRoute :20128 LÄUFT WIEDER (Widerspruch zum Abbau — Richtung offen), DOPPEL-Automation entdeckt (Doku-Sync Mi 15:00 automation-2df8eec5 dupliziert Tages-Routine-Zweig, Lösch-GO offen); **26.10. SYSTEMPROOF 6/6 LIVE PASS → URTEIL AKTIV**; Settings: 4 Automations aktiv, 5 SessionStart-Hook-Gruppen; offen auf GO: Wecker · Deutsch-Patch · Duplikat weg · OmniRoute-Richtung; UHR-ANOMALIE (date=Wahrheit, vor Append NEU lesen); 1 Task pro Chat-Limit"
+description: "13.09.–27.10. LIVE: EINE Automation mit ALLEN 6 Briefs (cron `0 9,10,15,16,21`; niemals 6 separate — Nutzer-Ziel!) · **58+ Läufe** · INFO-PUSH lebt (macOS-Benachrichtigung + 4-Zeilen-Format bei JEDEM Lauf inkl. No-ops, zweimal Automatik-PASS) · GROSS-KONSOLIDIERUNG 26.10.: LOKI_TASKBOARD.md (~/.agents/memory/, 3,9 KB) + SYSTEMPROOF 6/6 AKTIV + Doku-Fix ERLEDIGT (README+Backup) · LokiVoice = `~/loki-ki/_ARCHIV/2026-10/loki-voice-alt/` (P1s obsolet) · Magicline-PDF bewiesen = `~/Desktop/MAGICLINE_GEORGE_ALLES_IN_EINEM_2026-10-19.pdf` (426 KB, déjà-Lektion: vor DATENLAGE UNKLAR deja+exaktes ls) · OmniRoute :20128 LÄUFT WIEDER (Richtung offen) · Doku-Sync-DUPLIKAT automation-2df8eec5 Lösch-GO offen · offen auf GO: Wecker · Deutsch-Patch · Duplikat weg · OmniRoute-Richtung · 1 Task pro Chat-Limit"
 metadata:
   node_type: memory
   type: project
@@ -17768,6 +17769,7 @@ Sascha will **keine Gruppen-Liste**, sondern eine normale chronologische Verlauf
 - [LOKI.OS Live-Status 11.10.](loki-os-livestatus-2026-10-11.md) — Kernel repariert (v15.3.0 lebt, bootstrap-Rezept) · GO 1+2: v17 gestoppt, Brain.app archiviert (/Applications = v18+LokiVoice) · **Taskmaster FINAL: 27 Tasks (19 offen / 8 erledigt), ATLAS-Auftrags-Lücken = Android-Fix #28 + Upload-Echtdurchläufe + Nutzbarkeits-Bewertung** · Nachrichten-Archiv :8745 · Agenten-Tafel D3 · **PDF-Familie Desktop: TAGESBERICHT_11-10-2026 + LOKI_UNIVERSUM_ANALYSE_11-10-2026 + LOKI_OS_UEBERSICHT + DEINE_BEDIENUNG** · openclaw 2026.9.2 im PATH · legal-ops-omni-Sync-Fix (Symlink→echte Kopie)
 - [Berater+Umsetzer-Prinzip](berater-umsetzer-prinzip.md) — 11.10. HART: erst WAS+WARUM erklären (seine Sprache), dann bauen · Stopp-erklär = Erklär-GO · jedes Deliverable mit Userflow
 - [Pflicht-Ablauf: Plan sichtbar](pflicht-ablauf-plan-sichtbar.md) — 11.10. HART: Plan-Tabelle VOR jeder Arbeit (A2 in STANDARD-SKILLS.md, alle Harnesses) · Monster-Session-Token-Ban (keine 2. Session am selben Thema)
+- [Visitenkarte Print-Pipeline](visitenkarte-print-pipeline.md) — 27.10. 4 Designs 8/8 Judge-PASS; Pipeline: PNG@300dpi → bildbasiertes PDF; Seiten-HTMLs brauchen vollen Style-Block
 
 ## appagentteam-flutter-skill-live
 
@@ -19612,6 +19614,31 @@ metadata:
 - **P4 offen:** ALLE-TOOLS-Doku (MD+PDF, Reife-Stempel 🟢🟡🔴⚫) erst NACH Runden-Ende (sonst veraltet). Sascha-GO für Recharge des Platform-Keys = optionaler Qualitäts-Hebel.
 - **Auto-Pilot-Fortschritt (14:5x):** **2/50 plan.json fertig**; dann TimeoutExpired bei cali-atlas-final (600s zu knapp für GLM-4.6-Langläufer) → **autopilot.py timeout 600→1200** (Edit drin, gilt für die Rest-Runde nach dem aktuellen Durchlauf — die laufende Runde hat den alten Wert im Speicher und überspringt Langläufer, Rest-Runde mit frischem Cap nachholen). Rest-Pfad: defekte erneut löschen → POST /api/autopilot → bis 50/50.
 - **Eigent-Schwarm (Sascha-Auftrag „Testlauf ATLAS + Verkaufs-HUB SOFORT in Eigent"):** TESTLAUF 1 (ATLAS) **GESENDET** — nach `open -a Eigent` (rendert das Fenster, ABER startet NEUE Instanz PID 43699 und resettet Arbeitskräfte-Modus+Prompt → Modus neu setzen, setValue neu) funktionierte setValue + „Jetzt senden"-Klick; UI: „Aufgaben werden zum Start vorbereitet". TESTLAUF 2 (Verkaufs-HUB) landete als **Nachfrage im ATLAS-Chat** (Datei→Neue Sitzung per AX-Click führt nicht aus; Agent fragte „Could you clarify") → Sascha macht Neue Sitzung manuell, Prompt kopierfertig. GUI-Lektionen: setValue funktioniert auf Electron-Textareas (paste/pressKey scheitern an window_offscreen bei ungerenderten Fenstern); menuitem-AX-Click führt Electron-Menüpunkte nicht aus.
+
+## visitenkarte-print-pipeline
+
+---
+name: visitenkarte-print-pipeline
+description: Saschas Visitenkarten-Workflowsstand 27.10. — Design-Taste-Skills,
+  Visual-Judge-Gate, bewährte Druck-PDF-Pipeline (PNG→bildbasiertes PDF)
+metadata:
+  node_type: memory
+  type: project
+  originSessionId: session_c6838a9a3dbab5ae2ed3f047aa155416
+---
+
+Visitenkarte KÖRPERFLUSS (27.10.2026): 4 freigegebene Designs A/F/H/I, 8/8 Seiten von pdf:visual-judge PASS.
+
+**Warum:** Erste Versionen "hingen" (Sascha: "wie hingeschossen") — Emoji-Icons, kein Font-System. Fix per [[design-taste-frontend-v2-experimental]] (Anti-Slop: keine Emojis, kein Pure-Black, Em-Dash-Ban, Marcellus+Jost).
+
+**How to apply (bewährte Pipeline):**
+1. Design in `~/Desktop/VISITENKARTE_DESIGNS_2026-10-27/highend.html` (500×318px Canvas, Fonts lokal in `fonts/` via fontsource-CDN).
+2. Seiten-HTMLs MÜSSEN den kompletten `<style>`-Block aus highend.html erben (sonst Serif-Fallback + schwarze Icons — teuer gelernt).
+3. Pro Seite: `chrome --headless --force-device-scale-factor=2.008 --window-size=500,318 --screenshot` → 1004×639px = 300dpi.
+4. PDF: 2 `<img>` mit `@page{size:85mm 55mm;margin:0}` + `page-break-after:always` → chrome `--print-to-pdf`. NIEMALS direkt HTML-Karten printen (Layer überlappen).
+5. Abnahme: pdf:visual-judge-Agent auf die PNGs, Fixes, Re-Check — erst dann PDF.
+
+Inhalt (final): Ganzheitlicher Therapeut · kein Diplom-Wording · kein Website-Link · nur +43 660 425 3366 + koerperfluss@gmail.com. Glas-Kopf: `LeePerrySmith.glb` aus `~/Desktop/Coworkspace_Ich/Körperfluss EDU/3d-UPGRADE-clone/public/`, gerendert via http-localhost + three.js (file://-CORS blockt GLB-Fetch).
 
 ## wayfinder-skill-konsolidierung
 
