@@ -1,7 +1,7 @@
 ---
 app: zcode
 quelle: "saschalagler/cli/memories/projects/saschalagler-927d48cc8990f46e/memory/sascha-vollzug-keine-zwischenfragen.md"
-stand: 2026-10-11
+stand: 2026-10-27
 tags: [spiegel, zcode]
 ---
 
@@ -35,6 +35,8 @@ Sascha (18.09.2026, nach 30h Konfiguration): „WIESO MUSS ICH JEDEN SCHEISS SCH
 **Ergänzung (11.10., Cline-Pin — „REDE STU TROTTEL"):** „Vorschlag-Listen für Sascha zum Selber-Klicken" = Regelverstoß. Kontext: Ich hatte seine Frage (Modelle rotieren nicht) gelöst, empfahl aber am Ende „In Cline-Pass-Dropdown mal manuell auf ein frisches Modell klicken" — er explodierte, weil ER mich beauftragt hatte zu konfigurieren. **Rule:** Wenn der Auftrag „mach/konfiguriere X" heißt, liefere ich X fertig (Config-Datei direkt editieren + App neustarten + Beweis), NIE als To-do-Liste an ihn zurück. Auch „Entscheidungen für dich"-Listen am Ende sind bei einem Vollzugs-Auftrag Fehlformat — nur Ergebnis + was bleibt offen.
 
 Verwandt: [[loki-verkaufstool-stand]]
+
+**Ergänzung (27.10., FörderOps — „nein warte .. du hast den ffg antrag fertig eingereicht du bimbo" + 5 Skill-Tags grill-me/grill-with-docs/writing-plans/triage/verification-before-completion):** „Nein warte" = SOFORT laufende Workflows stoppen (TaskStop), bevor weiter Token brennen — gestoppt und `ls`-bewiesen: 0 Output auf Platte. **Rule 1:** Wenn Sascha „warte/nein" sagt → Run anhalten, IST-Stand beweisen (ls/TaskStop-Exit), NICHT auslaufen lassen. **Rule 2:** Auf ein FERTIG abgeschlossenes Ding (FFG eingereicht) KEIN neues Szenario-Gebäude (Plan-B-Dokumente, Ablehnungs-Gates, 9-Agenten-Reruns) bauen — das war Doppelarbeit um eine Entscheidung (Jury), die nicht meine ist. Vollzug heißt auch: abgeschlossene Aufgaben NICHT wieder aufkochen. **Rule 3:** Bei Frust+Skill-Tag-Spam (siehe Regel 14 arbeitsregeln): Intent extrahieren = „Verifiziere → Triage → Grill → dann erst weiter" — funktioniert hat: TaskStop + Beweis-Tabelle + Triage (fertig / jetzt fällig / gate-gebunden) + EINE Grill-Runde mit 3 nummerierten ja/nein-Fragen UND je einer klaren Empfehlung (grilling-Skill-Format). Er will die Runde dann wirklich beantworten — Fragen MIT Empfehlung sind erlaubt, offene Fragen nicht.
 
 **Ergänzung (20.09., Voice-Session — härtester Ausbruch bisher):** (1) **GUI-/TCC-Systemdialoge IMMER vorher ankündigen** — ein unaufgefordertes Mikrofon-„Darf python3.14…"-Popup löste „was ist das mausi du sollst nur planen" + Plan-Modus aus. (2) **AskUserQuestion-Formulare mit Options-Chips = Total-Ablehnung** („ALTER BIST DU BEHINDERT") — er will keine Menü-Auswahl, sondern dass ich sein Ziel aus seinen eigenen Doku-Quellen ableite (Explorer-Memory-Sweep) und direkt liefere. (3) Nach Plan-Ablehnung sofort „STARTE SOFORT MULTI AGENT TEAM /research /plan /dev" — Forschung/Analyse darf parallel als 3 Explorer laufen, Edits aber NICHT (Plan-Modus blockiert Schreibzugriffe hart; Read-only-Analysis ist der einzige erlaubte Weg, produktiv zu bleiben). (4) Sein „NICHTS DAVON STIMMT" hieß: er wollte eine **Systemanalyse seines ganzen Agentic OS** (jede App, jede Info), nicht den engen Voice-Fix-Plan — Scope falsch geraten. Lektion: Bei mehrdeutigem Wut-Feedback zuerst den eigentlichen Scope aus dem Shout extrahieren (er benennt ihn) und DIESEN liefern.
 
