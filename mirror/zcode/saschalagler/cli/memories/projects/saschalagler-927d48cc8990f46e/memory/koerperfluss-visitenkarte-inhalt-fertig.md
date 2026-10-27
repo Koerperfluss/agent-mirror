@@ -1,10 +1,10 @@
 ---
 name: koerperfluss-visitenkarte-inhalt-fertig
-description: 27.10.2026 Visitenkarte KÖRPERFLUSS — Inhalt final + 4 Designs A/B/C (design.com
-  Gold/Braun-Nachbauten) + **D „Website-Edition"** (schwarz-gold, echter LeePerrySmith.glb-Glas-Torso
-  als durchscheinende Ebene via three.js/SwiftShader gerendert); KEIN Diplom (psychologische
-  Ansprache „Ganzheitlicher Therapeut"), kein Website-Link, Foto+Logo-Assets gesetzt; Druck-PDF
-  wartet auf Design-Wahl (D ist Saschas letzte Richtung)
+description: 27.10.2026 Visitenkarte KÖRPERFLUSS — Inhalt final + **10 Designs A–J fertig
+  gerendert** (A/B/C design.com-Nachbauten, D Website-Edition mit LeePerrySmith.glb-Glas-Torso,
+  E–J neu: Nachtgold/Goldrahmen/Körperfluss-Linien/Foto-Vollfläche/Creme/Diagonal-Split); KEIN
+  Diplom („Ganzheitlicher Therapeut"), kein Website-Link; Druck-PDF wartet auf Saschas Wahl
+  von 2–3 Favoriten
 metadata:
   node_type: memory
   type: project
@@ -36,7 +36,14 @@ metadata:
 
 **27.10. QUALITÄTS-FIX-RUNDE (letzte Nachricht, /brainstorming-Skill gelesen):** Saschas 3 Kritikpunkte ALLE GEFIXT + gerendert (PNG-Read verifiziert): ① Logo C-Rückseite zentriert (top 47 % optische Mitte) ② B: Pinselband verkleinert/versetzt → Kontaktzeile auf freiem Gold, dunkler (#5a3a00) + fett ③ Lesbarkeit: Untertitel A 11.5px fett dunkel, Script-Headline dunkler + weißer Schatten, Footer B fett. Brainstorming-Skill bewusst ÜBERSPRUNGEN (Idee schon scharf, Nachricht = Fehlerliste) — Sascha akzeptierte; /ui-ux-tester & Co. bewusst nicht genutzt (Karten-Layout ≠ interaktive App).
 
-**Offen (wartet auf Sascha):** Design-Wahl **A/B/C/D** → dann Gewinner pixelgenau polieren + Druck-PDF (85×55 mm, 300 dpi); Subpage nur noch optional. Verwandt: [[ffg-1-anlauf-historie-originalunterlagen]] · [[sascha-arbeitsregeln-hart]]
+**Offen (wartet auf Sascha):** Sascha forderte dann „erstelle mir einfach daraus 5–10 designs" → **AKTUELLER STAND = 10 DESIGNS A–J KOMPLETT** (Übersicht `UEBERSICHT_10_DESIGNS.png`, 1100×4400px — Fenster-Höhe ≥4400 nötig, sonst fehlen untere Reihen). E–J (27.10. spät, alle mit finalem Inhalt + Assets):
+- **E „Nachtgold"**: schwarze Gold-Riesentypo + Rückseite Services in 3 Spalten mit Gold-Stegen
+- **F „Goldrahmen"**: feiner Goldrahmen (inset 14px) + Foto-Porträt links; Rückseite Gold-Vollfläche braune Typo
+- **G „Körperfluss-Linien"**: SVG-Flow-Kurven (Bewegungs-Metapher) + Rückseite Glas-Torso links (opacity .75) + Services rechts
+- **H „Foto-Vollfläche"**: SL-10-Foto als ganze Vorderseite + Schwarz-Verlauf unten; Rückseite Enso-Logo riesig abgeschnitten rechts unten
+- **I „Creme Edition"**: hell #f5ecd7 + Braun-Typo (max. Lesbarkeit, 60+/Hausbesuch-Klientel) + brauner Footer-Balken
+- **J „Diagonal-Split"**: Gold/Dunkel 115°-Diagonalsplit + Foto-Kreis rechts auf Rückseite
+**Nächster Schritt:** Sascha nennt 2–3 Favoriten → polieren + Druck-PDF 85×55 mm, 300 dpi, beidseitig, Beschnitt. Verwandt: [[ffg-1-anlauf-historie-originalunterlagen]] · [[sascha-arbeitsregeln-hart]]
 
 **27.10. ABEND: DESIGN D „WEBSITE-EDITION" (neue Richtungsentscheidung):** Sascha wählte A als Basis, aber „etwas was zu meiner Website passt, modern, die 3D-Figur im Hintergrund ganz leicht durchschimmernd". Umgesetzt:
 - **3D-Modell gefunden:** `~/Desktop/Coworkspace_Ich/Körperfluss EDU/3d-UPGRADE-clone/public/LeePerrySmith.glb` (405 KB) = DAS Website-Modell (Memory-Beleg: „LeePerrySmith-Glas-Kopf nur Startseite"). Kein fertiges Render auf der Website — GLB lokal vorhanden!

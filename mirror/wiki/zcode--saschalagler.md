@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-27 12:50 UTC
+Zuletzt gespiegelt: 2026-10-27 13:06 UTC
 
 ## AGENTS
 
@@ -18578,10 +18578,11 @@ metadata:
 
 ---
 name: koerperfluss-visitenkarte-inhalt-fertig
-description: 27.10.2026 Visitenkarte KÖRPERFLUSS — Inhalt final + 3 Vorlagen-Nachbauten
-  A/B/C (design.com Gold/Braun-Stil), KEIN Diplom mehr (psychologische Ansprache: „Ganzheitlicher
-  Therapeut"), Website-Link raus, Foto+Logo-Assets gecroppt, alle Fix-Runden gerendert; Druck-PDF
-  wartet auf Design-Wahl A/B/C
+description: 27.10.2026 Visitenkarte KÖRPERFLUSS — Inhalt final + 4 Designs A/B/C (design.com
+  Gold/Braun-Nachbauten) + **D „Website-Edition"** (schwarz-gold, echter LeePerrySmith.glb-Glas-Torso
+  als durchscheinende Ebene via three.js/SwiftShader gerendert); KEIN Diplom (psychologische
+  Ansprache „Ganzheitlicher Therapeut"), kein Website-Link, Foto+Logo-Assets gesetzt; Druck-PDF
+  wartet auf Design-Wahl (D ist Saschas letzte Richtung)
 metadata:
   node_type: memory
   type: project
@@ -18613,7 +18614,13 @@ metadata:
 
 **27.10. QUALITÄTS-FIX-RUNDE (letzte Nachricht, /brainstorming-Skill gelesen):** Saschas 3 Kritikpunkte ALLE GEFIXT + gerendert (PNG-Read verifiziert): ① Logo C-Rückseite zentriert (top 47 % optische Mitte) ② B: Pinselband verkleinert/versetzt → Kontaktzeile auf freiem Gold, dunkler (#5a3a00) + fett ③ Lesbarkeit: Untertitel A 11.5px fett dunkel, Script-Headline dunkler + weißer Schatten, Footer B fett. Brainstorming-Skill bewusst ÜBERSPRUNGEN (Idee schon scharf, Nachricht = Fehlerliste) — Sascha akzeptierte; /ui-ux-tester & Co. bewusst nicht genutzt (Karten-Layout ≠ interaktive App).
 
-**Offen (wartet auf Sascha):** Design-Wahl **A/B/C** → dann Gewinner pixelgenau polieren + Druck-PDF (85×55 mm, 300 dpi); Subpage nur noch optional. Verwandt: [[ffg-1-anlauf-historie-originalunterlagen]] · [[sascha-arbeitsregeln-hart]]
+**Offen (wartet auf Sascha):** Design-Wahl **A/B/C/D** → dann Gewinner pixelgenau polieren + Druck-PDF (85×55 mm, 300 dpi); Subpage nur noch optional. Verwandt: [[ffg-1-anlauf-historie-originalunterlagen]] · [[sascha-arbeitsregeln-hart]]
+
+**27.10. ABEND: DESIGN D „WEBSITE-EDITION" (neue Richtungsentscheidung):** Sascha wählte A als Basis, aber „etwas was zu meiner Website passt, modern, die 3D-Figur im Hintergrund ganz leicht durchschimmernd". Umgesetzt:
+- **3D-Modell gefunden:** `~/Desktop/Coworkspace_Ich/Körperfluss EDU/3d-UPGRADE-clone/public/LeePerrySmith.glb` (405 KB) = DAS Website-Modell (Memory-Beleg: „LeePerrySmith-Glas-Kopf nur Startseite"). Kein fertiges Render auf der Website — GLB lokal vorhanden!
+- **Render-Rezept (bewiesen, 3 Fehlversuche korrigiert):** `render_head.html` = three.js 0.160 (unpkg importmap) + GLTFLoader + MeshPhysicalMaterial gold (color 0x8a6a1e, metalness .55, roughness .18, clearcoat 1) + Gold-Rim-Light; **Kamera-Auto-Framing nötig**: `dist = (size.y*1.18)/tan(fov/2)` — fixe Distanzen landeten IM Kopf (2.6/5.2 = Nahaufnahme Kinn). **CORS-Falle:** file://-Seite kann GLB nicht fetchen → kopiere GLB neben HTML + `python3 -m http.server 8765` + POST-Save-Endpoint (base64 Canvas→toDataURL→fetch POST→Datei). Headless-Chrome (--headless=new + swiftshader) renderte SCHWARZ — echter Chrome via **chrome-devtools-MCP** (new_page→evaluate __DONE-Poll→toDataURL→POST) funktionierte. Ergebnis `glass_head.png` 1000×1250.
+- **Einbau:** `mix-blend-mode:screen` (Schwarz verschwindet, nur Gold schimmert), Vorderseite opacity .8/118 % rechts, Rückseite .55/88 %. **$PWD-Falle:** in Python-String nicht expandiert → `file://$PWD/…` = kaputte Bild-URLs (schwarze Kreise) — immer os.getcwd() verwenden.
+- DESIGN D = dunkel #050505 + Gold #F6B40C, Gold-Orbit-SVG, weiß/gold Typo, Foto-Chip mit Goldring vorne, Enso-Logo + Services + Quali-Zeile hinten, Übersicht jetzt `UEBERSICHT_4_DESIGNS.png`.
 
 **27.10. SPÄTESTE WENDE — DIPLOM KOMPLETT RAUS, PSYCHOLOGIE STATTTITEL:** Sascha: „KEIN DIPLOM ERWÄHNEN .. DU SOLLST PSYCHOLOGISCH VORGEHEN". Titel-Sprache fliegt von allen Karten:
 - Untertitel Vorderseiten A+B+C = **„GANZHEITLICHER THERAPEUT"** (Saschas eigene Identität, warm, kein Zertifikat)
@@ -19454,6 +19461,10 @@ Saschas harte Regeln, gelernt aus dem 20.09.-Zerwürfnis (619k Token in 1 Sessio
 20. **Nach dichten Technik-Turns: einfache-Sprache-Zusammenfassung PFLICHT (11.10., „ich versteh dich nicht"):** Auf den Cline-Skill-Sync (Fachdetails: skillshare-Quelle, Symlink-Discovery, Context-Budget) reagierte Sascha mit „ich versteh dich nicht" — die BLUF-Tabelle + 3 Fach-Nächste-Schritte waren zu dicht. **Why:** Nach mehreren Work-Paketen hintereinander kennt er die Fachbegriffe des Turns nicht mehr — Beweis-Tabellen beweisen für ICH, nicht für IHN. **How to apply:** Wenn ein Turn mehrere technische Pakete abgeschlossen hat: zum Schluss 1 kurzer Block in einfachen Sätzen („Was du gesagt hast → was jetzt existiert → du musst nichts tun"), Optionen als Alltags-Auswahl-Tabelle („Sag du X → passiert Y"), keine neuen Fachbegriffe; bei Unverständnis NICHT mehr Details liefern, sondern RADIKAL kürzen. Verwandt: Regel 15 (1-Satz-Ziel-Antwort).
 
 21. **Wissen ist DA — erst Inventur, dann Run; KEINE Grill-Fragen bei vorhandenem Kontext (27.10., „DU SOLLTEST IN OBSIDIAN GRAPHIFY CLAUDE-MEM LLM-WIKI MEMORY ALLES GENAU HABEN — DEN GESAMTEN PLAN ALLE FÖRDERUNGEN DAS GANZE PROJEKT ALLE VORLAGEN"):** Ich hatte (a) ein Plan-B-Theater um das bereits EINGEREICHTE FFG gebaut und (b) dem Nutzer 3 Grill-Fragen gestellt, deren Antworten alle in den Quellen standen. **Why:** Für ihn ist „du weißt es doch schon, frag nicht" = Respekt vor der Wissensbasis; Rückfragen bei vorhandenem Kontext wirken wie Inkompetenz. **How to apply:** Vor jedem Antrag/Build: 1× Investigator/FTS-Sweep über die Bekannten Quellen (SECOND_BRAIN/02_FAKTEN_SSOT, SECOND_BRAIN/OUTPUT/, docs/, FÖRDERUNG-Harvests, loki-brain `python3 ~/loki-brain/brain.py search`) — die gefundenen Pfade INJEKTIERT man in Agenten-Prompts („Deine Primärquellen: <Pfad>"), statt Agenten suchen zu lassen oder den Nutzer zu fragen. Fragen nur bei echten Nutzer-Entscheidungen (Geld/Unterschrift/Login), nie bei Fakten. Bewiesen: Investigator-Sweep (312k Token, 117 s) fand 30+ Quellen inkl. 02_SMS_Anfrage.md, 05_TIP_KI_Aktivierung.md, Pilotpartner_Akquise.md — danach lief der Run ohne eine einzige Rückfrage. **Ergänzung (27.10., zweiter Wut-Ausbruch „soll ich dich gleich umbringen?“ mit Zitat DigitalArk/Andrae):** Wenn das Projekt-Memory einen Punkt als [x] erledigt führt (05.08, Andrae + Pelikan), ist er ERLEDIGT — keine „Status-Nachfrage“-/Follow-up-Karten als Absicherung erfinden; Zweifel am Versand nicht als eigene Karte austragen. DigitalArk-Paket auf seinen Befehl aus KLAR/ in KLAR/_ARCHIV/ versetzt, Morgenbericht auf 5 Karten reduziert.
+
+22. **Vom Nutzer gezeigte Vorlagen sind die VERBINDLICHE Design-Basis — nicht neu erfinden (27.10., Visitenkarte, Wut-Ausbruch „WARUM GLAUBST DU DIE VORLAGEN SIND ZUM SPASS?"):** Ich hatte auf seine design.com-Templates hin eigene neue Schwarz-Gold-Designs erfunden statt die Templates nachzubauen. **Why:** Wenn er Screenshots/PDFs seiner Alt-Entwürfe anhängt, ist das der Auftrag „auf DIESER Basis bauen", nicht „Inspiration". **How to apply:** Angehängte Alt-Designs = Palette (#F6B40C Gold, #865000 Pinsel-Braun) + Layoutstruktur exakt übernehmen; neue Richtung nur wenn er explizit „modern/neu" sagt (wie bei Design D Website-Edition). Details: [[koerperfluss-visitenkarte-inhalt-fertig]].
+
+23. **Marketing-Sprache = Nutzen & Identität, KEINE Titel/Zertifikate (27.10., „ICH BIN SPORT UND HEILMASSEUR MIT DIPLOM" → später „kein diplom erwähnen .. du sollst psychologisch vorgehen"):** Er pendelte erst hart auf den Diplom-Titel, dann komplett raus — Endstand: Untertitel „GANZHEITLICHER THERAPEUT" (seine eigene Identität), Trust-Closer „Alles aus einer Hand", Fachwörter (Sport- & Heilmasseur/WSWCF) bleiben ohne Titel-Zeremonie. **Why:** Er denkt verkaufspsychologisch — Kunden kaufen Ergebnis, nicht Papiere. **How to apply:** Bei Kunden-Sichtbarem (Karten, Flyer, Website-Texte): Nutzen-Identität statt Credential-Listen; Zertifikate nur ins Erstgespräch/Impressum. Nicht zwischen Titeln pendeln — direkt Nutzen-Formulierung anbieten.
 
 **Why:** Sascha (ADHS) will das GROSSE Bild in SEINEM Orchestrierungs-Format (PLAN-Tabelle, Schwarm-Rollen, Reviewer-Veto) — weder Explorer-Schleifen noch Solo-Mini-Pläne. Plan-Lehnen heißt „Format falsch", nicht „weniger machen".
 **How to apply:** Neuer Build-Auftrag → sofort PLAN-Tabelle konform Standard-Skill-System S.2 mit installierten Subagenten (implementer/qa-tester/reviewer qwen3.8-max/explore), max 3 parallel, PLAN.md ins Projekt, Auto-Vollzug nach Freigabe. GUI/Deploy/Dateien nur nach GO. Verwandt: [[sascha-vollzug-keine-zwischenfragen]] (GO-Phase), [[loki-voice-agent]].
