@@ -84,6 +84,21 @@ public final class StemPlayer {
         isPlaying = false
     }
 
+    /// Seek in Sekunden; laufende Wiedergabe wird an der neuen Position fortgesetzt.
+    public func seek(to seconds: TimeInterval) {
+        guard !files.isEmpty else { return }
+        let wasPlaying = isPlaying
+        for (i, p) in players.enumerated() {
+            let f = files[i]
+            let sr = f.processingFormat.sampleRate
+            let target = AVAudioFramePosition(max(0, min(seconds * sr, Double(f.length) - 1)))
+            p.stop()
+            f.framePosition = target
+        }
+        isPlaying = false
+        if wasPlaying { play() }
+    }
+
     /// Gain je Kanal: Index 0 = Mix, 1...4 = Stems (Solo/Mute über 0/1).
     /// Index außerhalb der Reichweite wird ignoriert (no-crash).
     public func setStemGain(index: Int, gain: Double) {

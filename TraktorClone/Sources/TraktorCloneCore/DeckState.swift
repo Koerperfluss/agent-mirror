@@ -96,6 +96,16 @@ public struct DeckState {
         guard let s = loopStart, position > s else { return }
         loopEnd = position; loopActive = true
     }
+
+    /// Beat-Loop: setzt Loop ab aktueller Position über N Beats (Traktor-Loop-Encoder).
+    /// Ende wird an die Track-Dauer geclampt.
+    public mutating func setBeatLoop(beats: Int, bpm: Double) {
+        precondition(beats > 0 && bpm > 0)
+        let spb = 60.0 / bpm
+        loopStart = position
+        loopEnd = min(position + Double(beats) * spb, duration)
+        loopActive = true
+    }
     public mutating func loopExit() { loopActive = false }
     public mutating func loopToggle() { loopActive.toggle() }
 

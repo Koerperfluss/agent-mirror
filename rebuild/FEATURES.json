@@ -53,7 +53,7 @@
   "name": "Loop In/Out + Exit",
   "evidence_level": "documented",
   "implementation_status": "implemented",
-  "notes": "DeckState-Loop-Logik (Sprung in AudioEngine Slice 4)"
+  "notes": "Slice 9: Beat-Loops 1/2/4/8 Beats (setBeatLoop + Engine-Timer-Retrigger) + Exit"
  },
  {
   "id": "F-008",
@@ -197,8 +197,9 @@
   "area": "Sync",
   "name": "Auto-DJ/Playlists",
   "evidence_level": "documented",
-  "implementation_status": "not_started",
-  "notes": "Slice 9"
+  "implementation_status": "implemented",
+  "notes": "Slice 9: Auto-DJ-Toggle, 5s-Ende-Wächter lädt nächsten Library-Track ins andere Deck (AutoDJ round-robin)",
+  "test_refs": "AutoDJTests"
  },
  {
   "id": "F-026",
@@ -230,7 +231,8 @@
   "area": "Deck",
   "name": "Jog-Wheel-Seek",
   "evidence_level": "documented",
-  "implementation_status": "not_started",
-  "notes": "Slice 3 (mit Waveform)"
+  "implementation_status": "implemented",
+  "notes": "Slice 9: Waveform-Drag = Scrub (kontinuierlicher Seek), Klick = Jump; Zoom 1x/2x/4x um Playhead",
+  "test_refs": "waveformView"
  }
 ]

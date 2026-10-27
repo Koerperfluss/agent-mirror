@@ -69,6 +69,12 @@ struct ContentView: View {
             }
             .buttonStyle(.bordered)
             Button("Sync B→A") { engineHost.syncDeck(1) }.buttonStyle(.borderedProminent)
+            // Slice 8: Auto-DJ — spielt die Library nacheinander durch
+            Button(engineHost.autoDjEnabled ? "🤖 Auto-DJ ✓" : "🤖 Auto-DJ") {
+                engineHost.toggleAutoDJ()
+            }
+            .buttonStyle(.borderedProminent)
+            .tint(engineHost.autoDjEnabled ? Theme.gr : Theme.acc)
             Button(engineHost.isRecording ? "⏺ Stop" : "⏺ Rec") { toggleRecording() }
                 .buttonStyle(.borderedProminent)
                 .tint(engineHost.isRecording ? Theme.rd : Theme.acc)
@@ -92,17 +98,27 @@ struct ContentView: View {
         VStack(alignment: .leading, spacing: 8) {
             HStack {
                 Text("Deck \(label)").font(.headline)
+                Button("🔍\(vm.zoom)x") { vm.cycleZoom() }
+                    .buttonStyle(.bordered).font(.caption)
                 Spacer()
                 Text(vm.title).font(.caption).lineLimit(1).truncationMode(.middle)
             }
             waveformView(vm: vm)
-            HStack {
+            HStack(spacing: 8) {
                 Text(timeString(vm.playhead)).font(.system(.caption, design: .monospaced))
                 // Slice 8: Beat-Phase-LED — blitzt bei jedem Beat-Start auf
                 Circle()
                     .fill(Theme.gr.opacity(vm.state.isPlaying ? Double(1 - vm.beatPhase) * 0.9 + 0.1 : 0.15))
                     .frame(width: 10, height: 10)
                     .help("Beat-Phase (blinkt auf dem Beat)")
+                // Slice 8: VU-Meter
+                GeometryReader { geo in
+                    Capsule()
+                        .fill(Theme.gr.opacity(0.85))
+                        .frame(width: max(2, geo.size.width * CGFloat(min(vm.level, 1))))
+                }
+                .frame(height: 6)
+                .background(Capsule().fill(Theme.bd))
                 Spacer()
                 Text(timeString(vm.state.duration)).font(.system(.caption, design: .monospaced))
             }
@@ -117,9 +133,22 @@ struct ContentView: View {
                     Button("\(i)") { vm.hotcue(i) }.frame(width: 34)
                 }
                 Spacer()
+                // Slice 8: Beat-Loops 1/2/4/8 + Exit
+                ForEach([1, 2, 4, 8], id: \.self) { b in
+                    Button("\(b)") { vm.setBeatLoop(b) }
+                        .buttonStyle(.bordered)
+                        .tint(vm.loopBeats == b ? Theme.yl : Theme.acc)
+                        .frame(width: 30)
+                }
+                if vm.loopBeats != nil {
+                    Button("✕") { vm.exitLoop() }.buttonStyle(.bordered).tint(Theme.rd)
+                }
+                Spacer()
                 Button(vm.state.keylock ? "Key ✓" : "Key") { vm.state.toggleKeylock() }
                     .buttonStyle(.bordered)
             }
+            // Slice 8: Stem-Mixer (nur bei .stem.mp4)
+            if vm.isStem { stemMixerRow(vm: vm) }
             pitchRow(vm: vm)
             fxRow(vm: vm)
         }
@@ -139,25 +168,39 @@ struct ContentView: View {
         }
     }
 
-    /// Slice 3: Waveform-Canvas mit Playhead; Klick = Seek.
+    /// Slice 3/8: Waveform-Canvas mit Zoom-Fenster; Klick = Seek, Ziehen = Scrub.
     private func waveformView(vm: DeckViewModel) -> some View {
         Canvas { ctx, size in
             let w = size.width, h = size.height
-            let buckets = vm.waveform
-            if buckets.isEmpty {
+            let all = vm.waveform
+            if all.isEmpty {
                 ctx.fill(Path(CGRect(x: 0, y: h / 2 - 1, width: w, height: 2)),
-                         with: .color(.secondary.opacity(0.25)))
+                         with: .color(Theme.muted.opacity(0.25)))
+                return
+            }
+            // Zoom-Fenster um den Playhead (1x = alles, 2x/4x = Ausschnitt)
+            let n = all.count
+            let frac = vm.state.duration > 0 ? vm.playhead / vm.state.duration : 0
+            let vis: ArraySlice<Float>
+            let offsetF: CGFloat
+            if vm.zoom == 1 {
+                vis = all[...]; offsetF = 0
             } else {
-                let bw = w / CGFloat(buckets.count)
-                for (i, peak) in buckets.enumerated() {
-                    let barH = max(1, CGFloat(peak) * h)
-                    ctx.fill(Path(CGRect(x: CGFloat(i) * bw, y: (h - barH) / 2,
-                                         width: max(bw - 0.5, 0.5), height: barH)),
-                             with: .color(Theme.acc.opacity(0.7)))
-                }
+                let win = max(1, n / vm.zoom)
+                var start = Int(frac * CGFloat(n)) - win / 2
+                start = max(0, min(start, n - win))
+                vis = all[start..<(start + win)]
+                offsetF = CGFloat(start) / CGFloat(n)
+            }
+            let bw = w / CGFloat(max(vis.count, 1))
+            for (i, peak) in vis.enumerated() {
+                let barH = max(1, CGFloat(peak) * h)
+                ctx.fill(Path(CGRect(x: CGFloat(i) * bw, y: (h - barH) / 2,
+                                     width: max(bw - 0.5, 0.5), height: barH)),
+                         with: .color(Theme.acc.opacity(0.7)))
             }
             if vm.state.duration > 0 {
-                let x = w * CGFloat(vm.playhead / vm.state.duration)
+                let x = w * CGFloat(max(0, min(frac - offsetF, 1)))
                 ctx.fill(Path(CGRect(x: x, y: 0, width: 2, height: h)),
                          with: .color(Theme.rd))
             }
@@ -171,8 +214,33 @@ struct ContentView: View {
                     .onTapGesture { location in
                         vm.seekFraction(location.x / geo.size.width)
                     }
+                    .gesture(DragGesture(minimumDistance: 1).onChanged { g in
+                        vm.seekFraction(g.location.x / geo.size.width)   // Jog/Scrub
+                    })
             }
         )
+    }
+
+    /// Slice 8: Stem-Mixer — Gain-Slider Mix + 4 Stems mit Solo.
+    private func stemMixerRow(vm: DeckViewModel) -> some View {
+        let labels = ["Mix", "Drums", "Bass", "Other", "Voc"]
+        return VStack(alignment: .leading, spacing: 3) {
+            Text("Stems").font(.caption).foregroundStyle(Theme.muted)
+            HStack(spacing: 8) {
+                ForEach(0..<5, id: \.self) { i in
+                    VStack(spacing: 2) {
+                        Slider(value: Binding(get: { vm.stemGains[i] },
+                                              set: { vm.setStemGain(i, $0) }), in: 0...1)
+                            .frame(width: 74)
+                        HStack(spacing: 3) {
+                            Text(labels[i]).font(.caption2).foregroundStyle(Theme.muted)
+                            Button("S") { vm.stemSolo(i) }
+                                .buttonStyle(.bordered).font(.caption2).padding(1)
+                        }
+                    }
+                }
+            }
+        }
     }
 
     private func pitchRow(vm: DeckViewModel) -> some View {
@@ -327,6 +395,42 @@ final class EngineHost: ObservableObject {
     // Slice 8: MIDI-Learn-Zustand
     @Published var learning = false
     @Published var learnAction: DeckAction?
+    // Slice 8: Auto-DJ
+    @Published var autoDjEnabled = false
+    private var autoDj = AutoDJ()
+    private var finishTimer: Timer?
+
+    /// Auto-DJ: lädt bei Track-Ende den nächsten Library-Track ins freie Deck.
+    func toggleAutoDJ() {
+        autoDjEnabled.toggle()
+        autoDj.enabled = autoDjEnabled
+        if autoDjEnabled { startFinishWatcher() } else { finishTimer?.invalidate() }
+    }
+
+    /// Beobachtet beide Decks; kurz vor Track-Ende: nächster Track ins andere Deck.
+    private func startFinishWatcher() {
+        finishTimer?.invalidate()
+        finishTimer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { [weak self] _ in
+            Task { @MainActor in
+                guard let self, self.autoDjEnabled, self.library.isEmpty == false else { return }
+                for vm in [self.deckA, self.deckB] {
+                    let remaining = vm.state.duration - vm.playhead
+                    if vm.state.isPlaying, vm.state.duration > 0,
+                       remaining < 5, remaining > 0, !vm.autoDjArmed {
+                        vm.autoDjArmed = true
+                        // Nächsten Track ins ANDERE Deck laden und starten
+                        if let next = self.autoDj.next(from: self.library) {
+                            let other = vm === self.deckA ? self.deckB : self.deckA
+                            self.load(track: next, deck: other.index)
+                            if !other.state.isPlaying { other.togglePlay() }
+                        }
+                    } else if !vm.state.isPlaying || remaining > 10 {
+                        vm.autoDjArmed = false   // Reset, wenn neu gestartet/geseekt
+                    }
+                }
+            }
+        }
+    }
 
     /// Lern-Modus starten: nächste MIDI-Botschaft wird auf `action` gemappt.
     func startLearn(_ action: DeckAction) {

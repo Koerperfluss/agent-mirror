@@ -1,7 +1,7 @@
 import AVFoundation
 
-/// Audio-Backend: 2 Decks über AVAudioEngine (PlayerNode + TimePitch pro Deck).
-/// Slice 1: Load/Play/Pause/Pitch/Keylock/Volume. Loop-Seek folgt in Slice 4.
+/// Audio-Backend: 2 Decks über AVAudioEngine (PlayerNode + TimePitch + FX-Kette
+/// pro Deck), Stem-Player je Deck (echtes 4-Stem), VU-Pegel-Messung, Loops.
 public final class AudioEngine {
     public enum DeckError: Error { case loadFailed(String) }
 
@@ -11,6 +11,11 @@ public final class AudioEngine {
     private var files: [Int: AVAudioFile] = [:]
     /// Effekt-Kette pro Deck (Filter/Delay/Reverb) — in init verkabelt.
     public private(set) var fx: [Int: FxChain] = [:]
+    /// Slice 8: Stem-Player pro Deck (echtes 4-Stem-Playback über eigene Dateien).
+    private var stemPlayers: [Int: StemPlayer] = [:]
+    /// Slice 8: Pegel-Messung je Deck (Peak 0...1, per Tap).
+    private var deckLevels: [Int: Double] = [0: 0, 1: 0]
+    private var lastTapTime: [Int: TimeInterval] = [0: 0, 1: 0]
 
     public init() {
         for d in 0...1 {
@@ -30,6 +35,28 @@ public final class AudioEngine {
             players[d] = player
             timePitch[d] = tp
             fx[d] = chain
+            installMeter(deck: d, node: chain.reverb)
+        }
+    }
+
+    /// VU-Pegel (Peak 0...1) je Deck; verfällt, wenn keine Buffer mehr kommen.
+    public func level(deck: Int) -> Double {
+        let now = ProcessInfo.processInfo.systemUptime
+        guard let last = lastTapTime[deck], now - last < 0.15 else { return 0 }
+        return deckLevels[deck] ?? 0
+    }
+
+    private func installMeter(deck: Int, node: AVAudioNode) {
+        let fmt = node.outputFormat(forBus: 0)
+        node.installTap(onBus: 0, bufferSize: 1024, format: fmt) { [weak self] buffer, _ in
+            guard let self, let ch = buffer.floatChannelData?[0] else { return }
+            var peak: Float = 0
+            for i in 0..<Int(buffer.frameLength) {
+                let v = abs(ch[i])
+                if v > peak { peak = v }
+            }
+            self.deckLevels[deck] = Double(peak)
+            self.lastTapTime[deck] = ProcessInfo.processInfo.systemUptime
         }
     }
 
@@ -44,13 +71,32 @@ public final class AudioEngine {
             throw DeckError.loadFailed("Nicht lesbar: \(url.lastPathComponent)")
         }
         stop(deck: deck)
+        stemPlayers[deck] = nil                          // Stem-Modus verlassen
         files[deck] = file
         let sampleRate = file.processingFormat.sampleRate
         return Double(file.length) / sampleRate
     }
 
+    /// Slice 8: Stem-Datei laden (echte 5-Track-Wiedergabe); wirft bei Fehlern durch.
+    public func loadStem(url: URL, deck: Int) throws -> Double {
+        guard (0...1).contains(deck) else { throw DeckError.loadFailed("Deck \(deck) existiert nicht") }
+        let sp = stemPlayers[deck] ?? StemPlayer()
+        try sp.load(url: url)
+        players[deck]?.stop()
+        files[deck] = nil
+        stemPlayers[deck] = sp
+        return sp.duration ?? 0
+    }
+
+    public func isStemDeck(_ deck: Int) -> Bool { stemPlayers[deck] != nil }
+
+    public func stemGain(deck: Int, stem: Int, gain: Double) {
+        stemPlayers[deck]?.setStemGain(index: stem, gain: gain)
+    }
+
     /// Seek: Player neu schedulen ab Frame-Offset; Playing-Zustand wird erhalten.
     public func seek(deck: Int, to seconds: TimeInterval) {
+        if let sp = stemPlayers[deck] { sp.seek(to: seconds); return }
         guard let file = files[deck], let player = players[deck] else { return }
         let sampleRate = file.processingFormat.sampleRate
         let target = AVAudioFramePosition(max(0, min(seconds * sampleRate, Double(file.length) - 1)))
@@ -68,8 +114,9 @@ public final class AudioEngine {
     }
 
     public func play(deck: Int) {
-        guard let file = files[deck], let player = players[deck] else { return }
         try? startIfNeeded()
+        if let sp = stemPlayers[deck] { sp.play(); return }
+        guard let file = files[deck], let player = players[deck] else { return }
         if player.isPlaying { return }
         let start = file.framePosition
         player.scheduleSegment(file, startingFrame: start,
@@ -78,13 +125,15 @@ public final class AudioEngine {
     }
 
     public func stop(deck: Int) {
+        if let sp = stemPlayers[deck] { sp.pause(); return }
         players[deck]?.stop()
     }
 
     /// Pause mit Präzision: aktuelle playerTime-Position wird in
     /// `file.framePosition` zurückgeschrieben, damit `play(deck:)` exakt dort
-    /// weiterscheduled (statt am Dateiende/gestörten Offset).
+    /// weiterscheduled (Stem-Decks pausiert der StemPlayer selbst).
     public func pause(deck: Int) {
+        if let sp = stemPlayers[deck] { sp.pause(); return }
         guard let file = files[deck], let player = players[deck] else { return }
         var pos = Double(file.framePosition)
         if let nodeTime = player.lastRenderTime,
@@ -95,13 +144,10 @@ public final class AudioEngine {
         file.framePosition = AVAudioFramePosition(max(0, min(pos, Double(file.length))))
     }
 
-    // MARK: - Loop (Slice 7c)
+    // MARK: - Loop
 
-    /// Loop pro Deck. MECHANISMUS: `AVAudioPlayerNode.scheduleSegment` hat einen
-    /// Completion-Handler, aber Retrigger darüber ist an `completionCallbackType`
-    /// gebunden und beim Seek/Stop fragil — deshalb bewusst SIMPLEST: ein
-    /// repeating Timer alle (Loop-Dauer / Rate) Sekunden macht `seek(deck:to:)`
-    /// zurück zum Loop-Start. Kompiliert, nachvollziehbar, `disableLoop` stoppt ihn.
+    /// Loop pro Deck. MECHANISMUS: repeating Timer alle (Loop-Dauer) macht
+    /// `seek(deck:to:)` zurück zum Loop-Start — simplest, robust, `disableLoop` stoppt ihn.
     private struct LoopState {
         let startSec: Double
         let endSec: Double
@@ -136,9 +182,7 @@ public final class AudioEngine {
     }
 
     public func setKeylock(deck: Int, on: Bool) {
-        let tp = timePitch[deck]
-        tp?.pitch = 0                                 // Tonhöhe neutral
-        // AVAudioUnitTimePitch hält Tonhöhe bei raten Änderung automatisch (kSteepness default).
+        timePitch[deck]?.pitch = 0                      // Tonhöhe neutral (Keylock)
         _ = on
     }
 

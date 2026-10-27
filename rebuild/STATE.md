@@ -36,3 +36,13 @@ cd agent-mirror/TraktorClone
 - MIDI-Learn-UI: Learn-Leiste (Play/Cue/HC1–4/X-Fade) → nächste MIDI-Botschaft zuweist, Persistenz mappings.json; Abbrechen-Button
 - 62/62 Tests, App neu gebaut
 - Offen S9: Auto-DJ, Waveform-Zoom
+
+## Slice 9 (26.10.) — FERTIG (Kernfunktionen komplett)
+- Auto-DJ: Toggle, 5s vor Ende wird nächster Library-Track ins andere Deck geladen+gestartet (AutoDJ round-robin, getestet)
+- Beat-Loops: 1/2/4/8 Beats ab Position (setBeatLoop, Engine-Timer-Retrigger), Loop-Exit ✕
+- Jog/Scrub: Waveform-Drag = kontinuierlicher Seek; Klick = Jump
+- Waveform-Zoom 1x/2x/4x (Fenster um Playhead)
+- Stem-Mixer: Mix+4 Stems Gain-Slider + Solo (bei .stem.mp4)
+- VU-Meter je Deck (Peak-Tap an FX-Kette, 0,15s-Decay)
+- 70/70 Tests (14 Suiten), Bundle neu, App läuft
+- Offen: Waveform-Feinschliff (Beatgrid-Overlay), Cue-Persistenz

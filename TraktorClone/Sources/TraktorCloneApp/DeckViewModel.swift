@@ -13,6 +13,12 @@ final class DeckViewModel: ObservableObject {
     @Published var title: String = "— kein Track —"
     @Published var playhead: TimeInterval = 0
     @Published var beatPhase: Double = 0              // Slice 8: 0...1 im Beat (LED)
+    @Published var zoom = 1                           // Slice 8: Waveform-Zoom 1/2/4
+    @Published var level: Double = 0                  // Slice 8: VU-Pegel 0...1
+    @Published var isStem = false                     // Slice 8: Stem-Deck (.stem.mp4)?
+    @Published var stemGains: [Double] = [1, 1, 1, 1, 1]  // Mix + 4 Stems
+    @Published var loopBeats: Int? = nil              // aktiver Beat-Loop (1/2/4/8)
+    var autoDjArmed = false                           // Slice 8: Auto-DJ-Marker je Deck
     private var syncEngine = SyncEngine()
     @Published var waveform: [Float] = []             // Slice 3: Peak-Buckets
     @Published var bpm: Double?                       // aus Library oder Setzung
@@ -42,10 +48,18 @@ final class DeckViewModel: ObservableObject {
 
     func load(url: URL) {
         do {
-            let dur = try engine.load(url: url, deck: index)
+            var dur: Double
+            if url.pathExtension.lowercased() == "mp4" {
+                dur = try engine.loadStem(url: url, deck: index)   // Slice 8: echter Stem-Pfad
+                isStem = true
+            } else {
+                dur = try engine.load(url: url, deck: index)
+                isStem = false
+            }
             state.load(title: url.deletingPathExtension().lastPathComponent, duration: dur)
             title = state.trackTitle
             loadedURL = url
+            loopBeats = nil
             // Waveform im Hintergrund extrahieren (Slice 3)
             waveform = []
             let extractURL = url
@@ -115,6 +129,38 @@ final class DeckViewModel: ObservableObject {
         engine.setVolume(deck: index, gain: gain)
     }
 
+    /// Slice 8: Beat-Loop 1/2/4/8 Beats ab aktueller Position (State + Engine-Retrigger).
+    func setBeatLoop(_ beats: Int) {
+        guard duration > 0 else { return }
+        let bpmV = bpm ?? 120
+        state.setBeatLoop(beats: beats, bpm: bpmV)
+        if let s = state.loopStart, let e = state.loopEnd {
+            engine.enableLoop(deck: index, startSec: s, endSec: e)
+            loopBeats = beats
+        }
+    }
+
+    func exitLoop() {
+        state.loopExit()
+        engine.disableLoop(deck: index)
+        loopBeats = nil
+    }
+
+    func cycleZoom() {
+        zoom = zoom == 1 ? 2 : (zoom == 2 ? 4 : 1)
+    }
+
+    /// Slice 8: Stem-Gain/Solo (Mix = 0, Stems 1...4).
+    func setStemGain(_ i: Int, _ v: Double) {
+        guard stemGains.indices.contains(i) else { return }
+        stemGains[i] = min(max(v, 0), 1)
+        engine.stemGain(deck: index, stem: i, gain: stemGains[i])
+    }
+
+    func stemSolo(_ i: Int) {
+        for k in 0..<5 { setStemGain(k, k == i ? 1 : 0) }
+    }
+
     var fileURL: URL? { loadedURL }
 
     private var clock: TimeInterval { ProcessInfo.processInfo.systemUptime }
@@ -131,6 +177,7 @@ final class DeckViewModel: ObservableObject {
                 // Beat-Phase für LED (Standard 120 BPM, solange kein BPM bekannt)
                 let grid = BeatGrid(bpm: self.bpm ?? 120)
                 self.beatPhase = self.syncEngine.beatPhase(time: self.playhead, grid: grid)
+                self.level = self.engine.level(deck: self.index)
             }
         }
     }
