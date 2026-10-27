@@ -1,7 +1,7 @@
 ---
 app: zcode
 quelle: "saschalagler/cli/memories/projects/default-041661acc4598b22/memory/subagent-dispatch-implementer-workaround.md"
-stand: 2026-10-05
+stand: 2026-10-27
 tags: [spiegel, zcode]
 ---
 
@@ -40,3 +40,5 @@ metadata:
 **✅ 05.10. 14:09 — FALL KOMPLETT GELÖST (Endbeweis):** Sascha hat ZCode neu geöffnet (⌘Q + Neustart) → 1-Zeilen-Test-Dispatch: **„DISPATCH OK — Neustart wirksam"** (general-purpose, 17,5 s). Die Kette ist damit bewiesen: Konfig auf Disk korrigieren (Overrides leeren ODER Sascha stellt im UI um) → **App-Neustart ist der unverzichtbare letzte Schritt** → Dispatch läuft. Danach sofort 2 Hintergrund-Agents gestartet (Fundinventar + Marinus-Nachricht) — liefen sauber. Merksatz final: disk-fix → restart → EIN Test → direkt Teams starten, keine weiteren Einzel-Tests (Karten-Regel oben).
 
 **⚠️ 18.09. (3. Beobachtung):** implementer kann auch silent FERTIG sein und danach weitere Edits machen — TaskOutput „No task found" heißt nicht verloren; Arbeit lag im Tree (git log bewies seinen Picker-Commit). Und: gelöschte Director-Dateien können im Projekt-`_ARCHIV/` liegen (Kollisions-Auflösung des Agenten) — vor Re-Implementierung IMMER erst Archiv/Tree prüfen, sonst baut man Duplikate.
+
+**✅ 26.10. RELIABILITÄTS-UPDATE:** Parallel-Team aus **2× implementer + 1× code-architect** lief sauber (Engine-Bau 7/7 PASS · asar-Extraktion 5066 UI-Strings mit Gates · Kalender-AppleScript-Beweis mit Event-UID); **explore + reviewer warfen erneut „Model request failed"** (2×Retry half nicht), ein dritter implementer starb an „user concurrency limit exceeded". Merkmuster: implementer/code-architect = zuverlässige Typen, explore/reviewer = unzuverlässig → bei deren Aufgaben direkt selbst ausführen oder implementer mit Read-only-Auftrag.
