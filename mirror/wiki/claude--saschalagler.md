@@ -1,6 +1,6 @@
 # saschalagler (claude)
 
-Zuletzt gespiegelt: 2026-10-27 02:37 UTC
+Zuletzt gespiegelt: 2026-10-27 02:53 UTC
 
 ## CLAUDE
 
@@ -2313,6 +2313,129 @@ Encode these as explicit "NEVER DO" rules in the DESIGN.md:
 # Design System: [Project Title]
 
 ## 1. Visual Theme & Atmosphere
+
+## SKILL
+
+---
+name: _gstack-command
+preamble-tier: 1
+version: 1.2.0
+description: Router for the gstack skill suite. (gstack)
+allowed-tools:
+  - Bash
+  - Read
+  - AskUserQuestion
+triggers:
+  - gstack
+  - which gstack skill
+  - route this with gstack
+
+---
+<!-- AUTO-GENERATED from SKILL.md.tmpl — do not edit directly -->
+<!-- Regenerate: bun run gen:skill-docs -->
+
+
+## When to invoke this skill
+
+Sends any gstack request to the right skill
+(planning, review, QA, shipping, debugging, docs, security, design). For browser/QA
+and dogfooding it points you at /browse. Use when you invoke gstack without a specific
+skill, or ask "which gstack skill fits this?".
+
+## Preamble (run first)
+
+```bash
+_UPD=$(~/.claude/skills/gstack/bin/gstack-update-check 2>/dev/null || .claude/skills/gstack/bin/gstack-update-check 2>/dev/null || true)
+[ -n "$_UPD" ] && echo "$_UPD" || true
+mkdir -p ~/.gstack/sessions
+touch ~/.gstack/sessions/"$PPID"
+_SESSIONS=$(find ~/.gstack/sessions -mmin -120 -type f 2>/dev/null | wc -l | tr -d ' ')
+find ~/.gstack/sessions -mmin +120 -type f -exec rm {} + 2>/dev/null || true
+_PROACTIVE=$(~/.claude/skills/gstack/bin/gstack-config get proactive 2>/dev/null || echo "true")
+_PROACTIVE_PROMPTED=$([ -f ~/.gstack/.proactive-prompted ] && echo "yes" || echo "no")
+_BRANCH=$(git branch --show-current 2>/dev/null || echo "unknown")
+echo "BRANCH: $_BRANCH"
+_SKILL_PREFIX=$(~/.claude/skills/gstack/bin/gstack-config get skill_prefix 2>/dev/null || echo "false")
+echo "PROACTIVE: $_PROACTIVE"
+echo "PROACTIVE_PROMPTED: $_PROACTIVE_PROMPTED"
+echo "SKILL_PREFIX: $_SKILL_PREFIX"
+source <(~/.claude/skills/gstack/bin/gstack-repo-mode 2>/dev/null) || true
+REPO_MODE=${REPO_MODE:-unknown}
+echo "REPO_MODE: $REPO_MODE"
+_SESSION_KIND=$(~/.claude/skills/gstack/bin/gstack-session-kind 2>/dev/null || echo "interactive")
+case "$_SESSION_KIND" in spawned|headless|interactive) ;; *) _SESSION_KIND="interactive" ;; esac
+echo "SESSION_KIND: $_SESSION_KIND"
+# Conductor host: AskUserQuestion is unreliable here (native disabled, MCP
+# variant flaky), so skills render decisions as prose instead of calling the
+# tool. Gated on !headless so an eval/CI run INSIDE Conductor (GSTACK_HEADLESS)
+# still BLOCKs rather than rendering prose to nobody.
+if [ "$_SESSION_KIND" != "headless" ] && { [ -n "${CONDUCTOR_WORKSPACE_PATH:-}" ] || [ -n "${CONDUCTOR_PORT:-}" ]; }; then
+  echo "CONDUCTOR_SESSION: true"
+fi
+_ACTIVATED=$([ -f ~/.gstack/.activated ] && echo "yes" || echo "no")
+_FIRST_LOOP_SHOWN=$([ -f ~/.gstack/.first-loop-tip-shown ] && echo "yes" || echo "no")
+echo "ACTIVATED: $_ACTIVATED"
+echo "FIRST_LOOP_SHOWN: $_FIRST_LOOP_SHOWN"
+# First-run project detection: run the detector ONLY on the first-ever skill run
+# (ACTIVATED=no, interactive) so it stays off the hot path for every run after.
+_FIRST_TASK=""
+if [ "$_ACTIVATED" = "no" ] && [ "$_SESSION_KIND" != "headless" ]; then
+  _FIRST_TASK=$(~/.claude/skills/gstack/bin/gstack-first-task-detect 2>/dev/null || true)
+fi
+echo "FIRST_TASK: $_FIRST_TASK"
+_LAKE_SEEN=$([ -f ~/.gstack/.completeness-intro-seen ] && echo "yes" || echo "no")
+echo "LAKE_INTRO: $_LAKE_SEEN"
+_TEL=$(~/.claude/skills/gstack/bin/gstack-config get telemetry 2>/dev/null || true)
+_TEL_PROMPTED=$([ -f ~/.gstack/.telemetry-prompted ] && echo "yes" || echo "no")
+_TEL_START=$(date +%s)
+_SESSION_ID="$$-$(date +%s)"
+echo "TELEMETRY: ${_TEL:-off}"
+echo "TEL_PROMPTED: $_TEL_PROMPTED"
+_EXPLAIN_LEVEL=$(~/.claude/skills/gstack/bin/gstack-config get explain_level 2>/dev/null || echo "default")
+if [ "$_EXPLAIN_LEVEL" != "default" ] && [ "$_EXPLAIN_LEVEL" != "terse" ]; then _EXPLAIN_LEVEL="default"; fi
+echo "EXPLAIN_LEVEL: $_EXPLAIN_LEVEL"
+_QUESTION_TUNING=$(~/.claude/skills/gstack/bin/gstack-config get question_tuning 2>/dev/null || echo "false")
+echo "QUESTION_TUNING: $_QUESTION_TUNING"
+_UPDATE_CHECK=$(~/.claude/skills/gstack/bin/gstack-config get update_check 2>/dev/null || echo "true")
+echo "UPDATE_CHECK: $_UPDATE_CHECK"
+mkdir -p ~/.gstack/analytics
+if [ "$_TEL" != "off" ]; then
+echo '{"skill":"gstack","ts":"'$(date -u +%Y-%m-%dT%H:%M:%SZ)'","repo":"'$(_repo=$(basename "$(git rev-parse --show-toplevel 2>/dev/null)" 2>/dev/null | tr -cd 'a-zA-Z0-9._-'); echo "${_repo:-unknown}")'"}'  >> ~/.gstack/analytics/skill-usage.jsonl 2>/dev/null || true
+fi
+for _PF in $(find ~/.gstack/analytics -maxdepth 1 -name '.pending-*' 2>/dev/null); do
+  if [ -f "$_PF" ]; then
+    if [ "$_TEL" != "off" ] && [ -x "$HOME/.claude/skills/gstack/bin/gstack-telemetry-log" ]; then
+      ~/.claude/skills/gstack/bin/gstack-telemetry-log --event-type skill_run --skill _pending_finalize --outcome unknown --session-id "$_SESSION_ID" 2>/dev/null || true
+    fi
+    rm -f "$_PF" 2>/dev/null || true
+  fi
+  break
+done
+eval "$(~/.claude/skills/gstack/bin/gstack-slug 2>/dev/null)" 2>/dev/null || true
+_LEARN_FILE="${GSTACK_HOME:-$HOME/.gstack}/projects/${SLUG:-unknown}/learnings.jsonl"
+if [ -f "$_LEARN_FILE" ]; then
+  _LEARN_COUNT=$(wc -l < "$_LEARN_FILE" 2>/dev/null | tr -d ' ')
+  echo "LEARNINGS: $_LEARN_COUNT entries loaded"
+  if [ "$_LEARN_COUNT" -gt 5 ] 2>/dev/null; then
+    ~/.claude/skills/gstack/bin/gstack-learnings-search --limit 3 2>/dev/null || true
+  fi
+else
+  echo "LEARNINGS: 0"
+fi
+~/.claude/skills/gstack/bin/gstack-timeline-log '{"skill":"gstack","event":"started","branch":"'"$_BRANCH"'","session":"'"$_SESSION_ID"'"}' 2>/dev/null &
+_HAS_ROUTING="no"
+for _RF in CLAUDE.md AGENTS.md; do
+  if [ -f "$_RF" ] && grep -q "## Skill routing" "$_RF" 2>/dev/null; then
+    _HAS_ROUTING="yes"
+  fi
+done
+_ROUTING_DECLINED=$(~/.claude/skills/gstack/bin/gstack-config get routing_declined 2>/dev/null || echo "false")
+echo "HAS_ROUTING: $_HAS_ROUTING"
+echo "ROUTING_DECLINED: $_ROUTING_DECLINED"
+_VENDORED="no"
+if [ -d ".claude/skills/gstack" ] && [ ! -L ".claude/skills/gstack" ]; then
+  if [ -f ".claude/skills/gstack/VERSION" ] || [ -d ".claude/skills/gstack/.git" ]; then
+    _VENDORED="yes"
 
 ## README
 
