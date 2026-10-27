@@ -24,4 +24,6 @@ BrowserOS (`chrome://browseros/settings` → AI & Agents), FINAL-Stand 26.10.202
 **Why:** Sascha lieferte selbst die OpenRouter-Free-Router-Doku — Gratis-Auto-Modellwahl + ClinePass-Schonung sind jetzt beide erfüllt.
 **How to apply:** Browser-Chat läuft über openrouter/free (0 €). Bei Ausfall: Ollama als Default setzen. curl-Direktests vor UI-Arbeit. Master-Doku: `/Users/saschalagler/LOKI_OS_SETUP.md`.
 
+**ACP-Agenten FINAL (26.10. abends, Sascha-Wunsch „GENAU DAS"):** BrowserOS nutzt jetzt eigene Agenten als „Gehirn", KEIN Claude Code: **Hermes** (`hermes acp`, Connected v0.17.0) · **pi** (`npx pi-acp`, Connected v0.0.34) · **opencode** (`opencode acp`, Connected v1.18.16). Gelöscht: Alt-Eintrag `herm hermes acp` (Binary heißt `hermes`) + mein fälschlicher Claude-Code-Eintrag. Alles überlebte BrowserOS-Neustart (persistiert in Settings). Umschaltung: Composer → Provider-Popup → Agent wählen. Konfig-Dialog: Settings → AI & Agents → CODING AGENTS → Add Custom ACP agent → Name + voller Befehl + Workdir → Test connection (grün = Connected vX) → Create agent.
+
 Verwandt: [[umgebungs-blocker-zcode]] · [[loki-os-system-setup-2026-10-26]]

@@ -1,6 +1,6 @@
 # Memory Index
 
-- [qwen-flash-spark Projekt](qwen-flash-spark-project.md) — Qwen3.8 auf DGX Spark + macOS-Traktor-Clone **Slices 1–8 FERTIG** (TraktorClone/ SwiftPM, 62 Tests, .app-Bundle, Head a9ddc64a4: echter 4-Stem-Playback, Beat-LED, MIDI-Learn-UI); Kanonik: ~/agent-os/agent-mirror; Swift-CLT-Gotchas (Swift Testing, plugin-path)
+- [qwen-flash-spark Projekt](qwen-flash-spark-project.md) — Qwen3.8 auf DGX Spark + macOS-Traktor-Clone **Slices 1–8 FERTIG** (TraktorClone/ SwiftPM, 62 Tests, .app-Bundle, Head ca2b35b30: Dark-DJ-Theme aus Downloads-TSI [505 Entries, Theme-Enum, AA-Kontrast]; vorher 4-Stem-Playback, Beat-LED, MIDI-Learn-UI, Drag&Drop; Old-Instance-Falle: pkill vor Neustart); Kanonik: ~/agent-os/agent-mirror; Swift-CLT-Gotchas (Swift Testing, plugin-path)
 - [Mimosa-Hook-Schreibconstraints](mimosa-hook-write-constraints.md) — warum Edits/Pushes blockiert werden und welche Gegenmuster funktionieren (validate_host, write_text, lazy, pipefail)
 - [Custom-Skills manuell ausführen](custom-skills-read-from-autoclaw.md) — roo-code/gsd-core/coderabbit/loki-dev/ponytail liegen in ~/.openclaw-autoclaw/skills/, ZCode registriert sie nicht → SKILL.md lesen + Methodik manuell anwenden
 - [Subagent-Provider-Fix](subagent-provider-fix-zai-api.md) — finale Lösung: ALLE 10 Defs `account:zai-individual-coding-plan/GLM-5.3-Flash` + thoughtLevel low; **nach Neustart bewiesen: implementer läuft** (alle 37 aktiv); vor Neustart = Live-Route cavecrew-builder
