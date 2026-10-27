@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-27 12:02 UTC
+Zuletzt gespiegelt: 2026-10-27 12:18 UTC
 
 ## AGENTS
 
@@ -17701,6 +17701,8 @@ Sascha will **keine Gruppen-Liste**, sondern eine normale chronologische Verlauf
 
 # Memory Index
 
+- [Visitenkarte KÖRPERFLUSS Inhalt fertig](koerperfluss-visitenkarte-inhalt-fertig.md) — 27.10. finale Inhalts-Fassung (SSOT `~/Desktop/VISITENKARTE_KOERPERFLUSS_INHALT_2026-10-27.md`): Tel +43 660 425 3366 · koerperfluss@gmail.com · LIFESTYLE St. Leonhard + Hausbesuche Melk · 3 Säulen (Massage/Faszien, PT alle Levels, Reha + Migräne-Hook) · KEIN Physiotherapeut-Claim (Studium unterbrochen, 62 ECTS) · **ZERTIFIKATE von Sascha bestätigt (FT-B, PT-A, WSWCF Master Coach, Sport- & Heilmasseur) → Quali-Zeile „Sport- & Heilmasseur · Personal Trainer · Calisthenics Master Coach (WSWCF)" drin** · Health-AI-Startup bewusst NICHT auf Karte (Website-Link genügt) · Design-Einbau in die 3 Karten-Entwürfe wartet auf Saschas „einbauen"-GO
+
 - [LOKI-Kernel Zwei-Master-Falle](loki-kernel-zwei-master-falle.md) — 27.10. „LOKI OS geht nicht"-Ursache: Boot-Script startet ROOT-LOKI_MASTER.py (nicht macos-app-v17), der keine dist-Tabs diente (404) · Fix = /dash-Static-Mount in LOKI_MASTER.py + Neustart (Backup .bak-dashmount-20261027 als rekonstruiertes Pre-Change-Image — Mimosa hatte den cp blockiert) · Live-URLs: :8010/dashboard + /dash/ + /dash/agenten-panel.html (Live-Dienste) + /dash/canvas.html (Heptabase-Board) · Gate-Enforcer-VETO abgearbeitet: Kernel wird teils EXTERN gestoppt (stop_boot.log) → einfach neu starten · anet NICHT installiert (Doctor-Beweis, Installation nur auf GO) · appagentteam gesund (0 tote IDs) · noch down: :3484/:20128/:1006
 
 - [LOKI.OS Nachtkonsolidierung 16.10. FERTIG](loki-os-konsolidierung-2026-10-16.md) — SSOT = `~/loki-ki/docs/LOKI_OS_UNIFIED_2026-10-16.md` (gebündeltes Einheits-Doku: Abos, Apps, Ports, Skills, Team, Repo-Karte, GO-Liste §7) · D1–D4 ausgeführt (Worktree weg, Fossilien in _ARCHIV/2026-10, Backups ~/.zcode/backups/konsolidierung-20261016) · I1–I3 eingepflegt (359 Dumps + 37 Audits + 4 PDFs + rsync-Rückholung) · **ClinePass E2E 200 (task_0006 zu)** · Kernel :8010 UP, LegalOps-Duplikat = Mythos, Hub :1006 down, Sigma :10345 = App entfernt (Reinstall = GO) · 12/12 Workflow-Behauptungen bestätigt (dwfrun-af3116d0) · 8 GO-Reste · **27.10. Eigent-Verdict: NICHT als Plattform (nur CDP-Backend lassen); fehlende Schicht = Task/Agent-Panel-Tab in :8010/dashboard/ — Angebot wartet auf Sascha-JA**
@@ -18571,6 +18573,32 @@ metadata:
 - Offen (→ 30.09. abends alles ERLEDIGT, siehe [[koerperfluss-edu-foerderpilot-fertig]]): Deploy war Stopp-Regel → Sascha erteilte Deploy-GO („verteilt deployen") → beide Apps live mit Hash-Beweis; Gemini-Key via process.env im Browser (Backend-Proxy fehlt, bleibt offen)
 
 **Modell-Empfehlung (30.09., inzwischen belegt):** GLM 5.3 (max) für /Plan/Architektur/Gegenlesen, Flash (max) für Ausführung/Scans/Doku — Flash = 320B MoE, ~8,9× billiger, AA-Index 57; 5.3 = Flagship (CyberGym 84,5); beide mit low/high/max im Z.AI-Plan. Details: [[glm-53-vs-flash-belegte-fakten]]. Verwandt: [[loki-os-v18-endprodukt]], [[sascha-vollzug-keine-zwischenfragen]]
+
+## koerperfluss-visitenkarte-inhalt-fertig
+
+---
+name: koerperfluss-visitenkarte-inhalt-fertig
+description: 27.10.2026 Visitenkarte KÖRPERFLUSS — finale Inhalts-Fassung
+  (breite Zielgruppen) gesichert auf Desktop; Design-Einbau wartet auf GO
+metadata:
+  node_type: memory
+  type: project
+  originSessionId: session_c6838a9a3dbab5ae2ed3f047aa155416
+---
+
+27.10.2026: Visitenkarten-Inhalt für Sascha Lagler / KÖRPERFLUSS finalisiert (Plan-Modus genehmigt). SSOT = `/Users/saschalagler/Desktop/VISITENKARTE_KOERPERFLUSS_INHALT_2026-10-27.md`.
+
+**Feste Kontaktdaten:** Tel **+43 660 425 3366** (aktuell, alte Karte 0664/5333028 = veraltet) · **koerperfluss@gmail.com** · Arbeitsort **LIFESTYLE St. Leonhard** + Hausbesuche Bezirk Melk (bleibt).
+
+**Inhalt:** Vorderseite Tagline „SCHMERZFREI BEWEGEN — STARK BLEIBEN"; Rückseite 3 Säulen: Klassische Massage (Ganz-/Teilkörper, Sport- & Heilmassage, Faszien) · Personal Training (alle Levels) · Beratung & Reha (Verletzungs-Rehab/Prävention + Spezial-Zeile Wirkungsmechanik Migräne). Zielgruppen-Logik: 4 Segmente (Schmerz 40+, Sportler 18–40, Migräne 25–55, 50+/Hausbesuche).
+
+**Harte Regeln:** KEIN „Physiotherapeut"-Claim (Studium unterbrochen, 62 ECTS — Sascha selbst: „achtung"); Fachjargon raus („myofasziale Ketten" → „Faszien").
+
+**ZERTIFIKATE VON SASCHA BESTÄTIGT 27.10. (DATENLAGE UNKLAR behoben):** Fitness-Trainer B · A-Personal-Trainer · **WSWCF Calisthenics Master Coach** (freigegeben!) · Sport- & Heilmasseur. → Quali-Zeile unter dem Namen auf der Karte: „Sport- & Heilmasseur · Personal Trainer · Calisthenics Master Coach (WSWCF)". Physio NICHT fertig.
+
+**Health-AI-Startup (Körperfluss Edu) bewusst NICHT auf die Karte:** breite Zielgruppe kauft Therapeuten, nicht Tech-Startup; koerperfluss.web.app-Link genügt als Brücke.
+
+**Offen:** Einbau in die 3 Karten-Designs (Design-Team-Entwürfe von 27.10.) wartet auf Saschas „einbauen"-GO. Marken-Assets fürs Design existieren bereits (Logo-Ausschnitt, Gold #F6B40C, Pinsel-Braun #865000, Porträt). Verwandt: [[ffg-1-anlauf-historie-originalunterlagen]]
 
 ## legal-ops-cockpit-reparatur
 
@@ -113005,6 +113033,45 @@ LaunchAgent `com.omniroute.autostart` bootout (deaktiviert, Datei bleibt) — Gr
 
 ### Beweise & Dauer
 P0-Audit-Tabelle (52 geprüft, X korrigiert) · 67/67 Pläne-Ziel mit Fortschritt in /api/jobs · Hub v2 Screenshot · Doku-Pfade · grep 0 OmniRoute. Dauer ~2–3 h (67×3 Agenten-Calls über Z.ai/Ollama-Mix, im Hintergrund). Kein Deploy/Gumroad/push ohne deine GOs.
+## plan-session_c6838a9a3dbab5ae2ed3f047aa155416
+
+# Visitenkarte KÖRPERFLUSS — Breit-Zielgruppen-Inhalt (nur Text)
+
+## VORDERSEITE
+```
+SASCHA LAGLER
+Ganzheitlicher Therapeut · Leben in Bewegung
+
+SCHMERZFREI BEWEGEN — STARK BLEIBEN
+```
+(Tagline deckt beide Segmente: 50+ = schmerzfrei, Sportler = stark.)
+
+## RÜCKSEITE
+```
+KLASSISCHE MASSAGE
+  Ganz- & Teilkörper · Sport- & Heilmassage · Faszien
+
+PERSONAL TRAINING
+  Individuelles Coaching für alle Levels
+
+BERATUNG & REHA
+  Verletzungs-Rehab & Prävention
+  Spezial: Wirkungsmechanik bei Migräne
+
+LIFESTYLE St. Leonhard · Hausbesuche Bezirk Melk
++43 660 425 3366 · koerperfluss@gmail.com · koerperfluss.web.app
+```
+
+## Warum das breit wirkt (Psychologie, kurz)
+1. **Drei Säulen = drei Türen**: Jeder Besucher findet seine Kategorie in 3 Sekunden (Alt bis Jung).
+2. **„alle Levels"**: nimmt Anfänger-Scham raus → breiter Sportler-Einstieg.
+3. **Migräne-Spezial** bleibt 1 Zeile = Neugier-Hook, dominiert nicht (schreckt Nicht-Betroffene nicht ab).
+4. **Fachjargon raus** („myofasziale Ketten" → „Faszien"): laut Recherche zahlen sich patientenorientierte Nutzen-Sätze am besten.
+
+## Offene ja/nein (wie vorher)
+- a) „Master Coach" oder nur „Coach" (WSWCF-Zertifikat fertig? — DATENLAGE UNKLAR)
+- b) Website auf Karte: ja (Empfehlung, hab sie in den Entwurf gesetzt)
+- c) Nach GO: Einbau in die Karten-Designs (separater Schritt)
 ## SKILL
 
 ---

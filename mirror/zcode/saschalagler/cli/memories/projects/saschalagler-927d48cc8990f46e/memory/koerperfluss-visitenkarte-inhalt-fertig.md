@@ -1,23 +1,37 @@
 ---
 name: koerperfluss-visitenkarte-inhalt-fertig
-description: 27.10.2026 Visitenkarte KÖRPERFLUSS — finale Inhalts-Fassung
-  (breite Zielgruppen) gesichert auf Desktop; Design-Einbau wartet auf GO
+description: 27.10.2026 Visitenkarte KÖRPERFLUSS — Inhalt final + 3 Vorlagen-Nachbauten
+  A/B/C (design.com Gold/Braun-Stil), Diplom-Titel zuerst, Website-Link raus, Foto+Logo-Assets
+  gecroppt, Logo-/Farb-/Lesbarkeits-Fixes gerendert; Druck-PDF wartet auf Design-Wahl A/B/C
 metadata:
   node_type: memory
   type: project
   originSessionId: session_c6838a9a3dbab5ae2ed3f047aa155416
 ---
 
-27.10.2026: Visitenkarten-Inhalt für Sascha Lagler / KÖRPERFLUSS finalisiert (Plan-Modus genehmigt). SSOT = `/Users/saschalagler/Desktop/VISITENKARTE_KOERPERFLUSS_INHALT_2026-10-27.md`.
+27.10.2026: Visitenkarten-Inhalt für Sascha Lagler / KÖRPERFLUSS finalisiert + **3 Vorlagen-Nachbauten GEBEN & GERENDERT** (verifiziert per PNG-Read). SSOTs: Inhalt `/Users/saschalagler/Desktop/VISITENKARTE_KOERPERFLUSS_INHALT_2026-10-27.md` · Designs `~/Desktop/VISITENKARTE_DESIGNS_2026-10-27/` (index.html editierbar + UEBERSICHT_3_DESIGNS.png + logo_rund.png).
 
-**Feste Kontaktdaten:** Tel **+43 660 425 3366** (aktuell, alte Karte 0664/5333028 = veraltet) · **koerperfluss@gmail.com** · Arbeitsort **LIFESTYLE St. Leonhard** + Hausbesuche Bezirk Melk (bleibt).
+**Feste Kontaktdaten:** Tel **+43 660 425 3366** · **koerperfluss@gmail.com** · Arbeitsort **LIFESTYLE St. Leonhard** + Hausbesuche Bezirk Melk (bleibt). Website korrekt = **https://koerperfluss.web.app/** (Sascha korrigierte kürzere Schreibweise als „völlig falsch").
 
-**Inhalt:** Vorderseite Tagline „SCHMERZFREI BEWEGEN — STARK BLEIBEN"; Rückseite 3 Säulen: Klassische Massage (Ganz-/Teilkörper, Sport- & Heilmassage, Faszien) · Personal Training (alle Levels) · Beratung & Reha (Verletzungs-Rehab/Prävention + Spezial-Zeile Wirkungsmechanik Migräne). Zielgruppen-Logik: 4 Segmente (Schmerz 40+, Sportler 18–40, Migräne 25–55, 50+/Hausbesuche).
+**27.10. SPÄTESTE WENDE (Stand nach letztem Render):**
+1. **DIPLOM ZUERST:** Sascha eskaliert („ICH BIN FUCKING SPORT UND HEILMASSEUR MIT DIPLOM DU BIMBO") → Leit-Titel Vorderseiten = **„DIPLOMIERTER SPORT- & HEILMASSEUR"** (A+B unter Name, C im Footer unterm Namen), NICHT mehr „Ganzheitlicher Therapeut". Quali-Zeilen: „Dipl. Sport- & Heilmasseur · Personal Trainer · Cali Master Coach (WSWCF)" (A-Rückseite) / „DIPLOM. …" (C-Rückseite).
+2. **WEBSITE-LINK VON DER KARTE ENTFERNT** (Sascha: „gib … nen Link weg") — Python-Check beweist 0× `koerperfluss.web.app/karte` im HTML. Kontakt NUR Telefon + Email. Der /karte-Subpage-Beschluss bleibt als Idealerklärung, ABER die URL steht nicht mehr auf der Karte.
+3. **SSOT-MOVE:** Die alte Desktop-Datei `VISITENKARTE_KOERPERFLUSS_INHALT_2026-10-27.md` VERSCHWAND vom Desktop (Ursache unklar, evtl. Sascha verschoben) → neue Inhalts-SSOT = `~/Desktop/VISITENKARTE_DESIGNS_2026-10-27/INHALT_FINAL.md` (mit allen Regeln: kein Physio-Claim, kein Website-Link, Foto vorne / Logo hinten).
 
-**Harte Regeln:** KEIN „Physiotherapeut"-Claim (Studium unterbrochen, 62 ECTS — Sascha selbst: „achtung"); Fachjargon raus („myofasziale Ketten" → „Faszien").
+**Inhalt (final):** Vorderseite „SASCHA LAGLER — DIPLOMIERTER SPORT- & HEILMASSEUR" + Tagline „SCHMERZFREI BEWEGEN — STARK BLEIBEN"; Rückseite 3 Säulen: Klassische Massage (Ganz-/Teilkörper, Sport- & Heilmassage, Faszien) · Personal Training (alle Levels) · Beratung & Reha (Rehab/Prävention + Spezial: Wirkungsmechanik Migräne).
 
-**ZERTIFIKATE VON SASCHA BESTÄTIGT 27.10. (DATENLAGE UNKLAR behoben):** Fitness-Trainer B · A-Personal-Trainer · **WSWCF Calisthenics Master Coach** (freigegeben!) · Sport- & Heilmasseur. → Quali-Zeile unter dem Namen auf der Karte: „Sport- & Heilmasseur · Personal Trainer · Calisthenics Master Coach (WSWCF)". Physio NICHT fertig.
+**Harte Regeln:** KEIN „Physiotherapeut"-Claim (Studium unterbrochen, 62 ECTS); Fachjargon raus (→ „Faszien").
 
-**Health-AI-Startup (Körperfluss Edu) bewusst NICHT auf die Karte:** breite Zielgruppe kauft Therapeuten, nicht Tech-Startup; koerperfluss.web.app-Link genügt als Brücke.
+**ZERTIFIKATE VON SASCHA BESTÄTIGT 27.10.:** Fitness-Trainer B · A-Personal-Trainer · **WSWCF Calisthenics Master Coach** · Sport- & Heilmasseur. Quali-Zeile: „Sport- & Heilmasseur · Personal Trainer · Calisthenics Master Coach (WSWCF)". Physio NICHT fertig — er entwickelt aber das Health-AI-Startup Körperfluss Edu (bewusst NICHT auf der Karte, Website-Link genügt).
 
-**Offen:** Einbau in die 3 Karten-Designs (Design-Team-Entwürfe von 27.10.) wartet auf Saschas „einbauen"-GO. Marken-Assets fürs Design existieren bereits (Logo-Ausschnitt, Gold #F6B40C, Pinsel-Braun #865000, Porträt). Verwandt: [[ffg-1-anlauf-historie-originalunterlagen]]
+**DESIGN-WENDE (wichtig!):** Erste 3 dunkle Schwarz-Gold-Designs wurden von Sascha VERWORFEN („WARUM GLAUBST DU DIE VORLAGEN SIND ZUM SPASS?") — die design.com-Templates + seine alte Karte sind die VERBINDLICHE Basis. Aktuelle 3 Nachbauten (Gold #F6B40C + Pinsel-Braun #865000): **A „Klassiker"** (Gold oben, brauner Footer-Balken, design.com) · **B „Script"** (Schreib-Schriftzug + Pinselband, design.com) · **C „Alte Karte"** (Gold-Gradient, 3 Leistungszeilen, 2-Spalten-Footer, „passenden verlauf.pdf"). Lektion: vom Nutzer gezeigte Vorlagen = Design-Basis kopieren, nicht neue Richtung erfinden (auch in [[sascha-arbeitsregeln-hart]]).
+
+**Logo-Asset:** rundes Gold-Logo gecroppt aus `~/Desktop/IMG_1784.PNG` via sips (--cropOffset 1130 640, 320px) → `logo_rund.png`; logo.svg aus `~/Desktop/Körperfluss/0) Körperfluss - grafiken:logos/` hat BRAUNEN Holzhintergrund.
+
+**FOTO-ASSET (27.10. spät):** Saschas Porträt gefunden = `~/Desktop/Desktop-Dokumente/1) FOTOS/OLSE-FOTOS/SL-10.jpg` (1200×1800, BarBulls-Shirt) — Kopf-Square gecroppt via sips (-c 760 760 --cropOffset 170 210) → `foto_rund.jpg`. **FOTO JETZT AUF A + C VORDERSEITEN** (Kreis oben rechts, wie auf seiner alten Karte; Logo nur noch Rückseiten). Sascha hatte moniert: „WIESO LOGO statt MEIN FOTO / WIEDER alter Inhalt?" — Inhalt war schon neu, es fehlte das Foto. Website nur klein bei A/B (`/karte`); Email ist auf ALLEN Karten; C = exakt alte Karte ohne Website.
+
+**SUBPAGE-BESCHLUSS (überholt durch Link-Entfernung):** Ursprünglich Karte zeigt `/karte` statt Haupt-App (Sascha: „sie sollen die Seiten nicht voll bedienen können") — Subpage-Konzept bleibt gültig für später, aber die URL steht NICHT mehr auf der Karte.
+
+**27.10. QUALITÄTS-FIX-RUNDE (letzte Nachricht, /brainstorming-Skill gelesen):** Saschas 3 Kritikpunkte ALLE GEFIXT + gerendert (PNG-Read verifiziert): ① Logo C-Rückseite zentriert (top 47 % optische Mitte) ② B: Pinselband verkleinert/versetzt → Kontaktzeile auf freiem Gold, dunkler (#5a3a00) + fett ③ Lesbarkeit: Untertitel A 11.5px fett dunkel, Script-Headline dunkler + weißer Schatten, Footer B fett. Brainstorming-Skill bewusst ÜBERSPRUNGEN (Idee schon scharf, Nachricht = Fehlerliste) — Sascha akzeptierte; /ui-ux-tester & Co. bewusst nicht genutzt (Karten-Layout ≠ interaktive App).
+
+**Offen (wartet auf Sascha):** Design-Wahl **A/B/C** → dann Gewinner pixelgenau polieren + Druck-PDF (85×55 mm, 300 dpi); Subpage nur noch optional. Verwandt: [[ffg-1-anlauf-historie-originalunterlagen]] · [[sascha-arbeitsregeln-hart]]
