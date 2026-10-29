@@ -1,7 +1,7 @@
 ---
 app: cline-code
 quelle: "web-template/cloud-api-operations/references/recipes/platform-agent-guardrails.md"
-stand: 2026-10-18
+stand: 2026-10-29
 tags: [spiegel, cline-code]
 ---
 
@@ -64,6 +64,8 @@ logs  agents  capi  feedback
 
 1. **身份在你的这一层取**（员工登录态 / 网关的鉴权结果），不要取工具参数里的自报字段。
 2. **连 `params` 一起记**。只记工具名查不出"改了什么" —— 写操作的入参里才有 `EnvId`、`Alias`、上游资源名这些定位信息。
+
+要把上面的裁剪、拦截、审计固化成一个员工开箱即用的包（而不是每份配置重复写开关），按 [Recipe 13](./enterprise-mcp-wrapper.md) 封装企业专属 MCP。
 
 ### C. 用自定义专家固化企业约束
 

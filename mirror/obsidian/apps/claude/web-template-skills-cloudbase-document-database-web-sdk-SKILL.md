@@ -1,14 +1,14 @@
 ---
 app: claude
 quelle: "web-template/skills/cloudbase-document-database-web-sdk/SKILL.md"
-stand: 2026-10-25
+stand: 2026-10-29
 tags: [spiegel, claude]
 ---
 
 ---
 name: cloudbase-document-database-web-sdk
 description: Use CloudBase document database Web SDK only for confirmed NoSQL collection work. Query, create, update, and delete document data; if the task mentions PostgreSQL / CloudBase PG / app.rdb(), route to postgresql-development instead.
-version: 2.36.1
+version: 2.36.2
 license: MIT
 alwaysApply: false
 ---

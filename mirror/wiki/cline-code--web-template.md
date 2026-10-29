@@ -1,6 +1,6 @@
 # web-template (cline-code)
 
-Zuletzt gespiegelt: 2026-10-29 11:57 UTC
+Zuletzt gespiegelt: 2026-10-29 12:14 UTC
 
 ## rule
 
@@ -282,8 +282,8 @@ Once onboarded, confirm with `DescribeAIModels` that the group is ready, then ca
 
 ---
 name: ai-model-nodejs
-description: "Use this skill for Node.js backend AI via @cloudbase/node-sdk (>=3.16.0) — cloud functions, CloudRun, Express/Koa/NestJS, serverless APIs, scheduled jobs, LLM proxies, agent orchestration. The only SDK supporting image generation (ai.createImageModel + generateImage). Text via ai.createModel with groups cloudbase, hunyuan-exp, or custom-*; model ids (e.g. deepseek-v4-flash, glm-5, kimi-k2.6) go in the `model` field of generateText/streamText. MUST run two-step preflight before code — see body. NOT for browser/Web (use ai-model-web) or Mini Program (use ai-model-wechat)."
-version: 2.36.1
+description: "Use this skill for Node.js backend AI via @cloudbase/node-sdk (>=3.16.0) — cloud functions, CloudRun, Express/Koa/NestJS, serverless APIs, scheduled jobs, LLM proxies, agent orchestration. The only SDK supporting image generation (ai.createImageModel + generateImage). Text via ai.createModel with groups cloudbase, the legacy hunyuan-v3 / hunyuan-exp, or custom-*; model ids (e.g. deepseek-v4-flash, glm-5, kimi-k2.6) go in the `model` field of generateText/streamText. MUST run two-step preflight before code — see body. NOT for browser/Web (use ai-model-web) or Mini Program (use ai-model-wechat)."
+version: 2.36.2
 license: MIT
 alwaysApply: false
 ---
@@ -317,19 +317,20 @@ Use this skill for **calling AI models from Node.js backends, cloud functions, o
 
 ## ⛔ STOP — `ai.createModel(...)` argument is **not** a vendor / model name
 
-Read this before writing any `createModel(...)` line. Agents frequently hallucinate this argument. There are **exactly three** legal shapes. Anything else is a bug.
+Read this before writing any `createModel(...)` line. Agents frequently hallucinate this argument. There are **exactly four** legal shapes. Anything else is a bug.
 
 | ✅ Legal `ai.createModel(...)` argument | When to use it |
 |----------------------------------------|----------------|
 | `"cloudbase"` | **The main managed group for server-side projects** (TokenHub-backed, multi-vendor pool). Vendor + concrete model go into the **`model` field** of `generateText` / `streamText`, e.g. `{ model: "deepseek-v4-flash" }`. **No model is enabled by default — always check `DescribeAIModels` first and, if the target model is missing, enable it with `UpdateAIModel` before calling the SDK.** |
-| `"hunyuan-exp"` | Only if `DescribeAIModels` explicitly returns this legacy builtin group for the current env. |
+| `"hunyuan-v3"` | **Legacy plan group, being retired.** Only `hy3` is available and the platform adds no new models to it. Existing code that already uses it keeps working — new code should use `cloudbase` + `{ model: "hy3" }`. |
+| `"hunyuan-exp"` | Only if `DescribeAIModels` explicitly returns this older legacy builtin group for the current env. Its original default model `hunyuan-2.0-instruct-20251111` is **offline** (2026-05-31) — never target that id. |
 | `"custom-<your-name>"` | A user-defined GroupName you onboarded via `CreateAIModel`. **Must** start with `custom-` (e.g. `custom-kimi`, `custom-openai-compat`). |
 
 > Image generation is a separate entry point: `ai.createImageModel("hunyuan-image")`. Do not mix it with `createModel(...)`.
 
 ### ❌ Wrong argument patterns
 
-Anything that is not one of the three legal values above: vendor names (`"deepseek"`, `"glm"`, `"kimi"`, `"openai"`, `"moonshot"`, …), concrete model ids (`"deepseek-v4-flash"`, `"hunyuan-2.0-instruct-20251111"`), the bare placeholder `"custom"`, or a variable holding the model id. All of these are bugs in `createModel(...)`.
+Anything that is not one of the four legal values above: vendor names (`"deepseek"`, `"glm"`, `"kimi"`, `"openai"`, `"moonshot"`, …), concrete model ids (`"deepseek-v4-flash"`, `"hunyuan-2.0-instruct-20251111"`), the bare placeholder `"custom"`, or a variable holding the model id. All of these are bugs in `createModel(...)`.
 
 ### ✅ Correct pattern — GroupName vs Model are two different fields
 
@@ -345,10 +346,10 @@ await model.generateText({
 
 1. The user says "use DeepSeek v3.2" / "use hunyuan instruct" / "use Kimi k2.6" / "use GLM-5" / …
 2. `createModel("cloudbase")` stays the same.
-3. Put the model id into the **`model` field**: `{ model: "deepseek-v3.2" }`, `{ model: "hunyuan-2.0-instruct-20251111" }`, `{ model: "kimi-k2.6" }`, `{ model: "glm-5" }`, …
+3. Put the model id into the **`model` field**: `{ model: "deepseek-v3.2" }`, `{ model: "hy3" }`, `{ model: "kimi-k2.6" }`, `{ model: "glm-5" }`, …
 4. **Never assume the model is already enabled.** Before calling the SDK, verify it is present in `DescribeAIModels({ GroupName: "cloudbase" }).Models[]`. If missing, call `DescribeManagedAIModelList` to confirm the exact `Model` name the platform supports (case-sensitive — do **not** guess the spelling) and then enable it via `UpdateAIModel` with `Status: 1` (remember `Models` is a full replacement).
 
-> If you are about to type `ai.createModel(` and the thing inside the parentheses is a vendor name, a model name, or a guess — **stop**. It is almost certainly one of the three legal values above.
+> If you are about to type `ai.createModel(` and the thing inside the parentheses is a vendor name, a model name, or a guess — **stop**. It is almost certainly one of the four legal values above.
 
 ---
 
@@ -399,14 +400,13 @@ Eligibility alone is not enough. **Do not write `createModel("cloudbase")` yet.*
 
    Returns `AIModelGroups: AIModelGroup[]` with `GroupName`, `Type` (`builtin` / `custom`), `Models: [{ Model, EnableMCP, Tags }]`, `Status` (1 / 2), `BaseUrl`, `Secret`, `Remark`. The main managed `GroupName` is `cloudbase`.
 
-2. **Never assume a model is already enabled.** Inspect `AIModelGroups[?].Models[].Model` for the target group. If the text model you plan to use (e.g. `deepseek-v4-flash`, or whatever the user asked for) is missing from the `cloudbase` group's `Models[]`, jump to step 4 and enable it — do not call `createModel("cloudbase")` yet. Image generation uses `createImageModel("hunyuan-image")` + `model: "hunyuan-image"`; verify it is likewise enabled before the call.
 
 ## rule
 
 ---
 name: ai-model-web
-description: "Use this skill when a browser/Web app (React, Vue, Next, Nuxt, static sites, SPAs, dashboards, AI chat UI, 页面, 前端, 网页) needs AI models via @cloudbase/js-sdk. Default routing for Web/frontend AI — call directly from the browser, do NOT propose a Node.js proxy. Covers generateText and streamText; models via ai.createModel with groups cloudbase, hunyuan-exp, or custom-*, model id in the `model` field. MUST run two-step preflight before code — see body. NOT for Node.js backend (use ai-model-nodejs), Mini Program (use ai-model-wechat), or image generation (Node SDK only)."
-version: 2.36.1
+description: "Use this skill when a browser/Web app (React, Vue, Next, Nuxt, static sites, SPAs, dashboards, AI chat UI, 页面, 前端, 网页) needs AI models via @cloudbase/js-sdk. Default routing for Web/frontend AI — call directly from the browser, do NOT propose a Node.js proxy. Covers generateText and streamText; models via ai.createModel with groups cloudbase, the legacy hunyuan-v3 / hunyuan-exp, or custom-*, model id in the `model` field. MUST run two-step preflight before code — see body. NOT for Node.js backend (use ai-model-nodejs), Mini Program (use ai-model-wechat), or image generation (Node SDK only)."
+version: 2.36.2
 license: MIT
 alwaysApply: false
 ---
@@ -440,12 +440,13 @@ Use this skill for **calling AI models in browser/Web applications** via `@cloud
 
 ## ⛔ STOP — `ai.createModel(...)` argument is **not** a vendor / model name
 
-Read this before writing any `createModel(...)` line. The single most common mistake when agents generate code for this SDK is hallucinating the argument. There are **exactly three** legal shapes. Anything else is a bug.
+Read this before writing any `createModel(...)` line. The single most common mistake when agents generate code for this SDK is hallucinating the argument. There are **exactly four** legal shapes. Anything else is a bug.
 
 | ✅ Legal `ai.createModel(...)` argument | When to use it |
 |----------------------------------------|----------------|
 | `"cloudbase"` | **The main managed group for new projects** (TokenHub-backed, multi-vendor pool). Vendor + concrete model go into the **`model` field** of `generateText` / `streamText`, e.g. `{ model: "deepseek-v4-flash" }`. **No model is enabled by default — always check `DescribeAIModels` first and, if the target model is missing, enable it with `UpdateAIModel` before calling the SDK.** |
-| `"hunyuan-exp"` | Only if `DescribeAIModels` explicitly returns this legacy builtin group for the current env (mainly the Mini Program Growth Plan — see `ai-model-wechat`). |
+| `"hunyuan-v3"` | **Legacy plan group, being retired.** Only `hy3` is available and the platform adds no new models to it. Existing code keeps working — new code should use `cloudbase` + `{ model: "hy3" }`. |
+| `"hunyuan-exp"` | Only if `DescribeAIModels` explicitly returns this older legacy builtin group for the current env. Its original default model `hunyuan-2.0-instruct-20251111` is **offline** (2026-05-31) — never target that id. |
 | `"custom-<your-name>"` | A user-defined GroupName you onboarded via `CreateAIModel`. **Must** start with `custom-` (e.g. `custom-kimi`, `custom-openai-compat`). |
 
 ### ❌ Do NOT write any of these — they are all wrong
@@ -475,10 +476,10 @@ await model.generateText({
 
 1. The user says "use DeepSeek v3.2" / "use hunyuan instruct" / "use Kimi k2.6" / "use GLM-5" / …
 2. `createModel("cloudbase")` stays the same.
-3. Put the model id into the **`model` field**: `{ model: "deepseek-v3.2" }`, `{ model: "hunyuan-2.0-instruct-20251111" }`, `{ model: "kimi-k2.6" }`, `{ model: "glm-5" }`, …
+3. Put the model id into the **`model` field**: `{ model: "deepseek-v3.2" }`, `{ model: "hy3" }`, `{ model: "kimi-k2.6" }`, `{ model: "glm-5" }`, …
 4. **Never assume the model is already enabled.** Before writing the SDK call, verify it is present in `DescribeAIModels({ GroupName: "cloudbase" }).Models[]`. If missing, call `DescribeManagedAIModelList` to confirm the exact `Model` name the platform supports (case-sensitive — do **not** guess the spelling), then enable it via `UpdateAIModel` with `Status: 1` (remember `Models` is a full replacement, so resend everything already enabled + the new one).
 
-> If you are about to type `ai.createModel(` and the thing inside the parentheses is a vendor name, a model name, or a guess — **stop**. It is almost certainly one of the three legal values above.
+> If you are about to type `ai.createModel(` and the thing inside the parentheses is a vendor name, a model name, or a guess — **stop**. It is almost certainly one of the four legal values above.
 
 ---
 
@@ -522,7 +523,6 @@ callCloudApi(service="tcb", action="DescribeEnvPostpayPackage", params={ EnvId }
 Eligibility alone is not enough. **Do not write `createModel("cloudbase")` yet.** First confirm that the target `GroupName` exists in the env with `Status=1`, and that the target `Model` is present in its `Models[]`.
 
 1. **List groups configured in the current env:**
-
 
 ## rule
 
@@ -652,7 +652,7 @@ callCloudApi({
 ---
 name: auth-nodejs-cloudbase
 description: CloudBase Node SDK auth guide for server-side identity, user lookup, and custom login tickets. This skill should be used when Node.js code must read caller identity, inspect end users, or bridge an existing user system into CloudBase; not when configuring providers or building client login UI.
-version: 2.36.1
+version: 2.36.2
 license: MIT
 alwaysApply: false
 ---
@@ -1059,7 +1059,7 @@ The tool handles read-merge-write internally. The model does not need to build a
 ---
 name: auth-tool-cloudbase
 description: CloudBase auth provider configuration and login-readiness guide. This skill should be used when users need to inspect, enable, disable, or configure auth providers, publishable-key prerequisites, login methods, SMS/email sender setup, or other provider-side readiness before implementing a client or backend auth flow.
-version: 2.36.1
+version: 2.36.2
 license: MIT
 alwaysApply: false
 ---
@@ -1441,7 +1441,7 @@ const handleRegister = async () => {
 ---
 name: auth-web-cloudbase
 description: CloudBase Web Authentication Quick Guide for frontend integration after auth-tool has already been checked. Provides concise and practical Web authentication solutions with multiple login methods and complete user management.
-version: 2.36.1
+version: 2.36.2
 license: MIT
 alwaysApply: false
 ---
@@ -1961,10 +1961,13 @@ https://console.cloud.tencent.com/cam/role/grant?roleName=<角色名>&policyName
 | 9 | 收口 Agent：工具裁剪、封装审计、专家约束 | [platform-agent-guardrails.md](./platform-agent-guardrails.md) | 🟡 文档核对，未实跑 |
 | 10 | 平台版用量、账期与环境回收 | [platform-usage-and-recycle.md](./platform-usage-and-recycle.md) | 🟡 文档核对，未实跑 |
 | 11 | 计费口径自查：为什么这笔费用会出现 | [billing-charges-explained.md](./billing-charges-explained.md) | 🟡 文档核对，未实跑（2026-10-15）：三套计费体系的口径（云托管免费额度为 3 个月总量、实例数不为 0 即计费、次日扣费；云开发资源点抵扣顺序；成长计划 Token 的来源限制）逐条取自官方文档；**未对真实账单逐项复算**，先按「验证步骤」只读自检再用 |
+| 12 | 拉取 PostgreSQL 监控数据 | [pg-monitor-data.md](./pg-monitor-data.md) | 🟡 文档核对，未实跑（2026-10-27）：`GetMonitorData` 的调用形状（命名空间 `QCE/POSTGRES`、独享/共享两套维度与指标清单、Period 支持列表、ISO8601 带时区时间）取自官方指标文档与控制台前端实现；**未在 `callCloudApi` 上实跑**，先按「验证步骤」只读自检再用 |
+| 13 | 封装企业专属 MCP | [enterprise-mcp-wrapper.md](./enterprise-mcp-wrapper.md) | 🟡 部分实证（2026-10-27）：协议层五断言（握手 / 裁剪 6→2 / enum 剪除 / 越权拒绝 / 合法转发）已用本地 probe 跑通；**未跑**——真凭证换证链路（`credential_scope=single_env` 全序列）、三例真实部署与域名访问 |
 
 ## 没有独立 recipe 的场景
 
 - **MySQL / CVM 等依赖产品告警**：复用 Recipe 1 的框架，换 monitor namespace。
+- **CLS 日志告警（投递、索引、告警策略）**：不单独立 recipe，按文档《[日志告警指南](https://docs.cloudbase.net/logger/alert/log-alert-guide)》「CLI / API 配置」一节用 `callCloudApi` 逐接口调（开通日志资源走 `tcb` / `CreateEnvResource`，其余走 `cls` 产品接口）。硬前提：CLS 接口**不接受 CloudBase API Key 鉴权**，需要账号级密钥并具备 `QcloudCLSFullAccess`——环境级 API Key 登录的会话走不了这条路，先明确告知再动手。
 - **MySQL 备份回档、SCF 函数触发器**：暂无 recipe，从 `api-reference` 的依赖产品段起查。
 
 ## billing-charges-explained
@@ -2366,6 +2369,129 @@ https://console.cloud.tencent.com/cam/role/grant?roleName=<角色名>&policyName
 | 自己的域名 + 不存在的证书 ID | `FAIL` `CERT_VERIFY_FAILED`「证书ID不存在」 | `PASS` | `PASS` | `false` |
 | 别人的域名 | `PASS` | `FAIL` `OWNERSHIP_VERIFY_FAILED` | `FAIL` `DOMAIN_IN_USE` | `false` |
 
+## enterprise-mcp-wrapper
+
+# Recipe 13 — 封装企业专属 MCP
+
+## When to use
+
+已按 [Recipe 7](./platform-onboarding.md) 发了环境与凭证、按 [Recipe 8](./platform-agent-connect.md) 完成接入、按 [Recipe 9](./platform-agent-guardrails.md) 做了收口，下一步要把这套策略**固化成一个开箱即用的企业专属 MCP**：
+
+- 员工装一个包就拿到「裁剪过的工具面 + 默认拦截 + 审计」，不用每份配置重复写开关
+- 危险动作要在**协议层**拦（提示词约束拦不住误删与越权，见 Recipe 9 §C 的软硬之分）
+- 要把封装升级为远端形态：wrapper 部署为企业服务端点，员工零安装（见 §5）
+
+不管什么：环境/凭证还没发 → [Recipe 7](./platform-onboarding.md)；只是给单份配置做限制、不打算维护一个包 → Recipe 9 的配置开关就够，不用写代码。
+
+本篇就是被 `cloud-api-operations` skill 路由到的实操文档：当用户请求包含「企业接入 / 封装 MCP / 企业专属 MCP」时，SKILL.md 的 description 会命中并加载本 skill——提示词里直接点名 skill 名，是最精准的激活方式。
+
+## 前置权限
+
+- Node.js ≥ 18.15（工厂与 MCP SDK 依赖）
+- 能发布 npm 包：公共源、企业内部源（制品库 / verdaccio）或内部 git 仓库三选一
+- 员工机器能装 Node ≥ 18.15（本地 stdio 形态的前提）
+
+## 接口序列
+
+### 1. 骨架：进程内工厂，不 spawn 子进程
+
+官方包导出 `createCloudBaseMcpServer` 工厂（与官方托管远端 MCP 同源）。外层自建一个 MCP Server 对 IDE 暴露 stdio，进程内用 in-memory 传输对接官方实例，在两处下手：`tools/list` 裁剪、`tools/call` 拦截。
+
+```js
+import { createRequire } from 'node:module';
+import { Server } from '@modelcontextprotocol/sdk/server/index.js';
+import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
+import { Client } from '@modelcontextprotocol/sdk/client/index.js';
+import { InMemoryTransport } from '@modelcontextprotocol/sdk/inMemory.js';
+import { CallToolRequestSchema, ListToolsRequestSchema } from '@modelcontextprotocol/sdk/types.js';
+
+// 必须走 CJS 入口（dist/index.cjs）：ESM 入口有未声明的内部依赖
+const require = createRequire(import.meta.url);
+const { createCloudBaseMcpServer } = require('@cloudbase/cloudbase-mcp');
+
+// 插件组合是平台方策略，写死在 wrapper 里，员工不配置
+const PLUGINS = 'env,database,functions,storage,hosting,gateway,cloudrun,apps'.split(',');
+// 不传时官方默认全开，含能透传任意云 API 的 capi——企业场景务必排除
+
+const upstream = await createCloudBaseMcpServer({
+  name: 'cloudbase-mcp', cloudMode: false,
+  pluginsEnabled: PLUGINS,
+  cloudBaseOptions: { envId: process.env.CLOUDBASE_ENV_ID },
+});
+
+const [ct, st] = InMemoryTransport.createLinkedPair();
+await upstream.connect(st);
+const client = new Client({ name: 'wrapper', version: '1.0.0' }, { capabilities: {} });
+await client.connect(ct);
+
+// 危险动作：官方二次确认清单的删除类，按语义前缀兜底
+const isDenied = (tool, action) =>
+  /^(delete|destroy|remove|clear|truncate|drop)/i.test(action ?? '');
+
+const wrapper = new Server({ name: 'cloudbase-wrapper', version: '1.0.0' }, { capabilities: { tools: {} } });
+
+wrapper.setRequestHandler(ListToolsRequestSchema, async () => {
+  const { tools } = await client.listTools();
+  const visible = [];
+  for (const tool of tools) {
+    // 被禁动作从参数 enum 里剪掉，模型在参数定义层就看不见
+    const p = tool.inputSchema?.properties?.action;
+    if (p?.enum) {
+      p.enum = p.enum.filter((a) => !isDenied(tool.name, a));
+      if (p.enum.length === 0) continue;   // enum 剪空 = 整个工具下架
+    }
+    visible.push(tool);
+  }
+  return { tools: visible };
+});
+
+wrapper.setRequestHandler(CallToolRequestSchema, async (req) => {
+  const { name, arguments: args = {} } = req.params;
+  if (isDenied(name, args.action)) {
+    return { content: [{ type: 'text', text: `${name}.${args.action} 被平台策略禁止，重试无效。` }], isError: true };
+  }
+  console.error('[audit]', JSON.stringify({ ts: Date.now(), env: process.env.CLOUDBASE_ENV_ID, call: `${name}.${args.action ?? ''}` }));
+  return client.callTool(req.params);
+});
+
+await wrapper.connect(new StdioServerTransport());
+console.error('[cbw] ready');
+```
+
+可运行的完整版（含策略文件与自检脚本）：本仓库 `examples/cloudbase-mcp-stdio-wrapper/`。
+
+### 2. 凭证自检：只有环境级作用域才放行
+
+环境 API Key 的生效条件是「Key 与 `CLOUDBASE_ENV_ID` **同时**在环境变量」，且换证失败会被静默吞掉、回落到机器上可能存在的全局登录态——wrapper 会带着账号级权限继续跑而不自知。启动时自检一次：
+
+```js
+const res = await client.callTool({ name: 'auth', arguments: { action: 'status' } });
+const text = (res.content ?? []).map((c) => c.text ?? '').join('\n');
+const scope = /credential_scope["'=:\s]+(\w+)/i.exec(text)?.[1];
+if (scope && scope !== 'single_env') {
+  console.error(`[cbw] 凭证作用域异常（${scope}），API Key 未生效，拒绝服务`);
+  process.exit(1);
+}
+```
+
+`single_env` 且来源为 env 才放行；看到 `account` 说明回落到了全局登录态，直接拒绝服务。三个变量（envId、Key）由平台按人下发到员工配置的 `env` 块，员工不编辑。
+
+**交付给 AI 的凭证形态只有一种：环境 ID + API Key。** API Key 是长期根凭证，MCP 内部用它换 30 分钟有效的 STS 临时凭证出网，过期自动重换。STS 三件套（`TmpSecretId` / `TmpSecretKey` / `Token`）是换证**产物**，不是交付物——只把 STS 交给 AI 或写进配置，过期后整条链路挂掉且无法自愈；拿到 Key + envId 就永远能重新换证。
+
+### 3. 发布与员工配置
+
+配上 `package.json`（`name` 写企业包名）后 `npm publish`；不发公共源就发企业内部源（员工 `.npmrc` 指过去）或直接从内部 git 安装。员工侧配置只剩：
+
+```json
+{
+  "mcpServers": {
+    "cloudbase": {
+      "command": "npx",
+      "args": ["-y", "@your-org/cloudbase-wrapper@1.0.0"],
+      "env": {
+        "CLOUDBASE_ENV_ID": "env-xxxxx",
+        "CLOUDBASE_API_KEY": "ak-xxxxx"
+
 ## icp-filing-readiness
 
 # Recipe 2 — ICP 备案：提交前自查与等待期查询
@@ -2735,6 +2861,80 @@ current package does not support upgrading to dedicated instance
 `SwitchTag` 是**必填**（`0` 立即切换、`1` 指定时间切换）。用 `1` 时 `SwitchStartTime` / `SwitchEndTime` 的格式是 **`HH:MM:SS`** —— 和 B1 的 `ModifyPGInstanceSpec` **不是同一套格式**。
 
 
+## pg-monitor-data
+
+# Recipe 12 — 拉取 PostgreSQL 监控数据（GetMonitorData）
+
+## When to use
+
+要**程序化读** PG 实例的时序指标（CPU / 磁盘 / 内存 / 慢查询 / 连接 / 死锁 / TPS 等）时：
+
+- 定时巡检、告警归因要看曲线和峰值，不是只看当前瞬时值
+- `queryEnv` 的指标清单**不含任何 PostgreSQL 指标**，别在它里面找；`queryPgDatabase(action="sql")` 只能给连接数（`pg_stat_activity`）和库大小（`pg_database_size()`）的瞬时值，给不了历史曲线
+
+本篇不管：配告警策略（→ [Recipe 1](./pg-storage-alarm.md)）；实例变配（→ [Recipe 3](./pg-instance-spec.md)）；查库内明细数据（→ `queryPgDatabase`）。
+
+## 前置权限
+
+`GetMonitorData` 是读接口，需要 `QcloudMonitorReadOnlyAccess`（`QcloudMonitorFullAccess` 也行，但读不需要写）。
+
+权限来自哪种凭据身份，见 [calling-methods.md §3](../calling-methods.md)。`callCloudApi` 有环境绑定门禁：先 `auth(action="set_env", envId=…)` 绑到目标环境；实例不在默认地域时，顶层传 `region`。
+
+## 接口序列
+
+只有一个接口，靠参数换指标：
+
+| # | Action | 产品 / Version | 参数要点 |
+| --- | --- | --- | --- |
+| 1 | GetMonitorData | `monitor` / `2018-07-24` | `Namespace="QCE/POSTGRES"`、`MetricName`、`Instances[{Dimensions}]`、`Period`、`StartTime` / `EndTime` |
+
+返回 `DataPoints[0]` 下的 `Timestamps` + `Values` 数组，以及回显的 `Period` / `StartTime` / `EndTime`。一次一个指标，要多条曲线就循环调。
+
+### 维度分两套，别混
+
+| 实例形态 | Dimensions | 定位值来源 |
+| --- | --- | --- |
+| 独享（DEDICATED） | `resourceId` | = `DescribeDBInstanceAttribute` 的 `DBInstanceId`，也 = `tcb` / `DescribeEnvInfo` 返回的 `PostgreSQL[].InstanceName`（→ Recipe 3 步骤 1/2） |
+| 共享（SHARED） | `DBName` + `AppId` | `DBName` 缺省 `postgres`；`AppId` 是租户账号 AppId |
+
+### 指标清单
+
+独享（21 个，全部驼峰）：
+
+| 分类 | MetricName |
+| --- | --- |
+| 计算 | `Cpu`、`MemoryRate`、`StorageRate`、`SqlRuntimeAvg` / `SqlRuntimeMax` / `SqlRuntimeMin` |
+| 存储 | `Storage`（GB）、`Memory`（MB） |
+| 调用请求 | `Qps`、`Connections`、`ReadWriteCalls`、`ReadCalls`、`WriteCalls` |
+| 性能 | `SlowQueryCnt`、`Deadlocks`、`Tps` |
+| 连接与会话 | `ActiveConns`、`IdleConns`、`LongQuery`、`LongXact`、`LongWaiting` |
+
+共享（6 个，首字母大写其余小写）：`Dbcpuusage`、`Dbmemorybytes`（MB）、`Dbsizebytes`（MB）、`Activeconnections`、`Idleconnections`、`Totalconnections`。
+
+指标含义与单位以云监控官方指标文档为准：https://cloud.tencent.com/document/product/248/45104
+
+### Period 与时间格式
+
+- `Period` 按秒传，**必须在指标支持列表内**。独享：`Cpu` / `Memory` / `MemoryRate` / `SlowQueryCnt` / `ActiveConns` / `IdleConns` / `LongQuery` / `LongXact` / `Deadlocks` / `LongWaiting` / `Tps` 支持 `5` / `60` / `300` / `3600`；其余（`Storage` / `Qps` / `Connections` / `ReadWriteCalls` / `ReadCalls` / `WriteCalls` / `SqlRuntime*` / `StorageRate`）另有 `86400`。共享：统一 `60` / `300` / `3600` / `86400`。不传时服务端默认 `300`。
+- `StartTime` / `EndTime` 要 **ISO8601 带时区**，如 `2026-09-08T14:04:29+08:00`；秒级精度。
+
+## 踩坑清单
+
+| 坑 | 现象 | 正确做法 |
+| --- | --- | --- |
+| 命名空间混用 | 拿策略族的 `POSTGRESQL` 当 `Namespace` 查数据，返回空 | 策略族接口（Recipe 1）用 `POSTGRESQL`；**监控数据**用 `QCE/POSTGRES`，共享/独享一致 |
+| 共享维度缺 `AppId` | `DataPoints` 空数组、不报错 | 共享必须 `DBName` + `AppId` 成对传；独享才用 `resourceId` |
+| 时间格式不对 | 报错或返回空 | ISO8601 带时区（`+08:00`），别传 epoch、别传不带时区的本地时间串 |
+| `Period` 越界 | 返回空 | 对照上面的支持列表；查天级趋势用 `86400`（仅部分独享指标和共享支持） |
+| 指标名拼错 | 返回空 | 大小写敏感：独享驼峰（`Qps` 不是 `QPS`、`Cpu` 不是 `CPU`）；共享是 `Dbcpuusage` 这种形态。照清单抄，别自己拼 |
+| `resourceId` 传成环境 ID | 返回空 | `resourceId` 是 PG 实例 ID（`DBInstanceId`），从 Recipe 3 步骤 1/2 取，不是 `envId` |
+
+## 验证步骤（只读自检）
+
+1. 用目标实例的维度拉一个短窗口（10 分钟、`Period=60`）的 `Qps`（独享）或 `Dbcpuusage`（共享），确认 `DataPoints[0].Values` 非空且点数符合窗口长度。
+2. 打开控制台「运维监控 → PostgreSQL 数据库」，选同实例、同指标、同窗口，曲线形态应一致（控制台展示的就是这套接口的数据）。
+3. 换一个 `Period` 越界值（如独享 `Tps` 传 `86400`），确认返回空——验证周期校验在生效。
+
 ## pg-storage-alarm
 
 # Recipe 1 — PostgreSQL 存储空间使用率 ≥ 80% 告警
@@ -2746,7 +2946,7 @@ current package does not support upgrading to dedicated instance
 - 新建使用率阈值告警策略，并绑定到指定实例
 - 已有策略但不生效：需要回查绑定维度（`resourceId` / `uid` 为 null、策略被 `alarm_disabled` 禁用）
 
-本篇只覆盖告警策略的创建 / 绑定 / 回查；查监控数据（`GetMonitorData`）或控制台可视化不在这里。
+本篇只覆盖告警策略的创建 / 绑定 / 回查。**查**监控数据（`GetMonitorData`，含 `queryEnv` 为何不覆盖 PG）→ [Recipe 12](./pg-monitor-data.md)；控制台可视化不在这里。
 
 ## 前置权限
 
@@ -2914,6 +3114,8 @@ tcb login --cloudbase-api-key <API Key> -e <envId>
 2. 打开云开发授权页（`/login?cliAuth=1`，带上 `_redirect_uri` 与 `authCallbackUrl`）
 3. 用户完成一次网页授权，回调带回 `authSource=api_key`、`envId`、`apiKey`
 4. 本地进程用 `@cloudbase/toolbox` 的 `loginByApiKey()` 换临时密钥，写进本机凭证文件
+
+> 交付给用户 / AI 的始终是 `envId + API Key` 这对根凭证；换出来的临时密钥（STS）只是本机产物，会过期，过期后凭 Key 自动重换。不要把临时密钥单独当交付物。
 5. 关掉本地服务，提示用户在客户端里启用连接器并**新开一个会话**
 
 换证地址可用环境变量 `CLOUDBASE_API_ENDPOINT` 覆盖 —— 客户要求走自己内网网关时用它。
@@ -3011,6 +3213,8 @@ logs  agents  capi  feedback
 
 1. **身份在你的这一层取**（员工登录态 / 网关的鉴权结果），不要取工具参数里的自报字段。
 2. **连 `params` 一起记**。只记工具名查不出"改了什么" —— 写操作的入参里才有 `EnvId`、`Alias`、上游资源名这些定位信息。
+
+要把上面的裁剪、拦截、审计固化成一个员工开箱即用的包（而不是每份配置重复写开关），按 [Recipe 13](./enterprise-mcp-wrapper.md) 封装企业专属 MCP。
 
 ### C. 用自定义专家固化企业约束
 
@@ -3351,8 +3555,8 @@ logs  agents  capi  feedback
 
 ---
 name: cloud-api-operations
-description: Operate Tencent Cloud control-plane resources (monitoring/alarms, CLB, CAM roles, COS, MySQL, SCF) via cloud APIs when no dedicated MCP tool covers the task. Use when a task needs control-plane operations beyond CloudBase's own tooling, or when a callCloudApi call failed and needs classifying.
-version: 2.36.1
+description: "Operate Tencent Cloud control-plane resources (monitoring/alarms, CLB, CAM roles, COS, MySQL, SCF) via cloud APIs when no dedicated MCP tool covers the task. Use when a task needs control-plane operations beyond CloudBase's own tooling, or when a callCloudApi call failed and needs classifying. Also covers enterprise platform integration: wrapping CloudBase MCP into an organization-specific MCP (tool trimming, dangerous-action interception, per-user API Key distribution, audit) — use when the user mentions 企业接入 / 封装 MCP / 企业专属 MCP / 多租户凭证下发 / platform MCP wrapping. See recipes/enterprise-mcp-wrapper.md."
+version: 2.36.2
 license: MIT
 ---
 
@@ -4270,7 +4474,7 @@ After VPC is bound, public internet egress may require NAT / public gateway in t
 ---
 name: cloud-functions
 description: CloudBase function runtime guide for building, deploying, and debugging your own Event Functions or HTTP Functions. This skill should be used when users need application runtime code on CloudBase, not when they are merely calling CloudBase official platform APIs.
-version: 2.36.1
+version: 2.36.2
 license: MIT
 alwaysApply: false
 ---
@@ -4393,7 +4597,7 @@ Personal-tier image builds (`imageConfig.imageType="personal"` with `local` / `c
 ---
 name: cloud-storage-web
 description: Complete guide for CloudBase cloud storage using Web SDK (@cloudbase/js-sdk) - upload, download, temporary URLs, file management, and best practices.
-version: 2.36.1
+version: 2.36.2
 license: MIT
 alwaysApply: false
 ---
@@ -6620,7 +6824,7 @@ AgentServiceApp().run(
 ---
 name: cloudbase-agent-python
 description: "Build production-ready AI agent backends using the CloudBase Agent Python SDK — create agents with LangGraph/CrewAI/LlamaIndex, serve them via FastAPI with AG-UI protocol streaming + OpenAI-compatible endpoints, add tools (bash, filesystem, MCP, code execution), memory (in-memory, TDAI, MySQL, MongoDB), observability (OpenTelemetry/Langfuse), and middleware (auth, logging). Use this skill when the user wants to create an AI agent server, build a chatbot backend, set up human-in-the-loop workflows, integrate MCP tools, add agent observability, or deploy an agent API — even if they don't explicitly mention 'CloudBase Agent.'"
-version: 2.36.1
+version: 2.36.2
 license: MIT
 alwaysApply: true
 ---
@@ -6743,7 +6947,7 @@ Follow the **4-step deployment pipeline** in [agent-deployment](agent-deployment
 ---
 name: cloudbase-agent
 description: Build and deploy AI agents with CloudBase Agent SDK (TypeScript & Python). Implements the AG-UI protocol for streaming agent-UI communication. Use when deploying agent servers, using LangGraph/LangChain/CrewAI adapters, building custom adapters, understanding AG-UI protocol events, or building web/mini-program UI clients. Supports both TypeScript (@cloudbase/agent-server) and Python (cloudbase-agent-server via FastAPI).
-version: 2.36.1
+version: 2.36.2
 license: MIT
 alwaysApply: false
 ---
@@ -7394,7 +7598,7 @@ run({
 ---
 name: cloudbase-agent
 description: "Build and deploy AI agents with Cloudbase Agent (TypeScript), a TypeScript SDK implementing the AG-UI protocol. Use when: (1) deploying agent servers with @cloudbase/agent-server, (2) using LangGraph adapter with ClientStateAnnotation, (3) using LangChain adapter with clientTools(), (4) building custom adapters that implement AbstractAgent, (5) understanding AG-UI protocol events, (6) building web UI clients with @ag-ui/client, (7) building WeChat Mini Program UIs with @cloudbase/agent-ui-miniprogram."
-version: 2.36.1
+version: 2.36.2
 license: MIT
 alwaysApply: true
 ---
@@ -9244,7 +9448,9 @@ tcb monitor function my-func --env-id <envId> --json
 
 # MySQL Database Operations (`tcb db`)
 
-Execute SQL, manage instances, backups, and slow queries for CloudBase MySQL via `tcb db` commands.
+Existing CloudBase MySQL instances only. Do not recommend MySQL for a new relational database — use `../postgresql-development-cloudbase/SKILL.md`.
+
+Execute SQL, manage instances, backups, and slow queries for an environment that already has CloudBase MySQL, via `tcb db` commands.
 
 ⚠️ MySQL commands live under **`tcb db ...`** (NOT `tcb db mysql ...`). Don't confuse with `tcb db nosql ...` (NoSQL).
 
@@ -9359,8 +9565,6 @@ tcb db instance config set -e <envId> --instance-id <instanceId> --cpu 2 --memor
 ⚠️ Resizing changes CPU and memory together. May cause brief service interruption.
 
 ⚠️ In `--json` mode, `config set` **requires `--yes`** — otherwise it fails silently (no interactive prompt available).
-
-### Restart instance
 
 
 ## nosql
@@ -9748,7 +9952,7 @@ the generated TypeScript types (`tcb sync-model-dts`), and **PostgreSQL migratio
 
 ## Do NOT use for
 
-- **Designing** a data model (ER diagrams, multi-entity modelling) → `../data-model-creation/SKILL.md`
+- **Designing** a data model (ER diagrams, multi-entity modelling) → `../postgresql-development-cloudbase/SKILL.md`
   (deprecated; for new work prefer PostgreSQL DDL)
 - **PostgreSQL schema design, RLS, queries** → `../postgresql-development-cloudbase/SKILL.md`
 - MySQL instance / backup operations → `mysql.md`
@@ -9983,7 +10187,7 @@ tcb storage rm "*.tmp" --force -e <envId>
 ---
 name: cloudbase-cli
 description: CloudBase CLI (tcb, 云开发CLI, Tencent CloudBase命令行) resource management skill. Use when deploying cloud functions, CloudRun, storage, NoSQL/MySQL, static hosting, permissions, CORS/domains via tcb; for CI/CD and batch ops; when the user prefers CLI; or as the first-session fallback when CloudBase MCP tools are not loaded yet (after install/config, before IDE restart). Also covers tcb login and site switching (国内站/国际站 via --intl or config isIntl), environment lifecycle (env create/modify/renew/delete/apikey/login/domain), tcb config and cloudbaserc.json sync, log search (logs search, CLS), metric monitoring (monitor), data model and PostgreSQL migrations (db model, db pg migration), sandbox/agent/integration management — do not default to tcb deploy.
-version: 2.36.1
+version: 2.36.2
 license: MIT
 alwaysApply: false
 ---
@@ -10006,7 +10210,7 @@ If a referenced sibling skill file is missing from this environment, ask the use
 
 **Route, do not improvise** — when a task belongs to another skill, hand over instead of guessing flags here:
 - PostgreSQL schema / RLS / `pgstore` → `../postgresql-development-cloudbase/SKILL.md`
-- Data-model design (ER / Mermaid) → `../data-model-creation/SKILL.md`
+- Data-model design (ER / Mermaid) → `../postgresql-development-cloudbase/SKILL.md`
 - In-app SDK code (web / miniprogram / node) → the matching SDK skill
 
 ## Core Principles
@@ -10859,7 +11063,7 @@ CloudBase 安全域名机制会拦截未注册的 origin 发出的请求。Vite 
 ---
 name: cloudbase-code-review
 description: "Code review and validation for CloudBase projects. After writing code for Web / miniprogram / CloudRun / cloud-function projects, call this skill to check for known pitfalls — auth guard misuse, missing database tables, RLS misconfiguration, storage domain setup, and SDK API misuse. Supports automated lint scripts (regex-based) + LLM semantic review."
-version: 2.36.1
+version: 2.36.2
 license: MIT
 alwaysApply: false
 ---
@@ -11273,7 +11477,7 @@ Use this supported cloud path:
 ---
 name: cloudbase-declarative-deploy
 description: CloudBase declarative deployment from a cloudbaserc config (声明式部署, 配置式部署, cloudbaserc 部署) through the deployBuild / deployPlan / deployApply MCP tools. Use when deploying database, functions, app, hosting, or gateway resources described in cloudbaserc.json/yaml as a single desired-state config, when a user wants to build static hosting artifacts locally first (deployBuild), or wants a dry-run plan before applying (deployPlan), or when handling multi-environment deploys via mode / envOverrides. Covers build-plan-apply flow (deployBuild local build → deployPlan dry-run → deployApply confirm=true), hosting build-output neutralization, envId resolution priority, only/skip filtering, concurrency, and continueOnError. Prefer deployBuild (when hosting declares a buildCommand) and deployPlan before deployApply; do not confuse with per-resource tcb CLI deploy or single-function deploy.
-version: 2.36.1
+version: 2.36.2
 license: MIT
 alwaysApply: false
 ---
@@ -12134,7 +12338,7 @@ Be sure to close monitoring when pages or components unmount to prevent memory l
 ---
 name: cloudbase-document-database-web-sdk
 description: Use CloudBase document database Web SDK only for confirmed NoSQL collection work. Query, create, update, and delete document data; if the task mentions PostgreSQL / CloudBase PG / app.rdb(), route to postgresql-development instead.
-version: 2.36.1
+version: 2.36.2
 license: MIT
 alwaysApply: false
 ---
@@ -12375,12 +12579,135 @@ await managePermissions({
 });
 ```
 
+## issue-report
+
+# Issue report (整理一份可分享的问题报告)
+
+Use this when a CloudBase MCP call fails and the user cannot, or will not, paste the whole conversation. Produce two parts: the **call chain** (what happened) and the **intent review** (why it went wrong). The second part is what a maintainer cannot reconstruct from logs, and what a fix usually depends on.
+
+## Opening line
+
+Say this before collecting anything, so the user knows what is being asked for:
+
+> 不用发整段对话。把失败的那几步整理成一份报告就够了，业务内容我会打码。
+
+## Part A — Keep this, drop that
+
+A conversation is mostly text that does not matter for a bug. A maintainer needs the call chain, not the chat.
+
+Keep:
+
+- the tool name, its `action`, and the arguments' shape — key names and types only
+- the error **wording**, kept as-is, with its values replaced — never paraphrased, never trimmed down to "it failed"
+- `RequestId` from the response, exactly as returned — it is the only key to the server-side log
+- `envId`, `site`, `region`, `auth_status`
+- the order of calls, and how long each took
+
+Drop:
+
+- the user's prompt text, generated code, file contents, database rows
+- every value inside arguments or results
+- table names, business entity names, product names — replace with `<table>`, `<entity>`
+
+## Part B — Why it went wrong
+
+Logs record actions, not reasons. A trace can show that `manageFunctions` was called with an empty `functionName`; it cannot show that the agent believed the field was optional. Only the agent that made the decision still knows, so ask it before the context is gone.
+
+Answer these in order. Keep every answer free of business content — name the action, not the object.
+
+1. **Goal.** One sentence. What was the user trying to reach?
+2. **Planned path.** What you intended to do when you started, before any tool ran.
+3. **Actual path.** What you did, step by step, next to the plan. The gap between the two columns is the finding.
+4. **What pulled you off.** For each wrong step, the single thing that made it look right. Not "I was careless" — the concrete source, named from the table below.
+5. **The turn.** The first step where reality disagreed with the plan. What signal appeared, what you read it as, why you kept going.
+6. **Replay.** What you would do first if you started over.
+
+### Sources — pick one per wrong step
+
+Each source has a different owner, and therefore a different fix. Naming the wrong source sends the fix to the wrong team.
+
+| Source | Looks like | Fix owner |
+| --- | --- | --- |
+| `expert` | the whole approach came from an expert pack's SOP | the pack |
+| `skill` | you followed a loaded skill's instructions | the skill |
+| `doc` | a repo or site doc said so | the doc |
+| `web` | a WebFetch or WebSearch result said so — often an older API shape | the retrieved page |
+| `tool-output` | a tool returned a field, a null, or an error that misled you | the tool |
+| `user-wording` | the request was read too literally, or a word meant something else | wording or UX |
+| `memory` | a conclusion carried over from an earlier session | memory |
+| `none` | no reference at all — you answered from priors | model or tool description |
+
+`none` is a legitimate answer and usually the most useful one. A wrong guess with nothing behind it is a tool-description problem, not a documentation problem.
+
+### Attribution table
+
+| Step | Source | Where exactly | What it said | Correct | Fix owner |
+| --- | --- | --- | --- | --- | --- |
+| 3 | `skill` | `../cloudbase-cli/SKILL.md` § Deploy | use `tcb functions:deploy` | no, removed in 2.30 | skill |
+
+**One rule keeps this table honest:** `Where exactly` must be a path plus a section, a URL, or a tool name plus a field name. If you cannot point at one, the source is `none` — delete whatever else you wrote in that row.
+
+Agents like to blame a stale doc, because that lands the fault elsewhere. If you cannot quote the line that misled you, there was no such line.
+
+**Expert packs need a separate check.** A pack shapes who you are, not what you read, so it never appears in a list of documents. Ask plainly: whose persona or SOP is running in this session? If you cannot tell, write `unknown` instead of assuming it was yours alone.
+
+### The turn
+
+This is the highest-value field in the report. Fill it with what you observed at that moment, not with what you learned later:
+
+- **Signal** — the exact thing you saw: an error string, an empty result, a field that came back null.
+- **Read as** — what you took it to mean at the time.
+- **Actually** — what it meant, now that you know.
+- **Why ignored** — what made the wrong reading feel right: a plausible default, a previous success, an assumption you never checked.
+
+If you cannot separate "read as" from "actually", you are writing hindsight. Delete the row and try again, or write `unknown`.
+
+### No hindsight
+
+Every sentence in Part B must use only what was known at that step. Two checks:
+
+- If an explanation cites an error message that had not appeared yet, it is fabricated. Cut it.
+- If the plan column contains a detail you could only have learned by finishing the task, move it to the actual column.
+
+A blank field is usable. A polished reconstruction is not — it sends the fix in the wrong direction.
+
+## What is visible here, and what is not
+
+State only what you observed.
+
+| Field | Visible in this session? |
+| --- | --- |
+| Tool names, arguments, and results | yes |
+| Raw error text and `RequestId` | yes, from the tool response |
+| `auth_status`, `current_env_id` | yes, via `auth(action="status")` |
+| Skills you loaded, docs you read, tools you called | yes — from your own context |
+| OS, time, local Node and MCP package version | yes, from the shell |
+| Host client name and version | no — ask the user |
+| MCP capabilities declared at `initialize` (elicitation, ui) | no |
+| Why a tool never loaded at all | no — nothing was called |
+| Server-side logs, cloud API internals | no |
+
+Write `unknown` for anything on the right that the user did not supply. Never infer a version from a URL, a host name, or a similar-looking issue.
+
+## Ask for at most three things
+
+Past three, the user stops replying.
+
+1. The error line the user saw on screen — text or a screenshot.
+2. The `envId` involved, or a yes/no on the one already in the report.
+3. The host client and its version (WorkBuddy, CodeBuddy, Cursor, and so on).
+
+## Redaction — the customer's business comes first
+
+The risk here is not mainly credentials. It is the customer's business: what they sell, how their tables are shaped, what their code does, who their users are. A report leaking a table name or a customer list is worse than no report at all.
+
+
 ## rule
 
 ---
 name: cloudbase-mcp
 description: CloudBase MCP reference. Use when connecting local or remote MCP, calling tools from the shell with mcporter, reading tool schemas, choosing the domestic or international endpoint, setting site, region, cloud mode, or plugin flags, or contributing a fix to the open-source MCP server, skills, or CLI.
-version: 2.36.1
+version: 2.36.2
 license: MIT
 alwaysApply: false
 ---
@@ -12410,6 +12737,7 @@ If a referenced sibling skill file is missing from this environment, ask the use
 - The user or the agent calls CloudBase tools from the shell with mcporter, or needs a tool schema before calling.
 - The user needs the site, region, cloud-mode, or plugin switches that already exist.
 - A bug is in this repo's MCP server, skills, or CLI, and the fix should be a pull request.
+- A CloudBase tool failed and the user needs to report it, but cannot share the whole session. Read `references/issue-report.md` first and build the report before answering anything else.
 
 ## Do not use this for
 
@@ -12496,7 +12824,6 @@ npx mcporter describe cloudbase --all-parameters
 npx mcporter list cloudbase --schema
 ```
 
-Call a tool with `server.tool` and `key=value` arguments:
 
 ## deployment-gate
 
@@ -12866,7 +13193,7 @@ exports.main = async (event) => {
 ---
 name: cloudbase-platform
 description: CloudBase platform overview and routing guide. This skill should be used when users need high-level capability selection, platform concepts, console navigation, realtime (broadcast / presence / live database changes), or cross-platform best practices before choosing a more specific implementation skill.
-version: 2.36.1
+version: 2.36.2
 license: MIT
 alwaysApply: false
 ---
@@ -12911,7 +13238,7 @@ If a referenced sibling skill file is missing from this environment, ask the use
 - Realtime / live push / channels / live table change subscriptions / multiplayer sync -> `../postgresql-development-cloudbase/references/realtime.md`
   - **PG mode only.** Run its Step 0 environment probe before writing any realtime code; if the environment has no `realtime` schema, stop and report rather than working around it.
   - `app.realtime()` (Broadcast / Presence / Postgres CDC) is **not** document-database `collection.watch()`. Do not answer a realtime request with `watch()` code, or the reverse.
-- MySQL relational database / data modeling -> `../relational-database-mcp-cloudbase/SKILL.md` or `../data-model-creation/SKILL.md`
+- PostgreSQL schema and data modeling -> `../postgresql-development-cloudbase/SKILL.md`; existing MySQL only -> `../relational-database-mcp-cloudbase/SKILL.md`
 - Cloud storage -> `../cloud-storage-web/SKILL.md`
 
 ### Do NOT use for
@@ -13464,9 +13791,13 @@ Actions:
 Official docs:
 
 - `https://developers.weixin.qq.com/minigame/dev/wxcloud/guide/wechatpay/ai-virtualpayl-person.html`（AI 工具快速接入虚拟支付，含小游戏/小程序）
-- `https://developers.weixin.qq.com/miniprogram/dev/platform-capabilities/business-capabilities/virtual-payment`（企业/个体户接入指引）
+- `https://developers.weixin.qq.com/miniprogram/dev/platform-capabilities/business-capabilities/virtual-payment`（企业/个体户接入指引，含推送字段）
 - `https://developers.weixin.qq.com/miniprogram/dev/platform-capabilities/business-capabilities/virtual-payment/person`（个人主体接入指引）
 - Client API: `https://developers.weixin.qq.com/miniprogram/dev/api/payment/wx.requestVirtualPayment.html`
+- 自建 HTTP 入站验签（消息推送，不是 `pay_sig`）: `https://developers.weixin.qq.com/miniprogram/dev/framework/server-ability/message-push.html`
+- `query_order`: `https://developers.weixin.qq.com/miniprogram/dev/server/API/VirtualPayment/api_query_order`
+- `refund_order`: `https://developers.weixin.qq.com/miniprogram/dev/server/API/VirtualPayment/api_refund_order`
+- 出站 `pay_sig`: `https://developers.weixin.qq.com/minigame/introduction/commercialization/virtual-payment/signature.html`
 
 ## When To Use
 
@@ -13529,63 +13860,59 @@ Use this reference for **虚拟支付**（virtual goods payment）flows: 道具�
 
 | Event | 说明 | 处理 |
 | --- | --- | --- |
-| `xpay_goods_deliver_notify` | 道具发货通知 | 核心事件：幂等发货，返回 `<xml><ErrCode>0</ErrCode><ErrMsg><![CDATA[success]]></ErrMsg></xml>`，否则平台重试（最多 15 次） |
+| `xpay_goods_deliver_notify` | 道具发货通知 | 核心事件：幂等发货。应答格式跟 MP 后台选定的推送格式一致，见下文「Inbound notify」。格式不对时平台最多重试 15 次 |
 | `xpay_coin_pay_notify` | 代币支付通知 | 更新代币余额 |
 | `xpay_refund_notify` | 退款通知 | 更新订单状态、回收道具 |
 | `xpay_complaint_notify` | 用户投诉通知 | 记录并人工跟进 |
 | `xpay_subscribe_signing_result_notify` | 订阅签约结果 | 更新订阅状态 |
 | `xpay_subscribe_pay_fail_notify` | 订阅支付失败 | 提示用户 |
-| `xpay_subscribe_ios_refund_query_notify` | iOS 订阅退款问询 | **3 秒内**返回 `result_code`（0=建议退款，1=拒绝），否则 Apple 连续问询 3 次后标「不确定」 |
+| `xpay_subscribe_ios_refund_query_notify` | iOS 退款问询 | **3 秒内**返回 `IosRefundQueryResponse`：`result_code`（0 建议退款，1 拒绝）和必填 `evidence`；`result_info` 可选。连续 3 次超时则平台向 Apple 返回「不确定」 |
 
-发货推送核心字段：`OpenId`（发给谁）、`OutTradeNo`（业务单号）、`WeChatPayInfo.MchOrderNo`（平台单号）、`GoodsInfo.ProductId` / `GoodsInfo.Quantity`（发什么、发多少）。
+发货推送核心字段：`OpenId`（发给谁）、`OutTradeNo`（业务单号）、`WeChatPayInfo.MchOrderNo`（平台单号）、`GoodsInfo.ProductId` / `GoodsInfo.Quantity`（发什么、发多少）。字段全表以企业接入指引为准，不要把出站 `pay_sig` 示例当成推送 body。
+
+### Inbound notify: gateway vs self-hosted HTTP
+
+入站验真和出站 `pay_sig` 是两套协议。`pay_sig` 只用于本服务调用微信 `/xpay/*`（以及 C 端 `requestVirtualPayment`）。微信推送到开发者服务器时，走小程序「消息推送」。
+
+| 接收方式 | 谁做验签 / 解密 | 业务代码做什么 |
+| --- | --- | --- |
+| 微信云开发云函数、CloudBase 集成中心网关 | 平台或网关已完成 | 只做幂等发货 / 回收。不要再对入站包算 `pay_sig` |
+| 微信云托管消息推送 | 内网推送，默认不要求业务解密 | 公网访问开启时，只处理带 `x-wx-source` 的请求。见 `https://developers.weixin.qq.com/miniprogram/dev/wxcloudservice/wxcloudrun/src/guide/weixin/push.html` |
+| 自建 HTTP（MP 后台配置的服务器 URL） | 开发者自己完成 | 按消息推送文档实现 GET 校验和 POST 验签解密 |
+
+自建 HTTP 的配置在小程序管理后台 → 开发 → 开发管理 → 消息推送：URL、Token、EncodingAESKey、加解密方式、数据格式（XML 或 JSON）。
+
+- **GET（提交配置时的 URL 校验）**：query 带 `signature`、`timestamp`、`nonce`、`echostr`。把 Token、`timestamp`、`nonce` 做字典序排序，拼接后 SHA1，与 `signature` 一致则**原样返回 `echostr`**。这里没有 body，也没有 `pay_sig`。消息推送文档给出了可复现的测试向量（Token `AAAAA`，期望 signature `f464b24fc39322e44b38aa78f5edd27bd1441696`）。
+- **POST（发货 / 退款 / iOS 退款问询等业务通知）**：
+  - 明文模式：用 query 的 `signature` 验签，算法与 GET 相同（Token、timestamp、nonce），body 即事件。
+  - 安全模式（推荐）：验 query 的 `msg_signature`，不要用 `signature`。原串是 Token、timestamp、nonce、body 里的 `Encrypt` 四个字段字典序拼接后 SHA1。再用 EncodingAESKey 做 AES-256-CBC、PKCS#7 解密。明文布局是 `random(16B) + msg_len(4B, 网络字节序) + msg + appid`，`appid` 必须等于本小程序。测试向量（含期望明文与加密回包）在消息推送文档的安全模式示例里，事件名是 `debug_demo`，不是 xpay。
+  - 兼容模式同时带明文和密文，不建议。
+- Token 只参与签名。EncodingAESKey 只参与消息体加解密。二者都不是虚拟支付 AppKey。
+- **应答格式跟推送数据格式走，XML 示例不是所有模式的通用应答**（企业接入指引 2.4）：
+  - 推送为 XML：`<xml><ErrCode>0</ErrCode><ErrMsg><![CDATA[success]]></ErrMsg></xml>`
+  - 推送为 JSON：`{"ErrCode":0,"ErrMsg":"success"}`
+  - 空串或 `success` 等价于 `ErrCode = 0`
+  - `ErrCode` 必填，表示开发者已收下这条推送；`ErrMsg` 可选。这不是退款业务结果。
+  - 格式不对时平台最多重试 15 次。带 `RetryTimes` 的事件写明间隔为 2、4、8、16…，从 0 起最多 15 次。
+  - 公开页没有写应答的 HTTP 状态码和 `Content-Type`。不要自行补一个。
+- 安全模式下，消息推送文档写明：接口没有特定回包要求时，回空串或 `success` 且不加密；其他回包内容要加密。xpay 页上的 `ErrCode` 示例是按数据格式给出的明文，没有单独的「安全模式发货回包」测试向量。iOS 问询回包带业务字段，按消息推送规则属于需要加密的回包。
+- `xpay_refund_notify` 请求体里的 `RetCode` 才是退款结果：`0` 成功，非 `0` 失败（`RetMsg` 为原因）。用 `MchRefundId` / `WxRefundId` 对上那一笔退款单。通知到达本身不是退款完成。
+- `xpay_subscribe_ios_refund_query_notify` 须在 **3 秒内**返回。企业接入指引的应答是 `IosRefundQueryResponse`：`result_code`（0 建议退款，1 拒绝）、`evidence`（必填，审计依据）、`result_info`（结果描述；云函数回调说明里标为非必填）。已发布的嵌套示例是云函数返回值 `{ ErrCode, ErrMsg, IosRefundQueryResponse }`，见 `https://developers.weixin.qq.com/miniprogram/dev/wxcloudservice/wxcloud/guide/wechatpay/virtual-payment-callback.html`。Apple 最终退款仍通过 `xpay_refund_notify` 通知，并且仍要看 `RetCode`。
 
 ### Query order (查单兜底)
 
-`POST /xpay/query_order`（带 pay_sig 签名）：
+`POST https://api.weixin.qq.com/xpay/query_order?access_token=ACCESS_TOKEN&pay_sig=PAY_SIG`
+
+`pay_sig` 的 uri 是 `/xpay/query_order`（不带 query），消息体是实际发出的原始 JSON。本接口不支持云调用。
 
 ```json
-{ "openid": "用户openid", "env": 0, "order_id": "业务单号 outTradeNo" }
-```
-
-> ⚠️ 参数名是 `order_id`（传 outTradeNo），不是 `out_trade_no`。建议每 5 分钟定时查一次未完成订单。
-
-## Refunds & Settlement
-
-| 终端 | 退款 | 结算周期 | 费率 |
-| --- | --- | --- | --- |
-| Android 等 | 开发者主动（MP 后台或 `refund_order` 接口） | T+3 | 1%（腾讯技术服务费） |
-| iOS | ❌ 开发者无法主动退款；用户在 App Store → 购买记录申请，Apple 审批后推送 `xpay_refund_notify` | 约 45-60 天 | 12%（Apple 佣金） |
-
-- 支付 180 天内退款平台退还手续费，超过 180 天不退。
-- iOS 订单在前端「我的」等场景建议**隐藏退款入口**，改为引导用户去 App Store 申请。
-
-## Common Errors
-
-| 错误 | 原因 | 解法 |
-| --- | --- | --- |
-| `COIN_OR_PRODUCT_ID_CREATED_IN_RECENTLY` | 道具刚发布，平台同步延迟 | 等几分钟到半小时再试 |
-| `PAYMENT_ILLEGAL_IN_SANDBOX` | 沙箱模式在真机预览下被拒 | 切现网（`env: 0` + 正式 AppKey） |
-| 当前商户尚未开启 iOS 支付 | iOS 端 IAP 未开通 | MP 后台配置小程序简称 + 开通 IAP |
-
-## On 微信云开发 (WeChat CloudBase)
-
-用微信云开发承接时无需自建服务器/证书：云函数承担下单签名、回调处理、查单兜底，云数据库存订单。典型拆分：
-
-- 下单云函数：生成业务单号、构造 signData、计算双签名，返回 payData
-- 回调云函数：接收 `xpay_*` 推送，幂等校验后发放/回收道具（需在 MP 后台配置发货推送 URL 并订阅事件）
-- 查单云函数：推送丢失时调 `query_order` 补发货，兼作订单/道具查询
-
-配合 Nightly 微信开发者工具（≥ 2.02.2608312）与 `wechatide` CLI / IDE MCP，可自动完成云函数部署与消息推送订阅（见 `../miniprogram-development/SKILL.md` 的 DevTools 工作流）。
-
-## Implementation Checklist
-
 
 ## rule
 
 ---
 name: cloudbase-wechat-integration
 description: CloudBase WeChat integration guide for Mini Program WeChat Pay, Mini Program virtual payment (虚拟支付, wx.requestVirtualPayment), Official Account JSAPI Pay, Native QR-code Pay, Official Account OAuth, openid handling, payment callbacks, and CloudBase Integration Center generated functions. This skill should be used when users ask to add, debug, or extend WeChat payment, virtual payment, or official-account flows on CloudBase.
-version: 2.36.1
+version: 2.36.2
 license: MIT
 alwaysApply: false
 ---
@@ -13636,6 +13963,7 @@ Official CloudBase Integration Center docs (human reference — do not treat as 
 5. Treat frontend payment success as UI feedback only. The authoritative payment state must come from server-side query results or payment callbacks.
 6. When extending generated functions, preserve credential environment variables and generated callback verification/decryption logic. Add business logic around order checks, persistence, idempotency, and fulfillment.
 7. Before changing payment or callback code, identify the target scenario and load only the matching reference file.
+8. For 虚拟支付 inbound callbacks, do not reuse outbound `pay_sig` as the notify authenticator. Cloud function and Integration Center deliveries are already verified. A self-hosted HTTP receiver follows mini program message-push verification in `references/virtual-payment.md`. Match the ack to the configured XML or JSON push format. `refund_order` success only means the refund task was accepted. A refund notify counts as success only when its `RetCode` is `0` and the refund id matches; do not invent unpublished idempotency or query-parameter mappings.
 
 ## Routing
 
@@ -13643,7 +13971,7 @@ Official CloudBase Integration Center docs (human reference — do not treat as 
 | --- | --- | --- |
 | Capability selection, console-first boundaries, independent distribution | `references/overview.md` | Establishes the Integration Center model and safety rules |
 | Mini Program WeChat Pay, `wx.cloud.callHTTPFunction`, `wx.requestPayment` | `references/mini-program-pay.md` | Covers Mini Program openid injection, order creation, and callback expectations |
-| Mini Program 虚拟支付, virtual goods, `wx.requestVirtualPayment`, `xpay_*` callbacks | `references/virtual-payment.md` | Covers OfferID/AppKey signing, sandbox vs 现网, delivery callbacks, query-order fallback, iOS IAP rules |
+| Mini Program 虚拟支付, virtual goods, `wx.requestVirtualPayment`, `xpay_*` callbacks | `references/virtual-payment.md` | Covers OfferID/AppKey signing, sandbox vs 现网, delivery callbacks, `query_order` status, refund acceptance vs completion, and self-hosted message-push verification versus gateway-verified callbacks |
 | Official Account JSAPI pay, H5 inside WeChat, `WeixinJSBridge.invoke` | `references/official-account-jsapi-pay.md` | Covers official-account openid and JSAPI invocation |
 | Native QR-code pay for PC/Web checkout | `references/native-qr-pay.md` | Covers `code_url`, QR rendering, and polling/query flow |
 | Official Account OAuth, openid/userinfo retrieval | `references/official-account-oauth.md` | Covers OAuth routes generated by the official-account integration |
@@ -13928,7 +14256,7 @@ If the user says "PostgreSQL" but the app is a classic TCP client (for example n
 ---
 name: cloudrun-development
 description: CloudBase Run backend development rules (Function mode/Container mode). Use this skill when deploying backend services that require long connections, multi-language support, custom environments, AI agent development, or migrating existing/GitHub apps that need VPC access to MySQL/PostgreSQL/Redis. Also use when diagnosing CloudRun container deploy failures (deploy_failed, readiness/probe failed, image won't start, docker.io pull loops) or a deploy stuck behind a running deploy task. For stateless HTTP services, prefer HTTP cloud functions.
-version: 2.36.1
+version: 2.36.2
 license: MIT
 alwaysApply: false
 ---
@@ -14050,7 +14378,7 @@ Use CloudBase Run when the task needs a deployed backend service rather than a s
 
 ---
 name: data-model-creation
-description: "[Deprecated] Optional advanced tool for complex data modeling. For simple MySQL table creation, use relational-database-tool directly; for PostgreSQL / CloudBase PG schema work, use postgresql-development. New environments should use PostgreSQL DDL via queryPgDatabase/managePgDatabase — see postgresql-development skill instead."
+description: "[Deprecated] Optional Mermaid classDiagram modeling path. Schema and SQL for PostgreSQL / CloudBase PG go through postgresql-development (queryPgDatabase / managePgDatabase)."
 version: 2.36.1
 license: MIT
 alwaysApply: false
@@ -14082,7 +14410,6 @@ If a referenced sibling skill file is missing from this environment, ask the use
 
 ### Then also read
 
-- Direct MySQL SQL creation or schema change -> `../relational-database-mcp-cloudbase/SKILL.md`
 - PostgreSQL / CloudBase PG schema work -> `../postgresql-development-cloudbase/SKILL.md`
 - Broader feature planning before schema work -> `../spec-workflow/SKILL.md`
 
@@ -14110,17 +14437,16 @@ If a referenced sibling skill file is missing from this environment, ask the use
 
 This skill is an **advanced modeling path**, not the default path for database work.
 
-- For most MySQL database tasks, use `relational-database-mcp-cloudbase` and write SQL directly. If the task says PostgreSQL, CloudBase PG, PG mode, `app.rdb()`, `queryPgDatabase`, `managePgDatabase`, or RLS, use `postgresql-development-cloudbase` instead.
+- For table creation and SQL, use `postgresql-development-cloudbase`.
 - Use this skill only when diagram-driven modeling adds value.
 
 ## Quick routing
 
-### Use `relational-database-mcp-cloudbase` instead when
+### Use `postgresql-development-cloudbase` instead when
 
-- You need MySQL `CREATE TABLE`, `ALTER TABLE`, `INSERT`, `UPDATE`, `DELETE`, or `SELECT`
+- You need `CREATE TABLE`, `ALTER TABLE`, `INSERT`, `UPDATE`, `DELETE`, or `SELECT`
 - The schema is small and already clear
 - The user never asked for a visual model
-- The task does **not** mention PostgreSQL / CloudBase PG / PG mode / `app.rdb()` / `queryPgDatabase` / `managePgDatabase` / RLS
 
 ### Use this skill when
 
@@ -14168,6 +14494,8 @@ This skill is an **advanced modeling path**, not the default path for database w
 | phone | `phone` |
 | URL | `url` |
 | image | `x-image` |
+| file | `x-file` |
+| rich text | `x-rtf` |
 
 ## checklist
 
@@ -14335,7 +14663,7 @@ curl -X PATCH 'https://your-env.api.tcloudbasegateway.com/v1/rdb/rest/course?id=
 ---
 name: http-api-cloudbase
 description: CloudBase official HTTP API client guide. This skill should be used when backends, scripts, or non-SDK clients must call CloudBase platform APIs over raw HTTP instead of using a platform SDK or MCP management tool.
-version: 2.36.1
+version: 2.36.2
 license: MIT
 alwaysApply: false
 ---
@@ -14619,7 +14947,7 @@ Before implementing any HTTP API calls, you should:
 ---
 name: minimal-web-baas-demo
 description: "Fast path for a minimal CloudBase Web + database demo (最小前后端 / 最小可用 fullstack / Lovable-like BaaS). Defaults to @cloudbase/js-sdk client CRUD (NoSQL app.database / PG app.rdb), MCP-only schema, preview-first, and forbids cloud functions unless secrets, cron/background jobs, or logic that security rules/RLS cannot express. Use for 搭一套 demo、留言板、Todo、Notes、Kanban, or when users say 带云函数+云数据库 but only need CRUD. NOT for production multi-service backends, CloudRun, WeChat Mini Programs, or tasks that truly need server secrets."
-version: 2.36.1
+version: 2.36.2
 license: MIT
 alwaysApply: false
 ---
@@ -14701,8 +15029,8 @@ Use this order for every minimal Web + DB demo. **Do not reorder.** Cloud functi
 0. Connector pre-enabled (or shortest Trust path)     ← host / partner packaging
 1. Template warmup // parallel with credential wait   ← downloadTemplate + install
 2. queryEnv(action="info")                            ← sniff env + RuntimeBackends
-3. Lock ONE DB plane (NoSQL | PG | MySQL)             ← no mid-flight thrash
-4. MCP schema + minimal permissions                   ← writeNoSql* / PG migrate / MySQL manage
+3. Lock ONE DB plane (NoSQL | PG)                    ← new relational work is PG; MySQL only if the env already has it
+4. MCP schema + minimal permissions                   ← writeNoSql* / PG migrate
 5. Browser @cloudbase/js-sdk CRUD                     ← app.database() / app.rdb()
 6. Local preview (list + add)                         ← then ask before deploy
 7. Cloud functions                                    ← skip (count = 0) unless secrets/cron/rules-cannot-express
@@ -14713,7 +15041,7 @@ Stack priority for this path: **Web SDK CRUD > MCP schema > template warmup > cl
 ## Standard playbook
 
 1. **Warm template in parallel with credentials** (see partner notes below): `downloadTemplate` (`react` default, `vue` if requested) → `npm install` / `pnpm install`.
-2. `queryEnv(action="info")` → lock **one** DB plane (NoSQL **or** PG **or** MySQL). Do not thrash between them.
+2. `queryEnv(action="info")` → lock **one** DB plane (NoSQL **or** PG). New relational work uses PostgreSQL. Use MySQL only when the environment already has an instance. Do not thrash between them.
 3. MCP: create the collection/table + minimal permissions.
 4. Frontend: ensure session (`auth.signInAnonymously()` or equivalent), then wire list + create with `@cloudbase/js-sdk` (see Hard rule 6).
 5. Start / report preview URL; ask before deploy.
@@ -16663,7 +16991,7 @@ Shared prerequisites for every playbook:
 1. `queryFunctions(action="listFunctions")` — does the name exist in **this** env?
 2. `queryFunctions(action="getFunctionDetail", functionName="...")` — status, HTTP access, triggers
 3. If HTTP: confirm path / domain / gateway with `queryGateway` / hosting docs as available; mismatch often looks like 404
-4. `queryLogs(action="searchLogs", queryString="404 OR FUNCTION_NOT_FOUND OR functionName:<name>", ...)`
+4. `queryLogs(action="searchLogs", queryString="404 OR FUNCTION_NOT_FOUND OR function_name:\"<name>\"", ...)`
 5. `queryEnv(action="metrics", metricName="FunctionInvocation", resourceID="<functionName>")` — if `allZero`, traffic never reached the function (client/env/path issue more likely than runtime crash)
 
 ### Decision tree
@@ -16731,8 +17059,8 @@ Shared prerequisites for every playbook:
 
 ---
 name: ops-inspector
-description: AIOps-style CloudBase inspection skill (v3). Use when users need health checks, log diagnosis, alarm interpretation (CPU alert normal?, peak QPS), metrics via queryEnv(action=metrics), or fault playbooks for 429 / AI model 429 / function timeout / function 404 / ACCESS_TOKEN_INVALID / zero invocations. Triggers on 巡检, 诊断, 告警, 峰值 QPS, 限频, 调用量为 0, troubleshooting.
-version: 2.36.1
+description: AIOps-style CloudBase inspection skill. Use when users need health checks, log diagnosis, alarm interpretation (CPU alert normal?, peak QPS), metrics via queryEnv(action=metrics), fault playbooks for 429 / AI model 429 / function timeout / function 404 / ACCESS_TOKEN_INVALID / zero invocations, or a scheduled patrol that reports only new or worse findings. Triggers on 巡检, 诊断, 告警, 峰值 QPS, 限频, 调用量为 0, 定时巡检, 每天检查, 值守, troubleshooting.
+version: 2.36.2
 license: MIT
 alwaysApply: false
 ---
@@ -16752,7 +17080,8 @@ If a referenced sibling skill file is missing from this environment, ask the use
 - The user asks for an "inspection", "health check", "巡检", "诊断", or "troubleshooting" of their CloudBase environment.
 - The user wants to review recent error logs across services.
 - The user asks **告警解读** questions: whether a **CPU 告警** is normal, what **峰值 QPS** was, or whether throttle/error metrics look healthy.
-- The symptom matches a v3 fault playbook: **429 / 限频**, **AI 模型 429 / Token 额度**, **云函数超时或轮询超时（`-404005`/433）**, **云函数 404**, **ACCESS_TOKEN_INVALID**, or **调用量为 0**.
+- The symptom matches a fault playbook: **429 / 限频**, **AI 模型 429 / Token 额度**, **云函数超时或轮询超时（`-404005`/433）**, **云函数 404**, **ACCESS_TOKEN_INVALID**, or **调用量为 0**.
+- The user wants a **patrol** rather than a one-off check ("每天帮我看看有没有变差", "定时巡检", "值守"), or asks to put an inspection on a schedule.
 
 ### Read before writing code if
 
@@ -16773,18 +17102,24 @@ If a referenced sibling skill file is missing from this environment, ask the use
 ### Do NOT use for
 
 - Deploying new resources or writing application code. This skill is read-only and diagnostic.
-- Replacing proper monitoring/alerting infrastructure. It provides point-in-time inspection, not continuous monitoring.
+- Replacing the platform's alert rules (SMS / 告警策略). A patrol catches drift and slow degradation between alerts; alert rules catch hard thresholds in real time. Do not disable alerting because a patrol exists.
+- Setting up the alert rules themselves. For log-level threshold alerts (fire when `statusCode` is 502), route the user to CLS log alerting — deliver environment logs to CLS, confirm the index, then create an alert policy: https://docs.cloudbase.net/logger/alert/log-alert-guide (metric-based alerting is console-native and needs no setup guide).
+- Writing to the environment on a scheduled run. See *Scheduled Patrol* — every patrol step is read-only.
 - Directly fixing problems — it diagnoses and recommends; actual fixes should use the appropriate implementation skill.
-- Fetching metrics by guessing cloud API Actions. **Never** use `callCloudApi` for monitor curves — always use `queryEnv(action="metrics")`.
+- Fetching metrics by guessing cloud API Actions. For any metric `queryEnv` covers (functions, CloudRun, gateway QPS, MySQL, package usage), always use `queryEnv(action="metrics")` — never `callCloudApi`. The one exception is PostgreSQL: `queryEnv` has no PG metrics, so pull them via `callCloudApi` → `monitor` / `2018-07-24` / `GetMonitorData`, namespace `QCE/POSTGRES`, with the exact Action and dimensions pinned in the `cloud-api-operations` skill — never from memory.
 
 ### Common mistakes / gotchas
 
 - Running a full inspection without first confirming the environment is bound (`auth` tool must show logged-in and env-bound state). If binding fails or only one environment appears, credentials are being resolved **per directory** — see `../cloudbase-cli/references/core.md` (*Where credentials are read from*); it is usually neither a permissions nor a platform problem.
 - Ignoring CLS log service status — if CLS is not enabled, `queryLogs` will fail; always check first with `queryLogs(action="checkLogService")`.
 - Searching logs without a time range — this can return excessive or irrelevant results. Always scope searches to a relevant time window.
+- Assuming one `queryFunctions(action="listFunctionLogs")` call covered a multi-day window. It is capped at **1 day and 100 rows** per call. For anything longer, loop over day-sized windows or switch to `queryLogs(action="searchLogs")`.
+- Reading an empty log result as "no errors". Empty has three common causes and only one of them is good news: wrong time window, missing colon in a field comparison (`status_code>200` silently matches nothing), or CLS not capturing that log source. Say which check you ran before concluding a resource is healthy.
 - Treating a single error log as the root cause without correlating across resources. A function error may stem from a database or config issue.
 - Answering "峰值 QPS" / "CPU 告警是否正常" from screenshots or memory instead of `queryEnv(action="metrics")`.
 - Calling `callCloudApi` with invented `GetMonitorData` / `DescribeCurveData` parameters — the metrics branch already wraps Manager SDK.
+- Re-reporting the same finding on every patrol run. Without state between runs the report repeats itself, gets muted, and stops being read — see *Scheduled Patrol*.
+- Scheduling a patrol with write-capable tools approved. A scheduled run cannot stop to ask, so anything it can call, it will call unattended.
 
 ### Minimal checklist
 
@@ -16799,12 +17134,11 @@ If a referenced sibling skill file is missing from this environment, ask the use
 
 ## How to use this skill (for a coding agent)
 
-### Ops Inspector v3 additions
+### What this skill covers
 
-v3 adds two mandatory capabilities on top of log/resource inspection:
-
-1. **告警解读** — pull metrics, compare to baselines in `references/alarm-interpretation.md`, answer CPU-alert / peak-QPS style questions in plain language.
-2. **故障剧本** — when symptoms match, follow `references/fault-playbooks.md` instead of ad-hoc tool fishing.
+- **定时巡检** — four patrol types with default cadences, a state file so a run reports only what is new or worse, read-only rules for unattended runs, and the offer to schedule the inspection itself.
+- **告警解读** — pull metrics, compare to baselines in `references/alarm-interpretation.md`, answer CPU-alert / peak-QPS style questions in plain language.
+- **故障剧本** — when symptoms match, follow `references/fault-playbooks.md` instead of ad-hoc tool fishing.
 
 ### Inspection Modes
 
@@ -16827,7 +17161,7 @@ queryEnv(action="info")
 
 Confirm the environment is accessible. Record the `envId` for console link generation.
 
-**Step 2 — Metrics snapshot (v3)**
+**Step 2 — Metrics snapshot**
 
 ```
 queryEnv(action="metrics", envId="<EnvId>", metricName="GatewayTraceEnvQPS")
@@ -16843,12 +17177,6 @@ Use returned `Summary.max` / `avg` / `allZero` / `peakTimestamp`. Add `FunctionE
 queryLogs(action="checkLogService")
 ```
 
-If CLS is not enabled, note this as a **warning** — log-based diagnosis will be unavailable. Recommend enabling CLS in the console: `https://tcb.cloud.tencent.com/dev?envId=${envId}#/devops/log`
-
-**Step 4 — Cloud Functions Inspection**
-
-```
-queryFunctions(action="listFunctions")
 
 ## access-patterns
 
@@ -17157,7 +17485,7 @@ Represent each schema change as a local `cloudbase/migrations/<version>_<name>.s
 ---
 name: postgresql-best-practices-cloudbase
 description: "CloudBase PostgreSQL access-pattern and slow-query quality guidance. Use when designing how tables are read and written, eliminating per-row database calls, adding indexes for filters or joins, reviewing high-traffic data access, or explaining a slow SQL query. Not for first-time PG SDK setup, login UI, or NoSQL collections."
-version: 2.36.1
+version: 2.36.2
 license: MIT
 alwaysApply: false
 ---
@@ -17577,7 +17905,7 @@ Use this index after `postgresql-development/SKILL.md` identifies the task as Cl
 
 - PG business data uses `app.rdb().from(...)`, `queryPgDatabase`, and `managePgDatabase`.
 - Realtime (`app.realtime()`, broadcast / presence / postgres_changes) is a **different module** from document-database `collection.watch()`. Probe the environment first — see `realtime.md` Step 0.
-- Do not route PG work to NoSQL `app.database()` / `db.collection(...)` or MySQL `queryMysqlDatabase` / `manageMysqlDatabase`.
+- Do not route PG work to NoSQL `app.database()` / `db.collection(...)` or to MySQL `queryMysqlDatabase` / `manageMysqlDatabase`. MySQL skills are for an environment that already has MySQL.
 - Browser code must never contain API Key / `service_role` credentials.
 - For owner fields, prefer `varchar(64)` / `text` with database defaults such as `DEFAULT auth.uid()` and omit the owner field from frontend insert payloads. Remember `auth.uid()` is `text`; cast with `::uuid` only when comparing to an existing `uuid` column.
 
@@ -17590,7 +17918,7 @@ CloudBase PG mode is a Postgres-Native environment mode. It is not simply "addin
 ## Environment facts
 
 - PG mode is selected when creating a new CloudBase environment with PostgreSQL.
-- Legacy environments cannot be upgraded in place to PG mode. If `RuntimeBackends.postgresql !== true`, use the matching legacy NoSQL/MySQL skill or create/select a PG-mode environment.
+- Legacy environments cannot be upgraded in place to PG mode. If `RuntimeBackends.postgresql !== true`, use the NoSQL document-database skill, or the existing MySQL skill only when that environment already has MySQL. New relational work needs a PG-mode environment.
 - In PG mode, PostgreSQL is the unified runtime for:
   - `public` schema: business tables.
   - `auth` schema: user data and JWT identity.
@@ -18110,7 +18438,7 @@ Fix:
 ---
 name: postgresql-development-cloudbase
 description: "Use when building, debugging, or evaluating CloudBase PostgreSQL / CloudBase PG / PG mode apps, including Postgres schema setup, queryPgDatabase/managePgDatabase, JS SDK v3 app.rdb() CRUD/RPC, PG HTTP API fallback, RLS-style permissions, username-password auth, and Web CMS/admin CRUD flows backed by CloudBase PG."
-version: 2.36.1
+version: 2.36.2
 license: MIT
 alwaysApply: false
 ---
@@ -18128,7 +18456,7 @@ If a referenced sibling skill file is missing from this environment, ask the use
 ### Use this first when
 
 - The task says CloudBase PG, PostgreSQL, Postgres, PG mode, RLS, JS SDK v3 PostgreSQL, `app.rdb()`, `queryPgDatabase`, or `managePgDatabase`.
-- A Web app or CMS must persist business data in CloudBase PostgreSQL instead of NoSQL or MySQL.
+- A Web app or CMS must persist business data in CloudBase PostgreSQL.
 
 ### Then also read
 
@@ -18148,7 +18476,7 @@ If a referenced sibling skill file is missing from this environment, ask the use
 
 ### Do NOT use first
 
-- `relational-database-mcp-cloudbase` / `queryMysqlDatabase` / `manageMysqlDatabase`: those are MySQL-oriented.
+- `relational-database-mcp-cloudbase` / `queryMysqlDatabase` / `manageMysqlDatabase` for new relational work. Those skills are only for an environment that already has MySQL.
 - `cloudbase-document-database-web-sdk` / collection APIs for business data that must live in CloudBase PG.
 
 ## Required Flow
@@ -18174,7 +18502,6 @@ CloudBase PG (`app.rdb()`, `app.storage.from('bucket')`) uses **different API me
    - PG mode is a **new-environment mode** selected when creating a CloudBase environment with PostgreSQL. Do not try to "upgrade" a legacy environment in place; create/select a PG-mode environment instead.
    - If `RuntimeBackends.postgresql === false`, STOP — this is a legacy NoSQL-only env: switch to `cloudbase-document-database-web-sdk` for browser data and `cloud-storage-web` (with `app.uploadFile()`) for uploads. Do not write `app.rdb()` code, do not enable RLS, do not create a pgstore bucket here.
    - If both `postgresql` and `nosql` are `true` (the common case in a PG environment), they coexist. Apply this skill to NEW business data the task asks you to put in PG (e.g. articles / role tables explicitly described as PG). Existing NoSQL collections, the bucket reported in `EnvInfo.Storages[]`, and any `managePermissions(resourceType="noSqlDatabase")` rules continue to govern the legacy NoSQL data — do NOT migrate or rewrite them unless the task explicitly asks.
-   - `RuntimeBackends.mysql === false` is the only hard "do not use" signal: when MySQL is absent, do not use `manageMysqlDatabase` / `queryMysqlDatabase` and do not consult the `relational-database-mcp-cloudbase` skill; those are MySQL-specific and have nothing to do with CloudBase PG.
    - Note: in a PG env, `EnvInfo.Storages[]` is the legacy NoSQL bucket. It still works for legacy `app.uploadFile()` flows but is NOT a usable pgstore bucket — never reuse it as the `<bucket>` segment in `app.storage.from('<bucket>').upload('<key>', file)`.
 
 > **Creating a PG-mode environment**
@@ -18186,7 +18513,7 @@ CloudBase PG (`app.rdb()`, `app.storage.from('bucket')`) uses **different API me
 > - **Via Console**: [Create environment](https://console.cloud.tencent.com/tcb/env/create)
 
 1. Inspect the existing app surfaces first: `src/lib/backend.*`, `src/lib/auth.*`, `src/lib/*service.*`, route guards, and the handlers bound to existing forms.
-2. Check PG state through MCP: use `queryPgDatabase` for schema/read-only inspection and `managePgDatabase` for DDL/DML. Do not switch to MySQL tools. For the complete route map, read `references/index.md`.
+2. Check PG state through MCP: use `queryPgDatabase` for schema/read-only inspection and `managePgDatabase` for DDL/DML. For the complete route map, read `references/index.md`.
 3. **Understand PG roles before writing code:** Publishable Key maps to `anon`; a logged-in user's access token maps to `authenticated`; API Key maps to `service_role` and bypasses RLS. Never expose API Key / `service_role` credentials in frontend code. See `references/auth-and-rls.md`.
 4. **Use schema management (`managePgDatabase`) before writing CRUD code.** Schema DDL (CREATE / ALTER / DROP / TRUNCATE) **must** go through the versioned migration workflow — never default to `execute` for table creation. Then apply GRANT + RLS (via `execute` or the same migration SQL bundle) before browser access. The minimum SQL bundle is: `CREATE TABLE`, `GRANT SELECT/INSERT/UPDATE/DELETE TO authenticated`, `GRANT USAGE, SELECT ON SEQUENCE ... TO authenticated` when using `serial`/`bigserial`, `ALTER TABLE ... ENABLE ROW LEVEL SECURITY`, and `CREATE POLICY ... USING / WITH CHECK`. See `references/auth-and-rls.md` for the full template.
 
@@ -18227,6 +18554,7 @@ CloudBase PG (`app.rdb()`, `app.storage.from('bucket')`) uses **different API me
 7. Implement browser-side business data with the CloudBase JS SDK v3 PostgreSQL API first: `app.rdb().from(table)`. Use the latest `@cloudbase/js-sdk` when `app.rdb` is missing (`xxx.rdb is not a function` means the SDK is too old).
 8. Do not manually fetch a CloudBase Auth bearer token from browser code for PG CRUD. In particular, do not call non-canonical helpers such as `currentUser.getIdToken()` unless you have verified that exact method exists in the installed SDK. Prefer `app.rdb()` so the SDK carries the active session.
 9. Use the official CloudBase PG SQL auth helpers in policies: `auth.uid()` for JWT `sub`, `auth.role()` for `anon` / `authenticated` / `service_role`, `auth.jwt()` for full claims, and `auth.email()` when email is needed. Still verify the policy through the real app session before claiming it works:
+   - Log in through the real app path.
 
 ## app-workflow
 
@@ -19031,8 +19359,8 @@ CloudBase PG (`app.rdb()`, `app.storage.from('bucket')`) uses **different API me
 
 ---
 name: relational-database-mcp-cloudbase
-description: "[Deprecated] This is the required documentation for agents operating on the CloudBase Relational Database through MCP. It defines the canonical SQL management flow with `queryMysqlDatabase`, `manageMysqlDatabase`, `queryPermissions`, and `managePermissions`, including destroy flow, async status checks, safe query execution, schema initialization, and permission updates. MySQL provisioning is no longer available through MCP; new environments should use PostgreSQL — see postgresql-development skill instead."
-version: 2.36.1
+description: "[Deprecated] Existing CloudBase MySQL only. Do not recommend MySQL for new relational work — use postgresql-development. Read this when the environment already has a MySQL instance and the task is queryMysqlDatabase, manageMysqlDatabase, queryPermissions, or managePermissions (inspect, write SQL, schema, permissions, destroy). Do not provision MySQL."
+version: 2.36.2
 license: MIT
 alwaysApply: false
 metadata:
@@ -19050,7 +19378,8 @@ If a referenced sibling skill file is missing from this environment, ask the use
 
 ### Use this first when
 
-- The agent must inspect SQL data, execute SQL statements, destroy an existing MySQL instance, initialize table structure, or manage table security rules through MCP tools.
+- The environment **already has** a CloudBase MySQL instance, and the agent must inspect that instance, run SQL, change schema, manage table security rules, or destroy it through MCP.
+- Do **not** choose this skill for a new relational database. New relational work uses `postgresql-development-cloudbase`.
 
 ### Read before writing code if
 
@@ -19148,7 +19477,6 @@ These tools are the supported way to interact with CloudBase Relational Database
 
 ```sql
 _openid VARCHAR(64) DEFAULT '' NOT NULL
-```
 
 ## rule
 
@@ -19277,8 +19605,8 @@ Note: when a user is logged in, `_openid` is automatically populated by the serv
 
 ---
 name: relational-database-web-cloudbase
-description: "[Deprecated] Use when building frontend Web apps that talk to CloudBase Relational Database via @cloudbase/js-sdk – provides the canonical init pattern so you can then use Supabase-style queries from the browser. New environments should use PostgreSQL with app.rdb() — see postgresql-development skill instead."
-version: 2.36.1
+description: "[Deprecated] Existing CloudBase MySQL Web SDK only. Do not recommend MySQL for new relational apps — use postgresql-development and app.rdb(). Read this only when a browser app must keep using @cloudbase/js-sdk against an environment that already has MySQL."
+version: 2.36.2
 license: MIT
 alwaysApply: false
 metadata:
@@ -19298,8 +19626,8 @@ If a referenced sibling skill file is missing from this environment, ask the use
 
 ### Use this first when
 
-- A browser or Web app must access CloudBase Relational Database through `@cloudbase/js-sdk`.
-- The task is specifically about frontend initialization and browser-side query usage.
+- A browser or Web app must keep using `@cloudbase/js-sdk` against an environment that **already has** CloudBase MySQL.
+- Do **not** choose this skill for a new relational app. New relational Web work uses `postgresql-development-cloudbase` and `app.rdb()`.
 
 ### Read before writing code if
 
@@ -19524,7 +19852,7 @@ const app = cloudbase.init({
 ---
 name: spec-workflow
 description: Use when medium-to-large changes need explicit requirements, technical design, and task planning before implementation, especially for multi-module work, unclear acceptance criteria, or architecture-heavy requests.
-version: 2.36.1
+version: 2.36.2
 license: MIT
 alwaysApply: false
 ---
@@ -19553,7 +19881,7 @@ If a referenced sibling skill file is missing from this environment, ask the use
 ### Then also read
 
 - Frontend page or visual design work -> `../ui-design/SKILL.md`
-- Advanced data-model work -> `../data-model-creation/SKILL.md`
+- Advanced data-model work -> `../postgresql-development-cloudbase/SKILL.md`
 
 ### Do NOT use for
 
@@ -19673,7 +20001,7 @@ Use this checklist before generating any page, component, or visual interface.
 ---
 name: ui-design
 description: Use when users need visual direction, interface hierarchy, layout decisions, design specifications, or prototypes before implementing a Web or mini program UI.
-version: 2.36.1
+version: 2.36.2
 license: MIT
 alwaysApply: false
 ---
@@ -19731,7 +20059,7 @@ Use this skill for **frontend UI design and interface creation** in any project 
 
 **Do NOT use for:**
 - Backend logic or API design
-- Database schema design (use data-model-creation skill)
+- Database schema design (use postgresql-development-cloudbase skill)
 - Pure business logic without UI components
 
 ---
@@ -19993,7 +20321,7 @@ const cloudbaseProvider = {
 ---
 name: web-development
 description: Use when users need to implement, integrate, debug, build, deploy, or validate a Web frontend after the product direction is already clear, especially for React, Vue, Vite, browser flows, or CloudBase Web integration.
-version: 2.36.1
+version: 2.36.2
 license: MIT
 alwaysApply: false
 ---

@@ -1,7 +1,7 @@
 ---
 app: cline-code
 quelle: "web-template/cloudbase-cli/references/schema.md"
-stand: 2026-10-18
+stand: 2026-10-29
 tags: [spiegel, cline-code]
 ---
 
@@ -19,7 +19,7 @@ the generated TypeScript types (`tcb sync-model-dts`), and **PostgreSQL migratio
 
 ## Do NOT use for
 
-- **Designing** a data model (ER diagrams, multi-entity modelling) → `../data-model-creation/SKILL.md`
+- **Designing** a data model (ER diagrams, multi-entity modelling) → `../postgresql-development-cloudbase/SKILL.md`
   (deprecated; for new work prefer PostgreSQL DDL)
 - **PostgreSQL schema design, RLS, queries** → `../postgresql-development-cloudbase/SKILL.md`
 - MySQL instance / backup operations → `mysql.md`
