@@ -1,7 +1,7 @@
 ---
 app: zcode
 quelle: "saschalagler/cli/memories/projects/saschalagler-927d48cc8990f46e/memory/berater-umsetzer-prinzip.md"
-stand: 2026-10-11
+stand: 2026-10-29
 tags: [spiegel, zcode]
 ---
 
@@ -29,3 +29,6 @@ metadata:
 7. **Einziger echtes Tages-Ziel, das offen blieb:** #17 appagentteam Live-Lauf (Team noch nie an echter App geflogen) + Saschas 2 TCC-Klicks (Stimme). Beides vor neuen Bau-Projekten priorisieren.
 8. **„DAS WAREN AUCH NICHT DIE AUFGABEN" (11.10.):** Wenn er nach „den Aufgaben" fragt → KOMPLETTE Liste zeigen (alle offenen + alle erledigten aus dem Taskmaster + den Auftrag-Wortlaut als Checkliste mit Status), NIE Auszüge oder „die wichtigsten". Auszüge = für ihn „nicht die Aufgaben".
 9. **„Ich verstehe dich nicht / erklären in einfachen logischen Sätzen" (11.10.):** Dann KEINE Tabellen, keine Bullets, kein Jargon — sondern eine chronologische Fließtext-Erzählung in einfachen vollständigen deutschen Sätzen (was passiert ist und warum, wie einem Freund erzählt). Bewährte Form beim Tagesverlauf: Zeitachse Absatz für Absatz, am Ende: „wenn ein Satz unklar ist, sag mir welcher".
+10. **Plan-Mode-Plan ABGELEHNT (11.10., „ich versteh dich schon wieder nicht?"):** Ein ExitPlanMode-Plan mit Fachwörtern (Endpoint-Test, Model-Fix, settings.json-Pfade) lehnt er ab — die EINFACHE deutsche Variante („Kurz gesagt: läuft schon, ich muss nur 2 Kleinigkeiten reparieren, was ich machen will: 1. testen 2. Datei fixen mit Backup, sag nur ja") verstand er. Pläne für ihn = einfache Sätze, keine Dateipfade/Tech-Begriffe in der Kernaussage.
+11. **„WIESO ERKLÄRST DU WAS NICHT GEHT" (11.10.):** Offene Baustellen NICHT als Erklärung/offene Frage zurückgeben — selbst umsetzen (Beispiel: statt „OmniRoute ist tot, willst du ihn zurück?" → OmniRoute einfach neu starten + Beweis liefern). Lösen statt erklären; Nutzer-Entscheidungen („OmniRoute abgebaut") bei neuem Gegen-Wunsch sofort revidieren.
+12. **Konzept-Erklärungen (11.10., „unterschied Skills/MCP/Plugins/Sub-Agents"):** Will BELEHRUNG wie für einen Freund („Lorenz erklären"), nicht Feature-Listen — bewährtes Format: 1 KERN-Satz + 1 Alltags-Analogie (Hausbau: Skill=Anleitung, MCP-Server=Stecker, Plugin=Paket, Sub-Agent=Hilfs-Kollege, Extension=App-Erweiterung) + Mini-Tabelle + expliziter Punkt „nichts klappt automatisch: jedes Ding muss eingerichtet UND aufgerufen werden".

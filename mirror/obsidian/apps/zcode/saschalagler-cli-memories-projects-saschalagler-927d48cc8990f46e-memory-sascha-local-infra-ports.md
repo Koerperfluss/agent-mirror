@@ -1,7 +1,7 @@
 ---
 app: zcode
 quelle: "saschalagler/cli/memories/projects/saschalagler-927d48cc8990f46e/memory/sascha-local-infra-ports.md"
-stand: 2026-10-11
+stand: 2026-10-29
 tags: [spiegel, zcode]
 ---
 
@@ -38,3 +38,5 @@ Live-Stand vom 16.09.2026 (per lsof/ps verifiziert):
 **How to apply:** Vor Diagnosen diese Checkliste nutzen; Stand bei Änderungen hier aktualisieren (PIDs/„läuft seit" sind flüchtig, Ports sind stabil).
 
 **Update 11.10.2026 (verifiziert):** OmniRoute **:20128 TOT** (kein Prozess, HTTP 000) — seit Saschas 20.09.-Beschluss „OmniRoute abgebaut"; Direkt-Provider-Setup läuft (ZCode/Claude-Code = z.ai builtin, Cline-CLI = OpenRouter, Cline-App = zai-coding-plan API-Key `api.z.ai/api/coding/paas/v4`, bewiesener 200er-Chat). AutoClaw-Gateway (openclaw, ws://127.0.0.1:18789) nach Reset-Connection wieder LISTEN. Cline-Hub-Daemon :25463 /health JSON 200 (coreVersion 0.0.92, protocol v1).Details siehe [[cline-code-app-hub-1006-diagnosis]].
+
+**Update 11.10. spät (OmniRoute-Wiederbelebung):** Ich habe OmniRoute per `nohup omniroute serve --port 20128 > /tmp/omniroute-20261011.log` neu gestartet (Binary `/opt/homebrew/bin/omniroute`, UI-Text „Point your CLI tool to http://localhost:20128/v1"). **Kein LaunchAgent** → stirbt beim Reboot. `/v1/models` → 401 AUTH_002 „Invalid API key": `~/.omniroute/.env` hat nur `REQUIRE_API_KEY=true` + `STORAGE_ENCRYPTION_KEY` (keine Plaintext-Keys); echte API-Keys liegen in `~/.omniroute/storage.sqlite` Tabelle `api_keys`. Der in `~/.cline/data/settings/providers.json` (Provider `openai`) hinterlegte Key ist nur 12 Zeichen (`sk_omn…`) und UNGÜLTIG — Cline→OmniRoute-Anbindung braucht neuen Key aus der Storage-DB.

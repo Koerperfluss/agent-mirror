@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-29 19:05 UTC
+Zuletzt gespiegelt: 2026-10-29 19:21 UTC
 
 ## AGENTS
 
@@ -17768,8 +17768,9 @@ Sascha will **keine Gruppen-Liste**, sondern eine normale chronologische Verlauf
 - [LOKI Voice Agent](loki-voice-agent.md) — 24/7-Daemon ~/loki-voice/ LIVE (Doppel-Ctrl→Whisper→glm-5.3-flash→say, Stufe 2 bewiesen) + App-Fork ~/loki-voice-app/ gebaut, NICHT deployt; Rest (Tests/Deploy/mac_action/Ollama-Fix) durch Plan-Modus-Streit NICHT ausgeführt; Original-Stand real 18.09. (V10 keyfrei); TCC-Klicks offen; Prompt-Architektur verortet (alles hardcoded, whisper ohne initial_prompt)
 - [Agentic-OS-Inventur](loki-os-ecosystem-stand.md) — 20.09. Vollanalyse: 10 Harnesses/1075 Skills/21 MCPs; kritisch: Kernel 8010 tot+0.0.0.0-Bind, VwGH-DB leer, 4 LegalOps-Duplikate, Phantome Phi/STANDARD-Skills/cognee; 05.10. Re-Count: 466 Skills/3 Roots (134 Duplikate), 22 MCPs · **11.10. SKILL-AUDIT FERTIG + VOLLZUG (dwfrun-fb29e93d, Report ~/Desktop/LOKI_SKILL_AUDIT_2026-10-11.md, Dashboard ANTHROPIC_VS_LOKI_SKILLS_2026-10-11.html): 1211 SKILL.md gescannt, eff. 638 Uniques · **ALLE 3 GOs AUSGEFÜHRT („mach fertig"): Cache 276→169 MB (107 frei), 5 abweichende Paare (qa/projects/lisa-therapeut/obsidian-second-brain/ios-swift-development) per mtime auf neuere Version synchronisiert → 0 diffs, alpha-Fixture-Leak-Symlink weg; Backup ~/.zcode/backups/skill-aufraeumen-20261011** · gstack 547 = Symlink-Farm-Artefakt (nicht konsolidieren!) · offen nur: gitlab/example-plugin deaktivieren, EIN Kanon-Root festlegen, Wartungs-Routine · Anthropic-Verdict: 0 von 26 Plugins nötig, nur Supabase ggf. · Ladezeit-Behauptung RETRAKTIERT (Harness dedupliziert beim Laden) · Modell-ID: `account:zai-individual-coding-plan/GLM-5.3-Flash` (zai-api ungültig) · Workflow-Lektionen: Subagent-Namen im fan-out index-sicher bauen, Quota 1308 (5h) läuft selbst durch, GUI-Settings-Änderung supersedet Run mit Cache** · Saschas Traum = Voice→Agentic-OS-Kopplung
 - [Chrome Agent-Browser Fix](chrome-agent-browser-fix.md) — Agent-Browser läuft auf 9222 (persistentes Profil, Login bleibt); Service-Worker-Cache = Ursache „Websites alt" (177 Worker); chrome-cache-nuke.sh wartet auf GO; Übersicht: ~/Desktop/chrome-fix-uebersicht.html
-- [Cline Hub 1006-Diagnose](cline-code-app-hub-1006-diagnosis.md) — „Hub connection closed" = lokaler Daemon-Crash, Server meist OK · **11.10. Full-Fix bewiesen: kill -9 + Neustart → Hub /health=200; ECONNRESET transient (Key-Test aus providers.json `zai-coding-plan` → api.z.ai/api/coding/paas/v4/chat/completions HTTP 200); Composer-Provider ≠ Run-Provider (Goal-Runs gepinnt auf Startzeit-Provider, crashen weiter); GUI-Injection erreicht Cline-Webview nicht → Senden per Enter selbst**
-- [Lokale Infra & Ports](sascha-local-infra-ports.md) — OmniRoute 20128, Ollama 11434, LOKI 8010, Cline Code.app standalone
+- [Cline Hub 1006-Diagnose](cline-code-app-hub-1006-diagnosis.md) — „Hub connection closed" = lokaler Daemon-Crash, Server meist OK · **11.10. Full-Fix bewiesen: kill -9 + Neustart → Hub /health=200; ECONNRESET transient (Key-Test aus providers.json `zai-coding-plan` → api.z.ai/api/coding/paas/v4/chat/completions HTTP 200); Composer-Provider ≠ Run-Provider (Goal-Runs gepinnt auf Startzeit-Provider, crashen weiter); GUI-Injection erreicht Cline-Webview nicht → Senden per Enter selbst** · **11.10. Modell-Pin-Audit: Server rotiert (458 Modelle, frisch bis 08.10.), Pin war auf TODES Modell `kat-coder-pro` → jetzt `anthropic/claude-haiku-5.5` (Backups providers.json.bak-20261011-*); Usage-API per curl immer 401 (App signiert selbst) — Pin-Änderungen mache ICH in providers.json + App-Restart, keine Klick-Anleitungen**
+- [Claude.app + ZCode-Abo](claude-app-zai-setup.md) — 11.10.: Claude.app = Claude Desktop CHAT (com.anthropic.claudefordesktop, kein Umbau aufs Abo möglich — 1 Satz sagen) · Claude-CODE-Config `~/.claude/settings.json` BEREITS auf z.ai (Base `api.z.ai/api/anthropic`, Token cb194f3f… = cline-pass-Key, Modelle glm-5.3-flash[1m]) · Stale: `ANTHROPIC_MODEL=glm-first` (OmniRoute-Alias) → Fix auf glm-5.3-flash geplant, wartet auf Sascha-JA
+- [Lokale Infra & Ports](sascha-local-infra-ports.md) — OmniRoute 20128, Ollama 11434, LOKI 8010, Cline Code.app standalone · **11.10. spät: OmniRoute von mir NEU GESTARTET (`nohup omniroute serve --port 20128`, kein LaunchAgent → Reboot = tot); `/v1/models` 401 AUTH_002 — echte Keys in `~/.omniroute/storage.sqlite` Tabelle api_keys (.env hat nur REQUIRE_API_KEY=true); der 12-Zeichen-Key in Cline-Provider `openai` ist UNGÜLTIG**
 - [LOKI Verkaufstool Stand](loki-verkaufstool-stand.md) — **Alle 6 eBay.at-Anzeigen LIVE (2006 €, Konto saschlagle_0)**. NEU 20.09. VII: 3 neue Objekte — **Nespresso Gemini CS203** (Schild druckt „CS200 Pro", Service-Manual beweist CS203; Max-Preise wh 390 €/eBay 399 €) · **KTM Life One Rad** (Opa, wh 199 VB/eBay 179) · **ATX-Scheiben 199 €** (keine Fotos). **eBay im 9222-Chrome eingeloggt; Kaffee-Draft 5202586051500 zu 95 % CDP-gebaut — Rest: Merkmal „Modell" + Publish (Sascha 1 Min)**; willhaben-Rad-Entwurf fertig (nur Farbe+Publish). Ordner `~/Desktop/PRojekte /VERKAUF-Nespresso-Gemini-CS203/` + `VERKAUF-KTM-Life-One-Rad/`. CDP-eBay-Playbook im File. AT-Fokus Loosdorf/NÖ
 - [Sascha Vollzug-Regel](sascha-vollzug-keine-zwischenfragen.md) — Komplettlösungen ohne Zwischenfragen; GO gilt bis zum fertigen Ergebnis; nur bei Passwort/Stopp-Regeln nachfragen
 - [deja-vu installiert](deja-vu-install.md) — deja 0.20.2 (brew, 739 Sessions); **01.10. FIX: alle 5 deja-Hooks aus ~/.claude/settings.json entfernt (Backup .bak-20261001) — Ursache: jede deja-Suche spawnt Background-Refresh („refreshing in the background") = bei 3,6-GB-Index 100-%-CPU-Amok; MCP + Terminal-Suche bleiben; Rückgängig = Backup zurück**; Fallen: `deja hook --help` läuft als SUCHE (kein hook-Subbefehl), ps-Match trifft auch FinderSyncExtension-Helper
@@ -17951,6 +17952,9 @@ metadata:
 7. **Einziger echtes Tages-Ziel, das offen blieb:** #17 appagentteam Live-Lauf (Team noch nie an echter App geflogen) + Saschas 2 TCC-Klicks (Stimme). Beides vor neuen Bau-Projekten priorisieren.
 8. **„DAS WAREN AUCH NICHT DIE AUFGABEN" (11.10.):** Wenn er nach „den Aufgaben" fragt → KOMPLETTE Liste zeigen (alle offenen + alle erledigten aus dem Taskmaster + den Auftrag-Wortlaut als Checkliste mit Status), NIE Auszüge oder „die wichtigsten". Auszüge = für ihn „nicht die Aufgaben".
 9. **„Ich verstehe dich nicht / erklären in einfachen logischen Sätzen" (11.10.):** Dann KEINE Tabellen, keine Bullets, kein Jargon — sondern eine chronologische Fließtext-Erzählung in einfachen vollständigen deutschen Sätzen (was passiert ist und warum, wie einem Freund erzählt). Bewährte Form beim Tagesverlauf: Zeitachse Absatz für Absatz, am Ende: „wenn ein Satz unklar ist, sag mir welcher".
+10. **Plan-Mode-Plan ABGELEHNT (11.10., „ich versteh dich schon wieder nicht?"):** Ein ExitPlanMode-Plan mit Fachwörtern (Endpoint-Test, Model-Fix, settings.json-Pfade) lehnt er ab — die EINFACHE deutsche Variante („Kurz gesagt: läuft schon, ich muss nur 2 Kleinigkeiten reparieren, was ich machen will: 1. testen 2. Datei fixen mit Backup, sag nur ja") verstand er. Pläne für ihn = einfache Sätze, keine Dateipfade/Tech-Begriffe in der Kernaussage.
+11. **„WIESO ERKLÄRST DU WAS NICHT GEHT" (11.10.):** Offene Baustellen NICHT als Erklärung/offene Frage zurückgeben — selbst umsetzen (Beispiel: statt „OmniRoute ist tot, willst du ihn zurück?" → OmniRoute einfach neu starten + Beweis liefern). Lösen statt erklären; Nutzer-Entscheidungen („OmniRoute abgebaut") bei neuem Gegen-Wunsch sofort revidieren.
+12. **Konzept-Erklärungen (11.10., „unterschied Skills/MCP/Plugins/Sub-Agents"):** Will BELEHRUNG wie für einen Freund („Lorenz erklären"), nicht Feature-Listen — bewährtes Format: 1 KERN-Satz + 1 Alltags-Analogie (Hausbau: Skill=Anleitung, MCP-Server=Stecker, Plugin=Paket, Sub-Agent=Hilfs-Kollege, Extension=App-Erweiterung) + Mini-Tabelle + expliziter Punkt „nichts klappt automatisch: jedes Ding muss eingerichtet UND aufgerufen werden".
 
 ## browser-doppelsystem-setup
 
@@ -18057,6 +18061,30 @@ Stand 18.09.2026 — **AUSGEFÜHRT + VERIFIZIERT**: Agent-Chrome läuft auf `htt
 **Nachtrag 13 (01.10., Block auch in Chrome 154 bestätigt + Alternativen-Status):** Saschas Standard-Chrome 154.0.8037.58 mit `--remote-debugging-port=9223` gestartet (Prozess ps-Beweis) → Port bleibt komplett leer auf 127.0.0.1 UND localhost — der 136+-Debug-Block gilt unverändert, Profil-Kopie wäre der einzige CDP-Weg (siehe Nachtrag 10). Andere Gmail-Automatisierungswege am 01.10. ebenfalls beweisbar tot: Gmail-API-MCP „Permission denied" (Scopes), ZCode-IAB (control-browser-Skill: file chooser/upload explizit UNSUPPORTED — bei Browser-Upload-Aufgaben IMMER zuerst im Skill-Doku nachlesen), AutoClaw-mcporter-Binary existiert nicht (nur Config unter `~/.openclaw-autoclaw/workspace/config/mcporter.json`). Vorhandene Python-WS-Libs: `websocket-client` + `websockets` OK (für den Tag, an dem ein Agent-Profil mit Port läuft). → [[legal-ops-cockpit-reparatur]]
 
 **Nachtrag 14 (11.10., 9222-Port-Inhaber gewechselt + mcporter doch da):** (1) **Port 9222 wird aktuell von EIGENT gehalten** (Chrome/130, curl /json/list = 9 Tabs u. a. eigent-browser-toolkit) — nicht mehr der 18.09.-Agent-Chrome (153). Regel: bei 9222-Fragen IMMER zuerst `curl -s http://127.0.0.1:9222/json/version` wer hängt (Browser-String) und `/json/list` welche Tabs — der Port-Inhaber kann sich ändern (Eigent läuft dauerhaft und exponiert CDP). Für flutter-skill/E2E-Tests ideal: Tests laufen direkt über Eigent. (2) **mcporter existiert DOCH seit 11.10.** (korrigiert Nachtrag 13): `~/.local/bin/mcporter` v0.9.0, von mir nachinstalliert (npm -g). Bedingung: autoclaw-productivity/github-MCPs antworten nur, wenn AutoClaw2-App OFFEN ist (mcporter list beweist „offline unable to reach" bei zuer App); connector:cloudflare/vercel brauchen `mcporter auth`. → [[loki-os-livestatus-2026-10-11]]
+
+## claude-app-zai-setup
+
+---
+name: claude-app-zai-setup
+description: Claude.app = Claude Desktop (Chat, kein Umbau aufs ZCode-Abo
+  möglich); Claude-Code-CLI-Config ~/.claude/settings.json ist BEREITS auf z.ai
+  GLM umgestellt (Token = cline-pass-Key)
+metadata:
+  node_type: memory
+  type: project
+  originSessionId: sess_3710694b-d1b2-4d51-bafa-02d30fb8bda5
+---
+
+Sascha will „Claude mit dem ZCode-Abo betreiben" (11.10.2026, Plan-Modus, Umsetzung wartet auf sein JA).
+
+**Fakten (bewiesen):**
+- `/Applications/Claude.app` = **Claude Desktop** (`com.anthropic.claudefordesktop`, v3.6556.2, Electron) — der CHAT-Client. Der braucht Anthropic-Login und lässt sich technisch NICHT auf das z.ai/GLM-Abo umbiegen. Das in 1 Satz sagen, nicht als Ampel-Liste.
+- Claude **Code** (CLI) dagegen liest `~/.claude/settings.json` — und die ist **bereits fertig konfiguriert**: `ANTHROPIC_BASE_URL=https://api.z.ai/api/anthropic`, `ANTHROPIC_AUTH_TOKEN=cb194f3f…UIwwAP` (**identisch mit dem cline-pass-Key** in `~/.cline/data/settings/providers.json`!), `ANTHROPIC_DEFAULT_HAIKU/OPUS/SONNET_MODEL=glm-5.3-flash[1m]`.
+- **Stale-Eintrag:** `ANTHROPIC_MODEL` + `ANTHROPIC_DEFAULT_FABLE_MODEL` = `glm-first` — alter OmniRoute-Alias, auf dem direkten z.ai-Endpoint ungültig → Fix auf `glm-5.3-flash` (geplant, Backup `settings.json.bak-20261011` vorgesehen).
+
+**Why:** Er fragte dreimal differently formuliert nach derselben Sache (AutoClaw, Cline, jetzt Claude) — immer dasselbe Muster: App soll sein GLM-Coding-Plan-Abo nutzen statt separatem Provider-Login.
+
+**How to apply:** Bei „Claude geht nicht / 0 Credits" erst diese Datei lesen. Offener Umsetzungs-Rest: (1) z.ai-Anthropic-Endpoint curl-Test mit dem Key, (2) glm-first→glm-5.3-flash in settings.json (mit Backup), (3) Claude.app neustarten + Screenshot-Verifikation. Siehe [[cline-code-app-hub-1006-diagnosis]] + [[sascha-vollzug-keine-zwischenfragen]].
 
 ## cline-code-app-hub-1006-diagnosis
 
@@ -19532,6 +19560,8 @@ Live-Stand vom 16.09.2026 (per lsof/ps verifiziert):
 **How to apply:** Vor Diagnosen diese Checkliste nutzen; Stand bei Änderungen hier aktualisieren (PIDs/„läuft seit" sind flüchtig, Ports sind stabil).
 
 **Update 11.10.2026 (verifiziert):** OmniRoute **:20128 TOT** (kein Prozess, HTTP 000) — seit Saschas 20.09.-Beschluss „OmniRoute abgebaut"; Direkt-Provider-Setup läuft (ZCode/Claude-Code = z.ai builtin, Cline-CLI = OpenRouter, Cline-App = zai-coding-plan API-Key `api.z.ai/api/coding/paas/v4`, bewiesener 200er-Chat). AutoClaw-Gateway (openclaw, ws://127.0.0.1:18789) nach Reset-Connection wieder LISTEN. Cline-Hub-Daemon :25463 /health JSON 200 (coreVersion 0.0.92, protocol v1).Details siehe [[cline-code-app-hub-1006-diagnosis]].
+
+**Update 11.10. spät (OmniRoute-Wiederbelebung):** Ich habe OmniRoute per `nohup omniroute serve --port 20128 > /tmp/omniroute-20261011.log` neu gestartet (Binary `/opt/homebrew/bin/omniroute`, UI-Text „Point your CLI tool to http://localhost:20128/v1"). **Kein LaunchAgent** → stirbt beim Reboot. `/v1/models` → 401 AUTH_002 „Invalid API key": `~/.omniroute/.env` hat nur `REQUIRE_API_KEY=true` + `STORAGE_ENCRYPTION_KEY` (keine Plaintext-Keys); echte API-Keys liegen in `~/.omniroute/storage.sqlite` Tabelle `api_keys`. Der in `~/.cline/data/settings/providers.json` (Provider `openai`) hinterlegte Key ist nur 12 Zeichen (`sk_omn…`) und UNGÜLTIG — Cline→OmniRoute-Anbindung braucht neuen Key aus der Storage-DB.
 
 ## sascha-vollzug-keine-zwischenfragen
 
