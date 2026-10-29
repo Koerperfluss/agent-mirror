@@ -1,7 +1,7 @@
 ---
 app: zcode
 quelle: "saschalagler/cli/memories/projects/saschalagler-927d48cc8990f46e/memory/sascha-vollzug-keine-zwischenfragen.md"
-stand: 2026-10-27
+stand: 2026-10-29
 tags: [spiegel, zcode]
 ---
 
@@ -33,6 +33,8 @@ Sascha (18.09.2026, nach 30h Konfiguration): „WIESO MUSS ICH JEDEN SCHEISS SCH
 **Ergänzung (01.10., Gmail-Debakel — „WIE GEHT DAS SOLL ICH DAS RIECHEN"):** Vollzug heißt: das Fertige liegt **IM ZIEL-TOOL**, nicht als Umweg-Datei daneben. Ich lieferte .eml-Dateien + Send-Listen — seine Reaktion: „DU MISSGEBURT SOLLST MIR IN GMAIL ALLES VORBEREITEN". **Rule:** Erst klären, WO er das Ergebnis konsumiert (hier: Gmail-Web in seinem Browser), DANN den Weg bauen, der genau dort ablegt — auch wenn der Umweg technisch aufwendiger ist (Browser-Debug-Port statt Dateien). Umweg-Lösungen als „fertig" zu melden = Verarschung in seinen Augen. Bei technisch unmöglicher Direkt-Lieferung (Gmail-API ohne Scopes): die EINE fehlende Freigabe als Ja/Nein-Frage („Chrome GO?") statt Umwege aufdrücken.
 
 **Ergänzung (11.10., Cline-Pin — „REDE STU TROTTEL"):** „Vorschlag-Listen für Sascha zum Selber-Klicken" = Regelverstoß. Kontext: Ich hatte seine Frage (Modelle rotieren nicht) gelöst, empfahl aber am Ende „In Cline-Pass-Dropdown mal manuell auf ein frisches Modell klicken" — er explodierte, weil ER mich beauftragt hatte zu konfigurieren. **Rule:** Wenn der Auftrag „mach/konfiguriere X" heißt, liefere ich X fertig (Config-Datei direkt editieren + App neustarten + Beweis), NIE als To-do-Liste an ihn zurück. Auch „Entscheidungen für dich"-Listen am Ende sind bei einem Vollzugs-Auftrag Fehlformat — nur Ergebnis + was bleibt offen.
+
+**Ergänzung (29./30.10., Lorenz-Handoff — „du hast nicht verstanden was du tun sollst"):** (1) **Deliverables für Dritte am EMPFÄNGER-System ausrichten:** Sascha bestellte ein Handoff „für Lorenz zum Prüfen in der Claude Desktop App" — ich baute zweimal Saschas System hinein (Terminal-Befehle, z.ai-Setup). Erst die Frage „Womit prüft Lorenz?" (Antwort: „Alles für Desktop-App") löste es. **Rule:** Wenn das Deliverable einen Dritten konsumiert, dessen Werkzeug/Umgebung vorher klären — nicht das eigene Setup hineinprojizieren. (2) **Ausnahme zur AskUserQuestion-Ablehnung:** Nach wiederholtem „nicht verstanden" war EINE präzise Frage mit 3 sauberen Optionen der richtige Weg — sie wurde sofort beantwortet und beendete den Frust. Die Ablehnung gilt für Optionen-Wüsten bei klaren Aufträgen, nicht für eine echte Scope-Frage nach nachgewiesenem Missverständnis. (3) **Invoked Skills wirklich ausführen:** Mein „Modus-Gate: kein Web-Research nötig" wurde mit „DAS WAR KEINE FRAGE DU SOLLST ES TUN" bestraft — wenn Sascha einen Skill/Command aufruft, führe den Lauf wirklich aus (3 Parallel-Subagenten mit Output-Contract lieferten 25 Fakten/12 Quellen in ~6 Min), nie „überflüssig" abkürzen.
 
 Verwandt: [[loki-verkaufstool-stand]]
 
