@@ -1,0 +1,20 @@
+---
+name: loki-skills-location
+description: Saschas LOKI-Skills + briefmaker sind seit 29.10. als NATIVES ZCode-Plugin
+  „loki-skills" installiert (cache/loki-local, enabled in config.json) — nach App-Restart
+  über das Skill-Tool aufrufbar; Read-der-SKILL.md bleibt Fallback
+metadata:
+  node_type: memory
+  type: project
+  originSessionId: session_e471165b9adf80eda6e42d16256949b0
+---
+
+Saschas LOKI-Skills liegen in `~/.claude/skills/<name>/SKILL.md` (loki-os-standard, loki-dev, loki-os-health, loki-memory-sync, ask-matt, **briefmaker** u. a.). Die ZCode-UI zeigt sie als Slash-Commands an, aber das Skill-Tool in ZCode-Sessions listet sie NICHT — Aufruf schlägt fehl (29.10. auch bei `mattpocock-skills:briefmaker`/`briefmaker` trotz Listen-Eintrag: „Skill not found").
+
+**Warum:** ZCode lädt Skills aus `~/.zcode`-Plugins + Workspace; `~/.claude/skills` gehört zum Claude-Code-Harness. Kein Token/Quota-Problem (Sascha fragte explizit nach den 300k Free-Token — Antwort: nein, unbeteiligt, nur Ordner-Problem).
+
+**So anwenden:** Wenn Sascha `/loki-os-standard`, `/briefmaker` o. ä. tippt: Datei direkt mit Read laden (`~/.claude/skills/<name>/SKILL.md`) und befolgen, statt Skill-Tool zu rufen. **Bewährt am 29.10.:** loki-os-standard ✅ gelesen+befolgt, briefmaker ✅ gelesen+befolgt → Vorlage `~/.claude/skills/briefmaker/vorlage.html`, Pipeline = HTML nach `/tmp` schreiben → Chrome headless `--print-to-pdf` → `pdftoppm -png -r 70` → 1 Read der Vorschau → Pfad + max. 3 Zeilen Chat. Ergebnis: `~/Desktop/Bericht_Homebrew_Aufraeumung_2026-10-29.pdf` (2 Seiten, 148 KB, Vorschau sauber). Der Inhalt von loki-os-standard ist weitgehend deckungsgleich mit STANDARD-SKILLS in `~/.zcode/AGENTS.md` (Sequential Thinking → Memory-Check → Plan sichtbar → Routing → max. 3 Subagenten → Beweis). Verwandt: [[menschi-antwortformat]], [[simple-language-feedback]]
+
+**NATIVER Weg (29.10. Abend geklärt, Sascha pocht auf „ALLES nativ in ZCode", kein „Workaround"-Sprachgebrauch):** Die Skills sind bereits nativ in ZCode verdrahtet: `~/.zcode/commands/` enthält briefmaker.md, loki-dev.md, loki-memory-sync.md, loki-os-health.md, loki-os-standard.md (Wrapper: „Lies die Skill-Datei ~/.claude/skills/<name>/SKILL.md … $ARGUMENTS"), und `~/.zcode/skills/` enthält die Skill-Ordner (briefmaker, loki-*, allrounder, ask-matt). Trotzdem listet das interne Skill-Tool sie NICHT (App-Grenze: Liste = nur Plugin-Skills aus ~/.zcode/cli/plugins/cache) — nichts nachkopieren nötig. **Funktionsregel:** Sascha tippt `/name` als ALLERSTES Zeichen der Nachricht → ZCode injiziert „Run custom command /name …" und ich befolge es (so kam /ask-matt in den Chat). Slash mitten im Satz = wird als Text gelesen, kein Befehl. Interner Skill-Tool-Aufruf meinerseits schlägt fehl („Skill not found") — dann nicht als Workaround framen, sondern schweigend SKILL.md per Read laden und befolgen; Ergebnisse identisch.
+
+**29.10. SPÄT: PLUGIN „loki-skills" NATIV INSTALLIERT (Sascha wütend: „kein workaround ich will ALLES nativ"):** Echtes ZCode-Plugin gebaut unter `~/.zcode/cli/plugins/cache/loki-local/loki-skills/1.0.0/` (`.claude-plugin/plugin.json` mit skills-Liste + SKILL.md-Kopien aus ~/.claude/skills für loki-os-standard, loki-dev, loki-os-health, loki-memory-sync, briefmaker). Registriert in `~/.zcode/cli/plugins/installed_plugins.json` (Eintrag `loki-skills@zcode-plugins-official`, marketplace bewusst auf das bestehende zcode-plugins-official gesetzt, um die known_marketplaces-Registrierung zu sparen) und aktiviert in `~/.zcode/config.json` unter `plugins.enabledPlugins` = true. Alle 3 JSON validiert. Backups: `installed_plugins.json.bak-loki-20261029`, `config.json.bak-loki-20261029`. **WIRKSAM ERST NACH ZCODE-APP-RESTART** (Plugin-Liste wird beim Start eingelesen). Falls der Loader das Plugin wegen fehlendem Marktplatz-Eintrag verwirft: Plan B = eigener Mini-Marktplatz in `~/.zcode/cli/plugins/known_marketplaces.json` (gleiche Methode). Read-der-SKILL.md bleibt als Fallback, aber NICHT mehr als „Workaround" gegenüber Sascha benennen — er lehnt das Wort ab; nativ heißt für ihn: Ich rufe den Skill selbst auf.

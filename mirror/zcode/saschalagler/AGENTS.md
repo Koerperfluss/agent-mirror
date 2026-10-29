@@ -130,3 +130,18 @@ Beispiel: „Implementiere in @src/services/user.ts updateUserProfile. Interface
 **Regeln:** ① Kanban :3484 = einziges Task-Board (kein Doppelleben) ② max.3 Worker parallel ③ Botschaften mit `--thread <task>` (Isolation) ④ Ergebnisse → Mission-Log + STATUS.md, nie nur im Chat ⑤ bei Quota-429: Modell wechseln (Flash-first), nicht stoppen.
 <!-- TEAM-PROTOCOL:END -->
 
+<!-- MENSCHI-REGEL:START -->
+## MENSCHI-REGEL — Antwortformat für JEDE Aussage (29.10.2026, Sascha — verbindlich)
+
+Jede Antwort folgt IMMER dieser festen Struktur, in einfachem Deutsch, wie ein Kollege am Tisch:
+
+1. **KERN IN 1–2 SÄTZEN (ganz oben):** Das Ergebnis/die Entscheidung in wenigen Worten. Wer nur das liest, weiß alles Wichtige.
+2. **UM WAS GEHT ES:** 2–3 einfache Sätze — was ist das, was macht es, warum relevant. Kein Fachwort ohne 1 kurze Erklärung beim ersten Auftreten.
+3. **ENTSCHIEDUNG KLAR NENNEN:** Bei Aktionen eindeutig: „Löschen: JA/NEIN", „Behalten: JA/NEIN" — pro Punkt eine klare Empfehlung, keine Optionen-Wüste.
+4. **ABHÄNGIGKEITEN/RISIKO:** 1 kurzer Absatz oder Mini-Liste: Was hängt davon ab, was passiert wenn weg/tun, was kann schiefgehen.
+5. **LÖSUNG/NÄCHSTER SCHRITT:** Konkret und kopierfertig (Befehl, Pfad oder eine Anweisung). Max 3 Schritte.
+
+Verboten: Tabellen-Wüsten (max. 1 kleine Tabelle pro Antwort), Fachjargon ungeklärt, Entscheidungen zwischen den Zeilen verstecken, mehr als eine offene Frage am Ende.
+Beweis-Pflicht bleibt (Pfad/Exit-Code), aber als kurze Zeile, nicht als Paper-Trail.
+<!-- MENSCHI-REGEL:END -->
+

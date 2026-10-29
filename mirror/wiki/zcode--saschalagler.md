@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-29 12:46 UTC
+Zuletzt gespiegelt: 2026-10-29 13:03 UTC
 
 ## AGENTS
 
@@ -15572,15 +15572,16 @@ Sascha kritisierte am 19.10.2026 einen vorherigen Trainingsplan-Output als "derm
 
 # Memory Index
 
-- [Homebrew-Stack-Inventar](homebrew-stack-inventory.md) — 224 Pakete (51 leaves + 16 Casks), autoremove leer, Löschkandidaten browseros-neo/gologin/caskhub/remindian
+- [Homebrew-Stack-Inventar](homebrew-stack-inventory.md) — 224 Pakete; 3-Agenten-Audit 29.10.: nur ~10 aktiv (Ollama/Obsidian/git/mole/hcom), Docker+Hammerspoon+Zen halb entkoppelt; Löschvorschlag wartet auf GO
 - [Einfache Sprache](simple-language-feedback.md) — Erklärungen: erst 2–3 einfache Sätze + Alltags-Metapher, Tabelle danach; Jargon sofort erklären
 
 ## homebrew-stack-inventory
 
 ---
 name: homebrew-stack-inventory
-description: Saschas Mac hat 224 Homebrew-Pakete (Stand 29.10.2026) — 51 echte
-  "leaves" + 16 Cask-Apps; brew autoremove leer
+description: Saschas Mac hat 224 Homebrew-Pakete (Stand 29.10.2026) — Audit abgeschlossen:
+  ~10 Pakete wirklich aktiv (Ollama, Obsidian, git, mole, hcom …), Rest ohne Nutzungsspuren;
+  Löschvorschlag wartet auf GO
 metadata:
   node_type: memory
   type: project
@@ -15595,7 +15596,15 @@ Casks: Obsidian, Docker Desktop, Ollama-App, gcloud-cli, Flutter, Zen, Maccy, Ha
 
 `brew autoremove --dry-run` war leer (keine verwaisten Deps), 0 Updates ausstehend. Bei Aufräumen: erst `brew uses --installed <name>` prüfen.
 
-**29.10.2026 Verifizierung:** `brew services list` = leer, keine Ollama/Postgres/Mongo/cloudflared/Docker-Prozesse aktiv — **lief zum Stichtag NICHTS als Hintergrunddienst**. Sascha sagte, er nutze keines der Pakete aktiv. Sichere Löschkandidaten (noch nicht ausgeführt, nur vorgeschlagen): `brew uninstall --cask browseros-neo gologin caskhub` + `uninstall ffmpeg ffmpeg-full && brew install ffmpeg` (Duplikat bereinigen) + `openjdk@17` (doppelt zu @21) + `mongodb-community-shell`. Siehe [[simple-language-feedback]].
+**29.10.2026 Agenten-Audit (3 Subagenten: Shell-History-Spuren, System-Verweise, brew-deps-Map):**
+- **Wirklich aktiv (Beweis):** Ollama (Agent `com.ollama.ollama` geladen, 7,2 GB Modelle in `~/.ollama`), Obsidian (Vault in `~/Documents`), git/gh (History-Treffer + .gitconfig), mole (52 Treffer + `~/.config/mole/`), hcom (verdrahtet in Kilo+OpenCode-Plugins), deja-vu, Flutter+dart (PATH in zshrc), gcloud-cli.
+- **Nie benutzt (0 Spuren):** Formeln cloudflared, cocoapods, m1ddc, mas, pyenv, qpdf, tectonic, trufflehog, mongodb (beide), openjdk@17, cpulimit, bottom, displayplacer u. a. (24 null-Treffer); Apps GoLogin, Maccy, NeoHtop (nie gestartet), browseros-neo (nur gestaged), Remindian (1× Absturz).
+- **Kaputt/halb entkoppelt:** Docker (root-Daemons installiert, Docker.app-Bundle fehlt), Hammerspoon (Konfig `~/.hammerspoon/init.lua` da, kein App-Bundle), Zen (Profil 02.10. da, kein App-Bundle). Duplikate: ffmpeg+ffmpeg-full, openjdk@17+@21.
+- Alle 48 geprüften Leaves haben **0 Formel-Verbraucher** (`brew uses --installed`) → technisch gefahrlos löschbar.
+- **Bekannte Lücke:** zsh hat kein `EXTENDED_HISTORY` → keine Nutzungsdaten pro Befehl. Abhilfe: `setopt EXTENDED_HISTORY`.
+- **29.10. CaskHub-Klärung:** CaskHub = grafischer App-Store für Homebrew-Casks (das Menu-Icon „Homebrew · Installiert 224" ist seine Ansicht). Am 05.10. einmal gestartet (`~/Library/Application Support/CaskHub` angelegt, plus Crash-Log), Ordner leer, keine dauerhafte Nutzung. Sicherer Löschkandidat, da Paketverwaltung direkt über `brew` läuft.
+- Löschvorschlag liegt vor (`brew uninstall --cask gologin maccy neohtop browseros-neo remindian` + Formel-Liste), wartet auf Saschas GO — nichts gelöscht. Siehe [[simple-language-feedback]].
+- **29.10. finalisierte Einteilung (sicher/unsicher):** Behalten trotz 0 History-Treffern wegen indirekter Workflow-Nutzung: ffmpeg, pandoc, qpdf (PDF/Video-Pipelines der Skills), poppler (vorsichtshalber), portaudio (Python-Audio), python@3.11/pipx/coreutils/ripgrep/jq (zshrc-Basis), postgresql@15 (PATH in `~/.zshrc:7–9` verdrahtet — löschbar nur wenn Sascha DB wirklich nie nutzt), skillshare (Skill-System), zoetrope/sqz/render = löschbar (Fremd-Taps, 1–2 Treffer). Mole-Aufräumer hat eigene clean-list unter `~/.config/mole/clean-list.txt`.
 
 ## simple-language-feedback
 
