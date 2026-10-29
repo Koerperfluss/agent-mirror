@@ -1,7 +1,7 @@
 ---
 app: zcode
 quelle: "saschalagler/cli/memories/projects/default-041661acc4598b22/memory/omniroute-rueckbau-system-fixes-2026-09-20.md"
-stand: 2026-10-26
+stand: 2026-10-29
 tags: [spiegel, zcode]
 ---
 
@@ -24,4 +24,6 @@ Stand 20.09.2026 Abend — Fix-Lauf nach System-Selbstprüfung (Workflow „LOKI
 
 Verwandt: [[loki-kernel-v17-start-8010-fix]], [[zai-coding-plan-limits]]
 
-**⚠️ UPDATE 26.10.: OmniRoute LÄUFT WIEDER** — lsof-Beweis: Port **:20128 LISTEN** (node PID 871). Widerspricht dem Abbau vom 20.09.; laut Kompass-Doku 15.10. gab es einen LaunchAgent-Fix 11.10. (`--tray` entfernt, Backup `.bak-20261011`) → offenbar reaktiviert. Offen: Richtungs-Entscheidung Sascha (wieder an vs. endgültig zu) + Security-P1 „API-Keys-Logik vor White-Label-Verkauf" (dwfrun-Lauf 10.10., Status unbestätigt). Details: [[zcode-adhs-automationen]] / LOKI_TASKBOARD.md.
+**⚠️ UPDATE 26.10.: OmniRoute LÄUFT WIEDER** — lsof-Beweis: Port **:20128 LISTEN** (node PID 871). Widerspricht dem Abbau vom 20.09.; laut Kompass-Doku 15.10. gab es einen LaunchAgent-Fix 11.10. (`--tray` entfernt, Backup `.bak-20261011`) → offenbar reaktiviert. Offen: Richtungs-Entscheidung Sascha (wieder an vs. endgültig zu) + Security-P1 „API-Keys-Logik vor White-Label-Verkauf" (dwfrun-Lauf 10.10., Status unbestätigt — dwfrun-Läufe dazu auch am 10.10. im Tages-Routine-Sweep sichtbar). Details: [[zcode-adhs-automationen]] / LOKI_TASKBOARD.md (~/.agents/memory/).
+
+**⚠️ UPDATE 29.10.: Weiterhin :20128 LISTEN** (erneut im Tages-Routine-Sweep bestätigt, keine Richtung-Entscheidung gefallen). Taskboard-Eintrag #3 (Cline: Konflikt + P1-Status prüfen) bleibt offen.

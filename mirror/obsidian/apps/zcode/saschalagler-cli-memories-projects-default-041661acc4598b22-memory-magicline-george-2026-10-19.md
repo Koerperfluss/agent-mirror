@@ -1,7 +1,7 @@
 ---
 app: zcode
 quelle: "saschalagler/cli/memories/projects/default-041661acc4598b22/memory/magicline-george-2026-10-19.md"
-stand: 2026-10-27
+stand: 2026-10-29
 tags: [spiegel, zcode]
 ---
 
@@ -30,3 +30,5 @@ metadata:
 **Update 26.10. (Tages-Routine-Morgen-Lauf):** Blocker unverändert (Key-Mail Thomas, noch nicht angefasst). ⚠️ **Das Master-PDF ist vom Desktop WEG:** `ls ~/Desktop/*MAGICLINE*` = leer (am 19.10. noch geliefert) — verschoben/Ort DATENLAGE UNKLAR, im Tagesplan 26.10. als Punkt 1 hinterlegt. Verifiziert noch da: Workflow `~/.zcode/workflows/magicline-george-anleitung.dwf.ts` (ls ✓) + Briefing `out/GEORGE_MAGICLINE_BRIEFING.md` (191 Zeilen, überarbeitet). Nächster Schritt nach Key-Eingang: Key auf Windows (setx) → George Briefing als Kontext → Test-Fragen.
 
 **Update 27.10. (Tages-Routine-Morgen-Lauf, déjà-recall löste das Rätsel):** ✅ **PDF NICHT weg — bewiesen vorhanden:** `~/Desktop/MAGICLINE_GEORGE_ALLES_IN_EINEM_2026-10-19.pdf` (deja-Beweis: 6 Seiten, 426 KB — Memorie 363 KB vom 19.10. war wohl Zwischenstand, finales PDF größer). Der gestrige „ls = leer"-Befund war ein Suchmuster-Fehlschlag (Glob `*MAGICLINE*` vs. tatsächlichem Namen — vermutlich Umlaut-/Casing-Echo im Shell-Glob). **Lektion: bevor „DATENLAGE UNKLAR" geschrieben wird, zuerst deja-recall + präzisen Pfad testen (ls auf den EXAKTEN Dateinamen), nicht nur Glob-Muster.** Blocker unverändert: Key-Mail Thomas.
+
+**Update 28./29.10. (Tages-Routine):** Keine Bewegung — Blocker unverändert Key-Mail Thomas; keine neuen Magicline-Sessions im Sweep. Das PDF-Rätsel gilt als endgültig gelöst (Pfad oben ist kanonisch).

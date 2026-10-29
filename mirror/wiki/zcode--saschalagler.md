@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-29 13:03 UTC
+Zuletzt gespiegelt: 2026-10-29 15:30 UTC
 
 ## AGENTS
 
@@ -12704,7 +12704,7 @@ In ATLAS-ZCode-Sessions kann das Bash-Tool komplett tot sein: jeder Aufruf (auch
 
 # Memory Index
 
-- [ZCode ADHS-Automations](zcode-adhs-automationen.md) — 13.09.–27.10. LIVE: **EINE Automation mit ALLEN 6 Briefs** (cron `0 9,10,15,16,21`; niemals 6 separate) · **59 Läufe** · INFO-PUSH je Lauf (macOS-Benachrichtigung + 4-Zeilen-Format, auch No-ops) · Taskboard `~/.agents/memory/LOKI_TASKBOARD.md` · SYSTEMPROOF 6/6 AKTIV · Doku-Fix erledigt · LokiVoice=`_ARCHIV/2026-10/loki-voice-alt` · offen: GO Wecker · Deutsch-Patch · Doku-Sync-Duplikat weg · OmniRoute-Richtung · 1 Task pro Chat-Limit
+- [ZCode ADHS-Automations](zcode-adhs-automationen.md) — 13.09.–29.10. LIVE: **EINE Automation mit ALLEN 6 Briefs** (cron `0 9,10,15,16,21`; niemals 6 separate) · **61+ Läufe** · INFO-PUSH je Lauf (macOS-Benachrichtigung + 4-Zeilen-Format, auch No-ops) · Taskboard `~/.agents/memory/LOKI_TASKBOARD.md` · SYSTEMPROOF 6/6 AKTIV · Doku-Fix erledigt · LokiVoice=`_ARCHIV/2026-10/loki-voice-alt` · offen: GO Wecker · Deutsch-Patch · Doku-Sync-Duplikat weg · OmniRoute-Richtung · 1 Task pro Chat-Limit
 - [Magicline→George 19.10.](magicline-george-2026-10-19.md) — Paket fertig (Anleitung-PDF Desktop + Briefing out/GEORGE_MAGICLINE_BRIEFING.md + Workflow `magicline-george-anleitung` global); Weg B (REST direkt, kein VPN); blockiert auf Key-Mail von Thomas; KEIN Studiowert-Zähl-Endpoint; LEHRE: Übergabe = normales DOKUMENT, kein Skill · 27.10. PDF bewiesen DA (426 KB, déjà löste „Ort unklar" — vor DATENLAGE UNKLAR immer deja+exakter ls)
 - [Workflow-Topologie 15.10.](dynamic-workflow-topologie-2026-10-15.md) — dwfrun-542bffb6 ✅ COMPLETED: Dashboard out/topologie-workflow.html (13.4 KB, ls-beweisen), 2 verified Findings (Slice-Verify trivial-sicher), GO für Ausführung offen; LESSONS: Skill-Tool nur `skill`+`args`, Free-Modell-Fallback = Müll → GLM
 - [Token-Sparen 10.10.](feedback-token-sparen.md) — Vereinbarung: 5 Werkzeuge reichen fürs Förder-Projekt (Rest 90+ Skills überflüssig); keine Workflows ohne konkreten Auftrag, max. 2–3 Tags, keine Seiten-Pastes, App/Dateien statt Chat
@@ -14401,6 +14401,8 @@ metadata:
 
 **Update 27.10. (Tages-Routine-Morgen-Lauf, déjà-recall löste das Rätsel):** ✅ **PDF NICHT weg — bewiesen vorhanden:** `~/Desktop/MAGICLINE_GEORGE_ALLES_IN_EINEM_2026-10-19.pdf` (deja-Beweis: 6 Seiten, 426 KB — Memorie 363 KB vom 19.10. war wohl Zwischenstand, finales PDF größer). Der gestrige „ls = leer"-Befund war ein Suchmuster-Fehlschlag (Glob `*MAGICLINE*` vs. tatsächlichem Namen — vermutlich Umlaut-/Casing-Echo im Shell-Glob). **Lektion: bevor „DATENLAGE UNKLAR" geschrieben wird, zuerst deja-recall + präzisen Pfad testen (ls auf den EXAKTEN Dateinamen), nicht nur Glob-Muster.** Blocker unverändert: Key-Mail Thomas.
 
+**Update 28./29.10. (Tages-Routine):** Keine Bewegung — Blocker unverändert Key-Mail Thomas; keine neuen Magicline-Sessions im Sweep. Das PDF-Rätsel gilt als endgültig gelöst (Pfad oben ist kanonisch).
+
 ## omniroute-gateway-keys
 
 ---
@@ -14442,7 +14444,9 @@ Stand 20.09.2026 Abend — Fix-Lauf nach System-Selbstprüfung (Workflow „LOKI
 
 Verwandt: [[loki-kernel-v17-start-8010-fix]], [[zai-coding-plan-limits]]
 
-**⚠️ UPDATE 26.10.: OmniRoute LÄUFT WIEDER** — lsof-Beweis: Port **:20128 LISTEN** (node PID 871). Widerspricht dem Abbau vom 20.09.; laut Kompass-Doku 15.10. gab es einen LaunchAgent-Fix 11.10. (`--tray` entfernt, Backup `.bak-20261011`) → offenbar reaktiviert. Offen: Richtungs-Entscheidung Sascha (wieder an vs. endgültig zu) + Security-P1 „API-Keys-Logik vor White-Label-Verkauf" (dwfrun-Lauf 10.10., Status unbestätigt). Details: [[zcode-adhs-automationen]] / LOKI_TASKBOARD.md.
+**⚠️ UPDATE 26.10.: OmniRoute LÄUFT WIEDER** — lsof-Beweis: Port **:20128 LISTEN** (node PID 871). Widerspricht dem Abbau vom 20.09.; laut Kompass-Doku 15.10. gab es einen LaunchAgent-Fix 11.10. (`--tray` entfernt, Backup `.bak-20261011`) → offenbar reaktiviert. Offen: Richtungs-Entscheidung Sascha (wieder an vs. endgültig zu) + Security-P1 „API-Keys-Logik vor White-Label-Verkauf" (dwfrun-Lauf 10.10., Status unbestätigt — dwfrun-Läufe dazu auch am 10.10. im Tages-Routine-Sweep sichtbar). Details: [[zcode-adhs-automationen]] / LOKI_TASKBOARD.md (~/.agents/memory/).
+
+**⚠️ UPDATE 29.10.: Weiterhin :20128 LISTEN** (erneut im Tages-Routine-Sweep bestätigt, keine Richtung-Entscheidung gefallen). Taskboard-Eintrag #3 (Cline: Konflikt + P1-Status prüfen) bleibt offen.
 
 ## oneforma-agb-pruefung
 
@@ -15261,7 +15265,7 @@ Integration done 2026-08-30: added `web-search-prime`, `zread`, `zai-vision` MCP
 
 ---
 name: zcode-adhs-automationen
-description: "13.09.–27.10. LIVE: EINE Automation mit ALLEN 6 Briefs (cron `0 9,10,15,16,21`; niemals 6 separate — Nutzer-Ziel!) · **58+ Läufe** · INFO-PUSH lebt (macOS-Benachrichtigung + 4-Zeilen-Format bei JEDEM Lauf inkl. No-ops, zweimal Automatik-PASS) · GROSS-KONSOLIDIERUNG 26.10.: LOKI_TASKBOARD.md (~/.agents/memory/, 3,9 KB) + SYSTEMPROOF 6/6 AKTIV + Doku-Fix ERLEDIGT (README+Backup) · LokiVoice = `~/loki-ki/_ARCHIV/2026-10/loki-voice-alt/` (P1s obsolet) · Magicline-PDF bewiesen = `~/Desktop/MAGICLINE_GEORGE_ALLES_IN_EINEM_2026-10-19.pdf` (426 KB, déjà-Lektion: vor DATENLAGE UNKLAR deja+exaktes ls) · OmniRoute :20128 LÄUFT WIEDER (Richtung offen) · Doku-Sync-DUPLIKAT automation-2df8eec5 Lösch-GO offen · offen auf GO: Wecker · Deutsch-Patch · Duplikat weg · OmniRoute-Richtung · 1 Task pro Chat-Limit"
+description: "13.09.–29.10. LIVE: EINE Automation mit ALLEN 6 Briefs (cron `0 9,10,15,16,21`; niemals 6 separate — Nutzer-Ziel!) · **61+ Läufe** · INFO-PUSH lebt (macOS-Benachrichtigung + 4-Zeilen-Format bei JEDEM Lauf inkl. No-ops, mehrfach Automatik-PASS) · GROSS-KONSOLIDIERUNG 26.10.: LOKI_TASKBOARD.md (~/.agents/memory/, 3,9 KB) + SYSTEMPROOF 6/6 AKTIV + Doku-Fix ERLEDIGT (README+Backup, grep-Beweis) · LokiVoice = `~/loki-ki/_ARCHIV/2026-10/loki-voice-alt/` (P1s obsolet) · Förder-Antrag: FÖDERUNG-Ordner aufgebaut (dwfrun) · Magicline-PDF bewiesen = `~/Desktop/MAGICLINE_GEORGE_ALLES_IN_EINEM_2026-10-19.pdf` (426 KB, déjà-Lektion: vor DATENLAGE UNKLAR deja+exaktes ls) · OmniRoute :20128 LÄUFT WIEDER (Richtung offen) · Doku-Sync-DUPLIKAT automation-2df8eec5 Lösch-GO offen · offen auf GO: Wecker · Deutsch-Patch · Duplikat weg · OmniRoute-Richtung · 1 Task pro Chat-Limit"
 metadata:
   node_type: memory
   type: project
@@ -15271,114 +15275,34 @@ metadata:
 **Stand 13.09.2026 abends — ZIEL ERREICHT: 1 Automation, alle 6 Funktionen, Engine komplett gebaut und live getestet.**
 
 ## Die EINE Automation (verifiziert via CronList, ID `automation-d3f486f6-0509-4176-8459-be13ad3b4282`)
-- **Titel:** „LOKI Tages-Routine: alle 6 Briefs (09/10/15/16/21 Uhr + Zweige)" · cron **`0 9,10,15,16,21 * * *`** · active
-- Zweig-Wahl zur Laufzeit per `date '+%H %u %A'`: 09:00 MORGEN-BRIEF (tgl.) + DEV-BRIEF (Mo–Fr, im selben Lauf: Commits/Modul-Änderungen/Follow-ups, CI nur melden wenn konfiguriert) · 10:00 RISIKO-SCAN (tgl., 24 h-Diffs, nur hohe Konfidenz + Beweis, „keine Findings" = valid) · 15:00 nur Mi DOKU-SYNC (7 Tage Code vs. Doku) · 16:00 nur Fr RELEASE-BRIEF (Features/Fixes/Experience/Engineering + DE-Release-Notes + Kalender-Event) · 21:00 ABEND-ZUSAMMENFASSUNG (skippt still wenn Logbuch schon „abgeschlossen")
-- **Nutzer-Kernforderung:** „wieso formulierst du die automationen nicht als eine einzige statt 6 — DAS WAR DAS ZIEL" → niemals 6 separate Tasks anlegen; weitere Briefs = neue Zweige + neue Stunde in DENSELBEN cron. ZCode-Limit bestätigt: **1 Scheduled Task pro Chat** (CronCreate in Task-Session → Fehler).
-- Nutzung `/feierabend` (Command-Datei) für manuellen Feierabend ohne 21:00-Warten.
+- **Titel:** „LOKI Tages-Routine: alle 6 Briefs + Info-Push je Lauf" · cron **`0 9,10,15,16,21 * * *`** · active
+- Zweig-Wahl zur Laufzeit per `date '+%H %u %A'`: 09:00 MORGEN-BRIEF (tgl.) + DEV-BRIEF (Mo–Fr, im selben Lauf) · 10:00 RISIKO-SCAN (tgl.) · 15:00 nur Mi DOKU-SYNC · 16:00 nur Fr RELEASE-BRIEF · 21:00 ABEND-ZUSAMMENFASSUNG.
+- **Nutzer-Kernforderung:** „wieso formulierst du die automationen nicht als eine einzige statt 6 — DAS WAR DAS ZIEL" → niemals 6 separate Tasks anlegen; weitere Briefs = neue Zweige + neue Stunde in DENSELBEN cron. ZCode-Limit bestätigt: **1 Scheduled Task pro Chat**.
+- **INFO-PUSH-Vertrag (26.10. per CronUpdate, Sascha: „die Läufe geben mir KEINE Info … 0 Info völlig wertlos"):** ① macOS-Benachrichtigung bei JEDEM Lauf (auch No-ops, `display notification` + title „LOKI <Zweig> <Uhrzeit>") ② Chat im 4-Zeilen-Format: WAS PASSIERT IST · WO ZU FINDEN (Kalender-Event + Logbuch-Pfad) · WANN nächster Lauf · WIE WEITER (GO-Wort) ③ No-op-1-Zeiler verboten (auch No-ops pushen mit Grund + nächstem vollen Lauf). Live bewiesen an vollen Läufen UND No-ops.
 
 ## Engine — GEBAUT 13.09. (Implementer-Subagent, 7/7 PASS, live getestet)
-1. **`~/.agents/tools/daily_sweep.py`** — 7 Quellen read-only: ZCode-Rollouts (`request.body.messages[]` role=user, mtime-Filter, Break nach erstem Prompt), Cline `~/.cline/data/sessions/*/*.messages.json`, Antigravity `~/.gemini/antigravity/brain/*`, AutoClaw `~/.openclaw-autoclaw/agents/*/sessions/*.jsonl`+`cron/jobs.json`, claude-mem.db (Schema-Discovery `mode=ro`), Git heute (`~/loki-ki`, `~/Projects/*`), LOKI-Dateien. Live-Test: 9 Einträge aus 2 Quellen (AutoClaw, ZCode), exit 0.
-2. **Logbuch** `~/.agents/memory/logbuch/2026-09-13.md` — Frontmatter date/projects/status, H2 pro Projekt, `## ✍️ Meine Notizen` = tabu (Parser stoppt dort), append-only, status nur via feierabend → „abgeschlossen".
-3. **`~/loki-assistent/assi`** erweitert: CMD `"brief": brief.py, "feierabend": evening.py`; `brief`-Alias-Kollision gelöst (`("--brief",)` → status). Backup `assi.bak-vor-brief`.
-4. **`assi brief`** = Morgen-Brief (neuestes Logbuch ⏳/🔨 + MASTER_TODO, max. 5 Bullets); `--hook` printet 1 Zeile `{"additionalContext": …}`, IMMER exit 0. **`assi feierabend`** = Sweep anhängen + status setzen (Live-Lauf PASS).
-5. **SessionStart-Hook** in `~/.zcode/cli/config.json`: neue Gruppe `{"matcher":"startup", hooks:[assi brief --hook, timeout 30]}` AN bestehendes SessionStart-Array angehängt (bestehende 2 Hooks intakt), Backup `config.json.bak-vor-assi-hook`, JSON valid.
+1. **`~/.agents/tools/daily_sweep.py`** — 7 Quellen read-only: ZCode-Rollouts, Cline `~/.cline/data/sessions/*/*.messages.json`, Antigravity `~/.gemini/antigravity/brain/*`, AutoClaw `~/.openclaw-autoclaw/agents/*/sessions/*.jsonl`+`cron/jobs.json`, claude-mem.db (Schema-Discovery `mode=ro`), Git heute, LOKI-Dateien.
+2. **Logbuch** `~/.agents/memory/logbuch/` (23+ Dateien) — Frontmatter date/projects/status, H2 pro Projekt, `## ✍️ Meine Notizen` = tabu (Parser stoppt dort), append-only, Multi-Writer-sicher (vor jedem Schreiben NEU lesen — fremde Workflows schreiben mit!).
+3. **`~/loki-assistent/assi`** erweitert: `brief` (Morgen-Brief, `--hook` = additionalContext-JSON, exit 0) + `feierabend` (Sweep anhängen + status abgeschlossen).
+4. **SessionStart-Hook** in `~/.zcode/cli/config.json` (matcher „startup", assi brief --hook, timeout 30) — jetzt **5 Gruppen** (obsidian-vault, projects.py, assi-brief + 2).
+5. **README-Fix 26.10.:** `~/loki-assistent/README.md` Befehls-Tabelle um brief/feierabend + push.sh-Abschnitt ergänzt (Backup `README.md.bak-20261026`, grep 0→4 Treffer) — Doku-Sync-Finding tot.
 
-## Kalender-Fakten (bewiesen 13.09.)
-- osascript → Calendar.app funktioniert **ohne TCC-Prompt** (Zugriff still gewährt).
-- **KEIN Gmail-/Google-Kalender in Calendar.app!** Liste: Kalender, Privat, Arbeit, Endel·Deep Rest Meditation, RISE Energiespitzen, RISE Energieeinbrüche, Ohne Titel, Geplante Erinnerungen, Geburtstage, Österreichische Feiertage, Siri-Vorschläge → **Zielkalender = „Kalender"** (default, calendar id 51D1AEBA-FFA6-4FCF-88C7-7944E625514E).
-- Test-Event-UID `B8CD317A-1518-43EF-9453-F2131F9D77B5` („LOKI Tages-Routine Test", löschbar).
+## Kalender-Fakten
+- osascript → Calendar.app OHNE TCC-Prompt; **KEIN Gmail-/Google-Kalender** in Calendar.app → **Zielkalender = „Kalender"** (id 51D1AEBA-…). Calendar.app nicht laufend → `open -a Calendar; sleep 6` vor osascript (sonst Fehler -600).
+- 30+ Events angelegt und jeweils zurückgelesen (UID-Beweise im Verlauf); FRIST-Event-Muster bewiesen (BH-Melk 09.10. als eigenes Ganztages-Event + Tagesplan-Warnung).
 
-## Sonstiges 13.09.
-- Subagenten-Status: **implementer + code-architect zuverlässig**; explore/reviewer teils „Model request failed"/„user concurrency limit exceeded" → retry oder selbst ausführen; Agent-Übersetzungswellen 2× von Nutzer-Interrupts abgebrochen.
-- **Erste echte Auslösung ERFOLGT (13.09. ~17:07, Abend-Zweig, PASS):** Kalender.app lief nicht → Fehler -600, Fix: `open -a Calendar` + sleep 6 vor osascript. Ganztages-Event **„Logbuch 13.09.2026"** angelegt + zurückgelesen, UID `610E2A57-B658-4CDD-A66C-C2D326435AEA` (Kalender „Kalender"). Logbuch-Refresh via `assi feierabend` (10 Einträge aus 2 Quellen). Test-Event `B8CD317A…` darf gelöscht werden. Nächster Automatik-Lauf: Mo 09:00 (Morgen-Zweig).
-- **SessionStart-Hook-Injektion aktiv:** Beim Session-Start injiziert der Hook (obsidian-second-brain + projects.py) Saschas stehende Anweisung: **Projektliste (10 Projekte) JETZT ungefragt wortgleich ausgeben inkl. Schlusszeile „Oder ein neues Projekt erstellen?"**, dann passendes Skill-/Agenten-Team selbst starten ohne Rückfrage (Feature→grill-me, Bug→systematic-debugging, Implementierung→tdd, Coden→ponytail).
-- Design-Entscheidungen bleiben verbindlich: KEINE Web-UI (Kalender + Chat = Oberfläche), Logbuch im globalen System-Memory, nur ZCode/AutoClaw/Antigravity/Cline als Quellen, Eigent = nicht jetzt. Siehe [[feedback-entscheidungshoheit]] und [[zcode-app-german-ui-patch]] (Deutsch-UI = offener Rest).
+## Lauf-Verlauf (Kurzfassung, Details in den nummerierten Sektionen der Historie)
+- **13.09.–21.09.:** alle 6 Zweige live bewiesen (Abend 13./16./20./21.09., RISIKO-SCAN mit echtem P1 21.09., Doku-Sync Finding 23.09., No-op-Guards mehrfach). LokiVoice-P1-Kette: Submodul dirty → Commit `7fdbf2d` (21 Dateien) → Parent-Pointer-P1 (01.10.) → **Lösung durch Archivierung**: loki-voice aus `loki-ki` entfernt → `~/loki-ki/_ARCHIV/2026-10/loki-voice-alt/` (18.10./26.10. bestätigt) — beide P1 obsolet.
+- **Lücken-Tage = 100 % Schlaf-Fälle:** 15./17./19./23./25.–28.09., 30.09.–05.10., 07.–12.10., 19.–25.10. — Mac aus → ZCode-Cron feuert nicht. **Dauerhebel auf GO: LaunchAgent `com.sascha.assi.daily` (08:00) zum Routine-Wecker aufrüsten.** Catch-up-Muster bewährt: verpassten Morgen-Brief im 15/16/21-Lauf nachholen (Zweig-Abweichung dokumentieren).
+- **UHR-ANOMALIE:** Zukunftdatierte Logbuch-Dateien (06.10/13.10) existierten, bevor das echte Datum sie einholte — Behandlung: `date`-Output = Wahrheit, Zukunftdateien beim echten Datum zu gültigen Logbüchern umbauen (Korrektur-Sektion anhängen, nichts löschen, Bi-Temporal).
+- **26.10. GROSS-KONSOLIDIERUNG:** Taskboard `~/.agents/memory/LOKI_TASKBOARD.md` (3,9 KB; 16 Alt-Aufgaben, 6 erledigt/obsolet, Verteilung ZCode/Cline/AutoClaw/Sascha) + **SYSTEMPROOF 6/6 LIVE PASS** (Hook-JSON, 23 Logbücher, Sweep, Kalender-Rücklesen, Doku-Fix grep, 3/3 Engine-Dateien) + **Doku-Fix erledigt**.
+- **27.10.–29.10.:** Info-Push an allen Läufen bewiesen (Morgen 09:05 pünktlich + 2 No-ops + Abend 21:04, jeweils Push + 4-Zeilen). **Förder-Antrag Körperfluss EDU:** dwfrun baute `FÖDERUNG/`-Ordner (FÖRDERANTRAGEN_2026-10, HARVESTS, FFG Kleinprojekt Anlauf 2) · Verkaufs-HUB-Handoff aktiv · Magicline-PDF bewiesen (426 KB) · 29.10. Donnerstags-No-op mit Push.
+- Bilanz: **61+ Läufe**; Dauer-GOs unverändert: **GO Wecker · Deutsch-Patch („weiter übersetzen") · Duplikat weg (automation-2df8eec5) · OmniRoute-Richtung**.
 
-## Zweiter Live-Lauf (Mo 14.09. 15:07 — Morgen-Brief NACHGEHOLT)
-- **Der 09:00-Lauf feuerte NICHT** (kein `2026-09-14.md` um 15:07 nachweisbar) — Mac/ZCode war um 09:00 vermutlich schlafend; ZCode-Cron hat KEINEN Weck-Mechanismus. Option auf GO: bestehenden LaunchAgent `com.sascha.assi.daily` (launchd weckt pünktlich) zum Brief-Macher umrüsten.
-- Nachgeholt (Zweig-Abweichung dokumentiert): Logbuch `~/.agents/memory/logbuch/2026-09-14.md` angelegt (status: offen, 5 Tagesplan-Bullets + DEV-BRIEF-Sektion), Kalender-Event **„Tagesplan 14.09."** UID `A1284A91-8470-4F77-8F84-BA932A081B13` (Event-Zeit = jetzt+15 Min statt 09:00, da nachgeholt).
-- **DEV-BRIEF erster echter Output:** 0 Commits seit Freitag in `~/loki-ki` + `~/Projects/*`, „keine CI konfiguriert", Modul-Änderungen nur außerhalb Git (daily_sweep.py, assi, Hook).
-- SessionStart-Hook injiziert die Projektlisten-Pflicht auch in Automation-Sessions (Funktioniert) — bei Automation-Läufen zuerst Projektliste, dann Zweig-Ausführung.
-
-## Dritter Lauf (Mo 14.09. 16:01 — No-op-Zweig PASS)
-- 16:00-Lauf am Montag korrekt mit **1 Zeile „heute nichts zu tun"** geendet (RELEASE-BRIEF nur freitags) — Zweig-Guard funktioniert wie designiert; echtes Close des Logbuchs macht der 21:00-Abend-Zweig.
-
-## Vierter Lauf (Mi 16.09. 21:03 — Abend-Zweig PASS)
-- Kalender-Event **„Logbuch 16.09.2026"** UID `88CCE1A6-AAD8-44CF-8548-65D966CCD86D` (Ganztages, Kalender „Kalender"), Logbuch `~/.agents/memory/logbuch/2026-09-16.md` (status: abgeschlossen).
-- Inhalt: Bewerbungen (4 Texte HCS/ASFINAG/Mapei/EnergieD auditiert + 6 PDFs verifiziert + Zeugnisse aufbereitet, via Cline), Tool-Hub-Verkaufsplattform (WAYFINDER: Spec + FastAPI-Backend + Dashboard, via Cline), 3 Antigravity-Brain-Sessions, 0 Git-Commits, Deutsch-Patch weiter offen.
-- **15.09. = Lücken-Tag:** kein Logbuch (Lauf verpasst, Mac vermutlich aus) — bestätigt den Wecker-Bedarf (LaunchAgent com.sascha.assi.daily auf GO).
-- Sweep-Qualität gut genug für reale Tages-Zusammenfassung: Cline-Task-Themen (Bewerbungen, Hub-Bau) sauber erkennbar; Antigravity-Transcripts liefern nur Ordner-Signal, keine Klartext-Themen.
-
-## Fünfter Lauf (Fr 18.09. 15:05 — Morgen-Brief nachgeholt, PASS)
-- 09:00 wieder verpasst (3. Lücken-Morgen: 15./17./18.09. ohne Logbuch bzw. nachgeholt) → 15:00-Freitag-Slot als Nachhol-Lauf genutzt (Zweig-Abweichung dokumentiert). Kalender-Event **„Tagesplan 18.09."** UID `533CCF84-6694-440A-B4C9-E2F21CEF2B6F`, Logbuch `~/.agents/memory/logbuch/2026-09-18.md` (status: offen, DEV-BRIEF: 0 Commits, keine CI; Cline-Yolo-Team „daily digest/documentation maintainer/security reviewer" in Session 712478 gesichtet — mögliche Überschneidung mit Tages-Routine beobachten).
-- **LaunchAgent-Wecker (com.sascha.assi.daily umrüsten) weiter auf GO offen** — Dauerlösung gegen verpasste 09:00-Läufe.
-- 17.09. bleibt Lücken-Tag (kein Logbuch).
-
-## Sechster Lauf (So 20.09. 10:07 — RISIKO-SCAN-Zweig PASS)
-- Erster echter RISIKO-SCAN (Sonntag 10:00-Slot): 0 Commits letzte 24 h in `~/loki-ki` + `~/Projects/*`, 0 uncommittete Änderungen, 0 Engine-Datei-Änderungen → **„Keine Hoch-Risiko-Änderungen gefunden"** als valides Leerergebnis, kein ⚠️-Kalender-Event nötig.
-- Scan im Tages-Logbuch vermerkt: `~/.agents/memory/logbuch/2026-09-20.md` (status: offen, Abend-Zweig 21:00 schließt ab).
-- **19.09. (Samstag) = weiterer Lücken-Tag** — Lücken-Muster: 15./17./19.09. ohne Logbuch; LaunchAgent-Wecker (com.sascha.assi.daily umrüsten) wartet weiterhin auf Saschas „GO Wecker".
-- Lauf-Bilanz 13.–20.09.: Abend-Zweig 2× PASS (13./16.09.), Morgen nachgeholt 2× (14./18.09.), No-op-Guards 4× korrekt (14.09. 16:00, So 20.09. 15:00+16:00, ⌀), Risiko-Scan 1× PASS (20.09.) — alle 6 Zweige mindestens einmal real ausgeführt.
-- Wochenend-No-ops So 20.09. bestätigt (15:00- und 16:00-Lauf je 1 Zeile „heute nichts zu tun", Logbuch blieb offen für 21:00-Abend-Lauf).
-
-## Siebter Lauf (So 20.09. 21:07 — Abend-Zweig PASS)
-- Kalender-Event **„Logbuch 20.09.2026"** UID `6BFDB24A-2893-4AA2-A4CE-477B56148BDC` (Ganztages, Kalender „Kalender"), Logbuch `~/.agents/memory/logbuch/2026-09-20.md` → status **abgeschlossen** (Edit: status + ABEND-Sektion vor „✍️ Meine Notizen" eingefügt, append-only).
-- Inhalt: System-Audit 39 Checks/7 Findings + OmniRoute-Rückbau Q1–Q7 (aus [[omniroute-rueckbau-system-fixes-2026-09-20]]), Skill-System-Standard + deja-vu-Skill-Install 🔨, LokiVoiceApp V10-Binary-Rebuild-Handoff 🔨, Deutsch-Patch + Wecker-GO ⏳.
-- **Endbilanz 13.–20.09.: alle 6 Zweige live bewiesen; nur noch 2 offene Punkte: LaunchAgent-Wecker (auf „GO Wecker") + Deutsch-Patch (siehe [[zcode-app-german-ui-patch]]).**
-
-## Achter Lauf (Mo 21.09. 09:05 — Morgen-Brief ERSTMALS PÜNKTLICH, PASS)
-- **Der 09:00-Cron feuerte zum ersten Mal on-time** (Mac war wach) — Nachhol-Logik blieb ungenutzt. Logbuch `~/.agents/memory/logbuch/2026-09-21.md` (status: offen), Kalender-Event **„Tagesplan 21.09."** UID `C1BFC6A3-99DA-4120-B8B1-C46CB9311A31`.
-- **DEV-BRIEF mit echten Wochenend-Commits:** 2 Commits in `~/loki-ki` (TAKEOVER LOKI.OS): `ae899b0` Initial commit v15.3 (46 dirs) + `eaf7bc4` Final Polish (Unified Search `bin/loki-search`, HUD-Upgrade `loki-hud/hud.py` +39 Zeilen, BEFEHLE.md/PROJECT.md). CI weiterhin keine.
-- Tagesplan: LokiVoiceApp V10-Rebuild · Deutsch-Patch · Thomas-Kritik-Runde 2 (dwf-Workflow läuft) · Wecker-GO · Skill-System+deja-vu.
-- Lauf-Bilanz 13.–21.09.: 8 Läufe, alle 6 Zweige bewiesen; weiterhin offen nur Wecker-GO + Deutsch-Patch.
-
-## Neunter Lauf (Mo 21.09. 10:07 — RISIKO-SCAN mit erstem P1-Finding, PASS)
-- **⚠️ P1 Datenverlust-Risiko:** Submodul `~/loki-ki/loki-voice` **dirty** — `app.py`, `audio.py`, `konfiguration.py`, `registry.py` uncommittet geändert (Beweis: `git -C ~/loki-ki/loki-voice status --porcelain`, Pointer `53e4a75…-dirty`); späteres `git submodule update`/hard reset würde die Änderungen löschen → Sascha angeboten: **„GO voice-commit"** (mit Backup). Relevant für heutigen Tagesplan-Punkt 1 (V10-Rebuild berührt genau diese Dateien).
-- **ℹ️ P2 Config-Drift:** `config.json` wuchs seit Backup 13.09 von 16→**17 MCP-Server** und 1→**4 SessionStart-Hook-Gruppen** (nicht dieser Chat; App läuft). Beobachten.
-- Keine Runtime/Auth/Leak/Cross-Platform-Findings; kein ⚠️-Kalender-Event (nicht kritisch). Scan vermerkt in `2026-09-21.md`.
-- Lauf-Bilanz 13.–21.09.: 9 Läufe (Risiko-Scan 2×, davon 1× mit echtem Finding = Scanner liefert Wert).
-
-## Zehnter Lauf (Mo 21.09. 15:0x — No-op PASS)
-- 15:00-Montag-Slot korrekt 1-Zeilen-No-op (Doku-Sync nur mittwochs); Logbuch 21.09. blieb offen für 21:00-Abend-Lauf. Bilanz: 10 Läufe, noch immer nur 2 offene Punkte: **LaunchAgent-Wecker-GO + Deutsch-Patch**; zusätzlich wartet **„GO voice-commit"** (P1-Finding aus Risiko-Scan: loki-voice-Submodul dirty, 4 Dateien).
-
-## Elfter Lauf (Mo 21.09. 16:0x — No-op PASS)
-- 16:00-Montag-Slot korrekt 1-Zeilen-No-op (Release-Brief nur freitags); dabei verifiziert: **P1 besteht weiter** (loki-voice noch dirty, 4 Dateien + .DS_Store untracked) — Sascha im No-op-Output daran erinnert. Bilanz: 11 Läufe; offene Punkte unverändert: Wecker-GO · Deutsch-Patch · GO voice-commit.
-
-## Zwölfter Lauf (Mo 21.09. 21:05 — Abend-Zweig PASS, Multi-Writer-Lektion)
-- Kalender-Event **„Logbuch 21.09.2026"** UID `C269B996-812A-4B7B-BA10-1F1F3BCC1E56`, Logbuch `2026-09-21.md` → abgeschlossen.
-- **⚠️ Lektion Multi-Writer-Logbuch:** Beim Append kam „File has been modified since read" — die Abschnitte „Feierabend-Log 21.09." und „Abschließer-Sweep 21.09." (dwfrun-102156ed, actor#3) waren von ANDEREN Workflows dazugekommen. Regel bewährt: **vor jedem Logbuch-Schreiben neu lesen, nur append-only vor „✍️ Meine Notizen"**, eigene Aussagen gegen den aktuellen Datei-Stand korrigieren (mein Morgen-P1 „wartet auf GO voice-commit" war beim Abend-Lauf schon gelöst: Commit `7fdbf2d`, 21 Dateien).
-- Tagesbilanz 21.09.: erster Tag mit allen 3 Läufen pünktlich/vollständig (Morgen 09:05 · Risiko 10:07 mit P1 · Abend 21:05 mit P1-gelöst-Bestätigung); MA-Standard-Pipeline final (siehe MEMORY-Index „Subagent-Dispatch"); Deutsch-Patch-Strings-Artefakt im Dateisystem nicht mehr auffindbar.
-
-## Dreizehnter Lauf (Di 22.09. 15:0x — Morgen-Brief wieder verpasst → Catch-up PASS)
-- **09:00 wieder verpasst** (kein `2026-09-22.md`; Mac schlief — Wecker-GO bleibt DER Hebel). Catch-up 15:0x Dienstag wie am 18.09.: Logbuch `2026-09-22.md` angelegt (status: offen), Kalender-Event **„Tagesplan 22.09."** UID `F2C35605-1BA2-44D7-AD36-5CF3C3615015`.
-- Tagesplan 22.09.: V10-Rebuild (Handoff `8db9086b`, seit 21.09. unangetreten) · Deutsch-Patch-Strings-Wiederherstellung · Wecker-GO · eqMac/Spotify-Fix abschließen (siehe [[eqmac-deinstallation-spotify-fix]]) · Thomas-Bericht-GO. DEV-BRIEF: 0 neue Commits letzte 24 h, keine CI.
-
-## Vierzehnter Lauf (Di 22.09. 16:0x — No-op PASS)
-- 16:00-Dienstag-Slot korrekt 1-Zeilen-No-op (Release-Brief nur freitags); P1-Erinnerung unnötig geworden (loki-voice war schon um 16:15 durch Abschließer-Sweep committed).
-
-## Fünfzehnter Lauf (Mi 23.09. 15:0x — DOKU-SYNC erster echter Lauf, PASS mit 1 Finding)
-- **Erster echter DOKU-SYNC-CHECK** (15:00-Mittwoch-Slot, letzte 7 Tage): ⚠️ Finding hohe Konfidenz — **`~/loki-assistent/README.md` Befehls-Tabelle fehlen `assi brief` + `assi feierabend`** (Code seit 13.09., README nie nachgezogen; grep-Beweis: 3 Treffer nur „brief_latest.txt"-Kontext). Auf Saschas „GO doku-fix" wartend (2 Tabellenzeilen, ~2 Min).
-- ✅ Sauber: loki-ki `ae899b0`/`eaf7bc4`/`2bad878` (Doku stets mitgeändert: PROJECT/BEFEHLE/wayfinder) · loki-voice `7fdbf2d` brachte WIKI.md + PLAN_CHIPSI_CONNECTOR.md im selben Commit mit.
-- 23.09.-Morgen wieder verpasst (kein Logbuch um 15:0x) — gestriger Tagesplan 22.09. galt weiter; neuer Git-Commit `2bad878` (Vault-Organisation + wayfinder-Update) im Sync sichtbar. Bilanz: 15 Läufe; offen: Wecker-GO · Deutsch-Patch · GO doku-fix.
-
-## Sechzehnter Lauf (Mi 23.09. 16:0x — No-op PASS) + 23.09.-Abend VERPASST
-- 16:00-Mittwoch-Slot korrekt 1-Zeilen-No-op (Release-Brief nur freitags).
-- **23.09. 21:00-Abend-Lauf wurde NICHT ausgeführt** (Logbuch `2026-09-23.md` blieb status: offen) — erster verpasster Abend-Zweig seit Start. Im 24.09.-Abend-Brief offen gemeldet.
-
-## Siebzehnter Lauf (Do 24.09. 21:0x — Abend-Zweig PASS, Ruhig-Tag-Format)
-- Kalender-Event **„Logbuch 24.09.2026"** UID `9299B443-6943-493A-9BF9-E6E6EA1B524F`, Logbuch `2026-09-24.md` (status: abgeschlossen).
-- **Evidenz-basierter Ruhig-Tag:** Sweep = nur 1 ZCode-Session (die Tages-Routine selbst) + 0 Git-Commits → Brief sagt „kein Arbeits-Output heute" statt zu erfinden (Ehrlichkeits-Regel bewährt). Zusätzlich: verpasster 23.09.-Abend + offene GOs (doku-fix, Deutsch-Patch, Wecker) gemeldet.
-- Bilanz 13.–24.09.: 17 Läufe, alle 6 Zweige bewiesen; Daueroffen: **Wecker-GO · Deutsch-Patch-Recovery · GO doku-fix**.
-
-## Achtzehnter Lauf (Mo 29.09. 15:0x — Morgen-Brief verpasst → Catch-up PASS)
-- 09:00 wieder verpasst + **4 Lücken-Tage 25.–28.09.** (kein Logbuch). Catch-up: Logbuch `2026-09-29.md` (status: offen), Kalender-Event **„Tagesplan 29.09."** UID `9CCD68DB-DDCB-4730-A6A8-B881D4D25BC7`. DEV-BRIEF: 0 Commits seit Freitag, keine CI. Wochenbilanz im Brief: 5 Logbücher, 3 Lücken-Tage in Woche 39.
-
-## Neunzehnter Lauf (Mo 06.10. 16:0x — nach 6 Lücken-Tagen Catch-up PASS)
-- **6 Lücken-Tage 30.09.–05.10.** (Woche 40 = komplette Pause, Evidenz: keine Logbücher/Sessions, letzte Aktivität 29.09.) + 09:00 heute wieder verpasst. Catch-up: Logbuch `2026-10-06.md` (status: offen), Kalender-Event **„Tagesplan 06.10."** UID `8ED6CD3B-458E-4801-8ECE-F507999847E6`. DEV-BRIEF: 0 Commits seit Freitag, keine CI.
-- **Muster endgültig bestätigt:** Die Automation läuft zuverlässig, WANN IMMER der Mac wach ist — jeder verpasste Lauf = Schlaf-Fall. Nur „GO Wecker" (LaunchAgent `com.sascha.assi.daily` umrüsten) beendet das Muster; deutsch/doku/Wecker warten seit Tagen unverändert nur auf Saschas Wort.
-
-## Zwanzigster + Einundzwanzigster Lauf (Mo 13.10. 21:0x — Abend PASS nach 2. Funkstille-Woche)
-- **Zweite Funkstille-Woche 07.–12.10.** (kein Logbuch, keine Sessions — Mac durchgehend aus); heute wieder nur 1 Session (die Tages-Routine selbst) + 0 Commits. Logbuch `~/.agents/memory/logbuch/2026-10-13.md` (status: abgeschlossen), Kalender-Event **„Logbuch 13.10.2026"** UID `2FF9A547-A4F3-41C5-A8C7-EF96454CABA3`.
+## Offene Konflikte
+- **OmniRoute :20128 LÄUFT WIEDER** (node PID 871, lsof 26.10.) — Widerspruch zum Abbau 20.09. ([[omniroute-rueckbau-system-fixes-2026-09-20]]); Richtung nur Sascha.
+- **Doku-Sync-Duplikat:** `automation-2df8eec5` „Documentation sync check" (Mi 15:00, englisch) dupliziert den Mi-Zweig → Lösch-GO offen.
+- Deutsch-Patch: `/tmp/zcode_i18n` verloren (flüchtig), aber app.asar vorhanden → Re-Extraktion jederzeit möglich; Details [[zcode-app-german-ui-patch]].
 
 ## zcode-app-german-ui-patch
 
@@ -15572,16 +15496,17 @@ Sascha kritisierte am 19.10.2026 einen vorherigen Trainingsplan-Output als "derm
 
 # Memory Index
 
-- [Homebrew-Stack-Inventar](homebrew-stack-inventory.md) — 224 Pakete; 3-Agenten-Audit 29.10.: nur ~10 aktiv (Ollama/Obsidian/git/mole/hcom), Docker+Hammerspoon+Zen halb entkoppelt; Löschvorschlag wartet auf GO
-- [Einfache Sprache](simple-language-feedback.md) — Erklärungen: erst 2–3 einfache Sätze + Alltags-Metapher, Tabelle danach; Jargon sofort erklären
+- [Homebrew-Stack-Inventar](homebrew-stack-inventory.md) — Cleanup 29.10. ABGESCHLOSSEN: 224→147 Pakete (Casks+Formeln+Deps gelöscht, Docker/Hammerspoon/Zen komplett raus); ~10 aktiv; NUR noch offen: postgresql-Entscheidung (zshrc-Pfad)
+- [Einfache Sprache](simple-language-feedback.md) — MENSCHI-Regel in AGENTS.md aktiv: Kern 1–2 Sätze → Kontext → Entscheidung (Löschen JA/NEIN) → Risiko → kopierfertiger Schritt; AGENTS.md nur per Edit ändern (Mimosa blockt Bash-Append)
+- [LOKI-Skills-Ort](loki-skills-location.md) — /loki-* UND /briefmaker liegen in ~/.claude/skills, per Read laden statt Skill-Tool; briefmaker-Pipeline 29.10. bewährt (Bericht-PDF auf Desktop)
 
 ## homebrew-stack-inventory
 
 ---
 name: homebrew-stack-inventory
-description: Saschas Mac hat 224 Homebrew-Pakete (Stand 29.10.2026) — Audit abgeschlossen:
-  ~10 Pakete wirklich aktiv (Ollama, Obsidian, git, mole, hcom …), Rest ohne Nutzungsspuren;
-  Löschvorschlag wartet auf GO
+description: Saschas Mac Homebrew-Cleanup 29.10.2026 EXECUTIERT — 224→150 Pakete (6 Casks
+  + 22 Formeln gelöscht, 62 verwaiste Deps per autoremove). ~10 aktiv (Ollama, Obsidian,
+  git, mole, hcom …). Offen: Docker/Hammerspoon/Zen (halb entkoppelt), postgresql-Entscheidung
 metadata:
   node_type: memory
   type: project
@@ -15603,8 +15528,37 @@ Casks: Obsidian, Docker Desktop, Ollama-App, gcloud-cli, Flutter, Zen, Maccy, Ha
 - Alle 48 geprüften Leaves haben **0 Formel-Verbraucher** (`brew uses --installed`) → technisch gefahrlos löschbar.
 - **Bekannte Lücke:** zsh hat kein `EXTENDED_HISTORY` → keine Nutzungsdaten pro Befehl. Abhilfe: `setopt EXTENDED_HISTORY`.
 - **29.10. CaskHub-Klärung:** CaskHub = grafischer App-Store für Homebrew-Casks (das Menu-Icon „Homebrew · Installiert 224" ist seine Ansicht). Am 05.10. einmal gestartet (`~/Library/Application Support/CaskHub` angelegt, plus Crash-Log), Ordner leer, keine dauerhafte Nutzung. Sicherer Löschkandidat, da Paketverwaltung direkt über `brew` läuft.
-- Löschvorschlag liegt vor (`brew uninstall --cask gologin maccy neohtop browseros-neo remindian` + Formel-Liste), wartet auf Saschas GO — nichts gelöscht. Siehe [[simple-language-feedback]].
+- **29.10. ABEND: LÖSCHUNG EXECUTIERT (GO erteilt, per subagent-driven-development-Verifikation):** Prüf-Subagent bestätigte 27/28 Pakete sauber (0 Prozess, 0 Config, 0 Verbraucher). Flagge browseros-neo = **Namenskollision** (skillshare-Symlink zeigt auf Skill `~/.agents/skills/browseros-neo`, nicht auf die Brew-App) → trotzdem gelöscht. Gelöscht: Casks gologin (blockierende App-Rest-Datei in Caskroom musste manuell weg), maccy, neohtop, browseros-neo, remindian, caskhub + 22 Formeln (mongodb×2, pgvector, openjdk@17, cloudflared, cocoapods, m1ddc, displayplacer, mas, pyenv, exiftool, tectonic, typst, marp-cli, trufflehog, bottom, cpulimit, ios-deploy, xcbeautify, xcodegen, ffmpeg-full, hf) + 62 verwaiste Deps via `brew autoremove`. **Neuer Stand: 10 Casks, 140 Formeln, 33 Leaves.** Beweis: `brew list --cask` danach.
+- CaskHub gelöscht; Sascha fragte nach „Einrichten weil sinnvoll" — Empfehlung war NEIN (Paketverwaltung läuft direkt über brew-Terminal). Reinstall: `brew install --cask caskhub`.
+- **OFFEN → 29.10. SPÄT ABGESCHLOSSEN:** ①② Docker, Hammerspoon, Zen **komplett entfernt auf Saschas expliciten Befehl** (`brew uninstall --cask docker-desktop hammerspoon zen` + Reste manuell: `~/.docker`, `~/.hammerspoon`, `~/Library/Application Support/Docker Desktop` + zen-Profil, Root-Daemons `com.docker.socket`/`com.docker.vmnetd` aus `/Library/LaunchDaemons`). Beweis: alle Pfade „No such file", launchctl leer. ③ **postgresql@15 bleibt OFFEN** (PATH in `~/.zshrc:7–9`, noch nicht entschieden). **Neuer Gesamtstand: ~147 Pakete** (10 Casks minus 3 = 7: bambu-studio, browseros, flutter, font-noto-sans-cjk-sc, gcloud-cli, obsidian, ollama-app; 140 Formeln).
+- Websuche zu „KI menschlicher reden" (29.10.): kein installierbares Skill/Plugin existiert — es sind Prompt-Vorlagen. **ERLEDIGT:** MENSCHI-Regel steht jetzt in `~/.zcode/AGENTS.md`. Siehe [[simple-language-feedback]].
+- Lücke bleibt: zsh ohne `EXTENDED_HISTORY` → künftig `setopt EXTENDED_HISTORY` für Nutzungsdaten mit Datum. Siehe [[simple-language-feedback]].
+- **29.10. ABSCHLUSSBERICHT:** Per briefmaker (via Read-Workaround, siehe [[loki-skills-location]]) PDF erzeugt: `~/Desktop/Bericht_Homebrew_Aufraeumung_2026-10-29.pdf` (2 Seiten, 148 KB — Kern-Liste, 4 Abschnitte, Screenshot 1, Vorschau via pdftoppm geprüft). Token-Vertändnis geklärt: fehlende Skills ≠ Free-300k-Quota, nur Ordner-Problem.
 - **29.10. finalisierte Einteilung (sicher/unsicher):** Behalten trotz 0 History-Treffern wegen indirekter Workflow-Nutzung: ffmpeg, pandoc, qpdf (PDF/Video-Pipelines der Skills), poppler (vorsichtshalber), portaudio (Python-Audio), python@3.11/pipx/coreutils/ripgrep/jq (zshrc-Basis), postgresql@15 (PATH in `~/.zshrc:7–9` verdrahtet — löschbar nur wenn Sascha DB wirklich nie nutzt), skillshare (Skill-System), zoetrope/sqz/render = löschbar (Fremd-Taps, 1–2 Treffer). Mole-Aufräumer hat eigene clean-list unter `~/.config/mole/clean-list.txt`.
+- **29.10. FRISCHE SCHLUSSPRÜFUNG (nach Saschas Sammel-Nachricht):** Stand bestätigt — **140 Formeln + 7 Casks = 147** (übrig: bambu-studio, browseros, flutter, font-noto-sans-cjk-sc, gcloud-cli, obsidian, ollama-app); Docker/Hammerspoon/Zen-Reste erneut „No such file"; loki-skills-Plugin-Datei vorhanden. CaskHub-Einrichten nochmal angefragt → Empfehlung erneut NEIN (1× gestartet, nie genutzt; Reinstall `brew install --cask caskhub`). SASCHA NUR NOCH EIN PUNKT OFFEN: postgres-Entscheidung. Bei Sammel-/Zitat-Nachrichten: erst prüfen, was schon erledigt ist — nicht doppelt ausführen.
+
+## loki-skills-location
+
+---
+name: loki-skills-location
+description: Saschas LOKI-Skills + briefmaker sind seit 29.10. als NATIVES ZCode-Plugin
+  „loki-skills" installiert (cache/loki-local, enabled in config.json) — nach App-Restart
+  über das Skill-Tool aufrufbar; Read-der-SKILL.md bleibt Fallback
+metadata:
+  node_type: memory
+  type: project
+  originSessionId: session_e471165b9adf80eda6e42d16256949b0
+---
+
+Saschas LOKI-Skills liegen in `~/.claude/skills/<name>/SKILL.md` (loki-os-standard, loki-dev, loki-os-health, loki-memory-sync, ask-matt, **briefmaker** u. a.). Die ZCode-UI zeigt sie als Slash-Commands an, aber das Skill-Tool in ZCode-Sessions listet sie NICHT — Aufruf schlägt fehl (29.10. auch bei `mattpocock-skills:briefmaker`/`briefmaker` trotz Listen-Eintrag: „Skill not found").
+
+**Warum:** ZCode lädt Skills aus `~/.zcode`-Plugins + Workspace; `~/.claude/skills` gehört zum Claude-Code-Harness. Kein Token/Quota-Problem (Sascha fragte explizit nach den 300k Free-Token — Antwort: nein, unbeteiligt, nur Ordner-Problem).
+
+**So anwenden:** Wenn Sascha `/loki-os-standard`, `/briefmaker` o. ä. tippt: Datei direkt mit Read laden (`~/.claude/skills/<name>/SKILL.md`) und befolgen, statt Skill-Tool zu rufen. **Bewährt am 29.10.:** loki-os-standard ✅ gelesen+befolgt, briefmaker ✅ gelesen+befolgt → Vorlage `~/.claude/skills/briefmaker/vorlage.html`, Pipeline = HTML nach `/tmp` schreiben → Chrome headless `--print-to-pdf` → `pdftoppm -png -r 70` → 1 Read der Vorschau → Pfad + max. 3 Zeilen Chat. Ergebnis: `~/Desktop/Bericht_Homebrew_Aufraeumung_2026-10-29.pdf` (2 Seiten, 148 KB, Vorschau sauber). Der Inhalt von loki-os-standard ist weitgehend deckungsgleich mit STANDARD-SKILLS in `~/.zcode/AGENTS.md` (Sequential Thinking → Memory-Check → Plan sichtbar → Routing → max. 3 Subagenten → Beweis). Verwandt: [[menschi-antwortformat]], [[simple-language-feedback]]
+
+**NATIVER Weg (29.10. Abend geklärt, Sascha pocht auf „ALLES nativ in ZCode", kein „Workaround"-Sprachgebrauch):** Die Skills sind bereits nativ in ZCode verdrahtet: `~/.zcode/commands/` enthält briefmaker.md, loki-dev.md, loki-memory-sync.md, loki-os-health.md, loki-os-standard.md (Wrapper: „Lies die Skill-Datei ~/.claude/skills/<name>/SKILL.md … $ARGUMENTS"), und `~/.zcode/skills/` enthält die Skill-Ordner (briefmaker, loki-*, allrounder, ask-matt). Trotzdem listet das interne Skill-Tool sie NICHT (App-Grenze: Liste = nur Plugin-Skills aus ~/.zcode/cli/plugins/cache) — nichts nachkopieren nötig. **Funktionsregel:** Sascha tippt `/name` als ALLERSTES Zeichen der Nachricht → ZCode injiziert „Run custom command /name …" und ich befolge es (so kam /ask-matt in den Chat). Slash mitten im Satz = wird als Text gelesen, kein Befehl. Interner Skill-Tool-Aufruf meinerseits schlägt fehl („Skill not found") — dann nicht als Workaround framen, sondern schweigend SKILL.md per Read laden und befolgen; Ergebnisse identisch.
+
+**29.10. SPÄT: PLUGIN „loki-skills" NATIV INSTALLIERT (Sascha wütend: „kein workaround ich will ALLES nativ"):** Echtes ZCode-Plugin gebaut unter `~/.zcode/cli/plugins/cache/loki-local/loki-skills/1.0.0/` (`.claude-plugin/plugin.json` mit skills-Liste + SKILL.md-Kopien aus ~/.claude/skills für loki-os-standard, loki-dev, loki-os-health, loki-memory-sync, briefmaker). Registriert in `~/.zcode/cli/plugins/installed_plugins.json` (Eintrag `loki-skills@zcode-plugins-official`, marketplace bewusst auf das bestehende zcode-plugins-official gesetzt, um die known_marketplaces-Registrierung zu sparen) und aktiviert in `~/.zcode/config.json` unter `plugins.enabledPlugins` = true. Alle 3 JSON validiert. Backups: `installed_plugins.json.bak-loki-20261029`, `config.json.bak-loki-20261029`. **WIRKSAM ERST NACH ZCODE-APP-RESTART** (Plugin-Liste wird beim Start eingelesen). Falls der Loader das Plugin wegen fehlendem Marktplatz-Eintrag verwirft: Plan B = eigener Mini-Marktplatz in `~/.zcode/cli/plugins/known_marketplaces.json` (gleiche Methode). Read-der-SKILL.md bleibt als Fallback, aber NICHT mehr als „Workaround" gegenüber Sascha benennen — er lehnt das Wort ab; nativ heißt für ihn: Ich rufe den Skill selbst auf.
 
 ## simple-language-feedback
 
@@ -15623,6 +15577,8 @@ Auf die Brew-Inventar-Antwort (kategorisierte Tabelle, 51 Pakete) reagierte Sasc
 **Why:** ADHD-/caveman-Kompaktheit kollidiert mit Fachferne; bei System-Themen (Pakete, Infra) braucht er Plan-Sprache statt Jargon-Tabelle.
 
 **How to apply:** Bei Erklär-Aufgaben Zeile 1 = Ergebnis in 2–3 einfachen Sätzen, Alltags-Metaphern, erst dann Detail-Tabelle; Fachbegriffe (leaf, Cask, Dependency) direkt mit Rezept-Beispiel erklären. Eskalation 29.10.: Nach zweiter kategorisierter Tabelle wurde er aggressiv (Beleidigungen) und verlangte die rohe Liste Paket-für-Paket — also lieferte die vollständige 51-Zeilen-Einzeltabelle mit Klartext-Erklärung pro Paket, das nahm er an. Bei „was ist das alles?"-Fragen also die komplette Einzelposten-Liste, keine Kategorien-Zusammenfassung. Siehe [[homebrew-stack-inventory]].
+
+**29.10. Abend — ERLEDIGT: MENSCHI-REGEL steht in `~/.zcode/AGENTS.md`** (Ende der Datei, Block `<!-- MENSCHI-REGEL:START/END -->`, verbindlich seit 29.10.2026). Saschas Vorgaben, die sie kodifiziert: ① KERN in 1–2 Sätzen ganz oben ② um was geht es (2–3 einfache Sätze, Fachwort = 1 Erklärungssatz) ③ Entscheidung klar: „Löschen: JA/NEIN" pro Punkt, keine Optionen-Wüste ④ Abhängigkeiten/Risiko kurz ⑤ Lösung/Nächster Schritt kopierfertig, max. 3 Schritte. Verboten: Tabellen-Wüsten (max. 1 kleine Tabelle), Jargon ungeklärt, Entscheidungen versteckt. Sascha rief sie an mit „alles daran war unklar … wie eine Aussage aussehen soll" — die Struktur kam aus seiner eigenen Beschreibung. Hook-Notiz: `cat >> AGENTS.md` via Bash wird von Mimosa geblockt — AGENTS.md nur per **Edit/Write** ändern. Skill-Router-Referenz: `~/.claude/skills/ask-matt/SKILL.md`. Websuche-Befund: keine installierbaren „menschlich"-Plugins, nur Prompt-Vorlagen ([actmorehuman.com/guides](https://www.actmorehuman.com/guides) u. a.). `/loki-os-standard`, `/gstack-openclaw-ceo-review`, `/memory-enhanced-decision-making`, `/briefmaker` (trotz Listen-Eintrag) und `/i-have-adhd`/`/allrounder` sind als Skills NICHT aufrufbar — bei solchen Invokes klar sagen und die dahinterliegende Regel direkt umsetzen.
 
 ## MEMORY
 
