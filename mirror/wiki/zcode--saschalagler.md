@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-29 19:21 UTC
+Zuletzt gespiegelt: 2026-10-29 19:38 UTC
 
 ## AGENTS
 
@@ -17769,7 +17769,7 @@ Sascha will **keine Gruppen-Liste**, sondern eine normale chronologische Verlauf
 - [Agentic-OS-Inventur](loki-os-ecosystem-stand.md) — 20.09. Vollanalyse: 10 Harnesses/1075 Skills/21 MCPs; kritisch: Kernel 8010 tot+0.0.0.0-Bind, VwGH-DB leer, 4 LegalOps-Duplikate, Phantome Phi/STANDARD-Skills/cognee; 05.10. Re-Count: 466 Skills/3 Roots (134 Duplikate), 22 MCPs · **11.10. SKILL-AUDIT FERTIG + VOLLZUG (dwfrun-fb29e93d, Report ~/Desktop/LOKI_SKILL_AUDIT_2026-10-11.md, Dashboard ANTHROPIC_VS_LOKI_SKILLS_2026-10-11.html): 1211 SKILL.md gescannt, eff. 638 Uniques · **ALLE 3 GOs AUSGEFÜHRT („mach fertig"): Cache 276→169 MB (107 frei), 5 abweichende Paare (qa/projects/lisa-therapeut/obsidian-second-brain/ios-swift-development) per mtime auf neuere Version synchronisiert → 0 diffs, alpha-Fixture-Leak-Symlink weg; Backup ~/.zcode/backups/skill-aufraeumen-20261011** · gstack 547 = Symlink-Farm-Artefakt (nicht konsolidieren!) · offen nur: gitlab/example-plugin deaktivieren, EIN Kanon-Root festlegen, Wartungs-Routine · Anthropic-Verdict: 0 von 26 Plugins nötig, nur Supabase ggf. · Ladezeit-Behauptung RETRAKTIERT (Harness dedupliziert beim Laden) · Modell-ID: `account:zai-individual-coding-plan/GLM-5.3-Flash` (zai-api ungültig) · Workflow-Lektionen: Subagent-Namen im fan-out index-sicher bauen, Quota 1308 (5h) läuft selbst durch, GUI-Settings-Änderung supersedet Run mit Cache** · Saschas Traum = Voice→Agentic-OS-Kopplung
 - [Chrome Agent-Browser Fix](chrome-agent-browser-fix.md) — Agent-Browser läuft auf 9222 (persistentes Profil, Login bleibt); Service-Worker-Cache = Ursache „Websites alt" (177 Worker); chrome-cache-nuke.sh wartet auf GO; Übersicht: ~/Desktop/chrome-fix-uebersicht.html
 - [Cline Hub 1006-Diagnose](cline-code-app-hub-1006-diagnosis.md) — „Hub connection closed" = lokaler Daemon-Crash, Server meist OK · **11.10. Full-Fix bewiesen: kill -9 + Neustart → Hub /health=200; ECONNRESET transient (Key-Test aus providers.json `zai-coding-plan` → api.z.ai/api/coding/paas/v4/chat/completions HTTP 200); Composer-Provider ≠ Run-Provider (Goal-Runs gepinnt auf Startzeit-Provider, crashen weiter); GUI-Injection erreicht Cline-Webview nicht → Senden per Enter selbst** · **11.10. Modell-Pin-Audit: Server rotiert (458 Modelle, frisch bis 08.10.), Pin war auf TODES Modell `kat-coder-pro` → jetzt `anthropic/claude-haiku-5.5` (Backups providers.json.bak-20261011-*); Usage-API per curl immer 401 (App signiert selbst) — Pin-Änderungen mache ICH in providers.json + App-Restart, keine Klick-Anleitungen**
-- [Claude.app + ZCode-Abo](claude-app-zai-setup.md) — 11.10.: Claude.app = Claude Desktop CHAT (com.anthropic.claudefordesktop, kein Umbau aufs Abo möglich — 1 Satz sagen) · Claude-CODE-Config `~/.claude/settings.json` BEREITS auf z.ai (Base `api.z.ai/api/anthropic`, Token cb194f3f… = cline-pass-Key, Modelle glm-5.3-flash[1m]) · Stale: `ANTHROPIC_MODEL=glm-first` (OmniRoute-Alias) → Fix auf glm-5.3-flash geplant, wartet auf Sascha-JA
+- [Claude.app + ZCode-Abo](claude-app-zai-setup.md) — **30.10. FERTIG: Claude Code läuft aufs ZCode/GLM-Abo** (Base `api.z.ai/api/anthropic`, Opus/Sonnet=glm-5.3[1m], Haiku=flash[1m], 2× e2e „PINGPONG"/„JA" Exit 0) · Chat bleibt Login-only · **z.ai-MCP FERTIG: `zai-mcp-server`+`zai-vision` ✔ Connected, Claude Code sieht web-search-prime+zread (bewiesen); Remote-HTTP `api.z.ai/api/mcp/mcp_server/mcp` = Protokoll-Falle (JSON-RPC-Fehler, entfernt — nicht erneut versuchen)** · Backup settings.json.bak-20261011
 - [Lokale Infra & Ports](sascha-local-infra-ports.md) — OmniRoute 20128, Ollama 11434, LOKI 8010, Cline Code.app standalone · **11.10. spät: OmniRoute von mir NEU GESTARTET (`nohup omniroute serve --port 20128`, kein LaunchAgent → Reboot = tot); `/v1/models` 401 AUTH_002 — echte Keys in `~/.omniroute/storage.sqlite` Tabelle api_keys (.env hat nur REQUIRE_API_KEY=true); der 12-Zeichen-Key in Cline-Provider `openai` ist UNGÜLTIG**
 - [LOKI Verkaufstool Stand](loki-verkaufstool-stand.md) — **Alle 6 eBay.at-Anzeigen LIVE (2006 €, Konto saschlagle_0)**. NEU 20.09. VII: 3 neue Objekte — **Nespresso Gemini CS203** (Schild druckt „CS200 Pro", Service-Manual beweist CS203; Max-Preise wh 390 €/eBay 399 €) · **KTM Life One Rad** (Opa, wh 199 VB/eBay 179) · **ATX-Scheiben 199 €** (keine Fotos). **eBay im 9222-Chrome eingeloggt; Kaffee-Draft 5202586051500 zu 95 % CDP-gebaut — Rest: Merkmal „Modell" + Publish (Sascha 1 Min)**; willhaben-Rad-Entwurf fertig (nur Farbe+Publish). Ordner `~/Desktop/PRojekte /VERKAUF-Nespresso-Gemini-CS203/` + `VERKAUF-KTM-Life-One-Rad/`. CDP-eBay-Playbook im File. AT-Fokus Loosdorf/NÖ
 - [Sascha Vollzug-Regel](sascha-vollzug-keine-zwischenfragen.md) — Komplettlösungen ohne Zwischenfragen; GO gilt bis zum fertigen Ergebnis; nur bei Passwort/Stopp-Regeln nachfragen
@@ -17954,7 +17954,7 @@ metadata:
 9. **„Ich verstehe dich nicht / erklären in einfachen logischen Sätzen" (11.10.):** Dann KEINE Tabellen, keine Bullets, kein Jargon — sondern eine chronologische Fließtext-Erzählung in einfachen vollständigen deutschen Sätzen (was passiert ist und warum, wie einem Freund erzählt). Bewährte Form beim Tagesverlauf: Zeitachse Absatz für Absatz, am Ende: „wenn ein Satz unklar ist, sag mir welcher".
 10. **Plan-Mode-Plan ABGELEHNT (11.10., „ich versteh dich schon wieder nicht?"):** Ein ExitPlanMode-Plan mit Fachwörtern (Endpoint-Test, Model-Fix, settings.json-Pfade) lehnt er ab — die EINFACHE deutsche Variante („Kurz gesagt: läuft schon, ich muss nur 2 Kleinigkeiten reparieren, was ich machen will: 1. testen 2. Datei fixen mit Backup, sag nur ja") verstand er. Pläne für ihn = einfache Sätze, keine Dateipfade/Tech-Begriffe in der Kernaussage.
 11. **„WIESO ERKLÄRST DU WAS NICHT GEHT" (11.10.):** Offene Baustellen NICHT als Erklärung/offene Frage zurückgeben — selbst umsetzen (Beispiel: statt „OmniRoute ist tot, willst du ihn zurück?" → OmniRoute einfach neu starten + Beweis liefern). Lösen statt erklären; Nutzer-Entscheidungen („OmniRoute abgebaut") bei neuem Gegen-Wunsch sofort revidieren.
-12. **Konzept-Erklärungen (11.10., „unterschied Skills/MCP/Plugins/Sub-Agents"):** Will BELEHRUNG wie für einen Freund („Lorenz erklären"), nicht Feature-Listen — bewährtes Format: 1 KERN-Satz + 1 Alltags-Analogie (Hausbau: Skill=Anleitung, MCP-Server=Stecker, Plugin=Paket, Sub-Agent=Hilfs-Kollege, Extension=App-Erweiterung) + Mini-Tabelle + expliziter Punkt „nichts klappt automatisch: jedes Ding muss eingerichtet UND aufgerufen werden".
+12. **Konzept-Erklärungen (11.10., „unterschied Skills/MCP/Plugins/Sub-Agents"):** Will BELEHRUNG wie für einen Freund („Lorenz erklären"), nicht Feature-Listen — bewährtes Format: 1 KERN-Satz + 1 Alltags-Analogie (Hausbau: Skill=Anleitung, MCP-Server=Stecker, Plugin=Paket, Sub-Agent=Hilfs-Kollege, Extension=App-Erweiterung) + Mini-Tabelle + expliziter Punkt „nichts klappt automatisch: jedes Ding muss eingerichtet UND aufgerufen werden". **29.10. Nachschärfung:** „mit beispielen das man versteht was du laberst" — Analogien allein reichen nicht, JEDE Zeile braucht ein konkretes Durchlauf-Beispiel (Du sagst X → ich mache Y → Ergebnis Z; bewährt: Rezept/Steckdose/IKEA-Paket/Praktikant/Sauger-Aufsatz + mermaid flowchart direkt im Chat, wenn Gen-UI-Datei nicht schreibbar).
 
 ## browser-doppelsystem-setup
 
@@ -18066,25 +18066,45 @@ Stand 18.09.2026 — **AUSGEFÜHRT + VERIFIZIERT**: Agent-Chrome läuft auf `htt
 
 ---
 name: claude-app-zai-setup
-description: Claude.app = Claude Desktop (Chat, kein Umbau aufs ZCode-Abo
-  möglich); Claude-Code-CLI-Config ~/.claude/settings.json ist BEREITS auf z.ai
-  GLM umgestellt (Token = cline-pass-Key)
+description: FERTIG 30.10. — Claude Code läuft auf ZCode/GLM-Abo, OFFIZIELL von
+  z.ai-Doku bestätigt; Modell-Mapping nach offizieller Empfehlung
+  (Opus/Sonnet=glm-5.3[1m], Haiku=flash[1m]); z.ai-MCP-Server eingerichtet+geprüft
+  (zai-mcp-server/zai-vision ✔, Remote-HTTP-Endpoint = Protokoll-Falle);
+  2× e2e bewiesen; Chat bleibt Login-only
 metadata:
   node_type: memory
   type: project
   originSessionId: sess_3710694b-d1b2-4d51-bafa-02d30fb8bda5
 ---
 
-Sascha will „Claude mit dem ZCode-Abo betreiben" (11.10.2026, Plan-Modus, Umsetzung wartet auf sein JA).
+Sascha will „Claude mit dem ZCode-Abo betreiben" (11.10.2026) — **ABGESCHLOSSEN 30.10.2026 (Plan approved, ausgeführt):**
 
-**Fakten (bewiesen):**
-- `/Applications/Claude.app` = **Claude Desktop** (`com.anthropic.claudefordesktop`, v3.6556.2, Electron) — der CHAT-Client. Der braucht Anthropic-Login und lässt sich technisch NICHT auf das z.ai/GLM-Abo umbiegen. Das in 1 Satz sagen, nicht als Ampel-Liste.
-- Claude **Code** (CLI) dagegen liest `~/.claude/settings.json` — und die ist **bereits fertig konfiguriert**: `ANTHROPIC_BASE_URL=https://api.z.ai/api/anthropic`, `ANTHROPIC_AUTH_TOKEN=cb194f3f…UIwwAP` (**identisch mit dem cline-pass-Key** in `~/.cline/data/settings/providers.json`!), `ANTHROPIC_DEFAULT_HAIKU/OPUS/SONNET_MODEL=glm-5.3-flash[1m]`.
-- **Stale-Eintrag:** `ANTHROPIC_MODEL` + `ANTHROPIC_DEFAULT_FABLE_MODEL` = `glm-first` — alter OmniRoute-Alias, auf dem direkten z.ai-Endpoint ungültig → Fix auf `glm-5.3-flash` (geplant, Backup `settings.json.bak-20261011` vorgesehen).
+**Endstand (bewiesen):**
+- Endpoint-Test: `curl https://api.z.ai/api/anthropic/v1/messages` mit Key → HTTP 200, `model: glm-5.3-flash`.
+- Fix ausgeführt: `ANTHROPIC_MODEL` + `ANTHROPIC_DEFAULT_FABLE_MODEL` von `glm-first` → **`glm-5.3-flash`** in `~/.claude/settings.json`. Backup: `~/.claude/settings.json.bak-20261011`.
+- Claude.app neu gestartet (6 Prozesse); CLI `claude --version` → 2.1.251.
+- **End-to-End-Beweis:** `claude -p "PINGPONG-Test" --model glm-5.3-flash` → antwortete „PINGPONG", Exit 0. Warnung `[claude-code:unrecognized_model]` ist harmlos (CLI prüft gegen Anthropic-Modellliste, Aufruf läuft trotzdem über z.ai).
+- Claude-Desktop-**Chat** bleibt Anthropic-Login-only (technisch nicht umbiegbar) — nur Claude **Code** (CLI + Code-Bereich der App) läuft aufs GLM-Abo.
+- **OFFIZIELLE Bestätigung (30.10., docs.z.ai/devpack/tool/claude):** Z.AI unterstützt Claude Code offiziell — exakt `ANTHROPIC_BASE_URL=https://api.z.ai/api/anthropic` + `ANTHROPIC_AUTH_TOKEN=<zai-key>`. Empfohlenes Mapping: `OPUS_MODEL`/`SONNET_MODEL` = `glm-5.3[1m]` (Flagship für schwere Slots), `HAIKU_MODEL` = `glm-5.3-flash[1m]` — so gesetzt (vorher stand überall flash). Zweiter e2e-Beweis nach Mapping-Fix: `claude -p` → „JA", Exit 0.
+
+**z.ai MCP-Server (30.10., „richte alles ein" — FERTIG):**
+- **Schon installiert und VERBUNDEN** (nichts neu nötig): `zai-mcp-server` (lokal `/opt/homebrew/lib/node_modules/@z_ai/mcp-server/build/index.js`) + `zai-vision` (`npx -y @z_ai/mcp-server`) — beide `✔ Connected` in `claude mcp list`.
+- **Remote-HTTP-Endpoint-Falle:** `https://api.z.ai/api/mcp/mcp_server/mcp` antwortet auf GET mit HTTP 200, aber der MCP-Handshake aus Claude Code scheitert mit JSON-RPC-Validierungsfehler („Invalid input: expected jsonrpc 2.0"). Eintrag `zai` per `claude mcp add --transport http` war tot → **wieder entfernt**. Nicht nochmal versuchen — die lokalen @z_ai/mcp-server-Instanzen sind der richtige Weg.
+- **Endbeweis:** `claude -p` listete live `mcp__web-search-prime__web_search_prime` + 3× `mcp__zread__*` — Claude Code sieht und nutzt die z.ai-MCP-Tools über sein Abo, Exit 0.
+- Scope-Doppel-Eintrag existiert (user: npx, project: lokaler Node-Pfad) — beide verbinden, harmlos; Warnung von `claude mcp list` ignorierbar.
+
+**Terminal-Nutzung bestätigt (30.10., letzte Runde):** Sascha fragte „claude nutzbar im Terminal?" → JA, mit Bedienungs-Tabelle geliefert: `claude` (interaktiv), `claude -p "Frage"` (Einmal-Frage), `cd Projekt && claude` (im Projekt). Gilt automatisch nach Terminal-Neustart, nichts weiter zu tun.
+
+**LIVE-START bewiesen (30.10., finale Runde):** Terminal mit `osascript -e 'tell application "Terminal" to do script "claude"'` geöffnet → Screenshot-Beweis: Claude Code v2.1.251, Header-Zeile **`glm-5.3-flash · /Users/saschalagler`** = läuft live auf dem z.ai-Abo. Wichtig: Die Queue-Ansicht („13 awaiting input") zeigt viele alte 429-/Fehler-Zeilen (19d/60d/83d alt) — das sind **veraltete background-agent-Reste, KEINE neuen Fehler**; nicht davon verwirren lassen. Sascha soll nur ins Fenster klicken, tippen, Enter.
+
+**Fakten:**
+- `/Applications/Claude.app` = **Claude Desktop** (`com.anthropic.claudefordesktop`, v3.6556.2, Electron).
+- `ANTHROPIC_AUTH_TOKEN=cb194f3f…UIwwAP` = **identisch mit dem cline-pass-Key** in `~/.cline/data/settings/providers.json` (z.ai Coding Plan).
+- Plan-Modus-Falle: 1. ExitPlanMode wurde abgelehnt → Bash komplett geblockt (auch read-only curl); 2. Einreichung mit einfachem, kurzem Plan wurde approved — Sascha versteht lange technische Pläne nicht, MENSCHI-Sprache im Plan.
 
 **Why:** Er fragte dreimal differently formuliert nach derselben Sache (AutoClaw, Cline, jetzt Claude) — immer dasselbe Muster: App soll sein GLM-Coding-Plan-Abo nutzen statt separatem Provider-Login.
 
-**How to apply:** Bei „Claude geht nicht / 0 Credits" erst diese Datei lesen. Offener Umsetzungs-Rest: (1) z.ai-Anthropic-Endpoint curl-Test mit dem Key, (2) glm-first→glm-5.3-flash in settings.json (mit Backup), (3) Claude.app neustarten + Screenshot-Verifikation. Siehe [[cline-code-app-hub-1006-diagnosis]] + [[sascha-vollzug-keine-zwischenfragen]].
+**How to apply:** Bei „Claude geht nicht / 0 Credits" erst diese Datei lesen — Setup ist FERTIG, Rest nur bei Fehlern. Siehe [[cline-code-app-hub-1006-diagnosis]] + [[sascha-vollzug-keine-zwischenfragen]].
 
 ## cline-code-app-hub-1006-diagnosis
 
@@ -113033,6 +113053,15 @@ Kein neues UI · keine Cloud (Speicher 100 % lokal) · keine ATLAS-/Ökosystem-R
 3. **SaveWorkflow `foerderops-refresh`** (Projekt-Scope) — der bewährte 6-Builder-Run (Quellen-injiziert → Prüfer → Fixer → Morgenbericht) als benannter, wiederverwendbarer Workflow für künftige Aktualisierungen.
 4. **Verifikation:** ls/wc beider Dateien + öffnen; sonst nichts angefasst.
 5. Keine Agenten-Runs (z.ai-Quota bis 17:38 erschöpft) — 3 Dateien = direkte Text-Arbeit. Danach Goal-Modus: autonom bis fertig, keine Rückfragen; dein einziger Schritt bleibt ja/nein auf den 5 Karten.
+## plan-sess_3710694b-d1b2-4d51-bafa-02d30fb8bda5
+
+**Claude Code auf dein ZCode/GLM-Abo stellen — 3 Schritte:**
+
+1. **Test:** Dein z.ai-Schlüssel wird per Testanfrage geprüft (Antwort = Beweis).
+2. **Fix `~/.claude/settings.json`:** 2 Einträge „glm-first" (alter toter Name) → „glm-5.3-flash". Backup vorher (`settings.json.bak-20261011`).
+3. **Claude.app neu starten** und per Screenshot beweisen, dass Claude Code mit GLM antwortet.
+
+Sonst nichts. Kein Login, keine Löschung. Hinweis: Der normale Claude-Chat (nicht Code) braucht weiter Anthropic-Login — das kann technisch niemand umstellen.
 ## plan-sess_415f90b8-06e6-414b-8ea5-c4c65864b581
 
 # eBay.at: Debug-Modus + alle 7 Anzeigen LIVE (300/69/69/149/249/35/1190 €)
