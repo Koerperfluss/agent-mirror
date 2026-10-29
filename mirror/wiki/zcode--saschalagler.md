@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-29 12:14 UTC
+Zuletzt gespiegelt: 2026-10-29 12:30 UTC
 
 ## AGENTS
 
@@ -15567,6 +15567,53 @@ Sascha kritisierte am 19.10.2026 einen vorherigen Trainingsplan-Output als "derm
 **Why:** Er liefert extrem detaillierte Spezifikationen (12-Set-Framework, Top-Set/Back-Off, Pausenzeiten, Kill-Kriterien) und erwartet, dass diese 1:1 umgesetzt werden — nicht neu erfunden oder verwässert.
 
 **How to apply:** Bei Build-Wünschen: Inhalt ausschließlich aus seiner Spezifikation übernehmen, Struktur einfach + tabellarisch halten, bei Formularen leere Eintragefelder. Plan-Tabelle sichtbar im Chat vor der Ausführung (steht auch in seinen STANDARD-SKILLS). Bei langen Pastes: vorherigen KI-Output darin (oft mit "12-Set", "STUFE 1–6"-Gliederung markiert) als Müll ignorieren — nur seine eigenen Formulierungen sind die Spezifikation. Exakt den angefragten Artifact-Lieferumfang bauen ("die heutige Sitzung" = 1 Session-Blatt, kein Multi-Wochen-Logbuch). Verwandt: [[atlas-training-logbuch-pdf]]
+
+## MEMORY
+
+# Memory Index
+
+- [Homebrew-Stack-Inventar](homebrew-stack-inventory.md) — 224 Pakete (51 leaves + 16 Casks), autoremove leer, Löschkandidaten browseros-neo/gologin/caskhub/remindian
+- [Einfache Sprache](simple-language-feedback.md) — Erklärungen: erst 2–3 einfache Sätze + Alltags-Metapher, Tabelle danach; Jargon sofort erklären
+
+## homebrew-stack-inventory
+
+---
+name: homebrew-stack-inventory
+description: Saschas Mac hat 224 Homebrew-Pakete (Stand 29.10.2026) — 51 echte
+  "leaves" + 16 Cask-Apps; brew autoremove leer
+metadata:
+  node_type: memory
+  type: project
+  originSessionId: session_e471165b9adf80eda6e42d16256949b0
+---
+
+Homebrew-Bestand auf Saschas Mac (aufgenommen 29.10.2026): **224 Pakete** = 208 Formeln (davon nur ~51 echte `brew leaves`, Rest Abhängigkeiten) + **16 Casks**.
+
+Kern-Stack: git/gh, python@3.11 + pyenv/pipx, yarn, openjdk@17+21, dart; iOS-Build (xcodes, xcodegen, xcbeautify, ios-deploy, cocoapods); DBs (postgresql@15, pgvector, mongodb-community); KI (ollama, hf); Media/Docs (ffmpeg, pandoc, marp-cli, typst, tectonic, poppler, qpdf); Mac-Automation (hammerspoon, displayplacer, m1ddc, switchaudio-osx); Security (trufflehog); eigener Stack (hcom, deja-vu, zoetrope, sqz, skillshare).
+
+Casks: Obsidian, Docker Desktop, Ollama-App, gcloud-cli, Flutter, Zen, Maccy, Hammerspoon, Neohtop, Bambu Studio + Löschkandidaten (browseros-neo, gologin, caskhub, remindian).
+
+`brew autoremove --dry-run` war leer (keine verwaisten Deps), 0 Updates ausstehend. Bei Aufräumen: erst `brew uses --installed <name>` prüfen.
+
+**29.10.2026 Verifizierung:** `brew services list` = leer, keine Ollama/Postgres/Mongo/cloudflared/Docker-Prozesse aktiv — **lief zum Stichtag NICHTS als Hintergrunddienst**. Sascha sagte, er nutze keines der Pakete aktiv. Sichere Löschkandidaten (noch nicht ausgeführt, nur vorgeschlagen): `brew uninstall --cask browseros-neo gologin caskhub` + `uninstall ffmpeg ffmpeg-full && brew install ffmpeg` (Duplikat bereinigen) + `openjdk@17` (doppelt zu @21) + `mongodb-community-shell`. Siehe [[simple-language-feedback]].
+
+## simple-language-feedback
+
+---
+name: simple-language-feedback
+description: Sascha verstand die kategorisierte Brew-Tabelle nicht — bei
+  Erklärungen erst einfache Sätze, Tabellen nur als Zusatz
+metadata:
+  node_type: memory
+  type: feedback
+  originSessionId: session_e471165b9adf80eda6e42d16256949b0
+---
+
+Auf die Brew-Inventar-Antwort (kategorisierte Tabelle, 51 Pakete) reagierte Sascha mit „ich verstehe dich nicht /boost" (29.10.2026). Erst die 3-Sätze-Erklärung („nur ~51 selbst installiert, Rest sind Zutaten wie für ein Rezept, nichts tun") kam an.
+
+**Why:** ADHD-/caveman-Kompaktheit kollidiert mit Fachferne; bei System-Themen (Pakete, Infra) braucht er Plan-Sprache statt Jargon-Tabelle.
+
+**How to apply:** Bei Erklär-Aufgaben Zeile 1 = Ergebnis in 2–3 einfachen Sätzen, Alltags-Metaphern, erst dann Detail-Tabelle; Fachbegriffe (leaf, Cask, Dependency) direkt mit Rezept-Beispiel erklären. Eskalation 29.10.: Nach zweiter kategorisierter Tabelle wurde er aggressiv (Beleidigungen) und verlangte die rohe Liste Paket-für-Paket — also lieferte die vollständige 51-Zeilen-Einzeltabelle mit Klartext-Erklärung pro Paket, das nahm er an. Bei „was ist das alles?"-Fragen also die komplette Einzelposten-Liste, keine Kategorien-Zusammenfassung. Siehe [[homebrew-stack-inventory]].
 
 ## MEMORY
 
