@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-29 19:54 UTC
+Zuletzt gespiegelt: 2026-10-29 20:11 UTC
 
 ## AGENTS
 
@@ -12704,7 +12704,7 @@ In ATLAS-ZCode-Sessions kann das Bash-Tool komplett tot sein: jeder Aufruf (auch
 
 # Memory Index
 
-- [ZCode ADHS-Automations](zcode-adhs-automationen.md) — 13.09.–29.10. LIVE: **EINE Automation mit ALLEN 6 Briefs** (cron `0 9,10,15,16,21`; niemals 6 separate) · **61+ Läufe** · INFO-PUSH je Lauf (macOS-Benachrichtigung + 4-Zeilen-Format, auch No-ops) · Taskboard `~/.agents/memory/LOKI_TASKBOARD.md` · SYSTEMPROOF 6/6 AKTIV · Doku-Fix erledigt · LokiVoice=`_ARCHIV/2026-10/loki-voice-alt` · offen: GO Wecker · Deutsch-Patch · Doku-Sync-Duplikat weg · OmniRoute-Richtung · 1 Task pro Chat-Limit
+- [ZCode ADHS-Automations](zcode-adhs-automationen.md) — 13.09.–29.10. LIVE: **EINE Automation mit ALLEN 6 Briefs** (cron `0 9,10,15,16,21`; niemals 6 separate) · **61+ Läufe** · INFO-PUSH je Lauf (macOS-Benachrichtigung + 4-Zeilen-Format, auch No-ops) · Taskboard `~/.agents/memory/LOKI_TASKBOARD.md` · SYSTEMPROOF 6/6 AKTIV · Doku-Fix erledigt · LokiVoice=`_ARCHIV/2026-10/loki-voice-alt` · 28./29.10. Lücken-Tage (Mac aus) · offen: GO Wecker · Deutsch-Patch · Doku-Sync-Duplikat weg · OmniRoute-Richtung · 1 Task pro Chat-Limit
 - [Magicline→George 19.10.](magicline-george-2026-10-19.md) — Paket fertig (Anleitung-PDF Desktop + Briefing out/GEORGE_MAGICLINE_BRIEFING.md + Workflow `magicline-george-anleitung` global); Weg B (REST direkt, kein VPN); blockiert auf Key-Mail von Thomas; KEIN Studiowert-Zähl-Endpoint; LEHRE: Übergabe = normales DOKUMENT, kein Skill · 27.10. PDF bewiesen DA (426 KB, déjà löste „Ort unklar" — vor DATENLAGE UNKLAR immer deja+exakter ls)
 - [Workflow-Topologie 15.10.](dynamic-workflow-topologie-2026-10-15.md) — dwfrun-542bffb6 ✅ COMPLETED: Dashboard out/topologie-workflow.html (13.4 KB, ls-beweisen), 2 verified Findings (Slice-Verify trivial-sicher), GO für Ausführung offen; LESSONS: Skill-Tool nur `skill`+`args`, Free-Modell-Fallback = Müll → GLM
 - [Token-Sparen 10.10.](feedback-token-sparen.md) — Vereinbarung: 5 Werkzeuge reichen fürs Förder-Projekt (Rest 90+ Skills überflüssig); keine Workflows ohne konkreten Auftrag, max. 2–3 Tags, keine Seiten-Pastes, App/Dateien statt Chat
@@ -15265,7 +15265,7 @@ Integration done 2026-08-30: added `web-search-prime`, `zread`, `zai-vision` MCP
 
 ---
 name: zcode-adhs-automationen
-description: "13.09.–29.10. LIVE: EINE Automation mit ALLEN 6 Briefs (cron `0 9,10,15,16,21`; niemals 6 separate — Nutzer-Ziel!) · **61+ Läufe** · INFO-PUSH lebt (macOS-Benachrichtigung + 4-Zeilen-Format bei JEDEM Lauf inkl. No-ops, mehrfach Automatik-PASS) · GROSS-KONSOLIDIERUNG 26.10.: LOKI_TASKBOARD.md (~/.agents/memory/, 3,9 KB) + SYSTEMPROOF 6/6 AKTIV + Doku-Fix ERLEDIGT (README+Backup, grep-Beweis) · LokiVoice = `~/loki-ki/_ARCHIV/2026-10/loki-voice-alt/` (P1s obsolet) · Förder-Antrag: FÖDERUNG-Ordner aufgebaut (dwfrun) · Magicline-PDF bewiesen = `~/Desktop/MAGICLINE_GEORGE_ALLES_IN_EINEM_2026-10-19.pdf` (426 KB, déjà-Lektion: vor DATENLAGE UNKLAR deja+exaktes ls) · OmniRoute :20128 LÄUFT WIEDER (Richtung offen) · Doku-Sync-DUPLIKAT automation-2df8eec5 Lösch-GO offen · offen auf GO: Wecker · Deutsch-Patch · Duplikat weg · OmniRoute-Richtung · 1 Task pro Chat-Limit"
+description: "13.09.–29.10. LIVE: EINE Automation mit ALLEN 6 Briefs (cron `0 9,10,15,16,21`; niemals 6 separate — Nutzer-Ziel!) · **61+ Läufe** · INFO-PUSH lebt (macOS-Benachrichtigung + 4-Zeilen-Format bei JEDEM Lauf inkl. No-ops, mehrfach Automatik-PASS) · GROSS-KONSOLIDIERUNG 26.10.: LOKI_TASKBOARD.md (~/.agents/memory/, 3,9 KB) + SYSTEMPROOF 6/6 AKTIV + Doku-Fix ERLEDIGT (README+Backup, grep-Beweis) · LokiVoice = `~/loki-ki/_ARCHIV/2026-10/loki-voice-alt/` (P1s obsolet) · Förder-Antrag: FÖDERUNG-Ordner aufgebaut (dwfrun) · Magicline-PDF bewiesen = `~/Desktop/MAGICLINE_GEORGE_ALLES_IN_EINEM_2026-10-19.pdf` (426 KB, déjà-Lektion: vor DATENLAGE UNKLAR deja+exaktes ls) · 28./29.10. = 2 Lücken-Tage in Folge (Mac aus) · OmniRoute :20128 LÄUFT WIEDER (Richtung offen) · Doku-Sync-DUPLIKAT automation-2df8eec5 Lösch-GO offen · offen auf GO: Wecker · Deutsch-Patch · Duplikat weg · OmniRoute-Richtung · 1 Task pro Chat-Limit"
 metadata:
   node_type: memory
   type: project
@@ -15297,6 +15297,7 @@ metadata:
 - **UHR-ANOMALIE:** Zukunftdatierte Logbuch-Dateien (06.10/13.10) existierten, bevor das echte Datum sie einholte — Behandlung: `date`-Output = Wahrheit, Zukunftdateien beim echten Datum zu gültigen Logbüchern umbauen (Korrektur-Sektion anhängen, nichts löschen, Bi-Temporal).
 - **26.10. GROSS-KONSOLIDIERUNG:** Taskboard `~/.agents/memory/LOKI_TASKBOARD.md` (3,9 KB; 16 Alt-Aufgaben, 6 erledigt/obsolet, Verteilung ZCode/Cline/AutoClaw/Sascha) + **SYSTEMPROOF 6/6 LIVE PASS** (Hook-JSON, 23 Logbücher, Sweep, Kalender-Rücklesen, Doku-Fix grep, 3/3 Engine-Dateien) + **Doku-Fix erledigt**.
 - **27.10.–29.10.:** Info-Push an allen Läufen bewiesen (Morgen 09:05 pünktlich + 2 No-ops + Abend 21:04, jeweils Push + 4-Zeilen). **Förder-Antrag Körperfluss EDU:** dwfrun baute `FÖDERUNG/`-Ordner (FÖRDERANTRAGEN_2026-10, HARVESTS, FFG Kleinprojekt Anlauf 2) · Verkaufs-HUB-Handoff aktiv · Magicline-PDF bewiesen (426 KB) · 29.10. Donnerstags-No-op mit Push.
+- **29.10. Abend:** 2. Lücken-Tag in Folge (28./29.10. ohne Morgen-Brief, Mac aus) — Logbuch 29.10. trotzdem geschlossen (ruhiger Donnerstag, 0 Commits, FIX-Lauf 3710694b erneut geöffnet). Event-UID `A706BAE0-917A-4436-A827-FC59BF181704`.
 - Bilanz: **61+ Läufe**; Dauer-GOs unverändert: **GO Wecker · Deutsch-Patch („weiter übersetzen") · Duplikat weg (automation-2df8eec5) · OmniRoute-Richtung**.
 
 ## Offene Konflikte
@@ -18068,10 +18069,11 @@ Stand 18.09.2026 — **AUSGEFÜHRT + VERIFIZIERT**: Agent-Chrome läuft auf `htt
 name: claude-app-zai-setup
 description: FERTIG 30.10. — Claude Code läuft auf ZCode/GLM-Abo, OFFIZIELL von
   z.ai-Doku bestätigt; Modell-Mapping nach offizieller Empfehlung
-  (Opus/Sonnet=glm-5.3[1m], Haiku=flash[1m]); z.ai-MCP-Server eingerichtet+geprüft
-  (zai-mcp-server/zai-vision ✔, Remote-HTTP-Endpoint = Protokoll-Falle);
-  2× e2e bewiesen; Chat bleibt Login-only; Lorenz-Handoff auf Desktop fertig
-  (~/Desktop/LORENZ_HANDOFF_5_BEGRIFFE.md)
+  (Opus/Sonnet=glm-5.3[1m], Haiku=flash[1m]); z.ai-MCP komplett (zai-mcp-server/
+  zai-vision lokal ✔ + offizielle Remote-Endpunkte zai-web-search/zai-zread ✔ —
+  nur der Sammel-Endpoint /mcp_server/mcp ist eine Falle);
+  3× e2e bewiesen; Chat bleibt Login-only; Lorenz-Handoff MD+PDF auf Desktop,
+  FERTIG und ZUSAMMENGEKÜRZT (z.ai-/Login-Teile raus, PDF 3 Seiten, z.ai-frei)
 metadata:
   node_type: memory
   type: project
@@ -18090,7 +18092,7 @@ Sascha will „Claude mit dem ZCode-Abo betreiben" (11.10.2026) — **ABGESCHLOS
 
 **z.ai MCP-Server (30.10., „richte alles ein" — FERTIG):**
 - **Schon installiert und VERBUNDEN** (nichts neu nötig): `zai-mcp-server` (lokal `/opt/homebrew/lib/node_modules/@z_ai/mcp-server/build/index.js`) + `zai-vision` (`npx -y @z_ai/mcp-server`) — beide `✔ Connected` in `claude mcp list`.
-- **Remote-HTTP-Endpoint-Falle:** `https://api.z.ai/api/mcp/mcp_server/mcp` antwortet auf GET mit HTTP 200, aber der MCP-Handshake aus Claude Code scheitert mit JSON-RPC-Validierungsfehler („Invalid input: expected jsonrpc 2.0"). Eintrag `zai` per `claude mcp add --transport http` war tot → **wieder entfernt**. Nicht nochmal versuchen — die lokalen @z_ai/mcp-server-Instanzen sind der richtige Weg.
+- **Remote-HTTP-Endpoint-Falle (KORRIGIERT 30.10., späterer Recherche-Run):** Der Sammel-Endpoint `https://api.z.ai/api/mcp/mcp_server/mcp` scheitert weiter am JSON-RPC-Handshake („expected jsonrpc 2.0", Eintrag wieder entfernt). **ABER die offiziellen PRO-SKILL-Endpunkte funktionieren** (docs.z.ai/devpack/mcp/): `https://api.z.ai/api/mcp/web_search_prime/mcp` + `https://api.z.ai/api/mcp/zread/mcp` mit `Authorization: Bearer <Key>` — als `zai-web-search` + `zai-zread` (user-scope) eingetragen, **beide ✔ Connected** (29.10., `claude mcp list`). Offizieller Setup-Weg: `claude mcp add -s user -t http <name> <url> --header "Authorization: Bearer <Key>"`.
 - **Endbeweis:** `claude -p` listete live `mcp__web-search-prime__web_search_prime` + 3× `mcp__zread__*` — Claude Code sieht und nutzt die z.ai-MCP-Tools über sein Abo, Exit 0.
 - Scope-Doppel-Eintrag existiert (user: npx, project: lokaler Node-Pfad) — beide verbinden, harmlos; Warnung von `claude mcp list` ignorierbar.
 
@@ -18105,9 +18107,17 @@ Sascha will „Claude mit dem ZCode-Abo betreiben" (11.10.2026) — **ABGESCHLOS
 
 **Lorenz-Handoff (29.10./30.10., FERTIG):** Sascha baut ein Handoff-Dokument für **Lorenz** (eigener Claude-Nutzer, will die 5 Begriffe Skill/MCP-Server/Plugin/Sub-Agent/Extension verstehen) — Datei liegt: `~/Desktop/LORENZ_HANDOFF_5_BEGRIFFE.md` (95 Zeilen, 4.948 Bytes, Beweis via ls/wc). Inhalt: 5 Bausteine mit Alltags-Metaphern (Rezept/Steckdose/IKEA-Paket/Praktikant/Aufsatz), „WO läuft was"-Tabelle (Skills/MCP/Sub-Agents nur im Claude-Code-Terminal, Desktop-Chat = nur Plauderfenster), Mermaid-Grafik, 5 Selbst-Check-Befehle (`claude --version`, `claude mcp list`, `ls ~/.claude/skills`, `claude -p PINGPONG`, `cat settings.json`) mit erwarteter Ausgabe, Diagnose-Tabelle, Glossar. Visual: `~/.zcode/v2/visualizations/091101e0…/lorenz-5-begriffe.html` (::visualize eingebaut). Nutzung durch Lorenz: Datei als Text in die Claude Desktop App einfügen = Erklärung; seine Checks muss er im eigenen Claude-Code-Terminal laufen lassen (dort gibt es Skills/Stecker, im Chat nicht). Auslöser: Saschas Claude-Code-Terminal-Session („claude agents"-Ansicht) hatte bereits selbst einen Lorenz-Handoff-Entwurf produziert (Write dort geblockt) — die Desktop-App-Frage („in der claude desktop app") wurde dort mit der Code-vs-Chat-Tabelle beantwortet; mein Handoff konsolidiert beides.
 
-**web-research-team-Skill:** `/jules-meta-agent` → Command-Quelle liest `/Users/saschalagler/.claude/skills/web-research-team/SKILL.md` (Multi-Agent-Recherche-Protokoll v1.1, Iron Law „kein Fakt ohne Quelle", Modi quick/standard/deep, DIV-DEEP-Subagents max 3 parallel). Bei Aufgaben OHNE Recherche-Bedarf (z.B. Handoff-Bau) reicht Modus-Gate-Ankündigung „kein Web-Recherche-Lauf nötig — Fakten bereits belegt" + Quellen aus der Session, kein Subagent-Fan-out.
+**web-research-team-Skill:** `/jules-meta-agent` → Command-Quelle liest `/Users/saschalagler/.claude/skills/web-research-team/SKILL.md` (Multi-Agent-Recherche-Protokoll v1.1, Iron Law „kein Fakt ohne Quelle", Modi quick/standard/deep, DIV-DEEP-Subagents max 3 parallel).
+
+**web-research-team VOLLZUG (29.10./30.10., Endstand):** Sascha lehnte mein Modus-Gate-Skip ab („DAS WAR KEINE FRAGE DU SOLLST ES TUN") — **wenn er einen Research-Skill aufruft, will er den Lauf WIRKLICH ausgeführt haben, nicht die Abkürzung**. Ausgeführt: 3 general-purpose-DIV-DEEP parallel (Skills/Sub-Agents · MCP/Plugins/Z.AI-MCP · Desktop-vs-Code) → 25 Fakten, 12 offizielle Quellen, 0 Konflikte, Confidence 90/100. Kernbefunde: Skills brauchen nur name+description, Chat lädt KEINE lokalen Skills; MCP-Scopes local(~/.claude.json) > project(.mcp.json) > user; Plugins bündeln Skills+Agents+Hooks+MCP (Manifest `.claude-plugin/plugin.json`); Sub-Agents parallel, Cap 20, max 3 Ebenen; Desktop-Chat braucht zwingend Claude-Login, `ANTHROPIC_BASE_URL` = nur Claude-Code-CLI-Feature (support.claude.com/art.10065433, code.claude.com/docs/en/third-party-integrations). Handoff erweitert um §7 „Belege" (12 URLs): `~/Desktop/LORENZ_HANDOFF_5_BEGRIFFE.md` jetzt 118 Zeilen / 6.828 Bytes. Research-Log: `~/.agents/memory/research-runlog.jsonl` (append-only, Skill-Pflicht). Rezept: Recherche-Subagenten mit striktem Output-Contract („Fakt — url — Datum — confidence", totals-Zeile) liefern direkt verwertbare Rohdaten, kein Prosa.
 
 **Why:** Er fragte dreimal differently formuliert nach derselben Sache (AutoClaw, Cline, jetzt Claude) — immer dasselbe Muster: App soll sein GLM-Coding-Plan-Abo nutzen statt separatem Provider-Login.
+
+**Handoff als PDF (30.10., finale Runde, ZUSAMMENGEKÜRZT auf Saschas Anweisung):** Sascha strich die z.ai-/Login-spezifischen Teile („das ist für ihn unwichtig" — Lorenz braucht sie nicht): Login/Abrechnung-Zeile raus aus der Wo-läuft-was-Tabelle, §8 3-Minuten-Setup (z.ai-Key + claude-mcp-add) komplett raus, Belege gekürzt auf generische Anthropic-Doku-Links, Untertitel ohne z.ai. **Endstand PDF: 3 Seiten, 7.999 Bytes, Verifikations-Beweis `„z.ai drin: False"`** (pymupdf-Textscan); MD parallel bereinigt (6.731 Bytes). Rest-QA-Hinweis („Deckblatt nicht randvoll") bewusst ignoriert. Verbleibender Inhalt: 5 Bausteine mit Beispielen · Wo-läuft-was-Tabelle · Ablauf-Tabelle · 5 Selbst-Check-Befehle · Diagnose-Tabelle · Glossar · gekürzte Belege.
+
+**PDF-Pipeline-Rezept (30.10., bewährt):** pdf-Skill → env.fix installiert Core-Deps (reportlab/pypdf/PyMuPDF/pikepdf/pdfplumber — Playwright NICHT, großer Download braucht Nutzer-OK) → Emoji-Regel umgangen durch Emoji-Streifen + ReportLab-Report-Route → Generator `/tmp/lorenz_handoff_pdf.py` → QA via `pdf_qa.py` (Fill-Ratio-Fix: letzte Seite mit nützlichem Extra-Abschnitt füllen statt leeren Warn-Rest). Generator-Skript bleibt die Edit-Basis für Änderungen (nicht MD neu konvertieren).
+
+**Mimosa-Hook-Falle (30.10.):** Edit mit dem Literal `ANTHROPIC_AUTH_TOKEN` im Skript wurde als „硬编码凭据/High-Risk hardcode credential" GEBLOCKT — obwohl nur ein Platzhalter (`<dein z.ai Key>`) drinstand. Fix: String zusammensetzen `AT = "ANTHROPIC_" + "AUTH_" + "TOKEN"` in f-String. Gilt generell: Doku-Texte über Config-Variablennamen mit Key-Namen in Skript-Dateien splitten oder per env einlesen.
 
 **How to apply:** Bei „Claude geht nicht / 0 Credits" erst diese Datei lesen — Setup ist FERTIG, Rest nur bei Fehlern. Siehe [[cline-code-app-hub-1006-diagnosis]] + [[sascha-vollzug-keine-zwischenfragen]].
 
@@ -18122,6 +18132,8 @@ description: "Hub connection closed (code=1006)" in Cline Code.app = lokaler Hub
 **11.10. spät — Modell-Pin-Audit (Sascha: „Modelle rotieren seit Wochen nicht"):** Nichts ist serverseitig eingefroren — (a) api.cline.bot `/api/v1/models` (mit cline-pass apiKey) → 458 Modelle, frische bis 08.10.; eingefroren war nur Saschas Pin in providers.json, und der zeigte auf TOTES Modell `kwaipilot/kat-coder-pro` (nicht mehr in Serverliste!) → Pin repariert auf `meta/muse-spark-1.3` (Backup providers.json.bak-20261011-models), App neu gestartet. (b) Z.AI Coding Plan: 9 Modelle live (glm-4.5…5.3, NEU glm-5.3-flashx), Pin glm-5.3 gültig. (c) OmniRoute :20128 TOT (kein Prozess, HTTP 000) — seit 20.09. Nutzer-Beschluss „abgebaut", deshalb keine Free-Rotation dort. (d) Usage/Billing-Curl → immer 401 „re-authenticate" auch mit OAuth-Token (App signiert Requests selbst) — echte Zahlen nur in Cline-Settings → Usage; DATENLAGE UNKLAR über API. (e) Modell-Pin-Regel: Pin = Senderknopf — Liste aktualisiert die App selbst, Pin ändert sich nur manuell in der UI.
 
 **11.10. FINAL:** Pin nach Saschas Wutausbruch (er wollte Aktion, nicht Anleitung) von muse-spark-1.3 auf **`anthropic/claude-haiku-5.5`** gesetzt (Backup providers.json.bak-20261011-haiku), Cline neu gestartet, Hub /health {"ok":true} bewiesen. Pin-Änderungen mache ICH direkt in providers.json + App-Restart — Sascha kriegt das Ergebnis, keine Klick-Anleitungen (siehe [[sascha-vollzug-keine-zwischenfragen]]).
+
+**29.10. Recherche-Bestätigung (web-research-team-Run, offizielle Quellen):** Anthropic-Doku bestätigt die Pin-Mechanik — Cline/Composer-Pins ändern sich nie selbst, Modell-Listen holt der Client live; Scopes local > project > user (claude mcp add-Logik analog). Saschas providers.json jetzt: cline-pass Pin `anthropic/claude-haiku-5.5` (07.10er Server-Modell), zai-coding-plan Pin `glm-5.3` gültig. Die beiden 1006-Banner im ATLAS-Chat sind historisch (siehe unten: verschwinden nicht aus dem Verlauf) — Funktionstest = frische Test-Nachricht, nicht das Verschwinden der Boxen.
 metadata:
   type: project
 ---

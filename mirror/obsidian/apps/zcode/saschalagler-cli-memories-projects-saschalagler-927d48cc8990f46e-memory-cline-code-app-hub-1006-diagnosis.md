@@ -1,7 +1,7 @@
 ---
 app: zcode
 quelle: "saschalagler/cli/memories/projects/saschalagler-927d48cc8990f46e/memory/cline-code-app-hub-1006-diagnosis.md"
-stand: 2026-10-11
+stand: 2026-10-29
 tags: [spiegel, zcode]
 ---
 
@@ -14,6 +14,8 @@ description: "Hub connection closed (code=1006)" in Cline Code.app = lokaler Hub
 **11.10. spät — Modell-Pin-Audit (Sascha: „Modelle rotieren seit Wochen nicht"):** Nichts ist serverseitig eingefroren — (a) api.cline.bot `/api/v1/models` (mit cline-pass apiKey) → 458 Modelle, frische bis 08.10.; eingefroren war nur Saschas Pin in providers.json, und der zeigte auf TOTES Modell `kwaipilot/kat-coder-pro` (nicht mehr in Serverliste!) → Pin repariert auf `meta/muse-spark-1.3` (Backup providers.json.bak-20261011-models), App neu gestartet. (b) Z.AI Coding Plan: 9 Modelle live (glm-4.5…5.3, NEU glm-5.3-flashx), Pin glm-5.3 gültig. (c) OmniRoute :20128 TOT (kein Prozess, HTTP 000) — seit 20.09. Nutzer-Beschluss „abgebaut", deshalb keine Free-Rotation dort. (d) Usage/Billing-Curl → immer 401 „re-authenticate" auch mit OAuth-Token (App signiert Requests selbst) — echte Zahlen nur in Cline-Settings → Usage; DATENLAGE UNKLAR über API. (e) Modell-Pin-Regel: Pin = Senderknopf — Liste aktualisiert die App selbst, Pin ändert sich nur manuell in der UI.
 
 **11.10. FINAL:** Pin nach Saschas Wutausbruch (er wollte Aktion, nicht Anleitung) von muse-spark-1.3 auf **`anthropic/claude-haiku-5.5`** gesetzt (Backup providers.json.bak-20261011-haiku), Cline neu gestartet, Hub /health {"ok":true} bewiesen. Pin-Änderungen mache ICH direkt in providers.json + App-Restart — Sascha kriegt das Ergebnis, keine Klick-Anleitungen (siehe [[sascha-vollzug-keine-zwischenfragen]]).
+
+**29.10. Recherche-Bestätigung (web-research-team-Run, offizielle Quellen):** Anthropic-Doku bestätigt die Pin-Mechanik — Cline/Composer-Pins ändern sich nie selbst, Modell-Listen holt der Client live; Scopes local > project > user (claude mcp add-Logik analog). Saschas providers.json jetzt: cline-pass Pin `anthropic/claude-haiku-5.5` (07.10er Server-Modell), zai-coding-plan Pin `glm-5.3` gültig. Die beiden 1006-Banner im ATLAS-Chat sind historisch (siehe unten: verschwinden nicht aus dem Verlauf) — Funktionstest = frische Test-Nachricht, nicht das Verschwinden der Boxen.
 metadata:
   type: project
 ---
