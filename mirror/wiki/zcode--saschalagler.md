@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-30 02:08 UTC
+Zuletzt gespiegelt: 2026-10-30 02:24 UTC
 
 ## AGENTS
 
@@ -12051,8 +12051,38 @@ Music stem separation is set up and verified working on this machine (2026-10-21
 - [Einfache Sprache](simple-language-responses.md) — Sascha versteht fachliche Antworten oft nicht: radikal vereinfachen, max 3 Punkte, 1 Entscheidung pro Antwort
 - [Lokale Browser-Tests](local-browser-testing-gotchas.md) — file:// blockiert → http.server; nach Edits Cache-Buster-URL nutzen (Altversions-Falle)
 - [ZCode-Skills-Landschaft](zcode-skills-landscape.md) — 251 Slash-Befehle in ~/.zcode/commands/ (27.10. generiert), sichtbar erst nach App-Neustart; /workflow fest eingebaut; 11 Skill-Ordner kaputt
-- [Product-Canvas-Nachbau](product-canvas-rebuild.md) — aktives Projekt: Google Product Canvas VOLL LAUFFÄHIG lokal (Emulator-Login+DB, ?mock=1), wartet nur auf echten Gemini-Key; echtes Firebase optional
+- [Product-Canvas-Nachbau](product-canvas-rebuild.md) — Web-Nachbau VOLL LAUFFÄHIG lokal (Emulator, ?mock=1); ab 30.10. abgelöst von LokiCanvas (nativ)
 - [gstack-Werkzeugkasten](gstack-toolkit.md) — ~/gstack = Garry Tans KI-Toolkit; bin/-Befehle laufen automatisch, nicht von Hand anfassen
+- [LokiCanvas Native-App](lokicanvas-native-app.md) — AKTIV: SwiftUI-Mac-App läuft, 27/27 Tests, Ollama lokal (nur coder:7b echt, 9b/vl-Blobs fehlen), Push von Guardrail blockiert
+- [CLT ohne Xcode: kein @State](clt-swiftui-no-state.md) — @State-Makro schlägt fehl → @Published+@StateObject-Muster; Testing-Plugin-Pfad; AVAudioSession iOS-only
+
+## clt-swiftui-no-state
+
+---
+name: clt-swiftui-no-state
+description: macOS hat NUR Command Line Tools (kein Xcode) — @State ist externes
+  SwiftUIMacros-Makro und schlägt fehl; SwiftUI-UIs müssen
+  @Published-ObservableObject + @StateObject nutzen (TraktorClone-Muster);
+  weitere CLT-Fallen
+metadata:
+  node_type: memory
+  type: reference
+  originSessionId: session_3a1cc25ff2c2e82e01c329cebdb4fa22
+---
+
+Saschas Mac hat **kein Xcode.app, nur CommandLineTools** (xcode-select → /Library/Developer/CommandLineTools; kein Xcode*.app auf Platte, kein .xip in Downloads).
+
+**Kern-Falle:** `@State` ist im aktuellen SDK ein externes Makro (Modul `SwiftUIMacros`), dessen Plugin **nur mit Xcode ausgeliefert wird** — Fehler: „external macro implementation type 'SwiftUIMacros.StateMacro' could not be found". Behebung ohne Xcode:
+- **Nie `@State` schreiben.** Stattdessen je View eine kleine `@MainActor final class XUIState: ObservableObject { @Published var … }` + `@StateObject private var ui = XUIState()` — @StateObject/@EnvironmentObject/@Published sind KEINE Makros und laufen (genau so baut TraktorClone).
+- Swift-Testing braucht Plugin-Pfad: `swift test -Xswiftc -plugin-path -Xswiftc /Library/Developer/CommandLineTools/usr/lib/swift/host/plugins/testing` (steht in run_tests.sh von TraktorClone/LokiCanvas).
+
+**Weitere CLT/macOS-Fallen (30.10. bewiesen):**
+- `AVAudioSession` ist iOS-only → auf macOS die Session-Zeilen weglassen; AVAudioEngine läuft direkt.
+- Swift 6 strict concurrency: unveränderliche Clients (nur `let`-Props) als `: Sendable` deklarieren, sonst „sending 'self.client' risks causing data races" in Tasks.
+- Bundle per Hand: `swift build -c release` + Info.plist (CFBundleExecutable, NSMicrophoneUsageDescription) + `codesign --force --sign -`.
+- Test-Runner kann mit Signal 6 crashen, wenn eine App mit SFSpeechRecognizer gleichzeitig läuft → App vorher schließen.
+
+**Why:** Diese Blocker kosten jede Session sonst 30+ Min Fehlersuche. Verwandt: [[lokicanvas-native-app]].
 
 ## gstack-toolkit
 
@@ -12092,6 +12122,38 @@ Beim Browser-Test lokaler Dateien (26.10., hub-glass.html):
 4. **Self-signed HTTPS wird hart blockiert** (27.10., Product Canvas): Playwright wirft `ERR_CERT_AUTHORITY_INVALID` ohne Durchklick-Warnseite → für automatisierte Tests eine zweite Vite-Instanz ohne `ssl()`/`https` auf Extra-Port starten (z. B. `vite.dev-http.config.ts` :5188); der HTTPS-Server bleibt für den Nutzer im echten Browser.
 
 **Why:** Diese Fallen kosten sonst Fehldiagnosen an Saschas Live-Apps. **How to apply:** Bei jedem lokalen UI-Test: Server → Cache-Buster-URL → Delta-Messung. Siehe [[uiux-skills-repair-2026-10-26]].
+
+## lokicanvas-native-app
+
+---
+name: lokicanvas-native-app
+description: Aktives Projekt (30.10.) — LokiCanvas native SwiftUI-Mac-App in
+  ~/agent-os/agent-mirror/LokiCanvas; .app läuft, 27/27 Tests, KI über lokales
+  Ollama (nur qwen2.5-coder:7b真的 installiert); Commit 628ced708 lokal, Push von
+  Guardrail blockiert
+metadata:
+  node_type: memory
+  type: project
+  originSessionId: session_3a1cc25ff2c2e82e01c329cebdb4fa22
+---
+
+Seit 30.10.2026: Sascha wollte den Product-Canvas-Nachbau NICHT als Web/localhost-App, sondern **eigenständige native macOS-App** mit seinen lokalen Ollama-Modellen („multiplayer völlig egal"). Ergebnis: **LokiCanvas** — echte SwiftUI-Mac-App, gebaut ohne Xcode.
+
+**Stand 30.10.2026 (alles bewiesen):**
+- Pfad: `~/agent-os/agent-mirror/LokiCanvas/` (Teil des agent-mirror-Repos, Branch `cline/s4sx83cs`, Remote github.com/Koerperfluss/agent-mirror.git)
+- `.app`: `build/LokiCanvas.app` (make_app.sh, ad-hoc signiert, Mic-Purpose in Info.plist) — Doppelklick/Dock, kein Browser/localhost/Firebase/Gemini
+- 27/27 Tests in 6 Suiten (Swift Testing; `bash run_tests.sh` mit CLT-testing-Plugin-Pfad)
+- Features: unendliche Canvas (Pan/Zoom 25–400 %), Node-Typen Text/Skizze/Bild/KI/Prototyp, deutsche Voice-Befehle (VoiceParser+VoiceAgent on-device), Auto-Persistenz `~/Documents/LokiCanvas/autosave.json`, Modell-Statusleiste
+- Commit `628ced708` liegt LOKAL; **git push wurde vom Guardrail-Hook blockiert** (nach 1 fehlgeschlagenem Erst-Push werden wiederholte Pushes gesperrt) — Push von Sascha/Cline manuell nachholen.
+
+**Ollama-Lage (30.10.):** Nur `qwen2.5-coder:7b` (+1.5b) wirklich installiert und antwortet (= LocalModels.chat UND .coder). `qwen3.5:9b` und `qwen3-vl:8b` haben nur Manifeste — **Blobs fehlen** (7,2 GB gesamt; 9b/vl je ~5 GB weg) → Statusleiste rot; Fix: `ollama pull qwen3.5:9b`. glm-*-cloud = Abo-Limit. Mac hat 11,8 GiB VRAM.
+**Ollama-Start-Falle:** `nohup ollama serve` kennt die Modelle NICHT (anderer Kontext) — immer via `open -a Ollama` starten (LaunchAgent com.ollama.ollama registriert).
+
+**Kollisions-Falle:** Tests crashen mit Signal 6, wenn die LokiCanvas-App gleichzeitig läuft (Speech-Freigabe-Kollision) → vor `run_tests.sh` App schließen.
+
+**Nebenbeweis:** TraktorClone (`~/agent-os/agent-mirror/TraktorClone/`) = bewährtes SwiftPM+handgebaut-Bundle-Muster (83/83 Tests) — Vorlage für weitere native Apps ohne Xcode.
+
+**Why:** Hauptprojekt; Build-Tricks, Ollama-Modell-Lücke und Guardrail-Verhalten sind aus keinem Repo ableitbar. Verwandt: [[product-canvas-rebuild]], [[clt-swiftui-no-state]], [[simple-language-responses]].
 
 ## mimosa-hook-skills-write-tool
 
@@ -12150,9 +12212,9 @@ Seit 27.10.2026 baut Sascha Google „Product Canvas" (ProductCanvas-Experiment 
 
 **Echtes Firebase (optional, Projektparts fertig):** Projekt `product-canvas-lab-6609` per gcloud+REST angelegt (Pflicht-Header `x-goog-user-project`; `gcloud projects create --name=`), Web-App appId `1:675368337217:web:076991cb00d8fe20efabc0`. **Blocker bleiben:** RTDB-Create REST→404-HTML, identitytoolkit→CONFIGURATION_NOT_FOUND (nur Console-/CLI-Ritual). firebase login via Saschas Code wäre der Hebel — Sessions verfallen aber sofort und der Link-Chaos frustrierte ihn; nur noch anbieten wenn er fragt.
 
-**Nächste Phase:** Umbau zum eigenen Produkt (loki-dev MAP, Multi-Session).
+**Nächste Phase:** ~~Umbau zum eigenen Produkt~~ → **ABGELÖST 30.10.:** Sascha lehnte Web/localhost-Träger ab („0 Sinn") und wollte native App + lokale Ollama-Modelle statt Gemini-Key → Nachfolger ist **LokiCanvas** (SwiftUI, siehe [[lokicanvas-native-app]]). Web-Nachbau ruht als Referenz; Quellordner offenbar nach `~/Desktop/Reverse Engeniering /product-canvas-nachbau/` verschoben.
 
-**Why:** Saschas aktives Hauptprojekt; Pfade, Patches, Emulator-Ports und Restarbeiten sind aus keinem Repo ableitbar. Verwandt: [[zcode-skills-landscape]], [[local-browser-testing-gotchas]], [[simple-language-responses]].
+**Why:** Nachfolge-Projekt von [[lokicanvas-native-app]]; Pfade, Patches, Emulator-Ports hier, Restarbeiten aus keinem Repo ableitbar. Verwandt: [[zcode-skills-landscape]], [[local-browser-testing-gotchas]], [[simple-language-responses]].
 
 ## simple-language-responses
 

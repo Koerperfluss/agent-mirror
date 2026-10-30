@@ -1,7 +1,7 @@
 ---
 app: zcode
 quelle: "saschalagler/cli/memories/projects/1793024820133-8d065fb4-bac5-4106-8c13-ba8a6f59e4-892c7edb1193a737/memory/MEMORY.md"
-stand: 2026-10-27
+stand: 2026-10-30
 tags: [spiegel, zcode]
 ---
 
@@ -12,5 +12,7 @@ tags: [spiegel, zcode]
 - [Einfache Sprache](simple-language-responses.md) — Sascha versteht fachliche Antworten oft nicht: radikal vereinfachen, max 3 Punkte, 1 Entscheidung pro Antwort
 - [Lokale Browser-Tests](local-browser-testing-gotchas.md) — file:// blockiert → http.server; nach Edits Cache-Buster-URL nutzen (Altversions-Falle)
 - [ZCode-Skills-Landschaft](zcode-skills-landscape.md) — 251 Slash-Befehle in ~/.zcode/commands/ (27.10. generiert), sichtbar erst nach App-Neustart; /workflow fest eingebaut; 11 Skill-Ordner kaputt
-- [Product-Canvas-Nachbau](product-canvas-rebuild.md) — aktives Projekt: Google Product Canvas VOLL LAUFFÄHIG lokal (Emulator-Login+DB, ?mock=1), wartet nur auf echten Gemini-Key; echtes Firebase optional
+- [Product-Canvas-Nachbau](product-canvas-rebuild.md) — Web-Nachbau VOLL LAUFFÄHIG lokal (Emulator, ?mock=1); ab 30.10. abgelöst von LokiCanvas (nativ)
 - [gstack-Werkzeugkasten](gstack-toolkit.md) — ~/gstack = Garry Tans KI-Toolkit; bin/-Befehle laufen automatisch, nicht von Hand anfassen
+- [LokiCanvas Native-App](lokicanvas-native-app.md) — AKTIV: SwiftUI-Mac-App läuft, 27/27 Tests, Ollama lokal (nur coder:7b echt, 9b/vl-Blobs fehlen), Push von Guardrail blockiert
+- [CLT ohne Xcode: kein @State](clt-swiftui-no-state.md) — @State-Makro schlägt fehl → @Published+@StateObject-Muster; Testing-Plugin-Pfad; AVAudioSession iOS-only
