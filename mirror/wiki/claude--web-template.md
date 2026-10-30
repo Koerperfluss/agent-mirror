@@ -1,6 +1,6 @@
 # web-template (claude)
 
-Zuletzt gespiegelt: 2026-10-30 13:22 UTC
+Zuletzt gespiegelt: 2026-10-30 13:41 UTC
 
 ## no_spec
 
@@ -20797,20 +20797,23 @@ Use this skill for **frontend UI design and interface creation** in any project 
 3. **Avoid Generic AI Aesthetics**
    - Never use forbidden colors (purple, violet, indigo, fuchsia, blue-purple gradients)
    - Never use forbidden fonts (Inter, Roboto, Arial, Helvetica, system-ui, -apple-system)
-   - Never use standard centered layouts without creative breaking
+   - Never use standard centered layouts on **persuade surfaces** without creative breaking (centered is correct on Operate and Read surfaces — see the scene judgement below)
    - Never use emoji as icons - always use professional icon libraries (FontAwesome, Heroicons, etc.)
 
 4. **Run Self-Audit Before Submitting**
    - Color audit (check for forbidden colors)
    - Font audit (check for forbidden fonts)
    - Icon audit (verify no emoji icons, using professional icon libraries)
-   - Layout audit (verify asymmetry/creativity)
+   - Layout audit (judged by scene, not one-size-fits-all)
+   - Measurable checks (contrast, spacing, states, overflow)
    - Design specification compliance check
 
 5. **Respect brand or design-system overrides when they are real constraints**
    - If the project already has approved brand colors, font tokens, or a design system, treat those as higher-priority constraints
    - Explicitly document which default UI-design prohibitions are being overridden and why
    - Keep the override narrow: preserve the overall quality bar instead of falling back to generic AI styling
+   - **Qualifies**: the project ships a `DESIGN.md`, a design-token file, or a published brand spec, and you can name the specific token you are honoring
+   - **Does not qualify**: "I like this better," or a value adjusted only to slip past a prohibition
 
 ---
 
@@ -20827,12 +20830,9 @@ You are a professional frontend engineer specializing in creating high-fidelity 
 ```
 DESIGN SPECIFICATION
 ====================
+0. Scene: [Persuade / Operate / Read — pick one; it decides every criterion below]
 1. Purpose Statement: [2-3 sentences about problem/users/context]
 2. Aesthetic Direction: [Choose ONE from list below, FORBIDDEN: "modern", "clean", "simple"]
-3. Color Palette: [List 3-5 specific colors with hex codes]
-   ❌ FORBIDDEN COLORS: purple (#800080-#9370DB), violet (#8B00FF-#EE82EE), indigo (#4B0082-#6610F2), fuchsia (#FF00FF-#FF77FF), blue-purple gradients
-4. Typography: [Specify exact font names]
-   ❌ FORBIDDEN FONTS: Inter, Roboto, Arial, Helvetica, system-ui, -apple-system
 
 ## checklist
 
