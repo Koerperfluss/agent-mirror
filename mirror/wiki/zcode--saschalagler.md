@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-30 10:20 UTC
+Zuletzt gespiegelt: 2026-10-30 10:37 UTC
 
 ## AGENTS
 
@@ -12330,9 +12330,9 @@ Sascha fragte wiederholt wütend „WO SIND MEINE SKILLS?" — dauerhafte Fakten
 
 # Memory Index
 
-- [Traktor DVS Timecode-Decoder](traktor-dvs-timecode-decoder.md) — Slices 12+13: Hardware-Setup (BD-1380-USB=Line-preamp-integriert, Scratch-Vinyl da, Mac=Interface), LFSR+LUT-Decoder synthetisch bewiesen (114/114), NI-TSI-Format (S4/S2=Registry ohne MIDI-Nummern, HID; robuster UTF16-Scanner, Endian-Falle); GPL-Route: eigene Impl nach §40e UrhG; Live-Kalibrierung offen
+- [Traktor DVS Timecode-Decoder](traktor-dvs-timecode-decoder.md) — Slices 12+13: Hardware-Setup (BD-1380-USB=Line-preamp-integriert, Scratch-Vinyl da, Mac=Interface), LFSR+LUT-Decoder synthetisch bewiesen, NI-TSI-Format (S4/S2=Registry ohne MIDI-Nummern, HID; robuster UTF16-Scanner, Endian-Falle); GPL-Route: eigene Impl nach §40e UrhG; Live-Kalibrierung offen
 - [Vor „geht nicht" recherchieren](research-before-declining-blocked.md) — Saschas DVS-Korrektur: „blocked"-Aussagen nur nach Prior-Art-Recherche (xwax/Mixxx) + Hardware-Spec-Lektüre; rechtliche Grenzen → maximal legalen Teil bauen
-- [TraktorClone Projekt](qwen-flash-spark-project.md) — **Slices 1–13 ALLE FERTIG (30.10., 114/114 Tests in 25 Suiten, HEAD bb7cc7e6d, 31/39 Features)**: Restfeatures (Beatgrid-Offset, Sync-Nudge, Marker, Zoom-Fix, Playlists, Treiber-Panel, Spotify-Metadaten-Import) + DVS + NI-TSI-Reader; App läuft live bei Sascha mit Auto-Analyse; **@State-Plugin fehlt im CLT komplett (kein Race!)** + kein `Skip` in Testing 2403; agentos M1–M5 DONE (210/210); LokiCanvas v1.0 fertig (Parallel-Session 628ced708)
+- [TraktorClone Projekt](qwen-flash-spark-project.md) — **Slices 1–16 ALLE FERTIG (30.10., 138/138 Tests in 28 Suiten, HEAD ce0c50bf7, 36/44 Features)**: +Flux Mode (Deck-Zeitbasis!), 4-Deck-Modus (C/D fader-only, AutoDJ-only-frei), Pattern Player (Synthese→WAV→Deck), MasterLimiter+Phaser/Bitcrusher/Gate (Core bewiesen, Live-Routing offen); Reviewer-Veto etabliert (4×P2 gefixt); Subagenten-Code braucht Director-Build-Fixes (Foundation-Import, Double/Int-Mixes); @State-Plugin fehlt im CLT, kein Skip in Testing 2403; agentos M1–M5 DONE; LokiCanvas v1.0 fertig
 - [Mimosa-Hook-Schreibconstraints](mimosa-hook-write-constraints.md) — warum Edits/Pushes blockiert werden und welche Gegenmuster funktionieren (validate_host, write_text, lazy, pipefail, Button-Style-Paren-Falle)
 - [Custom-Skills manuell ausführen](custom-skills-read-from-autoclaw.md) — roo-code/gsd-core/coderabbit/loki-dev/ponytail liegen in ~/.openclaw-autoclaw/skills/, ZCode registriert sie nicht → SKILL.md lesen + Methodik manuell anwenden
 - [Subagent-Provider-Fix](subagent-provider-fix-zai-api.md) — finale Lösung: ALLE 10 Defs `account:zai-individual-coding-plan/GLM-5.3-Flash` + thoughtLevel low; **nach Neustart bewiesen: implementer läuft** (alle 37 aktiv); vor Neustart = Live-Route cavecrew-builder
@@ -166817,31 +166817,36 @@ Sound bei 56 s identifizieren und isolieren (Acid People FLAC)
 Venv: ~/.venvs/demucs (librosa + soundfile installiert). Skripte via Write anlegen (Mimosa-Hook blockt .py in Bash).
 ## plan-session_3a1cc25ff2c2e82e01c329cebdb4fa22
 
-# LokiCanvas zu Ende bauen — native SwiftUI-Mac-App, 100 % lokal (deine Ollama-Modelle)
+# Product Canvas Local — Funktionsparität: 3 kaputte Teile heilen + Rest sauber kappen
 
-## Verifizierte Basis (3 Erkundungs-Agenten, Pfad:Zeile-Beweise)
-Core steht komplett (OllamaClient mit chat/vision/models · CanvasNode+Persistenz · PrototypeGenerator mit Sanitizer · Theme · VoiceParser) · **22 Tests grün-bereit** · TraktorClone-Bündel-Muster bewiesen (70 Tests + laufende .app auf genau diesem Mac, nur Command-Line-Tools nötig). **Es fehlt allein die App-Schicht + VoiceAgent.**
+## Context
+Der 1:1-Klon des Google Product Canvas läuft nativ als Tauri-App (Canvas, Docs, KI-Text/Code über Ollama, lokale DB). Die Exploration (2 Agenten, Pfad-Beweise) zeigt jetzt GENAU, was im LOCAL-Modus noch kaputt ist — und was davon lokal überhaupt machbar ist. Neues ZIP = identisch mit Original, keine Sync nötig (nur unsere 3 bewussten Zusätze).
 
-## Schritte
-
-| # | Was | Beweis |
+## Befunde (bewiesen)
+| Feature | Status | Ursache |
 |---|---|---|
-| 0 | **Ollama hochfahren** (LaunchAgent ist da, nur gestoppt) + Modelle verifizieren: qwen3.5:9b, qwen3.5-vl:8b, qwen2.5-coder:7b — Namen ggf. an Code-Whitelist angleichen | curl /api/tags + 1-Chat-Antwort |
-| 1 | **2 Builder parallel** (ehrliche max. Parallelität — die 4 UI-Dateien sind ein Klettpaket, >2 Agenten würden sich nur ins Weg laufen): **B1 = App-Schicht** (LokiCanvasApp @main · ContentView mit unendlicher Canvas: Pan/Zoom 25–400 %/Node-Layer/Toolbar · NodeView für Skizze/Text/Bild/AI/Prototyp · InspectorView mit Prompt/Modell-Wahl/Voice-Button · nutzt Core-APIs unverändert) · **B2 = VoiceAgent.swift** (SFSpeechRecognizer on-device, deutsch → VoiceParser → Aktionen) + 4 neue Tests | Dateien + Test-Zähler ≥26 |
-| 2 | **Integration + Gates**: Build-Fix (Target-Verzeichnis existiert dann), `swift test` komplett grün, `make_app.sh` → **LokiCanvas.app** (ad-hoc signiert, Info.plist mit Mikrofon-Freigabe-Text) | Exit-Codes + .app-Pfad |
-| 3 | **Beweis-Batterie**: App per `open` starten (PID), Screenshot; Node anlegen + verschieben; **KI-Antwort von qwen3.5:9b landet im AI-Node**; App beenden+neu starten → **Daten bleiben** (autosave.json); Modell-Statusleiste grün | Screenshots + JSON-Datei |
-| 4 | **Erste Versionierung**: LokiCanvas committen + pushen auf `cline/s4sx83cs` (bisher untracked) | Commit-Hash |
+| AI-Cursor, Wiki/Tiptap, Slash-Befehle, Onboarding, Mini-App-Generator | ✅ läuft | Adapter deckt Text-Generierung |
+| **Live-Voice** (`live/LiveAPI.tsx:200`) | ❌ TypeError-Crash | Adapter hat kein `ai.live` → Boot nutzt es → Crash-Gefahr beim Voice-Button |
+| **Bild-Generierung** (`ai/nano-banana.ts`) | ❌ Fehlermeldung statt Bild | Adapter liefert kein `inlineData`; `getDownloadURL()` rejected bewusst |
+| **Mini-App-Runtime** (iframe) | ❌ offline | React/Lucide/Tailwind kommen von esm.sh/jsdelivr-CDN |
 
-## Abnahme (beobachtbar)
-Echte `.app` per Doppelklick · kein Browser/localhost/Firebase/Gemini · Daten überlebt Neustart · KI-Antworten aus deinen lokalen Modellen · 24/7 (App + optional Ollama-LaunchAgent läuft ohnehin dauerhaft).
+## Schritte (Backups .bak-2026-10-30 vor jedem Original-Edit)
 
-## Ehrliche Grenzen (1 Zeile each)
-- Mikrofon: 1× macOS-Dialog beim ersten Voice-Klick (kein Key, einmal bestätigen).
-- Vision/Bild-Analyse braucht das exakte Modell in Ollama — Schritt 0 verifiziert, fehlt eines → klare Meldung statt Absturz (App läuft trotzdem).
-- Nur CLT installiert — für diese native Mac-App bewiesen ausreichend (TraktorClone-Präzedenzfall).
+| # | Was | Wie | Beweis |
+|---|---|---|---|
+| 1 | **Live-Voice sauber kappen**: `ai-local.ts` erhält `live`-Stub, dessen `connect()` eine klare deutsche Fehlermeldung wirft; Editor versteckt Voice-UI im LOCAL-Modus (statt TypeError-Crash) | Code-Diff + kein Crash mehr beim Voice-Versuch |
+| 2 | **Bild-Speicher heilen**: `firebase-local.ts` `getDownloadURL()` → liefert lokale Data-URL statt Reject (saveImage-Pfad läuft dann ohne Absturz); nano-banana `generateImage` → klare Meldung „Bild malen lokal nicht möglich (Ollama kann nur Text/Bild verstehen)" im Node-Text | Bild-Node zeigt sauberen Hinweis |
+| 3 | **Mini-App-Runtime offline-tauglich**: React/ReactDOM aus dem App-Bundle lokal servieren (importmap auf `tauri://localhost/vendor/`), lucide-react+Tailwind bleiben CDN mit Offline-Hinweis im Frame — Prototyp-Preview läuft mit React-Teil offline | Mini-App-Node zeigt Vorschau ohne Netz für React |
+| 4 | **Frontend + Tauri neu bündeln**, App starten | Build-Exits |
+| 5 | **Beweis-Batterie**: Canvas + KI-Text-Antwort (Ollama live) + Notebook + Mini-App-Hinweis + kein Voice-Crash + Persistenz-Datei wächst | Screenshots (fenster-exakt) + boot.log + canvas-db.json |
 
-## Zeit
-**~60–120 Min.** (Core steht schon; Rest ist UI-Schicht + Bündel + Beweise). Backups: neue Dateien sind additive; bestehende Core-Dateien werden nicht angefasst außer VoiceAgent kommt NEU dazu.
+## Nicht tun (klar abgegrenzt)
+- Echtes Bild-MALEN lokal: braucht Diffusions-Modell (ComfyUI/Draw Things) — separater Auftrag auf Wunsch.
+- Echte Live-Voice lokal: Whisper+Ollama-Pipeline — Ausbau später.
+- Multiplayer/Video: bleibt raus (Befehl).
+
+## Zeitaufwand
+~45–60 Min. · Credits gering (alles lokal, nur 1 Build-Zyklus + Screenshots).
 ## skills-bericht-2026-10-27
 
 # Skills sind DA — 249 Ordner, 218 gesund
