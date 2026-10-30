@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-30 14:18 UTC
+Zuletzt gespiegelt: 2026-10-30 14:35 UTC
 
 ## AGENTS
 
@@ -12939,7 +12939,8 @@ In ATLAS-ZCode-Sessions kann das Bash-Tool komplett tot sein: jeder Aufruf (auch
 
 - [Cline-App Backend-Fix](cline-app-desktop-backend-fix.md) — 18.09. „desktop backend exited" gefixt: steckengebliebener code-sidecar; Health-Check Port 25463/health; Fix-Einzeiler pkill code-sidecar + App-Neustart; ~/.cline ist NICHT die App
 
-- [SSD-Cache-Automation](ssd-cache-automation.md) — 18.09.: 29→42 GB frei; automation-03ce4628 täglich 12 Uhr (Mole-CLI+var/folders+Caches); Top-Analyse fertig: Barbulls „MEDIE: PLÄNE" 24 GB = größter Hebel, ~/.zcode/cli/rollout 7,8 GB alle <30T aktiv; 3 GO-Hebel offen
+- [SSD-Cache-Automation](ssd-cache-automation.md) — 18.09.–30.10.: automation-03ce4628 täglich 12 Uhr (Mole+var/folders+Caches); 30.10.-Klärung: Platte voll durch FESTE Brocken — rollout 25 GB („ja zcode" GO offen), Autodesk-Reste 12 GB („ja autodesk" GO offen), ollama/AI_STUDIO_EXPORTS behalten; deja-Index macht Rollout-Löschung verlustarm
+- [deja Memory-Layer](deja-memory-layer.md) — deja v0.23.2 = bestehendes komprimiertes Memory (2.415 Sessions/118k Nachrichten → 196 MB ~/.cache/deja, nur search/index/restore); bei Komprimierungs-Wünschen deja nutzen, KEIN cognee/graphify-Neubau
 
 - [Kein Raten — Agenten-Wissen](feedback-kein-raten-agenten-wissen.md) — 18.09. „HÖR AUF MIT MIR ZU RATEN": keine unbelegten Tool-Behauptungen; Unwissen = Research-Agent mit Quellen-Nachweis statt Formulierung ins Blaue; „alle Tools" = VOLLSTÄNDIGE Inventur
 
@@ -13451,6 +13452,31 @@ Regeln: nie Emulator + LLM gleichzeitig (~7 GB Puffer), RAM vorher freiräumen, 
 **Diagnose „Modell extrem langsam und dumm" (13.09., letzter Stand, noch nicht gelöst):** Checkliste an Sascha/Moritz gegangen — LANGSAM: (1) Swap-Tod prüfen (Task-Manager: „Ausgelagert" >2–3 GB / Disk 100 % = häufigste Ursache → Programme schließen, Modell neu laden), (2) **GPU Offload muss Maximum** sein im Load-Panel (0 = CPU-only = 1–3 tok/s statt 8–15), (3) Runtime muss **CUDA** sein, nicht Vulkan/CPU (Zahnrad → Runtime). Referenz: 8–15 tok/s normal, 1–3 = Konfig-Fehler. DUMM = ehrlicher Preis von **UD-Q2_K_XL (2-Bit-Qualitätsfloor)**. Empfehlung: parallel **Qwen3.5-35B-A3B Q4 (~21 GB, 5 GB Luft, Q4>2-Bit schlauer, besseres Tool-Calling)** laden und vergleichen — realistischer Daily-Driver; Alternativ-Fix auf 80B: Wechsel auf IQ3_XXS (nur wenn Swap gelöst). Erst-Check-Ergebnis steht noch aus.
 
 **10.10. — Report-Datei GELEERT vorgefunden + rekonstruiert:** `~/Desktop/CODING_MODELL_RESEARCH_2026-09-13.md` war zwischenzeitlich von 113 auf 0 Zeilen reduziert (vermutlich manuell geleert); nach neuem Anhang nur 17 Zeilen → **komplett rekonstruiert als verdichtete 31-Zeilen-Fassung** (alle Kernfakten aus Session-Chronik: SOTA-Stand, MOOLAPTOP-Finale, Mac-Deep-Research). Lektion: Desktop-MD-Reports kann Sascha löschen — Session-Chronik ist die eigentliche Sicherung; bei wichtigen Reports Datei-Existenz+Zeilen vor jedem Append prüfen (`wc -l`), nicht blind `>>`. Mac-Deep-Research-Details (Gemma 4, Checkpoints-Leak, 10–15 tok/s) leben jetzt in [[lm-studio-mac-gemma4-2026-10-10]].
+
+## deja-memory-layer
+
+---
+name: deja-memory-layer
+description: deja CLI = Saschas bestehendes komprimiertes Memory-Layer (2.415
+  Sessions → 196 MB Suchindex); bei Memory-Komprimierungs-Wünschen deja nutzen,
+  kein cognee/graphify-Neubau
+metadata:
+  node_type: memory
+  type: reference
+  originSessionId: sess_66536c69-6d4a-4f36-a9c7-b1c72c2a20b1
+---
+
+**deja = das vorhandene komprimierte Memory-Layer auf Saschas Mac (verifiziert 30.10.2026):**
+
+- CLI: `/opt/homebrew/bin/deja`, **v0.23.2** (nur `deja search <query>` + `deja index` + `deja restore`; **kein `deja list`-Kommando**)
+- Index-Stand 30.10.: **2.415 Sessions, 118.882 Nachrichten**, Range 01.03.–30.10.2026, aus allen Harnesses (Antigravity 494 Sessions, ZCode, Cline, Claude, Gemini…)
+- **Store: `~/.cache/deja` = 196 MB** (25 GB Roh-Rollouts → Faktor ~100:1); `~/.config/deja` 16K, `~/.local/share/deja` 12K
+- Behält Zusammenfassungen/Stichworte + wiederherstellbare Text-Spans (`deja restore <file>` — 5.723 gesicherte Spans über 1.099 Dateien); Warnung bei anstehender 30-Tage-Bereinigung des Quell-Tools („deja keeps them searchable")
+- Im Chat greift **deja-recall automatisch** (SessionStart-Block mit „✓ recalled from zcode session") — bei Treffer Antwort mit `déjà vu: <was>` + `deja:<session id>` eröffnen
+
+**Verknüpfte Skills in `~/.agents/skills/` (alle vorhanden):** deja-search, deja-history, cognee-memory, graphify, caveman-compress, caveman-learn, memory-enhanced-decision-making, loki-memory-sync.
+
+**Regel:** Wenn Sascha „komprimiere alte Verläufe/Doku in ein Memory-Layer" verlangt (30.10., „mir egal" welches Tool) → deja ist die Antwort, NICHT cognee/graphify/Obsidian neu aufbauen (Duplikat). Volltext-Löschung der Rollouts ([[ssd-cache-automation]], 25 GB) ist nach deja-Indexierung verlustarm — wartet auf sein „ja rollout".
 
 ## dynamic-workflow-topologie-2026-10-15
 
@@ -15158,6 +15184,8 @@ Echte Entlastung braucht zusätzlich manuell: Desktop ausmisten (79 GB) — Sasc
 **13.10.2026 Stand:** `df` = **73 GiB frei** (05.10.: 42 GiB → **+31 GiB** in ~1 Woche). Ursache unbestätigt (Attribution): Kandidat ist diese Automation (12-Uhr-Läufe beim gelegentlichen Mac-Aufwachen in der Funkstille-Woche) — Nachweis über ihr Automation-Log möglich, nicht geprüft. Meldung im Abend-Brief der Tages-Routine ([[zcode-adhs-automationen]]).
 
 **30.10. Ordner-Klärung nach Saschas Wut („für was reinigst du… was ist das… 40 GB Application Support?"):** Er fürchtete, die Automation lösche seine Sachen — widerlegt: Automation fasst NUR var/folders X+T, ~/Library/Caches, ~/.cache, Trash an. Klare Zuordnung (gemessen): `~/.ollama/models/blobs` **15 GB = Ollama-Modell-Gewichtsdateien** (qwen2.5-coder:7b u. a., BrowserOS-Hauptmodell) → BEHALTEN; `~/Claude/Projects/TOOL SAMMLUNG VERKAUF/AI_STUDIO_EXPORTS` **3,3 GB, 807 Objekte (erstellt 30.08.) = seine exportierten AI-Studio-Tools, Verkaufs-Warenlager** → BEHALTEN; App Support ~37 GB Top: **Autodesk 12 GB — aber Autodesk NICHT als App installiert = Restdaten → EINZIGER Lösch-Kandidat, wartet auf GO** (Backup zuerst), autoclaw 3,9 GB, FileProvider/CloudDocs je 2,4 GB, Google 2,1 GB, BrowserOS 1,5 GB. SSD-Stand 30.10.: 36–39 GB frei, purgeable-Specher füllt Platte über Nacht scheinbar (~40 GB Schwankung normal, kein echtes Wachstum); Gesamtbelegung wächst langsam real (361→383 GB in 6 Wochen) — Treiber: Desktop ~70 GB, CoreDevice 19 GB, LM-Studio 14 GB, Autodesk-Rest 12 GB.
+
+**30.10. Runde 3 („wieso komprimierst du das nicht alles wie du sollst?"): Sascha wollte alte Chat-Verläufe/Doku in EIN komprimiertes Memory-Layer (caveman wiki/cognee/obsidian/graphify — „mir egal"). ERGEBNIS: Layer existiert bereits = **deja** (siehe [[deja-memory-layer]]) — 2.415 Sessions/118.882 Nachrichten (01.03.–30.10.) auf 196 MB Suchindex verdichtet, live aktualisiert. Damit sind die 25 GB Rollouts doppelt vorhanden (Volltext + Index) → Löschen „ja rollout" wäre verlustarm, wartet weiterhin auf GO (plus „ja autodesk" für 12 GB). Kein cognee/graphify-Neubau nötig — Duplikat vermeiden.
 
 **30.10. Runde 2 („rede ich undeutlich?"): Kern-Klärung geliefert — die Platte bleibt voll, weil sie NICHT von Müll voll wird, sondern von FESTEN Brocken, die kein Cleaner anfassen darf. Neu gemessen:** **`~/.zcode/cli/rollout` (ZCode-Chat-Verläufe) 7,8→25 GB in 6 Wochen = größter Wachstums-Treiber!** · Autodesk-Reste 12 GB · .ollama 16 GB (806 Blob-Dateien intakt, behalten) · .gemini 11 GB · .lmstudio 8 GB. **2 GO-Angebote mit Kurzbefehl gestellt, wartet auf Saschas Antwort:** **„ja zcode"** = löscht 25 GB alte Chat-Logs (verliert alte ZCode-Chat-Historie!) · **„ja autodesk"** = sichert + löscht 12 GB Reste. Sascha wiederholte dieselbe Frage nach der Klärung → nächstes Mal noch kürzere, tabellenlose Antwort mit Löschen JA/NEIN pro Punkt.
 

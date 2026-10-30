@@ -1,7 +1,7 @@
 ---
 app: zcode
 quelle: "saschalagler/cli/memories/projects/default-041661acc4598b22/memory/MEMORY.md"
-stand: 2026-10-29
+stand: 2026-10-30
 tags: [spiegel, zcode]
 ---
 
@@ -32,7 +32,8 @@ tags: [spiegel, zcode]
 
 - [Cline-App Backend-Fix](cline-app-desktop-backend-fix.md) — 18.09. „desktop backend exited" gefixt: steckengebliebener code-sidecar; Health-Check Port 25463/health; Fix-Einzeiler pkill code-sidecar + App-Neustart; ~/.cline ist NICHT die App
 
-- [SSD-Cache-Automation](ssd-cache-automation.md) — 18.09.: 29→42 GB frei; automation-03ce4628 täglich 12 Uhr (Mole-CLI+var/folders+Caches); Top-Analyse fertig: Barbulls „MEDIE: PLÄNE" 24 GB = größter Hebel, ~/.zcode/cli/rollout 7,8 GB alle <30T aktiv; 3 GO-Hebel offen
+- [SSD-Cache-Automation](ssd-cache-automation.md) — 18.09.–30.10.: automation-03ce4628 täglich 12 Uhr (Mole+var/folders+Caches); 30.10.-Klärung: Platte voll durch FESTE Brocken — rollout 25 GB („ja zcode" GO offen), Autodesk-Reste 12 GB („ja autodesk" GO offen), ollama/AI_STUDIO_EXPORTS behalten; deja-Index macht Rollout-Löschung verlustarm
+- [deja Memory-Layer](deja-memory-layer.md) — deja v0.23.2 = bestehendes komprimiertes Memory (2.415 Sessions/118k Nachrichten → 196 MB ~/.cache/deja, nur search/index/restore); bei Komprimierungs-Wünschen deja nutzen, KEIN cognee/graphify-Neubau
 
 - [Kein Raten — Agenten-Wissen](feedback-kein-raten-agenten-wissen.md) — 18.09. „HÖR AUF MIT MIR ZU RATEN": keine unbelegten Tool-Behauptungen; Unwissen = Research-Agent mit Quellen-Nachweis statt Formulierung ins Blaue; „alle Tools" = VOLLSTÄNDIGE Inventur
 
