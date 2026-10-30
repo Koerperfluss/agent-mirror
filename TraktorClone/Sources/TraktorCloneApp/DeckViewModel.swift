@@ -19,6 +19,9 @@ final class DeckViewModel: ObservableObject {
     @Published var stemGains: [Double] = [1, 1, 1, 1, 1]  // Mix + 4 Stems
     @Published var loopBeats: Int? = nil              // aktiver Beat-Loop (1/2/4/8)
     var autoDjArmed = false                           // Slice 8: Auto-DJ-Marker je Deck
+    // Slice 15: Flux Mode — Scrub/Platte wirken virtuell, Rückkehr automatisch
+    @Published var fluxActive = false
+    private var flux = FluxMode()
     private var syncEngine = SyncEngine()
     @Published var waveform: [Float] = []             // Slice 3: Peak-Buckets
     @Published var bpm: Double?                       // aus Library oder Setzung
@@ -40,10 +43,39 @@ final class DeckViewModel: ObservableObject {
 
     var duration: TimeInterval { state.duration }
 
+    /// Flux Mode umschalten: bei Aus springt das Deck dorthin zurück, wo es
+    /// ohne die Scrub-Bewegungen wäre (Traktor-Verhalten). Zeitbasis = Deck-
+    /// Position → Pause/Loop/pitch-sicher (Reviewer P2-1).
+    func toggleFlux() {
+        if fluxActive {
+            let back = flux.disengage(deckTime: state.currentPlayhead(now: clock))
+            fluxActive = false
+            seekSeconds(back)
+        } else {
+            let pos = state.currentPlayhead(now: clock)
+            flux.engage(position: pos, deckTime: pos)
+            fluxActive = true
+        }
+    }
+
+    /// Virtuelle Flux-Position für Waveform-Anzeige (nil = normaler Playhead).
+    var fluxDisplayPosition: TimeInterval? {
+        guard fluxActive else { return nil }
+        return min(max(flux.virtualPosition(deckTime: state.currentPlayhead(now: clock)), 0),
+                   max(duration, 0))
+    }
+
     /// Sichtbares Waveform-Fenster (Zoom): Playhead in der Mitte, Klicks mappen aufs Fenster.
     var window: (offset: Double, width: Double) {
         WaveWindow.visible(playheadFraction: duration > 0 ? playhead / duration : 0,
                            zoom: zoom, buckets: waveform.count)
+    }
+
+    /// Fenster für die Anzeige — folgt im Flux-Modus der virtuellen Position.
+    var displayWindow: (offset: Double, width: Double) {
+        let pos = fluxDisplayPosition ?? playhead
+        return WaveWindow.visible(playheadFraction: duration > 0 ? pos / duration : 0,
+                                  zoom: zoom, buckets: waveform.count)
     }
 
     func load() {
@@ -196,13 +228,20 @@ final class DeckViewModel: ObservableObject {
 
     /// Slice 3 + Rest-4: Seek über Waveform-Klick. Fraction bezieht sich auf das
     /// sichtbare Fenster (bei Zoom > 1 also nicht mehr auf den ganzen Track).
+    /// Flux aktiv → Bewegung wird virtuell gescribbt (Audio läuft unberührt weiter).
     func seekFraction(_ f: Double) {
         guard duration > 0 else { return }
-        let win = window
+        // Flux: Klick mappt aufs Anzeige-Fenster (virtuelle Position), sonst Playhead-Fenster
+        let win = fluxActive ? displayWindow : window
         let tFrac = win.offset + min(max(f, 0), 1) * win.width
         let t = tFrac * duration
-        state.seek(to: t, now: clock)
-        engine.seek(deck: index, to: t)
+        if fluxActive {
+            let current = fluxDisplayPosition ?? 0
+            flux.scrub(delta: t - current)
+        } else {
+            state.seek(to: t, now: clock)
+            engine.seek(deck: index, to: t)
+        }
     }
 
     /// Slice 4: FX-Parameter an die Engine-Kette durchreichen.

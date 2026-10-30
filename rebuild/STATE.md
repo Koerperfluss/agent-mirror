@@ -81,3 +81,11 @@ cd agent-mirror/TraktorClone
 - DeckAction erweitert: playPauseB/cueB/hotcue1-4B/loopInB/loopOutB (Router behandelt, alte JSONs laden weiter)
 - DVS: Line/Phono-Toggle (Default Line für BD-1380-USB), Info.plist-Mic-Text aktualisiert
 - 114/114 Tests (25 Suiten; 6 neue inkl. Integrationstest gegen die echte S4-Datei — grün)
+
+## Slice 14–16 (30.10., loki-dev BUILD) — Funktionsabgleich Traktor Pro 4 — FERTIG
+- Team: 3 cavecrew-Builder parallel (Flux+Limiter / PatternPlayer / FX-Extra) + Director (4 Decks, Integration) + cavecrew-Reviewer (REQUEST_CHANGES: 4×P2 — ALLE gefixt)
+- FluxMode auf Deck-Zeitbasis umgebaut (Reviewer P2-1): Pause/Loop/pitch-sicher, Tests erweitert (Pause-Freeze-Test)
+- 4 Decks: Engine 4 Ketten, UI-Reihe C/D, C/D fader-only (P2-4), AutoDJ lädt nur in freie Decks (P2-3), Pattern-Fallback ohne Überschreiben (P3-5)
+- Pattern Player: Kick/Snare/Hat/Clap-Synthese (LCG deterministisch, Kick cos-Punch, Hat 2.5× skaliert), 16-Step, 3 Presets → WAV → freies Deck
+- FX-Extra + MasterLimiter: Core + Tests bewiesen; Live-Verkabelung = Folge-Tickets (P3-6: Limiter gleitendes Max-Fenster + Block-Zustand; FX-Routing)
+- 138/138 Tests (28 Suiten; +24: Flux 8→9, Pattern 8, FX 8 — nach Fixes), F-040..F-044

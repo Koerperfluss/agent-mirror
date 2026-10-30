@@ -10,6 +10,11 @@ final class EngineHost: ObservableObject {
     let audio = AudioEngine()
     let deckA: DeckViewModel
     let deckB: DeckViewModel
+    let deckC: DeckViewModel                       // Slice 15: 4-Deck-Modus
+    let deckD: DeckViewModel
+    /// Alle Decks in Slot-Reihenfolge (Auto-DJ, DVS, Rotation).
+    var allDecks: [DeckViewModel] { [deckA, deckB, deckC, deckD] }
+    @Published var fourDeckMode = false            // UI: zweite Deck-Reihe ein/aus
     private var mixer = Mixer()
     var sync = SyncEngine()
     let recorder = MasterRecorder()
@@ -44,6 +49,8 @@ final class EngineHost: ObservableObject {
     init() {
         deckA = DeckViewModel(index: 0, engine: audio)
         deckB = DeckViewModel(index: 1, engine: audio)
+        deckC = DeckViewModel(index: 2, engine: audio)
+        deckD = DeckViewModel(index: 3, engine: audio)
         loadLibrary()
         playlists = PlaylistStore.load()
         refreshAudioDevices()
@@ -85,14 +92,13 @@ final class EngineHost: ObservableObject {
         guard dvs.enabled else { return }
         let pairs: [(DeckViewModel, Int)] = [(deckA, 0), (deckB, 1)]
         for (vm, deck) in pairs {
-            guard vm.duration > 0 else { continue }
+            guard vm.duration > 0, !vm.fluxActive else { continue }   // Flux: Platte ruht
             if let t = dvs.trackTime(deck: deck), abs(vm.playhead - t) > 0.08 {
                 vm.seekSeconds(t)
             }
             vm.applyPlatterSpeed(dvs.deckSpeed[deck])
         }
     }
-
     func setCrossfader(_ x: Double) {
         crossfader = x
         applyCrossfader(x)
@@ -102,6 +108,10 @@ final class EngineHost: ObservableObject {
         mixer.crossfader = x
         deckA.applyMixerVolume(deckA.fader * mixer.outputGain(channel: 0) * 2)
         deckB.applyMixerVolume(deckB.fader * mixer.outputGain(channel: 1) * 2)
+        // C/D hängen nicht am Crossfader (Traktor-Semantik): Fader-only, damit
+        // sie nicht unkontrolliert in den Master laufen (Reviewer P2-4).
+        deckC.applyMixerVolume(deckC.fader)
+        deckD.applyMixerVolume(deckD.fader)
     }
 
     func toggleSyncMaster() { sync.toggleMaster(syncMaster == 0 ? 1 : 0) }
@@ -140,12 +150,21 @@ final class EngineHost: ObservableObject {
         finishTimer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { [weak self] _ in
             Task { @MainActor in
                 guard let self, self.autoDjEnabled, self.autoDjSource.isEmpty == false else { return }
-                for vm in [self.deckA, self.deckB] {
+                let decks = self.fourDeckMode ? self.allDecks : [self.deckA, self.deckB]
+                for vm in decks {
                     let remaining = vm.state.duration - vm.playhead
                     if vm.state.isPlaying, vm.state.duration > 0,
                        remaining < 5, remaining > 0, !vm.autoDjArmed {
                         vm.autoDjArmed = true
-                        if let next = self.autoDj.next(from: self.autoDjSource) {
+                        // 4-Deck: nur in ein FREIES Deck laden — sonst Skip
+                        // (Reviewer P2-3: nie ein spielendes Deck überschreiben).
+                        // 2-Deck: klassisches A/B-Ping-Pong wie zuvor.
+                        if self.fourDeckMode {
+                            guard let free = decks.first(where: { !$0.state.isPlaying && $0 !== vm }),
+                                  let next = self.autoDj.next(from: self.autoDjSource) else { continue }
+                            self.load(track: next, deck: free.index)
+                            free.togglePlay()
+                        } else if let next = self.autoDj.next(from: self.autoDjSource) {
                             let other = vm === self.deckA ? self.deckB : self.deckA
                             self.load(track: next, deck: other.index)
                             if !other.state.isPlaying { other.togglePlay() }
@@ -181,7 +200,7 @@ final class EngineHost: ObservableObject {
         if path.hasPrefix("/") == false && !path.contains(":") { path = "/" + path }
         let url = URL(fileURLWithPath: path)
         guard FileManager.default.fileExists(atPath: url.path) else { return }
-        let vm = deck == 0 ? deckA : deckB
+        guard (0...3).contains(deck), let vm = allDecks[safe: deck] else { return }
         vm.load(url: url)
         vm.bpm = track.bpm
     }
@@ -239,6 +258,72 @@ final class EngineHost: ObservableObject {
             playlists[i].trackPaths.append(track.path)
             persistPlaylists()
         }
+    }
+
+    // MARK: Pattern Player (Slice 15)
+
+    /// Stil-Presets: 16 Steps je Spur (Kick/Snare-Hat/Clap vereinfacht auf 3 Spuren).
+    enum PatternStyle: String, CaseIterable {
+        case house, techno, hipHop
+
+        /// Steps: [kick, hat, clap] — 4/4-Raster.
+        var tracks: [DrumSound: [Bool]] {
+            let on = Array(repeating: true, count: 16)
+            var kick = [Bool](repeating: false, count: 16)
+            var hat = [Bool](repeating: false, count: 16)
+            var clap = [Bool](repeating: false, count: 16)
+            switch self {
+            case .house:
+                for i in [0, 4, 8, 12] { kick[i] = true }
+                for i in [2, 6, 10, 14] { hat[i] = true }
+                for i in [4, 12] { clap[i] = true }
+            case .techno:
+                for i in stride(from: 0, to: 16, by: 2) { kick[i] = true }
+                _ = on
+                for i in stride(from: 1, to: 16, by: 2) { hat[i] = true }
+                clap[14] = true
+            case .hipHop:
+                for i in [0, 7, 10] { kick[i] = true }
+                for i in [4, 12] { hat[i] = true; clap[i] = true }
+            }
+            return [.kick: kick, .hat: hat, .clap: clap]
+        }
+    }
+
+    /// Rendert 2 Takte Drum-Pattern als WAV und lädt es auf ein freies Deck.
+    /// BPM kommt vom Master-Deck (fallback 124).
+    func loadPattern(_ style: PatternStyle) {
+        let bpm = (sync.masterDeck == 0 ? deckA.bpm : deckB.bpm) ?? 124
+        let seq = PatternSequencer(bpm: bpm, steps: style.tracks)
+        let samples = seq.renderLoop(sampleRate: 44100, bars: 2)
+
+        // WAV schreiben (16-bit mono) — RIFF-Header + PCM-Daten
+        let url = FileManager.default.temporaryDirectory
+            .appendingPathComponent("pattern-\(style.rawValue)-\(Int(bpm)).wav")
+        try? FileManager.default.removeItem(at: url)
+        let pcm: [Int16] = samples.map { Int16(max(-1, min(1, $0)) * 32000) }
+        var data = Data()
+        let byteRate = UInt32(44100 * 2)
+        let dataSize = UInt32(pcm.count * 2)
+        func str(_ s: String) { s.utf8.forEach { data.append($0) } }
+        func u32(_ v: UInt32) { withUnsafeBytes(of: v.littleEndian) { data.append(contentsOf: $0) } }
+        func u16(_ v: UInt16) { withUnsafeBytes(of: v.littleEndian) { data.append(contentsOf: $0) } }
+        str("RIFF"); u32(36 + dataSize); str("WAVE")
+        str("fmt "); u32(16); u16(1); u16(1)
+        u32(44100); u32(byteRate); u16(2); u16(16)
+        str("data"); u32(dataSize)
+        pcm.withUnsafeBytes { data.append(contentsOf: $0) }
+        do {
+            try data.write(to: url, options: .atomic)
+        } catch {
+            return
+        }
+
+        // Freies Deck suchen (C/D bevorzugt im 4-Deck-Modus) — alle belegt →
+        // gar nicht laden statt spielendes Deck zu überschreiben (Reviewer P3-5).
+        let candidates = fourDeckMode ? [deckC, deckD, deckA, deckB] : [deckA, deckB]
+        guard let target = candidates.first(where: { !$0.state.isPlaying }) else { return }
+        target.load(url: url)
     }
 
     // MARK: Spotify-Import (Rest-7, nur Metadaten — kein Audio-Streaming)
@@ -385,6 +470,13 @@ final class EngineHost: ObservableObject {
         for l in MappingStore.loadOrDefault(from: MappingStore.defaultURL()) {
             if let a = l.assignment { midi.router.assign(a) }
         }
+    }
+}
+
+/// Sicheres Index-Subscript für kleine Collections (4 Decks).
+extension Array {
+    subscript(safe index: Int) -> Element? {
+        indices.contains(index) ? self[index] : nil
     }
 }
 

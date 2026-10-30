@@ -1,6 +1,6 @@
 import AVFoundation
 
-/// Audio-Backend: 2 Decks über AVAudioEngine (PlayerNode + TimePitch + FX-Kette
+/// Audio-Backend: 4 Decks über AVAudioEngine (PlayerNode + TimePitch + FX-Kette
 /// pro Deck), Stem-Player je Deck (echtes 4-Stem), VU-Pegel-Messung, Loops.
 public final class AudioEngine {
     public enum DeckError: Error { case loadFailed(String) }
@@ -14,11 +14,11 @@ public final class AudioEngine {
     /// Slice 8: Stem-Player pro Deck (echtes 4-Stem-Playback über eigene Dateien).
     private var stemPlayers: [Int: StemPlayer] = [:]
     /// Slice 8: Pegel-Messung je Deck (Peak 0...1, per Tap).
-    private var deckLevels: [Int: Double] = [0: 0, 1: 0]
-    private var lastTapTime: [Int: TimeInterval] = [0: 0, 1: 0]
+    private var deckLevels: [Int: Double] = [0: 0, 1: 0, 2: 0, 3: 0]
+    private var lastTapTime: [Int: TimeInterval] = [0: 0, 1: 0, 2: 0, 3: 0]
 
     public init() {
-        for d in 0...1 {
+        for d in 0...3 {
             let player = AVAudioPlayerNode()
             let tp = AVAudioUnitTimePitch()
             let chain = FxChain()
@@ -64,9 +64,9 @@ public final class AudioEngine {
         if !engine.isRunning { try engine.start() }
     }
 
-    /// Lädt eine Audio-Datei auf ein Deck (0/1).
+    /// Lädt eine Audio-Datei auf ein Deck (0–3).
     public func load(url: URL, deck: Int) throws -> Double {
-        guard (0...1).contains(deck) else { throw DeckError.loadFailed("Deck \(deck) existiert nicht") }
+        guard (0...3).contains(deck) else { throw DeckError.loadFailed("Deck \(deck) existiert nicht") }
         guard let file = try? AVAudioFile(forReading: url) else {
             throw DeckError.loadFailed("Nicht lesbar: \(url.lastPathComponent)")
         }
@@ -79,7 +79,7 @@ public final class AudioEngine {
 
     /// Slice 8: Stem-Datei laden (echte 5-Track-Wiedergabe); wirft bei Fehlern durch.
     public func loadStem(url: URL, deck: Int) throws -> Double {
-        guard (0...1).contains(deck) else { throw DeckError.loadFailed("Deck \(deck) existiert nicht") }
+        guard (0...3).contains(deck) else { throw DeckError.loadFailed("Deck \(deck) existiert nicht") }
         let sp = stemPlayers[deck] ?? StemPlayer()
         try sp.load(url: url)
         players[deck]?.stop()
@@ -156,7 +156,7 @@ public final class AudioEngine {
     private var loops: [Int: LoopState] = [:]
 
     public func enableLoop(deck: Int, startSec: Double, endSec: Double) {
-        guard (0...1).contains(deck), endSec > startSec else { return }
+        guard (0...3).contains(deck), endSec > startSec else { return }
         disableLoop(deck: deck)
         let duration = endSec - startSec
         // Swift-6-Concurrency: Timer-Closure ist @Sendable; Engine ist nicht

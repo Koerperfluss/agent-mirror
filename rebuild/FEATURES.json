@@ -325,5 +325,50 @@
   "implementation_status": "implemented",
   "notes": "Slice 13: BD-1380-USB hat Phono-Preamp eingebaut → Line-Modus als Default; klassische Phono-Verkabelung umschaltbar (Threshold-Faktor 32)",
   "test_refs": "DVSController.lineLevel"
+ },
+ {
+  "id": "F-040",
+  "area": "Deck",
+  "name": "Flux Mode",
+  "evidence_level": "documented",
+  "implementation_status": "implemented",
+  "notes": "Slice 15: Deck-Zeitbasis (pause/loop/pitch-sicher), virtuelles Scrub in Waveform, Rückkehr ans Timer-Ziel beim Ausschalten; ⚡︎-Button je Deck; DVS ruht während Flux",
+  "test_refs": "FluxLimiterTests"
+ },
+ {
+  "id": "F-041",
+  "area": "Master",
+  "name": "Ozone-Style Master-Limiter (Core)",
+  "evidence_level": "documented",
+  "implementation_status": "implemented",
+  "notes": "Slice 15: Look-Ahead-Peak-Limiter (Ceiling+Release-Glättung, Safety-Clamp) — DSP bewiesen; Live-Verkabelung in den AVAudioEngine-Master-Graph = Folge-Ticket (braucht Render-Node)",
+  "test_refs": "FluxLimiterTests"
+ },
+ {
+  "id": "F-042",
+  "area": "Performance",
+  "name": "Pattern Player (Drum-Synthese)",
+  "evidence_level": "documented",
+  "implementation_status": "implemented",
+  "notes": "Slice 15: Kick(cos-Sweep)/Snare/Hat/Clap rein synthetisiert (deterministisches LCG), 16-Step-Sequencer, 3 Stil-Presets (House/Techno/HipHop) → 2 Takte WAV → freies Deck (Master-BPM-getaktet)",
+  "test_refs": "PatternPlayerTests"
+ },
+ {
+  "id": "F-043",
+  "area": "FX",
+  "name": "Phaser + Bitcrusher + Gate (Core)",
+  "evidence_level": "documented",
+  "implementation_status": "implemented",
+  "notes": "Slice 15: 4-Stufen-Allpass-Phaser (LFO), Bitcrusher (Bits+Downsample), Gate (Threshold/Release) — DSP bewiesen; Live-Routing in FX-Kette = Folge-Ticket",
+  "test_refs": "FxExtraTests"
+ },
+ {
+  "id": "F-044",
+  "area": "Deck",
+  "name": "4-Deck-Modus (A–D)",
+  "evidence_level": "documented",
+  "implementation_status": "implemented",
+  "notes": "Slice 15: AudioEngine 4 Ketten, 2/4-Toggle, zweite Deck-Reihe C/D (eigene Tasten a/s/d + j/k/l), C/D fader-only (kein XF, Traktor-Semantik), AutoDJ rotiert nur in freie Decks, Library →C/→D",
+  "test_refs": "138-Test-Suite + Build + App-Lauf"
  }
 ]

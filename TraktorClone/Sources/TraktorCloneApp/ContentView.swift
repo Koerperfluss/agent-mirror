@@ -52,6 +52,15 @@ struct ContentView: View {
                 deckView(vm: engineHost.deckB, label: "B", keys: ("u", "i", "o"))
             }
             .padding(.horizontal, 12)
+            // Slice 15: 4-Deck-Modus — zweite Reihe C/D
+            if engineHost.fourDeckMode {
+                HStack(alignment: .top, spacing: 12) {
+                    deckView(vm: engineHost.deckC, label: "C", keys: ("a", "s", "d"))
+                    deckView(vm: engineHost.deckD, label: "D", keys: ("j", "k", "l"))
+                }
+                .padding(.horizontal, 12)
+                .padding(.top, 8)
+            }
             libraryView
                 .padding(.horizontal, 12)
                 .padding(.bottom, 12)
@@ -83,6 +92,10 @@ struct ContentView: View {
 
             // Sync-Sektion (BPM + Beat-Phase)
             HStack(spacing: 4) {
+                Button(engineHost.fourDeckMode ? "4 Decks ✓" : "2 Decks") {
+                    engineHost.fourDeckMode.toggle()
+                }
+                .buttonStyle(.djControl(tint: engineHost.fourDeckMode ? Theme.gr : Theme.acc))
                 Button(engineHost.syncMaster == 1 ? "Master: B" : "Master: A") {
                     engineHost.toggleSyncMaster()
                 }
@@ -235,6 +248,9 @@ struct ContentView: View {
 
                 Button(vm.state.keylock ? "Key ✓" : "Key") { vm.state.toggleKeylock() }
                     .buttonStyle(.djControl(tint: vm.state.keylock ? Theme.gr : Theme.acc))
+                Button(vm.fluxActive ? "⚡︎ Flux ✓" : "⚡︎ Flux") { vm.toggleFlux() }
+                    .buttonStyle(.djControl(tint: vm.fluxActive ? Theme.yl : Theme.acc))
+                    .help("Flux: Scrub/Platten-Bewegungen wirken virtuell — beim Ausschalten zurück im Takt")
             }
 
             // ── Stem-Mixer ──
@@ -330,8 +346,10 @@ struct ContentView: View {
                 return
             }
             let n = all.count
-            let win = vm.window
+            let win = vm.displayWindow
             let total = vm.state.duration
+            // Flux: Playhead-Fenster folgt der virtuellen Position
+            let displayPos = vm.fluxDisplayPosition ?? vm.playhead
 
             /// Track-Sekunde → x im sichtbaren Fenster.
             func xFor(_ time: TimeInterval) -> CGFloat {
@@ -391,9 +409,9 @@ struct ContentView: View {
                 if let t = vm.state.hotcues[i] { marker(t, markerColors[i - 1], flag: true) }
             }
 
-            // Playhead mit Glow (Fenstermitte bei Zoom > 1)
+            // Playhead mit Glow (Fenstermitte bei Zoom > 1; Flux = virtuelle Position)
             if total > 0 {
-                let x = xFor(vm.playhead)
+                let x = xFor(displayPos)
                 if x >= 0 && x <= w {
                     ctx.fill(Path(CGRect(x: x - 1, y: 0, width: 4, height: h)),
                              with: .color(Theme.rd.opacity(0.3)))
@@ -526,6 +544,14 @@ struct ContentView: View {
                 Text("Library").font(Theme.fHeadline).foregroundStyle(Theme.muted)
                 Text("(\(engineHost.library.count))")
                     .font(Theme.fCaption).foregroundStyle(Theme.muted)
+                // Pattern Player: Drum-Loop als Track in freies Deck
+                ForEach(EngineHost.PatternStyle.allCases, id: \.rawValue) { style in
+                    Button("🥁 \(style.rawValue == "hipHop" ? "HipHop" : style.rawValue.capitalized)") {
+                        engineHost.loadPattern(style)
+                    }
+                    .buttonStyle(.djControl(tint: Theme.gr))
+                    .help("2 Takte \(style.rawValue)-Groove als Track ins freie Deck")
+                }
                 Spacer()
                 Button("🎧 Spotify-Playlist …") { engineHost.showSpotifyImport = true }
                     .buttonStyle(.djControl(tint: Theme.gr))
@@ -561,6 +587,12 @@ struct ContentView: View {
                         .buttonStyle(.djControl)
                     Button("→ B") { engineHost.load(track: track, deck: 1) }
                         .buttonStyle(.djControl)
+                    if engineHost.fourDeckMode {
+                        Button("→ C") { engineHost.load(track: track, deck: 2) }
+                            .buttonStyle(.djControl)
+                        Button("→ D") { engineHost.load(track: track, deck: 3) }
+                            .buttonStyle(.djControl)
+                    }
                 }
                 .listRowBackground(Theme.surface)
             }
