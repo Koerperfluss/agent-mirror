@@ -1,6 +1,6 @@
 # cli (antigravity)
 
-Zuletzt gespiegelt: 2026-10-30 11:27 UTC
+Zuletzt gespiegelt: 2026-10-30 11:43 UTC
 
 ## dwfrun-cbe44067-32c7-4a38-800e-206b4b4823d4_artifact_1_1-tool-result-3f2bcea8-8bd5-4aa2-aa2e-2a34d6f279c2
 
@@ -4669,6 +4669,26 @@ StF: [BGBl. I Nr. 120/2002](/Dokumente/BgblPdf/2002_120_1/2002_120_1.pdf) (NR: G
 [BGBl. I Nr. 177/2021](/eli/bgbl/I/2021/177) (NR: GP XXVII [RV 945](https://www.parlament.gv.at/gegenstand/XXVII/I/945) [AB 990](https://www.parlament.gv.at/gegenstand/XXVII/I/990) [S. 117.](https://www.parlament.gv.at/gegenstand/XXVII/NRSITZ/117) BR: [AB 10721](https://www.parlament.gv.at/gegenstand/BR/I-BR/10721) [S. 928.](https://www.parlament.gv.at/gegenstand/BR/BRSITZ/928))
 [BGBl. I Nr. 52/2023](/eli/bgbl/I/2023/52) (NR: GP XXVII [RV 1927](https://www.parlament.gv.at/gegenstand/XXVII/I/1927) [AB 1997](https://www.parlament.gv.at/gegenstand/XXVII/I/1997) [S. 209.](https://www.parlament.gv.at/gegenstand/XXVII/NRSITZ/209) BR: [AB 11226](https://www.parlament.gv.at/gegenstand/BR/I-BR/11226) [S. 953.](https://www.parlament.gv.at/gegenstand/BR/BRSITZ/953))
 
+## dwfrun-28e5e347-7eb2-458b-8414-fbf1d8e0b99a_artifact_1_1-tool-result-7528adc5-00cd-4bd6-91a7-aa709ac666c6
+
+# TraktorClone Abschluss-Workflow
+
+**Prüfer-Urteil:** PASS — 4 Findings (0 blockierend; keine).
+**Testsuite:** exit 0.
+
+## Baustellen
+- Master-Routing (Limiter live, Bitcrusher/Gate-Nodes): Fx.swift: FxChain um AVAudioUnitBitcrusher (Default bypass, bitDepth 8) und AVAudioUnitDynamicsProcessor als Noise-Gate (Default bypass) erweitert; neues `lastNode`-Computed-Property (Rückgabe Gate) als Ketten-Ende; public setBitcrusher(bits:downsample:enabled:) mit bits 1...16 und downsample-Faktor 1...32 (gegen Node-Sample-Rate gerechnet, Rate in Hz geclamped 100...200000); public setGate(thresholdDb:releaseMs:enabled:) mit Attack fest 1 ms, Release wirksam 10...2000 ms, ExpansionRatio 50 als Gate, Kompressor-Ast transparent (threshold +20 dB); bypassAll() schaltet jetzt auch Bitcrusher+Gate trocken.; AudioEngine.swift: Master-Limiter (AVAudioUnitDynamicsProcessor, private) in Output-Kette: mainMixerNode → masterLimiter → engine.outputNode (explizite Connects in init, ersetzen die implizite Output-Verbindung); Konfiguration threshold -1.5 dB, headRoom 1.5 dB (Limit-Zone bis 0 dBFS), attack 1 ms, release 50 ms, keine Expansion, masterGain 0; public setMasterLimiter(enabled:) toggelt nur bypass; Deko-Init-Loop verkabelt jetzt reverb → bitcrusher → gate → mainMixer (attach + connect) und der VU-Meter-Tap hängt am chain.lastNode statt am Reverb.; MasterRecorder.swift: Recorder-Instanz hält MasterLimiter-Struct mit ceiling 0.98; im mainMixer-Tap wird vor dem Schreiben pro Block und pro Kanal limitedCopy(of:) mit limiter.process(_:sampleRate:) erzeugt und DIE KOPIE geschrieben (Tap-Buffer der Engine bleibt unangetastet — Live-Audio unverändert); Fallback bei Puffer-Allokationsfehler: unbegrenzter Mitschnitt statt Aufnahmedatenverlust.
+- Flexible Beatgrids: FlexibleGrid.swift: TempoChange + FlexibleBeatGrid (stetige Beat-Integration über Temposegmente, Fallback 120 BPM bei leerem Grid, erster BPM gilt auch rückwärts vor changes[0].time) + FlexibleGridAnalyzer.detect (Segmentierung à segmentSeconds, BPM je Segment via BPMDetector, Median-Glättung 3er-Fenster, Nil-Auffüllung, Merge unter tolerancePct, Gruppen-Median als Change-BPM); FlexibleGridTests.swift: 13 Swift-Testing-Tests — konstantes Grid (bpm konstant, Inversheit), Tempowechsel 120→132 @ 30s (bpm an Grenze, Stetigkeit von beatIndex, Roundtrip fernab der Grenze, exakte Beat-Integration 50s=104 Beats), leeres Grid Fallback, init-Sortierung, erstes Segment beginnt beim ersten Change (bpm davor = erster BPM, negative beatIndex), detect auf synthetischen Click-Track (120→132: 2 Changes, ±2 tolerant, Wechselzeit 15–25s; konstant 120: genau 1 Change; <4s-Material: leeres Grid; kurzes Restsegment: kein Extra-Change; hoher tolerancePct: 1 Change mit Median 126)
+- Doku: agent-mirror/TraktorClone/README.md — Bedienungs-Doku für TraktorClone (101 Zeilen, 12 H2-Blöcke): Was ist das (44 Features, DSP-Analyse, 138 Tests) · Installation (git clone -b cline/s4sx83cs → ./make_app.sh → build/TraktorClone.app, macOS 13+, swift --version) · Erster Start (collection.nml Auto-Load, Drag&Drop, Tastatur A/B/C/D) · Mixing-Tabelle (Play/Cue, Hotcues 1-4, Beatloops, Pitch ±8%, Keylock, Sync A/B, Flux ⚡︎, Fader, VU) · Pattern Player 🥁 · FX (Deck-FX inkl. Bitcrusher/Gate, Master-Limiter) · DVS-Setup in 5 Steps + ehrliche Grenze (Live-Kalibrierung ausstehend) · MIDI (Learn, JSON-Export, .tsi-Reader, HID-Hinweis) · Playlists & Spotify (nur Metadaten, Env-Variablen, kein Streaming) · Recording (AIFF + Limiter) · Tests/Entwicklung (./run_tests.sh, Core vs App) · Troubleshooting-Tabelle (Library/MIDI/DVS)
+
+## Prüfbefunde
+- [P3] agent-mirror/TraktorClone/README.md:7: Testzahl veraltet: '138 Tests' — grep über Tests/TraktorCloneCoreTests/*.swift zählt 151 @Test (inkl. 13 neuer FlexibleGridTests); 138+13=151, Zahl wurde beim neuen Slice nicht hochgezogen.
+- [P3] agent-mirror/TraktorClone/Sources/TraktorCloneCore/AudioEngine.swift:20: Data Race auf deckLevels/lastTapTime: Tap-Closure (Audio-Render-Thread, AudioEngine.swift:91-92) mutiert dieselben Dictionaries, die level(deck:) (AudioEngine.swift:76-79) vom UI-Thread liest — konkurrierender Swift-Dictionary-Zugriff ist undefiniert und kann selten crashen. Muster ist pre-existing (Taps hingen vorher am Reverb), durch die Verlegung ans Ketten-Ende nicht verschlimmert; kompiliert unter Swift 6, da Tap-Closures nicht @Sendable sind.
+- [P3] agent-mirror/TraktorClone/Sources/TraktorCloneCore/MasterRecorder.swift:62: removeTap(onBus: 0) am mainMixerNode entfernt ALLE Taps dieses Busses, nicht nur den Recorder-Tap — Falle für künftige Zusatz-Taps am Master. Aktuell harmlos: grep über Sources/ belegt, dass MasterRecorder der einzige mainMixer-Tap ist (Meter-Taps hängen an den 4 Gate-Nodes, DVS am inputNode).
+- [P3] agent-mirror/TraktorClone/Sources/TraktorCloneCore/Fx.swift:45: 48-kHz-Fallback in setBitcrusher ist praktisch tot: outputFormat(forBus: 0) eines unverbundenen Node liefert ein Standard-Format statt 0 Hz, d.h. vor Engine-Attach/-Start kann die Basisrate von der echten Engine-Rate abweichen und der Downsample-Faktor nur approximativ stimmen. Bricht nichts (Clamp 100…200000 hält den Wert gültig), nur die Genauigkeitsannahme im Doc-Kommentar ist optimistic.
+
+## Director-Anschluss (nach diesem Workflow)
+App-Neustart (make_app.sh + open) und Git-Push folgen außerhalb des Workflows (Deploy-GO-Regel).
 ## dwfrun-b62a1f9f-a520-4e52-b569-c5cc2f4f9790_artifact_1_1-tool-result-5aef739e-f4e2-48f8-8dc7-d467c44e9ec8
 
 # Rassel-Isolation bei 56 s — Ergebnis
