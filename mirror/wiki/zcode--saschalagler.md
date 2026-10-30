@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-30 04:04 UTC
+Zuletzt gespiegelt: 2026-10-30 04:21 UTC
 
 ## AGENTS
 
@@ -12049,11 +12049,12 @@ Music stem separation is set up and verified working on this machine (2026-10-21
 - [Mimosa-Hook: Code-Dateien nur via Write-Tool](mimosa-hook-skills-write-tool.md) — Bash-Kopie von .py/.yaml nach ~/.claude/skills wird blockiert
 - [UI/UX-Skills Reparatur 26.10.2026](uiux-skills-repair-2026-10-26.md) — Skills komplettiert + verdrahtet; HUB-Fixes erledigt (Backup da); offen: Backup-Watcher, Manifest, Stufe C
 - [Einfache Sprache](simple-language-responses.md) — Sascha versteht fachliche Antworten oft nicht: radikal vereinfachen, max 3 Punkte, 1 Entscheidung pro Antwort
-- [Lokale Browser-Tests](local-browser-testing-gotchas.md) — file:// blockiert → http.server; nach Edits Cache-Buster-URL nutzen (Altversions-Falle)
+- [Lokale Browser-Tests](local-browser-testing-gotchas.md) — file:// blockiert → http.server; Cache-Buster; kein SPA-Fallback; agent-browser-CLI als Alternative
 - [ZCode-Skills-Landschaft](zcode-skills-landscape.md) — 251 Slash-Befehle in ~/.zcode/commands/ (27.10. generiert), sichtbar erst nach App-Neustart; /workflow fest eingebaut; 11 Skill-Ordner kaputt
-- [Product-Canvas-Nachbau](product-canvas-rebuild.md) — Web-Nachbau VOLL LAUFFÄHIG lokal (Emulator, ?mock=1); ab 30.10. abgelöst von LokiCanvas (nativ)
+- [Product-Canvas-Nachbau](product-canvas-rebuild.md) — AKTIV: native Tauri-App „Product Canvas Local" gebaut (Firebase-Aliase → lokaler Shim); Browser-Beweis komplett, Tauri-Webview hängt noch im Loading
+- [Tauri-2-Fallen](tauri-build-gotchas.md) — capabilities statt fs-scope, withGlobalTauri, --bundles app (DMG crasht), SPA-Hard-Nav = weiß, fehlende Named-Exports failen Rollup
 - [gstack-Werkzeugkasten](gstack-toolkit.md) — ~/gstack = Garry Tans KI-Toolkit; bin/-Befehle laufen automatisch, nicht von Hand anfassen
-- [LokiCanvas Native-App](lokicanvas-native-app.md) — AKTIV: SwiftUI-Mac-App läuft, 27/27 Tests, Ollama lokal (nur coder:7b echt, 9b/vl-Blobs fehlen), Push von Guardrail blockiert
+- [LokiCanvas Native-App](lokicanvas-native-app.md) — FERTIG: SwiftUI-Mac-App läuft, 27/27 Tests, Ollama lokal (nur coder:7b echt, 9b/vl-Blobs fehlen), Push von Guardrail blockiert
 - [CLT ohne Xcode: kein @State](clt-swiftui-no-state.md) — @State-Makro schlägt fehl → @Published+@StateObject-Muster; Testing-Plugin-Pfad; AVAudioSession iOS-only
 
 ## clt-swiftui-no-state
@@ -12106,22 +12107,24 @@ Gruppen: `gstack-brain-*` (Agenten-Gedächtnis, Git-Sync), `gstack-gbrain-*` (Su
 
 ---
 name: local-browser-testing-gotchas
-description: Lokale HTML im Playwright-MCP testen — file:// blockiert,
-  http.server starten, Cache-Buster gegen Alt-Versionen
+description: Browser-Testing lokal — file:// blockiert, http.server ohne
+  SPA-Fallback, Cache-Buster, agent-browser-CLI als Playwright-Alternative
 metadata:
   node_type: memory
-  type: project
+  type: reference
   originSessionId: session_3a1cc25ff2c2e82e01c329cebdb4fa22
 ---
 
-Beim Browser-Test lokaler Dateien (26.10., hub-glass.html):
+Beim Browser-Test lokaler Apps:
 
-1. **Playwright-MCP blockiert `file://`** → stattdessen `python3 -m http.server <Port> --bind 127.0.0.1` im Projektordner (Bash mit run_in_background) starten, dann `http://127.0.0.1:<Port>/<datei>` testen; Server danach per TaskStop beenden.
-2. **Browser-Cache-Falle:** Nach Datei-Edits liefert `page.goto` ohne Weiteres die ALTE Seite aus dem Cache → Messungen an der Altversion (passierte 26.10.: Drossel schien „kaputt", 23 statt 4 Fehler). Immer mit Cache-Buster neu laden (`…html?v=neu1`) oder Server-Auslieferung per curl gegengeprüfen.
-3. Messreihen über Zeit (Konsolen-Fehler-Zählung) erst nach Cache-Buster als beweiskräftig werten; Zähler-Stände zwischen eigenen Tool-Calls können Minuten umfassen (Seite lebt weiter).
-4. **Self-signed HTTPS wird hart blockiert** (27.10., Product Canvas): Playwright wirft `ERR_CERT_AUTHORITY_INVALID` ohne Durchklick-Warnseite → für automatisierte Tests eine zweite Vite-Instanz ohne `ssl()`/`https` auf Extra-Port starten (z. B. `vite.dev-http.config.ts` :5188); der HTTPS-Server bleibt für den Nutzer im echten Browser.
+1. **Playwright-MCP blockiert `file://`** → `python3 -m http.server <Port> --bind 127.0.0.1` im Projektordner (run_in_background), dann `http://127.0.0.1:<Port>/…`; Server danach per TaskStop beenden.
+2. **Browser-Cache-Falle:** Nach Edits liefert goto die ALTE Seite (26.10.: Drossel schien „kaputt") → Cache-Buster (`?v=neu1`) oder curl-Gegenprobe der Server-Auslieferung. Vite-Asset-Hashes im HTML gegen `ls dist/assets` prüfen, wenn Symptome „kleben" bleiben.
+3. Konsolen-Zähler zwischen Tool-Calls können Minuten umfassen — Deltamessung erst nach Cache-Buster werten.
+4. **Self-signed HTTPS hart blockiert** (`ERR_CERT_AUTHORITY_INVALID`, keine Durchklick-Seite) → zweite Vite-Instanz ohne ssl() auf Extra-Port für automatisierte Tests.
+5. **python http.server hat KEINEN SPA-Fallback** (30.10., Product Canvas): Client-Routen wie `/<docId>` ergeben 404 „Error response" — im Browser sichtbar, in Tauri als weißer Screen getarnt. Für SPA-Tests: Route per History-API erreichen statt hart zu navigieren, oder Server mit Fallback.
+6. **`agent-browser`-CLI** (`/opt/homebrew/bin/agent-browser`) = robuste Alternative, wenn Playwright-MCP spinnt: `open <url>`, `snapshot`, `eval "js"`, `console`, `errors`, `click @ref`, `wait` — Terminal-basiert (Chromium), inkl. echter Konsole/Errors; startet eigenen Browser (close + neu öffnen = frische Session, erst dann eval; ein „open" danach landet evtl. auf about:blank → nochmal open).
 
-**Why:** Diese Fallen kosten sonst Fehldiagnosen an Saschas Live-Apps. **How to apply:** Bei jedem lokalen UI-Test: Server → Cache-Buster-URL → Delta-Messung. Siehe [[uiux-skills-repair-2026-10-26]].
+**Why:** Diese Fallen kosteten Fehldiagnosen an Saschas Live-Apps. **How to apply:** Server → Cache-Buster → Deltamessung; bei Playwright-MCP-Ausfällen direkt agent-browser. Siehe [[tauri-build-gotchas]], [[product-canvas-rebuild]].
 
 ## lokicanvas-native-app
 
@@ -12178,43 +12181,37 @@ Der Mimosa PreToolUse-Hook lehnt Bash-Befehle ab, die Python-/Config-Dateien dir
 
 ---
 name: product-canvas-rebuild
-description: Aktives Projekt — Google Product Canvas (romannurik) als eigene Full-Stack-App; seit 27.10. VOLL LAUFFÄHIG lokal via Firebase-Emulatoren (Login/Mock/Canvas bewiesen); KI wartet nur auf echten Gemini-Key; echtes Firebase optional
+description: Aktives Projekt — Google Product Canvas (romannurik) lokal; 30.10. neu
+  als native Tauri-App „Product Canvas Local.app" gebaut (Vite-Alias-Shim statt 12
+  Umbauten); Editor im Browser-Build voll bewiesen, Tauri-Webview hängt noch im Loading
 metadata:
   node_type: memory
   type: project
   originSessionId: session_3a1cc25ff2c2e82e01c329cebdb4fa22
 ---
 
-Seit 27.10.2026 baut Sascha Google „Product Canvas" (ProductCanvas-Experiment von romannurik, Apache-2.0 → Nachbau legal) als eigene Full-Stack-App.
+Sascha baut Google „Product Canvas" (ProductCanvas-Experiment von romannurik, Apache-2.0) nach. **Zielstand 30.10.: native Tauri-Mac-App „Product Canvas Local.app" — kein Browser/localhost, keine Firebase/Gemini, KI über lokale Ollama/LM-Studio-Modelle, kein Multiplayer.** Geschwistert-Projekt: [[lokicanvas-native-app]] (SwiftUI-Variante, fertig).
 
-**Stand 27.10.2026 (nachts): VOLL LAUFFÄHIG END-TO-END BEWIESEN.**
-- Pfad: `~/Desktop/Coworkspace_Ich/product-canvas-nachbau/ProductCanvas-Experiment-main` (138 Dateien, 10.732 Zeilen; Stack: Vite+React+TS, React Flow, Firebase RTDB+Auth, WebRTC, Gemini Live, esbuild-wasm, Tiptap, matter.js)
-- **Klickpfad komplett bestanden** (Playwright): ?mock=1 → „Sign in with Google" → anonym (Emulator) → Privacy „Got it" → Setup (Gemini-Key-Feld) → **Canvas-Session `/vcqM8oQytB`** → Leinwand rendert (React Flow, Toolbar, „What do you want to build?"), 0 echte Fehler.
-- Server: `vite.dev.config.ts` → HTTPS 5173 (self-signed) + `vite.dev-http.config.ts` → HTTP 5188 (für Playwright). Nutzung: `https://localhost:5173/?mock=1` (Zertifikatswarnung durchklicken).
-- `.env` = echte Config von Projekt `product-canvas-lab-6609` (barbulls-app unberührt).
+**Pfad (gezogen):** `~/Desktop/Reverse Engeniering /product-canvas-nachbau/ProductCanvas-Experiment-main` (Leerzeichen + trailing space!). 138 Dateien, 10.732 Zeilen; Vite+React+TS, React Flow, Firebase RTDB+Auth, WebRTC, Gemini Live, esbuild-wasm, Tiptap, matter.js. Kein Git-Repo im Ordner.
 
-**Chirurgische Patches (je Backup `*.bak-2026-10-27` daneben):**
-1. `src/firebase.ts`: in DEV `connectAuthEmulator(9099)` + `connectDatabaseEmulator(9100)`.
-2. `src/onboarding/Onboarding.tsx`: DEV + `?mock` überspringt den Invite-Claim (`hasAccess`-Gate).
-3. `src/auth/AuthProvider.tsx`: signIn → wenn DEV+`?mock` → `signInAnonymously` statt Google-Popup.
-- Erkenntnis: Der eingebaute `?mock=N`-Modus ersetzt nur einen BEREITS eingeloggten User (Anzeige-Trick) — kein Gate-Bypass; deshalb Patch 3.
+**Architektur-Trick (statt 12 Umbauten): 1 Nahtstelle + Vite-Aliase.**
+- `src/local/rtdb-local.ts` (~340 Z.): Mini-RTDB (ref/set/update/push/onValue/get/child/query/onDisconnect…), Baum debounced (500 ms) als `canvas-db.json`; Tauri: `window.__TAURI__.path.appDataDir()` + `__TAURI__.fs`, Browser-Fallback: localStorage (Key `rtdb-local:/tmp/...`).
+- `src/local/firebase-local.ts`: Total-Ersatz für firebase/app|auth|database|functions|storage — `vite.config.ts` aliasiert bei `VITE_LOCAL_APP=1` ALLE `firebase/*`-Imports darauf (23 direkte Imports in 12 Verbrauchern! — DocumentProvider, PresenceProvider, rtcfire, MiniAppHost importieren direkt). **Rollup failt hart bei fehlenden Named-Exports** → Vertragsliste: connectAuthEmulator/connectDatabaseEmulator (no-op), serverTimestamp, onChildAdded/Changed, getDatabase, signInAnonymously/WithPopup/WithRedirect, GoogleAuthProvider, getIdTokenResult, uploadBytes/getDownloadURL, httpsCallable …
+- `src/local/ai-local.ts` + `ai/index.ts` LOCAL-Zweig: OpenAI-Format (chat/completions) gegen `prefs.localAIBaseUrl` (Default `http://127.0.0.1:11434/v1` Ollama) + `prefs.localAIModel` (Default `qwen2.5-coder:7b`); cURL-Beweis geliefert. Bild/Voice werfen bewusst „Lokal nicht verfügbar".
+- Auth: Auto-Login `uid:'local-user'`, `getIdTokenResult()` → `{claims:{hasAccess:'local'}}` (Invite-Gate), Onboarding überspringt Login/Invite/Gemini-Key, LoginScreen-Text „Lokal starten".
+- `src-tauri/` (Tauri 2): Fenster 1440×900, fs+http-Plugins, Command `fetch_local_ai` (Host 127.0.0.1, Port nur 11434/1234).
 
-**Emulator-Setup (umgeht beide Google-Sperren komplett):**
-- `firebase.emulator.json` (auth :9099, database :9100, ui :4000) + `database.rules.json` (offen). Start: `JAVA_HOME=/opt/homebrew/opt/openjdk@21 firebase emulators:start -c firebase.emulator.json --project demo-canvas` (demo-Präfix = kein Login nötig). Java 21 war schon via brew da (Java 8 zu alt für Emulator).
-- **Port 9000 ist von BrowserOS belegt** → Datenbank-Emulator auf 9100.
+**Fixes beim Bau (alle .bak-2026-10-30):** `vite-tsconfig-paths` war DER ETIMEDOUT-Übeltäter (scandiert Google-Drive-Shortcuts; Bisect bewiesen) → entfernt, `@`-Alias reicht. App.tsx: harte Navigation (`window.location.pathname = generateId()`) → `history.replaceState` + docId-State (harte Nav = weißer Screen/404 in Tauri/Static-Server); DocumentProvider braucht docId-Prop. Shim-User MUSS `getIdTokenResult()` als Methode haben (AuthProvider ruft direkt auf — sonst stiller Loading-Hänger ohne Konsolenfehler!). Devtools-Feature in Cargo.toml (`tauri = {version:"2", features:["devtools"]}`) für Release-Inspektion.
 
-**Reparaturen beim Aufsetzen (wieder verwendbar):**
-- `node-stdlib-browser` v1.2.1/1.3.1 packaging bug: Stubs `mock/empty.js`, `proxy/querystring.js`, `proxy/url.js` **im Projekt-Root** (nicht node_modules — create-require löst relativ zum Start-Kontext auf).
-- `vite-tsconfig-paths` → ETIMEDOUT-scandir in Google-Drive-Shortcuts (Ursache offen) → Plugin weggelassen, `@/*` per resolve.alias.
-- Playwright-MCP blockt self-signed HTTPS → HTTP-Zweitinstanz. `firebase login` (alle Varianten) endet sofort by design; Links im ZCode-In-App-Browser scheitern mit „Unable to verify client" (Cookies/Flow).
+**Stand (bewiesen):**
+- Frontend `VITE_LOCAL_APP=1 vite build` grün; Tauri-App gebaut: `src-tauri/target/release/bundle/macos/Product Canvas Local.app` (13,7 MiB; DMG-Bundling scheitert am Finder-AppleScript-Timeout → immer `tauri build --bundles app`).
+- **Browser-Gegenbeweis komplett** (`python3 -m http.server 4188` im dist, agent-browser): Auto-Login → Privacy → SPA-Route `/b6LEv9YBzo` → Editor (Toolbar, „Lokal"-Button) → Shim-Persistenz in localStorage, 0 Konsolenfehler, 0 Google-Calls.
+- **OFFEN:** Tauri-Webview bleibt im Loading-Spinner hängen (dunkles Fenster + Theme + Menü ok, kein JS-Fehler sichtbar), obwohl identisches dist im Browser läuft. DevTools (Cargo-devtools, Cmd+Opt+I im App-Fokus) noch nicht ausgelesen — Fokus-Krieg mit Parallel-Session, die gerade CLT 27.2 installiert.
+- Ollama real: nur `qwen2.5-coder:7b` (+1.5b) antwortet; `qwen3.5:9b`/`qwen3-vl:8b` Manifeste ohne Blobs (→ `ollama pull`); LM Studio aus.
 
-**Die 4 restlichen Konsolen-Fehler (erklärt):** 2× html-to-image Google-Fonts-CORS (harmlos, auch im Original) + 2× Gemini 400 API_KEY_INVALID = **KI-Kette lebt, wartet nur auf echten Gemini-Key** (aistudio.google.com/api-keys → in App-Settings eintragen).
+**Ältere Artefakte (27.10., ruhen):** Web-Version via Firebase-Emulatoren voll lauffähig (Patches + Ports siehe Git-Historie dieser Datei); echtes Firebase-Projekt `product-canvas-lab-6609` teils eingerichtet (RTDB-Create + identitykit nur per Console-Ritual, Blocker unverändert).
 
-**Echtes Firebase (optional, Projektparts fertig):** Projekt `product-canvas-lab-6609` per gcloud+REST angelegt (Pflicht-Header `x-goog-user-project`; `gcloud projects create --name=`), Web-App appId `1:675368337217:web:076991cb00d8fe20efabc0`. **Blocker bleiben:** RTDB-Create REST→404-HTML, identitytoolkit→CONFIGURATION_NOT_FOUND (nur Console-/CLI-Ritual). firebase login via Saschas Code wäre der Hebel — Sessions verfallen aber sofort und der Link-Chaos frustrierte ihn; nur noch anbieten wenn er fragt.
-
-**Nächste Phase:** ~~Umbau zum eigenen Produkt~~ → **ABGELÖST 30.10.:** Sascha lehnte Web/localhost-Träger ab („0 Sinn") und wollte native App + lokale Ollama-Modelle statt Gemini-Key → Nachfolger ist **LokiCanvas** (SwiftUI, siehe [[lokicanvas-native-app]]). Web-Nachbau ruht als Referenz; Quellordner offenbar nach `~/Desktop/Reverse Engeniering /product-canvas-nachbau/` verschoben.
-
-**Why:** Nachfolge-Projekt von [[lokicanvas-native-app]]; Pfade, Patches, Emulator-Ports hier, Restarbeiten aus keinem Repo ableitbar. Verwandt: [[zcode-skills-landscape]], [[local-browser-testing-gotchas]], [[simple-language-responses]].
+**Why:** Multi-Session-Projekt; Alias-Architektur, Vertragsliste und Tauri-Fallen sind aus dem Repo nicht ableitbar. Verwandt: [[lokicanvas-native-app]], [[tauri-build-gotchas]], [[local-browser-testing-gotchas]], [[simple-language-responses]].
 
 ## simple-language-responses
 
@@ -12241,6 +12238,31 @@ Am 26.10.2026 sagte Sascha: "Alter, ich verstehe nicht, was du machst oder redes
 7. „Wenn du schon tust, mach es richtig" (26.10., nach Wut-Ausbruch in Caps): Sobald er eine Aktion an seinem Projekt absegnet, sie VOLLSTÄNDIG und BEWEISBAR ausführen (Backup, Werte nachmessen statt behaupten, Browser-Verifikation) — keine Halbarbeit, keine erneute Rückfrage. Bei Caps/Wut: ruhig kurz bleiben, Fakten, max. 3 Zeilen, keine dritte Entschuldigung.
 8. Er wiederholt gern alte Plan-Texte/AI-Artikel zurück in den Chat (auch wütend, „das ist Mist"). Check ERST, ob der eingefügte Plan längst erledigt ist, und das mit 1 frischen Beweis-Befehl zeigen (Status-Tabelle Plan-Schritt→Status), statt neu zu arbeiten oder zu erklären. Seine persönlichen Skills (~/.claude/skills, 249 Stück) erscheinen NICHT im ZCode-Slash-Menü (nur Plugin-Skills) — er muss sie nicht als /Befehl tippen; Nutzung über Triggersätze wie „Prüfe die UI von X". Bei kaputtem Skill: erst Anzahl/SKILL.md-Gesundheit zählen (ls/find) und mit Zahlen antworten, nicht behaupten.
 9. Harte Eskalation 27.10.2026 („mach dir vorher Gedanken, einen Plan, orchestriert durchführen, am Ende erklären was du wie wo gemacht hast, dass ein Mensch es versteht"): Bei mehrstufigen Aufgaben EINEN kompletten Plan VORAB zeigen (was/wie/welches Tool), dann KOMPLETT autonom durchziehen — ohne Links, Codes oder Bittschreiben an ihn („Terminals bitte mach selber"); Fallbacks selbst wählen und erst wieder melden, wenn fertig oder wirklich blockiert. Abschluss = EINE menschliche Gesamt-Erklärung mit Beweisen, nicht Schritt-Nachrichten.
+
+## tauri-build-gotchas
+
+---
+name: tauri-build-gotchas
+description: Tauri-2-Fallen aus Product Canvas Local (30.10.) — capabilities
+  statt fs-scope, withGlobalTauri, DMG-Bundling abschalten, SPA-Hard-Nav =
+  weißer Screen, fehlende Named-Exports failen Rollup hart
+metadata:
+  node_type: memory
+  type: reference
+  originSessionId: session_3a1cc25ff2c2e82e01c329cebdb4fa22
+---
+
+Tauri-2-Erkenntnisse aus dem Bau von „Product Canvas Local" (30.10.2026, Web-React-App in native Hülle):
+
+1. **Weißer Screen + Crash beim Start:** `plugins.fs` mit `scope` in tauri.conf.json ist Tauri-1-Syntax → Panic `unknown field 'scope'`. Tauri 2 will `src-tauri/capabilities/default.json` (permissions wie `fs:allow-appdata-read-recursive`, `http:default`, `core:default`) und plugins in der conf leer (`"plugins": {}`).
+2. **`window.__TAURI__` nur mit `"withGlobalTauri": true`** (app-Sektion der conf). Ohne laufen `__TAURI__.path.appDataDir()`/`__TAURI__.fs` ins Leere. Achtung: Plugin-APIs (fs) erscheinen nur dort, wenn das Plugin Global-Scripts mitbringt — sonst npm-Paket `@tauri-apps/plugin-fs` im Frontend nutzen. conf-Änderungen sind in den Rust-Build eingebrannt (generate_context!) → nach conf-Edit neu bündeln.
+3. **DMG-Bundling scheitert** an Finder-AppleScript-Timeout (`execution error -1712`) → **`npx tauri build --bundles app`** (nur .app, keine DMG) — .app liegt dann in `src-tauri/target/release/bundle/macos/`.
+4. **SPA-Routing:** harte Navigation (`window.location.pathname = x`) = weißer Screen (Asset-Protocol ohne SPA-Fallback) bzw. 404 auf Static-Server → `history.replaceState({}, "", "/" + id)` + State setzen. Tauri-spezifisch weiß; im normalen Chromium-Build dasselbe Symptom über Static-Server-404 — gut zum Vortesten.
+5. **Alias-Strategie für SDK-Ersatz:** `resolve.alias` auf Regex `^firebase/(app|auth|…)$` → Ersatzmodul ersetzt das ganze SDK auch in direkten Imports. Rollup bricht bei JEDEM fehlenden Named-Export hart ab („X is not exported by …") — die Ersatzdatei muss die komplette Import-Oberfläche abbilden; fehlende Exports per Schleife ergänzen bis grün.
+6. **Release-DevTools:** `tauri = { version = "2", features = ["devtools"] }` in Cargo.toml → Inspector auch im Release-Build. Öffnen: App-Fenster fokussieren (System Events frontmost) + Cmd+Opt+I — globaler Keystroke geht sonst an falsche Apps (Multi-Monitor/Fokus-Krieg mit Parallel-Sessions beachten; Screenshots auf 3 Monitoren selten aussagekräftig — lieber Fenster-Liste via System Events verifizieren).
+7. Build-Dauer: erster Cargo-Build ~2 Min (warm cache), Frontend ~8 s. cargo 1.98 war bereits installiert; @tauri-apps/cli via npm -D (v2.12.4).
+
+**Why:** Jede dieser Fallen kostete eine Debug-Runde. **How to apply:** Vor Tauri-2-Bauten conf/capabilities gegen diese Liste prüfen; SPA-Apps nie mit location-Assignment routen. Siehe [[product-canvas-rebuild]], [[local-browser-testing-gotchas]].
 
 ## uiux-skills-repair-2026-10-26
 
