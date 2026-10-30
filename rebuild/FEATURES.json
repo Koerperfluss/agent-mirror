@@ -298,5 +298,14 @@
   "implementation_status": "implemented",
   "notes": "Rest-7: Spotify Web API (Client-Credentials via Env), URL/URI-Parsing, Match gegen lokale Library, Treffer als Playlist; bewusst KEIN Audio-Streaming (Spotify-AGB)",
   "test_refs": "SpotifyImportTests"
+ },
+ {
+  "id": "F-037",
+  "area": "DVS",
+  "name": "Timecode-Vinyl (Traktor Scratch/Serato-Formate)",
+  "evidence_level": "documented",
+  "implementation_status": "implemented",
+  "notes": "Slice 12: LFSR-Decoder (23/20 Bit) + Position-LUT + Zero-Crossing-Bitstream + Tonearm-Tiefpass + Speed-EMA; Phono-Input (AVAudioEngine-Tap) → Absolute-Mode-Seek + Platter-Pitch (rückwärts/Stop); DVS-Zeile im Treiber-Panel mit Eingangsgeräte-Wahl. Decoder synthetisch bewiesen (Position/1.5x-Speed/5%-Rauschen); Live-Kalibrierung am echten Vinyl mit Phono-Interface (z. B. Traktor Audio/Behringer UFO202)",
+  "test_refs": "DvsTests"
  }
 ]

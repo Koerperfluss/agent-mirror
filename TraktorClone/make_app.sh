@@ -21,7 +21,7 @@ cat > "$APP/Contents/Info.plist" <<'PLIST'
   <key>CFBundlePackageType</key><string>APPL</string>
   <key>CFBundleShortVersionString</key><string>0.2</string>
   <key>NSHighResolutionCapable</key><true/>
-  <key>NSMicrophoneUsageDescription</key><string>DJ-Audio-Aufnahme des Master-Ausgangs</string>
+  <key>NSMicrophoneUsageDescription</key><string>DVS: Timecode-Vinyl am Phono-Eingang lesen + Master-Aufnahme</string>
 </dict>
 </plist>
 PLIST

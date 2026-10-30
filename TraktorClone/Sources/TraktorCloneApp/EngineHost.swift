@@ -29,6 +29,9 @@ final class EngineHost: ObservableObject {
     // Rest-6: Treiber (Audio) + MIDI-Mapping-Verwaltung
     @Published var audioDevices: [AudioDeviceInfo] = []
     @Published var defaultAudioDeviceID: UInt32?
+    @Published var inputDevices: [AudioDeviceInfo] = []
+    @Published var defaultInputDeviceID: UInt32?
+    let dvs = DVSController()
     @Published var mappingRevision = 0        // zählt Mapping-Änderungen hoch (UI-Rerender)
     // Rest-7: Spotify-Import (Metadaten → lokale Library)
     @Published var spotifyResults: [SpotifyTrack] = []
@@ -44,17 +47,49 @@ final class EngineHost: ObservableObject {
         loadLibrary()
         playlists = PlaylistStore.load()
         refreshAudioDevices()
+        startDVSTimer()
+    }
+
+    /// DVS-Kopplung mit 10 Hz (Position + Speed → Decks).
+    private var dvsTimer: Timer?
+    private func startDVSTimer() {
+        dvsTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { [weak self] _ in
+            Task { @MainActor in self?.applyDVS() }
+        }
     }
 
     func refreshAudioDevices() {
-        audioDevices = AudioDevices.list()
+        let all = AudioDevices.list()
+        audioDevices = all.filter(\.hasOutput)
+        inputDevices = all.filter(\.hasInput)
         defaultAudioDeviceID = AudioDevices.defaultOutputID()
+        defaultInputDeviceID = AudioDevices.defaultInputID()
     }
 
     /// System-Ausgang umschalten (macOS-weit — CoreAudio-Default-Output).
     func setDefaultAudio(_ id: UInt32) {
         if AudioDevices.setDefaultOutput(id: id) {
             defaultAudioDeviceID = id
+        }
+    }
+
+    /// System-Eingang umschalten (DVS-Phono-Interface).
+    func setDefaultInputDevice(_ id: UInt32) {
+        if AudioDevices.setDefaultInput(id: id) {
+            defaultInputDeviceID = id
+        }
+    }
+
+    /// DVS: Platte treibt die Decks (Absolute-Mode + Pitch = Platten-Geschwindigkeit).
+    private func applyDVS() {
+        guard dvs.enabled else { return }
+        let pairs: [(DeckViewModel, Int)] = [(deckA, 0), (deckB, 1)]
+        for (vm, deck) in pairs {
+            guard vm.duration > 0 else { continue }
+            if let t = dvs.trackTime(deck: deck), abs(vm.playhead - t) > 0.08 {
+                vm.seekSeconds(t)
+            }
+            vm.applyPlatterSpeed(dvs.deckSpeed[deck])
         }
     }
 

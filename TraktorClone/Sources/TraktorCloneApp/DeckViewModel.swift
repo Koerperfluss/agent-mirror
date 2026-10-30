@@ -164,6 +164,30 @@ final class DeckViewModel: ObservableObject {
         engine.seek(deck: index, to: target)
     }
 
+    /// Slice 12 DVS: absolute Sekunden ansteuern (Timecode-Position).
+    func seekSeconds(_ t: TimeInterval) {
+        guard duration > 0 else { return }
+        let clamped = min(max(t, 0), duration)
+        state.seek(to: clamped, now: clock)
+        engine.seek(deck: index, to: clamped)
+    }
+
+    /// Slice 12 DVS: Platte treibt das Deck — Pitch = Plattengeschwindigkeit
+    /// (auch rückwärts), Stillstand = Pause. Stems bleiben außen vor.
+    func applyPlatterSpeed(_ s: Double) {
+        guard !isStem else { return }
+        if abs(s) < 0.05 {
+            if state.isPlaying { state.pause(now: clock); engine.pause(deck: index) }
+        } else {
+            if !state.isPlaying {
+                state.play(now: clock)
+                engine.setPitchFactor(deck: index, factor: state.rate)
+                engine.play(deck: index)
+            }
+            engine.setPitchFactor(deck: index, factor: min(max(s, -4), 4))
+        }
+    }
+
     func setPitch(_ p: Double) {
         state.setPitch(p, now: clock)
         pitch = state.pitch

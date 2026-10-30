@@ -64,3 +64,13 @@ cd agent-mirror/TraktorClone
 - Spotify-Import: Web-API-Metadaten (Env-Keys) → Match gegen Library → als Playlist (KEIN Audio-Streaming, Spotify-AGB)
 - CLT-Falle bestätigt: @State = SwiftUIMacros-Makro, im CLT nicht vorhanden → UI-Flags in EngineHost (@Published)
 - 102/102 Tests (22 Suiten; 19 neue), F-030..F-036 in FEATURES.json
+
+## Slice 12 (30.10.) — DVS (Timecode-Vinyl) — FERTIG (Core bewiesen)
+- Nutzer-Korrektur übernommen: DVS geht auch mit Riemenantrieb — Timecode wird aus dem Phono-Signal gelesen
+- TimecodeVinyl.swift: LFSR (23-Bit Traktor Scratch A/B + 20-Bit Serato 2A Konstanten), Position-LUT, Zero-Crossing-Bitstream-Decoder, Tonearm-Tiefpass (2×Carrier), Speed-EMA, Richtungswechsel→Revalidierung
+- DVSController: Phono-Input (AVAudioEngine input tap) → Decoder je Deck; EngineHost-Timer 10 Hz: Absolute-Mode-Seek (Lead-in 1000 Codes) + applyPlatterSpeed (Pitch=rückwärts/Stop)
+- AudioDevices: Input-Geräte + Default-Input setzen (Phono-Interface-Wahl); UI DVS-Zeile im Treiber-Panel mit A/B-Speedanzeige
+- Beweis synthetisch: Position@1.0x, 1.5×-Speed, 5 %-Rauschen, Extrapolation, LFSR fwd/rev invers, LUT-Zuordnung — 108/108 Tests (24 Suiten)
+- Ehrlich offen: Live-Kalibrierung am echten Vinyl braucht Phono-Interface (Traktor Audio gebraucht oder Behringer UFO202) + Mikrofon-Freigabe-Dialog
+- Lizenz-Route: eigene Implementierung des öffentlich dokumentierten Signalformats (§ 40e UrhG / Art. 6 RL 2009/24/EG), kein fremder Code übernommen (xwax ist GPL, Mixxx GPL)
+- Xcode-27.2-Hinweis: installiert die fehlenden SwiftUIMacros-Plugins (CLT-@State-Falle stirbt)

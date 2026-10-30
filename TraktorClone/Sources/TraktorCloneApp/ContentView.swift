@@ -649,6 +649,33 @@ struct ContentView: View {
                     Spacer()
                 }
 
+                // DVS (Timecode-Vinyl, Slice 12)
+                HStack(spacing: 6) {
+                    Text("DVS").font(Theme.fCaption).foregroundStyle(Theme.muted)
+                        .frame(width: 48, alignment: .leading)
+                    Button(engineHost.dvs.enabled ? "⏹ Stop" : "▶︎ Vinyl") { engineHost.dvs.toggle() }
+                        .buttonStyle(.djProminent(tint: engineHost.dvs.enabled ? Theme.rd : Theme.gr))
+                    Menu {
+                        ForEach(engineHost.inputDevices, id: \.id) { dev in
+                            Button(dev.name) { engineHost.setDefaultInputDevice(dev.id) }
+                        }
+                    } label: {
+                        Text(engineHost.inputDevices.first { $0.id == engineHost.defaultInputDeviceID }?.name
+                             ?? "Eingang")
+                            .font(Theme.fCaption)
+                    }
+                    .fixedSize()
+                    Text(engineHost.dvs.status)
+                        .font(Theme.fCaption).foregroundStyle(Theme.soft).lineLimit(1)
+                    Spacer()
+                    ForEach(0..<2, id: \.self) { i in
+                        let active = engineHost.dvs.deckPosition[i] != nil
+                        Text("\(i == 0 ? "A" : "B") \(engineHost.dvs.deckSpeed[i], specifier: "%.2f")×")
+                            .font(Theme.fSub)
+                            .foregroundStyle(active ? Theme.gr : Theme.muted)
+                    }
+                }
+
                 // MIDI-Geräte + Mappings
                 HStack(spacing: 6) {
                     Text("MIDI").font(Theme.fCaption).foregroundStyle(Theme.muted)
