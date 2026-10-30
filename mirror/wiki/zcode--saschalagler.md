@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-30 05:22 UTC
+Zuletzt gespiegelt: 2026-10-30 05:37 UTC
 
 ## AGENTS
 
@@ -12051,11 +12051,11 @@ Music stem separation is set up and verified working on this machine (2026-10-21
 - [Einfache Sprache](simple-language-responses.md) — Sascha versteht fachliche Antworten oft nicht: radikal vereinfachen, max 3 Punkte, 1 Entscheidung pro Antwort
 - [Lokale Browser-Tests](local-browser-testing-gotchas.md) — file:// blockiert → http.server; Cache-Buster; kein SPA-Fallback; agent-browser-CLI als Alternative
 - [ZCode-Skills-Landschaft](zcode-skills-landscape.md) — 251 Slash-Befehle in ~/.zcode/commands/ (27.10. generiert), sichtbar erst nach App-Neustart; /workflow fest eingebaut; 11 Skill-Ordner kaputt
-- [Product-Canvas-Nachbau](product-canvas-rebuild.md) — AKTIV: native Tauri-App „Product Canvas Local" gebaut (Firebase-Aliase → lokaler Shim); Browser-Beweis komplett, Tauri-Webview hängt noch im Loading
+- [Product-Canvas-Nachbau](product-canvas-rebuild.md) — AKTIV: native Tauri-App gebaut; Boot-Crash geroot-caused (firebase-Aliase + getIdTokenResult-Vertrag); Browser-Beweis komplett; nur Tauri-Loading-Hänger offen
 - [Tauri-2-Fallen](tauri-build-gotchas.md) — capabilities statt fs-scope, withGlobalTauri, --bundles app (DMG crasht), SPA-Hard-Nav = weiß, fehlende Named-Exports failen Rollup
 - [gstack-Werkzeugkasten](gstack-toolkit.md) — ~/gstack = Garry Tans KI-Toolkit; bin/-Befehle laufen automatisch, nicht von Hand anfassen
-- [LokiCanvas Native-App](lokicanvas-native-app.md) — FERTIG: SwiftUI-Mac-App läuft, 27/27 Tests, Ollama lokal (nur coder:7b echt, 9b/vl-Blobs fehlen), Push von Guardrail blockiert
-- [CLT ohne Xcode: kein @State](clt-swiftui-no-state.md) — @State-Makro schlägt fehl → @Published+@StateObject-Muster; Testing-Plugin-Pfad; AVAudioSession iOS-only
+- [LokiCanvas Native-App](lokicanvas-native-app.md) — AKTIV v1.1: läuft nativ, 32/32 Tests, Vision-Analyse + QA-Fixes drin; alle 3 Ollama-Modelle bewiesen (RAM-Grenze: nicht 9b+vl gleichzeitig); Push von Guardrail blockiert
+- [CLT ohne Xcode: kein @State](clt-swiftui-no-state.md) — @State-Makro schlägt fehl → @Published+@StateObject-Muster; XCTest existiert in CLT nicht (Swift Testing!); Audio-Live-Tests flaky; AVAudioSession iOS-only
 
 ## clt-swiftui-no-state
 
@@ -12073,15 +12073,19 @@ metadata:
 
 Saschas Mac hat **kein Xcode.app, nur CommandLineTools** (xcode-select → /Library/Developer/CommandLineTools; kein Xcode*.app auf Platte, kein .xip in Downloads).
 
+**Auch CLT 27.2 (30.10. installiert) enthält SwiftUIMacros NICHT** — per `find` verifiziert. „Einfach CLT aktualisieren" löst das @State-Problem nicht; nur volles Xcode brächte das Plugin. Makrofreie SwiftUI-UIs bleiben der Standard-Weg auf diesem Mac.
+
 **Kern-Falle:** `@State` ist im aktuellen SDK ein externes Makro (Modul `SwiftUIMacros`), dessen Plugin **nur mit Xcode ausgeliefert wird** — Fehler: „external macro implementation type 'SwiftUIMacros.StateMacro' could not be found". Behebung ohne Xcode:
 - **Nie `@State` schreiben.** Stattdessen je View eine kleine `@MainActor final class XUIState: ObservableObject { @Published var … }` + `@StateObject private var ui = XUIState()` — @StateObject/@EnvironmentObject/@Published sind KEINE Makros und laufen (genau so baut TraktorClone).
 - Swift-Testing braucht Plugin-Pfad: `swift test -Xswiftc -plugin-path -Xswiftc /Library/Developer/CommandLineTools/usr/lib/swift/host/plugins/testing` (steht in run_tests.sh von TraktorClone/LokiCanvas).
 
 **Weitere CLT/macOS-Fallen (30.10. bewiesen):**
+- **XCTest existiert in CLT NICHT** („unable to resolve module dependency: 'XCTest'") — Test-Dateien müssen Swift-Testing sein (`import Testing`, `@Test`, `#expect`, `@Suite`).
+- Mikro/Audio-Live-Calls (VoiceAgent.start()) in der Batch-Testsuite → Testing-Helper-Abort (Signal 6, auch ohne laufende App nicht immer reproduzierbar) → Suites mikrophonfrei halten (nur process()/Startzustand prüfen).
 - `AVAudioSession` ist iOS-only → auf macOS die Session-Zeilen weglassen; AVAudioEngine läuft direkt.
 - Swift 6 strict concurrency: unveränderliche Clients (nur `let`-Props) als `: Sendable` deklarieren, sonst „sending 'self.client' risks causing data races" in Tasks.
 - Bundle per Hand: `swift build -c release` + Info.plist (CFBundleExecutable, NSMicrophoneUsageDescription) + `codesign --force --sign -`.
-- Test-Runner kann mit Signal 6 crashen, wenn eine App mit SFSpeechRecognizer gleichzeitig läuft → App vorher schließen.
+- Test-Runner kann mit Signal 6 crashen, wenn eine App mit SFSpeechRecognizer gleichzeitig läuft → App vorher schließen (LokiCanvas-Fall: App schließen reichte).
 
 **Why:** Diese Blocker kosten jede Session sonst 30+ Min Fehlersuche. Verwandt: [[lokicanvas-native-app]].
 
@@ -12122,7 +12126,7 @@ Beim Browser-Test lokaler Apps:
 3. Konsolen-Zähler zwischen Tool-Calls können Minuten umfassen — Deltamessung erst nach Cache-Buster werten.
 4. **Self-signed HTTPS hart blockiert** (`ERR_CERT_AUTHORITY_INVALID`, keine Durchklick-Seite) → zweite Vite-Instanz ohne ssl() auf Extra-Port für automatisierte Tests.
 5. **python http.server hat KEINEN SPA-Fallback** (30.10., Product Canvas): Client-Routen wie `/<docId>` ergeben 404 „Error response" — im Browser sichtbar, in Tauri als weißer Screen getarnt. Für SPA-Tests: Route per History-API erreichen statt hart zu navigieren, oder Server mit Fallback.
-6. **`agent-browser`-CLI** (`/opt/homebrew/bin/agent-browser`) = robuste Alternative, wenn Playwright-MCP spinnt: `open <url>`, `snapshot`, `eval "js"`, `console`, `errors`, `click @ref`, `wait` — Terminal-basiert (Chromium), inkl. echter Konsole/Errors; startet eigenen Browser (close + neu öffnen = frische Session, erst dann eval; ein „open" danach landet evtl. auf about:blank → nochmal open).
+6. **`agent-browser`-CLI** (`/opt/homebrew/bin/agent-browser`) = robuste Alternative, wenn Playwright-MCP spinnt: `open <url>`, `snapshot`, `eval "js"`, `console`, `errors`, `click @ref`, `wait` — Terminal-basiert (Chromium), inkl. echter Konsole/Errors. Session-Falle: nach `close` landet das nächste `open` evtl. auf about:blank (eval → „blank") → ein zweites `open` der URL; erst dann eval/snapshot. Liefert `eval window.location.pathname` als SPA-Routen-Beweis und `console` leer als 0-Fehler-Nachweis.
 
 **Why:** Diese Fallen kosteten Fehldiagnosen an Saschas Live-Apps. **How to apply:** Server → Cache-Buster → Deltamessung; bei Playwright-MCP-Ausfällen direkt agent-browser. Siehe [[tauri-build-gotchas]], [[product-canvas-rebuild]].
 
@@ -12130,10 +12134,9 @@ Beim Browser-Test lokaler Apps:
 
 ---
 name: lokicanvas-native-app
-description: Aktives Projekt (30.10.) — LokiCanvas native SwiftUI-Mac-App in
-  ~/agent-os/agent-mirror/LokiCanvas; .app läuft, 27/27 Tests, KI über lokales
-  Ollama (nur qwen2.5-coder:7b真的 installiert); Commit 628ced708 lokal, Push von
-  Guardrail blockiert
+description: Aktives Projekt (30.10.) — LokiCanvas native SwiftUI-Mac-App v1.1;
+  Vision-Analyse eingebaut, 32/32 Tests, ALLE 3 Ollama-Modelle installiert und
+  bewiesen; Commits 628ced708+26da6f987 lokal, Push von Guardrail blockiert
 metadata:
   node_type: memory
   type: project
@@ -12142,21 +12145,30 @@ metadata:
 
 Seit 30.10.2026: Sascha wollte den Product-Canvas-Nachbau NICHT als Web/localhost-App, sondern **eigenständige native macOS-App** mit seinen lokalen Ollama-Modellen („multiplayer völlig egal"). Ergebnis: **LokiCanvas** — echte SwiftUI-Mac-App, gebaut ohne Xcode.
 
-**Stand 30.10.2026 (alles bewiesen):**
-- Pfad: `~/agent-os/agent-mirror/LokiCanvas/` (Teil des agent-mirror-Repos, Branch `cline/s4sx83cs`, Remote github.com/Koerperfluss/agent-mirror.git)
-- `.app`: `build/LokiCanvas.app` (make_app.sh, ad-hoc signiert, Mic-Purpose in Info.plist) — Doppelklick/Dock, kein Browser/localhost/Firebase/Gemini
-- 27/27 Tests in 6 Suiten (Swift Testing; `bash run_tests.sh` mit CLT-testing-Plugin-Pfad)
-- Features: unendliche Canvas (Pan/Zoom 25–400 %), Node-Typen Text/Skizze/Bild/KI/Prototyp, deutsche Voice-Befehle (VoiceParser+VoiceAgent on-device), Auto-Persistenz `~/Documents/LokiCanvas/autosave.json`, Modell-Statusleiste
-- Commit `628ced708` liegt LOKAL; **git push wurde vom Guardrail-Hook blockiert** (nach 1 fehlgeschlagenem Erst-Push werden wiederholte Pushes gesperrt) — Push von Sascha/Cline manuell nachholen.
+**Stand 30.10.2026 (v1.1, alles bewiesen):**
+- Pfad: `~/agent-os/agent-mirror/LokiCanvas/` (agent-mirror-Repo, Branch `cline/s4sx83cs`, Remote github.com/Koerperfluss/agent-mirror.git)
+- `.app`: `build/LokiCanvas.app` (make_app.sh, ad-hoc signiert, Mic-Purpose) — läuft nativ
+- **32/32 Tests in 7 Suiten** (Swift Testing; `bash run_tests.sh` mit CLT-testing-Plugin-Pfad)
+- Features: unendliche Canvas (Pan/Zoom 25–400 % kumulativ), Nodes Text/Skizze/Bild/KI/Prototyp, **NEU v1.1: Vision-Analyse** (Bild-/Skizzen-Node im Inspector „Analysieren → KI-Node", qwen3-vl via OllamaClient.vision; Stroke-Render-Hilfe in VisionSupport.swift, ImageUtil.swift in Core), deutsche Voice-Befehle, Auto-Persistenz `~/Documents/LokiCanvas/autosave.json`, Modell-Statusleiste
+- Commits `628ced708` + `26da6f987` liegen LOKAL; **git push vom Guardrail-Hook blockiert** (wiederholte Pushes nach Erst-Fehlschlag gesperrt) — Sascha/Cline manuell nachholen.
 
-**Ollama-Lage (30.10.):** Nur `qwen2.5-coder:7b` (+1.5b) wirklich installiert und antwortet (= LocalModels.chat UND .coder). `qwen3.5:9b` und `qwen3-vl:8b` haben nur Manifeste — **Blobs fehlen** (7,2 GB gesamt; 9b/vl je ~5 GB weg) → Statusleiste rot; Fix: `ollama pull qwen3.5:9b`. glm-*-cloud = Abo-Limit. Mac hat 11,8 GiB VRAM.
-**Ollama-Start-Falle:** `nohup ollama serve` kennt die Modelle NICHT (anderer Kontext) — immer via `open -a Ollama` starten (LaunchAgent com.ollama.ollama registriert).
+**QA-Team-Ergebnis (30.10., Reviewer-Agent, alle gefixt):** Stroke-Zeichnen hatte invertierte Bedingung (unsichtbare 1-Punkt-Strokes; Fix: ui.strokeFinished-Flag) · VoiceAgent crashte beim 2. start() (removeTap onBus:0 in stop()) · NSEvent-Scroll-Monitor frass alle Scroll-Events (Fix: nur CMD abfangen + removeMonitor in onDisappear) · Pinch-Zoom war multiplikativ-kompoundierend (Fix: pinchBase kumulativ + zoomTo) · Autosave-Deckung pan/zoomBy + willTerminate-Flush · Bild-Grenze 8 MB + NSImage-Check · Label „(Entf)" entfernt (kein Shortcut gebaut).
 
-**Kollisions-Falle:** Tests crashen mit Signal 6, wenn die LokiCanvas-App gleichzeitig läuft (Speech-Freigabe-Kollision) → vor `run_tests.sh` App schließen.
+**Ollama (30.10. abends):** ALLE 3 Modelle installiert und bewiesen — `qwen3.5:9b` Chat-Antwort live („Von Nutzern erstellte interaktive App", 250 s Kaltladung), `qwen3-vl:8b` geladen (8,4 GB VRAM), `qwen2.5-coder:7b` schnell. Reparatur der früheren Blob-Lücken: `curl -X POST :11434/api/pull -d '{"name":"…"}'` (fehlte nur Manifest/Blob-Nachzug).
+**RAM-Grenze:** Mac hat nur 17 GB RAM, Swap 10/10 GB voll (Fusion+Drucker+Agenten-Sessions) — **9b und vl NICHT gleichzeitig im RAM** (Vision-Inference im Swap-Sumpf >590 s ohne Antwort); Entladen via `/api/generate {"model":…,"keep_alive":0}`. glm-*-cloud = Abo-Limit.
+**Ollama-Start-Falle:** `nohup ollama serve` kennt die Modelle NICHT — immer `open -a Ollama`.
 
-**Nebenbeweis:** TraktorClone (`~/agent-os/agent-mirror/TraktorClone/`) = bewährtes SwiftPM+handgebaut-Bundle-Muster (83/83 Tests) — Vorlage für weitere native Apps ohne Xcode.
+**Kollisions-Fallen:** Tests crashen mit Signal 6, wenn die LokiCanvas-App gleichzeitig läuft → App schließen vor run_tests.sh. Mikro-Live-Calls (start()) in der Batch-Suite ebenda Abort → VoiceAgentTests sind mikrophonfrei (nur process()/Startzustand).
 
-**Why:** Hauptprojekt; Build-Tricks, Ollama-Modell-Lücke und Guardrail-Verhalten sind aus keinem Repo ableitbar. Verwandt: [[product-canvas-rebuild]], [[clt-swiftui-no-state]], [[simple-language-responses]].
+**Nebenbefund:** TraktorClone (`~/agent-os/agent-mirror/TraktorClone/`, 83/83 Tests) = Vorlagen-Muster; eine Parallel-Cline-Session arbeitet dort (UI-Modernisierung, CLT-27.2-Installer) — Bildschirm-Fokus-Kriege bei Screenshots möglich.
+
+**Feature-Paritäts-Lücken vs. Google-Original (30.10. analysiert, offen):**
+- **Flag-/Wiki-Knoten fehlen** (Original „+"-Menü: Personas · User Goals 🚩 · Tech stack · Design ideas · Prototype) — reine UI/Logik, lokal machbar; als nächster Feature-Slice vorgeschlagen (~20 Min), noch nicht gebaut.
+- **Bild-ERZEUGUNG (Nano-Banana-Äquivalent) unmöglich mit Ollama** — Ollama kann nur Text/Vision, keine Diffusion. Bräuchte Zusatz-Tool (ComfyUI/Draw Things); Sascha noch nicht entschieden.
+- Live-Sprach-Agent (Gemini Live, Cloud) = bewusst durch on-device Speech ersetzt.
+- App läuft als PID bewiesen; Frage nach dauerhafter Kopie nach /Applications/Dock noch offen (nur auf GO).
+
+**Why:** Hauptprojekt; QA-Fixliste, Ollama-RAM-Grenze und Guardrail-Verhalten sind aus keinem Repo ableitbar. Verwandt: [[product-canvas-rebuild]], [[clt-swiftui-no-state]], [[simple-language-responses]].
 
 ## mimosa-hook-skills-write-tool
 
@@ -12204,12 +12216,15 @@ Sascha baut Google „Product Canvas" (ProductCanvas-Experiment von romannurik, 
 **Fixes beim Bau (alle .bak-2026-10-30):** `vite-tsconfig-paths` war DER ETIMEDOUT-Übeltäter (scandiert Google-Drive-Shortcuts; Bisect bewiesen) → entfernt, `@`-Alias reicht. App.tsx: harte Navigation (`window.location.pathname = generateId()`) → `history.replaceState` + docId-State (harte Nav = weißer Screen/404 in Tauri/Static-Server); DocumentProvider braucht docId-Prop. Shim-User MUSS `getIdTokenResult()` als Methode haben (AuthProvider ruft direkt auf — sonst stiller Loading-Hänger ohne Konsolenfehler!). Devtools-Feature in Cargo.toml (`tauri = {version:"2", features:["devtools"]}`) für Release-Inspektion.
 
 **Stand (bewiesen):**
-- Frontend `VITE_LOCAL_APP=1 vite build` grün; Tauri-App gebaut: `src-tauri/target/release/bundle/macos/Product Canvas Local.app` (13,7 MiB; DMG-Bundling scheitert am Finder-AppleScript-Timeout → immer `tauri build --bundles app`).
-- **Browser-Gegenbeweis komplett** (`python3 -m http.server 4188` im dist, agent-browser): Auto-Login → Privacy → SPA-Route `/b6LEv9YBzo` → Editor (Toolbar, „Lokal"-Button) → Shim-Persistenz in localStorage, 0 Konsolenfehler, 0 Google-Calls.
-- **OFFEN:** Tauri-Webview bleibt im Loading-Spinner hängen (dunkles Fenster + Theme + Menü ok, kein JS-Fehler sichtbar), obwohl identisches dist im Browser läuft. DevTools (Cargo-devtools, Cmd+Opt+I im App-Fokus) noch nicht ausgelesen — Fokus-Krieg mit Parallel-Session, die gerade CLT 27.2 installiert.
-- Ollama real: nur `qwen2.5-coder:7b` (+1.5b) antwortet; `qwen3.5:9b`/`qwen3-vl:8b` Manifeste ohne Blobs (→ `ollama pull`); LM Studio aus.
+- Frontend `VITE_LOCAL_APP=1 vite build` grün (inkl. firebase/*-Aliase); Tauri-App gebaut: `src-tauri/target/release/bundle/macos/Product Canvas Local.app` (13,7 MiB; DMG-Bundling scheitert am Finder-AppleScript-Timeout → immer `tauri build --bundles app`).
+- **Browser-Gegenbeweis komplett** (`python3 -m http.server 4188` im dist, agent-browser): Auto-Login → Privacy → SPA-Route `/b6LEv9YBzo` → Editor (Toolbar, „Lokal"-Button) → Shim-Persistenz in localStorage (Key `rtdb-local:/tmp/...`), 0 Google-Calls.
+- **Boot-Crash geROOT-CAUSED und gefixt (30.10. Nacht):** `$._checkNotDeleted is not a function` = direkte `firebase/database`-Imports trafen das echte SDK mit dem Shim-db-Objekt → **vite.config-Aliase für ALLE firebase/*-Pakete** (firebase-local.ts, Vertragsliste erweitert um connectAuthEmulator/getDatabase/getIdTokenResult-Vertrag) + **LOCAL_USER braucht getIdTokenResult() als echte Methode** (AuthProvider ruft sie direkt; sonst stiller Loading-Hänger) + App.tsx: docId-State + `history.replaceState` statt location-Assignment. Danach: Auto-Login, Editor, Route, Persistenz — alles im Browser bewiesen.
+- **OFFEN:** Tauri-Webview bleibt im Loading-Spinner hängen (dunkles Fenster + Theme + Menü ok, kein JS-Fehler sichtbar), obwohl identisches dist im Browser läuft. DevTools (Cargo-devtools, Cmd+Opt+I im App-Fokus) noch nicht ausgewertet — Fokus-Krieg mit Parallel-Session, die gerade CLT 27.2 installiert.
+- Ollama: ALLE 3 Modelle installiert (Pulls am 30.10. abends geglückt); RAM 17 GB / Swap voll — nicht gleichzeitig 9b+vl laden.
 
 **Ältere Artefakte (27.10., ruhen):** Web-Version via Firebase-Emulatoren voll lauffähig (Patches + Ports siehe Git-Historie dieser Datei); echtes Firebase-Projekt `product-canvas-lab-6609` teils eingerichtet (RTDB-Create + identitykit nur per Console-Ritual, Blocker unverändert).
+
+**Echtes Firebase (Stand 30.10. spät):** Projekt `product-canvas-lab-6609` existiert (per gcloud REST erstellt: projects create → services enable → addFirebase), Web-App registriert (appId `1:675368337217:web:076991cb00d8fe20efabc0`), **echte Config sitzt in `.env`** (databaseURL auf `-default-rtdb` gezielt, DB selbst noch nicht erzeugt). Offene Google-Blocker (bewusst REST-unlösbare Erst-Initialisierung): RTDB-Create 404-t (Endpoint existiert erst nach Console-Ritual), Identity-Config → `CONFIGURATION_NOT_FOUND`, Authorized-Domains akzeptieren KEINE Ports (localhost gilt implizit für alle Ports). **Firebase-CLI-Login-Falle:** `firebase login --no-localhost` endet SOFORT by design (Link drucken, dann separat `firebase login <code>`); Session stirbt, wenn der Prozess gekillet wird (z. B. durch `| head`!) → „Unable to verify client". Weißer Tauri-Screen zusätzlich verdächtigt, vom In-App-Browser verursacht. Nächster Schritt bei Bedarf: frische Login-Session generieren, Sascha öffnet Link in normalem Chrome/Safari (nicht In-App-Browser), Code zurückchatten → dann RTDB+Auth per CLI.
 
 **Why:** Multi-Session-Projekt; Alias-Architektur, Vertragsliste und Tauri-Fallen sind aus dem Repo nicht ableitbar. Verwandt: [[lokicanvas-native-app]], [[tauri-build-gotchas]], [[local-browser-testing-gotchas]], [[simple-language-responses]].
 
