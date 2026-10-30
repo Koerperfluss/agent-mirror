@@ -1,0 +1,97 @@
+import Foundation
+
+/// Nachricht im Ollama-Chat-Format; `images` = Base64-Bilder (Vision-Modelle).
+public struct OllamaMessage: Codable, Equatable {
+    public var role: String
+    public var content: String
+    public var images: [String]?
+
+    public init(role: String, content: String, images: [String]? = nil) {
+        self.role = role; self.content = content; self.images = images
+    }
+}
+
+struct ChatRequest: Codable {
+    var model: String
+    var messages: [OllamaMessage]
+    var stream: Bool
+}
+
+struct ChatResponse: Codable {
+    struct Msg: Codable { var role: String?; var content: String? }
+    var message: Msg?
+}
+
+struct TagsResponse: Codable {
+    struct M: Codable { var name: String }
+    var models: [M]
+}
+
+/// Lokale Modellnamen. chat/coder = bewiesen installiert (30.10.).
+/// vision-Manifest existiert, Blob fehlt derzeit (Statusleiste zeigt rot) —
+/// nach `ollama pull qwen3-vl:8b` automatisch nutzbar.
+/// Für den besseren Chat: `ollama pull qwen3.5:9b`, dann im Inspector umwählen.
+public enum LocalModels {
+    public static let chat = "qwen2.5-coder:7b"
+    public static let vision = "qwen3-vl:8b"
+    public static let coder = "qwen2.5-coder:7b"
+}
+
+/// HTTP-Client für Ollama (localhost:11434) — Chat, Vision, Modell-Liste.
+/// Sendable: nur unveränderliche Konfiguration, thread-sicher einsetzbar.
+public final class OllamaClient: Sendable {
+    public let baseURL: URL
+    public let timeout: TimeInterval
+
+    public init(baseURL: URL = URL(string: "http://localhost:11434")!, timeout: TimeInterval = 300) {
+        self.baseURL = baseURL
+        self.timeout = timeout
+    }
+
+    // MARK: Reine Parsing-Helfer (testbar ohne Netz)
+
+    /// Extrahiert die Antwort aus einer /api/chat-Response.
+    public static func parseChatResponse(_ data: Data) -> String? {
+        guard let r = try? JSONDecoder().decode(ChatResponse.self, from: data) else { return nil }
+        return r.message?.content ?? ""
+    }
+
+    /// Baut den Request-Body (stream immer false).
+    public static func buildRequestBody(model: String, messages: [OllamaMessage]) throws -> Data {
+        try JSONEncoder().encode(ChatRequest(model: model, messages: messages, stream: false))
+    }
+
+    /// Extrahiert Modellnamen aus /api/tags.
+    public static func parseTags(_ data: Data) -> [String] {
+        (try? JSONDecoder().decode(TagsResponse.self, from: data))?.models.map(\.name) ?? []
+    }
+
+    // MARK: Netz-Calls (async)
+
+    public func chat(model: String, messages: [OllamaMessage]) async throws -> String {
+        var req = URLRequest(url: baseURL.appendingPathComponent("api/chat"))
+        req.httpMethod = "POST"
+        req.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        req.timeoutInterval = timeout
+        req.httpBody = try Self.buildRequestBody(model: model, messages: messages)
+        let (data, resp) = try await URLSession.shared.data(for: req)
+        guard (resp as? HTTPURLResponse)?.statusCode == 200,
+              let text = Self.parseChatResponse(data) else {
+            throw URLError(.badServerResponse)
+        }
+        return text
+    }
+
+    /// Vision: Bild (Base64) + Prompt → Antwort (nutzt qwen3.5-vl).
+    public func vision(prompt: String, imageBase64: String, model: String = LocalModels.vision) async throws -> String {
+        try await chat(model: model, messages: [
+            OllamaMessage(role: "user", content: prompt, images: [imageBase64])
+        ])
+    }
+
+    public func models() async -> [String] {
+        guard let (data, _) = try? await URLSession.shared.data(from: baseURL.appendingPathComponent("api/tags"))
+        else { return [] }
+        return Self.parseTags(data)
+    }
+}

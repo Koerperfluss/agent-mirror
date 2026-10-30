@@ -1,40 +1,19 @@
 import SwiftUI
 import LokiCanvasCore
 
-// MARK: - VoiceAgent (Platzhalter mit GENAU dem B2-Interface)
-//
-// B2 liefert die echte Implementierung (Spracherkennung, de-DE). Bis dahin
-// läuft diese lokale Variante: start()/stop() toggeln nur den Zustand,
-// es wird nichts erkannt — die UI bleibt bedienbar, kein Crash.
-// Beim Eintreffen der Core-Implementierung diesen Block entfernen.
-
-final class VoiceAgent: ObservableObject {
-    @Published var isListening: Bool = false
-    @Published var transcript: String = ""
-    var onCommand: ((VoiceCommand) -> Void)?
-    var availabilityText: String
-
-    init(locale: Locale = Locale(identifier: "de-DE")) {
-        availabilityText = "Spracherkennung: Warten auf B2-Modul (\(locale.identifier))."
-    }
-
-    func start() {
-        isListening = true
-        transcript = ""
-    }
-
-    func stop() {
-        isListening = false
-    }
-}
-
 // MARK: - Inspector (rechte Seitenleiste)
+
+/// UI-Zustand makrofrei (CLT ohne SwiftUIMacros-Plugin — @Published statt @State).
+@MainActor
+final class InspectorUIState: ObservableObject {
+    @Published var prompt = ""
+    @Published var selectedModel = LocalModels.chat
+}
 
 struct InspectorView: View {
     @EnvironmentObject var model: CanvasModel
     @EnvironmentObject var voice: VoiceAgent
-    @State private var prompt = ""
-    @State private var selectedModel = LocalModels.chat
+    @StateObject private var ui = InspectorUIState()
 
     var body: some View {
         Group {
@@ -79,22 +58,22 @@ struct InspectorView: View {
     @ViewBuilder
     private func nodeActions(_ node: CanvasNode) -> some View {
         Text("Prompt").font(.caption).foregroundStyle(Theme.muted)
-        TextEditor(text: $prompt)
+        TextEditor(text: $ui.prompt)
             .font(.callout)
             .scrollContentBackground(.hidden)
             .frame(height: 90)
             .background(Theme.bg.opacity(0.5))
 
         if node.kind == .ai {
-            Picker("Modell", selection: $selectedModel) {
+            Picker("Modell", selection: $ui.selectedModel) {
                 ForEach(availableModels, id: \.self) { Text($0).tag($0) }
             }
             .pickerStyle(.menu)
             .font(.caption)
 
             Button("Senden") {
-                model.runAI(node.id, prompt: prompt.isEmpty ? node.text : prompt,
-                            model: selectedModel)
+                model.runAI(node.id, prompt: ui.prompt.isEmpty ? node.text : ui.prompt,
+                            model: ui.selectedModel)
             }
             .buttonStyle(.borderedProminent)
             .tint(Theme.acc)
@@ -109,7 +88,7 @@ struct InspectorView: View {
             }
         } else {
             Button("Prototyp generieren") {
-                model.generatePrototype(node.id, prompt: prompt.isEmpty ? node.title : prompt)
+                model.generatePrototype(node.id, prompt: ui.prompt.isEmpty ? node.title : ui.prompt)
             }
             .buttonStyle(.borderedProminent)
             .tint(Theme.acc)

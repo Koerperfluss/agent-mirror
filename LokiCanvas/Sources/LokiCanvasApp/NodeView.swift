@@ -4,15 +4,21 @@ import UniformTypeIdentifiers
 import LokiCanvasCore
 
 /// Ein Knoten auf der Canvas: Rahmen, Verschieben, Inhalt je NodeKind.
+/// UI-Zustand makrofrei (CLT ohne SwiftUIMacros — @Published statt @State).
+@MainActor
+final class NodeUIState: ObservableObject {
+    @Published var dragStart: CGPoint?
+    @Published var strokeColor = "#22D3EE"
+    @Published var eraser = false
+    @Published var showImagePicker = false
+}
+
 struct NodeView: View {
     @EnvironmentObject var model: CanvasModel
     let node: CanvasNode
     let selected: Bool
 
-    @State private var dragStart: CGPoint?
-    @State private var strokeColor = "#22D3EE"
-    @State private var eraser = false
-    @State private var showImagePicker = false
+    @StateObject private var ui = NodeUIState()
 
     private var kindLabel: String {
         switch node.kind {
@@ -37,7 +43,7 @@ struct NodeView: View {
         .gesture(moveGesture.simultaneously(with: TapGesture().onEnded {
             model.selection = node.id
         }))
-        .fileImporter(isPresented: $showImagePicker, allowedContentTypes: [.image]) { result in
+        .fileImporter(isPresented: $ui.showImagePicker, allowedContentTypes: [.image]) { result in
             if case .success(let url) = result,
                let data = try? Data(contentsOf: url) {
                 model.setImage(node.id, data: data)
@@ -55,7 +61,7 @@ struct NodeView: View {
             Text(kindLabel).font(.caption2).foregroundStyle(Theme.acc)
             TextField("Titel", text: Binding(
                 get: { node.title },
-                set: { model.mutate(node.id) { $0.title = $0 } }))
+                set: { newValue in model.mutate(node.id) { $0.title = newValue } }))
                 .textFieldStyle(.plain)
                 .font(.caption)
                 .foregroundStyle(Theme.soft)
@@ -65,15 +71,15 @@ struct NodeView: View {
     private var moveGesture: some Gesture {
         DragGesture(minimumDistance: 2)
             .onChanged { g in
-                if let start = dragStart {
+                if let start = ui.dragStart {
                     model.doc.nodes[nodeIndex].x = start.x + Double(g.translation.width) / model.zoom
                     model.doc.nodes[nodeIndex].y = start.y + Double(g.translation.height) / model.zoom
                 } else {
-                    dragStart = CGPoint(x: node.x, y: node.y)
+                    ui.dragStart = CGPoint(x: node.x, y: node.y)
                 }
             }
             .onEnded { _ in
-                dragStart = nil
+                ui.dragStart = nil
                 model.autosaveSoon()
             }
     }
@@ -98,7 +104,7 @@ struct NodeView: View {
     private var textBody: some View {
         TextEditor(text: Binding(
             get: { node.text },
-            set: { model.mutate(node.id) { $0.text = $0 } }))
+            set: { newValue in model.mutate(node.id) { $0.text = newValue } }))
             .font(.callout)
             .scrollContentBackground(.hidden)
             .foregroundStyle(Theme.ink)
@@ -113,7 +119,7 @@ struct NodeView: View {
                 colorButton("#22D3EE")
                 colorButton("#FBBF24")
                 colorButton("#F87171")
-                Button(eraser ? "Stift" : "Radierer") { eraser.toggle() }
+                Button(ui.eraser ? "Stift" : "Radierer") { ui.eraser.toggle() }
                     .font(.caption2).buttonStyle(.bordered)
                 Button("Leeren") {
                     model.mutate(node.id) { $0.strokes = [] }
@@ -126,11 +132,11 @@ struct NodeView: View {
 
     private func colorButton(_ hex: String) -> some View {
         Button {
-            strokeColor = hex
-            eraser = false
+            ui.strokeColor = hex
+            ui.eraser = false
         } label: {
             Circle().fill(Color(hexString: hex) ?? Theme.acc).frame(width: 14, height: 14)
-                .overlay(Circle().stroke(strokeColor == hex && !eraser ? Theme.ink : Theme.bd, lineWidth: 1.5))
+                .overlay(Circle().stroke(ui.strokeColor == hex && !ui.eraser ? Theme.ink : Theme.bd, lineWidth: 1.5))
         }
         .buttonStyle(.plain)
     }
@@ -155,7 +161,7 @@ struct NodeView: View {
             DragGesture(minimumDistance: 0)
                 .onChanged { g in
                     let p = [Double(g.location.x), Double(g.location.y)]
-                    if eraser {
+                    if ui.eraser {
                         // Radierer: Punkt-Striche nahe der Position entfernen
                         model.mutate(node.id) { n in
                             n.strokes.removeAll { s in
@@ -164,7 +170,7 @@ struct NodeView: View {
                         }
                     } else if node.strokes.last?.points.isEmpty == false || node.strokes.isEmpty {
                         model.mutate(node.id) { n in
-                            n.strokes.append(Stroke(color: strokeColor, points: [p]))
+                            n.strokes.append(Stroke(color: ui.strokeColor, points: [p]))
                         }
                     } else {
                         model.mutate(node.id) { n in
@@ -185,7 +191,7 @@ struct NodeView: View {
             } else {
                 Text("Bild hierher ziehen oder Button.")
                     .font(.caption).foregroundStyle(Theme.muted)
-                Button("Bild wählen …") { showImagePicker = true }
+                Button("Bild wählen …") { ui.showImagePicker = true }
                     .font(.caption).buttonStyle(.bordered)
             }
         }

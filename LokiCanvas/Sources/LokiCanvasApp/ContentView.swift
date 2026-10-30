@@ -91,9 +91,9 @@ final class CanvasModel: ObservableObject {
     func checkModels() async {
         let tags = await client.models()
         ollamaOffline = tags.isEmpty
-        chatOnline = tags.contains { $0.contains("qwen3.5") && !$0.contains("vl") }
-        visionOnline = tags.contains { $0.contains("vl") }
-        coderOnline = tags.contains { $0.contains("coder") }
+        chatOnline = tags.contains(LocalModels.chat)
+        visionOnline = tags.contains(LocalModels.vision)
+        coderOnline = tags.contains(LocalModels.coder)
         status = tags.isEmpty
             ? "Ollama offline — Knoten/Text/Skizze funktionieren trotzdem, KI nicht."
             : "Ollama: \(tags.count) Modelle gefunden."
@@ -158,11 +158,19 @@ final class CanvasModel: ObservableObject {
 
 // MARK: - Haupt-View
 
+/// UI-lokaler Zustand ohne @State ( CommandLineTools liefern kein SwiftUIMacros-Plugin;
+/// @Published/@StateObject sind makrofrei — TraktorClone-Muster).
+@MainActor
+final class ContentViewUIState: ObservableObject {
+    @Published var panOrigin: CGPoint?
+    @Published var showImporter = false
+    @Published var scrollMonitor: Any?
+}
+
 struct ContentView: View {
     @EnvironmentObject var model: CanvasModel
     @StateObject private var voice = VoiceAgent(locale: Locale(identifier: "de-DE"))
-    @State private var panOrigin: CGPoint?
-    @State private var showImporter = false
+    @StateObject private var ui = ContentViewUIState()
 
     var body: some View {
         VStack(spacing: 0) {
@@ -181,7 +189,7 @@ struct ContentView: View {
             Task { await model.checkModels() }
         }
         .onDisappear { voice.stop() }
-        .fileImporter(isPresented: $showImporter, allowedContentTypes: [.image]) { result in
+        .fileImporter(isPresented: $ui.showImporter, allowedContentTypes: [.image]) { result in
             if case .success(let url) = result,
                let data = try? Data(contentsOf: url) {
                 model.addImageNode(data: data, title: url.lastPathComponent)
@@ -198,7 +206,7 @@ struct ContentView: View {
             Text("LokiCanvas").font(.headline).foregroundStyle(Theme.acc)
             Button("+ Text") { model.addNode(.text) }
             Button("+ Skizze") { model.addNode(.sketch) }
-            Button("+ Bild") { showImporter = true }
+            Button("+ Bild") { ui.showImporter = true }
             Button("+ KI") { model.addNode(.ai) }
             Button("+ Prototyp") { model.addNode(.prototype) }
             Divider().frame(height: 18)
@@ -245,23 +253,22 @@ struct ContentView: View {
     private var panGesture: some Gesture {
         DragGesture(minimumDistance: 1)
             .onChanged { g in
-                if let o = panOrigin {
+                if let o = ui.panOrigin {
                     model.setPan(x: o.x + g.translation.width, y: o.y + g.translation.height)
                 } else {
-                    panOrigin = CGPoint(x: model.doc.panX, y: model.doc.panY)
+                    ui.panOrigin = CGPoint(x: model.doc.panX, y: model.doc.panY)
                 }
             }
             .onEnded { _ in
-                panOrigin = nil
+                ui.panOrigin = nil
                 model.autosaveSoon()
             }
     }
 
     /// Trackpad-Scroll = Pan, Cmd+Scroll = Zoom (NSEvent-Monitor, beim Verlassen entfernt).
-    @State private var scrollMonitor: Any?
     private func installScrollMonitor() {
-        guard scrollMonitor == nil else { return }
-        scrollMonitor = NSEvent.addLocalMonitorForEvents(matching: .scrollWheel) { ev in
+        guard ui.scrollMonitor == nil else { return }
+        ui.scrollMonitor = NSEvent.addLocalMonitorForEvents(matching: .scrollWheel) { ev in
             if ev.modifierFlags.contains(.command) {
                 model.zoomBy(1.0 - ev.scrollingDeltaY * 0.01)
             } else {
