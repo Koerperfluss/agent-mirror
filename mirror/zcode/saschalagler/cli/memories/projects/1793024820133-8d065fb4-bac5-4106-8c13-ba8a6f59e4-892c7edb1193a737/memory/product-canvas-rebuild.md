@@ -34,6 +34,6 @@ Seit 27.10.2026 baut Sascha Google „Product Canvas" (ProductCanvas-Experiment 
 
 **Echtes Firebase (optional, Projektparts fertig):** Projekt `product-canvas-lab-6609` per gcloud+REST angelegt (Pflicht-Header `x-goog-user-project`; `gcloud projects create --name=`), Web-App appId `1:675368337217:web:076991cb00d8fe20efabc0`. **Blocker bleiben:** RTDB-Create REST→404-HTML, identitytoolkit→CONFIGURATION_NOT_FOUND (nur Console-/CLI-Ritual). firebase login via Saschas Code wäre der Hebel — Sessions verfallen aber sofort und der Link-Chaos frustrierte ihn; nur noch anbieten wenn er fragt.
 
-**Nächste Phase:** Umbau zum eigenen Produkt (loki-dev MAP, Multi-Session).
+**Nächste Phase:** ~~Umbau zum eigenen Produkt~~ → **ABGELÖST 30.10.:** Sascha lehnte Web/localhost-Träger ab („0 Sinn") und wollte native App + lokale Ollama-Modelle statt Gemini-Key → Nachfolger ist **LokiCanvas** (SwiftUI, siehe [[lokicanvas-native-app]]). Web-Nachbau ruht als Referenz; Quellordner offenbar nach `~/Desktop/Reverse Engeniering /product-canvas-nachbau/` verschoben.
 
-**Why:** Saschas aktives Hauptprojekt; Pfade, Patches, Emulator-Ports und Restarbeiten sind aus keinem Repo ableitbar. Verwandt: [[zcode-skills-landscape]], [[local-browser-testing-gotchas]], [[simple-language-responses]].
+**Why:** Nachfolge-Projekt von [[lokicanvas-native-app]]; Pfade, Patches, Emulator-Ports hier, Restarbeiten aus keinem Repo ableitbar. Verwandt: [[zcode-skills-landscape]], [[local-browser-testing-gotchas]], [[simple-language-responses]].
