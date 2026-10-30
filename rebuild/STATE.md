@@ -54,3 +54,13 @@ cd agent-mirror/TraktorClone
 - Auto-Analyse im Hintergrund beim Laden (90 s Material); Header zeigt „128 BPM · Am"
 - Beatgrid-Overlay in der Waveform (Beat-Striche bei bekanntem BPM, zoomtreu)
 - 83/83 Tests (16 Suiten; 13 neue)
+
+## Slice 11 (30.10.) — FERTIG (Restaufwand + Ausbau)
+- Beatgrid-Offset: Phasen-Schätzung aus Onset-Kurve (estimateFirstBeatOffset), TrackMemory + Overlay nutzen Offset
+- Sync-Nudge: Sync → A/B = BPM + Beat-Phase (nudgeTarget wählt nächsten Kandidaten MIT Ziel-Phase)
+- Waveform: Cue/Hotcue-Marker (5 Farben + Flags), Zoom-Bug gefixt (Playhead Mitte, Klick → Fensterzeit via WaveWindow)
+- Playlists: PlaylistStore (JSON), Quelle-Menü, Auto-DJ-Quelle umschaltbar, ＋ pro Library-Zeile
+- Treiber-Panel: CoreAudio-Geräteliste + System-Ausgangswechsel, MIDI-Mapping-Tabelle (Löschen/Export/Import)
+- Spotify-Import: Web-API-Metadaten (Env-Keys) → Match gegen Library → als Playlist (KEIN Audio-Streaming, Spotify-AGB)
+- CLT-Falle bestätigt: @State = SwiftUIMacros-Makro, im CLT nicht vorhanden → UI-Flags in EngineHost (@Published)
+- 102/102 Tests (22 Suiten; 19 neue), F-030..F-036 in FEATURES.json

@@ -23,6 +23,7 @@ final class DeckViewModel: ObservableObject {
     @Published var waveform: [Float] = []             // Slice 3: Peak-Buckets
     @Published var bpm: Double?                       // aus Library oder Setzung
     @Published var keyText: String = ""              // Slice 10: DSP-Key "Am"
+    @Published var beatgridOffset: Double?           // Rest-1: erster Beat (Phase-Grid)
     @Published var delayWet: Double = 0
     @Published var reverbWet: Double = 0
     @Published var filterOn = false
@@ -38,6 +39,12 @@ final class DeckViewModel: ObservableObject {
     }
 
     var duration: TimeInterval { state.duration }
+
+    /// Sichtbares Waveform-Fenster (Zoom): Playhead in der Mitte, Klicks mappen aufs Fenster.
+    var window: (offset: Double, width: Double) {
+        WaveWindow.visible(playheadFraction: duration > 0 ? playhead / duration : 0,
+                           zoom: zoom, buckets: waveform.count)
+    }
 
     func load() {
         let panel = NSOpenPanel()
@@ -102,6 +109,7 @@ final class DeckViewModel: ObservableObject {
         }
         bpm = m.bpm
         keyText = m.key ?? ""
+        beatgridOffset = m.beatgridOffset
     }
 
     private func analyzeInBackground(url: URL) {
@@ -113,14 +121,19 @@ final class DeckViewModel: ObservableObject {
             let samples = PCMExtractor.loadMono(url: analyzeURL, maxSeconds: 90)
             let sr = 22050.0     // Detector-Fold läuft auf jeder Rate; env-Rate korrekt berechnet
             let win = 1024
-            let env = BPMDetector.envelope(samples, win: win)
-            let detectedBPM = BPMDetector.detectFromOnsets(BPMDetector.onsets(env),
-                                                            framesPerSecond: sr / Double(win))
+            let fps = sr / Double(win)
+            let ons = BPMDetector.onsets(BPMDetector.envelope(samples, win: win))
+            let detectedBPM = BPMDetector.detectFromOnsets(ons, framesPerSecond: fps)
             let detectedKey = KeyDetector.detectKey(samples, sampleRate: sr)
+            // Rest-1: Beat-Phase (erster Beat) aus derselben Onset-Kurve
+            let detectedOffset = detectedBPM.map {
+                BeatGrid.estimateFirstBeatOffset(onsets: ons, framesPerSecond: fps, bpm: $0)
+            }
             await MainActor.run {
                 guard let self, self.loadedURL == analyzeURL else { return }
                 if let b = detectedBPM, self.bpm == nil { self.bpm = b }
                 if let k = detectedKey { self.keyText = k }
+                if let o = detectedOffset { self.beatgridOffset = o }
                 self.persistMemory()
             }
         }
@@ -134,8 +147,21 @@ final class DeckViewModel: ObservableObject {
                                      cue: state.cuePoint,
                                      hotcues: hotcues,
                                      bpm: bpm,
-                                     key: keyText.isEmpty ? nil : keyText)
+                                     key: keyText.isEmpty ? nil : keyText,
+                                     beatgridOffset: beatgridOffset)
         TrackMemoryStore.save(entry)
+    }
+
+    /// Rest-2: Beat-Phase an den Master angleichen (BPM bleibt, nur Sprung auf Beat-Grenze).
+    func alignPhase(masterTime: TimeInterval, masterBPM: Double, masterOffset: Double?) {
+        guard let bpmV = bpm else { return }
+        let master = BeatGrid(bpm: masterBPM, firstBeatOffset: masterOffset ?? 0)
+        let slave = BeatGrid(bpm: bpmV, firstBeatOffset: beatgridOffset ?? 0)
+        let target = syncEngine.nudgeTarget(masterTime: masterTime, master: master,
+                                            slaveTime: state.currentPlayhead(now: clock),
+                                            slave: slave)
+        state.seek(to: target, now: clock)
+        engine.seek(deck: index, to: target)
     }
 
     func setPitch(_ p: Double) {
@@ -144,10 +170,13 @@ final class DeckViewModel: ObservableObject {
         engine.setPitchFactor(deck: index, factor: state.rate)
     }
 
-    /// Slice 3: Seek über Waveform-Klick (Fraction 0...1).
+    /// Slice 3 + Rest-4: Seek über Waveform-Klick. Fraction bezieht sich auf das
+    /// sichtbare Fenster (bei Zoom > 1 also nicht mehr auf den ganzen Track).
     func seekFraction(_ f: Double) {
         guard duration > 0 else { return }
-        let t = min(max(f, 0), 1) * duration
+        let win = window
+        let tFrac = win.offset + min(max(f, 0), 1) * win.width
+        let t = tFrac * duration
         state.seek(to: t, now: clock)
         engine.seek(deck: index, to: t)
     }

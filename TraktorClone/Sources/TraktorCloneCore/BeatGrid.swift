@@ -35,4 +35,27 @@ public struct BeatGrid: Equatable {
     public func rateToMatch(target: BeatGrid) -> Double {
         target.bpm / bpm
     }
+
+    /// Schätzt den Offset des ersten Beats (Phase) aus einer Onset-Kurve:
+    /// bewertet jede Kandidaten-Phase als Summe der Onset-Werte auf den Beat-Zeiten,
+    /// die Phase mit dem höchsten Score gewinnt. Genauigkeit = Frame-Periode der Kurve.
+    public static func estimateFirstBeatOffset(onsets: [Float], framesPerSecond fps: Double,
+                                               bpm: Double) -> Double {
+        let spbFrames = 60.0 / bpm * fps
+        guard spbFrames >= 2, onsets.count > 4, fps > 0 else { return 0 }
+        var bestPhase = 0.0
+        var bestScore = -Double.infinity
+        var phase = 0.0
+        while phase < spbFrames {
+            var score = 0.0
+            var f = phase
+            while f < Double(onsets.count) {
+                score += Double(onsets[Int(f)])
+                f += spbFrames
+            }
+            if score > bestScore { bestScore = score; bestPhase = phase }
+            phase += 1
+        }
+        return bestPhase / fps
+    }
 }

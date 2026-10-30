@@ -20,6 +20,27 @@ public struct SyncEngine {
         return frac < 0 ? frac + 1 : frac
     }
 
+    /// Zeit, auf die der Slave springen soll, damit seine Beat-Phase der Master-Phase
+    /// entspricht. Kandidaten sind die nächstliegenden Beat-Grenzen MIT Ziel-Phase
+    /// (±1 Beat); Kandidaten vor dem ersten Beat werden verworfen.
+    public func nudgeTarget(masterTime: TimeInterval, master: BeatGrid,
+                            slaveTime: TimeInterval, slave: BeatGrid) -> TimeInterval {
+        guard master.secondsPerBeat > 0, slave.secondsPerBeat > 0 else { return slaveTime }
+        let masterBeats = (masterTime - master.firstBeatOffset) / master.secondsPerBeat
+        let phase = masterBeats - masterBeats.rounded(.down)              // 0..<1
+        let slaveBeats = (slaveTime - slave.firstBeatOffset) / slave.secondsPerBeat
+        let base = slave.firstBeatOffset + (slaveBeats.rounded(.down) + phase) * slave.secondsPerBeat
+        var best = base
+        var bestDist = abs(base - slaveTime)
+        for delta in [-1.0, 1.0] {
+            let candidate = base + delta * slave.secondsPerBeat
+            if candidate < slave.firstBeatOffset { continue }
+            let d = abs(candidate - slaveTime)
+            if d < bestDist { bestDist = d; best = candidate }
+        }
+        return max(0, best)
+    }
+
     /// Wie viele Slave-Beats der Slave gegenüber dem Master versetzt ist
     /// (positiv = Slave hinkt hinterher in Beats gemessen bei slave-BPM).
     public func beatsDiff(masterTime: TimeInterval, master: BeatGrid,

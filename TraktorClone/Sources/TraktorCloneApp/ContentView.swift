@@ -36,6 +36,8 @@ enum Theme {
 struct ContentView: View {
     @EnvironmentObject var midi: MIDIController
     @StateObject private var engineHost = EngineHost()
+    // CLT-Falle: @State ist im macOS-27-SDK ein Makro (SwiftUIMacros fehlt im CLT)
+    // → UI-Schalter als @Published im EngineHost, nicht als @State.
 
     var body: some View {
         VStack(spacing: 0) {
@@ -58,6 +60,9 @@ struct ContentView: View {
         .tint(Theme.acc)
         .background(Theme.bg)
         .onAppear { engineHost.wire(midi: midi) }
+        .sheet(isPresented: $engineHost.showSpotifyImport) {
+            SpotifyImportSheet(host: engineHost)
+        }
     }
 
     // MARK: Top-Bar
@@ -75,13 +80,15 @@ struct ContentView: View {
 
             Spacer()
 
-            // Sync-Sektion
+            // Sync-Sektion (BPM + Beat-Phase)
             HStack(spacing: 4) {
                 Button(engineHost.syncMaster == 1 ? "Master: B" : "Master: A") {
                     engineHost.toggleSyncMaster()
                 }
                 .buttonStyle(.djControl)
-                Button("Sync B→A") { engineHost.syncDeck(1) }
+                Button("Sync → A") { engineHost.syncDeck(0) }
+                    .buttonStyle(.djProminent)
+                Button("Sync → B") { engineHost.syncDeck(1) }
                     .buttonStyle(.djProminent)
                 Button(engineHost.autoDjEnabled ? "🤖 Auto-DJ ✓" : "🤖 Auto-DJ") {
                     engineHost.toggleAutoDJ()
@@ -311,7 +318,7 @@ struct ContentView: View {
         .frame(width: 60, height: 5)
     }
 
-    // MARK: Waveform
+    // MARK: Waveform (Zoom-Fenster + Cue/Hotcue-Marker)
     private func waveformView(vm: DeckViewModel) -> some View {
         Canvas { ctx, size in
             let w = size.width, h = size.height
@@ -322,32 +329,28 @@ struct ContentView: View {
                 return
             }
             let n = all.count
-            let frac = vm.state.duration > 0 ? vm.playhead / vm.state.duration : 0
-            let vis: ArraySlice<Float>
-            let offsetF: CGFloat
-            if vm.zoom == 1 { vis = all[...]; offsetF = 0 }
-            else {
-                let win = max(1, n / vm.zoom)
-                var start = Int(frac * CGFloat(n)) - win / 2
-                start = max(0, min(start, n - win))
-                vis = all[start..<(start + win)]
-                offsetF = CGFloat(start) / CGFloat(n)
-            }
-            let bw = w / CGFloat(max(vis.count, 1))
+            let win = vm.window
+            let total = vm.state.duration
 
-            // Beatgrid
-            if let bpmV = vm.bpm, bpmV > 0 {
+            /// Track-Sekunde → x im sichtbaren Fenster.
+            func xFor(_ time: TimeInterval) -> CGFloat {
+                guard total > 0 else { return -1 }
+                let f = time / total
+                return w * CGFloat((f - win.offset) / max(win.width, 0.0001))
+            }
+
+            let bw = w / CGFloat(max(n * Int(win.width), 1))
+
+            // Beatgrid (nutzt Offset aus der Track-Analyse, nicht nur BPM-Takt)
+            if let bpmV = vm.bpm, bpmV > 0, total > 0 {
                 let spb = 60.0 / bpmV
-                let total = vm.state.duration
-                let win = vm.zoom == 1 ? n : max(1, n / vm.zoom)
-                let start = vm.zoom == 1 ? 0 : max(0, min(Int(frac * Double(n)) - win / 2, n - win))
-                let t0 = Double(start) / Double(n) * total
-                let t1 = Double(start + win) / Double(n) * total
-                var t = (t0 / spb).rounded(.up) * spb
+                let t0 = win.offset * total
+                let t1 = (win.offset + win.width) * total
+                let phase = vm.beatgridOffset ?? 0
+                var t = max(((t0 - phase) / spb).rounded(.up) * spb + phase, 0)
                 while t < t1 {
-                    let idx = Int(t / total * Double(n)) - start
-                    if idx >= 0 && idx < win {
-                        let x = CGFloat(idx) * bw
+                    let x = xFor(t)
+                    if x >= 0 && x <= w {
                         ctx.fill(Path(CGRect(x: x, y: h * 0.5 - 4, width: 1, height: 8)),
                                  with: .color(Theme.muted.opacity(0.4)))
                     }
@@ -355,25 +358,47 @@ struct ContentView: View {
                 }
             }
 
-            // Waveform-Bars mit vertikalem Gradient
-            for (i, peak) in vis.enumerated() {
+            // Waveform-Bars (nur das sichtbare Fenster), zweifarbig
+            let firstBucket = Int(win.offset * Double(n))
+            let visibleCount = max(1, Int(win.width * Double(n)))
+            for i in 0..<visibleCount {
+                let idx = min(firstBucket + i, n - 1)
+                let peak = all[idx]
                 let barH = max(1, CGFloat(peak) * h * 0.9)
                 let x = CGFloat(i) * bw
                 let barW = max(bw - 0.5, 0.5)
-                // Obere Hälfte heller, untere dunkler
                 ctx.fill(Path(CGRect(x: x, y: (h - barH) / 2, width: barW, height: barH / 2)),
                          with: .color(Theme.acc.opacity(0.85)))
                 ctx.fill(Path(CGRect(x: x, y: h / 2, width: barW, height: barH / 2)),
                          with: .color(Theme.acc.opacity(0.45)))
             }
 
-            // Playhead mit Glow
-            if vm.state.duration > 0 {
-                let x = w * CGFloat(max(0, min(frac - offsetF, 1)))
-                ctx.fill(Path(CGRect(x: x - 1, y: 0, width: 4, height: h)),
-                         with: .color(Theme.rd.opacity(0.3)))
-                ctx.fill(Path(CGRect(x: x, y: 0, width: 2, height: h)),
-                         with: .color(Theme.rd))
+            // Rest-3: Cue-Marker (gelb) + Hotcues 1–4 (cyan/grün/gelb/rot) mit Flag oben
+            let markerColors: [Color] = [Theme.acc, Theme.gr, Theme.yl, Theme.rd]
+            func marker(_ time: TimeInterval, _ color: Color, flag: Bool) {
+                let x = xFor(time)
+                guard x >= 0 && x <= w else { return }
+                ctx.fill(Path(CGRect(x: x - 1, y: flag ? 8 : 0, width: 2, height: flag ? h - 8 : h)),
+                         with: .color(color.opacity(0.55)))
+                if flag {
+                    ctx.fill(Path(CGRect(x: x - 1, y: 0, width: 8, height: 8)),
+                             with: .color(color))
+                }
+            }
+            marker(vm.state.cuePoint, Theme.yl, flag: true)
+            for i in 1...4 {
+                if let t = vm.state.hotcues[i] { marker(t, markerColors[i - 1], flag: true) }
+            }
+
+            // Playhead mit Glow (Fenstermitte bei Zoom > 1)
+            if total > 0 {
+                let x = xFor(vm.playhead)
+                if x >= 0 && x <= w {
+                    ctx.fill(Path(CGRect(x: x - 1, y: 0, width: 4, height: h)),
+                             with: .color(Theme.rd.opacity(0.3)))
+                    ctx.fill(Path(CGRect(x: x, y: 0, width: 2, height: h)),
+                             with: .color(Theme.rd))
+                }
             }
         }
         .frame(height: 64)
@@ -493,7 +518,7 @@ struct ContentView: View {
         .frame(width: 100, height: 36)
     }
 
-    // MARK: Library
+    // MARK: Library + Playlists + Treiber
     private var libraryView: some View {
         VStack(alignment: .leading, spacing: 6) {
             HStack(spacing: 8) {
@@ -501,6 +526,8 @@ struct ContentView: View {
                 Text("(\(engineHost.library.count))")
                     .font(Theme.fCaption).foregroundStyle(Theme.muted)
                 Spacer()
+                Button("🎧 Spotify-Playlist …") { engineHost.showSpotifyImport = true }
+                    .buttonStyle(.djControl(tint: Theme.gr))
                 TextField("Suche …", text: Binding(
                     get: { engineHost.searchText },
                     set: { engineHost.searchText = $0 }
@@ -508,6 +535,9 @@ struct ContentView: View {
                 .textFieldStyle(.roundedBorder)
                 .frame(maxWidth: 280)
             }
+
+            // Rest-5: Playlists (Crate) — Quelle für Auto-DJ
+            playlistRow
 
             let results = LibrarySearch.filter(engineHost.library, query: engineHost.searchText)
             List(results.prefix(60), id: \.path) { track in
@@ -523,6 +553,9 @@ struct ContentView: View {
                         }
                     }
                     Spacer()
+                    Button("＋") { engineHost.addToActivePlaylist(track) }
+                        .buttonStyle(.djSquare)
+                        .help("In aktive Playlist")
                     Button("→ A") { engineHost.load(track: track, deck: 0) }
                         .buttonStyle(.djControl)
                     Button("→ B") { engineHost.load(track: track, deck: 1) }
@@ -538,9 +571,119 @@ struct ContentView: View {
                 Text("collection.nml leer — in Traktor Tracks importieren, dann App neu starten.")
                     .font(Theme.fCaption).foregroundStyle(Theme.muted)
             }
+
+            setupPanel
         }
         .padding(12)
         .background(RoundedRectangle(cornerRadius: Theme.rCard).fill(Theme.surface))
+    }
+
+    private var playlistRow: some View {
+        HStack(spacing: 6) {
+            Text("Quelle:").font(Theme.fCaption).foregroundStyle(Theme.muted)
+            Menu {
+                Button("Library (alle)") { engineHost.activePlaylistID = nil }
+                ForEach(engineHost.playlists) { p in
+                    Button(p.name) { engineHost.activePlaylistID = p.id }
+                }
+            } label: {
+                Text(engineHost.activePlaylistLabel)
+                    .font(Theme.fCaption)
+                    .foregroundStyle(engineHost.activePlaylistID != nil ? Theme.yl : Theme.acc)
+            }
+            .fixedSize()
+
+            if engineHost.activePlaylistID != nil {
+                Text("(\(engineHost.activePlaylist?.trackPaths.count ?? 0))")
+                    .font(Theme.fCaption).foregroundStyle(Theme.muted)
+                Button("🗑") {
+                    if let id = engineHost.activePlaylistID { engineHost.deletePlaylist(id) }
+                }
+                .buttonStyle(.djSquare(active: true, activeColor: Theme.rd))
+                .help("Playlist löschen")
+            }
+            Button("＋ Neu") { newPlaylistAlert() }
+                .buttonStyle(.djControl)
+            Spacer()
+            Text("Auto-DJ zieht aus der gewählten Quelle.")
+                .font(Theme.fCaption).foregroundStyle(Theme.muted)
+        }
+    }
+
+    private func newPlaylistAlert() {
+        let alert = NSAlert()
+        alert.messageText = "Neue Playlist"
+        alert.informativeText = "Name der Playlist:"
+        alert.addButton(withTitle: "Anlegen")
+        alert.addButton(withTitle: "Abbrechen")
+        let field = NSTextField(frame: NSRect(x: 0, y: 0, width: 240, height: 24))
+        field.placeholderString = "z. B. Warm-Up"
+        alert.accessoryView = field
+        if alert.runModal() == .alertFirstButtonReturn {
+            engineHost.createPlaylist(name: field.stringValue)
+        }
+    }
+
+    // MARK: Treiber & MIDI-Mappings (Rest-6)
+    private var setupPanel: some View {
+        DisclosureGroup(isExpanded: $engineHost.showSetup) {
+            VStack(alignment: .leading, spacing: 6) {
+                // Audio-Ausgang
+                HStack(spacing: 6) {
+                    Text("Audio").font(Theme.fCaption).foregroundStyle(Theme.muted)
+                        .frame(width: 48, alignment: .leading)
+                    Menu {
+                        ForEach(engineHost.audioDevices, id: \.id) { dev in
+                            Button(dev.name) { engineHost.setDefaultAudio(dev.id) }
+                        }
+                    } label: {
+                        Text(engineHost.audioDevices.first { $0.id == engineHost.defaultAudioDeviceID }?.name
+                             ?? "System-Ausgang")
+                            .font(Theme.fCaption)
+                    }
+                    .fixedSize()
+                    Button("↻") { engineHost.refreshAudioDevices() }
+                        .buttonStyle(.djControl)
+                    Text("(System-Ausgang, macOS-weit)")
+                        .font(Theme.fCaption).foregroundStyle(Theme.muted)
+                    Spacer()
+                }
+
+                // MIDI-Geräte + Mappings
+                HStack(spacing: 6) {
+                    Text("MIDI").font(Theme.fCaption).foregroundStyle(Theme.muted)
+                        .frame(width: 48, alignment: .leading)
+                    Text(midi.status).font(Theme.fCaption).foregroundStyle(Theme.soft)
+                    Spacer()
+                    Button("Export") { engineHost.exportMappings() }
+                        .buttonStyle(.djControl)
+                    Button("Import") { engineHost.importMappings() }
+                        .buttonStyle(.djControl)
+                }
+
+                let mappings = engineHost.currentMappings
+                if mappings.isEmpty {
+                    Text("Keine Mappings — oben per MIDI-Learn anlernen.")
+                        .font(Theme.fCaption).foregroundStyle(Theme.muted)
+                } else {
+                    ForEach(Array(mappings.enumerated()), id: \.offset) { _, m in
+                        HStack(spacing: 6) {
+                            Text("\(m.isCC ? "CC" : "Note") \(m.control) · Ch \(m.channel + 1)")
+                                .font(Theme.fSub).foregroundStyle(Theme.acc)
+                                .frame(width: 130, alignment: .leading)
+                            Text("→ \(m.action)").font(Theme.fCaption).foregroundStyle(Theme.soft)
+                            Spacer()
+                            Button("✕") { engineHost.removeMapping(m) }
+                                .buttonStyle(.djSquare(active: true, activeColor: Theme.rd))
+                        }
+                    }
+                }
+            }
+            .padding(.top, 4)
+        } label: {
+            Text("Treiber & MIDI (\(engineHost.currentMappings.count))")
+                .font(Theme.fCaption).foregroundStyle(Theme.muted)
+        }
     }
 
     private func timeString(_ t: TimeInterval) -> String {
@@ -652,5 +795,76 @@ enum LearnTarget: String, CaseIterable, Identifiable {
         case .hc4: return .hotcue4
         case .xf: return .crossfader
         }
+    }
+}
+
+// MARK: - Spotify-Playlist-Import (Rest-7: nur Metadaten, Match gegen lokale Library)
+
+struct SpotifyImportSheet: View {
+    @ObservedObject var host: EngineHost
+    @Environment(\.dismiss) private var dismiss
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            HStack(spacing: 8) {
+                Image(systemName: "music.note").foregroundStyle(Theme.gr)
+                Text("Spotify-Playlist importieren").font(Theme.fDisplay)
+                Spacer()
+                Button("Schließen") { dismiss() }.buttonStyle(.djControl)
+            }
+
+            Text("Metadaten-Import: Spotify erlaubt DJ-Apps kein Audio-Streaming — die Tracks werden gegen deine lokale Library gematcht.")
+                .font(Theme.fCaption).foregroundStyle(Theme.muted)
+
+            HStack(spacing: 6) {
+                TextField("https://open.spotify.com/playlist/…", text: $host.spotifyURLText)
+                    .textFieldStyle(.roundedBorder)
+                Button("Holen") {
+                    Task { await host.importSpotifyPlaylist(host.spotifyURLText) }
+                }
+                .buttonStyle(.djProminent(tint: Theme.gr))
+            }
+
+            if !host.spotifyStatus.isEmpty {
+                Text(host.spotifyStatus).font(Theme.fCaption).foregroundStyle(Theme.yl)
+            }
+
+            if !host.spotifyResults.isEmpty {
+                List(host.spotifyResults, id: \.self) { st in
+                    let local = PlaylistMatch.match(spotify: st, in: host.library)
+                    HStack(spacing: 8) {
+                        Circle()
+                            .fill(local != nil ? Theme.gr : Theme.bd)
+                            .frame(width: 7, height: 7)
+                            .help(local != nil ? "In lokaler Library" : "Kein lokaler Treffer")
+                        VStack(alignment: .leading, spacing: 1) {
+                            Text(st.name).font(Theme.fBody).lineLimit(1)
+                            Text(st.artist).font(Theme.fCaption).foregroundStyle(Theme.muted)
+                        }
+                        Spacer()
+                        if let l = local {
+                            Text(l.title).font(Theme.fCaption).foregroundStyle(Theme.soft).lineLimit(1)
+                        } else {
+                            Text("—").font(Theme.fCaption).foregroundStyle(Theme.muted)
+                        }
+                    }
+                }
+                .listStyle(.inset)
+                .frame(minHeight: 180, maxHeight: 300)
+                .scrollContentBackground(.hidden)
+
+                Button("Gefundene als Playlist anlegen") {
+                    host.saveSpotifyMatchesAsPlaylist(
+                        name: host.spotifyStatus.split(separator: ":").first.map(String.init) ?? "Spotify-Import")
+                }
+                .buttonStyle(.djProminent)
+            }
+
+            Spacer(minLength: 0)
+        }
+        .padding(16)
+        .frame(width: 560)
+        .foregroundStyle(Theme.ink)
+        .background(Theme.bg)
     }
 }

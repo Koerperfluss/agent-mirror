@@ -8,11 +8,12 @@ public struct TrackMemoryEntry: Codable, Equatable {
     public var hotcues: [String: Double]      // "1"..."4" → Sekunden
     public var bpm: Double?
     public var key: String?
+    public var beatgridOffset: Double?      // Sekunden bis Beat 0 (Phase-Grid, optional → alte Dateien laden)
 
     public init(path: String, cue: Double? = nil, hotcues: [String: Double] = [:],
-                bpm: Double? = nil, key: String? = nil) {
+                bpm: Double? = nil, key: String? = nil, beatgridOffset: Double? = nil) {
         self.path = path; self.cue = cue; self.hotcues = hotcues
-        self.bpm = bpm; self.key = key
+        self.bpm = bpm; self.key = key; self.beatgridOffset = beatgridOffset
     }
 }
 

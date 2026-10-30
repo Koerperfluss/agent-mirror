@@ -235,5 +235,68 @@
   "implementation_status": "implemented",
   "notes": "Slice 9: Waveform-Drag = Scrub (kontinuierlicher Seek), Klick = Jump; Zoom 1x/2x/4x um Playhead",
   "test_refs": "waveformView"
+ },
+ {
+  "id": "F-030",
+  "area": "Analyse",
+  "name": "Beatgrid-Offset (Phase)",
+  "evidence_level": "documented",
+  "implementation_status": "implemented",
+  "notes": "Rest-1: estimateFirstBeatOffset aus Onset-Kurve (Phasen-Scoring), in TrackMemory persistiert, Beatgrid-Overlay nutzt Offset",
+  "test_refs": "BeatgridOffsetTests"
+ },
+ {
+  "id": "F-031",
+  "area": "Sync",
+  "name": "Sync-Beat-Phase-Nudge",
+  "evidence_level": "documented",
+  "implementation_status": "implemented",
+  "notes": "Rest-2: Sync = BPM-Angleich + Phasensprung auf nächstliegende Beat-Grenze MIT Master-Phase; Sync → A / Sync → B Buttons",
+  "test_refs": "SyncNudgeTests"
+ },
+ {
+  "id": "F-032",
+  "area": "Deck",
+  "name": "Cue/Hotcue-Marker in Waveform",
+  "evidence_level": "documented",
+  "implementation_status": "implemented",
+  "notes": "Rest-3: Cue-Marker gelb + Hotcues 1–4 (cyan/grün/gelb/rot) mit Flag, zoomfenstertreu",
+  "test_refs": "waveformView"
+ },
+ {
+  "id": "F-033",
+  "area": "Deck",
+  "name": "Zoom-Feinschliff",
+  "evidence_level": "documented",
+  "implementation_status": "implemented",
+  "notes": "Rest-4: Playhead sitzt in Fenstermitte (Bug: vorher w/4), Klick/Drag mappt aufs sichtbare Fenster (WaveWindow), Beatgrid nutzt Grid-Offset",
+  "test_refs": "WaveWindowTests"
+ },
+ {
+  "id": "F-034",
+  "area": "Library",
+  "name": "Playlists (Crates)",
+  "evidence_level": "documented",
+  "implementation_status": "implemented",
+  "notes": "Rest-5: PlaylistStore JSON, Quelle-Menü (Library/Playlist), +Neu/Löschen, ＋-Button pro Track, Auto-DJ zieht aus aktiver Quelle",
+  "test_refs": "PlaylistStoreTests"
+ },
+ {
+  "id": "F-035",
+  "area": "Treiber",
+  "name": "Audio-Geräte + MIDI-Mapping-Verwaltung",
+  "evidence_level": "documented",
+  "implementation_status": "implemented",
+  "notes": "Rest-6: CoreAudio-Geräteliste + System-Ausgang umschalten, Mapping-Tabelle mit Löschen + JSON-Export/Import, Treiber-Panel DisclosureGroup",
+  "test_refs": "AudioDevicesTests"
+ },
+ {
+  "id": "F-036",
+  "area": "Library",
+  "name": "Spotify-Playlist-Import (Metadaten)",
+  "evidence_level": "documented",
+  "implementation_status": "implemented",
+  "notes": "Rest-7: Spotify Web API (Client-Credentials via Env), URL/URI-Parsing, Match gegen lokale Library, Treffer als Playlist; bewusst KEIN Audio-Streaming (Spotify-AGB)",
+  "test_refs": "SpotifyImportTests"
  }
 ]

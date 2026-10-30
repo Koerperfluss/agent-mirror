@@ -47,3 +47,18 @@ public enum WaveformExtractor {
         return peaks
     }
 }
+
+/// Sichtbares Waveform-Fenster (Zoom): Playhead sitzt in der Fenstermitte,
+/// Klick-/Drag-Positionen werden über offset+width zurück auf Track-Zeiten gemappt.
+public enum WaveWindow {
+    /// `offset` = Fensterstart als Anteil (0..<1), `width` = Fensterbreite als Anteil.
+    public static func visible(playheadFraction: Double, zoom: Int,
+                               buckets: Int) -> (offset: Double, width: Double) {
+        guard buckets > 0, zoom > 1 else { return (0, 1) }
+        let win = max(1, buckets / zoom)
+        let frac = min(max(playheadFraction, 0), 1)
+        var start = Int(frac * Double(buckets)) - win / 2
+        start = max(0, min(start, buckets - win))
+        return (Double(start) / Double(buckets), Double(win) / Double(buckets))
+    }
+}

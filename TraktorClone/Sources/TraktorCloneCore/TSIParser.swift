@@ -76,6 +76,11 @@ public final class MIDIActionRouter {
 
     public func clear() { assignments.removeAll() }
 
+    /// Entfernt die Zuordnung eines konkreten Controls (Mapping-Verwaltung).
+    public func remove(matching a: MIDIAssignment) {
+        assignments.removeAll { $0.channel == a.channel && $0.isCC == a.isCC && $0.control == a.control }
+    }
+
     /// Normale MIDI-Events (anzahl Bytes 3: [status, d1, d2]).
     public func route(event bytes: [UInt8]) {
         guard bytes.count >= 3 else { return }

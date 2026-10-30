@@ -2,6 +2,7 @@ import SwiftUI
 import TraktorCloneCore
 import CoreMIDI
 import AppKit
+import UniformTypeIdentifiers
 
 /// Hält AudioEngine + Decks + Mixer + Sync + Recorder + Library + MIDI-Learn + Auto-DJ.
 @MainActor
@@ -22,11 +23,39 @@ final class EngineHost: ObservableObject {
     private var finishTimer: Timer?
     @Published var library: [NMLTrack] = []
     @Published var searchText = ""
+    // Rest-5: Playlists
+    @Published var playlists: [Playlist] = []
+    @Published var activePlaylistID: UUID?
+    // Rest-6: Treiber (Audio) + MIDI-Mapping-Verwaltung
+    @Published var audioDevices: [AudioDeviceInfo] = []
+    @Published var defaultAudioDeviceID: UInt32?
+    @Published var mappingRevision = 0        // zählt Mapping-Änderungen hoch (UI-Rerender)
+    // Rest-7: Spotify-Import (Metadaten → lokale Library)
+    @Published var spotifyResults: [SpotifyTrack] = []
+    @Published var spotifyStatus = ""
+    @Published var showSpotifyImport = false    // Sheet-Steuerung (kein @State: CLT-Macro-Falle)
+    @Published var spotifyURLText = ""          // Eingabefeld im Sheet
+    @Published var showSetup = false            // Treiber-Panel auf-/zugeklappt
+    weak var midiController: MIDIController?
 
     init() {
         deckA = DeckViewModel(index: 0, engine: audio)
         deckB = DeckViewModel(index: 1, engine: audio)
         loadLibrary()
+        playlists = PlaylistStore.load()
+        refreshAudioDevices()
+    }
+
+    func refreshAudioDevices() {
+        audioDevices = AudioDevices.list()
+        defaultAudioDeviceID = AudioDevices.defaultOutputID()
+    }
+
+    /// System-Ausgang umschalten (macOS-weit — CoreAudio-Default-Output).
+    func setDefaultAudio(_ id: UInt32) {
+        if AudioDevices.setDefaultOutput(id: id) {
+            defaultAudioDeviceID = id
+        }
     }
 
     func setCrossfader(_ x: Double) {
@@ -42,12 +71,15 @@ final class EngineHost: ObservableObject {
 
     func toggleSyncMaster() { sync.toggleMaster(syncMaster == 0 ? 1 : 0) }
 
+    /// Rest-2: Sync = BPM angleichen + Beat-Phase des Masters übernehmen.
     func syncDeck(_ slave: Int) {
         let masterVM = sync.masterDeck == 0 ? deckA : deckB
         let slaveVM = slave == 0 ? deckA : deckB
         guard let mb = masterVM.bpm, let sb = slaveVM.bpm else { return }
         let pitch = sync.slavePitch(master: BeatGrid(bpm: mb), slave: BeatGrid(bpm: sb))
         slaveVM.setPitch(pitch)
+        slaveVM.alignPhase(masterTime: masterVM.playhead,
+                           masterBPM: mb, masterOffset: masterVM.beatgridOffset)
     }
 
     // MARK: Recording
@@ -72,13 +104,13 @@ final class EngineHost: ObservableObject {
         finishTimer?.invalidate()
         finishTimer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { [weak self] _ in
             Task { @MainActor in
-                guard let self, self.autoDjEnabled, self.library.isEmpty == false else { return }
+                guard let self, self.autoDjEnabled, self.autoDjSource.isEmpty == false else { return }
                 for vm in [self.deckA, self.deckB] {
                     let remaining = vm.state.duration - vm.playhead
                     if vm.state.isPlaying, vm.state.duration > 0,
                        remaining < 5, remaining > 0, !vm.autoDjArmed {
                         vm.autoDjArmed = true
-                        if let next = self.autoDj.next(from: self.library) {
+                        if let next = self.autoDj.next(from: self.autoDjSource) {
                             let other = vm === self.deckA ? self.deckB : self.deckA
                             self.load(track: next, deck: other.index)
                             if !other.state.isPlaying { other.togglePlay() }
@@ -119,12 +151,140 @@ final class EngineHost: ObservableObject {
         vm.bpm = track.bpm
     }
 
+    // MARK: Playlists (Rest-5)
+
+    var activePlaylist: Playlist? {
+        playlists.first { $0.id == activePlaylistID }
+    }
+
+    var activePlaylistLabel: String {
+        activePlaylist?.name ?? "Library (alle)"
+    }
+
+    /// Auto-DJ-Quelle: aktive Playlist, sonst die ganze Library.
+    var autoDjSource: [NMLTrack] {
+        guard let p = activePlaylist else { return library }
+        return p.trackPaths.map { path in
+            library.first { $0.path == path } ?? playlistEntry(path: path)
+        }
+    }
+
+    private func playlistEntry(path: String) -> NMLTrack {
+        var t = NMLTrack()
+        t.path = path
+        t.title = URL(fileURLWithPath: path).deletingPathExtension().lastPathComponent
+        return t
+    }
+
+    private func persistPlaylists() {
+        try? PlaylistStore.save(playlists)
+    }
+
+    func createPlaylist(name: String) {
+        let trimmed = name.trimmingCharacters(in: .whitespacesAndNewlines)
+        let pl = Playlist(name: trimmed.isEmpty ? "Neue Playlist" : trimmed)
+        playlists.append(pl)
+        activePlaylistID = pl.id
+        persistPlaylists()
+    }
+
+    func deletePlaylist(_ id: UUID) {
+        playlists.removeAll { $0.id == id }
+        if activePlaylistID == id { activePlaylistID = nil }
+        persistPlaylists()
+    }
+
+    /// Aktiven Track einer NML-Zeile in die aktive Playlist hängen.
+    func addToActivePlaylist(_ track: NMLTrack) {
+        guard !track.path.isEmpty else { return }
+        if activePlaylist == nil { createPlaylist(name: "Neue Playlist") }
+        guard let p = activePlaylist else { return }
+        if let i = playlists.firstIndex(where: { $0.id == p.id }),
+           !playlists[i].trackPaths.contains(track.path) {
+            playlists[i].trackPaths.append(track.path)
+            persistPlaylists()
+        }
+    }
+
+    // MARK: Spotify-Import (Rest-7, nur Metadaten — kein Audio-Streaming)
+
+    func importSpotifyPlaylist(_ input: String) async {
+        guard let id = SpotifyClient.playlistID(from: input) else {
+            spotifyStatus = "Keine Spotify-Playlist-URL erkannt"
+            return
+        }
+        guard let cid = ProcessInfo.processInfo.environment["SPOTIFY_CLIENT_ID"],
+              let csec = ProcessInfo.processInfo.environment["SPOTIFY_CLIENT_SECRET"] else {
+            spotifyStatus = "SPOTIFY_CLIENT_ID / SPOTIFY_CLIENT_SECRET fehlen (Env-Variablen setzen)"
+            return
+        }
+        do {
+            let token = try await SpotifyClient.token(clientID: cid, clientSecret: csec)
+            let pl = try await SpotifyClient.fetchPlaylist(id: id, token: token)
+            spotifyResults = pl.tracks
+            spotifyStatus = "\(pl.name): \(pl.tracks.count) Tracks"
+        } catch {
+            spotifyStatus = "Fehler: \(error.localizedDescription)"
+        }
+    }
+
+    /// Alle lokal gematchten Spotify-Tracks als neue Playlist anlegen.
+    func saveSpotifyMatchesAsPlaylist(name: String) {
+        var paths: [String] = []
+        for st in spotifyResults {
+            if let m = PlaylistMatch.match(spotify: st, in: library) {
+                if !paths.contains(m.path) { paths.append(m.path) }
+            }
+        }
+        guard !paths.isEmpty else { spotifyStatus = "Keine Treffer in der lokalen Library"; return }
+        let pl = Playlist(name: name, trackPaths: paths)
+        playlists.append(pl)
+        activePlaylistID = pl.id
+        persistPlaylists()
+        spotifyStatus = "Playlist '\(pl.name)' mit \(paths.count) lokalen Tracks angelegt"
+    }
+
+    // MARK: MIDI-Mapping-Verwaltung (Rest-6)
+
+    var currentMappings: [LearnedMapping] {
+        midiController?.router.assignments.map(\.learned) ?? []
+    }
+
+    func removeMapping(_ m: LearnedMapping) {
+        guard let a = m.assignment, let router = midiController?.router else { return }
+        router.remove(matching: a)
+        saveMappings(router.assignments.map(\.learned))
+        mappingRevision += 1
+    }
+
+    func exportMappings() {
+        let panel = NSSavePanel()
+        panel.allowedContentTypes = [.json]
+        panel.nameFieldStringValue = "TraktorClone-Mappings.json"
+        guard panel.runModal() == .OK, let url = panel.url else { return }
+        do { try MappingStore.save(currentMappings, to: url); mappingRevision += 1 } catch { }
+    }
+
+    func importMappings() {
+        let panel = NSOpenPanel()
+        panel.allowedContentTypes = [.json]
+        panel.canChooseDirectories = false
+        guard panel.runModal() == .OK, let url = panel.url,
+              let router = midiController?.router else { return }
+        for l in MappingStore.loadOrDefault(from: url) {
+            if let a = l.assignment { router.assign(a) }
+        }
+        saveMappings(router.assignments.map(\.learned))
+        mappingRevision += 1
+    }
+
     // MARK: MIDI-Learn-Persistenz
     func saveMappings(_ mappings: [LearnedMapping]) {
         try? MappingStore.save(mappings, to: MappingStore.defaultURL())
     }
 
     func wire(midi: MIDIController) {
+        midiController = midi
         midi.router.onAction = { [weak self] action, value in
             Task { @MainActor in
                 guard let self else { return }

@@ -1,6 +1,6 @@
 {
   "schema_version": "mimosa-task-review/v2",
-  "run_id": "20261026T160300907Z-61904-1768a57febef",
+  "run_id": "20261030T014946422Z-14295-fdec584241ef",
   "run_status": "inconclusive",
   "errors": [
     {
@@ -93,10 +93,10 @@
     ],
     "reasons_truncated": false
   },
-  "generated_at": "2026-10-26T16:03:00.907Z",
+  "generated_at": "2026-10-30T01:49:46.422Z",
   "session_id": "session_58f3f4bfcb9a88671e0595593de28702",
   "target": ".",
-  "revision": "f0dad8a3c119d836022c1ea9646da374dc66336d",
+  "revision": "6d112d5d503b1707cce9c9b5be4625b7209aeb84",
   "rules_version": "unavailable",
   "diff_hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "diff": {
@@ -105,9 +105,9 @@
     "changed_files": []
   },
   "timing": {
-    "started_at": "2026-10-26T16:03:00.650Z",
-    "completed_at": "2026-10-26T16:03:00.907Z",
-    "duration_ms": 257,
+    "started_at": "2026-10-30T01:49:46.052Z",
+    "completed_at": "2026-10-30T01:49:46.422Z",
+    "duration_ms": 370,
     "measurement": "hook_wall_clock"
   },
   "tokens": {
@@ -122,8 +122,8 @@
     "profile": "gate",
     "operation": "Stop",
     "outcome": "partial/INCONCLUSIVE",
-    "latencyMs": 257,
-    "peakMemoryBytes": 106741760,
+    "latencyMs": 370,
+    "peakMemoryBytes": 107675648,
     "memoryMeasurement": "max-observed-process-rss",
     "scannedFiles": 0,
     "cache": {
@@ -150,8 +150,8 @@
   "finding_events": [],
   "findings": [],
   "artifacts": {
-    "immutable_report": ".mimosa/reports/task-review-session_58f3f4bfcb9a88671e0595593de28702-20261026T160300907Z-61904-1768a57febef.json",
+    "immutable_report": ".mimosa/reports/task-review-session_58f3f4bfcb9a88671e0595593de28702-20261030T014946422Z-14295-fdec584241ef.json",
     "latest_report": ".mimosa/reports/task-review-session_58f3f4bfcb9a88671e0595593de28702.json",
-    "history_summary": ".mimosa/history/run-20261026T160300907Z-61904-1768a57febef.json"
+    "history_summary": ".mimosa/history/run-20261030T014946422Z-14295-fdec584241ef.json"
   }
 }
