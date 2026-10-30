@@ -79,22 +79,22 @@ head: Tide: No such file or directory
 head: retention: No such file or directory
 head: rebuild.md: No such file or directory
 Wiki aktualisiert: /Users/saschalagler/Mirror/agent-mirror/mirror/wiki
-2026-10-30 01:35:20 UTC [INFO] Cognee übersprungen (kein Zugang hinterlegt)
-2026-10-30 01:35:20 UTC [INFO] Cognee übersprungen (kein Zugang hinterlegt)
+2026-10-30 01:52:07 UTC [INFO] Cognee übersprungen (kein Zugang hinterlegt)
+2026-10-30 01:52:07 UTC [INFO] Cognee übersprungen (kein Zugang hinterlegt)
 /Users/saschalagler/Projects/agent-mirror/scripts/archive-to-gcs.sh: line 23: gsutil: command not found
-2026-10-30 01:35:24 UTC [WARN] GCS nicht erreichbar — /Users/saschalagler/.cache/agent-mirror-gcs/mirror-20261030-0029.tar.gz bleibt in Warteschlange
-2026-10-30 01:35:27 UTC [INFO] Lauf beendet: state=ok files=22 
-2026-10-30 01:45:27 UTC [INFO] Starte Spiegelung: /Users/saschalagler → /Users/saschalagler/Mirror/agent-mirror
-2026-10-30 01:46:19 UTC [INFO] antigravity: 0 Datei(en) aktualisiert
-2026-10-30 01:47:09 UTC [INFO] antigravity: 0 Datei(en) aktualisiert
-2026-10-30 01:47:59 UTC [INFO] cline-code: 0 Datei(en) aktualisiert
-2026-10-30 01:48:43 UTC [INFO] cline-code: 0 Datei(en) aktualisiert
-2026-10-30 01:49:27 UTC [INFO] cline-cli: 0 Datei(en) aktualisiert
-2026-10-30 01:50:17 UTC [INFO] claude: 0 Datei(en) aktualisiert
-2026-10-30 01:51:14 UTC [INFO] zcode: 1 Datei(en) aktualisiert
-2026-10-30 01:51:15 UTC [INFO] Commit erstellt: Auto-sync: 2026-10-30 01:51 UTC (23 files)
-2026-10-30 01:51:25 UTC [INFO] Push erfolgreich (1 Commit(s))
-Obsidian-Notizbuch aktualisiert: /Users/saschalagler/Mirror/agent-mirror/mirror/obsidian (19 geänderte Notizen)
+2026-10-30 01:52:15 UTC [WARN] GCS nicht erreichbar — /Users/saschalagler/.cache/agent-mirror-gcs/mirror-20261030-0045.tar.gz bleibt in Warteschlange
+2026-10-30 01:52:17 UTC [INFO] Lauf beendet: state=ok files=23 
+2026-10-30 02:02:17 UTC [INFO] Starte Spiegelung: /Users/saschalagler → /Users/saschalagler/Mirror/agent-mirror
+2026-10-30 02:03:06 UTC [INFO] antigravity: 0 Datei(en) aktualisiert
+2026-10-30 02:03:50 UTC [INFO] antigravity: 0 Datei(en) aktualisiert
+2026-10-30 02:04:34 UTC [INFO] cline-code: 0 Datei(en) aktualisiert
+2026-10-30 02:05:17 UTC [INFO] cline-code: 0 Datei(en) aktualisiert
+2026-10-30 02:06:00 UTC [INFO] cline-cli: 0 Datei(en) aktualisiert
+2026-10-30 02:06:45 UTC [INFO] claude: 0 Datei(en) aktualisiert
+2026-10-30 02:07:45 UTC [INFO] zcode: 3 Datei(en) aktualisiert
+2026-10-30 02:07:45 UTC [INFO] Commit erstellt: Auto-sync: 2026-10-30 02:07 UTC (25 files)
+2026-10-30 02:07:55 UTC [INFO] Push erfolgreich (1 Commit(s))
+Obsidian-Notizbuch aktualisiert: /Users/saschalagler/Mirror/agent-mirror/mirror/obsidian (21 geänderte Notizen)
 head: /Users/saschalagler/Mirror/agent-mirror/mirror/claude/saschalagler/skills/obsidian-second-brain/examples/sample-vault/Ideas/2026-04-27: No such file or directory
 head: —: No such file or directory
 head: Streak: No such file or directory
@@ -194,7 +194,7 @@ head: Tide: No such file or directory
 head: retention: No such file or directory
 head: rebuild.md: No such file or directory
 Wiki aktualisiert: /Users/saschalagler/Mirror/agent-mirror/mirror/wiki
-2026-10-30 01:52:07 UTC [INFO] Cognee übersprungen (kein Zugang hinterlegt)
-2026-10-30 01:52:07 UTC [INFO] Cognee übersprungen (kein Zugang hinterlegt)
+2026-10-30 02:08:42 UTC [INFO] Cognee übersprungen (kein Zugang hinterlegt)
+2026-10-30 02:08:42 UTC [INFO] Cognee übersprungen (kein Zugang hinterlegt)
 /Users/saschalagler/Projects/agent-mirror/scripts/archive-to-gcs.sh: line 23: gsutil: command not found
-2026-10-30 01:52:15 UTC [WARN] GCS nicht erreichbar — /Users/saschalagler/.cache/agent-mirror-gcs/mirror-20261030-0045.tar.gz bleibt in Warteschlange
+2026-10-30 02:08:46 UTC [WARN] GCS nicht erreichbar — /Users/saschalagler/.cache/agent-mirror-gcs/mirror-20261030-0102.tar.gz bleibt in Warteschlange
