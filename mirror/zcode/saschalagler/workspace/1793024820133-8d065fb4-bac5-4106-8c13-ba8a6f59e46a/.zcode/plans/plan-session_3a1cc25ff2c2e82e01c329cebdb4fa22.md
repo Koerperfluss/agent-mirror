@@ -1,25 +1,30 @@
-# LokiCanvas zu Ende bauen — native SwiftUI-Mac-App, 100 % lokal (deine Ollama-Modelle)
+# Product Canvas Local — Funktionsparität: 3 kaputte Teile heilen + Rest sauber kappen
 
-## Verifizierte Basis (3 Erkundungs-Agenten, Pfad:Zeile-Beweise)
-Core steht komplett (OllamaClient mit chat/vision/models · CanvasNode+Persistenz · PrototypeGenerator mit Sanitizer · Theme · VoiceParser) · **22 Tests grün-bereit** · TraktorClone-Bündel-Muster bewiesen (70 Tests + laufende .app auf genau diesem Mac, nur Command-Line-Tools nötig). **Es fehlt allein die App-Schicht + VoiceAgent.**
+## Context
+Der 1:1-Klon des Google Product Canvas läuft nativ als Tauri-App (Canvas, Docs, KI-Text/Code über Ollama, lokale DB). Die Exploration (2 Agenten, Pfad-Beweise) zeigt jetzt GENAU, was im LOCAL-Modus noch kaputt ist — und was davon lokal überhaupt machbar ist. Neues ZIP = identisch mit Original, keine Sync nötig (nur unsere 3 bewussten Zusätze).
 
-## Schritte
-
-| # | Was | Beweis |
+## Befunde (bewiesen)
+| Feature | Status | Ursache |
 |---|---|---|
-| 0 | **Ollama hochfahren** (LaunchAgent ist da, nur gestoppt) + Modelle verifizieren: qwen3.5:9b, qwen3.5-vl:8b, qwen2.5-coder:7b — Namen ggf. an Code-Whitelist angleichen | curl /api/tags + 1-Chat-Antwort |
-| 1 | **2 Builder parallel** (ehrliche max. Parallelität — die 4 UI-Dateien sind ein Klettpaket, >2 Agenten würden sich nur ins Weg laufen): **B1 = App-Schicht** (LokiCanvasApp @main · ContentView mit unendlicher Canvas: Pan/Zoom 25–400 %/Node-Layer/Toolbar · NodeView für Skizze/Text/Bild/AI/Prototyp · InspectorView mit Prompt/Modell-Wahl/Voice-Button · nutzt Core-APIs unverändert) · **B2 = VoiceAgent.swift** (SFSpeechRecognizer on-device, deutsch → VoiceParser → Aktionen) + 4 neue Tests | Dateien + Test-Zähler ≥26 |
-| 2 | **Integration + Gates**: Build-Fix (Target-Verzeichnis existiert dann), `swift test` komplett grün, `make_app.sh` → **LokiCanvas.app** (ad-hoc signiert, Info.plist mit Mikrofon-Freigabe-Text) | Exit-Codes + .app-Pfad |
-| 3 | **Beweis-Batterie**: App per `open` starten (PID), Screenshot; Node anlegen + verschieben; **KI-Antwort von qwen3.5:9b landet im AI-Node**; App beenden+neu starten → **Daten bleiben** (autosave.json); Modell-Statusleiste grün | Screenshots + JSON-Datei |
-| 4 | **Erste Versionierung**: LokiCanvas committen + pushen auf `cline/s4sx83cs` (bisher untracked) | Commit-Hash |
+| AI-Cursor, Wiki/Tiptap, Slash-Befehle, Onboarding, Mini-App-Generator | ✅ läuft | Adapter deckt Text-Generierung |
+| **Live-Voice** (`live/LiveAPI.tsx:200`) | ❌ TypeError-Crash | Adapter hat kein `ai.live` → Boot nutzt es → Crash-Gefahr beim Voice-Button |
+| **Bild-Generierung** (`ai/nano-banana.ts`) | ❌ Fehlermeldung statt Bild | Adapter liefert kein `inlineData`; `getDownloadURL()` rejected bewusst |
+| **Mini-App-Runtime** (iframe) | ❌ offline | React/Lucide/Tailwind kommen von esm.sh/jsdelivr-CDN |
 
-## Abnahme (beobachtbar)
-Echte `.app` per Doppelklick · kein Browser/localhost/Firebase/Gemini · Daten überlebt Neustart · KI-Antworten aus deinen lokalen Modellen · 24/7 (App + optional Ollama-LaunchAgent läuft ohnehin dauerhaft).
+## Schritte (Backups .bak-2026-10-30 vor jedem Original-Edit)
 
-## Ehrliche Grenzen (1 Zeile each)
-- Mikrofon: 1× macOS-Dialog beim ersten Voice-Klick (kein Key, einmal bestätigen).
-- Vision/Bild-Analyse braucht das exakte Modell in Ollama — Schritt 0 verifiziert, fehlt eines → klare Meldung statt Absturz (App läuft trotzdem).
-- Nur CLT installiert — für diese native Mac-App bewiesen ausreichend (TraktorClone-Präzedenzfall).
+| # | Was | Wie | Beweis |
+|---|---|---|---|
+| 1 | **Live-Voice sauber kappen**: `ai-local.ts` erhält `live`-Stub, dessen `connect()` eine klare deutsche Fehlermeldung wirft; Editor versteckt Voice-UI im LOCAL-Modus (statt TypeError-Crash) | Code-Diff + kein Crash mehr beim Voice-Versuch |
+| 2 | **Bild-Speicher heilen**: `firebase-local.ts` `getDownloadURL()` → liefert lokale Data-URL statt Reject (saveImage-Pfad läuft dann ohne Absturz); nano-banana `generateImage` → klare Meldung „Bild malen lokal nicht möglich (Ollama kann nur Text/Bild verstehen)" im Node-Text | Bild-Node zeigt sauberen Hinweis |
+| 3 | **Mini-App-Runtime offline-tauglich**: React/ReactDOM aus dem App-Bundle lokal servieren (importmap auf `tauri://localhost/vendor/`), lucide-react+Tailwind bleiben CDN mit Offline-Hinweis im Frame — Prototyp-Preview läuft mit React-Teil offline | Mini-App-Node zeigt Vorschau ohne Netz für React |
+| 4 | **Frontend + Tauri neu bündeln**, App starten | Build-Exits |
+| 5 | **Beweis-Batterie**: Canvas + KI-Text-Antwort (Ollama live) + Notebook + Mini-App-Hinweis + kein Voice-Crash + Persistenz-Datei wächst | Screenshots (fenster-exakt) + boot.log + canvas-db.json |
 
-## Zeit
-**~60–120 Min.** (Core steht schon; Rest ist UI-Schicht + Bündel + Beweise). Backups: neue Dateien sind additive; bestehende Core-Dateien werden nicht angefasst außer VoiceAgent kommt NEU dazu.
+## Nicht tun (klar abgegrenzt)
+- Echtes Bild-MALEN lokal: braucht Diffusions-Modell (ComfyUI/Draw Things) — separater Auftrag auf Wunsch.
+- Echte Live-Voice lokal: Whisper+Ollama-Pipeline — Ausbau später.
+- Multiplayer/Video: bleibt raus (Befehl).
+
+## Zeitaufwand
+~45–60 Min. · Credits gering (alles lokal, nur 1 Build-Zyklus + Screenshots).
