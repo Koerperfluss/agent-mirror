@@ -1,13 +1,13 @@
 ---
 app: zcode
 quelle: "saschalagler/cli/memories/projects/default-041661acc4598b22/memory/zcode-adhs-automationen.md"
-stand: 2026-10-29
+stand: 2026-10-30
 tags: [spiegel, zcode]
 ---
 
 ---
 name: zcode-adhs-automationen
-description: "13.09.–29.10. LIVE: EINE Automation mit ALLEN 6 Briefs (cron `0 9,10,15,16,21`; niemals 6 separate — Nutzer-Ziel!) · **61+ Läufe** · INFO-PUSH lebt (macOS-Benachrichtigung + 4-Zeilen-Format bei JEDEM Lauf inkl. No-ops, mehrfach Automatik-PASS) · GROSS-KONSOLIDIERUNG 26.10.: LOKI_TASKBOARD.md (~/.agents/memory/, 3,9 KB) + SYSTEMPROOF 6/6 AKTIV + Doku-Fix ERLEDIGT (README+Backup, grep-Beweis) · LokiVoice = `~/loki-ki/_ARCHIV/2026-10/loki-voice-alt/` (P1s obsolet) · Förder-Antrag: FÖDERUNG-Ordner aufgebaut (dwfrun) · Magicline-PDF bewiesen = `~/Desktop/MAGICLINE_GEORGE_ALLES_IN_EINEM_2026-10-19.pdf` (426 KB, déjà-Lektion: vor DATENLAGE UNKLAR deja+exaktes ls) · 28./29.10. = 2 Lücken-Tage in Folge (Mac aus) · OmniRoute :20128 LÄUFT WIEDER (Richtung offen) · Doku-Sync-DUPLIKAT automation-2df8eec5 Lösch-GO offen · offen auf GO: Wecker · Deutsch-Patch · Duplikat weg · OmniRoute-Richtung · 1 Task pro Chat-Limit"
+description: "13.09.–30.10. LIVE: EINE Automation mit ALLEN 6 Briefs (cron `0 9,10,15,16,21`; niemals 6 separate — Nutzer-Ziel!) · **62+ Läufe** · INFO-PUSH lebt (macOS-Benachrichtigung + 4-Zeilen-Format bei JEDEM Lauf inkl. No-ops) · 30.10. RELEASE-BRIEF-Zweig erstmals gelaufen: **0 Commits diese Woche** → LEHRE: leeres Release bekommt KEIN Kalender-Event (Info-Null-Kritik) · agent-mirror GAP-REPORT + _AUDIT (Build OK, Secrets 0 Funde) ungecommten → „GO audit-commit" offen · 28.–30.10. = **3 Lücken-Tage in Folge** (Mac aus) · Taskboard `~/.agents/memory/LOKI_TASKBOARD.md` + Doku-Fix erledigt (26.10.) · LokiVoice-Archiv bestätigt `_ARCHIV/2026-10/loki-voice-alt/` (mdfind) · OmniRoute :20128 LÄUFT WIEDER · offen auf GO: Wecker · Deutsch-Patch · Duplikat weg · OmniRoute-Richtung · audit-commit · 1 Task pro Chat-Limit"
 metadata:
   node_type: memory
   type: project
@@ -40,7 +40,8 @@ metadata:
 - **26.10. GROSS-KONSOLIDIERUNG:** Taskboard `~/.agents/memory/LOKI_TASKBOARD.md` (3,9 KB; 16 Alt-Aufgaben, 6 erledigt/obsolet, Verteilung ZCode/Cline/AutoClaw/Sascha) + **SYSTEMPROOF 6/6 LIVE PASS** (Hook-JSON, 23 Logbücher, Sweep, Kalender-Rücklesen, Doku-Fix grep, 3/3 Engine-Dateien) + **Doku-Fix erledigt**.
 - **27.10.–29.10.:** Info-Push an allen Läufen bewiesen (Morgen 09:05 pünktlich + 2 No-ops + Abend 21:04, jeweils Push + 4-Zeilen). **Förder-Antrag Körperfluss EDU:** dwfrun baute `FÖDERUNG/`-Ordner (FÖRDERANTRAGEN_2026-10, HARVESTS, FFG Kleinprojekt Anlauf 2) · Verkaufs-HUB-Handoff aktiv · Magicline-PDF bewiesen (426 KB) · 29.10. Donnerstags-No-op mit Push.
 - **29.10. Abend:** 2. Lücken-Tag in Folge (28./29.10. ohne Morgen-Brief, Mac aus) — Logbuch 29.10. trotzdem geschlossen (ruhiger Donnerstag, 0 Commits, FIX-Lauf 3710694b erneut geöffnet). Event-UID `A706BAE0-917A-4436-A827-FC59BF181704`.
-- Bilanz: **61+ Läufe**; Dauer-GOs unverändert: **GO Wecker · Deutsch-Patch („weiter übersetzen") · Duplikat weg (automation-2df8eec5) · OmniRoute-Richtung**.
+- **30.10.:** RISIKO-SCAN sauber (Event `AB5C6190-2B59-44D3-A3F6-0068F63C3D90`) + **RELEASE-BRIEF-Zweig erstmals gelaufen (Fr 15:0x): 0 Commits diese Woche** → LEHRE: leeres Release = Logbuch-Abschnitt JA, aber **KEIN Kalender-Event** (leeres Event = Info-Null, Saschas Kritik). **agent-mirror GAP-REPORT.md + `_AUDIT/`** (Build Exit 0 „✓ built in 369ms" Vite 8 + Nitro 3, Secrets-Audit 0 verifizierte Funde, SBOM) liegen **ungecommten** — erster Commit-Kandidat der neuen Woche, wartet auf „GO audit-commit". 3. Lücken-Tag in Folge (28.–30.10.).
+- Bilanz: **62+ Läufe**; Dauer-GOs: **GO Wecker · Deutsch-Patch („weiter übersetzen") · Duplikat weg (automation-2df8eec5) · OmniRoute-Richtung · GO audit-commit**.
 
 ## Offene Konflikte
 - **OmniRoute :20128 LÄUFT WIEDER** (node PID 871, lsof 26.10.) — Widerspruch zum Abbau 20.09. ([[omniroute-rueckbau-system-fixes-2026-09-20]]); Richtung nur Sascha.

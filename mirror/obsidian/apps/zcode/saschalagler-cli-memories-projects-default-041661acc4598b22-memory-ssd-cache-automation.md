@@ -1,7 +1,7 @@
 ---
 app: zcode
 quelle: "saschalagler/cli/memories/projects/default-041661acc4598b22/memory/ssd-cache-automation.md"
-stand: 2026-09-28
+stand: 2026-10-30
 tags: [spiegel, zcode]
 ---
 
@@ -28,3 +28,7 @@ metadata:
 Echte Entlastung braucht zusätzlich manuell: Desktop ausmisten (79 GB) — Sascha-Entscheidung.
 
 **13.10.2026 Stand:** `df` = **73 GiB frei** (05.10.: 42 GiB → **+31 GiB** in ~1 Woche). Ursache unbestätigt (Attribution): Kandidat ist diese Automation (12-Uhr-Läufe beim gelegentlichen Mac-Aufwachen in der Funkstille-Woche) — Nachweis über ihr Automation-Log möglich, nicht geprüft. Meldung im Abend-Brief der Tages-Routine ([[zcode-adhs-automationen]]).
+
+**30.10. Ordner-Klärung nach Saschas Wut („für was reinigst du… was ist das… 40 GB Application Support?"):** Er fürchtete, die Automation lösche seine Sachen — widerlegt: Automation fasst NUR var/folders X+T, ~/Library/Caches, ~/.cache, Trash an. Klare Zuordnung (gemessen): `~/.ollama/models/blobs` **15 GB = Ollama-Modell-Gewichtsdateien** (qwen2.5-coder:7b u. a., BrowserOS-Hauptmodell) → BEHALTEN; `~/Claude/Projects/TOOL SAMMLUNG VERKAUF/AI_STUDIO_EXPORTS` **3,3 GB, 807 Objekte (erstellt 30.08.) = seine exportierten AI-Studio-Tools, Verkaufs-Warenlager** → BEHALTEN; App Support ~37 GB Top: **Autodesk 12 GB — aber Autodesk NICHT als App installiert = Restdaten → EINZIGER Lösch-Kandidat, wartet auf GO** (Backup zuerst), autoclaw 3,9 GB, FileProvider/CloudDocs je 2,4 GB, Google 2,1 GB, BrowserOS 1,5 GB. SSD-Stand 30.10.: 36–39 GB frei, purgeable-Specher füllt Platte über Nacht scheinbar (~40 GB Schwankung normal, kein echtes Wachstum); Gesamtbelegung wächst langsam real (361→383 GB in 6 Wochen) — Treiber: Desktop ~70 GB, CoreDevice 19 GB, LM-Studio 14 GB, Autodesk-Rest 12 GB.
+
+**30.10. Runde 2 („rede ich undeutlich?"): Kern-Klärung geliefert — die Platte bleibt voll, weil sie NICHT von Müll voll wird, sondern von FESTEN Brocken, die kein Cleaner anfassen darf. Neu gemessen:** **`~/.zcode/cli/rollout` (ZCode-Chat-Verläufe) 7,8→25 GB in 6 Wochen = größter Wachstums-Treiber!** · Autodesk-Reste 12 GB · .ollama 16 GB (806 Blob-Dateien intakt, behalten) · .gemini 11 GB · .lmstudio 8 GB. **2 GO-Angebote mit Kurzbefehl gestellt, wartet auf Saschas Antwort:** **„ja zcode"** = löscht 25 GB alte Chat-Logs (verliert alte ZCode-Chat-Historie!) · **„ja autodesk"** = sichert + löscht 12 GB Reste. Sascha wiederholte dieselbe Frage nach der Klärung → nächstes Mal noch kürzere, tabellenlose Antwort mit Löschen JA/NEIN pro Punkt.
