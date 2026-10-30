@@ -1,44 +1,25 @@
-# UI/UX-Test-Skills: aktualisieren, vervollständigen, verdrahten, beweisen
+# LokiCanvas zu Ende bauen — native SwiftUI-Mac-App, 100 % lokal (deine Ollama-Modelle)
 
-## Ausgangslage (verifiziert)
-- Alle 3 beworbenen Skill-Sets sind bereits in `~/.claude/skills/` installiert → **keine Neu-Installation**.
-- Reale Lücken: (a) `better-interface` referenziert 5 Sub-Skills, die lokal fehlen; (b) `ui-ux-pro-max` möglicherweise veraltet (Upstream heute gepusht); (c) `~/.agents/skill-routing.md` hat keine Zeilen für die UI/UX-Skills.
+## Verifizierte Basis (3 Erkundungs-Agenten, Pfad:Zeile-Beweise)
+Core steht komplett (OllamaClient mit chat/vision/models · CanvasNode+Persistenz · PrototypeGenerator mit Sanitizer · Theme · VoiceParser) · **22 Tests grün-bereit** · TraktorClone-Bündel-Muster bewiesen (70 Tests + laufende .app auf genau diesem Mac, nur Command-Line-Tools nötig). **Es fehlt allein die App-Schicht + VoiceAgent.**
 
 ## Schritte
 
-### 1. Backup (vor jedem Eingriff)
-`~/.claude/skills/{ui-ux-pro-max,better-interface,better-ui,better-accessibility}` → `~/.claude/skills/_backup-uiux-2026-10-26.tar.gz`
-Beweis: tar-Datei vorhanden.
+| # | Was | Beweis |
+|---|---|---|
+| 0 | **Ollama hochfahren** (LaunchAgent ist da, nur gestoppt) + Modelle verifizieren: qwen3.5:9b, qwen3.5-vl:8b, qwen2.5-coder:7b — Namen ggf. an Code-Whitelist angleichen | curl /api/tags + 1-Chat-Antwort |
+| 1 | **2 Builder parallel** (ehrliche max. Parallelität — die 4 UI-Dateien sind ein Klettpaket, >2 Agenten würden sich nur ins Weg laufen): **B1 = App-Schicht** (LokiCanvasApp @main · ContentView mit unendlicher Canvas: Pan/Zoom 25–400 %/Node-Layer/Toolbar · NodeView für Skizze/Text/Bild/AI/Prototyp · InspectorView mit Prompt/Modell-Wahl/Voice-Button · nutzt Core-APIs unverändert) · **B2 = VoiceAgent.swift** (SFSpeechRecognizer on-device, deutsch → VoiceParser → Aktionen) + 4 neue Tests | Dateien + Test-Zähler ≥26 |
+| 2 | **Integration + Gates**: Build-Fix (Target-Verzeichnis existiert dann), `swift test` komplett grün, `make_app.sh` → **LokiCanvas.app** (ad-hoc signiert, Info.plist mit Mikrofon-Freigabe-Text) | Exit-Codes + .app-Pfad |
+| 3 | **Beweis-Batterie**: App per `open` starten (PID), Screenshot; Node anlegen + verschieben; **KI-Antwort von qwen3.5:9b landet im AI-Node**; App beenden+neu starten → **Daten bleiben** (autosave.json); Modell-Statusleiste grün | Screenshots + JSON-Datei |
+| 4 | **Erste Versionierung**: LokiCanvas committen + pushen auf `cline/s4sx83cs` (bisher untracked) | Commit-Hash |
 
-### 2. ui-ux-pro-max aktualisieren
-Frisches Clone von `github.com/nextlevelbuilder/ui-ux-pro-max-skill` → Dateien (SKILL.md, references/, Such-Tool) ersetzen. Beweis: diff-Statistik alt↔neu + aktualisierte Regel-Zahlen in SKILL.md.
+## Abnahme (beobachtbar)
+Echte `.app` per Doppelklick · kein Browser/localhost/Firebase/Gemini · Daten überlebt Neustart · KI-Antworten aus deinen lokalen Modellen · 24/7 (App + optional Ollama-LaunchAgent läuft ohnehin dauerhaft).
 
-### 3. better-* vervollständigen + aktualisieren
-Aus `github.com/jakubkrehel/skills`: fehlende `better-layout`, `better-typography`, `better-colors`, `better-writing`, `interface-review` installieren; bestehende 3 (`better-interface`, `better-ui`, `better-accessibility`) auf Stand bringen (Symlink-/skillshare-Struktur beibehalten oder echte Ordner, je nachdem worauf die Symlinks zeigen — wird beim Umsetzen geprüft). Beweis: ls-Output mit allen better-* + interface-review.
+## Ehrliche Grenzen (1 Zeile each)
+- Mikrofon: 1× macOS-Dialog beim ersten Voice-Klick (kein Key, einmal bestätigen).
+- Vision/Bild-Analyse braucht das exakte Modell in Ollama — Schritt 0 verifiziert, fehlt eines → klare Meldung statt Absturz (App läuft trotzdem).
+- Nur CLT installiert — für diese native Mac-App bewiesen ausreichend (TraktorClone-Präzedenzfall).
 
-### 4. Routing verdrahten
-Neue Zeilen in `~/.agents/skill-routing.md` (Tabelle „Erlernte Task→Skill-Zuordnungen"):
-| Signal | Skill |
-|---|---|
-| „UI/UX-Design-Audit", „Review Interface-Code" | ui-ux-pro-max |
-| „Barrierefreiheit/WCAG prüfen" | better-accessibility |
-| „gesamtes Interface reviewen" | better-interface (Orchestrator) |
-| „klick-teste/durchklicke App X" | ui-ux-tester (Fallback: browser-use:web-gui-tester) |
-Beweis: grep auf die neuen Zeilen.
-
-### 5. Smoke-Test A — Design-Audit (ui-ux-pro-max)
-Audit auf Verkaufs-HUB `hub-glass.html` (aktives Projekt lt. Tagesplan; Fallback: ATLAS-Web-App). Beweis: Audit-Report als Datei + Top-3-Befunde im Chat.
-
-### 6. Smoke-Test B — Klick-Test (ui-ux-tester)
-Auf HUB `:3300`, falls Server läuft (sonst starten oder auf file:///ATLAS ausweichen). Wenn chrome-devtools-MCP in der Session fehlt: browser-use:web-gui-tester als Runner nutzen (Methodik bleibt). Beweis: Screenshot-Ordner + Kurzreport (PASS/FAIL je Testpunkt).
-
-### 7. Abschluss-Report
-- Beweis-Pfade je Schritt + Exit-Codes
-- Fakten-Korrektur der KI-Antwort: alles schon installiert; Sterne 140.718 (nicht 113.000); ui-ux-tester = eigenes Custom-Skill ohne GitHub-Repo
-- „Was bleibt offen" (max. 3 Punkte)
-
-## Nicht tun
-Keine Deploys, keine Löschungen, keine Überschreibung ohne Backup, keine Installation zusätzlicher Skills über die genannten hinaus.
-
-## Aufwand
-~30–60 Min nach Freigabe; Credit-Risiko gering (lokale Arbeit, kein MCP-Verbrauch außer evtl. Browser-Screenshots beim Smoke-Test).
+## Zeit
+**~60–120 Min.** (Core steht schon; Rest ist UI-Schicht + Bündel + Beweise). Backups: neue Dateien sind additive; bestehende Core-Dateien werden nicht angefasst außer VoiceAgent kommt NEU dazu.

@@ -1,39 +1,54 @@
 # agent-os (zcode)
 
-Zuletzt gespiegelt: 2026-10-30 01:18 UTC
+Zuletzt gespiegelt: 2026-10-30 01:35 UTC
 
 ## plan-session_58f3f4bfcb9a88671e0595593de28702
 
-# Plan: Traktor-App „voll" — Slices 2–7 mit Multi-Agent-Team (kein Spark)
+# Plan: LokiCanvas — native macOS-KI-Canvas-App (Google-Canvas-Klon, 100 % lokal)
 
-**Ziel:** Aus Slice 1 (2-Deck-Fundament, 27 Tests) eine vollständig nutzbare macOS-DJ-App bauen: Library, Waveform+Seek, Effekte, Recording, Sync, Stems + klickbares `.app`-Bundle. Alles lokal, SwiftPM (xcodebuild nicht nötig).
+**Ziel:** Eigenständige native macOS-App nach Google-Canvas-Vorbild: unendliche Canvas mit Nodes (Skizze, Text, Bild, KI), KI-Skizzen/Analyse, Sprach-Agent, Prototyp-Generator — **komplett lokal über Ollama** (qwen3.5:9b Chat, qwen3-vl:8b Vision, qwen2.5-coder:7b Code — alle heute live bewiesen). Kein Gemini-Key, kein Multiplayer, kein localhost-Browser: echte `.app` im Dock, 24/7.
 
-## Team (Aktivierung zuerst)
-| Rolle | Wer | Beweis |
-|---|---|---|
-| Director | Ich (ZCode) | PLAN-Table + GO/NO-GO |
-| Builder (max 3 parallel) | `implementer`/`cavecrew-builder`-Subagenten (≤2 Dateien/Ticket) | Agent-Tool |
-| Reviewer (Veto) | `cavecrew-reviewer`/`qa-tester` pro Slice — „wer baut, prüft nicht" | Review-Output |
-| hcom-Bus | `hcom start` (ZCode-Manual-Modus) — Cline/Antigravity koppeln, wenn deren Prozesse laufen; Antigravity-App-Prüfung in /Applications | hcom status-Output |
+**Beweiste Basis aus dieser Session:** Ollama :11434 🟢 mit allen 3 Modellen · SwiftPM+native-Bundle-Pattern bewiesen (TraktorClone: 70 Tests, laufende .app) · Dark-Theme-Tokens wiederverwendbar.
 
-Wenn externe Agenten (Cline/Antigravity) nicht antworten: ehrlich dokumentieren, Bau läuft mit ZCode-Team weiter — keine Blockade.
+## Architektur (bewährtes TraktorClone-Muster)
 
-## Bau-Reihenfolge (gsd-core: jeder Slice mit DONE-WHEN + Tests + Review)
+```
+agent-mirror/LokiCanvas/
+├── Package.swift              # LokiCanvasCore (Lib) + LokiCanvasApp (executable) + Tests
+├── Sources/LokiCanvasCore/
+│   ├── OllamaClient.swift     # POST /api/chat (stream=false), Model-Whitelist, Timeout, Vision via base64-Bild
+│   ├── NodeModel.swift        # Node-Typen: sketch/text/image/ai/prototype + Position/Size/Content
+│   ├── CanvasDocument.swift   # JSON-Persistenz ~/Documents/LokiCanvas/*.json (Nodes, Verbindungen)
+│   ├── PrototypeGenerator.swift # Sketch/Bild+Prompt → qwen2.5-coder → Code (SwiftUI/HTML), sanitisiert
+│   ├── VoiceAgent.swift       # SFSpeechRecognizer on-device (de-DE) → Text → OllamaChat
+│   └── Theme.swift            # Dark-Tokens (aus TraktorClone wiederverwendet)
+├── Sources/LokiCanvasApp/
+│   ├── LokiCanvasApp.swift    # @main, Fenster 1200×800
+│   ├── ContentView.swift      # unendliche Canvas (MagnificationGesture+Drag), Node-Layer, Toolbar
+│   ├── NodeView.swift         # je Typ: Skizze (NSBezierPath-Zeichnen), Text, Bild, AI-Output, Proto-Vorschau
+│   └── InspectorView.swift    # Prompt-Eingabe, Modell-Wahl, Voice-Button (🔴 Aufnahme)
+├── Tests/                     # Swift Testing: OllamaClient-Parsing (Mock), NodeModel, Document-Roundtrip, Generator-Sanitizer, Voice-Textverarbeitung
+├── run_tests.sh               # CLT-Plugin-Fix (bewiesen)
+└── make_app.sh                # → build/LokiCanvas.app, ad-hoc signiert, Info.plist mit Mic-Purpose
+```
 
-1. **Slice 2 — Library/Browser:** Swift-NML-Parser (deine echte `collection.nml` als lokale Fixture — nur Metadaten/Struktur, keine PII committet) + Browser-Tabelle mit Suche + **MIDI-Learn** (Klick→Control zuweisen, Persistenz als JSON)
-2. **Slice 3 — Waveform+Seek:** PCM aus AVAudioFile → SwiftUI-Canvas-Waveform + Seek via PlayerNode-Frame-Offset (Playhead folgt exakt)
-3. **Slice 4 — Effekte:** Pro Deck: Filter (LP/HP), Delay/Echo, Reverb (AVAudioUnit) mit Dry/Wet + Bypass
-4. **Slice 5 — Recording:** Master-Mixer-Tap → AVAudioFile (AIFF/WAV) mit Rec-Button + Datei-Ziel
-5. **Slice 6 — Sync-Engine:** BPM-Angleichung via BeatGrid.rateToMatch (Auto-Pitch), Beat-Phase-LED, Sync-Toggle pro Deck
-6. **Slice 7 — Stems:** .stem.mp4 (MP4 mit 5 Audio-Tracks) via AVAssetReader → 4 Stem-Gewichte + Solo/Mute
-7. **App-Bundle:** `make_app.sh` baut `TraktorClone.app` (Info.plist + Binary) — klickbar ohne Xcode
+## Kernfunktionen (Canvas-Feature-Parität, Multiplayer ausgelassen)
 
-## Qualitäts-Gates (pro Slice)
-Tests grün (`run_tests.sh`) → Reviewer-Veto-Prüfung → FEATURES.json/STATE.md aktualisiert → Commit. Push auf `cline/s4sx83cs` als Abschluss (Plan-GO = deine Freigabe dafür).
+1. **Unendliche Canvas**: Pan (Space+Drag/2-Finger), Zoom 25–400 %, Snap-Grid
+2. **Node-Typen**: Skizze (frei zeichnen, Farben, Radierer), Text (Markdown), Bild (Drag&Drop/File), AI-Node (Prompt→Antwort), Prototyp-Node (Bild+Prompt→Code-Vorschau)
+3. **KI-Skizzen**: qwen3-vl:8b analysiert Skizze/Bild („was siehst du?") → Ergebnis in AI-Node
+4. **Prototyp-Generator**: qwen2.5-coder:7b generiert aus Skizze+Prompt lauffähigen Code, Code-Fence-Sanitizer, Vorschau im Node
+5. **Sprach-Agent**: macOS-Speech on-device → Transcript → Ollama → Antwort-Node (Button in Toolbar)
+6. **Dokumente**: Auto-Save JSON in ~/Documents/LokiCanvas, Öffnen-Dialog, mehrere Dokumente
+7. **Modell-Statusleiste**: grün/rot je Ollama-Modell (Health-Check beim Start)
+8. **24/7**: LokiCanvas.app nativ (kein Server, kein Port), optional LaunchAgent-Autostart-Hinweis in README
+
+## Qualitäts-Gates
+Swift-Testing-Suite grün (≥15 Tests) → Build complete → make_app.sh → App-Start mit PID-Beweis → README mit Bedienung → Commit+Push auf cline/s4sx83cs.
 
 ## Ehrliche Grenzen
-- xcodebuild fehlt (nur CLT) → kein Codesigning/Xcode-Projekt; SwiftPM + handgebautes Bundle deckt den Rest
-- hcom-Cline/Antigravity-Kopplung nur, wenn deren Prozesse live sind — sonst ZCode-Team allein (Doku in STATE.md)
-- Kein Spark: README-Schritte A–D bleiben als Tickets stehen (Spark irrelevant laut dir)
+- Sprache: SFSpeechRecognizer on-device braucht einmaligen Mic-Zugriff (macOS-Dialog, kein Key)
+- Ollama muss laufen (läuft 24/7 bei dir, LaunchAgent vorhanden); App zeigt klaren Offline-Hinweis, startet aber trotzdem
+- Keine Cloud, kein Multiplayer, keine Accounts — wie gefordert
 
-**Aufwand:** groß (5–8h Agenten-Arbeit über mehrere Bau-Blöcke, ~2–3 Mio Subagent-Tokens) — los geht's mit Team-Aktivierung + Slice 2.
+**Aufwand:** ~2–3 h Director-Bau (Subagenten verfügbar, aber ein zusammenhängendes UI-Paket ist als Einzelbau schneller). Los nach GO.
