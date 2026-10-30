@@ -1,6 +1,7 @@
 import SwiftUI
 import TraktorCloneCore
 import CoreMIDI
+import UniformTypeIdentifiers
 
 /// Traktor-inspiriertes Dark-DJ-Theme (AA-Kontrast geprüft).
 /// Taste-Skill-Locks: EIN Akzent (Cyan), EIN Radius-System (12/8/6), EIN Spacing-Rhythmus (4er).
@@ -624,6 +625,28 @@ struct ContentView: View {
         }
     }
 
+    /// NI-Controller-TSI lesen → Action-Katalog (Zuordnung selbst per MIDI-Learn).
+    private func importNativeTSI() {
+        let panel = NSOpenPanel()
+        panel.allowedContentTypes = [UTType(filenameExtension: "tsi") ?? .xml]
+        panel.canChooseDirectories = false
+        panel.directoryURL = URL(fileURLWithPath: NSString(
+            string: "~/Documents/Native Instruments/Traktor 4.5.0/Settings/Default Settings/Controller"
+        ).expandingTildeInPath)
+        guard panel.runModal() == .OK, let url = panel.url else { return }
+        let r = engineHost.importNativeMappings(from: url)
+        let alert = NSAlert()
+        alert.messageText = "NI-Controller-TSI gelesen"
+        alert.informativeText = """
+        \(r.total) NI-Actions erkannt, \(r.supported) davon unterstützt TraktorClone \
+        (Play/Cue/Hotcues/Loops je Deck, Crossfader).
+
+        Hinweis: S4/S2-Templates speichern keine MIDI-Nummern (HID-Geräte). \
+        Weise deine Regler oben per MIDI-Learn zu (Klick auf die Aktion, dann Regler bewegen).
+        """
+        alert.runModal()
+    }
+
     // MARK: Treiber & MIDI-Mappings (Rest-6)
     private var setupPanel: some View {
         DisclosureGroup(isExpanded: $engineHost.showSetup) {
@@ -667,6 +690,11 @@ struct ContentView: View {
                     .fixedSize()
                     Text(engineHost.dvs.status)
                         .font(Theme.fCaption).foregroundStyle(Theme.soft).lineLimit(1)
+                    Button(engineHost.dvs.lineLevel ? "Line ✓" : "Phono") {
+                        engineHost.dvs.lineLevel.toggle()
+                    }
+                    .buttonStyle(.djControl(tint: engineHost.dvs.lineLevel ? Theme.gr : Theme.yl))
+                    .help("BD-1380-USB = Line (Preamp eingebaut); klassische Phono-Verkabelung = Phono")
                     Spacer()
                     ForEach(0..<2, id: \.self) { i in
                         let active = engineHost.dvs.deckPosition[i] != nil
@@ -686,6 +714,9 @@ struct ContentView: View {
                         .buttonStyle(.djControl)
                     Button("Import") { engineHost.importMappings() }
                         .buttonStyle(.djControl)
+                    Button("NI .tsi") { importNativeTSI() }
+                        .buttonStyle(.djControl(tint: Theme.gr))
+                        .help("Native-Instruments-Controller-Mapping laden (S4/S2 & Co.)")
                 }
 
                 let mappings = engineHost.currentMappings

@@ -71,6 +71,8 @@ public final class VoiceAgent: ObservableObject {
         task?.cancel()
         request = nil
         task = nil
+        // Tap entfernen, sonst crasht der ZWEITE start() mit doppeltem Bus-0-Tap.
+        engine.inputNode.removeTap(onBus: 0)
         engine.stop()
         isListening = false
     }

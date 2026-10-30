@@ -50,6 +50,10 @@ public enum DeckAction: String, Codable, Equatable {
     case loopIn, loopOut, loopExit
     case crossfader, channelFaderA, channelFaderB
     case pitchA, pitchB, keylockA, keylockB
+    // Slice 13: Deck-B-Seite (NI-TSI-Import; alte Mapping-JSONs laden weiter)
+    case playPauseB, cueB
+    case hotcue1B, hotcue2B, hotcue3B, hotcue4B
+    case loopInB, loopOutB
 }
 
 public struct MIDIAssignment: Equatable {

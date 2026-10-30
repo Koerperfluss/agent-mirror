@@ -74,3 +74,10 @@ cd agent-mirror/TraktorClone
 - Ehrlich offen: Live-Kalibrierung am echten Vinyl braucht Phono-Interface (Traktor Audio gebraucht oder Behringer UFO202) + Mikrofon-Freigabe-Dialog
 - Lizenz-Route: eigene Implementierung des öffentlich dokumentierten Signalformats (§ 40e UrhG / Art. 6 RL 2009/24/EG), kein fremder Code übernommen (xwax ist GPL, Mixxx GPL)
 - Xcode-27.2-Hinweis: installiert die fehlenden SwiftUIMacros-Plugins (CLT-@State-Falle stirbt)
+
+## Slice 13 (30.10.) — NI-TSI-Reader + DVS-Pegel + B-Deck-MIDI — FERTIG
+- Nutzer-Kontext geklärt: Mac = Audio-Interface; BD-1380-USB bringt Phono-Preamp+USB-Line-Out (kein Extra-Interface nötig); Mixer egal (Xone:32/DJM-750); Traktor-Scratch-Vinyl vorhanden
+- TSIMappingImporter: S4/S2-User-Mappings sind NIXML+Base64-Blobs; DCDT-Region = Action-Registry (UTF-16LE-Namen), ABER ohne MIDI-Nummern (S4/S2=HID). Ehrliche Lösung: Action-Katalog-Bericht + Unterstützungs-Check statt Fake-Import; echte Bindings via MIDI-Learn. Scanner: robuster [u16 nlen][UTF16LE-ASCII]-String-Scan (Endian-Falle im Header-Feld umgangen)
+- DeckAction erweitert: playPauseB/cueB/hotcue1-4B/loopInB/loopOutB (Router behandelt, alte JSONs laden weiter)
+- DVS: Line/Phono-Toggle (Default Line für BD-1380-USB), Info.plist-Mic-Text aktualisiert
+- 114/114 Tests (25 Suiten; 6 neue inkl. Integrationstest gegen die echte S4-Datei — grün)

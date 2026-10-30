@@ -7,6 +7,7 @@ import LokiCanvasCore
 @MainActor
 final class InspectorUIState: ObservableObject {
     @Published var prompt = ""
+    @Published var visionPrompt = ""
     @Published var selectedModel = LocalModels.chat
 }
 
@@ -23,6 +24,8 @@ struct InspectorView: View {
 
                     if node.kind == .ai || node.kind == .prototype {
                         nodeActions(node)
+                    } else if node.kind == .image || node.kind == .sketch {
+                        visionSection(node)
                     } else {
                         Text("Keine Aktionen für diesen Typ — direkt im Knoten bearbeiten.")
                             .font(.caption).foregroundStyle(Theme.muted)
@@ -32,7 +35,7 @@ struct InspectorView: View {
 
                     Spacer()
 
-                    Button("Knoten löschen (Entf)") {
+                    Button("Auswahl löschen") {
                         model.deleteSelected()
                     }
                     .tint(Theme.rd)
@@ -115,6 +118,34 @@ struct InspectorView: View {
         var m = [LocalModels.chat, LocalModels.vision, LocalModels.coder]
         m.removeDuplicates()
         return m
+    }
+
+    // MARK: Bild-Analyse (Vision) für Bild-/Skizzen-Nodes
+
+    @ViewBuilder
+    private func visionSection(_ node: CanvasNode) -> some View {
+        VStack(alignment: .leading, spacing: 6) {
+            Text("Bild-Analyse (Vision)").font(.caption).foregroundStyle(Theme.muted)
+            TextEditor(text: $ui.visionPrompt)
+                .font(.callout)
+                .scrollContentBackground(.hidden)
+                .frame(height: 60)
+                .background(Theme.bg.opacity(0.5))
+            Button("Analysieren → KI-Node") {
+                model.runVision(fromImageNodeId: node.id, prompt: ui.visionPrompt)
+            }
+            .buttonStyle(.borderedProminent)
+            .tint(Theme.acc)
+            .disabled(model.loadingNode != nil || model.busy)
+            if model.loadingNode != nil {
+                HStack(spacing: 6) {
+                    ProgressView().controlSize(.small)
+                    Text("Lokales Modell arbeitet …").font(.caption).foregroundStyle(Theme.muted)
+                }
+            }
+        }
+        .padding(8)
+        .background(RoundedRectangle(cornerRadius: 8).fill(Theme.bg.opacity(0.4)))
     }
 
     // MARK: Sprache

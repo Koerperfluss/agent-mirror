@@ -17,6 +17,9 @@ final class CanvasModel: ObservableObject {
 
     let client = OllamaClient()
 
+    /// true, solange ein KI-/Vision-Call läuft.
+    var busy: Bool { loadingNode != nil }
+
     private var autosaveTimer: Timer?
 
     init() {
@@ -60,6 +63,7 @@ final class CanvasModel: ObservableObject {
 
     func pan(byX dx: Double, dy: Double) {
         doc.panX += dx; doc.panY += dy
+        autosaveSoon()
     }
 
     func setPan(x: Double, y: Double) {
@@ -68,6 +72,13 @@ final class CanvasModel: ObservableObject {
 
     func zoomBy(_ factor: Double) {
         doc.zoom = min(4.0, max(0.25, doc.zoom * factor))
+        autosaveSoon()
+    }
+
+    /// Absoluter Zoom (kumulativer Pinch): Basis × Gestenwert, geclampt 25–400 %.
+    func zoomTo(_ absolute: Double) {
+        doc.zoom = min(4.0, max(0.25, absolute))
+        autosaveSoon()
     }
 
     func dragNode(_ id: UUID, translation: CGSize, zoom: Double) {
@@ -144,9 +155,45 @@ final class CanvasModel: ObservableObject {
         }
     }
 
+    /// Vision: Bild-/Skizzen-Node analysieren, Ergebnis in neuen AI-Node schreiben.
+    func runVision(fromImageNodeId id: UUID, prompt: String) {
+        guard let n = node(id) else { return }
+        guard let b64 = VisionSupport.base64ForNode(n) else {
+            status = "Kein Bild in diesem Knoten (weder imageB64 noch Strokes)."
+            return
+        }
+        let p = prompt.isEmpty ? ImageUtil.defaultVisionPrompt : prompt
+        addNode(.ai, title: prompt.isEmpty ? "Bild-Analyse" : String(prompt.prefix(30)))
+        guard let aiId = selection else { return }
+        loadingNode = aiId
+        status = "Bild-Analyse (\(LocalModels.vision)) …"
+        mutate(aiId) { $0.text = "" }
+        Task { @MainActor in
+            defer { loadingNode = nil }
+            do {
+                // visionOnline==false: trotzdem versuchen — Ollama liefert klaren Fehler.
+                let answer = try await client.vision(prompt: p, imageBase64: b64)
+                mutate(aiId) { $0.text = answer }
+                status = "Bild-Analyse fertig (\(answer.count) Zeichen)."
+            } catch {
+                mutate(aiId) { $0.text = "KI-Fehler: \(error.localizedDescription)" }
+                status = "Vision-Fehler: \(error.localizedDescription)"
+            }
+        }
+    }
+
     // MARK: Bild in Node laden (FileImporter/Drop)
 
     func setImage(_ id: UUID, data: Data) {
+        // Grenzen: max. 8 MB und echtes Bild — sonst status statt Crash/Müll.
+        guard data.count <= 8_000_000 else {
+            status = "Bild zu groß (max. 8 MB)."
+            return
+        }
+        guard NSImage(data: data) != nil else {
+            status = "Keine gültige Bilddatei."
+            return
+        }
         mutate(id) { $0.imageB64 = data.base64EncodedString() }
     }
 
@@ -165,6 +212,7 @@ final class ContentViewUIState: ObservableObject {
     @Published var panOrigin: CGPoint?
     @Published var showImporter = false
     @Published var scrollMonitor: Any?
+    @Published var pinchBase: Double?
 }
 
 struct ContentView: View {
@@ -188,7 +236,18 @@ struct ContentView: View {
             voice.onCommand = { handleVoice($0) }
             Task { await model.checkModels() }
         }
-        .onDisappear { voice.stop() }
+        .onDisappear {
+            voice.stop()
+            // NSEvent-Monitor sauber entfernen (sonst frisst er jedes Scroll-Event app-weit).
+            if let m = ui.scrollMonitor {
+                NSEvent.removeMonitor(m)
+                ui.scrollMonitor = nil
+            }
+        }
+        // Sicherheitsnetz: Autosave-Flush beim App-Ende (Timer könnte pending sein).
+        .onReceive(NotificationCenter.default.publisher(for: NSApplication.willTerminateNotification)) { _ in
+            model.doc.autosave()
+        }
         .fileImporter(isPresented: $ui.showImporter, allowedContentTypes: [.image]) { result in
             if case .success(let url) = result,
                let data = try? Data(contentsOf: url) {
@@ -246,7 +305,15 @@ struct ContentView: View {
         .clipped()
         .scaleEffect(model.zoom, anchor: .topLeading)
         .offset(x: model.doc.panX, y: model.doc.panY)
-        .gesture(MagnificationGesture().onChanged { model.zoomBy($0) })
+        .gesture(
+            MagnificationGesture()
+                .onChanged { v in
+                    // Kumulativ: Basis beim Pinch-Start merken (sonst compounding).
+                    if ui.pinchBase == nil { ui.pinchBase = model.zoom }
+                    model.zoomTo(ui.pinchBase! * v)
+                }
+                .onEnded { _ in ui.pinchBase = nil }
+        )
         .onAppear { installScrollMonitor() }
     }
 
@@ -265,16 +332,16 @@ struct ContentView: View {
             }
     }
 
-    /// Trackpad-Scroll = Pan, Cmd+Scroll = Zoom (NSEvent-Monitor, beim Verlassen entfernt).
+    /// Cmd+Scroll = Zoom (nur dort geschluckt); normaler Scroll fällt durch
+    /// (Inspector/TextEditor bleiben scrollbar). Canvas-Pan läuft über Drag.
     private func installScrollMonitor() {
         guard ui.scrollMonitor == nil else { return }
         ui.scrollMonitor = NSEvent.addLocalMonitorForEvents(matching: .scrollWheel) { ev in
             if ev.modifierFlags.contains(.command) {
                 model.zoomBy(1.0 - ev.scrollingDeltaY * 0.01)
-            } else {
-                model.pan(byX: ev.scrollingDeltaX, dy: ev.scrollingDeltaY)
+                return nil
             }
-            return nil
+            return ev
         }
     }
 

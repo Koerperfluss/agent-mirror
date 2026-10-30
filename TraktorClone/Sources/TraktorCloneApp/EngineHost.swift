@@ -313,6 +313,17 @@ final class EngineHost: ObservableObject {
         mappingRevision += 1
     }
 
+    /// Slice 13: NI-Controller-TSI lesen → Action-Katalog-Bericht.
+    /// (S4/S2-Templates enthalten die Action-Registry ohne MIDI-Nummern —
+    /// die Geräte reden HID. Konkrete Bindings entstehen per MIDI-Learn.)
+    @discardableResult
+    func importNativeMappings(from url: URL) -> (total: Int, supported: Int) {
+        let catalog = TSIMappingImporter.actions(url: url)
+        let supported = catalog.filter(\.supported).count
+        mappingRevision += 1
+        return (catalog.count, supported)
+    }
+
     // MARK: MIDI-Learn-Persistenz
     func saveMappings(_ mappings: [LearnedMapping]) {
         try? MappingStore.save(mappings, to: MappingStore.defaultURL())
@@ -355,6 +366,15 @@ final class EngineHost: ObservableObject {
                 case .loopIn: self.deckA.state.loopIn()
                 case .loopOut: self.deckA.state.loopOut()
                 case .loopExit: self.deckA.state.loopExit()
+                // Slice 13: Deck B (aus NI-TSI-Import)
+                case .playPauseB: self.deckB.togglePlay()
+                case .cueB: self.deckB.cue()
+                case .hotcue1B: self.deckB.hotcue(1)
+                case .hotcue2B: self.deckB.hotcue(2)
+                case .hotcue3B: self.deckB.hotcue(3)
+                case .hotcue4B: self.deckB.hotcue(4)
+                case .loopInB: self.deckB.state.loopIn()
+                case .loopOutB: self.deckB.state.loopOut()
                 }
             }
         }

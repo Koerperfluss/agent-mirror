@@ -307,5 +307,23 @@
   "implementation_status": "implemented",
   "notes": "Slice 12: LFSR-Decoder (23/20 Bit) + Position-LUT + Zero-Crossing-Bitstream + Tonearm-Tiefpass + Speed-EMA; Phono-Input (AVAudioEngine-Tap) → Absolute-Mode-Seek + Platter-Pitch (rückwärts/Stop); DVS-Zeile im Treiber-Panel mit Eingangsgeräte-Wahl. Decoder synthetisch bewiesen (Position/1.5x-Speed/5%-Rauschen); Live-Kalibrierung am echten Vinyl mit Phono-Interface (z. B. Traktor Audio/Behringer UFO202)",
   "test_refs": "DvsTests"
+ },
+ {
+  "id": "F-038",
+  "area": "MIDI",
+  "name": "NI-Controller-TSI-Reader + Deck-B-MIDI-Aktionen",
+  "evidence_level": "documented",
+  "implementation_status": "implemented",
+  "notes": "Slice 13: Reverse-Engineered DCDT-Blob-Reader (S4/S2-User-Mappings: Action-Registry ohne MIDI-Nummern, da HID) → Action-Katalog mit Unterstützungs-Check; neue DeckActions playPauseB/cueB/hotcue1-4B/loopInB/loopOutB im Router; UI-Button 'NI .tsi' mit Bericht. Echte Bindings entstehen per MIDI-Learn (2 s/Knopf)",
+  "test_refs": "TSIMappingImportTests (inkl. echter S4-Datei)"
+ },
+ {
+  "id": "F-039",
+  "area": "DVS",
+  "name": "Eingangspegel-Umschaltung Line/Phono",
+  "evidence_level": "documented",
+  "implementation_status": "implemented",
+  "notes": "Slice 13: BD-1380-USB hat Phono-Preamp eingebaut → Line-Modus als Default; klassische Phono-Verkabelung umschaltbar (Threshold-Faktor 32)",
+  "test_refs": "DVSController.lineLevel"
  }
 ]

@@ -11,6 +11,7 @@ final class NodeUIState: ObservableObject {
     @Published var strokeColor = "#22D3EE"
     @Published var eraser = false
     @Published var showImagePicker = false
+    @Published var strokeFinished = true // true = nächster onChanged beginnt neuen Stroke
 }
 
 struct NodeView: View {
@@ -71,6 +72,9 @@ struct NodeView: View {
     private var moveGesture: some Gesture {
         DragGesture(minimumDistance: 2)
             .onChanged { g in
+                // Node kann während des Drags gelöscht werden (z. B. Sprach-Befehl)
+                // → gar nicht schreiben statt auf falschen Index zu schreiben.
+                guard model.node(node.id) != nil else { return }
                 if let start = ui.dragStart {
                     model.doc.nodes[nodeIndex].x = start.x + Double(g.translation.width) / model.zoom
                     model.doc.nodes[nodeIndex].y = start.y + Double(g.translation.height) / model.zoom
@@ -168,17 +172,23 @@ struct NodeView: View {
                                 s.points.contains { hypot($0[0] - p[0], $0[1] - p[1]) < 14 }
                             }
                         }
-                    } else if node.strokes.last?.points.isEmpty == false || node.strokes.isEmpty {
+                    } else if ui.strokeFinished || node.strokes.isEmpty {
+                        // Neuer Strich (nach Drag-Ende oder bei leerer Skizze)
+                        ui.strokeFinished = false
                         model.mutate(node.id) { n in
                             n.strokes.append(Stroke(color: ui.strokeColor, points: [p]))
                         }
                     } else {
                         model.mutate(node.id) { n in
+                            guard !n.strokes.isEmpty else { return }
                             n.strokes[n.strokes.count - 1].points.append(p)
                         }
                     }
                 }
-                .onEnded { _ in model.autosaveSoon() }
+                .onEnded { _ in
+                    ui.strokeFinished = true
+                    model.autosaveSoon()
+                }
         )
     }
 

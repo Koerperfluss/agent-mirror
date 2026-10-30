@@ -13,6 +13,9 @@ final class DVSController: ObservableObject {
     @Published var status = "DVS: aus"
     @Published var deckPosition: [Int32?] = [nil, nil]
     @Published var deckSpeed: [Double] = [0, 0]
+    /// Eingangspegel: BD-1380-USB & Co. liefern Line-Pegel (Phono-Preamp eingebaut);
+    /// klassische Phono-Verkabelung braucht den empfindlicheren Modus.
+    @Published var lineLevel = true
     /// Stille Zone am Plattenanfang (Codes), bevor der Track startet.
     @Published var leadInCodes: Double = 1000
 
@@ -32,8 +35,8 @@ final class DVSController: ObservableObject {
             status = "DVS: kein Stereo-Eingang verfügbar"
             return
         }
-        decoders = [TimecodeDecoder(def: defA, sampleRate: format.sampleRate),
-                    TimecodeDecoder(def: defB, sampleRate: format.sampleRate)]
+        decoders = [TimecodeDecoder(def: defA, sampleRate: format.sampleRate, phono: !lineLevel),
+                    TimecodeDecoder(def: defB, sampleRate: format.sampleRate, phono: !lineLevel)]
         input.installTap(onBus: 0, bufferSize: 512, format: format) { [weak self] buffer, _ in
             guard let self else { return }
             self.feed(buffer: buffer, channels: Int(format.channelCount))
