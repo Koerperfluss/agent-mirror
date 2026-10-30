@@ -1,39 +1,33 @@
 ---
 name: product-canvas-rebuild
-description: Aktives Projekt — Google Product Canvas (romannurik) als eigene Full-Stack-App; seit 27.10. VOLL LAUFFÄHIG lokal via Firebase-Emulatoren (Login/Mock/Canvas bewiesen); KI wartet nur auf echten Gemini-Key; echtes Firebase optional
+description: Aktives Projekt — Google Product Canvas (romannurik) lokal; 30.10. neu
+  als native Tauri-App „Product Canvas Local.app" gebaut (Vite-Alias-Shim statt 12
+  Umbauten); Editor im Browser-Build voll bewiesen, Tauri-Webview hängt noch im Loading
 metadata:
   node_type: memory
   type: project
   originSessionId: session_3a1cc25ff2c2e82e01c329cebdb4fa22
 ---
 
-Seit 27.10.2026 baut Sascha Google „Product Canvas" (ProductCanvas-Experiment von romannurik, Apache-2.0 → Nachbau legal) als eigene Full-Stack-App.
+Sascha baut Google „Product Canvas" (ProductCanvas-Experiment von romannurik, Apache-2.0) nach. **Zielstand 30.10.: native Tauri-Mac-App „Product Canvas Local.app" — kein Browser/localhost, keine Firebase/Gemini, KI über lokale Ollama/LM-Studio-Modelle, kein Multiplayer.** Geschwistert-Projekt: [[lokicanvas-native-app]] (SwiftUI-Variante, fertig).
 
-**Stand 27.10.2026 (nachts): VOLL LAUFFÄHIG END-TO-END BEWIESEN.**
-- Pfad: `~/Desktop/Coworkspace_Ich/product-canvas-nachbau/ProductCanvas-Experiment-main` (138 Dateien, 10.732 Zeilen; Stack: Vite+React+TS, React Flow, Firebase RTDB+Auth, WebRTC, Gemini Live, esbuild-wasm, Tiptap, matter.js)
-- **Klickpfad komplett bestanden** (Playwright): ?mock=1 → „Sign in with Google" → anonym (Emulator) → Privacy „Got it" → Setup (Gemini-Key-Feld) → **Canvas-Session `/vcqM8oQytB`** → Leinwand rendert (React Flow, Toolbar, „What do you want to build?"), 0 echte Fehler.
-- Server: `vite.dev.config.ts` → HTTPS 5173 (self-signed) + `vite.dev-http.config.ts` → HTTP 5188 (für Playwright). Nutzung: `https://localhost:5173/?mock=1` (Zertifikatswarnung durchklicken).
-- `.env` = echte Config von Projekt `product-canvas-lab-6609` (barbulls-app unberührt).
+**Pfad (gezogen):** `~/Desktop/Reverse Engeniering /product-canvas-nachbau/ProductCanvas-Experiment-main` (Leerzeichen + trailing space!). 138 Dateien, 10.732 Zeilen; Vite+React+TS, React Flow, Firebase RTDB+Auth, WebRTC, Gemini Live, esbuild-wasm, Tiptap, matter.js. Kein Git-Repo im Ordner.
 
-**Chirurgische Patches (je Backup `*.bak-2026-10-27` daneben):**
-1. `src/firebase.ts`: in DEV `connectAuthEmulator(9099)` + `connectDatabaseEmulator(9100)`.
-2. `src/onboarding/Onboarding.tsx`: DEV + `?mock` überspringt den Invite-Claim (`hasAccess`-Gate).
-3. `src/auth/AuthProvider.tsx`: signIn → wenn DEV+`?mock` → `signInAnonymously` statt Google-Popup.
-- Erkenntnis: Der eingebaute `?mock=N`-Modus ersetzt nur einen BEREITS eingeloggten User (Anzeige-Trick) — kein Gate-Bypass; deshalb Patch 3.
+**Architektur-Trick (statt 12 Umbauten): 1 Nahtstelle + Vite-Aliase.**
+- `src/local/rtdb-local.ts` (~340 Z.): Mini-RTDB (ref/set/update/push/onValue/get/child/query/onDisconnect…), Baum debounced (500 ms) als `canvas-db.json`; Tauri: `window.__TAURI__.path.appDataDir()` + `__TAURI__.fs`, Browser-Fallback: localStorage (Key `rtdb-local:/tmp/...`).
+- `src/local/firebase-local.ts`: Total-Ersatz für firebase/app|auth|database|functions|storage — `vite.config.ts` aliasiert bei `VITE_LOCAL_APP=1` ALLE `firebase/*`-Imports darauf (23 direkte Imports in 12 Verbrauchern! — DocumentProvider, PresenceProvider, rtcfire, MiniAppHost importieren direkt). **Rollup failt hart bei fehlenden Named-Exports** → Vertragsliste: connectAuthEmulator/connectDatabaseEmulator (no-op), serverTimestamp, onChildAdded/Changed, getDatabase, signInAnonymously/WithPopup/WithRedirect, GoogleAuthProvider, getIdTokenResult, uploadBytes/getDownloadURL, httpsCallable …
+- `src/local/ai-local.ts` + `ai/index.ts` LOCAL-Zweig: OpenAI-Format (chat/completions) gegen `prefs.localAIBaseUrl` (Default `http://127.0.0.1:11434/v1` Ollama) + `prefs.localAIModel` (Default `qwen2.5-coder:7b`); cURL-Beweis geliefert. Bild/Voice werfen bewusst „Lokal nicht verfügbar".
+- Auth: Auto-Login `uid:'local-user'`, `getIdTokenResult()` → `{claims:{hasAccess:'local'}}` (Invite-Gate), Onboarding überspringt Login/Invite/Gemini-Key, LoginScreen-Text „Lokal starten".
+- `src-tauri/` (Tauri 2): Fenster 1440×900, fs+http-Plugins, Command `fetch_local_ai` (Host 127.0.0.1, Port nur 11434/1234).
 
-**Emulator-Setup (umgeht beide Google-Sperren komplett):**
-- `firebase.emulator.json` (auth :9099, database :9100, ui :4000) + `database.rules.json` (offen). Start: `JAVA_HOME=/opt/homebrew/opt/openjdk@21 firebase emulators:start -c firebase.emulator.json --project demo-canvas` (demo-Präfix = kein Login nötig). Java 21 war schon via brew da (Java 8 zu alt für Emulator).
-- **Port 9000 ist von BrowserOS belegt** → Datenbank-Emulator auf 9100.
+**Fixes beim Bau (alle .bak-2026-10-30):** `vite-tsconfig-paths` war DER ETIMEDOUT-Übeltäter (scandiert Google-Drive-Shortcuts; Bisect bewiesen) → entfernt, `@`-Alias reicht. App.tsx: harte Navigation (`window.location.pathname = generateId()`) → `history.replaceState` + docId-State (harte Nav = weißer Screen/404 in Tauri/Static-Server); DocumentProvider braucht docId-Prop. Shim-User MUSS `getIdTokenResult()` als Methode haben (AuthProvider ruft direkt auf — sonst stiller Loading-Hänger ohne Konsolenfehler!). Devtools-Feature in Cargo.toml (`tauri = {version:"2", features:["devtools"]}`) für Release-Inspektion.
 
-**Reparaturen beim Aufsetzen (wieder verwendbar):**
-- `node-stdlib-browser` v1.2.1/1.3.1 packaging bug: Stubs `mock/empty.js`, `proxy/querystring.js`, `proxy/url.js` **im Projekt-Root** (nicht node_modules — create-require löst relativ zum Start-Kontext auf).
-- `vite-tsconfig-paths` → ETIMEDOUT-scandir in Google-Drive-Shortcuts (Ursache offen) → Plugin weggelassen, `@/*` per resolve.alias.
-- Playwright-MCP blockt self-signed HTTPS → HTTP-Zweitinstanz. `firebase login` (alle Varianten) endet sofort by design; Links im ZCode-In-App-Browser scheitern mit „Unable to verify client" (Cookies/Flow).
+**Stand (bewiesen):**
+- Frontend `VITE_LOCAL_APP=1 vite build` grün; Tauri-App gebaut: `src-tauri/target/release/bundle/macos/Product Canvas Local.app` (13,7 MiB; DMG-Bundling scheitert am Finder-AppleScript-Timeout → immer `tauri build --bundles app`).
+- **Browser-Gegenbeweis komplett** (`python3 -m http.server 4188` im dist, agent-browser): Auto-Login → Privacy → SPA-Route `/b6LEv9YBzo` → Editor (Toolbar, „Lokal"-Button) → Shim-Persistenz in localStorage, 0 Konsolenfehler, 0 Google-Calls.
+- **OFFEN:** Tauri-Webview bleibt im Loading-Spinner hängen (dunkles Fenster + Theme + Menü ok, kein JS-Fehler sichtbar), obwohl identisches dist im Browser läuft. DevTools (Cargo-devtools, Cmd+Opt+I im App-Fokus) noch nicht ausgelesen — Fokus-Krieg mit Parallel-Session, die gerade CLT 27.2 installiert.
+- Ollama real: nur `qwen2.5-coder:7b` (+1.5b) antwortet; `qwen3.5:9b`/`qwen3-vl:8b` Manifeste ohne Blobs (→ `ollama pull`); LM Studio aus.
 
-**Die 4 restlichen Konsolen-Fehler (erklärt):** 2× html-to-image Google-Fonts-CORS (harmlos, auch im Original) + 2× Gemini 400 API_KEY_INVALID = **KI-Kette lebt, wartet nur auf echten Gemini-Key** (aistudio.google.com/api-keys → in App-Settings eintragen).
+**Ältere Artefakte (27.10., ruhen):** Web-Version via Firebase-Emulatoren voll lauffähig (Patches + Ports siehe Git-Historie dieser Datei); echtes Firebase-Projekt `product-canvas-lab-6609` teils eingerichtet (RTDB-Create + identitykit nur per Console-Ritual, Blocker unverändert).
 
-**Echtes Firebase (optional, Projektparts fertig):** Projekt `product-canvas-lab-6609` per gcloud+REST angelegt (Pflicht-Header `x-goog-user-project`; `gcloud projects create --name=`), Web-App appId `1:675368337217:web:076991cb00d8fe20efabc0`. **Blocker bleiben:** RTDB-Create REST→404-HTML, identitytoolkit→CONFIGURATION_NOT_FOUND (nur Console-/CLI-Ritual). firebase login via Saschas Code wäre der Hebel — Sessions verfallen aber sofort und der Link-Chaos frustrierte ihn; nur noch anbieten wenn er fragt.
-
-**Nächste Phase:** ~~Umbau zum eigenen Produkt~~ → **ABGELÖST 30.10.:** Sascha lehnte Web/localhost-Träger ab („0 Sinn") und wollte native App + lokale Ollama-Modelle statt Gemini-Key → Nachfolger ist **LokiCanvas** (SwiftUI, siehe [[lokicanvas-native-app]]). Web-Nachbau ruht als Referenz; Quellordner offenbar nach `~/Desktop/Reverse Engeniering /product-canvas-nachbau/` verschoben.
-
-**Why:** Nachfolge-Projekt von [[lokicanvas-native-app]]; Pfade, Patches, Emulator-Ports hier, Restarbeiten aus keinem Repo ableitbar. Verwandt: [[zcode-skills-landscape]], [[local-browser-testing-gotchas]], [[simple-language-responses]].
+**Why:** Multi-Session-Projekt; Alias-Architektur, Vertragsliste und Tauri-Fallen sind aus dem Repo nicht ableitbar. Verwandt: [[lokicanvas-native-app]], [[tauri-build-gotchas]], [[local-browser-testing-gotchas]], [[simple-language-responses]].

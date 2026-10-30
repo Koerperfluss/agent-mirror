@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-30 03:46 UTC
+Zuletzt gespiegelt: 2026-10-30 04:04 UTC
 
 ## AGENTS
 
@@ -12293,7 +12293,8 @@ Sascha fragte wiederholt wütend „WO SIND MEINE SKILLS?" — dauerhafte Fakten
 
 # Memory Index
 
-- [TraktorClone Projekt](qwen-flash-spark-project.md) — **Slices 1–11 ALLE FERTIG (30.10., 102/102 Tests in 22 Suiten, HEAD d7f36b0af)**: Restfeatures (Beatgrid-Offset, Sync-Phase-Nudge, Cue/Hotcue-Marker, Zoom-Fix, Playlists/Crates, Treiber-Panel, Spotify-Playlist-Import via Env-Keys — kein Audio-Streaming, Spotify-AGB); **@State = SwiftUIMacros-Makro, fehlt im CLT komplett** → UI-Flags in EngineHost; agentos M1–M5 DONE (210/210); LokiCanvas v1.0 fertig (Parallel-Session 628ced708); 28/36 Features implemented, DVS blocked (BD-1380 Riemenantrieb)
+- [Traktor DVS Timecode-Decoder](traktor-dvs-timecode-decoder.md) — Slice 12 (30.10., Commit 7264e782b): Traktor-Scratch/Serato-Konstanten, LFSR+LUT-Decoder synthetisch bewiesen (108/108); **DVS geht am Riemenantrieb (Nutzer-Korrektur!)**; GPL-Route: eigene Impl nach §40e UrhG; Live-Kalibrierung braucht Phono-Interface
+- [TraktorClone Projekt](qwen-flash-spark-project.md) — **Slices 1–12 ALLE FERTIG (30.10., 108/108 Tests in 24 Suiten, HEAD 7264e782b, 29/37 Features)**: Restfeatures (Beatgrid-Offset, Sync-Phase-Nudge, Cue/Hotcue-Marker, Zoom-Fix, Playlists/Crates, Treiber-Panel, Spotify-Playlist-Import via Env-Keys — kein Audio-Streaming, Spotify-AGB) + DVS (Timecode-Vinyl, Phono-Input); **@State = SwiftUIMacros-Makro, fehlt im CLT komplett** → UI-Flags in EngineHost; agentos M1–M5 DONE (210/210); LokiCanvas v1.0 fertig (Parallel-Session 628ced708)
 - [Mimosa-Hook-Schreibconstraints](mimosa-hook-write-constraints.md) — warum Edits/Pushes blockiert werden und welche Gegenmuster funktionieren (validate_host, write_text, lazy, pipefail, Button-Style-Paren-Falle)
 - [Custom-Skills manuell ausführen](custom-skills-read-from-autoclaw.md) — roo-code/gsd-core/coderabbit/loki-dev/ponytail liegen in ~/.openclaw-autoclaw/skills/, ZCode registriert sie nicht → SKILL.md lesen + Methodik manuell anwenden
 - [Subagent-Provider-Fix](subagent-provider-fix-zai-api.md) — finale Lösung: ALLE 10 Defs `account:zai-individual-coding-plan/GLM-5.3-Flash` + thoughtLevel low; **nach Neustart bewiesen: implementer läuft** (alle 37 aktiv); vor Neustart = Live-Route cavecrew-builder
@@ -12435,6 +12436,26 @@ Saschas ZCode-Subagenten (~/.zcode/agents/*.md: cavecrew-*, implementer, qa-test
 3. **Live-Beweis:** cavecrew-builder (account:-Format) lieferte 2 echte Tasks (73k + 262k Tokens): STATE-Check + vollständigen StemExporter (AVAssetReader→WAV, Build complete, committed 42641ef05). Builder als Ersatz-Reviewer mit Vetorecht funktioniert („hast nichts gebaut") — lieferte REQUEST_CHANGES mit 7 echten Findings, alle gefixt.
 4. **Fehler-Diagnose-Kette:** `provider-not-found` = Provider-Name falsch · `reasoning-level-not-supported` = Provider ok aber thoughtLevel nicht unterstützt. UI-Anzeige „GLM-5.3-Flash" im Subagents-Panel ist nur der Modell-Anzeigename — sagt nichts über den Provider.
 5. hcom-Bus: `hcom start` macht ZCode als Agent sichtbar (Name „neko"); Antigravity.app in /Applications vorhanden ✅; aber Cline/Antigravity/AutoClaw-Peers standen 16 Tage stale — externes Team nicht verlässlich, dokumentieren statt blocken. Kontext: [[qwen-flash-spark-project]], [[custom-skills-read-from-autoclaw]].
+
+## traktor-dvs-timecode-decoder
+
+---
+name: traktor-dvs-timecode-decoder
+description: DVS im TraktorClone — Traktor-Scratch-Timecode-Konstanten,
+  Decoder-Architektur, Beweisgrenze (Live-Kalibrierung braucht Phono-Interface)
+metadata:
+  node_type: memory
+  type: project
+  originSessionId: session_58f3f4bfcb9a88671e0595593de28702
+---
+
+DVS (Slice 12, 30.10.2026, Commit 7264e782b) im TraktorClone implementiert: `TimecodeVinyl.swift` dekodiert Traktor Scratch (23 Bit, seed 0x134503/0x32066c, taps 0x041040, 2 kHz) und Serato 2A (20 Bit, seed 0x59017, taps 0x361e4, 1 kHz) — LFSR fwd/rev invers, Position-LUT (1<<bits Int32, bounds-check!), Zero-Crossing-Bitstream, Tonearm-Tiefpass bei 2×Carrier (nötig gegen 5 % Rauschen), Speed-EMA.
+
+**Wichtig:** Nutzer-Korrektur — DVS geht auch mit Riemenantrieb (BD-1380); „blocked"-Aussage war falsch. Lizenz-Route: eigene Implementierung des öffentlich dokumentierten Formats (§40e UrhG), xwax/Mixxx sind GPL → deren Code NICHT kopieren, nur Format-Konstanten als Interop-Spec nutzen.
+
+**Beweisgrenze:** Decoder synthetisch bewiesen (Position/1.5×-Speed/Rauschen, 6 Tests); Live-Kalibrierung am echten Vinyl ausstehend — braucht Phono-Interface (Traktor Audio oder Behringer UFO202) + Mikrofon-Freigabe. Absolute-Mode: Lead-in 1000 Codes, Seek-Toleranz 0.08 s bei 10 Hz Kopplungstimer.
+
+Verwandt: [[qwen-flash-spark-project]]
 
 ## uiux-skills-hub-audit
 
