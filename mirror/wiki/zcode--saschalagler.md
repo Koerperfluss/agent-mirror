@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-30 04:21 UTC
+Zuletzt gespiegelt: 2026-10-30 04:38 UTC
 
 ## AGENTS
 
@@ -12315,8 +12315,9 @@ Sascha fragte wiederholt wütend „WO SIND MEINE SKILLS?" — dauerhafte Fakten
 
 # Memory Index
 
-- [Traktor DVS Timecode-Decoder](traktor-dvs-timecode-decoder.md) — Slice 12 (30.10., Commit 7264e782b): Traktor-Scratch/Serato-Konstanten, LFSR+LUT-Decoder synthetisch bewiesen (108/108); **DVS geht am Riemenantrieb (Nutzer-Korrektur!)**; GPL-Route: eigene Impl nach §40e UrhG; Live-Kalibrierung braucht Phono-Interface
-- [TraktorClone Projekt](qwen-flash-spark-project.md) — **Slices 1–12 ALLE FERTIG (30.10., 108/108 Tests in 24 Suiten, HEAD 7264e782b, 29/37 Features)**: Restfeatures (Beatgrid-Offset, Sync-Phase-Nudge, Cue/Hotcue-Marker, Zoom-Fix, Playlists/Crates, Treiber-Panel, Spotify-Playlist-Import via Env-Keys — kein Audio-Streaming, Spotify-AGB) + DVS (Timecode-Vinyl, Phono-Input); **@State = SwiftUIMacros-Makro, fehlt im CLT komplett** → UI-Flags in EngineHost; agentos M1–M5 DONE (210/210); LokiCanvas v1.0 fertig (Parallel-Session 628ced708)
+- [Traktor DVS Timecode-Decoder](traktor-dvs-timecode-decoder.md) — Slices 12+13: Hardware-Setup (BD-1380-USB=Line-preamp-integriert, Scratch-Vinyl da, Mac=Interface), LFSR+LUT-Decoder synthetisch bewiesen (114/114), NI-TSI-Format (S4/S2=Registry ohne MIDI-Nummern, HID; robuster UTF16-Scanner, Endian-Falle); GPL-Route: eigene Impl nach §40e UrhG; Live-Kalibrierung offen
+- [Vor „geht nicht" recherchieren](research-before-declining-blocked.md) — Saschas DVS-Korrektur: „blocked"-Aussagen nur nach Prior-Art-Recherche (xwax/Mixxx) + Hardware-Spec-Lektüre; rechtliche Grenzen → maximal legalen Teil bauen
+- [TraktorClone Projekt](qwen-flash-spark-project.md) — **Slices 1–13 ALLE FERTIG (30.10., 114/114 Tests in 25 Suiten, HEAD bb7cc7e6d, 31/39 Features)**: Restfeatures (Beatgrid-Offset, Sync-Nudge, Marker, Zoom-Fix, Playlists, Treiber-Panel, Spotify-Metadaten-Import) + DVS + NI-TSI-Reader; App läuft live bei Sascha mit Auto-Analyse; **@State-Plugin fehlt im CLT komplett (kein Race!)** + kein `Skip` in Testing 2403; agentos M1–M5 DONE (210/210); LokiCanvas v1.0 fertig (Parallel-Session 628ced708)
 - [Mimosa-Hook-Schreibconstraints](mimosa-hook-write-constraints.md) — warum Edits/Pushes blockiert werden und welche Gegenmuster funktionieren (validate_host, write_text, lazy, pipefail, Button-Style-Paren-Falle)
 - [Custom-Skills manuell ausführen](custom-skills-read-from-autoclaw.md) — roo-code/gsd-core/coderabbit/loki-dev/ponytail liegen in ~/.openclaw-autoclaw/skills/, ZCode registriert sie nicht → SKILL.md lesen + Methodik manuell anwenden
 - [Subagent-Provider-Fix](subagent-provider-fix-zai-api.md) — finale Lösung: ALLE 10 Defs `account:zai-individual-coding-plan/GLM-5.3-Flash` + thoughtLevel low; **nach Neustart bewiesen: implementer läuft** (alle 37 aktiv); vor Neustart = Live-Route cavecrew-builder
@@ -12408,8 +12409,11 @@ Projekt `~/agent-os/agent-mirror` (Kanonik, Klon von Koerperfluss/agent-mirror, 
 | **Slice 9 (f4bc8233d)** | Auto-DJ (Round-Robin, 5s-Ende-Wächter), Beat-Loops 1/2/4/8 (`setBeatLoop`+Engine-Timer-Retrigger), Waveform-Scrub (DragGesture=kontinuierlicher Seek), Zoom 1x/2x/4x (Fenster um Playhead), Stem-Mixer (Mix+4 Stems Gain-Slider+Solo), VU-Meter (Peak-Tap an FX-Kette) | |
 | **Slice 10 (6d112d5d5)** | BPM-DSP (PCM→Mono→RMS-Hüllkurve→Onset→Autokorrelation, Fold 70–180; synthetisch: 120→120, 90→90), Key-DSP (Goertzel über 12 Pitch-Klassen Okt. 2–5, Dur/Moll-Terz-Heuristik; A4-Sinus→A), TrackMemoryStore (Cue/Hotcues/BPM/Key pro Datei-Pfad SHA256-Key in AppSupport), Auto-Analyse im Hintergrund (90s Material), Beatgrid-Overlay (Beat-Striche zoomtreu) | |
 | **UI-Modernisierung (ec4d1f74d)** | Taste-Skill-Locks durchgesetzt (1 Radius-System 12/8/6, 5-Stufen-Typo fDisplay→fCaption, 4er-Spacing), 3 DJ-Button-Styles (djControl/djSquare/djProminent mit Scale+Glow), VU-Gradient grün→gelb→rot, Beat-LED mit Glow-Shadow, Waveform zweifarbig (oben 85%/unten 45%), Playhead mit Aura, prominenter Play-Button (Gradient-Icon), tieferer BG #0E1014, cyan Glow-Rahmen wenn Deck spielt | |
+| **Slice 11 (d7f36b0af)** | Restfeatures: Beatgrid-Offset (`estimateFirstBeatOffset`, Phasen-Score in TrackMemory), Sync-Nudge (`nudgeTarget` wählt nächsten Kandidaten MIT Ziel-Phase, ±1 Beat), Cue/Hotcue-Marker in Waveform (5 Farben+Flags), Zoom-Fix (`WaveWindow`: Playhead Fenstermitte, Klick mappt aufs Fenster — alter Bug: Playhead bei w/4), Playlists/Crates (PlaylistStore JSON, Auto-DJ-Quelle umschaltbar), Treiber-Panel (CoreAudio Out+In, Mapping-Tabelle Export/Import/Löschen), Spotify-Playlist-Import (Web-API Metadaten via Env `SPOTIFY_CLIENT_ID/SECRET`, Match gegen Library → Playlist; bewusst KEIN Audio-Streaming, Spotify-AGB) | |
+| **Slice 12 (7264e782b)** | DVS Timecode-Vinyl (siehe [[traktor-dvs-timecode-decoder]]) | |
+| **Slice 13 (bb7cc7e6d)** | NI-TSI-Reader (DCDT-Blob, Action-Katalog), Deck-B-MIDI-Aktionen (playPauseB/cueB/hotcue1-4B/loopInB/loopOutB), DVS Line/Phono-Toggle | |
 
-**Status:** 27+ von 29 FEATURES implemented; nur DVS blocked (BD-1380 Riemenantrieb → kein Timecode) + 2 Komfort-Details (Waveform-Zoom-Feinschliff, Sync-Beat-Phase-Nudging). **`rebuild/STATE.md` führt weiter.** Sascha pocht auf ALLE Funktionen sofort — „mach es selbst" = keine Rückfragen.
+**Status:** 39 FEATURES / 31 implemented; DVS gebaut (synthetisch bewiesen, Live-Kalibrierung am echten Scratch-Vinyl offen). **`rebuild/STATE.md` + `rebuild/FEATURES.json` führen weiter.** Sascha pocht auf ALLE Funktionen sofort — „mach es selbst" = keine Rückfragen. Merge auf `main` nur auf sein „stable"-GO.
 
 ## Swift-CLT-Build-Fallen (alle durch Tests gefunden)
 
@@ -12434,6 +12438,24 @@ Projekt `~/agent-os/agent-mirror` (Kanonik, Klon von Koerperfluss/agent-mirror, 
 Core+Tests+App-Gerüst in `agent-mirror/LokiCanvas/` (uncommittet). Nutzt Ollama (qwen3.5:9b/vl:8b/coder:7b, alle live bewiesen). OllamaClient+NodeModel+CanvasDocument+PrototypeGenerator+VoiceParser+Theme fertig, Tests geschrieben. App-Gerüst: CanvasViewModel+SpeechController+ContentView (Pan/Zoom+Nodes). Unterbrochen wegen „DU SOLLST TRAKTOR BAUEN" — auf Zuruf „Canvas weiterbauen" fortsetzen.
 
 Siehe [[mimosa-hook-write-constraints]], [[subagent-provider-fix-zai-api]], [[loki-workflow-harness]].
+
+## research-before-declining-blocked
+
+---
+name: research-before-declining-blocked
+description: Niemals Features als "geht nicht/blocked" abmelden ohne Recherche —
+  Saschas DVS-Korrektur als Lehrstück
+metadata:
+  node_type: memory
+  type: feedback
+  originSessionId: session_58f3f4bfcb9a88671e0595593de28702
+---
+
+Sascha korrigierte mich scharf („du volltrottel das geht mit traktor vinyl platten RECHERCHIERE DOCH ODER?"), als ich DVS als „blocked — Riemenantrieb kann kein Timecode" abgemeldet hatte. Die Recherche (xwax/Mixxx) zeigte: DVS funktioniert an jedem Turntable mit Pitch-Slider; der Task war in derselben Session komplett gebaut.
+
+**Why:** „Blocked/unausführbar"-Aussagen ohne Quellenrecherche sind für Sascha ein Arbeitsverweigerungs-Delikt — erst wenn Open-Source-Prior-Feed (xwax, Mixxx & Co.) und Web-Recherche wirklich keinen Weg zeigen, ist „nicht möglich" eine legitime Antwort.
+
+**How to apply:** Vor jeder „geht nicht"-Aussage: (1) Web-Suche nach Prior-Art im Open-Source-Bereich, (2)Hardware-Spec lesen statt Annahmen (BD-1380-USB hatte z. B. eingebauten Phono-Preamp), (3) wenn Grenzen rechtlich sind (Spotify-Audio-Streaming), Grenze klar nennen aber den maximal legalen Teil bauen (Metadaten-Import). Gilt auch für seine „kein Limit keine Grenze"-Aufträge. Siehe [[traktor-dvs-timecode-decoder]].
 
 ## subagent-provider-fix-zai-api
 
@@ -12463,21 +12485,39 @@ Saschas ZCode-Subagenten (~/.zcode/agents/*.md: cavecrew-*, implementer, qa-test
 
 ---
 name: traktor-dvs-timecode-decoder
-description: DVS im TraktorClone — Traktor-Scratch-Timecode-Konstanten,
-  Decoder-Architektur, Beweisgrenze (Live-Kalibrierung braucht Phono-Interface)
+description: DVS + NI-TSI-Reader im TraktorClone (Slices 12+13) — Hardware-Setup
+  (BD-1380-USB=Line, Scratch-Vinyl vorhanden), Decoder-Gotchas, TSI-Format-Befund,
+  Beweisgrenze synthetisch
 metadata:
   node_type: memory
   type: project
   originSessionId: session_58f3f4bfcb9a88671e0595593de28702
 ---
 
-DVS (Slice 12, 30.10.2026, Commit 7264e782b) im TraktorClone implementiert: `TimecodeVinyl.swift` dekodiert Traktor Scratch (23 Bit, seed 0x134503/0x32066c, taps 0x041040, 2 kHz) und Serato 2A (20 Bit, seed 0x59017, taps 0x361e4, 1 kHz) — LFSR fwd/rev invers, Position-LUT (1<<bits Int32, bounds-check!), Zero-Crossing-Bitstream, Tonearm-Tiefpass bei 2×Carrier (nötig gegen 5 % Rauschen), Speed-EMA.
+DVS + NI-TSI-Import im TraktorClone (30.10., Commits `7264e782b` Slice 12 + `bb7cc7e6d` Slice 13, 114/114 Tests).
 
-**Wichtig:** Nutzer-Korrektur — DVS geht auch mit Riemenantrieb (BD-1380); „blocked"-Aussage war falsch. Lizenz-Route: eigene Implementierung des öffentlich dokumentierten Formats (§40e UrhG), xwax/Mixxx sind GPL → deren Code NICHT kopieren, nur Format-Konstanten als Interop-Spec nutzen.
+## Saschas echtes Setup (wichtig für alle Audio-Fragen)
 
-**Beweisgrenze:** Decoder synthetisch bewiesen (Position/1.5×-Speed/Rauschen, 6 Tests); Live-Kalibrierung am echten Vinyl ausstehend — braucht Phono-Interface (Traktor Audio oder Behringer UFO202) + Mikrofon-Freigabe. Absolute-Mode: Lead-in 1000 Codes, Seek-Toleranz 0.08 s bei 10 Hz Kopplungstimer.
+- **Mac = das Audio-Interface** („wir brauchen gar nichts"); Mixer egal (Xone:32 oder DJM-750 per Line-In vom Mac-Out)
+- **BD-1380-USB hat Phono-Preamp + USB-Line-Out eingebaut** → Turntable direkt per USB an den Mac, KEIN extra Interface (frühere Annahme „Traktor Audio/UFO202 nötig" ist falsch). DVS-Default daher `lineLevel = true`, Phono-Toggle im Treiber-Panel
+- **Traktor-Scratch-Vinyl ist vorhanden** — Live-Kalibrierung jederzeit möglich
+- „ALSA-Standardtreiber" = Linux-Konzept; macOS-Pendant CoreAudio ist eingebaut (`AudioDevices.swift` listet/sets Output+Input)
 
-Verwandt: [[qwen-flash-spark-project]]
+## TimecodeDecoder (`TimecodeVinyl.swift`)
+
+Traktor Scratch A/B (23 Bit, seed 0x134503/0x32066c, taps 0x041040, 2 kHz) + Serato 2A (20 Bit, seed 0x59017, taps 0x361e4). Gotchas: **LUT-lookup braucht Bounds-Check** (Code 0xDEADBEE → Index-out-of-range-Crash); **Tonearm-Tiefpass bei 2×Carrier ist Pflicht** für Rauschrobustheit (5%-Rauschen-Test schlug ohne fehl); Richtungswechsel → validCounter reset. Kopplung: EngineHost-Timer 10 Hz, Absolute-Mode (Lead-in 1000 Codes), `applyPlatterSpeed` (Pitch = Plattengeschwindigkeit, ±0.05 = Pause, Stems ausgenommen).
+
+## NI-TSI-Format (Slice 13, reverse-engineered)
+
+.tsi = NIXML, Mappings in Base64-Blob von Entry `DeviceIO.Config.Controller`. **S4/S2-User-Mappings enthalten die Action-Registry (UTF-16LE-Namen wie "Left.Cue") OHNE MIDI-Nummern** — S4/S2 sind HID-Geräte. Deshalb: Action-Katalog-Bericht statt Fake-Import; echte Bindings per MIDI-Learn (2 s/Knopf). Scanner-Lektion: Header-Schema scheiterte an **Endian-Falle im payloadLen-Feld** (LE vs BE je Version) → robuster `[u16 nlen][UTF16LE-ASCII]`-String-Scan über den ganzen Blob, Punkt-Notation als Filter, Set-Dedup. Integrationstest gegen echte S4-Datei grün.
+
+## Lizenz-Route
+
+Eigene Implementierung des öffentlich dokumentierten Signalformats (§ 40e UrhG / Art. 6 RL 2009/24/EG). xwax + Mixxx sind GPL → deren Code NIE kopieren, nur Format-Konstanten als Interop-Spec.
+
+## Beweisgrenze
+
+Decoder nur synthetisch bewiesen (Position @1.0×/1.5×-Speed, 5 % Rauschen, LFSR fwd/rev invers). **Live-Kalibrierung ausstehend**: Vinyl auflegen → Treiber-Panel → DVS „▶︎ Vinyl" → Eingang „USB Audio CODEC" (BD-1380) → Mic-Dialog erlauben. Siehe [[qwen-flash-spark-project]], [[research-before-declining-blocked]].
 
 ## uiux-skills-hub-audit
 
