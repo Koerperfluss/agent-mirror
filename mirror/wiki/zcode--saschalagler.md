@@ -1,6 +1,6 @@
 # saschalagler (zcode)
 
-Zuletzt gespiegelt: 2026-10-30 03:29 UTC
+Zuletzt gespiegelt: 2026-10-30 03:46 UTC
 
 ## AGENTS
 
@@ -12293,7 +12293,7 @@ Sascha fragte wiederholt wütend „WO SIND MEINE SKILLS?" — dauerhafte Fakten
 
 # Memory Index
 
-- [TraktorClone Projekt](qwen-flash-spark-project.md) — **Slices 1–10 + UI-Modernisierung ALLE FERTIG** (83/83 Tests, HEAD ec4d1f74d); agentos M1–M5 DONE (210/210); LokiCanvas geparkt (uncommittet in agent-mirror/LokiCanvas/); Swift-CLT-Gotchas; BD-1380 Riemenantrieb → DVS blocked
+- [TraktorClone Projekt](qwen-flash-spark-project.md) — **Slices 1–11 ALLE FERTIG (30.10., 102/102 Tests in 22 Suiten, HEAD d7f36b0af)**: Restfeatures (Beatgrid-Offset, Sync-Phase-Nudge, Cue/Hotcue-Marker, Zoom-Fix, Playlists/Crates, Treiber-Panel, Spotify-Playlist-Import via Env-Keys — kein Audio-Streaming, Spotify-AGB); **@State = SwiftUIMacros-Makro, fehlt im CLT komplett** → UI-Flags in EngineHost; agentos M1–M5 DONE (210/210); LokiCanvas v1.0 fertig (Parallel-Session 628ced708); 28/36 Features implemented, DVS blocked (BD-1380 Riemenantrieb)
 - [Mimosa-Hook-Schreibconstraints](mimosa-hook-write-constraints.md) — warum Edits/Pushes blockiert werden und welche Gegenmuster funktionieren (validate_host, write_text, lazy, pipefail, Button-Style-Paren-Falle)
 - [Custom-Skills manuell ausführen](custom-skills-read-from-autoclaw.md) — roo-code/gsd-core/coderabbit/loki-dev/ponytail liegen in ~/.openclaw-autoclaw/skills/, ZCode registriert sie nicht → SKILL.md lesen + Methodik manuell anwenden
 - [Subagent-Provider-Fix](subagent-provider-fix-zai-api.md) — finale Lösung: ALLE 10 Defs `account:zai-individual-coding-plan/GLM-5.3-Flash` + thoughtLevel low; **nach Neustart bewiesen: implementer läuft** (alle 37 aktiv); vor Neustart = Live-Route cavecrew-builder
@@ -12371,7 +12371,7 @@ metadata:
   originSessionId: session_58f3f4bfcb9a88671e0595593de28702
 ---
 
-Projekt `~/agent-os/agent-mirror` (Kanonik, Klon von Koerperfluss/agent-mirror, Branch `cline/s4sx83cs`). **TraktorClone/ SwiftPM: Slices 1–10 ALLE FERTIG (Stand 26.10. spät, HEAD `ec4d1f74d`)** — 83/83 Tests in 16 Suiten, laufende `.app`, GitHub-Branch synchron.
+Projekt `~/agent-os/agent-mirror` (Kanonik, Klon von Koerperfluss/agent-mirror, Branch `cline/s4sx83cs`). **TraktorClone/ SwiftPM: Slices 1–11 ALLE FERTIG (Stand 30.10., HEAD `d7f36b0af`)** — 102/102 Tests in 22 Suiten, laufende `.app` (Old-Instance-Falle: pkill vor `open build/TraktorClone.app`), GitHub-Branch synchron.
 
 ## TraktorClone Feature-Vollständigkeit (alle Kernfunktionen gebaut)
 
