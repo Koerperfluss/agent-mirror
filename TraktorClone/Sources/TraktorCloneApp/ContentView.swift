@@ -100,6 +100,11 @@ struct ContentView: View {
                 Text("Deck \(label)").font(.headline)
                 Button("🔍\(vm.zoom)x") { vm.cycleZoom() }
                     .buttonStyle(.bordered).font(.caption)
+                // Slice 10: BPM + Key aus DSP-Analyse
+                if vm.bpm != nil || !vm.keyText.isEmpty {
+                    Text("\(vm.bpm.map { String(Int($0)) } ?? "?") BPM\(vm.keyText.isEmpty ? "" : " · \(vm.keyText)")")
+                        .font(.caption).foregroundStyle(Theme.yl)
+                }
                 Spacer()
                 Text(vm.title).font(.caption).lineLimit(1).truncationMode(.middle)
             }
@@ -200,6 +205,27 @@ struct ContentView: View {
                          with: .color(Theme.acc.opacity(0.7)))
             }
             if vm.state.duration > 0 {
+                // Slice 10: Beatgrid-Linien (BPM bekannt → Beat-Intervalle)
+                if let bpmV = vm.bpm, bpmV > 0 {
+                    let spb = 60.0 / bpmV
+                    let total = vm.state.duration
+                    let n = all.count
+                    let frac = vm.playhead / total
+                    let win = vm.zoom == 1 ? n : max(1, n / vm.zoom)
+                    let start = vm.zoom == 1 ? 0 : max(0, min(Int(frac * Double(n)) - win / 2, n - win))
+                    let visibleT0 = Double(start) / Double(n) * total
+                    let visibleT1 = Double(start + win) / Double(n) * total
+                    var t = (visibleT0 / spb).rounded(.up) * spb
+                    while t < visibleT1 {
+                        let idx = Int(t / total * Double(n)) - start
+                        if idx >= 0 && idx < win {
+                            let x = CGFloat(idx) * bw
+                            ctx.fill(Path(CGRect(x: x, y: h * 0.5 - 4, width: 1, height: 8)),
+                                     with: .color(Theme.muted.opacity(0.55)))
+                        }
+                        t += spb
+                    }
+                }
                 let x = w * CGFloat(max(0, min(frac - offsetF, 1)))
                 ctx.fill(Path(CGRect(x: x, y: 0, width: 2, height: h)),
                          with: .color(Theme.rd))

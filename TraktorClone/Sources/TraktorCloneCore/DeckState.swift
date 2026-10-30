@@ -85,6 +85,10 @@ public struct DeckState {
     public mutating func setCueHere() { cuePoint = position }
 
     public mutating func setHotcue(_ i: Int) { precondition((1...4).contains(i)); hotcues[i] = position }
+    /// Setzt Hotcue auf feste Zeit (Restore aus Track-Memory, ohne Positionsfreigabe).
+    public mutating func setHotcueRaw(_ i: Int, at t: TimeInterval) {
+        precondition((1...4).contains(i)); hotcues[i] = min(max(t, 0), duration)
+    }
     @discardableResult
     public mutating func jumpHotcue(_ i: Int, now: TimeInterval) -> Bool {
         guard let t = hotcues[i] else { return false }

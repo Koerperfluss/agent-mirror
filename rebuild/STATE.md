@@ -46,3 +46,11 @@ cd agent-mirror/TraktorClone
 - VU-Meter je Deck (Peak-Tap an FX-Kette, 0,15s-Decay)
 - 70/70 Tests (14 Suiten), Bundle neu, App läuft
 - Offen: Waveform-Feinschliff (Beatgrid-Overlay), Cue-Persistenz
+
+## Slice 10 (26.10.) — FERTIG (Analyse & Gedächtnis)
+- BPM-Detektion: PCM→Mono→RMS-Hüllkurve→Onsets→Autokorrelation, Fold 70–180 (synthetisch: 120→120, 90→90)
+- Key-Detektion: Goertzel über 12 Pitch-Klassen (Okt. 2–5), Dur/Moll-Terz-Heuristik (A4-Sinus→A)
+- TrackMemoryStore: Cue/Hotcues/BPM/Key pro Datei-Pfad (SHA256-Key) in AppSupport — überlebt Neustarts
+- Auto-Analyse im Hintergrund beim Laden (90 s Material); Header zeigt „128 BPM · Am"
+- Beatgrid-Overlay in der Waveform (Beat-Striche bei bekanntem BPM, zoomtreu)
+- 83/83 Tests (16 Suiten; 13 neue)

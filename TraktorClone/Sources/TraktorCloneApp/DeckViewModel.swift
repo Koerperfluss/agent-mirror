@@ -22,6 +22,7 @@ final class DeckViewModel: ObservableObject {
     private var syncEngine = SyncEngine()
     @Published var waveform: [Float] = []             // Slice 3: Peak-Buckets
     @Published var bpm: Double?                       // aus Library oder Setzung
+    @Published var keyText: String = ""              // Slice 10: DSP-Key "Am"
     @Published var delayWet: Double = 0
     @Published var reverbWet: Double = 0
     @Published var filterOn = false
@@ -60,6 +61,8 @@ final class DeckViewModel: ObservableObject {
             title = state.trackTitle
             loadedURL = url
             loopBeats = nil
+            restoreMemory(for: url)                    // Slice 10: Cue/Hotcues/BPM/Key
+            analyzeInBackground(url: url)              // Slice 10: BPM+Key-DSP, falls unbekannt
             // Waveform im Hintergrund extrahieren (Slice 3)
             waveform = []
             let extractURL = url
@@ -82,10 +85,57 @@ final class DeckViewModel: ObservableObject {
         }
     }
 
-    func cue() { state.cue(now: clock); engine.stop(deck: index) }
+    func cue() { state.cue(now: clock); engine.stop(deck: index); persistMemory() }
 
     func hotcue(_ i: Int) {
         if state.hotcues[i] != nil { state.jumpHotcue(i, now: clock) } else { state.setHotcue(i) }
+        persistMemory()                                // Slice 10: Hotcues dauerhaft
+    }
+
+    // MARK: - Slice 10: Track-Memory (Cue/Hotcues/BPM/Key pro Datei)
+
+    private func restoreMemory(for url: URL) {
+        guard let m = TrackMemoryStore.load(path: url.path) else { return }
+        if let c = m.cue { state.seek(to: c, now: clock) }
+        for (k, v) in m.hotcues {
+            if let i = Int(k), (1...4).contains(i) { state.setHotcueRaw(i, at: v) }
+        }
+        bpm = m.bpm
+        keyText = m.key ?? ""
+    }
+
+    private func analyzeInBackground(url: URL) {
+        let path = url.path
+        let alreadyKnown = TrackMemoryStore.load(path: path)
+        if let b = alreadyKnown?.bpm, alreadyKnown?.key != nil { bpm = b; keyText = alreadyKnown?.key ?? ""; return }
+        let analyzeURL = url
+        Task.detached(priority: .utility) { [weak self] in
+            let samples = PCMExtractor.loadMono(url: analyzeURL, maxSeconds: 90)
+            let sr = 22050.0     // Detector-Fold läuft auf jeder Rate; env-Rate korrekt berechnet
+            let win = 1024
+            let env = BPMDetector.envelope(samples, win: win)
+            let detectedBPM = BPMDetector.detectFromOnsets(BPMDetector.onsets(env),
+                                                            framesPerSecond: sr / Double(win))
+            let detectedKey = KeyDetector.detectKey(samples, sampleRate: sr)
+            await MainActor.run {
+                guard let self, self.loadedURL == analyzeURL else { return }
+                if let b = detectedBPM, self.bpm == nil { self.bpm = b }
+                if let k = detectedKey { self.keyText = k }
+                self.persistMemory()
+            }
+        }
+    }
+
+    func persistMemory() {
+        guard let url = loadedURL else { return }
+        var hotcues: [String: Double] = [:]
+        for (i, t) in state.hotcues { hotcues[String(i)] = t }
+        let entry = TrackMemoryEntry(path: url.path,
+                                     cue: state.cuePoint,
+                                     hotcues: hotcues,
+                                     bpm: bpm,
+                                     key: keyText.isEmpty ? nil : keyText)
+        TrackMemoryStore.save(entry)
     }
 
     func setPitch(_ p: Double) {

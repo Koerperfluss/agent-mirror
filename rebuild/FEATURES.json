@@ -21,7 +21,7 @@
   "name": "Cue (zurück zu Cue-Punkt, Pause)",
   "evidence_level": "documented",
   "implementation_status": "implemented",
-  "notes": "DeckState.cue()"
+  "notes": "+ Slice 10: Cue-Punkt pro Track dauerhaft (TrackMemoryStore, SHA256-Datei-Keys)"
  },
  {
   "id": "F-004",
@@ -29,7 +29,7 @@
   "name": "Hotcues 1–4 setzen/springen",
   "evidence_level": "documented",
   "implementation_status": "implemented",
-  "notes": "DeckState.setHotcue/jumpHotcue"
+  "notes": "+ Slice 10: Hotcues pro Track dauerhaft gespeichert/wiederhergestellt"
  },
  {
   "id": "F-005",
@@ -69,7 +69,8 @@
   "name": "BPM/Beatgrid-Anzeige + nearestBeat",
   "evidence_level": "documented",
   "implementation_status": "implemented",
-  "notes": "BeatGrid"
+  "notes": "Slice 10: BPM-Auto-Detektion (Onset-Autokorrelation, synthetisch bewiesen 120/90 BPM) + Anzeige im Header",
+  "test_refs": "AnalysisTests"
  },
  {
   "id": "F-010",
